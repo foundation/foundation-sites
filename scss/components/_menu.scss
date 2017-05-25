@@ -297,8 +297,6 @@ $menu-item-background-hover: $light-gray !default;
 
 @mixin menu-text {
   padding: $global-menu-padding;
-  padding-top: 0;
-  padding-bottom: 0;
 
   font-weight: bold;
   line-height: 1;
@@ -379,7 +377,7 @@ $menu-item-background-hover: $light-gray !default;
     }
 
     // Active state
-    .active > a {
+    .is-active > a {
       background: $menu-item-background-active;
       color: $menu-item-color-active;
     }

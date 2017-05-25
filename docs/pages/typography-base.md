@@ -1,6 +1,7 @@
 ---
 title: Base Typography
 description: Typography in Foundation 6 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.
+video: pzAyIfsXis4
 sass:
   - scss/typography/_base.scss
   - scss/typography/_print.scss
@@ -24,6 +25,10 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
   <p>If the emphasis of a phrase is important, don't make the emphasis purely visual&mdash;use the `<em>` or `<strong>` tags to mark it as well. Both of these tags have built-in styles, but there's no harm in adding additional styles in specific contexts.</p>
 </div>
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWMEOd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to <em>italicize your words</em>.</p>
 ```
@@ -34,8 +39,13 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
 
 Foundation includes styles for all headings&mdash;they're balanced and sized along a modular scale.
 
+<a class="" data-open-video="0:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="callout primary">
   <p>Avoid skipping heading levels when structuring your document, as it confuses screen readers. For example, after using an <code>&lt;h2&gt;</code> in your code, the next heading used should be either <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/PmeKme" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -53,6 +63,8 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a wider range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
 
+<a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 Header  | Default | Medium and up
 --------|---------|--------------
 `<h1>`  | 24px    | 48px
@@ -69,7 +81,7 @@ In its most complete form the `$header-styles` map looks like this:
 ```
 $header-styles: (
   'small': (
-    'h1': ('font-size': 24, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom), 
+    'h1': ('font-size': 24, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
     'h2': ('font-size': 20, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
     'h3': ('font-size': 19, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
     'h4': ('font-size': 18, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
@@ -93,7 +105,7 @@ Because this is a little bit lengthy we have also introduced a short form, that 
 ```
 $header-styles: (
   'small': (
-    'h1': ('fs': 24, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom), 
+    'h1': ('fs': 24, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
     'h2': ('fs': 20, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
     'h3': ('fs': 19, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
     'h4': ('fs': 18, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
@@ -127,8 +139,16 @@ The value for `'line-height'`/`'lh'` is transformed into a unitless number, that
 
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
 
+<p>
+  <a class="" data-open-video="2:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/eWrEEm" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<h3>Foundation for Sites <small>Version 6.3.0</small></h3>
+<h3>Foundation for Sites <small>Version 6.3.1</small></h3>
 ```
 
 ---
@@ -137,8 +157,13 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 
 Links are very standard, and the color is preset to the Foundation primary color. <a href="global.html">Learn more about Foundation's global colors.</a>
 
+<a class="" data-open-video="3:22"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="callout">
   <p>To make links screen reader-friendly, avoid using vague words like "here" or "read more" within link text. The text of the link itself should adequately describe where the link goes.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/wdjqrY" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -151,6 +176,10 @@ Links are very standard, and the color is preset to the Foundation primary color
 
 Use dividers to define thematic breaks between paragraphs. To denote the end of one section of a page and the start of another, it's better to use the `<section>` tag.
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/Vbxzrz" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <hr>
 ```
@@ -160,6 +189,10 @@ Use dividers to define thematic breaks between paragraphs. To denote the end of 
 ## Unordered Lists
 
 Use an unordered list to... *list things*, if the order of the items doesn't matter.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmLMXx" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul>
@@ -182,7 +215,9 @@ Use an unordered list to... *list things*, if the order of the items doesn't mat
 
 ## Ordered Lists
 
-Use an `<ol>` when creating a list where the order of the items is important, like ranking pizza toppings from best to worst.
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/XRqaBd" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ol>
@@ -206,6 +241,10 @@ Use an `<ol>` when creating a list where the order of the items is important, li
 
 A definition list (`<dl>`) is used to display name-value pairs, like metadata or a dictionary definition. Each term (`<dt>`) is paired with one or more definitions (`<dd>`).
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/oWdeMe" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <dl>
   <dt>Time</dt>
@@ -222,6 +261,10 @@ A definition list (`<dl>`) is used to display name-value pairs, like metadata or
 
 Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKoJMb" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <blockquote>
   Those people who think they know everything are a great annoyance to those of us who do.
@@ -235,6 +278,10 @@ Sometimes other people say smart things, and you may want to mention those thing
 
 Use the `<abbr>` tag to annotate a shortened term. Abbreviations must always have a `title` attribute which clarifies the full term.
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmpzNW?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p>In my dream last night, I saw <abbr title="John Ronald Reuel">J. R. R.</abbr> Tolkien and George <abbr title="Raymond Richard">R. R.</abbr> Martin hanging out on Sunset <abbr title="Boulevard">Blvd</abbr>.</p>
 ```
@@ -243,7 +290,11 @@ Use the `<abbr>` tag to annotate a shortened term. Abbreviations must always hav
 
 ## Code
 
-Format references to code with the `<code>` tag.
+Format references to code with the `<code>` tag. In order for angle brackets `<>` to render correctly, you need to change them to `&lt; and &gt;`.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/LymjvO" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
@@ -254,6 +305,10 @@ Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
 ## Keystrokes
 
 Use the `<kbd>` element to annotate a key stroke or combination.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/GmBxRL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p>Press <kbd>Cmd+Q</kbd> (or <kbd>Ctrl+Q</kbd> on Windows) to play Half-Life 3.</p>
@@ -319,6 +374,8 @@ Foundation includes print styles developed by HTML5 Boilerplate to give you some
 - Page cleanup and window minimization
 
 On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
+
+<a class="" data-open-video="4:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="callout primary">
   <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>

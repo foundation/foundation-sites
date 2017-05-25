@@ -1,13 +1,14 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Abide module.
  * @module foundation.abide
  */
 
-class Abide {
+class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
@@ -15,13 +16,11 @@ class Abide {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options = {}) {
+  _setup(element, options = {}) {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Abide');
   }
 
   /**
@@ -110,9 +109,11 @@ class Abide {
   }
 
   /**
-   * Based on $el, get the first element with selector in this order:
-   * 1. The element's direct sibling('s).
-   * 3. The element's parent's children.
+   * Get:
+   * - Based on $el, the first element(s) corresponding to `formErrorSelector` in this order:
+   *   1. The element's direct sibling('s).
+   *   2. The element's parent's children.
+   * - Element(s) with the attribute `[data-form-error-for]` set with the element's id.
    *
    * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
    *
@@ -120,11 +121,14 @@ class Abide {
    * @returns {Object} jQuery object with the selector.
    */
   findFormError($el) {
+    var id = $el[0].id;
     var $error = $el.siblings(this.options.formErrorSelector);
 
     if (!$error.length) {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
+
+    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
 
     return $error;
   }
@@ -237,7 +241,7 @@ class Abide {
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
    * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
@@ -448,7 +452,7 @@ class Abide {
    * Destroys an instance of Abide.
    * Removes error styles and classes from elements, without resetting their values.
    */
-  destroy() {
+  _destroy() {
     var _this = this;
     this.$element
       .off('.abide')
@@ -460,8 +464,6 @@ class Abide {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -555,7 +557,14 @@ Abide.defaults = {
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
-    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+
+    // Domain || URL
+    website: {
+      test: (text) => {
+        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+      }
+    }
   },
 
   /**
@@ -573,7 +582,4 @@ Abide.defaults = {
   }
 }
 
-// Window exports
-Foundation.plugin(Abide, 'Abide');
-
-}(jQuery);
+export {Abide};

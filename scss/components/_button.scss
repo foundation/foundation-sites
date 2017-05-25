@@ -6,6 +6,10 @@
 /// @group button
 ////
 
+/// Font family for button elements.
+/// @type Font
+$button-font-family: inherit !default;
+
 /// Padding inside buttons.
 /// @type List
 $button-padding: 0.85em 1em !default;
@@ -37,6 +41,10 @@ $button-color-alt: $black !default;
 /// Border radius for buttons, defaulted to global-radius.
 /// @type Number
 $button-radius: $global-radius !default;
+
+/// Border width for hollow outline buttons
+/// @type Number
+$button-hollow-border-width: 1px !default;
 
 /// Sizes for buttons.
 /// @type Map
@@ -78,7 +86,18 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
-  padding: $button-padding;
+  font-family: $button-font-family;
+
+  @if (type-of($button-padding) == 'map') {
+    @each $size, $padding in $button-padding {
+      @include breakpoint($size) {
+        padding: $padding;
+      }
+    }
+  }
+  @else {
+    padding: $button-padding;
+  }
 
   -webkit-appearance: none;
   border: 1px solid transparent;
@@ -140,31 +159,54 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   &:hover, &:focus {
     background-color: transparent;
   }
+
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
 }
 
 @mixin button-hollow-style(
-  $color: $primary-color,
-  $hover-lightness: $button-hollow-hover-lightness
+  $color: $button-background,
+  $hover-lightness: $button-hollow-hover-lightness,
+  $border-width: $button-hollow-border-width
 ) {
   $color-hover: scale-color($color, $lightness: $hover-lightness);
 
-  border: 1px solid $color;
+  border: $border-width solid $color;
   color: $color;
 
   &:hover, &:focus {
     border-color: $color-hover;
     color: $color-hover;
+    &.disabled,
+    &[disabled] {
+      border: $border-width solid $color;
+      color: $color;
+    }
   }
 }
 
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-@mixin button-disabled($color: $primary-color) {
+/// @param [Color] $background [$button-background] - Background color of the disabled button.
+/// @param [Color] $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a color based on the background color.
+@mixin button-disabled(
+  $background: $button-background,
+  $color: $button-color
+) {
+  @if $color == auto {
+    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
+  }
+
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
 
-  &:hover, &:focus {
-    background-color: $color;
-    color: $button-color;
+  &, &:hover, &:focus {
+    background-color: $background;
+    color: $color;
   }
 }
 
@@ -184,7 +226,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
     display: inline-block;
     float: #{$global-right};
-    margin-#{$global-left}: get-side($button-padding, right);
+    margin-#{$global-left}: $offset;
   }
 }
 
@@ -247,6 +289,18 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       }
     }
 
+    // Disabled style
+    &.disabled,
+    &[disabled] {
+      @include button-disabled;
+
+      @each $name, $color in $button-palette {
+        &.#{$name} {
+          @include button-disabled($color, auto);
+        }
+      }
+    }
+
     // Hollow style
     @if $button-fill != hollow {
       &.hollow {
@@ -261,14 +315,31 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       }
     }
 
-    // Disabled style
-    &.disabled,
-    &[disabled] {
-      @include button-disabled;
+    // Clear style
+    @if $button-fill != clear {
+      &.clear {
+        @include button-hollow;
+        @include button-hollow-style;
 
-      @each $name, $color in $button-palette {
-        &.#{$name} {
-          @include button-disabled($color);
+        &, &:hover, &:focus {
+          &, &.disabled, &[disabled] {
+            border-color: transparent;
+          }
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            @include button-hollow-style($color);
+
+            &, &:hover,
+            &:focus {
+              &,
+              &.disabled,
+              &[disabled] {
+                border-color: transparent;
+              }
+            }
+          }
         }
       }
     }
@@ -280,6 +351,20 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       @if $button-fill == hollow {
         &::after {
           border-top-color: $button-background;
+        }
+      }
+
+      &.hollow {
+        &::after {
+          border-top-color: $button-background;
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            &::after {
+              border-top-color: $color;
+            }
+          }
         }
       }
     }

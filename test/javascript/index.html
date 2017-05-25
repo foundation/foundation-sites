@@ -4,15 +4,15 @@
     <title>Mocha</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../_build/assets/js/foundation.js"></script>
+    <script src="lib/mocha.js"></script>
     <link rel="stylesheet" href="lib/mocha.css" />
     <link rel="stylesheet" href="../../_build/assets/css/foundation.css">
     <link rel="stylesheet" href="../../node_modules/motion-ui/dist/motion-ui.css">
   </head>
   <body>
     <div id="mocha"></div>
-    <script src="../../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../../_build/assets/js/foundation.js"></script>
-    <script src="lib/mocha.js"></script>
     <script src="lib/chai.js"></script>
     <script src="lib/chai-jquery.js"></script>
     <script src="lib/sinon.js"></script>
@@ -20,6 +20,7 @@
       mocha.setup('bdd');
       chai.should();
     </script>
+    <script src="lib/keyboard-event-mock.js"></script>
     <script src="js-tests.js"></script>
     <script>
       mocha.run();

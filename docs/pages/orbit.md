@@ -4,6 +4,7 @@ description: An image and content carousel with animation support and many custo
 sass: scss/components/_orbit.scss
 js: js/foundation.orbit.js
 mui: true
+video: l0bdHvBuylA
 tags:
   - slider
   - carousel
@@ -13,28 +14,48 @@ tags:
 
 Orbit doesn't automatically generate any HTML for you, giving you the flexibility to move around the various pieces of the plugin. Here's a complete example&mdash;we'll break down the individual pieces farther down.
 
-```html_example
+<p>
+  <a class="" data-open-video="0:48"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/GmGzWY?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-  <ul class="orbit-container">
-    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-    <li class="is-active orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
-      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
-      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
-      <figcaption class="orbit-caption">Encapsulating</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
-      <figcaption class="orbit-caption">Outta This World</figcaption>
-    </li>
-  </ul>
+  <div class="orbit-wrapper">
+    <div class="orbit-controls">
+      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+    </div>
+    <ul class="orbit-container">
+      <li class="is-active orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="http://placehold.it/1200x600/999?text=Slide-1" alt="Space">
+          <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="http://placehold.it/1200x600/888?text=Slide-2" alt="Space">
+          <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="http://placehold.it/1200x600/777?text=Slide-3" alt="Space">
+          <figcaption class="orbit-caption">Encapsulating</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="http://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+          <figcaption class="orbit-caption">Outta This World</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
   <nav class="orbit-bullets">
     <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
@@ -43,6 +64,47 @@ Orbit doesn't automatically generate any HTML for you, giving you the flexibilit
   </nav>
 </div>
 ```
+
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+  <div class="orbit-wrapper">
+    <div class="orbit-controls">
+      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+    </div>
+    <ul class="orbit-container">
+      <li class="is-active orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
+          <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
+          <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
+          <figcaption class="orbit-caption">Encapsulating</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
+          <figcaption class="orbit-caption">Outta This World</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <nav class="orbit-bullets">
+    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+  </nav>
+</div>
 
 ---
 
@@ -64,8 +126,10 @@ Each slide is an `<li>` with the class `.orbit-slide`. The first slide is marked
 ```html
 <ul class="orbit-container">
   <li class="orbit-slide is-active">
-    <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
-    <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+    <figure class="orbit-figure">
+      <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
+      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+    </figure>
   </li>
   <!-- More slides... -->
 </ul>
@@ -109,6 +173,14 @@ The bullets serve two purposes: they mark the current slide, and can be clicked 
 
 A carousel slide can contain images or HTML&mdash;you can even mix between slides in one carousel!
 
+<p>
+  <a class="" data-open-video="5:20"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmrbrV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <li class="orbit-slide">
   <div>
@@ -120,30 +192,34 @@ A carousel slide can contain images or HTML&mdash;you can even mix between slide
 ```
 
 <div class="orbit" role="region" aria-label="Favorite Text Ever" data-orbit>
-  <ul class="orbit-container">
-    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-    <li class="is-active orbit-slide">
-      <div class="docs-example-orbit-slide">
-        <p><strong>This is dodgerblue.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </li>
-    <li class="orbit-slide">
-      <div class="docs-example-orbit-slide">
-        <p><strong>This is rebeccapurple.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </li>
-    <li class="orbit-slide">
-      <div class="docs-example-orbit-slide">
-        <p><strong>This is darkgoldenrod.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </li>
-    <li class="orbit-slide">
-      <div class="docs-example-orbit-slide">
-        <p><strong>This is lightseagreen.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </li>
-  </ul>
+  <div class="orbit-wrapper">
+    <div class="orbit-controls">
+      <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+      <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    </div>
+    <ul class="orbit-container">
+      <li class="is-active orbit-slide">
+        <div class="docs-example-orbit-slide">
+          <p><strong>This is dodgerblue.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </li>
+      <li class="orbit-slide">
+        <div class="docs-example-orbit-slide">
+          <p><strong>This is rebeccapurple.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </li>
+      <li class="orbit-slide">
+        <div class="docs-example-orbit-slide">
+          <p><strong>This is darkgoldenrod.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </li>
+      <li class="orbit-slide">
+        <div class="docs-example-orbit-slide">
+          <p><strong>This is lightseagreen.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
   <nav class="orbit-bullets">
     <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
@@ -171,32 +247,49 @@ There are four plugin options you can set to change the default effects:
 
 Since those option names are pretty *long*, you can also set them all in one HTML attribute, using `data-options`:
 
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWymQy?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
 </div>
 ```
 
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
-  <ul class="orbit-container">
-    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-    <li class="is-active orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
-      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
-      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
-      <figcaption class="orbit-caption">Encapsulating</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
-      <figcaption class="orbit-caption">Outta This World</figcaption>
-    </li>
-  </ul>
+  <div class="orbit-wrapper">
+    <div class="orbit-controls">
+      <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+      <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    </div>
+    <ul class="orbit-container">
+      <li class="is-active orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
+          <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
+          <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
+          <figcaption class="orbit-caption">Encapsulating</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
+          <figcaption class="orbit-caption">Outta This World</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
   <nav class="orbit-bullets">
    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
@@ -211,32 +304,48 @@ Since those option names are pretty *long*, you can also set them all in one HTM
 
 To disable Motion UI, set the plugin option `useMUI` to `false`. Written as an HTML attribute, that's `data-use-m-u-i="false"`.
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbdgNV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-use-m-u-i="false">
 </div>
 ```
 
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-use-m-u-i="false">
-  <ul class="orbit-container">
-    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-    <li class="is-active orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
-      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
-      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
-      <figcaption class="orbit-caption">Encapsulating</figcaption>
-    </li>
-    <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
-      <figcaption class="orbit-caption">Outta This World</figcaption>
-    </li>
-  </ul>
+  <div class="orbit-wrapper">
+    <div class="orbit-controls">
+      <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+      <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    </div>
+    <ul class="orbit-container">
+      <li class="is-active orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
+          <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+        </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
+          <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+          </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
+          <figcaption class="orbit-caption">Encapsulating</figcaption>
+          </figure>
+      </li>
+      <li class="orbit-slide">
+        <figure class="orbit-figure">
+          <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
+          <figcaption class="orbit-caption">Outta This World</figcaption>
+          </figure>
+      </li>
+    </ul>
+  </div>
   <nav class="orbit-bullets">
    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>

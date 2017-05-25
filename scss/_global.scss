@@ -109,6 +109,10 @@ $global-flexbox: false !default;
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
+/// Global tolerance for color pick contrast.
+/// @type Number
+$global-color-pick-contrast-tolerance: 0 !default;
+
 // Internal variables used for colors
 $primary-color: get-color(primary);
 $secondary-color: get-color(secondary);
@@ -207,6 +211,15 @@ $alert-color: get-color(alert);
   // Prevent text overflow on pre
   pre {
     overflow: auto;
+  }
+
+  // Make reset inherit font-family instead of settings sans-serif
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
   }
 
   // Internal classes to show/hide elements in JavaScript

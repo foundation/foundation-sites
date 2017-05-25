@@ -6,6 +6,10 @@
 /// @group tooltip
 ////
 
+/// Default cursor of the defined term.
+/// @type Keyword
+$has-tip-cursor: help !default;
+
 /// Default font weight of the defined term.
 /// @type Keyword | Number
 $has-tip-font-weight: $global-weight-bold !default;
@@ -25,6 +29,10 @@ $tooltip-color: $white !default;
 /// Default padding of the tooltip background.
 /// @type Number
 $tooltip-padding: 0.75rem !default;
+
+/// Default max width for tooltips.
+/// @type Number
+$tooltip-max-width: 10rem !default;
 
 /// Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.
 /// @type Number
@@ -48,7 +56,7 @@ $tooltip-radius: $global-radius !default;
 
   border-bottom: $has-tip-border-bottom;
   font-weight: $has-tip-font-weight;
-  cursor: help;
+  cursor: $has-tip-cursor;
 }
 
 @mixin tooltip {
@@ -56,7 +64,7 @@ $tooltip-radius: $global-radius !default;
   top: calc(100% + #{$tooltip-pip-height});
   z-index: 1200;
 
-  max-width: 10rem;
+  max-width: $tooltip-max-width;
   padding: $tooltip-padding;
 
   border-radius: $tooltip-radius;

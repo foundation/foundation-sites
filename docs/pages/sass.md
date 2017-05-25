@@ -1,6 +1,7 @@
 ---
 title: Sass
 description: Foundation is written in Sass, which allows us to make the codebase customizable and flexible.
+video: mYiyunVQdMY
 ---
 
 <div class="primary callout">
@@ -32,7 +33,7 @@ autoprefixer({
 
 ## Loading the Framework
 
-If you're the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
+If you're using the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
 
 To get started, first install the framework files using Bower or npm.
 
