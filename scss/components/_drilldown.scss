@@ -20,7 +20,7 @@ $drilldown-padding: $global-menu-padding !default;
 
 /// Sets drilldown menu nested margin
 /// @type Number
-$drilldown-nested-margin: 0 !default; 
+$drilldown-nested-margin: 0 !default;
 
 /// Background color for drilldown top level items.
 /// @type Color
@@ -41,6 +41,32 @@ $drilldown-arrow-color: $primary-color !default;
 /// Sets drilldown arrow size if arrow is used.
 /// @type Length
 $drilldown-arrow-size: 6px !default;
+
+@mixin zf-drilldown-left-right-arrows {
+  .is-drilldown-submenu-parent > a {
+    position: relative;
+    &::after {
+      position: absolute;
+      top: 50%;
+      margin-top: -1 * $drilldown-arrow-size;
+      #{$global-right}: 1rem;
+      @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
+    }
+  }
+
+  &.align-left .is-drilldown-submenu-parent > a::after {
+    left: auto;
+    right: 1rem;
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, right);
+  }
+
+  &.align-right .is-drilldown-submenu-parent > a::after {
+    right: auto;
+    left: 1rem;
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
+  }
+
+}
 
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
@@ -100,17 +126,7 @@ $drilldown-arrow-size: 6px !default;
     }
 
     @if $drilldown-arrows {
-      .is-drilldown-submenu-parent > a {
-        position: relative;
-
-        &::after {
-          @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
-          position: absolute;
-          top: 50%;
-          margin-top: -1 * $drilldown-arrow-size;
-          #{$global-right}: 1rem;
-        }
-      }
+      @include zf-drilldown-left-right-arrows;
 
       .js-drilldown-back > a::before {
         @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-left);
