@@ -30,6 +30,10 @@ $tooltip-color: $white !default;
 /// @type Number
 $tooltip-padding: 0.75rem !default;
 
+/// Default max width for tooltips.
+/// @type Number
+$tooltip-max-width: 100% !default;
+
 /// Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.
 /// @type Number
 $tooltip-font-size: $small-font-size !default;
@@ -60,7 +64,7 @@ $tooltip-radius: $global-radius !default;
   top: calc(100% + #{$tooltip-pip-height});
   z-index: 1200;
 
-  max-width: 10rem;
+  max-width: $tooltip-max-width;
   padding: $tooltip-padding;
 
   border-radius: $tooltip-radius;
