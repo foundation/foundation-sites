@@ -12,95 +12,65 @@
 @function zf-cell-size(
   $size: $grid-columns
 ) {
-    // Parsing percents, decimals, n of n and number counts
-    @if type-of($size) == 'number' {
-        @if unit($size) == '%' {
-            $size: $size;
-        }
-        @else if $size < 1 {
-            $size: percentage($size);
-        }
-        @else {
-            $size: percentage($size / $grid-columns);
-        }
+  // Parsing percents, decimals, n of n and number counts
+  @if type-of($size) == 'number' {
+    @if unit($size) == '%' {
+      $size: $size;
     }
-
-    // Parsing "n of n" or "n/n" expressions
-    @else if type-of($size) == 'list' {
-        @if length($size) != 3 {
-            @error 'Wrong syntax for zf-cell-size(). Use the format "n of n" or "n/n".';
-        }
-        @else {
-            $size: percentage(nth($size, 1) / nth($size, 3));
-        }
+    @else if $size < 1 {
+      $size: percentage($size);
     }
-
-    // Anything else is incorrect
     @else {
-        @error 'Wrong syntax for zf-cell-size(). Use a number, decimal, percentage, or "n of n" / "n/n".';
+      $size: percentage($size / $grid-columns);
     }
+  }
 
-    @return $size;
+  // Parsing "n of n" or "n/n" expressions
+  @elseif type-of($size) == 'list' {
+    @if length($size) != 3 {
+      @error 'Wrong syntax for zf-cell-size(). Use the format "n of n" or "n/n".';
+    }
+    @else {
+      $size: percentage(nth($size, 1) / nth($size, 3));
+    }
+  }
+  // Anything else is incorrect
+  @else {
+    @error 'Wrong syntax for zf-cell-size(). Use a number, decimal, percentage, or "n of n" / "n/n".';
+  }
+
+  @return $size;
 }
 
-// Outputs sizing for full sized cells.
-@mixin -zf-cell-full($gutters, $gutter-type, $gutter-position, $vertical) {
-  // Set either width or height depending on axis
+@mixin -zf-cell-margin($size, $gutters, $gutter-position, $vertical) {
   $direction: if($vertical == true, height, width);
-
-  // If we have a margin, output as calc
-  @if($gutter-type == 'margin') {
+  @if($size == 'auto') {
+    flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+  } @else {
     @include -zf-breakpoint-value(auto, $gutters) {
       $gutter: rem-calc($-zf-bp-value);
-      flex: 1 1 calc(100% - #{$gutter});
+      @if($size == 'shrink'){
+        max-#{$direction}: calc(100% - #{$gutter});
+      } @elseif($size == 'full') {
+        flex: 1 1 calc(100% - #{$gutter});
+      } @else {
+        flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
+        max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
+      }
     }
   }
-  // If not margin, output as non-calc
-  @else {
-    flex: 1 1 100%;
-  }
 }
 
-// Outputs sizing for auto sized cells.
-@mixin -zf-cell-auto() {
-  flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
-}
-
-// Outputs sizing for shrinking sized cells.
-@mixin -zf-cell-shrink($gutters, $gutter-type, $gutter-position, $vertical) {
-  // Set either width or height depending on axis
+@mixin -zf-cell-padding($size, $gutters, $gutter-position, $vertical) {
   $direction: if($vertical == true, height, width);
-
-  flex: 0 0 auto;
-
-  // If we are margin, output as calc
-  @if($gutter-type == 'margin') {
-    @include -zf-breakpoint-value(auto, $gutters) {
-      $gutter: rem-calc($-zf-bp-value);
-      max-#{$direction}: calc(100% - #{$gutter});
-    }
-  }
-  // If not margin, output as non-calc
-  @else {
+  @if($size == 'auto') {
+    flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+  } @elseif($size == 'shrink'){
+    flex: 0 0 auto;
     max-#{$direction}: 100%;
-  }
-}
-
-// Outputs sizing for sized cells.
-@mixin -zf-cell-size($size, $gutters, $gutter-type, $gutter-position, $vertical) {
-  // Set either width or height depending on axis
-  $direction: if($vertical == true, height, width);
-
-  // If we have a margin, output as calc
-  @if($gutter-type == 'margin') {
-    @include -zf-breakpoint-value(auto, $gutters) {
-      $gutter: rem-calc($-zf-bp-value);
-      flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
-      max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
-    }
-  }
-  // If no margin, output as non-calc
-  @else {
+  } @elseif($size == 'full') {
+    flex: 1 1 100%;
+  } @else {
     flex: 0 0 zf-cell-size($size);
     max-#{$direction}: zf-cell-size($size);
   }
@@ -122,20 +92,11 @@
   $gutter-position: right left,
   $vertical: false
 ) {
-  // Sizing properties
-  @if($size == 'full') {
-    @include -zf-cell-full($gutters, $gutter-type, $gutter-position, $vertical);
-  }
-  @elseif($size == 'auto') {
-    @include -zf-cell-auto();
-  }
-  @elseif($size == 'shrink') {
-    @include -zf-cell-shrink($gutters, $gutter-type, $gutter-position, $vertical);
-  }
 
-  // If its not a keyword, just output our sizes
-  @else {
-    @include -zf-cell-size($size, $gutters, $gutter-type, $gutter-position, $vertical);
+  @if($gutter-type == 'margin') {
+    @include -zf-cell-margin($size, $gutters, $gutter-position, $vertical);
+  } @else {
+    @include -zf-cell-padding($size, $gutters, $gutter-position, $vertical);
   }
 
   // If we want to output the gutters
