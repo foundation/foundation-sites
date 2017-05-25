@@ -42,20 +42,31 @@
   @return $size;
 }
 
-@mixin -zf-cell-margin($size, $gutters, $gutter-position, $vertical) {
+@mixin -zf-cell-margin($size, $gutters, $gutter-position, $vertical, $breakpoint) {
   $direction: if($vertical == true, height, width);
   @if($size == 'auto') {
-    flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+    @if($breakpoint == auto) {
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+    } @else {
+      @include breakpoint($breakpoint) {
+        flex: 1 1 0px; // sass-lint:disable-line zero-unit
+      }
+    }
   } @else {
-    @include -zf-breakpoint-value(auto, $gutters) {
-      $gutter: rem-calc($-zf-bp-value);
-      @if($size == 'shrink'){
-        max-#{$direction}: calc(100% - #{$gutter});
-      } @elseif($size == 'full') {
-        flex: 1 1 calc(100% - #{$gutter});
-      } @else {
-        flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
-        max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
+    @each $bp in -zf-breakpoints-up-from($breakpoint) {
+      @include breakpoint($bp) {
+        @include -zf-breakpoint-value($bp, $gutters) {
+          $gutter: rem-calc($-zf-bp-value);
+          @if($size == 'shrink'){
+            flex: 0 0 auto;
+            max-#{$direction}: calc(100% - #{$gutter});
+          } @elseif($size == 'full') {
+            flex: 1 1 calc(100% - #{$gutter});
+          } @else {
+            flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
+            max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
+          }
+        }
       }
     }
   }
@@ -90,17 +101,19 @@
   $gutters: $grid-margin-gutters,
   $gutter-type: margin,
   $gutter-position: right left,
-  $vertical: false
+  $vertical: false,
+  $breakpoint: auto
 ) {
 
   @if($gutter-type == 'margin') {
-    @include -zf-cell-margin($size, $gutters, $gutter-position, $vertical);
+    @include -zf-cell-margin($size, $gutters, $gutter-position, $vertical, $breakpoint);
   } @else {
     @include -zf-cell-padding($size, $gutters, $gutter-position, $vertical);
   }
 
   // If we want to output the gutters
   @if($gutter-output) {
+    // TODO: Figure out if we need to pass breakpoint in here too.
     @include zf-gutters($gutters, $gutter-type, $gutter-position);
   }
 }

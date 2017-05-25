@@ -259,7 +259,7 @@
 /// - For a single value, `$-zf-bp-value` is this value.
 /// - For a breakpoint name, `$-zf-bp-value` is the corresponding breakpoint value in `$map`.
 /// - For "auto", `$-zf-bp-value` is the corresponding breakpoint value in `$map` and is passed to `@content`, which is made responsive for each breakpoint of `$map`.
-/// @param {Number|Keyword} $name [auto] - Single value or breakpoint name to use. "auto" by default.
+/// @param {Number|Array|Keyword} $name [auto] - Single value, breakpoint name, or list of breakpoint names to use. "auto" by default.
 /// @param {Number|Map} $map - Map of breakpoints and values or single value to use.
 @mixin -zf-breakpoint-value(
   $name: auto,

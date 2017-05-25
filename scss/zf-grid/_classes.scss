@@ -60,25 +60,25 @@
     }
 
     // Auto width
-    @include -zf-each-breakpoint() {
+    @include -zf-each-breakpoint($auto-insert-breakpoints: false) {
       > .#{$-zf-size}-auto {
-        @include zf-cell(auto, false);
+        @include zf-cell(auto, false, $breakpoint: $-zf-size);
       }
     }
 
     // Shrink
-    @include -zf-each-breakpoint() {
+    @include -zf-each-breakpoint($auto-insert-breakpoints: false) {
       > .#{$-zf-size}-shrink {
-        @include zf-cell(shrink, false);
+        @include zf-cell(shrink, false, $breakpoint: $-zf-size);
       }
     }
 
     // Sizing classes
-    @include -zf-each-breakpoint {
+    @include -zf-each-breakpoint($auto-insert-breakpoints: false) {
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
-          @include zf-cell($i, false);
+          @include zf-cell($i, false, $breakpoint: $-zf-size);
         }
       }
     }
