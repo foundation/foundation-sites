@@ -1,0 +1,149 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style>
+      body {
+        padding: 30px;
+      }
+
+      .demo {
+        background: tomato;
+      }
+
+      .cell {
+        background: dodgerblue;
+        margin-bottom: 30px;
+        height: 50px;
+        line-height: 50px;
+        color: white;
+        text-align: center;
+      }
+
+      .dodgerblue {
+        background: dodgerblue;
+        padding: 10px;
+        color: white;
+        width: 50%;
+        float: left;
+      }
+
+      .tomato {
+        background: tomato;
+        padding: 10px;
+        color: white;
+        width: 50%;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Demo showing the padding/margin gutter options</h1>
+
+    <h2>Key:</h2>
+    <div class="dodgerblue">This shows the padding of the cells</div>
+    <div class="tomato">This shows the cell</div>
+
+    <hr>
+
+    <button class="button toggle-margin-gutters">Toggle margin gutters</button>
+    <button class="button toggle-padding-gutters">Toggle padding gutters</button>
+
+    <div class="grid toggle-classes">
+      <div class="cell medium-12"><div class="demo">12</div></div>
+      <div class="cell medium-11"><div class="demo">11</div></div>
+      <div class="cell medium-1"><div class="demo">1</div></div>
+      <div class="cell medium-10"><div class="demo">10</div></div>
+      <div class="cell medium-2"><div class="demo">2</div></div>
+      <div class="cell medium-9"><div class="demo">9</div></div>
+      <div class="cell medium-3"><div class="demo">3</div></div>
+      <div class="cell medium-8"><div class="demo">8</div></div>
+      <div class="cell medium-4"><div class="demo">4</div></div>
+      <div class="cell medium-7"><div class="demo">7</div></div>
+      <div class="cell medium-5"><div class="demo">5</div></div>
+      <div class="cell medium-6"><div class="demo">6</div></div>
+      <div class="cell medium-4"><div class="demo">4</div></div>
+    </div>
+
+    <h2>Margin gutters nested example</h2>
+    <div class="grid margin-gutters">
+      <div class="cell medium-6">
+        <div class="grid margin-gutters">
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+        </div>
+      </div>
+      <div class="cell medium-6"><div class="demo">6</div></div>
+    </div>
+
+    <h2>Padding gutters nested example</h2>
+    <div class="grid padding-gutters">
+      <div class="cell medium-6">
+        <div class="grid padding-gutters">
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+        </div>
+      </div>
+      <div class="cell medium-6"><div class="demo">6</div></div>
+    </div>
+
+    <h2>Mixed gutters nested example</h2>
+    <div class="grid padding-gutters">
+      <div class="cell medium-6">
+        <div class="grid margin-gutters">
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+        </div>
+      </div>
+      <div class="cell medium-6"><div class="demo">6</div></div>
+    </div>
+
+    <h2>Mixed gutters nested example</h2>
+    <div class="grid margin-gutters">
+      <div class="cell medium-6">
+        <div class="grid padding-gutters">
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+           <div class="cell medium-6"><div class="demo">6 nested</div></div>
+        </div>
+      </div>
+      <div class="cell medium-6"><div class="demo">6</div></div>
+    </div>
+
+    <h2>Vertical grid</h2>
+    <div class="grid grid-vertical toggle-classes" style="height: 500px;">
+      <div class="cell medium-vertical-12"><div class="demo">12</div></div>
+      <div class="cell medium-vertical-11"><div class="demo">11</div></div>
+      <div class="cell medium-vertical-1"><div class="demo">1</div></div>
+      <div class="cell medium-vertical-10"><div class="demo">10</div></div>
+      <div class="cell medium--vertical-2"><div class="demo">2</div></div>
+      <div class="cell medium-vertical-9"><div class="demo">9</div></div>
+      <div class="cell medium-vertical-3"><div class="demo">3</div></div>
+      <div class="cell medium-vertical-8"><div class="demo">8</div></div>
+      <div class="cell medium-vertical-4"><div class="demo">4</div></div>
+      <div class="cell medium-vertical-7"><div class="demo">7</div></div>
+      <div class="cell medium-vertical-5"><div class="demo">5</div></div>
+      <div class="cell medium-vertical-6"><div class="demo">6</div></div>
+      <div class="cell medium-vertical-4"><div class="demo">4</div></div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+
+      $('.toggle-margin-gutters').click(function() {
+        $('.toggle-classes').toggleClass('margin-gutters');
+      });
+
+      $('.toggle-padding-gutters').click(function() {
+        $('.toggle-classes').toggleClass('padding-gutters');
+      });
+    </script>
+  </body>
+</html>

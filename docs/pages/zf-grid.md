@@ -31,15 +31,15 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 The structure of the new grid uses `.grid` (formerly `.row`) and `.cell` (formerly `.column`). This structure makes it a lot clearer when working with vertical grids.
 
 ```html_example
-<div class="grid">
+<div class="grid padding-gutters">
   <div class="cell">full width cell</div>
   <div class="cell">full width cell</div>
 </div>
-<div class="grid">
+<div class="grid padding-gutters">
   <div class="small-6 cell">6 cells</div>
   <div class="small-6 cell">6 cells</div>
 </div>
-<div class="grid">
+<div class="grid padding-gutters">
   <div class="medium-6 large-4 cell">12/6/4 cells</div>
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
@@ -49,12 +49,12 @@ The structure of the new grid uses `.grid` (formerly `.row`) and `.cell` (former
 
 ## Auto Sizing
 
-If the class `.auto` is added to the cell, it will take up the remaining space.
+If the class `.[size]-auto` is added to the cell, it will take up the remaining space.
 
 ```html_example
-<div class="grid">
+<div class="grid padding-gutters">
   <div class="small-4 cell">4 cells</div>
-  <div class="auto cell">Whatever's left!</div>
+  <div class="small-auto cell">Whatever's left!</div>
 </div>
 ```
 
@@ -65,19 +65,19 @@ Multiple expanding cells will share the leftover space equally.
 ```html_example
 <div class="grid">
   <div class="small-4 cell">4 cells</div>
-  <div class="auto cell">Whatever's left!</div>
-  <div class="auto cell">Whatever's left!</div>
+  <div class="small-auto cell">Whatever's left!</div>
+  <div class="small-auto cell">Whatever's left!</div>
 </div>
 ```
 
 ---
 
-A cell can also be made to *shrink*, by adding the `.shrink` class. This means it will only take up the space its contents need.
+A cell can also be made to *shrink*, by adding the `.[size]-shrink` class. This means it will only take up the space its contents need.
 
 ```html_example
 <div class="grid">
-  <div class="shrink cell">Shrink!</div>
-  <div class="auto cell">Expand!</div>
+  <div class="small-shrink cell">Shrink!</div>
+  <div class="small-auto cell">Expand!</div>
 </div>
 ```
 
