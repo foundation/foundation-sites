@@ -435,7 +435,7 @@ OffCanvas.defaults = {
    * @type {boolean}
    * @default false
    */
-  trapFocus: false
+  trapFocus: true
 }
 
 export {OffCanvas};
