@@ -101,13 +101,36 @@ class Positionable extends Plugin {
   }
 
 
+  // When we're trying to center, we don't want to apply offset that's going to
+  // take us just off center, so wrap around to return 0 for the appropriate
+  // offset in those alignments.  TODO: Figure out if we want to make this
+  // configurable behavior... it feels more intuitive, especially for tooltips, but
+  // it's possible someone might actually want to start from center and then nudge
+  // slightly off.
+  _getVOffset() {
+    if(this.alignment === 'center' && (this.position === 'left' || this.position === 'right')) {
+      return 0;
+    } else {
+      return this.options.vOffset;
+    }
+  }
+
+  _getHOffset() {
+    if(this.alignment === 'center' && (this.position === 'top' || this.position === 'bottom')) {
+      return 0;
+    } else {
+      return this.options.hOffset;
+    }
+  }
+
+
   _setPosition($anchor, $element, $parent) {
     if($anchor.attr('aria-expanded') === 'false'){ return false; }
     var $eleDims = Box.GetDimensions($element),
         $anchorDims = Box.GetDimensions($anchor);
 
 
-    $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
+    $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
 
     if(!this.options.allowOverlap) {
       var overlaps = {};
@@ -127,13 +150,13 @@ class Positionable extends Plugin {
 
         this._reposition();
 
-        $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
+        $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
       }
       // If we get through the entire loop, there was no non-overlapping
       // position available. Pick the version with least overlap.
       this.position = minCoordinates.position;
       this.alignment = minCoordinates.alignment;
-      $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
+      $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
     }
   }
 

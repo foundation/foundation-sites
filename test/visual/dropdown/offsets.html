@@ -11,7 +11,7 @@
     <div class="row column">
       <h1>Dropdown: Explicit Positioning Content - with offsets</h1>
 
-      <p>These dropdowns test various positioning and alignments WITH OFFSETS. 
+      <p>These dropdowns test various positioning and alignments WITH OFFSETS.
          Valid positions are left/right/top/bottom.  Valid alignments are
          left/right/top/bottom/center. Left align means left sides should line up.
          Right align means right sides should line up. Center align means centers should line up.
@@ -33,7 +33,7 @@
           <p>Bottom Center</p>
           <button class="button" type="button" data-toggle="example-dropdown-bottom-center">Toggle Dropdown</button>
           <div class="dropdown-pane" data-h-offset="50" data-v-offset="50" data-position="bottom" data-alignment="center" id="example-dropdown-bottom-center" data-dropdown data-auto-focus="true">
-            <p>This offset should push right and down.</p>
+            <p>This offset should push down and ignore the horizontal offset.</p>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
           <p>Top Center</p>
           <button class="button" type="button" data-toggle="example-dropdown-top-center">Toggle Dropdown</button>
           <div class="dropdown-pane" data-h-offset="50" data-v-offset="50" data-position="top" data-alignment="center" id="example-dropdown-top-center" data-dropdown data-auto-focus="true">
-            <p>This offset should push right and up.</p>
+            <p>This offset should push up and ignore the horizontal offset.</p>
           </div>
         </div>
 
@@ -92,14 +92,14 @@
           <p>Right Center</p>
           <button class="button" type="button" data-toggle="example-dropdown-right-center">Toggle Dropdown</button>
           <div class="dropdown-pane" data-h-offset="50" data-v-offset="50" data-position="right" data-alignment="center" id="example-dropdown-right-center" data-dropdown data-auto-focus="true">
-            <p>This offset should push right and down.</p>
+            <p>This offset should push right and ignore the vertical offset.</p>
           </div>
         </div>
         <div class="column">
           <p>Left Center</p>
           <button class="button" type="button" data-toggle="example-dropdown-left-center">Toggle Dropdown</button>
           <div class="dropdown-pane" data-h-offset="50" data-v-offset="50" data-position="left" data-alignment="center" id="example-dropdown-left-center" data-dropdown data-auto-focus="true">
-            <p>This offset should push left and down.</p>
+            <p>This offset should push left and ignore the vertical offset.</p>
           </div>
         </div>
 
