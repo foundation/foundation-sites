@@ -155,6 +155,11 @@ Sometimes you want a sticky nav bar or side nav, this is pretty simple, but does
 </div>
 ```
 With the minimum markup above, your nav bar will be sticky for the entire page. You could change this up by using anchor points, so it sticks and breaks at important markers on the page. A top anchor point of '1' will make it stick at the top of the page, a bottom anchor of `content:bottom` will make it break at the bottom of your `#content` element. This is useful if you want a sticky nav element, but not for the full length of the page.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/aWaJpM?editors=1010" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div data-sticky-container>
   <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">

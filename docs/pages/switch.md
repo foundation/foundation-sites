@@ -1,7 +1,7 @@
 ---
 title: Switch
-description: Now you can tell your users to flip the switch or switch off.
-video: '25NIiOhwGNQ'
+description: Create pure CSS3 On/Off switches with animated transitions. Now you can tell your users to flip the switch or switch off.
+video: 'AEL2Mj0DT3o'
 sass: scss/components/_switch.scss
 ---
 
@@ -24,7 +24,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
 </div>
 
 <p>
-  <a class="" data-open-video="0:18"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -47,7 +47,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
 You can also use `<input type="radio">` instead of `checkbox` to create a series of options.
 
 <p>
-  <a class="" data-open-video="1:48"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="4:17"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -84,7 +84,7 @@ You can also use `<input type="radio">` instead of `checkbox` to create a series
 Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
 
 <p>
-  <a class="" data-open-video="2:08"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="6:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -126,7 +126,7 @@ Active/inactive text goes inside of the switch's `<label>`.
   <p>Depending on the length of the words you place inside the switch, you may need to fine-tune the <code>left</code> or <code>right</code> CSS properties of the text to get it positioned right.</p>
 </div>
 
-<a class="" data-open-video="2:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="8:07"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="primary callout">
   <p>Add <code>aria-hidden="true"</code> to these labels to prevent AT from reading them.</p>

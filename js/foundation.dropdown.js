@@ -330,8 +330,10 @@ class Dropdown extends Plugin {
     this.$anchor.addClass('hover')
         .attr({'aria-expanded': true});
     // this.$element/*.show()*/;
+
+    this.$element.addClass('is-opening');
     this._setPosition();
-    this.$element.addClass('is-open')
+    this.$element.removeClass('is-opening').addClass('is-open')
         .attr({'aria-hidden': false});
 
     if(this.options.autoFocus){

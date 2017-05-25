@@ -3,7 +3,7 @@ title: Dropdown
 description: Dropdown panes are little happy sprites which can be revealed on click or hover.
 sass: scss/components/_dropdown.scss
 js: js/foundation.dropdown.js
-video: 'MkkmXbFbVXY'
+video: '0F68zptD_nQ'
 ---
 
 <div class="primary callout">

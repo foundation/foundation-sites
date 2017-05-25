@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var filter = require('gulp-filter');
-var cssnano = require('gulp-cssnano');
+var cleancss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var confirm = require('gulp-prompt').confirm;
@@ -54,7 +54,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
     .pipe(plumber())
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
-      .pipe(cssnano())
+      .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist/css'))
     .pipe(cssFilter.restore)
@@ -153,7 +153,7 @@ gulp.task('deploy:templates', function(done) {
 // The Customizer runs this function to generate files it needs
 gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
   gulp.src('./_build/assets/css/foundation.css')
-      .pipe(cssnano())
+      .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename('foundation.min.css'))
       .pipe(gulp.dest('./_build/assets/css'));
 
