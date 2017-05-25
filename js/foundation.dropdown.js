@@ -2,9 +2,8 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { Box } from './foundation.util.box';
-import { GetYoDigits, rtl as Rtl } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.util.core';
+import { Positionable } from './foundation.positionable';
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what a triggers import "means", since triggers are always accessed indirectly.
@@ -17,28 +16,7 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
-
-const POSITIONS = ['left', 'right', 'top', 'bottom'];
-const VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
-const HORIZONTAL_ALIGNMENTS = ['left', 'right', 'center'];
-
-const ALIGNMENTS = {
-  'left': VERTICAL_ALIGNMENTS,
-  'right': VERTICAL_ALIGNMENTS,
-  'top': HORIZONTAL_ALIGNMENTS,
-  'bottom': HORIZONTAL_ALIGNMENTS
-}
-
-function nextItem(item, array) {
-  var currentIdx = array.indexOf(item);
-  if(currentIdx === array.length - 1) {
-    return array[0];
-  } else {
-    return array[currentIdx + 1];
-  }
-}
-
-class Dropdown extends Plugin {
+class Dropdown extends Positionable {
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -81,21 +59,15 @@ class Dropdown extends Plugin {
     }else{
       this.$parent = null;
     }
-    this._setupPositionAndAlignment();
 
-    this.triedPositions = {};
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
       'aria-labelledby': this.$anchor[0].id || GetYoDigits(6, 'dd-anchor')
     });
+    super._init();
     this._events();
-  }
-
-  _setupPositionAndAlignment() {
-    this.position  = this.options.position === 'auto' ? this._getDefaultPosition() : this.options.position;
-    this.alignment = this.options.alignment === 'auto' ? this._getDefaultAlignment() : this.options.alignment;
   }
 
   /**
@@ -124,66 +96,16 @@ class Dropdown extends Plugin {
   }
 
   _getDefaultAlignment() {
-    // handle legacy float appraoch
+    // handle legacy float approach
     var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
     if(horizontalPosition) {
       return horizontalPosition[1];
     }
 
-    switch(this.position) {
-      case 'bottom':
-      case 'top':
-        return Rtl() ? 'right' : 'left';
-      case 'left':
-      case 'right':
-        return 'bottom';
-    }
-  }
-
-  /**
-   * Adjusts the dropdown pane possible positions by iterating through alignments
-   * and positions. NOTE: Only used if position is auto, otherwise only alignments
-   * will be tried within the specified position.
-   * @function
-   * @private
-   */
-  _reposition() {
-    if(this._alignmentsExhausted(this.position)) {
-      this.position = nextItem(this.position, POSITIONS);
-      this.alignment = ALIGNMENTS[this.position][0];
-    } else {
-      this._realign();
-    }
+    return super._getDefaultAlignment();
   }
 
 
-  /**
-   * Adjusts the dropdown pane possible positions by iterating through alignments
-   * on the current position.
-   * @function
-   * @private
-   */
-  _realign() {
-    this._addTriedPosition(this.position, this.alignment)
-    this.alignment = nextItem(this.alignment, ALIGNMENTS[this.position])
-  }
-
-  _addTriedPosition(position, alignment) {
-    this.triedPositions[position] = this.triedPositions[position] || []
-    this.triedPositions[position].push(alignment);
-  }
-
-  _positionsExhausted() {
-    var isExhausted = true;
-    for(var i = 0; i < POSITIONS.length; i++) {
-      isExhausted = isExhausted && this._alignmentsExhausted(POSITIONS[i]);
-    }
-    return isExhausted;
-  }
-
-  _alignmentsExhausted(position) {
-    return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
-  }
 
   /**
    * Sets the position and orientation of the dropdown pane, checks for collisions if allow-overlap is not true.
@@ -192,39 +114,7 @@ class Dropdown extends Plugin {
    * @private
    */
   _setPosition() {
-    if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
-    var $eleDims = Box.GetDimensions(this.$element),
-        $anchorDims = Box.GetDimensions(this.$anchor);
-
-
-    this.$element.offset(Box.GetExplicitOffsets(this.$element, this.$anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
-
-    if(!this.options.allowOverlap) {
-      var overlaps = {};
-      var minOverlap = 100000000;
-      // default coordinates to how we start, in case we can't figure out better
-      var minCoordinates = {position: this.position, alignment: this.alignment};
-      while(!this._positionsExhausted()) {
-        let overlap = Box.OverlapArea(this.$element, this.$parent, false, false, this.options.allowBottomOverlap);
-        if(overlap === 0) {
-          return;
-        }
-
-        if(overlap < minOverlap) {
-          minOverlap = overlap;
-          minCoordinates = {position: this.position, alignment: this.alignment};
-        }
-
-        this._reposition();
-
-        this.$element.offset(Box.GetExplicitOffsets(this.$element, this.$anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
-      }
-      // If we get through the entire loop, there was no non-overlapping
-      // position available. Pick the version with least overlap.
-      this.position = minCoordinates.position;
-      this.alignment = minCoordinates.alignment;
-      this.$element.offset(Box.GetExplicitOffsets(this.$element, this.$anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
-    }
+    super._setPosition(this.$anchor, this.$element, this.$parent);
   }
 
   /**
@@ -371,17 +261,6 @@ class Dropdown extends Plugin {
     this.$anchor.removeClass('hover')
         .attr('aria-expanded', false);
 
-    if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
-      if(curPositionClass){
-        this.$element.removeClass(curPositionClass);
-      }
-      this.$element.addClass(this.options.positionClass)
-          /*.hide()*/.css({height: '', width: ''});
-      this.classChanged = false;
-      this.counter = 4;
-      this.usedPositions.length = 0;
-    }
     /**
      * Fires once the dropdown is no longer visible.
      * @event Dropdown#hide
