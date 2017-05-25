@@ -1,0 +1,210 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group zf-grid
+////
+
+// Margin Grid classes
+@mixin zf-base-grid-classes {
+
+  // Grid Container
+  .grid-container {
+    @include zf-grid-container;
+  }
+
+  // Base grid styles
+  .grid {
+    @include zf-grid;
+  }
+  
+  // Base cell styles
+  .cell {
+    @include zf-cell($gutter-output: false, $gutter-type: padding);
+  }
+
+  // Auto width
+  @include -zf-each-breakpoint() {
+    > .#{$-zf-size}-auto {
+      @include zf-cell(auto, false, $gutter-type: padding);
+    }
+  }
+
+  // Shrink
+  @include -zf-each-breakpoint() {
+    > .#{$-zf-size}-shrink {
+      @include zf-cell(shrink, false, $gutter-type: padding);
+    }
+  }
+
+  // Sizing classes
+  @include -zf-each-breakpoint {
+    @for $i from 1 through $grid-columns {
+      // Sizing (percentage)
+      .#{$-zf-size}-#{$i} {
+        @include zf-cell($i, false, $gutter-type: padding);
+      }
+    }
+  }
+}
+
+// Margin Grid classes
+@mixin zf-margin-grid-classes {
+  .margin-gutters {
+    @include zf-gutters($negative: true);
+
+    // Base cell styles
+    > .cell {
+      @include zf-cell();
+    }
+
+    // Auto width
+    @include -zf-each-breakpoint() {
+      > .#{$-zf-size}-auto {
+        @include zf-cell(auto, false);
+      }
+    }
+
+    // Shrink
+    @include -zf-each-breakpoint() {
+      > .#{$-zf-size}-shrink {
+        @include zf-cell(shrink, false);
+      }
+    }
+
+    // Sizing classes
+    @include -zf-each-breakpoint {
+      @for $i from 1 through $grid-columns {
+        // Sizing (percentage)
+        > .#{$-zf-size}-#{$i} {
+          @include zf-cell($i, false);
+        }
+      }
+    }
+  }
+}
+
+// Padding Grid classes
+@mixin zf-padding-grid-classes {
+  .padding-gutters {
+
+    // Negative margin for nested grids
+    .padding-gutters {
+      @include zf-gutters($negative: true);
+    }
+
+    // Base cell styles
+    > .cell {
+      @include zf-gutters($gutters: $grid-padding-gutters, $gutter-type: padding);
+    }
+  }
+}
+
+// Collapse classes
+@mixin zf-collapse-grid-classes {
+  @include -zf-each-breakpoint {
+    .#{$-zf-size}-margin-collapse {
+        @include zf-grid-collapse($gutter-type: margin);
+    }
+
+    .#{$-zf-size}-padding-collapse {
+        @include zf-grid-collapse($gutter-type: padding);
+    }
+  }
+}
+
+// Offset classes
+@mixin zf-offset-cell-classes {
+  @include -zf-each-breakpoint {
+    @for $i from 1 through $grid-columns {
+      // Offsets
+      $o: $i - 1;
+
+      .margin-gutters > .#{$-zf-size}-offset-#{$o} {
+        @include zf-cell-offset($o);
+      }
+
+      .padding-gutters > .#{$-zf-size}-offset-#{$o} {
+        @include zf-cell-offset($o, $gutter-type: padding);
+      }
+    }
+  }
+}
+
+// Vertical Grid classes
+@mixin zf-vertical-grid-classes {
+  // Sizing classes
+  @include -zf-each-breakpoint {
+    @for $i from 1 through $grid-columns {
+      // Sizing (percentage)
+      .#{$-zf-size}-vertical-#{$i} {
+        @include zf-cell($i, false, $gutter-type: padding, $vertical: true);
+      }
+    }
+  }
+
+  // Auto width
+  @include -zf-each-breakpoint() {
+    .#{$-zf-size}-vertical-auto {
+      @include zf-cell(auto, false, $vertical: true);
+    }
+  }
+
+  // Shrink
+  @include -zf-each-breakpoint() {
+    .#{$-zf-size}-vertical-shrink {
+      @include zf-cell(shrink, false, $vertical: true);
+    }
+  }
+
+  .grid-vertical.margin-gutters {
+    @include zf-gutters($gutter-position: top bottom, $negative: true);
+
+    // Base cell styles
+    > .cell {
+      @include zf-cell($gutter-position: top bottom, $vertical: true);
+    }
+  }
+}
+
+// Final classes
+@mixin foundation-zf-grid-classes(
+  $base-grid: true,
+  $margin-grid: true,
+  $padding-grid: true,
+  $vertical-grid: true,
+  $collapse: true,
+  $offset: true
+) {
+
+  // Base grid styles
+  @if($base-grid) {
+    @include zf-base-grid-classes();
+  }
+
+  // Margin grid
+  @if($margin-grid) {
+    @include zf-margin-grid-classes();
+  }
+
+  // Padding grid
+  @if($padding-grid) {
+    @include zf-padding-grid-classes();
+  }
+
+  // Vertical grid
+  @if($vertical-grid) {
+    @include zf-vertical-grid-classes();
+  }
+
+  // Collapse gutters
+  @if($collapse) {
+    @include zf-collapse-grid-classes();
+  }
+
+  // Offset gutters
+  @if($offset) {
+    @include zf-offset-cell-classes();
+  }
+}

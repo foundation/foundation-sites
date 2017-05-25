@@ -1,0 +1,145 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group zf-grid
+////
+
+/// Calculate the percentage size of a cell.
+///
+/// @param {Number|List} $size [$grid-columns] - Size to make the cell. You can pass a value in multiple formats, such as `6`, `50%`, `1 of 2 or 1/3.
+@function zf-cell-size(
+  $size: $grid-columns
+) {
+    // Parsing percents, decimals, n of n and number counts
+    @if type-of($size) == 'number' {
+        @if unit($size) == '%' {
+            $size: $size;
+        }
+        @else if $size < 1 {
+            $size: percentage($size);
+        }
+        @else {
+            $size: percentage($size / $grid-columns);
+        }
+    }
+
+    // Parsing "n of n" or "n/n" expressions
+    @else if type-of($size) == 'list' {
+        @if length($size) != 3 {
+            @error 'Wrong syntax for zf-cell-size(). Use the format "n of n" or "n/n".';
+        }
+        @else {
+            $size: percentage(nth($size, 1) / nth($size, 3));
+        }
+    }
+
+    // Anything else is incorrect
+    @else {
+        @error 'Wrong syntax for zf-cell-size(). Use a number, decimal, percentage, or "n of n" / "n/n".';
+    }
+
+    @return $size;
+}
+
+// Outputs sizing for full sized cells.
+@mixin -zf-cell-full($gutters, $gutter-type, $gutter-position, $vertical) {
+  // Set either width or height depending on axis
+  $direction: if($vertical == true, height, width);
+
+  // If we have a margin, output as calc
+  @if($gutter-type == 'margin') {
+    @include -zf-breakpoint-value(auto, $gutters) {
+      $gutter: rem-calc($-zf-bp-value);
+      flex: 1 1 calc(100% - #{$gutter});
+    }
+  }
+  // If not margin, output as non-calc
+  @else {
+    flex: 1 1 100%;
+  }
+}
+
+// Outputs sizing for auto sized cells.
+@mixin -zf-cell-auto() {
+  flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+}
+
+// Outputs sizing for shrinking sized cells.
+@mixin -zf-cell-shrink($gutters, $gutter-type, $gutter-position, $vertical) {
+  // Set either width or height depending on axis
+  $direction: if($vertical == true, height, width);
+
+  flex: 0 0 auto;
+
+  // If we are margin, output as calc
+  @if($gutter-type == 'margin') {
+    @include -zf-breakpoint-value(auto, $gutters) {
+      $gutter: rem-calc($-zf-bp-value);
+      max-#{$direction}: calc(100% - #{$gutter});
+    }
+  }
+  // If not margin, output as non-calc
+  @else {
+    max-#{$direction}: 100%;
+  }
+}
+
+// Outputs sizing for sized cells.
+@mixin -zf-cell-size($size, $gutters, $gutter-type, $gutter-position, $vertical) {
+  // Set either width or height depending on axis
+  $direction: if($vertical == true, height, width);
+
+  // If we have a margin, output as calc
+  @if($gutter-type == 'margin') {
+    @include -zf-breakpoint-value(auto, $gutters) {
+      $gutter: rem-calc($-zf-bp-value);
+      flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
+      max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
+    }
+  }
+  // If no margin, output as non-calc
+  @else {
+    flex: 0 0 zf-cell-size($size);
+    max-#{$direction}: zf-cell-size($size);
+  }
+}
+
+/// Creates a cell for your grid.
+///
+/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
+/// @param {Boolean} $gutter-output [true] - Output out gutters or not. Set to false when using with breakpoints when the base styles have already been set.
+/// @param {Number|Map} $margin [$grid-margin-gutters] - Map or single value for margin gutters.
+/// @param {Number|Map} $padding [$grid-padding-gutters] - Map or single value for padding gutters.
+/// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
+/// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
+@mixin zf-cell(
+  $size: full,
+  $gutter-output: true,
+  $gutters: $grid-margin-gutters,
+  $gutter-type: margin,
+  $gutter-position: right left,
+  $vertical: false
+) {
+  // Sizing properties
+  @if($size == 'full') {
+    @include -zf-cell-full($gutters, $gutter-type, $gutter-position, $vertical);
+  }
+  @elseif($size == 'auto') {
+    @include -zf-cell-auto();
+  }
+  @elseif($size == 'shrink') {
+    @include -zf-cell-shrink($gutters, $gutter-type, $gutter-position, $vertical);
+  }
+
+  // If its not a keyword, just output our sizes
+  @else {
+    @include -zf-cell-size($size, $gutters, $gutter-type, $gutter-position, $vertical);
+  }
+
+  // If we want to output the gutters
+  @if($gutter-output) {
+    @include zf-gutters($gutters, $gutter-type, $gutter-position);
+  }
+}

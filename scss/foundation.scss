@@ -27,6 +27,7 @@
 
 // Components
 @import 'grid/grid';
+@import 'zf-grid/zf-grid';
 @import 'typography/typography';
 @import 'forms/forms';
 @import 'components/visibility';
@@ -64,7 +65,7 @@
 @import 'components/thumbnail';
 @import 'components/tooltip';
 
-@mixin foundation-everything($flex: false) {
+@mixin foundation-everything($flex: true) {
   @if $flex {
     $global-flexbox: true !global;
   }
@@ -74,7 +75,12 @@
     @include foundation-grid;
   }
   @else {
-    @include foundation-flex-grid;
+    @if $zf-grid {
+      @include foundation-zf-grid-classes;
+    }
+    @else {
+      @include foundation-flex-grid;
+    }
   }
   @include foundation-typography;
   @include foundation-forms;
@@ -116,5 +122,3 @@
     @include foundation-flex-classes;
   }
 }
-
-@include zf-grid-classes;
