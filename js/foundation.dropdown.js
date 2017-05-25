@@ -133,7 +133,7 @@ class Dropdown extends Plugin {
     switch(this.position) {
       case 'bottom':
       case 'top':
-        return Rtl() ? 'left' : 'right';
+        return Rtl() ? 'right' : 'left';
       case 'left':
       case 'right':
         return 'bottom';
@@ -205,7 +205,7 @@ class Dropdown extends Plugin {
       // default coordinates to how we start, in case we can't figure out better
       var minCoordinates = {position: this.position, alignment: this.alignment};
       while(!this._positionsExhausted()) {
-        let overlap = Box.OverlapArea(this.$element, this.$parent);
+        let overlap = Box.OverlapArea(this.$element, this.$parent, false, false, this.options.allowBottomOverlap);
         if(overlap === 0) {
           return;
         }
@@ -488,6 +488,15 @@ Dropdown.defaults = {
    * @default false
    */
   allowOverlap: false,
+  /**
+   * Allow overlap of only the bottom of the container. This is the most common
+   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+   * screen but not otherwise influence or break out of the container.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  allowBottomOverlap: true,
   /**
    * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
    * @option

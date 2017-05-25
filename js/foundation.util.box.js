@@ -21,13 +21,13 @@ var Box = {
  * @default if no parent object passed, detects collisions with `window`.
  * @returns {Boolean} - true if collision free, false if a collision in any direction.
  */
-function ImNotTouchingYou(element, parent, lrOnly, tbOnly) {
-  return OverlapArea(element, parent, lrOnly, tbOnly) === 0;
+function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
+  return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
 };
 
-function OverlapArea(element, parent, lrOnly, tbOnly) {
+function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
   var eleDims = GetDimensions(element),
-      topOver, bottomOver, leftOver, rightOver;
+  topOver, bottomOver, leftOver, rightOver;
   if (parent) {
     var parDims = GetDimensions(parent);
 
@@ -43,7 +43,7 @@ function OverlapArea(element, parent, lrOnly, tbOnly) {
     rightOver  = eleDims.windowDims.width - (eleDims.offset.left + eleDims.width);
   }
 
-  bottomOver = Math.min(bottomOver, 0);
+  bottomOver = ignoreBottom ? 0 : Math.min(bottomOver, 0);
   topOver    = Math.min(topOver, 0);
   leftOver   = Math.min(leftOver, 0);
   rightOver  = Math.min(rightOver, 0);
