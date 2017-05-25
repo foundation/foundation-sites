@@ -120,6 +120,7 @@ function GetDimensions(elem, test){
  * TODO alter/rewrite to work with `em` values as well/instead of pixels
  */
 function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
+  console.log("NOTE: GetOffsets is deprecated in favor of GetExplicitOffsets and will be removed in 6.5");
   switch (position) {
     case 'top':
       return Rtl() ?
