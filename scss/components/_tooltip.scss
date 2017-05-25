@@ -60,7 +60,7 @@ $tooltip-radius: $global-radius !default;
   top: calc(100% + #{$tooltip-pip-height});
   z-index: 1200;
 
-  max-width: 10rem;
+  max-width: 100%;
   padding: $tooltip-padding;
 
   border-radius: $tooltip-radius;
