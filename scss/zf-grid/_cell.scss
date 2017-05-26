@@ -42,64 +42,30 @@
   @return $size;
 }
 
-@mixin -zf-cell-margin-inner($size, $direction, $gutters, $breakpoint) {
-  @include breakpoint($breakpoint) {
-    @include -zf-breakpoint-value($breakpoint, $gutters) {
-      $gutter: rem-calc($-zf-bp-value);
-      @if($size == 'shrink'){
-        flex: 0 0 auto;
-        max-#{$direction}: calc(100% - #{$gutter});
-      } @elseif($size == 'full') {
-        flex: 1 1 calc(100% - #{$gutter});
-      } @else {
-        flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
-        max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
-      }
-    }
-  }
-}
-
-@mixin -zf-cell-margin($size, $gutters, $gutter-position, $vertical, $breakpoint) {
-  $direction: if($vertical == true, height, width);
-  @if($size == 'auto') {
-    @if($breakpoint == auto) {
-      flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
-    } @else {
-      @include breakpoint($breakpoint) {
-        flex: 1 1 0px; // sass-lint:disable-line zero-unit
-      }
-    }
-  } @else {
-    @if($breakpoint == auto) {
-      $breakpoint: $-zf-zero-breakpoint;
-    }
-    @debug 'default setting ' + $size + ' inner for breakpoint ' + $breakpoint;
-    @include -zf-cell-margin-inner($size, $direction, $gutters, $breakpoint);
-    @each $bp in -zf-breakpoints-above($breakpoint) {
-      @if(type-of($gutters) == 'map') {
-        @if map-has-key($gutters, $bp) {
-          @debug 'inside loop setting ' + $size + ' inner for breakpoint ' + $bp;
-          @include -zf-cell-margin-inner($size, $direction, $gutters, $bp);
-        }
-      }
-    }
-  }
-}
-
-@mixin -zf-cell-padding($size, $gutters, $gutter-position, $vertical) {
-  $direction: if($vertical == true, height, width);
-  @if($size == 'auto') {
-    flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
-  } @elseif($size == 'shrink'){
+@mixin zf-cell-base($size: full) {
+  @if($size == 'full') {
+    // This is the base style, all others inherit from it
     flex: 0 0 auto;
-    max-#{$direction}: 100%;
-  } @elseif($size == 'full') {
-    flex: 1 1 100%;
-  } @else {
-    flex: 0 0 zf-cell-size($size);
-    max-#{$direction}: zf-cell-size($size);
+  } @elseif ($size == 'auto') {
+    flex: 1 1 auto;
+  } @elseif ($size == 'shrink') {
+    flex: 0 0 auto;
   }
 }
+
+@mixin -zf-cell-properties($size, $margin-gutter, $vertical) {
+  $direction: if($vertical == true, height, width);
+  @if($size == 'full') {
+    #{$direction}: calc(100% - #{$margin-gutter});
+    max-#{$direction}: calc(100% - #{$margin-gutter});
+  } @elseif ($size == 'auto') {
+    $direction: calc(100% - #{$margin-gutter});
+  } @elseif ($size == 'shrink') {
+  } @else {
+    #{$direction}: calc(#{zf-cell-size($size)} - #{$margin-gutter});
+  }
+}
+
 
 /// Creates a cell for your grid.
 ///
@@ -119,15 +85,29 @@
   $breakpoint: auto
 ) {
 
+  // TODO: figure out how we want to define this
+}
+
+@mixin zf-cell-nonresponsive(
+  $size: full,
+  $gutter-output: true,
+  $gutters:$grid-margin-gutters,
+  $breakpoint: $-zf-zero-breakpoint,
+  $gutter-type: margin,
+  $vertical: false) {
+
+  $gutter: -zf-get-bp-val($gutters, $breakpoint);
+  $gutter-position: if($vertical == true, top bottom, left right);
+
   @if($gutter-type == 'margin') {
-    @include -zf-cell-margin($size, $gutters, $gutter-position, $vertical, $breakpoint);
+    @include -zf-cell-properties($size, $gutter,  $vertical);
   } @else {
-    @include -zf-cell-padding($size, $gutters, $gutter-position, $vertical);
+    @include -zf-cell-properties($size, 0, $vertical);
   }
 
   // If we want to output the gutters
   @if($gutter-output) {
     // TODO: Figure out if we need to pass breakpoint in here too.
-    @include zf-gutters($gutters, $gutter-type, $gutter-position);
+    @include zf-gutters($gutter, $gutter-type, $gutter-position);
   }
 }

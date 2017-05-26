@@ -19,33 +19,33 @@
     @include zf-grid;
   }
 
-  // Base cell styles
   .cell {
-    @include zf-cell($gutter-output: false, $gutter-type: padding);
+    @include zf-cell-base();
   }
 
   .grid {
-    // Auto width
-    @include -zf-each-breakpoint() {
-      > .#{$-zf-size}-auto {
-        @include zf-cell(auto, false, $gutter-type: padding);
-      }
+    > .auto {
+      @include zf-cell-base(auto);
+    }
+    > .shrink {
+      @include zf-cell-base(shrink);
     }
 
-    // Shrink
-    @include -zf-each-breakpoint() {
-      > .#{$-zf-size}-shrink {
-        @include zf-cell(shrink, false, $gutter-type: padding);
-      }
-    }
   }
 
-    // Sizing classes
-  @include -zf-each-breakpoint {
+  // Auto width
+  @include -zf-each-breakpoint(false) {
+    .grid > .#{$-zf-size}-auto {
+      @include zf-cell-base(auto);
+    }
+
+    .grid > .#{$-zf-size}-shrink {
+      @include zf-cell-base(shrink);
+    }
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .#{$-zf-size}-#{$i} {
-        @include zf-cell($i, false, $gutter-type: padding);
+        @include zf-cell-nonresponsive($i, false);
       }
     }
   }
@@ -58,29 +58,22 @@
 
     // Base cell styles
     > .cell {
-      @include zf-cell();
+      @include zf-cell-nonresponsive();
     }
 
     // Auto width
-    @include -zf-each-breakpoint($auto-insert-breakpoints: false) {
+    @include -zf-each-breakpoint(false) {
       > .#{$-zf-size}-auto {
-        @include zf-cell(auto, false, $breakpoint: $-zf-size);
+        @include zf-cell-nonresponsive(auto, false, $breakpoint: $-zf-size);
       }
-    }
-
-    // Shrink
-    @include -zf-each-breakpoint($auto-insert-breakpoints: false) {
       > .#{$-zf-size}-shrink {
-        @include zf-cell(shrink, false, $breakpoint: $-zf-size);
+        @include zf-cell-nonresponsive(shrink, false, $breakpoint: $-zf-size);
       }
-    }
 
-    // Sizing classes
-    @include -zf-each-breakpoint($auto-insert-breakpoints: false) {
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
-          @include zf-cell($i, false, $breakpoint: $-zf-size);
+          @include zf-cell-nonresponsive($i, false, $breakpoint: $-zf-size);
         }
       }
     }
