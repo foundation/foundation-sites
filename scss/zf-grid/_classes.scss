@@ -63,11 +63,47 @@
 
     // Auto width
     @include -zf-each-breakpoint(false) {
+      @if(map-has-key($grid-margin-gutters, $-zf-size)) {
+        > .cell {
+          @include zf-cell-nonresponsive($breakpoint: $-zf-size);
+        }
+        > .auto {
+          @include zf-cell-nonresponsive(auto, false, $breakpoint: $-zf-size);
+        }
+        > .shrink {
+          @include zf-cell-nonresponsive(shrink, false, $breakpoint: $-zf-size);
+        }
+      }
       > .#{$-zf-size}-auto {
         @include zf-cell-nonresponsive(auto, false, $breakpoint: $-zf-size);
       }
       > .#{$-zf-size}-shrink {
         @include zf-cell-nonresponsive(shrink, false, $breakpoint: $-zf-size);
+      }
+
+      @for $i from 1 through $grid-columns {
+        // Sizing (percentage)
+        > .#{$-zf-size}-#{$i} {
+          @include zf-cell-nonresponsive($i, false, $breakpoint: $-zf-size);
+        }
+      }
+      @if(map-has-key($grid-margin-gutters, $-zf-size)) {
+        @each $bp in -zf-breakpoints-less-than($-zf-size) {
+          @if(map-has-key($grid-margin-gutters, $bp)) {
+            > .#{$bp}-auto {
+              @include zf-cell-nonresponsive(auto, false, $breakpoint: $bp);
+            }
+            > .#{$bp}-shrink {
+              @include zf-cell-nonresponsive(shrink, false, $breakpoint: $bp);
+            }
+            @for $i from 1 through $grid-columns {
+              // Sizing (percentage)
+              > .#{$bp}-#{$i} {
+                @include zf-cell-nonresponsive($i, false, $breakpoint: $bp);
+              }
+            }
+          }
+        }
       }
 
       @for $i from 1 through $grid-columns {

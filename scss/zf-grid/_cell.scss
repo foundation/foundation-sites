@@ -56,13 +56,16 @@
 @mixin -zf-cell-properties($size, $margin-gutter, $vertical) {
   $direction: if($vertical == true, height, width);
   @if($size == 'full') {
-    #{$direction}: calc(100% - #{$margin-gutter});
-    max-#{$direction}: calc(100% - #{$margin-gutter});
+    #{$direction}: calc(100% - #{rem-calc($margin-gutter)});
+    max-#{$direction}: calc(100% - #{rem-calc($margin-gutter)});
   } @elseif ($size == 'auto') {
-    $direction: calc(100% - #{$margin-gutter});
+    #{$direction}: auto;
+    max-#{$direction}: calc(100% - #{rem-calc($margin-gutter)});
   } @elseif ($size == 'shrink') {
+    #{$direction}: auto;
   } @else {
-    #{$direction}: calc(#{zf-cell-size($size)} - #{$margin-gutter});
+    #{$direction}: calc(#{zf-cell-size($size)} - #{rem-calc($margin-gutter)});
+    max-#{$direction}: calc(#{zf-cell-size($size)} - #{rem-calc($margin-gutter)});
   }
 }
 
