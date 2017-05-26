@@ -211,26 +211,26 @@ $breakpoint-classes: (small medium large) !default;
 
 }
 
-/// Return a list of our named breakpoints starting from one in particular
+/// Return a list of our named breakpoints greater than $key
 /// @access private
 ///
 /// @param {String} $key - Key to use as a starting point.
 ///
-/// @returns {Array} The list of breakpoints greater or equal to $key. If $key is auto, returns entire list
-@function -zf-breakpoints-up-from($key) {
+/// @returns {Array} The list of breakpoints greater than $key. If $key is auto, returns breakpoints above the zero
+@function -zf-breakpoints-above($key) {
   $list: ();
   $found_key: false;
 
   @if ($key == 'auto') {
-    $list: $-zf-breakpoints-keys;
+    $list: -zf-breakpoints-above($-zf-zero-breakpoint);
   }
   @else {
     @each $name in $-zf-breakpoints-keys {
-      @if ($name == $key) {
-        $found_key: true;
-      }
       @if ($found_key) {
         $list: append($list, $name);
+      }
+      @if ($name == $key) {
+        $found_key: true;
       }
     }
   }

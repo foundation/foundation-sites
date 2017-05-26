@@ -174,10 +174,10 @@
 @mixin foundation-zf-grid-classes(
   $base-grid: true,
   $margin-grid: true,
-  $padding-grid: true,
-  $vertical-grid: true,
-  $collapse: true,
-  $offset: true
+  $padding-grid: false,
+  $vertical-grid: false,
+  $collapse: false,
+  $offset: false
 ) {
 
   // Base grid styles

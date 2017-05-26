@@ -42,6 +42,23 @@
   @return $size;
 }
 
+@mixin -zf-cell-margin-inner($size, $direction, $gutters, $breakpoint) {
+  @include breakpoint($breakpoint) {
+    @include -zf-breakpoint-value($breakpoint, $gutters) {
+      $gutter: rem-calc($-zf-bp-value);
+      @if($size == 'shrink'){
+        flex: 0 0 auto;
+        max-#{$direction}: calc(100% - #{$gutter});
+      } @elseif($size == 'full') {
+        flex: 1 1 calc(100% - #{$gutter});
+      } @else {
+        flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
+        max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
+      }
+    }
+  }
+}
+
 @mixin -zf-cell-margin($size, $gutters, $gutter-position, $vertical, $breakpoint) {
   $direction: if($vertical == true, height, width);
   @if($size == 'auto') {
@@ -53,19 +70,16 @@
       }
     }
   } @else {
-    @each $bp in -zf-breakpoints-up-from($breakpoint) {
-      @include breakpoint($bp) {
-        @include -zf-breakpoint-value($bp, $gutters) {
-          $gutter: rem-calc($-zf-bp-value);
-          @if($size == 'shrink'){
-            flex: 0 0 auto;
-            max-#{$direction}: calc(100% - #{$gutter});
-          } @elseif($size == 'full') {
-            flex: 1 1 calc(100% - #{$gutter});
-          } @else {
-            flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
-            max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
-          }
+    @if($breakpoint == auto) {
+      $breakpoint: $-zf-zero-breakpoint;
+    }
+    @debug 'default setting ' + $size + ' inner for breakpoint ' + $breakpoint;
+    @include -zf-cell-margin-inner($size, $direction, $gutters, $breakpoint);
+    @each $bp in -zf-breakpoints-above($breakpoint) {
+      @if(type-of($gutters) == 'map') {
+        @if map-has-key($gutters, $bp) {
+          @debug 'inside loop setting ' + $size + ' inner for breakpoint ' + $bp;
+          @include -zf-cell-margin-inner($size, $direction, $gutters, $bp);
         }
       }
     }
