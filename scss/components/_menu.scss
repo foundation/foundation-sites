@@ -117,6 +117,12 @@ $menu-item-background-hover: $light-gray !default;
       .submenu li {
         text-align: $global-left;
       }
+
+      &.vertical {
+        .submenu li {
+          text-align: $global-right;
+        }
+      }
     }
   }
   @else if $alignment == center {
