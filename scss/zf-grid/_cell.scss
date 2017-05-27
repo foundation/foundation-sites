@@ -53,6 +53,16 @@
   }
 }
 
+@mixin zf-cell-reset($vertical: true) {
+  $direction: if($vertical == true, width, height);
+  $sides: if($vertical == true, left right, top bottom);
+  #{$direction}: auto;
+  @each $side in $sides {
+    margin-#{$side}: 0;
+    padding-#{$side}: 0;
+  }
+}
+
 @mixin -zf-cell-properties($size, $margin-gutter, $vertical) {
   $direction: if($vertical == true, height, width);
   @if($size == 'full') {
