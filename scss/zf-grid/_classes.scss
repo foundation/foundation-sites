@@ -139,11 +139,11 @@
 @mixin zf-collapse-grid-classes {
   @include -zf-each-breakpoint {
     .#{$-zf-size}-margin-collapse {
-        @include zf-grid-collapse($gutter-type: margin);
+      @include zf-grid-collapse($gutter-type: margin);
     }
 
     .#{$-zf-size}-padding-collapse {
-        @include zf-grid-collapse($gutter-type: padding);
+      @include zf-grid-collapse($gutter-type: padding);
     }
   }
 }

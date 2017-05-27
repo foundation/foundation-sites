@@ -28,11 +28,11 @@
       }
     }
 
-    @include -zf-each-breakpoint {
-      // Output new widths to not include gutters
+    // Output new widths to not include gutters
+    @each $bp in $breakpoint-classes {
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        > .#{$-zf-size}-#{$i} {
+        > .#{$bp}-#{$i} {
           @include zf-cell-nonresponsive($i, $gutter-output: false, $gutter-type: padding);
         }
       }
@@ -43,16 +43,16 @@
     @each $value in $gutter-position {
       margin-#{$value}: 0;
 
-      > .#{$selector} {
+      > #{$selector} {
         padding-#{$value}: 0;
       }
     }
 
-    @include -zf-each-breakpoint {
-      // Output new widths to not include gutters
+    // Output new widths to not include gutters
+    @each $bp in $breakpoint-classes {
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        > .#{$-zf-size}-#{$i} {
+        > .#{$bp}-#{$i} {
           @include zf-cell-nonresponsive($i, $gutter-output: false, $gutter-type: padding);
         }
       }
