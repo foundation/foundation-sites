@@ -10,21 +10,18 @@
 ///
 /// @param {Number|List} $n - Size to offset by. You can pass in any value accepted by the `zf-cell()` mixin, such as `6`, `50%`, or `1 of 2`.
 /// @param {Boolean} $vertical [false] Sets the direction of the offset. If set to true will apply margin-top instead.
-@mixin zf-cell-offset($n, $gutters: $grid-margin-gutters, $gutter-type: margin, $vertical: false) {
+@mixin zf-cell-offset(
+ $n,
+ $gutters: $grid-margin-gutters,
+ $gutter-type: margin,
+ $breakpoint: $-zf-zero-breakpoint,
+ $vertical: false
+) {
   $direction: if($vertical, 'top', $global-left);
 
-  @if (type-of($gutters) == 'map') {
-    @include -zf-breakpoint-value(auto, $gutters) {
-      $gutter: rem-calc($-zf-bp-value) / 2;
-      $size: if($gutter-type == 'margin', calc(#{zf-cell-size($n)} + #{$gutter}), #{zf-cell-size($n)});
-
-      margin-#{$direction}: #{$size};
-    }
-  }
-  @else {
+  @include -zf-breakpoint-value($breakpoint, $gutters) {
     $gutter: rem-calc($-zf-bp-value) / 2;
     $size: if($gutter-type == 'margin', calc(#{zf-cell-size($n)} + #{$gutter}), #{zf-cell-size($n)});
-
     margin-#{$direction}: #{$size};
   }
 }
