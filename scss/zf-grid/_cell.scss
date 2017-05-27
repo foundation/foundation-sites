@@ -58,17 +58,14 @@
   @if($size == 'full') {
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
-    max-#{$direction}: $val;
   } @elseif ($size == 'auto') {
     #{$direction}: auto;
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
-    max-#{$direction}: $val;
   } @elseif ($size == 'shrink') {
     #{$direction}: auto;
   } @else {
     $val: if($margin-gutter == 0, #{zf-cell-size($size)}, calc(#{zf-cell-size($size)} - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
-    max-#{$direction}: $val;
   }
 }
 

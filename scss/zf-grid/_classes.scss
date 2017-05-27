@@ -34,14 +34,17 @@
   }
 
   // Auto width
-  @include -zf-each-breakpoint(false) {
-    .grid > .#{$-zf-size}-auto {
-      @include zf-cell-base(auto);
+  @include -zf-each-breakpoint() {
+    @if not($-zf-size == small) {
+      .grid > .#{$-zf-size}-auto {
+        @include zf-cell-base(auto);
+      }
+
+      .grid > .#{$-zf-size}-shrink {
+        @include zf-cell-base(shrink);
+      }
     }
 
-    .grid > .#{$-zf-size}-shrink {
-      @include zf-cell-base(shrink);
-    }
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .#{$-zf-size}-#{$i} {
