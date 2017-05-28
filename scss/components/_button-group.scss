@@ -72,7 +72,29 @@ $buttongroup-radius-on-each: true !default;
         border-bottom-#{$global-right}-radius: $button-radius;
       }
     }
+  }
 
+  // Hollow style
+  &.hollow {
+    @each $name, $color in $button-palette {
+      &.#{$name} #{$child-selector},
+      &.#{$name} #{$child-selector}:hover,
+      &.#{$name} #{$child-selector}:focus {
+        @include button-hollow-style($color);
+        background-color: $white;
+      }
+    }
+  }
+  
+  // No Gaps
+  &.no-gaps {
+    #{$child-selector} {
+      margin-#{$global-right}: 0;
+      
+      + #{$child-selector} {
+        border-#{$global-left}: 0;
+      }
+    }
   }
 }
 

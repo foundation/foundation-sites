@@ -76,7 +76,55 @@ Buttons within a button group can be colored individually with the `.secondary`,
 The entire group can also be colored using the same classes.
 
 ```html_example
-<div class="secondary button-group">
+<div class="primary button-group">
+  <a class="button">Harder</a>
+  <a class="button">Better</a>
+  <a class="button">Faster</a>
+  <a class="button">Stronger</a>
+</div>
+```
+
+## Hollow
+
+Buttons within a button group can be given hollow style individually by adding a class `.hollow` respectively.
+
+```html_example
+<div class="button-group">
+  <a class="secondary button hollow">View</a>
+  <a class="success button hollow">Edit</a>
+  <a class="warning button hollow">Share</a>
+  <a class="alert button hollow">Delete</a>
+</div>
+```
+
+The entire group can also be given hollow style using the same class.
+
+```html_example
+<div class="primary button-group hollow">
+  <a class="button">Harder</a>
+  <a class="button">Better</a>
+  <a class="button">Faster</a>
+  <a class="button">Stronger</a>
+</div>
+```
+
+## No Gaps
+
+When using a single color for the button-group, you might want to remove the `1px` spacing between the buttons. You can use `no-gaps` to just the same.
+
+```html_example
+<div class="primary button-group no-gaps">
+  <a class="button">Harder</a>
+  <a class="button">Better</a>
+  <a class="button">Faster</a>
+  <a class="button">Stronger</a>
+</div>
+```
+
+The class `no-gaps` also works for hollow style.
+
+```html_example
+<div class="primary button-group hollow no-gaps">
   <a class="button">Harder</a>
   <a class="button">Better</a>
   <a class="button">Faster</a>
