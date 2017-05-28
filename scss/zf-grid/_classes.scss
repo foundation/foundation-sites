@@ -70,7 +70,7 @@
 
     // Auto width
     @include -zf-each-breakpoint(false) {
-      @if(typeof($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+      @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         > .cell {
           @include zf-cell-nonresponsive($breakpoint: $-zf-size, $vertical: $vertical);
         }
@@ -94,7 +94,7 @@
           @include zf-cell-nonresponsive($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
-      @if(typeof($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+      @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
             > .#{$bp}-auto {
@@ -181,7 +181,7 @@
       @include zf-cell-reset()
     }
     @include -zf-each-breakpoint() {
-      @if(typeof($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+      @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         > .cell {
           @include zf-cell-nonresponsive($breakpoint: $-zf-size, $vertical: true);
         }
