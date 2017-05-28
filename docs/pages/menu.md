@@ -117,7 +117,7 @@ Items can also be set to expand out and take up an even amount of space, with th
 
 ## Vertical Menu
 
-Add the `.vertical` class to a Menu to switch its orientation.
+Add the `.vertical` class to a Menu to switch its orientation. 
 
 <p>
   <a class="" data-open-video="4:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -129,6 +129,39 @@ Add the `.vertical` class to a Menu to switch its orientation.
 
 ```html_example
 <ul class="vertical menu">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+```
+
+<br>
+
+Add `align-right` class for making the vertical menu aligned to the right. 
+
+```html_example
+<ul class="vertical menu align-right">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+```
+
+<br>
+
+Add `align-center` class for making the vertical menu aligned to the center.
+
+<div class="warning callout">
+  <p>
+    The above vertically left &amp; right aligned menu are supported in all types of menu's. <br>
+    But as we don't think `align-center` is useful for dropdown, accordion or a drilldown menu, we have just kept it on basic menu only.
+  </p>
+</div> 
+
+```html_example
+<ul class="vertical menu align-center">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
