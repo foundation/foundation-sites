@@ -68,12 +68,15 @@
   @if($size == 'full') {
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
-  } @elseif ($size == 'auto') {
+  }
+  @elseif ($size == 'auto') {
     #{$direction}: auto;
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
-  } @elseif ($size == 'shrink') {
+  }
+  @elseif ($size == 'shrink') {
     #{$direction}: auto;
-  } @else {
+  }
+  @else {
     $val: if($margin-gutter == 0, #{zf-cell-size($size)}, calc(#{zf-cell-size($size)} - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
   }
@@ -90,21 +93,47 @@
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin zf-cell(
   $size: full,
-  $gutter-output: true,
   $gutters: $grid-margin-gutters,
-  $gutter-type: margin,
+  $include-gutters: true, // TODO - better name?
   $gutter-position: right left,
-  $vertical: false,
-  $breakpoint: auto
+  $vertical: false
 ) {
+  // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
+  $breakpoint: if(variable-exists(-zf-size), $-zf-size, $-zf-zero-breakpoint);
 
-  // TODO: figure out how we want to define this
+  // Get our gutters from map if available, if not map just return the value.
+  $gutter: -zf-get-bp-val($gutters, $breakpoint);
+
+  // Set gutter type for the `zf-gutters` mixin
+  $gutter-type: if($include-gutters, margin, padding);
+
+  // Base flex properties
+  @include zf-cell-base($size);
+
+  @if($include-gutters) {
+    @include -zf-cell-properties($size, $gutter, $vertical);
+  }
+  @else {
+    @include -zf-cell-properties($size, 0, $vertical);
+  }
+
+  // If gutters = map
+  @if(type-of($gutters) == 'map') {
+    // If $gutters map has a key = $breakpoint, output the value
+    @if (map-has-key($gutters, $-zf-size)) {
+      @include zf-gutters($gutter, $gutter-type, $gutter-position);
+    }
+  }
+  // If not a map
+  @else {
+    @include zf-gutters($gutter, $gutter-type, $gutter-position);
+  }
 }
 
 @mixin zf-cell-static(
   $size: full,
   $gutter-output: true,
-  $gutters:$grid-margin-gutters,
+  $gutters: $grid-margin-gutters,
   $breakpoint: $-zf-zero-breakpoint,
   $gutter-type: margin,
   $vertical: false) {
@@ -113,7 +142,7 @@
   $gutter-position: if($vertical == true, top bottom, left right);
 
   @if($gutter-type == 'margin') {
-    @include -zf-cell-properties($size, $gutter,  $vertical);
+    @include -zf-cell-properties($size, $gutter, $vertical);
   } @else {
     @include -zf-cell-properties($size, 0, $vertical);
   }
