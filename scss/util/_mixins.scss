@@ -249,7 +249,8 @@
       @include breakpoint($name) {
         @content;
       }
-    } @else {
+    }
+    @else {
       @content;
     }
   }

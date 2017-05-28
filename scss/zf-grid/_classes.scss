@@ -27,10 +27,10 @@
     > .auto {
       @include zf-cell-base(auto);
     }
+
     > .shrink {
       @include zf-cell-base(shrink);
     }
-
   }
 
   // Auto width
@@ -75,32 +75,39 @@
           @include zf-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
+
       > .#{$-zf-size}-auto {
         @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
       }
+
       > .#{$-zf-size}-shrink {
         @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
       }
 
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        $classname: if($vertical, ".#{$-zf-size}-vertical-#{$i}", ".#{$-zf-size}-#{$i}");
+        $classname: if($vertical, '.#{$-zf-size}-vertical-#{$i}', '.#{$-zf-size}-#{$i}');
+
         > #{$classname} {
           @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
+
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
             > .#{$bp}-auto {
               @include zf-cell-static(auto, false, $breakpoint: $bp, $vertical: $vertical);
             }
+
             > .#{$bp}-shrink {
               @include zf-cell-static(shrink, false, $breakpoint: $bp, $vertical: $vertical);
             }
+
             @for $i from 1 through $grid-columns {
               // Sizing (percentage)
-              $classname: if($vertical, ".#{$bp}-vertical-#{$i}", ".#{$bp}-#{$i}");
+              $classname: if($vertical, '.#{$bp}-vertical-#{$i}', '.#{$bp}-#{$i}');
+
               > #{$classname} {
                 @include zf-cell-static($i, false, $breakpoint: $bp, $vertical: $vertical);
               }
@@ -166,21 +173,26 @@
 ) {
   .grid-vertical {
     @include zf-grid(vertical);
+
     > .cell {
       @include zf-cell-reset()
     }
+
     @include -zf-each-breakpoint() {
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         > .cell {
           @include zf-cell-static($breakpoint: $-zf-size, $vertical: true);
         }
+
         > .auto {
           @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
+
         > .shrink {
           @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
         }
       }
+
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         .#{$-zf-size}-vertical-#{$i} {
@@ -188,6 +200,7 @@
         }
       }
     }
+
     &.padding-gutters {
       // Negative margin for nested grids
       .padding-gutters {
@@ -200,8 +213,8 @@
       }
     }
   }
-  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
 
+  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
 }
 
 // Final classes

@@ -46,9 +46,11 @@
   @if($size == 'full') {
     // This is the base style, all others inherit from it
     flex: 0 0 auto;
-  } @elseif ($size == 'auto') {
+  }
+  @elseif ($size == 'auto') {
     flex: 1 1 auto;
-  } @elseif ($size == 'shrink') {
+  }
+  @elseif ($size == 'shrink') {
     flex: 0 0 auto;
   }
 }
@@ -94,23 +96,27 @@
 @mixin zf-cell(
   $size: full,
   $gutters: $grid-margin-gutters,
-  $include-gutters: true, // TODO - better name?
+  $gutter-type: margin,
   $gutter-position: right left,
   $vertical: false
 ) {
+  $breakpoint: null;
+
   // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
-  $breakpoint: if(variable-exists(-zf-size), $-zf-size, $-zf-zero-breakpoint);
+  @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') {
+    $breakpoint: $-zf-size;
+  }
+  @else {
+    $breakpoint: $-zf-zero-breakpoint;
+  }
 
   // Get our gutters from map if available, if not map just return the value.
   $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
-  // Set gutter type for the `zf-gutters` mixin
-  $gutter-type: if($include-gutters, margin, padding);
-
   // Base flex properties
   @include zf-cell-base($size);
 
-  @if($include-gutters) {
+  @if($gutter-type == 'margin') {
     @include -zf-cell-properties($size, $gutter, $vertical);
   }
   @else {
@@ -143,7 +149,8 @@
 
   @if($gutter-type == 'margin') {
     @include -zf-cell-properties($size, $gutter, $vertical);
-  } @else {
+  }
+  @else {
     @include -zf-cell-properties($size, 0, $vertical);
   }
 
