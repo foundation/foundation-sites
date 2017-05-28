@@ -65,7 +65,7 @@
 
     // Base cell styles
     > .cell {
-      @include zf-cell-nonresponsive($vertical: true);
+      @include zf-cell-nonresponsive($vertical: $vertical);
     }
 
     // Auto width
@@ -209,7 +209,7 @@
   $base-grid: true,
   $margin-grid: true,
   $padding-grid: true,
-  $vertical-grid: true,
+  $vertical-grid: false,
   $collapse: true,
   $offset: true
 ) {
