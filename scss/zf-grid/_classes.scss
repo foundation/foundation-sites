@@ -74,12 +74,6 @@
         > .cell {
           @include zf-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
         }
-        > .auto {
-          @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
-        }
-        > .shrink {
-          @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
-        }
       }
       > .#{$-zf-size}-auto {
         @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
