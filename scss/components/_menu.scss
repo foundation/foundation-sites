@@ -200,8 +200,20 @@ $menu-item-background-hover: $light-gray !default;
 
 /// Adds styles for a nested Menu, by adding `margin-left` to the menu.
 /// @param {Keyword|Number} $margin [$menu-nested-margin] - Length of the margin.
-@mixin menu-nested($margin: $menu-nested-margin) {
-  margin-#{$global-left}: $margin;
+/// @param {Keyword} $nested-alignment [left] - Alignment of the nested class
+@mixin menu-nested(
+  $margin: $menu-nested-margin,
+  $nested-alignment: left
+) {
+  @if $nested-alignment == right {
+    margin-#{$global-right}: $margin;
+    margin-#{$global-left}: 0;
+  } 
+  @else {
+    margin-#{$global-right}: 0;
+    margin-#{$global-left}: $margin;
+  }
+  
 }
 
 /// Adds basic styles for icons in menus.
@@ -405,6 +417,10 @@ $menu-item-background-hover: $light-gray !default;
     // Align right
     &.align-#{$global-right} {
       @include menu-align(right);
+
+      .nested {
+        @include menu-nested($nested-alignment: right);
+      }
     }
 
     // Align center

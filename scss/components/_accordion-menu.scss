@@ -61,6 +61,12 @@ $accordionmenu-arrow-size: 6px !default;
     .nested.is-accordion-submenu {
       @include menu-nested($accordionmenu-nested-margin);
     }
+
+    &.align-#{$global-right} {
+      .nested.is-accordion-submenu {
+        @include menu-nested($accordionmenu-nested-margin, right);
+      }
+    }
   }
 
   .is-accordion-submenu-parent > a {
