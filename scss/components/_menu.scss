@@ -110,6 +110,15 @@ $menu-item-background-hover: $light-gray !default;
           justify-content: flex-start;
         }
       }
+
+      &.vertical li {
+        display: block;
+        text-align: $global-right;
+
+        .submenu li {
+          text-align: $global-right;
+        }
+      }
     }
     @else {
       text-align: $global-right;
