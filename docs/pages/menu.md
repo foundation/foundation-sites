@@ -64,27 +64,21 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 
 <br>
 
-To align items in the middle, add a wrapping element with the class `.menu-centered`.
+To align items in the middle, use `.align-center`
 
 <a class="" data-open-video="2:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-<div class="primary callout">
-  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="https://codepen.io/IamManchanda/pen/bWMXKQ?editors=1100">codepen</a> or instead you can use the default wrapper class below.</p>
-</div>
-
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxXxO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbOypm?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<div class="menu-centered">
-  <ul class="menu">
-    <li><a href="#">One</a></li>
-    <li><a href="#">Two</a></li>
-    <li><a href="#">Three</a></li>
-    <li><a href="#">Four</a></li>
-  </ul>
-</div>
+<ul class="menu align-center">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
 ```
 
 <br>
