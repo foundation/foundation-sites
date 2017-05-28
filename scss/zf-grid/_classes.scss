@@ -112,13 +112,6 @@
           }
         }
       }
-
-      @for $i from 1 through $grid-columns {
-        // Sizing (percentage)
-        > .#{$-zf-size}-#{$i} {
-          @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
-        }
-      }
     }
   }
 }
