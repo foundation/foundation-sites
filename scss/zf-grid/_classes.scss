@@ -188,8 +188,19 @@
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         .#{$-zf-size}-#{$i} {
-          @include zf-cell-static($i, false, $vertical: true);
+          @include zf-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
+      }
+    }
+    &.padding-gutters {
+      // Negative margin for nested grids
+      .padding-gutters {
+        @include zf-gutters($negative: true, $gutter-position: top bottom);
+      }
+
+      // Base cell styles
+      > .cell {
+        @include zf-gutters($gutters: $grid-padding-gutters, $gutter-type: padding, $gutter-position: top bottom);
       }
     }
   }
@@ -202,7 +213,7 @@
   $base-grid: true,
   $margin-grid: true,
   $padding-grid: true,
-  $vertical-grid: false,
+  $vertical-grid: true,
   $collapse: true,
   $offset: true
 ) {
