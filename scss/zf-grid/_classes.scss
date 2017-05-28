@@ -90,7 +90,8 @@
 
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        > .#{$-zf-size}-#{$i} {
+        $classname: if($vertical, ".#{$-zf-size}-vertical-#{$i}", ".#{$-zf-size}-#{$i}");
+        > #{$classname} {
           @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
@@ -105,7 +106,8 @@
             }
             @for $i from 1 through $grid-columns {
               // Sizing (percentage)
-              > .#{$bp}-#{$i} {
+              $classname: if($vertical, ".#{$bp}-vertical-#{$i}", ".#{$bp}-#{$i}");
+              > #{$classname} {
                 @include zf-cell-static($i, false, $breakpoint: $bp, $vertical: $vertical);
               }
             }
@@ -187,7 +189,7 @@
       }
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        .#{$-zf-size}-#{$i} {
+        .#{$-zf-size}-vertical-#{$i} {
           @include zf-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
