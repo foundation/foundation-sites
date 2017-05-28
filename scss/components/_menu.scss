@@ -199,7 +199,7 @@ $menu-item-background-hover: $light-gray !default;
 }
 
 /// Adds styles for a nested Menu, by adding `margin-left` to the menu.
-/// @param {Keyword|Number} $padding [auto] - Length of the margin.
+/// @param {Keyword|Number} $margin [$menu-nested-margin] - Length of the margin.
 @mixin menu-nested($margin: $menu-nested-margin) {
   margin-#{$global-left}: $margin;
 }
