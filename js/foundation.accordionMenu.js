@@ -169,6 +169,9 @@ class AccordionMenu extends Plugin {
           return true;
         },
         toggle: function() {
+          if (_this.options.submenuToggle) {
+            return false;
+          }
           if ($element.children('[data-submenu]').length) {
             _this.toggle($element.children('[data-submenu]'));
             return true;
