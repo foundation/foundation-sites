@@ -22,18 +22,20 @@
 
     @each $value in $gutter-position {
       margin-#{$value}: 0;
+    }
 
       > #{$selector} {
-        margin-#{$value}: 0;
+        @each $value in $gutter-position {
+          margin-#{$value}: 0;
+        }
       }
-    }
 
     // Output new widths to not include gutters
     @each $bp in $breakpoint-classes {
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$bp}-#{$i} {
-          @include zf-cell-nonresponsive($i, $gutter-output: false, $gutter-type: padding);
+          @include zf-cell-static($i, $gutter-output: false, $gutter-type: padding);
         }
       }
     }
@@ -42,19 +44,11 @@
 
     @each $value in $gutter-position {
       margin-#{$value}: 0;
-
-      > #{$selector} {
-        padding-#{$value}: 0;
-      }
     }
 
-    // Output new widths to not include gutters
-    @each $bp in $breakpoint-classes {
-      @for $i from 1 through $grid-columns {
-        // Sizing (percentage)
-        > .#{$bp}-#{$i} {
-          @include zf-cell-nonresponsive($i, $gutter-output: false, $gutter-type: padding);
-        }
+    > #{$selector} {
+      @each $value in $gutter-position {
+        padding-#{$value}: 0;
       }
     }
   }

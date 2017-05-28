@@ -101,7 +101,7 @@
   // TODO: figure out how we want to define this
 }
 
-@mixin zf-cell-nonresponsive(
+@mixin zf-cell-static(
   $size: full,
   $gutter-output: true,
   $gutters:$grid-margin-gutters,

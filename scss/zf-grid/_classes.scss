@@ -48,7 +48,7 @@
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .#{$-zf-size}-#{$i} {
-        @include zf-cell-nonresponsive($i, false);
+        @include zf-cell-static($i, false, $gutter-type: padding);
       }
     }
   }
@@ -65,48 +65,48 @@
 
     // Base cell styles
     > .cell {
-      @include zf-cell-nonresponsive($vertical: $vertical);
+      @include zf-cell-static($vertical: $vertical);
     }
 
     // Auto width
     @include -zf-each-breakpoint(false) {
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         > .cell {
-          @include zf-cell-nonresponsive($breakpoint: $-zf-size, $vertical: $vertical);
+          @include zf-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
         }
         > .auto {
-          @include zf-cell-nonresponsive(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
+          @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
         > .shrink {
-          @include zf-cell-nonresponsive(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
+          @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
       > .#{$-zf-size}-auto {
-        @include zf-cell-nonresponsive(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
+        @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
       }
       > .#{$-zf-size}-shrink {
-        @include zf-cell-nonresponsive(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
+        @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
       }
 
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
-          @include zf-cell-nonresponsive($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
+          @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
             > .#{$bp}-auto {
-              @include zf-cell-nonresponsive(auto, false, $breakpoint: $bp, $vertical: $vertical);
+              @include zf-cell-static(auto, false, $breakpoint: $bp, $vertical: $vertical);
             }
             > .#{$bp}-shrink {
-              @include zf-cell-nonresponsive(shrink, false, $breakpoint: $bp, $vertical: $vertical);
+              @include zf-cell-static(shrink, false, $breakpoint: $bp, $vertical: $vertical);
             }
             @for $i from 1 through $grid-columns {
               // Sizing (percentage)
               > .#{$bp}-#{$i} {
-                @include zf-cell-nonresponsive($i, false, $breakpoint: $bp, $vertical: $vertical);
+                @include zf-cell-static($i, false, $breakpoint: $bp, $vertical: $vertical);
               }
             }
           }
@@ -116,7 +116,7 @@
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
-          @include zf-cell-nonresponsive($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
+          @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
     }
@@ -183,19 +183,19 @@
     @include -zf-each-breakpoint() {
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         > .cell {
-          @include zf-cell-nonresponsive($breakpoint: $-zf-size, $vertical: true);
+          @include zf-cell-static($breakpoint: $-zf-size, $vertical: true);
         }
         > .auto {
-          @include zf-cell-nonresponsive(auto, false, $breakpoint: $-zf-size, $vertical: true);
+          @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
         > .shrink {
-          @include zf-cell-nonresponsive(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+          @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
         }
       }
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         .#{$-zf-size}-#{$i} {
-          @include zf-cell-nonresponsive($i, false, $vertical: true);
+          @include zf-cell-static($i, false, $vertical: true);
         }
       }
     }
