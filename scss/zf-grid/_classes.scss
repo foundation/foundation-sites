@@ -152,7 +152,7 @@
     @include zf-grid(vertical);
 
     > .cell {
-      @include zf-cell-reset()
+      @include zf-cell-reset();
     }
 
     @include -zf-each-breakpoint() {
@@ -161,11 +161,11 @@
           @include zf-cell-static($breakpoint: $-zf-size, $vertical: true);
         }
 
-        > .#{$-zf-size}-auto {
+        @at-root .#{$-zf-size}-vertical-auto {
           @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
 
-        > .#{$-zf-size}-shrink {
+        @at-root .#{$-zf-size}-vertical-shrink {
           @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
         }
       }
@@ -189,9 +189,31 @@
         @include zf-gutters($gutters: $grid-padding-gutters, $gutter-type: padding, $gutter-position: top bottom);
       }
     }
-  }
 
-  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
+    &.margin-gutters {
+      @include zf-gutters($negative: true, $gutter-position: top bottom);
+
+      // Base cell styles
+      > .cell {
+        @include zf-cell-static($vertical: true);
+      }
+
+      // Auto width
+      @include -zf-each-breakpoint() {
+        @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+          > .cell {
+            @include zf-cell-static($breakpoint: $-zf-size, $vertical: true);
+          }
+        }
+
+        @for $i from 1 through $grid-columns {
+          @at-root .margin-gutters > .#{$-zf-size}-vertical-#{$i} {
+            @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: true);
+          }
+        }
+      }
+    }
+  }
 }
 
 // Final classes
