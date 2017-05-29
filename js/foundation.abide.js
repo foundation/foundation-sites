@@ -253,7 +253,8 @@ class Abide extends Plugin {
         validated = false,
         customValidator = true,
         validator = $el.attr('data-validator'),
-        equalTo = true;
+        equalTo = true,
+        euqalToElement;
 
     // don't validate ignored inputs or hidden inputs or disabled inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
