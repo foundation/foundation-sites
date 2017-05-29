@@ -64,7 +64,7 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 
 <br>
 
-To align items in the middle, use `.align-center`
+To align items in the middle, add `.align-center` to the `.menu` class.
 
 <a class="" data-open-video="2:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
@@ -156,7 +156,7 @@ Add `align-center` class for making the vertical menu aligned to the center.
 <div class="warning callout">
   <p>
     The above vertically left &amp; right aligned menu are supported in all types of menu's. <br>
-    But as we don't think `align-center` is useful for dropdown, accordion or a drilldown menu, we have just kept it on basic menu only.
+    But `align-center` for vertical menu&rsquo;s is only available for basic menu and is not available for dropdown, accordion or a drilldown menu.
   </p>
 </div> 
 
