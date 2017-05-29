@@ -614,13 +614,13 @@ In this example, the grid is 16 columns instead of the normal 12. Any references
 .container {
   @include grid-row(16) {
     .main-content {
-      // 5/16 = 31.25%
-      @include grid-column(5);
+      // 11/16 = 68.75%
+      @include grid-column(11);
     }
 
     .sidebar {
-      // 11/16 = 68.75%
-      @include grid-column(11);
+      // 5/16 = 31.25%
+      @include grid-column(5);
     }
   }
 }
