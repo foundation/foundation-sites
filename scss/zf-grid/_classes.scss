@@ -132,12 +132,12 @@
       // Offsets
       $o: $i - 1;
 
-      .margin-gutters > .#{$-zf-size}-offset-#{$o} {
-        @include zf-cell-offset($o, $breakpoint: $-zf-size);
+      .#{$-zf-size}-offset-#{$o} {
+        @include zf-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
       }
 
-      .padding-gutters > .#{$-zf-size}-offset-#{$o} {
-        @include zf-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
+      .margin-gutters > .#{$-zf-size}-offset-#{$o} {
+        @include zf-cell-offset($o, $breakpoint: $-zf-size);
       }
     }
   }
