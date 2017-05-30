@@ -623,7 +623,7 @@ Border box lets you only add the content, padding and border, but not the margin
 
 ## Border none
 
-Border none lets you quickly resets border to `none` into any component.
+Border none lets you quickly resets border to `none` for any element.
 
 ```html_example
 <div class="callout primary border-none">
