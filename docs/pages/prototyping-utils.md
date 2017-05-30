@@ -101,7 +101,7 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 
 ```html
 <div class="radius bordered shadow card">
-  <img src="assets/img/generic/rectangle-1.jpg">
+  <img src="http://placehold.it/500x250">
   <div class="card-divider">
     Styled Card
   </div>
@@ -156,13 +156,13 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 #### Tables
 
 ```html
-<table class="rounded bordered shadow">
+<table class="radius bordered shadow">
 	<!-- My Table goes here -->
 </table>
 ```
 
 <div class="docs-code-live">
-	<table class="rounded bordered shadow">
+	<table class="radius bordered shadow">
 	  <thead>
 	    <tr>
 	      <th width="200">Table Header</th>
@@ -203,13 +203,13 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 #### Images
 
 ```html
-<img src="" class="rounded">
-<img src="" class="rounded-circle">
+<img src="http://placehold.it/100x100" class="radius">
+<img src="http://placehold.it/100x100" class="circle">
 ```
 
 <div class="docs-code-live margin-bottom-1">
-	<img src="http://placehold.it/100x100" class="rounded margin-right-1">
-	<img src="http://placehold.it/100x100" class="rounded-circle">
+	<img src="http://placehold.it/100x100" class="radius margin-right-1">
+	<img src="http://placehold.it/100x100" class="circle">
 </div>
 
 ---
