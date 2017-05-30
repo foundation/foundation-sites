@@ -65,3 +65,63 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
   </li>
   <li><a href="#">Item 3</a></li>
 </ul>
+
+
+## Submenu Toggle
+
+Accordion menus can have a seperate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
+You need to add the class `accordion-menu` as well as the data attribute `data-submenu-toggle="true"` for this to work correctly.
+
+```html
+<ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
+  <li>
+    <a href="http://foundation.zurb.com/">Zurb Foundation</a>
+    <ul class="menu vertical">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="menu vertical">
+          <li><a href="#">Item 1Ai</a></li>
+          <li><a href="#">Item 1Aii</a></li>
+          <li><a href="#">Item 1Aiii</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+      <li><a href="#">Item 1C</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="menu vertical">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Item 3</a></li>
+</ul>
+```
+
+<ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
+  <li>
+    <a href="http://foundation.zurb.com/">Zurb Foundation</a>
+    <ul class="menu vertical">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="menu vertical">
+          <li><a href="#">Item 1Ai</a></li>
+          <li><a href="#">Item 1Aii</a></li>
+          <li><a href="#">Item 1Aiii</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+      <li><a href="#">Item 1C</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="menu vertical">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Item 3</a></li>
+</ul>
