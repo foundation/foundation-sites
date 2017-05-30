@@ -172,7 +172,7 @@
 
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        @at-root .#{$-zf-size}-vertical-#{$i} {
+        .#{$-zf-size}-vertical-#{$i} {
           @include zf-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
@@ -191,7 +191,7 @@
     }
   }
 
-  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
+  @include zf-margin-grid-classes(top bottom, true, '.margin-gutters')
 }
 
 // Final classes
