@@ -74,6 +74,10 @@ $global-margin: 1rem !default;
 /// @type Number
 $global-padding: 1rem !default;
 
+/// Global value used for positioning on components.
+/// @type Number
+$global-position: 1rem !default;
+
 /// Global font weight used for normal type.
 /// @type Keyword | Number
 $global-weight-normal: normal !default;
@@ -93,6 +97,10 @@ $global-text-direction: ltr !default;
 /// Enables flexbox for components that support it.
 /// @type Boolean
 $global-flexbox: false !default;
+
+/// Enabled responsive breakpoints for prototypes if applicable
+// @type Boolean
+$global-prototype-breakpoints: false !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
