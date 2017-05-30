@@ -132,12 +132,12 @@
       // Offsets
       $o: $i - 1;
 
-      .margin-gutters > .#{$-zf-size}-offset-#{$o} {
-        @include zf-cell-offset($o, $breakpoint: $-zf-size);
+      .#{$-zf-size}-offset-#{$o} {
+        @include zf-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
       }
 
-      .padding-gutters > .#{$-zf-size}-offset-#{$o} {
-        @include zf-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
+      .margin-gutters > .#{$-zf-size}-offset-#{$o} {
+        @include zf-cell-offset($o, $breakpoint: $-zf-size);
       }
     }
   }
@@ -152,7 +152,7 @@
     @include zf-grid(vertical);
 
     > .cell {
-      @include zf-cell-reset()
+      @include zf-cell-reset();
     }
 
     @include -zf-each-breakpoint() {
@@ -191,7 +191,7 @@
     }
   }
 
-  @include zf-margin-grid-classes(top bottom, true, '.margin-gutters')
+  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
 }
 
 // Final classes
@@ -199,9 +199,9 @@
   $base-grid: true,
   $margin-grid: true,
   $padding-grid: true,
-  $vertical-grid: true,
   $collapse: true,
-  $offset: true
+  $offset: true,
+  $vertical-grid: true
 ) {
 
   // Base grid styles
@@ -219,11 +219,6 @@
     @include zf-padding-grid-classes();
   }
 
-  // Vertical grid
-  @if($vertical-grid) {
-    @include zf-vertical-grid-classes($margin-grid, $padding-grid);
-  }
-
   // Collapse gutters
   @if($collapse) {
     @include zf-collapse-grid-classes();
@@ -232,5 +227,10 @@
   // Offset gutters
   @if($offset) {
     @include zf-offset-cell-classes();
+  }
+
+  // Vertical grid
+  @if($vertical-grid) {
+    @include zf-vertical-grid-classes($margin-grid, $padding-grid);
   }
 }
