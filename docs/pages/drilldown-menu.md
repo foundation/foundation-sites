@@ -1,7 +1,7 @@
 ---
 title: Drilldown Menu
 description: Drilldown is one of Foundation's three menu patterns, which converts a series of nested lists into a vertical drilldown menu.
-video: risWADXGMYs
+video: 8qPQRXl52hI
 scss: scss/components/_drilldown.scss
 js: js/foundation.drilldown.js
 ---
@@ -15,7 +15,7 @@ To create sub-menus, place a `<ul>` *next to* an `<a>`. Clicking that `<a>` will
 Any `<a>` without a submenu will function like a normal link.
 
 <p>
-  <a class="" data-open-video="0:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:54"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -90,14 +90,14 @@ Any `<a>` without a submenu will function like a normal link.
 </div>
 
 <p>
-<a class="" data-open-video="3:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="4:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmKyrw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
-```html 
+```html
 <ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true">
   <!--  -->
 </ul>
@@ -175,7 +175,7 @@ Any `<a>` without a submenu will function like a normal link.
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKEwX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
-```html 
+```html
 <ul class="menu" data-drilldown data-scroll-top="true">
   <!--  -->
 </ul>
