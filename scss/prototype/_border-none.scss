@@ -12,7 +12,7 @@ $prototype-border-none-breakpoints: $global-prototype-breakpoints !default;
 
 /// Border none utility
 @mixin border-none {
-  border: none !important;
+  border: 0 !important;
 }
 
 @mixin foundation-prototype-border-none {
