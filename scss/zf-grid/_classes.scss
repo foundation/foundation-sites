@@ -21,6 +21,7 @@
 
   .cell {
     @include zf-cell-base();
+    @include zf-cell-static($grid-columns, false, $gutter-type: padding);
   }
 
   .grid {
@@ -70,7 +71,7 @@
 
     // Auto width
     @include -zf-each-breakpoint() {
-      @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+      @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size) and $-zf-size != $-zf-zero-breakpoint) {
         > .cell {
           @include zf-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
         }
@@ -172,7 +173,7 @@
 
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        .#{$-zf-size}-vertical-#{$i} {
+        > .#{$-zf-size}-vertical-#{$i} {
           @include zf-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
