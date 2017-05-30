@@ -13,14 +13,14 @@ $prototype-decoration-breakpoints: $global-prototype-breakpoints !default;
 /// Map containing all the `text-decoration` classes
 /// @type Map
 $prototype-text-decoration: (
-  overline, underline, line-through
+  overline, underline, strike-through
 ) !default;
 
 /// Text Decoration, by default coming through a map `$prototype-text-decoration`
 /// @param {String} $decoration [] Text Decoration
 @mixin text-decoration($decoration) {
   text-decoration: $decoration !important;
-} 
+}
 
 @mixin foundation-prototype-text-decoration {
   @each $decoration in $prototype-text-decoration {

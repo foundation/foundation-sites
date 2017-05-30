@@ -322,14 +322,18 @@ For text:
 
 ### Image Replacement (Text Hide)
 
-You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
+You can include an image with visually hidden helper text for the sake of accessibility and improving SEO. The `.text-hide` class will visually hide an element’s text within the context of an image.
 
-```html_example
-<a href="" class="text-hide">
-  <img src="assets/img/logos/zurb-logo.svg">
+```html
+<a href="#" class="text-hide">
+  <img src="http://placehold.it/100x30" alt="zurb logo">
   Zurb <!-- Logo Text  -->
 </a>
 ```
+<a href="#" class="text-hide">
+  <img src="assets/img/logos/zurb-logo.svg" alt="zurb logo">
+  Zurb <!-- Logo Text  -->
+</a>
 
 ---
 
@@ -349,7 +353,7 @@ Text transformation lets you control the capitalization of text. You can change 
 
 <p class="text-capitalize"><strong>This is a caPitAlized teXt.</strong> Set in the yEar 0 F.E. ("Foundation Era"), The PsychohisTorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
 
-Note how `text-capitalize` just changes the first letter of every single word, leaving the case of other letters unaffected.
+Note: `.text-capitalize` changes the first letter of every single word, leaving the case of other letters unaffected.
 
 ---
 
@@ -360,7 +364,7 @@ Text Decoration can be used to underline, overline, or line-through a text. You 
 ```html_example
 <p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
 <p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
-<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
+<p class="text-strike-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
 ```
 
 ---
