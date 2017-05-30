@@ -102,12 +102,14 @@
 ) {
   $breakpoint: null;
 
-  // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
-  @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') {
-    $breakpoint: $-zf-size;
-  }
-  @else {
-    $breakpoint: $-zf-zero-breakpoint;
+  @if($breakpoint == null) {
+    // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
+    @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') {
+      $breakpoint: $-zf-size;
+    }
+    @else {
+      $breakpoint: $-zf-zero-breakpoint;
+    }
   }
 
   // Get our gutters from map if available, if not map just return the value.
@@ -126,7 +128,7 @@
   // If gutters = map
   @if(type-of($gutters) == 'map') {
     // If $gutters map has a key = $breakpoint, output the value
-    @if (map-has-key($gutters, $-zf-size)) {
+    @if (map-has-key($gutters, $breakpoint)) {
       @include zf-gutters($gutter, $gutter-type, $gutter-position);
     }
   }

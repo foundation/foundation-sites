@@ -240,6 +240,31 @@ $breakpoint-classes: (small medium large) !default;
   @return $list;
 }
 
+/// Return a list of our named breakpoints less than $key. Useful for dealing with
+/// responsive gutters for the grid.
+/// @access private
+///
+/// @param {String} $breakpoing - a named or non-named breakpoing.
+///
+/// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -zf-closest-named-breakpoint($breakpoint) {
+  $last: $-zf-zero-breakpoint;
+  $found: false;
+
+  $value: unitless-calc($breakpoint, 1px);
+  @each $key, $val in $breakpoints {
+    @if not $found {
+      @if unitless-calc($val) > $value {
+        $found: true;
+      } @else {
+        $last: $key;
+      }
+    }
+  }
+
+  @return $last;
+}
+
 /// Get a value for a breakpoint from a responsive config map or single value.
 /// - If the config is a single value, return it regardless of `$value`.
 /// - If the config is a map and has the key `$value`, the exact breakpoint value is returned.
@@ -256,9 +281,10 @@ $breakpoint-classes: (small medium large) !default;
     @return $map;
   }
 
+
   // Check if the breakpoint name exists globally
   @if not map-has-key($breakpoints, $value) {
-    @return null;
+    $value: -zf-closest-named-breakpoint($value);
   }
   // Check if the breakpoint name exists in the local config map
   @else if map-has-key($map, $value) {
