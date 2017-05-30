@@ -324,10 +324,10 @@ $content: $maincontent-class
 /// Overrides the off-canvas styles
 @mixin in-canvas() {
   transform: none !important;
-  visibility: visible !important;
+  visibility: visible;
   height: auto !important;
   box-shadow: none !important;
-  position: static !important;
+  position: static;
   background: inherit;
   width: inherit;
   overflow: inherit;
@@ -395,7 +395,7 @@ $content: $maincontent-class
   @each $name, $value in $breakpoint-classes {
     @if $name != $-zf-zero-breakpoint {
       @include breakpoint($name) {
-        .in-canvas-for-#{$name} {
+        .off-canvas.in-canvas-for-#{$name} {
           @include in-canvas;
         }
       }
