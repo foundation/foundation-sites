@@ -152,7 +152,7 @@
     @include zf-grid(vertical);
 
     > .cell {
-      @include zf-cell-reset()
+      @include zf-cell-reset();
     }
 
     @include -zf-each-breakpoint() {
@@ -191,7 +191,7 @@
     }
   }
 
-  @include zf-margin-grid-classes(top bottom, true, '.margin-gutters')
+  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
 }
 
 // Final classes
