@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>zf padding grid</title>
+    <title>Collapse classes</title>
     <link href="../assets/css/foundation.css" rel="stylesheet" />
     <style>
       body {
@@ -16,7 +16,7 @@
       }
 
       .cell {
-        background: tomato;
+        /*background: dodgerblue;*/
         line-height: 50px;
         height: 50px;
         color: white;
@@ -26,11 +26,12 @@
     </style>
   </head>
   <body>
-    <h1>Padding Grid - red shows the padding gutters</h1>
+    <h1>Grid Collapse</h1>
 
-    <h2>Sizing Classes</h2>
+    <h2>Margin Grid Collapse</h2>
+    <p>Gutters should collapse on large.</p>
 
-    <div class="grid padding-gutters">
+    <div class="grid margin-gutters large-margin-collapse">
       <div class="cell medium-12"><div class="demo">12</div></div>
       <div class="cell medium-11"><div class="demo">11</div></div>
       <div class="cell medium-1"><div class="demo">1</div></div>
@@ -46,28 +47,12 @@
       <div class="cell medium-4"><div class="demo">4</div></div>
     </div>
 
-    <h2>Nesting</h2>
+    <hr>
 
-    <div class="grid padding-gutters">
-      <div class="cell medium-6">
-        <div class="grid padding-gutters">
-          <div class="cell medium-9"><div class="demo">9 nested</div></div>
-          <div class="cell medium-3"><div class="demo">3 nested</div></div>
-        </div>
-      </div>
-      <div class="cell medium-6"><div class="demo">11</div></div>
-    </div>
+    <h2>Padding Grid Collapse</h2>
+    <p>Gutters should collapse on medium.</p>
 
-    <h2>Auto and Shrink</h2>
-
-    <div class="grid padding-gutters">
-      <div class="cell medium-shrink"><div class="demo">Shrink on medium</div></div>
-      <div class="cell medium-auto"><div class="demo">Auto on medium</div></div>
-    </div>
-
-    <h2>Collapse</h2>
-
-    <div class="grid padding-gutters large-padding-collapse">
+    <div class="grid padding-gutters medium-padding-collapse">
       <div class="cell medium-12"><div class="demo">12</div></div>
       <div class="cell medium-11"><div class="demo">11</div></div>
       <div class="cell medium-1"><div class="demo">1</div></div>
@@ -80,13 +65,6 @@
       <div class="cell medium-7"><div class="demo">7</div></div>
       <div class="cell medium-5"><div class="demo">5</div></div>
       <div class="cell medium-6"><div class="demo">6</div></div>
-      <div class="cell medium-4"><div class="demo">4</div></div>
-    </div>
-
-    <h2>Offset</h2>
-
-    <div class="grid padding-gutters">
-      <div class="cell medium-3 medium-offset-2"><div class="demo">3</div></div>
       <div class="cell medium-4"><div class="demo">4</div></div>
     </div>
 
