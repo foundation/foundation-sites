@@ -213,7 +213,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       }
     }
 
-    > li {
+    > li:not('.column') {
       width: 100%;
     }
 
