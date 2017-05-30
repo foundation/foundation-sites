@@ -41,7 +41,13 @@ If you use the `foundation-everything()` mixin in your main Sass file, just pass
 @include foundation-everything($prototype: true);
 ```
 
-If you included each component manually (like our starter projects do), open up your `app.scss` file and simply add:
+If you included each component manually (like our starter projects do), open up your `app.scss` file and simply comment in:
+
+```scss
+// @include foundation-prototype-classes;
+```
+
+So it will look like:
 
 ```scss
 @include foundation-prototype-classes;
@@ -84,17 +90,17 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 #### Buttons
 
 ```html_example
-<button type="button" class="button rounded bordered shadow primary">Primary</button>
+<button type="button" class="button radius bordered shadow primary">Primary</button>
 <button type="button" class="button rounded bordered shadow secondary">Secondary</button>
-<button type="button" class="button rounded bordered shadow success">Success</button>
+<button type="button" class="button radius bordered shadow success">Success</button>
 <button type="button" class="button rounded bordered shadow alert">Alert</button>
-<button type="button" class="button rounded bordered shadow warning">Warning</button>
+<button type="button" class="button radius bordered shadow warning">Warning</button>
 ```
 
 #### Cards
 
 ```html
-<div class="rounded bordered shadow card">
+<div class="radius bordered shadow card">
   <img src="assets/img/generic/rectangle-1.jpg">
   <div class="card-divider">
     Styled Card
@@ -109,7 +115,7 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 <div class="docs-code-live">
 	<div class="row">
 		<div class="small-4 columns">
-			<div class="rounded bordered shadow card">
+			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
 			    Styled Card
@@ -121,7 +127,7 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 			</div>
 		</div>
 		<div class="small-4 columns">
-			<div class="rounded bordered shadow card">
+			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
 			    Styled Card
@@ -133,7 +139,7 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 			</div>
 		</div>
 		<div class="small-4 columns">
-			<div class="rounded bordered shadow card">
+			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
 			    Styled Card

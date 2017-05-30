@@ -12,9 +12,9 @@ $prototype-rounded-breakpoints: $global-prototype-breakpoints !default;
 
 /// Default value for `prototype-border-radius`
 /// @type Number
-$prototype-border-radius: rem-calc(4px) !default;
+$prototype-border-radius: rem-calc(3) !default;
 
-/// Rounded utility (all corners): Adds rounded corners (all corners) to an element by default.
+/// Rounded utility (all corners): Adds radius corners (all corners) to an element by default.
 /// @param {Number} $radius [$prototype-border-radius] Border radius (all corners)
 @mixin border-radius(
   $radius: $prototype-border-radius
@@ -22,17 +22,27 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-radius: $radius;
 }
 
-/// Rounded circle utility
-@mixin rounded-circle {
+/// Circle utility (all corners): Rounds all corners to an element by default to make a cirlce.
+@mixin circle {
   border-radius: 50% !important;
 }
 
+/// Rounded square utility or rectangle utility (all corners): Rounds all corners to an element by default to make a pill shape.
+@mixin border-rounded {
+  border-radius: 5000px !important;
+}
+
 @mixin foundation-prototype-rounded {
-  .rounded {
-    @include border-radius;
+  .circle {
+    @include circle;
   }
-  .rounded-circle {
-    @include rounded-circle;
+
+  .rounded {
+    @include border-rounded;
+  }
+
+  .radius {
+    @include border-radius;
   }
 
   @if ($prototype-rounded-breakpoints) {
