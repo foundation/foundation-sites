@@ -13,7 +13,9 @@ $prototype-decoration-breakpoints: $global-prototype-breakpoints !default;
 /// Map containing all the `text-decoration` classes
 /// @type Map
 $prototype-text-decoration: (
-  overline, underline, strike-through
+  overline,
+  underline,
+  line-through,
 ) !default;
 
 /// Text Decoration, by default coming through a map `$prototype-text-decoration`

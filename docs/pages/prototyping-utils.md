@@ -359,19 +359,19 @@ Note: `.text-capitalize` changes the first letter of every single word, leaving 
 
 ### Text Decoration
 
-Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `.text-overline`, or `.text-line-through` to an element.
 
 ```html_example
 <p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
 <p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
-<p class="text-strike-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
+<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
 ```
 
 ---
 
 ### Text Truncate
 
-The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where overflow is hidden. See how in example the content did not crossed the first line!
+The `.text-truncate` class will truncate your text and display an elipsis. This class works for a single line of text.
 
 ```html_example
 <p class="text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
@@ -381,7 +381,7 @@ The `text-truncate` displays an elipsis when the text must be in a single straig
 
 ### Text No-wrap
 
-If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
+If you would like to prevent the text wrapping into the next line you can utilize `.text-nowrap`. Please note that the text will continue to be in same line unless the `<br>` tag is used.
 
 ```html
 <p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
@@ -389,7 +389,7 @@ If you would like to prevent the text wrapping into the next line you can utiliz
 
 ### Text Wrap
 
-Oppositely, if you are looking for text wrapping into the next line, you can use `text-wrap`.
+To force text to wrap to the next line, you can use `.text-wrap`.
 
 ```html
 <p class="text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
@@ -399,7 +399,7 @@ Oppositely, if you are looking for text wrapping into the next line, you can use
 
 ## Margin Helpers
 
-Generate spaces around the element with these easy to use margin classes.
+Generate spacing around elements with these easy to use margin classes.
 
 <div class="primary callout">
 	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
@@ -481,12 +481,12 @@ This above code will generate the below output
 ```scss
 .foo {
   margin-top: 1rem !important;
-  margin-right: 0rem !important;
+  margin-right: 0 !important;
   margin-bottom: 2rem !important;
 }
 ```
 
-See how `margin-left` wasn't printed as this mixin also accept `null` as a value. Sass Reference [here](#margin)
+Note: The `margin-left` property wasn't printed as this mixin also accept `null` as a value to reduce CSS output. [See Sass Reference here](#margin)
 
 ---
 
@@ -574,18 +574,18 @@ This above code will generate the below output
 ```scss
 .bar {
   padding-top: 1rem !important;
-  padding-right: 0rem !important;
+  padding-right: 0 !important;
   padding-bottom: 2rem !important;
 }
 ```
 
-See how `padding-left` wasn't printed as this mixin also accept `null` as a value. Sass Reference [here](#padding)
+Note: The `padding-left` property wasn't printed as this mixin also accept `null` as a value to reduce CSS output. [See Sass Reference here](#padding)
 
 ---
 
 ## Sizing
 
-These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it only supports `25%`, `50%`, `75%` and `100%`. You can add more sizes though, through Sass Variables.
+These width and height classes help you to easily make an element as wide or as tall as needed relative to its parent. By default it supports `25%`, `50%`, `75%` and `100%`. You can add more sizes though, through Sass map variable.
 
 #### Width
 
@@ -613,7 +613,7 @@ These width and height classes helps you to easily make an element as wide or as
 
 ## Border box
 
-Border box lets you only add the content, padding and border, but not the margin within the width and height css properties.
+Border box lets you only add the content, padding and border, but not the margin within the width and height CSS properties.
 
 ```html
 <div class="border-box"></div>
