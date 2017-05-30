@@ -1,19 +1,27 @@
 ---
 title: Prototyping Utilities
-description: Utility Toolkit for quickly fleshing out the skeletal sketches and mockups into hi-fi prototype's
+description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
 sass:
   - scss/prototype/*.scss
 ---
 
-Prototyping utilities helps you to make prototypes from simple sketches and mockups quickly. Foundation provides you with a utility toolkit that you can use for your prototyping project and quickly create a fully-functional and responsive prototypes. Just fire in these simple and reusable classes and you are done.
+<h4><strong>Prototype to Production</strong></h4>
 
-At the same time, we also understand that prototypes are not always required for every single projects and there are many cases specially in bigger projects where you have the time to show up your skill with both design &amp; code and so, prototype mode is **disabled by default!** 
+Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implimentation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
+
+Sometimes prototype code is meant the be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scruitiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
+
+Foundation's Prototyping Utilities help you build coded prototypes from scratch ultra-fast. This allows you to get to right answer faster through feedback and experimentation. From positioning to visual styles, there are a range of utilities to choose from. Every Utility has a mixin, so you can use your own custom classes or swap classes for mixins in production for cleaner markup.
+
+#### Prototype mode is **disabled by default!**
+
+Not all projects require Prototyping Utilities and adding utility classes like these increase your CSS file size especially if you're not using all of them. For these reasons Prototype mode is *disabled by default*.
 
 <div class="primary callout">
 	<p>
-		Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which we are fully sure that values of those properties shouldn't be overridden.
+		Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
 	</p>
-</div> 
+</div>
 
 ---
 
@@ -33,12 +41,13 @@ If you use the `foundation-everything()` mixin in your main Sass file, just pass
 @include foundation-everything($prototype: true);
 ```
 
-If you included each component manually (like our starter projects do), open up your main **scss** file and simply add
+If you included each component manually (like our starter projects do), open up your `app.scss` file and simply add:
 
 ```scss
 @include foundation-prototype-classes;
 ```
-or, if you looking for specific utility instead of all, these helper classes can be included individually like. Also, for your ease full list is also included below.
+
+You can instead import only the specific utility classes that you need. To make it easy, the full list is included below:
 
 ```scss
 @include foundation-prototype-typescale;
@@ -190,7 +199,7 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 ```html
 <img src="" class="rounded">
 <img src="" class="rounded-circle">
-``` 
+```
 
 <div class="docs-code-live margin-bottom-1">
 	<img src="http://placehold.it/100x100" class="rounded margin-right-1">
@@ -211,7 +220,7 @@ This creates a tiny separator below the heading of an element and is usually use
 <h3 class="separator-left">Lorem</h3>
 <h3 class="separator-center">Ipsum Dolor</h3>
 <h3 class="separator-right">Tempor</h3>
-``` 
+```
 
 <div class="docs-code-live">
 	<div class="row">
@@ -238,7 +247,7 @@ You can use font styling to style your text. You can change the font styling by 
 <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 <p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
-``` 
+```
 
 ---
 
@@ -270,7 +279,7 @@ Adjust font-size by overriding an element’s default size.
 <ul class="list-disc"></ul>
 <ul class="list-circle"></ul>
 <ul class="list-square"></ul>
-``` 
+```
 
 #### Ordered Lists
 
@@ -283,7 +292,7 @@ Adjust font-size by overriding an element’s default size.
 <ol class="list-upper-alpha"></ol>
 <ol class="list-upper-latin"></ol>
 <ol class="list-upper-roman"></ol>
-``` 
+```
 
 ---
 
@@ -304,13 +313,13 @@ You might want to include a logo on the page but you also would like to use a te
 
 ### Text Transformation
 
-Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
+Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element.
 
 ```html
 <p class="text-uppercase"><!-- Text here --></p>
 <p class="text-lowercase"><!-- Text here --></p>
 <p class="text-capitalize"><!-- Text here --></p>
-``` 
+```
 
 <p class="text-uppercase"><strong>This is a upper-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
 
@@ -330,7 +339,7 @@ Text Decoration can be used to underline, overline, or line-through a text. You 
 <p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
 <p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
 <p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
-``` 
+```
 
 ---
 
@@ -340,7 +349,7 @@ The `text-truncate` displays an elipsis when the text must be in a single straig
 
 ```html_example
 <p class="text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
-``` 
+```
 
 ---
 
@@ -350,7 +359,7 @@ If you would like to prevent the text wrapping into the next line you can utiliz
 
 ```html
 <p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
-``` 
+```
 
 ### Text Wrap
 
@@ -358,13 +367,13 @@ Oppositely, if you are looking for text wrapping into the next line, you can use
 
 ```html
 <p class="text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
-``` 
+```
 
 ---
 
 ## Margin Helpers
 
-Generate spaces around the element with these easy to use margin classes. 
+Generate spaces around the element with these easy to use margin classes.
 
 <div class="primary callout">
 	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
@@ -377,7 +386,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-1"></div>
 <div class="margin-2"></div>
 <div class="margin-3"></div>
-``` 
+```
 
 #### Margin Top
 
@@ -386,7 +395,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-top-1"></div>
 <div class="margin-top-2"></div>
 <div class="margin-top-3"></div>
-``` 
+```
 
 #### Margin Bottom
 
@@ -395,7 +404,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-bottom-1"></div>
 <div class="margin-bottom-2"></div>
 <div class="margin-bottom-3"></div>
-``` 
+```
 
 #### Margin Left
 
@@ -404,7 +413,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-left-1"></div>
 <div class="margin-left-2"></div>
 <div class="margin-left-3"></div>
-``` 
+```
 
 #### Margin Right
 
@@ -413,7 +422,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-right-1"></div>
 <div class="margin-right-2"></div>
 <div class="margin-right-3"></div>
-``` 
+```
 
 #### Margin Left Right (Horizontal Axis)
 
@@ -422,7 +431,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-horizontal-1"></div>
 <div class="margin-horizontal-2"></div>
 <div class="margin-horizontal-3"></div>
-``` 
+```
 
 #### Margin Top Bottom (Vertical Axis)
 
@@ -431,7 +440,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-vertical-1"></div>
 <div class="margin-vertical-2"></div>
 <div class="margin-vertical-3"></div>
-``` 
+```
 
 #### Margin: Usage as a Mixin
 
@@ -441,7 +450,7 @@ Generate spaces around the element with these easy to use margin classes.
 }
 ```
 
-This above code will generate the below output 
+This above code will generate the below output
 
 ```scss
 .foo {
@@ -470,7 +479,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-1"></div>
 <div class="padding-2"></div>
 <div class="padding-3"></div>
-``` 
+```
 
 #### Padding Top
 
@@ -479,7 +488,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-top-1"></div>
 <div class="padding-top-2"></div>
 <div class="padding-top-3"></div>
-``` 
+```
 
 #### Padding Bottom
 
@@ -488,7 +497,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-bottom-1"></div>
 <div class="padding-bottom-2"></div>
 <div class="padding-bottom-3"></div>
-``` 
+```
 
 #### Padding Left
 
@@ -497,7 +506,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-left-1"></div>
 <div class="padding-left-2"></div>
 <div class="padding-left-3"></div>
-``` 
+```
 
 #### Padding Right
 
@@ -506,7 +515,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-right-1"></div>
 <div class="padding-right-2"></div>
 <div class="padding-right-3"></div>
-``` 
+```
 
 #### Padding Left Right (Horizontal Axis)
 
@@ -515,7 +524,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-horizontal-1"></div>
 <div class="padding-horizontal-2"></div>
 <div class="padding-horizontal-3"></div>
-``` 
+```
 
 #### Padding Top Bottom (Vertical Axis)
 
@@ -524,7 +533,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-vertical-1"></div>
 <div class="padding-vertical-2"></div>
 <div class="padding-vertical-3"></div>
-``` 
+```
 
 #### Padding: Usage as a Mixin
 
@@ -534,7 +543,7 @@ Generate spaces around the content with these easy to use padding classes.
 }
 ```
 
-This above code will generate the below output 
+This above code will generate the below output
 
 ```scss
 .bar {
@@ -561,7 +570,7 @@ These width and height classes helps you to easily make an element as wide or as
 <div class="width-100"></div>
 
 <div class="max-width-100"></div>
-``` 
+```
 
 #### Height
 
@@ -572,21 +581,21 @@ These width and height classes helps you to easily make an element as wide or as
 <div class="height-100"></div>
 
 <div class="max-height-100"></div>
-``` 
+```
 
 ---
 
-## Border box 
+## Border box
 
 Border box lets you only add the content, padding and border, but not the margin within the width and height css properties.
 
 ```html
 <div class="border-box"></div>
-``` 
+```
 
 ---
 
-## Border none 
+## Border none
 
 Border none lets you quickly resets border to `none` into any component.
 
@@ -594,7 +603,7 @@ Border none lets you quickly resets border to `none` into any component.
 <div class="callout primary border-none">
   Hi! I am a callout with no Borders
 </div>
-``` 
+```
 
 ---
 
@@ -607,7 +616,7 @@ Display classes helps to display the elements in specific positions inside any o
 <div class="display-inline-block"></div>
 <div class="display-block"></div>
 <div class="display-table"></div>
-``` 
+```
 
 By default, we have just added the most used display classes. but as you would know, there are many other display classes as specified by MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/display). If you need some of those classes, then you can add them easily through Sass variables with `$prototype-display`. Sass Reference [here](#sass-reference)
 
@@ -619,7 +628,7 @@ By default, we have just added the most used display classes. but as you would k
 
 ## Positioning
 
-Positioning is very helpful and basic need for complex layouts. 
+Positioning is very helpful and basic need for complex layouts.
 
 ```html
 <div class="position-static"></div>
@@ -628,7 +637,7 @@ Positioning is very helpful and basic need for complex layouts.
 <div class="position-fixed"></div>
 <div class="position-fixed-top"></div>
 <div class="position-fixed-bottom"></div>
-``` 
+```
 
 #### Positioning: Usage as a Mixin
 
@@ -638,14 +647,14 @@ Positioning is very helpful and basic need for complex layouts.
 }
 ```
 
-This above code will generate the below output 
+This above code will generate the below output
 
 ```scss
 .foo {
   position: fixed !important;
   top: 1rem !important;
   right: 2rem !important;
-  bottom: 0rem !important; 
+  bottom: 0rem !important;
 }
 ```
 
@@ -655,15 +664,15 @@ See how `left` offset wasn't printed as this mixin also accept `null` as a value
 
 ## Overflow
 
-These overflow classes helps you to clip content, render scrollbars or simply just display the content when it overflows its block level container. 
+These overflow classes helps you to clip content, render scrollbars or simply just display the content when it overflows its block level container.
 
-#### All sides 
+#### All sides
 
 ```html
 <div class="overflow-visible"></div>
 <div class="overflow-hidden"></div>
 <div class="overflow-scroll"></div>
-``` 
+```
 
 #### Horizontal Axis
 
@@ -671,7 +680,7 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 <div class="overflow-x-visible"></div>
 <div class="overflow-x-hidden"></div>
 <div class="overflow-x-scroll"></div>
-``` 
+```
 
 #### Vertical Axis
 
@@ -679,11 +688,11 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 <div class="overflow-y-visible"></div>
 <div class="overflow-y-hidden"></div>
 <div class="overflow-y-scroll"></div>
-``` 
+```
 
 ---
 
-## Sass Mixin Helpers 
+## Sass Mixin Helpers
 
 We also provides some extra utility mixins that you can use for your next prototype project.
 
@@ -691,7 +700,7 @@ We also provides some extra utility mixins that you can use for your next protot
 
 This mixin helps you to easily create a square, rectangle or a circle. Sass Reference [here](#box)
 
-```scss 
+```scss
 .foo {
 	@include box(1rem, 2rem); // Rectangle
 }
@@ -701,12 +710,12 @@ This mixin helps you to easily create a square, rectangle or a circle. Sass Refe
 .baz {
 	@include box(1rem, $circle: true); // Circle
 }
-``` 
+```
 
-### Rotate Mixin 
+### Rotate Mixin
 These Rotate mixins lets you rotate an element to a certain degree.
 
-```scss 
+```scss
 .foo {
 	@include rotate(30); // 30 Degree
 }
@@ -719,14 +728,14 @@ These Rotate mixins lets you rotate an element to a certain degree.
 .shaz {
 	@include rotateZ(120); // 120 Degree
 }
-``` 
+```
 
 ### Relational Mixins
 
 These relational mixins helps you to manage styling of :nth-child’ified elements through easy Sass mixins.
 
 ```scss
-@include first($num) {} 
+@include first($num) {}
 @include first-child {}
 @include last($num) {}
 @include last-child {}
@@ -746,4 +755,4 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include odd-between($first, $last) {}
 @include number-between($num, $first, $last) {}
 ```
- 
+
