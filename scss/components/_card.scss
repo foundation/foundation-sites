@@ -120,4 +120,10 @@ $card-margin-bottom: $global-margin !default;
   .card-section {
     @include card-section;
   }
+
+  // For IE 11 - Flexbug
+  // https://github.com/philipwalton/flexbugs/issues/75
+  .card-image {
+    min-height: 1px;
+  }
 }
