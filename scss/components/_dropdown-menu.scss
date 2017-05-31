@@ -51,6 +51,14 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 // @type Length
 $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
+/// Text color of an active dropdown menu item. Explicit override for menu defaults
+/// @type Color
+$dropdown-menu-item-color-active: get-color(primary) !default;
+
+/// Background color of an active dropdown menu item. Explicit override for menu defaults
+/// @type Color
+$dropdown-menu-item-background-active: transparent !default;
+
 @mixin zf-dropdown-left-right-arrows {
   > a::after {
     #{$global-right}: 14px;
@@ -136,6 +144,12 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     a {
       @include disable-mouse-outline;
       padding: $dropdownmenu-padding;
+    }
+
+    // Active state
+    .is-active > a {
+      background: $dropdown-menu-item-background-active;
+      color: $dropdown-menu-item-color-active;
     }
 
     .no-js & ul {
