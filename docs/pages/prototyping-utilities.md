@@ -787,7 +787,7 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include all-but-first-last($num) {} // applies style all except first and last child
 @include unique {} // applies style to a child who has no siblings
 @include not-unique {} // applies style to all children except a child who has no siblings
-@include between($first, $last) {}
+@include between($first, $last) {} // applies style to all except first and last child
 @include even {} // applies style to all even children
 @include even-between($first, $last) {} // applies style to all even children except first and last
 @include odd {} // applies style to all odd children
