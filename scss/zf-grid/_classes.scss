@@ -33,6 +33,10 @@
     @include zf-cell-block();
   }
 
+  .cell-block-container {
+    @include zf-cell-block-container();
+  }
+
   .grid {
     > .auto {
       @include zf-cell-base(auto);
