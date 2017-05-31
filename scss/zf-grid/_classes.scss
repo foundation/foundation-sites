@@ -73,11 +73,12 @@
 }
 
 @mixin -zf-breakpoint-cell-classes($breakpoint, $vertical) {
-  > .#{$breakpoint}-auto {
+  $prefix: if($breakpoint == $-zf-zero-breakpoint, '', '#{$breakpoint}-');
+  > .#{$prefix}auto {
     @include zf-cell-static(auto, false, $breakpoint: $breakpoint, $vertical: $vertical);
   }
 
-  > .#{$breakpoint}-shrink {
+  > .#{$prefix}shrink {
     @include zf-cell-static(shrink, false, $breakpoint: $breakpoint, $vertical: $vertical);
   }
 
@@ -117,6 +118,8 @@
     @include -zf-each-breakpoint() {
       @include -zf-breakpoint-cell-classes($-zf-size, $vertical);
 
+      // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
+      // for prior breakpoints based on the responsive gutter.
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
