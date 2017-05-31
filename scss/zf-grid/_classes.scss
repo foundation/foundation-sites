@@ -40,10 +40,12 @@
   .grid {
     > .auto {
       @include zf-cell-base(auto);
+      @include zf-cell-static(auto, false);
     }
 
     > .shrink {
       @include zf-cell-base(shrink);
+      @include zf-cell-static(shrink, false);
     }
   }
 
@@ -52,10 +54,12 @@
     @if not($-zf-size == small) {
       .grid > .#{$-zf-size}-auto {
         @include zf-cell-base(auto);
+        @include zf-cell-static(auto, false);
       }
 
       .grid > .#{$-zf-size}-shrink {
         @include zf-cell-base(shrink);
+        @include zf-cell-static(shrink, false);
       }
 
       &.#{$-zf-size}-grid-frame {
