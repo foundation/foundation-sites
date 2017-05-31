@@ -266,7 +266,7 @@ $visibility-breakpoint-queries:
           display: table-row-group !important;
         }
         #{$visibility-table-row-list} {
-          display: table-row;
+          display: table-row !important;
         }
         #{$visibility-table-cell-list} {
           display: table-cell !important;
