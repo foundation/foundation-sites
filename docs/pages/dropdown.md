@@ -97,7 +97,7 @@ Adding `.float-right` or `.float-left` to the anchor will change the direction o
 
 ## Explicit Positioning
 
-Won't it be great if you can define both positions at the dropdown element. Dropdown has a fully explicit positioning model through which you can use both `data-position` and `data-alignment` to do the same.
+Won't it be great if you can define both positions at the dropdown element. Dropdown has a fully explicit positioning model through which you can use both `data-position` and `data-alignment` to define both positions.
 
 These dropdowns test various positioning and alignments. Valid positions are left/right/top/bottom. Valid alignments are left/right/top/bottom/center. Left align means left sides should line up. Right align means right sides should line up. Center align means centers should line up.
 
@@ -273,4 +273,3 @@ These dropdowns test various positioning and alignments. Valid positions are lef
     </div>
   </div>
 </div>
-      
