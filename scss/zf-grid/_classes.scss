@@ -76,22 +76,22 @@
   }
 }
 
-@mixin -zf-breakpoint-cell-classes($breakpoint, $vertical) {
-  $prefix: if($breakpoint == $-zf-zero-breakpoint, '', '#{$breakpoint}-');
+@mixin -zf-breakpoint-cell-classes($class-breakpoint, $gutter-breakpoint, $vertical) {
+  $prefix: if($class-breakpoint == $-zf-zero-breakpoint, '', '#{$class-breakpoint}-');
   > .#{$prefix}auto {
-    @include zf-cell-static(auto, false, $breakpoint: $breakpoint, $vertical: $vertical);
+    @include zf-cell-static(auto, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
   }
 
   > .#{$prefix}shrink {
-    @include zf-cell-static(shrink, false, $breakpoint: $breakpoint, $vertical: $vertical);
+    @include zf-cell-static(shrink, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
   }
 
   @for $i from 1 through $grid-columns {
     // Sizing (percentage)
-    $classname: if($vertical, '.#{$breakpoint}-vertical-#{$i}', '.#{$breakpoint}-#{$i}');
+    $classname: if($vertical, '.#{$class-breakpoint}-vertical-#{$i}', '.#{$class-breakpoint}-#{$i}');
 
     > #{$classname} {
-      @include zf-cell-static($i, false, $breakpoint: $breakpoint, $vertical: $vertical);
+      @include zf-cell-static($i, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
     }
   }
 }
@@ -120,17 +120,18 @@
     }
 
     @include -zf-each-breakpoint() {
-      @include -zf-breakpoint-cell-classes($-zf-size, $vertical);
 
       // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
       // for prior breakpoints based on the responsive gutter.
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
-            @include -zf-breakpoint-cell-classes($bp, $vertical);
+            @include -zf-breakpoint-cell-classes($bp, $-zf-size, $vertical);
           }
         }
       }
+
+      @include -zf-breakpoint-cell-classes($-zf-size, $-zf-size, $vertical);
     }
   }
 }
