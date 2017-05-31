@@ -88,6 +88,7 @@
 /// Creates a cell for your grid.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
+/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
 /// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
@@ -95,6 +96,7 @@
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin zf-cell(
   $size: full,
+  $gutter-output: true,
   $gutters: $grid-margin-gutters,
   $gutter-type: margin,
   $gutter-position: right left,
@@ -124,16 +126,18 @@
     @include -zf-cell-properties($size, 0, $vertical);
   }
 
-  // If gutters = map
-  @if(type-of($gutters) == 'map') {
-    // If $gutters map has a key = $breakpoint, output the value
-    @if (map-has-key($gutters, $breakpoint)) {
+  @if $gutter-output {
+    // If gutters = map
+    @if(type-of($gutters) == 'map') {
+      // If $gutters map has a key = $breakpoint, output the value
+      @if (map-has-key($gutters, $breakpoint)) {
+        @include zf-gutters($gutter, $gutter-type, $gutter-position);
+      }
+    }
+    // If not a map
+    @else {
       @include zf-gutters($gutter, $gutter-type, $gutter-position);
     }
-  }
-  // If not a map
-  @else {
-    @include zf-gutters($gutter, $gutter-type, $gutter-position);
   }
 }
 
