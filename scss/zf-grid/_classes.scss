@@ -53,6 +53,14 @@
       .grid > .#{$-zf-size}-shrink {
         @include zf-cell-base(shrink);
       }
+
+      &.#{$-zf-size}-grid-frame {
+        width: auto;
+        @include zf-grid-frame(true);
+      }
+      .#{$-zf-size}-cell-block {
+        @include zf-cell-block();
+      }
     }
 
     @for $i from 1 through $grid-columns {
@@ -60,6 +68,25 @@
       .#{$-zf-size}-#{$i} {
         @include zf-cell-static($i, false, $gutter-type: padding);
       }
+    }
+  }
+}
+
+@mixin -zf-breakpoint-cell-classes($breakpoint, $vertical) {
+  > .#{$breakpoint}-auto {
+    @include zf-cell-static(auto, false, $breakpoint: $breakpoint, $vertical: $vertical);
+  }
+
+  > .#{$breakpoint}-shrink {
+    @include zf-cell-static(shrink, false, $breakpoint: $breakpoint, $vertical: $vertical);
+  }
+
+  @for $i from 1 through $grid-columns {
+    // Sizing (percentage)
+    $classname: if($vertical, '.#{$breakpoint}-vertical-#{$i}', '.#{$breakpoint}-#{$i}');
+
+    > #{$classname} {
+      @include zf-cell-static($i, false, $breakpoint: $breakpoint, $vertical: $vertical);
     }
   }
 }
@@ -88,42 +115,12 @@
     }
 
     @include -zf-each-breakpoint() {
-      > .#{$-zf-size}-auto {
-        @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
-      }
-
-      > .#{$-zf-size}-shrink {
-        @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
-      }
-
-      @for $i from 1 through $grid-columns {
-        // Sizing (percentage)
-        $classname: if($vertical, '.#{$-zf-size}-vertical-#{$i}', '.#{$-zf-size}-#{$i}');
-
-        > #{$classname} {
-          @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
-        }
-      }
+      @include -zf-breakpoint-cell-classes($-zf-size, $vertical);
 
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
-            > .#{$bp}-auto {
-              @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
-            }
-
-            > .#{$bp}-shrink {
-              @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
-            }
-
-            @for $i from 1 through $grid-columns {
-              // Sizing (percentage)
-              $classname: if($vertical, '.#{$bp}-vertical-#{$i}', '.#{$bp}-#{$i}');
-
-              > #{$classname} {
-                @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
-              }
-            }
+            @include -zf-breakpoint-cell-classes($bp, $vertical);
           }
         }
       }
@@ -188,6 +185,14 @@
     @include zf-cell-block(true);
   }
 
+  @include -zf-each-breakpoint() {
+    @if not($-zf-size == small) {
+      .#{$-zf-size}-cell-block-vertical {
+        @include zf-cell-block(true);
+      }
+    }
+  }
+
   .grid-vertical {
     @include zf-grid(vertical);
 
@@ -196,24 +201,34 @@
       @include zf-grid-frame(true);
     }
 
+
     > .cell {
       @include zf-cell-reset();
-
     }
 
-    @include -zf-each-breakpoint() {
-      > .cell {
-        @include zf-cell-static($breakpoint: $-zf-size, $vertical: true, $gutter-output: false, $gutter-type: padding);
-      }
+    > .auto {
+      @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
     }
 
-    @include -zf-each-breakpoint() {
-      > .auto {
-        @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
-      }
+    > .shrink {
+      @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+    }
 
-      > .shrink {
-        @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+
+    @include -zf-each-breakpoint() {
+      @if not($-zf-size == small) {
+        > .#{$-zf-size}-auto {
+          @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+        }
+
+        > .#{$-zf-size}-shrink {
+          @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+        }
+
+        &.#{$-zf-size}-grid-frame {
+          width: auto;
+          @include zf-grid-frame(true);
+        }
       }
 
       @for $i from 1 through $grid-columns {
