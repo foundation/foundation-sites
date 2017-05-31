@@ -28,7 +28,7 @@
     "yarn.lock"
   ],
   "dependencies": {
-    "jquery": ">= 2.2.0",
-    "what-input": "~4.0.3"
+    "jquery": ">= 3.0.0",
+    "what-input": "~4.1.3"
   }
 }
