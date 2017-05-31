@@ -244,12 +244,12 @@ Triggers.init = function($, Foundation) {
   if (typeof($.triggersInitialized) === 'undefined') {
     let $document = $(document);
 
-    Triggers.Initializers.addSimpleListeners();
-
     if(document.readyState === "complete") {
+      Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
     } else {
       $(window).on('load', () => {
+        Triggers.Initializers.addSimpleListeners();
         Triggers.Initializers.addGlobalListeners();
       });
     }
