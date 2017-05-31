@@ -252,6 +252,11 @@ $keystroke-radius: $global-radius !default;
 $abbr-underline: 1px dotted $black !default;
 
 @mixin foundation-typography-base {
+  // Default body font
+  body {
+    font-family: $body-font-family;
+  }
+  
   // Typography resets
   div,
   dl,
