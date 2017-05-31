@@ -37,7 +37,7 @@ A card container has no padding, allowing you to place full-bleed images inside.
 ```
 
 <div class="alert callout">
-  <p><strong>Browser Bug (IE 11 - Flexbug): </strong>On IE 11, when using the card with Equalizer, there is an extra added space under each image that happens to match the original image size. The bug can be reproduced <a href="https://codepen.io/IamManchanda/pen/MmRqvN?editors=1100">here</a> on an IE11 browser. Use <code>.card-image</code> class as a parent class to an <strong>image</strong> to resolve this.</p>
+  <p><strong>Browser Bug (IE 11 - Flexbug): </strong>On IE 11, when using the card with Equal sizing, there is an extra added light whitespace under each image that happens to match the original image size. The bug can be reproduced <a href="https://codepen.io/IamManchanda/pen/MmNqEX?editors=1100">here</a> on an IE11 browser. Use <code>.card-image</code> class as a parent class to an <strong>image</strong> to resolve this.</p>
 </div>
 
 <div class="docs-codepen-container">
