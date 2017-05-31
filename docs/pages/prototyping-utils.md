@@ -661,15 +661,17 @@ These cover some of the most used display types. There are many other display va
 Positioning classes help you change an element's position value. By default, an element's postion value is `static`.
 
 ```html
-<div class="position-static"></div>
 <div class="position-relative"></div>
 <div class="position-absolute"></div>
 <div class="position-fixed"></div>
 <div class="position-fixed-top"></div>
 <div class="position-fixed-bottom"></div>
+<div class="position-static"></div>
 ```
 
 #### Positioning: Usage as a Mixin
+
+The position mixin can be used to set a position and to set the `top` `right` `bottom` and/or `left` property all in one.
 
 ```scss
 .foo {
@@ -684,11 +686,11 @@ This above code will generate the below output
   position: fixed !important;
   top: 1rem !important;
   right: 2rem !important;
-  bottom: 0rem !important;
+  bottom: 0 !important;
 }
 ```
 
-See how `left` offset wasn't printed as this mixin also accept `null` as a value. Sass Reference [here](#position)
+See how the `left` offset wasn't printed as this mixin also accepts `null` as a value. Sass Reference [here](#position)
 
 ---
 
