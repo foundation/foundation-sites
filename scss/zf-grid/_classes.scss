@@ -156,7 +156,7 @@
   @if $margin-grid {
     @include -zf-each-breakpoint {
       @for $i from 1 through $block-grid-max {
-        .#{$-zf-size}-margin-up-#{$i} {
+        .margin-gutters.#{$-zf-size}-up-#{$i} {
           @include zf-grid-layout($i, '.cell', $gutter-type: margin);
         }
       }
@@ -166,7 +166,7 @@
   @if $padding-grid {
     @include -zf-each-breakpoint {
       @for $i from 1 through $block-grid-max {
-        .#{$-zf-size}-padding-up-#{$i} {
+        .padding-gutters.#{$-zf-size}-up-#{$i} {
           @include zf-grid-layout($i, '.cell', $gutter-type: padding);
         }
       }
