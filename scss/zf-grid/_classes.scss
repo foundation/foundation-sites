@@ -109,11 +109,11 @@
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
             > .#{$bp}-auto {
-              @include zf-cell-static(auto, false, $breakpoint: $bp, $vertical: $vertical);
+              @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
             }
 
             > .#{$bp}-shrink {
-              @include zf-cell-static(shrink, false, $breakpoint: $bp, $vertical: $vertical);
+              @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: $vertical);
             }
 
             @for $i from 1 through $grid-columns {
@@ -121,7 +121,7 @@
               $classname: if($vertical, '.#{$bp}-vertical-#{$i}', '.#{$bp}-#{$i}');
 
               > #{$classname} {
-                @include zf-cell-static($i, false, $breakpoint: $bp, $vertical: $vertical);
+                @include zf-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
               }
             }
           }
