@@ -88,20 +88,19 @@
 /// Creates a cell for your grid.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
-/// @param {Boolean} $gutter-output [true] - Output out gutters or not. Set to false when using with breakpoints when the base styles have already been set.
-/// @param {Number|Map} $margin [$grid-margin-gutters] - Map or single value for margin gutters.
-/// @param {Number|Map} $padding [$grid-padding-gutters] - Map or single value for padding gutters.
+/// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
+/// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
 /// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin zf-cell(
   $size: full,
   $gutters: $grid-margin-gutters,
   $gutter-type: margin,
   $gutter-position: right left,
+  $breakpoint: null,
   $vertical: false
 ) {
-  $breakpoint: null;
-
   @if($breakpoint == null) {
     // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
     @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') {
