@@ -152,14 +152,18 @@
 }
 
 // Collapse classes
-@mixin zf-collapse-grid-classes {
+@mixin zf-collapse-grid-classes($margin-grid: true, $padding-grid: true) {
   @include -zf-each-breakpoint {
-    .#{$-zf-size}-margin-collapse {
-      @include zf-grid-collapse($gutter-type: margin);
+    @if $margin-grid {
+      .#{$-zf-size}-margin-collapse {
+        @include zf-grid-collapse($gutter-type: margin);
+      }
     }
 
-    .#{$-zf-size}-padding-collapse {
-      @include zf-grid-collapse($gutter-type: padding);
+    @if $padding-grid {
+      .#{$-zf-size}-padding-collapse {
+        @include zf-grid-collapse($gutter-type: padding);
+      }
     }
   }
 }
@@ -246,20 +250,24 @@
       }
     }
 
-    &.padding-gutters {
-      // Negative margin for nested grids
-      .padding-gutters {
-        @include zf-gutters($negative: true, $gutter-position: top bottom);
-      }
+    @if $padding-grid {
+      &.padding-gutters {
+        // Negative margin for nested grids
+        .padding-gutters {
+          @include zf-gutters($negative: true, $gutter-position: top bottom);
+        }
 
-      // Base cell styles
-      > .cell {
-        @include zf-gutters($gutters: $grid-padding-gutters, $gutter-type: padding, $gutter-position: top bottom);
+        // Base cell styles
+        > .cell {
+          @include zf-gutters($gutters: $grid-padding-gutters, $gutter-type: padding, $gutter-position: top bottom);
+        }
       }
     }
   }
 
-  @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
+  @if $margin-grid {
+    @include zf-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
+  }
 }
 
 // Final classes
@@ -289,7 +297,7 @@
 
   // Collapse gutters
   @if($collapse) {
-    @include zf-collapse-grid-classes();
+    @include zf-collapse-grid-classes($margin-grid, $padding-grid);
   }
 
   // Offset gutters
