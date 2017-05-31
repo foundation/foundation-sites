@@ -265,7 +265,7 @@ Adjust font-size by overriding an element’s default size. This can be useful t
 
 For headers:
 
-```html_example
+```html
 <h2 class="h1">Lorem Ipsum Dolor</h2>
 <h3 class="h2">Lorem Ipsum Dolor</h3>
 <h4 class="h3">Lorem Ipsum Dolor</h4>
