@@ -151,6 +151,29 @@
   }
 }
 
+// Block Grid classes
+@mixin zf-block-grid-classes($margin-grid: true, $padding-grid: true) {
+  @if $margin-grid {
+    @include -zf-each-breakpoint {
+      @for $i from 1 through $block-grid-max {
+        .#{$-zf-size}-margin-up-#{$i} {
+          @include zf-grid-layout($i, '.cell', $gutter-type: margin);
+        }
+      }
+    }
+  }
+
+  @if $padding-grid {
+    @include -zf-each-breakpoint {
+      @for $i from 1 through $block-grid-max {
+        .#{$-zf-size}-padding-up-#{$i} {
+          @include zf-grid-layout($i, '.cell', $gutter-type: padding);
+        }
+      }
+    }
+  }
+}
+
 // Collapse classes
 @mixin zf-collapse-grid-classes($margin-grid: true, $padding-grid: true) {
   @include -zf-each-breakpoint {
@@ -275,6 +298,7 @@
   $base-grid: true,
   $margin-grid: true,
   $padding-grid: true,
+  $block-grid: true,
   $collapse: true,
   $offset: true,
   $vertical-grid: true
@@ -293,6 +317,11 @@
   // Padding grid
   @if($padding-grid) {
     @include zf-padding-grid-classes();
+  }
+
+  // Block grid
+  @if($block-grid) {
+    @include zf-block-grid-classes($margin-grid, $padding-grid);
   }
 
   // Collapse gutters

@@ -23,7 +23,9 @@
   $breakpoint: $-zf-zero-breakpoint,
   $vertical: false
 ) {
+  $size: percentage(1/$n);
+
   & > #{$selector} {
-    @include zf-cell($n, $gutter-type: $gutter-type, $gutter-position: $gutter-position, $vertical: $vertical);
+    @include zf-cell($size, $gutter-type: $gutter-type, $gutter-position: $gutter-position, $vertical: $vertical);
   }
 }
