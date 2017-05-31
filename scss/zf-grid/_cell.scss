@@ -162,3 +162,16 @@
     @include zf-gutters($gutter, $gutter-type, $gutter-position);
   }
 }
+
+/// Modifies a cell to give it "block" behavior (overflow auto, inertial scrolling)
+///
+/// @param {Boolean} $vertical [false] - Is grid vertical or horizontal. Should match grid.
+@mixin zf-cell-block(
+  $vertical: false
+) {
+  $property: if($vertical == true, 'overflow-y', 'overflow-x');
+
+  #{$property}: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-stype: -ms-autohiding-scrollbar;
+}

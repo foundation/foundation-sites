@@ -19,9 +19,18 @@
     @include zf-grid;
   }
 
+  // Framed grid styles
+  .grid-frame {
+    @include zf-grid-frame;
+  }
+
   .cell {
     @include zf-cell-base();
     @include zf-cell-static($grid-columns, false, $gutter-type: padding);
+  }
+
+  .cell-block {
+    @include zf-cell-block();
   }
 
   .grid {
@@ -69,14 +78,16 @@
       @include zf-cell-static($vertical: $vertical);
     }
 
-    // Auto width
+    // base styles need to all be before the auto and shrink styles
     @include -zf-each-breakpoint() {
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size) and $-zf-size != $-zf-zero-breakpoint) {
         > .cell {
           @include zf-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
         }
       }
+    }
 
+    @include -zf-each-breakpoint() {
       > .#{$-zf-size}-auto {
         @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: $vertical);
       }
@@ -149,26 +160,37 @@
   $margin-grid: true,
   $padding-grid: true
 ) {
+
+  .cell-block-vertical {
+    @include zf-cell-block(true);
+  }
+
   .grid-vertical {
     @include zf-grid(vertical);
 
+    &.grid-frame {
+      width: auto;
+      @include zf-grid-frame(true);
+    }
+
     > .cell {
       @include zf-cell-reset();
+
     }
 
     @include -zf-each-breakpoint() {
-      @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
-        > .cell {
-          @include zf-cell-static($breakpoint: $-zf-size, $vertical: true);
-        }
+      > .cell {
+        @include zf-cell-static($breakpoint: $-zf-size, $vertical: true, $gutter-output: false, $gutter-type: padding);
+      }
+    }
 
-        > .#{$-zf-size}-auto {
-          @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
-        }
+    @include -zf-each-breakpoint() {
+      > .#{$-zf-size}-auto {
+        @include zf-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+      }
 
-        > .#{$-zf-size}-shrink {
-          @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
-        }
+      > .#{$-zf-size}-shrink {
+        @include zf-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
       }
 
       @for $i from 1 through $grid-columns {
