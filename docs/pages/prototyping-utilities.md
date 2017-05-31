@@ -81,7 +81,7 @@ Looking for more customization including **responsive breakpoints?** Click here 
 
 ## Component Styling
 
-These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used independently or together to style the component by rounding its corners, giving light borders, and creating shadow to it respectively. Mostly used in buttons, cards, tables, images and many more
+These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used independently or together to style the component by rounding its corners, giving light borders, and creating shadow to it respectively. Mostly used in buttons, cards, tables, images and many more.
 
 <div class="primary callout">
 	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](http://codepen.io/IamManchanda/pen/XMRMwo)
@@ -204,12 +204,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 ```html
 <img src="http://placehold.it/100x100" class="radius">
-<img src="http://placehold.it/100x100" class="circle">
 ```
 
 <div class="docs-code-live margin-bottom-1">
 	<img src="http://placehold.it/100x100" class="radius margin-right-1">
-	<img src="http://placehold.it/100x100" class="circle">
 </div>
 
 ---
