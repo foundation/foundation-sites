@@ -1,0 +1,53 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-rounded
+////
+
+/// Responsive breakpoints for rounded utility.
+/// @type Boolean
+$prototype-rounded-breakpoints: $global-prototype-breakpoints !default;
+
+/// Default value for `prototype-border-radius`
+/// @type Number
+$prototype-border-radius: rem-calc(4px) !default;
+
+/// Rounded utility (all corners): Adds rounded corners (all corners) to an element by default.
+/// @param {Number} $radius [$prototype-border-radius] Border radius (all corners)
+@mixin border-radius(
+  $radius: $prototype-border-radius
+) {
+  border-radius: $radius;
+}
+
+/// Rounded circle utility
+@mixin rounded-circle {
+  border-radius: 50% !important;
+}
+
+@mixin foundation-prototype-rounded {
+  .rounded {
+    @include border-radius;
+  }
+  .rounded-circle {
+    @include rounded-circle;
+  }
+
+  @if ($prototype-rounded-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-rounded {
+            @include border-radius;
+          }
+          .#{$size}-rounded-circle {
+            @include rounded-circle;
+          }
+        }
+      }
+    }
+  }
+}
