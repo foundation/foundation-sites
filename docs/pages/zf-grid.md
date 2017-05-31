@@ -1,6 +1,6 @@
 ---
 title: ZF Grid
-description: 6.4 grid.
+description: A fully reworked new grid system in v6.4 which has all the variety inbuilt in the form of multiple grid types which includes margin grid, padding grid, frame grid, block grid and vertical grid.
 sass: scss/grid/_zf-grid.scss
 ---
 
