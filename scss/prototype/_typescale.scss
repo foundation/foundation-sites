@@ -1,0 +1,20 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-typescale
+////
+
+@mixin foundation-prototype-typescale {
+	@each $size, $headers in $header-styles {
+    @include breakpoint($size) {
+      @each $header, $header-defs in $headers {
+        $font-size-temp: 1rem;
+        .#{$header} {
+          @extend #{$header};
+        }
+      }
+    }
+  }
+}
