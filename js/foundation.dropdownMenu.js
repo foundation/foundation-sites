@@ -56,7 +56,7 @@ class DropdownMenu extends Plugin {
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
     if (this.options.alignment === 'auto') {
-        if (this.$element.hasClass(this.options.rightClass) || Foundation.rtl() || this.$element.parents('.top-bar-right').is('*')) {
+        if (this.$element.hasClass(this.options.rightClass) || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
             this.options.alignment = 'right';
             subs.addClass('opens-left');
         } else {
