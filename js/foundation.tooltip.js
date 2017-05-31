@@ -132,6 +132,7 @@ class Tooltip extends Positionable {
     this.template.css('visibility', 'hidden').show();
     this._setPosition();
     this.template.removeClass('top bottom left right').addClass(this.position)
+    this.template.removeClass('align-top align-bottom align-left align-right align-center').addClass('align-' + this.alignment);
 
     /**
      * Fires to close all other open tooltips on the page
