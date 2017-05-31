@@ -43,6 +43,8 @@
 }
 
 @mixin zf-cell-base($size: full) {
+  min-height: 0px;
+  min-width: 0px;
   @if($size == 'full') {
     // This is the base style, all others inherit from it
     flex: 0 0 auto;
@@ -175,7 +177,14 @@
 ) {
   $property: if($vertical == true, 'overflow-y', 'overflow-x');
 
-  #{$property}: auto;
+  @if $vertical == true {
+    overflow-y: auto;
+    max-height: 100%;
+  } @else {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
   -webkit-overflow-scrolling: touch;
   -ms-overflow-stype: -ms-autohiding-scrollbar;
 }
@@ -186,4 +195,9 @@
 @mixin zf-cell-block-container() {
   display: flex;
   flex-direction: column;
+  max-height: 100%;
+
+  > .grid {
+    max-height: 100%;
+  }
 }
