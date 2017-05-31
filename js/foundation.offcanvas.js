@@ -32,7 +32,7 @@ class OffCanvas extends Plugin {
     this.$triggers = $();
     this.position = 'left';
     this.$content = $();
-    this.nested = false;
+    this.nested = !!(this.options.nested);
 
     this._init();
     this._events();
@@ -73,8 +73,14 @@ class OffCanvas extends Plugin {
       this.$content = this.$element.closest('[data-off-canvas-content]').first();
     }
 
-    // Assume that the off-canvas element is nested if it isn't a sibling of the content
-    this.nested = this.$element.siblings('[data-off-canvas-content]').length && !this.options.contentId ? false : true;
+    if (!this.options.contentId) {
+      // Assume that the off-canvas element is nested if it isn't a sibling of the content
+      this.nested = this.$element.siblings('[data-off-canvas-content]').length === 0;
+    } else if (this.options.contentId && this.options.nested === null) {
+      // Warning if using content ID without setting the nested option
+      // Once the element is nested it is required to work properly in this case
+      console.warn('Remember to use the nested option if using the content ID option!');
+    }
 
     this.$content.addClass(`has-transition-${this.options.transition}`);
 
@@ -480,6 +486,14 @@ OffCanvas.defaults = {
    * @default null
    */
   contentId: null,
+
+  /**
+   * Define the off-canvas element is nested in an off-canvas content. This is required when using the contentId option for a nested element.
+   * @option
+   * @type {boolean}
+   * @default null
+   */
+  nested: null,
 
   /**
    * Enable/disable scrolling of the main content when an off canvas panel is open.

@@ -336,17 +336,12 @@ If you want an element to be off-canvas only for specific sceen sizes and then m
 
 ## Nested Off-Canvas
 
-Since v6.4 it's also possible to place the off-canvas inside the off-canvas content instead of only as a sibling. This is handy if you want to use the same element e.g. for small screens as off-canvas and for large screens as usual page element without duplicate content.<br>
-To realize such responsive off-canvas changing you can use the new <a href="#in-canvas">In-Canvas</a> class. Besides it is now possible to place the off-canvas element anywhere on the page if you use the new content-id option to bind it to the appropriate content.
+In v6.4 the off-canvas component has been heavily extended. Apart from the <a href="#in-canvas">In-Canvas</a> feature it is now possible to nest the element in the content instead of using it only as a sibling. This is handy if you want to use the same element e.g. for small screens as off-canvas and for large screens as usual page element without duplicate content.
 
-So there are three ways to place the off-canvas element now:
-<ol>
-  <li>preceding sibling of the off-canvas content (as done prior to v6.4)</li>
-  <li>nested in the off-canvas content</li>
-  <li>anywhere using <code>data-content-id="[CONTENT-ID]"</code> on the element</li>
-</ol>
+Another improvement is the support of several off-canvas elements that share the same position e.g. two elements with `position-left`.
 
-<div class="secondary callout">As you can see in the example below there are two off-canvas elements that have the same position in the same content container. This is possible since v6.4 and lets you easily define multiple off-canvas elements with the same position and toggle them.</div>
+Advanced off-canvas users may use the new `contentId` option to bind an element to a content. This lets you place the element much more flexibly as it may be a sibling of the content, a child or none of it.<br>
+<strong>Important:</strong> when using the `contentId` on a nested element it's required to also use the new `nested` option and tell the JavaScript if it's nested or not!
 
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasNestedPush">
@@ -356,14 +351,16 @@ So there are three ways to place the off-canvas element now:
   Open Nested Off-Canvas Overlap
 </button>
 
-<p>I'm usual content inside the off-canvas content</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
 <div class="off-canvas position-left" id="offCanvasNestedPush" data-off-canvas>
   <div class="callout">I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</div>
 </div>
 <div class="off-canvas position-left" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
   <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
 </div>
-<p>The callout above is moved into the off-canvas area and is nested in the off-canvas content.</p>
+
+<p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
 ```
 
 ---
