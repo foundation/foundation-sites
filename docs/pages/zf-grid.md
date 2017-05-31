@@ -54,7 +54,7 @@ If the class `.[size]-auto` is added to the cell, it will take up the remaining 
 ```html_example
 <div class="grid padding-gutters">
   <div class="small-4 cell">4 cells</div>
-  <div class="small-auto cell">Whatever's left!</div>
+  <div class="auto cell">Whatever's left!</div>
 </div>
 ```
 
@@ -65,8 +65,8 @@ Multiple expanding cells will share the leftover space equally.
 ```html_example
 <div class="grid">
   <div class="small-4 cell">4 cells</div>
-  <div class="small-auto cell">Whatever's left!</div>
-  <div class="small-auto cell">Whatever's left!</div>
+  <div class="auto cell">Whatever's left!</div>
+  <div class="auto cell">Whatever's left!</div>
 </div>
 ```
 
@@ -76,8 +76,8 @@ A cell can also be made to *shrink*, by adding the `.[size]-shrink` class. This 
 
 ```html_example
 <div class="grid">
-  <div class="small-shrink cell">Shrink!</div>
-  <div class="small-auto cell">Expand!</div>
+  <div class="shrink cell">Shrink!</div>
+  <div class="auto cell">Expand!</div>
 </div>
 ```
 
