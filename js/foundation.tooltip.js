@@ -5,9 +5,8 @@ import $ from 'jquery';
 import { Box } from './foundation.util.box';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
+import { Triggers } from './foundation.util.triggers';
 import { Plugin } from './foundation.plugin';
-
-  // import "foundation.util.triggers";
 
 /**
  * Tooltip module.
@@ -31,6 +30,10 @@ class Tooltip extends Plugin {
 
     this.isActive = false;
     this.isClick = false;
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+
     this._init();
   }
 

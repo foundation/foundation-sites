@@ -35,7 +35,7 @@ import { Touch } from '../foundation.util.touch';
 Touch.init($);
 
 import { Triggers } from '../foundation.util.triggers';
-Triggers.init(Foundation, $);
+Triggers.init($, Foundation);
 
 import { Abide } from '../foundation.abide';
 Foundation.plugin(Abide, 'Abide');

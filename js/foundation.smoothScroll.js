@@ -43,15 +43,15 @@ class SmoothScroll extends Plugin {
             if(!$(this).is('a[href^="#"]'))  {
                 return false;
             }
-            
+
             var arrival = this.getAttribute('href');
-            
+
             _this._inTransition = true;
 
             SmoothScroll.scrollToLoc(arrival, _this.options, function() {
                 _this._inTransition = false;
             });
-            
+
             e.preventDefault();
         };
 

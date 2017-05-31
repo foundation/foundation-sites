@@ -240,7 +240,7 @@ Triggers.Initializers.addGlobalListeners = function() {
 }
 
 
-Triggers.init = function(Foundation, $) {
+Triggers.init = function($, Foundation) {
   if (typeof($.triggersInitialized) === 'undefined') {
     let $document = $(document);
 
@@ -253,11 +253,15 @@ Triggers.init = function(Foundation, $) {
         Triggers.Initializers.addGlobalListeners();
       });
     }
-    Foundation.Triggers = Triggers;
 
+
+    $.triggersInitialized = true;
+  }
+
+  if(Foundation) {
+    Foundation.Triggers = Triggers;
     // Legacy included to be backwards compatible for now.
     Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
-    $.triggersInitialized = true;
   }
 }
 
