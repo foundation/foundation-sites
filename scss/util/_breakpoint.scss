@@ -284,7 +284,11 @@ $breakpoint-classes: (small medium large) !default;
 
   // Check if the breakpoint name exists globally
   @if not map-has-key($breakpoints, $value) {
-    $value: -zf-closest-named-breakpoint($value);
+    @if type-of($value) == 'number' {
+      $value: -zf-closest-named-breakpoint($value);
+    } @else {
+      @return null;
+    }
   }
   // Check if the breakpoint name exists in the local config map
   @else if map-has-key($map, $value) {
