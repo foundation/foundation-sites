@@ -1,6 +1,6 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
 /**
  * Motion module.
@@ -99,7 +99,5 @@ function animate(isIn, element, animation, cb) {
   }
 }
 
-Foundation.Move = Move;
-Foundation.Motion = Motion;
+export {Move, Motion};
 
-}(jQuery);

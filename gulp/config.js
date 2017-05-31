@@ -3,6 +3,7 @@ module.exports = {
   // Javascript
   JS_FILES: [
   'js/foundation.core.js',
+  'js/foundation.util.core.js',
   'js/foundation.util.*.js',
   'js/*.js'
   ],

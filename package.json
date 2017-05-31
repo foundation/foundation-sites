@@ -18,7 +18,8 @@
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
     "deploy:prep": "gulp deploy:prep",
-    "deploy:docs": "gulp deploy:docs"
+    "deploy:docs": "gulp deploy:docs",
+    "deploy:beta": "gulp deploy:beta"
   },
   "dependencies": {
     "jquery": ">=2.2.0",
@@ -29,6 +30,7 @@
     "array-uniq": "^1.0.2",
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.10",
     "babel-plugin-transform-es2015-arrow-functions": "^6.3.13",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.3.13",
     "babel-plugin-transform-es2015-block-scoping": "^6.4.0",
@@ -50,8 +52,8 @@
     "gulp-babel": "^6.1.1",
     "gulp-cache-bust": "~1.0.2",
     "gulp-check-deps": "^1.4.1",
+    "gulp-clean-css": "^3.3.1",
     "gulp-concat": "^2.4.3",
-    "gulp-cssnano": "^2.1.0",
     "gulp-eslint": "^3.0.1",
     "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.0",
@@ -91,7 +93,10 @@
     "supercollider": "^1.4.0",
     "touch": "^1.0.0",
     "vinyl": "^2.0.1",
+    "vinyl-named": "^1.1.0",
     "vinyl-source-stream": "^1.1.0",
+    "webpack": "^2.2.0-rc.7",
+    "webpack-stream": "^3.2.0",
     "yargs": "^6.5.0"
   },
   "engines": {

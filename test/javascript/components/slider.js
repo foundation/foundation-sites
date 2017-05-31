@@ -163,14 +163,77 @@ describe('Slider', function() {
 
       plugin.$handle.should.have.attr('aria-valuenow', plugin.$handle.attr('aria-valuemin'));
     });
-    it('sets value to maximum using END', function() {
+    it('increases value by step size on ARROW_RIGHT', function() {
       $html = $(template).appendTo('body');
-      plugin = new Foundation.Slider($html, {});
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
 
       plugin.$handle.focus()
-        .trigger(window.mockKeyboardEvent('END'));
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
 
-      plugin.$handle.should.have.attr('aria-valuenow', plugin.$handle.attr('aria-valuemax'));
+      plugin.$handle.should.have.attr('aria-valuenow', (10 + 1).toString());
+    });
+    it('increases value by step size on ARROW_UP', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_UP'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 + 1).toString());
+    });
+    it('decreases value by step size on ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 - 1).toString());
+    });
+    it('decreases value by step size on ARROW_DOWN', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 - 1).toString());
+    });
+    it('decreases value by step size times 10 on SHIFT_ARROW_RIGHT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT', {shift: true}));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 + 1 * 10).toString());
+    });
+    it('decreases value by step size times 10 on SHIFT_ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT', {shift: true}));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 - 1 * 10).toString());
     });
   });
 });

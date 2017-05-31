@@ -43,19 +43,26 @@ $dropdown-sizes: (
   position: absolute;
   z-index: 10;
 
-  display: block;
   width: $dropdown-width;
   padding: $dropdown-padding;
 
   visibility: hidden;
+  display: none;
   border: $dropdown-border;
   border-radius: $dropdown-radius;
   background-color: $dropdown-background;
 
   font-size: $dropdown-font-size;
 
+
+  // Allow an intermittent state to do positioning before making visible.
+  &.is-opening {
+    display: block;
+  }
+
   &.is-open {
     visibility: visible;
+    display: block;
   }
 }
 

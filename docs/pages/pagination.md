@@ -1,6 +1,7 @@
 ---
 title: Pagination
 description: Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.
+video: '9gcGADHzz9o'
 sass: scss/components/_pagination.scss
 ---
 
@@ -11,6 +12,14 @@ A pagination list is just a `<ul>` with the class `.pagination`, and a series of
 Note that the container has the attributes `role="navigation"` and `aria-label="Pagination"`. These explain the purpose of the component to assistive technologies.
 
 Extra screen reader-only text should also be added to a pagination element. In the below example, users reading the page will just see "Next" and "Previous", but screen readers will read it as "Next page" and "Previous page". Additionally, the text for the current page will read as "You're on page one".
+
+<p>
+  <a class="" data-open-video="0:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="pagination" role="navigation" aria-label="Pagination">
@@ -31,6 +40,14 @@ Extra screen reader-only text should also be added to a pagination element. In t
 ## Centered
 
 The items in a pagination list are `display: inline-block`, which makes centering them easy. Use our built-in `.text-center` class, or add `text-align: center` in your CSS.
+
+<p>
+  <a class="" data-open-video="7:20"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWKYZb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="pagination text-center" role="navigation" aria-label="Pagination">

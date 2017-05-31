@@ -70,9 +70,11 @@ $stat-font-size: 2.5rem !default;
     }
   }
 
-  // Use to remove the bullets from an unordered list
-  .no-bullet {
-    margin-#{$global-left}: 0;
-    list-style: none;
+  ul, ol {
+    // Use to remove numbers from ordered list & bullets from unordered list
+    &.no-bullet {
+      margin-#{$global-left}: 0;
+      list-style: none;
+    }
   }
 }

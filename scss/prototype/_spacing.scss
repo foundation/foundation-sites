@@ -1,0 +1,204 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-spacing
+////
+
+/// Responsive breakpoints for spacing classes (margin and padding)
+/// @type Boolean
+$prototype-spacing-breakpoints: $global-prototype-breakpoints !default;
+
+/// Default number of spacers count (margin and padding)
+/// @type Number
+$prototype-spacers-count: 3 !default;
+
+/// Margin helper mixin, all the values are multiplied by `$global-margin` which by default is equal to `1rem`
+/// @param {Number} $top [null] - Margin Top
+/// @param {Number} $right [null] - Margin Right
+/// @param {Number} $bottom [null] - Margin Bottom
+/// @param {Number} $left [null] - Margin Left
+@mixin margin(
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  @if $top != null {
+    margin-top: $top * $global-margin !important;
+  }
+  @if $right != null {
+    margin-right: $right * $global-margin !important;
+  }
+  @if $bottom != null {
+    margin-bottom: $bottom * $global-margin !important;
+  }
+  @if $left != null {
+    margin-left: $left * $global-margin !important;
+  }
+}
+
+/// Padding helper mixin, all the values are multiplied by `$global-padding` which by default is equal to `1rem`
+/// @param {Number} $top [null] - Padding Top
+/// @param {Number} $right [null] - Padding Right
+/// @param {Number} $bottom [null] - Padding Bottom
+/// @param {Number} $left [null] - Padding Left
+@mixin padding(
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  @if $top != null {
+    padding-top: $top * $global-padding !important;
+  }
+  @if $right != null {
+    padding-right: $right * $global-padding !important;
+  }
+  @if $bottom != null {
+    padding-bottom: $bottom * $global-padding !important;
+  }
+  @if $left != null {
+    padding-left: $left * $global-padding !important;
+  }
+}
+
+@mixin foundation-prototype-spacing {
+  @for $spacer from 0 through $prototype-spacers-count {
+    // All Sides
+    .margin-#{$spacer} {
+      @include margin($spacer, $spacer, $spacer, $spacer);
+    }
+
+    .padding-#{$spacer} {
+      @include padding($spacer, $spacer, $spacer, $spacer);
+    }
+
+    // Top Side
+    .margin-top-#{$spacer} {
+      @include margin($spacer, null, null, null);
+    }
+
+    .padding-top-#{$spacer} {
+      @include padding($spacer, null, null, null);
+    }
+
+    // Right Side
+    .margin-right-#{$spacer} {
+      @include margin(null, $spacer, null, null);
+    }
+
+    .padding-right-#{$spacer} {
+      @include padding(null, $spacer, null, null);
+    }
+
+    // Bottom Side
+    .margin-bottom-#{$spacer} {
+      @include margin(null, null, $spacer, null);
+    }
+
+    .padding-bottom-#{$spacer} {
+      @include padding(null, null, $spacer, null);
+    }
+
+    // Left Side
+    .margin-left-#{$spacer} {
+      @include margin(null, null, null, $spacer);
+    }
+
+    .padding-left-#{$spacer} {
+      @include padding(null, null, null, $spacer);
+    }
+
+    // Horizontal Axes
+    .margin-horizontal-#{$spacer} {
+      @include margin(null, $spacer, null, $spacer);
+    }
+
+    .padding-horizontal-#{$spacer} {
+      @include padding(null, $spacer, null, $spacer);
+    }
+
+    // Vertical Axes
+    .margin-vertical-#{$spacer} {
+      @include margin($spacer, null, $spacer, null)
+    }
+
+    .padding-vertical-#{$spacer} {
+      @include padding($spacer, null, $spacer, null)
+    }
+
+    @if ($prototype-spacing-breakpoints) {
+    // Loop through Responsive Breakpoints
+      @each $size in $breakpoint-classes {
+        @include breakpoint($size) {
+          @if $size != $-zf-zero-breakpoint {
+            // All Sides
+            .#{$size}-margin-#{$spacer} {
+              @include margin($spacer, $spacer, $spacer, $spacer);
+            }
+
+            .#{$size}-padding-#{$spacer} {
+              @include padding($spacer, $spacer, $spacer, $spacer);
+            }
+
+            // Top Side
+            .#{$size}-margin-top-#{$spacer} {
+              @include margin($spacer, null, null, null);
+            }
+
+            .#{$size}-padding-top-#{$spacer} {
+              @include padding($spacer, null, null, null);
+            }
+
+            // Right Side
+            .#{$size}-margin-right-#{$spacer} {
+              @include margin(null, $spacer, null, null);
+            }
+
+            .#{$size}-padding-right-#{$spacer} {
+              @include padding(null, $spacer, null, null);
+            }
+
+            // Bottom Side
+            .#{$size}-margin-bottom-#{$spacer} {
+              @include margin(null, null, $spacer, null);
+            }
+
+            .#{$size}-padding-bottom-#{$spacer} {
+              @include padding(null, null, $spacer, null);
+            }
+
+            // Left Side
+            .#{$size}-margin-left-#{$spacer} {
+              @include margin(null, null, null, $spacer);
+            }
+
+            .#{$size}-padding-left-#{$spacer} {
+              @include padding(null, null, null, $spacer);
+            }
+
+            // Horizontal Axes
+            .#{$size}-margin-horizontal-#{$spacer} {
+              @include margin(null, $spacer, null, $spacer);
+            }
+
+            .#{$size}-padding-horizontal-#{$spacer} {
+              @include padding(null, $spacer, null, $spacer);
+            }
+
+            // Vertical Axes
+            .#{$size}-margin-vertical-#{$spacer} {
+              @include margin($spacer, null, $spacer, null)
+            }
+
+            .#{$size}-padding-vertical-#{$spacer} {
+              @include padding($spacer, null, $spacer, null)
+            }
+          }
+        }
+      }
+    }
+  }
+}

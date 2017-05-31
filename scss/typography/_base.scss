@@ -469,10 +469,10 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Abbreviations
-  abbr {
+  abbr, abbr[title] {
     border-bottom: $abbr-underline;
-    color: $body-font-color;
     cursor: help;
+    text-decoration: none;
   }
 
   // Figures

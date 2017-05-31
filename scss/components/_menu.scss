@@ -244,8 +244,6 @@ $menu-border: $light-gray !default;
 }
 
 @mixin menu-text {
-  padding-top: 0;
-  padding-bottom: 0;
   padding: $menu-item-padding;
 
   font-weight: bold;
@@ -327,7 +325,7 @@ $menu-border: $light-gray !default;
     }
 
     // Active state
-    .active > a {
+    .is-active > a {
       background: $menu-item-background-active;
       color: $menu-item-color-active;
     }
@@ -365,6 +363,9 @@ $menu-border: $light-gray !default;
       @else {
         display: inline-block;
         vertical-align: top;
+      }
+      &.vertical > li > a {
+        justify-content: center;
       }
     }
   }

@@ -1,6 +1,7 @@
 ---
 title: JavaScript Utilities
 description: Our JavaScript Utility Libraries are easy to use and super helpful.
+video: 'h83jR82cjWM'
 ---
 
 ## Installing
@@ -120,16 +121,18 @@ Foundation.Move(durationInMS, $element, function(){
 ```
 When the animation is complete, your jQuery element will fire `finished.zf.animate`.
 
-## Timer & Images Loaded
-`js/foundation.util.timerAndImageLoader.js`
+## Timer
+`js/foundation.util.timer.js`
 
-Both functions are used by [Orbit](orbit.html), and can be useful elsewhere as well.
 ```js
 
 var timer = new Foundation.Timer($element, {duration: ms, infinite: bool}, callback);
 // includes: timer.start(), timer.pause(), timer.restart()
 ```
 Similar to `setInterval`, except you can pause and resume where you left off.
+
+## ImageLoader
+`js/foundation.util.imageLoader.js`
 
 ```js
 Foundation.onImagesLoaded($images, callback);
@@ -139,7 +142,7 @@ This will execute your callback function after all the images in your jQuery col
 ## Touch
 `js/foundation.util.touch.js`
 
-Allows you to add `swipe*` and psuedo-drag events to elements.
+Allows you to add `swipe*` and pseudo-drag events to elements.
 
 ```js
 $('selector').addTouch().on('mousemove', handleDrag);
@@ -180,7 +183,7 @@ $('#someId').on('resizeme.zf.trigger', handleResize);
 
 Foundation includes a couple useful features in the core library that are used in many places, that you can tap into.
 
-`Foundation.GetYoDigits([number, namespace])` returns a base-36, psuedo-random string with a hyphenated namespace (if you include one). Both arguments are optional; by default, it will return a string six characters long.
+`Foundation.GetYoDigits([number, namespace])` returns a base-36, pseudo-random string with a hyphenated namespace (if you include one). Both arguments are optional; by default, it will return a string six characters long.
 
 `Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us—it's useful.
 
