@@ -14,7 +14,7 @@
 /// @param {Keyword} $gutter-type [margin] - Type of margin to output. Accepts `margin` or `padding`.
 /// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
-@mixin grid-layout(
+@mixin zf-grid-layout(
   $n,
   $selector: '.cell',
   $gutters: $grid-margin-gutters,
