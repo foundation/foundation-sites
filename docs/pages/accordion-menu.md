@@ -3,7 +3,7 @@ title: Accordion Menu
 sass: scss/components/_accordion-menu.scss
 js: js/foundation.accordionMenu.js
 description: Change a basic vertical Menu into a expandable accordion menu with the Accordion Menu plugin.
-video: yPGdaMRx60w
+video: FXZIZ9N4aeI
 ---
 
 ## Basics
@@ -12,7 +12,7 @@ Accordion menus follow the basic [Menu](menu.html) syntax of `<ul>`, `<li>`, and
 
 Any `<a>` will behave like a standard link. However, any `<a>` paired with a nested `<ul>` menu will then slide that sub-menu up and down when clicked on.
 
-<a class="" data-open-video="0:29"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="1:03"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="primary callout">
   <p>You can use the built-in <code>.nested</code> class to add an indent to a nested menu.</p>
