@@ -84,7 +84,7 @@
         .off('.abide')
         .on('submit.fndtn.abide', function (e) {
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
-          return self.validate(self.S(this).find('input, textarea, select').not(":hidden, [data-abide-ignore]").get(), e, is_ajax);
+          return self.validate(self.S(this).find('input, textarea, select').not("[data-abide-ignore]").get(), e, is_ajax);
         })
         .on('validate.fndtn.abide', function (e) {
           if (settings.validate_on === 'manual') {
