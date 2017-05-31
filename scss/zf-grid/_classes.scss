@@ -156,8 +156,19 @@
   @if $margin-grid {
     @include -zf-each-breakpoint {
       @for $i from 1 through $block-grid-max {
-        .#{$-zf-size}-margin-up-#{$i} {
-          @include zf-grid-layout($i, '.cell', $gutter-type: margin);
+        .margin-gutters.#{$-zf-size}-up-#{$i} {
+          @include zf-grid-layout($i, '.cell', $gutter-type: margin, $breakpoint: $-zf-size);
+        }
+        // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
+        // for prior breakpoints based on the responsive gutter.
+        @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+          @each $bp in -zf-breakpoints-less-than($-zf-size) {
+            @if(map-has-key($grid-margin-gutters, $bp)) {
+              .margin-gutters.#{$bp}-up-#{$i} {
+                @include zf-grid-layout($i, '.cell', $gutter-type: margin, $breakpoint: $bp);
+              }
+            }
+          }
         }
       }
     }
@@ -166,8 +177,19 @@
   @if $padding-grid {
     @include -zf-each-breakpoint {
       @for $i from 1 through $block-grid-max {
-        .#{$-zf-size}-padding-up-#{$i} {
+        .padding-gutters.#{$-zf-size}-up-#{$i} {
           @include zf-grid-layout($i, '.cell', $gutter-type: padding);
+        }
+        // This is purely for responsive gutters - the padding grid has to go back and adjust gutters
+        // for prior breakpoints based on the responsive gutter.
+        @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
+          @each $bp in -zf-breakpoints-less-than($-zf-size) {
+            @if(map-has-key($grid-padding-gutters, $bp)) {
+              .padding-gutters.#{$bp}-up-#{$i} {
+                @include zf-gutters($gutters: -zf-get-bp-val($grid-padding-gutters, $-zf-size), $gutter-type: padding, $gutter-position: left right);
+              }
+            }
+          }
         }
       }
     }
