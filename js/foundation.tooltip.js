@@ -75,6 +75,22 @@ class Tooltip extends Positionable {
     return 'center';
   }
 
+  _getHOffset() {
+    if(this.position === 'left' || this.position === 'right') {
+      return this.options.hOffset + this.options.tooltipWidth;
+    } else {
+      return this.options.hOffset
+    }
+  }
+
+  _getVOffset() {
+    if(this.position === 'top' || this.position === 'bottom') {
+      return this.options.vOffset + this.options.tooltipHeight;
+    } else {
+      return this.options.vOffset
+    }
+  }
+
   /**
    * builds the tooltip element, adds attributes, and returns the template.
    * @private
@@ -398,16 +414,30 @@ Tooltip.defaults = {
    * Distance, in pixels, the template should push away from the anchor on the Y axis.
    * @option
    * @type {number}
-   * @default 10
+   * @default 0
    */
-  vOffset: 10,
+  vOffset: 0,
   /**
-   * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
+   * Distance, in pixels, the template should push away from the anchor on the X axis
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  hOffset: 0,
+  /**
+   * Distance, in pixels, the template spacing auto-adjust for a vertical tooltip
+   * @option
+   * @type {number}
+   * @default 14
+   */
+  tooltipHeight: 14,
+  /**
+   * Distance, in pixels, the template spacing auto-adjust for a horizontal tooltip
    * @option
    * @type {number}
    * @default 12
    */
-  hOffset: 12,
+  tooltipWidth: 12,
     /**
    * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
    * allowing HTML may open yourself up to XSS attacks.

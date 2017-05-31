@@ -108,19 +108,11 @@ class Positionable extends Plugin {
   // it's possible someone might actually want to start from center and then nudge
   // slightly off.
   _getVOffset() {
-    if(this.alignment === 'center' && (this.position === 'left' || this.position === 'right')) {
-      return 0;
-    } else {
-      return this.options.vOffset;
-    }
+    return this.options.vOffset;
   }
 
   _getHOffset() {
-    if(this.alignment === 'center' && (this.position === 'top' || this.position === 'bottom')) {
-      return 0;
-    } else {
-      return this.options.hOffset;
-    }
+    return this.options.hOffset;
   }
 
 
