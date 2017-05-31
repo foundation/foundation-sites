@@ -149,7 +149,15 @@ $table-stack-breakpoint: medium !default;
       text-align: #{$global-left};
     }
   }
-
+  
+  // Table foot
+  tfoot {
+    // Background
+    background: $table-foot-background;
+    // Font color
+    color: $table-foot-font-color;
+  }
+  
   // Table rows
   tbody {
     th,
