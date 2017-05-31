@@ -94,6 +94,10 @@ $global-text-direction: ltr !default;
 /// @type Boolean
 $global-flexbox: false !default;
 
+/// Always define components with classes instead of tags (besides the reset).
+/// @type Boolean
+$global-namespace: false !default;
+
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
 }
