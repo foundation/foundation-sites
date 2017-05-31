@@ -7,38 +7,38 @@
     <title>Foundation for Sites Testing</title>
     <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation-prototype.css" rel="stylesheet" />
-
   </head>
   <body>
     <div class="row column">
-      <h2 class="margin-top-1">Buttons</h2>
-      <button type="button" class="button rounded bordered primary">Primary</button>
-      <button type="button" class="button rounded bordered secondary">Secondary</button>
-      <button type="button" class="button rounded bordered success">Success</button>
-      <button type="button" class="button rounded bordered alert">Alert</button>
-      <button type="button" class="button rounded bordered warning">Warning</button>
-    </div>
-    <div class="row column">
-      <h2 class="margin-top-1">Images</h2>
-      <img src="http://placehold.it/100x100" class="rounded margin-right-1">
-      <img src="http://placehold.it/100x100" class="rounded-circle">
-    </div>
-    <div class="row column">
-      <h2 class="margin-top-1">Cards</h2>
-      <div class="rounded bordered card" style="width: 300px;">
-        <img src="../assets/img/generic/rectangle-1.jpg">
+      <h2>Rounded</h2>
+
+      <p>These <code>.radius</code>, <code>.rounded</code>, <code>.bordered</code> &amp; <code>.shadow</code> classes can be used independently or together to style the component by rounding its corners, giving light borders, and creating shadow to it respectively. Mostly used in buttons, cards, tables, images and many more.</p>
+
+      <div class="primary callout">
+        <strong>Sass Tip</strong>: You can use <a href="#shadow">Shadow</a> mixin to create something like <code>shadow-hover-focus</code>. <a href="http://codepen.io/IamManchanda/pen/XMRMwo">Codepen example</a>
+      </div>
+
+      <h4>Buttons</h4>
+      <button type="button" class="button radius bordered shadow primary">Primary</button>
+      <button type="button" class="button rounded bordered shadow secondary">Secondary</button>
+      <button type="button" class="button radius bordered shadow success">Success</button>
+      <button type="button" class="button rounded bordered shadow alert">Alert</button>
+      <button type="button" class="button radius bordered shadow warning">Warning</button>
+
+      <h4>Cards</h4>
+      <div class="radius bordered shadow card" style="max-width: 300px;">
+        <img src="http://placehold.it/500x250">
         <div class="card-divider">
-          Rounded Card
+          Styled Card
         </div>
         <div class="card-section">
           <h4>This is a card.</h4>
           <p>It has an easy to override visual style, and is appropriately subdued.</p>
         </div>
       </div>
-    </div>
-    <div class="row column">
-      <h2 class="margin-top-1">Tables</h2>
-      <table class="rounded bordered">
+
+      <h4>Tables</h4>
+      <table class="radius bordered shadow">
         <thead>
           <tr>
             <th width="200">Table Header</th>
@@ -74,8 +74,11 @@
           </tr>
         </tbody>
       </table>
+
+      <h4>Images</h4>
+      <img src="http://placehold.it/100x100" class="radius">
+
     </div>
-    <p class="margin-vertical-1">&nbsp;</p>
 
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/foundation.js"></script>
