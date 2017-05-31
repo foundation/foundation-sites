@@ -335,6 +335,9 @@ class OffCanvas extends Plugin {
 
     if (this.options.autoFocus === true) {
       this.$element.one(transitionend(this.$element), function() {
+        if (!_this.$element.hasClass('is-open')) {
+          return; // exit if prematurely closed
+        }
         var canvasFocus = _this.$element.find('[data-autofocus]');
         if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
