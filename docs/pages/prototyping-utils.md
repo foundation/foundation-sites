@@ -635,26 +635,30 @@ Border none lets you quickly resets border to `none` for any element.
 
 ## Display Classes
 
-Display classes helps to display the elements in specific positions inside any other HTML elements.
+Display classes allow you to change the display property of any element.
 
 ```html
 <div class="display-inline"></div>
 <div class="display-inline-block"></div>
 <div class="display-block"></div>
 <div class="display-table"></div>
+<div class="display-table-cell"></div>
 ```
 
-By default, we have just added the most used display classes. but as you would know, there are many other display classes as specified by MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/display). If you need some of those classes, then you can add them easily through Sass variables with `$prototype-display`. Sass Reference [here](#sass-reference)
+These cover some of the most used display types. There are many other display values as specified by MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/display). If you need some of those classes, then you can add them easily through Sass variables with `$prototype-display`. Sass Reference [here](#sass-reference)
 
 <div class="primary callout">
-  <p>For `display: flex` and `display: none`, use generic `.flex-container` and `.hide` respectively!</p>
+  <ul>
+  	<li>For `display: flex` use `.flex-container`. See [Flexbox Reference](flexbox.html)</li>
+  	<li>For `display: none` use `.hide`. or Foundation's [Visibility Classes](visibility.html)</li>
+  </ul>
 </div>
 
 ---
 
 ## Positioning
 
-Positioning is very helpful and basic need for complex layouts.
+Positioning classes help you change an element's position value. By default, an element's postion value is `static`.
 
 ```html
 <div class="position-static"></div>
