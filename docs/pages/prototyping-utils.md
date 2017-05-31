@@ -738,55 +738,60 @@ This mixin helps you to easily create a square, rectangle or a circle. Sass Refe
 .foo {
 	@include box(1rem, 2rem); // Rectangle
 }
+
 .bar {
 	@include box(1rem); // Square
 }
+
 .baz {
 	@include box(1rem, $circle: true); // Circle
 }
 ```
 
 ### Rotate Mixin
-These Rotate mixins lets you rotate an element to a certain degree.
+These Rotate mixins lets you rotate an element to a certain degree. Clockwise is the default direction but adding a `-` in front of the degrees will make it counter-clockwise.
 
 ```scss
 .foo {
 	@include rotate(30); // 30 Degree
 }
+
 .bar {
 	@include rotateX(60); // 60 Degree
 }
+
 .baz {
 	@include rotateY(90); // 90 Degree
 }
+
 .shaz {
 	@include rotateZ(120); // 120 Degree
 }
 ```
 
-### Relational Mixins
+### Relational Mixins (AKA: nth:child mixins)
 
 These relational mixins helps you to manage styling of :nth-child’ified elements through easy Sass mixins.
 
 ```scss
-@include first($num) {}
-@include first-child {}
-@include last($num) {}
-@include last-child {}
-@include every($num) {}
-@include first-last {}
-@include after-first($num) {}
-@include from-last($num) {}
-@include from-first-last($num) {}
-@include all-but($num) {}
-@include all-but-first-last($num) {}
-@include unique {}
-@include not-unique {}
+@include first($num) {} // applies style to first n children
+@include first-child {} // applies style to first child only
+@include last($num) {}  // applies style to last n children
+@include last-child {}  // applies style to first child only
+@include every($num) {} // applies style to every n children
+@include first-last {}  // applies style to first and last child only
+@include after-first($num) {} // applies style to all after nth child
+@include from-last($num) {} // applies style to all after and including nth child
+@include from-first-last($num) {} // applies style to nth child from first child and last child
+@include all-but($num) {} // applies style to all except nth child
+@include all-but-first-last($num) {} // applies style all except first and last child
+@include unique {} // applies style to a child who has no siblings
+@include not-unique {} // applies style to all children except a child who has no siblings
 @include between($first, $last) {}
-@include even {}
-@include even-between($first, $last) {}
-@include odd {}
-@include odd-between($first, $last) {}
-@include number-between($num, $first, $last) {}
+@include even {} // applies style to all even children
+@include even-between($first, $last) {} // applies style to all even children except first and last
+@include odd {} // applies style to all odd children
+@include odd-between($first, $last) {} // applies style to all odd children except first and last
+@include number-between($num, $first, $last) {} // applies style to every n children from first child and last child
 ```
 
