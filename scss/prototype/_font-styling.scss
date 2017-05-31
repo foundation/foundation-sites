@@ -12,7 +12,7 @@ $prototype-font-breakpoints: $global-prototype-breakpoints !default;
 
 /// Letter spacing for `.font-wide`
 /// @type Number
-$prototype-wide-letter-spacing: rem-calc(4px) !default;
+$prototype-wide-letter-spacing: rem-calc(4) !default;
 
 /// Default weight for `.font-normal`, defaulted to `global-weight-normal`
 /// @type Number

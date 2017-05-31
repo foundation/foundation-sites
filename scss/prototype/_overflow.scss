@@ -13,7 +13,9 @@ $prototype-overflow-breakpoints: $global-prototype-breakpoints !default;
 /// Map containing all the `overflow` classes
 /// @type Map
 $prototype-overflow: (
-  visible, hidden, scroll
+  visible,
+  hidden,
+  scroll
 ) !default;
 
 /// Overflow classes, by default coming through a map `$prototype-overflow`

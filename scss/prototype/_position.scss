@@ -13,24 +13,27 @@ $prototype-position-breakpoints: $global-prototype-breakpoints !default;
 /// Map containing all the `position` classes
 /// @type Map
 $prototype-position: (
-  static, relative, absolute, fixed
+  static,
+  relative,
+  absolute,
+  fixed
 ) !default;
 
 /// z-index for fixed positioning
 /// @type Number
 $prototype-position-z-index: 975 !default;
 
-/// Position classes, by default coming through a map `$prototype-position`, whereas all the offset values are multiplied by `$global-position` which by default is equal to `1rem`. 
+/// Position classes, by default coming through a map `$prototype-position`, whereas all the offset values are multiplied by `$global-position` which by default is equal to `1rem`.
 /// @param {String} $position [] Position classes, Either `static`, `relative`, `absolute` or `fixed`
 /// @param {Number} $top [null] - Top offset
 /// @param {Number} $right [null] - Right offset
 /// @param {Number} $bottom [null] - Bottom offset
 /// @param {Number} $left [null] - Left offset
 @mixin position(
-  $position, 
-  $top: null, 
-  $right: null, 
-  $bottom: null, 
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
   $left: null
 ) {
   position: $position !important;
@@ -64,7 +67,7 @@ $prototype-position-z-index: 975 !default;
 ) {
   @include position(fixed, null, 0, 0, 0);
   z-index: $z-index;
-} 
+}
 
 @mixin foundation-prototype-position {
   // Position: Static, Relative, Fixed, Absolute
@@ -73,7 +76,7 @@ $prototype-position-z-index: 975 !default;
       @include position($position);
     }
   }
-  
+
   // Position: Fixed Top, Fixed Bottom
   .position-fixed-top {
     @include position-fixed-top;
