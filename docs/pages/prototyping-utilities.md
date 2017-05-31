@@ -351,7 +351,9 @@ Text transformation lets you control the capitalization of text. You can change 
 
 <p class="text-capitalize"><strong>This is a caPitAlized teXt.</strong> Set in the yEar 0 F.E. ("Foundation Era"), The PsychohisTorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
 
-Note: `.text-capitalize` changes the first letter of every single word, leaving the case of other letters unaffected.
+<div class="callout primary">
+  <strong>Note:</strong> `.text-capitalize` changes the first letter of every single word, leaving the case of other letters unaffected.
+</div>
 
 ---
 
