@@ -722,6 +722,8 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 <div class="overflow-y-scroll"></div>
 ```
 
+Note: Combining `overflow: hidden` in either the X or Y direction with the `overflow: visible` in the opposite direction does not work as expected in CSS spec. [More info](https://stackoverflow.com/questions/6421966/css-overflow-x-visible-and-overflow-y-hidden-causing-scrollbar-issue#answer-6433475)
+
 ---
 
 ## Sass Mixin Helpers
