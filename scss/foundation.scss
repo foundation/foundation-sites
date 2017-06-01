@@ -27,6 +27,7 @@
 
 // Components
 @import 'grid/grid';
+@import 'xy-grid/xy-grid';
 @import 'typography/typography';
 @import 'forms/forms';
 @import 'components/visibility';
@@ -66,7 +67,7 @@
 @import 'prototype/prototype';
 
 @mixin foundation-everything(
-  $flex: false,
+  $flex: true,
   $prototype: false
 ) {
   @if $flex {
@@ -78,7 +79,12 @@
     @include foundation-grid;
   }
   @else {
-    @include foundation-flex-grid;
+    @if $xy-grid {
+      @include foundation-xy-grid-classes;
+    }
+    @else {
+      @include foundation-flex-grid;
+    }
   }
   @include foundation-typography;
   @include foundation-forms;

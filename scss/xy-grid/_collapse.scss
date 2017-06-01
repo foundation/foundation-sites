@@ -1,0 +1,54 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group xy-grid
+////
+
+/// Collapses the grid a cells within it.
+///
+/// @param {String} $selector [.cell] - The child element to remove the gutter from.
+/// @param {Keyword} $gutter-type [margin] - The type of gutter to remove.
+/// @param {List} $gutter-position [right left] - The positions to remove gutters from. Accepts `top`, `bottom`, `left`, `right` in any combination.
+@mixin xy-grid-collapse(
+  $selector: '.cell',
+  $gutter-type: margin,
+  $gutter-position: right left
+) {
+  // First, lets negate any margins on the top level
+  @if ($gutter-type == 'margin') {
+
+    @each $value in $gutter-position {
+      margin-#{$value}: 0;
+    }
+
+      > #{$selector} {
+        @each $value in $gutter-position {
+          margin-#{$value}: 0;
+        }
+      }
+
+    // Output new widths to not include gutters
+    @each $bp in $breakpoint-classes {
+      @for $i from 1 through $grid-columns {
+        // Sizing (percentage)
+        > .#{$bp}-#{$i} {
+          @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+        }
+      }
+    }
+  }
+  @else {
+
+    @each $value in $gutter-position {
+      margin-#{$value}: 0;
+    }
+
+    > #{$selector} {
+      @each $value in $gutter-position {
+        padding-#{$value}: 0;
+      }
+    }
+  }
+}

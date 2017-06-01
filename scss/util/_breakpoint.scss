@@ -144,6 +144,10 @@ $breakpoint-classes: (small medium large) !default;
   $bp: index($-zf-breakpoints-keys, $value);
   $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
 
+  // Make breakpoint size available as a variable
+  $old-zf-size: $-zf-zero-breakpoint;
+  $-zf-size: nth($value, 1) !global; // get the first value to account for `only` and `down` keywords
+
   // If $str is still an empty string, no media query is needed
   @if $str == '' {
     @content;
@@ -163,6 +167,9 @@ $breakpoint-classes: (small medium large) !default;
       }
     }
   }
+
+  // Restore the old breakpoint size
+  $-zf-size: $old-zf-size !global;
 }
 
 /// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
@@ -211,6 +218,53 @@ $breakpoint-classes: (small medium large) !default;
 
 }
 
+/// Return a list of our named breakpoints less than $key. Useful for dealing with
+/// responsive gutters for the grid.
+/// @access private
+///
+/// @param {String} $key - Key to use as last breakpoint.
+///
+/// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -zf-breakpoints-less-than($key) {
+  $list: ();
+  $found_key: false;
+
+  @each $name in $-zf-breakpoints-keys {
+    @if ($name == $key) {
+      $found_key: true;
+    }
+    @if not $found_key {
+      $list: append($list, $name);
+    }
+  }
+  @return $list;
+}
+
+/// Return a list of our named breakpoints less than $key. Useful for dealing with
+/// responsive gutters for the grid.
+/// @access private
+///
+/// @param {String} $breakpoing - a named or non-named breakpoing.
+///
+/// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -zf-closest-named-breakpoint($breakpoint) {
+  $last: $-zf-zero-breakpoint;
+  $found: false;
+
+  $value: unitless-calc($breakpoint, 1px);
+  @each $key, $val in $breakpoints {
+    @if not $found {
+      @if unitless-calc($val) > $value {
+        $found: true;
+      } @else {
+        $last: $key;
+      }
+    }
+  }
+
+  @return $last;
+}
+
 /// Get a value for a breakpoint from a responsive config map or single value.
 /// - If the config is a single value, return it regardless of `$value`.
 /// - If the config is a map and has the key `$value`, the exact breakpoint value is returned.
@@ -227,9 +281,14 @@ $breakpoint-classes: (small medium large) !default;
     @return $map;
   }
 
+
   // Check if the breakpoint name exists globally
   @if not map-has-key($breakpoints, $value) {
-    @return null;
+    @if type-of($value) == 'number' {
+      $value: -zf-closest-named-breakpoint($value);
+    } @else {
+      @return null;
+    }
   }
   // Check if the breakpoint name exists in the local config map
   @else if map-has-key($map, $value) {
