@@ -46,11 +46,11 @@
 ///
 /// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto` or `shrink`.
 @mixin xy-cell-base($size: full) {
-  min-height: 0px;
-  min-width: 0px;
   @if($size == 'full') {
     // This is the base style, all others inherit from it
     flex: 0 0 auto;
+    min-height: 0px;
+    min-width: 0px;
   }
   @elseif ($size == 'auto') {
     flex: 1 1 auto;
