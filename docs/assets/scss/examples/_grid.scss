@@ -75,17 +75,13 @@
   }
 }
 // Flex Grid
-[id^="docs-zf"].docs-component .docs-code-live {
+[id^="docs-xy"].docs-component .docs-code-live {
   @include foundation-xy-grid-classes;
 
   .grid {
-    background: #f9f9f9;
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 10px;
     line-height: 2rem;
-    border: solid 1px #c6c6c6;
-    margin-left: 0;
-    margin-right: 0;
     margin-bottom: 1.5rem;
   }
 
