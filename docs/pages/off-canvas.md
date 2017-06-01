@@ -241,7 +241,7 @@ There are 2 available transitions: push (`data-transition="push"`) which is the 
 <button type="button" class="button" data-toggle="offCanvasOverlap">Open Left with Overlap</button>
 <button class="button" type="button" data-toggle="offCanvasRight">Open Right with Push</button>
 
-<div class="off-canvas position-left" id="offCanvasOverlap" data-off-canvas data-transition="overlap">
+<div class="off-canvas position-left is-closed" id="offCanvasOverlap" data-off-canvas data-transition="overlap">
   <ul class="vertical menu">
     <li><a href="#">Foundation</a></li>
     <li><a href="#">Dot</a></li>
@@ -343,6 +343,10 @@ Another improvement is the support of several off-canvas elements that share the
 Advanced off-canvas users may use the new `contentId` option to bind an element to a content. This lets you place the element much more flexibly as it may be a sibling of the content, a child or none of it.<br>
 <strong>Important:</strong> when using the `contentId` on a nested element it's required to also use the new `nested` option and tell the JavaScript if it's nested or not!
 
+<div class="callout">
+  When you are facing a <a href="https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank">FOUC</a> issue you can try to add the class `is-closed` to the element which is usually added and removed automatically via JavaScript. This will cover the delay in loading.
+</div>
+
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasNestedPush">
   Open Nested Off-Canvas Push
@@ -353,10 +357,10 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
-<div class="off-canvas position-left" id="offCanvasNestedPush" data-off-canvas>
+<div class="off-canvas position-left is-closed" id="offCanvasNestedPush" data-off-canvas>
   <div class="callout">I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</div>
 </div>
-<div class="off-canvas position-left" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+<div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
   <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
 </div>
 
