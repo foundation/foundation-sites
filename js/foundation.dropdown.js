@@ -2,9 +2,8 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { Box } from './foundation.util.box';
 import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { Positionable } from './foundation.positionable';
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what a triggers import "means", since triggers are always accessed indirectly.
@@ -17,8 +16,7 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
-
-class Dropdown extends Plugin {
+class Dropdown extends Positionable {
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -61,114 +59,47 @@ class Dropdown extends Plugin {
     }else{
       this.$parent = null;
     }
-    this.options.positionClass = this.getPositionClass();
-    this.counter = 4;
-    this.usedPositions = [];
+
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
       'aria-labelledby': this.$anchor[0].id || GetYoDigits(6, 'dd-anchor')
     });
+    super._init();
     this._events();
   }
 
-  /**
-   * Helper function to determine current orientation of dropdown pane.
-   * @function
-   * @returns {String} position - string value of a position class.
-   */
-  getPositionClass() {
-    var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
-        verticalPosition = verticalPosition ? verticalPosition[0] : '';
+  _getDefaultPosition() {
+    // handle legacy classnames
+    var position = this.$element[0].className.match(/(top|left|right|bottom)/g);
+    if(position) {
+      return position[0];
+    } else {
+      return 'bottom'
+    }
+  }
+
+  _getDefaultAlignment() {
+    // handle legacy float approach
     var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
-        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
-    var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
+    if(horizontalPosition) {
+      return horizontalPosition[1];
+    }
 
-    return position;
+    return super._getDefaultAlignment();
   }
 
-  /**
-   * Adjusts the dropdown panes orientation by adding/removing positioning classes.
-   * @function
-   * @private
-   * @param {String} position - position class to remove.
-   */
-  _reposition(position) {
-    this.usedPositions.push(position ? position : 'bottom');
-    //default, try switching to opposite side
-    if(!position && (this.usedPositions.indexOf('top') < 0)){
-      this.$element.addClass('top');
-    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }else if(position === 'left' && (this.usedPositions.indexOf('right') < 0)){
-      this.$element.removeClass(position)
-          .addClass('right');
-    }else if(position === 'right' && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.removeClass(position)
-          .addClass('left');
-    }
 
-    //if default change didn't work, try bottom or left first
-    else if(!position && (this.usedPositions.indexOf('top') > -1) && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.addClass('left');
-    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') > -1) && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.removeClass(position)
-          .addClass('left');
-    }else if(position === 'left' && (this.usedPositions.indexOf('right') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }
-    //if nothing cleared, set to bottom
-    else{
-      this.$element.removeClass(position);
-    }
-    this.classChanged = true;
-    this.counter--;
-  }
 
   /**
-   * Sets the position and orientation of the dropdown pane, checks for collisions.
+   * Sets the position and orientation of the dropdown pane, checks for collisions if allow-overlap is not true.
    * Recursively calls itself if a collision is detected, with a new position class.
    * @function
    * @private
    */
   _setPosition() {
-    if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
-    var position = this.getPositionClass(),
-        $eleDims = Box.GetDimensions(this.$element),
-        $anchorDims = Box.GetDimensions(this.$anchor),
-        _this = this,
-        direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
-        param = (direction === 'top') ? 'height' : 'width',
-        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
-
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Box.ImNotTouchingYou(this.$element, this.$parent))){
-      var newWidth = $eleDims.windowDims.width,
-          parentHOffset = 0;
-      if(this.$parent){
-        var $parentDims = Box.GetDimensions(this.$parent),
-            parentHOffset = $parentDims.offset.left;
-        if ($parentDims.width < newWidth){
-          newWidth = $parentDims.width;
-        }
-      }
-
-      this.$element.offset(Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + parentHOffset, true)).css({
-        'width': newWidth - (this.options.hOffset * 2),
-        'height': 'auto'
-      });
-      this.classChanged = true;
-      return false;
-    }
-
-    this.$element.offset(Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
-
-    while(!Box.ImNotTouchingYou(this.$element, this.$parent, true) && this.counter){
-      this._reposition(position);
-      this._setPosition();
-    }
+    super._setPosition(this.$anchor, this.$element, this.$parent);
   }
 
   /**
@@ -315,17 +246,6 @@ class Dropdown extends Plugin {
     this.$anchor.removeClass('hover')
         .attr('aria-expanded', false);
 
-    if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
-      if(curPositionClass){
-        this.$element.removeClass(curPositionClass);
-      }
-      this.$element.addClass(this.options.positionClass)
-          /*.hide()*/.css({height: '', width: ''});
-      this.classChanged = false;
-      this.counter = 4;
-      this.usedPositions.length = 0;
-    }
     /**
      * Fires once the dropdown is no longer visible.
      * @event Dropdown#hide
@@ -395,23 +315,54 @@ Dropdown.defaults = {
    * Number of pixels between the dropdown pane and the triggering element on open.
    * @option
    * @type {number}
-   * @default 1
+   * @default 0
    */
-  vOffset: 1,
+  vOffset: 0,
   /**
    * Number of pixels between the dropdown pane and the triggering element on open.
    * @option
    * @type {number}
-   * @default 1
+   * @default 0
    */
-  hOffset: 1,
+  hOffset: 0,
   /**
-   * Class applied to adjust open position. JS will test and fill this in.
+   * DEPRECATED: Class applied to adjust open position.
    * @option
    * @type {string}
    * @default ''
    */
   positionClass: '',
+
+  /**
+   * Position of dropdown. Can be left, right, bottom, top, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  position: 'auto',
+  /**
+   * Alignment of dropdown relative to anchor. Can be left, right, bottom, top, center, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  alignment: 'auto',
+  /**
+   * Allow overlap of container/window. If false, dropdown will first try to position as defined by data-position and data-alignment, but reposition if it would cause an overflow.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  allowOverlap: false,
+  /**
+   * Allow overlap of only the bottom of the container. This is the most common
+   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+   * screen but not otherwise influence or break out of the container.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  allowBottomOverlap: true,
   /**
    * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
    * @option

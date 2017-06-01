@@ -83,7 +83,7 @@ $input-radius: $global-radius !default;
 $form-button-radius: $global-radius !default;
 
 @mixin form-element {
-  $height: ($input-font-size * $input-line-height) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+  $height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
 
   display: block;
   box-sizing: border-box;
