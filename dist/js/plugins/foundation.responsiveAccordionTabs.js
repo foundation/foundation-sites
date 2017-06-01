@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 91);
+/******/ 	return __webpack_require__(__webpack_require__.s = 90);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -89,18 +89,18 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 25:
+/***/ 24:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_responsiveMenu__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_responsiveAccordionTabs__ = __webpack_require__(54);
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_responsiveMenu__["a" /* ResponsiveMenu */], 'ResponsiveMenu');
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_responsiveAccordionTabs__["a" /* ResponsiveAccordionTabs */], 'ResponsiveAccordionTabs');
 
 /***/ }),
 
@@ -111,11 +111,11 @@ module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.Get
 
 /***/ }),
 
-/***/ 55:
+/***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResponsiveMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResponsiveAccordionTabs; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__ = __webpack_require__(6);
@@ -124,12 +124,10 @@ module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.Get
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_plugin__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__foundation_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_drilldown__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_drilldown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__foundation_drilldown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_accordion__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_accordion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__foundation_accordion__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_tabs__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_tabs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__foundation_tabs__);
 
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -148,64 +146,61 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
+// The plugin matches the plugin classes with these plugin instances.
 var MenuPlugins = {
-  dropdown: {
-    cssClass: 'dropdown',
-    plugin: __WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu__["DropdownMenu"]
-  },
-  drilldown: {
-    cssClass: 'drilldown',
-    plugin: __WEBPACK_IMPORTED_MODULE_5__foundation_drilldown__["Drilldown"]
+  tabs: {
+    cssClass: 'tabs',
+    plugin: __WEBPACK_IMPORTED_MODULE_5__foundation_tabs__["Tabs"]
   },
   accordion: {
-    cssClass: 'accordion-menu',
-    plugin: __WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu__["AccordionMenu"]
+    cssClass: 'accordion',
+    plugin: __WEBPACK_IMPORTED_MODULE_4__foundation_accordion__["Accordion"]
   }
 };
 
-// import "foundation.util.triggers.js";
-
-
 /**
- * ResponsiveMenu module.
- * @module foundation.responsiveMenu
- * @requires foundation.util.triggers
- * @requires foundation.util.mediaQuery
+ * ResponsiveAccordionTabs module.
+ * @module foundation.responsiveAccordionTabs
+ * @requires foundation.util.motion
+ * @requires foundation.accordion
+ * @requires foundation.tabs
  */
 
-var ResponsiveMenu = function (_Plugin) {
-  _inherits(ResponsiveMenu, _Plugin);
+var ResponsiveAccordionTabs = function (_Plugin) {
+  _inherits(ResponsiveAccordionTabs, _Plugin);
 
-  function ResponsiveMenu() {
-    _classCallCheck(this, ResponsiveMenu);
+  function ResponsiveAccordionTabs() {
+    _classCallCheck(this, ResponsiveAccordionTabs);
 
-    return _possibleConstructorReturn(this, (ResponsiveMenu.__proto__ || Object.getPrototypeOf(ResponsiveMenu)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (ResponsiveAccordionTabs.__proto__ || Object.getPrototypeOf(ResponsiveAccordionTabs)).apply(this, arguments));
   }
 
-  _createClass(ResponsiveMenu, [{
+  _createClass(ResponsiveAccordionTabs, [{
     key: '_setup',
 
     /**
-     * Creates a new instance of a responsive menu.
+     * Creates a new instance of a responsive accordion tabs.
      * @class
-     * @fires ResponsiveMenu#init
+     * @fires ResponsiveAccordionTabs#init
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
       this.$element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element);
-      this.rules = this.$element.data('responsive-menu');
+      this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, this.$element.data(), options);
+      this.rules = this.$element.data('responsive-accordion-tabs');
       this.currentMq = null;
       this.currentPlugin = null;
+      if (!this.$element.attr('id')) {
+        this.$element.attr('id', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["GetYoDigits"])(6, 'responsiveaccordiontabs'));
+      };
 
       this._init();
       this._events();
     }
 
     /**
-     * Initializes the Menu by parsing the classes from the 'data-ResponsiveMenu' attribute on the element.
+     * Initializes the Menu by parsing the classes from the 'data-responsive-accordion-tabs' attribute on the element.
      * @function
      * @private
      */
@@ -234,11 +229,34 @@ var ResponsiveMenu = function (_Plugin) {
         this.rules = rulesTree;
       }
 
+      this._getAllOptions();
+
       if (!__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.isEmptyObject(this.rules)) {
         this._checkMediaQueries();
       }
-      // Add data-mutate since children may need it.
-      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["GetYoDigits"])(6, 'responsive-menu'));
+    }
+  }, {
+    key: '_getAllOptions',
+    value: function _getAllOptions() {
+      //get all defaults and options
+      var _this = this;
+      _this.allOptions = {};
+      for (var key in MenuPlugins) {
+        if (MenuPlugins.hasOwnProperty(key)) {
+          var obj = MenuPlugins[key];
+          try {
+            var dummyPlugin = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<ul></ul>');
+            var tmpPlugin = new obj.plugin(dummyPlugin, _this.options);
+            for (var keyKey in tmpPlugin.options) {
+              if (tmpPlugin.options.hasOwnProperty(keyKey) && keyKey !== 'zfPlugin') {
+                var objObj = tmpPlugin.options[keyKey];
+                _this.allOptions[keyKey] = objObj;
+              }
+            }
+            tmpPlugin.destroy();
+          } catch (e) {}
+        }
+      }
     }
 
     /**
@@ -255,9 +273,6 @@ var ResponsiveMenu = function (_Plugin) {
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('changed.zf.mediaquery', function () {
         _this._checkMediaQueries();
       });
-      // $(window).on('resize.zf.ResponsiveMenu', function() {
-      //   _this._checkMediaQueries();
-      // });
     }
 
     /**
@@ -293,8 +308,78 @@ var ResponsiveMenu = function (_Plugin) {
       this.$element.addClass(this.rules[matchedMq].cssClass);
 
       // Create an instance of the new plugin
-      if (this.currentPlugin) this.currentPlugin.destroy();
+      if (this.currentPlugin) {
+        //don't know why but on nested elements data zfPlugin get's lost
+        if (!this.currentPlugin.$element.data('zfPlugin') && this.storezfData) this.currentPlugin.$element.data('zfPlugin', this.storezfData);
+        this.currentPlugin.destroy();
+      }
+      this._handleMarkup(this.rules[matchedMq].cssClass);
       this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
+      this.storezfData = this.currentPlugin.$element.data('zfPlugin');
+    }
+  }, {
+    key: '_handleMarkup',
+    value: function _handleMarkup(toSet) {
+      var _this = this,
+          fromString = 'accordion';
+      var $panels = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-tabs-content=' + this.$element.attr('id') + ']');
+      if ($panels.length) fromString = 'tabs';
+      if (fromString === toSet) {
+        return;
+      };
+
+      var tabsTitle = _this.allOptions.linkClass ? _this.allOptions.linkClass : 'tabs-title';
+      var tabsPanel = _this.allOptions.panelClass ? _this.allOptions.panelClass : 'tabs-panel';
+
+      this.$element.removeAttr('role');
+      var $liHeads = this.$element.children('.' + tabsTitle + ',[data-accordion-item]').removeClass(tabsTitle).removeClass('accordion-item').removeAttr('data-accordion-item');
+      var $liHeadsA = $liHeads.children('a').removeClass('accordion-title');
+
+      if (fromString === 'tabs') {
+        $panels = $panels.children('.' + tabsPanel).removeClass(tabsPanel).removeAttr('role').removeAttr('aria-hidden').removeAttr('aria-labelledby');
+        $panels.children('a').removeAttr('role').removeAttr('aria-controls').removeAttr('aria-selected');
+      } else {
+        $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
+      };
+
+      $panels.css({ display: '', visibility: '' });
+      $liHeads.css({ display: '', visibility: '' });
+      if (toSet === 'accordion') {
+        $panels.each(function (key, value) {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(value).appendTo($liHeads.get(key)).addClass('accordion-content').attr('data-tab-content', '').removeClass('is-active').css({ height: '' });
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-tabs-content=' + _this.$element.attr('id') + ']').after('<div id="tabs-placeholder-' + _this.$element.attr('id') + '"></div>').detach();
+          $liHeads.addClass('accordion-item').attr('data-accordion-item', '');
+          $liHeadsA.addClass('accordion-title');
+        });
+      } else if (toSet === 'tabs') {
+        var $tabsContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-tabs-content=' + _this.$element.attr('id') + ']');
+        var $placeholder = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#tabs-placeholder-' + _this.$element.attr('id'));
+        if ($placeholder.length) {
+          $tabsContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content', _this.$element.attr('id'));
+          $placeholder.remove();
+        } else {
+          $tabsContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
+        };
+        $panels.each(function (key, value) {
+          var tempValue = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(value).appendTo($tabsContent).addClass(tabsPanel);
+          var hash = $liHeadsA.get(key).hash.slice(1);
+          var id = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(value).attr('id') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["GetYoDigits"])(6, 'accordion');
+          if (hash !== id) {
+            if (hash !== '') {
+              __WEBPACK_IMPORTED_MODULE_0_jquery___default()(value).attr('id', hash);
+            } else {
+              hash = id;
+              __WEBPACK_IMPORTED_MODULE_0_jquery___default()(value).attr('id', hash);
+              __WEBPACK_IMPORTED_MODULE_0_jquery___default()($liHeadsA.get(key)).attr('href', __WEBPACK_IMPORTED_MODULE_0_jquery___default()($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
+            };
+          };
+          var isActive = __WEBPACK_IMPORTED_MODULE_0_jquery___default()($liHeads.get(key)).hasClass('is-active');
+          if (isActive) {
+            tempValue.addClass('is-active');
+          };
+        });
+        $liHeads.addClass(tabsTitle);
+      };
     }
 
     /**
@@ -305,15 +390,15 @@ var ResponsiveMenu = function (_Plugin) {
   }, {
     key: '_destroy',
     value: function _destroy() {
-      this.currentPlugin.destroy();
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('.zf.ResponsiveMenu');
+      if (this.currentPlugin) this.currentPlugin.destroy();
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('.zf.ResponsiveAccordionTabs');
     }
   }]);
 
-  return ResponsiveMenu;
+  return ResponsiveAccordionTabs;
 }(__WEBPACK_IMPORTED_MODULE_3__foundation_plugin__["Plugin"]);
 
-ResponsiveMenu.defaults = {};
+ResponsiveAccordionTabs.defaults = {};
 
 
 
@@ -326,31 +411,24 @@ module.exports = {MediaQuery: window.Foundation.MediaQuery};
 
 /***/ }),
 
-/***/ 73:
+/***/ 72:
 /***/ (function(module, exports) {
 
-module.exports = {AccordionMenu: window.Foundation.AccordionMenu};
+module.exports = {Accordion: window.Foundation.Accordion};
 
 /***/ }),
 
-/***/ 74:
+/***/ 77:
 /***/ (function(module, exports) {
 
-module.exports = {Drilldown: window.Foundation.Drilldown};
+module.exports = {Tabs: window.Foundation.Tabs};
 
 /***/ }),
 
-/***/ 75:
-/***/ (function(module, exports) {
-
-module.exports = {DropdownMenu: window.Foundation.DropdownMenu};
-
-/***/ }),
-
-/***/ 91:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(25);
+module.exports = __webpack_require__(24);
 
 
 /***/ })
