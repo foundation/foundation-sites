@@ -203,11 +203,11 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 #### Images
 
 ```html
-<img src="http://placehold.it/100x100" class="radius">
+<img src="http://placehold.it/150x150" class="radius">
 ```
 
 <div class="docs-code-live margin-bottom-1">
-	<img src="http://placehold.it/100x100" class="radius margin-right-1">
+	<img src="http://placehold.it/150x150" class="radius">
 </div>
 
 ---
