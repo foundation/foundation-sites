@@ -1,7 +1,7 @@
 ---
 title: Dropdown Menu
 description: Change a basic Menu into an expandable dropdown menu with the Dropdown Menu plugin.
-video: 'qDybCaxK3bA'
+video: 'KfnRuKBKrbw'
 sass: scss/components/_dropdown-menu.scss
 js: js/foundation.dropdownMenu.js
 ---
@@ -21,7 +21,7 @@ Dropdown menus build on the [Menu](menu.html) component's syntax. Add the class 
 
 To create dropdown menus, nest a new `<ul>` inside an `<li>`. You can nest further to create more levels of dropdowns.
 
-<a class="" data-open-video="0:33"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="0:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="primary callout">
   <p>Note that the <code>&lt;ul&gt;</code> goes <em>after</em> the <code>&lt;a&gt;</code>, and not inside of it.</p>
