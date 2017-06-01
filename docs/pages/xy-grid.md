@@ -1,16 +1,16 @@
 ---
-title: ZF Grid
+title: XY Grid
 description: A fully reworked new grid system in v6.4 which has all the variety inbuilt in the form of multiple grid types which includes margin grid, padding grid, frame grid, block grid and vertical grid.
-sass: scss/grid/_zf-grid.scss
+sass: scss/xy-grid/_xy-grid.scss
 ---
 
-The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing, and easier source ordering.
+The XY grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing, and easier source ordering.
 
 ---
 
 ## Browser support
 
-The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+XY grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
@@ -21,8 +21,8 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 ```scss
 @import 'foundation';
 
-@include zf-grid;
-@include zf-grid-classes;
+@include xy-grid;
+@include xy-grid-classes;
 ```
 ---
 

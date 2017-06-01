@@ -3,16 +3,15 @@
 // Licensed under MIT Open Source
 
 ////
-/// @group zf-grid
+/// @group xy-grid
 ////
 
 /// Collapses the grid a cells within it.
 ///
 /// @param {String} $selector [.cell] - The child element to remove the gutter from.
 /// @param {Keyword} $gutter-type [margin] - The type of gutter to remove.
-/// @param {Number|Map} $margin [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {List} $gutter-position [right left] - The positions to remove gutters from. Accepts `top`, `bottom`, `left`, `right` in any combination.
-@mixin zf-grid-collapse(
+@mixin xy-grid-collapse(
   $selector: '.cell',
   $gutter-type: margin,
   $gutter-position: right left
@@ -35,7 +34,7 @@
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$bp}-#{$i} {
-          @include zf-cell-static($i, $gutter-output: false, $gutter-type: padding);
+          @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
         }
       }
     }

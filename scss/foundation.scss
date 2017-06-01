@@ -27,7 +27,7 @@
 
 // Components
 @import 'grid/grid';
-@import 'zf-grid/zf-grid';
+@import 'xy-grid/xy-grid';
 @import 'typography/typography';
 @import 'forms/forms';
 @import 'components/visibility';
@@ -79,8 +79,8 @@
     @include foundation-grid;
   }
   @else {
-    @if $zf-grid {
-      @include foundation-zf-grid-classes;
+    @if $xy-grid {
+      @include foundation-xy-grid-classes;
     }
     @else {
       @include foundation-flex-grid;

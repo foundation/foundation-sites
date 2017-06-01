@@ -3,13 +3,13 @@
 // Licensed under MIT Open Source
 
 ////
-/// @group zf-grid
+/// @group xy-grid
 ////
 
 /// Creates a max width container, designed to house your grid content.
 ///
 /// @param {Number} $width [$grid-container] - a width to limit the container to.
-@mixin zf-grid-container(
+@mixin xy-grid-container(
   $width: $grid-container
 ) {
   max-width: rem-calc($width);
@@ -20,7 +20,7 @@
 ///
 /// @param {Keyword} $direction [horizontal] - Either horizontal or vertical direction of cells within.
 /// @param {Boolean} $wrap [true] - If the cells within should wrap or not.
-@mixin zf-grid(
+@mixin xy-grid(
   $direction: horizontal,
   $wrap: true
 ) {
@@ -35,7 +35,8 @@
 /// Modifies a grid to give it "frame" behavior (no overflow, no wrap, stretch behavior)
 ///
 /// @param {Boolean} $vertical [false] - Is grid vertical or horizontal. Should match grid.
-@mixin zf-grid-frame(
+/// @param {Boolean} $nested [false] - Is grid nested or not. If nested is true this sets the frame to 100% height, otherwise will be 100vh.
+@mixin xy-grid-frame(
   $vertical: false,
   $nested: false
 ) {

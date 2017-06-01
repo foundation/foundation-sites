@@ -76,7 +76,7 @@
 }
 // Flex Grid
 [id^="docs-zf"].docs-component .docs-code-live {
-  @include foundation-zf-grid-classes;
+  @include foundation-xy-grid-classes;
 
   .grid {
     background: #f9f9f9;

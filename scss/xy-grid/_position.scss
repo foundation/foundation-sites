@@ -3,14 +3,14 @@
 // Licensed under MIT Open Source
 
 ////
-/// @group zf-grid
+/// @group xy-grid
 ////
 
 /// Offsets a column to the right/bottom by `$n` columns.
 ///
 /// @param {Number|List} $n - Size to offset by. You can pass in any value accepted by the `zf-cell()` mixin, such as `6`, `50%`, or `1 of 2`.
 /// @param {Boolean} $vertical [false] Sets the direction of the offset. If set to true will apply margin-top instead.
-@mixin zf-cell-offset(
+@mixin xy-cell-offset(
  $n,
  $gutters: $grid-margin-gutters,
  $gutter-type: margin,
@@ -21,7 +21,7 @@
 
   @include -zf-breakpoint-value($breakpoint, $gutters) {
     $gutter: rem-calc($-zf-bp-value) / 2;
-    $size: if($gutter-type == 'margin', calc(#{zf-cell-size($n)} + #{$gutter}), #{zf-cell-size($n)});
+    $size: if($gutter-type == 'margin', calc(#{xy-cell-size($n)} + #{$gutter}), #{xy-cell-size($n)});
 
     margin-#{$direction}: #{$size};
   }

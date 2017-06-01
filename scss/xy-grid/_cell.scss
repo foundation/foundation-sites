@@ -3,13 +3,13 @@
 // Licensed under MIT Open Source
 
 ////
-/// @group zf-grid
+/// @group xy-grid
 ////
 
 /// Calculate the percentage size of a cell.
 ///
 /// @param {Number|List} $size [$grid-columns] - Size to make the cell. You can pass a value in multiple formats, such as `6`, `50%`, `1 of 2 or 1/3.
-@function zf-cell-size(
+@function xy-cell-size(
   $size: $grid-columns
 ) {
   // Parsing percents, decimals, n of n and number counts
@@ -28,7 +28,7 @@
   // Parsing "n of n" or "n/n" expressions
   @elseif type-of($size) == 'list' {
     @if length($size) != 3 {
-      @error 'Wrong syntax for zf-cell-size(). Use the format "n of n" or "n/n".';
+      @error 'Wrong syntax for xy-cell-size(). Use the format "n of n" or "n/n".';
     }
     @else {
       $size: percentage(nth($size, 1) / nth($size, 3));
@@ -36,13 +36,16 @@
   }
   // Anything else is incorrect
   @else {
-    @error 'Wrong syntax for zf-cell-size(). Use a number, decimal, percentage, or "n of n" / "n/n".';
+    @error 'Wrong syntax for xy-cell-size(). Use a number, decimal, percentage, or "n of n" / "n/n".';
   }
 
   @return $size;
 }
 
-@mixin zf-cell-base($size: full) {
+/// Sets base flex properties for cells.
+///
+/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto` or `shrink`.
+@mixin xy-cell-base($size: full) {
   min-height: 0px;
   min-width: 0px;
   @if($size == 'full') {
@@ -57,7 +60,10 @@
   }
 }
 
-@mixin zf-cell-reset($vertical: true) {
+/// Resets a cells width (or height if vertical is true) as well as strips its gutters.
+///
+/// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
+@mixin xy-cell-reset($vertical: true) {
   $direction: if($vertical == true, width, height);
   $sides: if($vertical == true, left right, top bottom);
   #{$direction}: auto;
@@ -67,7 +73,8 @@
   }
 }
 
-@mixin -zf-cell-properties($size, $margin-gutter, $vertical) {
+// Sets our cell widths or heights depending on gutter type.
+@mixin -xy-cell-properties($size, $margin-gutter, $vertical) {
   $direction: if($vertical == true, height, width);
   @if($size == 'full') {
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
@@ -81,11 +88,10 @@
     #{$direction}: auto;
   }
   @else {
-    $val: if($margin-gutter == 0, #{zf-cell-size($size)}, calc(#{zf-cell-size($size)} - #{rem-calc($margin-gutter)}));
+    $val: if($margin-gutter == 0, #{xy-cell-size($size)}, calc(#{xy-cell-size($size)} - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
   }
 }
-
 
 /// Creates a cell for your grid.
 ///
@@ -96,7 +102,7 @@
 /// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
 /// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
-@mixin zf-cell(
+@mixin xy-cell(
   $size: full,
   $gutter-output: true,
   $gutters: $grid-margin-gutters,
@@ -119,13 +125,13 @@
   $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
   // Base flex properties
-  @include zf-cell-base($size);
+  @include xy-cell-base($size);
 
   @if($gutter-type == 'margin') {
-    @include -zf-cell-properties($size, $gutter, $vertical);
+    @include -xy-cell-properties($size, $gutter, $vertical);
   }
   @else {
-    @include -zf-cell-properties($size, 0, $vertical);
+    @include -xy-cell-properties($size, 0, $vertical);
   }
 
   @if $gutter-output {
@@ -133,22 +139,30 @@
     @if(type-of($gutters) == 'map') {
       // If $gutters map has a key = $breakpoint, output the value
       @if (map-has-key($gutters, $breakpoint)) {
-        @include zf-gutters($gutter, $gutter-type, $gutter-position);
+        @include xy-gutters($gutter, $gutter-type, $gutter-position);
       }
     }
     // If not a map
     @else {
-      @include zf-gutters($gutter, $gutter-type, $gutter-position);
+      @include xy-gutters($gutter, $gutter-type, $gutter-position);
     }
   }
 }
 
-@mixin zf-cell-static(
+/// Creates a single breakpoint sized grid. Used to generate our grid classes.
+///
+/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
+/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters
+/// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
+/// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
+@mixin xy-cell-static(
   $size: full,
   $gutter-output: true,
   $gutters: $grid-margin-gutters,
-  $breakpoint: $-zf-zero-breakpoint,
   $gutter-type: margin,
+  $breakpoint: $-zf-zero-breakpoint,
   $vertical: false
 ) {
 
@@ -156,23 +170,23 @@
   $gutter-position: if($vertical == true, top bottom, left right);
 
   @if($gutter-type == 'margin') {
-    @include -zf-cell-properties($size, $gutter, $vertical);
+    @include -xy-cell-properties($size, $gutter, $vertical);
   }
   @else {
-    @include -zf-cell-properties($size, 0, $vertical);
+    @include -xy-cell-properties($size, 0, $vertical);
   }
 
   // If we want to output the gutters
   @if($gutter-output) {
     // TODO: Figure out if we need to pass breakpoint in here too.
-    @include zf-gutters($gutter, $gutter-type, $gutter-position);
+    @include xy-gutters($gutter, $gutter-type, $gutter-position);
   }
 }
 
 /// Modifies a cell to give it "block" behavior (overflow auto, inertial scrolling)
 ///
 /// @param {Boolean} $vertical [false] - Is grid vertical or horizontal. Should match grid.
-@mixin zf-cell-block(
+@mixin xy-cell-block(
   $vertical: false
 ) {
   $property: if($vertical == true, 'overflow-y', 'overflow-x');
@@ -192,7 +206,7 @@
 /// Container for inside a grid frame containing multiple blocks. Typically used
 /// as a modifier for a `.cell` to allow the cell to pass along flex sizing
 /// constraints / from parents to children.
-@mixin zf-cell-block-container() {
+@mixin xy-cell-block-container() {
   display: flex;
   flex-direction: column;
   max-height: 100%;
