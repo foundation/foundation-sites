@@ -30,7 +30,7 @@ To enable SmoothScroll on internal links, just add the attribute `data-smooth-sc
 </div>
 ```
 
-You can also setup SmoothScroll directly via indiviual link.
+You can also setup SmoothScroll directly via individual link.
 
 ```html
 <a href="#exclusive" data-smooth-scroll>Exclusive Section</a>
