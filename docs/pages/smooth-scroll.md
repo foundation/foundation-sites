@@ -36,5 +36,3 @@ You can also setup SmoothScroll directly via individual link.
 <a href="#exclusive" data-smooth-scroll>Exclusive Section</a>
 <section id="exclusive">The Exclusive Section</section>
 ```
-
----
