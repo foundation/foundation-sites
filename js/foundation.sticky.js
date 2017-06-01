@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';
+import { Triggers } from './foundation.util.triggers';
+
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -21,6 +23,9 @@ class Sticky extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     this._init();
   }

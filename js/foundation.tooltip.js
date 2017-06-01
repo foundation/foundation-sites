@@ -4,9 +4,8 @@ import $ from 'jquery';
 
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
+import { Triggers } from './foundation.util.triggers';
 import { Positionable } from './foundation.positionable';
-
-  // import "foundation.util.triggers";
 
 /**
  * Tooltip module.
@@ -30,6 +29,10 @@ class Tooltip extends Positionable {
 
     this.isActive = false;
     this.isClick = false;
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+
     this._init();
   }
 
