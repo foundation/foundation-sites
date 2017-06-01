@@ -191,7 +191,7 @@ To remove the overlay, add the attribute `data-overlay="false"` to the modal.
 
 ### Animations
 
-To use animations from the Motion UI library, include the <code>data-animation-in="someAnimationIn"</code> and <code>data-animation-out="someAnimationOut"</code> attributes.
+To use animations from the Motion UI library, include the <code>data-animation-in="someAnimationIn"</code> and <code>data-animation-out="someAnimationOut"</code> attributes. If you want to adjust the speed or timing, include it the attributes like <code>data-animation-in="someAnimationIn fast"</code>.
 
 <p>
   <a class="" data-open-video="5:40"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

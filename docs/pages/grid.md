@@ -168,7 +168,7 @@ Medium sized screens will inherit styles from small, unless you specify a differ
 
 ### Combined Column/Row
 
-If you need a full-width column to use as a container, put the `.column` and `.row` classes on the same element. You can still nest more grids inside this container like usual.
+If you have just a single column, you can save some markup by combining the `.row` and `.column` classes together on the same element. You can still nest more grids inside this container like usual.
 
 <div class="warning callout">
   <p>Column rows can use sizing classes like <code>.small-8</code>, but only when used as a top-level container&mdash;not when nested inside another row.</p>
