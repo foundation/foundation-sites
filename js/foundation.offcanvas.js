@@ -33,6 +33,8 @@ class OffCanvas extends Plugin {
     this.position = 'left';
     this.$content = $();
     this.nested = !!(this.options.nested);
+    this.$relativeParent;
+    this.relativeScope = false;
 
     this._init();
     this._events();
@@ -80,6 +82,13 @@ class OffCanvas extends Plugin {
       // Warning if using content ID without setting the nested option
       // Once the element is nested it is required to work properly in this case
       console.warn('Remember to use the nested option if using the content ID option!');
+    }
+
+    // For a nested element, find closest (relative) positioned element
+    if (this.nested) {
+      this.$relativeParent = this.$element.offsetParent();
+      // Initial adjustment of the element according to local scope
+      this._adjustToLocalScope();
     }
 
     this.$content.addClass(`has-transition-${this.options.transition}`);
@@ -140,6 +149,7 @@ class OffCanvas extends Plugin {
       // Delay as timeout to prevent too many calls on resizing
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
+        this._adjustToLocalScope();
         this._emulateFixedPosition(true);
       }, 250);
     });
@@ -183,6 +193,40 @@ class OffCanvas extends Plugin {
   }
 
   /**
+   * Adjust element's left position if relative parent is affecting local coords (left).
+   * This is required if using a nested element within a push/pull column.
+   * @private
+   */
+  _adjustToLocalScope() {
+    if (this.nested) {
+      // Check if relative parent is affecting local coords
+      if (parseInt(this.$relativeParent.css('left')) > 0 || this.$relativeParent.offset().top > 0) {
+        this.relativeScope = true;
+        // Adjust element to local scope
+        let xOffset = Math.ceil(parseFloat(this.$relativeParent.css('left'))) * (-1);
+        switch (this.position) {
+          case 'top':
+            this.$element.css('left', xOffset).width($(window).width());
+            break;
+          case 'bottom':
+            this.$element.css('left', xOffset).width($(window).width());
+            break;
+          case 'left':
+            this.$element.css('left', xOffset);
+            break;
+        }
+      } else {
+        this.relativeScope = false;
+        // Reset adjustment
+        this.$element.css({
+          'left': '',
+          'width': ''
+        });
+      }
+    }
+  }
+
+  /**
    * Emulate fixed position for a nested off-canvas element by using fixed height and current document scrollTop.
    * This is necessary due to the transform property of the content that creates a new local coordinate system.
    * @param  {Boolean} resetHeight - true if the element's height should be set as well (mostly on init and window resize)
@@ -192,17 +236,19 @@ class OffCanvas extends Plugin {
     
     if (this.nested === true) {
 
+      var topOffset = this.relativeScope ? this.$relativeParent.offset().top : 0;
+
       if (this.position === 'top') {
         
-        this.$element.css('top', $(document).scrollTop());
+        this.$element.css('top', $(document).scrollTop() - topOffset);
 
       } else if (this.position === 'bottom') {
 
-        this.$element.css('top', $(document).scrollTop() + $(window).height() - this.$element.outerHeight());
+        this.$element.css('top', $(document).scrollTop() + $(window).height() - this.$element.outerHeight() - topOffset);
 
       } else { // left|right
 
-        this.$element.css('top', $(document).scrollTop());
+        this.$element.css('top', $(document).scrollTop() - topOffset);
       
         if (resetHeight === true) {
           this.$element.height( $(window).height() );
@@ -309,6 +355,7 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
+    this._adjustToLocalScope();
     this._emulateFixedPosition();
 
     /**
