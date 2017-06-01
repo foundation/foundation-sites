@@ -19,24 +19,10 @@
     @include xy-grid;
   }
 
-  // Framed grid styles
-  .grid-frame {
-    @include xy-grid-frame;
-  }
-
   .cell {
     @include xy-cell-base();
     @include xy-cell-static($grid-columns, false, $gutter-type: padding);
   }
-
-  .cell-block {
-    @include xy-cell-block();
-  }
-
-  .cell-block-container {
-    @include xy-cell-block-container();
-  }
-
   .grid {
     > .auto {
       @include xy-cell-base(auto);
@@ -62,13 +48,6 @@
         @include xy-cell-static(shrink, false);
       }
 
-      &.#{$-zf-size}-grid-frame {
-        width: auto;
-        @include xy-grid-frame(true);
-      }
-      .#{$-zf-size}-cell-block {
-        @include xy-cell-block();
-      }
     }
 
     @for $i from 1 through $grid-columns {
@@ -233,25 +212,13 @@
   $padding-grid: true
 ) {
 
-  .cell-block-vertical {
-    @include xy-cell-block(true);
-  }
-
   @include -zf-each-breakpoint() {
     @if not($-zf-size == small) {
-      .#{$-zf-size}-cell-block-vertical {
-        @include xy-cell-block(true);
-      }
     }
   }
 
   .grid-vertical {
     @include xy-grid(vertical);
-
-    &.grid-frame {
-      width: auto;
-      @include xy-grid-frame(true);
-    }
 
 
     > .cell {
@@ -277,10 +244,6 @@
           @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
         }
 
-        &.#{$-zf-size}-grid-frame {
-          width: auto;
-          @include xy-grid-frame(true);
-        }
       }
 
       @for $i from 1 through $grid-columns {
@@ -311,6 +274,60 @@
   }
 }
 
+@mixin xy-frame-grid-classes($vertical-grid: true) {
+  // Framed grid styles
+  .grid-frame {
+    @include xy-grid-frame;
+  }
+
+  .cell-block {
+    @include xy-cell-block();
+  }
+
+
+  .cell-block-container {
+    @include xy-cell-block-container();
+  }
+
+
+  @include -zf-each-breakpoint(false) {
+
+    .#{$-zf-size}-grid-frame {
+      width: auto;
+      @include xy-grid-frame(true);
+    }
+    .#{$-zf-size}-cell-block {
+      @include xy-cell-block();
+    }
+  }
+
+  @if $vertical-grid {
+
+    .cell-block-vertical {
+      @include xy-cell-block(true);
+    }
+
+    .grid-vertical {
+      &.grid-frame {
+        width: auto;
+        @include xy-grid-frame(true);
+      }
+
+      @include -zf-each-breakpoint(false) {
+        &.#{$-zf-size}-grid-frame {
+          width: auto;
+          @include xy-grid-frame(true);
+        }
+
+        .#{$-zf-size}-cell-block-vertical {
+          @include xy-cell-block(true);
+        }
+      }
+    }
+  }
+
+}
+
 // Final classes
 @mixin foundation-xy-grid-classes(
   $base-grid: true,
@@ -319,7 +336,8 @@
   $block-grid: true,
   $collapse: true,
   $offset: true,
-  $vertical-grid: true
+  $vertical-grid: true,
+  $frame-grid: true
 ) {
 
   // Base grid styles
@@ -355,5 +373,9 @@
   // Vertical grid
   @if($vertical-grid) {
     @include xy-vertical-grid-classes($margin-grid, $padding-grid);
+  }
+
+  @if ($frame-grid) {
+    @include xy-frame-grid-classes($vertical-grid)
   }
 }
