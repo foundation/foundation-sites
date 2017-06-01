@@ -212,6 +212,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
 }
 
 /// Horizontally centers the element inside of its first non-static parent,
@@ -220,6 +221,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
 }
 
 /// Absolutely centers the element inside of its first non-static parent,
@@ -229,6 +231,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
 }
 
 /// Iterates through breakpoints defined in `$breakpoint-classes` and prints the CSS inside the mixin at each breakpoint's media query. Use this with the grid, or any other component that has responsive classes.
