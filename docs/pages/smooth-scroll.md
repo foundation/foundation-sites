@@ -6,12 +6,12 @@ tags:
   - navigation
 ---
 
-<ul class="menu vertical" data-smooth-scroll>
+<ul class="menu align-center" data-smooth-scroll>
   <li><a href="#setup">Setup</a></li>
   <li><a href="#javascript-reference">Javascript Reference</a></li>
 </ul>
 
-<br>
+<hr>
 
 ## Setup
 
