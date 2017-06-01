@@ -5,6 +5,7 @@ import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
 import { Plugin } from './foundation.plugin';
+import { Triggers } from './foundation.util.triggers';
 
 /**
  * Reveal module.
@@ -26,6 +27,9 @@ class Reveal extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
     this._init();
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     Keyboard.register('Reveal', {
       'ESCAPE': 'close',

@@ -5,8 +5,7 @@ import { Keyboard } from './foundation.util.keyboard';
 import { GetYoDigits } from './foundation.util.core';
 import { Positionable } from './foundation.positionable';
 
-  // import "foundation.util.triggers.js";
-  // TODO: Figure out what a triggers import "means", since triggers are always accessed indirectly.
+import { Triggers } from './foundation.util.triggers';
 
 
 /**
@@ -27,6 +26,10 @@ class Dropdown extends Positionable {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+
     this._init();
 
     Keyboard.register('Dropdown', {
