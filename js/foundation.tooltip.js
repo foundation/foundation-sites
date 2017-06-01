@@ -2,11 +2,10 @@
 
 import $ from 'jquery';
 
-import { Box } from './foundation.util.box';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';
-import { Plugin } from './foundation.plugin';
+import { Positionable } from './foundation.positionable';
 
 /**
  * Tooltip module.
@@ -16,7 +15,7 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.triggers
  */
 
-class Tooltip extends Plugin {
+class Tooltip extends Positionable {
   /**
    * Creates a new instance of a Tooltip.
    * @class
@@ -44,7 +43,6 @@ class Tooltip extends Plugin {
   _init() {
     var elemId = this.$element.attr('aria-describedby') || GetYoDigits(6, 'tooltip');
 
-    this.options.positionClass = this.options.positionClass || this._getPositionClass(this.$element);
     this.options.tipText = this.options.tipText || this.$element.attr('title');
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
@@ -66,25 +64,36 @@ class Tooltip extends Plugin {
       'data-resize': elemId
     }).addClass(this.options.triggerClass);
 
-    //helper variables to track movement on collisions
-    this.usedPositions = [];
-    this.counter = 4;
-    this.classChanged = false;
-
+    super._init();
     this._events();
   }
 
-  /**
-   * Grabs the current positioning class, if present, and returns the value or an empty string.
-   * @private
-   */
-  _getPositionClass(element) {
-    if (!element) { return ''; }
-    // var position = element.attr('class').match(/top|left|right/g);
-    var position = element[0].className.match(/\b(top|left|right)\b/g);
-        position = position ? position[0] : '';
-    return position;
-  };
+  _getDefaultPosition() {
+    // handle legacy classnames
+    var position = this.$element[0].className.match(/\b(top|left|right|bottom)\b/g);
+    return position ? position[0] : 'top';
+  }
+
+  _getDefaultAlignment() {
+    return 'center';
+  }
+
+  _getHOffset() {
+    if(this.position === 'left' || this.position === 'right') {
+      return this.options.hOffset + this.options.tooltipWidth;
+    } else {
+      return this.options.hOffset
+    }
+  }
+
+  _getVOffset() {
+    if(this.position === 'top' || this.position === 'bottom') {
+      return this.options.vOffset + this.options.tooltipHeight;
+    } else {
+      return this.options.vOffset
+    }
+  }
+
   /**
    * builds the tooltip element, adds attributes, and returns the template.
    * @private
@@ -102,73 +111,12 @@ class Tooltip extends Plugin {
   }
 
   /**
-   * Function that gets called if a collision event is detected.
-   * @param {String} position - positioning class to try
-   * @private
-   */
-  _reposition(position) {
-    this.usedPositions.push(position ? position : 'bottom');
-
-    //default, try switching to opposite side
-    if (!position && (this.usedPositions.indexOf('top') < 0)) {
-      this.template.addClass('top');
-    } else if (position === 'top' && (this.usedPositions.indexOf('bottom') < 0)) {
-      this.template.removeClass(position);
-    } else if (position === 'left' && (this.usedPositions.indexOf('right') < 0)) {
-      this.template.removeClass(position)
-          .addClass('right');
-    } else if (position === 'right' && (this.usedPositions.indexOf('left') < 0)) {
-      this.template.removeClass(position)
-          .addClass('left');
-    }
-
-    //if default change didn't work, try bottom or left first
-    else if (!position && (this.usedPositions.indexOf('top') > -1) && (this.usedPositions.indexOf('left') < 0)) {
-      this.template.addClass('left');
-    } else if (position === 'top' && (this.usedPositions.indexOf('bottom') > -1) && (this.usedPositions.indexOf('left') < 0)) {
-      this.template.removeClass(position)
-          .addClass('left');
-    } else if (position === 'left' && (this.usedPositions.indexOf('right') > -1) && (this.usedPositions.indexOf('bottom') < 0)) {
-      this.template.removeClass(position);
-    } else if (position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)) {
-      this.template.removeClass(position);
-    }
-    //if nothing cleared, set to bottom
-    else {
-      this.template.removeClass(position);
-    }
-    this.classChanged = true;
-    this.counter--;
-  }
-
-  /**
    * sets the position class of an element and recursively calls itself until there are no more possible positions to attempt, or the tooltip element is no longer colliding.
    * if the tooltip is larger than the screen width, default to full width - any user selected margin
    * @private
    */
   _setPosition() {
-    var position = this._getPositionClass(this.template),
-        $tipDims = Box.GetDimensions(this.template),
-        $anchorDims = Box.GetDimensions(this.$element),
-        direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
-        param = (direction === 'top') ? 'height' : 'width',
-        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
-        _this = this;
-
-    if (($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Box.ImNotTouchingYou(this.template))) {
-      this.template.offset(Box.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-        'width': $anchorDims.windowDims.width - (this.options.hOffset * 2),
-        'height': 'auto'
-      });
-      return false;
-    }
-
-    this.template.offset(Box.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
-
-    while(!Box.ImNotTouchingYou(this.template) && this.counter) {
-      this._reposition(position);
-      this._setPosition();
-    }
+    super._setPosition(this.$element, this.template);
   }
 
   /**
@@ -186,6 +134,8 @@ class Tooltip extends Plugin {
     var _this = this;
     this.template.css('visibility', 'hidden').show();
     this._setPosition();
+    this.template.removeClass('top bottom left right').addClass(this.position)
+    this.template.removeClass('align-top align-bottom align-left align-right align-center').addClass('align-' + this.alignment);
 
     /**
      * Fires to close all other open tooltips on the page
@@ -224,15 +174,6 @@ class Tooltip extends Plugin {
     }).fadeOut(this.options.fadeOutDuration, function() {
       _this.isActive = false;
       _this.isClick = false;
-      if (_this.classChanged) {
-        _this.template
-             .removeClass(_this._getPositionClass(_this.template))
-             .addClass(_this.options.positionClass);
-
-       _this.usedPositions = [];
-       _this.counter = 4;
-       _this.classChanged = false;
-      }
     });
     /**
      * fires when the tooltip is hidden
@@ -435,26 +376,72 @@ Tooltip.defaults = {
    */
   clickOpen: true,
   /**
-   * Additional positioning classes, set by the JS
+   * DEPRECATED Additional positioning classes, set by the JS
    * @option
    * @type {string}
    * @default ''
    */
   positionClass: '',
   /**
+   * Position of tooltip. Can be left, right, bottom, top, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  position: 'auto',
+  /**
+   * Alignment of tooltip relative to anchor. Can be left, right, bottom, top, center, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  alignment: 'auto',
+  /**
+   * Allow overlap of container/window. If false, tooltip will first try to
+   * position as defined by data-position and data-alignment, but reposition if
+   * it would cause an overflow.  @option
+   * @type {boolean}
+   * @default false
+   */
+  allowOverlap: false,
+  /**
+   * Allow overlap of only the bottom of the container. This is the most common
+   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+   * screen but not otherwise influence or break out of the container.
+   * Less common for tooltips.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  allowBottomOverlap: false,
+  /**
    * Distance, in pixels, the template should push away from the anchor on the Y axis.
    * @option
    * @type {number}
-   * @default 10
+   * @default 0
    */
-  vOffset: 10,
+  vOffset: 0,
   /**
-   * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
+   * Distance, in pixels, the template should push away from the anchor on the X axis
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  hOffset: 0,
+  /**
+   * Distance, in pixels, the template spacing auto-adjust for a vertical tooltip
+   * @option
+   * @type {number}
+   * @default 14
+   */
+  tooltipHeight: 14,
+  /**
+   * Distance, in pixels, the template spacing auto-adjust for a horizontal tooltip
    * @option
    * @type {number}
    * @default 12
    */
-  hOffset: 12,
+  tooltipWidth: 12,
     /**
    * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
    * allowing HTML may open yourself up to XSS attacks.
