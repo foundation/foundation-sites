@@ -79,7 +79,21 @@ To define a grid type, simple set `.margin-gutters` or `.padding-gutters` on the
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
 ```
+---
 
+## Grid Container
+
+The grid defaults to the full width of its container. In order to contain the grid, use the `.grid-container` class.
+
+```html
+<div class="grid-container">
+  <div class="grid">
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+  </div>
+</div>
+```
 ---
 
 ## Auto Sizing
