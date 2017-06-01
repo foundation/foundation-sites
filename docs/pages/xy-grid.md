@@ -47,6 +47,10 @@ These are:
 
 The structure of XY grid uses `.grid` and `.cell` as its base. Without [defining a gutter type](#gutters) the cells with simply split up the space without any gutters.
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gRYeMQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid">
   <div class="cell">full width cell</div>
@@ -68,6 +72,10 @@ The structure of XY grid uses `.grid` and `.cell` as its base. Without [defining
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
 To define a grid type, simple set `.margin-gutters` or `.padding-gutters` on the grid.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/owvqYp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid margin-gutters">
@@ -190,6 +198,11 @@ All other classes are available eg: `.[size]-vertical-[number]`, `[size]-vertica
   <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100 vertical height grid (or 100% height if nested).</p>
 </div>
 
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JJPLYJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-vertical" style="height: 500px;">
   <div class="cell small-vertical-6 medium-vertical-8 large-vertical-2">
@@ -209,6 +222,9 @@ The XY grid incorporates the grid frame from Foundation for Apps plus many other
 To start, add `.grid-frame` to the grid. This sets the grid to be 100vh (the full height of the browser window).
 
 Here's an example of what you can do:
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/MogrXG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid grid-vertical medium-grid-frame">
