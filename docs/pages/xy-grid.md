@@ -219,7 +219,7 @@ Here's an example of what you can do:
         A medium 4 cell
       </div>
       <div class="cell medium-4 medium-cell-block">
-        <p style="width:100vw;">A medium 4 cell block... on medium this content should overflow and let you horizontally scroll across... one might use this for an array of options</p>
+        <p style="width:80vw;">A medium 4 cell block... on medium this content should overflow and let you horizontally scroll across... one might use this for an array of options</p>
       </div>
       <div class="cell medium-4">
         A medium 4 cell
