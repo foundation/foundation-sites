@@ -15,7 +15,7 @@ tags:
 ## Text Alignment
 
 <div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving text alignment classes to <a href="prototyping.html">Prototype specific mode</a> and thus text alignment classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving text alignment classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus text alignment classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 You can change the text alignment of an element by adding `.text-left`, `.text-right`, `.text-center` or `.text-justify` to an element.
