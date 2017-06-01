@@ -6,12 +6,12 @@ tags:
   - navigation
 ---
 
-<ul class="menu vertical" data-smooth-scroll>
+<ul class="menu align-center" data-smooth-scroll>
   <li><a href="#setup">Setup</a></li>
   <li><a href="#javascript-reference">Javascript Reference</a></li>
 </ul>
 
-<br>
+<hr>
 
 ## Setup
 
@@ -30,11 +30,9 @@ To enable SmoothScroll on internal links, just add the attribute `data-smooth-sc
 </div>
 ```
 
-You can also setup SmoothScroll directly via indiviual link.
+You can also setup SmoothScroll directly via individual link.
 
 ```html
 <a href="#exclusive" data-smooth-scroll>Exclusive Section</a>
 <section id="exclusive">The Exclusive Section</section>
 ```
-
----

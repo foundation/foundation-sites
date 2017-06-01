@@ -327,7 +327,7 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
   background: url("../img/icons/youtube.png") no-repeat center 0;
 }
 
-.menu li.docs-nav-version {
+.docs-nav li.docs-nav-version {
   display: flex;
   align-items: center;
 
@@ -423,7 +423,7 @@ a[data-open-video] {
   position: relative;
 }
 
-.docs-nav.menu {
+.docs-nav {
   .docs-expand-all {
     font-size: 0.6rem;
     position: absolute;

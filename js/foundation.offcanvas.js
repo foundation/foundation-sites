@@ -6,8 +6,7 @@ import { MediaQuery } from './foundation.util.mediaQuery';
 import { transitionend } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
-  // import "foundation.util.triggers.js";
-  // TODO: Figure out what triggers import should actually do, given how indirect their use is
+import { Triggers } from './foundation.util.triggers';
 
 /**
  * OffCanvas module.
@@ -30,6 +29,9 @@ class OffCanvas extends Plugin {
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
     this.$lastTrigger = $();
     this.$triggers = $();
+
+    //Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     this._init();
     this._events();
