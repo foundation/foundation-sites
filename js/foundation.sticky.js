@@ -318,6 +318,7 @@ class Sticky extends Plugin {
     }
 
     this.$element.css({
+      'width': `${newElemWidth - pdngl - pdngr}px`,
       'max-width': `${newElemWidth - pdngl - pdngr}px`
     });
 
