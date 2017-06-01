@@ -114,7 +114,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 <div class="docs-code-live">
 	<div class="row">
-		<div class="small-4 columns">
+		<div class="medium-4 columns">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -126,7 +126,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 			  </div>
 			</div>
 		</div>
-		<div class="small-4 columns">
+		<div class="medium-4 columns">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -138,7 +138,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 			  </div>
 			</div>
 		</div>
-		<div class="small-4 columns">
+		<div class="medium-4 columns">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">

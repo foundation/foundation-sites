@@ -6,19 +6,19 @@ sass: scss/xy-grid/_xy-grid.scss
 
 ## XY Grid Basics
 
-The XY grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing and a full vertical grid.
+The XY grid works very similarly to the standard float grid, but includes a number of useful features only possible with Flexbox, like horizontal and vertical alignment, automatic sizing and a full vertical grid.
 
 ---
 
 ## Browser support
 
-The XY grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+The XY grid is supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View Flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the XY grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
 ## Importing
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with Flexbox mode enabled.
 
 ```scss
 @import 'foundation';
