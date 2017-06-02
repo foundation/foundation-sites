@@ -45,22 +45,22 @@ These are:
 
 ## Basics
 
-The structure of XY grid uses `.grid` and `.cell` as its base. Without [defining a gutter type](#gutters) the cells with simply split up the space without any gutters.
+The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Without [defining a gutter type](#gutters) the cells with simply split up the space without any gutters.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gRYeMQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<div class="grid">
+<div class="grid-x">
   <div class="cell">full width cell</div>
   <div class="cell">full width cell</div>
 </div>
-<div class="grid">
+<div class="grid-x">
   <div class="small-6 cell">6 cells</div>
   <div class="small-6 cell">6 cells</div>
 </div>
-<div class="grid">
+<div class="grid-x">
   <div class="medium-6 large-4 cell">12/6/4 cells</div>
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
@@ -78,11 +78,11 @@ To define a grid type, simple set `.margin-gutters` or `.padding-gutters` on the
 </div>
 
 ```html_example
-<div class="grid margin-gutters">
+<div class="grid-x margin-gutters">
   <div class="medium-6 large-4 cell">12/6/4 cells</div>
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
-<div class="grid padding-gutters">
+<div class="grid-x padding-gutters">
   <div class="medium-6 large-4 cell">12/6/4 cells</div>
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
@@ -95,7 +95,7 @@ The grid defaults to the full width of its container. In order to contain the gr
 
 ```html
 <div class="grid-container">
-  <div class="grid">
+  <div class="grid-x">
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
@@ -109,7 +109,7 @@ The grid defaults to the full width of its container. In order to contain the gr
 If the class `.auto` or `.[size]-auto` is added to the cell, it will take up the remaining space.
 
 ```html_example
-<div class="grid margin-gutters">
+<div class="grid-x margin-gutters">
   <div class="small-4 cell">4 cells</div>
   <div class="auto cell">Whatever's left!</div>
 </div>
@@ -120,7 +120,7 @@ If the class `.auto` or `.[size]-auto` is added to the cell, it will take up the
 Multiple expanding cells will share the leftover space equally.
 
 ```html_example
-<div class="grid margin-gutters">
+<div class="grid-x margin-gutters">
   <div class="small-4 cell">4 cells</div>
   <div class="auto cell">Whatever's left!</div>
   <div class="auto cell">Whatever's left!</div>
@@ -132,7 +132,7 @@ Multiple expanding cells will share the leftover space equally.
 A cell can also be made to *shrink*, by adding the `.shrink` or `.[size]-shrink` class. This means it will only take up the space its contents need.
 
 ```html_example
-<div class="grid margin-gutters">
+<div class="grid-x margin-gutters">
   <div class="shrink cell">Shrink!</div>
   <div class="auto cell">Expand!</div>
 </div>
@@ -145,7 +145,7 @@ A cell can also be made to *shrink*, by adding the `.shrink` or `.[size]-shrink`
 To switch back to the auto behavior from a percentage or shrink behavior, use the classes `.[size]-auto` or `.[size]-shrink`. In the below example, the cells stack on small screens, and become even-width on large screens.
 
 ```html_example
-<div class="grid">
+<div class="grid-x">
   <div class="large-auto cell">One</div>
   <div class="large-auto cell">Two</div>
   <div class="large-auto cell">Three</div>
@@ -164,7 +164,7 @@ The `.[size]-[margin-type]-collapse` class lets you remove cell gutters.
 There are times when you won't want each media query to be collapsed. In this case, use the media query size you want and collapse and add that to your grid element. Example shows gutters at small and no gutters on medium and up.
 
 ```html_example
-<div class="grid margin-gutters medium-margin-collapse">
+<div class="grid-x margin-gutters medium-margin-collapse">
   <div class="small-6 cell">
     Gutters at small no gutters at medium.
   </div>
@@ -181,7 +181,7 @@ There are times when you won't want each media query to be collapsed. In this ca
 Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to a grid.
 
 ```html_example
-<div class="grid margin-gutters">
+<div class="grid-x margin-gutters">
   <div class="small-4 large-offset-2 cell">Offset 2 on large</div>
   <div class="small-4 cell">4 cells</div>
 </div>
@@ -191,8 +191,8 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 ## Vertical Grids
 
-The XY grid also supports vertical grids. Simply apply `.grid-vertical` instead of `.grid`.
-All other classes are available eg: `.[size]-vertical-[number]`, `[size]-vertical-auto` and `[size]-vertical-shrink` classes work as height rather than width.
+The XY grid also supports vertical grids. Simply apply `.grid-y` instead of `.grid-x`.
+The internal cells will shift automatically to provide spacing vertically rather than horizontally
 
 <div class="callout">
   <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100 vertical height grid (or 100% height if nested).</p>
@@ -204,11 +204,11 @@ All other classes are available eg: `.[size]-vertical-[number]`, `[size]-vertica
 </div>
 
 ```html_example
-<div class="grid-vertical" style="height: 500px;">
-  <div class="cell small-vertical-6 medium-vertical-8 large-vertical-2">
+<div class="grid-y" style="height: 500px;">
+  <div class="cell small-6 medium-8 large-2">
     6/8/2
   </div>
-  <div class="cell small-vertical-6 medium-vertical-4 large-vertical-10">
+  <div class="cell small-6 medium-4 large-10">
     6/4/10
   </div>
 </div>
@@ -227,10 +227,10 @@ Here's an example of what you can do:
 </div>
 
 ```html_example
-<div class="grid grid-vertical medium-grid-frame">
+<div class="grid-y medium-grid-frame">
   <div class="cell shrink header cell-block-container">
     <h1>Grid Frame Header</h1>
-    <div class="grid padding-gutters">
+    <div class="grid-x padding-gutters">
       <div class="cell medium-4">
         A medium 4 cell
       </div>
@@ -243,15 +243,15 @@ Here's an example of what you can do:
     </div>
   </div>
   <div class="cell auto cell-block-container">
-    <div class="grid padding-gutters">
-      <div class="cell medium-4 medium-cell-block-vertical">
+    <div class="grid-x padding-gutters">
+      <div class="cell medium-4 medium-cell-block-y">
         <h2>Independent scrolling sidebar</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus, dignissim tortor a, hendrerit risus.</p>
 
         <p>Suspendisse pulvinar, massa iaculis feugiat lobortis, dolor sapien vestibulum nulla, vel cursus tellus leo in lorem. Aliquam eu placerat urna. Suspendisse sed viverra orci, ut mattis neque. Fusce non ultrices nisi. In sagittis varius mollis. Quisque dolor quam, consectetur eu lacinia ac, ullamcorper vel arcu. Nullam mattis imperdiet nulla sed ornare. Praesent tristique, est id eleifend vestibulum, neque nibh condimentum ex, nec lobortis purus justo a libero. Phasellus id ex ac nunc hendrerit hendrerit. Nullam urna ipsum, rutrum at fringilla vel, venenatis non purus. Maecenas egestas ex vitae venenatis molestie. Ut et odio egestas, accumsan neque et, viverra nisl. Sed faucibus nec nulla sed imperdiet. Fusce quis sem ac urna semper tempor a id elit. Nulla fringilla vitae sapien a vehicula.</p>
 
       </div>
-      <div class="cell medium-8 medium-cell-block-vertical">
+      <div class="cell medium-8 medium-cell-block-y">
         <h2>Independent scrolling body</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus, dignissim tortor a, hendrerit risus.</p>
         <p>Suspendisse pulvinar, massa iaculis feugiat lobortis, dolor sapien vestibulum nulla, vel cursus tellus leo in lorem. Aliquam eu placerat urna. Suspendisse sed viverra orci, ut mattis neque. Fusce non ultrices nisi. In sagittis varius mollis. Quisque dolor quam, consectetur eu lacinia ac, ullamcorper vel arcu. Nullam mattis imperdiet nulla sed ornare. Praesent tristique, est id eleifend vestibulum, neque nibh condimentum ex, nec lobortis purus justo a libero. Phasellus id ex ac nunc hendrerit hendrerit. Nullam urna ipsum, rutrum at fringilla vel, venenatis non purus. Maecenas egestas ex vitae venenatis molestie. Ut et odio egestas, accumsan neque et, viverra nisl. Sed faucibus nec nulla sed imperdiet. Fusce quis sem ac urna semper tempor a id elit. Nulla fringilla vitae sapien a vehicula.</p>
