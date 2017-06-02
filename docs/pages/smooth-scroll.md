@@ -15,7 +15,7 @@ tags:
 
 ## Setup
 
-To enable SmoothScroll on internal links, just add the attribute `data-smooth-scroll` to the parent container like our [Menu](menu.html). Each section needs a unique ID
+To enable SmoothScroll on internal links, just add the attribute `data-smooth-scroll` to the parent container like our [Menu](menu.html). Please note that each section needs a unique ID.
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jwOEEM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
