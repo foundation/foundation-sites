@@ -408,64 +408,64 @@ Generate spacing around elements with these easy to use margin classes.
 #### Margin (All Sides)
 
 ```html
-<div class="margin-0"></div>
-<div class="margin-1"></div>
-<div class="margin-2"></div>
-<div class="margin-3"></div>
+<div class="m-0"></div> <!-- Margin 0 -->
+<div class="m-1"></div> <!-- Margin 1rem -->
+<div class="m-2"></div> <!-- Margin 2rem -->
+<div class="m-3"></div> <!-- Margin 3rem -->
 ```
 
 #### Margin Top
 
 ```html
-<div class="margin-top-0"></div>
-<div class="margin-top-1"></div>
-<div class="margin-top-2"></div>
-<div class="margin-top-3"></div>
+<div class="m-t-0"></div> <!-- Margin Top 0 -->
+<div class="m-t-1"></div> <!-- Margin Top 1rem -->
+<div class="m-t-2"></div> <!-- Margin Top 2rem -->
+<div class="m-t-3"></div> <!-- Margin Top 3rem -->
 ```
 
 #### Margin Bottom
 
 ```html
-<div class="margin-bottom-0"></div>
-<div class="margin-bottom-1"></div>
-<div class="margin-bottom-2"></div>
-<div class="margin-bottom-3"></div>
+<div class="m-b-0"></div> <!-- Margin Bottom 0 -->
+<div class="m-b-1"></div> <!-- Margin Bottom 1rem -->
+<div class="m-b-2"></div> <!-- Margin Bottom 2rem -->
+<div class="m-b-3"></div> <!-- Margin Bottom 3rem -->
 ```
 
 #### Margin Left
 
 ```html
-<div class="margin-left-0"></div>
-<div class="margin-left-1"></div>
-<div class="margin-left-2"></div>
-<div class="margin-left-3"></div>
+<div class="m-l-0"></div> <!-- Margin Left 0 -->
+<div class="m-l-1"></div> <!-- Margin Left 1rem -->
+<div class="m-l-2"></div> <!-- Margin Left 2rem -->
+<div class="m-l-3"></div> <!-- Margin Left 3rem -->
 ```
 
 #### Margin Right
 
 ```html
-<div class="margin-right-0"></div>
-<div class="margin-right-1"></div>
-<div class="margin-right-2"></div>
-<div class="margin-right-3"></div>
+<div class="m-r-0"></div> <!-- Margin Right 0 -->
+<div class="m-r-1"></div> <!-- Margin Right 1rem -->
+<div class="m-r-2"></div> <!-- Margin Right 2rem -->
+<div class="m-r-3"></div> <!-- Margin Right 3rem -->
 ```
 
 #### Margin Left Right (Horizontal Axis)
 
 ```html
-<div class="margin-horizontal-0"></div>
-<div class="margin-horizontal-1"></div>
-<div class="margin-horizontal-2"></div>
-<div class="margin-horizontal-3"></div>
+<div class="m-x-0"></div> <!-- Margin Horizontal 0 -->
+<div class="m-x-1"></div> <!-- Margin Horizontal 1rem -->
+<div class="m-x-2"></div> <!-- Margin Horizontal 2rem -->
+<div class="m-x-3"></div> <!-- Margin Horizontal 3rem -->
 ```
 
 #### Margin Top Bottom (Vertical Axis)
 
 ```html
-<div class="margin-vertical-0"></div>
-<div class="margin-vertical-1"></div>
-<div class="margin-vertical-2"></div>
-<div class="margin-vertical-3"></div>
+<div class="m-y-0"></div> <!-- Margin Vertical 0 -->
+<div class="m-y-1"></div> <!-- Margin Vertical 1rem -->
+<div class="m-y-2"></div> <!-- Margin Vertical 2rem -->
+<div class="m-y-3"></div> <!-- Margin Vertical 3rem -->
 ```
 
 #### Margin: Usage as a Mixin
@@ -501,64 +501,64 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding (All Sides)
 
 ```html
-<div class="padding-0"></div>
-<div class="padding-1"></div>
-<div class="padding-2"></div>
-<div class="padding-3"></div>
+<div class="p-0"></div> <!-- Padding 0 -->
+<div class="p-1"></div> <!-- Padding 1rem -->
+<div class="p-2"></div> <!-- Padding 2rem -->
+<div class="p-3"></div> <!-- Padding 3rem -->
 ```
 
 #### Padding Top
 
 ```html
-<div class="padding-top-0"></div>
-<div class="padding-top-1"></div>
-<div class="padding-top-2"></div>
-<div class="padding-top-3"></div>
+<div class="p-t-0"></div> <!-- Padding Top 0 -->
+<div class="p-t-1"></div> <!-- Padding Top 1rem -->
+<div class="p-t-2"></div> <!-- Padding Top 2rem -->
+<div class="p-t-3"></div> <!-- Padding Top 3rem -->
 ```
 
 #### Padding Bottom
 
 ```html
-<div class="padding-bottom-0"></div>
-<div class="padding-bottom-1"></div>
-<div class="padding-bottom-2"></div>
-<div class="padding-bottom-3"></div>
+<div class="p-b-0"></div> <!-- Padding Bottom 0 -->
+<div class="p-b-1"></div> <!-- Padding Bottom 1rem -->
+<div class="p-b-2"></div> <!-- Padding Bottom 2rem -->
+<div class="p-b-3"></div> <!-- Padding Bottom 3rem -->
 ```
 
 #### Padding Left
 
 ```html
-<div class="padding-left-0"></div>
-<div class="padding-left-1"></div>
-<div class="padding-left-2"></div>
-<div class="padding-left-3"></div>
+<div class="p-l-0"></div> <!-- Padding Left 0 -->
+<div class="p-l-1"></div> <!-- Padding Left 1rem -->
+<div class="p-l-2"></div> <!-- Padding Left 2rem -->
+<div class="p-l-3"></div> <!-- Padding Left 3rem -->
 ```
 
 #### Padding Right
 
 ```html
-<div class="padding-right-0"></div>
-<div class="padding-right-1"></div>
-<div class="padding-right-2"></div>
-<div class="padding-right-3"></div>
+<div class="p-r-0"></div> <!-- Padding Right 0 -->
+<div class="p-r-1"></div> <!-- Padding Right 1rem -->
+<div class="p-r-2"></div> <!-- Padding Right 2rem -->
+<div class="p-r-3"></div> <!-- Padding Right 3rem -->
 ```
 
 #### Padding Left Right (Horizontal Axis)
 
 ```html
-<div class="padding-horizontal-0"></div>
-<div class="padding-horizontal-1"></div>
-<div class="padding-horizontal-2"></div>
-<div class="padding-horizontal-3"></div>
+<div class="p-x-0"></div> <!-- Padding Horizontal 0 -->
+<div class="p-x-1"></div> <!-- Padding Horizontal 1rem -->
+<div class="p-x-2"></div> <!-- Padding Horizontal 2rem -->
+<div class="p-x-3"></div> <!-- Padding Horizontal 3rem -->
 ```
 
 #### Padding Top Bottom (Vertical Axis)
 
 ```html
-<div class="padding-vertical-0"></div>
-<div class="padding-vertical-1"></div>
-<div class="padding-vertical-2"></div>
-<div class="padding-vertical-3"></div>
+<div class="p-y-0"></div> <!-- Padding Vertical 0 -->
+<div class="p-y-1"></div> <!-- Padding Vertical 1rem -->
+<div class="p-y-2"></div> <!-- Padding Vertical 2rem -->
+<div class="p-y-3"></div> <!-- Padding Vertical 3rem -->
 ```
 
 #### Padding: Usage as a Mixin
@@ -590,23 +590,23 @@ These width and height classes help you to easily make an element as wide or as 
 #### Width
 
 ```html
-<div class="width-25"></div>
-<div class="width-50"></div>
-<div class="width-75"></div>
-<div class="width-100"></div>
+<div class="w-25"></div> <!-- Width - 25% -->
+<div class="w-50"></div> <!-- Width - 50% -->
+<div class="w-75"></div> <!-- Width - 75% -->
+<div class="w-100"></div> <!-- Width - 100% -->
 
-<div class="max-width-100"></div>
+<div class="mx-w"></div> <!-- Max Width 100 -->
 ```
 
 #### Height
 
 ```html
-<div class="height-25"></div>
-<div class="height-50"></div>
-<div class="height-75"></div>
-<div class="height-100"></div>
+<div class="h-25"></div> <!-- Height - 25% -->
+<div class="h-50"></div> <!-- Height - 50% -->
+<div class="h-75"></div> <!-- Height - 75% -->
+<div class="h-100"></div> <!-- Height - 100% -->
 
-<div class="max-height-100"></div>
+<div class="mx-h"></div> <!-- Max Height 100 -->
 ```
 
 ---
