@@ -15,22 +15,29 @@
   }
 
   // Base grid styles
-  .grid {
+  .grid-x {
     @include xy-grid;
   }
 
   .cell {
     @include xy-cell-base();
     @include xy-cell-static($grid-columns, false, $gutter-type: padding);
-  }
-  .grid {
-    > .auto {
+
+    &.auto {
       @include xy-cell-base(auto);
+    }
+
+    &.shrink {
+      @include xy-cell-base(shrink);
+    }
+
+  }
+  .grid-x {
+    > .auto {
       @include xy-cell-static(auto, false);
     }
 
     > .shrink {
-      @include xy-cell-base(shrink);
       @include xy-cell-static(shrink, false);
     }
   }
@@ -38,12 +45,12 @@
   // Auto width
   @include -zf-each-breakpoint() {
     @if not($-zf-size == small) {
-      .grid > .#{$-zf-size}-auto {
+      .grid-x > .#{$-zf-size}-auto {
         @include xy-cell-base(auto);
         @include xy-cell-static(auto, false);
       }
 
-      .grid > .#{$-zf-size}-shrink {
+      .grid-x > .#{$-zf-size}-shrink {
         @include xy-cell-base(shrink);
         @include xy-cell-static(shrink, false);
       }
@@ -71,7 +78,7 @@
 
   @for $i from 1 through $grid-columns {
     // Sizing (percentage)
-    $classname: if($vertical, '.#{$class-breakpoint}-vertical-#{$i}', '.#{$class-breakpoint}-#{$i}');
+    $classname: if($vertical, '.#{$class-breakpoint}-#{$i}', '.#{$class-breakpoint}-#{$i}');
 
     > #{$classname} {
       @include xy-cell-static($i, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
@@ -217,7 +224,7 @@
     }
   }
 
-  .grid-vertical {
+  .grid-y {
     @include xy-grid(vertical);
 
 
@@ -248,7 +255,7 @@
 
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
-        > .#{$-zf-size}-vertical-#{$i} {
+        > .#{$-zf-size}-#{$i} {
           @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
@@ -270,7 +277,7 @@
   }
 
   @if $margin-grid {
-    @include xy-margin-grid-classes(top bottom, true, '.grid-vertical.margin-gutters')
+    @include xy-margin-grid-classes(top bottom, true, '.grid-y.margin-gutters')
   }
 }
 
@@ -303,11 +310,11 @@
 
   @if $vertical-grid {
 
-    .cell-block-vertical {
+    .cell-block-y {
       @include xy-cell-block(true);
     }
 
-    .grid-vertical {
+    .grid-y {
       &.grid-frame {
         width: auto;
         @include xy-grid-frame(true);
@@ -319,7 +326,7 @@
           @include xy-grid-frame(true);
         }
 
-        .#{$-zf-size}-cell-block-vertical {
+        .#{$-zf-size}-cell-block-y {
           @include xy-cell-block(true);
         }
       }
