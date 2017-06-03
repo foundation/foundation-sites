@@ -65,7 +65,8 @@ You can instead import only the specific utility classes that you need. To make 
 @include foundation-prototype-rounded;
 @include foundation-prototype-bordered;
 @include foundation-prototype-shadow;
-@include foundation-prototype-titlebar;
+@include foundation-prototype-arrow;
+@include foundation-prototype-separator;
 @include foundation-prototype-overflow;
 @include foundation-prototype-display;
 @include foundation-prototype-position;
@@ -209,6 +210,24 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 <div class="docs-code-live margin-bottom-1">
 	<img src="http://placehold.it/150x150" class="radius">
 </div>
+
+---
+
+## Arrow Utility
+
+Mostly used as dropdown arrows for navigation.
+
+```html
+<div class="arrow-down"></div>
+<div class="arrow-up"></div>
+<div class="arrow-right"></div>
+<div class="arrow-left"></div>
+```
+
+<div class="arrow-down display-inline-block margin-right-1"></div>
+<div class="arrow-up display-inline-block margin-right-1"></div>
+<div class="arrow-right display-inline-block margin-right-1"></div>
+<div class="arrow-left display-inline-block"></div>
 
 ---
 
