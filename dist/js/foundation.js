@@ -913,6 +913,8 @@ Triggers.init = function ($, Foundation) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Motion; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(1);
+
 
 
 
@@ -997,7 +999,7 @@ function animate(isIn, element, animation, cb) {
   });
 
   // Clean up the animation when it finishes
-  element.one(Foundation.transitionend(element), finish);
+  element.one(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["c" /* transitionend */])(element), finish);
 
   // Hides the element (for out animations), resets the element, and runs a callback
   function finish() {
@@ -5256,7 +5258,7 @@ Abide.defaults = {
 
 
 
-var FOUNDATION_VERSION = '6.4.0-rc1';
+var FOUNDATION_VERSION = '6.4.0-rc2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

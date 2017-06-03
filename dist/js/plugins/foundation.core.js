@@ -177,7 +177,7 @@ window.Foundation = __WEBPACK_IMPORTED_MODULE_1__foundation_core__["a" /* Founda
 
 
 
-var FOUNDATION_VERSION = '6.4.0-rc1';
+var FOUNDATION_VERSION = '6.4.0-rc2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
