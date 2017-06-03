@@ -72,7 +72,12 @@ $buttongroup-radius-on-each: true !default;
         border-bottom-#{$global-right}-radius: $button-radius;
       }
     }
+  }
 
+  &.vertical {
+    #{$child-selector} {
+      display: block;
+    }
   }
 }
 

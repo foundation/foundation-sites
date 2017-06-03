@@ -30,6 +30,24 @@ Add the `.button-group` class to a container, and inside it place any number of 
 
 ---
 
+## Vertical Button group
+
+Add the `.vertical` class to a `.button-group` to group a series of buttons vertically.
+
+<div class="primary callout">
+  <p>Vertical Button group child selectors are block level elements, which means they stretch to fill the width of their container. To make the below example less goofy, we've hard-coded a <code>max-width</code> on the button group.</p>
+</div>
+
+```html_example
+<div class="button-group vertical" style="max-width: 250px;">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+```
+
+---
+
 ## Sizing
 
 Button groups can be sized with the same classes as standard buttons: `.tiny`, `.small`, and `.large`.
