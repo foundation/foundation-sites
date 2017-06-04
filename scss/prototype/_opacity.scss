@@ -1,0 +1,15 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-opacity
+////
+
+/// Opacity Mixin: Easily create opacity to an element
+/// @param {Number} $opacity[] Opacity/Transparency of an element
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
