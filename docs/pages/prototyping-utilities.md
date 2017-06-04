@@ -65,7 +65,7 @@ You can instead import only the specific utility classes that you need. To make 
 @include foundation-prototype-rounded;
 @include foundation-prototype-bordered;
 @include foundation-prototype-shadow;
-@include foundation-prototype-titlebar;
+@include foundation-prototype-separator;
 @include foundation-prototype-overflow;
 @include foundation-prototype-display;
 @include foundation-prototype-position;
