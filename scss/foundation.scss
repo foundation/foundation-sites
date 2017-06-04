@@ -47,6 +47,7 @@
 @import 'components/flex';
 @import 'components/responsive-embed';
 @import 'components/label';
+@import 'components/list-group';
 @import 'components/media-object';
 @import 'components/menu';
 @import 'components/menu-icon';
@@ -104,6 +105,7 @@
   @include foundation-dropdown-menu;
   @include foundation-responsive-embed;
   @include foundation-label;
+  @include foundation-list-group;
   @include foundation-media-object;
   @include foundation-off-canvas;
   @include foundation-orbit;
