@@ -12,6 +12,7 @@ declare module FoundationSites {
     requiredChecked(element: JQuery): boolean;
     findFormError(element: JQuery): JQuery;
     findLabel(element: JQuery): boolean;
+    findRadioLabels(element: JQuery): any;
     addErrorClasses(element: JQuery): void;
     removeRadioErrorClasses(groupName: string): void;
     removeErrorClasses(element: JQuery): void;
@@ -24,16 +25,8 @@ declare module FoundationSites {
     destroy(): void;
   }
 
-  interface AbideDefaults {
-    validateOn: string;
-    labelErrorClass: string;
-    inputErrorClass: string;
-    formErrorSelector: string;
-    formErrorClass: string;
-    liveValidate: boolean;
-    validateOnBlur: boolean;
-    patterns: IAbidePatterns;
-    validators: any; // TODO, maybe there is a better solution to describe how this object may look like
+  interface AbideDefaults extends IAbideOptions{
+   
   }
 
   interface IAbidePatterns {
@@ -62,7 +55,8 @@ declare module FoundationSites {
     formErrorSelector?: string;
     formErrorClass?: string;
     liveValidate?: boolean;
-    validators?: any;
+    validators?: {[key:string]:Function};
+    patterns?:{[key:string]:RegExp}; 
   }
 
   // http://foundation.zurb.com/sites/docs/accordion.html#javascript-reference
@@ -71,6 +65,10 @@ declare module FoundationSites {
     down($target: JQuery, firstTime: boolean): void;
     up($target: JQuery): void;
     destroy(): void;
+  }
+
+  interface AccordionDefaults extends IAccordionOptions{
+   
   }
 
   interface IAccordionOptions {
@@ -88,6 +86,10 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface AccordionMenuDefaults extends IAccordionMenuOptions{
+
+  }
+
   interface IAccordionMenuOptions {
     slideSpeed?: number;
     multiOpen?: boolean;
@@ -98,11 +100,23 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface DrilldownDefaults extends IDrilldownOptions{
+    
+  }
+
   interface IDrilldownOptions {
     backButton?: string;
+    backButtonPosition?: string;
     wrapper?: string;
     parentLink?: boolean;
     closeOnClick?: boolean;
+    autoHeight?: boolean;
+    animateHeight?: boolean;
+    scrollTop?: boolean;
+    scrollTopElement?: string;
+    scrollTopOffset?: number;
+    animationDuration?: number;
+    animationEasing?: string;
   }
 
   // http://foundation.zurb.com/sites/docs/dropdown.html#javascript-reference
@@ -112,6 +126,10 @@ declare module FoundationSites {
     close(): void;
     toggle(): void;
     destroy(): void;
+  }
+
+  interface DropdownDefaults extends IDropdownOptions{
+  
   }
 
   interface IDropdownOptions {
@@ -129,6 +147,10 @@ declare module FoundationSites {
   // http://foundation.zurb.com/sites/docs/dropdown-menu.html#javascript-reference
   interface DropdownMenu {
     destroy(): void;
+  }
+
+  interface dropdownMenuDefaults extends IDropdownMenuOptions{
+  
   }
 
   interface IDropdownMenuOptions {
@@ -153,10 +175,14 @@ declare module FoundationSites {
     destroy(): void;
   }
 
-  interface IEqualizerOptions {
+  interface EqualizerDefaults extends IEqualizerOptions{
+  }
+
+  interface IEqualizerOptions{
     equalizeOnStack?: boolean;
     equalizeByRow?: boolean;
     equalizeOn?: string;
+  
   }
 
   // http://foundation.zurb.com/sites/docs/interchange.html#javascript-reference
@@ -165,8 +191,12 @@ declare module FoundationSites {
     destroy(): void;
   }
 
-  interface IInterchangeOptions {
-    rules?: Array<any>
+  interface InterchangeDefaults extends IInterchangeOptions{
+  
+  }
+
+  interface InterchangeOptions{
+    rules?: Array<any>;
   }
 
   // http://foundation.zurb.com/sites/docs/magellan.html#javascript-reference
@@ -175,6 +205,10 @@ declare module FoundationSites {
     scrollToLoc(location: string): void;
     reflow(): void;
     destroy(): void;
+  }
+  
+  interface MagellanDefaults extends IMagellanOptions{
+    
   }
 
   interface IMagellanOptions {
@@ -195,6 +229,10 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface OffCanvasDefaults extends IOffCanvasOptions{
+    
+  }
+
   interface IOffCanvasOptions {
     closeOnClick?: boolean;
     transitionTime?: number;
@@ -212,6 +250,10 @@ declare module FoundationSites {
     geoSync(): void;
     changeSlide(isLTR: boolean, chosenSlide?: JQuery, idx?: number): void;
     destroy(): void;
+  }
+
+  interface OrbitDefaults extends IOrbitOptions{
+    
   }
 
   interface IOrbitOptions {
@@ -235,6 +277,34 @@ declare module FoundationSites {
     useMUI?: boolean;
   }
 
+  // https://foundation.zurb.com/sites/docs/responsive-navigation.htm
+  interface ResponsiveMenu{
+    destroy();
+  }
+
+  interface ResponsiveMenuDefaults extends IResponsiveMenuOptions{
+    
+  }
+
+  interface IResponsiveMenuOptions{
+
+  }
+
+  // https://foundation.zurb.com/sites/docs/responsive-navigation.html
+  interface ResponsiveToggle{
+    toggleMenu();
+    destroy();
+  }
+
+  interface ResponsiveToggleDefaults extends IResponsiveToggleOptions{
+    
+  }
+
+  interface IResponsiveToggleOptions{
+    hideFor?: string;
+    animate?: boolean|string;
+  }
+
   // http://foundation.zurb.com/sites/docs/reveal.html#javascript-reference
   interface Reveal {
     open(): void;
@@ -243,6 +313,9 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface RevealDefaults extends IRevealOptions{
+
+  }
   interface IRevealOptions {
     animationIn?: string;
     animationOut?: string;
@@ -251,13 +324,14 @@ declare module FoundationSites {
     closeOnClick?: boolean;
     closeOnEsc?: boolean;
     multipleOpened?: boolean;
-    vOffset?: number;
-    hOffset?: number;
+    vOffset?: number|string;
+    hOffset?: number|string;
     fullScreen?: boolean;
     btmOffsetPct?: number;
     overlay?: boolean;
     resetOnClose?: boolean;
     deepLink?: boolean;
+    appendTo?: string;
   }
 
   // http://foundation.zurb.com/sites/docs/slider.html#javascript-reference
@@ -265,11 +339,15 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface SliderDefaults extends ISliderOptions{
+
+  }
+
   interface ISliderOptions {
     start?: number;
     end?: number;
     step?: number;
-    initialStart ?: number;
+    initialStart?: number;
     initialEnd?: number;
     binding?: boolean;
     clickSelect?: boolean;
@@ -280,11 +358,23 @@ declare module FoundationSites {
     decimal?: number;
     moveTime?: number;
     disabledClass?: string;
+    invertVertical?: boolean;
+    changedDelay?: number;
+    nonLinearBase?: number;
+    positionValueFunction?: string;
   }
 
   // http://foundation.zurb.com/sites/docs/sticky.html#javascript-reference
   interface Sticky {
     destroy(): void;
+  }
+
+  interface StickyDefaults{
+
+  }
+
+  interface StickyDefaults extends IStickyOptions{
+
   }
 
   interface IStickyOptions {
@@ -307,12 +397,23 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface TabsDefaults extends ITabsOptions{
+
+  }
+
   interface ITabsOptions {
+    deepLink?: boolean;
+    deepLinkSmudge?: boolean;
+    deepLinkSmudgeDelay?: number;
+    updateHistory?: boolean;
     autoFocus?: boolean;
     wrapOnKeys?: boolean;
     matchHeight?: boolean;
+    activeCollapse?: boolean;
     linkClass?: string;
+    linkActiveClass?: string;
     panelClass?: string;
+    panelActiveClass?: string;
   }
 
   // http://foundation.zurb.com/sites/docs/toggler.html#javascript-reference
@@ -321,8 +422,12 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface TogglerDefaults extends ITogglerOptions{
+
+  }
+
   interface ITogglerOptions {
-    animate?: boolean;
+    animate?: boolean|string;
   }
 
   // http://foundation.zurb.com/sites/docs/tooltip.html#javascript-reference
@@ -333,21 +438,28 @@ declare module FoundationSites {
     destroy(): void;
   }
 
+  interface TooltipDefaults extends ITooltipOptions{
+
+  }
+
   interface ITooltipOptions {
+    disableForTouch?: boolean;
     hoverDelay?: number;
     fadeInDuration?: number;
     fadeOutDuration?: number;
-    disableHover?: boolean;
+    disableHover?: number;
     templateClasses?: string;
     tooltipClass?: string;
     triggerClass?: string;
     showOn?: string;
     template?: string;
     tipText?: string;
+    touchCloseText?: string;
     clickOpen?: boolean;
     positionClass?: string;
     vOffset?: number;
     hOffset?: number;
+    allowHtml?: boolean;
   }
 
   // Utilities
@@ -408,6 +520,7 @@ declare module FoundationSites {
     registerPlugin(plugin: Object): void;
     unregisterPlugin(plugin: Object): void;
     reInit(plugins: Array<any>): void;
+	reInit(element: JQuery): void;
     GetYoDigits(length: number, namespace?: string): string;
     reflow(elem: Object, plugins?: Array<string>|string): void;
     getFnName(fn: string): string;
@@ -423,51 +536,76 @@ declare module FoundationSites {
     }
     Accordion: {
       new(element: JQuery, options?: IAccordionOptions): Accordion;
+      defaults: AccordionDefaults;
     }
     AccordionMenu: {
       new(element: JQuery, options?: IAccordionMenuOptions): AccordionMenu;
+      defaults: AccordionMenuDefaults;
     }
     Drilldown: {
       new(element: JQuery, options?: IDrilldownOptions): Drilldown;
+      defaults: DrilldownDefaults;
     }
     Dropdown: {
       new(element: JQuery, options?: IDropdownOptions): Dropdown;
+      defaults: DropdownDefaults;
     }
     DropdownMenu: {
       new(element: JQuery, options?: IDropdownMenuOptions): DropdownMenu;
+      defaults: dropdownMenuDefaults;
     }
     Equalizer: {
       new(element: JQuery, options?: IEqualizerOptions): Equalizer;
+      defaults: EqualizerDefaults;
     }
     Interchange: {
       new(element: JQuery, options?: IInterchangeOptions): Interchange;
+      defaults: InterchangeDefaults;
+      SPECIAL_QUERIES:{[key:string]:string};
     }
     Magellan: {
       new(element: JQuery, options?: IMagellanOptions): Magellan;
+      defaults: MagellanDefaults;
     }
     OffCanvas: {
       new(element: JQuery, options?: IOffCanvasOptions): OffCanvas;
+      defaults: OffCanvasDefaults;
     }
     Orbit: {
       new(element: JQuery, options?: IOrbitOptions): Orbit;
+      defaults: OrbitDefaults;
+    }
+    ResponsiveMenu: {
+      new(element: JQuery, options?: IResponsiveMenuOptions): ResponsiveMenu;
+      defaults: ResponsiveMenuDefaults;
+    }
+    ResponsiveToggle:{
+      new(element: JQuery, options?:IResponsiveToggleOptions): ResponsiveToggle;
+      defaults: ResponsiveToggleDefaults;
     }
     Reveal: {
       new(element: JQuery, options?: IRevealOptions): Reveal;
+      defaults: RevealDefaults;
     };
     Slider: {
       new(element: JQuery, options?: ISliderOptions): Slider;
+      defaults: SliderDefaults;
     }
     Sticky: {
       new(element: JQuery, options?: IStickyOptions): Sticky;
+      defaults: StickyDefaults;
     }
     Tabs: {
       new(element: JQuery, options?: ITabsOptions): Tabs;
+      defaults: TabsDefaults;
     }
     Toggler: {
       new(element: JQuery, options?: ITogglerOptions): Toggler;
+      defaults: TogglerDefaults;
     }
     Tooltip: {
       new(element: JQuery, options?: ITooltipOptions): Tooltip;
+      defaults: TooltipDefaults;
     }
 
     // utils
@@ -487,6 +625,8 @@ declare module FoundationSites {
 
 interface JQuery {
   foundation(method?: string|Array<any>, $element?: JQuery): JQuery;
+  addTouch():JQuery;
+  spotSwipe():JQuery;
 }
 
 declare var Foundation: FoundationSites.FoundationSitesStatic;
