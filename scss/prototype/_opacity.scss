@@ -9,7 +9,11 @@
 /// Opacity Mixin: Easily create opacity to an element
 /// @param {Number} $opacity[] Opacity/Transparency of an element
 @mixin opacity($opacity) {
-  opacity: $opacity;
-  $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
+  @if ($opacity >= 0 and $opacity <= 1) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+  } @else {
+    @warn 'Opacity should be between 0.0 and 1.0';
+  }
 }
