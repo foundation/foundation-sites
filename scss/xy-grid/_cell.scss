@@ -53,7 +53,7 @@
     min-width: 0px;
   }
   @elseif ($size == 'auto') {
-    flex: 1 1 auto;
+    flex: 1 1 0px; // sass-lint:disable-line zero-unit
   }
   @elseif ($size == 'shrink') {
     flex: 0 0 auto;
