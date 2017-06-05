@@ -300,11 +300,15 @@
   @include -zf-each-breakpoint(false) {
 
     .#{$-zf-size}-grid-frame {
-      width: auto;
-      @include xy-grid-frame(true);
+      @include xy-grid-frame;
     }
+
     .#{$-zf-size}-cell-block {
       @include xy-cell-block();
+    }
+
+    .#{$-zf-size}-cell-block-y {
+      @include xy-cell-block(true);
     }
   }
 
@@ -326,9 +330,6 @@
           @include xy-grid-frame(true);
         }
 
-        .#{$-zf-size}-cell-block-y {
-          @include xy-cell-block(true);
-        }
       }
     }
   }
