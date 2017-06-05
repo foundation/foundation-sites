@@ -64,7 +64,7 @@ class Magellan extends Plugin {
 
     this.$targets.each(function(){
       var $tar = $(this),
-          pt = Math.round($tar.offset().top - _this.options.threshold);
+          pt = Math.round($tar.offset().top - _this.options.threshold - _this.options.barOffset);
       $tar.targetPoint = pt;
       _this.points.push(pt);
     });
