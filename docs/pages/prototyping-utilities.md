@@ -748,16 +748,6 @@ This mixin helps you to easily create a square, rectangle or a circle. Sass Refe
 }
 ```
 
-### Opacity Mixin
-
-This mixin helps you easily create opacity/transparency of an element. Sass Reference [here](#opacity)
-
-```scss
-.foo {
-  @include opacity(0.7); 
-}
-```
-
 ### Rotate Mixin
 These Rotate mixins lets you rotate an element to a certain degree. Clockwise is the default direction but adding a `-` in front of the degrees will make it counter-clockwise.
 

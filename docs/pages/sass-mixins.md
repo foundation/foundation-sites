@@ -50,7 +50,6 @@ Here is a list of available mixins:
 - [Font Italic](#font-italic)
 - [Style Type Unordered](#style-type-unordered)
 - [Style Type Ordered](#style-type-ordered)
-- [Opacity](#opacity)
 - [Overflow](#overflow)
 - [Overflow-x](#overflow-x)
 - [Overflow-y](#overflow-y)
