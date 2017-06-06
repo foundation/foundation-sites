@@ -157,7 +157,17 @@ Every component includes a set of variables that modify core structural or visua
 
 <div class="callout warning">
   <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/zurb/foundation/releases">Foundation releases</a> so you know when things change.</p>
+  <p>
+  A second handy approach is to set up a new setting file (e.g. `_setting-custom.scss`) and add only settings you wish to overwrite. In your `app.scss` include your custom setting right after the default setting. It may look like this:
+  </p>
 </div>
+
+```scss
+@import 'settings';
+@import 'settings-custom';
+```
+
+
 
 Here's an example set of settings variables. These change the default styling of [buttons](button.html):
 
