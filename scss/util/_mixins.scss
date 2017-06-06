@@ -199,7 +199,7 @@
   clip: auto;
 }
 
-/// Vertically centers the element inside of its first non-static parent,
+/// Vertically centers the element inside of its first non-static parent.
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin vertical-center {
   position: absolute;
@@ -207,7 +207,7 @@
   transform: translateY(-50%);
 }
 
-/// Horizontally centers the element inside of its first non-static parent,
+/// Horizontally centers the element inside of its first non-static parent.
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin horizontal-center {
   position: absolute;
@@ -215,7 +215,7 @@
   transform: translateX(-50%);
 }
 
-/// Absolutely centers the element inside of its first non-static parent,
+/// Absolutely centers the element inside of its first non-static parent.
 /// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
 @mixin absolute-center {
   position: absolute;
