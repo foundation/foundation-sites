@@ -38,6 +38,29 @@ $subheader-margin-bottom: 0.5rem !default;
 /// @type Number
 $stat-font-size: 2.5rem !default;
 
+/// @dropcaps
+
+// Line height for all the text within dropcaps, disabling default line height's
+$dropcaps-line-height : 1.45 !default;
+
+// @dropcaps-first-letter
+
+// Lets set margin first, used tiny negative margins for proper alignment
+$dropcaps-first-letter-margin-top: 0.02em !default;
+$dropcaps-first-letter-margin-bottom: -0.05em !default;
+
+// Padding Right to the dropcaps first letter to create gap b/w rest of text 
+$dropcaps-first-letter-padding-right: 0.05em !default;
+
+// Dropcaps first charchter is 500% bigger then regular size of an element 
+$dropcaps-first-letter-font-size: $global-font-size * 5 !default;
+
+// Line height for first letter of the dropcaps
+$dropcaps-first-letter-line-height: 0.85em !default;
+
+// Dropcaps float
+$dropcaps-first-letter-float: left;
+
 @mixin foundation-typography-helpers {
   // Use to create a subheading under a main header
   // Make sure you pair the two elements in a <header> element, like this:
@@ -74,5 +97,17 @@ $stat-font-size: 2.5rem !default;
   .no-bullet {
     margin-#{$global-left}: 0;
     list-style: none;
+  }
+
+  .dropcaps {
+    line-height: $dropcaps-line-height;
+    &:first-letter {
+      margin-top: $dropcaps-first-letter-margin-top;
+      margin-bottom: $dropcaps-first-letter-margin-bottom;
+      padding-right: $dropcaps-first-letter-padding-right;
+      font-size: $dropcaps-first-letter-font-size;
+      line-height: $dropcaps-first-letter-line-height;
+      float: $dropcaps-first-letter-float;
+    }
   }
 }
