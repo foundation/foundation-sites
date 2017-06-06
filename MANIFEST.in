@@ -1,0 +1,4 @@
+include README.md LICENSE bower.json
+
+recursive-include js *
+recursive-include scss *
