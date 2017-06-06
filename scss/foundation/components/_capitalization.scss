@@ -1,0 +1,20 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import "global";
+
+//set lower case letters
+.lower_case
+{
+	text-transform: lowercase;
+}
+//set upper case letters
+.upper_case
+{
+  text-transform: uppercase;
+}
+//set capitalize case letters(words)
+.capitalize{
+  text-transform: capitalize;
+}
