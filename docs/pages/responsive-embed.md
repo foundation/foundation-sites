@@ -6,7 +6,7 @@ tags: flex video 'flex video'
 video: GxUsloI_qnQ
 ---
 
-To make sure embedded content maintains its aspect ratio as the width of the screen changes, wrap the `iframe`, `object`, `embed`, or `video` in a container with the `.responsive-embed` class.
+To make sure embedded content maintains its aspect ratio as the width of the screen changes, wrap the `iframe`, `object`, `embed`, or `video` in a container with the `.flex-video` class.
 
 <p>
   <a class="" data-open-video="0:56"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -17,7 +17,7 @@ To make sure embedded content maintains its aspect ratio as the width of the scr
 </div>
 
 ```html_example
-<div class="responsive-embed">
+<div class="flex-video">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
@@ -37,7 +37,7 @@ Add ratio classes to change the aspect ratio of responsive embeds. The default r
 </div>
 
 ```html_example
-<div class="responsive-embed widescreen">
+<div class="flex-video widescreen">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/WUgvvPRH7Oc" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
@@ -62,7 +62,7 @@ $responsive-embed-ratios: (
 </div>
 
 ```html_example
-<div class="responsive-embed panorama">
+<div class="flex-video panorama">
   <iframe width="1024" height="315" src="https://www.youtube.com/embed/bnD9I24EL_4" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
