@@ -12,6 +12,8 @@
 
 #### Browser(s) and Device(s) tested on:
 
+#### Foundation Version(s) you are using:
+
 #### Test case link:
 
 <!-- Give us a link to a CodePen or JSFiddle that recreates the issue. -->
