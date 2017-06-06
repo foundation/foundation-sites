@@ -79,6 +79,8 @@ You're also going to want a settings file for your project, which will allow you
 @import 'foundation';
 ```
 
+Note: To relieve the tedium of comparing a newly released _settings.scss file with your project's current version, there is [DiffMerge](http://twobitlabs.com/2011/08/install-diffmerge-git-mac-os-x/). This handy application can either be integrated into your git workflow or used separately. Its GUI makes visualizing the line-by-line differences between two files a snap.
+
 ### Using Compiled CSS
 
 The Foundation for Sites npm and Bower packages include pre-compiled CSS files, in minified (compressed) and unminified flavors. If you're interested in editing the framework CSS directly, use the unminified file. For production, use the minified version.
