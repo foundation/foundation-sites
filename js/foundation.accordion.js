@@ -182,7 +182,7 @@ class Accordion {
       .attr('aria-hidden', false)
       .parent('[data-tab-content]')
       .addBack()
-      .parent().addClass('is-active');
+      .addClass('is-active');
 
     if (!this.options.multiExpand && !firstTime) {
       var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
