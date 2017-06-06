@@ -6,6 +6,10 @@
     "scss/foundation.scss",
     "dist/js/foundation.js"
   ],
+  "browser": [
+    "dist/foundation.min.css",
+    "dist/foundation.min.js"
+  ],
   "ignore": [
     "config",
     "docs",
