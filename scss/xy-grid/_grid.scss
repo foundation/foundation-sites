@@ -19,10 +19,10 @@
 /// Creates a container for your flex cells.
 ///
 /// @param {Keyword} $direction [horizontal] - Either horizontal or vertical direction of cells within.
-/// @param {Boolean} $wrap [true] - If the cells within should wrap or not.
+/// @param {Boolean} $wrap [false] - If the cells within should wrap or not.
 @mixin xy-grid(
   $direction: horizontal,
-  $wrap: true
+  $wrap: false
 ) {
   $direction: if($direction == 'horizontal', row, column);
   $wrap: if($wrap, wrap, nowrap);
