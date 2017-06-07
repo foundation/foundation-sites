@@ -53,7 +53,7 @@
     min-width: 0px;
   }
   @elseif ($size == 'auto') {
-    flex: 1 1 0px; // sass-lint:disable-line zero-unit
+    flex: 1 1 auto;
   }
   @elseif ($size == 'shrink') {
     flex: 0 0 auto;
@@ -81,7 +81,7 @@
     #{$direction}: $val;
   }
   @elseif ($size == 'auto') {
-    #{$direction}: auto;
+    #{$direction}: 0px;
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
   }
   @elseif ($size == 'shrink') {
