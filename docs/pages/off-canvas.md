@@ -336,6 +336,55 @@ For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, c
 
 ---
 
+## In-Canvas
+
+If you want an element to be off-canvas only for specific sceen sizes and then move in-canvas you can use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. Compared to the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as an usual page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+
+```html_example
+<button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
+  Open in-canvas that is off-canvas now
+</button>
+<div class="off-canvas in-canvas-for-large position-right" id="inCanvasExample" data-off-canvas>
+  <div class="callout">I'm in-canvas for medium screen size and move off-canvas for medium down.</div>
+</div>
+```
+
+---
+
+## Nested Off-Canvas
+
+Since v6.4 it's also possible to place the off-canvas inside the off-canvas content instead of only as a sibling. This is handy if you want to use the same element e.g. for small screens as off-canvas and for large screens as usual page element without duplicate content.<br>
+To realize such responsive off-canvas changing you can use the new <a href="#in-canvas">In-Canvas</a> class. Besides it is now possible to place the off-canvas element anywhere on the page if you use the new content-id option to bind it to the appropriate content.
+
+So there are three ways to place the off-canvas element now:
+<ol>
+  <li>preceding sibling of the off-canvas content (as done prior to v6.4)</li>
+  <li>nested in the off-canvas content</li>
+  <li>anywhere using <code>data-content-id="[CONTENT-ID]"</code> on the element</li>
+</ol>
+
+<div class="secondary callout">As you can see in the example below there are two off-canvas elements that have the same position in the same content container. This is possible since v6.4 and lets you easily define multiple off-canvas elements with the same position and toggle them.</div>
+
+```html_example
+<button type="button" class="button" data-toggle="offCanvasNestedPush">
+  Open Nested Off-Canvas Push
+</button>
+<button type="button" class="button" data-toggle="offCanvasNestedOverlap">
+  Open Nested Off-Canvas Overlap
+</button>
+
+<p>I'm usual content inside the off-canvas content</p>
+<div class="off-canvas position-left" id="offCanvasNestedPush" data-off-canvas>
+  <div class="callout">I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</div>
+</div>
+<div class="off-canvas position-left" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+  <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
+</div>
+<p>The callout above is moved into the off-canvas area and is nested in the off-canvas content.</p>
+```
+
+---
+
 ## Migrating from versions prior to v6.3
 
 <div class="primary callout">
