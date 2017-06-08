@@ -18,9 +18,12 @@ $card-font-color: $body-font-color !default;
 /// @type Color
 $card-divider-background: $light-gray !default;
 
+$card-divider-border-right: inset #e1e1e1 1px;
+
 /// Default border style.
 /// @type List
-$card-border: 1px solid $light-gray !default;
+//$card-border: 1px solid $light-gray !default;
+$card-border: none !default;
 
 /// Default card shadow.
 /// @type List
@@ -85,6 +88,8 @@ $card-margin-bottom: $global-margin !default;
     display: flex;
   }
 
+  border-right: $card-divider-border-right;
+
   padding: $padding;
   background: $background;
 
@@ -100,6 +105,10 @@ $card-margin-bottom: $global-margin !default;
   @if $global-flexbox {
     flex: 1 0 auto;
   }
+
+  border-width: 1px;
+  border-style: none inset solid outset;
+  border-color: $light-gray;
 
   padding: $padding;
 
