@@ -129,6 +129,7 @@ $accordionmenu-arrow-size: 6px !default;
     position: absolute;
     top: 0;
     #{$global-right}: 0;
+    cursor: pointer;
 
     width: $accordionmenu-submenu-toggle-width;
     height: $accordionmenu-submenu-toggle-height;
