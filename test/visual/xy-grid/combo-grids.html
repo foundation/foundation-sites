@@ -15,22 +15,25 @@
         background: #1779ba;
       }
 
+      h2 {
+        margin: 0;
+      }
+
       .cell {
         /*background: dodgerblue;*/
+        background: tomato;
         line-height: 50px;
-        height: 50px;
         color: white;
         text-align: center;
-        margin-bottom: 30px;
       }
     </style>
   </head>
   <body>
-    <h1>Margin Grid</h1>
+    <h1>Combo Grid</h1>
 
-    <h2>Sizing Classes</h2>
+    <h2>Sizing Classes, margin x, padding x & y</h2>
 
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x grid-margin-x grid-padding-x grid-padding-y">
       <div class="cell medium-12"><div class="demo">12</div></div>
       <div class="cell medium-11"><div class="demo">11</div></div>
       <div class="cell medium-1"><div class="demo">1</div></div>
@@ -46,16 +49,23 @@
       <div class="cell medium-4"><div class="demo">4</div></div>
     </div>
 
-    <h2>Nesting</h2>
+    <h2>Block Grid With Margin xy and padding x</h2>
 
-    <div class="grid-x grid-margin-x">
-      <div class="cell medium-6">
-        <div class="grid-x grid-margin-x">
-          <div class="cell medium-9"><div class="demo">9 nested</div></div>
-          <div class="cell medium-3"><div class="demo">3 nested</div></div>
-        </div>
-      </div>
-      <div class="cell medium-6"><div class="demo">6</div></div>
+    <div class="grid-x grid-margin-x grid-margin-y grid-padding-x small-up-2 medium-up-3 large-up-4">
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
+      <div class="cell"><div class="demo">6/4/3</div></div>
     </div>
 
     <h2>Auto and Shrink</h2>
@@ -97,3 +107,4 @@
     </script>
   </body>
 </html>
+
