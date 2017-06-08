@@ -74,3 +74,23 @@
     }
   }
 }
+// Flex Grid
+[id^="docs-xy"].docs-component .docs-code-live {
+  @include foundation-xy-grid-classes;
+
+  .grid {
+    font-size: 12px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cell {
+    &:nth-child(odd) {
+      background: #eee;
+    }
+    &:nth-child(even) {
+      background: #ddd;
+    }
+  }
+}

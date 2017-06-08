@@ -55,11 +55,20 @@ class DropdownMenu extends Plugin {
     this.$tabs = this.$element.children('[role="menuitem"]');
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-    if (this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
-      this.options.alignment = 'right';
-      subs.addClass('opens-left');
+    if (this.options.alignment === 'auto') {
+        if (this.$element.hasClass(this.options.rightClass) || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
+            this.options.alignment = 'right';
+            subs.addClass('opens-left');
+        } else {
+            this.options.alignment = 'left';
+            subs.addClass('opens-right');
+        }
     } else {
-      subs.addClass('opens-right');
+      if (this.options.alignment === 'right') {
+          subs.addClass('opens-left');
+      } else {
+          subs.addClass('opens-right');
+      }
     }
     this.changed = false;
     this._events();
@@ -397,12 +406,12 @@ DropdownMenu.defaults = {
 
   closingTime: 500,
   /**
-   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
+   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'auto'`, `'left'` or `'right'`.
    * @option
    * @type {string}
-   * @default 'left'
+   * @default 'auto'
    */
-  alignment: 'left',
+  alignment: 'auto',
   /**
    * Allow clicks on the body to close any open submenus.
    * @option

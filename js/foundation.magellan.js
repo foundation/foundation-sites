@@ -99,11 +99,14 @@ class Magellan extends Plugin {
         var arrival   = this.getAttribute('href');
         _this.scrollToLoc(arrival);
       });
-    $(window).on('popstate', function(e) {
+
+    this._deepLinkScroll = function(e) {
       if(_this.options.deepLinking) {
         _this.scrollToLoc(window.location.hash);
       }
-    });
+    };
+
+    $(window).on('popstate', this._deepLinkScroll);
   }
 
   /**
@@ -196,6 +199,7 @@ class Magellan extends Plugin {
       var hash = this.$active[0].getAttribute('href');
       window.location.hash.replace(hash, '');
     }
+    $(window).off('popstate', this._deepLinkScroll);
   }
 }
 
@@ -229,9 +233,9 @@ Magellan.defaults = {
    * Class applied to the active locations link on the magellan container.
    * @option
    * @type {string}
-   * @default 'active'
+   * @default 'is-active'
    */
-  activeClass: 'active',
+  activeClass: 'is-active',
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option

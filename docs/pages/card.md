@@ -1,6 +1,7 @@
 ---
 title: Card
 description: Cards are a popular and flexible UI component.
+video: 'OMwg8UsrLrM'
 sass: scss/components/_card.scss
 tags:
   - card
@@ -13,6 +14,14 @@ A card is just an element with a `.card` class applied. You can put any kind of 
 Make sure you wrap your content in a `.card-section` element in order to achieve the traditional card look.
 
 A card container has no padding, allowing you to place full-bleed images inside. Use the `.card-divider` and `.card-section` classes to sub-divide a card.
+
+<p>
+  <a class="" data-open-video="0:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/oWMEpo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="card" style="width: 300px;">
@@ -27,11 +36,33 @@ A card container has no padding, allowing you to place full-bleed images inside.
 </div>
 ```
 
+<div class="alert callout">
+  <p><strong>Browser Bug (IE 11 - Flexbug): </strong>On IE 11, when using the card with image, you may see a lot of whitespace under each image that happens to match the original image size. The bug can be reproduced <a href="https://codepen.io/IamManchanda/pen/MmNqEX?editors=1100">here</a> on an IE11 browser. Use <code>.card-image</code> class to wrap your image to resolve this.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/aWrWQq?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html
+<div class="card-image">
+  <img src="assets/img/generic/rectangle-1.jpg">
+</div>
+```
+
 ---
 
 ### Card Divider
 
 You can also include a `.card-divider` element as a title, footer or to break up content.
+
+<p>
+  <a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/PmyPbL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="card" style="width: 300px;">
@@ -50,6 +81,14 @@ You can also include a `.card-divider` element as a title, footer or to break up
 ### Images
 
 Images play nicely with cards. Simply include one outside of the `.card-section` element to span nicely to the edges. Or move the image inside the `.card-section` to have padding around the image.
+
+<p>
+  <a class="" data-open-video="2:12"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/QvBQvR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <!-- image has no padding -->
@@ -117,6 +156,14 @@ Images play nicely with cards. Simply include one outside of the `.card-section`
 ## Sizing
 
 You can either set the width of cards with custom css or add them into the Foundation grid.
+
+<p>
+  <a class="" data-open-video="0:34"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmabmL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row small-up-2 medium-up-3">

@@ -8,6 +8,8 @@ import { GetYoDigits, rtl as Rtl } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
 import { Touch } from './foundation.util.touch';
+
+import { Triggers } from './foundation.util.triggers';
 /**
  * Slider module.
  * @module foundation.slider
@@ -28,7 +30,10 @@ class Slider extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
 
-    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
+  // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
+    Touch.init($);
+    Triggers.init($);
+
     this._init();
 
     Keyboard.register('Slider', {

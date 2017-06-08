@@ -1,6 +1,7 @@
 ---
 title: Visibility Classes
 description: Visibility classes let you show or hide elements based on screen size or device orientation. You can also use visibility classes to control which elements users see depending on their browsing environment.
+video: 'j__6VmFdSnc'
 sass: scss/components/_visibility.scss
 tags:
   - hide
@@ -13,6 +14,10 @@ tags:
 
 <div class="callout warning">
   <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can't Detect a Touchscreen</a></p>
+</div>
+
+<div class="callout alert">
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 ## Show by Screen Size

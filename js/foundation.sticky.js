@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';
+import { Triggers } from './foundation.util.triggers';
+
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -21,6 +23,9 @@ class Sticky extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     this._init();
   }
@@ -108,7 +113,7 @@ class Sticky extends Plugin {
   /**
    * Adds event handlers for the scrolling element.
    * @private
-   * @param {String} id - psuedo-random id for unique scroll event listener.
+   * @param {String} id - pseudo-random id for unique scroll event listener.
    */
   _events(id) {
     var _this = this,
@@ -149,7 +154,7 @@ class Sticky extends Plugin {
   /**
    * Handler for events.
    * @private
-   * @param {String} id - psuedo-random id for unique scroll event listener.
+   * @param {String} id - pseudo-random id for unique scroll event listener.
    */
   _eventsHandler(id) {
        var _this = this,

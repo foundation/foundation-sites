@@ -71,7 +71,8 @@ module.exports = {
 
   DIST_FILES: [
     './_build/assets/css/foundation.css',
-    './_build/assets/css/foundation-flex.css',
+    './_build/assets/css/foundation-float.css',
+    './_build/assets/css/foundation-prototype.css',
     './_build/assets/css/foundation-rtl.css',
     '_build/assets/js/foundation.js'
   ],
