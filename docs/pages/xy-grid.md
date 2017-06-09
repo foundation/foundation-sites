@@ -230,7 +230,7 @@ Here's an example of what you can do:
 
 ```html_example
 <div class="grid-y medium-grid-frame">
-  <div class="cell shrink header cell-block-container">
+  <div class="cell shrink header medium-cell-block-container">
     <h1>Grid Frame Header</h1>
     <div class="grid-x grid-padding-x">
       <div class="cell medium-4">
@@ -244,7 +244,7 @@ Here's an example of what you can do:
       </div>
     </div>
   </div>
-  <div class="cell auto cell-block-container">
+  <div class="cell medium-auto medium-cell-block-container">
     <div class="grid-x grid-padding-x">
       <div class="cell medium-4 medium-cell-block-y">
         <h2>Independent scrolling sidebar</h2>
