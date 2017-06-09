@@ -40,6 +40,7 @@
     > .shrink {
       @include xy-cell-static(shrink, false);
     }
+
   }
 
   // Auto width
@@ -55,6 +56,10 @@
         @include xy-cell-static(shrink, false);
       }
 
+    }
+
+    .grid-x > [class*="#{$-zf-size}-"] {
+      flex-basis: auto;
     }
 
     @for $i from 1 through $grid-columns {
@@ -253,12 +258,17 @@
 
       }
 
+      > [class*="#{$-zf-size}-"] {
+        flex-basis: auto;
+      }
+
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
           @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
+
     }
   }
 
