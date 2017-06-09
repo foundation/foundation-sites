@@ -68,7 +68,7 @@ gulp.task('javascript:plugins', ['javascript:plugin-core'], function() {
 });
 
 gulp.task('javascript:foundation', ['javascript:plugins'], function() {
-  return gulp.src('js/entries/foundation.js')
+  return gulp.src('js/entries/foundation')
     .pipe(named())
     .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: moduleConfig}, webpack2))
     .pipe(gulp.dest('_build/assets/js'));

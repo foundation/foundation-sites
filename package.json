@@ -1,7 +1,7 @@
 {
   "name": "foundation-sites",
   "version": "6.4.0-rc2-1",
-  "main": "dist/js/foundation.js",
+  "main": "dist/js/npm.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
