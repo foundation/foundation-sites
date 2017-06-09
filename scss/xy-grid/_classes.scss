@@ -40,6 +40,12 @@
     > .shrink {
       @include xy-cell-static(shrink, false);
     }
+
+    @include -zf-each-breakpoint() {
+      > [class*="#{$-zf-size}-"] {
+        flex-basis: auto;
+      }
+    }
   }
 
   // Auto width
@@ -257,6 +263,12 @@
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
           @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
+        }
+      }
+
+      @include -zf-each-breakpoint() {
+        > [class*="#{$-zf-size}-"] {
+          flex-basis: auto;
         }
       }
     }
