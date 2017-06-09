@@ -592,6 +592,10 @@ textarea {
   width: 100%; }
 
 @media print, screen and (min-width: 40em) {
+  .grid-x > [class*="medium-"] {
+    -webkit-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+            flex-basis: auto; }
   .grid-x > .medium-auto {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
@@ -604,10 +608,6 @@ textarea {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto; }
-  .grid-x > [class*="medium-"] {
-    -webkit-flex-basis: auto;
-        -ms-flex-preferred-size: auto;
-            flex-basis: auto; }
   .medium-1 {
     width: 8.33333%; }
   .medium-2 {
@@ -634,6 +634,10 @@ textarea {
     width: 100%; } }
 
 @media print, screen and (min-width: 64em) {
+  .grid-x > [class*="large-"] {
+    -webkit-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+            flex-basis: auto; }
   .grid-x > .large-auto {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
@@ -646,10 +650,6 @@ textarea {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto; }
-  .grid-x > [class*="large-"] {
-    -webkit-flex-basis: auto;
-        -ms-flex-preferred-size: auto;
-            flex-basis: auto; }
   .large-1 {
     width: 8.33333%; }
   .large-2 {
@@ -1405,14 +1405,18 @@ textarea {
   .grid-y > .small-12 {
     height: 100%; }
   @media print, screen and (min-width: 40em) {
-    .grid-y > .medium-auto {
-      height: auto; }
-    .grid-y > .medium-shrink {
-      height: auto; }
     .grid-y > [class*="medium-"] {
       -webkit-flex-basis: auto;
           -ms-flex-preferred-size: auto;
               flex-basis: auto; }
+    .grid-y > .medium-auto {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 0px;
+          -ms-flex: 1 1 0px;
+              flex: 1 1 0px;
+      height: auto; }
+    .grid-y > .medium-shrink {
+      height: auto; }
     .grid-y > .medium-1 {
       height: 8.33333%; }
     .grid-y > .medium-2 {
@@ -1438,14 +1442,18 @@ textarea {
     .grid-y > .medium-12 {
       height: 100%; } }
   @media print, screen and (min-width: 64em) {
-    .grid-y > .large-auto {
-      height: auto; }
-    .grid-y > .large-shrink {
-      height: auto; }
     .grid-y > [class*="large-"] {
       -webkit-flex-basis: auto;
           -ms-flex-preferred-size: auto;
               flex-basis: auto; }
+    .grid-y > .large-auto {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 0px;
+          -ms-flex: 1 1 0px;
+              flex: 1 1 0px;
+      height: auto; }
+    .grid-y > .large-shrink {
+      height: auto; }
     .grid-y > .large-1 {
       height: 8.33333%; }
     .grid-y > .large-2 {
