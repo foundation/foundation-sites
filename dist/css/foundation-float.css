@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.0-rc2
+ * Version 6.4.0-rc3
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2185,6 +2185,7 @@ select {
   position: absolute;
   top: 0;
   right: 0;
+  cursor: pointer;
   width: 40px;
   height: 40px;
   border-left: 1px solid #e6e6e6; }

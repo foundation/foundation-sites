@@ -1,4 +1,4 @@
-# [Foundation for Sites](http://foundation.zurb.com) (v6.4.0-rc2)
+# [Foundation for Sites](http://foundation.zurb.com) (v6.4.0-rc3)
 
 Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes layout constructs, like a fully customizable, responsive grid, commonly used JavaScript plugins, and full A11Y support.
 

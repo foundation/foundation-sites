@@ -227,7 +227,12 @@ var DropdownMenu = function (_Plugin) {
   }, {
     key: '_isVertical',
     value: function _isVertical() {
-      return this.$tabs.css('display') === 'block';
+      return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
+    }
+  }, {
+    key: '_isRtl',
+    value: function _isRtl() {
+      return this.$element.hasClass('align-right') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])() && !this.$element.hasClass('align-left');
     }
 
     /**
@@ -367,7 +372,7 @@ var DropdownMenu = function (_Plugin) {
         if (isTab) {
           if (_this._isVertical()) {
             // vertical menu
-            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])()) {
+            if (_this._isRtl()) {
               // right aligned
               __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
                 down: nextSibling,
@@ -386,7 +391,7 @@ var DropdownMenu = function (_Plugin) {
             }
           } else {
             // horizontal menu
-            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])()) {
+            if (_this._isRtl()) {
               // right aligned
               __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
                 next: prevSibling,
@@ -406,7 +411,7 @@ var DropdownMenu = function (_Plugin) {
           }
         } else {
           // not tabs -> one sub
-          if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])()) {
+          if (_this._isRtl()) {
             // right aligned
             __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
               next: closeSub,
