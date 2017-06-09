@@ -291,6 +291,10 @@
     @include xy-cell-block();
   }
 
+  .cell-block-y {
+    @include xy-cell-block(true);
+  }
+
 
   .cell-block-container {
     @include xy-cell-block-container();
@@ -307,16 +311,16 @@
       @include xy-cell-block();
     }
 
+    .#{$-zf-size}-cell-block-container {
+      @include xy-cell-block-container();
+    }
+
     .#{$-zf-size}-cell-block-y {
       @include xy-cell-block(true);
     }
   }
 
   @if $vertical-grid {
-
-    .cell-block-y {
-      @include xy-cell-block(true);
-    }
 
     .grid-y {
       &.grid-frame {
