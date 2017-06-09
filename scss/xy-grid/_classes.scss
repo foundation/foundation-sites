@@ -45,6 +45,9 @@
 
   // Auto width
   @include -zf-each-breakpoint() {
+    .grid-x > [class*="#{$-zf-size}-"] {
+      flex-basis: auto;
+    }
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-auto {
         @include xy-cell-base(auto);
@@ -58,9 +61,6 @@
 
     }
 
-    .grid-x > [class*="#{$-zf-size}-"] {
-      flex-basis: auto;
-    }
 
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
@@ -247,8 +247,13 @@
 
 
     @include -zf-each-breakpoint() {
+      > [class*="#{$-zf-size}-"] {
+        flex-basis: auto;
+      }
+
       @if not($-zf-size == small) {
         > .#{$-zf-size}-auto {
+          @include xy-cell-base(auto);
           @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
 
@@ -256,10 +261,6 @@
           @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
         }
 
-      }
-
-      > [class*="#{$-zf-size}-"] {
-        flex-basis: auto;
       }
 
       @for $i from 1 through $grid-columns {
