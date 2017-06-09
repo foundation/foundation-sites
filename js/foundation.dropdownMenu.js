@@ -75,7 +75,11 @@ class DropdownMenu extends Plugin {
   };
 
   _isVertical() {
-    return this.$tabs.css('display') === 'block';
+    return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
+  }
+
+  _isRtl() {
+    return this.$element.hasClass('align-right') || (Rtl() && !this.$element.hasClass('align-left'));
   }
 
   /**
@@ -203,7 +207,7 @@ class DropdownMenu extends Plugin {
 
       if (isTab) {
         if (_this._isVertical()) { // vertical menu
-          if (Rtl()) { // right aligned
+          if (_this._isRtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
@@ -219,7 +223,7 @@ class DropdownMenu extends Plugin {
             });
           }
         } else { // horizontal menu
-          if (Rtl()) { // right aligned
+          if (_this._isRtl()) { // right aligned
             $.extend(functions, {
               next: prevSibling,
               previous: nextSibling,
@@ -236,7 +240,7 @@ class DropdownMenu extends Plugin {
           }
         }
       } else { // not tabs -> one sub
-        if (Rtl()) { // right aligned
+        if (_this._isRtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
