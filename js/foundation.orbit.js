@@ -131,7 +131,8 @@ class Orbit extends Plugin {
   */
   _prepareForOrbit() {
     var _this = this;
-    this._setWrapperHeight();
+    var cb = _this.options.callback || function(){};
+    this._setWrapperHeight( cb );
   }
 
   /**
