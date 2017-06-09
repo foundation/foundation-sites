@@ -53,7 +53,7 @@
     min-width: 0px;
   }
   @elseif ($size == 'auto') {
-    flex: 1 1 0px; // sass-lint:disable-line zero-unit
+    flex: 1 1 auto;
   }
   @elseif ($size == 'shrink') {
     flex: 0 0 auto;
@@ -71,12 +71,25 @@
 // Sets our cell widths or heights depending on gutter type.
 @mixin -xy-cell-properties($size, $margin-gutter, $vertical) {
   $direction: if($vertical == true, height, width);
+
+  // y grid needs to explicitly reset flex basis here to overrule auto.
+  // See: https://github.com/zurb/foundation-sites/pull/10139 and https://github.com/zurb/foundation-sites/pull/10151
+  @if ($vertical) {
+    flex-basis: auto;
+  }
+
   @if($size == 'full') {
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
   }
   @elseif ($size == 'auto') {
-    #{$direction}: auto;
+    // x grid can use flex-basis auto width 0px to save css size... y-grid requires otherwise.
+    // See: https://github.com/zurb/foundation-sites/pull/10139 and https://github.com/zurb/foundation-sites/pull/10151
+    @if($direction == 'width') {
+      #{$direction}: 0px;
+    } @else {
+      flex-basis: 0px;
+    }
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
   }
   @elseif ($size == 'shrink') {
