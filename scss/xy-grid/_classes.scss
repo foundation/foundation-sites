@@ -80,13 +80,15 @@
   > .#{$prefix}shrink {
     @include xy-cell-static(shrink, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
   }
-
-  @for $i from 1 through $grid-columns {
-    // Sizing (percentage)
-    $classname: if($vertical, '.#{$class-breakpoint}-#{$i}', '.#{$class-breakpoint}-#{$i}');
-
-    > #{$classname} {
-      @include xy-cell-static($i, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+  
+  @include -zf-each-breakpoint() {
+    @for $i from 1 through $grid-columns {
+      // Sizing (percentage)
+      $classname: if($vertical, '.#{$class-breakpoint}-#{$i}', '.#{$class-breakpoint}-#{$i}');
+      
+      > #{$classname} {
+        @include xy-cell-static($i, false, $breakpoint: $-zf-size, $vertical: $vertical);
+      }
     }
   }
 }
