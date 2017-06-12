@@ -32,8 +32,6 @@ class OffCanvas extends Plugin {
     this.position = 'left';
     this.$content = $();
     this.nested = !!(this.options.nested);
-    this.$relativeParent;
-    this.relativeScope = false;
 
     //Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);
@@ -57,17 +55,6 @@ class OffCanvas extends Plugin {
 
     this.$element.attr('aria-hidden', 'true');
 
-    this.$element.addClass(`is-transition-${this.options.transition} is-closed`);
-
-    // Find triggers that affect this element and add aria-expanded to them
-    this.$triggers = $(document)
-      .find('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
-      .attr('aria-expanded', 'false')
-      .attr('aria-controls', id);
-    
-    // Get position by checking for related CSS class
-    this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position;
-
     // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
     if (this.options.contentId) {
       this.$content = $('#'+this.options.contentId);
@@ -86,14 +73,25 @@ class OffCanvas extends Plugin {
       console.warn('Remember to use the nested option if using the content ID option!');
     }
 
-    // For a nested element, find closest (relative) positioned element
-    if (this.nested) {
-      this.$relativeParent = this.$element.offsetParent();
-      // Initial adjustment of the element according to local scope
-      this._adjustToLocalScope();
+    if (this.nested === true) {
+      // Force transition overlap if nested
+      this.options.transition = 'overlap';
+      // Remove appropriate classes if already assigned in markup
+      this.$element.removeClass('is-transition-push');
+      this.$content.removeClass('has-transition-push');
     }
 
+    this.$element.addClass(`is-transition-${this.options.transition} is-closed`);
     this.$content.addClass(`has-transition-${this.options.transition}`);
+
+    // Find triggers that affect this element and add aria-expanded to them
+    this.$triggers = $(document)
+      .find('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
+      .attr('aria-expanded', 'false')
+      .attr('aria-controls', id);
+    
+    // Get position by checking for related CSS class
+    this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position;
 
     // Add an overlay over the content if necessary
     if (this.options.contentOverlay === true) {
@@ -120,8 +118,6 @@ class OffCanvas extends Plugin {
     }
 
     this._setContentClasses();
-
-    this._emulateFixedPosition(true);
   }
 
   /**
@@ -130,8 +126,6 @@ class OffCanvas extends Plugin {
    * @private
    */
   _events() {
-    var id = this.$element.attr('id');
-
     this.$element.off('.zf.trigger .zf.offcanvas').on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
@@ -143,18 +137,6 @@ class OffCanvas extends Plugin {
       var $target = this.options.contentOverlay ? this.$overlay : this.$content;
       $target.on({'click.zf.offcanvas': this.close.bind(this)});
     }
-
-    var resizeListener = this.resizeListener = `resize.zf.${id}`;
-    var resizeTimeout;
-
-    $(window).off(resizeListener).on(resizeListener, () => {
-      // Delay as timeout to prevent too many calls on resizing
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        this._adjustToLocalScope();
-        this._emulateFixedPosition(true);
-      }, 250);
-    });
   }
 
   /**
@@ -191,71 +173,6 @@ class OffCanvas extends Plugin {
     if (hasReveal === true) {
       this.$content
         .addClass(`has-reveal-${this.position}`);
-    }
-  }
-
-  /**
-   * Adjust element's left position if relative parent is affecting local coords (left).
-   * This is required if using a nested element within a push/pull column.
-   * @private
-   */
-  _adjustToLocalScope() {
-    if (this.nested) {
-      // Check if relative parent is affecting local coords
-      if (parseInt(this.$relativeParent.css('left')) > 0 || this.$relativeParent.offset().top > 0) {
-        this.relativeScope = true;
-        // Adjust element to local scope
-        let xOffset = Math.ceil(parseFloat(this.$relativeParent.css('left'))) * (-1);
-        switch (this.position) {
-          case 'top':
-            this.$element.css('left', xOffset).width($(window).width());
-            break;
-          case 'bottom':
-            this.$element.css('left', xOffset).width($(window).width());
-            break;
-          case 'left':
-            this.$element.css('left', xOffset);
-            break;
-        }
-      } else {
-        this.relativeScope = false;
-        // Reset adjustment
-        this.$element.css({
-          'left': '',
-          'width': ''
-        });
-      }
-    }
-  }
-
-  /**
-   * Emulate fixed position for a nested off-canvas element by using fixed height and current document scrollTop.
-   * This is necessary due to the transform property of the content that creates a new local coordinate system.
-   * @param  {Boolean} resetHeight - true if the element's height should be set as well (mostly on init and window resize)
-   * @private
-   */
-  _emulateFixedPosition(resetHeight = false) {
-    
-    if (this.nested === true) {
-
-      var topOffset = this.relativeScope ? this.$relativeParent.offset().top : 0;
-
-      if (this.position === 'top') {
-        
-        this.$element.css('top', $(document).scrollTop() - topOffset);
-
-      } else if (this.position === 'bottom') {
-
-        this.$element.css('top', $(document).scrollTop() + $(window).height() - this.$element.outerHeight() - topOffset);
-
-      } else { // left|right
-
-        this.$element.css('top', $(document).scrollTop() - topOffset);
-      
-        if (resetHeight === true) {
-          this.$element.height( $(window).height() );
-        }
-      }
     }
   }
 
@@ -357,9 +274,6 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
-    this._adjustToLocalScope();
-    this._emulateFixedPosition();
-
     /**
      * Fires when the off-canvas menu opens.
      * @event OffCanvas#opened
@@ -373,8 +287,7 @@ class OffCanvas extends Plugin {
     this.$content.addClass('is-open-' + this.position);
 
     // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
-    // If off-canvas element is nested, force `contentScroll` false.
-    if (this.options.contentScroll === false || this.nested === true) {
+    if (this.options.contentScroll === false) {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
       this.$element.on('touchstart', this._recordScrollable);
       this.$element.on('touchmove', this._stopScrollPropagation);
@@ -433,8 +346,7 @@ class OffCanvas extends Plugin {
     this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
     // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
-    // // If off-canvas element is nested, force `contentScroll` false.
-    if (this.options.contentScroll === false || this.nested === true) {
+    if (this.options.contentScroll === false) {
       $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
       this.$element.off('touchstart', this._recordScrollable);
       this.$element.off('touchmove', this._stopScrollPropagation);
@@ -507,7 +419,6 @@ class OffCanvas extends Plugin {
     this.close();
     this.$element.off('.zf.trigger .zf.offcanvas');
     this.$overlay.off('.zf.offcanvas');
-    $(window).off(this.resizeListener);
   }
 }
 

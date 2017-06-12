@@ -358,10 +358,10 @@ In v6.4 the off-canvas component has been heavily extended. Apart from the <a hr
 Another improvement is the support of several off-canvas elements that share the same position e.g. two elements with `position-left`.
 
 Advanced off-canvas users may use the new `contentId` option to bind an element to a content. This lets you place the element much more flexibly as it may be a sibling of the content, a child or none of it.<br>
-<strong>Important:</strong> when using the `contentId` on a nested element it's required to also use the new `nested` option and tell the JavaScript if it's nested or not!
+<strong>Important:</strong> when using the `contentId` on a nested element you must also use the new `nested` option and tell the JavaScript it's nested!
 
-<div class="callout">
-  When you are facing a <a href="https://en.wikipedia.org/wiki/Flash_of_unstyled_content" target="_blank">FOUC</a> issue you can try to add the class `is-closed` to the element which is usually added and removed automatically via JavaScript. This will cover the delay in loading.
+<div class="callout warning">
+  Please note that it's currently not possible to use the push transition for a nested off-canvas element.
 </div>
 
 ```html_example
@@ -375,7 +375,10 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
 <div class="off-canvas position-left is-closed" id="offCanvasNestedPush" data-off-canvas>
-  <div class="callout">I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</div>
+  <div class="callout">
+    <p>I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</p>
+    <p>Since push transition is currently not possible for nested elements, I'm forced to use overlayp transition.</p>
+  </div>
 </div>
 <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
   <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>

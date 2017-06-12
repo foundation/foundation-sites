@@ -32,19 +32,19 @@ $offcanvas-inner-shadow-color: rgba($black, 0.25) !default;
 
 /// Z-index of an off-canvas content overlay.
 /// @type Number
-$offcanvas-overlay-zindex: 1 !default;
+$offcanvas-overlay-zindex: 11 !default;
 
 /// Z-index of an off-canvas panel with the `push` transition.
 /// @type Number
-$offcanvas-push-zindex: 2 !default;
+$offcanvas-push-zindex: 12 !default;
 
 /// Z-index of an off-canvas panel with the `overlap` transition.
 /// @type Number
-$offcanvas-overlap-zindex: 10 !default;
+$offcanvas-overlap-zindex: 13 !default;
 
 /// Z-index of an off-canvas panel using the `reveal-for-*` classes or mixin.
 /// @type Number
-$offcanvas-reveal-zindex: 2 !default;
+$offcanvas-reveal-zindex: 12 !default;
 
 /// Length of the animation on an off-canvas panel.
 /// @type Number
@@ -70,9 +70,9 @@ $maincontent-class: 'off-canvas-content' !default;
 
   // Checks the z-indexes and increase them due to backwards compatibility.
   // This is necessary because the overlay's z-index is new since v6.4 and may be identical to the user custom settings of the push z-index.
-  @if $offcanvas-push-zindex <= $offcanvas-overlay-zindex { $offcanvas-push-zindex: $offcanvas-push-zindex + 1 !global; }
-  @if $offcanvas-overlap-zindex <= $offcanvas-overlay-zindex { $offcanvas-overlap-zindex: $offcanvas-overlap-zindex + 1 !global; }
-  @if $offcanvas-reveal-zindex <= $offcanvas-overlay-zindex { $offcanvas-reveal-zindex: $offcanvas-reveal-zindex + 1 !global; }
+  @if $offcanvas-push-zindex <= $offcanvas-overlay-zindex { $offcanvas-push-zindex: $offcanvas-overlay-zindex + 1 !global; }
+  @if $offcanvas-overlap-zindex <= $offcanvas-push-zindex { $offcanvas-overlap-zindex: $offcanvas-push-zindex + 1 !global; }
+  @if $offcanvas-reveal-zindex <= $offcanvas-overlay-zindex { $offcanvas-reveal-zindex: $offcanvas-overlay-zindex + 1 !global; }
 
   // Hides overflow on body when an off-canvas panel is open.
   .is-off-canvas-open {
@@ -140,7 +140,7 @@ $maincontent-class: 'off-canvas-content' !default;
 
   // Set the off-canvas z-index.
   // Since the push z-index may be set by custom settings, a condition makes sure it is greater than the overlay's z-index (backwards compatibility).
-  z-index: if($offcanvas-push-zindex > $offcanvas-overlay-zindex, $offcanvas-push-zindex, $offcanvas-overlay-zindex + 1);
+  z-index: $offcanvas-push-zindex;
 
   transition: transform $transition;
   backface-visibility: hidden;
@@ -154,7 +154,7 @@ $maincontent-class: 'off-canvas-content' !default;
 
   // Overlap only styles.
   &.is-transition-overlap {
-    z-index: if($offcanvas-overlap-zindex > $offcanvas-overlay-zindex , $offcanvas-overlap-zindex, $offcanvas-overlay-zindex + 2);
+    z-index: $offcanvas-overlap-zindex;
 
     &.is-open {
       box-shadow: $offcanvas-shadow;
@@ -284,8 +284,8 @@ $maincontent-class: 'off-canvas-content' !default;
   }
 
   // No transform on overlap transition
-  @at-root .#{$maincontent-class}.has-transition-overlap[class*="is-open"] {
-    transform: translate(0, 0);
+  @at-root .#{$maincontent-class}.has-transition-overlap {
+    transform: none;
   }
 }
 
@@ -346,10 +346,10 @@ $content: $maincontent-class
   .off-canvas {
     @include off-canvas-base;
 
-    // Force position absolute for nested off-canvas because fixed doesn't work in this case (and gets emulated by JS anyway).
-    // This is important for the IE which doesn't show an opened push off-canvas element otherwise!
+    // Force position absolute for nested off-canvas because fixed doesn't work for push transition within the transform scope.
     @at-root .#{$maincontent-class} & {
-      position: absolute;
+      // NOTE: since overlap transition is currently forced if nested, there's no need to force position absolute until nested push transition is supported.
+      // position: absolute;
     }
   }
 
