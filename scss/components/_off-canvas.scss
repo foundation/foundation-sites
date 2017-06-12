@@ -139,8 +139,12 @@ $maincontent-class: 'off-canvas-content' !default;
   }
 
   // Set the off-canvas z-index.
-  // Since the push z-index may be set by custom settings, a condition makes sure it is greater than the overlay's z-index (backwards compatibility).
   z-index: $offcanvas-push-zindex;
+
+  // Increase CSS specificity
+  &.is-transition-push {
+    z-index: $offcanvas-push-zindex;
+  }
 
   transition: transform $transition;
   backface-visibility: hidden;
