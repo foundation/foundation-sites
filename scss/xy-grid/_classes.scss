@@ -119,7 +119,7 @@
       // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
       // for prior breakpoints based on the responsive gutter.
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
-        @each $bp in -xy-breakpoints-less-than($-zf-size) {
+        @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
             @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
           }
