@@ -30,7 +30,6 @@ class OffCanvas extends Plugin {
     this.$lastTrigger = $();
     this.$triggers = $();
     this.position = 'left';
-    this.$wrapperInner = $(); // prior v6.3
     this.$content = $();
     this.nested = !!(this.options.nested);
 
@@ -56,29 +55,18 @@ class OffCanvas extends Plugin {
 
     this.$element.attr('aria-hidden', 'true');
       
-    this.$wrapperInner = this.$element.parent('[data-off-canvas-wrapper]'); // prior v6.3
-
     // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
     if (this.options.contentId) {
       this.$content = $('#'+this.options.contentId);
     } else if (this.$element.siblings('[data-off-canvas-content]').length) {
       this.$content = this.$element.siblings('[data-off-canvas-content]').first();
-    } else if (this.$wrapperInner.length && this.$wrapperInner.siblings('[data-off-canvas-content]').length) {
-      this.$content = this.$wrapperInner.siblings('[data-off-canvas-content]').first();
     } else {
       this.$content = this.$element.closest('[data-off-canvas-content]').first();
     }
 
     if (!this.options.contentId) {
-
-
-      if (this.$wrapperInner.length && this.$wrapperInner.siblings('[data-off-canvas-content]').length) {
-        // If using off-canvas wrapper inner (prior v6.3), assume that the off-canvas element is not nested if the wrapper is a sibling of the content
-        this.nested = false;
-      } else {
-        // Assume that the off-canvas element is nested if it isn't a sibling of the content
-        this.nested = this.$element.siblings('[data-off-canvas-content]').length === 0;
-      }
+      // Assume that the off-canvas element is nested if it isn't a sibling of the content
+      this.nested = this.$element.siblings('[data-off-canvas-content]').length === 0;
 
     } else if (this.options.contentId && this.options.nested === null) {
       // Warning if using content ID without setting the nested option
