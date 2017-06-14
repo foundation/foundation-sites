@@ -287,17 +287,18 @@ $maincontent-class: 'off-canvas-content' !default;
     }    
   }
 
-  // No transform on overlap transition
-  @at-root .#{$maincontent-class}.has-transition-overlap {
-    transform: none;
-  }
 }
 
 /// Sets the styles for the content container.
 @mixin off-canvas-content() {
-  transform: translate(0, 0);
+  transform: none;
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   backface-visibility: hidden;
+
+  // Preserve transform none on overlap transition (override position based translate)
+  &.has-transition-overlap {
+    transform: none;
+  }
 }
 
 /// Adds styles that reveal an off-canvas panel.
