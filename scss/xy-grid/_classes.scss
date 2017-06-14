@@ -129,6 +129,16 @@
       @include -xy-breakpoint-cell-classes($-zf-size, $-zf-size, $vertical);
     }
   }
+
+  // Reset width when using `.grid-margin-x` not on `.grid-x`
+  .grid-margin-x:not(.grid-x) > .cell {
+    width: auto;
+  }
+
+  // Reset height when using `.grid-margin-y` not on `.grid-y`
+  .grid-margin-y:not(.grid-y) > .cell {
+    height: auto;
+  }
 }
 
 // Padding Grid classes
