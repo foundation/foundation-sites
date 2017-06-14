@@ -18,6 +18,10 @@ $dropdownmenu-arrow-color: $anchor-color !default;
 /// @type Length
 $dropdownmenu-arrow-size: 6px !default;
 
+/// Sets dropdown menu arrow padding for aligning the arrow correctly.
+/// @type Length
+$dropdownmenu-arrow-padding: 1.5rem !default;
+
 /// Minimum width of dropdown sub-menus.
 /// @type Length
 $dropdownmenu-min-width: 200px !default;
@@ -96,7 +100,7 @@ $dropdown-menu-item-background-active: transparent !default;
     @if $dropdownmenu-arrows {
       > li.is-dropdown-submenu-parent > a {
         position: relative;
-        padding-#{$global-right}: 1.5rem;
+        padding-#{$global-right}: $dropdownmenu-arrow-padding;
       }
 
       > li.is-dropdown-submenu-parent > a::after {
@@ -239,7 +243,7 @@ $dropdown-menu-item-background-active: transparent !default;
     border: $dropdownmenu-border;
     background: $dropdownmenu-submenu-background;
 
-    a {
+    .dropdown & a {
       padding: $dropdownmenu-submenu-padding;
     }
 
