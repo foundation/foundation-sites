@@ -294,7 +294,7 @@ class OffCanvas extends Plugin {
      * Fires when the off-canvas menu opens.
      * @event OffCanvas#opened
      */
-    _this.$element.addClass('is-open').removeClass('is-closed');
+    this.$element.addClass('is-open').removeClass('is-closed');
 
     this.$triggers.attr('aria-expanded', 'true');
     this.$element.attr('aria-hidden', 'false')
@@ -350,7 +350,7 @@ class OffCanvas extends Plugin {
 
     var _this = this;
 
-    _this.$element.removeClass('is-open');
+    this.$element.removeClass('is-open');
 
     this.$element.attr('aria-hidden', 'true')
       /**
@@ -383,23 +383,10 @@ class OffCanvas extends Plugin {
       Keyboard.releaseFocus(this.$element);
     }
 
-    // Listen to transitionEnd  and add class when done.
-    // Listening to both, element and content, is required because they don't always transform together (e.g. on nested push transition).
-    this.$content.one(Foundation.transitionend(this.$content), function(e) {
-      if (e.originalEvent.propertyName.match(/transform/i)) {
-        _this.$element.off(Foundation.transitionend(this.$content)); // unbind $element listener since it hasn't transformed
-        _this.$element.addClass('is-closed');
-        _this.$content.off(Foundation.transitionend(_this.$content));
-        _this._removeContentClasses();
-      }
-    });
+    // Listen to transitionEnd and add class when done.
     this.$element.one(Foundation.transitionend(this.$element), function(e) {
-      if (e.originalEvent.propertyName.match(/transform/i)) {
-        _this.$content.off(Foundation.transitionend(this.$element)); // unbind $content listener since it hasn't transformed
-        _this.$element.addClass('is-closed');
-        _this.$content.off(Foundation.transitionend(_this.$content));
-        _this._removeContentClasses();
-      }
+      _this.$element.addClass('is-closed');
+      _this._removeContentClasses();
     });
   }
 
