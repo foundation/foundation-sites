@@ -40,7 +40,6 @@
     > .shrink {
       @include xy-cell-static(shrink, false);
     }
-
   }
 
   // Auto width
@@ -228,7 +227,7 @@
   }
 
   .grid-y {
-    @include xy-grid(vertical);
+    @include xy-grid(vertical, false);
 
 
     > .cell {
