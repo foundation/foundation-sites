@@ -98,7 +98,7 @@
   $wrapping-selector: '.grid-margin-x'
 ){
   #{$wrapping-selector} {
-    @include xy-gutters($negative: true, $gutter-position: $gutter-position);
+    @include xy-gutters($negative: false, $gutter-position: $gutter-position);
 
     // Base cell styles
     > .cell {
@@ -127,6 +127,11 @@
       }
 
       @include -xy-breakpoint-cell-classes($-zf-size, $-zf-size, $vertical);
+    }
+
+    #{$wrapping-selector} {
+      margin-left: -0.9375rem;
+      margin-right: -0.9375rem;
     }
   }
 }
