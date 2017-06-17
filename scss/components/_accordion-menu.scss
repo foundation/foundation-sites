@@ -93,6 +93,10 @@ $accordionmenu-arrow-size: 6px !default;
       }
       padding: $accordionmenu-padding;
     }
+    
+    .is-accordion-submenu a {
+      padding: $accordionmenu-submenu-padding;
+    }
 
     .nested.is-accordion-submenu {
       @include menu-nested($accordionmenu-nested-margin);
@@ -114,10 +118,6 @@ $accordionmenu-arrow-size: 6px !default;
 
   .is-accordion-submenu-parent {
     position: relative;
-  }
-
-  .is-accordion-submenu-parent > a {
-    padding: $accordionmenu-submenu-padding;
   }
 
   .has-submenu-toggle > a {
