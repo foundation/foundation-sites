@@ -197,6 +197,15 @@ if (Foundation.MediaQuery.atLeast('medium')) {
 }
 ```
 
+To see if the screen is currently a certain breakpoint, use `MediaQuery.is`.
+
+```js
+if (Foundation.MediaQuery.is('small only')) {
+  // True if small
+  // False if medium or large
+}
+```
+
 To get the media query of a breakpoint, use `MediaQuery.get`.
 
 ```js
