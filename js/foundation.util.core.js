@@ -1,5 +1,7 @@
 "use strict";
 
+import $ from 'jquery';
+
 // Core Foundation Utilities, utilized in a number of places.
 
   /**
