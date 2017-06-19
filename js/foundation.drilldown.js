@@ -48,6 +48,10 @@ class Drilldown extends Plugin {
    * @private
    */
   _init() {
+    if(this.options.autoApplyClass) {
+      this.$element.addClass('drilldown');
+    }
+
     this.$element.attr({
       'role': 'tree',
       'aria-multiselectable': false
@@ -431,6 +435,14 @@ class Drilldown extends Plugin {
 }
 
 Drilldown.defaults = {
+  /**
+   * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
+   * on the `drilldown` class. This option auto-applies this class to the drilldown upon initialization.
+   * @option
+   * @type {boolian}
+   * @default true
+   */
+  autoApplyClass: true,
   /**
    * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
    * @option
