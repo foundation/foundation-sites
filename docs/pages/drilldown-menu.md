@@ -23,15 +23,19 @@ Any `<a>` without a submenu will function like a normal link.
 </div>
 
 ```html
-<ul class="vertical menu" data-drilldown>
+<ul class="vertical menu drilldown" data-drilldown>
+  <li><a href="#">One</a></li>
   <li>
-    <a href="#Item-1">Item 1</a>
-    <ul class="vertical menu">
-      <li><a href="#Item-1A">Item 1A</a></li>
-      <!-- ... -->
+    <a href="#">Two</a>
+    <ul class="menu vertical nested">
+      <li><a href="#">Two A</a></li>
+      <li><a href="#">Two B</a></li>
+      <li><a href="#">Two C</a></li>
+      <li><a href="#">Two D</a></li>
     </ul>
   </li>
-  <li><a href="#Item-2">Item 2</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
 </ul>
 ```
 
@@ -39,13 +43,13 @@ Any `<a>` without a submenu will function like a normal link.
   <p>The drilldown menu takes on the height of the tallest menu in the hierarchy, so the menu doesn't change height as the user navigates it.</p>
 </div>
 
-<ul class="menu" data-drilldown style="max-width: 250px" id="m1">
+<ul class="vertical menu drilldown" data-drilldown style="max-width: 250px" id="m1">
   <li>
     <a href="#">Item 1</a>
-    <ul class="menu">
+    <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
-        <ul class="menu">
+        <ul class="menu vertical nested">
           <li><a href="#Item-1Aa">Item 1Aa</a></li>
           <li><a href="#Item-1Ba">Item 1Ba</a></li>
           <li><a href="#Item-1Ca">Item 1Ca</a></li>
@@ -61,7 +65,7 @@ Any `<a>` without a submenu will function like a normal link.
   </li>
   <li>
     <a href="#">Item 2</a>
-    <ul class="menu">
+    <ul class="menu vertical nested">
       <li><a href="#Item-2A">Item 2A</a></li>
       <li><a href="#Item-2B">Item 2B</a></li>
       <li><a href="#Item-2C">Item 2C</a></li>
@@ -71,7 +75,7 @@ Any `<a>` without a submenu will function like a normal link.
   </li>
   <li>
     <a href="#">Item 3</a>
-    <ul class="menu">
+    <ul class="menu vertical nested">
       <li><a href="#Item-3A">Item 3A</a></li>
       <li><a href="#Item-3B">Item 3B</a></li>
       <li><a href="#Item-3C">Item 3C</a></li>
@@ -98,18 +102,18 @@ Any `<a>` without a submenu will function like a normal link.
 </div>
 
 ```html
-<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true">
+<ul class="vertical menu drilldown" data-drilldown data-auto-height="true" data-animate-height="true">
   <!--  -->
 </ul>
 ```
 
-<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m3">
+<ul class="vertical menu drilldown" data-drilldown data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m3">
   <li>
     <a href="#">Item 1</a>
-    <ul class="menu">
+    <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
-        <ul class="menu">
+        <ul class="menu vertical nested">
           <li><a href="#Item-1Aa">Item 1Aa</a></li>
           <li><a href="#Item-1Ba">Item 1Ba</a></li>
         </ul>
@@ -122,7 +126,7 @@ Any `<a>` without a submenu will function like a normal link.
   </li>
   <li>
     <a href="#">Item 2</a>
-    <ul class="menu">
+    <ul class="menu vertical nested">
       <li><a href="#Item-2A">Item 2A</a></li>
       <li><a href="#Item-2B">Item 2B</a></li>
       <li><a href="#Item-2C">Item 2C</a></li>
@@ -132,14 +136,14 @@ Any `<a>` without a submenu will function like a normal link.
   </li>
   <li>
     <a href="#">Item 3</a>
-    <ul class="menu">
+    <ul class="menu vertical nested">
       <li><a href="#Item-3A">Item 3A</a></li>
       <li><a href="#Item-3B">Item 3B</a></li>
       <li><a href="#Item-3C">Item 3C</a></li>
       <li><a href="#Item-3D">Item 3D</a></li>
       <li>
         <a href="#Item-3E">Item 3E</a>
-        <ul class="menu">
+        <ul class="menu vertical nested">
           <li><a href="#Item-3EA">Item 3EA</a></li>
           <li><a href="#Item-3EB">Item 3EB</a></li>
           <li><a href="#Item-3EC">Item 3EC</a></li>
@@ -176,12 +180,12 @@ Any `<a>` without a submenu will function like a normal link.
 </div>
 
 ```html
-<ul class="menu" data-drilldown data-scroll-top="true">
+<ul class="vertical menu drilldown" data-drilldown data-scroll-top="true">
   <!--  -->
 </ul>
 ```
 
-<ul class="menu" data-drilldown data-scroll-top="true" data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m2">
+<ul class="vertical menu drilldown" data-drilldown data-scroll-top="true" data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m2">
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
@@ -193,7 +197,7 @@ Any `<a>` without a submenu will function like a normal link.
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
   <li> <a href="#">Item</a>
-    <ul class="vertical menu">
+    <ul class="vertical menu nested">
       <li><a href="#">Item</a></li>
       <li><a href="#">Item</a></li>
       <li><a href="#">Item</a></li>
@@ -224,7 +228,7 @@ Any `<a>` without a submenu will function like a normal link.
       <li><a href="#">Item</a></li>
       <li><a href="#">Item</a></li>
       <li> <a href="#">Item</a>
-        <ul class="vertical menu">
+        <ul class="vertical menu nested">
           <li><a href="#">Item</a></li>
         </ul>
       </li>
