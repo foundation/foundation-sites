@@ -35,6 +35,8 @@ class Interchange extends Plugin {
    * @private
    */
   _init() {
+    MediaQuery._init();
+
     var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
     this.$element.attr({
       'data-resize': id,

@@ -59,6 +59,8 @@ class ResponsiveMenu extends Plugin {
    * @private
    */
   _init() {
+
+    MediaQuery._init();
     // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
     if (typeof this.rules === 'string') {
       let rulesTree = {};
