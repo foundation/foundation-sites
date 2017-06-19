@@ -36,9 +36,11 @@ class Equalizer extends Plugin {
     var eqId = this.$element.attr('data-equalizer') || '';
     var $watched = this.$element.find(`[data-equalizer-watch="${eqId}"]`);
 
+    MediaQuery._init();
+
     this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
     this.$element.attr('data-resize', (eqId || GetYoDigits(6, 'eq')));
-	this.$element.attr('data-mutate', (eqId || GetYoDigits(6, 'eq')));
+    this.$element.attr('data-mutate', (eqId || GetYoDigits(6, 'eq')));
 
     this.hasNested = this.$element.find('[data-equalizer]').length > 0;
     this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;

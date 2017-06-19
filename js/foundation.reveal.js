@@ -41,6 +41,7 @@ class Reveal extends Plugin {
    * @private
    */
   _init() {
+    MediaQuery._init();
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: MediaQuery.current};

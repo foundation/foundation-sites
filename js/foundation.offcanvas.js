@@ -32,6 +32,7 @@ class OffCanvas extends Plugin {
 
     //Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);
+    MediaQuery._init();
 
     this._init();
     this._events();

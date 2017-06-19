@@ -186,12 +186,8 @@ var Foundation = {
      */
     var foundation = function(method) {
       var type = typeof method,
-          $meta = $('meta.foundation-mq'),
           $noJS = $('.no-js');
 
-      if(!$meta.length){
-        $('<meta class="foundation-mq">').appendTo(document.head);
-      }
       if($noJS.length){
         $noJS.removeClass('no-js');
       }
