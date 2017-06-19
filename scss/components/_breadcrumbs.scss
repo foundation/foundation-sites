@@ -55,7 +55,7 @@ $breadcrumbs-item-separator-item-rtl: '\\' !default;
 /// @type Color
 $breadcrumbs-item-separator-color: $medium-gray !default;
 
-// If it exists $breadcrumbs-item-slash is used to build $breadcrumbs-item-separator. See the documentation.
+// If it exists $breadcrumbs-item-slash-color is used to build $breadcrumbs-item-separator-color. See the documentation.
 @if variable-exists($breadcrumbs-item-slash-color) {
   $breadcrumbs-item-separator-color: $breadcrumbs-item-slash-color;
 }
