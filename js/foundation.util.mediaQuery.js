@@ -75,6 +75,11 @@ var MediaQuery = {
    */
   _init() {
     var self = this;
+    var $meta = $('meta.foundation-mq');
+    if(!$meta.length){
+      $('<meta class="foundation-mq">').appendTo(document.head);
+    }
+
     var extractedStyles = $('.foundation-mq').css('font-family');
     var namedQueries;
 
@@ -173,7 +178,7 @@ var MediaQuery = {
    * @private
    */
   _watcher() {
-    $(window).on('resize.zf.mediaquery', () => {
+    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
       var newSize = this._getCurrentSize(), currentSize = this.current;
 
       if (newSize !== currentSize) {
