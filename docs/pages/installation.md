@@ -1,58 +1,194 @@
 ---
 title: Installation
-description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
+description: There are many ways to install Foundation from downloading the compiled CSS, automated Sass installs to popular package managers.
 video: '6KwsGcEHVTE'
 ---
 
-### Command-Line Tool
+## How to choose the right version for you?
 
-Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
+Each of these different ways to get started serves a different skill level or preferred workflow. If this is all new to you, don’t worry; The video above will give you an overview of each method and help you decide which is best for you.
+
+Here’s a breakdown of the options you’ll see on this page:
+
+<ul class="no-bullet" data-magellan data-bar-offset="90">
+
+  <li><a href="#download-the-css-starter-template"><strong>Download the CSS Starter Template</strong></a> - A ready-to-go zip file with Foundation’s CSS and JS. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label secondary">CSS</span></li>
+
+  <li><a href="#cdn-links"><strong>Use the Foundation CDN</strong></a> - Foundation’s CDN (Content Delivery Network) can be linked into a new or existing project without any downloading. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label secondary">CSS</span></li>
+
+  <li><a href="#command-line-tool"><strong>Foundation CLI </strong></a> - Foundation’s CLI (Command Line Interface) is the recommended way to create ready-to-go Foundation Sass projects. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#manual-setup"><strong>Manual Setup</strong></a> - You can Install from either the ZURB Stack or Basic Template manually. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#package-managers"><strong>Package Managers</strong></a> - Install foundation through your favorite package manager like npm, Bower, Meteor, RubyGems, Composer or NuGet. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#yeoman-generator"><strong>Yoeman Generators</strong></a> A generator is basically a plugin to scaffold complete projects or useful parts.
+ <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#download-the-sass-files"><strong>Download the Sass files</strong></a> - Already have a workflow you like? No problem, download Foundation's core SCSS files and you can go your own way. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+</ul>
+
+
+---
+
+## Download the CSS Starter Template
+
+<div class="responsive-embed widescreen mb1">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/lFrpnk0Oo_8"></a>
+</div>
+
+This is the quickest way to get started with Foundation. If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting index.html file for you to hack on. Just unzip and get coding!
+
+Our Starter template comes set up from the jump complete with:
+
+- Foundation’s CSS
+- Foundation’s JavaScript
+- A Starter HTML Index page
+- A blank CSS file for custom styles
+- Viewport meta tag and other boilerplate for building your responsive site
+
+<a href="http://foundation.zurb.com/sites/download" class="large button">Go to Download Page →</a>
+<a href="#" class="button large clear">Learn more →</a>
+
+---
+
+## CDN Links
+
+<p>
+  <a class="" data-open-video="8:33"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
+
+```html
+<!-- Compressed CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+
+<!-- MotionUI - used for component animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.2/motion-ui.min.css"/>
+
+<!-- Compressed JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+```
+
+Example usage:
+
+```html
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation CDN Boilerplate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.2/motion-ui.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+  </head>
+  <body>
+    <!-- page content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
+```
+
+*Note - jQuery is a dependancy of Foundation, therefor in the above example we've included a jQuery CDN which you'll need for it to work.*
+
+<a target="_blank" href="https://cdnjs.com/libraries/foundation" class="button large">See all Foundation 6 CDN Links →</a>
+
+---
+
+## Command-Line Tool
+
+<div class="responsive-embed widescreen mb1">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/rQguHjGzFEw" frameborder="0" allowfullscreen></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/rQguHjGzFEw"></a>
+</div>
+
+This is the recommended way to create ready-to-go Foundation Sass projects. The CLI (Command Line Interface) is an easy to install, tiny app that allows you to create and update Foundation Sass projects.
+
+What is needed?
+
+- [Node.JS](https://nodejs.org/en/) (Version 4 - 6.10.3)
+- [Git](https://git-scm.com/downloads)
+- Bower (CLI will install for you)
+- Gulp (CLI will install for you)
+
+The CLI and the ZURB Stack are both Node.JS based and required to run these modern build tools. Bower is a package manager for the web, which lets you download and install front-end libraries via the command line. For example, installing jQuery is a one line command: bower install jquery.
+
+As mentioned, Foundation CLI uses Gulp and Bower under the hood. In case you’re not familiar with Gulp and Bower, Gulp is a JavaScript task runner that will help you automate painful or time-consuming tasks in your development workflow. This includes SCSS compilation, minification, concatenation, image compression and other useful tasks.
+
+**Step 1** - Install Node: To install the CLI, you must first download and install [node.js](https://nodejs.org/en/) (which includes npm). npm stands for [node packaged modules](https://www.npmjs.com/) and is the package manager for JavaScript and the world’s largest software registry.
+
+**Step 2** - Then, from the command line (Terminal for Mac):
 
 ```bash
 npm install --global foundation-cli
 ```
 
-Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the command with `sudo` at the beginning:
+<div class="callout primary">
+  <p>Depending on how your machine is configured, the command may fail with an <code>EACCESS</code> error. To get around this, run the command with <code>sudo</code> at the beginning:</p>
+</div>
 
 ```bash
 sudo npm install --global foundation-cli
 ```
 
-<div class="callout alert">
-  <p>If you already have the Foundation 5 CLI on your machine, you will only be able to access one of the commands, depending on how your command line environment is configured.</p>
-
-  <p>If you want to remove the old CLI, run <code>gem uninstall foundation</code>. After testing this new CLI, if you want to go back to the old CLI, run <code>npm uninstall foundation-cli --global</code>.</p>
-</div>
-
-Once you've installed the CLI, use the `new` command to start making a new project:
+**Step 3** - Once you've installed the CLI, use the `new` command to start making a new project:
 
 ```bash
 foundation new
 ```
 
+You have a choice to build the Advanced template (ZURB Stack) or Basic template using the CLI.
+
+Choose your project type and name and the CLI will go to work for you building your Sass project. This will download all the packages needed to run the project. It could take a few minutes depending on your internet connection.
+
+<p><img src="{{root}}assets/img/cli-start.png"></p>
+
+That's it! The CLI will now build you a project that is ready to go!
+
+You will see a message like this:
+<p><img src="{{root}}assets/img/cli-complete.png"></p>
+
+**Step 4** - Now you can `cd` (change directory) into your new project and run `npm start` to start the build system and begin creating your next project.
+
+What's next? <a href="starter-projects.html">Learn more about our Sass starter templates →</a>
+
+--
+
+<a data-toggle="f5-cli">Already have the Foundation 5 CLI installed?</a>
+
+<div style="display: none;" class="callout alert" id="f5-cli" data-toggler data-animate="fade-in fade-out">
+  <p>If you already have the Foundation 5 CLI on your machine, you will only be able to access one of the commands, depending on how your command line environment is configured.</p>
+
+  <p>If you want to remove the old CLI, run <code>gem uninstall foundation</code>. After testing this new CLI, if you want to go back to the old CLI, run <code>npm uninstall foundation-cli --global</code>.</p>
+</div>
+
 ---
 
 ## Manual Setup
 
-### Basic Template
+If you don’t want the Foundation CLI to build projects for you, you can manually download and install the Sass starter builds themselves.
 
-To manually set up the basic template, first download it with Git:
+<p>
+  <a class="" data-open-video="6:04"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-```bash
-git clone https://github.com/zurb/foundation-sites-template projectname
-```
+What is needed?
 
-Then open the folder in your command line, and install the needed dependencies:
-
-```bash
-cd projectname
-npm install
-bower install
-```
-
-Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+- [Node.JS](https://nodejs.org/en/) (Version 0.12 - 6.10.3)
+- [Git](https://git-scm.com/downloads)
+- Bower - `$ npm install -g bower`
 
 ### ZURB Template
+
+The official ZURB Template includes not only Sass processing, but also JavaScript processing, Handlebars templating, and image compression. We use this exact template at ZURB for our client work!
 
 To manually set up the ZURB template, first download it with Git:
 
@@ -76,74 +212,52 @@ http://localhost:8000
 
 To create compressed, production-ready assets, run `npm run build`.
 
----
+<a href="starter-projects.html#zurb-template">Learn more about the ZURB Stack →</a>
 
-## CSS Download
+### Basic Template
 
-<div class="responsive-embed widescreen mb1">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
-  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/lFrpnk0Oo_8"></a>
-</div>
+Our basic project template has a flat directory structure and only compiles Sass. It's great if you want to quickly put together a simple project and only need to use Sass or if you’re looking for a simple Sass Gulp automation.
 
-If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
+To manually set up the basic template, first download it with Git:
 
-<a href="http://foundation.zurb.com/sites/download" class="large button">Download CSS Version</a>
-
----
-
-## HTML Starter Template
-Start with this HTML template and adapt it to your needs. Be sure to include the `.no-js` class on the `html` tag of your template.  Adding this class prevents [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content) for a number of foundation components.
-
-```html
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation Starter Template</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-
-  </body>
-</html>
-
+```bash
+git clone https://github.com/zurb/foundation-sites-template projectname
 ```
 
----
+Then open the folder in your command line, and install the needed dependencies:
 
-## CDN Links
-
-The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
-
-```html
-<!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
-
-<!-- Compressed JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+```bash
+cd projectname
+npm install
+bower install
 ```
+
+Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+
+<a target="_blank" href="http://yeoman.io/generators/">Learn more about the Basic Template →</a>
 
 ---
 
 ## Package Managers
 
-Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
+<p>
+  <a class="" data-open-video="9:13"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-- npm: `npm install foundation-sites`
-- Bower: `bower install foundation-sites`
-- Meteor: `meteor add zurb:foundation-sites`
-- Composer: `php composer.phar require zurb/foundation`
-- NuGet: `Install-Package foundation-sites`
+Foundation is available on <a href="https://www.npmjs.com/" target="_blank">NPM</a>, <a href="https://bower.io/" target="_blank">Bower</a>, <a href="https://atmospherejs.com/" target="_blank">Meteor</a>, <a href="https://rubygems.org/" target="_blank">RubyGems</a>, <a href="https://getcomposer.org/" target="_blank">Composer</a> and <a href="https://www.nuget.org/" target="_blank">NuGet</a>. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
+
+Install with a package manager gets you the compiled CSS and JS files as well as the source JavaScript, and Sass source files. If you're using Gulp, Grunt, or another task runner, you'll use this package to set up your project. You'll need to compile the Sass yourself.
+
+There are two ways to do this. You can either add your dependency (the package) to your bower.json (Bower) or package.json (npm) file, or you can use the command line. To make things simple, you can use the command line:
+
+<ul class="icon-list menu vertical">
+  <li><img src="https://eg2.gallerycdn.vsassets.io/extensions/eg2/vscode-npm-script/0.1.9/1491853545308/Microsoft.VisualStudio.Services.Icons.Default" class="" height="" width="" alt=""><strong>npm:</strong> <code>npm install foundation-sites</code></li>
+  <li><img src="https://bower.io/img/bower-logo.png" class="" height="" width="" alt=""><strong>Bower:</strong> <code>bower install foundation-sites</code></li>
+  <li><img src="https://shmck.herokuapp.com/content/images/2015/07/meteor.png" class="" height="" width="" alt=""><strong>Meteor:</strong> <code>meteor add zurb:foundation-sites</code></li>
+  <li><img src="https://getcomposer.org/img/logo-composer-transparent2.png" class="" height="" width="" alt=""><strong>Composer:</strong> <code>php composer.phar require zurb/foundation</code></li>
+  <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/NuGet_project_logo.svg/220px-NuGet_project_logo.svg.png" class="" height="" width="" alt=""><strong>NuGet:</strong> <code>Install-Package foundation-sites</code></li>
+  <li><img src="https://camo.githubusercontent.com/beede1ff8999a3d69c452f1cd0df90e076454344/687474703a2f2f7275627967656d732e6f72672f66617669636f6e2e69636f" class="" height="" width="" alt=""><strong>RubyGems:</strong> <code>gem install zurb-foundation</code></li>
+</ul>
 
 ### Package Contents
 
@@ -156,8 +270,39 @@ Here's what comes in the package.
   - `js/`: Concatenated JavaScript files. Includes minified and unminified files.
     - `plugins/`: Standalone JavaScript plugins.
 
+Once installed with one of the above commands, Foundation has been downloaded via git and installed into the `assets/` directory.
+
+If you are using Foundation Sass, you'll `@import` Foundation from the `scss/` folder. You will also link to the `js/` folder where all the uncompressed JS files live.
+
+If you are using the compiled CSS and JS then you'll use the `css/` and `js/` files in the `dist/` folder.
+
+---
+
+## Yeoman Generator
+
+A generator is basically a plugin that can be run with the `yo` command to scaffold complete projects or useful parts. There are many variations and combinations to build a Foundation project. Here are a couple:
+
+- [Foundation + Browserify Project Generator](https://github.com/dougmacklin/generator-foundation-browserify)
+- [Foundation 6 web app generator](https://github.com/bassjobsen/generator-foundation6/)
+
+<a href="starter-projects.html#basic-template">Search Foundation Yeoman Generators →</a>
+
+---
+
+## Download The Sass Files
+
+If you want to get the Sass files and use your own build system or workflow you can dowload the Sass source files and have it your way. This method requires a Sass compiler and some setup.
+
+*Note: Foundation uses <a href="https://autoprefixer.github.io/" target="_blank">Autoprefixer</a> to deal with <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank">CSS vendor prefixes</a>. If you're compiling Foundation from its Sass source and not using our Gulpfile, you'll need to integrate Autoprefixer into your build process yourself.*
+
+<a href="https://github.com/zurb/foundation-sites/archive/v6.3.1.zip" class="large button">Download Sass Source</a>
+
 ---
 
 ## Other Integrations
+
+<p>
+  <a class="" data-open-video="9:35"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 The Foundation community has helped us integrate the framework into Rails, WordPress, Django, and more. Head to our [resources page](http://foundation.zurb.com/sites/resources) to find even more ways to use Foundation.
