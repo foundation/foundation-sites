@@ -199,6 +199,7 @@ var Reveal = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["MediaQuery"]._init();
       this.id = this.$element.attr('id');
       this.isActive = false;
       this.cached = { mq: __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["MediaQuery"].current };

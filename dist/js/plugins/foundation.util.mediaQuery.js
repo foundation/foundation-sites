@@ -184,6 +184,11 @@ var MediaQuery = {
    */
   _init: function () {
     var self = this;
+    var $meta = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('meta.foundation-mq');
+    if (!$meta.length) {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<meta class="foundation-mq">').appendTo(document.head);
+    }
+
     var extractedStyles = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.foundation-mq').css('font-family');
     var namedQueries;
 
@@ -289,7 +294,7 @@ var MediaQuery = {
   _watcher: function () {
     var _this = this;
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('resize.zf.mediaquery', function () {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
       var newSize = _this._getCurrentSize(),
           currentSize = _this.current;
 

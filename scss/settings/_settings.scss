@@ -268,8 +268,10 @@ $breadcrumbs-item-color-current: $black;
 $breadcrumbs-item-color-disabled: $medium-gray;
 $breadcrumbs-item-margin: 0.75rem;
 $breadcrumbs-item-uppercase: true;
-$breadcrumbs-item-slash: true;
-$breadcrumbs-item-slash-color: $medium-gray;
+$breadcrumbs-item-separator: true;
+$breadcrumbs-item-separator-item: '/';
+$breadcrumbs-item-separator-item-rtl: '\\';
+$breadcrumbs-item-separator-color: $medium-gray;
 
 // 11. Button
 // ----------
@@ -384,6 +386,7 @@ $dropdown-sizes: (
 $dropdownmenu-arrows: true;
 $dropdownmenu-arrow-color: $anchor-color;
 $dropdownmenu-arrow-size: 6px;
+$dropdownmenu-arrow-padding: 1.5rem;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-submenu-background: $dropdownmenu-background;

@@ -183,6 +183,7 @@ var ResponsiveToggle = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["MediaQuery"]._init();
       var targetID = this.$element.data('responsive-toggle');
       if (!targetID) {
         console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
