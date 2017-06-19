@@ -28,24 +28,32 @@ Orbit doesn't automatically generate any HTML for you, giving you the flexibilit
 
 ```html_example
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-  <ul class="orbit-container">
     <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
     <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+  <ul class="orbit-container">
     <li class="is-active orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
-      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+      <figure class="orbit-slide">
+        <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
+        <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+      </figure>
     </li>
     <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
-      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+      <figure class="orbit-slide">
+        <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
+        <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+      </figure>
     </li>
     <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
-      <figcaption class="orbit-caption">Encapsulating</figcaption>
+      <figure class="orbit-slide">
+        <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
+        <figcaption class="orbit-caption">Encapsulating</figcaption>
+      </figure>
     </li>
     <li class="orbit-slide">
-      <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
-      <figcaption class="orbit-caption">Outta This World</figcaption>
+      <figure class="orbit-slide">
+        <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
+        <figcaption class="orbit-caption">Outta This World</figcaption>
+      </figure>
     </li>
   </ul>
   <nav class="orbit-bullets">
