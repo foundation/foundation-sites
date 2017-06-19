@@ -39,7 +39,7 @@ $breadcrumbs-item-uppercase: true !default;
 $breadcrumbs-item-separator: true !default;
 
 // If it exists $breadcrumbs-item-slash is used to build $breadcrumbs-item-separator. See the documentation.
-@if variable-exists($breadcrumbs-item-slash) {
+@if variable-exists(breadcrumbs-item-slash) {
   $breadcrumbs-item-separator: $breadcrumbs-item-slash;
 }
 
@@ -56,7 +56,7 @@ $breadcrumbs-item-separator-item-rtl: '\\' !default;
 $breadcrumbs-item-separator-color: $medium-gray !default;
 
 // If it exists $breadcrumbs-item-slash-color is used to build $breadcrumbs-item-separator-color. See the documentation.
-@if variable-exists($breadcrumbs-item-slash-color) {
+@if variable-exists(breadcrumbs-item-slash-color) {
   $breadcrumbs-item-separator-color: $breadcrumbs-item-slash-color;
 }
 
