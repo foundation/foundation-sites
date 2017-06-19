@@ -38,6 +38,11 @@ $breadcrumbs-item-uppercase: true !default;
 /// @type Boolean
 $breadcrumbs-item-separator: true !default;
 
+// If it exists $breadcrumbs-item-slash is used to build $breadcrumbs-item-separator. See the documentation.
+@if variable-exists($breadcrumbs-item-slash) {
+  $breadcrumbs-item-separator: $breadcrumbs-item-slash;
+}
+
 /// Used character for the breadcrumb separator.
 /// @type Content
 $breadcrumbs-item-separator-item: '/' !default;
@@ -49,6 +54,11 @@ $breadcrumbs-item-separator-item-rtl: '\\' !default;
 /// Color of breadcrumb item.
 /// @type Color
 $breadcrumbs-item-separator-color: $medium-gray !default;
+
+// If it exists $breadcrumbs-item-slash is used to build $breadcrumbs-item-separator. See the documentation.
+@if variable-exists($breadcrumbs-item-slash-color) {
+  $breadcrumbs-item-separator-color: $breadcrumbs-item-slash-color;
+}
 
 /// Adds styles for a breadcrumbs container, along with the styles for the `<li>` and `<a>` elements inside of it.
 @mixin breadcrumbs-container {
