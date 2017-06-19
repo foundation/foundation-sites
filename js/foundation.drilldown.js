@@ -48,9 +48,13 @@ class Drilldown extends Plugin {
    * @private
    */
   _init() {
+    this.$element.attr({
+      'role': 'tree',
+      'aria-multiselectable': false
+    });
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
-    this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
+    this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
+    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
     this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
@@ -82,7 +86,7 @@ class Drilldown extends Plugin {
           .attr({
             'aria-hidden': true,
             'tabindex': 0,
-            'role': 'menu'
+            'role': 'group'
           });
       _this._events($link);
     });

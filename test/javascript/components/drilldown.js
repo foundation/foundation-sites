@@ -62,8 +62,10 @@ describe('Drilldown Menu', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Drilldown($html, {});
 
+      plugin.$element.should.have.attr('role', 'tree');
+
       plugin.$element.find('[data-submenu]').each(function() {
-        $(this).should.have.attr('role', 'menu');
+        $(this).should.have.attr('role', 'group');
         $(this).should.have.attr('aria-hidden', 'true');
       });
 
@@ -71,6 +73,10 @@ describe('Drilldown Menu', function() {
         $(this).should.have.attr('aria-haspopup', 'true');
         $(this).should.have.attr('aria-expanded', 'false');
         $(this).should.have.attr('aria-label', $(this).children('a').first().text());
+      });
+
+      plugin.$element.find('li:not(.js-drilldown-back)').each(function() {
+        $(this).should.have.attr('role', 'treeitem');
       });
     });
   });
