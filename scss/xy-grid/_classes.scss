@@ -40,7 +40,6 @@
     > .shrink {
       @include xy-cell-static(shrink, false);
     }
-
   }
 
   // Auto width
@@ -58,16 +57,24 @@
         @include xy-cell-base(shrink);
         @include xy-cell-static(shrink, false);
       }
-
     }
-
 
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
-      .#{$-zf-size}-#{$i} {
+      .grid-x > .#{$-zf-size}-#{$i} {
         @include xy-cell-static($i, false, $gutter-type: padding);
       }
     }
+  }
+
+  // Reset width when using `.grid-margin-x` not on `.grid-x`
+  .grid-margin-x:not(.grid-x) > .cell {
+    width: auto;
+  }
+
+  // Reset height when using `.grid-margin-y` not on `.grid-y`
+  .grid-margin-y:not(.grid-y) > .cell {
+    height: auto;
   }
 }
 
@@ -230,7 +237,7 @@
   }
 
   .grid-y {
-    @include xy-grid(vertical);
+    @include xy-grid(vertical, false);
 
 
     > .cell {
