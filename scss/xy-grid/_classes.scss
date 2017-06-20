@@ -44,7 +44,7 @@
 
   // Auto width
   @include -zf-each-breakpoint() {
-    .grid-x > [class*="#{$-zf-size}-"] {
+    .grid-x > [class*="#{$-zf-size}-"]:not([class*="#{$-zf-size}-order"]):not([class*="#{$-zf-size}-offset"]) {
       flex-basis: auto;
     }
     @if not($-zf-size == small) {
@@ -254,7 +254,7 @@
 
 
     @include -zf-each-breakpoint() {
-      > [class*="#{$-zf-size}-"] {
+      > [class*="#{$-zf-size}-"]:not([class*="#{$-zf-size}-order"]):not([class*="#{$-zf-size}-offset"]) {
         flex-basis: auto;
       }
 
