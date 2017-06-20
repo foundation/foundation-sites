@@ -305,6 +305,10 @@
     @include xy-grid-frame;
   }
 
+  .cell .grid-frame {
+    width: 100%; // Same as include with $nested, but with less css
+  }
+
   .cell-block {
     @include xy-cell-block();
   }
@@ -323,6 +327,10 @@
 
     .#{$-zf-size}-grid-frame {
       @include xy-grid-frame;
+    }
+
+    .cell .#{$-zf-size}-grid-frame {
+      width: 100%; // Same as include with $nested, but with less css
     }
 
     .#{$-zf-size}-cell-block {
@@ -354,8 +362,17 @@
 
       }
     }
+    .cell {
+      .grid-y.grid-frame {
+        height: 100%; // Same as include with $nested, but with less css
+      }
+      @include -zf-each-breakpoint(false) {
+        .grid-y.#{$-zf-size}-grid-frame {
+          height: 100%; // Same as include with $nested, but with less css
+        }
+      }
+    }
   }
-
 }
 
 // Final classes
