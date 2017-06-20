@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.util.core';
 
 
 /**
@@ -37,7 +38,7 @@ class Interchange extends Plugin {
   _init() {
     MediaQuery._init();
 
-    var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
+    var id = this.$element[0].id || GetYoDigits(6, 'interchange');
     this.$element.attr({
       'data-resize': id,
       'id': id
