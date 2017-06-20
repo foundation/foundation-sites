@@ -307,6 +307,11 @@ $maincontent-class: 'off-canvas-content' !default;
   &.has-transition-push {
     transform: translate(0, 0);
   }
+
+  // Consider element & content, nested in another content
+  .off-canvas.is-open {
+    transform: translate(0, 0);
+  }
 }
 
 /// Adds styles that reveal an off-canvas panel.
