@@ -106,7 +106,7 @@ class ResponsiveToggle extends Plugin {
        */
       if(this.options.animate) {
         if (this.$targetMenu.is(':hidden')) {
-          Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, () => {
+          Motion.animateIn(this.$targetMenu, this.animationIn, () => {
             this.$element.trigger('toggled.zf.responsiveToggle');
             this.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
           });
