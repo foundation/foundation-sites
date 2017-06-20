@@ -28,7 +28,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </div>
 
 ```html
-<ul class="vertical menu" data-accordion-menu>
+<ul class="vertical menu accordion-menu" data-accordion-menu>
   <li>
     <a href="#">Item 1</a>
     <ul class="menu vertical nested">
@@ -40,7 +40,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </ul>
 ```
 
-<ul class="vertical menu" data-accordion-menu style="max-width: 250px">
+<ul class="vertical menu accordion-menu" data-accordion-menu style="max-width: 250px">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu vertical nested">
@@ -66,6 +66,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
   <li><a href="#">Item 3</a></li>
 </ul>
 
+<br>
 
 ## Submenu Toggle
 
@@ -76,10 +77,10 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
   <li>
     <a href="http://foundation.zurb.com/">Zurb Foundation</a>
-    <ul class="menu vertical">
+    <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
-        <ul class="menu vertical">
+        <ul class="menu vertical nested">
           <li><a href="#">Item 1Ai</a></li>
           <li><a href="#">Item 1Aii</a></li>
           <li><a href="#">Item 1Aiii</a></li>
@@ -91,7 +92,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
   </li>
   <li>
     <a href="#">Item 2</a>
-    <ul class="menu vertical">
+    <ul class="menu vertical nested">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
@@ -100,13 +101,13 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 </ul>
 ```
 
-<ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
+<ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" style="max-width: 250px">
   <li>
     <a href="http://foundation.zurb.com/">Zurb Foundation</a>
-    <ul class="menu vertical">
+    <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
-        <ul class="menu vertical">
+        <ul class="menu vertical nested">
           <li><a href="#">Item 1Ai</a></li>
           <li><a href="#">Item 1Aii</a></li>
           <li><a href="#">Item 1Aiii</a></li>
@@ -118,7 +119,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
   </li>
   <li>
     <a href="#">Item 2</a>
-    <ul class="menu vertical">
+    <ul class="menu vertical nested">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
