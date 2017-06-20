@@ -47,7 +47,7 @@ $menu-item-background-hover: $light-gray !default;
 
   @if $global-flexbox {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 
   li {
@@ -160,7 +160,7 @@ $menu-item-background-hover: $light-gray !default;
 @mixin menu-direction($dir: horizontal) {
   @if $dir == horizontal {
     @if $global-flexbox {
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       flex-direction: row;
     }
     @else {
@@ -171,7 +171,7 @@ $menu-item-background-hover: $light-gray !default;
   }
   @else if $dir == vertical {
     @if $global-flexbox {
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       flex-direction: column;
     }
     @else {
