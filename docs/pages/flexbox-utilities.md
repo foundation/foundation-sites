@@ -3,6 +3,7 @@ title: Flexbox Utilities
 description: Flexbox utility classes and mixins to make working with flexbox easier.
 video: 'KxafSdyTCIg'
 sass:
+  - scss/xy-grid/*.scss
   - scss/components/_flex.scss
   - scss/util/_flex.scss
 ---
@@ -13,17 +14,17 @@ Flexbox makes horizontal and vertical alignment painless, through the CSS proper
 
 To understand how these classes work, you need to understand the parent-child relationship created with flexbox. An element with `display: flex` is a *flex parent*, and can horizontally or vertically align its children. All immediate children of the flex parent are *flex children*. A flex child can vertically align itself.
 
-Here's a basic example: when using the grid, a row is a flex parent, and a column is a flex child.
-
-<div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XRZOjE?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="alert callout">
+  <p>In the below examples we are using [XY Grid](xy-grid.html) classes instead of [Legacy Flex Grid's](flex-grid.html) <code>row</code> and <code>column</code>. These examples will works for <code>row</code> and <code>column</code> but then again the Legacy Flex Grid will be depreciated from Foundation 7 so we recommend to use XY Grid.</p>
 </div>
 
-```html
-<div class="row">
-  <div class="column"></div>
-  <div class="column"></div>
-  <div class="column"></div>
+Here's a basic example: when using the grid, a `grid-x` or `grid-y` is a flex parent, and a `cell` is a flex child. Use `grid-margin-x` or `grid-padding-x` for adding [gutters](xy-grid.html#gutters)
+
+```html_example
+<div class="grid-x grid-padding-x">
+  <div class="cell small-4">Cell 1</div>
+  <div class="cell small-4">Cell 2</div>
+  <div class="cell small-4">Cell 3</div>
 </div>
 ```
 
@@ -38,34 +39,28 @@ Horizontal alignment classes are applied to flex parents. Left alignment is the 
 - `.align-justify`
 - `.align-spaced`
 
-<div class="docs-code-live">
-  <div class="text-center">
-    <div class="row">
-      <div class="column small-4">Aligned to</div>
-      <div class="column small-4">the left</div>
-    </div>
-    <div class="row align-right">
-      <div class="column small-4">Aligned to</div>
-      <div class="column small-4">the right</div>
-    </div>
-    <div class="row align-center">
-      <div class="column small-4">Aligned to</div>
-      <div class="column small-4">the center</div>
-    </div>
-    <div class="row align-justify">
-      <div class="column small-4">Aligned to</div>
-      <div class="column small-4">the edges</div>
-    </div>
-    <div class="row align-spaced">
-      <div class="column small-4">Aligned to</div>
-      <div class="column small-4">the space around</div>
-    </div>
-  </div>
+```html_example
+<div class="grid-x grid-padding-x"> <!-- Aligned to the left -->
+  <div class="cell small-4">Aligned to</div>
+  <div class="cell small-4">the left</div>
 </div>
-
-<div class="docs-codepen-container">
-<a class="codepen-logo-link left" href="http://codepen.io/ZURBFoundation/pen/WjMmvM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="grid-x grid-padding-x align-right"> <!-- Aligned to the right -->
+  <div class="cell small-4">Aligned to</div>
+  <div class="cell small-4">the right</div>
 </div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4">Aligned to</div>
+  <div class="cell small-4">the center</div>
+</div>
+<div class="grid-x grid-padding-x align-justify"> <!-- Aligned to the edges -->
+  <div class="cell small-4">Aligned to</div>
+  <div class="cell small-4">the edges</div>
+</div>
+<div class="grid-x grid-padding-x align-spaced"> <!-- Aligned to the space around -->
+  <div class="cell small-4">Aligned to</div>
+  <div class="cell small-4">the space around</div>
+</div>
+```
 
 You might be wondering what the difference between `.align-justify` and `.align-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
 
@@ -95,16 +90,30 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 </div>
 
 ```html_example
-<div class="row align-middle">
-  <div class="columns">I'm in the middle!</div>
-  <div class="columns">I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident distinctio aliquam omnis? Labore, ullam possimus.</div>
+<div class="grid-x grid-padding-x align-top">
+  <div class="cell small-4">I'm at the top (default)</div>
+  <div class="cell small-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
 
 ```html_example
-<div class="row align-stretch">
-  <div class="columns">These colums have the same height.</div>
-  <div class="columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+<div class="grid-x grid-padding-x align-middle">
+  <div class="cell small-4">I'm in the middle</div>
+  <div class="cell small-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+</div>
+```
+
+```html_example
+<div class="grid-x grid-padding-x align-bottom">
+  <div class="cell small-4">I'm at the bottom</div>
+  <div class="cell small-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+</div>
+```
+
+```html_example
+<div class="grid-x grid-padding-x align-stretch">
+  <div class="cell small-4">These cells have the same height</div>
+  <div class="cell small-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
 
@@ -144,9 +153,9 @@ Central alignment can be applied to a flex parent, which will centrally align al
 </div>
 
 ```html_example
-<div class="row align-center-middle text-center" style="height: 200px;">
-  <div class="columns small-4">I am in the center-middle</div>
-  <div class="columns small-4">I am also centrally located</div>
+<div class="grid-x grid-padding-x align-center-middle text-center" style="height: 200px;">
+  <div class="cell small-4">I am in the center-middle</div>
+  <div class="cell small-4">I am also centrally located</div>
 </div>
 ```
 
