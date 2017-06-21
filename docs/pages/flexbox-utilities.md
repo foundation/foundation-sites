@@ -131,10 +131,10 @@ To align an individual child, use the below classes. They use the same alignment
 </div>
 
 ```html_example
-<div class="row">
-  <div class="column align-self-bottom">Align bottom</div>
-  <div class="column align-self-middle">Align middle</div>
-  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+<div class="grid-x grid-padding-x">
+  <div class="cell small-4 align-self-bottom"><div class="demo">Align bottom</div></div>
+  <div class="cell small-4 align-self-middle"><div class="demo">Align middle</div></div>
+  <div class="cell small-4 align-self-top"><div class="demo">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div></div>
 </div>
 ```
 
