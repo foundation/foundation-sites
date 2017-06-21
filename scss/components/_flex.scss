@@ -1,3 +1,7 @@
+/// Default value for the count of source ordering`
+/// @type Number
+$flex-source-ordering-count: 6 !default;
+
 @mixin foundation-flex-classes {
   // Horizontal alignment using justify-content
   @each $hdir, $prop in map-remove($-zf-flex-justify, 'left') {
@@ -34,7 +38,7 @@
 
   // Source ordering
   @include -zf-each-breakpoint {
-    @for $i from 1 through 6 {
+    @for $i from 1 through $flex-source-ordering-count {
       .#{$-zf-size}-order-#{$i} {
         @include flex-order($i);
       }
