@@ -199,14 +199,12 @@ class OffCanvas extends Plugin {
    * @function
    */
   reveal(isRevealed) {
-    var $closer = this.$element.find('[data-close]');
     if (isRevealed) {
       this.close();
       this.isRevealed = true;
       this.$element.attr('aria-hidden', 'false');
       this.$element.off('open.zf.trigger toggle.zf.trigger');
       this.$element.removeClass('is-closed');
-      if ($closer.length) { $closer.hide(); }
     } else {
       this.isRevealed = false;
       this.$element.attr('aria-hidden', 'true');
@@ -215,9 +213,6 @@ class OffCanvas extends Plugin {
         'toggle.zf.trigger': this.toggle.bind(this)
       });
       this.$element.addClass('is-closed');
-      if ($closer.length) {
-        $closer.show();
-      }
     }
     this._addContentClasses(isRevealed);
   }

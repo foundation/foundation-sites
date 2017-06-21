@@ -329,6 +329,10 @@ $content: $maincontent-class
     position: absolute;
   }
 
+  .close-button {
+    display: none;
+  }
+
   @at-root .#{$content}.has-reveal-#{$position} {
     margin-#{$position}: $offcanvas-size;
   }
@@ -356,6 +360,10 @@ $content: $maincontent-class
   &.position-bottom {
     box-shadow: none;
     transform: none;
+  }
+
+  .close-button {
+    display: none;
   }
 }
 
