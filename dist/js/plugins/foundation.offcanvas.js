@@ -194,6 +194,7 @@ var OffCanvas = function (_Plugin) {
 
       //Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_5__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["MediaQuery"]._init();
 
       this._init();
       this._events();

@@ -53,7 +53,7 @@ Triggers.Listeners.Basic  = {
     let animation = $(this).data('closable');
 
     if(animation !== ''){
-      Foundation.Motion.animateOut($(this), animation, function() {
+      Motion.animateOut($(this), animation, function() {
         $(this).trigger('closed.zf');
       });
     }else{

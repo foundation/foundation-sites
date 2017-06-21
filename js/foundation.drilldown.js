@@ -48,9 +48,17 @@ class Drilldown extends Plugin {
    * @private
    */
   _init() {
+    if(this.options.autoApplyClass) {
+      this.$element.addClass('drilldown');
+    }
+
+    this.$element.attr({
+      'role': 'tree',
+      'aria-multiselectable': false
+    });
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
-    this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
+    this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
+    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
     this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
@@ -82,7 +90,7 @@ class Drilldown extends Plugin {
           .attr({
             'aria-hidden': true,
             'tabindex': 0,
-            'role': 'menu'
+            'role': 'group'
           });
       _this._events($link);
     });
@@ -427,6 +435,14 @@ class Drilldown extends Plugin {
 }
 
 Drilldown.defaults = {
+  /**
+   * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
+   * on the `drilldown` class. This option auto-applies this class to the drilldown upon initialization.
+   * @option
+   * @type {boolian}
+   * @default true
+   */
+  autoApplyClass: true,
   /**
    * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
    * @option

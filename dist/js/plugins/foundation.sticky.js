@@ -199,6 +199,8 @@ var Sticky = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["MediaQuery"]._init();
+
       var $parent = this.$element.parent('[data-sticky-container]'),
           id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["GetYoDigits"])(6, 'sticky'),
           _this = this;

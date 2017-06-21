@@ -80,6 +80,10 @@ module.exports = jQuery;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return rtl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GetYoDigits; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return transitionend; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
 
 
 // Core Foundation Utilities, utilized in a number of places.
@@ -87,9 +91,8 @@ module.exports = jQuery;
 /**
  * Returns a boolean for RTL support
  */
-
 function rtl() {
-  return $('html').attr('dir') === 'rtl';
+  return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').attr('dir') === 'rtl';
 }
 
 /**
@@ -466,6 +469,11 @@ var MediaQuery = {
    */
   _init: function () {
     var self = this;
+    var $meta = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('meta.foundation-mq');
+    if (!$meta.length) {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<meta class="foundation-mq">').appendTo(document.head);
+    }
+
     var extractedStyles = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.foundation-mq').css('font-family');
     var namedQueries;
 
@@ -571,7 +579,7 @@ var MediaQuery = {
   _watcher: function () {
     var _this = this;
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('resize.zf.mediaquery', function () {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
       var newSize = _this._getCurrentSize(),
           currentSize = _this.current;
 
@@ -2390,9 +2398,17 @@ var Drilldown = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      if (this.options.autoApplyClass) {
+        this.$element.addClass('drilldown');
+      }
+
+      this.$element.attr({
+        'role': 'tree',
+        'aria-multiselectable': false
+      });
       this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
-      this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
-      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
+      this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
+      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
       this.$element.attr('data-mutate', this.$element.attr('data-drilldown') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["b" /* GetYoDigits */])(6, 'drilldown'));
 
       this._prepareMenu();
@@ -2426,7 +2442,7 @@ var Drilldown = function (_Plugin) {
         $link.children('[data-submenu]').attr({
           'aria-hidden': true,
           'tabindex': 0,
-          'role': 'menu'
+          'role': 'group'
         });
         _this._events($link);
       });
@@ -2808,6 +2824,14 @@ var Drilldown = function (_Plugin) {
 
 Drilldown.defaults = {
   /**
+   * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
+   * on the `drilldown` class. This option auto-applies this class to the drilldown upon initialization.
+   * @option
+   * @type {boolian}
+   * @default true
+   */
+  autoApplyClass: true,
+  /**
    * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
    * @option
    * @type {string}
@@ -3009,7 +3033,12 @@ var DropdownMenu = function (_Plugin) {
   }, {
     key: '_isVertical',
     value: function _isVertical() {
-      return this.$tabs.css('display') === 'block';
+      return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
+    }
+  }, {
+    key: '_isRtl',
+    value: function _isRtl() {
+      return this.$element.hasClass('align-right') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["a" /* rtl */])() && !this.$element.hasClass('align-left');
     }
 
     /**
@@ -3149,7 +3178,7 @@ var DropdownMenu = function (_Plugin) {
         if (isTab) {
           if (_this._isVertical()) {
             // vertical menu
-            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["a" /* rtl */])()) {
+            if (_this._isRtl()) {
               // right aligned
               __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
                 down: nextSibling,
@@ -3168,7 +3197,7 @@ var DropdownMenu = function (_Plugin) {
             }
           } else {
             // horizontal menu
-            if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["a" /* rtl */])()) {
+            if (_this._isRtl()) {
               // right aligned
               __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
                 next: prevSibling,
@@ -3188,7 +3217,7 @@ var DropdownMenu = function (_Plugin) {
           }
         } else {
           // not tabs -> one sub
-          if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["a" /* rtl */])()) {
+          if (_this._isRtl()) {
             // right aligned
             __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(functions, {
               next: closeSub,
@@ -5258,7 +5287,7 @@ Abide.defaults = {
 
 
 
-var FOUNDATION_VERSION = '6.4.0-rc2';
+var FOUNDATION_VERSION = '6.4.0-rc4';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -5448,12 +5477,8 @@ var Foundation = {
      */
     var foundation = function (method) {
       var type = typeof method,
-          $meta = $('meta.foundation-mq'),
           $noJS = $('.no-js');
 
-      if (!$meta.length) {
-        $('<meta class="foundation-mq">').appendTo(document.head);
-      }
       if ($noJS.length) {
         $noJS.removeClass('no-js');
       }
@@ -6122,6 +6147,8 @@ var Equalizer = function (_Plugin) {
       var eqId = this.$element.attr('data-equalizer') || '';
       var $watched = this.$element.find('[data-equalizer-watch="' + eqId + '"]');
 
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
+
       this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
       this.$element.attr('data-resize', eqId || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["b" /* GetYoDigits */])(6, 'eq'));
       this.$element.attr('data-mutate', eqId || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["b" /* GetYoDigits */])(6, 'eq'));
@@ -6515,6 +6542,8 @@ var Interchange = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
+
       var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
       this.$element.attr({
         'data-resize': id,
@@ -7086,6 +7115,7 @@ var OffCanvas = function (_Plugin) {
 
       //Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_5__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
 
       this._init();
       this._events();
@@ -8228,6 +8258,8 @@ var ResponsiveAccordionTabs = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
+
       // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
       if (typeof this.rules === 'string') {
         var rulesTree = {};
@@ -8519,6 +8551,8 @@ var ResponsiveMenu = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
       // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
       if (typeof this.rules === 'string') {
         var rulesTree = {};
@@ -8693,6 +8727,7 @@ var ResponsiveToggle = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
       var targetID = this.$element.data('responsive-toggle');
       if (!targetID) {
         console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
@@ -8901,6 +8936,7 @@ var Reveal = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
       this.id = this.$element.attr('id');
       this.isActive = false;
       this.cached = { mq: __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */].current };
@@ -10340,6 +10376,8 @@ var Sticky = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
+
       var $parent = this.$element.parent('[data-sticky-container]'),
           id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["b" /* GetYoDigits */])(6, 'sticky'),
           _this = this;
@@ -11117,6 +11155,7 @@ var Tooltip = function (_Positionable) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
       var elemId = this.$element.attr('aria-describedby') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["b" /* GetYoDigits */])(6, 'tooltip');
 
       this.options.tipText = this.options.tipText || this.$element.attr('title');

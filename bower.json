@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.4.0-rc2",
+  "version": "6.4.0-rc4",
   "license": "MIT",
   "main": [
     "scss/foundation.scss",

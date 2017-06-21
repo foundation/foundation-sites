@@ -65,12 +65,7 @@
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin xy-cell-reset($vertical: true) {
   $direction: if($vertical == true, width, height);
-  $sides: if($vertical == true, left right, top bottom);
   #{$direction}: auto;
-  @each $side in $sides {
-    margin-#{$side}: 0;
-    padding-#{$side}: 0;
-  }
 }
 
 // Sets our cell widths or heights depending on gutter type.

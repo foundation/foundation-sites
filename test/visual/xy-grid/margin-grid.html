@@ -30,10 +30,10 @@
 
     <h2>Sizing Classes</h2>
 
-    <div class="grid-x margin-gutters">
-      <div class="cell medium-12"><div class="demo">12</div></div>
-      <div class="cell medium-11"><div class="demo">11</div></div>
-      <div class="cell medium-1"><div class="demo">1</div></div>
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12"><div class="demo">12/12</div></div>
+      <div class="cell medium-11 large-7"><div class="demo">12/11/7</div></div>
+      <div class="cell medium-1 large-5" ><div class="demo">12/1/5</div></div>
       <div class="cell medium-10"><div class="demo">10</div></div>
       <div class="cell medium-2"><div class="demo">2</div></div>
       <div class="cell medium-9"><div class="demo">9</div></div>
@@ -46,11 +46,19 @@
       <div class="cell medium-4"><div class="demo">4</div></div>
     </div>
 
+    <h2>Sizing Classes</h2>
+
+    <div class="grid-x grid-margin-x">
+      <div class="cell small-4"><div class="demo">4</div></div>
+      <div class="cell small-4"><div class="demo">4</div></div>
+      <div class="cell small-4"><div class="demo">4</div></div>
+    </div>
+
     <h2>Nesting</h2>
 
-    <div class="grid-x margin-gutters">
+    <div class="grid-x grid-margin-x">
       <div class="cell medium-6">
-        <div class="grid-x margin-gutters">
+        <div class="grid-x grid-margin-x">
           <div class="cell medium-9"><div class="demo">9 nested</div></div>
           <div class="cell medium-3"><div class="demo">3 nested</div></div>
         </div>
@@ -60,14 +68,14 @@
 
     <h2>Auto and Shrink</h2>
 
-    <div class="grid-x margin-gutters">
-      <div class="cell medium-shrink"><div class="demo">Shrink on medium</div></div>
-      <div class="cell medium-auto"><div class="demo">Auto on medium</div></div>
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-shrink large-10"><div class="demo">Shrink on medium, 10 on large</div></div>
+      <div class="cell medium-auto large-2"><div class="demo">Auto on medium, 2 large</div></div>
     </div>
 
     <h2>Collapse</h2>
 
-    <div class="grid-x margin-gutters large-margin-collapse">
+    <div class="grid-x grid-margin-x large-margin-collapse">
       <div class="cell medium-12"><div class="demo">12</div></div>
       <div class="cell medium-11"><div class="demo">11</div></div>
       <div class="cell medium-1"><div class="demo">1</div></div>
@@ -85,7 +93,7 @@
 
     <h2>Offset</h2>
 
-    <div class="grid-x margin-gutters">
+    <div class="grid-x grid-margin-x">
       <div class="cell medium-3 medium-offset-2"><div class="demo">3</div></div>
       <div class="cell medium-4"><div class="demo">4</div></div>
     </div>

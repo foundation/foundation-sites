@@ -36,6 +36,8 @@ class Sticky extends Plugin {
    * @private
    */
   _init() {
+    MediaQuery._init();
+
     var $parent = this.$element.parent('[data-sticky-container]'),
         id = this.$element[0].id || GetYoDigits(6, 'sticky'),
         _this = this;

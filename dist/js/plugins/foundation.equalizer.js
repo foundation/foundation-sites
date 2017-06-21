@@ -193,6 +193,8 @@ var Equalizer = function (_Plugin) {
       var eqId = this.$element.attr('data-equalizer') || '';
       var $watched = this.$element.find('[data-equalizer-watch="' + eqId + '"]');
 
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["MediaQuery"]._init();
+
       this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
       this.$element.attr('data-resize', eqId || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["GetYoDigits"])(6, 'eq'));
       this.$element.attr('data-mutate', eqId || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["GetYoDigits"])(6, 'eq'));

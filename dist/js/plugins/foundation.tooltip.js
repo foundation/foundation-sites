@@ -460,6 +460,7 @@ var Tooltip = function (_Positionable) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["MediaQuery"]._init();
       var elemId = this.$element.attr('aria-describedby') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["GetYoDigits"])(6, 'tooltip');
 
       this.options.tipText = this.options.tipText || this.$element.attr('title');

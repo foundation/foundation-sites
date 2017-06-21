@@ -213,6 +213,8 @@ var ResponsiveMenu = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["MediaQuery"]._init();
       // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
       if (typeof this.rules === 'string') {
         var rulesTree = {};

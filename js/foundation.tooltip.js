@@ -41,6 +41,7 @@ class Tooltip extends Positionable {
    * @private
    */
   _init() {
+    MediaQuery._init();
     var elemId = this.$element.attr('aria-describedby') || GetYoDigits(6, 'tooltip');
 
     this.options.tipText = this.options.tipText || this.$element.attr('title');

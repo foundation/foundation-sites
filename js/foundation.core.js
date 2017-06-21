@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
-var FOUNDATION_VERSION = '6.4.0-rc2';
+var FOUNDATION_VERSION = '6.4.0-rc4';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -186,12 +186,8 @@ var Foundation = {
      */
     var foundation = function(method) {
       var type = typeof method,
-          $meta = $('meta.foundation-mq'),
           $noJS = $('.no-js');
 
-      if(!$meta.length){
-        $('<meta class="foundation-mq">').appendTo(document.head);
-      }
       if($noJS.length){
         $noJS.removeClass('no-js');
       }

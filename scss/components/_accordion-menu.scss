@@ -28,7 +28,7 @@ $accordionmenu-item-background: null !default;
 
 /// Sets accordion menu item border.
 /// @type Color
-$accordionmenu-border: 1px solid $light-gray !default;
+$accordionmenu-border: null !default;
 
 /// Sets accordion menu item padding.
 /// @type Color
@@ -93,6 +93,10 @@ $accordionmenu-arrow-size: 6px !default;
       }
       padding: $accordionmenu-padding;
     }
+    
+    .is-accordion-submenu a {
+      padding: $accordionmenu-submenu-padding;
+    }
 
     .nested.is-accordion-submenu {
       @include menu-nested($accordionmenu-nested-margin);
@@ -116,10 +120,6 @@ $accordionmenu-arrow-size: 6px !default;
     position: relative;
   }
 
-  .is-accordion-submenu-parent > a {
-    padding: $accordionmenu-submenu-padding;
-  }
-
   .has-submenu-toggle > a {
     margin-#{$global-right}: $accordionmenu-submenu-toggle-width;
   }
@@ -129,6 +129,7 @@ $accordionmenu-arrow-size: 6px !default;
     position: absolute;
     top: 0;
     #{$global-right}: 0;
+    cursor: pointer;
 
     width: $accordionmenu-submenu-toggle-width;
     height: $accordionmenu-submenu-toggle-height;

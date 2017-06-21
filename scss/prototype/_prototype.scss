@@ -42,6 +42,9 @@
 // Shadow Utility
 @import 'shadow';
 
+// Arrow Utility
+@import 'arrow';
+
 // Separator Utility
 @import 'separator';
 
@@ -76,6 +79,7 @@
   @include foundation-prototype-rounded;
   @include foundation-prototype-bordered;
   @include foundation-prototype-shadow;
+  @include foundation-prototype-arrow;
   @include foundation-prototype-separator;
   @include foundation-prototype-overflow;
   @include foundation-prototype-display;

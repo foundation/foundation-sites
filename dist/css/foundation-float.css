@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.0-rc2
+ * Version 6.4.0-rc4
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2161,6 +2161,8 @@ select {
     width: 100%; }
   .accordion-menu a {
     padding: 0.7rem 1rem; }
+  .accordion-menu .is-accordion-submenu a {
+    padding: 0.7rem 1rem; }
   .accordion-menu .nested.is-accordion-submenu {
     margin-right: 0;
     margin-left: 1rem; }
@@ -2175,9 +2177,6 @@ select {
 .is-accordion-submenu-parent {
   position: relative; }
 
-.is-accordion-submenu-parent > a {
-  padding: 0.7rem 1rem; }
-
 .has-submenu-toggle > a {
   margin-right: 40px; }
 
@@ -2185,6 +2184,7 @@ select {
   position: absolute;
   top: 0;
   right: 0;
+  cursor: pointer;
   width: 40px;
   height: 40px;
   border-left: 1px solid #e6e6e6; }
@@ -2294,7 +2294,6 @@ select {
     text-transform: uppercase; }
     .breadcrumbs li:not(:last-child)::after {
       position: relative;
-      top: 1px;
       margin: 0 0.75rem;
       opacity: 1;
       content: "/";
@@ -3021,7 +3020,7 @@ select {
   min-width: 200px;
   border: 1px solid #cacaca;
   background: #fefefe; }
-  .is-dropdown-submenu a {
+  .dropdown .is-dropdown-submenu a {
     padding: 0.7rem 1rem; }
   .is-dropdown-submenu .is-dropdown-submenu-parent > a::after {
     right: 14px; }

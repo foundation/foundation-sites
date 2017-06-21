@@ -173,6 +173,8 @@ var Interchange = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["MediaQuery"]._init();
+
       var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
       this.$element.attr({
         'data-resize': id,

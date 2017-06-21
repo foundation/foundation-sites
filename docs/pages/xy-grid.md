@@ -71,18 +71,18 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 ## Gutters
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
-To define a grid type, simple set `.margin-gutters` or `.padding-gutters` on the grid.
+To define a grid type, simple set `.grid-margin-x` or `.grid-padding-x` on the grid.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/owvqYp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<div class="grid-x margin-gutters">
+<div class="grid-x grid-margin-x">
   <div class="medium-6 large-4 cell">12/6/4 cells</div>
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
-<div class="grid-x padding-gutters">
+<div class="grid-x grid-padding-x">
   <div class="medium-6 large-4 cell">12/6/4 cells</div>
   <div class="medium-6 large-8 cell">12/6/8 cells</div>
 </div>
@@ -109,7 +109,7 @@ The grid defaults to the full width of its container. In order to contain the gr
 If the class `.auto` or `.[size]-auto` is added to the cell, it will take up the remaining space.
 
 ```html_example
-<div class="grid-x margin-gutters">
+<div class="grid-x grid-margin-x">
   <div class="small-4 cell">4 cells</div>
   <div class="auto cell">Whatever's left!</div>
 </div>
@@ -120,7 +120,7 @@ If the class `.auto` or `.[size]-auto` is added to the cell, it will take up the
 Multiple expanding cells will share the leftover space equally.
 
 ```html_example
-<div class="grid-x margin-gutters">
+<div class="grid-x grid-margin-x">
   <div class="small-4 cell">4 cells</div>
   <div class="auto cell">Whatever's left!</div>
   <div class="auto cell">Whatever's left!</div>
@@ -132,7 +132,7 @@ Multiple expanding cells will share the leftover space equally.
 A cell can also be made to *shrink*, by adding the `.shrink` or `.[size]-shrink` class. This means it will only take up the space its contents need.
 
 ```html_example
-<div class="grid-x margin-gutters">
+<div class="grid-x grid-margin-x">
   <div class="shrink cell">Shrink!</div>
   <div class="auto cell">Expand!</div>
 </div>
@@ -159,12 +159,12 @@ To switch back to the auto behavior from a percentage or shrink behavior, use th
 
 ## Collapse Cells
 
-The `.[size]-[margin-type]-collapse` class lets you remove cell gutters.
+The `.[size]-[gutter-type]-collapse` class lets you remove cell gutters.
 
 There are times when you won't want each media query to be collapsed. In this case, use the media query size you want and collapse and add that to your grid element. Example shows gutters at small and no gutters on medium and up.
 
 ```html_example
-<div class="grid-x margin-gutters medium-margin-collapse">
+<div class="grid-x grid-margin-x medium-margin-collapse">
   <div class="small-6 cell">
     Gutters at small no gutters at medium.
   </div>
@@ -181,7 +181,7 @@ There are times when you won't want each media query to be collapsed. In this ca
 Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to a grid.
 
 ```html_example
-<div class="grid-x margin-gutters">
+<div class="grid-x grid-margin-x">
   <div class="small-4 large-offset-2 cell">Offset 2 on large</div>
   <div class="small-4 cell">4 cells</div>
 </div>
@@ -192,7 +192,9 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 ## Vertical Grids
 
 The XY grid also supports vertical grids. Simply apply `.grid-y` instead of `.grid-x`.
-The internal cells will shift automatically to provide spacing vertically rather than horizontally
+The internal cells will shift automatically to provide spacing vertically rather than horizontally.
+
+You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y` to apply spacing to the top and bottom of cells.
 
 <div class="callout">
   <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100 vertical height grid (or 100% height if nested).</p>
@@ -228,9 +230,9 @@ Here's an example of what you can do:
 
 ```html_example
 <div class="grid-y medium-grid-frame">
-  <div class="cell shrink header cell-block-container">
+  <div class="cell shrink header medium-cell-block-container">
     <h1>Grid Frame Header</h1>
-    <div class="grid-x padding-gutters">
+    <div class="grid-x grid-padding-x">
       <div class="cell medium-4">
         A medium 4 cell
       </div>
@@ -242,8 +244,8 @@ Here's an example of what you can do:
       </div>
     </div>
   </div>
-  <div class="cell auto cell-block-container">
-    <div class="grid-x padding-gutters">
+  <div class="cell medium-auto medium-cell-block-container">
+    <div class="grid-x grid-padding-x">
       <div class="cell medium-4 medium-cell-block-y">
         <h2>Independent scrolling sidebar</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lacus odio, accumsan id ullamcorper eget, varius nec erat. Nulla facilisi. Donec dui felis, euismod nec finibus vitae, dapibus quis arcu. Maecenas tempor et ipsum quis venenatis. Ut posuere sed augue sit amet efficitur. Sed imperdiet, justo id tempus rhoncus, est est viverra turpis, non vulputate magna lectus et nisl. Pellentesque ultrices porttitor vehicula. Ut aliquet efficitur ligula, a consectetur felis. Proin tristique ut augue nec luctus. Curabitur a sapien pretium, auctor elit a, efficitur erat. Donec tincidunt dui vel velit bibendum euismod. Cras vitae nibh dui. Aliquam erat volutpat. Etiam sit amet arcu a erat efficitur facilisis. Ut viverra dapibus turpis, et ornare justo. Integer in dui cursus, dignissim tortor a, hendrerit risus.</p>

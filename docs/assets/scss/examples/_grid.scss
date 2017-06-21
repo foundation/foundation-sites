@@ -78,11 +78,15 @@
 [id^="docs-xy"].docs-component .docs-code-live {
   @include foundation-xy-grid-classes;
 
-  .grid {
+  .grid-x,
+  .grid-y {
     font-size: 12px;
-    margin-bottom: 10px;
     line-height: 2rem;
     margin-bottom: 1.5rem;
+  }
+
+  .grid-y .grid-x {
+    margin-bottom: 0;
   }
 
   .cell {

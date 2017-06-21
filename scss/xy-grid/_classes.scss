@@ -44,6 +44,9 @@
 
   // Auto width
   @include -zf-each-breakpoint() {
+    .grid-x > [class*="#{$-zf-size}-"] {
+      flex-basis: auto;
+    }
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-auto {
         @include xy-cell-base(auto);
@@ -54,15 +57,24 @@
         @include xy-cell-base(shrink);
         @include xy-cell-static(shrink, false);
       }
-
     }
 
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
-      .#{$-zf-size}-#{$i} {
+      .grid-x > .#{$-zf-size}-#{$i} {
         @include xy-cell-static($i, false, $gutter-type: padding);
       }
     }
+  }
+
+  // Reset width when using `.grid-margin-x` not on `.grid-x`
+  .grid-margin-x:not(.grid-x) > .cell {
+    width: auto;
+  }
+
+  // Reset height when using `.grid-margin-y` not on `.grid-y`
+  .grid-margin-y:not(.grid-y) > .cell {
+    height: auto;
   }
 }
 
@@ -90,7 +102,7 @@
 @mixin xy-margin-grid-classes(
   $gutter-position: left right,
   $vertical: false,
-  $wrapping-selector: '.margin-gutters'
+  $wrapping-selector: '.grid-margin-x'
 ){
   #{$wrapping-selector} {
     @include xy-gutters($negative: true, $gutter-position: $gutter-position);
@@ -114,7 +126,7 @@
       // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
       // for prior breakpoints based on the responsive gutter.
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
-        @each $bp in -xy-breakpoints-less-than($-zf-size) {
+        @each $bp in -zf-breakpoints-less-than($-zf-size) {
           @if(map-has-key($grid-margin-gutters, $bp)) {
             @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
           }
@@ -128,10 +140,10 @@
 
 // Padding Grid classes
 @mixin xy-padding-grid-classes {
-  .padding-gutters {
+  .grid-padding-x {
 
     // Negative margin for nested grids
-    .padding-gutters {
+    .grid-padding-x {
       @include xy-gutters($negative: true);
     }
 
@@ -144,6 +156,16 @@
 
 // Block Grid classes
 @mixin xy-block-grid-classes($margin-grid: true, $padding-grid: true) {
+  @if $padding-grid {
+    @include -zf-each-breakpoint {
+      @for $i from 1 through $block-grid-max {
+        .#{$-zf-size}-up-#{$i} {
+          @include xy-grid-layout($i, '.cell', false, $gutter-type: padding);
+        }
+      }
+    }
+  }
+
   @if $margin-grid {
     @include -zf-each-breakpoint {
       @for $i from 1 through $block-grid-max {
@@ -152,7 +174,7 @@
         @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
           @each $bp in -zf-breakpoints-less-than($-zf-size) {
             @if(map-has-key($grid-margin-gutters, $bp)) {
-              .margin-gutters.#{$bp}-up-#{$i} {
+              .grid-margin-x.#{$bp}-up-#{$i} {
                 @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $bp);
               }
             }
@@ -160,18 +182,8 @@
         }
       }
       @for $i from 1 through $block-grid-max {
-        .margin-gutters.#{$-zf-size}-up-#{$i} {
+        .grid-margin-x.#{$-zf-size}-up-#{$i} {
           @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $-zf-size);
-        }
-      }
-    }
-  }
-
-  @if $padding-grid {
-    @include -zf-each-breakpoint {
-      @for $i from 1 through $block-grid-max {
-        .padding-gutters.#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($i, '.cell', false, $gutter-type: padding);
         }
       }
     }
@@ -206,7 +218,7 @@
         @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
       }
 
-      .margin-gutters > .#{$-zf-size}-offset-#{$o} {
+      .grid-margin-x > .#{$-zf-size}-offset-#{$o} {
         @include xy-cell-offset($o, $breakpoint: $-zf-size);
       }
     }
@@ -225,7 +237,7 @@
   }
 
   .grid-y {
-    @include xy-grid(vertical);
+    @include xy-grid(vertical, false);
 
 
     > .cell {
@@ -242,8 +254,13 @@
 
 
     @include -zf-each-breakpoint() {
+      > [class*="#{$-zf-size}-"] {
+        flex-basis: auto;
+      }
+
       @if not($-zf-size == small) {
         > .#{$-zf-size}-auto {
+          @include xy-cell-base(auto);
           @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
 
@@ -259,25 +276,26 @@
           @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
+
     }
+  }
 
-    @if $padding-grid {
-      &.padding-gutters {
-        // Negative margin for nested grids
-        .padding-gutters {
-          @include xy-gutters($negative: true, $gutter-position: top bottom);
-        }
+  @if $padding-grid {
+    &.grid-padding-y {
+      // Negative margin for nested grids
+      .grid-padding-y {
+        @include xy-gutters($negative: true, $gutter-position: top bottom);
+      }
 
-        // Base cell styles
-        > .cell {
-          @include xy-gutters($gutters: $grid-padding-gutters, $gutter-type: padding, $gutter-position: top bottom);
-        }
+      // Base cell styles
+      > .cell {
+        @include xy-gutters($gutters: $grid-padding-gutters, $gutter-type: padding, $gutter-position: top bottom);
       }
     }
   }
 
   @if $margin-grid {
-    @include xy-margin-grid-classes(top bottom, true, '.grid-y.margin-gutters')
+    @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y')
   }
 }
 
@@ -289,6 +307,10 @@
 
   .cell-block {
     @include xy-cell-block();
+  }
+
+  .cell-block-y {
+    @include xy-cell-block(true);
   }
 
 
@@ -307,16 +329,16 @@
       @include xy-cell-block();
     }
 
+    .#{$-zf-size}-cell-block-container {
+      @include xy-cell-block-container();
+    }
+
     .#{$-zf-size}-cell-block-y {
       @include xy-cell-block(true);
     }
   }
 
   @if $vertical-grid {
-
-    .cell-block-y {
-      @include xy-cell-block(true);
-    }
 
     .grid-y {
       &.grid-frame {
