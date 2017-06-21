@@ -341,15 +341,22 @@ $content: $maincontent-class
 
 /// Overrides the off-canvas styles
 @mixin in-canvas() {
-  transform: none !important;
   visibility: visible;
-  height: auto !important;
-  box-shadow: none !important;
+  height: auto;
   position: static;
   background: inherit;
   width: inherit;
   overflow: inherit;
   transition: inherit;
+
+  // Increase CSS specificity
+  &.position-left,
+  &.position-right,
+  &.position-top,
+  &.position-bottom {
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 @mixin foundation-off-canvas {
