@@ -333,6 +333,11 @@ $content: $maincontent-class
     display: none;
   }
 
+  // Consider revealed element is nested in content
+  .#{$maincontent-class} & {
+    transform: none;
+  }
+
   @at-root .#{$content}.has-reveal-#{$position} {
     margin-#{$position}: $offcanvas-size;
   }

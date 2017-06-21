@@ -27,7 +27,7 @@ class OffCanvas extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
-    this.contentClasses = [];
+    this.contentClasses = { base: [], reveal: [] };
     this.$lastTrigger = $();
     this.$triggers = $();
     this.position = 'left';
@@ -36,11 +36,11 @@ class OffCanvas extends Plugin {
 
     // Defines the CSS transition/position classes of the off-canvas content container.
     $(['push', 'overlap']).each((index, val) => {
-      this.contentClasses.push('has-transition-'+val);
+      this.contentClasses.base.push('has-transition-'+val);
     });
     $(['left', 'right', 'top', 'bottom']).each((index, val) => {
-      this.contentClasses.push('has-position-'+val);
-      this.contentClasses.push('has-reveal-'+val);
+      this.contentClasses.base.push('has-position-'+val);
+      this.contentClasses.reveal.push('has-reveal-'+val);
     });
 
     // Triggers init is idempotent, just need to make sure it is initialized
@@ -175,8 +175,11 @@ class OffCanvas extends Plugin {
    * Removing the classes is important when another off-canvas gets opened that uses the same content container.
    * @private
    */
-  _removeContentClasses() {
-    this.$content.removeClass(this.contentClasses.join(' '));
+  _removeContentClasses(hasReveal) {
+    this.$content.removeClass(this.contentClasses.base.join(' '));
+    if (hasReveal === true) {
+      this.$content.removeClass(this.contentClasses.reveal.join(' '));
+    }
   }
 
   /**
@@ -380,7 +383,7 @@ class OffCanvas extends Plugin {
     }
 
     // Listen to transitionEnd and add class when done.
-    this.$element.one(Foundation.transitionend(this.$element), function(e) {
+    this.$element.one(transitionend(this.$element), function(e) {
       _this.$element.addClass('is-closed');
       _this._removeContentClasses();
     });
