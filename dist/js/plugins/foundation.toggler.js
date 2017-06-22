@@ -351,12 +351,10 @@ Triggers.Listeners.Basic = {
     triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'open');
   },
   closeListener: function () {
-    console.log('in close listener');
     var id = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('close');
     if (id) {
       triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'close');
     } else {
-      console.log('bubbling close');
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('close.zf.trigger');
     }
   },
@@ -369,7 +367,6 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function (e) {
-    console.log('in closeable listener');
     e.stopPropagation();
     var animation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('closable');
 
@@ -568,14 +565,11 @@ Triggers.init = function ($, Foundation) {
   if (typeof $.triggersInitialized === 'undefined') {
     var $document = $(document);
 
-    console.log('inside initialization');
     if (document.readyState === "complete") {
-      console.log('initializing because document complete');
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
     } else {
       $(window).on('load', function () {
-        console.log('initializing on load');
         Triggers.Initializers.addSimpleListeners();
         Triggers.Initializers.addGlobalListeners();
       });
