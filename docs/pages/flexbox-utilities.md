@@ -85,10 +85,6 @@ Stretch alignment is the default. To set parent alignment, use these classes:
   <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". As we can't have two CSS classes with the same name, thus we are using different terms.</p>
 </div>
 
-<div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaYwQ" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
-</div>
-
 ```html_example
 <div class="grid-x grid-padding-x align-top">
   <div class="cell small-4">I'm at the top (default)</div>
@@ -126,10 +122,6 @@ To align an individual child, use the below classes. They use the same alignment
 - `.align-self-bottom`
 - `.align-self-stretch`
 
-<div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwRbjY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
-</div>
-
 ```html_example
 <div class="grid-x grid-padding-x">
   <div class="cell small-4 align-self-bottom"><div class="demo">Align bottom</div></div>
@@ -146,10 +138,6 @@ Central alignment can be applied to a flex parent, which will centrally align al
 
 <div class="primary callout">
   <p>We are using `.text-center` class just for demo purposes here.</p>
-</div>
-
-<div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPamOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -207,10 +195,6 @@ These optional responsive classes can be disabled by setting `$flexbox-responsiv
 
 All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints. So you can do things like:
 
-<div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaXEO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
-</div>
-
 ```html_example
 <div class="grid-x grid-padding-x">
   <div class="cell small-12 flex-container flex-dir-column large-flex-dir-row">
@@ -243,10 +227,6 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 <p>
   <a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
-
-<div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/gWedmK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
-</div>
 
 ```html_example
 <div class="grid-x grid-padding-x">
