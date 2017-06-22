@@ -67,65 +67,65 @@ $prototype-spacers-count: 3 !default;
 @mixin foundation-prototype-spacing {
   @for $spacer from 0 through $prototype-spacers-count {
     // All Sides
-    .margin-#{$spacer} {
+    .m-#{$spacer} {
       @include margin($spacer, $spacer, $spacer, $spacer);
     }
 
-    .padding-#{$spacer} {
+    .p-#{$spacer} {
       @include padding($spacer, $spacer, $spacer, $spacer);
     }
 
     // Top Side
-    .margin-top-#{$spacer} {
+    .m-t-#{$spacer} {
       @include margin($spacer, null, null, null);
     }
 
-    .padding-top-#{$spacer} {
+    .p-t-#{$spacer} {
       @include padding($spacer, null, null, null);
     }
 
     // Right Side
-    .margin-right-#{$spacer} {
+    .m-r-#{$spacer} {
       @include margin(null, $spacer, null, null);
     }
 
-    .padding-right-#{$spacer} {
+    .p-r-#{$spacer} {
       @include padding(null, $spacer, null, null);
     }
 
     // Bottom Side
-    .margin-bottom-#{$spacer} {
+    .m-b-#{$spacer} {
       @include margin(null, null, $spacer, null);
     }
 
-    .padding-bottom-#{$spacer} {
+    .p-b-#{$spacer} {
       @include padding(null, null, $spacer, null);
     }
 
     // Left Side
-    .margin-left-#{$spacer} {
+    .m-l-#{$spacer} {
       @include margin(null, null, null, $spacer);
     }
 
-    .padding-left-#{$spacer} {
+    .p-l-#{$spacer} {
       @include padding(null, null, null, $spacer);
     }
 
     // Horizontal Axes
-    .margin-horizontal-#{$spacer} {
+    .m-x-#{$spacer} {
       @include margin(null, $spacer, null, $spacer);
     }
 
-    .padding-horizontal-#{$spacer} {
+    .p-x-#{$spacer} {
       @include padding(null, $spacer, null, $spacer);
     }
 
     // Vertical Axes
-    .margin-vertical-#{$spacer} {
+    .m-y-#{$spacer} {
       @include margin($spacer, null, $spacer, null)
     }
 
-    .padding-vertical-#{$spacer} {
+    .p-y-#{$spacer} {
       @include padding($spacer, null, $spacer, null)
     }
 
@@ -135,65 +135,65 @@ $prototype-spacers-count: 3 !default;
         @include breakpoint($size) {
           @if $size != $-zf-zero-breakpoint {
             // All Sides
-            .#{$size}-margin-#{$spacer} {
+            .#{$size}-m-#{$spacer} {
               @include margin($spacer, $spacer, $spacer, $spacer);
             }
 
-            .#{$size}-padding-#{$spacer} {
+            .#{$size}-p-#{$spacer} {
               @include padding($spacer, $spacer, $spacer, $spacer);
             }
 
             // Top Side
-            .#{$size}-margin-top-#{$spacer} {
+            .#{$size}-m-t-#{$spacer} {
               @include margin($spacer, null, null, null);
             }
 
-            .#{$size}-padding-top-#{$spacer} {
+            .#{$size}-p-t-#{$spacer} {
               @include padding($spacer, null, null, null);
             }
 
             // Right Side
-            .#{$size}-margin-right-#{$spacer} {
+            .#{$size}-m-r-#{$spacer} {
               @include margin(null, $spacer, null, null);
             }
 
-            .#{$size}-padding-right-#{$spacer} {
+            .#{$size}-p-r-#{$spacer} {
               @include padding(null, $spacer, null, null);
             }
 
             // Bottom Side
-            .#{$size}-margin-bottom-#{$spacer} {
+            .#{$size}-m-b-#{$spacer} {
               @include margin(null, null, $spacer, null);
             }
 
-            .#{$size}-padding-bottom-#{$spacer} {
+            .#{$size}-p-b-#{$spacer} {
               @include padding(null, null, $spacer, null);
             }
 
             // Left Side
-            .#{$size}-margin-left-#{$spacer} {
+            .#{$size}-m-l-#{$spacer} {
               @include margin(null, null, null, $spacer);
             }
 
-            .#{$size}-padding-left-#{$spacer} {
+            .#{$size}-p-l-#{$spacer} {
               @include padding(null, null, null, $spacer);
             }
 
             // Horizontal Axes
-            .#{$size}-margin-horizontal-#{$spacer} {
+            .#{$size}-m-x-#{$spacer} {
               @include margin(null, $spacer, null, $spacer);
             }
 
-            .#{$size}-padding-horizontal-#{$spacer} {
+            .#{$size}-p-x-#{$spacer} {
               @include padding(null, $spacer, null, $spacer);
             }
 
             // Vertical Axes
-            .#{$size}-margin-vertical-#{$spacer} {
+            .#{$size}-m-y-#{$spacer} {
               @include margin($spacer, null, $spacer, null)
             }
 
-            .#{$size}-padding-vertical-#{$spacer} {
+            .#{$size}-p-y-#{$spacer} {
               @include padding($spacer, null, $spacer, null)
             }
           }

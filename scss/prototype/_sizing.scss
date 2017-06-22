@@ -10,13 +10,6 @@
 /// @type Boolean
 $prototype-sizing-breakpoints: $global-prototype-breakpoints !default;
 
-/// Map containing all the `sizing` classes
-/// @type Map
-$prototype-sizing: (
-  width,
-  height
-) !default;
-
 /// Map containing all the sizes.
 /// @type Map
 $prototype-sizes: (
@@ -38,19 +31,19 @@ $prototype-sizes: (
 
 @mixin foundation-prototype-sizing {
   // Element Sizing
-  @each $sizing in $prototype-sizing {
+  @each $prop, $abbrev in (width: w, height: h) {
     @each $length, $percentage in $prototype-sizes {
-      .#{$sizing}-#{$length} {
-        #{$sizing}: $percentage !important;
+      .#{$abbrev}-#{$length} {
+        #{$prop}: $percentage !important;
       }
     }
   }
 
   // Max width & height
-  .max-width-100 {
+  .mx-w {
     @include max-width-100;
   }
-  .max-height-100 {
+  .mx-h {
     @include max-height-100;
   }
 
@@ -59,12 +52,20 @@ $prototype-sizes: (
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @if $size != $-zf-zero-breakpoint {
-          @each $sizing in $prototype-sizing {
+          @each $prop, $abbrev in (width: w, height: h) {
             @each $length, $percentage in $prototype-sizes {
-              .#{$size}-#{$sizing}-#{$length} {
-                #{$sizing}: $percentage !important;
+              .#{$size}-#{$abbrev}-#{$length} {
+                #{$prop}: $percentage !important;
               }
             }
+          }
+          
+          // Max width & height
+          .#{$size}-mx-w {
+            @include max-width-100;
+          }
+          .#{$size}-mx-h {
+            @include max-height-100;
           }
         }
       }
