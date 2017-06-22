@@ -265,7 +265,7 @@ var ResponsiveToggle = function (_Plugin) {
          */
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
-            Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
+            __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__["Motion"].animateIn(this.$targetMenu, this.animationIn, function () {
               _this3.$element.trigger('toggled.zf.responsiveToggle');
               _this3.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });

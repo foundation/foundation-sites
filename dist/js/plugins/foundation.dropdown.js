@@ -873,10 +873,12 @@ Triggers.Listeners.Basic = {
     triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'open');
   },
   closeListener: function () {
+    console.log('in close listener');
     var id = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('close');
     if (id) {
       triggers(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), 'close');
     } else {
+      console.log('bubbling close');
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('close.zf.trigger');
     }
   },
@@ -889,11 +891,12 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function (e) {
+    console.log('in closeable listener');
     e.stopPropagation();
     var animation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('closable');
 
     if (animation !== '') {
-      Foundation.Motion.animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_motion__["Motion"].animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('closed.zf');
       });
     } else {
@@ -928,7 +931,7 @@ Triggers.Initializers.addToggleListener = function ($elem) {
 // Elements with [data-closable] will respond to close.zf.trigger events.
 Triggers.Initializers.addCloseableListener = function ($elem) {
   $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
 };
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus
@@ -1087,11 +1090,14 @@ Triggers.init = function ($, Foundation) {
   if (typeof $.triggersInitialized === 'undefined') {
     var $document = $(document);
 
+    console.log('inside initialization');
     if (document.readyState === "complete") {
+      console.log('initializing because document complete');
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
     } else {
       $(window).on('load', function () {
+        console.log('initializing on load');
         Triggers.Initializers.addSimpleListeners();
         Triggers.Initializers.addGlobalListeners();
       });

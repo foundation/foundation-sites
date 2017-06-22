@@ -21,43 +21,44 @@
 //  16. Drilldown
 //  17. Dropdown
 //  18. Dropdown Menu
-//  19. Forms
-//  20. Label
-//  21. Media Object
-//  22. Menu
-//  23. Meter
-//  24. Off-canvas
-//  25. Orbit
-//  26. Pagination
-//  27. Progress Bar
-//  28. Prototype Arrow
-//  29. Prototype Border-Box
-//  30. Prototype Border-None
-//  31. Prototype Bordered
-//  32. Prototype Display
-//  33. Prototype Font-Styling
-//  34. Prototype List-Style-Type
-//  35. Prototype Overflow
-//  36. Prototype Position
-//  37. Prototype Rounded
-//  38. Prototype Separator
-//  39. Prototype Shadow
-//  40. Prototype Sizing
-//  41. Prototype Spacing
-//  42. Prototype Text-Decoration
-//  43. Prototype Text-Transformation
-//  44. Prototype Text-Utilities
-//  45. Responsive Embed
-//  46. Reveal
-//  47. Slider
-//  48. Switch
-//  49. Table
-//  50. Tabs
-//  51. Thumbnail
-//  52. Title Bar
-//  53. Tooltip
-//  54. Top Bar
-//  55. Xy Grid
+//  19. Flexbox Utilities
+//  20. Forms
+//  21. Label
+//  22. Media Object
+//  23. Menu
+//  24. Meter
+//  25. Off-canvas
+//  26. Orbit
+//  27. Pagination
+//  28. Progress Bar
+//  29. Prototype Arrow
+//  30. Prototype Border-Box
+//  31. Prototype Border-None
+//  32. Prototype Bordered
+//  33. Prototype Display
+//  34. Prototype Font-Styling
+//  35. Prototype List-Style-Type
+//  36. Prototype Overflow
+//  37. Prototype Position
+//  38. Prototype Rounded
+//  39. Prototype Separator
+//  40. Prototype Shadow
+//  41. Prototype Sizing
+//  42. Prototype Spacing
+//  43. Prototype Text-Decoration
+//  44. Prototype Text-Transformation
+//  45. Prototype Text-Utilities
+//  46. Responsive Embed
+//  47. Reveal
+//  48. Slider
+//  49. Switch
+//  50. Table
+//  51. Tabs
+//  52. Thumbnail
+//  53. Title Bar
+//  54. Tooltip
+//  55. Top Bar
+//  56. Xy Grid
 
 @import 'util/util';
 
@@ -92,7 +93,7 @@ $global-radius: 0;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
-$global-flexbox: false;
+$global-flexbox: true;
 $global-prototype-breakpoints: false;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
@@ -240,7 +241,7 @@ $accordionmenu-submenu-padding: $accordionmenu-padding;
 $accordionmenu-arrows: true;
 $accordionmenu-arrow-color: $primary-color;
 $accordionmenu-item-background: null;
-$accordionmenu-border: 1px solid $light-gray;
+$accordionmenu-border: null;
 $accordionmenu-submenu-toggle-background: null;
 $accordion-submenu-toggle-border: $accordionmenu-border;
 $accordionmenu-submenu-toggle-width: 40px;
@@ -397,7 +398,13 @@ $dropdownmenu-border: 1px solid $medium-gray;
 $dropdown-menu-item-color-active: get-color(primary);
 $dropdown-menu-item-background-active: transparent;
 
-// 19. Forms
+// 19. Flexbox Utilities
+// ---------------------
+
+$flex-source-ordering-count: 6;
+$flexbox-responsive-breakpoints: true;
+
+// 20. Forms
 // ---------
 
 $fieldset-border: 1px solid $medium-gray;
@@ -439,7 +446,7 @@ $input-number-spinners: true;
 $input-radius: $global-radius;
 $form-button-radius: $global-radius;
 
-// 20. Label
+// 21. Label
 // ---------
 
 $label-background: $primary-color;
@@ -450,14 +457,14 @@ $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
 
-// 21. Media Object
+// 22. Media Object
 // ----------------
 
 $mediaobject-margin-bottom: $global-margin;
 $mediaobject-section-padding: $global-padding;
 $mediaobject-image-width-stacked: 100%;
 
-// 22. Menu
+// 23. Menu
 // --------
 
 $menu-margin: 0;
@@ -469,7 +476,7 @@ $menu-item-background-active: get-color(primary);
 $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 
-// 23. Meter
+// 24. Meter
 // ---------
 
 $meter-height: 1rem;
@@ -479,7 +486,7 @@ $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
 $meter-fill-bad: $alert-color;
 
-// 24. Off-canvas
+// 25. Off-canvas
 // --------------
 
 $offcanvas-size: 250px;
@@ -488,6 +495,7 @@ $offcanvas-background: $light-gray;
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7);
 $offcanvas-inner-shadow-size: 20px;
 $offcanvas-inner-shadow-color: rgba($black, 0.25);
+$offcanvas-overlay-zindex: 11;
 $offcanvas-push-zindex: 12;
 $offcanvas-overlap-zindex: 13;
 $offcanvas-reveal-zindex: 12;
@@ -497,7 +505,7 @@ $offcanvas-fixed-reveal: true;
 $offcanvas-exit-background: rgba($white, 0.25);
 $maincontent-class: 'off-canvas-content';
 
-// 25. Orbit
+// 26. Orbit
 // ---------
 
 $orbit-bullet-background: $medium-gray;
@@ -512,7 +520,7 @@ $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
 
-// 26. Pagination
+// 27. Pagination
 // --------------
 
 $pagination-font-size: rem-calc(14);
@@ -530,7 +538,7 @@ $pagination-mobile-items: false;
 $pagination-mobile-current-item: false;
 $pagination-arrows: true;
 
-// 27. Progress Bar
+// 28. Progress Bar
 // ----------------
 
 $progress-height: 1rem;
@@ -539,7 +547,7 @@ $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
 
-// 28. Prototype Arrow
+// 29. Prototype Arrow
 // -------------------
 
 $prototype-arrow-directions: (
@@ -551,17 +559,17 @@ $prototype-arrow-directions: (
 $prototype-arrow-size: 0.4375rem;
 $prototype-arrow-color: $black;
 
-// 29. Prototype Border-Box
+// 30. Prototype Border-Box
 // ------------------------
 
 $prototype-border-box-breakpoints: $global-prototype-breakpoints;
 
-// 30. Prototype Border-None
+// 31. Prototype Border-None
 // -------------------------
 
 $prototype-border-none-breakpoints: $global-prototype-breakpoints;
 
-// 31. Prototype Bordered
+// 32. Prototype Bordered
 // ----------------------
 
 $prototype-bordered-breakpoints: $global-prototype-breakpoints;
@@ -569,7 +577,7 @@ $prototype-border-width: rem-calc(1);
 $prototype-border-type: solid;
 $prototype-border-color: $medium-gray;
 
-// 32. Prototype Display
+// 33. Prototype Display
 // ---------------------
 
 $prototype-display-breakpoints: $global-prototype-breakpoints;
@@ -581,7 +589,7 @@ $prototype-display: (
   table-cell
 );
 
-// 33. Prototype Font-Styling
+// 34. Prototype Font-Styling
 // --------------------------
 
 $prototype-font-breakpoints: $global-prototype-breakpoints;
@@ -589,7 +597,7 @@ $prototype-wide-letter-spacing: rem-calc(4);
 $prototype-font-normal: $global-weight-normal;
 $prototype-font-bold: $global-weight-bold;
 
-// 34. Prototype List-Style-Type
+// 35. Prototype List-Style-Type
 // -----------------------------
 
 $prototype-list-breakpoints: $global-prototype-breakpoints;
@@ -608,7 +616,7 @@ $prototype-style-type-ordered: (
   upper-roman
 );
 
-// 35. Prototype Overflow
+// 36. Prototype Overflow
 // ----------------------
 
 $prototype-overflow-breakpoints: $global-prototype-breakpoints;
@@ -618,7 +626,7 @@ $prototype-overflow: (
   scroll
 );
 
-// 36. Prototype Position
+// 37. Prototype Position
 // ----------------------
 
 $prototype-position-breakpoints: $global-prototype-breakpoints;
@@ -630,13 +638,13 @@ $prototype-position: (
 );
 $prototype-position-z-index: 975;
 
-// 37. Prototype Rounded
+// 38. Prototype Rounded
 // ---------------------
 
 $prototype-rounded-breakpoints: $global-prototype-breakpoints;
 $prototype-border-radius: rem-calc(3);
 
-// 38. Prototype Separator
+// 39. Prototype Separator
 // -----------------------
 
 $prototype-separator-breakpoints: $global-prototype-breakpoints;
@@ -646,14 +654,14 @@ $prototype-separator-width: 3rem;
 $prototype-separator-background: $primary-color;
 $prototype-separator-margin-top: $global-margin;
 
-// 39. Prototype Shadow
+// 40. Prototype Shadow
 // --------------------
 
 $prototype-shadow-breakpoints: $global-prototype-breakpoints;
 $prototype-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),
                        0 2px 10px 0 rgba(0,0,0,.12);
 
-// 40. Prototype Sizing
+// 41. Prototype Sizing
 // --------------------
 
 $prototype-sizing-breakpoints: $global-prototype-breakpoints;
@@ -668,13 +676,13 @@ $prototype-sizes: (
   100: 100%
 );
 
-// 41. Prototype Spacing
+// 42. Prototype Spacing
 // ---------------------
 
 $prototype-spacing-breakpoints: $global-prototype-breakpoints;
 $prototype-spacers-count: 3;
 
-// 42. Prototype Text-Decoration
+// 43. Prototype Text-Decoration
 // -----------------------------
 
 $prototype-decoration-breakpoints: $global-prototype-breakpoints;
@@ -684,7 +692,7 @@ $prototype-text-decoration: (
   line-through,
 );
 
-// 43. Prototype Text-Transformation
+// 44. Prototype Text-Transformation
 // ---------------------------------
 
 $prototype-transformation-breakpoints: $global-prototype-breakpoints;
@@ -694,13 +702,13 @@ $prototype-text-transformation: (
   capitalize
 );
 
-// 44. Prototype Text-Utilities
+// 45. Prototype Text-Utilities
 // ----------------------------
 
 $prototype-utilities-breakpoints: $global-prototype-breakpoints;
 $prototype-text-overflow: ellipsis;
 
-// 45. Responsive Embed
+// 46. Responsive Embed
 // --------------------
 
 $responsive-embed-margin-bottom: rem-calc(16);
@@ -709,7 +717,7 @@ $responsive-embed-ratios: (
   widescreen: 16 by 9,
 );
 
-// 46. Reveal
+// 47. Reveal
 // ----------
 
 $reveal-background: $white;
@@ -721,7 +729,7 @@ $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
 $reveal-overlay-background: rgba($black, 0.45);
 
-// 47. Slider
+// 48. Slider
 // ----------
 
 $slider-width-vertical: 0.5rem;
@@ -735,7 +743,7 @@ $slider-handle-background: $primary-color;
 $slider-opacity-disabled: 0.25;
 $slider-radius: $global-radius;
 
-// 48. Switch
+// 49. Switch
 // ----------
 
 $switch-background: $medium-gray;
@@ -751,7 +759,7 @@ $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
 
-// 49. Table
+// 50. Table
 // ---------
 
 $table-background: $white;
@@ -773,7 +781,7 @@ $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
 $table-stack-breakpoint: medium;
 
-// 50. Tabs
+// 51. Tabs
 // --------
 
 $tab-margin: 0;
@@ -790,7 +798,7 @@ $tab-content-border: $light-gray;
 $tab-content-color: $body-font-color;
 $tab-content-padding: 1rem;
 
-// 51. Thumbnail
+// 52. Thumbnail
 // -------------
 
 $thumbnail-border: solid 4px $white;
@@ -800,7 +808,7 @@ $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 
-// 52. Title Bar
+// 53. Title Bar
 // -------------
 
 $titlebar-background: $black;
@@ -811,7 +819,7 @@ $titlebar-icon-color: $white;
 $titlebar-icon-color-hover: $medium-gray;
 $titlebar-icon-spacing: 0.25rem;
 
-// 53. Tooltip
+// 54. Tooltip
 // -----------
 
 $has-tip-cursor: help;
@@ -826,7 +834,7 @@ $tooltip-pip-width: 0.75rem;
 $tooltip-pip-height: $tooltip-pip-width * 0.866;
 $tooltip-radius: $global-radius;
 
-// 54. Top Bar
+// 55. Top Bar
 // -----------
 
 $topbar-padding: 0.5rem;
@@ -836,7 +844,7 @@ $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
-// 55. Xy Grid
+// 56. Xy Grid
 // -----------
 
 $xy-grid: true;
