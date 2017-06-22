@@ -32,11 +32,13 @@ Triggers.Listeners.Basic  = {
     triggers($(this), 'open');
   },
   closeListener: function() {
+    console.log('in close listener');
     let id = $(this).data('close');
     if (id) {
       triggers($(this), 'close');
     }
     else {
+      console.log('bubbling close');
       $(this).trigger('close.zf.trigger');
     }
   },
@@ -49,6 +51,7 @@ Triggers.Listeners.Basic  = {
     }
   },
   closeableListener: function(e) {
+    console.log('in closeable listener');
     e.stopPropagation();
     let animation = $(this).data('closable');
 
@@ -88,7 +91,7 @@ Triggers.Initializers.addToggleListener = ($elem) => {
 // Elements with [data-closable] will respond to close.zf.trigger events.
 Triggers.Initializers.addCloseableListener = ($elem) => {
   $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
 }
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus
@@ -244,11 +247,14 @@ Triggers.init = function($, Foundation) {
   if (typeof($.triggersInitialized) === 'undefined') {
     let $document = $(document);
 
+    console.log('inside initialization');
     if(document.readyState === "complete") {
+      console.log('initializing because document complete');
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
     } else {
       $(window).on('load', () => {
+        console.log('initializing on load');
         Triggers.Initializers.addSimpleListeners();
         Triggers.Initializers.addGlobalListeners();
       });
