@@ -270,3 +270,121 @@ Here's an example of what you can do:
 ```
 
 ---
+
+## Building Semantically
+
+XY grid CSS is generated with a powerful set of Sass mixins, which you can use in your own code to build a semantic grid.
+
+### Grid Container
+
+Use the `xy-grid-container()` mixin to create a grid container. This contains the grid to the width specified in `$grid-container`.
+
+```scss
+.container {
+  @include xy-grid-container;
+}
+```
+---
+
+### Grids
+
+Use the `xy-grid()` mixin to create a grid.
+
+```scss
+.my-grid {
+  @include xy-grid;
+}
+```
+---
+
+### Gutters
+
+Use the `xy-gutters()` mixin to add gutters to an item. The `xy-cell` mixin used this to output gutters, but you can use this to add responsive gutters to anything you like.
+This is especially powerful as you can specify where you want the gutters, like so:
+
+```scss
+.gallery-item {
+  @include xy-gutters($gutter-position: left right bottom);
+}
+```
+---
+
+### Cells
+
+Use the `xy-cell()` mixin to create a cell. There are a number of ways to define the size of a cell.
+`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs).
+
+```scss
+.main-content {
+  // Use the full column count (100%)
+  @include xy-cell();
+
+  // Use a column count (33%);
+  @include xy-cell(4);
+
+  // Use a percentage (15%)
+  @include xy-cell(15%);
+
+  // Use a custom fraction (20%)
+  @include xy-cell(1 of 5);
+}
+```
+
+The cell size calculator can also be accessed as a function. This gives you the percentage value, without any of the grid cell CSS.
+
+```scss
+.main-content {
+  width: xy-cell-size(1 of 7);
+}
+```
+
+---
+
+### Responsive Grids
+
+Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
+Refer to the Sass documentation below to learn how each mixin works and the available arguements.
+
+```scss
+.main-content {
+  @include xy-cell();
+
+  @include breakpoint(medium) {
+    @include xy-cell(8);
+  }
+}
+```
+
+We also have a shorthand option for the above which outputs the same CSS:
+
+```scss
+.main-content {
+  @include xy-cell-breakpoints((small: full, medium: 8));
+}
+```
+
+### Custom Block Grid
+
+Use the `xy-grid-layout()` mixin to create your own block grid.
+By default the mixin takes 3 parameters:
+- number of columns
+- child selector
+
+Refer to the Sass documentation below for the full list of arguements.
+
+Here's an example:
+
+```scss
+.gallery {
+  @include xy-grid-layout(3, '.gallery-item');
+}
+```
+That outputs this CSS:
+
+```
+.gallery > .gallery-item {
+  width: calc(33.33333% - 1.25rem);
+  margin-right: 0.625rem;
+  margin-left: 0.625rem;
+}
+```
