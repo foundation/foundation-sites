@@ -368,43 +368,6 @@ Offsets work identically to the float grid, by applying `margin-left` to a colum
 
 ---
 
-## Source Ordering
-
-Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without weird relative positioning tricks.
-
-The CSS property is easy enough to remember.
-
-```scss
-.element {
-  order: 1;
-}
-```
-
-Columns within a row will be sorted by their `order` property. Lower numbers are placed first. If multiple columns have the same number, they're sorted in the order they appear in the HTML.
-
-We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
-
-<p>
-  <a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-</p>
-
-<div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/gWedmK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
-</div>
-
-```html_example
-<div class="row">
-  <div class="column small-order-2 medium-order-1">
-    This column will come second on small, and first on medium and larger.
-  </div>
-  <div class="column small-order-1 medium-order-2">
-    This column will come first on small, and second on medium and larger.
-  </div>
-</div>
-```
-
----
-
 ## Block Grids
 
 To define column widths at the row-level, instead of the individual column level, add the class `.[size]-up-[n]` to a row, where `[n]` is the number of columns to display per row, and `[size]` is the breakpoint at which to apply the effect.
