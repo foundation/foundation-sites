@@ -8,31 +8,35 @@
     <link href="../assets/css/foundation.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="row column">
-      <h1>Slider: Non-zero Start Value</h1>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Slider: Non-zero Start Value</h1>
 
-      <p>Slider should be at left, since the initialStart is 50 and the scale is 50-100. (top: broken, bottom: expected)</p>
+          <p>Slider should be at left, since the initialStart is 50 and the scale is 50-100. (top: broken, bottom: expected)</p>
 
-      <div class="slider" id="slider1" data-slider
-           data-initial-start="50"
-           data-start="50" data-end="100">
-        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-        <span class="slider-fill" data-slider-fill></span>
-        <input type="hidden">
-      </div>
+          <div class="slider" id="slider1" data-slider
+               data-initial-start="50"
+               data-start="50" data-end="100">
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <input type="hidden">
+          </div>
 
-      <hr>
+          <hr>
 
-      <p>Slider should cover 100%, since the initialStart is 50 and the scale is 50-100 (top: broken, bottom: expected)</p>
-      <div class="slider" id="slider2" data-slider
-           data-double-sided
-           data-initial-start="50" data-initial-end="100"
-           data-start="50" data-end="100">
-        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-        <span class="slider-fill" data-slider-fill></span>
-        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-        <input type="hidden">
-        <input type="hidden">
+          <p>Slider should cover 100%, since the initialStart is 50 and the scale is 50-100 (top: broken, bottom: expected)</p>
+          <div class="slider" id="slider2" data-slider
+               data-double-sided
+               data-initial-start="50" data-initial-end="100"
+               data-start="50" data-end="100">
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <input type="hidden">
+            <input type="hidden">
+          </div>
+        </div>
       </div>
     </div>
 
