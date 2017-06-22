@@ -182,20 +182,26 @@ For children, there are 3 quick helper classes to apply the flex property. These
 - `.flex-child-grow` (flex child that will grow to take up all possible space)
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
 
-<div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/jmZoQa?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+### Responsive Classes 
+
+<div class="callout alert">
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are disabling responsive classes by default. You would be able to re-enable it though, with setting that <code>$flexbox-responsive-breakpoints</code> to <code>true</code> .</p>
 </div>
 
+These vanilla flexbox helper classes also have an optional mobile first responsive classes so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint.. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large. 
+
+These optional responsive classes can be disabled by setting `$flexbox-responsive-breakpoints` to `false`. See [here](#sass-variables)
+
 ```html_example
-<div class="row">
-  <div class="column flex-container flex-dir-column">
-    <div class="callout flex-child-auto">Auto</div>
-    <div class="callout flex-child-auto">Auto</div>
-    <div class="callout flex-child-shrink">Shrink</div>
+<div class="grid-x grid-padding-x">
+  <div class="cell small-4 flex-container flex-dir-column">
+    <div class="callout primary flex-child-auto">Auto</div>
+    <div class="callout primary flex-child-auto">Auto</div>
+    <div class="callout primary flex-child-shrink">Shrink</div>
   </div>
-  <div class="column">
+  <div class="cell small-4">
   </div>
-  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="cell small-4 align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
 
@@ -206,19 +212,15 @@ All of these helper classes come in responsive varieties, prefixed with all of y
 </div>
 
 ```html_example
-<div class="row">
-  <div class="column large-12 flex-container flex-dir-column large-flex-dir-row">
-    <div class="callout flex-child-auto">Auto</div>
-    <div class="callout flex-child-auto">Auto</div>
-    <div class="callout flex-child-shrink large-flex-child-auto">Auto on Large</div>
+<div class="grid-x grid-padding-x">
+  <div class="cell small-12 flex-container flex-dir-column large-flex-dir-row">
+    <div class="callout primary flex-child-auto">Auto</div>
+    <div class="callout primary flex-child-auto">Auto</div>
+    <div class="callout primary flex-child-shrink large-flex-child-auto">Auto on Large</div>
   </div>
-  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="cell small-12 align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
-
-<div class="primary callout">
-  <p>Foundation's CSS is mobile first, so setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large.</p>
-</div>
 
 ---
 
@@ -247,11 +249,11 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 </div>
 
 ```html_example
-<div class="row">
-  <div class="column small-order-2 medium-order-1">
+<div class="grid-x grid-padding-x">
+  <div class="cell small-6 small-order-2 medium-order-1">
     This column will come second on small, and first on medium and larger.
   </div>
-  <div class="column small-order-1 medium-order-2">
+  <div class="cell small-6 small-order-1 medium-order-2">
     This column will come first on small, and second on medium and larger.
   </div>
 </div>
