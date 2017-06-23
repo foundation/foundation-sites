@@ -1,6 +1,7 @@
 ---
 title: Media Queries
 description: CSS media queries allow us to adjust the display and orientation of content at different screen sizes.
+video: gqqi2cqlST8
 sass: scss/util/_breakpoint.scss
 js: js/foundation.util.mediaQuery.js
 tags:
@@ -193,6 +194,15 @@ To see if the screen is currently a certain breakpoint or larger, use `MediaQuer
 if (Foundation.MediaQuery.atLeast('medium')) {
   // True if medium or large
   // False if small
+}
+```
+
+To see if the screen is currently a certain breakpoint, use `MediaQuery.is`.
+
+```js
+if (Foundation.MediaQuery.is('small only')) {
+  // True if small
+  // False if medium or large
 }
 ```
 

@@ -6600,9 +6600,9 @@ tar@^2.0.0, tar@~2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
-tbg-foundation-docs@BerndtGroup/TBG-foundation-docs:
-  version "0.1.0"
-  resolved "https://codeload.github.com/BerndtGroup/TBG-foundation-docs/tar.gz/ea643deb099707236dd924e654495f21580cad90"
+tbg-foundation-docs@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/tbg-foundation-docs/-/tbg-foundation-docs-0.1.1.tgz#4f98d5b83f48f2b0f09bb21fe951849a28bc0c24"
   dependencies:
     cheerio "^0.20.0"
     handlebars "^3.0.1"

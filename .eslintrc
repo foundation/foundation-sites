@@ -49,7 +49,7 @@
     "no-new": 2,
     "no-plusplus": 0,
     "no-proto": 2,
-    "no-script-url": 2,
+    "no-script-url": 0,
     "no-sequences": 2,
     "no-shadow": 1,
     "no-undef": 2,

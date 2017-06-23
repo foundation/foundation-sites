@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * Creates a new instance of a responsive accordion tabs.
      * @class
      * @fires ResponsiveAccordionTabs#init
-     * @param {jQuery} element - jQuery object to make into a dropdown menu.
+     * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     function ResponsiveAccordionTabs(element, options) {

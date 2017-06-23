@@ -3,6 +3,7 @@ title: Accordion
 description: Accordions are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.
 sass: scss/components/_accordion.scss
 js: js/foundation.accordion.js
+video: 'y_BX7saf65Q'
 ---
 
 ## Basics
@@ -17,12 +18,24 @@ Inside the accordion, place a series of panes with the class `.accordion-item` a
 
 Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-tab-content`.
 
+<p>
+  <a class="" data-open-video="1:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
+    <!-- Accordion tab title -->
     <a href="#" class="accordion-title">Accordion 1</a>
+
+    <!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
     <div class="accordion-content" data-tab-content>
-      I would start in the open state, due to using the `is-active` state class.
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <!-- ... -->
@@ -49,8 +62,8 @@ Once you put it all together, here's what you get!
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 3</a>
     <div class="accordion-content" data-tab-content>
-      Pick a date!
-      <input type="date"></input>
+      Type your name!
+      <input type="text"></input>
     </div>
   </li>
 </ul>
@@ -62,6 +75,15 @@ Once you put it all together, here's what you get!
 ### Multi-expand
 
 By default, only one pane of an accordion can be open at a time. This can be changed by setting the `multiExpand` option to `true`.
+
+<p>
+  <a class="" data-open-video="5:11"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybEErg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 
 ```html
 <ul class="accordion" data-accordion data-multi-expand="true">
@@ -95,6 +117,14 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 ### All Closed
 
 By default, at least one pane in an accordion must be open. This can be changed by setting `allowAllClosed` option to `true`.
+
+<p>
+  <a class="" data-open-video="6:09"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwaaVp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <ul class="accordion" data-accordion data-allow-all-closed="true">
