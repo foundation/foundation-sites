@@ -12,7 +12,7 @@
 @mixin xy-grid-container(
   $width: $grid-container
 ) {
-  max-width: rem-calc($width);
+  max-width: $width;
   margin: 0 auto;
 }
 
