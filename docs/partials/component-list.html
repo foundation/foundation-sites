@@ -24,15 +24,6 @@
         </div>
       </li>
 
-<<<<<<< HEAD
-  <li class="docs-nav-title">General</li>
-  <li{{#ifpage 'grid'}} class="current"{{/ifpage}}><a href="grid.html">Grid</a></li>
-  <li{{#ifpage 'flex-grid'}} class="current"{{/ifpage}}><a href="flex-grid.html">Flex Grid</a></li>
-  <li{{#ifpage 'forms'}} class="current"{{/ifpage}}><a href="forms.html">Forms</a></li>
-  <li{{#ifpage 'visibility'}} class="current"{{/ifpage}}><a href="visibility.html">Visibility Classes</a></li>
-  <li{{#ifpage 'float-classes'}} class="current"{{/ifpage}}><a href="float-classes.html">Float Classes</a></li>
-  <li{{#ifpage 'vertical-rhythm'}} class="current"{{/ifpage}}><a href="vertical-rhythm.html">Vertical Rhythm <small class="tbg">TBG</small></a></li>
-=======
       <li class="accordion-item {{#ifpage 'global' 'rtl' 'flexbox' 'sass' 'javascript' 'javascript-utilities' 'media-queries'}}is-active{{/ifpage}}" data-accordion-item>
         <a href="#" class="accordion-title">Setup</a>
         <div class="accordion-content {{#ifpage 'global' 'rtl' 'flexbox' 'sass' 'javascript' 'javascript-utilities' 'media-queries'}}is-active{{/ifpage}}" data-tab-content>
@@ -47,7 +38,6 @@
           </ul>
         </div>
       </li>
->>>>>>> 39176abbffe3b080673e430f30c8d46edbd86f1c
 
       <li class="accordion-item {{#ifpage 'grid' 'flex-grid' 'forms' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-accordion-item>
         <a href="#" class="accordion-title">General</a>
@@ -58,6 +48,7 @@
             <li{{#ifpage 'forms'}} class="current"{{/ifpage}}><a href="forms.html">Forms</a></li>
             <li{{#ifpage 'visibility'}} class="current"{{/ifpage}}><a href="visibility.html">Visibility Classes</a></li>
             <li{{#ifpage 'float-classes'}} class="current"{{/ifpage}}><a href="float-classes.html">Float Classes</a></li>
+            <li{{#ifpage 'vertical-rhythm'}} class="current"{{/ifpage}}><a href="vertical-rhythm.html">Vertical Rhythm <span class="label tbg">TBG</span></a></li>
           </ul>
         </div>
       </li>
@@ -85,31 +76,6 @@
         </div>
       </li>
 
-<<<<<<< HEAD
-  <li class="docs-nav-title">Containers</li>
-  <li{{#ifpage 'accordion'}} class="current"{{/ifpage}}><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
-  <li{{#ifpage 'callout'}} class="current"{{/ifpage}}><a href="callout.html">Callout</a></li>
-  <li{{#ifpage 'card'}} class="current"{{/ifpage}}><a href="card.html">Card</a></li>
-  <li{{#ifpage 'css-columns'}} class="current"{{/ifpage}}><a href="css-columns.html">CSS Columns <small class="tbg">TBG</small></a></li>
-  <li{{#ifpage 'dropdown'}} class="current"{{/ifpage}}><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
-  <li{{#ifpage 'media-object'}} class="current"{{/ifpage}}><a href="media-object.html">Media Object</a></li>
-  <li{{#ifpage 'off-canvas'}} class="current"{{/ifpage}}><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
-  <li{{#ifpage 'reveal'}} class="current"{{/ifpage}}><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
-  <li{{#ifpage 'table'}} class="current"{{/ifpage}}><a href="table.html">Table</a></li>
-  <li{{#ifpage 'tabs'}} class="current"{{/ifpage}}><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
-  <li{{#ifpage 'long-cat'}} class="current"{{/ifpage}}><a href="long-cat.html">Long Cat <span class="label">JS</span> <small class="tbg">TBG</small></a></li>
-  <li{{#ifpage 'responsive-accordion-tabs'}} class="current"{{/ifpage}}><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs<span class="label">JS</span></a></li>
-
-  <li class="docs-nav-title">Media</li>
-  <li{{#ifpage 'badge'}} class="current"{{/ifpage}}><a href="badge.html">Badge</a></li>
-  <li{{#ifpage 'responsive-embed'}} class="current"{{/ifpage}}><a href="responsive-embed.html">Responsive Embed</a></li>
-  <li{{#ifpage 'label'}} class="current"{{/ifpage}}><a href="label.html">Label</a></li>
-  <li{{#ifpage 'orbit'}} class="current"{{/ifpage}}><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
-  <li{{#ifpage 'flickity'}} class="current"{{/ifpage}}><a href="flickity.html">Flickity <span class="label">JS</span> <small>Carousel</small> <small class="tbg">TBG</small></a></li>
-  <li{{#ifpage 'progress-bar'}} class="current"{{/ifpage}}><a href="progress-bar.html">Progress Bar</a></li>
-  <li{{#ifpage 'thumbnail'}} class="current"{{/ifpage}}><a href="thumbnail.html">Thumbnail</a></li>
-  <li{{#ifpage 'tooltip'}} class="current"{{/ifpage}}><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
-=======
       <li class="accordion-item {{#ifpage 'navigation' 'menu' 'dropdown-menu' 'drilldown-menu' 'accordion-menu' 'top-bar' 'responsive-navigation' 'magellan' 'pagination' 'breadcrumbs'}}is-active{{/ifpage}}" data-accordion-item>
         <a href="#" class="accordion-title">Navigation</a>
         <div class="accordion-content {{#ifpage 'navigation' 'menu' 'dropdown-menu' 'drilldown-menu' 'accordion-menu' 'top-bar' 'responsive-navigation' 'magellan' 'pagination' 'breadcrumbs'}}is-active{{/ifpage}}" data-tab-content>
@@ -134,17 +100,18 @@
             <li{{#ifpage 'accordion'}} class="current"{{/ifpage}}><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
             <li{{#ifpage 'callout'}} class="current"{{/ifpage}}><a href="callout.html">Callout</a></li>
             <li{{#ifpage 'card'}} class="current"{{/ifpage}}><a href="card.html">Card</a></li>
+            <li{{#ifpage 'css-columns'}} class="current"{{/ifpage}}><a href="css-columns.html">CSS Columns <span class="label tbg">TBG</span></a></li>
             <li{{#ifpage 'dropdown'}} class="current"{{/ifpage}}><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
             <li{{#ifpage 'media-object'}} class="current"{{/ifpage}}><a href="media-object.html">Media Object</a></li>
             <li{{#ifpage 'off-canvas'}} class="current"{{/ifpage}}><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
             <li{{#ifpage 'reveal'}} class="current"{{/ifpage}}><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
             <li{{#ifpage 'table'}} class="current"{{/ifpage}}><a href="table.html">Table</a></li>
             <li{{#ifpage 'tabs'}} class="current"{{/ifpage}}><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
+            <li{{#ifpage 'long-cat'}} class="current"{{/ifpage}}><a href="long-cat.html">Long Cat <span class="label">JS</span> <span class="label tbg">TBG</span></a></li>
             <li{{#ifpage 'responsive-accordion-tabs'}} class="current"{{/ifpage}}><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs<span class="label">JS</span></a></li>
           </ul>
         </div>
       </li>
->>>>>>> 39176abbffe3b080673e430f30c8d46edbd86f1c
 
       <li class="accordion-item {{#ifpage 'badge' 'responsive-embed' 'label' 'orbit' 'progress-bar' 'thumbnail' 'tooltip'}}is-active{{/ifpage}}" data-accordion-item>
         <a href="#" class="accordion-title">Media</a>
@@ -154,6 +121,7 @@
             <li{{#ifpage 'responsive-embed'}} class="current"{{/ifpage}}><a href="responsive-embed.html">Responsive Embed</a></li>
             <li{{#ifpage 'label'}} class="current"{{/ifpage}}><a href="label.html">Label</a></li>
             <li{{#ifpage 'orbit'}} class="current"{{/ifpage}}><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
+            <li{{#ifpage 'flickity'}} class="current"{{/ifpage}}><a href="flickity.html">Flickity <span class="label">JS</span> <span class="label tbg">TBG</span> <small>Carousel</small></a></li>
             <li{{#ifpage 'progress-bar'}} class="current"{{/ifpage}}><a href="progress-bar.html">Progress Bar</a></li>
             <li{{#ifpage 'thumbnail'}} class="current"{{/ifpage}}><a href="thumbnail.html">Thumbnail</a></li>
             <li{{#ifpage 'tooltip'}} class="current"{{/ifpage}}><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>

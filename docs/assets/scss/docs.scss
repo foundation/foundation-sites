@@ -187,17 +187,6 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
     border: 0;
   }
 
-  // zurb logo
-  .global-nav-title {
-    opacity: 0.9;
-    transition: all 0.25s ease-in-out;
-
-    &:hover {
-      opacity: 1;
-      transition: all 0.25s ease-in-out;
-    }
-  }
-
   .title {
     background: $global-nav-bg;
     color: $dark-gray;
@@ -229,12 +218,11 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 }
 
 .global-nav-title {
+  align-items: center;
   line-height: 0;
   padding-left: $global-padding;
   display: flex;
-  flex-direction: column;
   height: 100%;
-  justify-content: center;
 
   .zurb-logo {
     color: $white;
@@ -249,7 +237,7 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
     @media all and (-ms-high-contrast:none) {
       line-height: 26px !important; // stupid microsoft
      }
-     @supports (-ms-ime-align:auto) {
+    @supports (-ms-ime-align:auto) {
       line-height: 26px !important; // stupid microsoft
     }
 
@@ -258,11 +246,18 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
       font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 17px;
       line-height: 46px;
+      @media screen and (max-width: 860px) {
+        display: none;
+      }
     }
 
     &:hover {
       opacity: 1;
     }
+  }
+
+  .tbg-logo {
+    margin: 0 20px;
   }
 }
 

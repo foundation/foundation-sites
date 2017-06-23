@@ -1,5 +1,5 @@
 /*!
- * Flickity PACKAGED v2.0.5
+ * Flickity PACKAGED v2.0.8
  * Touch, responsive, flickable carousels
  *
  * Licensed GPLv3 for open source use
@@ -441,7 +441,7 @@
 });
 
 /**
- * matchesSelector v2.0.1
+ * matchesSelector v2.0.2
  * matchesSelector( element, '.selector' )
  * MIT license
  */
@@ -467,7 +467,7 @@
   'use strict';
 
   var matchesMethod = function () {
-    var ElemProto = Element.prototype;
+    var ElemProto = window.Element.prototype;
     // check for the standard method name first
     if (ElemProto.matches) {
       return 'matches';
@@ -494,7 +494,7 @@
 });
 
 /**
- * Fizzy UI utils v2.0.3
+ * Fizzy UI utils v2.0.5
  * MIT license
  */
 
@@ -544,7 +544,7 @@
     if (Array.isArray(obj)) {
       // use object if already an array
       ary = obj;
-    } else if (obj && typeof obj.length == 'number') {
+    } else if (obj && typeof obj == 'object' && typeof obj.length == 'number') {
       // convert nodeList to array
       for (var i = 0; i < obj.length; i++) {
         ary.push(obj[i]);
@@ -568,7 +568,7 @@
   // ----- getParent ----- //
 
   utils.getParent = function (elem, selector) {
-    while (elem != document.body) {
+    while (elem.parentNode && elem != document.body) {
       elem = elem.parentNode;
       if (matchesSelector(elem, selector)) {
         return elem;
@@ -1885,13 +1885,18 @@
     jQuery.bridget('flickity', Flickity);
   }
 
+  // set internal jQuery, for Webpack + jQuery v3, #478
+  Flickity.setJQuery = function (jq) {
+    jQuery = jq;
+  };
+
   Flickity.Cell = Cell;
 
   return Flickity;
 });
 
 /*!
- * Unipointer v2.1.0
+ * Unipointer v2.2.0
  * base class for doing one thing with pointer event
  * MIT license
  */
@@ -1939,12 +1944,9 @@
     isBind = isBind === undefined ? true : !!isBind;
     var bindMethod = isBind ? 'addEventListener' : 'removeEventListener';
 
-    if (window.navigator.pointerEnabled) {
-      // W3C Pointer Events, IE11. See https://coderwall.com/p/mfreca
+    if (window.PointerEvent) {
+      // Pointer Events. Chrome 55, IE11, Edge 14
       elem[bindMethod]('pointerdown', this);
-    } else if (window.navigator.msPointerEnabled) {
-      // IE10 Pointer Events
-      elem[bindMethod]('MSPointerDown', this);
     } else {
       // listen for both, for devices like Chrome Pixel
       elem[bindMethod]('mousedown', this);
@@ -1985,7 +1987,7 @@
     this._pointerDown(event, event.changedTouches[0]);
   };
 
-  proto.onMSPointerDown = proto.onpointerdown = function (event) {
+  proto.onpointerdown = function (event) {
     this._pointerDown(event, event);
   };
 
@@ -2018,8 +2020,7 @@
   var postStartEvents = {
     mousedown: ['mousemove', 'mouseup'],
     touchstart: ['touchmove', 'touchend', 'touchcancel'],
-    pointerdown: ['pointermove', 'pointerup', 'pointercancel'],
-    MSPointerDown: ['MSPointerMove', 'MSPointerUp', 'MSPointerCancel']
+    pointerdown: ['pointermove', 'pointerup', 'pointercancel']
   };
 
   proto._bindPostStartEvents = function (event) {
@@ -2054,7 +2055,7 @@
     this._pointerMove(event, event);
   };
 
-  proto.onMSPointerMove = proto.onpointermove = function (event) {
+  proto.onpointermove = function (event) {
     if (event.pointerId == this.pointerIdentifier) {
       this._pointerMove(event, event);
     }
@@ -2089,7 +2090,7 @@
     this._pointerUp(event, event);
   };
 
-  proto.onMSPointerUp = proto.onpointerup = function (event) {
+  proto.onpointerup = function (event) {
     if (event.pointerId == this.pointerIdentifier) {
       this._pointerUp(event, event);
     }
@@ -2134,7 +2135,7 @@
 
   // ----- pointer cancel ----- //
 
-  proto.onMSPointerCancel = proto.onpointercancel = function (event) {
+  proto.onpointercancel = function (event) {
     if (event.pointerId == this.pointerIdentifier) {
       this._pointerCancel(event, event);
     }
@@ -2179,7 +2180,7 @@
 });
 
 /*!
- * Unidragger v2.1.0
+ * Unidragger v2.2.2
  * Draggable base class
  * MIT license
  */
@@ -2204,10 +2205,6 @@
   }
 })(window, function factory(window, Unipointer) {
 
-  // -----  ----- //
-
-  function noop() {}
-
   // -------------------------- Unidragger -------------------------- //
 
   function Unidragger() {}
@@ -2225,7 +2222,6 @@
     this._bindHandles(false);
   };
 
-  var navigator = window.navigator;
   /**
    * works as unbinder, as you can .bindHandles( false ) to unbind
    * @param {Boolean} isBind - will unbind if falsey
@@ -2233,28 +2229,17 @@
   proto._bindHandles = function (isBind) {
     // munge isBind, default to true
     isBind = isBind === undefined ? true : !!isBind;
-    // extra bind logic
-    var binderExtra;
-    if (navigator.pointerEnabled) {
-      binderExtra = function (handle) {
-        // disable scrolling on the element
-        handle.style.touchAction = isBind ? 'none' : '';
-      };
-    } else if (navigator.msPointerEnabled) {
-      binderExtra = function (handle) {
-        // disable scrolling on the element
-        handle.style.msTouchAction = isBind ? 'none' : '';
-      };
-    } else {
-      binderExtra = noop;
-    }
     // bind each handle
     var bindMethod = isBind ? 'addEventListener' : 'removeEventListener';
     for (var i = 0; i < this.handles.length; i++) {
       var handle = this.handles[i];
       this._bindStartEvent(handle, isBind);
-      binderExtra(handle);
       handle[bindMethod]('click', this);
+      // touch-action: none to override browser touch gestures
+      // metafizzy/flickity#540
+      if (window.PointerEvent) {
+        handle.style.touchAction = isBind ? 'none' : '';
+      }
     }
   };
 
@@ -2581,19 +2566,10 @@
     this.dispatchEvent('pointerDown', event, [pointer]);
   };
 
-  var touchStartEvents = {
-    touchstart: true,
-    MSPointerDown: true
-  };
-
-  var focusNodes = {
-    INPUT: true,
-    SELECT: true
-  };
-
   proto.pointerDownFocus = function (event) {
     // focus element, if not touch, and its not an input or select
-    if (!this.options.accessibility || touchStartEvents[event.type] || focusNodes[event.target.nodeName]) {
+    var canPointerDown = getCanPointerDown(event);
+    if (!this.options.accessibility || canPointerDown) {
       return;
     }
     var prevScrollY = window.pageYOffset;
@@ -2604,11 +2580,26 @@
     }
   };
 
+  var touchStartEvents = {
+    touchstart: true,
+    pointerdown: true
+  };
+
+  var focusNodes = {
+    INPUT: true,
+    SELECT: true
+  };
+
+  function getCanPointerDown(event) {
+    var isTouchStart = touchStartEvents[event.type];
+    var isFocusNode = focusNodes[event.target.nodeName];
+    return isTouchStart || isFocusNode;
+  }
+
   proto.canPreventDefaultOnPointerDown = function (event) {
-    // prevent default, unless touchstart or <select>
-    var isTouchstart = event.type == 'touchstart';
-    var targetNodeName = event.target.nodeName;
-    return !isTouchstart && targetNodeName != 'SELECT';
+    // prevent default, unless touchstart or input
+    var canPointerDown = getCanPointerDown(event);
+    return !canPointerDown;
   };
 
   // ----- move ----- //
@@ -3750,7 +3741,7 @@
 });
 
 /*!
- * Flickity v2.0.5
+ * Flickity v2.0.8
  * Touch, responsive, flickable carousels
  *
  * Licensed GPLv3 for open source use
@@ -3913,7 +3904,7 @@
 });
 
 /*!
- * imagesLoaded v4.1.1
+ * imagesLoaded v4.1.2
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
@@ -3936,7 +3927,7 @@
     // browser global
     window.imagesLoaded = factory(window, window.EvEmitter);
   }
-})(window,
+})(typeof window !== 'undefined' ? window : this,
 
 // --------------------------  factory -------------------------- //
 
