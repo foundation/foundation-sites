@@ -1,6 +1,6 @@
 {
   "name": "tbg-foundation-sites",
-  "version": "6.3.1-rc.1",
+  "version": "6.3.1-rc.2",
   "main": "dist/js/foundation.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "TBG fork of the most advanced responsive front-end framework in the world.",
