@@ -505,6 +505,8 @@ pre {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap; }
@@ -1801,10 +1803,6 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #cacaca; }
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-  color: #cacaca; }
-
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
   color: #cacaca; }
@@ -2014,8 +2012,6 @@ select {
   border-color: #cc4b37;
   background-color: #f9ecea; }
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
-    color: #cc4b37; }
-  .is-invalid-input:not(:focus)::-moz-placeholder {
     color: #cc4b37; }
   .is-invalid-input:not(:focus):-ms-input-placeholder {
     color: #cc4b37; }
@@ -2522,279 +2518,211 @@ select {
 .css-columns-0-large,
 .css-columns-1-large {
   -webkit-column-gap: normal;
-     -moz-column-gap: normal;
           column-gap: normal;
   -webkit-column-count: auto;
-     -moz-column-count: auto;
           column-count: auto; }
 
 
 .css-columns-2 {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 2;
-     -moz-column-count: 2;
           column-count: 2; }
   
   .css-columns-2 > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 
 .css-columns-3 {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 3;
-     -moz-column-count: 3;
           column-count: 3; }
   
   .css-columns-3 > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 
 .css-columns-4 {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 4;
-     -moz-column-count: 4;
           column-count: 4; }
   
   .css-columns-4 > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 
 .css-columns-5 {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 5;
-     -moz-column-count: 5;
           column-count: 5; }
   
   .css-columns-5 > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 
 .css-columns-6 {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 6;
-     -moz-column-count: 6;
           column-count: 6; }
   
   .css-columns-6 > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 .css-columns-0-small,
 .css-columns-1-small {
   -webkit-column-gap: normal;
-     -moz-column-gap: normal;
           column-gap: normal;
   -webkit-column-count: auto;
-     -moz-column-count: auto;
           column-count: auto; }
 
 .css-columns-2-small {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 2;
-     -moz-column-count: 2;
           column-count: 2; }
   .css-columns-2-small > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 .css-columns-3-small {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 3;
-     -moz-column-count: 3;
           column-count: 3; }
   .css-columns-3-small > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 .css-columns-4-small {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 4;
-     -moz-column-count: 4;
           column-count: 4; }
   .css-columns-4-small > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 .css-columns-5-small {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 5;
-     -moz-column-count: 5;
           column-count: 5; }
   .css-columns-5-small > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 .css-columns-6-small {
   -webkit-column-gap: 2rem;
-     -moz-column-gap: 2rem;
           column-gap: 2rem;
   -webkit-column-count: 6;
-     -moz-column-count: 6;
           column-count: 6; }
   .css-columns-6-small > * {
     -webkit-column-break-inside: avoid;
-       page-break-inside: avoid;
             break-inside: avoid; }
 
 @media print, screen and (min-width: 40em) {
   .css-columns-0-medium,
   .css-columns-1-medium {
     -webkit-column-gap: normal;
-       -moz-column-gap: normal;
             column-gap: normal;
     -webkit-column-count: auto;
-       -moz-column-count: auto;
             column-count: auto; }
   .css-columns-2-medium {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 2;
-       -moz-column-count: 2;
             column-count: 2; }
     .css-columns-2-medium > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-3-medium {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 3;
-       -moz-column-count: 3;
             column-count: 3; }
     .css-columns-3-medium > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-4-medium {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 4;
-       -moz-column-count: 4;
             column-count: 4; }
     .css-columns-4-medium > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-5-medium {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 5;
-       -moz-column-count: 5;
             column-count: 5; }
     .css-columns-5-medium > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-6-medium {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 6;
-       -moz-column-count: 6;
             column-count: 6; }
     .css-columns-6-medium > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; } }
 
 @media print, screen and (min-width: 64em) {
   .css-columns-0-large,
   .css-columns-1-large {
     -webkit-column-gap: normal;
-       -moz-column-gap: normal;
             column-gap: normal;
     -webkit-column-count: auto;
-       -moz-column-count: auto;
             column-count: auto; }
   .css-columns-2-large {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 2;
-       -moz-column-count: 2;
             column-count: 2; }
     .css-columns-2-large > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-3-large {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 3;
-       -moz-column-count: 3;
             column-count: 3; }
     .css-columns-3-large > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-4-large {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 4;
-       -moz-column-count: 4;
             column-count: 4; }
     .css-columns-4-large > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-5-large {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 5;
-       -moz-column-count: 5;
             column-count: 5; }
     .css-columns-5-large > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-6-large {
     -webkit-column-gap: 2rem;
-       -moz-column-gap: 2rem;
             column-gap: 2rem;
     -webkit-column-count: 6;
-       -moz-column-count: 6;
             column-count: 6; }
     .css-columns-6-large > * {
       -webkit-column-break-inside: avoid;
-         page-break-inside: avoid;
               break-inside: avoid; } }
 
 .close-button {
@@ -2853,6 +2781,8 @@ select {
     display: -ms-flexbox;
     display: flex; }
   .menu > li > a {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: row nowrap;
         -ms-flex-flow: row nowrap;
             flex-flow: row nowrap; }
@@ -2985,6 +2915,8 @@ select {
         -ms-flex-pack: end;
             justify-content: flex-end; }
   .menu.icon-top > li > a {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: column nowrap;
         -ms-flex-flow: column nowrap;
             flex-flow: column nowrap; }

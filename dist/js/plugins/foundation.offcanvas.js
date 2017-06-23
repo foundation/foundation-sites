@@ -472,8 +472,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @default false
      */
     trapFocus: false
-  };
 
-  // Window exports
-  Foundation.plugin(OffCanvas, 'OffCanvas');
+    // Window exports
+  };Foundation.plugin(OffCanvas, 'OffCanvas');
 }(jQuery);

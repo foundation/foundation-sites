@@ -278,8 +278,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @default 0
      */
     barOffset: 0
-  };
 
-  // Window exports
-  Foundation.plugin(Magellan, 'Magellan');
+    // Window exports
+  };Foundation.plugin(Magellan, 'Magellan');
 }(jQuery);

@@ -264,27 +264,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
         // Motion UI method of reveal
         if (this.options.animationIn) {
-          (function () {
-            var afterAnimation = function () {
-              _this.$element.attr({
-                'aria-hidden': false,
-                'tabindex': -1
-              }).focus();
-              addRevealOpenClasses();
-              Foundation.Keyboard.trapFocus(_this.$element);
-            };
+          var afterAnimation = function () {
+            _this.$element.attr({
+              'aria-hidden': false,
+              'tabindex': -1
+            }).focus();
+            addRevealOpenClasses();
+            Foundation.Keyboard.trapFocus(_this.$element);
+          };
 
-            if (_this3.options.overlay) {
-              Foundation.Motion.animateIn(_this3.$overlay, 'fade-in');
+          if (this.options.overlay) {
+            Foundation.Motion.animateIn(this.$overlay, 'fade-in');
+          }
+          Foundation.Motion.animateIn(this.$element, this.options.animationIn, function () {
+            if (_this3.$element) {
+              // protect against object having been removed
+              _this3.focusableElements = Foundation.Keyboard.findFocusable(_this3.$element);
+              afterAnimation();
             }
-            Foundation.Motion.animateIn(_this3.$element, _this3.options.animationIn, function () {
-              if (_this3.$element) {
-                // protect against object having been removed
-                _this3.focusableElements = Foundation.Keyboard.findFocusable(_this3.$element);
-                afterAnimation();
-              }
-            });
-          })();
+          });
         }
         // jQuery method of reveal
         else {

@@ -392,19 +392,18 @@
     ImNotTouchingYou: ImNotTouchingYou,
     GetDimensions: GetDimensions,
     GetOffsets: GetOffsets
-  };
 
-  /**
-   * Compares the dimensions of an element to a container and determines collision events with container.
-   * @function
-   * @param {jQuery} element - jQuery object to test for collisions.
-   * @param {jQuery} parent - jQuery object to use as bounding container.
-   * @param {Boolean} lrOnly - set to true to check left and right values only.
-   * @param {Boolean} tbOnly - set to true to check top and bottom values only.
-   * @default if no parent object passed, detects collisions with `window`.
-   * @returns {Boolean} - true if collision free, false if a collision in any direction.
-   */
-  function ImNotTouchingYou(element, parent, lrOnly, tbOnly) {
+    /**
+     * Compares the dimensions of an element to a container and determines collision events with container.
+     * @function
+     * @param {jQuery} element - jQuery object to test for collisions.
+     * @param {jQuery} parent - jQuery object to use as bounding container.
+     * @param {Boolean} lrOnly - set to true to check left and right values only.
+     * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+     * @default if no parent object passed, detects collisions with `window`.
+     * @returns {Boolean} - true if collision free, false if a collision in any direction.
+     */
+  };function ImNotTouchingYou(element, parent, lrOnly, tbOnly) {
     var eleDims = GetDimensions(element),
         top,
         bottom,
@@ -2097,8 +2096,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'validateInput',
       value: function validateInput($el) {
-        var _this4 = this;
-
         var clearRequire = this.requiredCheck($el),
             validated = false,
             customValidator = true,
@@ -2144,14 +2141,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // Re-validate inputs that depend on this one with equalto
           var dependentElements = this.$element.find('[data-equalto="' + $el.attr('id') + '"]');
           if (dependentElements.length) {
-            (function () {
-              var _this = _this4;
-              dependentElements.each(function () {
-                if ($(this).val()) {
-                  _this.validateInput($(this));
-                }
-              });
-            })();
+            var _this = this;
+            dependentElements.each(function () {
+              if ($(this).val()) {
+                _this.validateInput($(this));
+              }
+            });
           }
         }
 
@@ -2281,12 +2276,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'matchValidation',
       value: function matchValidation($el, validators, required) {
-        var _this5 = this;
+        var _this4 = this;
 
         required = required ? true : false;
 
         var clear = validators.split(' ').map(function (v) {
-          return _this5.options.validators[v]($el, required, $el.parent());
+          return _this4.options.validators[v]($el, required, $el.parent());
         });
         return clear.indexOf(false) === -1;
       }
@@ -2446,10 +2441,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return $('#' + el.attr('data-equalto')).val() === el.val();
       }
     }
-  };
 
-  // Window exports
-  Foundation.plugin(Abide, 'Abide');
+    // Window exports
+  };Foundation.plugin(Abide, 'Abide');
 }(jQuery);
 'use strict';
 
@@ -4134,10 +4128,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @default false
      */
     closeOnClick: false
-  };
 
-  // Window exports
-  Foundation.plugin(Dropdown, 'Dropdown');
+    // Window exports
+  };Foundation.plugin(Dropdown, 'Dropdown');
 }(jQuery);
 'use strict';
 
@@ -6061,10 +6054,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @default 0
      */
     barOffset: 0
-  };
 
-  // Window exports
-  Foundation.plugin(Magellan, 'Magellan');
+    // Window exports
+  };Foundation.plugin(Magellan, 'Magellan');
 }(jQuery);
 'use strict';
 
@@ -6540,10 +6532,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @default false
      */
     trapFocus: false
-  };
 
-  // Window exports
-  Foundation.plugin(OffCanvas, 'OffCanvas');
+    // Window exports
+  };Foundation.plugin(OffCanvas, 'OffCanvas');
 }(jQuery);
 'use strict';
 
@@ -7723,27 +7714,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
         // Motion UI method of reveal
         if (this.options.animationIn) {
-          (function () {
-            var afterAnimation = function () {
-              _this.$element.attr({
-                'aria-hidden': false,
-                'tabindex': -1
-              }).focus();
-              addRevealOpenClasses();
-              Foundation.Keyboard.trapFocus(_this.$element);
-            };
+          var afterAnimation = function () {
+            _this.$element.attr({
+              'aria-hidden': false,
+              'tabindex': -1
+            }).focus();
+            addRevealOpenClasses();
+            Foundation.Keyboard.trapFocus(_this.$element);
+          };
 
-            if (_this3.options.overlay) {
-              Foundation.Motion.animateIn(_this3.$overlay, 'fade-in');
+          if (this.options.overlay) {
+            Foundation.Motion.animateIn(this.$overlay, 'fade-in');
+          }
+          Foundation.Motion.animateIn(this.$element, this.options.animationIn, function () {
+            if (_this3.$element) {
+              // protect against object having been removed
+              _this3.focusableElements = Foundation.Keyboard.findFocusable(_this3.$element);
+              afterAnimation();
             }
-            Foundation.Motion.animateIn(_this3.$element, _this3.options.animationIn, function () {
-              if (_this3.$element) {
-                // protect against object having been removed
-                _this3.focusableElements = Foundation.Keyboard.findFocusable(_this3.$element);
-                afterAnimation();
-              }
-            });
-          })();
+          });
         }
         // jQuery method of reveal
         else {

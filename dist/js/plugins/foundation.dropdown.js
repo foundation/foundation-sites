@@ -458,8 +458,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @default false
      */
     closeOnClick: false
-  };
 
-  // Window exports
-  Foundation.plugin(Dropdown, 'Dropdown');
+    // Window exports
+  };Foundation.plugin(Dropdown, 'Dropdown');
 }(jQuery);

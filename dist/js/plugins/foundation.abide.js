@@ -286,8 +286,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'validateInput',
       value: function validateInput($el) {
-        var _this4 = this;
-
         var clearRequire = this.requiredCheck($el),
             validated = false,
             customValidator = true,
@@ -333,14 +331,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // Re-validate inputs that depend on this one with equalto
           var dependentElements = this.$element.find('[data-equalto="' + $el.attr('id') + '"]');
           if (dependentElements.length) {
-            (function () {
-              var _this = _this4;
-              dependentElements.each(function () {
-                if ($(this).val()) {
-                  _this.validateInput($(this));
-                }
-              });
-            })();
+            var _this = this;
+            dependentElements.each(function () {
+              if ($(this).val()) {
+                _this.validateInput($(this));
+              }
+            });
           }
         }
 
@@ -470,12 +466,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'matchValidation',
       value: function matchValidation($el, validators, required) {
-        var _this5 = this;
+        var _this4 = this;
 
         required = required ? true : false;
 
         var clear = validators.split(' ').map(function (v) {
-          return _this5.options.validators[v]($el, required, $el.parent());
+          return _this4.options.validators[v]($el, required, $el.parent());
         });
         return clear.indexOf(false) === -1;
       }
@@ -635,8 +631,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return $('#' + el.attr('data-equalto')).val() === el.val();
       }
     }
-  };
 
-  // Window exports
-  Foundation.plugin(Abide, 'Abide');
+    // Window exports
+  };Foundation.plugin(Abide, 'Abide');
 }(jQuery);
