@@ -38,6 +38,11 @@ $menu-icon-spacing: 0.25rem !default;
 /// @type Color
 $menu-item-background-hover: $light-gray !default;
 
+/// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
+/// But please note that `active` will be removed in upcoming versions.
+/// @type Boolean
+$menu-state-back-compat: true !default;
+
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   padding: 0;
@@ -334,6 +339,11 @@ $menu-item-background-hover: $light-gray !default;
   color: inherit;
 }
 
+@mixin menu-state-active {
+  background: $menu-item-background-active;
+  color: $menu-item-color-active;
+}
+
 @mixin foundation-menu {
   .menu {
     @include menu-base;
@@ -409,8 +419,14 @@ $menu-item-background-hover: $light-gray !default;
 
     // Active state
     .is-active > a {
-      background: $menu-item-background-active;
-      color: $menu-item-color-active;
+      @include menu-state-active;
+    }
+    
+    // Backward Compatibility for active state
+    @if $menu-state-back-compat {
+      .active > a {
+        @include menu-state-active;
+      }
     }
 
     // Align left
