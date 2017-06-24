@@ -186,8 +186,8 @@ $menu-item-background-hover: $light-gray !default;
 }
 
 /// Creates a simple Menu, which has no padding or hover state.
-/// @param {Keyword} $dir [$global-left] - Direction of the menu. This effects the side of the <li> that receives the margin.
-/// @param {Number} $margin [$menu-simple-margin] - The margin to apply to each <li>.
+/// @param {Keyword} $dir [$global-left] - Direction of the menu. This effects the side of the `<li>` that receives the margin.
+/// @param {Number} $margin [$menu-simple-margin] - The margin to apply to each `<li>`.
 @mixin menu-simple($dir: $global-left, $margin: $menu-simple-margin) {
   @if $global-flexbox {
     align-items: center;
