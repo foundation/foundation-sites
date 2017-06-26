@@ -1,0 +1,63 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>xy margin grid</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style>
+      .demo {
+        background: #1779ba;
+        color: white;
+        text-align: center;
+      }
+
+      .cell {
+        /*background: dodgerblue;*/
+        line-height: 50px;
+        height: 50px;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Grid Container</h1>
+
+          <div class="primary callout">
+            <p>Resize the window to know the difference!</p>
+          </div>
+
+          <h4>With no `grid-container-padding` should be flush below 1200px, and bounded and centered above</h4>
+
+          <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+              <div class="cell medium-12"><div class="demo">12/12</div></div>
+            </div>
+          </div>
+
+          <h4>With `grid-container-padded` should have padding below 1200px, corresponding to responsive gutters</h4>
+
+          <div class="grid-container grid-container-padded">
+            <div class="grid-x grid-margin-x">
+              <div class="cell medium-12"><div class="demo">12/12</div></div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+    
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

@@ -29,6 +29,9 @@ $grid-margin-gutters: (
 /// @type Map | Length
 $grid-padding-gutters: $grid-margin-gutters !default;
 
+$grid-container-padding: $grid-padding-gutters !default;
+$grid-container-max: $global-width !default;
+
 /// The maximum number of cells in a block grid.
 /// @type Number
 $block-grid-max: 8 !default;

@@ -102,6 +102,21 @@ The grid defaults to the full width of its container. In order to contain the gr
   </div>
 </div>
 ```
+
+By default, the container will be centered and have a max-width equal to your
+`$max-width` setting (1200px by default), and be flush to the screen for widths
+below that. If you want to add padding below the `$max-width`, simply add the
+`.grid-container-padded` class to your grid container.
+
+```html
+<div class="grid-container grid-container-padded">
+  <div class="grid-x">
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+  </div>
+</div>
+```
 ---
 
 ## Auto Sizing
