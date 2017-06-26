@@ -462,7 +462,6 @@ $menu-centered-back-compat: true !default;
     .menu-centered {
       > .menu {
         @if $global-flexbox {
-          display: flex;
           justify-content: center;
         }
         
