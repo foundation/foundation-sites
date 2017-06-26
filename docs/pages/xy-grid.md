@@ -366,11 +366,11 @@ We also have a shorthand option for the above which outputs the same CSS:
 ### Custom Block Grid
 
 Use the `xy-grid-layout()` mixin to create your own block grid.
-By default the mixin takes 3 parameters:
+By default the mixin takes 2 parameters:
 - number of columns
 - child selector
 
-Refer to the Sass documentation below for the full list of arguements.
+Refer to the Sass documentation [below](#xy-grid-layout) for the full list of arguments.
 
 Here's an example:
 
