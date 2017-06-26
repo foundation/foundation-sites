@@ -43,6 +43,11 @@ $menu-item-background-hover: $light-gray !default;
 /// @type Boolean
 $menu-state-back-compat: true !default;
 
+/// Backward compatibility for menu centered. If true, this duplicate `.menu-centered > .menu` with `.menu.align-center`. 
+/// But please note that `menu-centered` will be removed in upcoming versions.
+/// @type Boolean
+$menu-centered-back-compat: true !default;
+
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   padding: 0;
@@ -450,6 +455,19 @@ $menu-state-back-compat: true !default;
 
     .menu-text {
       @include menu-text;
+    }
+  }
+
+  @if $menu-centered-back-compat {
+    .menu-centered {
+      > .menu {
+        @if $global-flexbox {
+          display: flex;
+          justify-content: center;
+        }
+        
+        @include menu-align(center);
+      }
     }
   }
 
