@@ -14,6 +14,10 @@
     @include xy-grid-container;
   }
 
+  .grid-container-padded {
+    @include xy-grid-container-padding;
+  }
+
   // Base grid styles
   .grid-x {
     @include xy-grid;
