@@ -10,37 +10,49 @@
     <style>
       .demo {
         background: #1779ba;
+        color: white;
+        text-align: center;
       }
 
       .cell {
         /*background: dodgerblue;*/
         line-height: 50px;
         height: 50px;
-        color: white;
-        text-align: center;
         margin-bottom: 30px;
       }
     </style>
   </head>
   <body>
-    <h1>Grid Container</h1>
-
-    <h2>With no `grid-container-padding` should be flush below 1200px, and bounded and centered above</h2>
-
     <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12"><div class="demo">12/12</div></div>
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Grid Container</h1>
+
+          <div class="primary callout">
+            <p>Resize the window to know the difference!</p>
+          </div>
+
+          <h4>With no `grid-container-padding` should be flush below 1200px, and bounded and centered above</h4>
+
+          <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+              <div class="cell medium-12"><div class="demo">12/12</div></div>
+            </div>
+          </div>
+
+          <h4>With `grid-container-padded` should have padding below 1200px, corresponding to responsive gutters</h4>
+
+          <div class="grid-container grid-container-padded">
+            <div class="grid-x grid-margin-x">
+              <div class="cell medium-12"><div class="demo">12/12</div></div>
+            </div>
+          </div>
+        </div>
+        
+
       </div>
     </div>
-
-    <h2>With `grid-container-padded` should have padding below 1200px, corresponding to responsive gutters</h2>
-
-    <div class="grid-container grid-container-padded">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12"><div class="demo">12/12</div></div>
-      </div>
-    </div>
-
+    
 
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/foundation.js"></script>
