@@ -29,6 +29,7 @@ class Slider extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
+    this.className = 'Slider'; // ie9 back compat
 
   // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
     Touch.init($);

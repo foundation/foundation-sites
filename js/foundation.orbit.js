@@ -30,6 +30,7 @@ class Orbit extends Plugin {
   _setup(element, options){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
+    this.className = 'Orbit'; // ie9 back compat
 
     Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
 

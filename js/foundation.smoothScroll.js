@@ -12,6 +12,7 @@ class SmoothScroll extends Plugin {
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+        this.className = 'SmoothScroll'; // ie9 back compat
 
         this._init();
     }

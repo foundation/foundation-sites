@@ -24,6 +24,7 @@ class ResponsiveToggle extends Plugin {
   _setup(element, options) {
     this.$element = $(element);
     this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+    this.className = 'ResponsiveToggle'; // ie9 back compat
 
     this._init();
     this._events();
