@@ -24,7 +24,7 @@ class Plugin {
 
   destroy() {
     this._destroy();
-    var pluginName = hyphenate(this.constructor.name);
+    var pluginName = getPluginName(this);
     this.$element.removeAttr(`data-${pluginName}`).removeData('zfPlugin')
         /**
          * Fires when the plugin has been destroyed.
