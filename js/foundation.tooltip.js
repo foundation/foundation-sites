@@ -26,6 +26,7 @@ class Tooltip extends Positionable {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
+    this.className = 'Tooltip'; // ie9 back compat
 
     this.isActive = false;
     this.isClick = false;

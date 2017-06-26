@@ -23,6 +23,7 @@ class Accordion extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
+    this.className = 'Accordion'; // ie9 back compat
     this._init();
 
     Keyboard.register('Accordion', {

@@ -25,6 +25,7 @@ class Interchange extends Plugin {
     this.options = $.extend({}, Interchange.defaults, options);
     this.rules = [];
     this.currentPath = '';
+    this.className = 'Interchange'; // ie9 back compat
 
     this._init();
     this._events();
