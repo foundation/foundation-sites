@@ -250,7 +250,10 @@ You can switch the default transition of the off-canvas from pushing the page ov
 There are 2 available transitions: push (`data-transition="push"`) which is the default, and overlap (`data-transition="overlap"`).
 
 ```html
-<div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas>
+<div class="off-canvas position-left" id="offCanvasLeftOverlap" data-off-canvas data-transition="overlap">
+  <!-- Your menu or Off-canvas content goes here -->
+</div>
+<div class="off-canvas position-right" id="offCanvasRightPush" data-off-canvas data-transition="push">
   <!-- Your menu or Off-canvas content goes here -->
 </div>
 ```
