@@ -1,0 +1,51 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style type="text/css">
+      .demo {
+        background: #1779ba;
+        color: #fefefe;
+        text-align: center;
+      }
+
+      .cell {
+        /*background: dodgerblue;*/
+        line-height: 50px;
+        height: 50px;
+        
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Breakpoint Auto</h1>
+          <div class="grid-x grid-margin-x">
+            <div class="large-auto cell"><div class="demo">This will grow larger. This will grow larger. This will grow larger</div></div>
+            <div class="large-auto cell"><div class="demo">12/6/8 cells</div></div>
+          </div>
+         <h4>Auto overriding cell count</h4>  
+          <div class="grid-x grid-margin-x">
+            <div class="large-4 medium-auto cell"><div class="demo">Cell</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
