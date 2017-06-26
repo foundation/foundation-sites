@@ -70,6 +70,10 @@ $menu-item-background-hover: $light-gray !default;
   button {
     margin-bottom: 0;
   }
+
+  input {
+    display: inline-block;
+  }
 }
 
 /// Expands the items of a Menu, so each item is the same width.
@@ -192,7 +196,7 @@ $menu-item-background-hover: $light-gray !default;
   @if $global-flexbox {
     align-items: center;
   }
-  
+
   li + li {
     margin-#{$dir}: $margin;
   }
@@ -212,12 +216,12 @@ $menu-item-background-hover: $light-gray !default;
   @if $nested-alignment == right {
     margin-#{$global-right}: $margin;
     margin-#{$global-left}: 0;
-  } 
+  }
   @else {
     margin-#{$global-right}: 0;
     margin-#{$global-left}: $margin;
   }
-  
+
 }
 
 /// Adds basic styles for icons in menus.
