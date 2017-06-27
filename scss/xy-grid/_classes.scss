@@ -14,6 +14,10 @@
     @include xy-grid-container;
   }
 
+  .grid-container-padded {
+    @include xy-grid-container-padding;
+  }
+
   // Base grid styles
   .grid-x {
     @include xy-grid;
@@ -44,12 +48,22 @@
 
   // Auto width
   @include -zf-each-breakpoint() {
-    // This is a bit of a hack/workaround, see these PRs for the backstory:
+    // This is a bit of a hack/workaround, see these issues & PRs for the backstory:
+    // https://github.com/zurb/foundation-sites/issues/10244
     // https://github.com/zurb/foundation-sites/pull/10222 and
     // https://github.com/zurb/foundation-sites/pull/10164
-    .grid-x > [class*="#{$-zf-size}-"]:not([class*="#{$-zf-size}-order"]):not([class*="#{$-zf-size}-offset"]) {
-      flex-basis: auto;
+    .grid-x {
+      $str: "> #{$-zf-size}-shrink, > #{$-zf-size}-full";
+      @for $i from 1 through $grid-columns {
+        $str: $str + ", > #{$-zf-size}-#{$i}"
+      }
+      #{$str} {
+        flex-basis: auto;
+      }
     }
+  }
+
+  @include -zf-each-breakpoint() {
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-auto {
         @include xy-cell-base(auto);
@@ -257,13 +271,20 @@
 
 
     @include -zf-each-breakpoint() {
-      // This is a bit of a hack/workaround, see these PRs for the backstory:
+      // This is a bit of a hack/workaround, see these issues and PRs for the backstory:
+      // https://github.com/zurb/foundation-sites/issues/10244
       // https://github.com/zurb/foundation-sites/pull/10222 and
       // https://github.com/zurb/foundation-sites/pull/10164
-      > [class*="#{$-zf-size}-"]:not([class*="#{$-zf-size}-order"]):not([class*="#{$-zf-size}-offset"]) {
+      $str: "> #{$-zf-size}-shrink, > #{$-zf-size}-full";
+      @for $i from 1 through $grid-columns {
+        $str: $str + ", > #{$-zf-size}-#{$i}"
+      }
+      #{$str} {
         flex-basis: auto;
       }
+    }
 
+    @include -zf-each-breakpoint() {
       @if not($-zf-size == small) {
         > .#{$-zf-size}-auto {
           @include xy-cell-base(auto);

@@ -25,6 +25,7 @@ class Drilldown extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
+    this.className = 'Drilldown'; // ie9 back compat
 
     Nest.Feather(this.$element, 'drilldown');
 
