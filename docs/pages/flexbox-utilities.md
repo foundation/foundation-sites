@@ -39,6 +39,10 @@ Horizontal alignment classes are applied to flex parents. Left alignment is the 
 - `.align-justify`
 - `.align-spaced`
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mwqGLm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x"> <!-- Aligned to the left -->
   <div class="cell small-4">Aligned to</div>
