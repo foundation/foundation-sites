@@ -1,7 +1,15 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { Move } from './foundation.util.motion';
+import { GetYoDigits, rtl as Rtl } from './foundation.util.core';
 
+import { Plugin } from './foundation.plugin';
+
+import { Touch } from './foundation.util.touch';
+
+import { Triggers } from './foundation.util.triggers';
 /**
  * Slider module.
  * @module foundation.slider
@@ -11,21 +19,25 @@
  * @requires foundation.util.touch
  */
 
-class Slider {
+class Slider extends Plugin {
   /**
    * Creates a new instance of a slider control.
    * @class
    * @param {jQuery} element - jQuery object to make into a slider control.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
+    this.className = 'Slider'; // ie9 back compat
+
+  // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
+    Touch.init($);
+    Triggers.init($);
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Slider');
-    Foundation.Keyboard.register('Slider', {
+    Keyboard.register('Slider', {
       'ltr': {
         'ARROW_RIGHT': 'increase',
         'ARROW_UP': 'increase',
@@ -34,7 +46,9 @@ class Slider {
         'SHIFT_ARROW_RIGHT': 'increase_fast',
         'SHIFT_ARROW_UP': 'increase_fast',
         'SHIFT_ARROW_DOWN': 'decrease_fast',
-        'SHIFT_ARROW_LEFT': 'decrease_fast'
+        'SHIFT_ARROW_LEFT': 'decrease_fast',
+        'HOME': 'min',
+        'END': 'max'
       },
       'rtl': {
         'ARROW_LEFT': 'increase',
@@ -258,7 +272,7 @@ class Slider {
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
-    Foundation.Move(moveTime, $hndl, function() {
+    Move(moveTime, $hndl, function() {
       // adjusting the left/top property of the handle, based on the percentage calculated above
       // if movement isNaN, that is because the slider is hidden and we cannot determine handle width,
       // fall back to next best guess.
@@ -297,7 +311,7 @@ class Slider {
    */
   _setInitAttr(idx) {
     var initVal = (idx === 0 ? this.options.initialStart : this.options.initialEnd)
-    var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
+    var id = this.inputs.eq(idx).attr('id') || GetYoDigits(6, 'slider');
     this.inputs.eq(idx).attr({
       'id': id,
       'max': this.options.end,
@@ -373,7 +387,7 @@ class Slider {
       value = this._value(offsetPct);
 
       // turn everything around for RTL, yay math!
-      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+      if (Rtl() && !this.options.vertical) {value = this.options.end - value;}
 
       value = _this._adjustValue(null, value);
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
@@ -504,7 +518,7 @@ class Slider {
           newValue;
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Slider', {
+      Keyboard.handleKey(e, 'Slider', {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },
@@ -516,6 +530,12 @@ class Slider {
         },
         increase_fast: function() {
           newValue = oldValue + _this.options.step * 10;
+        },
+        min: function() {
+          newValue = _this.options.start;
+        },
+        max: function() {
+          newValue = _this.options.end;
         },
         handled: function() { // only set handle pos when event was handled specially
           e.preventDefault();
@@ -532,14 +552,12 @@ class Slider {
   /**
    * Destroys the slider plugin.
    */
-  destroy() {
+  _destroy() {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
 
     clearTimeout(this.timeout);
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -690,8 +708,4 @@ function baseLog(base, value) {
   return Math.log(value)/Math.log(base)
 }
 
-// Window exports
-Foundation.plugin(Slider, 'Slider');
-
-}(jQuery);
-
+export {Slider};

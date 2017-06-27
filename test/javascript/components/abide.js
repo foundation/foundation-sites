@@ -34,6 +34,34 @@ describe('Abide', function() {
 
       plugin.validateInput($html.find("input")).should.equal(true);
     });
-  });
 
+    it('returns true for checked checkboxes', function() {
+      $html = $("<form data-abide><input type='checkbox' required checked='checked'></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.validateInput($html.find("input")).should.equal(true);
+    });
+
+    it('returns false for unchecked checkboxes', function() {
+      $html = $("<form data-abide><input type='checkbox' required></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.validateInput($html.find("input")).should.equal(false);
+    });
+
+    it('returns true for selected select option', function() {
+      $html = $("<form data-abide><select required><option value=''></option><option value='One'>One</option><option value='Two' selected='selected'>Two</option></select></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.validateInput($html.find("select")).should.equal(true);
+      $html.find("select").val().should.equal("Two");
+    });
+
+    it('returns false for unselected select option', function() {
+      $html = $("<form data-abide><select required><option value=''></option><option value='One'>One</option><option value='Two'>Two</option></select></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.validateInput($html.find("select")).should.equal(false);
+    });
+  });
 });

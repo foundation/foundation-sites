@@ -4,47 +4,52 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Foundation for Sites Testing</title>
     <link href="../assets/css/foundation.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="row column">
-      <h1>Responsive Menu: reInit</h1>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Responsive Menu: reInit</h1>
 
-      <ul id="menu" class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
-        <li>
-          <a href="#">Item 1</a>
-          <ul class="vertical menu">
+          <ul id="menu" class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
             <li>
-              <a href="#">Item 1A</a>
+              <a href="#">Item 1</a>
               <ul class="vertical menu">
-                <li><a href="#">Item 1A</a></li>
+                <li>
+                  <a href="#">Item 1A</a>
+                  <ul class="vertical menu">
+                    <li><a href="#">Item 1A</a></li>
+                    <li><a href="#">Item 1B</a></li>
+                    <li><a href="#">Item 1C</a></li>
+                    <li><a href="#">Item 1D</a></li>
+                    <li><a href="#">Item 1E</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Item 1B</a></li>
-                <li><a href="#">Item 1C</a></li>
-                <li><a href="#">Item 1D</a></li>
-                <li><a href="#">Item 1E</a></li>
               </ul>
             </li>
-            <li><a href="#">Item 1B</a></li>
+            <li>
+              <a href="#">Item 2</a>
+              <ul class="vertical menu">
+                <li><a href="#">Item 2A</a></li>
+                <li><a href="#">Item 2B</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Item 3</a>
+              <ul class="vertical menu">
+                <li><a href="#">Item 3A</a></li>
+                <li><a href="#">Item 3B</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-        <li>
-          <a href="#">Item 2</a>
-          <ul class="vertical menu">
-            <li><a href="#">Item 2A</a></li>
-            <li><a href="#">Item 2B</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Item 3</a>
-          <ul class="vertical menu">
-            <li><a href="#">Item 3A</a></li>
-            <li><a href="#">Item 3B</a></li>
-          </ul>
-        </li>
-      </ul>
-      <p>This test is verifying that if you init a responsive menu twice, it still works (there was a bug around that).  This is done in the setup, so if the menu is working at all, this is a pass.
-      </p>
+          <p>This test is verifying that if you init a responsive menu twice, it still works (there was a bug around that).  This is done in the setup, so if the menu is working at all, this is a pass.
+          </p>
+        </div>
+      </div>
     </div>
 
     <script src="../assets/js/vendor.js"></script>

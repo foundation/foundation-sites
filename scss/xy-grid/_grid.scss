@@ -1,0 +1,56 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group xy-grid
+////
+
+/// Creates a max width container, designed to house your grid content.
+///
+/// @param {Number} $width [$grid-container] - a width to limit the container to.
+@mixin xy-grid-container(
+  $width: $grid-container
+) {
+  max-width: $width;
+  margin: 0 auto;
+}
+
+/// Add padding to your container, up to a particular size
+///
+/// @param {Number} $width [$grid-container] - a width to limit the container to.
+@mixin xy-grid-container-padding(
+  $padding: $grid-container-padding,
+  $max: $grid-container-max
+) {
+  // Output our margin gutters.
+  @if (type-of($padding) == 'map') {
+    @include -zf-breakpoint-value(auto, $padding) {
+      padding-left: rem-calc($-zf-bp-value / 2);
+      padding-right: rem-calc($-zf-bp-value / 2);
+    }
+  }
+  @elseif (type-of($padding) == 'number') {
+    padding-left: rem-calc($padding) / 2;
+    padding-right: rem-calc($padding) / 2;
+  }
+  @include breakpoint($max) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/// Creates a container for your flex cells.
+///
+/// @param {Keyword} $direction [horizontal] - Either horizontal or vertical direction of cells within.
+/// @param {Boolean} $wrap [true] - If the cells within should wrap or not.
+@mixin xy-grid(
+  $direction: horizontal,
+  $wrap: true
+) {
+  $direction: if($direction == 'horizontal', row, column);
+  $wrap: if($wrap, wrap, nowrap);
+
+  display: flex;
+  flex-flow: $direction $wrap;
+}

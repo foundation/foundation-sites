@@ -8,12 +8,12 @@ js: js/foundation.tabs.js
 
 ## Basics
 
-There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.
+There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab. Alternatively, the ID can be specified with the attribute `data-tabs-target`.
 
 ```html
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tabs-title"><a data-tabs-target="#panel2" href="#/tabs/panel2">Tab 2</a></li>
 </ul>
 ```
 
@@ -53,10 +53,12 @@ Put it all together, and we get this:
   <div class="tabs-panel is-active" id="panel1">
     <p>one</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    <p><a href="#">I am a link but don't do anything</a></p>
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    <textarea></textarea>
+    <button class="button">I do nothing!</button>
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>

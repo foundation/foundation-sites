@@ -18,13 +18,33 @@ $dropdownmenu-arrow-color: $anchor-color !default;
 /// @type Length
 $dropdownmenu-arrow-size: 6px !default;
 
+/// Sets dropdown menu arrow padding for aligning the arrow correctly.
+/// @type Length
+$dropdownmenu-arrow-padding: 1.5rem !default;
+
 /// Minimum width of dropdown sub-menus.
 /// @type Length
 $dropdownmenu-min-width: 200px !default;
 
-/// Background color for dropdowns.
+/// Background color for top level items.
 /// @type Color
 $dropdownmenu-background: $white !default;
+
+/// Background color for dropdowns.
+/// @type Color
+$dropdownmenu-submenu-background: $dropdownmenu-background !default;
+
+/// Padding for top level items.
+/// @type Number
+$dropdownmenu-padding: $global-menu-padding !default;
+
+/// Sets dropdown menu nested margin
+/// @type Number
+$dropdownmenu-nested-margin: 0 !default;
+
+/// Padding for sub-menu items.
+/// @type Number
+$dropdownmenu-submenu-padding: $dropdownmenu-padding !default;
 
 /// Border for dropdown sub-menus.
 /// @type List
@@ -35,12 +55,22 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 // @type Length
 $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
-@mixin left-right-arrows {
+/// Text color of an active dropdown menu item. Explicit override for menu defaults
+/// @type Color
+$dropdown-menu-item-color-active: get-color(primary) !default;
+
+/// Background color of an active dropdown menu item. Explicit override for menu defaults
+/// @type Color
+$dropdown-menu-item-background-active: transparent !default;
+
+@mixin zf-dropdown-left-right-arrows {
   > a::after {
     #{$global-right}: 14px;
   }
 
   &.opens-left > a::after {
+    right: auto;
+    left: 5px;
     @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
   }
 
@@ -70,7 +100,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     @if $dropdownmenu-arrows {
       > li.is-dropdown-submenu-parent > a {
         position: relative;
-        padding-#{$global-right}: 1.5rem;
+        padding-#{$global-right}: $dropdownmenu-arrow-padding;
       }
 
       > li.is-dropdown-submenu-parent > a::after {
@@ -90,6 +120,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
         > .is-dropdown-submenu {
           right: 100%;
           left: auto;
+          top: 0;
         }
       }
 
@@ -101,7 +132,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       }
 
       @if $dropdownmenu-arrows {
-        @include left-right-arrows;
+        @include zf-dropdown-left-right-arrows;
       }
     }
   }
@@ -116,10 +147,21 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     a {
       @include disable-mouse-outline;
+      padding: $dropdownmenu-padding;
+    }
+
+    // Active state
+    .is-active > a {
+      background: $dropdown-menu-item-background-active;
+      color: $dropdown-menu-item-color-active;
     }
 
     .no-js & ul {
       display: none;
+    }
+
+    .nested.is-dropdown-submenu {
+      @include menu-nested($dropdownmenu-nested-margin);
     }
 
     &.vertical {
@@ -199,11 +241,15 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     min-width: $dropdownmenu-min-width;
 
     border: $dropdownmenu-border;
-    background: $dropdownmenu-background;
+    background: $dropdownmenu-submenu-background;
+
+    .dropdown & a {
+      padding: $dropdownmenu-submenu-padding;
+    }
 
     .is-dropdown-submenu-parent {
       @if $dropdownmenu-arrows {
-        @include left-right-arrows;
+        @include zf-dropdown-left-right-arrows;
       }
     }
 

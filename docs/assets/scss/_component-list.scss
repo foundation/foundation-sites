@@ -1,14 +1,15 @@
-.docs-nav.menu {
+.docs-nav {
   padding-top: 1rem;
   border-right: 1px solid #efefef;
 }
 
-.docs-nav-category {
+.docs-nav .docs-nav-category {
   background: none;
 
   .accordion-title {
     border: none;
     color: #444444;
+    background-color: inherit;
     font-weight: 600;
   }
 
@@ -41,15 +42,15 @@
   }
 }
 
-.docs-nav.menu a:hover {
+.docs-nav a:hover {
   background: none;
 }
 
-.docs-nav.menu a:focus {
+.docs-nav a:focus {
   background: none;
 }
 
-.docs-nav.menu .current a {
+.docs-nav .current a {
   background: none;
   color: $primary-color;
 }
@@ -63,7 +64,6 @@
   }
 
   li a {
-    font-size: 1rem;
     color: #717171;
     line-height: 1.5;
     transition: color 0.3s ease;

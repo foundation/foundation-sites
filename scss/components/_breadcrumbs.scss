@@ -34,13 +34,31 @@ $breadcrumbs-item-margin: 0.75rem !default;
 /// @type Boolean
 $breadcrumbs-item-uppercase: true !default;
 
-/// If `true`, adds a slash between breadcrumb links.
+/// If `true`, adds a seperator between breadcrumb links.
 /// @type Boolean
-$breadcrumbs-item-slash: true !default;
+$breadcrumbs-item-separator: true !default;
 
-/// Color of breadcrumb slash.
+// If it exists $breadcrumbs-item-slash is used to build $breadcrumbs-item-separator. See the documentation.
+@if variable-exists(breadcrumbs-item-slash) {
+  $breadcrumbs-item-separator: $breadcrumbs-item-slash;
+}
+
+/// Used character for the breadcrumb separator.
+/// @type Content
+$breadcrumbs-item-separator-item: '/' !default;
+
+/// Used character for the breadcrumb separator in rtl mode.
+/// @type Content
+$breadcrumbs-item-separator-item-rtl: '\\' !default;
+
+/// Color of breadcrumb item.
 /// @type Color
-$breadcrumbs-item-slash-color: $medium-gray !default;
+$breadcrumbs-item-separator-color: $medium-gray !default;
+
+// If it exists $breadcrumbs-item-slash-color is used to build $breadcrumbs-item-separator-color. See the documentation.
+@if variable-exists(breadcrumbs-item-slash-color) {
+  $breadcrumbs-item-separator-color: $breadcrumbs-item-slash-color;
+}
 
 /// Adds styles for a breadcrumbs container, along with the styles for the `<li>` and `<a>` elements inside of it.
 @mixin breadcrumbs-container {
@@ -60,17 +78,16 @@ $breadcrumbs-item-slash-color: $medium-gray !default;
       text-transform: uppercase;
     }
 
-    @if $breadcrumbs-item-slash {
+    @if $breadcrumbs-item-separator {
       // Need to escape the backslash
-      $slash: if($global-text-direction == 'ltr', '/', '\\');
+      $separator: if($global-text-direction == 'ltr', $breadcrumbs-item-separator-item, $breadcrumbs-item-separator-item-rtl);
 
       &:not(:last-child)::after {
         position: relative;
-        top: 1px;
         margin: 0 $breadcrumbs-item-margin;
         opacity: 1;
-        content: $slash;
-        color: $breadcrumbs-item-slash-color;
+        content: $separator;
+        color: $breadcrumbs-item-separator-color;
       }
     }
     @else {

@@ -341,9 +341,7 @@ In order to work around browsers' different rounding behaviors, Foundation will 
 
 ### Gutters
 
-<div class="warning callout">
-  <p>Responsive gutters were added in Foundation 6.1.</p>
-</div>
+#### Responsive Gutters
 
 The grid *gutter*&mdash;the space between two columns in a row, and the space between the edge of a grid and the edge of the page&mdash;is responsive, and becomes wider on larger screens.
 
@@ -352,7 +350,7 @@ Breakpoint | Gutter Size
 `small`    | 20px
 `medium`   | 30px
 
-If you're using the Sass version of Foundation, you can change these defaults by editing the `$grid-column-gutter` variable:
+If you're using the Sass version of Foundation, you can change these defaults by editing the `$grid-column-gutter` variable map:
 
 ```scss
 $grid-column-gutter: (
@@ -363,10 +361,20 @@ $grid-column-gutter: (
 
 To add more gutter definitions, add new lines to the map. The breakpoint names used here must match a breakpoint name in your project's `$breakpoints` map.
 
-Or, if you prefer using one gutter size on every breakpoint, just use a single number.
+#### Static Gutters
+
+If you prefer using one gutter size for every breakpoint, just use a single number for the `$grid-column-gutter` variable:
 
 ```scss
 $grid-column-gutter: 30px;
+```
+
+You can also explicitly set the gutter size for a particular grid row by adding the `.gutter-[size]` class. This is useful when your using responsive gutters but specific components need static gutters.
+
+```html
+<div class="row gutter-small">
+  <div class="columns">This grid always has small gutters</div>
+</div>
 ```
 
 ---

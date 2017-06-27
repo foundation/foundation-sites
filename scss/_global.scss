@@ -74,6 +74,10 @@ $global-margin: 1rem !default;
 /// @type Number
 $global-padding: 1rem !default;
 
+/// Global value used for positioning on components.
+/// @type Number
+$global-position: 1rem !default;
+
 /// Global font weight used for normal type.
 /// @type Keyword | Number
 $global-weight-normal: normal !default;
@@ -86,13 +90,24 @@ $global-weight-bold: bold !default;
 /// @type Number
 $global-radius: 0 !default;
 
+/// Global value used for all menu styles. Can be overwritten at individual menu component level.
+/// @type Number
+$global-menu-padding: 0.7rem 1rem !default;
+
+/// Global value used for all menu styles. Nested margin for submenu.
+$global-menu-nested-margin: 1rem !default;
+
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
 /// @type Keyword
 $global-text-direction: ltr !default;
 
 /// Enables flexbox for components that support it.
 /// @type Boolean
-$global-flexbox: false !default;
+$global-flexbox: true !default;
+
+/// Enabled responsive breakpoints for prototypes if applicable
+// @type Boolean
+$global-prototype-breakpoints: false !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
@@ -101,6 +116,10 @@ $global-flexbox: false !default;
 // Internal variables used for text direction
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
+
+/// Global tolerance for color pick contrast.
+/// @type Number
+$global-color-pick-contrast-tolerance: 0 !default;
 
 // Internal variables used for colors
 $primary-color: get-color(primary);
@@ -200,6 +219,15 @@ $alert-color: get-color(alert);
   // Prevent text overflow on pre
   pre {
     overflow: auto;
+  }
+
+  // Make reset inherit font-family instead of settings sans-serif
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
   }
 
   // Internal classes to show/hide elements in JavaScript

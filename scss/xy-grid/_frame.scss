@@ -1,0 +1,54 @@
+/// Modifies a grid to give it "frame" behavior (no overflow, no wrap, stretch behavior)
+///
+/// @param {Boolean} $vertical [false] - Is grid vertical or horizontal. Should match grid.
+/// @param {Boolean} $nested [false] - Is grid nested or not. If nested is true this sets the frame to 100% height, otherwise will be 100vh.
+@mixin xy-grid-frame(
+  $vertical: false,
+  $nested: false
+) {
+
+  @if $vertical == true {
+    height: if($nested == true, 100%, 100vh);
+  } @else {
+    width: if($nested == true, 100%, 100vw);
+  }
+
+  overflow: hidden;
+  position: relative;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+/// Modifies a cell to give it "block" behavior (overflow auto, inertial scrolling)
+///
+/// @param {Boolean} $vertical [false] - Is grid vertical or horizontal. Should match grid.
+@mixin xy-cell-block(
+  $vertical: false
+) {
+  $property: if($vertical == true, 'overflow-y', 'overflow-x');
+
+  @if $vertical == true {
+    overflow-y: auto;
+    max-height: 100%;
+  } @else {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-stype: -ms-autohiding-scrollbar;
+}
+
+/// Container for inside a grid frame containing multiple blocks. Typically used
+/// as a modifier for a `.cell` to allow the cell to pass along flex sizing
+/// constraints / from parents to children.
+@mixin xy-cell-block-container() {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+
+  > .grid-x {
+    max-height: 100%;
+    flex-wrap: nowrap;
+  }
+}

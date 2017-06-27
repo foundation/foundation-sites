@@ -95,14 +95,22 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
   <p>Menus are block-level elements, which means they stretch to fill the width of their container. To make the below example less goofy, we've hard-coded a <code>max-width</code> on the menu.</p>
 </div>
 
-
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LyrYaE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
 <ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 250px;">
-  <li><a href="#">Item 1</a></li>
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="vertical menu nested">
+      <li><a href="#">Item 1A</a></li>
+      <!-- ... -->
+    </ul>
+  </li>
+  <li><a href="#">Item 2</a></li>
+  <li><a href="#">Item 3</a></li>
+  <li><a href="#">Item 4</a></li>
   <!-- ... -->
 </ul>
 ```
@@ -110,23 +118,23 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
 <ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 250px;">
   <li>
     <a href="#Item-1">Item 1</a>
-    <ul class="menu">
+    <ul class="vertical menu nested">
       <li><a href="#Item-1A">Item 1A</a></li>
       <li>
         <a href="#Item-1B">Item 1B</a>
-        <ul class="menu">
+        <ul class="vertical menu nested">
           <li><a href="#Item-1Bi">Item 1B i</a></li>
           <li><a href="#Item-1Bii">Item 1B ii</a></li>
           <li>
             <a href="#Item-1Biii">Item 1B iii</a>
-            <ul class="menu">
+            <ul class="vertical menu nested">
               <li><a href="#Item-1Biiialpha">Item 1B iii alpha</a></li>
               <li><a href="#Item-1Biiiomega">Item 1B iii omega</a></li>
             </ul>
           </li>
           <li>
             <a href="#Item-1Biv">Item 1B iv</a>
-            <ul class="menu">
+            <ul class="vertical menu nested">
               <li><a href="#Item-1Bivalpha">Item 1B iv alpha</a></li>
             </ul>
           </li>
@@ -137,7 +145,7 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
   </li>
   <li>
     <a href="#Item-2">Item 2</a>
-    <ul class="menu">
+    <ul class="vertical menu nested">
       <li><a href="#Item-2A">Item 2A</a></li>
       <li><a href="#Item-2B">Item 2B</a></li>
     </ul>

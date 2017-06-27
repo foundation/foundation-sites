@@ -5,7 +5,7 @@ video: 'FKzzaWR6j2M'
 sass: 
   - scss/components/_accordion.scss
   - scss/components/_tabs.scss
-js: js/foundation.zf.responsiveAccordionTabs.js
+js: js/foundation.responsiveAccordionTabs.js
 tags:
   - tabcordion
 ---

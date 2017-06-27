@@ -4,6 +4,8 @@
 
 @import 'math';
 
+$contrast-warnings: true !default;
+
 ////
 /// @group functions
 ////
@@ -55,11 +57,12 @@
 
 /// Checks the luminance of `$base`, and returns the color from `$colors` (list of colors) that has the most contrast.
 ///
-/// @param {Color} $color1 - First color to compare.
-/// @param {Color} $color2 - Second color to compare.
+/// @param {Color} $base - Color to check luminance.
+/// @param {List} $colors [($white, $black)] - Colors to compare.
+/// @param {Number} $tolerance [$global-color-pick-contrast-tolerance] - Contrast tolerance.
 ///
-/// @returns {Number} The contrast ratio of the compared colors.
-@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: 0) {
+/// @returns {Color} the color from `$colors` (list of colors) that has the most contrast.
+@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: $global-color-pick-contrast-tolerance) {
   $contrast: color-contrast($base, nth($colors, 1));
   $best: nth($colors, 1);
 
@@ -71,7 +74,7 @@
     }
   }
 
-  @if ($contrast < 3) {
+  @if ($contrast-warnings and $contrast < 3) {
     @warn "Contrast ratio of #{$best} on #{$base} is pretty bad, just #{$contrast}";
   }
 

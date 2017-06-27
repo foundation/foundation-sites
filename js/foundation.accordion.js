@@ -1,15 +1,17 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
- * @requires foundation.util.motion
  */
 
-class Accordion {
+class Accordion extends Plugin {
   /**
    * Creates a new instance of an accordion.
    * @class
@@ -17,14 +19,14 @@ class Accordion {
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - a plain object with settings to override the default options.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
+    this.className = 'Accordion'; // ie9 back compat
     this._init();
 
-    Foundation.registerPlugin(this, 'Accordion');
-    Foundation.Keyboard.register('Accordion', {
+    Keyboard.register('Accordion', {
       'ENTER': 'toggle',
       'SPACE': 'toggle',
       'ARROW_DOWN': 'next',
@@ -43,7 +45,7 @@ class Accordion {
     this.$tabs.each(function(idx, el) {
       var $el = $(el),
           $content = $el.children('[data-tab-content]'),
-          id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
+          id = $content[0].id || GetYoDigits(6, 'accordion'),
           linkId = el.id || `${id}-label`;
 
       $el.find('a:first').attr({
@@ -118,7 +120,7 @@ class Accordion {
           e.preventDefault();
           _this.toggle($tabContent);
         }).on('keydown.zf.accordion', function(e){
-          Foundation.Keyboard.handleKey(e, 'Accordion', {
+          Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
               _this.toggle($tabContent);
             },
@@ -153,6 +155,10 @@ class Accordion {
    * @function
    */
   toggle($target) {
+    if ($target.closest('[data-accordion]').is('[disabled]')) {
+      console.info('Cannot toggle an accordion that is disabled.');
+      return;
+    }
     if($target.parent().hasClass('is-active')) {
       this.up($target);
     } else {
@@ -178,6 +184,14 @@ class Accordion {
    * @function
    */
   down($target, firstTime) {
+    /**
+     * checking firstTime allows for initial render of the accordion
+     * to render preset is-active panes.
+     */
+    if ($target.closest('[data-accordion]').is('[disabled]') && !firstTime)  {
+      console.info('Cannot call down on an accordion that is disabled.');
+      return;
+    }
     $target
       .attr('aria-hidden', false)
       .parent('[data-tab-content]')
@@ -212,6 +226,11 @@ class Accordion {
    * @function
    */
   up($target) {
+    if ($target.closest('[data-accordion]').is('[disabled]')) {
+      console.info('Cannot call up on an accordion that is disabled.');
+      return;
+    }
+
     var $aunts = $target.parent().siblings(),
         _this = this;
 
@@ -219,15 +238,13 @@ class Accordion {
       return;
     }
 
-    // Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed, function () {
-        /**
-         * Fires when the tab is done collapsing up.
-         * @event Accordion#up
-         */
-        _this.$element.trigger('up.zf.accordion', [$target]);
-      });
-    // });
+    $target.slideUp(_this.options.slideSpeed, function () {
+      /**
+       * Fires when the tab is done collapsing up.
+       * @event Accordion#up
+       */
+      _this.$element.trigger('up.zf.accordion', [$target]);
+    });
 
     $target.attr('aria-hidden', true)
            .parent().removeClass('is-active');
@@ -243,14 +260,13 @@ class Accordion {
    * @fires Accordion#destroyed
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
     if(this.options.deepLink) {
       $(window).off('popstate', this._checkDeepLink);
     }
 
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -309,7 +325,4 @@ Accordion.defaults = {
   updateHistory: false
 };
 
-// Window exports
-Foundation.plugin(Accordion, 'Accordion');
-
-}(jQuery);
+export {Accordion};
