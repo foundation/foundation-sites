@@ -182,7 +182,7 @@ Columns in a flex grid can be aligned across the horizontal or vertical axis of 
 
 ### Horizontal Alignment
 
-Columns can be aligned the same way you would align text in a paragraph. By default, all columns align to the left (or the right in RTL), but this can be overridden with by adding the `.align-[dir]` class to the flex row.
+Columns can be aligned the same way you would align text in a paragraph. By default, all columns align to the left (or the right in right-to-left), but this can be overridden with by adding the `.align-[dir]` class to the flex row.
 
 <p>
   <a class="" data-open-video="13:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

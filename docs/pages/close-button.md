@@ -35,10 +35,10 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
 </div>
 
 <div class="primary callout">
-  <p>Any element can be used as a close trigger, not just close button. Adding the attribute <code>data-close</code> to any element within the callout will turn it into a close trigger.</p>
+  <p>Any element can be used as a close trigger, not just a close button. Adding the attribute <code>data-close</code> to any element within the callout will turn it into a close trigger.</p>
 </div>
 
-The below example pairs the callout with the close button component and `data-closable` attribute to create a dismissible alert box.
+The following example pairs the callout with the close button component and `data-closable` attribute to create a dismissible alert box.
 
 <a class="" data-open-video="4:24"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 

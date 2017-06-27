@@ -42,7 +42,7 @@ To manually set up the basic template, first download it with Git:
 git clone https://github.com/zurb/foundation-sites-template projectname
 ```
 
-Then open the folder in your command line, and install the needed dependencies:
+Then open the folder in your command line, and install the required dependencies:
 
 ```bash
 cd projectname
@@ -60,7 +60,7 @@ To manually set up the ZURB template, first download it with Git:
 git clone https://github.com/zurb/foundation-zurb-template projectname
 ```
 
-Then open the folder in your command line, and install the needed dependencies:
+Then open the folder in your command line, and install the required dependencies:
 
 ```bash
 cd projectname

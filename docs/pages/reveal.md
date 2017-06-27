@@ -233,7 +233,7 @@ $.ajax('/url')
 
 ## Accessibility
 
-Modals by default are accessible through the use of various ARIA attributes.  To make a modal even more accessible, designate a label to the modal by adding `aria-labelledby="exampleModalHeader11"` to the container and `id="exampleModalHeader11"` to the element you want to designate as the label.
+Modals by default are accessible through the use of various ARIA attributes. To make a modal even more accessible, designate a label to the modal by adding `aria-labelledby="exampleModalHeader11"` to the container and `id="exampleModalHeader11"` to the element you want to designate as the label.
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/RVJEBZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>

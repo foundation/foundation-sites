@@ -10,7 +10,7 @@ video: '1Nr12_1rUpo'
 
 Bandwidth is precious on mobile networks, so it helps to serve users on smaller screens a smaller image. Using Interchange, you can serve up specific images for users depending on their screen size. CSS media queries are used to determine what size the user's device is, and which image should be served.
 
-In the below example, we have three different sizes of image: one for small screens, one for medium, and one for large. Use the below format to set up a responsive image. The image will change automatically as the browser resizes.
+In the following example, we have three different sizes of image: one for small screens, one for medium, and one for large. The image will change automatically as the browser resizes.
 
 <p>
   <a class="" data-open-video="0:50"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -95,7 +95,7 @@ When using Interchange programmatically, you need to pass in your ruleset in the
 var $photoFrame = $('#some-container');
 var interchange = new Foundation.Interchange($photoFrame, {
   rules: [
-    "[path/to/default.jpg, small]", 
+    "[path/to/default.jpg, small]",
     "[path/to/medium.jpg, medium]",
     "[path/to/large.jpg, large]"
   ]

@@ -122,7 +122,7 @@ The `../` is added only on pages in a sub-folder, so the CSS can still be proper
 Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](http://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers and you can add your own.
 
 ### ifequal
-Displays the HTML inside the helper if the two values are equal. 
+Displays the HTML inside the helper if the two values are equal.
 ```handlebars
 {{#ifequal foo bar}}
   <p>foo and bar are equal</p>
@@ -184,7 +184,7 @@ Lorem ipsum [dolor sit amet](http://html5zombo.com), consectetur adipisicing eli
 
 ### Custom Helpers
 
-If you don't see the right helper, you can write your own. Add a javascript file to 'src/helpers', add `helpers: 'src/helpers'` to the Panini process in your gulpfile.babel.js, restart npm, then call it in your templates.
+If you don't see the right helper, you can write your own. Add a JavaScript file to `src/helpers`, add `helpers: 'src/helpers'` to the Panini process in your gulpfile.babel.js, restart npm, then call it in your templates.
 
 ```
 // Example file src/helpers/bold.js

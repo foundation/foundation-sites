@@ -8,7 +8,7 @@ video: 'wHpZCrpKlBc'
 
 ## Toggle a CSS class
 
-To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique ID so it can be targeted.
+To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique `id` so it can be targeted.
 
 <p>
   <a class="" data-open-video="0:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -27,7 +27,7 @@ To setup a class toggle, start by adding the attribute `data-toggler` to an elem
 </ul>
 ```
 
-Then, add `data-toggle` to any element, with the ID of the target as the value of the attribute. Now, any time you click on this element, the class will toggle on and off on the target.
+Then, add `data-toggle` to any element, with the `id` of the target as the value of the attribute. Now, any time you click on this element, the class will toggle on and off on the target.
 
 ```html
 <p><a data-toggle="menuBar">Expand!</a></p>
@@ -145,7 +145,7 @@ The `data-toggle`, `data-close`, and `data-open` attributes can now target multi
 ```html
 <button class="button" data-toggle="foo bar baz">Toggle things</button>
 ```
-Then the elements with ids of `foo`, `bar`, and `baz` will be toggled any time your button, (or any other element you choose), is clicked.
+Then the elements with `id`s of `foo`, `bar`, and `baz` will be toggled any time your button, (or any other element you choose), is clicked.
 
 <button class="button primary" data-toggle="thumb1 thumb2 thumb3">Toggle All These</button>
 <div class="row">

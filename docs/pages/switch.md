@@ -19,7 +19,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <p>Inspecting the value of the underlying input should be done by evaluating the <code>checked</code> property of said input.</p>
 </div>
 
-<div class="callout warning">
+<div class="warning callout">
   <p>Make sure the HTML of the switch goes in the order you see above&mdash;<code>&lt;input&gt;</code>, then <code>&lt;label&gt;</code></p>
 </div>
 
@@ -118,7 +118,7 @@ Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
 
 ## Inner Labels
 
-You can place active and inactive text inside of a switch. The active text (`.switch-active`) only displays when the switch is on, and the inactive text (`.switch-inactive`) only displays when the switch is off.
+You can place active and inactive text inside a switch. The active text (`.switch-active`) only displays when the switch is on, and the inactive text (`.switch-inactive`) only displays when the switch is off.
 
 Active/inactive text goes inside of the switch's `<label>`.
 
@@ -129,7 +129,7 @@ Active/inactive text goes inside of the switch's `<label>`.
 <a class="" data-open-video="8:07"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="primary callout">
-  <p>Add <code>aria-hidden="true"</code> to these labels to prevent AT from reading them.</p>
+  <p>Add <code>aria-hidden="true"</code> to these labels to prevent assistive technologies from reading them.</p>
 </div>
 
 

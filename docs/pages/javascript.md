@@ -123,7 +123,7 @@ It's worth noting that options passed to plugins via JavaScript take the highest
 ```html
 <div data-accordion data-slide-speed="500" data-options="slideSpeed:250;">...</div>
 ```
-your accordion element would have a slide speed of 250 milliseconds.
+&hellip;your accordion element would have a slide duration of 250 milliseconds.
 
 ---
 

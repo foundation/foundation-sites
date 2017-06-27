@@ -7,7 +7,7 @@ video: '_S_OO9NiWQ8'
 
 ## Basics
 
-Add the `.label` class to an element to create a label. In the below example, we're using `<span>`, but any tag will work fine.
+Add the `.label` class to an element to create a label. In the following example, we're using `<span>`, but any tag will work fine.
 
 <p>
   <a class="" data-open-video="3:52"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

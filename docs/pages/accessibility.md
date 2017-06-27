@@ -11,7 +11,7 @@ In addition to the accessibility features built into Foundation's components, be
 
 ## Basic Principles
 
-- **Structure your document properly.** Use the right HTML tags for the job when marking up navigation, lists, links, controls, and so on.
+- **Structure your document properly.** Use the correct HTML tags for the job when marking up navigation, lists, links, controls, and so on.
 - **Label everything.** If a control or form element has no text label, add one. You can use the [visibility classes](visibility.html#accessibility) to hide labels visually while maintaining accessibility. Use the `alt` attribute on all images to describe what they are.
 - **Don't rely on purely visual cues.** The content of a page should make sense even if page is being read to the user, or if the user is colorblind and can't make use of color-based labeling.
 - **Make everything usable on a keyboard and mouse.** Lucky for you, all of our components work with keyboards, mice, and touch screens out of the box.
@@ -22,8 +22,8 @@ In addition to the accessibility features built into Foundation's components, be
 
 ### Visual
 
-Visually-impaired users may have low vision or be completely blind. For low vision users, proper typographic contrast is important, both size and color. Foreground colors should stand out from background colors. You can use tools to calculate the contrast ratio of your foreground and background colors. The contrast ratio should at least be 1:4.5 for normal text and 3:1 for large text.
-Blind users consume the web by reading it using a [screen reader](http://en.wikipedia.org/wiki/Screen_reader). Screen readers read the content of a web page out loud, or write it out as Braille, using certain queues from the HTML to infer meaning.
+Visually-impaired users may have reduced vision or be completely blind. For partially-sighted users, proper typographic contrast is important, both size and color. Foreground colors should stand out from background colors. You can use tools to calculate the contrast ratio of your foreground and background colors. The contrast ratio should at least be 1:4.5 for normal text and 3:1 for large text.
+Blind users consume the web by reading it using a [screen reader](http://en.wikipedia.org/wiki/Screen_reader). Screen readers read the content of a web page out loud, or write it out as Braille, using certain cues from the HTML to infer meaning.
 
 ### Motor
 

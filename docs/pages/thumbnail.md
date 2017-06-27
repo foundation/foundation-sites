@@ -5,7 +5,7 @@ video: 'BOtW8oacFZk'
 sass: scss/components/_thumbnail.scss
 ---
 
-The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>` that wraps it. Make sure the `<img>` has an `alt` attribute that describes the contents of the image.
+The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>` that wraps it. Make sure the `<img>` has an `alt` attribute that describes the contents of the image:
 
 <p>
   <a class="" data-open-video="0:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

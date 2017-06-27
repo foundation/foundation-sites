@@ -132,7 +132,7 @@ Small grids expand to large screens easier than large grids cram into small scre
 
 ### Medium Grid
 
-Medium sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes.
+Medium-sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes.
 
 <p>
   <a class="" data-open-video="11:44"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

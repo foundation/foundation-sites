@@ -11,6 +11,7 @@ flex: true
 ## Basics
 
 A card is just an element with a `.card` class applied. You can put any kind of content inside.
+
 Make sure you wrap your content in a `.card-section` element in order to achieve the traditional card look.
 
 A card container has no padding, allowing you to place full-bleed images inside. Use the `.card-divider` and `.card-section` classes to sub-divide a card.
@@ -155,7 +156,7 @@ Images play nicely with cards. Simply include one outside of the `.card-section`
 
 ## Sizing
 
-You can either set the width of cards with custom css or add them into the Foundation grid.
+You can either set the width of cards with custom CSS or add them into the Foundation grid.
 
 <p>
   <a class="" data-open-video="0:34"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

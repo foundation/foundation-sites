@@ -15,7 +15,7 @@ tags:
 Orbit doesn't automatically generate any HTML for you, giving you the flexibility to move around the various pieces of the plugin. Here's a complete example&mdash;we'll break down the individual pieces farther down.
 
 <div class="callout alert">
-  <p>Please note that apart from Javascript, <a href="http://foundation.zurb.com/sites/docs/motion-ui.html">Motion UI</a> is a dependency for Orbit to work properly. If in case, you don't want any animations within your Carousel, you can always <a href="#disabling-animation">disable</a> the animation.</p>
+  <p>Please note that apart from JavaScript, <a href="http://foundation.zurb.com/sites/docs/motion-ui.html">Motion UI</a> is a dependency for Orbit to work properly. If in case, you don't want any animations within your Carousel, you can always <a href="#disabling-animation">disable</a> the animation.</p>
 </div>
 
 <p>
@@ -125,7 +125,7 @@ The wrapper houses the entire carousel. We use the `aria-label` attribute to lab
 
 The slide container houses each individual slide. In our above markup example, we also placed the buttons in here, so we can anchor them to the center edge of the slide container. However, they can be moved anywhere within the `data-orbit` wrapper.
 
-Each slide is an `<li>` with the class `.orbit-slide`. The first slide is marked with the `.is-active` class to indicate it's the default. You can place any HTML you want inside of the slide, but we have some premade styles for image-based slides with a caption.
+Each slide is an `<li>` with the class `.orbit-slide`. The first slide is marked with the `.is-active` class to indicate it's the default. You can place any HTML you want inside of the slide, but we have some pre-made styles for image-based slides with a caption.
 
 ```html
 <ul class="orbit-container">

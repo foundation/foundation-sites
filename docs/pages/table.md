@@ -54,7 +54,7 @@ No bells or whistles here, just a straight up table for all of your basic table 
 
 ## Hover State
 
-Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
+Need to spiff up the table just a tad? Just add the class `.hover` to slightly darken the table rows on hover.
 
 <p>
   <a class="" data-open-video="2:49"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -276,7 +276,7 @@ Got a lot of tubular tabular data? Add a wrapper element with the class `.table-
         <td>Why?</td>
       </tr>
       <tr>
-        <td>Here are some great super heros.</td>
+        <td>Here are some great super heroes.</td>
         <td>Batman</td>
         <td>Superman</td>
         <td>Spiderman</td>

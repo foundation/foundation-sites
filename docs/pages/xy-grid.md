@@ -71,6 +71,7 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 ## Gutters
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
+
 To define a grid type, simple set `.grid-margin-x` or `.grid-padding-x` on the grid.
 
 <div class="docs-codepen-container">
@@ -207,6 +208,7 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 ## Vertical Grids
 
 The XY grid also supports vertical grids. Simply apply `.grid-y` instead of `.grid-x`.
+
 The internal cells will shift automatically to provide spacing vertically rather than horizontally.
 
 You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y` to apply spacing to the top and bottom of cells.
@@ -236,6 +238,7 @@ You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y`
 ## Grid Frame
 
 The XY grid incorporates the grid frame from Foundation for Apps plus many other useful features.
+
 To start, add `.grid-frame` to the grid. This sets the grid to be 100vh (the full height of the browser window).
 
 Here's an example of what you can do:
@@ -358,6 +361,7 @@ The cell size calculator can also be accessed as a function. This gives you the 
 ### Responsive Grids
 
 Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
+
 Refer to the Sass documentation below to learn how each mixin works and the available arguements.
 
 ```scss
@@ -381,6 +385,7 @@ We also have a shorthand option for the above which outputs the same CSS:
 ### Custom Block Grid
 
 Use the `xy-grid-layout()` mixin to create your own block grid.
+
 By default the mixin takes 2 parameters:
 - number of columns
 - child selector

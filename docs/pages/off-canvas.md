@@ -75,7 +75,8 @@ So putting it all together:
 
 ### Wrapper
 
-You can add an optional wrapper around off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
+You can add an optional wrapper around Off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
+
 Simply add a container with the class `.off-canvas-wrapper`.
 
 ```html
@@ -135,6 +136,7 @@ Here's a complete example that can be pasted into the `<body>` tag of your page.
       <li><a href="#">Foundation</a></li>
       <li><a href="#">Dot</a></li>
       <li><a href="#">ZURB</a></li>
+      <li><a href="#">Dot</a></li>
       <li><a href="#">Com</a></li>
       <li><a href="#">Slash</a></li>
       <li><a href="#">Sites</a></li>
@@ -151,7 +153,7 @@ Here's a complete example that can be pasted into the `<body>` tag of your page.
 
 ## Off-canvas Position
 
-Foundation's Off-canvas is set to `position: fixed` by default using the `.off-canvas` class. This makes the off-canvas panel sit in relation to the viewport, and is the desired behavior for most users. However you can also set an off-canvas container to `position: absolute` by using the alternative class `.off-canvas-absolute`. Also be sure to use the `.off-canvas-wrapper` when using this method.
+Foundation's Off-canvas is set to `position: fixed` by default using the `.off-canvas` class. This makes the Off-canvas panel sit in relation to the viewport, and is the desired behavior for most users. However you can also set an off-canvas container to `position: absolute` by using the alternative class `.off-canvas-absolute`. Also be sure to use the `.off-canvas-wrapper` when using this method.
 
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeftSplit1">Open Left</button>
@@ -164,7 +166,7 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
         <!-- Your menu or Off-canvas content goes here -->
       </div>
       <div class="off-canvas-content" style="min-height: 300px;" data-off-canvas-content>
-        <p>I have nothing to do with the off-canvas on the right!</p>
+        <p>I have nothing to do with the Off-canvas on the right!</p>
       </div>
     </div>
   </div>
@@ -174,7 +176,7 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
         <!-- Your menu or Off-canvas content goes here -->
       </div>
       <div class="off-canvas-content" style="min-height: 300px;" data-off-canvas-content>
-        <p>Im a unique off-canvas container all on my own!</p>
+        <p>I'm a unique Off-canvas container all on my own!</p>
       </div>
     </div>
   </div>
@@ -185,7 +187,7 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
 
 ## Off-canvas Directions
 
-Foundation's Off-canvas can open from any direction, left, right, top, and bottom.
+Foundation's Off-canvas can open from any direction: left, right, top, or bottom.
 
 The Off-canvas container requires a positioning class to determine which side of the viewport it opens from:
 
@@ -215,7 +217,7 @@ The Off-canvas container requires a positioning class to determine which side of
       <!-- Your menu or Off-canvas content goes here -->
     </div>
     <div class="off-canvas-content" data-off-canvas-content>
-      <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+      <img src="//placehold.it/300x300" class="" height="" width="" alt="">
     </div>
   </div>
 </div>
@@ -247,6 +249,7 @@ A design can have multiple panels. Be sure that all panels come *before* the `.o
 ## Off-canvas Transitions
 
 You can switch the default transition of the off-canvas from pushing the page over as it open to overlapping the page by adding the `data-transition="overlap"` to the `.off-canvas`.
+
 There are 2 available transitions: push (`data-transition="push"`) which is the default, and overlap (`data-transition="overlap"`).
 
 ```html
@@ -290,7 +293,7 @@ The main content area (`.off-canvas-content`) will be padded to the left or righ
 
 ```html
 <div class="off-canvas position-left reveal-for-large" data-off-canvas>
-  <!-- ... -->
+  <!-- … -->
 </div>
 ```
 
@@ -300,7 +303,7 @@ The main content area (`.off-canvas-content`) will be padded to the left or righ
 
 ## Combining with Title Bar
 
-If you need a simple bar to contain your hamburger icon/s and toggle the off-canvas, `.title-bar` is here to help. It supports left- and right-aligned sections. You can add your off-canvas toggle triggers here:
+If you need a simple bar to contain your hamburger icon/s and toggle the Off-canvas, `.title-bar` is here to help. It supports left- and right-aligned sections. You can add your Off-canvas toggle triggers here:
 
 ```html_example
 <div class="title-bar">
@@ -316,7 +319,7 @@ If you need a simple bar to contain your hamburger icon/s and toggle the off-can
 <br>
 
 <div class="primary callout">
-  <p>When using the `title-bar` with a vertical off-canvas, the title-bar icons are still either `title-bar-left` or `title-bar-right`.</p>
+  <p>When using the `title-bar` with a vertical Off-canvas, the title-bar icons are still either `title-bar-left` or `title-bar-right`.</p>
 </div>
 
 ```html_example
@@ -335,13 +338,13 @@ If you need a simple bar to contain your hamburger icon/s and toggle the off-can
 
 #### Responsive Off-Canvas (Putting it all together)
 
-For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, check out this Building Block: http://zurb.com/building-blocks/top-bar-with-off-canvas
+For an example of Off-canvas on small screens and Top Bar Menu with Dropdowns, check out this Building Block: http://zurb.com/building-blocks/top-bar-with-off-canvas
 
 ---
 
 ## In-Canvas
 
-If you want an element to be off-canvas only for specific sceen sizes and then move in-canvas you can use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. Compared to the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as an usual page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+If you want an element to be off-canvas only for specific sceen sizes and then move in-canvas you can use the new class `.in-canvas-for-[BREAKPOINT]` for this. Compared to the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the Off-canvas for specific screen sizes but overrides the Off-canvas styles so it behaves as a usual page element. This way you can place an element anywhere on the page and move it into Off-canvas for e.g. small screens.
 
 ```html_example
 <button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
@@ -356,15 +359,16 @@ If you want an element to be off-canvas only for specific sceen sizes and then m
 
 ## Nested Off-Canvas
 
-In v6.4 the off-canvas component has been heavily extended. Apart from the <a href="#in-canvas">In-Canvas</a> feature it is now possible to nest the element in the content instead of using it only as a sibling. This is handy if you want to use the same element e.g. for small screens as off-canvas and for large screens as usual page element without duplicate content.
+In v6.4 the Off-canvas component has been heavily extended. Apart from the <a href="#in-canvas">In-Canvas</a> feature it is now possible to nest the element in the content instead of using it only as a sibling. This is handy if you want to use the same element e.g. for small screens as Off-canvas and for large screens as usual page element without duplicate content.
 
 Another improvement is the support of several off-canvas elements that share the same position e.g. two elements with `position-left`.
 
-Advanced off-canvas users may use the new `contentId` option to bind an element to a content. This lets you place the element much more flexibly as it may be a sibling of the content, a child or none of it.<br>
+Advanced Off-canvas users may use the new `contentId` option to bind an element to a content. This lets you place the element much more flexibly as it may be a sibling of the content, a child or none of it.
+
 <strong>Important:</strong> when using the `contentId` on a nested element you must also use the new `nested` option and tell the JavaScript it's nested!
 
 <div class="callout warning">
-  Please note that it's currently not possible to use the push transition for a nested off-canvas element.
+  Please note that it's currently not possible to use the push transition for a nested Off-canvas element.
 </div>
 
 ```html_example
@@ -379,12 +383,12 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 
 <div class="off-canvas position-left is-closed" id="offCanvasNestedPush" data-off-canvas>
   <div class="callout">
-    <p>I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</p>
-    <p>Since push transition is currently not possible for nested elements, I'm forced to use overlayp transition.</p>
+    <p>I'm a nested Off-canvas that mustn't be a sibling of the Off-canvas content anymore.</p>
+    <p>Since push transition is currently not possible for nested elements, I'm forced to use overlay transition.</p>
   </div>
 </div>
 <div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
-  <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
+  <div class="callout">I'm a nested Off-canvas that uses overlap transition and the same position as the other nested Off-canvas.</div>
 </div>
 
 <p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
@@ -406,25 +410,26 @@ So if you have changed the default off-canvas shadow you have to adjust the valu
 ## Migrating from versions prior to v6.3
 
 <div class="primary callout">
-  <p>`off-canvas-wrapper` and `off-canvas-wrapper-inner` are no longer needed on the new off-canvas. If you leave them in with 6.3+ off-canvas will work as expected.</p>
+  <p>`off-canvas-wrapper` and `off-canvas-wrapper-inner` are no longer needed on the new Off-canvas. If you leave them in with 6.3+, Off-canvas will work as expected.</p>
 </div>
 
-The default off-canvas position has changed from absolute to fixed. This will likely be the position you want since the menu is in view when opened regardless of the scroll position. You can choose the off-canvas position back to absolute using the built in classes:
+The default Off-canvas position has changed from absolute to fixed. This will likely be the position you want since the menu is in view when opened regardless of the scroll position. You can choose the Off-canvas position back to absolute using the built in classes:
 
 - `.is-overlay-absolute`
 - `.is-overlay-fixed`
 
-Or in globally in the _settings.scss, set the <code>$offcanvas-fixed-reveal</code> variable to <code>false</code>.</p>
+Or in globally in the `_settings.scss`, set the `$offcanvas-fixed-reveal` variable to `false`.
 
 ```html
 <div class="off-canvas position-left reveal-for-large" data-off-canvas>
-  <!-- ... -->
+  <!-- … -->
 </div>
 ```
 
 ### Pre 6.3 Off-canvas Setup
 
-To start, create two wrappers to house the page. These are necessary to prevent the off-canvas panels from being visible when they're not open. They also smooth out cross-browser bugs.
+To start, create two wrappers to house the page. These are necessary to prevent the Off-canvas panels from being visible when they're not open. They also smooth out cross-browser bugs.
+
 - The outer wrapper has the class `.off-canvas-wrapper`.
 - The inner wrapper has the class `.off-canvas-wrapper-inner` and the attribute `data-off-canvas-wrapper`.
 
@@ -436,7 +441,7 @@ To start, create two wrappers to house the page. These are necessary to prevent 
 </body>
 ```
 
-Inside these wrappers, create an off-canvas panel with the class `.off-canvas` and the attribute `data-off-canvas`. The panel also needs a positioning class, which can be `.position-left` or `.position-right`, and an attribute set for the position, `data-position="left"` or `data-position="right"`. Last, make sure the off-canvas panel has a unique ID so it can be targeted.
+Inside these wrappers, create an Off-canvas panel with the class `.off-canvas` and the attribute `data-off-canvas`. The panel also needs a positioning class, which can be `.position-left` or `.position-right`, and an attribute set for the position, `data-position="left"` or `data-position="right"`. Lastly, make sure the Off-canvas panel has a unique ID so it can be targeted.
 
 Along with the panel, the main content of your page will be housed in its own container with the class `.off-canvas-content` and attribute `data-off-canvas-content`. You will be putting your actual page content inside a class of `.off-canvas-content`.)
 

@@ -17,7 +17,7 @@ Inside the container are three elements:
 - The fill (`.slider-fill`), which resizes dynamically based on where the handle is.
 - A hidden `<input>`, which is where the value of the slider is stored.
 
-The `data-initial-start=""` value is where along the slider the handle starts. The `data-end=""` is the maximum value for the slider. In the below example, starting at 50 of 200 means the slider handle will start at 25% of the total.
+The `data-initial-start` value is where along the slider the handle starts. The `data-end` is the maximum value for the slider. In the below example, starting at 50 of 200 means the slider handle will start at 25% of the total.
 
 <p>
   <a class="" data-open-video="1:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -39,7 +39,7 @@ The `data-initial-start=""` value is where along the slider the handle starts. T
 
 ## Vertical
 
-To get *vertical*, just add a `.vertical` class and `data-vertical="true"` the slider.
+To get *vertical*, just add a `.vertical` class and `data-vertical="true"` to the slider.
 
 <p>
   <a class="" data-open-video="3:24"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -185,7 +185,7 @@ It's possible to use both the JavaScript slider and the native slider in the sam
 Sometimes not every value is of equal importance. In the example below, the slider focusses on the higher numbers by adding a `log`-type position value function.
 Alternatively there is also a `pow`-type position value function available, making the reverse possible.
 
-The nonLinearBase-option is optional and defaults to 5.
+The `nonLinearBase` option is optional and defaults to 5.
 
 ```html_example
 <div class="small-10 columns">
@@ -200,7 +200,7 @@ The nonLinearBase-option is optional and defaults to 5.
 
 ## Reflow
 
-The slider takes into account the width of the handles when calculating how to display itself. This means that if the slider is initially hidden, or hidden while the value is adjusted, the resulting visual will be slightly different because the width of the handle is indeterminate.  If this is problematic, you can use JavaScript to cause the slider to reflow at the time that you change it from being hidden.  Example:
+The slider takes into account the width of the handles when calculating how to display itself. This means that if the slider is initially hidden, or hidden while the value is adjusted, the resulting visual will be slightly different because the width of the handle is indeterminate.  If this is problematic, you can use JavaScript to cause the slider to reflow at the time that you change it from being hidden. Example:
 
 ```js
 $('#my-slider').show();

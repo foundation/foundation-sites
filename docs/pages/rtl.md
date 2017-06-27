@@ -6,7 +6,7 @@ video: 'TPz2Uzr4urE'
 
 ## HTML
 
-You'll need to make a few changes to your markup to get the Javascript components working nice and smooth. In the `<html>` tag, you'll need to add a `dir` attribute with a value of `rtl`. Here's what your `<html>` tag should look like:
+You'll need to make a few changes to your markup to get the JavaScript components working nice and smooth. In the `<html>` tag, you'll need to add a `dir` attribute with a value of `rtl`. Here's what your `<html>` tag should look like:
 
 ```html
 <!-- This example is for a right-to-left Arabic layout -->
@@ -15,7 +15,7 @@ You'll need to make a few changes to your markup to get the Javascript component
 
 ### Language Code
 
-You'll need to change your lang attribute value to match your language. Here's a handy list of common right-to-left languages and their html codes.
+You'll need to change your `lang` attribute value to match your language. Here's a handy list of common right-to-left languages and their html codes.
 
 - **Arabic:** `ar`
 - **Chinese:** `zh`

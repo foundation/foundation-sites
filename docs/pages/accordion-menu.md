@@ -10,7 +10,7 @@ video: FXZIZ9N4aeI
 
 Accordion menus follow the basic [Menu](menu.html) syntax of `<ul>`, `<li>`, and `<a>`. To convert a basic menu into an accordion, add the attribute `data-accordion-menu`. You probably also want it to be vertical, so add the class `.vertical` as well.
 
-Any `<a>` will behave like a standard link. However, any `<a>` paired with a nested `<ul>` menu will then slide that sub-menu up and down when clicked on.
+Any `<a>` will behave like a standard link. However, any `<a>` paired with a nested `<ul>` menu will then slide that sub-menu up and down when selected.
 
 <a class="" data-open-video="1:03"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
@@ -70,7 +70,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 
 ## Submenu Toggle
 
-Accordion menus can have a seperate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
+Accordion menus can have a separate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
 You need to add the class `accordion-menu` as well as the data attribute `data-submenu-toggle="true"` for this to work correctly.
 
 ```html
