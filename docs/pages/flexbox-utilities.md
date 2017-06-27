@@ -199,6 +199,10 @@ For children, there are 3 quick helper classes to apply the flex property. These
 - `.flex-child-grow` (flex child that will grow to take up all possible space)
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bRYmRZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x">
   <div class="cell small-4 flex-container flex-dir-column">
@@ -223,6 +227,10 @@ All of these helper classes come in responsive varieties, prefixed with all of y
 These vanilla flexbox helper classes also have an optional mobile first responsive classes so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint.. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large. 
 
 These optional responsive classes can be disabled by setting `$flexbox-responsive-breakpoints` to `false`. See [here](#sass-variables)
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/yXPRjY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x">
@@ -256,6 +264,10 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 <p>
   <a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZyaqNL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x">
