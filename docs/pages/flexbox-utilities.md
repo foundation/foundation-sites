@@ -165,6 +165,10 @@ Central alignment can be applied to a flex parent, which will centrally align al
   <p>We are using `.text-center` class just for demo purposes here.</p>
 </div>
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vZWVXp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x align-center-middle text-center" style="height: 200px;">
   <div class="cell small-4">I am in the center-middle</div>
