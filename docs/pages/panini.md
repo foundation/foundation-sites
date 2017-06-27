@@ -126,6 +126,8 @@ Displays the HTML inside the helper if the two values are equal.
 ```handlebars
 {{#ifequal foo bar}}
   <p>foo and bar are equal</p>
+{{else}}
+  <p>foo and bar are not equal}}  
 {{/ifequal}}
 ```
 
