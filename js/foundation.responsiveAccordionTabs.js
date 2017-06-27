@@ -43,6 +43,7 @@ class ResponsiveAccordionTabs extends Plugin{
     this.rules = this.$element.data('responsive-accordion-tabs');
     this.currentMq = null;
     this.currentPlugin = null;
+    this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
     if (!this.$element.attr('id')) {
       this.$element.attr('id',GetYoDigits(6, 'responsiveaccordiontabs'));
     };

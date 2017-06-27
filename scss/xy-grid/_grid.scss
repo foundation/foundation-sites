@@ -12,8 +12,32 @@
 @mixin xy-grid-container(
   $width: $grid-container
 ) {
-  max-width: rem-calc($width);
+  max-width: $width;
   margin: 0 auto;
+}
+
+/// Add padding to your container, up to a particular size
+///
+/// @param {Number} $width [$grid-container] - a width to limit the container to.
+@mixin xy-grid-container-padding(
+  $padding: $grid-container-padding,
+  $max: $grid-container-max
+) {
+  // Output our margin gutters.
+  @if (type-of($padding) == 'map') {
+    @include -zf-breakpoint-value(auto, $padding) {
+      padding-left: rem-calc($-zf-bp-value / 2);
+      padding-right: rem-calc($-zf-bp-value / 2);
+    }
+  }
+  @elseif (type-of($padding) == 'number') {
+    padding-left: rem-calc($padding) / 2;
+    padding-right: rem-calc($padding) / 2;
+  }
+  @include breakpoint($max) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 /// Creates a container for your flex cells.

@@ -48,6 +48,7 @@ class ResponsiveMenu extends Plugin {
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;
     this.currentPlugin = null;
+    this.className = 'ResponsiveMenu'; // ie9 back compat
 
     this._init();
     this._events();

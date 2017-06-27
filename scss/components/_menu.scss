@@ -38,6 +38,16 @@ $menu-icon-spacing: 0.25rem !default;
 /// @type Color
 $menu-item-background-hover: $light-gray !default;
 
+/// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
+/// But please note that `active` will be removed in upcoming versions.
+/// @type Boolean
+$menu-state-back-compat: true !default;
+
+/// Backward compatibility for menu centered. If true, this duplicate `.menu-centered > .menu` with `.menu.align-center`. 
+/// But please note that `menu-centered` will be removed in upcoming versions.
+/// @type Boolean
+$menu-centered-back-compat: true !default;
+
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   padding: 0;
@@ -69,6 +79,10 @@ $menu-item-background-hover: $light-gray !default;
   a,
   button {
     margin-bottom: 0;
+  }
+
+  input {
+    display: inline-block;
   }
 }
 
@@ -186,13 +200,13 @@ $menu-item-background-hover: $light-gray !default;
 }
 
 /// Creates a simple Menu, which has no padding or hover state.
-/// @param {Keyword} $dir [$global-left] - Direction of the menu. This effects the side of the <li> that receives the margin.
-/// @param {Number} $margin [$menu-simple-margin] - The margin to apply to each <li>.
+/// @param {Keyword} $dir [$global-left] - Direction of the menu. This effects the side of the `<li>` that receives the margin.
+/// @param {Number} $margin [$menu-simple-margin] - The margin to apply to each `<li>`.
 @mixin menu-simple($dir: $global-left, $margin: $menu-simple-margin) {
   @if $global-flexbox {
     align-items: center;
   }
-  
+
   li + li {
     margin-#{$dir}: $margin;
   }
@@ -212,12 +226,12 @@ $menu-item-background-hover: $light-gray !default;
   @if $nested-alignment == right {
     margin-#{$global-right}: $margin;
     margin-#{$global-left}: 0;
-  } 
+  }
   @else {
     margin-#{$global-right}: 0;
     margin-#{$global-left}: $margin;
   }
-  
+
 }
 
 /// Adds basic styles for icons in menus.
@@ -334,6 +348,11 @@ $menu-item-background-hover: $light-gray !default;
   color: inherit;
 }
 
+@mixin menu-state-active {
+  background: $menu-item-background-active;
+  color: $menu-item-color-active;
+}
+
 @mixin foundation-menu {
   .menu {
     @include menu-base;
@@ -409,8 +428,14 @@ $menu-item-background-hover: $light-gray !default;
 
     // Active state
     .is-active > a {
-      background: $menu-item-background-active;
-      color: $menu-item-color-active;
+      @include menu-state-active;
+    }
+    
+    // Backward Compatibility for active state
+    @if $menu-state-back-compat {
+      .active > a {
+        @include menu-state-active;
+      }
     }
 
     // Align left
@@ -434,6 +459,18 @@ $menu-item-background-hover: $light-gray !default;
 
     .menu-text {
       @include menu-text;
+    }
+  }
+
+  @if $menu-centered-back-compat {
+    .menu-centered {
+      > .menu {
+        @if $global-flexbox {
+          justify-content: center;
+        }
+        
+        @include menu-align(center);
+      }
     }
   }
 

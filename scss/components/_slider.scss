@@ -52,7 +52,6 @@ $slider-transition: all 0.2s ease-in-out !default;
 @mixin slider-handle {
   @include disable-mouse-outline;
   @include vertical-center;
-  position: absolute;
   left: 0;
   z-index: 1;
 

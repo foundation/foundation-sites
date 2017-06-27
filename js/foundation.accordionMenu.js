@@ -25,6 +25,7 @@ class AccordionMenu extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+    this.className = 'AccordionMenu'; // ie9 back compat
 
     Nest.Feather(this.$element, 'accordion');
 
