@@ -309,3 +309,68 @@
   }
 }
 
+// Responsive newsletter callout above the footer.
+
+.newsletter-signup-inner {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-signup {
+  background: #085a78;
+  padding: 1rem 0;
+
+  h5 {
+    color: $white;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 0;
+  }
+
+  p {
+    clear: both;
+    color: $white;
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $white;
+  }
+
+  .button {
+    background: $primary-color;
+
+    &:hover {
+      background: darken($primary-color, 14%);
+    }
+  }
+
+  .row.collapse form {
+    input[type="text"] {
+      border: 0;
+      color: #999;
+      font-size: 17px;
+      font-weight: 200;
+      position: relative;
+    }
+
+    .button {
+      background: #257696;
+      border: 0;
+      box-shadow: none;
+      margin: 0;
+
+      &:hover {
+        background: #1b566d;
+      }
+    }
+  }
+}
+
+#subForm {
+  margin-top: 1rem;
+}
+
+
