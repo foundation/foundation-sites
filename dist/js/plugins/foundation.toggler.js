@@ -168,6 +168,7 @@ var Toggler = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
+      this.className = 'Toggler'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_3__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);

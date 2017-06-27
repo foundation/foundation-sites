@@ -180,7 +180,7 @@ window.Foundation = __WEBPACK_IMPORTED_MODULE_1__foundation_core__["a" /* Founda
 
 
 
-var FOUNDATION_VERSION = '6.4.0-rc5';
+var FOUNDATION_VERSION = '6.4.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -548,7 +548,7 @@ var Plugin = function () {
     _classCallCheck(this, Plugin);
 
     this._setup(element, options);
-    var pluginName = hyphenate(this.constructor.name);
+    var pluginName = getPluginName(this);
     this.uuid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["b" /* GetYoDigits */])(6, pluginName);
 
     if (!this.$element.attr('data-' + pluginName)) {
@@ -568,7 +568,7 @@ var Plugin = function () {
     key: 'destroy',
     value: function destroy() {
       this._destroy();
-      var pluginName = hyphenate(this.constructor.name);
+      var pluginName = getPluginName(this);
       this.$element.removeAttr('data-' + pluginName).removeData('zfPlugin')
       /**
        * Fires when the plugin has been destroyed.
@@ -590,6 +590,14 @@ var Plugin = function () {
 
 function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function getPluginName(obj) {
+  if (typeof obj.constructor.name !== 'undefined') {
+    return hyphenate(obj.constructor.name);
+  } else {
+    return hyphenate(obj.className);
+  }
 }
 
 

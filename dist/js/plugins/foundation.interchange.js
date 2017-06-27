@@ -169,6 +169,7 @@ var Interchange = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Interchange.defaults, options);
       this.rules = [];
       this.currentPath = '';
+      this.className = 'Interchange'; // ie9 back compat
 
       this._init();
       this._events();

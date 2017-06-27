@@ -155,6 +155,7 @@ var SmoothScroll = function (_Plugin) {
         value: function _setup(element, options) {
             this.$element = element;
             this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+            this.className = 'SmoothScroll'; // ie9 back compat
 
             this._init();
         }

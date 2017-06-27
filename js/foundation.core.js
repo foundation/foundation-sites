@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
-var FOUNDATION_VERSION = '6.4.0-rc5';
+var FOUNDATION_VERSION = '6.4.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

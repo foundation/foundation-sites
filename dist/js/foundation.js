@@ -162,7 +162,7 @@ var Plugin = function () {
     _classCallCheck(this, Plugin);
 
     this._setup(element, options);
-    var pluginName = hyphenate(this.constructor.name);
+    var pluginName = getPluginName(this);
     this.uuid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["b" /* GetYoDigits */])(6, pluginName);
 
     if (!this.$element.attr('data-' + pluginName)) {
@@ -182,7 +182,7 @@ var Plugin = function () {
     key: 'destroy',
     value: function destroy() {
       this._destroy();
-      var pluginName = hyphenate(this.constructor.name);
+      var pluginName = getPluginName(this);
       this.$element.removeAttr('data-' + pluginName).removeData('zfPlugin')
       /**
        * Fires when the plugin has been destroyed.
@@ -204,6 +204,14 @@ var Plugin = function () {
 
 function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function getPluginName(obj) {
+  if (typeof obj.constructor.name !== 'undefined') {
+    return hyphenate(obj.constructor.name);
+  } else {
+    return hyphenate(obj.className);
+  }
 }
 
 
@@ -455,7 +463,7 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-};
+}();
 
 var MediaQuery = {
   queries: [],
@@ -1608,6 +1616,7 @@ var Accordion = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Accordion.defaults, this.$element.data(), options);
 
+      this.className = 'Accordion'; // ie9 back compat
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('Accordion', {
@@ -1986,6 +1995,7 @@ var AccordionMenu = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+      this.className = 'AccordionMenu'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'accordion');
 
@@ -2372,6 +2382,7 @@ var Drilldown = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
+      this.className = 'Drilldown'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'drilldown');
 
@@ -2981,6 +2992,7 @@ var DropdownMenu = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+      this.className = 'DropdownMenu'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'dropdown');
       this._init();
@@ -3742,6 +3754,7 @@ var SmoothScroll = function (_Plugin) {
         value: function _setup(element, options) {
             this.$element = element;
             this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+            this.className = 'SmoothScroll'; // ie9 back compat
 
             this._init();
         }
@@ -3921,6 +3934,7 @@ var Tabs = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Tabs.defaults, this.$element.data(), options);
+      this.className = 'Tabs'; // ie9 back compat
 
       this._init();
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('Tabs', {
@@ -4664,6 +4678,7 @@ var Abide = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Abide.defaults, this.$element.data(), options);
 
+      this.className = 'Abide'; // ie9 back compat
       this._init();
     }
 
@@ -5287,7 +5302,7 @@ Abide.defaults = {
 
 
 
-var FOUNDATION_VERSION = '6.4.0-rc5';
+var FOUNDATION_VERSION = '6.4.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -5689,6 +5704,7 @@ var Dropdown = function (_Positionable) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
+      this.className = 'Dropdown'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_4__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -6132,6 +6148,7 @@ var Equalizer = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Equalizer.defaults, this.$element.data(), options);
+      this.className = 'Equalizer'; // ie9 back compat
 
       this._init();
     }
@@ -6530,6 +6547,7 @@ var Interchange = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Interchange.defaults, options);
       this.rules = [];
       this.currentPath = '';
+      this.className = 'Interchange'; // ie9 back compat
 
       this._init();
       this._events();
@@ -6791,6 +6809,7 @@ var Magellan = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.className = 'Magellan'; // ie9 back compat
 
       this._init();
       this.calcPoints();
@@ -7112,6 +7131,7 @@ var OffCanvas = function (_Plugin) {
     value: function _setup(element, options) {
       var _this3 = this;
 
+      this.className = 'OffCanvas'; // ie9 back compat
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, OffCanvas.defaults, this.$element.data(), options);
       this.contentClasses = { base: [], reveal: [] };
@@ -7581,7 +7601,7 @@ OffCanvas.defaults = {
   contentOverlay: true,
 
   /**
-   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken. 
+   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
    * @option
    * @type {?string}
    * @default null
@@ -7737,6 +7757,7 @@ var Orbit = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Orbit.defaults, this.$element.data(), options);
+      this.className = 'Orbit'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_7__foundation_util_touch__["a" /* Touch */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
 
@@ -8339,7 +8360,7 @@ var ResponsiveAccordionTabs = function (_Plugin) {
      * Creates a new instance of a responsive accordion tabs.
      * @class
      * @fires ResponsiveAccordionTabs#init
-     * @param {jQuery} element - jQuery object to make into a dropdown menu.
+     * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
@@ -8348,6 +8369,7 @@ var ResponsiveAccordionTabs = function (_Plugin) {
       this.rules = this.$element.data('responsive-accordion-tabs');
       this.currentMq = null;
       this.currentPlugin = null;
+      this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
       if (!this.$element.attr('id')) {
         this.$element.attr('id', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["b" /* GetYoDigits */])(6, 'responsiveaccordiontabs'));
       };
@@ -8644,6 +8666,7 @@ var ResponsiveMenu = function (_Plugin) {
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
       this.currentPlugin = null;
+      this.className = 'ResponsiveMenu'; // ie9 back compat
 
       this._init();
       this._events();
@@ -8820,6 +8843,7 @@ var ResponsiveToggle = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element);
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+      this.className = 'ResponsiveToggle'; // ie9 back compat
 
       this._init();
       this._events();
@@ -9025,6 +9049,7 @@ var Reveal = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Reveal.defaults, this.$element.data(), options);
+      this.className = 'Reveal'; // ie9 back compat
       this._init();
 
       // Triggers init is idempotent, just need to make sure it is initialized
@@ -9671,6 +9696,7 @@ var Slider = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Slider.defaults, this.$element.data(), options);
+      this.className = 'Slider'; // ie9 back compat
 
       // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
       __WEBPACK_IMPORTED_MODULE_5__foundation_util_touch__["a" /* Touch */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -10467,6 +10493,7 @@ var Sticky = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Sticky.defaults, this.$element.data(), options);
+      this.className = 'Sticky'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_4__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -11045,6 +11072,7 @@ var Toggler = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
+      this.className = 'Toggler'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_3__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -11244,6 +11272,7 @@ var Tooltip = function (_Positionable) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Tooltip.defaults, this.$element.data(), options);
+      this.className = 'Tooltip'; // ie9 back compat
 
       this.isActive = false;
       this.isClick = false;

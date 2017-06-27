@@ -148,7 +148,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 </div>
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.4.0-rc5</small></h3>
+<h3>Foundation for Sites <small>Version 6.4.0</small></h3>
 ```
 
 ---
