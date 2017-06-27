@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.0-rc5
+ * Version 6.4.0
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2508,6 +2508,8 @@ select {
   .menu a,
   .menu button {
     margin-bottom: 0; }
+  .menu input {
+    display: inline-block; }
   .menu li, .menu.horizontal li {
     display: inline-block; }
   .menu.vertical li {
@@ -2594,6 +2596,9 @@ select {
   .menu .is-active > a {
     background: #1779ba;
     color: #fefefe; }
+  .menu .active > a {
+    background: #1779ba;
+    color: #fefefe; }
   .menu.align-left {
     text-align: left; }
   .menu.align-right {
@@ -2614,6 +2619,11 @@ select {
     font-weight: bold;
     line-height: 1;
     color: inherit; }
+
+.menu-centered > .menu {
+  text-align: center; }
+  .menu-centered > .menu .submenu li {
+    text-align: left; }
 
 .no-js [data-responsive-menu] ul {
   display: none; }
@@ -3707,7 +3717,6 @@ select {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  position: absolute;
   left: 0;
   z-index: 1;
   display: inline-block;

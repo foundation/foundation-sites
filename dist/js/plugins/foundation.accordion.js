@@ -168,6 +168,7 @@ var Accordion = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Accordion.defaults, this.$element.data(), options);
 
+      this.className = 'Accordion'; // ie9 back compat
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].register('Accordion', {

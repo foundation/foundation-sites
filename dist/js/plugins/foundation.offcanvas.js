@@ -189,6 +189,7 @@ var OffCanvas = function (_Plugin) {
     value: function _setup(element, options) {
       var _this3 = this;
 
+      this.className = 'OffCanvas'; // ie9 back compat
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, OffCanvas.defaults, this.$element.data(), options);
       this.contentClasses = { base: [], reveal: [] };
@@ -658,7 +659,7 @@ OffCanvas.defaults = {
   contentOverlay: true,
 
   /**
-   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken. 
+   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
    * @option
    * @type {?string}
    * @default null
