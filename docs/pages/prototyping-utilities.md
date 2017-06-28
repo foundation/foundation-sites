@@ -90,6 +90,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 #### Buttons
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/PjEKjW?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <button type="button" class="button radius bordered shadow primary">Primary</button>
 <button type="button" class="button rounded bordered shadow secondary">Secondary</button>
@@ -99,6 +103,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 ```
 
 #### Cards
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rwpzdR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="radius bordered shadow card">
@@ -156,6 +164,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 #### Tables
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vZpJQy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <table class="radius bordered shadow">
 	<!-- My Table goes here -->
@@ -202,6 +214,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 </div>
 
 #### Images
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WOdEBK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <img src="http://placehold.it/150x150" class="radius">
