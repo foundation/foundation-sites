@@ -18,7 +18,7 @@ module.exports = function(config, modules) {
   var dir = path.resolve(__dirname, '../../js/');
   var entry = "import $ from 'jquery';\n" +
               "import { Foundation } from '" + dir + "/foundation.core';\n" +
-              "Foundation.addToJQuery($);\n";
+              "Foundation.addToJquery($);\n";
 
   var libraries = [];
 
