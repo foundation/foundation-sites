@@ -107,6 +107,15 @@ $accordionmenu-arrow-size: 6px !default;
         @include menu-nested($accordionmenu-nested-margin, right);
       }
     }
+
+    @if $accordionmenu-arrows {
+      @include zf-accordion-menu-left-right-arrows;
+
+      .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+        transform: rotate(180deg);
+        transform-origin: 50% 50%;
+      }
+    }
   }
 
   .is-accordion-submenu li {
@@ -158,14 +167,5 @@ $accordionmenu-arrow-size: 6px !default;
 
   .submenu-toggle-text {
     @include element-invisible;
-  }
-
-  @if $accordionmenu-arrows {
-    @include zf-accordion-menu-left-right-arrows;
-
-    .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
-      transform: rotate(180deg);
-      transform-origin: 50% 50%;
-    }
   }
 }
