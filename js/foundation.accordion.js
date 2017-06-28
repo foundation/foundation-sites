@@ -15,9 +15,14 @@ class Accordion extends Plugin {
   /**
    * Creates a new instance of an accordion.
    * @class
-   * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - a plain object with settings to override the default options.
+   */
+  constructor(element, options = {}) { super(element, options); } // here for doc purposes only
+
+  /**
+   * Fires when the plugin has initialized
+   * @event Accordion#init
    */
   _setup(element, options) {
     this.$element = element;
@@ -256,18 +261,23 @@ class Accordion extends Plugin {
   }
 
   /**
-   * Destroys an instance of an accordion.
-   * @fires Accordion#destroyed
-   * @function
+   * Fires when the plugin has been destroyed.
+   * @event Accordion#destroyed
    */
+
   _destroy() {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
     if(this.options.deepLink) {
       $(window).off('popstate', this._checkDeepLink);
     }
-
   }
+  /**
+   * Destroy the Accordion instance
+   * @function
+   */
+  destroy() { super.destroy(); } // here for docs purposes only
+
 }
 
 Accordion.defaults = {

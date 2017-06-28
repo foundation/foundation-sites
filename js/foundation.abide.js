@@ -12,9 +12,14 @@ class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
-   * @fires Abide#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
+   */
+  constructor(element, options = {}) { super(element, options); }
+
+  /**
+   * Fires when the plugin has initialized
+   * @event Abide#init
    */
   _setup(element, options = {}) {
     this.$element = element;
@@ -450,6 +455,10 @@ class Abide extends Plugin {
   }
 
   /**
+   * Fires when the plugin has been destroyed.
+   * @event Abide#destroyed
+   */
+  /**
    * Destroys an instance of Abide.
    * Removes error styles and classes from elements, without resetting their values.
    */
@@ -466,6 +475,11 @@ class Abide extends Plugin {
         _this.removeErrorClasses($(this));
       });
   }
+  /**
+   * Destroy the Abide instance
+   * @function
+   */
+  destroy() { super.destroy(); } // here for docs purposes only
 }
 
 /**
