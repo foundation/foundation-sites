@@ -308,7 +308,7 @@
   }
 
   @if $padding-grid {
-    &.grid-padding-y {
+    .grid-padding-y {
       // Negative margin for nested grids
       .grid-padding-y {
         @include xy-gutters($negative: true, $gutter-position: top bottom);
