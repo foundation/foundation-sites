@@ -101,7 +101,7 @@ Each component has an **export mixin** which prints out the CSS for that compone
 @include foundation-everything;
 ```
 
-Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below. 
+Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below.
 
 ```scss
 @import 'foundation';
@@ -151,7 +151,7 @@ Our [starter projects](starter-projects.html) include the full list of imports, 
 
 ## The Settings File
 
-All Foundation projects include a settings file, named `_settings.scss`. If you're using the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
+All Foundation projects include a settings file, named `_settings.scss`. If you're using the CLI to create a Foundation for Sites project, you can find the settings file under `scss/` (basic template) or `src/assets/scss/` (ZURB template). If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
 
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 

@@ -9,7 +9,7 @@ sass:
 
 ## Flexbox Mode
 
-Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!
+Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way&hellip; if you are happy with the below browser support!
 
 Enabling **flexbox mode** replaces those hacks with flexbox properties, streamlining how layouts are made, and making sizing and alignment of elements much easier.
 
@@ -25,7 +25,7 @@ Flexbox mode is only supported these browsers:
 
 ## Enabling Flexbox Mode
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled. If you're using the Sass version of Foundation, you can enable flexbox mode two ways:
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled. If you're using the Sass version of Foundation, you can enable flexbox mode in one of two ways:
 
 If you use the `foundation-everything()` mixin in your main Sass file, pass in the parameter `true` to enable flexbox mode.
 
@@ -33,7 +33,7 @@ If you use the `foundation-everything()` mixin in your main Sass file, pass in t
 @include foundation-everything(true);
 ```
 
-If you included each component manually (like our starter projects do), open your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss) and set `$global-flexbox` to `true`, and remove the `@include` for the float grid and replace it with the one for the flex grid, along with the helper classes (basic template: scss/app.scss, ZURB template: src/assets/scss/app.scss):
+If you included each component manually (like our starter projects do), open your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss), set `$global-flexbox` to `true`, remove the `@include` for the float grid and replace it with the one for the flex grid, along with the helper classes (basic template: scss/app.scss, ZURB template: src/assets/scss/app.scss):
 
 ```scss
 $global-flexbox: true;

@@ -119,7 +119,7 @@ $button-palette: (
 The text color for each button class is determined by either `$button-color` or `$button-color-alt`, whichever settings variable has more contrast.
 
 <div class="primary callout">
-  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all buttons the same color text, set `$button-color` and `$button-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all buttons the same color text, set `$button-color` and `$button-color-alt` to the same value&mdash;but know that doing so may decrease accessibility.</p>
 </div>
 
 ---

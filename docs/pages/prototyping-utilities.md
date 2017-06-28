@@ -7,9 +7,9 @@ sass:
 
 <h4><strong>Prototype to Production</strong></h4>
 
-Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implimentation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
+Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implementation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
 
-Sometimes prototype code is meant the be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scruitiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
+Sometimes prototype code is meant the be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scrutiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
 
 Foundation's Prototyping Utilities help you build coded prototypes from scratch ultra-fast. This allows you to get to right answer faster through feedback and experimentation. From positioning to visual styles, there are a range of utilities to choose from. Every Utility has a mixin, so you can use your own custom classes or swap classes for mixins in production for cleaner markup.
 
@@ -19,7 +19,7 @@ Not all projects require Prototyping Utilities and adding utility classes like t
 
 <div class="primary callout">
 	<p>
-		Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
+		Many Prototype classes use `!important` to ensure that these they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
 	</p>
 </div>
 
@@ -102,7 +102,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 ```html
 <div class="radius bordered shadow card">
-  <img src="http://placehold.it/500x250">
+  <img src="//placehold.it/500x250">
   <div class="card-divider">
     Styled Card
   </div>
@@ -204,11 +204,11 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 #### Images
 
 ```html
-<img src="http://placehold.it/150x150" class="radius">
+<img src="//placehold.it/150x150" class="radius">
 ```
 
 <div class="docs-code-live margin-bottom-1">
-	<img src="http://placehold.it/150x150" class="radius">
+	<img src="//placehold.it/150x150" class="radius">
 </div>
 
 ---
@@ -495,7 +495,7 @@ Generate spacing around elements with these easy to use margin classes.
 }
 ```
 
-This above code will generate the below output
+This above code will generate the below output:
 
 ```scss
 .foo {
@@ -588,7 +588,7 @@ Generate spaces around the content with these easy to use padding classes.
 }
 ```
 
-This above code will generate the below output
+This above code will generate the below output:
 
 ```scss
 .bar {
@@ -677,7 +677,7 @@ These cover some of the most used display types. There are many other display va
 
 ## Positioning
 
-Positioning classes help you change an element's position value. By default, an element's postion value is `static`.
+Positioning classes help you change an element's position value. By default, an element's position value is `static`.
 
 ```html
 <div class="position-relative"></div>
@@ -790,7 +790,7 @@ These Rotate mixins lets you rotate an element to a certain degree. Clockwise is
 
 ### Relational Mixins (AKA: nth:child mixins)
 
-These relational mixins helps you to manage styling of :nth-child’ified elements through easy Sass mixins.
+These relational mixins helps you to manage styling of `:nth-child`-ified elements through easy Sass mixins.
 
 ```scss
 @include first($num) {} // applies style to first n children
@@ -813,4 +813,3 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include odd-between($first, $last) {} // applies style to all odd children except first and last
 @include number-between($num, $first, $last) {} // applies style to every n children from first child and last child
 ```
-

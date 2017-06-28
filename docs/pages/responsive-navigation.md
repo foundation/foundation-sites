@@ -262,7 +262,6 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
 
 To use animations from the Motion UI library, include the <code>data-animation="someAnimationIn someAnimationOut"</code> attribute.
 
-
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
 </div>

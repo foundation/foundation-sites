@@ -43,14 +43,14 @@ Callouts can be colored using the `.secondary`, `.primary`, `.success`, `.warnin
 </div>
 
 ```html
-<div class="callout secondary">
+<div class="secondary callout">
   <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 ```
 
-<div class="callout secondary">
+<div class="secondary callout">
   <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
@@ -108,7 +108,7 @@ Callouts can be sized using the `.small` and `.large` classes. These will affect
 
 ## Making Closable
 
-Pair the callout with the [close button](close-button.html) component and `data-closable` attribute to create a dismissable alert box.
+Pair the callout with the [close button](close-button.html) component and `data-closable` attribute to create a dismissible alert box.
 
 <a class="" data-open-video="4:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="primary callout">

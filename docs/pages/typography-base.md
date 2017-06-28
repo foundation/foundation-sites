@@ -126,7 +126,7 @@ $header-styles: (
 
 The values for `'font-size'`/`'fs'`, `'margin-top'`/`'mt'` and `'margin-bottom'`/`'mb'` are transformed into 'rem's. You can use any unit, but if you don't, we assume that you mean 'px'. If you do not set the keys `'font-size'`/`'fs'` defaults to `1rem`, `'margin-top'`/`'mt'` to `0` and `'margin-bottom'`/`'mb'` to `$header-margin-bottom` for size `'small'`. Thereafter the values for a larger size are inherited from the values of the smaller size if no value is entered for a larger breakpoint.
 
-The value for `'line-height'`/`'lh'` is transformed into a unitless number, that expresses the line-height relative to the fonts-size. You can also input any unit. If you don't, we assume that for numbers smaller than or equal to 10, you mean a typical relative line-height. However, if you put in anything larger than 10, we assume you mean 'px', since we have not yet seen relative line-heights that were larger than 10. If you do not set `'line-height'`/`'lh'` it defaults to `$header-lineheight` for size `'small'`. Thereafter the value for a larger size is inherited from the values of the smaller size.
+The value for `'line-height'`/`'lh'` is transformed into a unitless number, that expresses the line-height relative to the font's size. You can also input any unit. If you don't, we assume that for numbers smaller than or equal to 10, you mean a typical relative line-height. However, if you put in anything larger than 10, we assume you mean 'px', since we have not yet seen relative line-heights that were larger than 10. If you do not set `'line-height'`/`'lh'` it defaults to `$header-lineheight` for size `'small'`. Thereafter the value for a larger size is inherited from the values of the smaller size.
 
 <div class="callout alert">
   <p><strong>The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`.</strong></p>
@@ -188,7 +188,7 @@ Use dividers to define thematic breaks between paragraphs. To denote the end of 
 
 ## Unordered Lists
 
-Use an unordered list to... *list things*, if the order of the items doesn't matter.
+Use an unordered list to… *list things*, if the order of the items doesn't matter.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmLMXx" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -290,7 +290,7 @@ Use the `<abbr>` tag to annotate a shortened term. Abbreviations must always hav
 
 ## Code
 
-Format references to code with the `<code>` tag. In order for angle brackets `<>` to render correctly, you need to change them to `&lt; and &gt;`.
+Format references to code with the `<code>` tag. In order for angle brackets (`<` and `>`) to render correctly, you need to change them to `&lt; and &gt;`.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/LymjvO" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -332,7 +332,7 @@ Prefer using actual text over text inside a graphic. Assistive technologies can'
 
 ### Contrast
 
-The contrast between the color of an element's text and its background should be high enough that low-vision users can read it. **The minimum recommended contrast ratio is 4.5:1.** There are no automated tools that can effectively check this for you, but if you aren't sure about a specific color combination, you can run it through one of many color contrast checkers, such as [WebAIM's color contrast checker](http://webaim.org/resources/contrastchecker/).
+The contrast between the color of an element's text and its background should be high enough that partially-sighted users can read it. **The minimum recommended contrast ratio is 4.5:1.** There are no automated tools that can effectively check this for you, but if you aren't sure about a specific color combination, you can run it through one of many color contrast checkers, such as [WebAIM's color contrast checker](http://webaim.org/resources/contrastchecker/).
 
 Google Chrome's [Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) also includes a contrast checker. By selecting an element in the inspector, you can see if the contrast meets the minimum standards.
 
@@ -378,5 +378,5 @@ On top of that, Foundation includes a couple of simple classes you can use to co
 <a class="" data-open-video="4:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="callout primary">
-  <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Print styles use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>

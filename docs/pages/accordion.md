@@ -42,7 +42,7 @@ Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **c
 </ul>
 ```
 
-Once you put it all together, here's what you get!
+Once you put it all together, here's what you get:
 
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
@@ -191,14 +191,14 @@ There may be times where you want to disable pane switching on an accordion. Thi
 
 ### Browser history
 
-When the `data-deep-link` option is set to `true`, the current state of the accordion is recorded by adding a hash with the accordion panel ID to the browser URL when a accordion opens. By default, accordion *replace* the browser history (using `history.replaceState()`). Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each click that opens a accordion panel.
+When the `data-deep-link` option is set to `true`, the current state of the accordion is recorded by adding a hash with the accordion panel ID to the browser URL when a accordion opens. By default, accordion *replaces* the browser history (using `history.replaceState()`). Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each click that opens a accordion panel.
 
 By using deep linking (see below), the open state of a page's tabset may be shared by copy-pasting the browser URL.
 
 ### Deep linking
 
 Add the attribute `data-deep-link="true"` to a accordion to:
-- modify the browser history when a accordion panel is clicked
+- modify the browser history when a accordion panel is selected
 - allow users to open a particular accordion panel at page load with a hash-appended URL
 
 ```html_example
@@ -225,7 +225,7 @@ Add the attribute `data-deep-link="true"` to a accordion to:
 ```
 For example, <a target="_blank" href="#deeplink3">http://example.com/#deeplink3</a> will open the third accordion panel at page load. This example will open a new browser tab and scroll you to the open accordion panel.
 
-When linking directly to a accordion panel, it might not be obvious that the content appears within a accordion panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal accordion) so that the accordion is at the top of the viewport.
+When linking directly to an accordion panel, it might not be obvious that the content appears within an accordion panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal accordion) so that the accordion is at the top of the viewport.
 
 ```html_example
 <ul class="accordion" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600" data-accordion id="deeplinked-accordion-with-smudge">

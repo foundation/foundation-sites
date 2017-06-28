@@ -104,7 +104,7 @@ $foundation-palette: (
   <p>If you remove a default key from `$foundation-palette`, be sure to edit any variables in your settings file that reference that color.</p>
 </div>
 
-The named colors (white, light gray, medium gray, dark gray, and black) can be changed in their respective variables
+The named colors (`white`, `light gray`, `medium gray`, `dark gray`, and `black`) can be changed in their respective variables
 
 ```scss
 $light-gray: #e6e6e6;

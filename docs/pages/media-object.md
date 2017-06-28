@@ -138,7 +138,7 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 
 ### Nesting Media Objects
 
-By nesting a media object into the media-object-section section, you can easily indent it. This is great for comment strings.
+By nesting a media object into the `media-object-section` section, you can easily indent it. This is great for comment strings.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>

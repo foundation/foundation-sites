@@ -9,7 +9,7 @@ tags:
 ---
 
 <div class="callout primary">
-  <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Visibility classes use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>
 
 <div class="callout warning">
@@ -17,7 +17,7 @@ tags:
 </div>
 
 <div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to <a href="prototyping-utilities.html">Prototype-specific mode</a> and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 ## Show by Screen Size
@@ -97,7 +97,7 @@ Adding `display: none` to an element will prevent screen readers from reading it
 
 ### Show for Screen Readers Only
 
-To visually hide content, while still allowing assistive technology to read it, add the class show-for-sr.
+To visually hide content, while still allowing assistive technology to read it, add the class `show-for-sr`.
 
 ```html_example
 <p class="show-for-sr">This text can only be read by a screen reader.</p>
@@ -120,7 +120,7 @@ To hide text from assistive technology, while still keeping it visible, add the 
 
 If your site has a lot of navigation, a screen reader will have to read through the entire navigation to get to your site's content. To remedy this, you can add a *skip link* at the very top of your page, which will send the user farther down the page, past the navigation when clicked on.
 
-Use the class `.show-on-focus` to hide an element, except when it has focus. Adding tabindex="0" to the target element makes if focusable.
+Use the class `.show-on-focus` to hide an element, except when it has focus. Adding `tabindex="0"`` to the target element makes if focusable.
 
 ```html_example
 <p><a class="show-on-focus" href="#mainContent">Skip to Content</a></p>

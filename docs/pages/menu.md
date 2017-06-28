@@ -117,7 +117,7 @@ Items can also be set to expand out and take up an even amount of space, with th
 
 ## Vertical Menu
 
-Add the `.vertical` class to a Menu to switch its orientation. 
+Add the `.vertical` class to a Menu to switch its orientation.
 
 <p>
   <a class="" data-open-video="4:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -138,7 +138,7 @@ Add the `.vertical` class to a Menu to switch its orientation.
 
 <br>
 
-Add `align-right` class for making the vertical menu aligned to the right. 
+Add `align-right` class for making the vertical menu aligned to the right.
 
 ```html_example
 <ul class="vertical menu align-right">
@@ -158,7 +158,7 @@ Add `align-center` class for making the vertical menu aligned to the center.
     The above vertically left &amp; right aligned menu are supported in all types of menu's. <br>
     But `align-center` for vertical menu&rsquo;s is only available for basic menu and is not available for dropdown, accordion or a drilldown menu.
   </p>
-</div> 
+</div>
 
 ```html_example
 <ul class="vertical menu align-center">
@@ -196,7 +196,7 @@ Add the `.simple` class to a Menu to remove the padding and color change. This s
 
 ## Nested Style
 
-Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create a nested menu. The nested Menu has extra padding on the inside.
+Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create a nested menu. The nested menu has extra padding on the inside.
 
 <p>
   <a class="" data-open-video="7:17"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -249,7 +249,7 @@ Add the class `.is-active` to any `<li>` to create an active state. You could ap
 
 ## Text
 
-Because the padding of the menu item is applied to the `<a>`, if you try to add an item that's text only, it will be misaligned. To get around this, add the class `.menu-text` to any `<li>` that doesn't have a link inside of it.
+Because the padding of the menu item is applied to the `<a>`, if you try to add an item that's text-only, it will be misaligned. To get around this, add the class `.menu-text` to any `<li>` that doesn't have a link inside of it.
 
 <p>
   <a class="" data-open-video="9:11"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -294,7 +294,7 @@ Menu items can have icons. Wrap the text of the item in a `<span>`, and then add
 
 ---
 
-Add the class `.icon-top` to the Menu to orient icons above the text.
+Add the class `.icon-top` to the menu to orient icons above the text.
 
 <p>
   <a class="" data-open-video="10:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

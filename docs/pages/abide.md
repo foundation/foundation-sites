@@ -11,7 +11,7 @@ tags:
 
 ## Abide Demo
 
-These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url` and `week`. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.
+These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url` and `week`. Note the use of the `novalidate` attribute to disable any browser validation that could conflict with Abide.
 
 <p>
   <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -134,9 +134,9 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 ### Form Errors
 
-Abide automatically detects Form Errors of an input by their class (`.form-error` by default, see the `formErrorSelector` option) when they are siblings of the input or inside the same parent.
+Abide automatically detects form errors of an input by their class (`.form-error` by default, see the `formErrorSelector` option) when they are siblings of the input or inside the same parent.
 
-When the Form Errors cannot be placed next to its field, like in an Input Group, the relation can be declared with `[data-form-error-for]` attribute.
+When the form errors cannot be placed next to its field, like in an input group, the relation can be declared with `[data-form-error-for]` attribute.
 
 ```html_example
 <form data-abide novalidate>
@@ -224,11 +224,11 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 
 ## Event Listener
 Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.
-* valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function 
-  *   ev.target is the DOM field element, 
+* valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function
+  *   ev.target is the DOM field element,
   *   elem is jQuery selector for field element
 * formvalid.zf.abide and forminvalid.zf.abide are form events, triggered in validateForm function
-  *   ev.target is the DOM form element, 
+  *   ev.target is the DOM form element,
   *   frm is jQuery selector for form element
 
 ```javascript
@@ -248,7 +248,7 @@ $(document)
   // form validation passed, form will submit if submit event not returned false
   .on("formvalid.zf.abide", function(ev,frm) {
     console.log("Form id "+frm.attr('id')+" is valid");
-    // ajax post form 
+    // ajax post form
   })
   // to prevent form from submitting upon successful validation
   .on("submit", function(ev) {
@@ -267,7 +267,7 @@ $("#bar").on("formvalid.zf.abide", function(ev,frm) {
 
 ## Builtin Patterns and Validators
 
-The following patterns and validators are already built in: 
+The following patterns and validators are already built in:
 
 `alpha`,
 `alpha_numeric`,
@@ -286,7 +286,7 @@ The following patterns and validators are already built in:
 `time`,
 `url`
 
-Apart from these standard patterns, we have a `website` pattern too which is basically a combo of both `domain` and `url` pattern and we recommend you to use this `website` pattern for validating websites.
+Apart from these standard patterns, we have a `website` pattern too which is essentially a combo of both `domain` and `url` pattern and we recommend you to use this `website` pattern for validating websites.
 
 They are defined by regular expressions as you can see below. Note, that the patterns that relate to text such as `alpha` and `alpha_numeric` do not consider special characters from other languages. You need to add these special characters yourself to the regular expressions. For instance, for the German language you need to add:
 
@@ -295,9 +295,9 @@ alpha : /^[a-zäöüßA-ZÄÖÜ]+$/,
 alpha_numeric : /^[a-zäöüßA-ZÄÖÜ0-9]+$/,
 ```
 
-Then you need to customize the builtin patterns as explained in the next section. Otherwise Abide will produce an error if a special character is input in your text field which is validated with `pattern="alpha"` or  `pattern="alpha_numeric"`.
+Then you need to customize the built-in patterns as explained in the next section. Otherwise Abide will produce an error if a special character is input in your text field which is validated with `pattern="alpha"` or `pattern="alpha_numeric"`.
 
-Here are the definitions of the builtin patterns:
+Here are the definitions of the built-in patterns:
 
 ```JS
 alpha : /^[a-zA-Z]+$/,
@@ -340,7 +340,7 @@ website: {
 
 
 ## Adding Custom Pattern and Validator
-* Override builtin patterns and validators before foundation is initialized
+* Override built-in patterns and validators before foundation is initialized
 * Add new patterns and validators before or after foundation is initialized
 
 ```javascript

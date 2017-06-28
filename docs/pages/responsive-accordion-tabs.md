@@ -2,7 +2,7 @@
 title: Responsive Accordion Tabs
 description: Added in 6.3.0, use the Markup of the Accordion or Tabs components to create Responsive Accordion Tabs.
 video: 'FKzzaWR6j2M'
-sass: 
+sass:
   - scss/components/_accordion.scss
   - scss/components/_tabs.scss
 js: js/foundation.responsiveAccordionTabs.js
@@ -14,9 +14,9 @@ tags:
 
 Either the <a href="accordion.html">Accordion Markup</a> or the <a href="tabs.html">Tabs Markup</a> can be used to responsively switch between the two components at different breakpoints.
 
-The Accordion should have an id specified, but the plugin will automatically generate one if the id is omitted. 
+The Accordion should have an `id` specified, but the plugin will automatically generate one if the `id` is omitted.
 
-Accordion content should also have an ID, or the # of the href should be specified, otherwise a random id will be generated
+Accordion content should also have an `id`, or the `#` of the `href` should be specified, otherwise a random `id` will be generated
 
 <div class="secondary callout">
   <p>The accordion/tabs values can be in any order.</p>
@@ -165,5 +165,5 @@ Accordion content should also have an ID, or the # of the href should be specifi
 
 ## Plugin Options
 
-Plugin options can be set as individual data attributes, one combined data-options attribute, or as an object passed to the plugin's constructor. <a href="javascript.html#initializing">Learn more about how JavaScript plugins are initialized.</a><br>
+Plugin options can be set as individual data attributes, one combined `data-options` attribute, or as an object passed to the plugin's constructor. <a href="javascript.html#initializing">Learn more about how JavaScript plugins are initialized.</a><br>
 <div class="primary callout">All `data-options` from <a href="accordion.html#js-options">Accordion</a> or <a href="tabs.html#js-options">Tabs</a> can be passed through.</div>

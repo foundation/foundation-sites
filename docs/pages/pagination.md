@@ -39,7 +39,7 @@ Extra screen reader-only text should also be added to a pagination element. In t
 
 ## Centered
 
-The items in a pagination list are `display: inline-block`, which makes centering them easy. Use our built-in `.text-center` class, or add `text-align: center` in your CSS.
+The items in a pagination list are styled with `display: inline-block`, which makes centering them easy. Use our built-in `.text-center` class, or add `text-align: center` in your CSS.
 
 <p>
   <a class="" data-open-video="7:20"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

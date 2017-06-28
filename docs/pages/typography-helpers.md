@@ -15,7 +15,7 @@ tags:
 ## Text Alignment
 
 <div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving text alignment classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus text alignment classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving text alignment classes to <a href="prototyping-utilities.html">Prototype-specific mode</a> and thus text alignment classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 You can change the text alignment of an element by adding `.text-left`, `.text-right`, `.text-center` or `.text-justify` to an element.
@@ -31,10 +31,10 @@ Adding a breakpoint to the front of a text alignment class will cause it to only
 </div>
 
 ```html
-<p class="text-left"><!-- ... --></p>
-<p class="text-right"><!-- ... --></p>
-<p class="text-center"><!-- ... --></p>
-<p class="text-justify"><!-- ... --></p>
+<p class="text-left"><!-- … --></p>
+<p class="text-right"><!-- … --></p>
+<p class="text-center"><!-- … --></p>
+<p class="text-justify"><!-- … --></p>
 ```
 
 <p class="text-left"><strong>This text is left-aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>

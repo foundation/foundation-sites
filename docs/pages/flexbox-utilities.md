@@ -164,19 +164,19 @@ And to change its flex direction from row to column you can use the helper class
 - `.flex-dir-column`
 - `.flex-dir-column-reverse`
 
-For children, there are 3 quick helper classes to apply the flex property. These control how the containers take up space relative to their siblings:
+For children, there are 3 helper classes to apply the flex property. These control how the containers take up space relative to their siblings:
 
 - `.flex-child-auto` (auto size flex child)
 - `.flex-child-grow` (flex child that will grow to take up all possible space)
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
 
-### Responsive Classes 
+### Responsive Classes
 
 <div class="callout alert">
   <p><strong>Depreciation Notice:</strong> From v6.5.x, we are disabling responsive classes by default. You would be able to re-enable it though, with setting that <code>$flexbox-responsive-breakpoints</code> to <code>true</code> .</p>
 </div>
 
-These vanilla flexbox helper classes also have an optional mobile first responsive classes so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint.. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large. 
+These vanilla flexbox helper classes also have an optional mobile first responsive classes so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint.. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large.
 
 These optional responsive classes can be disabled by setting `$flexbox-responsive-breakpoints` to `false`. See [here](#sass-variables)
 

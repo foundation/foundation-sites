@@ -11,7 +11,7 @@ See our [JavaScript](javascript.html) and [Installation](installation.html) page
 ## Box
 `js/foundation.util.box.js`
 
-One of the useful libraries is `Foundation.Box`, and it has a couple methods designed to make your life easier. You can pass either jQuery objects or plain JavaScript elements to both.
+One of the useful libraries is `Foundation.Box`, and it has a couple of methods designed to make your life easier. You can pass either jQuery objects or plain JavaScript elements to both.
 
 ```js
 
@@ -46,7 +46,7 @@ var clear = Foundation.Box.ImNotTouchingYou(element [, parent, leftAndRightOnly,
 ## Keyboard
 `js/foundation.util.keyboard.js`
 
-Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de) of Germany who conceived and coded this library.
+Another useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de) of Germany who conceived and coded this library.
 
 Ever wanted a handy list of common keycodes and the keys they represent? Use `Foundation.Keyboard.keys`. This is an object containing key/value pairs of the most frequently used keys in our framework.
 
@@ -87,7 +87,7 @@ If you want to use your own key bindings, simply call the `Foundation.Keyboard.r
 ## MediaQuery
 `js/foundation.util.mediaQuery.js`
 
-The media query library used by Foundation has two publicly accessible functions and two properties:
+The MediaQuery library used by Foundation has two publicly accessible functions and two properties:
 ```js
 
 Foundation.MediaQuery.get('medium');
@@ -181,10 +181,10 @@ $('#someId').on('resizeme.zf.trigger', handleResize);
 
 ## Miscellaneous
 
-Foundation includes a couple useful features in the core library that are used in many places, that you can tap into.
+Foundation includes a couple of useful features in the core library that are used in many places, that you can tap into.
 
 `Foundation.GetYoDigits([number, namespace])` returns a base-36, pseudo-random string with a hyphenated namespace (if you include one). Both arguments are optional; by default, it will return a string six characters long.
 
-`Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us—it's useful.
+`Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us&mdash;it's useful.
 
 `Foundation.transitionend()` is a function<span data-tooltip title="Goodbye ZURB, I'll miss you"> </span> that returns the string of the properly vendor-prefixed version of `transitionend` events. Most browsers don't require a prefix these days, but for those that do, we've got you covered. But IE 9 doesn't support transitions?? Quite right you are! In that case, our plugins that use transitions will simply snap to whatever location or visibility state they were headed to, and this function will fire a `transitionend` event manually on the element you passed. It still gives the desired results, and allows Motion-UI to work in IE 9.

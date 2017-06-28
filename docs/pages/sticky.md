@@ -59,7 +59,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 
 ## Advanced
 
-You can also use two anchors, if you please. Using `data-top-anchor="idOfSomething"`, `data-btm-anchor="idOfSomething:[top/bottom]"`, or a set pixel number `data-top-anchor="150"`. If you use an element id with no top/bottom specified, it defaults to the top.
+You can also use two anchors, if you prefer. Using `data-top-anchor="idOfSomething"`, `data-btm-anchor="idOfSomething:[top/bottom]"`, or a set pixel number `data-top-anchor="150"`. If you use an element ID with no top/bottom specified, it defaults to the top.
 
 <p>
   <a class="" data-open-video="3:55"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -107,9 +107,10 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
 
 ## Stick to bottom
 
-You can also stick to bottom.
-Using `data-stick-to="bottom"`.
+You can also stick to bottom, using `data-stick-to="bottom"`.
+
 Here is an example using two anchors (like above) with a stick to bottom.
+
 ```html
 <div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
@@ -117,7 +118,6 @@ Here is an example using two anchors (like above) with a stick to bottom.
   </div>
 </div>
 ```
-
 
 <div class="row">
   <div class="columns small-6">
@@ -154,6 +154,7 @@ Sometimes you want a sticky nav bar or side nav, this is pretty simple, but does
   </div>
 </div>
 ```
+
 With the minimum markup above, your nav bar will be sticky for the entire page. You could change this up by using anchor points, so it sticks and breaks at important markers on the page. A top anchor point of '1' will make it stick at the top of the page, a bottom anchor of `content:bottom` will make it break at the bottom of your `#content` element. This is useful if you want a sticky nav element, but not for the full length of the page.
 
 <div class="docs-codepen-container">

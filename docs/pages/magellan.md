@@ -27,7 +27,7 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
   <li><a href="#third">Third Arrival</a></li>
 </ul>
 
-<!-- Add content where magellan will be linked -->
+<!-- Add content where Magellan will be linked -->
 <div class="sections">
   <section id="first" data-magellan-target="first">First Section</section>
   <section id="second" data-magellan-target="second">Second Section</section>
@@ -45,7 +45,7 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
-```html 
+```html
 <!-- Add a Sticky Menu -->
 <div data-sticky-container>
   <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
@@ -64,7 +64,7 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
   </div>
 </div>
 
-<!-- Add content where magellan will be linked -->
+<!-- Add content where Magellan will be linked -->
 <div class="sections">
   <section id="first" data-magellan-target="first">First Section</section>
   <section id="second" data-magellan-target="second">Second Section</section>
@@ -72,7 +72,7 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
 </div>
 ```
 
-This below example is a simplified version of the table of contents on the right side of this page.
+The following example is a simplified version of the table of contents on the right side of this page.
 
 ```html
 <div class="large-3 columns" data-sticky-container>
@@ -85,4 +85,3 @@ This below example is a simplified version of the table of contents on the right
   </nav>
 </div>
 ```
-
