@@ -259,6 +259,10 @@ This creates a tiny separator below the heading of an element and is usually use
 	You don't need to use [Text alignment classes](typography-helpers.html#text-alignment) as this separator utility deals with the alignment of the text itself.
 </div>
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dRJdyO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <h3 class="separator-left">Lorem</h3>
 <h3 class="separator-center">Ipsum Dolor</h3>
@@ -284,6 +288,10 @@ This creates a tiny separator below the heading of an element and is usually use
 ## Font Styling
 
 You can use font styling to style your text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also wider the text of an element with `font-wide`.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NgXyqL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p class="font-wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
