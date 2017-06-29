@@ -2,6 +2,8 @@
 
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
+import { MediaQuery } from './foundation.util.mediaQuery';
+
 var FOUNDATION_VERSION = '6.4.0';
 
 // Global Foundation object
@@ -193,7 +195,7 @@ var Foundation = {
       }
 
       if(type === 'undefined'){//needs to initialize the Foundation object, or an individual plugin.
-        Foundation.MediaQuery._init();
+        MediaQuery._init();
         Foundation.reflow(this);
       }else if(type === 'string'){//an individual method to invoke on a plugin or group of plugins
         var args = Array.prototype.slice.call(arguments, 1);//collect all the arguments, if necessary
