@@ -117,6 +117,19 @@ below that. If you want to add padding below the `$max-width`, simply add the
   </div>
 </div>
 ```
+
+If you have just a single cell for a padding grid, you can save some markup by combining the `.grid-container`, `.grid-x` and `.grid-padding-x` classes together on the same element. You can still nest more grids inside this container like usual.
+
+<div class="warning callout">
+  <p>For a margin grid it needs to stay separated.</p>
+</div>
+
+```html
+<div class="grid-container grid-x grid-padding-x">
+  <div class="cell">cell</div>
+</div>
+```
+
 ---
 
 ## Auto Sizing
