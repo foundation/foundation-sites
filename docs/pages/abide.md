@@ -344,9 +344,14 @@ website: {
 * Add new patterns and validators before or after foundation is initialized
 
 ```javascript
-$(document).foundation();
+
+// Set paramaters
 Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
 Foundation.Abide.defaults.validators['greater_than'] =
+
+// Init Foundation
+$(document).foundation();
+
 function($el,required,parent) {
   // parameter 1 is jQuery selector
   if (!required) return true;
