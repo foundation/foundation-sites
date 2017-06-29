@@ -177,10 +177,10 @@
 
   // Column row
   // The double .row class is needed to bump up the specificity
-  .column.row.row {
-    float: none;
-    display: block;
-  }
+  // .column.row.row {
+  //   float: none;
+  //   display: block;
+  // }
 
   // To properly nest a column row, padding and margin is removed
   .row .column.row.row {

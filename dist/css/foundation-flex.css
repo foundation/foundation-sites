@@ -553,10 +553,6 @@ pre {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
 
-.column.row.row, .row.row.columns {
-  float: none;
-  display: block; }
-
 .row .column.row.row, .row .row.row.columns {
   margin-right: 0;
   margin-left: 0;
