@@ -4,10 +4,7 @@
   background-color: $topbar-background;
   padding: 2rem;
   width: 100%;
-
-  @include breakpoint(medium only) {
-    justify-content: center;
-  }
+  justify-content: center;
 
   @include breakpoint(small only) {
     flex-direction: column;
@@ -38,7 +35,7 @@
 }
 
 .footer-nav-left {
-  @include breakpoint(medium only) {
+  @media screen and (min-width: 40em) and (max-width: 76.5em) {
     order: 3;
     display: flex;
     margin-left: 1rem;
@@ -50,7 +47,7 @@
 }
 
 .footer-nav-right {
-  @include breakpoint(medium only) {
+  @media screen and (min-width: 40em) and (max-width: 76.5em) {
     order: 2;
     display: flex;
     margin-right: 1rem;
@@ -70,7 +67,13 @@
 .footer-nav-center {
   @include flex-grid-column;
 
-  @include breakpoint(medium only) {
+  .footer-nav-menu-item {
+    @media screen and (min-width: 40em) and (max-width: 46.25em) {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media screen and (min-width: 40em) and (max-width: 76.5em) {
     display: flex;
     flex: 1 0 auto;
     order: 1;
@@ -227,7 +230,7 @@
     background-color: darken($white, 8%);
     border: 1px solid darken($white, 15%);
     border-radius: 5px;
-    color: darken($foundation-dark, 25%);
+    color: darken($foundation-dark, 45%);
     height: 2.55rem;
     padding-left: 1rem;
     transition: background-color 0.3s ease;
@@ -302,11 +305,6 @@
   font-weight: 600;
   background: $white;
   color: $foundation-dark;
-
-  &:hover {
-    background: darken($white, 20%);
-    color: darken($foundation-dark, 20%);
-  }
 }
 
 // Responsive newsletter callout above the footer.
