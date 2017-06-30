@@ -16,6 +16,7 @@ class Toggler extends Plugin {
   /**
    * Creates a new instance of Toggler.
    * @class
+   * @name Toggler
    * @fires Toggler#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.

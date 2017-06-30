@@ -23,6 +23,7 @@ class Slider extends Plugin {
   /**
    * Creates a new instance of a slider control.
    * @class
+   * @name Slider
    * @param {jQuery} element - jQuery object to make into a slider control.
    * @param {Object} options - Overrides to the default plugin settings.
    */

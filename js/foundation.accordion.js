@@ -15,6 +15,7 @@ class Accordion extends Plugin {
   /**
    * Creates a new instance of an accordion.
    * @class
+   * @name Accordion
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - a plain object with settings to override the default options.

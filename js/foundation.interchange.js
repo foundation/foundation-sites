@@ -16,6 +16,7 @@ class Interchange extends Plugin {
   /**
    * Creates a new instance of Interchange.
    * @class
+   * @name Interchange
    * @fires Interchange#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.

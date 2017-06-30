@@ -17,6 +17,7 @@ class Equalizer extends Plugin {
   /**
    * Creates a new instance of Equalizer.
    * @class
+   * @name Equalizer
    * @fires Equalizer#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
