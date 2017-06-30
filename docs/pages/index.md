@@ -197,14 +197,14 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Latest Foundation Updates</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://zurb.us/2gFxwrP">
+      <a target="_blank" href="http://zurb.com/blog/foundation-6-4-a-new-grid-javascript-upgrades-and-slick-new-prototyping-mode">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="{{root}}assets/img/docs-630.png" class="" height="" width="" alt="">
+            <img src="http://i3.ytimg.com/vi/vrvt9xMFjIE/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
-            <h5>Foundation 6.3 Update: Cards, Mutation Observers, Off Canvas and More</h5>
-            <p>Our biggest update since we first released Foundation 6 last year, the 6.3 update adds loads of new components including Cards, Mutation Observers, an improved Off Canvas and more. Big thanks to our international community for all of their hard work!</p>
+            <h5>Foundation 6.4.0 Update: A New Grid, JavaScript Upgrades, and Slick New Prototyping Mode</h5>
+            <p>Foundation 6.4 has dropped and it is AWESOME. This new release is jampacked with some incredible new features that enable you to build layouts and designs with Foundation that weren’t possible before.</p>
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>

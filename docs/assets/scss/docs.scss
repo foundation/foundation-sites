@@ -144,6 +144,10 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
     }
   }
 
+  .dropdown.menu .is-active a {
+    color: $white;
+  }
+
   .dropdown.menu > li.is-dropdown-submenu-parent > a {
     padding-left: 1rem;
     padding-right: 1rem;
