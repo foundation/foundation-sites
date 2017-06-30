@@ -428,6 +428,7 @@ var Dropdown = function (_Positionable) {
     /**
      * Creates a new instance of a dropdown.
      * @class
+     * @name Dropdown
      * @param {jQuery} element - jQuery object to make into a dropdown.
      *        Object should be of the dropdown panel, rather than its anchor.
      * @param {Object} options - Overrides to the default plugin settings.

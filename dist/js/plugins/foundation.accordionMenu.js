@@ -164,6 +164,7 @@ var AccordionMenu = function (_Plugin) {
     /**
      * Creates a new instance of an accordion menu.
      * @class
+     * @name AccordionMenu
      * @fires AccordionMenu#init
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.

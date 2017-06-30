@@ -167,6 +167,7 @@ var Tabs = function (_Plugin) {
     /**
      * Creates a new instance of tabs.
      * @class
+     * @name Tabs
      * @fires Tabs#init
      * @param {jQuery} element - jQuery object to make into tabs.
      * @param {Object} options - Overrides to the default plugin settings.

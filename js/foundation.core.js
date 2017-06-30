@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
-var FOUNDATION_VERSION = '6.4.0';
+var FOUNDATION_VERSION = '6.4.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.0
+ * Version 6.4.1
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2368,8 +2368,7 @@ legend {
   .fieldset legend {
     margin: 0;
     margin-right: -0.1875rem;
-    padding: 0 0.1875rem;
-    background: #fefefe; }
+    padding: 0 0.1875rem; }
 
 select {
   height: 2.4375rem;
@@ -2764,6 +2763,38 @@ select {
   margin-left: 1rem;
   margin-right: 0; }
 
+.accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle) > a {
+  position: relative; }
+  .accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle) > a::after {
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 6px;
+    content: '';
+    border-bottom-width: 0;
+    border-top-style: solid;
+    border-color: #1779ba transparent transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    left: 1rem; }
+
+.accordion-menu.align-left .is-accordion-submenu-parent > a::after {
+  left: auto;
+  right: 1rem; }
+
+.accordion-menu.align-right .is-accordion-submenu-parent > a::after {
+  right: auto;
+  left: 1rem; }
+
+.accordion-menu .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%; }
+
 .is-accordion-submenu-parent {
   position: relative; }
 
@@ -2809,38 +2840,6 @@ select {
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
   border: 0; }
-
-.is-accordion-submenu-parent:not(.has-submenu-toggle) > a {
-  position: relative; }
-  .is-accordion-submenu-parent:not(.has-submenu-toggle) > a::after {
-    display: block;
-    width: 0;
-    height: 0;
-    border: inset 6px;
-    content: '';
-    border-bottom-width: 0;
-    border-top-style: solid;
-    border-color: #1779ba transparent transparent;
-    position: absolute;
-    top: 50%;
-    margin-top: -3px;
-    left: 1rem; }
-
-.align-left .is-accordion-submenu-parent > a::after {
-  left: auto;
-  right: 1rem; }
-
-.align-right .is-accordion-submenu-parent > a::after {
-  right: auto;
-  left: 1rem; }
-
-.is-accordion-submenu-parent[aria-expanded='true'] > a::after {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
-  -webkit-transform-origin: 50% 50%;
-      -ms-transform-origin: 50% 50%;
-          transform-origin: 50% 50%; }
 
 .badge {
   display: inline-block;

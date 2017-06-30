@@ -168,6 +168,7 @@ var Drilldown = function (_Plugin) {
     /**
      * Creates a new instance of a drilldown menu.
      * @class
+     * @name Drilldown
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */

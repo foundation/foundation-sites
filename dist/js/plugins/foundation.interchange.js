@@ -160,6 +160,7 @@ var Interchange = function (_Plugin) {
     /**
      * Creates a new instance of Interchange.
      * @class
+     * @name Interchange
      * @fires Interchange#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -321,6 +322,7 @@ var Interchange = function (_Plugin) {
       }
       // Replacing background images
       else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+          path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
           this.$element.css({ 'background-image': 'url(' + path + ')' }).trigger(trigger);
         }
         // Replacing HTML

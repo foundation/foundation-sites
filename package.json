@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.4.0",
+  "version": "6.4.1",
   "main": "dist/js/npm.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
@@ -60,7 +60,7 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-newer": "^1.1.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-postcss": "^6.4.0",
+    "gulp-postcss": "^6.4.1",
     "gulp-prompt": "^0.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",

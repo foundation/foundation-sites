@@ -175,6 +175,7 @@ var Reveal = function (_Plugin) {
     /**
      * Creates a new instance of Reveal.
      * @class
+     * @name Reveal
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
