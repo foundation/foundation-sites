@@ -253,6 +253,11 @@
         .#{$-zf-size}-shrink {
           flex: flex-grid-column(shrink);
         }
+
+        .#{$-zf-size}-expand,
+        .#{$-zf-size}-shrink {
+          max-width: none;
+        }
       }
 
       // direction helper classes

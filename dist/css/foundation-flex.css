@@ -1081,7 +1081,10 @@ pre {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
-            flex: 0 0 auto; } }
+            flex: 0 0 auto; }
+  .medium-expand,
+  .medium-shrink {
+    max-width: none; } }
 
 @media print, screen and (min-width: 40em) {
   .medium-flex-dir-row {
@@ -1362,7 +1365,10 @@ pre {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
-            flex: 0 0 auto; } }
+            flex: 0 0 auto; }
+  .large-expand,
+  .large-shrink {
+    max-width: none; } }
 
 @media print, screen and (min-width: 64em) {
   .large-flex-dir-row {
