@@ -106,7 +106,7 @@ $global-text-direction: ltr !default;
 $global-flexbox: true !default;
 
 /// Enabled responsive breakpoints for prototypes if applicable
-// @type Boolean
+/// @type Boolean
 $global-prototype-breakpoints: false !default;
 
 @if not map-has-key($foundation-palette, primary) {
