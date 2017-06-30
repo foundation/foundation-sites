@@ -23,7 +23,6 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 ```scss
 @import 'foundation';
 
-@include xy-grid;
 @include foundation-xy-grid-classes;
 ```
 
