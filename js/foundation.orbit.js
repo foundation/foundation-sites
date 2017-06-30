@@ -24,6 +24,7 @@ class Orbit extends Plugin {
   /**
   * Creates a new instance of an orbit carousel.
   * @class
+  * @name Orbit
   * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
   * @param {Object} options - Overrides to the default plugin settings.
   */

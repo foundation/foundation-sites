@@ -16,6 +16,7 @@ class Magellan extends Plugin {
   /**
    * Creates a new instance of Magellan.
    * @class
+   * @name Magellan
    * @fires Magellan#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.

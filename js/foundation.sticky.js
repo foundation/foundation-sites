@@ -17,6 +17,7 @@ class Sticky extends Plugin {
   /**
    * Creates a new instance of a sticky thing.
    * @class
+   * @name Sticky
    * @param {jQuery} element - jQuery object to make sticky.
    * @param {Object} options - options object passed when creating the element programmatically.
    */

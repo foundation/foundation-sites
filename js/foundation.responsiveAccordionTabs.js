@@ -33,6 +33,7 @@ class ResponsiveAccordionTabs extends Plugin{
   /**
    * Creates a new instance of a responsive accordion tabs.
    * @class
+   * @name ResponsiveAccordionTabs
    * @fires ResponsiveAccordionTabs#init
    * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
    * @param {Object} options - Overrides to the default plugin settings.

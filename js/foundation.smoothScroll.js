@@ -9,6 +9,14 @@ import { Plugin } from './foundation.plugin';
  * @module foundation.smooth-scroll
  */
 class SmoothScroll extends Plugin {
+  /**
+   * Creates a new instance of SmoothScroll.
+   * @class
+   * @name SmoothScroll
+   * @fires SmoothScroll#init
+   * @param {Object} element - jQuery object to add the trigger to.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, SmoothScroll.defaults, this.$element.data(), options);

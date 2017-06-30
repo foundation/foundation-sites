@@ -12,6 +12,7 @@ class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
+   * @name Abide
    * @fires Abide#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
