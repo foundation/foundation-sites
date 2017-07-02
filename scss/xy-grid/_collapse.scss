@@ -42,7 +42,7 @@
   @else {
 
     @each $value in $gutter-position {
-      margin-#{$value}: 0;
+      padding-#{$value}: 0;
     }
 
     > #{$selector} {
