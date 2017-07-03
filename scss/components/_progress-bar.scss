@@ -19,7 +19,7 @@
   background-color: $progress-meter-background;
 
   @if has-value($progress-radius) {
-    border-radius: $global-radius;
+    border-radius: $progress-radius;
   }
 }
 
