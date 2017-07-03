@@ -294,7 +294,7 @@ Menu items can have icons. Wrap the text of the item in a `<span>`, and then add
 
 ---
 
-Add the class `.icon-top` to the Menu to orient icons above the text.
+Add the classes `.icons` and `.icon-top` to the Menu to orient icons above the text.
 
 <p>
   <a class="" data-open-video="10:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
