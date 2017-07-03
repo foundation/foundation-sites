@@ -48,6 +48,11 @@ $menu-state-back-compat: true !default;
 /// @type Boolean
 $menu-centered-back-compat: true !default;
 
+/// Backward compatibility for using `icon-*` classes without `.icons` classes
+/// But please note that this backward compatibility will be removed in upcoming versions.
+/// @type Boolean
+$menu-icons-back-compat: true !default;
+
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   padding: 0;
@@ -404,6 +409,16 @@ $menu-centered-back-compat: true !default;
     // Icon Base Styles
     &.icons {
       @include menu-icons;
+    }
+
+    // Backward Compatibility for active state
+    @if $menu-icons-back-compat {
+      &.icon-top,
+      &.icon-right,
+      &.icon-bottom,
+      &.icon-left {
+        @include menu-icons;
+      }
     }
 
     // Icon Left
