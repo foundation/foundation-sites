@@ -303,7 +303,7 @@ When using any of the menu icon layout classes, ensure that the icon and the tex
 </p>
 ### Icon Top
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/codetheorist/pen/XgqMMe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BZxWOj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -316,7 +316,7 @@ When using any of the menu icon layout classes, ensure that the icon and the tex
 ```
 ### Icon Right
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/codetheorist/pen/XgqMMe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BZxWOj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -329,7 +329,7 @@ When using any of the menu icon layout classes, ensure that the icon and the tex
 ```
 ### Icon Bottom
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/codetheorist/pen/XgqMMe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BZxWOj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -342,7 +342,7 @@ When using any of the menu icon layout classes, ensure that the icon and the tex
 ```
 ### Icon Left
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/codetheorist/pen/XgqMMe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BZxWOj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
