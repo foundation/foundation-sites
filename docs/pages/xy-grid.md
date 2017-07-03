@@ -203,6 +203,12 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 ---
 
+## Looking for Push Pull
+
+Push and pull are a bit of a hack solution and was only necessary for Float based grids. But for flexbox, this hack is not needed as [source ordering](flexbox-utilities.html#source-ordering) does this with ease.
+
+---
+
 ## Vertical Grids
 
 The XY grid also supports vertical grids. Simply apply `.grid-y` instead of `.grid-x`.
