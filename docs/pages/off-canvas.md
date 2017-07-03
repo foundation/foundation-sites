@@ -333,9 +333,9 @@ If you need a simple bar to contain your hamburger icon/s and toggle the off-can
 
 ---
 
-#### Responsive Off-Canvas (Putting it all together)
+#### Off-Canvas (Putting it all together)
 
-For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, check out this Building Block: http://zurb.com/building-blocks/top-bar-with-off-canvas
+For an example of off-canvas, checkout this top bar with off-canvas navigation and dropdowns for submenus building block: http://foundation.zurb.com/building-blocks/blocks/multilevel-offcanvas-menu.html
 
 ---
 
