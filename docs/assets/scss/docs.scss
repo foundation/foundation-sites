@@ -103,6 +103,21 @@ a#notice {
     .countdown { display: none; }
   }
 }
+a.docs-banner {
+  display: block;
+  overflow: hidden;
+  padding: 0.4rem 0;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #f88327;
+  color: $white;
+  h5 {
+    margin-bottom: 0 !important;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
 /* COUNTDOWN END */
 
 $transition-slow: all 0.5s ease-in-out;
@@ -439,4 +454,8 @@ a[data-open-video] {
     z-index: 1;
     color: #aaa;
   }
+}
+
+.docs-off-canvas-content {
+  padding-top: 130px;
 }
