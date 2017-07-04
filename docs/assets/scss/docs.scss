@@ -459,3 +459,8 @@ a[data-open-video] {
 .docs-off-canvas-content {
   padding-top: 130px;
 }
+
+.training-callout {
+  border-left: 3px solid $primary-color;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.17);
+}

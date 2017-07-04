@@ -9,6 +9,11 @@ tags:
   - block grid
 ---
 
+<div class="callout training-callout">
+  <p>Become a master of the Foundation Grids to create complex layouts faster and with less code. The new XY Grid is the newest and most powerful version. Stay up-to-date with all the new features in Foundation 6.4 and learn how to migrate to the XY Grid with our online webinar training. You’ll also learn all the useful UI components and Foundation JavaScript to really crush your projects.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Get registered for an upcomming Foundation training →</a>
+</div>
+
 ## Basics
 
 Start by adding an element with a class of `.row`. This will create a horizontal block to contain vertical columns. Then add elements with a `.column` class within that row. Specify the widths of each column with the `.small-#`, `.medium-#`, and `.large-#` classes.
@@ -662,6 +667,7 @@ Refer to the Sass documentation below to learn how each mixin works.
   }
 }
 ```
+
 ### Custom Block Grid
 
 Use the `grid-layout()` mixin to create your own block grid.

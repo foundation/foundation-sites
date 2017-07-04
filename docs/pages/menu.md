@@ -12,6 +12,11 @@ tags:
 flex: true
 ---
 
+<div class="callout training-callout">
+  <p>Navigation is one the most crucial part of your site. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+</div>
+
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
 
 ---
@@ -117,7 +122,7 @@ Items can also be set to expand out and take up an even amount of space, with th
 
 ## Vertical Menu
 
-Add the `.vertical` class to a Menu to switch its orientation. 
+Add the `.vertical` class to a Menu to switch its orientation.
 
 <p>
   <a class="" data-open-video="4:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -138,7 +143,7 @@ Add the `.vertical` class to a Menu to switch its orientation.
 
 <br>
 
-Add `align-right` class for making the vertical menu aligned to the right. 
+Add `align-right` class for making the vertical menu aligned to the right.
 
 ```html_example
 <ul class="vertical menu align-right">
@@ -158,7 +163,7 @@ Add `align-center` class for making the vertical menu aligned to the center.
     The above vertically left &amp; right aligned menu are supported in all types of menu's. <br>
     But `align-center` for vertical menu&rsquo;s is only available for basic menu and is not available for dropdown, accordion or a drilldown menu.
   </p>
-</div> 
+</div>
 
 ```html_example
 <ul class="vertical menu align-center">
