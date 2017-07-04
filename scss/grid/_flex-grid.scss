@@ -88,10 +88,6 @@
   @if $columns == expand {
     min-width: 0;
   }
-  // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != expand and $columns != shrink {
-    max-width: grid-column($columns);
-  }
 }
 
 /// Creates a block grid for a flex grid row.
