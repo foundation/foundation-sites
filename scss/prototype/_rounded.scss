@@ -45,7 +45,7 @@ $prototype-border-radius: rem-calc(3) !default;
             @include border-rounded;
           }
           .#{$size}-radius {
-            @include rounded-radius;
+            @include border-radius;
           }
         }
       }
