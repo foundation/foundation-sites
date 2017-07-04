@@ -9,6 +9,12 @@ tags:
   - modal
 ---
 
+
+<div class="callout training-callout">
+  <p>We hope you’re loving these free documentation videos! If you’d like to really accelerate your learning and master the world of front-end development, our Foundation online webinar training is the answer.</p>
+  <a href="http://zurb.com/university/courses" target="_blank">See the upcoming Foundation trainings →</a>
+</div>
+
 ## Basics
 
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to video to an entire grid.

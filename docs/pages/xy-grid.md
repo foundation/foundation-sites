@@ -4,6 +4,11 @@ description: A fully reworked new grid system in v6.4 which has all the variety 
 sass: scss/xy-grid/*.scss
 ---
 
+<div class="callout training-callout">
+  <p>The XY Grid is huge advancement in Grids. Stay up-to-date with all the new features in Foundation 6.4 with our online webinar training. You’ll come away knowing the ins and outs of the XY Grid to create complex layouts faster and with less code. Not to mention all the useful UI components and Foundation JavaScript you’ll learn. You’ll make your coworkers jealous.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Don’t miss out on the upcoming Foundation trainings →</a>
+</div>
+
 ## XY Grid Basics
 
 The XY grid works very similarly to the standard float grid, but includes a number of useful features only possible with Flexbox, like horizontal and vertical alignment, automatic sizing and a full vertical grid.

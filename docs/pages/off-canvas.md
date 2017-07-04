@@ -15,6 +15,11 @@ tags:
 flex: true
 ---
 
+<div class="callout training-callout">
+  <p>Off-canvas layouts are common and useful for mobile and desktop layouts. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+</div>
+
 <div class="primary callout">
   <p>Good news! We've updated Off-canvas to offer more and better functionality. Another bonus is the markup is simplified. This new version applies to version 6.3+. We work hard to avoid breaking changes, so any markup updates are listed in the <a href="#migrating-from-versions-prior-to-v6-3">migration section</a> of this page.</p>
 </div>
