@@ -15,9 +15,6 @@
 // Rotate Mixin
 @import 'rotate';
 
-// Typescale
-@import 'typescale';
-
 // Text utilities
 @import 'text-utilities';
 
@@ -70,7 +67,6 @@
 @import 'spacing';
 
 @mixin foundation-prototype-classes {
-  @include foundation-prototype-typescale;
   @include foundation-prototype-text-utilities;
   @include foundation-prototype-text-transformation;
   @include foundation-prototype-text-decoration;
