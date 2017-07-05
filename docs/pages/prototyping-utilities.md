@@ -274,37 +274,6 @@ You can use font styling to style your text. You can change the font styling by 
 
 ---
 
-## Typescale
-
-Adjust font-size by overriding an element’s default size. This can be useful to size a `<p>` or `<h1>` through `<h6>` using Foundation's existing header sizes.
-
-<div class="callout primary">
-  <p><strong>Especially useful because:</strong> It's important to avoid skipping heading levels when structuring your document, as it confuses screen readers. For example, after using an <code>&lt;h2&gt;</code> in your code, the next heading used should be either <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.</p>
-</div>
-
-For headers:
-
-```html
-<h2 class="h1">Lorem Ipsum Dolor</h2>
-<h3 class="h2">Lorem Ipsum Dolor</h3>
-<h4 class="h3">Lorem Ipsum Dolor</h4>
-<h5 class="h4">Lorem Ipsum Dolor</h5>
-<h6 class="h5">Lorem Ipsum Dolor</h6>
-```
-
-For text:
-
-```html_example
-<p class="h1">Lorem Ipsum Dolor</p>
-<p class="h2">Lorem Ipsum Dolor</p>
-<p class="h3">Lorem Ipsum Dolor</p>
-<p class="h4">Lorem Ipsum Dolor</p>
-<p class="h5">Lorem Ipsum Dolor</p>
-<p class="h6">Lorem Ipsum Dolor</p>
-```
-
----
-
 ## List Styling
 
 <div class="primary callout">
