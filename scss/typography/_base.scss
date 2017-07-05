@@ -95,6 +95,10 @@ $header-styles: (
 /// @type String
 $header-text-rendering: optimizeLegibility !default;
 
+/// Enable/disable the typescale utility
+/// @type Boolean
+$header-typescale: false;
+
 /// Font size of `<small>` elements.
 /// @type Number
 $small-font-size: 80% !default;
@@ -361,6 +365,12 @@ $abbr-underline: 1px dotted $black !default;
             margin-bottom: rem-calc(map-get($header-defs, mb));
           } @else if $size == $-zf-zero-breakpoint {
             margin-bottom: rem-calc($header-margin-bottom);
+          }
+        }
+        
+        @if ($header-typescale) {
+          .#{$header} {
+            @extend #{$header};
           }
         }
       }
