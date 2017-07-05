@@ -95,10 +95,6 @@ $header-styles: (
 /// @type String
 $header-text-rendering: optimizeLegibility !default;
 
-/// Enable/disable the typescale utility
-/// @type Boolean
-$header-typescale: false;
-
 /// Font size of `<small>` elements.
 /// @type Number
 $small-font-size: 80% !default;
@@ -310,12 +306,12 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Headings
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
     font-family: $header-font-family;
     font-style: $header-font-style;
     font-weight: $header-font-weight;
@@ -333,7 +329,7 @@ $abbr-underline: 1px dotted $black !default;
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
         $font-size-temp: 1rem;
-        #{$header} {
+        #{$header}, .#{$header} {
 
           @if map-has-key($header-defs, font-size) {
             $font-size-temp: rem-calc(map-get($header-defs, font-size));
@@ -365,12 +361,6 @@ $abbr-underline: 1px dotted $black !default;
             margin-bottom: rem-calc(map-get($header-defs, mb));
           } @else if $size == $-zf-zero-breakpoint {
             margin-bottom: rem-calc($header-margin-bottom);
-          }
-        }
-        
-        @if ($header-typescale) {
-          .#{$header} {
-            @extend #{$header};
           }
         }
       }
