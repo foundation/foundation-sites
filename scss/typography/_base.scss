@@ -306,12 +306,12 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Headings
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
     font-family: $header-font-family;
     font-style: $header-font-style;
     font-weight: $header-font-weight;
@@ -329,7 +329,7 @@ $abbr-underline: 1px dotted $black !default;
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
         $font-size-temp: 1rem;
-        #{$header} {
+        #{$header}, .#{$header} {
 
           @if map-has-key($header-defs, font-size) {
             $font-size-temp: rem-calc(map-get($header-defs, font-size));
