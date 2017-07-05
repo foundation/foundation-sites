@@ -106,6 +106,7 @@ $dropdown-menu-item-background-active: transparent !default;
       > li.is-dropdown-submenu-parent > a::after {
         @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
         #{$global-right}: 5px;
+        #{$global-left}: auto;
         margin-top: -1 * ($dropdownmenu-arrow-size / 2);
       }
     }
@@ -206,6 +207,7 @@ $dropdown-menu-item-background-active: transparent !default;
       position: absolute;
       top: 50%;
       #{$global-right}: 5px;
+      #{$global-left}: auto;
       margin-top: -1 * $dropdownmenu-arrow-size;
     }
 
