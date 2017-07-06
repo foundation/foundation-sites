@@ -76,7 +76,30 @@ You can instead import only the specific utility classes that you need. To make 
 @include foundation-prototype-spacing;
 ```
 
-Looking for more customization including **responsive breakpoints?** Click here for the [Sass Reference](#sass-reference)
+Looking for more customization? Click here for the [Sass Reference](#sass-reference)
+
+---
+
+## Responsive breakpoints
+
+<div class="alert callout">
+  <p>Responsive breakpoints is disabled by default.</p>
+</div>
+
+These prototype classes also have an optional mobile first responsive classes  so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint. <br>
+You can easily enable these classes by setting `$global-prototype-breakpoints` to `true`.
+
+```html
+<p class="medium-text-uppercase">This text will be uppercase for medium and up.</p>
+<p class="large-text-lowercase">This text will be lowercase for large breakpoint.</p>
+```
+
+You can also customise things by choosing to add responsive breakpoints only for specific prototype helpers that you would need as responsive classes. <br>
+For example, text transformation classes have a breakpoint variable `$prototype-transformation-breakpoints` which is set to `$global-prototype-breakpoints` which is set to `false` by default. For enabling responsive breakpoints for text transformation classes, simply set: 
+
+```scss
+$prototype-transformation-breakpoints: true;
+``` 
 
 ---
 
@@ -742,23 +765,6 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 ```
 
 Note: Combining `overflow: hidden` in either the X or Y direction with the `overflow: visible` in the opposite direction does not work as expected in CSS spec. [More info](https://stackoverflow.com/questions/6421966/css-overflow-x-visible-and-overflow-y-hidden-causing-scrollbar-issue#answer-6433475)
-
----
-
-## Responsive breakpoints
-
-For applicable classes, if you prefix a breakpoint,
-the effect will be effective within that breakpoint.
-
-<div class="primary callout">
-  <p>Responsive breakpoints is disabled by default. If you want to enable it, please set <code>$global-prototype-breakpoints</code> to <code>true</code>.</p>
-</div>
-
-
-```html_example
-<p class="medium-text-line-through">text-line-through effect when medium breakpoint.</p>
-<p class="large-text-line-through">text-line-through effect when large breakpoint.</p>
-```
 
 ---
 
