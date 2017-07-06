@@ -745,6 +745,23 @@ Note: Combining `overflow: hidden` in either the X or Y direction with the `over
 
 ---
 
+## Responsive breakpoints
+
+For applicable classes, if you prefix a breakpoint,
+the effect will be effective within that breakpoint.
+
+<div class="primary callout">
+  <p>Responsive breakpoints is disabled by default. If you want to enable it, please set <code>$global-prototype-breakpoints</code> to <code>true</code>.</p>
+</div>
+
+
+```html_example
+<p class="medium-text-line-through">text-line-through effect when medium breakpoint.</p>
+<p class="large-text-line-through">text-line-through effect when large breakpoint.</p>
+```
+
+---
+
 ## Sass Mixin Helpers
 
 We also provides some extra utility mixins that you can use for your next prototype project.
