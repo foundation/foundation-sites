@@ -76,7 +76,30 @@ You can instead import only the specific utility classes that you need. To make 
 @include foundation-prototype-spacing;
 ```
 
-Looking for more customization including **responsive breakpoints?** Click here for the [Sass Reference](#sass-reference)
+Looking for more customization? Click here for the [Sass Reference](#sass-reference)
+
+---
+
+## Responsive breakpoints
+
+<div class="alert callout">
+  <p>Responsive breakpoints is disabled by default.</p>
+</div>
+
+These prototype classes also have an optional mobile first responsive classes  so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint. <br>
+You can easily enable these classes by setting `$global-prototype-breakpoints` to `true`.
+
+```html
+<p class="medium-text-uppercase">This text will be uppercase for medium and up.</p>
+<p class="large-text-lowercase">This text will be lowercase for large breakpoint.</p>
+```
+
+You can also customise things by choosing to add responsive breakpoints only for specific prototype helpers that you would need as responsive classes. <br>
+For example, text transformation classes have a breakpoint variable `$prototype-transformation-breakpoints` which is set to `$global-prototype-breakpoints` which is set to `false` by default. For enabling responsive breakpoints for text transformation classes, simply set: 
+
+```scss
+$prototype-transformation-breakpoints: true;
+``` 
 
 ---
 
