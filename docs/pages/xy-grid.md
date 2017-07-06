@@ -190,6 +190,25 @@ There are times when you won't want each media query to be collapsed. In this ca
 
 ---
 
+## Block Grids
+
+To define cell widths at a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x` or `grid-y`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
+
+<div class="primary callout">This example uses padding grid but this can be used with margin grid too.</div>
+
+```html_example
+<div class="grid-x grid-padding-x small-up-2 medium-up-4 large-up-6">
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+</div>
+```
+
+---
+
 ## Offsets
 
 Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to a grid.
