@@ -200,6 +200,12 @@ class Slider extends Plugin {
 
     var isDbl = this.options.doubleSided;
 
+    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
+    //for click and drag events, it's weird due to the scale(-1, 1) css property
+    if (this.options.vertical && !noInvert) {
+      location = this.options.end - location;
+    }
+
     if (isDbl) { //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if (this.handles.index($hndl) === 0) {
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
@@ -208,12 +214,6 @@ class Slider extends Plugin {
         var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
         location = location <= h1Val ? h1Val + this.options.step : location;
       }
-    }
-
-    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
-    //for click and drag events, it's weird due to the scale(-1, 1) css property
-    if (this.options.vertical && !noInvert) {
-      location = this.options.end - location;
     }
 
     var _this = this,
