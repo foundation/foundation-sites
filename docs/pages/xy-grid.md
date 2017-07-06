@@ -190,11 +190,28 @@ There are times when you won't want each media query to be collapsed. In this ca
 
 ---
 
+## Offsets
+
+Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to a grid.
+
+```html_example
+<div class="grid-x grid-margin-x">
+  <div class="small-4 large-offset-2 cell">Offset 2 on large</div>
+  <div class="small-4 cell">4 cells</div>
+</div>
+```
+
+---
+
 ## Block Grids
 
-To define cell widths at a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x` or `grid-y`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
+To define cell widths within a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x` or `grid-y`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
 
 <div class="primary callout">This example uses padding grid but this can be used with margin grid too.</div>
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/PjBLxE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x small-up-2 medium-up-4 large-up-6">
@@ -204,19 +221,6 @@ To define cell widths at a direction-level, instead of the individual cell level
   <div class="cell">cell</div>
   <div class="cell">cell</div>
   <div class="cell">cell</div>
-</div>
-```
-
----
-
-## Offsets
-
-Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to a grid.
-
-```html_example
-<div class="grid-x grid-margin-x">
-  <div class="small-4 large-offset-2 cell">Offset 2 on large</div>
-  <div class="small-4 cell">4 cells</div>
 </div>
 ```
 
