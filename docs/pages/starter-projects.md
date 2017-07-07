@@ -70,11 +70,9 @@ The CSS is output in the `nested` style, which is readable like normal CSS. A so
 
 ### JavaScript Compilation
 
-All JavaScript files in the `src/assets/js` folder, along with Foundation and its dependencies, are bundled into one file called `app.js`. The files are bundled in this order:
+All JavaScript files in the `src/assets/js` folder, along with Foundation and its dependencies, are bundled into one file called `app.js`. The files are imported using module dependency with [webpack](https://webpack.js.org/) as the module bundler.
 
-- Foundation's dependencies (including jQuery)
-- All files in `src/assets/js`
-- `app.js`
+If you're unfamiliar with modules and module bundling, check out [this resource for node style require/exports](http://openmymind.net/2012/2/3/Node-Require-and-Exports/) and [this resource to understand ES6 modules](http://exploringjs.com/es6/ch_modules.html)
 
 A source map is created that maps back to the original files. By default, the bundled `app.js` is uncompressed. When building for production, the file is run through [UglifyJS](https://github.com/mishoo/UglifyJS) for compression.
 
