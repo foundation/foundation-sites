@@ -464,3 +464,12 @@ a[data-open-video] {
   border-left: 3px solid $primary-color;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.17);
 }
+
+.hyperlink {
+  text-decoration: underline;
+  color: $white;
+  transition: color 0.15s ease;
+}
+
+
+
