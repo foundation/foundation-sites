@@ -13,7 +13,7 @@ There are two pieces to a tabbed interface: the tabs themselves, and the content
 ```html
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-  <li class="tabs-title"><a data-tabs-target="#panel2" href="#/tabs/panel2">Tab 2</a></li>
+  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
 </ul>
 ```
 
