@@ -58,6 +58,8 @@ class Dropdown extends Positionable {
       'aria-expanded': false
     });
 
+    this._setCurrentAnchor(this.$anchors.first());
+
     if(this.options.parentClass){
       this.$parent = this.$element.parents('.' + this.options.parentClass);
     }else{
@@ -68,7 +70,7 @@ class Dropdown extends Positionable {
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': this.$anchors[0].id || GetYoDigits(6, 'dd-anchor')
+      'aria-labelledby': this.$currentAnchor.id || GetYoDigits(6, 'dd-anchor')
     });
     super._init();
     this._events();
@@ -86,7 +88,7 @@ class Dropdown extends Positionable {
 
   _getDefaultAlignment() {
     // handle legacy float approach
-    var horizontalPosition = /float-(\S+)/.exec(this.$anchors[0].className);
+    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.className);
     if(horizontalPosition) {
       return horizontalPosition[1];
     }
@@ -103,19 +105,18 @@ class Dropdown extends Positionable {
    * @private
    */
   _setPosition() {
-    super._setPosition(this.$anchors.filter('[data-is-primary]').first(), this.$element, this.$parent);
+    super._setPosition(this.$currentAnchor, this.$element, this.$parent);
   }
 
   /**
-   * Make it a primary anchor.
-   * primary anchor as the reference for the position of Dropdown panes.
+   * Make it a current anchor.
+   * Current anchor as the reference for the position of Dropdown panes.
    * @param {HTML} el - DOM element of the anchor.
    * @function
    * @private
    */
-  _setPrimaryAnchor(el) {
-    this.$anchors.removeAttr('data-is-primary');
-    $(el).attr('data-is-primary', true);
+  _setCurrentAnchor(el) {
+    this.$currentAnchor = $(el);
   }
 
   /**
@@ -133,12 +134,12 @@ class Dropdown extends Positionable {
     });
 
     this.$anchors.off('click.zf.trigger')
-      .on('click.zf.trigger', function() { _this._setPrimaryAnchor(this); });
+      .on('click.zf.trigger', function() { _this._setCurrentAnchor(this); });
 
     if(this.options.hover){
       this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
       .on('mouseenter.zf.dropdown', function(){
-        _this._setPrimaryAnchor(this);
+        _this._setCurrentAnchor(this);
 
         var bodyData = $('body').data();
         if(typeof(bodyData.whatinput) === 'undefined' || bodyData.whatinput === 'mouse') {
