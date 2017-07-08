@@ -18,6 +18,22 @@ describe('Abide', function() {
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
     });
+
+    it('the options are recursively merged', function() {
+      $html = $('<form data-abide novalidate></form>').appendTo('body');
+
+      var options = {
+        validators: {
+          notEqualTo: function (el, required, parent) {
+            return $(`#${el.attr('data-equalto')}`).val() !== el.val();
+          }
+        }
+      };
+
+      plugin = new Foundation.Abide($html, options);
+
+      plugin.options.validators.should.includes.keys('equalTo', 'notEqualTo');
+    });
   });
 
   describe('validateInput()', function() {

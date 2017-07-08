@@ -19,7 +19,7 @@ class Abide extends Plugin {
    */
   _setup(element, options = {}) {
     this.$element = element;
-    this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
+    this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
 
     this.className = 'Abide'; // ie9 back compat
     this._init();
