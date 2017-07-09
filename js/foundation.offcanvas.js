@@ -33,6 +33,7 @@ class OffCanvas extends Plugin {
     this.position = 'left';
     this.$content = $();
     this.nested = !!(this.options.nested);
+    this.$sticky = $();
 
     // Defines the CSS transition/position classes of the off-canvas content container.
     $(['push', 'overlap']).each((index, val) => {
@@ -127,6 +128,14 @@ class OffCanvas extends Plugin {
       this.$element.css('transition-duration', this.options.transitionTime);
     }
 
+    // Find fixed elements that should stay fixed while off-canvas is opened
+    this.$sticky = $('[data-off-canvas-sticky]');
+    if (this.$sticky.length > 0 && this.options.transition === 'push') {
+      // If there's at least one match force contentScroll:false because the absolute top value doesn't get recalculated on scroll
+      // Limit to push transition since there's no transform scope for overlap
+      this.options.contentScroll = false;
+    }
+
     // Initally remove all transition/position CSS classes from off-canvas content container.
     this._removeContentClasses();
   }
@@ -194,6 +203,48 @@ class OffCanvas extends Plugin {
     if (hasReveal === true) {
       this.$content.addClass(`has-reveal-${this.position}`);
     }
+  }
+
+  /**
+   * Preserves the fixed behavior of sticky elements on opening an off-canvas with push transition.
+   * Since the off-canvas container has got a transform scope in such a case, it is done by calculating position absolute values.
+   * @private
+   */
+  _fixStickyElements() {
+    var _this = this;
+    this.$sticky.each(function(){
+
+      // If sticky element is currently fixed, adjust its top value to match absolute position due to transform scope
+      // Limit to push transition because postion:fixed works without problems for overlap (no transform scope)
+      if ($(this).css('position') === 'fixed' && _this.options.transition === 'push') {
+
+        let topVal = parseInt($(this).css('top'));
+
+        // Save current inline styling to restore it if undoing the absolute fixing
+        $(this).data('offCanvasSticky', { top: topVal });
+
+        let absoluteTopVal = $(document).scrollTop() + topVal;
+
+        $(this).css({ top: `${absoluteTopVal}px`, width: '100%', transition: 'none' });
+      }
+    });
+  }
+
+  /**
+   * Restores the original fixed styling of sticky elements after having closed an off-canvas that got pseudo fixed beforehand.
+   * This reverts the changes of _fixStickyElements()
+   * @private
+   */
+  _unfixStickyElements() {
+    this.$sticky.each(function(){
+      
+      var stickyData = $(this).data('offCanvasSticky');
+
+      // If sticky element has got data object with prior values (meaning it was originally fixed) restore these values once off-canvas is closed
+      if (typeof stickyData === 'object') {
+        $(this).css({ top: `${stickyData.top}px`, width: '', transition: '' }).data('offCanvasSticky', '');
+      }
+    });
   }
 
   /**
@@ -336,6 +387,7 @@ class OffCanvas extends Plugin {
     }
 
     this._addContentClasses();
+    this._fixStickyElements();
   }
 
   /**
@@ -347,25 +399,15 @@ class OffCanvas extends Plugin {
   close(cb) {
     if (!this.$element.hasClass('is-open') || this.isRevealed) { return; }
 
-    var _this = this;
-
+    /**
+     * Fires when the off-canvas menu closes.
+     * @event OffCanvas#closed
+     */
     this.$element.removeClass('is-open');
-
-    this.$element.attr('aria-hidden', 'true')
-      /**
-       * Fires when the off-canvas menu opens.
-       * @event OffCanvas#closed
-       */
-        .trigger('closed.zf.offcanvas');
+    this.$element.attr('aria-hidden', 'true');
+    this.$element.trigger('closed.zf.offcanvas');
 
     this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
-
-    // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
-    if (this.options.contentScroll === false) {
-      $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
-      this.$element.off('touchstart', this._recordScrollable);
-      this.$element.off('touchmove', this._stopScrollPropagation);
-    }
 
     if (this.options.contentOverlay === true) {
       this.$overlay.removeClass('is-visible');
@@ -376,16 +418,32 @@ class OffCanvas extends Plugin {
     }
 
     this.$triggers.attr('aria-expanded', 'false');
+    
 
-    if (this.options.trapFocus === true) {
-      this.$content.removeAttr('tabindex');
-      Keyboard.releaseFocus(this.$element);
-    }
+    // Listen to transitionEnd: add class, re-enable scrolling and release focus when done.
+    this.$element.one(transitionend(this.$element), (e) => {
 
-    // Listen to transitionEnd and add class when done.
-    this.$element.one(transitionend(this.$element), function(e) {
-      _this.$element.addClass('is-closed');
-      _this._removeContentClasses();
+      /**
+       * Fires when the off-canvas menu close transition is done.
+       * @event OffCanvas#closedEnd
+       */
+      this.$element.addClass('is-closed');
+      this._removeContentClasses();
+      this._unfixStickyElements();
+
+      // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
+      if (this.options.contentScroll === false) {
+        $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
+        this.$element.off('touchstart', this._recordScrollable);
+        this.$element.off('touchmove', this._stopScrollPropagation);
+      }
+
+      if (this.options.trapFocus === true) {
+        this.$content.removeAttr('tabindex');
+        Keyboard.releaseFocus(this.$element);
+      }
+
+      this.$element.trigger('closedEnd.zf.offcanvas');
     });
   }
 
