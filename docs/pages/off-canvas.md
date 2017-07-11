@@ -392,6 +392,25 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 
 ---
 
+## Sticky
+
+By default an element with `position: fixed` disappears when opening an off-canvas with push transition. The reason for this is the transform property of the off-canvas content container what causes a `position: absolute` behavior for the fixed element.
+
+The good news: we've added the possibility to preserve the fixed appearance!
+You only have to add the attribute `data-off-canvas-sticky` to every sticky / fixed element that is supposed to remain fixed after opening the off-canvas.
+
+<div class="callout warning">
+  Please note that using this attribute will force the option `contentScroll: false`
+</div>
+
+```html
+<div class="top-bar sticky" data-sticky data-off-canvas-sticky>
+  Sticky top bar that will remain sticky after having opened an off-canvas
+</div>
+```
+
+---
+
 ## Migrating from versions prior to v6.4
 
 If you're upgrading from v6.3 there's nothing to do unless you haven't changed the default value of `$offcanvas-shadow`. Prior to v6.4 this variable was used for both, overlap and push off-canvas elements. Now it's only used for the overlap element whereas the push element uses two new variables:
