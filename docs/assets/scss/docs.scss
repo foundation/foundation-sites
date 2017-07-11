@@ -110,7 +110,7 @@ a.docs-banner {
   position: relative;
   width: 100%;
   height: auto;
-  background: #f88327;
+  background: $alert-color;
   color: $white;
   h5 {
     margin-bottom: 0 !important;
@@ -472,4 +472,19 @@ a[data-open-video] {
 }
 
 
+a.docs-banner {
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  h5 {
+    opacity: 0.8;
+    font-size: 1rem;
+  }
+}
+
+.welcome-hero,
+.docs-nav {
+  margin-top: 30px;
+}
