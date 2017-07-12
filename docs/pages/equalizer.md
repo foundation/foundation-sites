@@ -125,7 +125,7 @@ If you have a gallery of items that wrap multiple times, Equalizer can be config
 <div class="row small-up-1 medium-up-2 large-up-4" data-equalizer data-equalize-by-row="true">
   <div class="column">
     <div class="callout" data-equalizer-watch>
-      <img src="//placehold.it/180x200" class="thumbnail" alt="">
+      <img src="https://placehold.it/180x200" class="thumbnail" alt="">
       <p>Lorem ipsum dolor sit amet<p>
     </div>
   </div>
@@ -141,7 +141,7 @@ If you have a gallery of items that wrap multiple times, Equalizer can be config
   </div>
   <div class="column">
     <div class="callout" data-equalizer-watch>
-      <img src="//placehold.it/180x180" class="thumbnail" alt="">
+      <img src="https://placehold.it/180x180" class="thumbnail" alt="">
     </div>
   </div>
   <div class="column">
@@ -156,12 +156,12 @@ If you have a gallery of items that wrap multiple times, Equalizer can be config
   </div>
   <div class="column">
     <div class="callout" data-equalizer-watch>
-      <img src="//placehold.it/180x400" class="thumbnail" alt="">
+      <img src="https://placehold.it/180x400" class="thumbnail" alt="">
     </div>
   </div>
   <div class="column">
     <div class="callout" data-equalizer-watch>
-      <img src="//placehold.it/180x200" class="thumbnail" alt="">
+      <img src="https://placehold.it/180x200" class="thumbnail" alt="">
       <p>Lorem ipsum dolor sit amet<p>
     </div>
   </div>
@@ -177,22 +177,7 @@ If you have a gallery of items that wrap multiple times, Equalizer can be config
   </div>
   <div class="column">
     <div class="callout" data-equalizer-watch>
-      <img src="//placehold.it/180x180" class="thumbnail" alt="">
-    </div>
-  </div>
-  <div class="column">
-    <div class="callout" data-equalizer-watch>
-      <p>Lorem ipsum dolor sit amet<p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="callout" data-equalizer-watch>
-      <p>Lorem ipsum dolor sit amet<p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="callout" data-equalizer-watch>
-      <p>Lorem ipsum dolor sit amet<p>
+      <img src="https://placehold.it/180x180" class="thumbnail" alt="">
     </div>
   </div>
   <div class="column">
@@ -212,7 +197,22 @@ If you have a gallery of items that wrap multiple times, Equalizer can be config
   </div>
   <div class="column">
     <div class="callout" data-equalizer-watch>
-      <img src="//placehold.it/180x400" class="thumbnail" alt="">
+      <p>Lorem ipsum dolor sit amet<p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout" data-equalizer-watch>
+      <p>Lorem ipsum dolor sit amet<p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout" data-equalizer-watch>
+      <p>Lorem ipsum dolor sit amet<p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="callout" data-equalizer-watch>
+      <img src="https://placehold.it/180x400" class="thumbnail" alt="">
     </div>
   </div>
 </div>

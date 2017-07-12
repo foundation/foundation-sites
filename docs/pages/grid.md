@@ -536,22 +536,22 @@ Block grids are a shorthand way to create equally-sized columns. Add a class of 
 ```html_example
 <div class="row small-up-2 medium-up-3 large-up-4">
   <div class="column column-block">
-    <img src="//placehold.it/600x600" class="thumbnail" alt="">
+    <img src="https://placehold.it/600x600" class="thumbnail" alt="">
   </div>
   <div class="column column-block">
-    <img src="//placehold.it/600x600" class="thumbnail" alt="">
+    <img src="https://placehold.it/600x600" class="thumbnail" alt="">
   </div>
   <div class="column column-block">
-    <img src="//placehold.it/600x600" class="thumbnail" alt="">
+    <img src="https://placehold.it/600x600" class="thumbnail" alt="">
   </div>
   <div class="column column-block">
-    <img src="//placehold.it/600x600" class="thumbnail" alt="">
+    <img src="https://placehold.it/600x600" class="thumbnail" alt="">
   </div>
   <div class="column column-block">
-    <img src="//placehold.it/600x600" class="thumbnail" alt="">
+    <img src="https://placehold.it/600x600" class="thumbnail" alt="">
   </div>
   <div class="column column-block">
-    <img src="//placehold.it/600x600" class="thumbnail" alt="">
+    <img src="https://placehold.it/600x600" class="thumbnail" alt="">
   </div>
 </div>
 ```
