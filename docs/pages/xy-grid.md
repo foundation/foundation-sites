@@ -49,7 +49,7 @@ These are:
 
 ## Basics
 
-The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Without [defining a gutter type](#gutters) the cells with simply split up the space without any gutters.
+The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Without [defining a gutter type](#gutters) the cells will simply split up the space without any gutters.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gRYeMQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
