@@ -12,14 +12,14 @@
   // Grid Container
   .grid-container {
     @include xy-grid-container;
-  }
 
-  .grid-container-fluid {
-    @include xy-grid-container(100%);
-  }
+    &.fluid {
+      @include xy-grid-container(100%);
+    }
 
-  .grid-container-full {
-    @include xy-grid-container(100%, 0);
+    &.full {
+      @include xy-grid-container(100%, 0);
+    }
   }
 
   // Base grid styles
@@ -168,10 +168,9 @@
       @include xy-gutters($negative: true);
     }
 
-    // Negative margin for grids within `grid-container/grid-container-fluid`
+    // Negative margin for grids within `grid-container/grid-container.fluid`
     // This allows margin and padding grids to line up with eachother
-    .grid-container > &,
-    .grid-container-fluid > & {
+    .grid-container:not(.full) > & {
       @include xy-gutters($negative: true);
     }
 
