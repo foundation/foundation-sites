@@ -2,13 +2,15 @@
 
 Although Foundation is maintained by ZURB, it’s also a community effort. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
 
-A select group of our contributors have been dubbed *Yetinauts*. They have direct write access to the codebase and support the core Foundation team on the development of the framework. Are you interested in making your mark on the Foundation framework? Whether you’re just submitting bugs or helping us write new features, there are many ways to contribute to Foundation.
+Whether you’re just submitting bugs or helping us write new features, there are many ways to contribute to Foundation. [Join us on Slack](https://zurb-foundation-slack-invites.herokuapp.com/) to be the part of the community team. All of you are invited.
+
+A select group of our contributors have been dubbed *Yetinauts*. They have direct write access to the codebase and are the core Foundation development team who develop and maintain the framework with the Zurb Team. Are you interested in making your mark on the Foundation framework? Its not that difficult that it may seem like, we are looking for fresh yetinauts who are eager to contribute and work hard on the project
 
 ## Terms
 
 - The **community** is anyone commenting on issues or opening pull requests. That includes you!
-- A **Yetinaut** is anyone with write access to the repository.
-- The **Core Team** is anyone on the Foundation Team.
+- A **Yetinaut** is anyone with write access to the repository. Frankly they are the one who run foundation. Next might be you?
+- The **Zurb Team** are simply Zurbians.
 
 ## Issues
 
@@ -37,7 +39,7 @@ If you aren't sure how a feature should be implemented, we recommend checking ou
 
 ## Becoming a Yetinaut
 
-Want to join our crack team of Yetinauts? The Core Team is inviting active community members to become Yetinauts  on a case-by-case basis. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
+Want to join our crack team of Yetinauts? The Core Team is inviting active community members to become Yetinauts on a case-by-case basis. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
 
 If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
 
@@ -48,8 +50,11 @@ Contributors are expected to:
 - Help in reviewing pull requests from users, contributors, and the Core Team.
 - Follow the guidelines outlined in this document.
 
+Please note that folks are expected to contribute in good numbers even after they became the part of the core foundation development team. We understand that everyone has there jobs and its not easy to contribute daily but we wont allow if you show up on an highly occasional basis.  
+
 Here are some example contributions from some of our awesome team members:
 
+- Brettsmason developed the foundation's very own new Grid, the XY Grid
 - Colin Marshall converted our Sass unit tests to a newer test runner called True.
 - Andy Cochran reworked the CSS for button groups to fix issues with stacking and border radii.
 - designerno1 developed the Equalize by Row feature for the Equalizer plugin.
