@@ -344,9 +344,9 @@ For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, c
 
 ---
 
-## In-Canvas
+## In-Canvas to Off-Canvas
 
-If you want an element to be off-canvas only for specific sceen sizes and then move in-canvas you can use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. Compared to the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as an usual page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. This differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
 
 ```html_example
 <button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
