@@ -23,6 +23,7 @@ class Magellan extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
+    this.className = 'Magellan'; // ie9 back compat
 
     this._init();
     this.calcPoints();

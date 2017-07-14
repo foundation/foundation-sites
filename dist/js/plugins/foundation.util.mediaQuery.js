@@ -170,7 +170,7 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-};
+}();
 
 var MediaQuery = {
   queries: [],

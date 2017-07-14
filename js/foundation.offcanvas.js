@@ -25,6 +25,7 @@ class OffCanvas extends Plugin {
    * @param {Object} options - Overrides to the default plugin settings.
    */
   _setup(element, options) {
+    this.className = 'OffCanvas'; // ie9 back compat
     this.$element = element;
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
     this.contentClasses = { base: [], reveal: [] };
@@ -66,7 +67,7 @@ class OffCanvas extends Plugin {
     var id = this.$element.attr('id');
 
     this.$element.attr('aria-hidden', 'true');
-      
+
     // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
     if (this.options.contentId) {
       this.$content = $('#'+this.options.contentId);
@@ -100,7 +101,7 @@ class OffCanvas extends Plugin {
       .find('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
       .attr('aria-expanded', 'false')
       .attr('aria-controls', id);
-    
+
     // Get position by checking for related CSS class
     this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position;
 
@@ -349,7 +350,7 @@ class OffCanvas extends Plugin {
     this.$triggers.attr('aria-expanded', 'true');
     this.$element.attr('aria-hidden', 'false')
         .trigger('opened.zf.offcanvas');
-    
+
     this.$content.addClass('is-open-' + this.position);
 
     // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
@@ -510,7 +511,7 @@ OffCanvas.defaults = {
   contentOverlay: true,
 
   /**
-   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken. 
+   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
    * @option
    * @type {?string}
    * @default null

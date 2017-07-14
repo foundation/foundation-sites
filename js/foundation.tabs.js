@@ -22,6 +22,7 @@ class Tabs extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
+    this.className = 'Tabs'; // ie9 back compat
 
     this._init();
     Keyboard.register('Tabs', {

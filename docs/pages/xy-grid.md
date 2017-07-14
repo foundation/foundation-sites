@@ -102,6 +102,21 @@ The grid defaults to the full width of its container. In order to contain the gr
   </div>
 </div>
 ```
+
+By default, the container will be centered and have a max-width equal to your
+`$max-width` setting (1200px by default), and be flush to the screen for widths
+below that. If you want to add padding below the `$max-width`, simply add the
+`.grid-container-padded` class to your grid container.
+
+```html
+<div class="grid-container grid-container-padded">
+  <div class="grid-x">
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+  </div>
+</div>
+```
 ---
 
 ## Auto Sizing
@@ -366,11 +381,11 @@ We also have a shorthand option for the above which outputs the same CSS:
 ### Custom Block Grid
 
 Use the `xy-grid-layout()` mixin to create your own block grid.
-By default the mixin takes 3 parameters:
+By default the mixin takes 2 parameters:
 - number of columns
 - child selector
 
-Refer to the Sass documentation below for the full list of arguements.
+Refer to the Sass documentation [below](#xy-grid-layout) for the full list of arguments.
 
 Here's an example:
 

@@ -18,7 +18,11 @@ module.exports = function(config, modules) {
   var dir = path.resolve(__dirname, '../../js/');
   var entry = "import $ from 'jquery';\n" +
               "import { Foundation } from '" + dir + "/foundation.core';\n" +
-              "Foundation.addToJQuery($);\n";
+              "Foundation.addToJquery($);\n" +
+              "import { MediaQuery } from '" + dir + "/foundation.util.mediaQuery';\n" +
+              "Foundation.MediaQuery = MediaQuery;\n";
+
+  // last 2 pieces work around https://github.com/zurb/foundation-sites/issues/10287
 
   var libraries = [];
 

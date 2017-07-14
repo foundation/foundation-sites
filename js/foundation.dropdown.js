@@ -26,6 +26,7 @@ class Dropdown extends Positionable {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
+    this.className = 'Dropdown'; // ie9 back compat
 
     // Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);

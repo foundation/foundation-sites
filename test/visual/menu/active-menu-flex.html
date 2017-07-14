@@ -9,6 +9,7 @@
     <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <style>
       h1 {
@@ -41,12 +42,23 @@
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="cell">
-          <h1>Active Menu</h1>
+          <h1>Active Menu (is-active)</h1>
 
           <div class="example">
             <ul class="menu">
               <li><a href="#">One</a></li>
               <li class="is-active"><a href="#">Two (.active)</a></li>
+              <li><a href="#">Three</a></li>
+              <li><a href="#">Four</a></li>
+            </ul>
+          </div>
+
+          <h1>Active Menu (active)</h1>
+
+          <div class="example">
+            <ul class="menu">
+              <li><a href="#">One</a></li>
+              <li class="active"><a href="#">Two (.active)</a></li>
               <li><a href="#">Three</a></li>
               <li><a href="#">Four</a></li>
             </ul>

@@ -475,6 +475,8 @@ $menu-item-color-active: $white;
 $menu-item-background-active: get-color(primary);
 $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
+$menu-state-back-compat: true;
+$menu-centered-back-compat: true;
 
 // 24. Meter
 // ---------

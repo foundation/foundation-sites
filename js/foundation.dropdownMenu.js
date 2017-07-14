@@ -27,6 +27,7 @@ class DropdownMenu extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+    this.className = 'DropdownMenu'; // ie9 back compat
 
     Nest.Feather(this.$element, 'dropdown');
     this._init();

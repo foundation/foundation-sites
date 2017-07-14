@@ -39,6 +39,10 @@ Horizontal alignment classes are applied to flex parents. Left alignment is the 
 - `.align-justify`
 - `.align-spaced`
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mwqGLm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x"> <!-- Aligned to the left -->
   <div class="cell small-4">Aligned to</div>
@@ -85,12 +89,20 @@ Stretch alignment is the default. To set parent alignment, use these classes:
   <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". As we can't have two CSS classes with the same name, thus we are using different terms.</p>
 </div>
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LLOgYx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x align-top">
   <div class="cell small-4">I'm at the top (default)</div>
   <div class="cell small-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vZWVOW?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x align-middle">
@@ -99,12 +111,20 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 </div>
 ```
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/awVRvZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x align-bottom">
   <div class="cell small-4">I'm at the bottom</div>
   <div class="cell small-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/wePYKY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x align-stretch">
@@ -122,12 +142,17 @@ To align an individual child, use the below classes. They use the same alignment
 - `.align-self-bottom`
 - `.align-self-stretch`
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NgwOxe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="grid-x grid-padding-x">
-  <div class="cell small-4 align-self-bottom"><div class="demo">Align bottom</div></div>
-  <div class="cell small-4 align-self-middle"><div class="demo">Align middle</div></div>
-  <div class="cell small-4 align-self-top"><div class="demo">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div></div>
-</div>
+    <div class="cell small-3 align-self-bottom"><div class="demo">Align bottom</div></div>
+    <div class="cell small-3 align-self-middle"><div class="demo">Align middle</div></div>
+    <div class="cell small-3 align-self-stretch"><div class="demo">Align stretch</div></div>
+    <div class="cell small-3 align-self-top"><div class="demo">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div></div>
+  </div>
 ```
 
 ---
@@ -138,6 +163,10 @@ Central alignment can be applied to a flex parent, which will centrally align al
 
 <div class="primary callout">
   <p>We are using `.text-center` class just for demo purposes here.</p>
+</div>
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vZWVXp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -170,15 +199,9 @@ For children, there are 3 quick helper classes to apply the flex property. These
 - `.flex-child-grow` (flex child that will grow to take up all possible space)
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
 
-### Responsive Classes 
-
-<div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are disabling responsive classes by default. You would be able to re-enable it though, with setting that <code>$flexbox-responsive-breakpoints</code> to <code>true</code> .</p>
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bRYmRZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
-
-These vanilla flexbox helper classes also have an optional mobile first responsive classes so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint.. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large. 
-
-These optional responsive classes can be disabled by setting `$flexbox-responsive-breakpoints` to `false`. See [here](#sass-variables)
 
 ```html_example
 <div class="grid-x grid-padding-x">
@@ -193,7 +216,21 @@ These optional responsive classes can be disabled by setting `$flexbox-responsiv
 </div>
 ```
 
-All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints. So you can do things like:
+### Responsive Classes 
+
+<div class="callout alert">
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are disabling responsive classes by default. You would be able to re-enable it though, with setting that <code>$flexbox-responsive-breakpoints</code> to <code>true</code> .</p>
+</div>
+
+All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints.
+
+These vanilla flexbox helper classes also have an optional mobile first responsive classes so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint.. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large. 
+
+These optional responsive classes can be disabled by setting `$flexbox-responsive-breakpoints` to `false`. See [here](#sass-variables)
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/yXPRjY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x">
@@ -227,6 +264,10 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 <p>
   <a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZyaqNL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="grid-x grid-padding-x">

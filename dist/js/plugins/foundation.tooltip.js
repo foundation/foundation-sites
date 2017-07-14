@@ -442,6 +442,7 @@ var Tooltip = function (_Positionable) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Tooltip.defaults, this.$element.data(), options);
+      this.className = 'Tooltip'; // ie9 back compat
 
       this.isActive = false;
       this.isClick = false;

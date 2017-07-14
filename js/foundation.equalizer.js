@@ -24,6 +24,7 @@ class Equalizer extends Plugin {
   _setup(element, options){
     this.$element = element;
     this.options  = $.extend({}, Equalizer.defaults, this.$element.data(), options);
+    this.className = 'Equalizer'; // ie9 back compat
 
     this._init();
   }
