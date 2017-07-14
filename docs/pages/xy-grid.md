@@ -103,10 +103,10 @@ The grid defaults to the full width of the available space. To contain it use th
 ```
 ### Grid Container Fluid
 
-To stretch the content to the full width of the available space, simply use the class `grid-container-fluid` instead.
+To stretch the content to the full width of the available space, simply add the class `fluid` to your `grid-container`.
 
 ```html
-<div class="grid-container-fluid">
+<div class="grid-container fluid">
   <div class="grid-x grid-margin-x">
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
@@ -117,21 +117,15 @@ To stretch the content to the full width of the available space, simply use the 
 
 ### Grid Container Full
 
-To stretch the content to the full width of the available space and remove grid container padding, simply use the class `grid-container-full`. Note that this is primarily for use with `grid-margin-x` - it works with `grid-padding-x` too, but will work the same as `grid-container-fluid`.
+To stretch the content to the full width of the available space and remove grid container padding, simply add the class `full` to your `grid-container`. Note that this variation is primarily for use for the `grid-margin-x` - it works with `grid-padding-x` too, but will work the same as `.grid-container.fluid`.
 
 <div class="callout alert">
-  <p>Please note when using the `grid-container-full` and `grid-margin-x` you will also need to hide the horizontal overflow in order for this to work correctly if your content is going to touch the sides of the viewport.</p>
-  <p>The best way to do this is:
-  ```
-  body {
-    overflow-x: hidden;
-  }
-  ```
-  </p>
+  <p>Please note that when you are using `grid-margin-x` on a `grid-container` with `full` class you will also need to hide the horizontal overflow in order for this to work correctly if your content is going to touch the sides of the viewport.</p>
+  <p>The best way to do this is:&nbsp; `body {overflow-x: hidden;}`</p>
 </div>
 
 ```html
-<div class="grid-container-full">
+<div class="grid-container full">
   <div class="grid-x grid-margin-x">
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
