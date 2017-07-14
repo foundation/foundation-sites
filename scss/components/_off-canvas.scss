@@ -300,8 +300,13 @@ $maincontent-class: 'off-canvas-content' !default;
 /// Sets the styles for the content container.
 @mixin off-canvas-content() {
   transform: none;
-  transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   backface-visibility: hidden;
+
+  // Bind to has-transition-X class to prevent transition for transform:none
+  &.has-transition-overlap,
+  &.has-transition-push {
+    transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
+  }
 
   // Transform scope until the element is closed (makes sure transitionend gets triggered)
   &.has-transition-push {
