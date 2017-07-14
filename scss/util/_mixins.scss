@@ -21,14 +21,11 @@
 
   @if ($side == top) {
     box-shadow: inset 0 $helper $size (-1)*$helper $color;
-  }
-  @elseif ($side == left) {
+  } @else if ($side == left) {
     box-shadow: inset $helper 0 $size (-1)*$helper $color;
-  }
-  @elseif ($side == right) {
+  } @else if ($side == right) {
     box-shadow: inset (-1)*$helper 0 $size (-1)*$helper $color;
-  }
-  @elseif ($side == bottom) {
+  } @else if ($side == bottom) {
     box-shadow: inset 0 (-1)*$helper $size (-1)*$helper $color;
   }
 }
