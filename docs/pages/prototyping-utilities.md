@@ -799,15 +799,15 @@ These Rotate mixins lets you rotate an element to a certain degree. Clockwise is
 }
 
 .bar {
-	@include rotateX(60); // 60 Degree
+	@include rotateX(60); // 60 Degree on X axis
 }
 
 .baz {
-	@include rotateY(90); // 90 Degree
+	@include rotateY(90); // 90 Degree on Y axis
 }
 
 .shaz {
-	@include rotateZ(120); // 120 Degree
+	@include rotateZ(120); // 120 Degree on Z axis
 }
 ```
 
