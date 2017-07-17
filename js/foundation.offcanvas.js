@@ -191,7 +191,7 @@ class OffCanvas extends Plugin {
    * @private
    */
   _addContentClasses(hasReveal) {
-    this._removeContentClasses();
+    this._removeContentClasses(hasReveal);
     this.$content.addClass(`has-transition-${this.options.transition} has-position-${this.position}`);
     if (hasReveal === true) {
       this.$content.addClass(`has-reveal-${this.position}`);
