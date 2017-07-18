@@ -343,6 +343,15 @@ class Drilldown extends Plugin {
   }
 
   /**
+   * Opens a specific (sub)menu no matter what (sub)menu is currently .
+   * @function
+   * @param {jQuery} $elem - the target (sub)menu (`ul` tag)
+   */
+  _showMenu($elem) {
+    console.log('show menu ---> #'+$elem.attr('id'));
+  }
+
+  /**
    * Opens a submenu.
    * @function
    * @fires Drilldown#open
@@ -357,7 +366,7 @@ class Drilldown extends Plugin {
      * @event Drilldown#open
      */
     this.$element.trigger('open.zf.drilldown', [$elem]);
-  };
+  }
 
   /**
    * Hides a submenu
@@ -369,7 +378,7 @@ class Drilldown extends Plugin {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     var _this = this;
     $elem.parent('li').attr('aria-expanded', false);
-    $elem.attr('aria-hidden', true).addClass('is-closing')
+    $elem.attr('aria-hidden', true).addClass('is-closing');
     $elem.addClass('is-closing')
          .one(transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
