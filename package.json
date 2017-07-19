@@ -81,7 +81,7 @@
     "normalize-scss": "6.0.0",
     "octophant": "^1.0.0",
     "opener": "^1.4.3",
-    "panini": "^1.4.0",
+    "panini": "1.4.0",
     "parker": "^1.0.0-alpha.0",
     "prettyjson": "^1.1.3",
     "require-dir": "^0.3.2",
