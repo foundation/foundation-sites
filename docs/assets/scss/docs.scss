@@ -110,7 +110,7 @@ a.docs-banner {
   position: relative;
   width: 100%;
   height: auto;
-  background: $alert-color;
+  background: $success-color;
   color: $white;
   h5 {
     margin-bottom: 0 !important;
@@ -479,7 +479,7 @@ a.docs-banner {
   justify-content: center;
 
   h5 {
-    opacity: 0.8;
+    // opacity: 0.8;
     font-size: 1rem;
   }
 }
