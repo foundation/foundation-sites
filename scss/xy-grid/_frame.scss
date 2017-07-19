@@ -4,13 +4,29 @@
 /// @param {Boolean} $nested [false] - Is grid nested or not. If nested is true this sets the frame to 100% height, otherwise will be 100vh.
 @mixin xy-grid-frame(
   $vertical: false,
-  $nested: false
+  $nested: false,
+  $gutters: null,
+  $breakpoint: null
 ) {
+  // Get our gutters if applicable
+  $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
-  @if $vertical == true {
-    height: if($nested == true, 100%, 100vh);
-  } @else {
-    width: if($nested == true, 100%, 100vw);
+  // If we have a gutter, add it to the width/height
+  @if $gutter {
+    @if $vertical == true {
+      $unit: if($nested == true, 100%, 100vh);
+      height: calc(#{$unit} + #{$gutter});
+    } @else {
+      $unit: if($nested == true, 100%, 100vw);
+      width: calc(#{$unit} + #{$gutter});
+    }
+  }
+  @else {
+    @if $vertical == true {
+      height: if($nested == true, 100%, 100vh);
+    } @else {
+      width: if($nested == true, 100%, 100vw);
+    }
   }
 
   overflow: hidden;
