@@ -28,8 +28,6 @@ class Drilldown extends Plugin {
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
     this.className = 'Drilldown'; // ie9 back compat
 
-    Nest.Feather(this.$element, 'drilldown');
-
     this._init();
 
     Keyboard.register('Drilldown', {
@@ -50,6 +48,8 @@ class Drilldown extends Plugin {
    * @private
    */
   _init() {
+    Nest.Feather(this.$element, 'drilldown');
+
     if(this.options.autoApplyClass) {
       this.$element.addClass('drilldown');
     }
