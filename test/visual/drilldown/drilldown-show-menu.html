@@ -12,6 +12,8 @@
       #menu-b a { background: rgb(230,255,230); }
       #menu-c a { background: rgb(230,230,255); }
       #menu-x a { background: rgb(255,115,0); }
+      label { display: inline-block; margin-right: 20px; cursor: pointer; }
+      label > input[type="radio"] { margin-right: 5px; }
     </style>
   </head>
   <body>
@@ -26,6 +28,12 @@
               <button type="button" class="button" data-show-menu="menu-b">Show B</button>
               <button type="button" class="button" data-show-menu="menu-c">Show C</button>
               <button type="button" class="button" data-show-menu="menu-x">Show X</button>
+            </div>
+            <div>
+              <form>
+                <label><input type="radio" name="comparison-switch" value="new" checked> Use new showMenu</label>
+                <label><input type="radio" name="comparison-switch" value="old"> Use current show</label>
+              </form>
             </div>
           </div>
           <ul class="vertical menu drilldown" data-drilldown id="menu-a">
@@ -66,10 +74,33 @@
     <script>
       $(document).foundation();
 
+      var demoType;
+
       $(document).on('click', '[data-show-menu]', function(e){
+
         e.preventDefault();
+
         var $menu = $('#'+$(this).data('showMenu'));
-        $('[data-drilldown]').foundation('_showMenu', $menu);
+
+        if (demoType == 'old') {
+
+          if ($menu.is('[data-drilldown]')) {
+            // No possibility to show root except of hide all
+            $('[data-drilldown]').foundation('_hideAll');
+          } else {
+            $('[data-drilldown]').foundation('_show', $menu.parent('li'));
+          }
+
+        } else {
+
+          $('[data-drilldown]').foundation('_showMenu', $menu);
+
+        }
+      });
+
+      $(document).on('change', 'input[name="comparison-switch"]', function(){
+        demoType = $('input[name="comparison-switch"]:checked').val();
+        console.log('swtiched to ['+demoType+']');
       });
     </script>
   </body>

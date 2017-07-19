@@ -343,12 +343,74 @@ class Drilldown extends Plugin {
   }
 
   /**
-   * Opens a specific (sub)menu no matter what (sub)menu is currently .
+   * Sets the CSS classes for submenu to show it.
+   * @function
+   * @param {jQuery} $elem - the target submenu (`ul` tag)
+   * @param {boolean} trigger - trigger drilldown event
+   */
+  _setShowSubMenuClasses($elem, trigger) {
+    $elem.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+    $elem.parent('li').attr('aria-expanded', true);
+    if (trigger === true) {
+      this.$element.trigger('open.zf.drilldown', [$elem]);
+    }
+  }
+
+  /**
+   * Sets the CSS classes for submenu to hide it.
+   * @function
+   * @param {jQuery} $elem - the target submenu (`ul` tag)
+   * @param {boolean} trigger - trigger drilldown event
+   */
+  _setHideSubMenuClasses($elem, trigger) {
+    $elem.removeClass('is-active').addClass('invisible').attr('aria-hidden', true);
+    $elem.parent('li').attr('aria-expanded', false);
+    // if (trigger === true) {
+    //   $elem.trigger('hide.zf.drilldown', [$elem]);
+    // }
+  }
+
+  /**
+   * Opens a specific drilldown (sub)menu no matter which (sub)menu in it is currently visible.
+   * Compared to _show() this lets you jump into any submenu without clicking through every submenu on the way to it.
    * @function
    * @param {jQuery} $elem - the target (sub)menu (`ul` tag)
    */
   _showMenu($elem) {
-    console.log('show menu ---> #'+$elem.attr('id'));
+
+    var _this = this;
+
+    // Reset drilldown
+    var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
+    $expandedSubmenus.each(function(index) {
+      var isLastChild = index == $expandedSubmenus.length - 1;
+      _this._setHideSubMenuClasses($(this), isLastChild);
+    });
+
+    // If target menu is root, focus first link & exit
+    if ($elem.is('[data-drilldown]')) {
+      $elem.find('li[role="treeitem"] > a').first().focus();
+      return;
+    }
+
+    // Find all submenus on way to root incl. the element itself
+    var $submenus = $elem.children().first().parentsUntil('[data-drilldown]', '[data-submenu]');
+
+    // Open target menu and all submenus on its way to root
+    $submenus.each(function(index) {
+
+        var isLastChild = index == $submenus.length - 1;
+
+        // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
+        // Last child makes sure the event gets always triggered even if going through several menus
+        if (isLastChild === true) {
+          $(this).one(transitionend($(this)), () => {
+            $elem.find('li[role="treeitem"] > a').first().focus();
+          });
+        }
+
+        _this._setShowSubMenuClasses($(this), isLastChild);
+    });
   }
 
   /**
