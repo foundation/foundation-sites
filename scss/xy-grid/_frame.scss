@@ -8,31 +8,38 @@
   $gutters: null,
   $breakpoint: null
 ) {
-  // Get our gutters if applicable
-  $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
-  // If we have a gutter, add it to the width/height
-  @if $gutter {
-    @if $vertical == true {
-      $unit: if($nested == true, 100%, 100vh);
-      height: calc(#{$unit} + #{$gutter});
-    } @else {
-      $unit: if($nested == true, 100%, 100vw);
-      width: calc(#{$unit} + #{$gutter});
+  @if $breakpoint == null and type-of($gutters) == 'map' {
+    @include -zf-each-breakpoint() {
+      @include xy-grid-frame($vertical, $nested, $gutters, $-zf-size);
     }
-  }
-  @else {
-    @if $vertical == true {
-      height: if($nested == true, 100%, 100vh);
-    } @else {
-      width: if($nested == true, 100%, 100vw);
-    }
-  }
+  } @else {
+    // Get our gutters if applicable
+    $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
-  overflow: hidden;
-  position: relative;
-  flex-wrap: nowrap;
-  align-items: stretch;
+    // If we have a gutter, add it to the width/height
+    @if $gutter {
+      @if $vertical == true {
+        $unit: if($nested == true, 100%, 100vh);
+        height: calc(#{$unit} + #{$gutter});
+      } @else {
+        $unit: if($nested == true, 100%, 100vw);
+        width: calc(#{$unit} + #{$gutter});
+      }
+    }
+    @else {
+      @if $vertical == true {
+        height: if($nested == true, 100%, 100vh);
+      } @else {
+        width: if($nested == true, 100%, 100vw);
+      }
+    }
+
+    overflow: hidden;
+    position: relative;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
 }
 
 /// Modifies a cell to give it "block" behavior (overflow auto, inertial scrolling)

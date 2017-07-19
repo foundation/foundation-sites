@@ -333,6 +333,9 @@
 
   @if $margin-grid {
     @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y')
+    .grid-frame.grid-margin-y {
+      @include xy-grid-frame(true, false, $grid-margin-gutters)
+    }
   }
 }
 
