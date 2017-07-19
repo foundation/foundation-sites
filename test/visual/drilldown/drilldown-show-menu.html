@@ -14,6 +14,7 @@
       #menu-x a { background: rgb(255,115,0); }
       label { display: inline-block; margin-right: 20px; cursor: pointer; }
       label > input[type="radio"] { margin-right: 5px; }
+      .is-drilldown { margin-bottom: 10px; }
     </style>
   </head>
   <body>
@@ -36,7 +37,7 @@
               </form>
             </div>
           </div>
-          <ul class="vertical menu drilldown" data-drilldown id="menu-a">
+          <ul class="vertical menu drilldown" data-drilldown data-auto-height="true" id="menu-a">
             <li>
               <a href="#">Item A1</a>
               <ul class="vertical menu nested" id="menu-b">
@@ -64,6 +65,9 @@
             </li>
             <li><a href="#">Item A4</a></li>
           </ul>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione id accusantium dolore sequi architecto at soluta, nulla nam? Nemo magnam repellendus iure, ut recusandae voluptatibus, dolores pariatur facere illo! Sapiente.
+          </p>
         </div>
         <div class="auto cell"></div>
       </div>

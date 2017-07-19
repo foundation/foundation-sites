@@ -345,6 +345,7 @@ class Drilldown extends Plugin {
   /**
    * Sets the CSS classes for submenu to show it.
    * @function
+   * @private
    * @param {jQuery} $elem - the target submenu (`ul` tag)
    * @param {boolean} trigger - trigger drilldown event
    */
@@ -359,6 +360,7 @@ class Drilldown extends Plugin {
   /**
    * Sets the CSS classes for submenu to hide it.
    * @function
+   * @private
    * @param {jQuery} $elem - the target submenu (`ul` tag)
    * @param {boolean} trigger - trigger drilldown event
    */
@@ -374,6 +376,7 @@ class Drilldown extends Plugin {
    * Opens a specific drilldown (sub)menu no matter which (sub)menu in it is currently visible.
    * Compared to _show() this lets you jump into any submenu without clicking through every submenu on the way to it.
    * @function
+   * @fires Drilldown#open
    * @param {jQuery} $elem - the target (sub)menu (`ul` tag)
    */
   _showMenu($elem) {
@@ -390,6 +393,7 @@ class Drilldown extends Plugin {
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
       $elem.find('li[role="treeitem"] > a').first().focus();
+      if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
       return;
     }
 
@@ -398,6 +402,11 @@ class Drilldown extends Plugin {
 
     // Open target menu and all submenus on its way to root
     $submenus.each(function(index) {
+
+        // Update height of first child (target menu) if autoHeight option true
+        if (index === 0 && _this.options.autoHeight) {
+          _this.$wrapper.css('height', $(this).data('calcHeight'));
+        }
 
         var isLastChild = index == $submenus.length - 1;
 
