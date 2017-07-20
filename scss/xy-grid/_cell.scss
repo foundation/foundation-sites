@@ -130,17 +130,7 @@
   }
 
   @if $gutter-output {
-    // If gutters = map
-    @if(type-of($gutters) == 'map') {
-      // If $gutters map has a key = $breakpoint, output the value
-      @if (map-has-key($gutters, $breakpoint)) {
-        @include xy-gutters($gutter, $gutter-type, $gutter-position);
-      }
-    }
-    // If not a map
-    @else {
-      @include xy-gutters($gutter, $gutter-type, $gutter-position);
-    }
+    @include xy-gutters($gutter, $gutter-type, $gutter-position);
   }
 }
 
