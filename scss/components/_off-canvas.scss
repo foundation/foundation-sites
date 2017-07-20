@@ -6,14 +6,6 @@
 /// @group off-canvas
 ////
 
-/// Deprecated settings warning
-@if variable-exists(offcanvas-size) {
-  @warn '$offcanvas-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-sizes instead';
-}
-@if variable-exists(offcanvas-vertical-size) {
-  @warn '$offcanvas-vertical-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-vertical-sizes instead';
-}
-
 /// Width map of a left/right off-canvas panel.
 /// @type Map
 $offcanvas-sizes: (
@@ -81,6 +73,16 @@ $maincontent-class: 'off-canvas-content' !default;
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
+
+  /// Transform deprecated size settings into map & show warning
+  @if variable-exists(offcanvas-size) {
+    $offcanvas-sizes: (small: $offcanvas-size, medium: $offcanvas-size) !global;
+    @warn '$offcanvas-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-sizes instead';
+  }
+  @if variable-exists(offcanvas-vertical-size) {
+    $offcanvas-vertical-sizes: (small: $offcanvas-vertical-size, medium: $offcanvas-vertical-size) !global;
+    @warn '$offcanvas-vertical-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-vertical-sizes instead';
+  }
 
   // Checks the z-indexes and increase them due to backwards compatibility.
   // This is necessary because the overlay's z-index is new since v6.4 and may be identical to the user custom settings of the push z-index.
