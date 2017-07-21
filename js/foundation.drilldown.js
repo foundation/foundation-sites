@@ -367,9 +367,9 @@ class Drilldown extends Plugin {
   _setHideSubMenuClasses($elem, trigger) {
     $elem.removeClass('is-active').addClass('invisible').attr('aria-hidden', true);
     $elem.parent('li').attr('aria-expanded', false);
-    // if (trigger === true) {
-    //   $elem.trigger('hide.zf.drilldown', [$elem]);
-    // }
+    if (trigger === true) {
+      $elem.trigger('hide.zf.drilldown', [$elem]);
+    }
   }
 
   /**
@@ -386,8 +386,7 @@ class Drilldown extends Plugin {
     // Reset drilldown
     var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
     $expandedSubmenus.each(function(index) {
-      var isLastChild = index == $expandedSubmenus.length - 1;
-      _this._setHideSubMenuClasses($(this), isLastChild);
+      _this._setHideSubMenuClasses($(this));
     });
 
     // If target menu is root, focus first link & exit
