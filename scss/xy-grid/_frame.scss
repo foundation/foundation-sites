@@ -7,7 +7,7 @@
   $nested: false,
   $gutters: null,
   $breakpoint: null,
-  $include-base-styles: true,
+  $include-base-styles: true
 ) {
 
   @if $include-base-styles {
