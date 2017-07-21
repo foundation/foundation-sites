@@ -175,12 +175,14 @@ class OffCanvas extends Plugin {
   /**
    * Removes the CSS transition/position classes of the off-canvas content container.
    * Removing the classes is important when another off-canvas gets opened that uses the same content container.
+   * @param {Boolean} hasReveal - true if related off-canvas element is revealed.
    * @private
    */
   _removeContentClasses(hasReveal) {
-    this.$content.removeClass(this.contentClasses.base.join(' '));
-    if (hasReveal === true) {
-      this.$content.removeClass(this.contentClasses.reveal.join(' '));
+    if (typeof hasReveal !== 'boolean') {
+      this.$content.removeClass(this.contentClasses.base.join(' '));
+    } else if (hasReveal === false) {
+      this.$content.removeClass(`has-reveal-${this.position}`);
     }
   }
 
@@ -192,8 +194,9 @@ class OffCanvas extends Plugin {
    */
   _addContentClasses(hasReveal) {
     this._removeContentClasses(hasReveal);
-    this.$content.addClass(`has-transition-${this.options.transition} has-position-${this.position}`);
-    if (hasReveal === true) {
+    if (typeof hasReveal !== 'boolean') {
+      this.$content.addClass(`has-transition-${this.options.transition} has-position-${this.position}`);
+    } else if (hasReveal === true) {
       this.$content.addClass(`has-reveal-${this.position}`);
     }
   }
