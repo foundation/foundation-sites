@@ -6,13 +6,19 @@
 /// @group off-canvas
 ////
 
-/// Width of a left/right off-canvas panel.
-/// @type Number
-$offcanvas-size: 250px !default;
+/// Width map of a left/right off-canvas panel.
+/// @type Map
+$offcanvas-sizes: (
+  small: 250px,
+  medium: 350px,
+) !default;
 
-/// Height of a top/bottom off-canvas panel.
-/// @type Number
-$offcanvas-vertical-size: 250px !default;
+/// Height map of a top/bottom off-canvas panel.
+/// @type Map
+$offcanvas-vertical-sizes: (
+  small: 250px,
+  medium: 350px,
+) !default;
 
 /// Background color of an off-canvas panel.
 /// @type Color
@@ -67,6 +73,16 @@ $maincontent-class: 'off-canvas-content' !default;
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
+
+  /// Transform deprecated size settings into map & show warning
+  @if variable-exists(offcanvas-size) {
+    $offcanvas-sizes: (small: $offcanvas-size, medium: $offcanvas-size) !global;
+    @warn '$offcanvas-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-sizes instead';
+  }
+  @if variable-exists(offcanvas-vertical-size) {
+    $offcanvas-vertical-sizes: (small: $offcanvas-vertical-size, medium: $offcanvas-vertical-size) !global;
+    @warn '$offcanvas-vertical-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-vertical-sizes instead';
+  }
 
   // Checks the z-indexes and increase them due to backwards compatibility.
   // This is necessary because the overlay's z-index is new since v6.4 and may be identical to the user custom settings of the push z-index.
@@ -175,20 +191,30 @@ $maincontent-class: 'off-canvas-content' !default;
 @mixin off-canvas-position(
   $position: left,
   $orientation: horizontal,
-  $size: if($orientation == horizontal, $offcanvas-size, $offcanvas-vertical-size)
+  $sizes: if($orientation == horizontal, $offcanvas-sizes, $offcanvas-vertical-sizes)
 ) {
   @if $position == left {
     top: 0;
     left: 0;
-    width: $size;
+    width: map-get($sizes, small);
     height: 100%;
 
-    transform: translateX(-$size);
+    transform: translateX(-(map-get($sizes, small)));
     overflow-y: auto;
+
+    @include breakpoint(medium) {
+      width: map-get($sizes, medium);
+      transform: translateX(-(map-get($sizes, medium)));
+    }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateX(-$size);
+      transform: translateX(-(map-get($sizes, small)));
+
+      @include breakpoint(medium) {
+        transform: translateX(-(map-get($sizes, medium)));
+      }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -197,22 +223,35 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateX($size);
+        transform: translateX(map-get($sizes, small));
+        @include breakpoint(medium) {
+          transform: translateX(map-get($sizes, medium));
+        }
       }
     }
   }
   @else if $position == right {
     top: 0;
     right: 0;
-    width: $size;
+    width: map-get($sizes, small);
     height: 100%;
 
-    transform: translateX($size);
+    transform: translateX(map-get($sizes, small));
     overflow-y: auto;
+
+    @include breakpoint(medium) {
+      width: map-get($sizes, medium);
+      transform: translateX(map-get($sizes, medium));
+    }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateX($size);
+      transform: translateX(map-get($sizes, small));
+
+      @include breakpoint(medium) {
+        transform: translateX(map-get($sizes, medium));
+      }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -221,23 +260,35 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateX(-$size);
+        transform: translateX(-(map-get($sizes, small)));
+        @include breakpoint(medium) {
+          transform: translateX(-(map-get($sizes, medium)));
+        }
       }
     }
   }
   @else if $position == top {
     top: 0;
     left: 0;
-
     width: 100%;
-    height: $size;
+    height: map-get($sizes, small);
 
-    transform: translateY(-$size);
+    transform: translateY(-(map-get($sizes, small)));
     overflow-x: auto;
+
+    @include breakpoint(medium) {
+      height: map-get($sizes, medium);
+      transform: translateY(-(map-get($sizes, medium)));
+    }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateY(-$size);
+      transform: translateY(-(map-get($sizes, small)));
+
+      @include breakpoint(medium) {
+        transform: translateY(-(map-get($sizes, medium)));
+      }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -246,23 +297,35 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateY($size);
+        transform: translateY(map-get($sizes, small));
+        @include breakpoint(medium) {
+          transform: translateY(map-get($sizes, medium));
+        }
       }
     }
   }
   @else if $position == bottom {
     bottom: 0;
     left: 0;
-
     width: 100%;
-    height: $size;
+    height: map-get($sizes, small);
 
-    transform: translateY($size);
+    transform: translateY(map-get($sizes, small));
     overflow-x: auto;
+
+    @include breakpoint(medium) {
+      height: map-get($sizes, medium);
+      transform: translateY(map-get($sizes, medium));
+    }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateY($size);
+      transform: translateY(map-get($sizes, small));
+
+      @include breakpoint(medium) {
+        transform: translateY(map-get($sizes, medium));
+      }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -271,7 +334,10 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateY(-$size);
+        transform: translateY(-(map-get($sizes, small)));
+        @include breakpoint(medium) {
+          transform: translateY(-(map-get($sizes, medium)));
+        }
       }
     }
   }
@@ -339,12 +405,18 @@ $content: $maincontent-class
   }
 
   @at-root .#{$content}.has-reveal-#{$position} {
-    margin-#{$position}: $offcanvas-size;
+    margin-#{$position}: map-get($offcanvas-sizes, small);
+    @include breakpoint(medium) {
+      margin-#{$position}: map-get($offcanvas-sizes, medium);
+    }
   }
 
   // backwards compatibility (prior to v6.4)
   & ~ .#{$content} {
-    margin-#{$position}: $offcanvas-size;
+    margin-#{$position}: map-get($offcanvas-sizes, small);
+    @include breakpoint(medium) {
+      margin-#{$position}: map-get($offcanvas-sizes, medium);
+    }
   }
 }
 
