@@ -6,12 +6,20 @@
   $vertical: false,
   $nested: false,
   $gutters: null,
-  $breakpoint: null
+  $breakpoint: null,
+  $include-base-styles: true,
 ) {
+
+  @if $include-base-styles {
+    overflow: hidden;
+    position: relative;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
 
   @if $breakpoint == null and type-of($gutters) == 'map' {
     @include -zf-each-breakpoint() {
-      @include xy-grid-frame($vertical, $nested, $gutters, $-zf-size);
+      @include xy-grid-frame($vertical, $nested, $gutters, $-zf-size, false);
     }
   } @else {
     // Get our gutters if applicable
@@ -36,11 +44,6 @@
         width: if($nested == true, 100%, 100vw);
       }
     }
-
-    overflow: hidden;
-    position: relative;
-    flex-wrap: nowrap;
-    align-items: stretch;
   }
 }
 
