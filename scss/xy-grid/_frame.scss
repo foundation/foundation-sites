@@ -2,15 +2,18 @@
 ///
 /// @param {Boolean} $vertical [false] - Is grid vertical or horizontal. Should match grid.
 /// @param {Boolean} $nested [false] - Is grid nested or not. If nested is true this sets the frame to 100% height, otherwise will be 100vh.
+/// @param {Number|Map} $gutters [null] - Map or single value for gutters.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from.
+/// @param {Boolean} $include-base [true] - Include the base styles that don't vary per breakpoint.
 @mixin xy-grid-frame(
   $vertical: false,
   $nested: false,
   $gutters: null,
   $breakpoint: null,
-  $include-base-styles: true
+  $include-base: true
 ) {
 
-  @if $include-base-styles {
+  @if $include-base {
     overflow: hidden;
     position: relative;
     flex-wrap: nowrap;
