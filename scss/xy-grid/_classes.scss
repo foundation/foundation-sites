@@ -53,9 +53,9 @@
     // https://github.com/zurb/foundation-sites/pull/10222 and
     // https://github.com/zurb/foundation-sites/pull/10164
     .grid-x {
-      $str: "> #{$-zf-size}-shrink, > #{$-zf-size}-full";
+      $str: "> .#{$-zf-size}-shrink, > .#{$-zf-size}-full";
       @for $i from 1 through $grid-columns {
-        $str: $str + ", > #{$-zf-size}-#{$i}"
+        $str: $str + ", > .#{$-zf-size}-#{$i}"
       }
       #{$str} {
         flex-basis: auto;
