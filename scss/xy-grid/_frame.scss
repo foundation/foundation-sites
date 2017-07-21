@@ -21,9 +21,11 @@
     @if $gutter {
       @if $vertical == true {
         $unit: if($nested == true, 100%, 100vh);
+        $gutter: rem-calc($gutter);
         height: calc(#{$unit} + #{$gutter});
       } @else {
         $unit: if($nested == true, 100%, 100vw);
+        $gutter: rem-calc($gutter);
         width: calc(#{$unit} + #{$gutter});
       }
     }
