@@ -175,7 +175,7 @@
 @mixin xy-block-grid-classes($margin-grid: true, $padding-grid: true) {
   @if $padding-grid {
     @include -zf-each-breakpoint {
-      @for $i from 1 through $block-grid-max {
+      @for $i from 1 through $xy-block-grid-max {
         .#{$-zf-size}-up-#{$i} {
           @include xy-grid-layout($i, '.cell', false, $gutter-type: padding);
         }
@@ -185,7 +185,7 @@
 
   @if $margin-grid {
     @include -zf-each-breakpoint {
-      @for $i from 1 through $block-grid-max {
+      @for $i from 1 through $xy-block-grid-max {
         // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
         // for prior breakpoints based on the responsive gutter.
         @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
@@ -198,7 +198,7 @@
           }
         }
       }
-      @for $i from 1 through $block-grid-max {
+      @for $i from 1 through $xy-block-grid-max {
         .grid-margin-x.#{$-zf-size}-up-#{$i} {
           @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $-zf-size);
         }
