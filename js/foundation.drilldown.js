@@ -403,24 +403,24 @@ class Drilldown extends Plugin {
     // Open target menu and all submenus on its way to root
     $submenus.each(function(index) {
 
-        // Update height of first child (target menu) if autoHeight option true
-        if (index === 0 && _this.options.autoHeight) {
-          _this.$wrapper.css('height', $(this).data('calcHeight'));
-        }
+      // Update height of first child (target menu) if autoHeight option true
+      if (index === 0 && _this.options.autoHeight) {
+        _this.$wrapper.css('height', $(this).data('calcHeight'));
+      }
 
-        var isLastChild = index == $submenus.length - 1;
+      var isLastChild = index == $submenus.length - 1;
 
-        // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
-        // Last child makes sure the event gets always triggered even if going through several menus
-        if (isLastChild === true) {
-          $(this).one(transitionend($(this)), () => {
-            if (autoFocus !== false) {
-              $elem.find('li[role="treeitem"] > a').first().focus();
-            }
-          });
-        }
+      // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
+      // Last child makes sure the event gets always triggered even if going through several menus
+      if (isLastChild === true) {
+        $(this).one(transitionend($(this)), () => {
+          if (autoFocus !== false) {
+            $elem.find('li[role="treeitem"] > a').first().focus();
+          }
+        });
+      }
 
-        _this._setShowSubMenuClasses($(this), isLastChild);
+      _this._setShowSubMenuClasses($(this), isLastChild);
     });
   }
 
