@@ -324,9 +324,10 @@
   @if $margin-grid {
     @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y')
   }
+
 }
 
-@mixin xy-frame-grid-classes($vertical-grid: true) {
+@mixin xy-frame-grid-classes($vertical-grid: true, $margin-grid: true) {
   // Framed grid styles
   .grid-frame {
     @include xy-grid-frame;
@@ -374,7 +375,6 @@
   }
 
   @if $vertical-grid {
-
     .grid-y {
       &.grid-frame {
         width: auto;
@@ -397,6 +397,17 @@
         .grid-y.#{$-zf-size}-grid-frame {
           height: 100%; // Same as include with $nested, but with less css
         }
+      }
+    }
+  }
+  @if $margin-grid {
+    @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y')
+    .grid-frame.grid-margin-y {
+      @include xy-grid-frame(true, false, $grid-margin-gutters, $include-base: false)
+    }
+    @include -zf-each-breakpoint(false) {
+      .grid-margin-y.#{$-zf-size}-grid-frame {
+        @include xy-grid-frame(true, false, $grid-margin-gutters, $-zf-size, false)
       }
     }
   }
@@ -450,6 +461,6 @@
   }
 
   @if ($frame-grid) {
-    @include xy-frame-grid-classes($vertical-grid)
+    @include xy-frame-grid-classes($vertical-grid, $margin-grid)
   }
 }
