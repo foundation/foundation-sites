@@ -196,25 +196,24 @@ $maincontent-class: 'off-canvas-content' !default;
   @if $position == left {
     top: 0;
     left: 0;
-    width: map-get($sizes, small);
     height: 100%;
-
-    transform: translateX(-(map-get($sizes, small)));
     overflow-y: auto;
 
-    @include breakpoint(medium) {
-      width: map-get($sizes, medium);
-      transform: translateX(-(map-get($sizes, medium)));
+    @each $name, $size in $sizes {
+      @include breakpoint($name) {
+        width: $size;
+        transform: translateX(-$size);
+      }
     }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateX(-(map-get($sizes, small)));
 
-      @include breakpoint(medium) {
-        transform: translateX(-(map-get($sizes, medium)));
+      @each $name, $size in $sizes {
+        @include breakpoint($name) {
+          transform: translateX(-$size);
+        }
       }
-
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -223,9 +222,10 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateX(map-get($sizes, small));
-        @include breakpoint(medium) {
-          transform: translateX(map-get($sizes, medium));
+        @each $name, $size in $sizes {
+          @include breakpoint($name) {
+            transform: translateX($size);
+          }
         }
       }
     }
@@ -233,25 +233,24 @@ $maincontent-class: 'off-canvas-content' !default;
   @else if $position == right {
     top: 0;
     right: 0;
-    width: map-get($sizes, small);
     height: 100%;
-
-    transform: translateX(map-get($sizes, small));
     overflow-y: auto;
 
-    @include breakpoint(medium) {
-      width: map-get($sizes, medium);
-      transform: translateX(map-get($sizes, medium));
+    @each $name, $size in $sizes {
+      @include breakpoint($name) {
+        width: $size;
+        transform: translateX($size);
+      }
     }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateX(map-get($sizes, small));
 
-      @include breakpoint(medium) {
-        transform: translateX(map-get($sizes, medium));
+      @each $name, $size in $sizes {
+        @include breakpoint($name) {
+          transform: translateX($size);
+        }
       }
-
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -260,9 +259,10 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateX(-(map-get($sizes, small)));
-        @include breakpoint(medium) {
-          transform: translateX(-(map-get($sizes, medium)));
+        @each $name, $size in $sizes {
+          @include breakpoint($name) {
+            transform: translateX(-$size);
+          }
         }
       }
     }
@@ -271,24 +271,22 @@ $maincontent-class: 'off-canvas-content' !default;
     top: 0;
     left: 0;
     width: 100%;
-    height: map-get($sizes, small);
-
-    transform: translateY(-(map-get($sizes, small)));
     overflow-x: auto;
 
-    @include breakpoint(medium) {
-      height: map-get($sizes, medium);
-      transform: translateY(-(map-get($sizes, medium)));
+    @each $name, $size in $sizes {
+      @include breakpoint($name) {
+        height: $size;
+        transform: translateY(-$size);
+      }
     }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateY(-(map-get($sizes, small)));
-
-      @include breakpoint(medium) {
-        transform: translateY(-(map-get($sizes, medium)));
+      @each $name, $size in $sizes {
+        @include breakpoint($name) {
+          transform: translateY(-$size);
+        }
       }
-
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -297,9 +295,10 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateY(map-get($sizes, small));
-        @include breakpoint(medium) {
-          transform: translateY(map-get($sizes, medium));
+        @each $name, $size in $sizes {
+          @include breakpoint($name) {
+            transform: translateY($size);
+          }
         }
       }
     }
@@ -308,24 +307,22 @@ $maincontent-class: 'off-canvas-content' !default;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: map-get($sizes, small);
-
-    transform: translateY(map-get($sizes, small));
     overflow-x: auto;
 
-    @include breakpoint(medium) {
-      height: map-get($sizes, medium);
-      transform: translateY(map-get($sizes, medium));
+    @each $name, $size in $sizes {
+      @include breakpoint($name) {
+        height: $size;
+        transform: translateY($size);
+      }
     }
     
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
-      transform: translateY(map-get($sizes, small));
-
-      @include breakpoint(medium) {
-        transform: translateY(map-get($sizes, medium));
+      @each $name, $size in $sizes {
+        @include breakpoint($name) {
+          transform: translateY($size);
+        }
       }
-
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -334,9 +331,10 @@ $maincontent-class: 'off-canvas-content' !default;
     // Sets the open position for the content
     @at-root .#{$maincontent-class}.is-open-#{$position} {
       &.has-transition-push {
-        transform: translateY(-(map-get($sizes, small)));
-        @include breakpoint(medium) {
-          transform: translateY(-(map-get($sizes, medium)));
+        @each $name, $size in $sizes {
+          @include breakpoint($name) {
+            transform: translateY(-$size);
+          }
         }
       }
     }
@@ -405,17 +403,19 @@ $content: $maincontent-class
   }
 
   @at-root .#{$content}.has-reveal-#{$position} {
-    margin-#{$position}: map-get($offcanvas-sizes, small);
-    @include breakpoint(medium) {
-      margin-#{$position}: map-get($offcanvas-sizes, medium);
+    @each $name, $size in $offcanvas-sizes {
+      @include breakpoint($name) {
+        margin-#{$position}: $size;
+      }
     }
   }
 
   // backwards compatibility (prior to v6.4)
   & ~ .#{$content} {
-    margin-#{$position}: map-get($offcanvas-sizes, small);
-    @include breakpoint(medium) {
-      margin-#{$position}: map-get($offcanvas-sizes, medium);
+    @each $name, $size in $offcanvas-sizes {
+      @include breakpoint($name) {
+        margin-#{$position}: $size;
+      }
     }
   }
 }
