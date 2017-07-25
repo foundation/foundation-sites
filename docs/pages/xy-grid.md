@@ -26,7 +26,7 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 @include foundation-xy-grid-classes;
 ```
 
-Note `foundation-xy-grid-classes` accepts arguements to enable/disable individual grid components. Simply set the arguement to `false` to disable output of those classes.
+Note `foundation-xy-grid-classes` accepts arguments to enable/disable individual grid components. Simply set the argument to `false` to disable output of those classes.
 These are:
 
 ```
@@ -407,7 +407,7 @@ The cell size calculator can also be accessed as a function. This gives you the 
 ### Responsive Grids
 
 Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
-Refer to the Sass documentation below to learn how each mixin works and the available arguements.
+Refer to the Sass documentation below to learn how each mixin works and the available arguments.
 
 ```scss
 .main-content {
