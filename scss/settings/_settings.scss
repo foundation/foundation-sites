@@ -95,6 +95,7 @@ $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
 $global-prototype-breakpoints: false;
+$global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
@@ -477,6 +478,7 @@ $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
+$menu-icons-back-compat: true;
 
 // 24. Meter
 // ---------
@@ -865,5 +867,5 @@ $grid-margin-gutters: (
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
-$block-grid-max: 8;
+$xy-block-grid-max: 8;
 

@@ -240,7 +240,7 @@ var Drilldown = function (_Plugin) {
         var $link = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
         var $sub = $link.parent();
         if (_this.options.parentLink) {
-          $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
+          $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menuitem"></li>');
         }
         $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
         $link.children('[data-submenu]').attr({

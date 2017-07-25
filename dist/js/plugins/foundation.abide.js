@@ -155,7 +155,7 @@ var Abide = function (_Plugin) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
       this.$element = element;
-      this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Abide.defaults, this.$element.data(), options);
+      this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend(true, {}, Abide.defaults, this.$element.data(), options);
 
       this.className = 'Abide'; // ie9 back compat
       this._init();
