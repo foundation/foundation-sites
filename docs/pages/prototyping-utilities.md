@@ -76,7 +76,30 @@ You can instead import only the specific utility classes that you need. To make 
 @include foundation-prototype-spacing;
 ```
 
-Looking for more customization including **responsive breakpoints?** Click here for the [Sass Reference](#sass-reference)
+Looking for more customization? Click here for the [Sass Reference](#sass-reference)
+
+---
+
+## Responsive breakpoints
+
+<div class="alert callout">
+  <p>Responsive breakpoints is disabled by default.</p>
+</div>
+
+These prototype classes also have an optional mobile first responsive classes  so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint. <br>
+You can easily enable these classes by setting `$global-prototype-breakpoints` to `true`.
+
+```html
+<p class="medium-text-uppercase">This text will be uppercase for medium and up.</p>
+<p class="large-text-lowercase">This text will be lowercase for large breakpoint.</p>
+```
+
+You can also customise things by choosing to add responsive breakpoints only for specific prototype helpers that you would need as responsive classes. <br>
+For example, text transformation classes have a breakpoint variable `$prototype-transformation-breakpoints` which is set to `$global-prototype-breakpoints` which is set to `false` by default. For enabling responsive breakpoints for text transformation classes, simply set: 
+
+```scss
+$prototype-transformation-breakpoints: true;
+``` 
 
 ---
 
@@ -270,37 +293,6 @@ You can use font styling to style your text. You can change the font styling by 
 <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 <p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
-```
-
----
-
-## Typescale
-
-Adjust font-size by overriding an element’s default size. This can be useful to size a `<p>` or `<h1>` through `<h6>` using Foundation's existing header sizes.
-
-<div class="callout primary">
-  <p><strong>Especially useful because:</strong> It's important to avoid skipping heading levels when structuring your document, as it confuses screen readers. For example, after using an <code>&lt;h2&gt;</code> in your code, the next heading used should be either <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.</p>
-</div>
-
-For headers:
-
-```html
-<h2 class="h1">Lorem Ipsum Dolor</h2>
-<h3 class="h2">Lorem Ipsum Dolor</h3>
-<h4 class="h3">Lorem Ipsum Dolor</h4>
-<h5 class="h4">Lorem Ipsum Dolor</h5>
-<h6 class="h5">Lorem Ipsum Dolor</h6>
-```
-
-For text:
-
-```html_example
-<p class="h1">Lorem Ipsum Dolor</p>
-<p class="h2">Lorem Ipsum Dolor</p>
-<p class="h3">Lorem Ipsum Dolor</p>
-<p class="h4">Lorem Ipsum Dolor</p>
-<p class="h5">Lorem Ipsum Dolor</p>
-<p class="h6">Lorem Ipsum Dolor</p>
 ```
 
 ---

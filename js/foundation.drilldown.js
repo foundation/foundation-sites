@@ -19,12 +19,14 @@ class Drilldown extends Plugin {
   /**
    * Creates a new instance of a drilldown menu.
    * @class
+   * @name Drilldown
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
+    this.className = 'Drilldown'; // ie9 back compat
 
     Nest.Feather(this.$element, 'drilldown');
 

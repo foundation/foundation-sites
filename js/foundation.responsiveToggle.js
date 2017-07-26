@@ -17,6 +17,7 @@ class ResponsiveToggle extends Plugin {
   /**
    * Creates a new instance of Tab Bar.
    * @class
+   * @name ResponsiveToggle
    * @fires ResponsiveToggle#init
    * @param {jQuery} element - jQuery object to attach tab bar functionality to.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -24,6 +25,7 @@ class ResponsiveToggle extends Plugin {
   _setup(element, options) {
     this.$element = $(element);
     this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+    this.className = 'ResponsiveToggle'; // ie9 back compat
 
     this._init();
     this._events();

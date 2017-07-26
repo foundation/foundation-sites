@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Foundation for Sites Testing</title>
     <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation-prototype.css" rel="stylesheet" />
@@ -33,23 +34,27 @@
     </style>
   </head>
   <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h2 class="margin-top-1">Height</h2>
+          <div class="demo-height-box">
+            <div class="height-25 p-a-20">Height 25%</div>
+            <div class="height-50 p-a-20">Height 50%</div>
+            <div class="height-75 p-a-20">Height 75%</div>
+            <div class="height-100 p-a-20">Height 100%</div>
+          </div>
+        </div>
 
-    <div class="row column">
-      <h2 class="margin-top-1">Height</h2>
-      <div class="demo-height-box">
-        <div class="height-25 p-a-20">Height 25%</div>
-        <div class="height-50 p-a-20">Height 50%</div>
-        <div class="height-75 p-a-20">Height 75%</div>
-        <div class="height-100 p-a-20">Height 100%</div>
+        <div class="cell">
+          <h2 class="margin-vertical-2">Max Height 100</h2>
+          <div class="demo-max-height-box">
+            <div class="max-height-100 p-a-20">Max Height = 100%</div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="row column">
-      <h2 class="margin-vertical-2">Max Height 100</h2>
-      <div class="demo-max-height-box">
-        <div class="max-height-100 p-a-20">Max Height = 100%</div>
-      </div>
-    </div>
+    
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/foundation.js"></script>
     <script>

@@ -18,6 +18,7 @@ class AccordionMenu extends Plugin {
   /**
    * Creates a new instance of an accordion menu.
    * @class
+   * @name AccordionMenu
    * @fires AccordionMenu#init
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -25,6 +26,7 @@ class AccordionMenu extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+    this.className = 'AccordionMenu'; // ie9 back compat
 
     Nest.Feather(this.$element, 'accordion');
 

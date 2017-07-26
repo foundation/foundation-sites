@@ -178,7 +178,7 @@ Triggers.Listeners.Basic = {
     var animation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('closable');
 
     if (animation !== '') {
-      Foundation.Motion.animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_motion__["Motion"].animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('closed.zf');
       });
     } else {
@@ -213,7 +213,7 @@ Triggers.Initializers.addToggleListener = function ($elem) {
 // Elements with [data-closable] will respond to close.zf.trigger events.
 Triggers.Initializers.addCloseableListener = function ($elem) {
   $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
 };
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus

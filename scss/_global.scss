@@ -106,8 +106,12 @@ $global-text-direction: ltr !default;
 $global-flexbox: true !default;
 
 /// Enabled responsive breakpoints for prototypes if applicable
-// @type Boolean
+/// @type Boolean
 $global-prototype-breakpoints: false !default;
+
+/// Button cursor's value, `auto` by default
+/// @type Keyword
+$global-button-cursor: auto !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
@@ -205,15 +209,13 @@ $alert-color: get-color(alert);
   // Reset <button> styles created by most browsers
   button {
     @include disable-mouse-outline;
-
     padding: 0;
-
     appearance: none;
     border: 0;
     border-radius: $global-radius;
     background: transparent;
-
     line-height: 1;
+    cursor: $global-button-cursor;
   }
 
   // Prevent text overflow on pre

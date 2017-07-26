@@ -17,6 +17,7 @@ class Equalizer extends Plugin {
   /**
    * Creates a new instance of Equalizer.
    * @class
+   * @name Equalizer
    * @fires Equalizer#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -24,6 +25,7 @@ class Equalizer extends Plugin {
   _setup(element, options){
     this.$element = element;
     this.options  = $.extend({}, Equalizer.defaults, this.$element.data(), options);
+    this.className = 'Equalizer'; // ie9 back compat
 
     this._init();
   }

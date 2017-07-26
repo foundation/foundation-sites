@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>All Foundation Menu Options - Flexbox</title>
     <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation.css" rel="stylesheet" />
@@ -37,24 +38,26 @@
   </head>
 
   <body>
-    <div class="grid-x grid-padding-x">
-      <div class="cell">
-        <h1>Accordion Menu</h1>
-        <div class="example" style="max-width: 250px">
-          <ul class="vertical menu accordion-menu" data-accordion-menu>
-            <li><a href="#">One</a></li>
-            <li>
-              <a href="#">Two</a>
-              <ul class="menu vertical nested">
-                <li><a href="#">Two A</a></li>
-                <li><a href="#">Two B</a></li>
-                <li><a href="#">Two C</a></li>
-                <li><a href="#">Two D</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Three</a></li>
-            <li><a href="#">Four</a></li>
-          </ul>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Accordion Menu</h1>
+          <div class="example" style="max-width: 250px">
+            <ul class="vertical menu accordion-menu" data-accordion-menu>
+              <li><a href="#">One</a></li>
+              <li>
+                <a href="#">Two</a>
+                <ul class="menu vertical nested">
+                  <li><a href="#">Two A</a></li>
+                  <li><a href="#">Two B</a></li>
+                  <li><a href="#">Two C</a></li>
+                  <li><a href="#">Two D</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Three</a></li>
+              <li><a href="#">Four</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

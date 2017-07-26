@@ -19,6 +19,7 @@ class Dropdown extends Positionable {
   /**
    * Creates a new instance of a dropdown.
    * @class
+   * @name Dropdown
    * @param {jQuery} element - jQuery object to make into a dropdown.
    *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -26,6 +27,7 @@ class Dropdown extends Positionable {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
+    this.className = 'Dropdown'; // ie9 back compat
 
     // Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);

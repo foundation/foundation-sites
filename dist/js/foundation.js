@@ -162,7 +162,7 @@ var Plugin = function () {
     _classCallCheck(this, Plugin);
 
     this._setup(element, options);
-    var pluginName = hyphenate(this.constructor.name);
+    var pluginName = getPluginName(this);
     this.uuid = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["b" /* GetYoDigits */])(6, pluginName);
 
     if (!this.$element.attr('data-' + pluginName)) {
@@ -182,7 +182,7 @@ var Plugin = function () {
     key: 'destroy',
     value: function destroy() {
       this._destroy();
-      var pluginName = hyphenate(this.constructor.name);
+      var pluginName = getPluginName(this);
       this.$element.removeAttr('data-' + pluginName).removeData('zfPlugin')
       /**
        * Fires when the plugin has been destroyed.
@@ -204,6 +204,14 @@ var Plugin = function () {
 
 function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function getPluginName(obj) {
+  if (typeof obj.constructor.name !== 'undefined') {
+    return hyphenate(obj.constructor.name);
+  } else {
+    return hyphenate(obj.className);
+  }
 }
 
 
@@ -455,7 +463,7 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-};
+}();
 
 var MediaQuery = {
   queries: [],
@@ -696,7 +704,7 @@ Triggers.Listeners.Basic = {
     var animation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('closable');
 
     if (animation !== '') {
-      Foundation.Motion.animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_motion__["a" /* Motion */].animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('closed.zf');
       });
     } else {
@@ -731,7 +739,7 @@ Triggers.Initializers.addToggleListener = function ($elem) {
 // Elements with [data-closable] will respond to close.zf.trigger events.
 Triggers.Initializers.addCloseableListener = function ($elem) {
   $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
 };
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus
@@ -1600,6 +1608,7 @@ var Accordion = function (_Plugin) {
     /**
      * Creates a new instance of an accordion.
      * @class
+     * @name Accordion
      * @fires Accordion#init
      * @param {jQuery} element - jQuery object to make into an accordion.
      * @param {Object} options - a plain object with settings to override the default options.
@@ -1608,6 +1617,7 @@ var Accordion = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Accordion.defaults, this.$element.data(), options);
 
+      this.className = 'Accordion'; // ie9 back compat
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('Accordion', {
@@ -1979,6 +1989,7 @@ var AccordionMenu = function (_Plugin) {
     /**
      * Creates a new instance of an accordion menu.
      * @class
+     * @name AccordionMenu
      * @fires AccordionMenu#init
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -1986,6 +1997,7 @@ var AccordionMenu = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+      this.className = 'AccordionMenu'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'accordion');
 
@@ -2366,12 +2378,14 @@ var Drilldown = function (_Plugin) {
     /**
      * Creates a new instance of a drilldown menu.
      * @class
+     * @name Drilldown
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
+      this.className = 'Drilldown'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'drilldown');
 
@@ -2974,6 +2988,7 @@ var DropdownMenu = function (_Plugin) {
     /**
      * Creates a new instance of DropdownMenu.
      * @class
+     * @name DropdownMenu
      * @fires DropdownMenu#init
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -2981,6 +2996,7 @@ var DropdownMenu = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+      this.className = 'DropdownMenu'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'dropdown');
       this._init();
@@ -3739,9 +3755,19 @@ var SmoothScroll = function (_Plugin) {
 
     _createClass(SmoothScroll, [{
         key: '_setup',
+
+        /**
+         * Creates a new instance of SmoothScroll.
+         * @class
+         * @name SmoothScroll
+         * @fires SmoothScroll#init
+         * @param {Object} element - jQuery object to add the trigger to.
+         * @param {Object} options - Overrides to the default plugin settings.
+         */
         value: function _setup(element, options) {
             this.$element = element;
             this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+            this.className = 'SmoothScroll'; // ie9 back compat
 
             this._init();
         }
@@ -3914,6 +3940,7 @@ var Tabs = function (_Plugin) {
     /**
      * Creates a new instance of tabs.
      * @class
+     * @name Tabs
      * @fires Tabs#init
      * @param {jQuery} element - jQuery object to make into tabs.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -3921,6 +3948,7 @@ var Tabs = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Tabs.defaults, this.$element.data(), options);
+      this.className = 'Tabs'; // ie9 back compat
 
       this._init();
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('Tabs', {
@@ -4654,6 +4682,7 @@ var Abide = function (_Plugin) {
     /**
      * Creates a new instance of Abide.
      * @class
+     * @name Abide
      * @fires Abide#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -4664,6 +4693,7 @@ var Abide = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Abide.defaults, this.$element.data(), options);
 
+      this.className = 'Abide'; // ie9 back compat
       this._init();
     }
 
@@ -5225,7 +5255,7 @@ Abide.defaults = {
     number: /^[-+]?\d*(?:[\.\,]\d+)?$/,
 
     // amex, visa, diners
-    card: /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+    card: /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|(?:222[1-9]|2[3-6][0-9]{2}|27[0-1][0-9]|2720)[0-9]{12}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
     cvv: /^([0-9]){3,4}$/,
 
     // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
@@ -5283,11 +5313,14 @@ Abide.defaults = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__ = __webpack_require__(4);
 
 
 
 
-var FOUNDATION_VERSION = '6.4.0-rc4';
+
+
+var FOUNDATION_VERSION = '6.4.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -5485,7 +5518,7 @@ var Foundation = {
 
       if (type === 'undefined') {
         //needs to initialize the Foundation object, or an individual plugin.
-        Foundation.MediaQuery._init();
+        __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
         Foundation.reflow(this);
       } else if (type === 'string') {
         //an individual method to invoke on a plugin or group of plugins
@@ -5682,6 +5715,7 @@ var Dropdown = function (_Positionable) {
     /**
      * Creates a new instance of a dropdown.
      * @class
+     * @name Dropdown
      * @param {jQuery} element - jQuery object to make into a dropdown.
      *        Object should be of the dropdown panel, rather than its anchor.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -5689,6 +5723,7 @@ var Dropdown = function (_Positionable) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
+      this.className = 'Dropdown'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_4__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -6125,6 +6160,7 @@ var Equalizer = function (_Plugin) {
     /**
      * Creates a new instance of Equalizer.
      * @class
+     * @name Equalizer
      * @fires Equalizer#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -6132,6 +6168,7 @@ var Equalizer = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Equalizer.defaults, this.$element.data(), options);
+      this.className = 'Equalizer'; // ie9 back compat
 
       this._init();
     }
@@ -6484,6 +6521,7 @@ Equalizer.defaults = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_plugin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_core__ = __webpack_require__(1);
 
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -6493,6 +6531,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -6519,6 +6558,7 @@ var Interchange = function (_Plugin) {
     /**
      * Creates a new instance of Interchange.
      * @class
+     * @name Interchange
      * @fires Interchange#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -6528,6 +6568,7 @@ var Interchange = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Interchange.defaults, options);
       this.rules = [];
       this.currentPath = '';
+      this.className = 'Interchange'; // ie9 back compat
 
       this._init();
       this._events();
@@ -6544,7 +6585,7 @@ var Interchange = function (_Plugin) {
     value: function _init() {
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
 
-      var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
+      var id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["b" /* GetYoDigits */])(6, 'interchange');
       this.$element.attr({
         'data-resize': id,
         'id': id
@@ -6679,6 +6720,7 @@ var Interchange = function (_Plugin) {
       }
       // Replacing background images
       else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+          path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
           this.$element.css({ 'background-image': 'url(' + path + ')' }).trigger(trigger);
         }
         // Replacing HTML
@@ -6782,6 +6824,7 @@ var Magellan = function (_Plugin) {
     /**
      * Creates a new instance of Magellan.
      * @class
+     * @name Magellan
      * @fires Magellan#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -6789,6 +6832,7 @@ var Magellan = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.className = 'Magellan'; // ie9 back compat
 
       this._init();
       this.calcPoints();
@@ -7103,17 +7147,34 @@ var OffCanvas = function (_Plugin) {
     /**
      * Creates a new instance of an off-canvas wrapper.
      * @class
+     * @name OffCanvas
      * @fires OffCanvas#init
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
+      var _this3 = this;
+
+      this.className = 'OffCanvas'; // ie9 back compat
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, OffCanvas.defaults, this.$element.data(), options);
+      this.contentClasses = { base: [], reveal: [] };
       this.$lastTrigger = __WEBPACK_IMPORTED_MODULE_0_jquery___default()();
       this.$triggers = __WEBPACK_IMPORTED_MODULE_0_jquery___default()();
+      this.position = 'left';
+      this.$content = __WEBPACK_IMPORTED_MODULE_0_jquery___default()();
+      this.nested = !!this.options.nested;
 
-      //Triggers init is idempotent, just need to make sure it is initialized
+      // Defines the CSS transition/position classes of the off-canvas content container.
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(['push', 'overlap']).each(function (index, val) {
+        _this3.contentClasses.base.push('has-transition-' + val);
+      });
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(['left', 'right', 'top', 'bottom']).each(function (index, val) {
+        _this3.contentClasses.base.push('has-position-' + val);
+        _this3.contentClasses.reveal.push('has-reveal-' + val);
+      });
+
+      // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_5__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["a" /* MediaQuery */]._init();
 
@@ -7138,10 +7199,38 @@ var OffCanvas = function (_Plugin) {
 
       this.$element.attr('aria-hidden', 'true');
 
-      this.$element.addClass('is-transition-' + this.options.transition);
+      // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
+      if (this.options.contentId) {
+        this.$content = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + this.options.contentId);
+      } else if (this.$element.siblings('[data-off-canvas-content]').length) {
+        this.$content = this.$element.siblings('[data-off-canvas-content]').first();
+      } else {
+        this.$content = this.$element.closest('[data-off-canvas-content]').first();
+      }
+
+      if (!this.options.contentId) {
+        // Assume that the off-canvas element is nested if it isn't a sibling of the content
+        this.nested = this.$element.siblings('[data-off-canvas-content]').length === 0;
+      } else if (this.options.contentId && this.options.nested === null) {
+        // Warning if using content ID without setting the nested option
+        // Once the element is nested it is required to work properly in this case
+        console.warn('Remember to use the nested option if using the content ID option!');
+      }
+
+      if (this.nested === true) {
+        // Force transition overlap if nested
+        this.options.transition = 'overlap';
+        // Remove appropriate classes if already assigned in markup
+        this.$element.removeClass('is-transition-push');
+      }
+
+      this.$element.addClass('is-transition-' + this.options.transition + ' is-closed');
 
       // Find triggers that affect this element and add aria-expanded to them
       this.$triggers = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id);
+
+      // Get position by checking for related CSS class
+      this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position;
 
       // Add an overlay over the content if necessary
       if (this.options.contentOverlay === true) {
@@ -7150,9 +7239,9 @@ var OffCanvas = function (_Plugin) {
         overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
         this.$overlay = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(overlay);
         if (overlayPosition === 'is-overlay-fixed') {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').append(this.$overlay);
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this.$overlay).insertAfter(this.$element);
         } else {
-          this.$element.siblings('[data-off-canvas-content]').append(this.$overlay);
+          this.$content.append(this.$overlay);
         }
       }
 
@@ -7166,6 +7255,9 @@ var OffCanvas = function (_Plugin) {
       if (this.options.transitionTime) {
         this.$element.css('transition-duration', this.options.transitionTime);
       }
+
+      // Initally remove all transition/position CSS classes from off-canvas content container.
+      this._removeContentClasses();
     }
 
     /**
@@ -7185,7 +7277,7 @@ var OffCanvas = function (_Plugin) {
       });
 
       if (this.options.closeOnClick === true) {
-        var $target = this.options.contentOverlay ? this.$overlay : __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-off-canvas-content]');
+        var $target = this.options.contentOverlay ? this.$overlay : this.$content;
         $target.on({ 'click.zf.offcanvas': this.close.bind(this) });
       }
     }
@@ -7214,6 +7306,38 @@ var OffCanvas = function (_Plugin) {
     }
 
     /**
+     * Removes the CSS transition/position classes of the off-canvas content container.
+     * Removing the classes is important when another off-canvas gets opened that uses the same content container.
+     * @private
+     */
+
+  }, {
+    key: '_removeContentClasses',
+    value: function _removeContentClasses(hasReveal) {
+      this.$content.removeClass(this.contentClasses.base.join(' '));
+      if (hasReveal === true) {
+        this.$content.removeClass(this.contentClasses.reveal.join(' '));
+      }
+    }
+
+    /**
+     * Adds the CSS transition/position classes of the off-canvas content container, based on the opening off-canvas element.
+     * Beforehand any transition/position class gets removed.
+     * @param {Boolean} hasReveal - true if related off-canvas element is revealed.
+     * @private
+     */
+
+  }, {
+    key: '_addContentClasses',
+    value: function _addContentClasses(hasReveal) {
+      this._removeContentClasses();
+      this.$content.addClass('has-transition-' + this.options.transition + ' has-position-' + this.position);
+      if (hasReveal === true) {
+        this.$content.addClass('has-reveal-' + this.position);
+      }
+    }
+
+    /**
      * Handles the revealing/hiding the off-canvas at breakpoints, not the same as open.
      * @param {Boolean} isRevealed - true if element should be revealed.
      * @function
@@ -7222,15 +7346,12 @@ var OffCanvas = function (_Plugin) {
   }, {
     key: 'reveal',
     value: function reveal(isRevealed) {
-      var $closer = this.$element.find('[data-close]');
       if (isRevealed) {
         this.close();
         this.isRevealed = true;
         this.$element.attr('aria-hidden', 'false');
         this.$element.off('open.zf.trigger toggle.zf.trigger');
-        if ($closer.length) {
-          $closer.hide();
-        }
+        this.$element.removeClass('is-closed');
       } else {
         this.isRevealed = false;
         this.$element.attr('aria-hidden', 'true');
@@ -7238,10 +7359,9 @@ var OffCanvas = function (_Plugin) {
           'open.zf.trigger': this.open.bind(this),
           'toggle.zf.trigger': this.toggle.bind(this)
         });
-        if ($closer.length) {
-          $closer.show();
-        }
+        this.$element.addClass('is-closed');
       }
+      this._addContentClasses(isRevealed);
     }
 
     /**
@@ -7329,10 +7449,12 @@ var OffCanvas = function (_Plugin) {
        * Fires when the off-canvas menu opens.
        * @event OffCanvas#opened
        */
-      _this.$element.addClass('is-open');
+      this.$element.addClass('is-open').removeClass('is-closed');
 
       this.$triggers.attr('aria-expanded', 'true');
       this.$element.attr('aria-hidden', 'false').trigger('opened.zf.offcanvas');
+
+      this.$content.addClass('is-open-' + this.position);
 
       // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
       if (this.options.contentScroll === false) {
@@ -7351,6 +7473,9 @@ var OffCanvas = function (_Plugin) {
 
       if (this.options.autoFocus === true) {
         this.$element.one(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["c" /* transitionend */])(this.$element), function () {
+          if (!_this.$element.hasClass('is-open')) {
+            return; // exit if prematurely closed
+          }
           var canvasFocus = _this.$element.find('[data-autofocus]');
           if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
@@ -7361,9 +7486,11 @@ var OffCanvas = function (_Plugin) {
       }
 
       if (this.options.trapFocus === true) {
-        this.$element.siblings('[data-off-canvas-content]').attr('tabindex', '-1');
+        this.$content.attr('tabindex', '-1');
         __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].trapFocus(this.$element);
       }
+
+      this._addContentClasses();
     }
 
     /**
@@ -7382,7 +7509,7 @@ var OffCanvas = function (_Plugin) {
 
       var _this = this;
 
-      _this.$element.removeClass('is-open');
+      this.$element.removeClass('is-open');
 
       this.$element.attr('aria-hidden', 'true')
       /**
@@ -7390,6 +7517,8 @@ var OffCanvas = function (_Plugin) {
        * @event OffCanvas#closed
        */
       .trigger('closed.zf.offcanvas');
+
+      this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
       // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
       if (this.options.contentScroll === false) {
@@ -7409,9 +7538,15 @@ var OffCanvas = function (_Plugin) {
       this.$triggers.attr('aria-expanded', 'false');
 
       if (this.options.trapFocus === true) {
-        this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
+        this.$content.removeAttr('tabindex');
         __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].releaseFocus(this.$element);
       }
+
+      // Listen to transitionEnd and add class when done.
+      this.$element.one(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["c" /* transitionend */])(this.$element), function (e) {
+        _this.$element.addClass('is-closed');
+        _this._removeContentClasses();
+      });
     }
 
     /**
@@ -7440,12 +7575,12 @@ var OffCanvas = function (_Plugin) {
   }, {
     key: '_handleKeyboard',
     value: function _handleKeyboard(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].handleKey(e, 'OffCanvas', {
         close: function () {
-          _this3.close();
-          _this3.$lastTrigger.focus();
+          _this4.close();
+          _this4.$lastTrigger.focus();
           return true;
         },
         handled: function () {
@@ -7488,6 +7623,22 @@ OffCanvas.defaults = {
    * @default true
    */
   contentOverlay: true,
+
+  /**
+   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
+   * @option
+   * @type {?string}
+   * @default null
+   */
+  contentId: null,
+
+  /**
+   * Define the off-canvas element is nested in an off-canvas content. This is required when using the contentId option for a nested element.
+   * @option
+   * @type {boolean}
+   * @default null
+   */
+  nested: null,
 
   /**
    * Enable/disable scrolling of the main content when an off canvas panel is open.
@@ -7624,12 +7775,14 @@ var Orbit = function (_Plugin) {
     /**
     * Creates a new instance of an orbit carousel.
     * @class
+    * @name Orbit
     * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
     * @param {Object} options - Overrides to the default plugin settings.
     */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Orbit.defaults, this.$element.data(), options);
+      this.className = 'Orbit'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_7__foundation_util_touch__["a" /* Touch */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
 
@@ -8231,8 +8384,9 @@ var ResponsiveAccordionTabs = function (_Plugin) {
     /**
      * Creates a new instance of a responsive accordion tabs.
      * @class
+     * @name ResponsiveAccordionTabs
      * @fires ResponsiveAccordionTabs#init
-     * @param {jQuery} element - jQuery object to make into a dropdown menu.
+     * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
@@ -8241,6 +8395,7 @@ var ResponsiveAccordionTabs = function (_Plugin) {
       this.rules = this.$element.data('responsive-accordion-tabs');
       this.currentMq = null;
       this.currentPlugin = null;
+      this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
       if (!this.$element.attr('id')) {
         this.$element.attr('id', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["b" /* GetYoDigits */])(6, 'responsiveaccordiontabs'));
       };
@@ -8528,6 +8683,7 @@ var ResponsiveMenu = function (_Plugin) {
     /**
      * Creates a new instance of a responsive menu.
      * @class
+     * @name ResponsiveMenu
      * @fires ResponsiveMenu#init
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -8537,6 +8693,7 @@ var ResponsiveMenu = function (_Plugin) {
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
       this.currentPlugin = null;
+      this.className = 'ResponsiveMenu'; // ie9 back compat
 
       this._init();
       this._events();
@@ -8706,6 +8863,7 @@ var ResponsiveToggle = function (_Plugin) {
     /**
      * Creates a new instance of Tab Bar.
      * @class
+     * @name ResponsiveToggle
      * @fires ResponsiveToggle#init
      * @param {jQuery} element - jQuery object to attach tab bar functionality to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -8713,6 +8871,7 @@ var ResponsiveToggle = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element);
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+      this.className = 'ResponsiveToggle'; // ie9 back compat
 
       this._init();
       this._events();
@@ -8809,7 +8968,7 @@ var ResponsiveToggle = function (_Plugin) {
          */
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
-            Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
+            __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__["a" /* Motion */].animateIn(this.$targetMenu, this.animationIn, function () {
               _this3.$element.trigger('toggled.zf.responsiveToggle');
               _this3.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });
@@ -8912,12 +9071,14 @@ var Reveal = function (_Plugin) {
     /**
      * Creates a new instance of Reveal.
      * @class
+     * @name Reveal
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Reveal.defaults, this.$element.data(), options);
+      this.className = 'Reveal'; // ie9 back compat
       this._init();
 
       // Triggers init is idempotent, just need to make sure it is initialized
@@ -9558,12 +9719,14 @@ var Slider = function (_Plugin) {
     /**
      * Creates a new instance of a slider control.
      * @class
+     * @name Slider
      * @param {jQuery} element - jQuery object to make into a slider control.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Slider.defaults, this.$element.data(), options);
+      this.className = 'Slider'; // ie9 back compat
 
       // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
       __WEBPACK_IMPORTED_MODULE_5__foundation_util_touch__["a" /* Touch */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -10354,12 +10517,14 @@ var Sticky = function (_Plugin) {
     /**
      * Creates a new instance of a sticky thing.
      * @class
+     * @name Sticky
      * @param {jQuery} element - jQuery object to make sticky.
      * @param {Object} options - options object passed when creating the element programmatically.
      */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Sticky.defaults, this.$element.data(), options);
+      this.className = 'Sticky'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_4__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -10930,6 +11095,7 @@ var Toggler = function (_Plugin) {
     /**
      * Creates a new instance of Toggler.
      * @class
+     * @name Toggler
      * @fires Toggler#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -10938,6 +11104,7 @@ var Toggler = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
+      this.className = 'Toggler'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
       __WEBPACK_IMPORTED_MODULE_3__foundation_util_triggers__["a" /* Triggers */].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -11130,6 +11297,7 @@ var Tooltip = function (_Positionable) {
     /**
      * Creates a new instance of a Tooltip.
      * @class
+     * @name Tooltip
      * @fires Tooltip#init
      * @param {jQuery} element - jQuery object to attach a tooltip to.
      * @param {Object} options - object to extend the default configuration.
@@ -11137,6 +11305,7 @@ var Tooltip = function (_Positionable) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Tooltip.defaults, this.$element.data(), options);
+      this.className = 'Tooltip'; // ie9 back compat
 
       this.isActive = false;
       this.isClick = false;

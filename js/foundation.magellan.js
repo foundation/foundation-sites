@@ -16,6 +16,7 @@ class Magellan extends Plugin {
   /**
    * Creates a new instance of Magellan.
    * @class
+   * @name Magellan
    * @fires Magellan#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -23,6 +24,7 @@ class Magellan extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
+    this.className = 'Magellan'; // ie9 back compat
 
     this._init();
     this.calcPoints();

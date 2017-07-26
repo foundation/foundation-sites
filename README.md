@@ -33,6 +33,10 @@ npm install
 
 Then run `npm start` to compile the documentation. When it finishes, a new browser window will open pointing to a BrowserSync server displaying the documentation.
 
+## Training
+
+Want the guided tour to Foundation from the team that built it? The ZURB team offers comprehensive training courses for developers of all skill levels. If you're new to Foundation, check out the [Introduction to Foundation Course](http://zurb.com/university/foundation-intro?utm_source=Github%20Repo&utm_medium=website&utm_campaign=readme&utm_content=readme%20training%20link) to kickstart your skills, amplify your productivity, and get a comprehensive overview of everything Foundation has to offer. More Advanced users should check out the [Advanced Foundation Course](http://zurb.com/university/advanced-foundation-training?utm_source=Github%20Repo&utm_medium=website&utm_campaign=readme&utm_content=readme%20training%20link) to learn the Advanced skills that ZURB uses to deliver quality client work in short timeframes.
+
 ## Testing
 
 Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Refer to our [testing guide](https://github.com/zurb/foundation-sites/wiki/Testing-Guide) for more details.

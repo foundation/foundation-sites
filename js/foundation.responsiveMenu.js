@@ -39,6 +39,7 @@ class ResponsiveMenu extends Plugin {
   /**
    * Creates a new instance of a responsive menu.
    * @class
+   * @name ResponsiveMenu
    * @fires ResponsiveMenu#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -48,6 +49,7 @@ class ResponsiveMenu extends Plugin {
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;
     this.currentPlugin = null;
+    this.className = 'ResponsiveMenu'; // ie9 back compat
 
     this._init();
     this._events();

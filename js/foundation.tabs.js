@@ -15,6 +15,7 @@ class Tabs extends Plugin {
   /**
    * Creates a new instance of tabs.
    * @class
+   * @name Tabs
    * @fires Tabs#init
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -22,6 +23,7 @@ class Tabs extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
+    this.className = 'Tabs'; // ie9 back compat
 
     this._init();
     Keyboard.register('Tabs', {

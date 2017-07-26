@@ -194,12 +194,14 @@ var Slider = function (_Plugin) {
     /**
      * Creates a new instance of a slider control.
      * @class
+     * @name Slider
      * @param {jQuery} element - jQuery object to make into a slider control.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Slider.defaults, this.$element.data(), options);
+      this.className = 'Slider'; // ie9 back compat
 
       // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
       __WEBPACK_IMPORTED_MODULE_5__foundation_util_touch__["Touch"].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
@@ -1005,7 +1007,7 @@ Triggers.Listeners.Basic = {
     var animation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('closable');
 
     if (animation !== '') {
-      Foundation.Motion.animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
+      __WEBPACK_IMPORTED_MODULE_1__foundation_util_motion__["Motion"].animateOut(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this), animation, function () {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).trigger('closed.zf');
       });
     } else {
@@ -1040,7 +1042,7 @@ Triggers.Initializers.addToggleListener = function ($elem) {
 // Elements with [data-closable] will respond to close.zf.trigger events.
 Triggers.Initializers.addCloseableListener = function ($elem) {
   $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
 };
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus

@@ -6,6 +6,33 @@
 /// @group functions
 ////
 
+/// Creates an inner box-shadow for only one side
+/// 
+/// @param {Keyword} $side - Side the shadow is supposed to appear. Can be `top`, `left`, `right` or `bottom`.
+/// @param {Number} $size - Width for the target side.
+/// @param {Color} $color - Color of the shadow.
+@mixin inner-side-shadow(
+  $side: bottom,
+  $size: 20px,
+  $color: rgba($black, 0.25)
+) {
+
+  $helper: round($size * 0.65);
+
+  @if ($side == top) {
+    box-shadow: inset 0 $helper $size (-1)*$helper $color;
+  }
+  @elseif ($side == left) {
+    box-shadow: inset $helper 0 $size (-1)*$helper $color;
+  }
+  @elseif ($side == right) {
+    box-shadow: inset (-1)*$helper 0 $size (-1)*$helper $color;
+  }
+  @elseif ($side == bottom) {
+    box-shadow: inset 0 (-1)*$helper $size (-1)*$helper $color;
+  }
+}
+
 /// Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
 ///
 /// @param {Number} $triangle-size - Width of the triangle.

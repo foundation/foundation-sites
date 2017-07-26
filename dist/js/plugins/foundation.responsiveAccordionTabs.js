@@ -181,8 +181,9 @@ var ResponsiveAccordionTabs = function (_Plugin) {
     /**
      * Creates a new instance of a responsive accordion tabs.
      * @class
+     * @name ResponsiveAccordionTabs
      * @fires ResponsiveAccordionTabs#init
-     * @param {jQuery} element - jQuery object to make into a dropdown menu.
+     * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
@@ -191,6 +192,7 @@ var ResponsiveAccordionTabs = function (_Plugin) {
       this.rules = this.$element.data('responsive-accordion-tabs');
       this.currentMq = null;
       this.currentPlugin = null;
+      this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
       if (!this.$element.attr('id')) {
         this.$element.attr('id', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["GetYoDigits"])(6, 'responsiveaccordiontabs'));
       };

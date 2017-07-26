@@ -171,6 +171,7 @@ var Equalizer = function (_Plugin) {
     /**
      * Creates a new instance of Equalizer.
      * @class
+     * @name Equalizer
      * @fires Equalizer#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -178,6 +179,7 @@ var Equalizer = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Equalizer.defaults, this.$element.data(), options);
+      this.className = 'Equalizer'; // ie9 back compat
 
       this._init();
     }

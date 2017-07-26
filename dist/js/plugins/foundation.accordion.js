@@ -160,6 +160,7 @@ var Accordion = function (_Plugin) {
     /**
      * Creates a new instance of an accordion.
      * @class
+     * @name Accordion
      * @fires Accordion#init
      * @param {jQuery} element - jQuery object to make into an accordion.
      * @param {Object} options - a plain object with settings to override the default options.
@@ -168,6 +169,7 @@ var Accordion = function (_Plugin) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Accordion.defaults, this.$element.data(), options);
 
+      this.className = 'Accordion'; // ie9 back compat
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].register('Accordion', {

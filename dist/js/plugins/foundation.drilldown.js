@@ -168,12 +168,14 @@ var Drilldown = function (_Plugin) {
     /**
      * Creates a new instance of a drilldown menu.
      * @class
+     * @name Drilldown
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
+      this.className = 'Drilldown'; // ie9 back compat
 
       __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["Nest"].Feather(this.$element, 'drilldown');
 

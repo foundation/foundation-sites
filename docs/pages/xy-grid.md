@@ -23,7 +23,6 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 ```scss
 @import 'foundation';
 
-@include xy-grid;
 @include foundation-xy-grid-classes;
 ```
 
@@ -95,6 +94,21 @@ The grid defaults to the full width of its container. In order to contain the gr
 
 ```html
 <div class="grid-container">
+  <div class="grid-x">
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+  </div>
+</div>
+```
+
+By default, the container will be centered and have a max-width equal to your
+`$max-width` setting (1200px by default), and be flush to the screen for widths
+below that. If you want to add padding below the `$max-width`, simply add the
+`.grid-container-padded` class to your grid container.
+
+```html
+<div class="grid-container grid-container-padded">
   <div class="grid-x">
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
@@ -189,6 +203,35 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 ---
 
+## Block Grids
+
+To define cell widths within a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x` or `grid-y`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
+
+<div class="primary callout">This example uses padding grid but this can be used with margin grid too.</div>
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/PjBLxE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<div class="grid-x grid-padding-x small-up-2 medium-up-4 large-up-6">
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+  <div class="cell">cell</div>
+</div>
+```
+
+---
+
+## Looking for Push Pull
+
+Push and pull are a bit of a hack solution and was only necessary for Float based grids. But for flexbox, this hack is not needed as [source ordering](flexbox-utilities.html#source-ordering) does this with ease.
+
+---
+
 ## Vertical Grids
 
 The XY grid also supports vertical grids. Simply apply `.grid-y` instead of `.grid-x`.
@@ -270,3 +313,121 @@ Here's an example of what you can do:
 ```
 
 ---
+
+## Building Semantically
+
+XY grid CSS is generated with a powerful set of Sass mixins, which you can use in your own code to build a semantic grid.
+
+### Grid Container
+
+Use the `xy-grid-container()` mixin to create a grid container. This contains the grid to the width specified in `$grid-container`.
+
+```scss
+.container {
+  @include xy-grid-container;
+}
+```
+---
+
+### Grids
+
+Use the `xy-grid()` mixin to create a grid.
+
+```scss
+.my-grid {
+  @include xy-grid;
+}
+```
+---
+
+### Gutters
+
+Use the `xy-gutters()` mixin to add gutters to an item. The `xy-cell` mixin used this to output gutters, but you can use this to add responsive gutters to anything you like.
+This is especially powerful as you can specify where you want the gutters, like so:
+
+```scss
+.gallery-item {
+  @include xy-gutters($gutter-position: left right bottom);
+}
+```
+---
+
+### Cells
+
+Use the `xy-cell()` mixin to create a cell. There are a number of ways to define the size of a cell.
+`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs).
+
+```scss
+.main-content {
+  // Use the full column count (100%)
+  @include xy-cell();
+
+  // Use a column count (33%);
+  @include xy-cell(4);
+
+  // Use a percentage (15%)
+  @include xy-cell(15%);
+
+  // Use a custom fraction (20%)
+  @include xy-cell(1 of 5);
+}
+```
+
+The cell size calculator can also be accessed as a function. This gives you the percentage value, without any of the grid cell CSS.
+
+```scss
+.main-content {
+  width: xy-cell-size(1 of 7);
+}
+```
+
+---
+
+### Responsive Grids
+
+Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
+Refer to the Sass documentation below to learn how each mixin works and the available arguements.
+
+```scss
+.main-content {
+  @include xy-cell();
+
+  @include breakpoint(medium) {
+    @include xy-cell(8);
+  }
+}
+```
+
+We also have a shorthand option for the above which outputs the same CSS:
+
+```scss
+.main-content {
+  @include xy-cell-breakpoints((small: full, medium: 8));
+}
+```
+
+### Custom Block Grid
+
+Use the `xy-grid-layout()` mixin to create your own block grid.
+By default the mixin takes 2 parameters:
+- number of columns
+- child selector
+
+Refer to the Sass documentation [below](#xy-grid-layout) for the full list of arguments.
+
+Here's an example:
+
+```scss
+.gallery {
+  @include xy-grid-layout(3, '.gallery-item');
+}
+```
+That outputs this CSS:
+
+```
+.gallery > .gallery-item {
+  width: calc(33.33333% - 1.25rem);
+  margin-right: 0.625rem;
+  margin-left: 0.625rem;
+}
+```

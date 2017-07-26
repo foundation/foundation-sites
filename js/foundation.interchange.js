@@ -16,6 +16,7 @@ class Interchange extends Plugin {
   /**
    * Creates a new instance of Interchange.
    * @class
+   * @name Interchange
    * @fires Interchange#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -25,6 +26,7 @@ class Interchange extends Plugin {
     this.options = $.extend({}, Interchange.defaults, options);
     this.rules = [];
     this.currentPath = '';
+    this.className = 'Interchange'; // ie9 back compat
 
     this._init();
     this._events();
@@ -156,6 +158,7 @@ class Interchange extends Plugin {
     }
     // Replacing background images
     else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+      path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
       this.$element.css({ 'background-image': 'url('+path+')' })
           .trigger(trigger);
     }

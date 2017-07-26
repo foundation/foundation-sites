@@ -20,6 +20,7 @@ class DropdownMenu extends Plugin {
   /**
    * Creates a new instance of DropdownMenu.
    * @class
+   * @name DropdownMenu
    * @fires DropdownMenu#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -27,6 +28,7 @@ class DropdownMenu extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+    this.className = 'DropdownMenu'; // ie9 back compat
 
     Nest.Feather(this.$element, 'dropdown');
     this._init();

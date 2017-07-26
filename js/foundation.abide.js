@@ -12,6 +12,7 @@ class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
+   * @name Abide
    * @fires Abide#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -20,6 +21,7 @@ class Abide extends Plugin {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
 
+    this.className = 'Abide'; // ie9 back compat
     this._init();
   }
 
@@ -535,7 +537,7 @@ Abide.defaults = {
     number : /^[-+]?\d*(?:[\.\,]\d+)?$/,
 
     // amex, visa, diners
-    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|(?:222[1-9]|2[3-6][0-9]{2}|27[0-1][0-9]|2720)[0-9]{12}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
     cvv : /^([0-9]){3,4}$/,
 
     // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address

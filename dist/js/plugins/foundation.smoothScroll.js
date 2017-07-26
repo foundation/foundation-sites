@@ -152,9 +152,19 @@ var SmoothScroll = function (_Plugin) {
 
     _createClass(SmoothScroll, [{
         key: '_setup',
+
+        /**
+         * Creates a new instance of SmoothScroll.
+         * @class
+         * @name SmoothScroll
+         * @fires SmoothScroll#init
+         * @param {Object} element - jQuery object to add the trigger to.
+         * @param {Object} options - Overrides to the default plugin settings.
+         */
         value: function _setup(element, options) {
             this.$element = element;
             this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+            this.className = 'SmoothScroll'; // ie9 back compat
 
             this._init();
         }

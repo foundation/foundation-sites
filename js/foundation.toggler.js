@@ -16,6 +16,7 @@ class Toggler extends Plugin {
   /**
    * Creates a new instance of Toggler.
    * @class
+   * @name Toggler
    * @fires Toggler#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -24,6 +25,7 @@ class Toggler extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Toggler.defaults, element.data(), options);
     this.className = '';
+    this.className = 'Toggler'; // ie9 back compat
 
     // Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);

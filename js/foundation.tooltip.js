@@ -19,6 +19,7 @@ class Tooltip extends Positionable {
   /**
    * Creates a new instance of a Tooltip.
    * @class
+   * @name Tooltip
    * @fires Tooltip#init
    * @param {jQuery} element - jQuery object to attach a tooltip to.
    * @param {Object} options - object to extend the default configuration.
@@ -26,6 +27,7 @@ class Tooltip extends Positionable {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
+    this.className = 'Tooltip'; // ie9 back compat
 
     this.isActive = false;
     this.isClick = false;

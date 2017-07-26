@@ -160,6 +160,7 @@ var Magellan = function (_Plugin) {
     /**
      * Creates a new instance of Magellan.
      * @class
+     * @name Magellan
      * @fires Magellan#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -167,6 +168,7 @@ var Magellan = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = element;
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.className = 'Magellan'; // ie9 back compat
 
       this._init();
       this.calcPoints();

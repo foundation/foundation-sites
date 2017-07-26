@@ -162,6 +162,7 @@ var ResponsiveToggle = function (_Plugin) {
     /**
      * Creates a new instance of Tab Bar.
      * @class
+     * @name ResponsiveToggle
      * @fires ResponsiveToggle#init
      * @param {jQuery} element - jQuery object to attach tab bar functionality to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -169,6 +170,7 @@ var ResponsiveToggle = function (_Plugin) {
     value: function _setup(element, options) {
       this.$element = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(element);
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+      this.className = 'ResponsiveToggle'; // ie9 back compat
 
       this._init();
       this._events();
@@ -265,7 +267,7 @@ var ResponsiveToggle = function (_Plugin) {
          */
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
-            Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
+            __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__["Motion"].animateIn(this.$targetMenu, this.animationIn, function () {
               _this3.$element.trigger('toggled.zf.responsiveToggle');
               _this3.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });

@@ -104,6 +104,13 @@ __WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IM
 
 /***/ }),
 
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
+
+/***/ }),
+
 /***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -115,6 +122,8 @@ __WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IM
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_plugin__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__foundation_plugin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__);
 
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -124,6 +133,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -150,6 +160,7 @@ var Interchange = function (_Plugin) {
     /**
      * Creates a new instance of Interchange.
      * @class
+     * @name Interchange
      * @fires Interchange#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -159,6 +170,7 @@ var Interchange = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Interchange.defaults, options);
       this.rules = [];
       this.currentPath = '';
+      this.className = 'Interchange'; // ie9 back compat
 
       this._init();
       this._events();
@@ -175,7 +187,7 @@ var Interchange = function (_Plugin) {
     value: function _init() {
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["MediaQuery"]._init();
 
-      var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
+      var id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["GetYoDigits"])(6, 'interchange');
       this.$element.attr({
         'data-resize': id,
         'id': id
@@ -310,6 +322,7 @@ var Interchange = function (_Plugin) {
       }
       // Replacing background images
       else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+          path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
           this.$element.css({ 'background-image': 'url(' + path + ')' }).trigger(trigger);
         }
         // Replacing HTML

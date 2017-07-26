@@ -19,6 +19,8 @@
 @include foundation-meter-element;
 @include motion-ui-transitions;
 
+$foundation-dark: #074E68 ;
+$true-white: #fff;
 @import 'foundation-docs';
 @import 'examples/grid';
 @import 'examples/motion-ui';
@@ -30,6 +32,7 @@
 @import 'course-callout';
 @import 'component-list';
 @import 'accordion-content';
+@import 'docs-footer';
 
 
 // ZURB logo font
@@ -139,6 +142,10 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
     @media screen and (min-width: 775px) {
       display: flex;
     }
+  }
+
+  .dropdown.menu .is-active a {
+    color: $white;
   }
 
   .dropdown.menu > li.is-dropdown-submenu-parent > a {
