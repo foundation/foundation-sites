@@ -376,4 +376,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       margin-#{$global-left}: 0;
     }
   }
+  a.button {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
