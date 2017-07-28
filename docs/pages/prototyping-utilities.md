@@ -9,7 +9,7 @@ sass:
 
 Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implementation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
 
-Sometimes prototype code is meant the be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scrutiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
+Sometimes prototype code is meant to be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scrutiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
 
 Foundation's Prototyping Utilities help you build coded prototypes from scratch ultra-fast. This allows you to get to right answer faster through feedback and experimentation. From positioning to visual styles, there are a range of utilities to choose from. Every Utility has a mixin, so you can use your own custom classes or swap classes for mixins in production for cleaner markup.
 
