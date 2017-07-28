@@ -122,11 +122,7 @@ $global-right: if($global-text-direction == rtl, left, right);
 $global-color-pick-contrast-tolerance: 0 !default;
 
 // Internal variables used for colors
-$primary-color: get-color(primary);
-$secondary-color: get-color(secondary);
-$success-color: get-color(success);
-$warning-color: get-color(warning);
-$alert-color: get-color(alert);
+@include add-foundation-colors;
 
 @mixin foundation-global-styles {
   @include -zf-normalize;
