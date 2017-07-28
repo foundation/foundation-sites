@@ -377,7 +377,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     }
   }
   a.button {
-    &:hover {
+    &:hover,
+    &:focus {
       text-decoration: none;
     }
   }
