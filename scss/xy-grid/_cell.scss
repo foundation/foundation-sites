@@ -108,7 +108,7 @@
 ) {
   @if($breakpoint == null) {
     // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
-    @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') {
+    @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') and $-zf-size != null {
       $breakpoint: $-zf-size;
     }
     @else {
