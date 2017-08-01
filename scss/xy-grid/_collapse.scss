@@ -14,40 +14,60 @@
 @mixin xy-grid-collapse(
   $selector: '.cell',
   $gutter-type: margin,
-  $gutter-position: right left
+  $gutter-position: right left,
+  $min-breakpoint: $-zf-zero-breakpoint
 ) {
   // First, lets negate any margins on the top level
   @if ($gutter-type == 'margin') {
 
-    @each $value in $gutter-position {
-      margin-#{$value}: 0;
-    }
+    @include breakpoint($min-breakpoint) {
+      @each $value in $gutter-position {
+        margin-#{$value}: 0;
+      }
 
       > #{$selector} {
         @each $value in $gutter-position {
           margin-#{$value}: 0;
         }
       }
+    }
+
+    $excluded-bps: -zf-breakpoints-less-than($min-breakpoint);
 
     // Output new widths to not include gutters
     @each $bp in $breakpoint-classes {
-      @for $i from 1 through $grid-columns {
-        // Sizing (percentage)
-        > .#{$bp}-#{$i} {
-          @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+      @if(sl-contain($excluded-bps, $bp)) {
+        @include breakpoint($min-breakpoint) {
+          @for $i from 1 through $grid-columns {
+            // Sizing (percentage)
+            > .#{$bp}-#{$i} {
+              @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+            }
+          }
         }
-      }
+      } @else {
+        @include breakpoint($bp) {
+          @for $i from 1 through $grid-columns {
+            // Sizing (percentage)
+            > .#{$bp}-#{$i} {
+              @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+            }
+          }
+        }
+      } 
     }
   }
   @else {
 
-    @each $value in $gutter-position {
-      margin-#{$value}: 0;
-    }
-
-    > #{$selector} {
+    @include breakpoint($min-breakpoint) {
       @each $value in $gutter-position {
-        padding-#{$value}: 0;
+        margin-#{$value}: 0;
+      }
+
+      > #{$selector} {
+        @each $value in $gutter-position {
+          padding-#{$value}: 0;
+        }
       }
     }
   }
