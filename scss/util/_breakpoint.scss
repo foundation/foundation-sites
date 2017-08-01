@@ -144,6 +144,8 @@ $breakpoint-classes: (small medium large) !default;
   $bp: index($-zf-breakpoints-keys, $value);
   $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
 
+  $old-zf-size: null;
+
   // Make breakpoint size available as a variable
   @if global-variable-exists(-zf-size) {
     $old-zf-size: $-zf-size;
@@ -170,9 +172,11 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 
-  @if variable-exists(old-zf-size) {
+  @if $old-zf-size != null {
     // Restore the old breakpoint size
     $-zf-size: $old-zf-size !global;
+  } @else {
+    $-zf-size: null !global;
   }
 }
 
