@@ -145,7 +145,7 @@ $breakpoint-classes: (small medium large) !default;
   $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
 
   // Make breakpoint size available as a variable
-  $old-zf-size: $-zf-zero-breakpoint;
+  $old-zf-size: $-zf-size;
   $-zf-size: nth($value, 1) !global; // get the first value to account for `only` and `down` keywords
 
   // If $str is still an empty string, no media query is needed
