@@ -123,6 +123,7 @@
     "exports": false
   },
   "jspm": {
+    "main": "dist/js/foundation.js",
     "format": "global",
     "shim": {
       "dist/js/foundation": {
