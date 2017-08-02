@@ -7,6 +7,11 @@ tags:
   - dropdown button
 ---
 
+<div class="callout training-callout">
+  <p>To help you get the most out of Foundation and create responsive websites and apps like us we’ve put together some unique online webinar training. Learn Foundation’s Grid, how to use and modify Foundation's UI components, Foundation’s JavaScript options and functions, and tons of tips and tricks we learned from major client projects.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Learn more about Foundation training →</a>
+</div>
+
 ## Basics
 
 A basic button can be created with minimal markup. Because buttons can be used for many purposes, it's important to use the right tag.

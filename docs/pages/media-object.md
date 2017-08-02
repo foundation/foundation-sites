@@ -88,7 +88,7 @@ In flexbox mode, you can use the <a href="flexbox.html#helper-classes">flexbox h
 
 ```html
 <div class="media-object">
-  <div class="media-object-section align-self-center">
+  <div class="media-object-section align-self-middle">
     <div class="thumbnail">
       <img src= "assets/img/media-object/avatar-2.jpg">
     </div>
