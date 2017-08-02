@@ -8,6 +8,11 @@ tags:
   - breakpoints
 ---
 
+<div class="callout training-callout">
+  <p>Build better websites and apps, code cleaner, and become a better front-end developer with Foundation training. We're running two online webinar training sessions this month where we break down how to get the most out of Foundnation and leap ahead skillwise.</p>
+  <a href="http://zurb.com/university/courses" target="_blank"> Get registered →</a>
+</div>
+
 ## Default Media Queries
 
 Foundation for Sites has three core breakpoints:

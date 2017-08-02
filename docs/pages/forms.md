@@ -13,6 +13,11 @@ tags:
 flex: true
 ---
 
+<div class="callout training-callout">
+  <p>Learn the right way to tackle your project and at same time saving time and money. We offer in depth online webinars for you to gain the skills to become a Foundation front-end master.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Check out our upcoming training opportunities →</a>
+</div>
+
 ## Form Basics
 
 Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as grid rows and columns.

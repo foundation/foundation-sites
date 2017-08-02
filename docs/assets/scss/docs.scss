@@ -103,6 +103,21 @@ a#notice {
     .countdown { display: none; }
   }
 }
+a.docs-banner {
+  display: block;
+  overflow: hidden;
+  padding: 0.4rem 0;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: $success-color;
+  color: $white;
+  h5 {
+    margin-bottom: 0 !important;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
 /* COUNTDOWN END */
 
 $transition-slow: all 0.5s ease-in-out;
@@ -439,4 +454,32 @@ a[data-open-video] {
     z-index: 1;
     color: #aaa;
   }
+}
+
+.training-callout {
+  border-left: 3px solid $primary-color;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.17);
+}
+
+.hyperlink {
+  text-decoration: underline;
+  color: $white;
+  transition: color 0.15s ease;
+}
+
+
+a.docs-banner {
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h5 {
+    // opacity: 0.8;
+    font-size: 1rem;
+  }
+}
+
+.docs-nav-container {
+  overflow: auto;
 }

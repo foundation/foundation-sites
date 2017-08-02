@@ -70,6 +70,7 @@ gulp.task('customizer:prepareSassDeps', function() {
       'node_modules/@(normalize-scss)/sass/**/*.scss',
       'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
       'node_modules/@(sassy-lists)/stylesheets/helpers/true',
+      'node_modules/@(sassy-lists)/stylesheets/functions/contain',
       'node_modules/@(sassy-lists)/stylesheets/functions/purge',
       'node_modules/@(sassy-lists)/stylesheets/functions/remove',
       'node_modules/@(sassy-lists)/stylesheets/functions/replace',

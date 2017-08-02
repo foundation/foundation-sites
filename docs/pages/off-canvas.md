@@ -15,6 +15,11 @@ tags:
 flex: true
 ---
 
+<div class="callout training-callout">
+  <p>Off-canvas layouts are common and useful for mobile and desktop layouts. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+</div>
+
 <div class="primary callout">
   <p>Good news! We've updated Off-canvas to offer more and better functionality. Another bonus is the markup is simplified. This new version applies to version 6.3+. We work hard to avoid breaking changes, so any markup updates are listed in the <a href="#migrating-from-versions-prior-to-v6-3">migration section</a> of this page.</p>
 </div>
@@ -339,9 +344,9 @@ For an example of off-canvas, checkout this top bar with off-canvas navigation a
 
 ---
 
-## In-Canvas
+## In-Canvas to Off-Canvas
 
-If you want an element to be off-canvas only for specific sceen sizes and then move in-canvas you can use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. Compared to the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as an usual page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. This differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
 
 ```html_example
 <button type="button" class="button hide-for-large" data-toggle="inCanvasExample">

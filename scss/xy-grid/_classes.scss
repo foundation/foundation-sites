@@ -12,10 +12,14 @@
   // Grid Container
   .grid-container {
     @include xy-grid-container;
-  }
 
-  .grid-container-padded {
-    @include xy-grid-container-padding;
+    &.fluid {
+      @include xy-grid-container(100%);
+    }
+
+    &.full {
+      @include xy-grid-container(100%, 0);
+    }
   }
 
   // Base grid styles
@@ -164,6 +168,12 @@
       @include xy-gutters($negative: true);
     }
 
+    // Negative margin for grids within `grid-container/grid-container.fluid`
+    // This allows margin and padding grids to line up with eachother
+    .grid-container:not(.full) > & {
+      @include xy-gutters($negative: true);
+    }
+
     // Base cell styles
     > .cell {
       @include xy-gutters($gutters: $grid-padding-gutters, $gutter-type: padding);
@@ -209,16 +219,16 @@
 
 // Collapse classes
 @mixin xy-collapse-grid-classes($margin-grid: true, $padding-grid: true) {
-  @include -zf-each-breakpoint {
+  @each $bp in $breakpoint-classes {
     @if $margin-grid {
-      .#{$-zf-size}-margin-collapse {
-        @include xy-grid-collapse($gutter-type: margin);
+      .#{$bp}-margin-collapse {
+        @include xy-grid-collapse($gutter-type: margin, $min-breakpoint: $bp);
       }
     }
 
     @if $padding-grid {
-      .#{$-zf-size}-padding-collapse {
-        @include xy-grid-collapse($gutter-type: padding);
+      .#{$bp}-padding-collapse {
+        @include xy-grid-collapse($gutter-type: padding, $min-breakpoint: $bp);
       }
     }
   }

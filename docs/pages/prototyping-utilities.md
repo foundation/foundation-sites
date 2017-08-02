@@ -7,9 +7,9 @@ sass:
 
 <h4><strong>Prototype to Production</strong></h4>
 
-Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implimentation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
+Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implementation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
 
-Sometimes prototype code is meant the be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scruitiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
+Sometimes prototype code is meant to be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scrutiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
 
 Foundation's Prototyping Utilities help you build coded prototypes from scratch ultra-fast. This allows you to get to right answer faster through feedback and experimentation. From positioning to visual styles, there are a range of utilities to choose from. Every Utility has a mixin, so you can use your own custom classes or swap classes for mixins in production for cleaner markup.
 
@@ -95,11 +95,11 @@ You can easily enable these classes by setting `$global-prototype-breakpoints` t
 ```
 
 You can also customise things by choosing to add responsive breakpoints only for specific prototype helpers that you would need as responsive classes. <br>
-For example, text transformation classes have a breakpoint variable `$prototype-transformation-breakpoints` which is set to `$global-prototype-breakpoints` which is set to `false` by default. For enabling responsive breakpoints for text transformation classes, simply set: 
+For example, text transformation classes have a breakpoint variable `$prototype-transformation-breakpoints` which is set to `$global-prototype-breakpoints` which is set to `false` by default. For enabling responsive breakpoints for text transformation classes, simply set:
 
 ```scss
 $prototype-transformation-breakpoints: true;
-``` 
+```
 
 ---
 
@@ -768,15 +768,15 @@ These Rotate mixins lets you rotate an element to a certain degree. Clockwise is
 }
 
 .bar {
-	@include rotateX(60); // 60 Degree
+	@include rotateX(60); // 60 Degree on X axis
 }
 
 .baz {
-	@include rotateY(90); // 90 Degree
+	@include rotateY(90); // 90 Degree on Y axis
 }
 
 .shaz {
-	@include rotateZ(120); // 120 Degree
+	@include rotateZ(120); // 120 Degree on Z axis
 }
 ```
 

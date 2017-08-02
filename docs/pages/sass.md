@@ -4,6 +4,11 @@ description: Foundation is written in Sass, which allows us to make the codebase
 video: mYiyunVQdMY
 ---
 
+<div class="callout training-callout">
+  <p>Get trainied up on Foundation's Sass with our online webinar training. Sass allows you to write dramatically more efficient code. We'll go over things like how to install and start compiling Sass, nesting mixins and functions, and writing fully semantic CSS using Foundation mixins for insanely maintainable code.</p>
+  <a href="http://zurb.com/university/advanced-foundation-training" target="_blank">Reserve your spot →</a>
+</div>
+
 <div class="primary callout">
   <p>Not familiar with Sass? The [official tutorial](http://sass-lang.com/guide) on sass-lang.com is a great place to start.</p>
 </div>
@@ -101,7 +106,7 @@ Each component has an **export mixin** which prints out the CSS for that compone
 @include foundation-everything;
 ```
 
-Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below. 
+Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below.
 
 ```scss
 @import 'foundation';

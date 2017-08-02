@@ -4,6 +4,11 @@ description: A fully reworked new grid system in v6.4 which has all the variety 
 sass: scss/xy-grid/*.scss
 ---
 
+<div class="callout training-callout">
+  <p>The XY Grid is huge advancement in Grids. Stay up-to-date with all the new features in Foundation 6.4 with our online webinar training. You’ll come away knowing the ins and outs of the XY Grid to create complex layouts faster and with less code. Not to mention all the useful UI components and Foundation JavaScript you’ll learn. You’ll make your coworkers jealous.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Don’t miss out on the upcoming Foundation trainings →</a>
+</div>
+
 ## XY Grid Basics
 
 The XY grid works very similarly to the standard float grid, but includes a number of useful features only possible with Flexbox, like horizontal and vertical alignment, automatic sizing and a full vertical grid.
@@ -26,7 +31,7 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 @include foundation-xy-grid-classes;
 ```
 
-Note `foundation-xy-grid-classes` accepts arguements to enable/disable individual grid components. Simply set the arguement to `false` to disable output of those classes.
+Note `foundation-xy-grid-classes` accepts arguments to enable/disable individual grid components. Simply set the argument to `false` to disable output of those classes.
 These are:
 
 ```
@@ -44,7 +49,7 @@ These are:
 
 ## Basics
 
-The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Without [defining a gutter type](#gutters) the cells with simply split up the space without any gutters.
+The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Without [defining a gutter type](#gutters) the cells will simply split up the space without any gutters.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gRYeMQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -70,7 +75,7 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 ## Gutters
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
-To define a grid type, simple set `.grid-margin-x` or `.grid-padding-x` on the grid.
+To define a grid type, simply set `.grid-margin-x` or `.grid-padding-x` on the grid.
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/owvqYp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -90,11 +95,24 @@ To define a grid type, simple set `.grid-margin-x` or `.grid-padding-x` on the g
 
 ## Grid Container
 
-The grid defaults to the full width of its container. In order to contain the grid, use the `.grid-container` class.
+The grid defaults to the full width of the available space. To contain it use the `grid-container` class. The container will be centered and have a max-width equal to your `$grid-container` setting (1200px by default), along with padding on the left/right equal to half your `$grid-container-padding` setting.
 
 ```html
 <div class="grid-container">
-  <div class="grid-x">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+    <div class="cell small-4">cell</div>
+  </div>
+</div>
+```
+### Grid Container Fluid
+
+To stretch the content to the full width of the available space, simply add the class `fluid` to your `grid-container`.
+
+```html
+<div class="grid-container fluid">
+  <div class="grid-x grid-margin-x">
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
@@ -102,14 +120,18 @@ The grid defaults to the full width of its container. In order to contain the gr
 </div>
 ```
 
-By default, the container will be centered and have a max-width equal to your
-`$max-width` setting (1200px by default), and be flush to the screen for widths
-below that. If you want to add padding below the `$max-width`, simply add the
-`.grid-container-padded` class to your grid container.
+### Grid Container Full
+
+To stretch the content to the full width of the available space and remove grid container padding, simply add the class `full` to your `grid-container`. Note that this variation is primarily for use for the `grid-margin-x` - it works with `grid-padding-x` too, but will work the same as `.grid-container.fluid`.
+
+<div class="callout alert">
+  <p>Please note that when you are using `grid-margin-x` on a `grid-container` with `full` class you will also need to hide the horizontal overflow in order for this to work correctly if your content is going to touch the sides of the viewport.</p>
+  <p>The best way to do this is:&nbsp; `body {overflow-x: hidden;}`</p>
+</div>
 
 ```html
-<div class="grid-container grid-container-padded">
-  <div class="grid-x">
+<div class="grid-container full">
+  <div class="grid-x grid-margin-x">
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
     <div class="cell small-4">cell</div>
@@ -390,7 +412,7 @@ The cell size calculator can also be accessed as a function. This gives you the 
 ### Responsive Grids
 
 Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
-Refer to the Sass documentation below to learn how each mixin works and the available arguements.
+Refer to the Sass documentation below to learn how each mixin works and the available arguments.
 
 ```scss
 .main-content {

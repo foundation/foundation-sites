@@ -19,6 +19,11 @@ There are a number of ways to install Foundation for Sites. Our installation pag
 
 ## New to Foundation for Sites?
 
+<div class="callout training-callout">
+  <p>The number one way to learn your way around Foundation and start mastering responsive web development is via the training courses offered by the ZURB team.</p>
+  <a class="button" href="http://zurb.com/university/foundation-intro" target="_blank">Check out the next Foundation training →</a>
+</div>
+
 With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
 
 <ul class="accordion welcome-accordion" data-accordion data-allow-all-closed="true">
@@ -181,7 +186,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
+    </div>
   </li>
 
 </ul>

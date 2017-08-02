@@ -28,8 +28,6 @@ class AccordionMenu extends Plugin {
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
     this.className = 'AccordionMenu'; // ie9 back compat
 
-    Nest.Feather(this.$element, 'accordion');
-
     this._init();
 
     Keyboard.register('AccordionMenu', {
@@ -50,6 +48,8 @@ class AccordionMenu extends Plugin {
    * @private
    */
   _init() {
+    Nest.Feather(this.$element, 'accordion');
+
     var _this = this;
 
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
