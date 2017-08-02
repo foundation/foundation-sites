@@ -174,8 +174,6 @@ var AccordionMenu = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, AccordionMenu.defaults, this.$element.data(), options);
       this.className = 'AccordionMenu'; // ie9 back compat
 
-      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["Nest"].Feather(this.$element, 'accordion');
-
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].register('AccordionMenu', {
@@ -197,6 +195,8 @@ var AccordionMenu = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["Nest"].Feather(this.$element, 'accordion');
+
       var _this = this;
 
       this.$element.find('[data-submenu]').not('.is-active').slideUp(0); //.find('a').css('padding-left', '1rem');

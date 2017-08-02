@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.4.2-rc1",
+  "version": "6.4.2-rc2",
   "main": "dist/js/npm.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
@@ -30,7 +30,7 @@
     "array-uniq": "^1.0.2",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
-    "babel-loader": "^6.4.2-rc1",
+    "babel-loader": "^6.4.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.22.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.24.1",

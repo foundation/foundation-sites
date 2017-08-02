@@ -1997,8 +1997,6 @@ var AccordionMenu = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, AccordionMenu.defaults, this.$element.data(), options);
       this.className = 'AccordionMenu'; // ie9 back compat
 
-      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'accordion');
-
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('AccordionMenu', {
@@ -2020,6 +2018,8 @@ var AccordionMenu = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'accordion');
+
       var _this = this;
 
       this.$element.find('[data-submenu]').not('.is-active').slideUp(0); //.find('a').css('padding-left', '1rem');
@@ -2385,8 +2385,6 @@ var Drilldown = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
       this.className = 'Drilldown'; // ie9 back compat
 
-      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'drilldown');
-
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('Drilldown', {
@@ -2410,6 +2408,8 @@ var Drilldown = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'drilldown');
+
       if (this.options.autoApplyClass) {
         this.$element.addClass('drilldown');
       }
@@ -2996,7 +2996,6 @@ var DropdownMenu = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
 
-      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'dropdown');
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].register('DropdownMenu', {
@@ -3019,6 +3018,8 @@ var DropdownMenu = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["a" /* Nest */].Feather(this.$element, 'dropdown');
+
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
 
@@ -5316,7 +5317,7 @@ Abide.defaults = {
 
 
 
-var FOUNDATION_VERSION = '6.4.2-rc1';
+var FOUNDATION_VERSION = '6.4.2-rc2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -5744,15 +5745,16 @@ var Dropdown = function (_Positionable) {
     value: function _init() {
       var $id = this.$element.attr('id');
 
-      this.$anchor = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-toggle="' + $id + '"]').length ? __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-toggle="' + $id + '"]') : __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-open="' + $id + '"]');
-      this.$anchor.attr({
+      this.$anchors = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-toggle="' + $id + '"]').length ? __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-toggle="' + $id + '"]') : __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-open="' + $id + '"]');
+      this.$anchors.attr({
         'aria-controls': $id,
         'data-is-focus': false,
         'data-yeti-box': $id,
         'aria-haspopup': true,
         'aria-expanded': false
-
       });
+
+      this._setCurrentAnchor(this.$anchors.first());
 
       if (this.options.parentClass) {
         this.$parent = this.$element.parents('.' + this.options.parentClass);
@@ -5764,7 +5766,7 @@ var Dropdown = function (_Positionable) {
         'aria-hidden': 'true',
         'data-yeti-box': $id,
         'data-resize': $id,
-        'aria-labelledby': this.$anchor[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["b" /* GetYoDigits */])(6, 'dd-anchor')
+        'aria-labelledby': this.$currentAnchor.id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["b" /* GetYoDigits */])(6, 'dd-anchor')
       });
       _get(Dropdown.prototype.__proto__ || Object.getPrototypeOf(Dropdown.prototype), '_init', this).call(this);
       this._events();
@@ -5784,7 +5786,7 @@ var Dropdown = function (_Positionable) {
     key: '_getDefaultAlignment',
     value: function _getDefaultAlignment() {
       // handle legacy float approach
-      var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
+      var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.className);
       if (horizontalPosition) {
         return horizontalPosition[1];
       }
@@ -5802,7 +5804,21 @@ var Dropdown = function (_Positionable) {
   }, {
     key: '_setPosition',
     value: function _setPosition() {
-      _get(Dropdown.prototype.__proto__ || Object.getPrototypeOf(Dropdown.prototype), '_setPosition', this).call(this, this.$anchor, this.$element, this.$parent);
+      _get(Dropdown.prototype.__proto__ || Object.getPrototypeOf(Dropdown.prototype), '_setPosition', this).call(this, this.$currentAnchor, this.$element, this.$parent);
+    }
+
+    /**
+     * Make it a current anchor.
+     * Current anchor as the reference for the position of Dropdown panes.
+     * @param {HTML} el - DOM element of the anchor.
+     * @function
+     * @private
+     */
+
+  }, {
+    key: '_setCurrentAnchor',
+    value: function _setCurrentAnchor(el) {
+      this.$currentAnchor = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el);
     }
 
     /**
@@ -5822,21 +5838,27 @@ var Dropdown = function (_Positionable) {
         'resizeme.zf.trigger': this._setPosition.bind(this)
       });
 
+      this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function () {
+        _this._setCurrentAnchor(this);
+      });
+
       if (this.options.hover) {
-        this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
+        this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
+          _this._setCurrentAnchor(this);
+
           var bodyData = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').data();
           if (typeof bodyData.whatinput === 'undefined' || bodyData.whatinput === 'mouse') {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {
               _this.open();
-              _this.$anchor.data('hover', true);
+              _this.$anchors.data('hover', true);
             }, _this.options.hoverDelay);
           }
         }).on('mouseleave.zf.dropdown', function () {
           clearTimeout(_this.timeout);
           _this.timeout = setTimeout(function () {
             _this.close();
-            _this.$anchor.data('hover', false);
+            _this.$anchors.data('hover', false);
           }, _this.options.hoverDelay);
         });
         if (this.options.hoverPane) {
@@ -5846,19 +5868,19 @@ var Dropdown = function (_Positionable) {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {
               _this.close();
-              _this.$anchor.data('hover', false);
+              _this.$anchors.data('hover', false);
             }, _this.options.hoverDelay);
           });
         }
       }
-      this.$anchor.add(this.$element).on('keydown.zf.dropdown', function (e) {
+      this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
 
         var $target = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
             visibleFocusableElements = __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].findFocusable(_this.$element);
 
         __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["a" /* Keyboard */].handleKey(e, 'Dropdown', {
           open: function () {
-            if ($target.is(_this.$anchor)) {
+            if ($target.is(_this.$anchors)) {
               _this.open();
               _this.$element.attr('tabindex', -1).focus();
               e.preventDefault();
@@ -5866,7 +5888,7 @@ var Dropdown = function (_Positionable) {
           },
           close: function () {
             _this.close();
-            _this.$anchor.focus();
+            _this.$anchors.focus();
           }
         });
       });
@@ -5884,7 +5906,7 @@ var Dropdown = function (_Positionable) {
       var $body = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document.body).not(this.$element),
           _this = this;
       $body.off('click.zf.dropdown').on('click.zf.dropdown', function (e) {
-        if (_this.$anchor.is(e.target) || _this.$anchor.find(e.target).length) {
+        if (_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
           return;
         }
         if (_this.$element.find(e.target).length) {
@@ -5911,7 +5933,7 @@ var Dropdown = function (_Positionable) {
        * @event Dropdown#closeme
        */
       this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
-      this.$anchor.addClass('hover').attr({ 'aria-expanded': true });
+      this.$anchors.addClass('hover').attr({ 'aria-expanded': true });
       // this.$element/*.show()*/;
 
       this.$element.addClass('is-opening');
@@ -5954,7 +5976,7 @@ var Dropdown = function (_Positionable) {
       }
       this.$element.removeClass('is-open').attr({ 'aria-hidden': true });
 
-      this.$anchor.removeClass('hover').attr('aria-expanded', false);
+      this.$anchors.removeClass('hover').attr('aria-expanded', false);
 
       /**
        * Fires once the dropdown is no longer visible.
@@ -5976,7 +5998,7 @@ var Dropdown = function (_Positionable) {
     key: 'toggle',
     value: function toggle() {
       if (this.$element.hasClass('is-open')) {
-        if (this.$anchor.data('hover')) return;
+        if (this.$anchors.data('hover')) return;
         this.close();
       } else {
         this.open();
@@ -5992,7 +6014,7 @@ var Dropdown = function (_Positionable) {
     key: '_destroy',
     value: function _destroy() {
       this.$element.off('.zf.trigger').hide();
-      this.$anchor.off('.zf.dropdown');
+      this.$anchors.off('.zf.dropdown');
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document.body).off('click.zf.dropdown');
     }
   }]);

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.2-rc1
+ * Version 6.4.2-rc2
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2843,6 +2843,7 @@ select {
   border-top-style: solid;
   border-color: #1779ba transparent transparent;
   right: 5px;
+  left: auto;
   margin-top: -3px; }
 
 .dropdown.menu a {
@@ -2920,6 +2921,7 @@ select {
     border-top-style: solid;
     border-color: #1779ba transparent transparent;
     right: 5px;
+    left: auto;
     margin-top: -3px; }
   .dropdown.menu.medium-vertical > li .is-dropdown-submenu {
     top: 0; }
@@ -2975,6 +2977,7 @@ select {
     border-top-style: solid;
     border-color: #1779ba transparent transparent;
     right: 5px;
+    left: auto;
     margin-top: -3px; }
   .dropdown.menu.large-vertical > li .is-dropdown-submenu {
     top: 0; }
@@ -3024,6 +3027,7 @@ select {
     position: absolute;
     top: 50%;
     right: 5px;
+    left: auto;
     margin-top: -6px; }
   .is-dropdown-submenu-parent.opens-inner > .is-dropdown-submenu {
     top: 100%;
