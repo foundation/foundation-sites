@@ -302,7 +302,7 @@ description: Everything but.
 </div>
 
 ```html_example
-<div class="callout">
+<div class="callout" data-closable>
   <button class="close-button" aria-label="Close alert" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
