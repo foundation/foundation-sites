@@ -219,16 +219,16 @@
 
 // Collapse classes
 @mixin xy-collapse-grid-classes($margin-grid: true, $padding-grid: true) {
-  @include -zf-each-breakpoint {
+  @each $bp in $breakpoint-classes {
     @if $margin-grid {
-      .#{$-zf-size}-margin-collapse {
-        @include xy-grid-collapse($gutter-type: margin);
+      .#{$bp}-margin-collapse {
+        @include xy-grid-collapse($gutter-type: margin, $min-breakpoint: $bp);
       }
     }
 
     @if $padding-grid {
-      .#{$-zf-size}-padding-collapse {
-        @include xy-grid-collapse($gutter-type: padding);
+      .#{$bp}-padding-collapse {
+        @include xy-grid-collapse($gutter-type: padding, $min-breakpoint: $bp);
       }
     }
   }
