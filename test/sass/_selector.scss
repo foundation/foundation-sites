@@ -1,9 +1,5 @@
-@import "true";
-
-@import '../../scss/util/selector';
-
 @include test-module('Selector') {
-  
+
 	@include test('Selector [function]') {
 	  $test: #{text-inputs(text password)};
 	  $expect: "[type='text'], [type='password']";

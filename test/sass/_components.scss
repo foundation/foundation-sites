@@ -1,10 +1,3 @@
-@import "true";
-
-@import '../../scss/util/math';
-@import '../../scss/global';
-@import '../../scss/components/responsive-embed';
-@import '../../scss/grid/grid';
-
 @include test-module('Components') {
 
   @include test('Ratio to Percentage [function]') {

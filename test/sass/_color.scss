@@ -1,8 +1,3 @@
-@import "true";
-
-@import '../../scss/global';
-@import '../../scss/util/color';
-
 @include test-module('Color') {
 
   @include test('Foreground (Black) [function]') {
