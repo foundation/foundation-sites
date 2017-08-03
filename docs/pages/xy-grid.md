@@ -283,6 +283,10 @@ You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y`
 The XY grid incorporates the grid frame from Foundation for Apps plus many other useful features.
 To start, add `.grid-frame` to the grid. This sets the grid to be 100vh (the full height of the browser window).
 
+<div class="callout warning">
+  Please note to use `.grid-margin-x` or `.grid-margin-y` with `.grid-frame` you need to hide the overflow on the body like so: `body {overflow: hidden;}`.
+</div>
+
 Here's an example of what you can do:
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/MogrXG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
