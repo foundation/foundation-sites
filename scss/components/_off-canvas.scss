@@ -10,14 +10,14 @@
 /// @type Map
 $offcanvas-sizes: (
   small: 250px,
-  medium: 350px,
+  medium: 250px,
 ) !default;
 
 /// Height map of a top/bottom off-canvas panel.
 /// @type Map
 $offcanvas-vertical-sizes: (
   small: 250px,
-  medium: 350px,
+  medium: 250px,
 ) !default;
 
 /// Background color of an off-canvas panel.
@@ -126,7 +126,7 @@ $maincontent-class: 'off-canvas-content' !default;
     &.is-overlay-absolute {
       position: absolute;
     }
-    
+
     &.is-overlay-fixed {
       position: fixed;
     }
@@ -205,7 +205,7 @@ $maincontent-class: 'off-canvas-content' !default;
         transform: translateX(-$size);
       }
     }
-    
+
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
 
@@ -242,7 +242,7 @@ $maincontent-class: 'off-canvas-content' !default;
         transform: translateX($size);
       }
     }
-    
+
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
 
@@ -279,7 +279,7 @@ $maincontent-class: 'off-canvas-content' !default;
         transform: translateY(-$size);
       }
     }
-    
+
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
       @each $name, $size in $sizes {
@@ -315,7 +315,7 @@ $maincontent-class: 'off-canvas-content' !default;
         transform: translateY($size);
       }
     }
-    
+
     // Sets the position for nested off-canvas element
     @at-root .#{$maincontent-class} .off-canvas.position-#{$position} {
       @each $name, $size in $sizes {
@@ -356,7 +356,7 @@ $maincontent-class: 'off-canvas-content' !default;
       @else if $position == bottom {
         @include inner-side-shadow(top, $offcanvas-inner-shadow-size, $offcanvas-inner-shadow-color);
       }
-    }    
+    }
   }
 
 }
