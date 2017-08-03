@@ -107,6 +107,7 @@ $input-prefix-padding: 1rem !default;
 
     @if $global-flexbox {
       flex: 0 0 auto;
+      display: flex;
     }
     @else {
       width: 1%;
@@ -118,10 +119,15 @@ $input-prefix-padding: 1rem !default;
     button,
     label {
       @extend %input-group-child;
-      height: $height;
+      @if $global-flexbox {
+        height: auto;
+        align-self: stretch;
+      }
+      @else {
+        height: $height;
+      }
       padding-top: 0;
       padding-bottom: 0;
-
       font-size: $input-font-size;
     }
   }
