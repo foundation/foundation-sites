@@ -106,8 +106,8 @@ $input-prefix-padding: 1rem !default;
     text-align: center;
 
     @if $global-flexbox {
-      flex: 0 0 auto;
       display: flex;
+      flex: 0 0 auto;
     }
     @else {
       width: 1%;
