@@ -378,7 +378,7 @@ class Drilldown extends Plugin {
    * @function
    * @fires Drilldown#open
    * @param {jQuery} $elem - the target (sub)menu (`ul` tag)
-   * @param {boolean} autoFocus - if false the first link in the target (sub)menu won't get auto focused
+   * @param {boolean} autoFocus - if true the first link in the target (sub)menu gets auto focused
    */
   _showMenu($elem, autoFocus) {
 
@@ -392,7 +392,7 @@ class Drilldown extends Plugin {
 
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
-      if (autoFocus !== false) $elem.find('li[role="treeitem"] > a').first().focus();
+      if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
       if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
       return;
     }
@@ -414,7 +414,7 @@ class Drilldown extends Plugin {
       // Last child makes sure the event gets always triggered even if going through several menus
       if (isLastChild === true) {
         $(this).one(transitionend($(this)), () => {
-          if (autoFocus !== false) {
+          if (autoFocus === true) {
             $elem.find('li[role="treeitem"] > a').first().focus();
           }
         });
