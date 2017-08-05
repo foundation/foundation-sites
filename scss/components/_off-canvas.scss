@@ -380,7 +380,8 @@ $maincontent-class: 'off-canvas-content' !default;
 @mixin off-canvas-reveal(
 $position: left,
 $zindex: $offcanvas-reveal-zindex,
-$content: $maincontent-class
+$content: $maincontent-class,
+$breakpoint: small
 ) {
   transform: none;
   z-index: $zindex;
@@ -401,20 +402,12 @@ $content: $maincontent-class
   }
 
   @at-root .#{$content}.has-reveal-#{$position} {
-    @each $name, $size in $offcanvas-sizes {
-      @include breakpoint($name) {
-        margin-#{$position}: $size;
-      }
-    }
+    margin-#{$position}: -zf-get-bp-val($offcanvas-sizes, $breakpoint);
   }
 
   // backwards compatibility (prior to v6.4)
   & ~ .#{$content} {
-    @each $name, $size in $offcanvas-sizes {
-      @include breakpoint($name) {
-        margin-#{$position}: $size;
-      }
-    }
+    margin-#{$position}: -zf-get-bp-val($offcanvas-sizes, $breakpoint);
   }
 }
 
@@ -481,19 +474,19 @@ $content: $maincontent-class
     @if $name != $-zf-zero-breakpoint {
       @include breakpoint($name) {
         .position-left.reveal-for-#{$name} {
-          @include off-canvas-reveal(left);
+          @include off-canvas-reveal(left, $offcanvas-reveal-zindex, $maincontent-class, $name);
         }
 
         .position-right.reveal-for-#{$name} {
-          @include off-canvas-reveal(right);
+          @include off-canvas-reveal(right, $offcanvas-reveal-zindex, $maincontent-class, $name);
         }
 
         .position-top.reveal-for-#{$name} {
-          @include off-canvas-reveal(top);
+          @include off-canvas-reveal(top, $offcanvas-reveal-zindex, $maincontent-class, $name);
         }
 
         .position-bottom.reveal-for-#{$name} {
-          @include off-canvas-reveal(bottom);
+          @include off-canvas-reveal(bottom, $offcanvas-reveal-zindex, $maincontent-class, $name);
         }
       }
     }
