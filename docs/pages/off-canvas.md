@@ -397,6 +397,28 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 
 ---
 
+## Off-canvas Sizes
+
+In v6.4.2 the type of the off-canvas size variables has changed from number to map. This lets you define breakpoint specific sizes instead of one value for all.
+The map may contain every key that is defined in `$breakpoint-classes`.
+
+<div class="warning callout">
+  Please note the sizes maps do currently not work perfectly for the reveal classes. If sizes are defined for medium and large, `.reveal-for-medium` will only consider the medium value. This is going to get fixed in a future release.
+</div>
+
+```scss
+$offcanvas-sizes: (
+  small: 250px,
+  medium: 350px,
+);
+$offcanvas-vertical-sizes: (
+  small: 250px,
+  medium: 350px,
+);
+```
+
+---
+
 ## Migrating from versions prior to v6.4
 
 If you're upgrading from v6.3 there's nothing to do unless you haven't changed the default value of `$offcanvas-shadow`. Prior to v6.4 this variable was used for both, overlap and push off-canvas elements. Now it's only used for the overlap element whereas the push element uses two new variables:
