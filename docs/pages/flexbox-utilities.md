@@ -219,7 +219,7 @@ For children, there are 3 quick helper classes to apply the flex property. These
 ### Responsive Classes 
 
 <div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are disabling responsive classes by default. You would be able to re-enable it though, with setting that <code>$flexbox-responsive-breakpoints</code> to <code>true</code> .</p>
+  <p><strong>Deprecation Notice:</strong> From v6.5.x, we are disabling responsive classes by default. You would be able to re-enable it though, with setting that <code>$flexbox-responsive-breakpoints</code> to <code>true</code> .</p>
 </div>
 
 All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints.
