@@ -1107,7 +1107,7 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
  * @returns {Object} - nested object of integer pixel values
  * TODO - if element is window, return only those values.
  */
-function GetDimensions(elem, test) {
+function GetDimensions(elem) {
   elem = elem.length ? elem[0] : elem;
 
   if (elem === window || elem === document) {
@@ -5317,7 +5317,7 @@ Abide.defaults = {
 
 
 
-var FOUNDATION_VERSION = '6.4.2-rc2';
+var FOUNDATION_VERSION = '6.4.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
