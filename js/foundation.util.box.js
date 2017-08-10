@@ -66,7 +66,7 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
  * @returns {Object} - nested object of integer pixel values
  * TODO - if element is window, return only those values.
  */
-function GetDimensions(elem, test){
+function GetDimensions(elem){
   elem = elem.length ? elem[0] : elem;
 
   if (elem === window || elem === document) {
