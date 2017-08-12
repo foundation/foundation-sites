@@ -8,7 +8,7 @@
 
 /// Width map of a left/right off-canvas panel.
 /// @type Map
-$offcanvas-sizes: (
+$offcanvas-size: (
   small: 250px,
 ) !default;
 
@@ -75,11 +75,9 @@ $maincontent-class: 'off-canvas-content' !default;
   /// Transform deprecated size settings into map & show warning
   @if variable-exists(offcanvas-size) {
     $offcanvas-sizes: (small: $offcanvas-size, medium: $offcanvas-size) !global;
-    @warn '$offcanvas-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-sizes instead';
   }
   @if variable-exists(offcanvas-vertical-size) {
     $offcanvas-vertical-sizes: (small: $offcanvas-vertical-size, medium: $offcanvas-vertical-size) !global;
-    @warn '$offcanvas-vertical-size is deprecated and not used anymore! Please update your settings and use the map $offcanvas-vertical-sizes instead';
   }
 
   // Checks the z-indexes and increase them due to backwards compatibility.
