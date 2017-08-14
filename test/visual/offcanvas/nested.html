@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Off canvas nested</title>
     <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style>
+      #nestedOffcanvasScrollbox {
+        max-height: 300px;
+        overflow: auto;
+        background-color: #ccc;
+        padding: 15px 10px;
+        margin-bottom: 1rem;
+      }
+    </style>
   </head>
   <body>
 
@@ -184,10 +193,34 @@
                 <p>Just a test to see if overlap is also working without problems.</p>
               </div>
 
+              <div class="off-canvas position-right" id="offCanvasNestedNoContentScroll" data-off-canvas data-transition="overlap" data-content-scroll="false">
+                <button class="close-button" aria-label="Close panel" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h3>This is a nested off-canvas panel with contentScroll set to false</h3>
+                <p>The content box below should be scrollable on touch devices such as iPhone</p>
+                <div id="nestedOffcanvasScrollbox">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                </div>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequatur, deserunt beatae distinctio tempore ratione at aspernatur quisquam, animi, saepe nisi. Quisquam, harum quidem nostrum repellendus sint consectetur, a aliquam?</p> -->
+              </div>
+
               <div class="button-group expanded">
                 <button type="button" class="button hide-for-large" data-toggle="offCanvasNestedLeftPush">Nested Left Push</button>
                 <button type="button" class="button hide-for-large" data-toggle="offCanvasNestedLeftPushSharing">Nested Left Push Sharing</button>
                 <button type="button" class="button" data-toggle="offCanvasNestedRightOverlap">Nested Right Overlap</button>
+              </div>
+
+              <div>
+                <button type="button" class="secondary button" data-toggle="offCanvasNestedNoContentScroll">Nested Overlap with Content Scroll false</button>
               </div>
 
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eros massa, lacinia sed rutrum non, sodales quis urna. In hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus in rutrum magna, a varius lorem. Suspendisse nec nisi massa. Sed id lacus feugiat, commodo risus id, vulputate odio. Quisque aliquam lacus id mi euismod, ut sodales odio porttitor. Donec finibus dui vitae odio ultricies, sit amet volutpat risus bibendum. Nulla sagittis rhoncus fermentum. Nulla nisi mi, cursus posuere mollis in, faucibus ut lacus.
