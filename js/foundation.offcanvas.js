@@ -311,6 +311,8 @@ class OffCanvas extends Plugin {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
       this.$element.on('touchstart', this._recordScrollable);
       this.$element.on('touchmove', this._stopScrollPropagation);
+      this.$element.on('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
+      this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
     }
 
     if (this.options.contentOverlay === true) {
@@ -370,6 +372,8 @@ class OffCanvas extends Plugin {
       $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
       this.$element.off('touchstart', this._recordScrollable);
       this.$element.off('touchmove', this._stopScrollPropagation);
+      this.$element.off('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
+      this.$element.off('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
     }
 
     if (this.options.contentOverlay === true) {
