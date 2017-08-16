@@ -11,6 +11,7 @@
     <style>
       .force-great-height { max-width: 150px; }
       .test-callout { position: absolute; left: 0; top: 0; z-index: 1500; width: 100%; display: none; }
+      .auto.reveal { height: auto; min-height: 0; max-height: 100vh; }
     </style>
   </head>
   <body>
@@ -30,7 +31,7 @@
             <p>By default the reveal sets scrollTop to 0 if getting opened on a mobile device (indentified via user agent) and restores the original scrollTop after being closed.</p>
             <p><button class="alert button" data-open="exampleModal1">Open Default</button></p>
 
-            <div class="reveal" id="exampleModal1" data-reveal>
+            <div class="auto reveal" id="exampleModal1" data-reveal>
               <p>I'm a default reveal on a mobile device</p>
               <p><button class="button" data-close>Close</button></p>
             </div>
@@ -41,7 +42,7 @@
             <p>This reveal uses has set the option `mobileScrollTop: false` and thus doesn't affect the scrollTop if opened.</p>
             <p><button class="success button" data-open="exampleModal2">Open without scrollTop</button></p>
 
-            <div class="reveal" id="exampleModal2" data-reveal data-mobile-scroll-top="false">
+            <div class="auto reveal" id="exampleModal2" data-reveal data-mobile-scroll-top="false">
               <p>I'm a reveal with the option mobileScrollTop set to false.</p>
               <p><button class="button" data-close>Close</button></p>
             </div>
