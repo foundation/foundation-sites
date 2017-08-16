@@ -1,0 +1,79 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style>
+      .force-great-height { max-width: 150px; }
+      .test-callout { position: absolute; left: 0; top: 0; z-index: 1500; width: 100%; display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Reveal</h1>
+
+          <div class="test-callout alert callout">
+            If you see this, scrollTop got set to 0 by the reveal plugin
+          </div>
+
+          <p class="force-great-height">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat repellendus architecto, obcaecati in. Similique necessitatibus dolore repellendus modi perspiciatis dolorum, possimus pariatur sapiente eaque voluptatem rerum commodi ipsum a! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat repellendus architecto, obcaecati in. Similique necessitatibus dolore repellendus modi perspiciatis dolorum, possimus pariatur sapiente eaque voluptatem rerum commodi ipsum a! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat repellendus architecto, obcaecati in. Similique necessitatibus dolore repellendus modi perspiciatis dolorum, possimus pariatur sapiente eaque voluptatem rerum commodi</p>
+          
+          <section>
+            <h2>Mobile (default)</h2>
+            <p>By default the reveal sets scrollTop to 0 if getting opened on a mobile device (indentified via user agent) and restores the original scrollTop after being closed.</p>
+            <p><button class="alert button" data-open="exampleModal1">Open Default</button></p>
+
+            <div class="reveal" id="exampleModal1" data-reveal>
+              <p>I'm a default reveal on a mobile device</p>
+              <p><button class="button" data-close>Close</button></p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Mobile (disabled mobile scrollTop)</h2>
+            <p>This reveal uses has set the option `mobileScrollTop: false` and thus doesn't affect the scrollTop if opened.</p>
+            <p><button class="success button" data-open="exampleModal2">Open without scrollTop</button></p>
+
+            <div class="reveal" id="exampleModal2" data-reveal data-mobile-scroll-top="false">
+              <p>I'm a reveal with the option mobileScrollTop set to false.</p>
+              <p><button class="button" data-close>Close</button></p>
+            </div>
+          </section>
+
+          <p class="force-great-height">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat repellendus architecto, obcaecati in. Similique necessitatibus dolore repellendus modi perspiciatis dolorum, possimus pariatur sapiente eaque voluptatem rerum commodi ipsum a! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat repellendus architecto, obcaecati in. Similique necessitatibus dolore repellendus modi perspiciatis dolorum, possimus pariatur sapiente eaque voluptatem rerum commodi ipsum a! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat repellendus architecto, obcaecati in. Similique necessitatibus dolore repellendus modi perspiciatis dolorum, possimus pariatur sapiente eaque voluptatem rerum commodi</p>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script>
+
+      $('[data-reveal]').on('open.zf.reveal', function(){
+        $('.test-callout').show();
+      });
+
+      $('[data-reveal]').on('closed.zf.reveal', function(){
+        $('.test-callout').hide();
+      });
+
+      // Alert if no mobile device since it's required for this test
+      var UA = window.navigator.userAgent;
+      if (!UA.match(/iP(ad|hone|od).*OS/) && !UA.match(/Android/)) {
+        alert('ERROR: you have to view this test on a mobile device or an emulator with mobile user agent!');
+      }
+
+    </script>
+  </body>
+</html>

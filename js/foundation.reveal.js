@@ -241,7 +241,7 @@ class Reveal extends Plugin {
     var _this = this;
 
     function addRevealOpenClasses() {
-      if (_this.isMobile) {
+      if (_this.isMobile && _this.options.mobileScrollTop === true) {
         if(!_this.originalScrollPos) {
           _this.originalScrollPos = window.pageYOffset;
         }
@@ -375,7 +375,7 @@ class Reveal extends Plugin {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (_this.isMobile) {
+      if (_this.isMobile && _this.options.mobileScrollTop === true) {
         if ($('.reveal:visible').length === 0) {
           $('html, body').removeClass('is-reveal-open');
         }
@@ -567,7 +567,14 @@ Reveal.defaults = {
    * @type {string}
    * @default ''
    */
-  additionalOverlayClasses: ''
+  additionalOverlayClasses: '',
+  /**
+   * Define if scrollTop should be set to 0 for mobile devices while the reveal is opened.
+   * Mobile devices get identified by user agent.
+   * @type {boolean}
+   * @default  true
+   */
+  mobileScrollTop: true
 };
 
 function iPhoneSniff() {
