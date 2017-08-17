@@ -105,7 +105,9 @@ class Dropdown extends Positionable {
    * @private
    */
   _setPosition() {
+    this.$element.removeClass(`has-position-${this.position} has-alignment-${this.alignment}`);
     super._setPosition(this.$currentAnchor, this.$element, this.$parent);
+    this.$element.addClass(`has-position-${this.position} has-alignment-${this.alignment}`);
   }
 
   /**
