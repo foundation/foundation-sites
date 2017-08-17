@@ -246,8 +246,8 @@ There are four plugin options you can set to change the default effects:
 
 - `data-anim-in-from-left`: transition to play when a slide comes *in from the left*.
 - `data-anim-in-from-right`: transition to play when a slide comes *in from the right*.
-- `data-anim-out-from-left`: transition to play when a slide comes *out from the left*.
-- `data-anim-out-from-right`: transition to play when a slide comes *out from the right*.
+- `data-anim-out-to-left`: transition to play when a slide comes *out to the left*.
+- `data-anim-out-to-right`: transition to play when a slide comes *out to the right*.
 
 Since those option names are pretty *long*, you can also set them all in one HTML attribute, using `data-options`:
 
