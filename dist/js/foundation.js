@@ -5317,7 +5317,7 @@ Abide.defaults = {
 
 
 
-var FOUNDATION_VERSION = '6.4.2';
+var FOUNDATION_VERSION = '6.4.3';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
