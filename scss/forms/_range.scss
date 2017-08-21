@@ -73,7 +73,7 @@ $slider-radius: $global-radius !default;
       background: $slider-background;
     }
 
-    &::-webkit-slider-handle {
+    &::-webkit-slider-thumb {
       width: $slider-handle-width;
       height: $slider-handle-height;
       margin-top: -$margin;
