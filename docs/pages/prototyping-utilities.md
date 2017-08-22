@@ -461,22 +461,28 @@ Generate spacing around elements with these easy to use margin classes.
 <div class="margin-right-3"></div>
 ```
 
+<div class="callout warning">
+  <p>
+    <code>margin-horizontal</code> and <code>margin-vertical</code> classes have been depreciated and been replaced with <code>margin-x</code> and <code>margin-y</code> classes to keep our code consistent with <a href="xy-grid.html"><strong>XY Grid</strong></a> 
+  </p>
+</div>
+
 #### Margin Left Right (Horizontal Axis)
 
 ```html
-<div class="margin-horizontal-0"></div>
-<div class="margin-horizontal-1"></div>
-<div class="margin-horizontal-2"></div>
-<div class="margin-horizontal-3"></div>
+<div class="margin-x-0"></div>
+<div class="margin-x-1"></div>
+<div class="margin-x-2"></div>
+<div class="margin-x-3"></div>
 ```
 
 #### Margin Top Bottom (Vertical Axis)
 
 ```html
-<div class="margin-vertical-0"></div>
-<div class="margin-vertical-1"></div>
-<div class="margin-vertical-2"></div>
-<div class="margin-vertical-3"></div>
+<div class="margin-y-0"></div>
+<div class="margin-y-1"></div>
+<div class="margin-y-2"></div>
+<div class="margin-y-3"></div>
 ```
 
 #### Margin: Usage as a Mixin
@@ -553,6 +559,12 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-right-2"></div>
 <div class="padding-right-3"></div>
 ```
+
+<div class="callout warning">
+  <p>
+    <code>padding-horizontal</code> and <code>padding-vertical</code> classes have been depreciated and been replaced with <code>padding-x</code> and <code>padding-y</code> classes to keep our code consistent with <a href="xy-grid.html"><strong>XY Grid</strong></a> 
+  </p>
+</div>
 
 #### Padding Left Right (Horizontal Axis)
 
