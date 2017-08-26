@@ -293,6 +293,27 @@
     this.query = '';
   }
 
+  var onWindowLoadOnce = (function() {
+    var called = false;
+    return function() {
+      if (called) {
+        return;
+      }
+      called = true;
+      S(window).load(function () {
+        S(window)
+          .trigger('resize.fndtn.clearing')
+          .trigger('resize.fndtn.dropdown')
+          .trigger('resize.fndtn.equalizer')
+          .trigger('resize.fndtn.interchange')
+          .trigger('resize.fndtn.joyride')
+          .trigger('resize.fndtn.magellan')
+          .trigger('resize.fndtn.topbar')
+          .trigger('resize.fndtn.slider');
+      });
+    }
+  })();
+
   MediaQuery.prototype.toString = function () {
     return this.query || (this.query = S(this.selector).css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''));
   };
@@ -342,17 +363,7 @@
         }
       }
 
-      S(window).on('load', function () {
-        S(window)
-          .trigger('resize.fndtn.clearing')
-          .trigger('resize.fndtn.dropdown')
-          .trigger('resize.fndtn.equalizer')
-          .trigger('resize.fndtn.interchange')
-          .trigger('resize.fndtn.joyride')
-          .trigger('resize.fndtn.magellan')
-          .trigger('resize.fndtn.topbar')
-          .trigger('resize.fndtn.slider');
-      });
+      onWindowLoadOnce()
 
       return scope;
     },
