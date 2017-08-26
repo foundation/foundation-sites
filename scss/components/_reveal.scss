@@ -178,3 +178,11 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     }
   }
 }
+
+
+/// Disables the scroll when Reveal is shown to prevent the background from shifting
+html.disable-scroll {
+    position: fixed;
+    width: 100%;
+    overflow-y: scroll;
+}

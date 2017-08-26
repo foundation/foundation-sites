@@ -179,6 +179,29 @@ class Reveal extends Plugin {
     else{ this.close(); }
   }
 
+  /**
+  * Disables the scroll when Reveal is shown to prevent the background from shifting
+  */
+  _disableScroll(){
+    if ($(document).height() > $(window).height()) {
+      var scrollTop = $(window).scrollTop();
+      $("html")
+        .addClass("disable-scroll")
+        .css("top", -scrollTop);
+    }
+  }
+
+  /**
+  * Reenables the scroll when Reveal closes
+  */
+  _enableScroll(){
+    var scrollTop = parseInt($("html").css("top"));
+    $("html")
+      .removeClass("disable-scroll")
+      .css("top", "");
+    $(window).scrollTop(-scrollTop);
+  }
+
 
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
@@ -237,6 +260,8 @@ class Reveal extends Plugin {
        */
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
+
+    this._disableScroll();
 
     var _this = this;
 
@@ -394,6 +419,8 @@ class Reveal extends Plugin {
       Keyboard.releaseFocus(_this.$element);
 
       _this.$element.attr('aria-hidden', true);
+
+      _this._enableScroll();
 
       /**
       * Fires when the modal is done closing.
