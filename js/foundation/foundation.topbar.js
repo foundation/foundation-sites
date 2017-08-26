@@ -16,7 +16,8 @@
       is_hover : true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       sticky_on : 'all',
-      dropdown_autoclose: true
+      dropdown_autoclose: true,
+      scroll_throttle: 300
     },
 
     init : function (section, method, options) {
@@ -429,9 +430,9 @@
     sticky : function () {
       var self = this;
 
-      this.S(window).on('scroll', function () {
+      this.S(window).on('scroll', self.throttle( function () {
         self.update_sticky_positioning();
-      });
+      }, self.settings.scroll_throttle));
     },
 
     update_sticky_positioning : function () {

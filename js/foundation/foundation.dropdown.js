@@ -14,6 +14,7 @@
       is_hover : false,
       hover_timeout : 150,
       no_pip : false,
+      no_focus : false,
       opened : function () {},
       closed : function () {}
     },
@@ -165,7 +166,13 @@
       dropdown.data('target', target.get(0)).trigger('opened.fndtn.dropdown', [dropdown, target]);
       dropdown.attr('aria-hidden', 'false');
       target.attr('aria-expanded', 'true');
-      dropdown.focus();
+      
+      var settings = target.data(this.attr_name(true) + '-init') || this.settings;
+      
+      if (settings.no_focus === false) {
+        dropdown.focus();
+      }
+      
       dropdown.addClass('f-open-' + this.attr_name(true));
     },
 
