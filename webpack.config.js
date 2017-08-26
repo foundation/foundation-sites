@@ -17,6 +17,7 @@ module.exports = {
       // Compiles ES6 and ES7 into ES5 code
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
