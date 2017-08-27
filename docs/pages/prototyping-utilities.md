@@ -463,7 +463,7 @@ Generate spacing around elements with these easy to use margin classes.
 
 <div class="callout warning">
   <p>
-    <code>margin-horizontal</code> and <code>margin-vertical</code> classes have been depreciated and been replaced with <code>margin-x</code> and <code>margin-y</code> classes to keep our code consistent with <a href="xy-grid.html"><strong>XY Grid</strong></a> 
+    <code>margin-horizontal</code> and <code>margin-vertical</code> classes have been replaced with <code>margin-x</code> and <code>margin-y</code> classes to keep our code consistent with <a href="xy-grid.html"><strong>XY Grid</strong></a> 
   </p>
 </div>
 
@@ -562,7 +562,7 @@ Generate spaces around the content with these easy to use padding classes.
 
 <div class="callout warning">
   <p>
-    <code>padding-horizontal</code> and <code>padding-vertical</code> classes have been depreciated and been replaced with <code>padding-x</code> and <code>padding-y</code> classes to keep our code consistent with <a href="xy-grid.html"><strong>XY Grid</strong></a> 
+    <code>padding-horizontal</code> and <code>padding-vertical</code> classes have been replaced with <code>padding-x</code> and <code>padding-y</code> classes to keep our code consistent with <a href="xy-grid.html"><strong>XY Grid</strong></a> 
   </p>
 </div>
 
