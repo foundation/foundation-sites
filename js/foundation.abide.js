@@ -559,7 +559,7 @@ Abide.defaults = {
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
-    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+    color : /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i,
 
     // Domain || URL
     website: {
