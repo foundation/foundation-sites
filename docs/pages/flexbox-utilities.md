@@ -15,7 +15,7 @@ Flexbox makes horizontal and vertical alignment painless, through the CSS proper
 To understand how these classes work, you need to understand the parent-child relationship created with flexbox. An element with `display: flex` is a *flex parent*, and can horizontally or vertically align its children. All immediate children of the flex parent are *flex children*. A flex child can vertically align itself.
 
 <div class="alert callout">
-  <p>In the below examples we are using [XY Grid](xy-grid.html) classes instead of [Legacy Flex Grid's](flex-grid.html) <code>row</code> and <code>column</code>. These examples will works for <code>row</code> and <code>column</code> but then again the Legacy Flex Grid will be depreciated from Foundation 7 so we recommend to use XY Grid.</p>
+  <p>In the below examples we are using [XY Grid](xy-grid.html) classes instead of [Legacy Flex Grid's](flex-grid.html) <code>row</code> and <code>column</code>. These examples will work for <code>row</code> and <code>column</code> but then again the Legacy Flex Grid will be deprecated from Foundation 7 so we recommend to use XY Grid.</p>
 </div>
 
 Here's a basic example: when using the grid, a `grid-x` or `grid-y` is a flex parent, and a `cell` is a flex child. Use `grid-margin-x` or `grid-padding-x` for adding [gutters](xy-grid.html#gutters)
