@@ -558,8 +558,8 @@ Abide.defaults = {
     // DD/MM/YYYY
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
-    // #FFF or #FFFFFF
-    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+    // Hex (#FFF or #FFFFFF) || RGB || RGBA || HSL || HSLA
+    color : /^(#[0-9a-f]{3}|#(?:[0-9a-f]{2}){2,4}|(rgb|hsl)a?\((-?\d+%?[,\s]+){2,3}\s*[\d\.]+%?\))$/i,
 
     // Domain || URL
     website: {
