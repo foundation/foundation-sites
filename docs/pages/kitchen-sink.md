@@ -57,7 +57,7 @@ description: Everything but.
   <div class="row">
     <div class="medium-6 columns">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+        <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
       </label>
     </div>
     <div class="medium-6 columns">
@@ -720,7 +720,7 @@ description: Everything but.
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/200/200/people">
+    <img src= "https://placeimg.com/200/200/people">
   </div>
   <div class="media-object-section">
     <h4>Dreams feel real while we're in them.</h4>
