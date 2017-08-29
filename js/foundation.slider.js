@@ -153,7 +153,7 @@ class Slider extends Plugin {
       pctOfBar = this._logTransform(pctOfBar);
       break;
     }
-    var value = (this.options.end - this.options.start) * pctOfBar + this.options.start;
+    var value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
 
     return value
   }
