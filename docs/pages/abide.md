@@ -58,11 +58,11 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <div class="row">
     <div class="large-6 columns">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-      <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+      <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
     </div>
     <div class="large-6 columns">
       <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
-        <input type="text" placeholder="http://zurb.com or zurb.com" pattern="website">
+        <input type="text" placeholder="https://zurb.com or zurb.com" pattern="website">
       </label>
     </div>
   </div>
