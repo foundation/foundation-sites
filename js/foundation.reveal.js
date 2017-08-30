@@ -47,7 +47,6 @@ class Reveal extends Plugin {
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: MediaQuery.current};
-    this.isMobile = mobileSniff();
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
@@ -186,7 +185,6 @@ class Reveal extends Plugin {
     if ($(document).height() > $(window).height()) {
       var scrollTop = $(window).scrollTop();
       $("html")
-        .addClass("disable-scroll")
         .css("top", -scrollTop);
     }
   }
@@ -195,11 +193,12 @@ class Reveal extends Plugin {
   * Reenables the scroll when Reveal closes
   */
   _enableScroll(){
-    var scrollTop = parseInt($("html").css("top"));
-    $("html")
-      .removeClass("disable-scroll")
-      .css("top", "");
-    $(window).scrollTop(-scrollTop);
+    if ($(document).height() > $(window).height()) {
+      var scrollTop = parseInt($("html").css("top"));
+      $("html")
+        .css("top", "");
+      $(window).scrollTop(-scrollTop);
+    }
   }
 
 
@@ -267,7 +266,7 @@ class Reveal extends Plugin {
 
     function addRevealOpenClasses() {
 
-      $('body').addClass('is-reveal-open');
+      $('html').addClass('is-reveal-open');
     }
 
     // Motion UI method of reveal
@@ -396,7 +395,7 @@ class Reveal extends Plugin {
     function finishUp() {
 
       if ($('.reveal:visible').length  === 0) {
-        $('body').removeClass('is-reveal-open');
+        $('html').removeClass('is-reveal-open');
       }
 
       Keyboard.releaseFocus(_this.$element);
@@ -579,17 +578,5 @@ Reveal.defaults = {
    */
   additionalOverlayClasses: ''
 };
-
-function iPhoneSniff() {
-  return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
-}
-
-function androidSniff() {
-  return /Android/.test(window.navigator.userAgent);
-}
-
-function mobileSniff() {
-  return iPhoneSniff() || androidSniff();
-}
 
 export {Reveal};
