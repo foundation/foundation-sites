@@ -226,33 +226,4 @@ You can either set the width of cards with custom css or add them into the Found
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="medium-4 columns">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a row of cards.</h4>
-        <p>This row of cards is embedded in a Float Grid.</p>
-      </div>
-    </div>
-  </div>
-  <div class="medium-5 columns">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-      </div>
-    </div>
-  </div>
-  <div class="medium-3 columns">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-      </div>
-    </div>
-  </div>
-</div>
 ```
