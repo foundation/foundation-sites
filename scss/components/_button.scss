@@ -44,7 +44,8 @@ $button-radius: $global-radius !default;
 
 /// Border width for hollow outline buttons
 /// @type Number
-$button-hollow-border-width: 1px !default;
+$button-border-width: 1px !default;
+$button-hollow-border-width: $button-border-width;
 
 /// Sizes for buttons.
 /// @type Map
@@ -100,7 +101,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   }
 
   -webkit-appearance: none;
-  border: $button-hollow-border-width solid transparent;
+  border: $button-border-width solid transparent;
   border-radius: $button-radius;
   transition: $button-transition;
 
