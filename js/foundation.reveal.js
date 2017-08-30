@@ -266,16 +266,10 @@ class Reveal extends Plugin {
     var _this = this;
 
     function addRevealOpenClasses() {
-      if (_this.isMobile) {
-        if(!_this.originalScrollPos) {
-          _this.originalScrollPos = window.pageYOffset;
-        }
-        $('html, body').addClass('is-reveal-open');
-      }
-      else {
-        $('body').addClass('is-reveal-open');
-      }
+
+      $('body').addClass('is-reveal-open');
     }
+
     // Motion UI method of reveal
     if (this.options.animationIn) {
       function afterAnimation(){
@@ -400,21 +394,10 @@ class Reveal extends Plugin {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (_this.isMobile) {
-        if ($('.reveal:visible').length === 0) {
-          $('html, body').removeClass('is-reveal-open');
-        }
-        if(_this.originalScrollPos) {
-          $('body').scrollTop(_this.originalScrollPos);
-          _this.originalScrollPos = null;
-        }
-      }
-      else {
-        if ($('.reveal:visible').length  === 0) {
-          $('body').removeClass('is-reveal-open');
-        }
-      }
 
+      if ($('.reveal:visible').length  === 0) {
+        $('body').removeClass('is-reveal-open');
+      }
 
       Keyboard.releaseFocus(_this.$element);
 
