@@ -125,7 +125,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 ```html
 <div class="radius bordered shadow card">
-  <img src="http://placehold.it/500x250">
+  <img src="https://placehold.it/500x250">
   <div class="card-divider">
     Styled Card
   </div>
@@ -227,11 +227,11 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 #### Images
 
 ```html
-<img src="http://placehold.it/150x150" class="radius">
+<img src="https://placehold.it/150x150" class="radius">
 ```
 
 <div class="docs-code-live margin-bottom-1">
-	<img src="http://placehold.it/150x150" class="radius">
+	<img src="https://placehold.it/150x150" class="radius">
 </div>
 
 ---
@@ -335,7 +335,7 @@ You can include an image with visually hidden helper text for the sake of access
 
 ```html
 <a href="#" class="text-hide">
-  <img src="http://placehold.it/100x30" alt="zurb logo">
+  <img src="https://placehold.it/100x30" alt="zurb logo">
   Zurb <!-- Logo Text  -->
 </a>
 ```
