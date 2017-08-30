@@ -1,0 +1,166 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style>
+      /**
+       * Custom CSS 
+       * https://codepen.io/Lazerproof/pen/GEqLyW
+       */
+      @media screen and (max-width: 63.9375em) {
+        .product-tabs {
+          margin-left: 0;
+          background: #fefefe;
+          list-style-type: none;
+        }
+      }
+
+      @media print, screen and (min-width: 64em) {
+        .product-tabs {
+          margin: 0;
+          border: 1px solid transparent;
+          background: #fefefe;
+          list-style-type: none;
+        }
+        .product-tabs::before, .product-tabs::after {
+          display: table;
+          content: ' ';
+        }
+        .product-tabs::after {
+          clear: both;
+        }
+      }
+
+      @media screen and (max-width: 63.9375em) {
+        .product-tabs__title {
+          position: relative;
+          display: block;
+          padding: 1.25rem 1rem;
+          border: 1px solid #e0e0e0;
+          border-bottom: 0;
+          font-size: 0.75rem;
+          line-height: 1;
+          color: #ff6600;
+        }
+        :last-child:not(.is-active) > .product-tabs__title {
+          border-bottom: 1px solid #e0e0e0;
+          border-radius: 0 0 0.25rem 0.25rem;
+        }
+        .product-tabs__title:hover, .product-tabs__title:focus {
+          background-color: #e0e0e0;
+        }
+        .product-tabs__title::before {
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+          margin-top: -0.5rem;
+          content: '+';
+        }
+        .is-active > .product-tabs__title::before {
+          content: '\2013';
+        }
+      }
+
+      @media print, screen and (min-width: 64em) {
+        .product-tabs__title {
+          float: left;
+        }
+        .product-tabs__title > a {
+          display: block;
+          padding: 1.25rem 1.5rem;
+          font-size: 0.75rem;
+          line-height: 1;
+          color: #ff6600;
+        }
+        .product-tabs__title > a:hover {
+          background: #fefefe;
+          color: #db5800;
+        }
+        .product-tabs__title > a:focus,
+        .product-tabs__title > a[aria-selected='true'] {
+          background: #e0e0e0;
+          color: #ff6600;
+        }
+      }
+
+      @media screen and (max-width: 63.9375em) {
+        .product-tabs__content {
+          display: none;
+          padding: 1rem;
+          border: 1px solid #e0e0e0;
+          border-bottom: 0;
+          background-color: #fefefe;
+          color: #333;
+        }
+        :last-child > .product-tabs__content:last-child {
+          border-bottom: 1px solid #e0e0e0;
+        }
+      }
+
+      @media print, screen and (min-width: 64em) {
+        .product-tabs__content {
+          border: 1px solid transparent;
+          border-top: 0;
+          background: #fefefe;
+          color: #333;
+          transition: all 0.5s ease;
+        }
+      }
+
+      @media print, screen and (min-width: 64em) {
+        .product-tabs__panel {
+          display: none;
+          padding: 1rem;
+        }
+        .product-tabs__panel[aria-hidden="false"] {
+          display: block;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <ul class="product-tabs" id="product-tabs" data-responsive-accordion-tabs="accordion large-tabs">
+            <li class="product-tabs__title product-tabs__title--active"><a href="#panel1c" aria-selected="true">Tab 1</a></li>
+            <li class="product-tabs__title"><a href="#panel2c">Tab 2</a></li>
+          </ul>
+
+          <div class="tabs-content" data-tabs-content="product-tabs">
+            <div class="product-tabs__panel product-tabs__panel--active" id="panel1c">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="product-tabs__panel" id="panel2c">
+              <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      /**
+       * Custom Script
+       * https://codepen.io/Lazerproof/pen/GEqLyW
+       */
+      $(document).foundation();
+      var $productTabsContainer = $("#product-tabs");
+      var productTabs = new Foundation.ResponsiveAccordionTabs($productTabsContainer, {
+        linkClass: "product-tabs__title",
+        linkActiveClass: "product-tabs__title--active",
+        panelClass: "product-tabs__panel",
+        panelActiveClass: "product-tabs__panel--active"
+      });
+    </script>
+  </body>
+</html>
