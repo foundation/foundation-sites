@@ -100,7 +100,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   }
 
   -webkit-appearance: none;
-  border: 1px solid transparent;
+  border: $button-hollow-border-width solid transparent;
   border-radius: $button-radius;
   transition: $button-transition;
 
