@@ -13,7 +13,7 @@ Once you have the files, add links to jQuery and Foundation as `<script>` tags a
 ```html
 <script src="js/jquery.min.js"></script>
 <!-- this will include every plugin and utility required by Foundation -->
-<script src="js/foundation.min.js"></script>
+<script src="dist/js/foundation.min.js"></script>
 ```
 
 <div class="callout warning">
