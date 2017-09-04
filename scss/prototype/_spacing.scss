@@ -112,20 +112,20 @@ $prototype-spacers-count: 3 !default;
     }
 
     // Horizontal Axes
-    .margin-horizontal-#{$spacer} {
+    .margin-x-#{$spacer} {
       @include margin(null, $spacer, null, $spacer);
     }
 
-    .padding-horizontal-#{$spacer} {
+    .padding-x-#{$spacer} {
       @include padding(null, $spacer, null, $spacer);
     }
 
     // Vertical Axes
-    .margin-vertical-#{$spacer} {
+    .margin-y-#{$spacer} {
       @include margin($spacer, null, $spacer, null)
     }
 
-    .padding-vertical-#{$spacer} {
+    .padding-y-#{$spacer} {
       @include padding($spacer, null, $spacer, null)
     }
 
@@ -180,20 +180,20 @@ $prototype-spacers-count: 3 !default;
             }
 
             // Horizontal Axes
-            .#{$size}-margin-horizontal-#{$spacer} {
+            .#{$size}-margin-x-#{$spacer} {
               @include margin(null, $spacer, null, $spacer);
             }
 
-            .#{$size}-padding-horizontal-#{$spacer} {
+            .#{$size}-padding-x-#{$spacer} {
               @include padding(null, $spacer, null, $spacer);
             }
 
             // Vertical Axes
-            .#{$size}-margin-vertical-#{$spacer} {
+            .#{$size}-margin-y-#{$spacer} {
               @include margin($spacer, null, $spacer, null)
             }
 
-            .#{$size}-padding-vertical-#{$spacer} {
+            .#{$size}-padding-y-#{$spacer} {
               @include padding($spacer, null, $spacer, null)
             }
           }
