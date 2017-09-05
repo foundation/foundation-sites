@@ -165,8 +165,10 @@ class Magellan extends Plugin {
     }
 
     this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
-
+    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').parents()[this.options.activeParents]
+  	               ? $( this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').parents()[this.options.activeParents] ).addClass(this.options.activeClass)
+  	               : this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+    
     if(this.options.deepLinking){
       var hash = "";
       if(curIdx != undefined){
@@ -238,6 +240,13 @@ Magellan.defaults = {
    * @default 'is-active'
    */
   activeClass: 'is-active',
+    /**
+  * If >= 0 index of parents of active link, where activeClass is added/removed
+  * @option
+  * @type {number}
+  * @default -1
+  */
+ activeParents: -1,
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option
