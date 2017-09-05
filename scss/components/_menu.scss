@@ -441,7 +441,7 @@ $menu-icons-back-compat: true !default;
     }
 
     // Active state
-    .is-active > a {
+    .is-active {
       @include menu-state-active;
     }
     
