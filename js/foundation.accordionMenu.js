@@ -68,7 +68,7 @@ class AccordionMenu extends Plugin {
 
       if(_this.options.parentLink) {
         let $anchor = $elem.children('a');
-        $anchor.clone().prependTo($sub).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-accordian-submenu-item"></li>');
+        $anchor.clone().prependTo($sub).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-accordion-submenu-item"></li>');
       }
 
       if(_this.options.submenuToggle) {
