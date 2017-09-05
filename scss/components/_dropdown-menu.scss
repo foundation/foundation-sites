@@ -152,7 +152,7 @@ $dropdown-menu-item-background-active: transparent !default;
     }
 
     // Active state
-    .is-active {
+    .is-active > a {
       background: $dropdown-menu-item-background-active;
       color: $dropdown-menu-item-color-active;
     }
