@@ -66,6 +66,10 @@ class AccordionMenu extends Plugin {
           subId = $sub[0].id || GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
 
+      if(_this.options.parentLink) {
+        let $anchor = $elem.children('a');
+        $anchor.clone().prependTo($sub).wrap('<li class="is-submenu-parent-item is-submenu-item is-accordian-submenu-item"></li>');
+      }
 
       if(_this.options.submenuToggle) {
         $elem.addClass('has-submenu-toggle');
@@ -297,6 +301,13 @@ class AccordionMenu extends Plugin {
 }
 
 AccordionMenu.defaults = {
+  /**
+   * Adds the parent link to the submenu.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  parentLink: false,
   /**
    * Amount of time to animate the opening of a submenu in ms.
    * @option
