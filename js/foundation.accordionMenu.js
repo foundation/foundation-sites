@@ -68,7 +68,7 @@ class AccordionMenu extends Plugin {
 
       if(_this.options.parentLink) {
         let $anchor = $elem.children('a');
-        $anchor.clone().prependTo($sub).wrap('<li class="is-submenu-parent-item is-submenu-item is-accordian-submenu-item"></li>');
+        $anchor.clone().prependTo($sub).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-accordian-submenu-item"></li>');
       }
 
       if(_this.options.submenuToggle) {
@@ -290,6 +290,7 @@ class AccordionMenu extends Plugin {
   _destroy() {
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
+    this.$element.find('[data-is-parent-link]').detach();
 
     if(this.options.submenuToggle) {
       this.$element.find('.has-submenu-toggle').removeClass('has-submenu-toggle');
