@@ -99,7 +99,8 @@ class Tabs extends Plugin {
       var anchor = window.location.hash;
       //need a hash and a relevant anchor in this tabset
       if(anchor.length) {
-        var $link = this.$element.find('[href$="'+anchor+'"]');
+        var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
+        var $link = this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
         if ($link.length) {
           this.selectTab($(anchor), true);
 
@@ -318,7 +319,7 @@ class Tabs extends Plugin {
    * @function
    */
   selectTab(elem, historyHandled) {
-    var idStr;
+    var idStr, hashIdStr;
 
     if (typeof elem === 'object') {
       idStr = elem[0].id;
@@ -327,10 +328,13 @@ class Tabs extends Plugin {
     }
 
     if (idStr.indexOf('#') < 0) {
-      idStr = `#${idStr}`;
+      hashIdStr = `#${idStr}`;
+    } else {
+      hashIdStr = idStr;
+      idStr = idStr.slice(1);
     }
 
-    var $target = this.$tabTitles.find(`[href$="${idStr}"]`).parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.find(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first().parent(`.${this.options.linkClass}`);
 
     this._handleTabChange($target, historyHandled);
   };
