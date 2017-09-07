@@ -132,7 +132,7 @@ $prototype-direction: (
         }
       }
 
-      @each $dir in $prototype-direction {
+      @each $dir in (top, right, bottom, left, horizontal, vertical) {
         // Top Side
         .#{$prop}-#{$dir}-#{$spacer} {
           @if ($prop == margin) { 
@@ -162,7 +162,7 @@ $prototype-direction: (
                   }
                 }
 
-                @each $dir in $prototype-direction {
+                @each $dir in (top, right, bottom, left, horizontal, vertical) {
                   // Top Side
                   &-#{$prop}-#{$dir}-#{$spacer} {
                     @if ($prop == margin) { 
