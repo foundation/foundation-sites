@@ -122,7 +122,7 @@ $prototype-spacers-count: 3 !default;
           margin: $spacer * $global-margin; 
         }
         @else if ($prop == padding) { 
-          padding: $spacer * $global-margin; 
+          padding: $spacer * $global-padding; 
         }
       }
 
@@ -152,7 +152,7 @@ $prototype-spacers-count: 3 !default;
                     margin: $spacer * $global-margin; 
                   }
                   @else if ($prop == padding) { 
-                    padding: $spacer * $global-margin; 
+                    padding: $spacer * $global-padding; 
                   }
                 }
 
