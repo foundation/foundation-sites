@@ -70,6 +70,9 @@ $prototype-direction: (
   }
 }
 
+/// Margin classes for specific direction properties
+/// @param {String} $dir [] Direction
+/// @param {Number} $spacer [] Spacer
 @mixin margin-direction($dir, $spacer) {
   @if ($dir == top) { 
     @include margin($top: $spacer); 
@@ -91,6 +94,9 @@ $prototype-direction: (
   }
 }
 
+/// Padding classes for specific direction properties
+/// @param {String} $dir [] Direction
+/// @param {Number} $spacer [] Spacer
 @mixin padding-direction($dir, $spacer) {
   @if ($dir == top) { 
     @include padding($top: $spacer); 
