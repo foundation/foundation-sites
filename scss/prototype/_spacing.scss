@@ -70,6 +70,48 @@ $prototype-direction: (
   }
 }
 
+@mixin margin-direction($dir, $spacer) {
+  @if ($dir == top) { 
+    @include margin($top: $spacer); 
+  }
+  @else if ($dir == right) { 
+    @include margin($right: $spacer); 
+  }
+  @else if ($dir == bottom) { 
+    @include margin($bottom: $spacer); 
+  }
+  @else if ($dir == left) { 
+    @include margin($left: $spacer); 
+  }
+  @else if ($dir == horizontal) { 
+    @include margin($right: $spacer, $left: $spacer); 
+  }
+  @else if ($dir == vertical) { 
+    @include margin($top: $spacer, $bottom: $spacer); 
+  }
+}
+
+@mixin padding-direction($dir, $spacer) {
+  @if ($dir == top) { 
+    @include padding($top: $spacer); 
+  }
+  @else if ($dir == right) { 
+    @include padding($right: $spacer); 
+  }
+  @else if ($dir == bottom) { 
+    @include padding($bottom: $spacer); 
+  }
+  @else if ($dir == left) { 
+    @include padding($left: $spacer); 
+  }
+  @else if ($dir == horizontal) { 
+    @include padding($right: $spacer, $left: $spacer); 
+  }
+  @else if ($dir == vertical) { 
+    @include padding($top: $spacer, $bottom: $spacer); 
+  }
+}
+
 @mixin foundation-prototype-spacing {
   @for $spacer from 0 through $prototype-spacers-count {
     
@@ -88,44 +130,10 @@ $prototype-direction: (
         // Top Side
         .#{$prop}-#{$dir}-#{$spacer} {
           @if ($prop == margin) { 
-            @if ($dir == top) { 
-              @include margin($top: $spacer); 
-            }
-            @else if ($dir == right) { 
-              @include margin($right: $spacer); 
-            }
-            @else if ($dir == bottom) { 
-              @include margin($bottom: $spacer); 
-            }
-            @else if ($dir == left) { 
-              @include margin($left: $spacer); 
-            }
-            @else if ($dir == horizontal) { 
-              @include margin($right: $spacer, $left: $spacer); 
-            }
-            @else if ($dir == vertical) { 
-              @include margin($top: $spacer, $bottom: $spacer); 
-            }
+            @include margin-direction($dir, $spacer);
           }
           @else if ($prop == padding) {
-            @if ($dir == top) { 
-              @include padding($top: $spacer); 
-            }
-            @else if ($dir == right) { 
-              @include padding($right: $spacer); 
-            }
-            @else if ($dir == bottom) { 
-              @include padding($bottom: $spacer); 
-            }
-            @else if ($dir == left) { 
-              @include padding($left: $spacer); 
-            }
-            @else if ($dir == horizontal) { 
-              @include padding($right: $spacer, $left: $spacer); 
-            }
-            @else if ($dir == vertical) { 
-              @include padding($top: $spacer, $bottom: $spacer); 
-            }
+            @include padding-direction($dir, $spacer);
           }
         }
       }
@@ -152,44 +160,10 @@ $prototype-direction: (
                   // Top Side
                   &-#{$prop}-#{$dir}-#{$spacer} {
                     @if ($prop == margin) { 
-                      @if ($dir == top) { 
-                        @include margin($top: $spacer); 
-                      }
-                      @else if ($dir == right) { 
-                        @include margin($right: $spacer); 
-                      }
-                      @else if ($dir == bottom) { 
-                        @include margin($bottom: $spacer); 
-                      }
-                      @else if ($dir == left) { 
-                        @include margin($left: $spacer); 
-                      }
-                      @else if ($dir == horizontal) { 
-                        @include margin($right: $spacer, $left: $spacer); 
-                      }
-                      @else if ($dir == vertical) { 
-                        @include margin($top: $spacer, $bottom: $spacer); 
-                      }
+                      margin: $spacer; 
                     }
-                    @else if ($prop == padding) {
-                      @if ($dir == top) { 
-                        @include padding($top: $spacer); 
-                      }
-                      @else if ($dir == right) { 
-                        @include padding($right: $spacer); 
-                      }
-                      @else if ($dir == bottom) { 
-                        @include padding($bottom: $spacer); 
-                      }
-                      @else if ($dir == left) { 
-                        @include padding($left: $spacer); 
-                      }
-                      @else if ($dir == horizontal) { 
-                        @include padding($right: $spacer, $left: $spacer); 
-                      }
-                      @else if ($dir == vertical) { 
-                        @include padding($top: $spacer, $bottom: $spacer); 
-                      }
+                    @else if ($prop == padding) { 
+                      padding: $spacer; 
                     }
                   }
                 }
