@@ -14,12 +14,6 @@ $prototype-spacing-breakpoints: $global-prototype-breakpoints !default;
 /// @type Number
 $prototype-spacers-count: 3 !default;
 
-/// Available direction's for the spacer properties
-/// @type Map
-$prototype-direction: (
-  top, right, bottom, left, horizontal, vertical
-) !default;
-
 /// Margin helper mixin, all the values are multiplied by `$global-margin` which by default is equal to `1rem`
 /// @param {Number} $top [null] - Margin Top
 /// @param {Number} $right [null] - Margin Right
