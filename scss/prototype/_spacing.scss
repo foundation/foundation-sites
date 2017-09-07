@@ -76,8 +76,12 @@ $prototype-direction: (
     @each $prop in (margin, padding) {
       // All Sides
       .#{$prop}-#{$spacer} {
-        @if ($prop == margin) { margin: $spacer; }
-        @else if ($prop == padding) { padding: $spacer; }
+        @if ($prop == margin) { 
+          margin: $spacer; 
+        }
+        @else if ($prop == padding) { 
+          padding: $spacer; 
+        }
       }
 
       @each $dir in $prototype-direction {
@@ -136,8 +140,12 @@ $prototype-direction: (
               @each $prop in (margin, padding) {
                 // All Sides
                 &-#{$prop}-#{$spacer} {
-                  @if ($prop == margin) { margin: $spacer; }
-                  @else if ($prop == padding) { padding: $spacer; }
+                  @if ($prop == margin) { 
+                    margin: $spacer; 
+                  }
+                  @else if ($prop == padding) { 
+                    padding: $spacer; 
+                  }
                 }
 
                 @each $dir in $prototype-direction {
