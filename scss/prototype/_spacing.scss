@@ -66,67 +66,49 @@ $prototype-spacers-count: 3 !default;
 
 @mixin foundation-prototype-spacing {
   @for $spacer from 0 through $prototype-spacers-count {
-    // All Sides
-    .margin-#{$spacer} {
-      @include margin($spacer, $spacer, $spacer, $spacer);
-    }
+    
+    @each $prop in (margin, padding) {
+      // All Sides
+      .#{$prop}-#{$spacer} {
+        @if ($prop == margin) { @include margin($spacer, $spacer, $spacer, $spacer); }
+        @else if ($prop == padding) { @include padding($spacer, $spacer, $spacer, $spacer); }
+      }
 
-    .padding-#{$spacer} {
-      @include padding($spacer, $spacer, $spacer, $spacer);
-    }
+      // Top Side
+      .#{$prop}-top-#{$spacer} {
+        @if ($prop == margin) { @include margin($spacer, null, null, null); }
+        @else if ($prop == padding) { @include padding($spacer, null, null, null); }
+      }
 
-    // Top Side
-    .margin-top-#{$spacer} {
-      @include margin($spacer, null, null, null);
-    }
+      // Right Side
+      .#{$prop}-right-#{$spacer} {
+        @if ($prop == margin) { @include margin(null, $spacer, null, null); }
+        @else if ($prop == padding) { @include padding(null, $spacer, null, null); }
+      }
 
-    .padding-top-#{$spacer} {
-      @include padding($spacer, null, null, null);
-    }
+      // Bottom Side
+      .#{$prop}-bottom-#{$spacer} {
+        @if ($prop == margin) { @include margin(null, null, $spacer, null); }
+        @else if ($prop == padding) { @include padding(null, $spacer, null, null); }
+      }
 
-    // Right Side
-    .margin-right-#{$spacer} {
-      @include margin(null, $spacer, null, null);
-    }
+      // Left Side
+      .#{$prop}-left-#{$spacer} {
+        @if ($prop == margin) { @include margin(null, null, null, $spacer); }
+        @else if ($prop == padding) { @include padding(null, null, null, $spacer); }
+      }
 
-    .padding-right-#{$spacer} {
-      @include padding(null, $spacer, null, null);
-    }
+      // Horizontal Axes
+      .#{$prop}-horizontal-#{$spacer} {
+        @if ($prop == margin) { @include margin(null, $spacer, null, $spacer); }
+        @else if ($prop == padding) { @include padding(null, $spacer, null, $spacer); }
+      }
 
-    // Bottom Side
-    .margin-bottom-#{$spacer} {
-      @include margin(null, null, $spacer, null);
-    }
-
-    .padding-bottom-#{$spacer} {
-      @include padding(null, null, $spacer, null);
-    }
-
-    // Left Side
-    .margin-left-#{$spacer} {
-      @include margin(null, null, null, $spacer);
-    }
-
-    .padding-left-#{$spacer} {
-      @include padding(null, null, null, $spacer);
-    }
-
-    // Horizontal Axes
-    .margin-horizontal-#{$spacer} {
-      @include margin(null, $spacer, null, $spacer);
-    }
-
-    .padding-horizontal-#{$spacer} {
-      @include padding(null, $spacer, null, $spacer);
-    }
-
-    // Vertical Axes
-    .margin-vertical-#{$spacer} {
-      @include margin($spacer, null, $spacer, null)
-    }
-
-    .padding-vertical-#{$spacer} {
-      @include padding($spacer, null, $spacer, null)
+      // Vertical Axes
+      .#{$prop}-vertical-#{$spacer} {
+        @if ($prop == margin) { @include margin($spacer, null, $spacer, null); }
+        @else if ($prop == padding) { @include padding($spacer, null, $spacer, null); }
+      }
     }
 
     @if ($prototype-spacing-breakpoints) {
@@ -134,67 +116,50 @@ $prototype-spacers-count: 3 !default;
       @each $size in $breakpoint-classes {
         @include breakpoint($size) {
           @if $size != $-zf-zero-breakpoint {
-            // All Sides
-            .#{$size}-margin-#{$spacer} {
-              @include margin($spacer, $spacer, $spacer, $spacer);
-            }
+            .#{$size} {
+              @each $prop in (margin, padding) {
+                // All Sides
+                &-#{$prop}-#{$spacer} {
+                  @if ($prop == margin) { @include margin($spacer, $spacer, $spacer, $spacer); }
+                  @else if ($prop == padding) { @include padding($spacer, $spacer, $spacer, $spacer); }
+                }
 
-            .#{$size}-padding-#{$spacer} {
-              @include padding($spacer, $spacer, $spacer, $spacer);
-            }
+                // Top Side
+                &-#{$prop}-top-#{$spacer} {
+                  @if ($prop == margin) { @include margin($spacer, null, null, null); }
+                  @else if ($prop == padding) { @include padding($spacer, null, null, null); }
+                }
 
-            // Top Side
-            .#{$size}-margin-top-#{$spacer} {
-              @include margin($spacer, null, null, null);
-            }
+                // Right Side
+                &-#{$prop}-right-#{$spacer} {
+                  @if ($prop == margin) { @include margin(null, $spacer, null, null); }
+                  @else if ($prop == padding) { @include padding(null, $spacer, null, null); }
+                }
 
-            .#{$size}-padding-top-#{$spacer} {
-              @include padding($spacer, null, null, null);
-            }
+                // Bottom Side
+                &-#{$prop}-bottom-#{$spacer} {
+                  @if ($prop == margin) { @include margin(null, null, $spacer, null); }
+                  @else if ($prop == padding) { @include padding(null, $spacer, null, null); }
+                }
 
-            // Right Side
-            .#{$size}-margin-right-#{$spacer} {
-              @include margin(null, $spacer, null, null);
-            }
+                // Left Side
+                &-#{$prop}-left-#{$spacer} {
+                  @if ($prop == margin) { @include margin(null, null, null, $spacer); }
+                  @else if ($prop == padding) { @include padding(null, null, null, $spacer); }
+                }
 
-            .#{$size}-padding-right-#{$spacer} {
-              @include padding(null, $spacer, null, null);
-            }
+                // Horizontal Axes
+                &-#{$prop}-horizontal-#{$spacer} {
+                  @if ($prop == margin) { @include margin(null, $spacer, null, $spacer); }
+                  @else if ($prop == padding) { @include padding(null, $spacer, null, $spacer); }
+                }
 
-            // Bottom Side
-            .#{$size}-margin-bottom-#{$spacer} {
-              @include margin(null, null, $spacer, null);
-            }
-
-            .#{$size}-padding-bottom-#{$spacer} {
-              @include padding(null, null, $spacer, null);
-            }
-
-            // Left Side
-            .#{$size}-margin-left-#{$spacer} {
-              @include margin(null, null, null, $spacer);
-            }
-
-            .#{$size}-padding-left-#{$spacer} {
-              @include padding(null, null, null, $spacer);
-            }
-
-            // Horizontal Axes
-            .#{$size}-margin-horizontal-#{$spacer} {
-              @include margin(null, $spacer, null, $spacer);
-            }
-
-            .#{$size}-padding-horizontal-#{$spacer} {
-              @include padding(null, $spacer, null, $spacer);
-            }
-
-            // Vertical Axes
-            .#{$size}-margin-vertical-#{$spacer} {
-              @include margin($spacer, null, $spacer, null)
-            }
-
-            .#{$size}-padding-vertical-#{$spacer} {
-              @include padding($spacer, null, $spacer, null)
+                // Vertical Axes
+                &-#{$prop}-vertical-#{$spacer} {
+                  @if ($prop == margin) { @include margin($spacer, null, $spacer, null); }
+                  @else if ($prop == padding) { @include padding($spacer, null, $spacer, null); }
+                }
+              }
             }
           }
         }
