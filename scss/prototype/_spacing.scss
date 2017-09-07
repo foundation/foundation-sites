@@ -119,10 +119,10 @@ $prototype-spacers-count: 3 !default;
       // All Sides
       .#{$prop}-#{$spacer} {
         @if ($prop == margin) { 
-          margin: $spacer; 
+          margin: $spacer * $global-margin; 
         }
         @else if ($prop == padding) { 
-          padding: $spacer; 
+          padding: $spacer * $global-margin; 
         }
       }
 
@@ -149,10 +149,10 @@ $prototype-spacers-count: 3 !default;
                 // All Sides
                 &-#{$prop}-#{$spacer} {
                   @if ($prop == margin) { 
-                    margin: $spacer; 
+                    margin: $spacer * $global-margin; 
                   }
                   @else if ($prop == padding) { 
-                    padding: $spacer; 
+                    padding: $spacer * $global-margin; 
                   }
                 }
 
