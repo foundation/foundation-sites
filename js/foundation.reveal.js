@@ -109,7 +109,7 @@ class Reveal extends Plugin {
     var outerWidth = $(window).width();
     var height = this.$element.outerHeight();
     var outerHeight = $(window).height();
-    var left, top;
+    var left, top = null;
     if (this.options.hOffset === 'auto') {
       left = parseInt((outerWidth - width) / 2, 10);
     } else {
@@ -121,13 +121,17 @@ class Reveal extends Plugin {
       } else {
         top = parseInt((outerHeight - height) / 4, 10);
       }
-    } else {
+    } else if (this.options.vOffset !== null) {
       top = parseInt(this.options.vOffset, 10);
     }
-    this.$element.css({top: top + 'px'});
-    // only worry about left if we don't have an overlay or we havea  horizontal offset,
+
+    if (top !== null) {
+      this.$element.css({top: top + 'px'});
+    }
+
+    // only worry about left if we don't have an overlay or we have a horizontal offset,
     // otherwise we're perfectly in the middle
-    if(!this.$overlay || (this.options.hOffset !== 'auto')) {
+    if (!this.$overlay || (this.options.hOffset !== 'auto')) {
       this.$element.css({left: left + 'px'});
       this.$element.css({margin: '0px'});
     }
