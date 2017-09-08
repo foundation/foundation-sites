@@ -20,7 +20,7 @@ flex: true
 
 ## Form Basics
 
-Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as grid rows and columns.
+Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as grid rows and columns or cells.
 
 ---
 
@@ -37,17 +37,20 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 </div>
 
 ```html_example
+
 <form>
-  <div class="row">
-    <div class="medium-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns">
-      </label>
-    </div>
-    <div class="medium-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns">
-      </label>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Input Label
+          <input type="text" placeholder=".medium-6.cell">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Input Label
+          <input type="text" placeholder=".medium-6.cell">
+        </label>
+      </div>
     </div>
   </div>
 </form>
@@ -146,14 +149,14 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 </div>
 
 ```html_example
-<div class="row">
-  <fieldset class="large-6 columns">
+<div class="grid-x grid-padding-x">
+  <fieldset class="large-6 cell">
     <legend>Choose Your Favorite</legend>
     <input type="radio" name="pokemon" value="Red" id="pokemonRed" required><label for="pokemonRed">Red</label>
     <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
     <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
   </fieldset>
-  <fieldset class="large-6 columns">
+  <fieldset class="large-6 cell">
     <legend>Check these out</legend>
     <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
     <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
@@ -210,7 +213,7 @@ Place help text below a field to clarify its purpose. Whenever you use help text
 
 ## Label Positioning
 
-Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then use the class `.text-right` or `.float-right` (or add `text-align: right` yourself) to realign the label.
+Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different cell or column to the left of the input. Then use the class `.text-right` or `.float-right` (or add `text-align: right` yourself) to realign the label.
 
 <a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="warning callout">
@@ -223,23 +226,23 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake!
 
 ```html
 <form>
-  <div class="row">
-    <div class="small-3 columns">
+  <div class="grid-x grid-padding-x">
+    <div class="small-3 cell">
       <label for="right-label" class="text-right">Label</label>
     </div>
-    <div class="small-9 columns">
+    <div class="small-9 cell">
       <input type="text" id="right-label" placeholder="Right-aligned text input">
     </div>
   </div>
 </form>
 ```
 
-<div class="medium-8 column row">
-  <div class="row">
-    <div class="small-3 columns">
+<div class="medium-8 grid-x grid-padding-x cell align-center">
+  <div class="grid-x grid-padding-x">
+    <div class="small-3 cell">
       <label for="right-label" class="text-right">Label</label>
     </div>
-    <div class="small-9 columns">
+    <div class="small-9 cell">
       <input type="text" id="right-label" placeholder="Right-aligned text input">
     </div>
   </div>
@@ -251,23 +254,23 @@ Add the `.middle` class to vertically align the label with its input.
 
 ```html
 <form>
-  <div class="row">
-    <div class="small-3 columns">
+  <div class="grid-x grid-padding-x">
+    <div class="small-3 cell">
       <label for="middle-label" class="text-right middle">Label</label>
     </div>
-    <div class="small-9 columns">
+    <div class="small-9 cell">
       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
     </div>
   </div>
 </form>
 ```
 
-<div class="medium-8 column row">
-  <div class="row">
-    <div class="small-3 columns">
+<div class="medium-8 grid-x grid-padding-x cell align-center">
+  <div class="grid-x grid-padding-x">
+    <div class="small-3 cell">
       <label for="middle-label" class="text-right middle">Label</label>
     </div>
-    <div class="small-9 columns">
+    <div class="small-9 cell">
       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
     </div>
   </div>
