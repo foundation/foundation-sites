@@ -30,6 +30,9 @@ $prototype-border-radius: rem-calc(3) !default;
 @mixin foundation-prototype-rounded {
   .rounded {
     @include border-rounded;
+    &:after {
+      border-radius: 50%; // For switches
+    }
   }
 
   .radius {
