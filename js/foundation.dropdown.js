@@ -127,7 +127,9 @@ class Dropdown extends Positionable {
    * @private
    */
   _events() {
-    var _this = this;
+    var _this = this,
+        hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined');
+
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
@@ -135,8 +137,16 @@ class Dropdown extends Positionable {
       'resizeme.zf.trigger': this._setPosition.bind(this)
     });
 
-    this.$anchors.off('click.zf.trigger')
-      .on('click.zf.trigger', function() { _this._setCurrentAnchor(this); });
+    this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function(e) {
+        _this._setCurrentAnchor(this);
+
+        if (_this.options.forceFollow && hasTouch && _this.options.hover) {
+          var hasClicked = $(this).attr('data-is-click') === true;
+          if (hasClicked === false && _this.$element.attr('aria-hidden') === 'true') {
+            e.preventDefault();
+          }
+        }
+    });
 
     if(this.options.hover){
       this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
@@ -356,7 +366,6 @@ Dropdown.defaults = {
    * @default ''
    */
   positionClass: '',
-
   /**
    * Position of dropdown. Can be left, right, bottom, top, or auto.
    * @option
@@ -407,7 +416,14 @@ Dropdown.defaults = {
    * @type {boolean}
    * @default false
    */
-  closeOnClick: false
-}
+  closeOnClick: false,
+  /**
+   * Boolean to force overide the clicking of toggle link (href) to perform default action, on second touch event for mobile.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  forceFollow: true
+};
 
 export {Dropdown};
