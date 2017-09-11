@@ -323,25 +323,39 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
+$small-up: '';
+$small-only: '';
+
 @if map-has-key($breakpoints, small) {
   $small-up: screen;
   $small-only: unquote('screen and #{breakpoint(small only)}');
 }
+
+$medium-up: '';
+$medium-only: '';
 
 @if map-has-key($breakpoints, medium) {
   $medium-up: unquote('screen and #{breakpoint(medium)}');
   $medium-only: unquote('screen and #{breakpoint(medium only)}');
 }
 
+$large-up: '';
+$large-only: '';
+
 @if map-has-key($breakpoints, large) {
   $large-up: unquote('screen and #{breakpoint(large)}');
   $large-only: unquote('screen and #{breakpoint(large only)}');
 }
 
+$xlarge-up: '';
+$xlarge-only: '';
+
 @if map-has-key($breakpoints, xlarge) {
   $xlarge-up: unquote('screen and #{breakpoint(xlarge)}');
   $xlarge-only: unquote('screen and #{breakpoint(xlarge only)}');
 }
+
+$xxlarge-up: '';
 
 @if map-has-key($breakpoints, xxlarge) {
   $xxlarge-up: unquote('screen and #{breakpoint(xxlarge)}');
