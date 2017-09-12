@@ -121,6 +121,19 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 <button type="button" class="button radius bordered shadow warning">Warning</button>
 ```
 
+#### Switches
+
+Please note that you need to add `rounded` class with `switch-paddle` and not `switch`.
+
+```html_example
+<div class="switch">
+  <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+  <label class="switch-paddle rounded" for="exampleSwitch">
+    <span class="show-for-sr">Download Kittens</span>
+  </label>
+</div>
+```
+
 #### Cards
 
 ```html
