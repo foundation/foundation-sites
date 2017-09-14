@@ -137,7 +137,8 @@ class Dropdown extends Positionable {
       'resizeme.zf.trigger': this._setPosition.bind(this)
     });
 
-    this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function(e) {
+    this.$anchors.off('click.zf.trigger')
+      .on('click.zf.trigger', function(e) {
         _this._setCurrentAnchor(this);
 
         if (_this.options.forceFollow && hasTouch && _this.options.hover) {
