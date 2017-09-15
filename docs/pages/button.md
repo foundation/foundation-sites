@@ -59,6 +59,7 @@ Additional classes can be added to your button to change its size and shape.
 <a class="button large" href="#">So Large</a>
 <a class="button expanded" href="#">Such Expand</a>
 <a class="button small expanded" href="#">Wow, Small Expand</a>
+<a class="button small expanded-for-large" href="#">Wow, Small + Expand for Large</a>
 ```
 
 ---

@@ -270,6 +270,13 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     }
 
     &.expanded { @include button-expand; }
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        &.expanded-for-#{$size} {
+          @include button-expand;
+        }
+      }
+    }
 
     // Colors
     @each $name, $color in $button-palette {
