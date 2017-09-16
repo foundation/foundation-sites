@@ -45,7 +45,7 @@ $button-radius: $global-radius !default;
 /// Border width for hollow outline buttons
 /// @type Number
 $button-border-width: 1px !default;
-$button-hollow-border-width: $button-border-width;
+$button-hollow-border-width: $button-border-width !default;
 
 /// Sizes for buttons.
 /// @type Map
