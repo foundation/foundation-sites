@@ -21,10 +21,6 @@ To mark a disabled item, add the class `.disabled` to the `<li>`, and just use p
 </div>
 
 <div class="warning callout">
-  <p>We use a CSS <code>::after</code> element containing a slash character to create the separator between items. Some screen readers will read this character out loud&mdash;if this is an issue, you can use a background image or a separate element with <code>aria-hidden="true"</code> to create the separator instead.</p>
-</div>
-
-<div class="warning callout">
   <p>If your site is visited by search engines, then you should consider adding Schema.org structure data. This will allow your site to appear more attractive in search results. </p>
   <p>For more information, see <a href="https://developers.google.com/search/docs/data-types/breadcrumbs">Breadcrumbs - Google Developers</a>, <a href="http://schema.org/BreadcrumbList">BreadcrumbList - schema.org</a>.</p>
 </div>
