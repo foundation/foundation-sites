@@ -290,7 +290,7 @@ $responsive-expanded-button: true !default;
           }
 
           @include breakpoint(#{$size}) {
-            &.expanded-fpr-#{$size}-up {
+            &.expanded-for-#{$size}-up {
               @include button-expand;
             }
           }
