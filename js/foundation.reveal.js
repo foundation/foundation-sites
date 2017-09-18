@@ -47,7 +47,6 @@ class Reveal extends Plugin {
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: MediaQuery.current};
-    this.isMobile = mobileSniff();
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
@@ -183,6 +182,29 @@ class Reveal extends Plugin {
     else{ this.close(); }
   }
 
+  /**
+  * Disables the scroll when Reveal is shown to prevent the background from shifting
+  */
+  _disableScroll(){
+    if ($(document).height() > $(window).height()) {
+      var scrollTop = $(window).scrollTop();
+      $("html")
+        .css("top", -scrollTop);
+    }
+  }
+
+  /**
+  * Reenables the scroll when Reveal closes
+  */
+  _enableScroll(){
+    if ($(document).height() > $(window).height()) {
+      var scrollTop = parseInt($("html").css("top"));
+      $("html")
+        .css("top", "");
+      $(window).scrollTop(-scrollTop);
+    }
+  }
+
 
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
@@ -242,19 +264,15 @@ class Reveal extends Plugin {
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
 
+    this._disableScroll();
+
     var _this = this;
 
     function addRevealOpenClasses() {
-      if (_this.isMobile) {
-        if(!_this.originalScrollPos) {
-          _this.originalScrollPos = window.pageYOffset;
-        }
-        $('html, body').addClass('is-reveal-open');
-      }
-      else {
-        $('body').addClass('is-reveal-open');
-      }
+
+      $('html').addClass('is-reveal-open');
     }
+
     // Motion UI method of reveal
     if (this.options.animationIn) {
       function afterAnimation(){
@@ -379,25 +397,16 @@ class Reveal extends Plugin {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (_this.isMobile) {
-        if ($('.reveal:visible').length === 0) {
-          $('html, body').removeClass('is-reveal-open');
-        }
-        if(_this.originalScrollPos) {
-          $('body').scrollTop(_this.originalScrollPos);
-          _this.originalScrollPos = null;
-        }
-      }
-      else {
-        if ($('.reveal:visible').length  === 0) {
-          $('body').removeClass('is-reveal-open');
-        }
-      }
 
+      if ($('.reveal:visible').length  === 0) {
+        $('html').removeClass('is-reveal-open');
+      }
 
       Keyboard.releaseFocus(_this.$element);
 
       _this.$element.attr('aria-hidden', true);
+
+      _this._enableScroll();
 
       /**
       * Fires when the modal is done closing.
@@ -573,17 +582,5 @@ Reveal.defaults = {
    */
   additionalOverlayClasses: ''
 };
-
-function iPhoneSniff() {
-  return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
-}
-
-function androidSniff() {
-  return /Android/.test(window.navigator.userAgent);
-}
-
-function mobileSniff() {
-  return iPhoneSniff() || androidSniff();
-}
 
 export {Reveal};
