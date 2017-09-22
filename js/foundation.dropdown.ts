@@ -126,8 +126,11 @@ export class Dropdown extends Positionable {
      * @type {boolean}
      * @default false
      */
-    closeOnClick: false
+    closeOnClick: false,
   };
+  public options: DropdownOptions;
+  public $anchors: JQuery;
+  public $parent: JQuery;
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -282,22 +285,22 @@ export class Dropdown extends Positionable {
             });
       }
     }
-    this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
+    this.$anchors.add(this.$element).on('keydown.zf.dropdown', (e: JQuery.Event) => {
 
-      var $target = $(this),
+      const $target = $(e.currentTarget),
         visibleFocusableElements = Keyboard.findFocusable(_this.$element);
 
       Keyboard.handleKey(e, 'Dropdown', {
-        open: function() {
-          if ($target.is(_this.$anchors)) {
-            _this.open();
-            _this.$element.attr('tabindex', -1).focus();
+        open: () => {
+          if ($target.is(this.$anchors)) {
+            this.open();
+            this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
           }
         },
-        close: function() {
-          _this.close();
-          _this.$anchors.focus();
+        close: () => {
+          this.close();
+          this.$anchors.focus();
         }
       });
     });
@@ -397,10 +400,10 @@ export class Dropdown extends Positionable {
    * @function
    */
   toggle() {
-    if(this.$element.hasClass('is-open')){
-      if(this.$anchors.data('hover')) return;
+    if (this.$element.hasClass('is-open')) {
+      if (this.$anchors.data('hover')) return;
       this.close();
-    }else{
+    } else {
       this.open();
     }
   }

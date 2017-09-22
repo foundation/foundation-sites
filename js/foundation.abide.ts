@@ -12,7 +12,7 @@ export interface AbideOptions {
   validators?: any;
   patterns?: {
     [key: string]: RegExp | object;
-  }
+  };
 }
 
 /**
@@ -21,10 +21,6 @@ export interface AbideOptions {
  */
 
 export class Abide extends Plugin {
-
-  public $element: JQuery;
-  public $inputs: JQuery;
-  public options: AbideOptions;
   public static className = 'Abide'; // ie9 back compat
   /**
    * Default settings for plugin
@@ -141,6 +137,10 @@ export class Abide extends Plugin {
     },
   };
 
+  public $element: JQuery;
+  public $inputs: JQuery;
+  public options: AbideOptions;
+
   /**
    * Creates a new instance of Abide.
    * @class
@@ -220,23 +220,24 @@ export class Abide extends Plugin {
     if (!$el.attr('required')) return true;
 
     let isGood = true;
+    const element = $el[0];
+    if (element instanceof HTMLInputElement) {
+      switch (element.type) {
+        case 'checkbox':
+          isGood = element.checked;
+          break;
 
-    switch ($el[0].type) {
-      case 'checkbox':
-        isGood = $el[0].checked;
-        break;
+        case 'select':
+        case 'select-one':
+        case 'select-multiple':
+          const opt = $el.find('option:selected');
+          isGood = !(!opt.length || !opt.val());
+          break;
 
-      case 'select':
-      case 'select-one':
-      case 'select-multiple':
-        const opt = $el.find('option:selected');
-        if (!opt.length || !opt.val()) isGood = false;
-        break;
-
-      default:
-        if (!$el.val() || !$el.val().length) isGood = false;
+        default:
+          isGood = !(!$el.val() || !$el.val().length);
+      }
     }
-
     return isGood;
   }
 

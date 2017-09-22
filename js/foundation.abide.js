@@ -76,20 +76,21 @@ export class Abide extends Plugin {
         if (!$el.attr('required'))
             return true;
         let isGood = true;
-        switch ($el[0].type) {
-            case 'checkbox':
-                isGood = $el[0].checked;
-                break;
-            case 'select':
-            case 'select-one':
-            case 'select-multiple':
-                const opt = $el.find('option:selected');
-                if (!opt.length || !opt.val())
-                    isGood = false;
-                break;
-            default:
-                if (!$el.val() || !$el.val().length)
-                    isGood = false;
+        const element = $el[0];
+        if (element instanceof HTMLInputElement) {
+            switch (element.type) {
+                case 'checkbox':
+                    isGood = element.checked;
+                    break;
+                case 'select':
+                case 'select-one':
+                case 'select-multiple':
+                    const opt = $el.find('option:selected');
+                    isGood = !(!opt.length || !opt.val());
+                    break;
+                default:
+                    isGood = !(!$el.val() || !$el.val().length);
+            }
         }
         return isGood;
     }

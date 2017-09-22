@@ -149,19 +149,19 @@ export class Dropdown extends Positionable {
                 });
             }
         }
-        this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
-            var $target = $(this), visibleFocusableElements = Keyboard.findFocusable(_this.$element);
+        this.$anchors.add(this.$element).on('keydown.zf.dropdown', (e) => {
+            const $target = $(e.currentTarget), visibleFocusableElements = Keyboard.findFocusable(_this.$element);
             Keyboard.handleKey(e, 'Dropdown', {
-                open: function () {
-                    if ($target.is(_this.$anchors)) {
-                        _this.open();
-                        _this.$element.attr('tabindex', -1).focus();
+                open: () => {
+                    if ($target.is(this.$anchors)) {
+                        this.open();
+                        this.$element.attr('tabindex', -1).focus();
                         e.preventDefault();
                     }
                 },
-                close: function () {
-                    _this.close();
-                    _this.$anchors.focus();
+                close: () => {
+                    this.close();
+                    this.$anchors.focus();
                 }
             });
         });
@@ -370,5 +370,5 @@ Dropdown.defaults = {
      * @type {boolean}
      * @default false
      */
-    closeOnClick: false
+    closeOnClick: false,
 };

@@ -17,14 +17,14 @@ export interface AbideOptions {
  * @module foundation.abide
  */
 export declare class Abide extends Plugin {
-    $element: JQuery;
-    $inputs: JQuery;
-    options: AbideOptions;
     static className: string;
     /**
      * Default settings for plugin
      */
     static defaults: AbideOptions;
+    $element: JQuery;
+    $inputs: JQuery;
+    options: AbideOptions;
     /**
      * Creates a new instance of Abide.
      * @class

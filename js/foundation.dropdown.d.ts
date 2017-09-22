@@ -32,6 +32,9 @@ export declare class Dropdown extends Positionable {
         autoFocus: boolean;
         closeOnClick: boolean;
     };
+    options: DropdownOptions;
+    $anchors: JQuery;
+    $parent: JQuery;
     /**
      * Creates a new instance of a dropdown.
      * @class
