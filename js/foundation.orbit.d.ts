@@ -1,4 +1,24 @@
 import { Plugin } from './foundation.plugin';
+export interface OrbitOptions {
+    bullets?: boolean;
+    navButtons?: boolean;
+    animInFromRight?: string;
+    animOutToRight?: string;
+    animInFromLeft?: string;
+    animOutToLeft?: string;
+    autoPlay?: boolean;
+    timerDelay?: number;
+    infiniteWrap?: boolean;
+    swipe?: boolean;
+    pauseOnHover?: boolean;
+    accessible?: boolean;
+    containerClass?: string;
+    slideClass?: string;
+    boxOfBullets?: string;
+    nextClass?: string;
+    prevClass?: string;
+    useMUI?: boolean;
+}
 /**
  * Orbit module.
  * @module foundation.orbit
@@ -16,7 +36,7 @@ declare class Orbit extends Plugin {
     * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
     * @param {Object} options - Overrides to the default plugin settings.
     */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: OrbitOptions): void;
     /**
     * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
     * @function

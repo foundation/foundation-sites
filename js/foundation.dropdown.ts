@@ -3,10 +3,18 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { GetYoDigits } from './foundation.util.core';
-import { Positionable } from './foundation.positionable';
+import { Positionable, PositionableOptions } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
 
+export interface DropdownOptions extends PositionableOptions{
+  hover?: boolean;
+  hoverPane?: boolean;
+  positionClass?: string;
+  trapFocus?: boolean;
+  autoFocus?: boolean;
+  closeOnClick?: boolean;
+}
 
 /**
  * Dropdown module.
@@ -15,7 +23,111 @@ import { Triggers } from './foundation.util.triggers';
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
-class Dropdown extends Positionable {
+export class Dropdown extends Positionable {
+  public static className = 'Dropdown'; // ie9 back compat
+  public static defaults = {
+    /**
+     * Class that designates bounding container of Dropdown (default: window)
+     * @option
+     * @type {?string}
+     * @default null
+     */
+    parentClass: null,
+    /**
+     * Amount of time to delay opening a submenu on hover event.
+     * @option
+     * @type {number}
+     * @default 250
+     */
+    hoverDelay: 250,
+    /**
+     * Allow submenus to open on hover events
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    hover: false,
+    /**
+     * Don't close dropdown when hovering over dropdown pane
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    hoverPane: false,
+    /**
+     * Number of pixels between the dropdown pane and the triggering element on open.
+     * @option
+     * @type {number}
+     * @default 0
+     */
+    vOffset: 0,
+    /**
+     * Number of pixels between the dropdown pane and the triggering element on open.
+     * @option
+     * @type {number}
+     * @default 0
+     */
+    hOffset: 0,
+    /**
+     * DEPRECATED: Class applied to adjust open position.
+     * @option
+     * @type {string}
+     * @default ''
+     */
+    positionClass: '',
+
+    /**
+     * Position of dropdown. Can be left, right, bottom, top, or auto.
+     * @option
+     * @type {string}
+     * @default 'auto'
+     */
+    position: 'auto',
+    /**
+     * Alignment of dropdown relative to anchor. Can be left, right, bottom, top, center, or auto.
+     * @option
+     * @type {string}
+     * @default 'auto'
+     */
+    alignment: 'auto',
+    /**
+     * Allow overlap of container/window. If false, dropdown will first try to position as defined by data-position and data-alignment, but reposition if it would cause an overflow.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    allowOverlap: false,
+    /**
+     * Allow overlap of only the bottom of the container. This is the most common
+     * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+     * screen but not otherwise influence or break out of the container.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    allowBottomOverlap: true,
+    /**
+     * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    trapFocus: false,
+    /**
+     * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    autoFocus: false,
+    /**
+     * Allows a click on the body to close the dropdown.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    closeOnClick: false
+  };
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -24,10 +136,9 @@ class Dropdown extends Positionable {
    *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element, options: DropdownOptions) {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
-    this.className = 'Dropdown'; // ie9 back compat
 
     // Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);
@@ -305,109 +416,3 @@ class Dropdown extends Positionable {
 
   }
 }
-
-Dropdown.defaults = {
-  /**
-   * Class that designates bounding container of Dropdown (default: window)
-   * @option
-   * @type {?string}
-   * @default null
-   */
-  parentClass: null,
-  /**
-   * Amount of time to delay opening a submenu on hover event.
-   * @option
-   * @type {number}
-   * @default 250
-   */
-  hoverDelay: 250,
-  /**
-   * Allow submenus to open on hover events
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  hover: false,
-  /**
-   * Don't close dropdown when hovering over dropdown pane
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  hoverPane: false,
-  /**
-   * Number of pixels between the dropdown pane and the triggering element on open.
-   * @option
-   * @type {number}
-   * @default 0
-   */
-  vOffset: 0,
-  /**
-   * Number of pixels between the dropdown pane and the triggering element on open.
-   * @option
-   * @type {number}
-   * @default 0
-   */
-  hOffset: 0,
-  /**
-   * DEPRECATED: Class applied to adjust open position.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
-
-  /**
-   * Position of dropdown. Can be left, right, bottom, top, or auto.
-   * @option
-   * @type {string}
-   * @default 'auto'
-   */
-  position: 'auto',
-  /**
-   * Alignment of dropdown relative to anchor. Can be left, right, bottom, top, center, or auto.
-   * @option
-   * @type {string}
-   * @default 'auto'
-   */
-  alignment: 'auto',
-  /**
-   * Allow overlap of container/window. If false, dropdown will first try to position as defined by data-position and data-alignment, but reposition if it would cause an overflow.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  allowOverlap: false,
-  /**
-   * Allow overlap of only the bottom of the container. This is the most common
-   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
-   * screen but not otherwise influence or break out of the container.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  allowBottomOverlap: true,
-  /**
-   * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  trapFocus: false,
-  /**
-   * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  autoFocus: false,
-  /**
-   * Allows a click on the body to close the dropdown.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  closeOnClick: false
-}
-
-export {Dropdown};

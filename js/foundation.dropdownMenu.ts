@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
@@ -7,6 +5,18 @@ import { Box } from './foundation.util.box';
 import { rtl as Rtl } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
+export interface DropdownMenuOptions {
+  disableHover?: boolean;
+  autoclose?: boolean;
+  hoverDelay?: number;
+  clickOpen?: boolean;
+  closingTime?: number;
+  alignment?: string;
+  closeOnClick?: boolean;
+  verticalClass?: string;
+  rightClass?: string;
+  forceFollow?: boolean;
+}
 
 /**
  * DropdownMenu module.
@@ -25,7 +35,7 @@ class DropdownMenu extends Plugin {
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: DropdownMenuOptions) {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
     this.className = 'DropdownMenu'; // ie9 back compat

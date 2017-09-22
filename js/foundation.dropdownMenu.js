@@ -1,4 +1,3 @@
-'use strict';
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';

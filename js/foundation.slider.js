@@ -1,4 +1,3 @@
-'use strict';
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Move } from './foundation.util.motion';
@@ -25,7 +24,6 @@ class Slider extends Plugin {
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
-        this.className = 'Slider'; // ie9 back compat
         // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
         Touch.init($);
         Triggers.init($);
@@ -489,6 +487,7 @@ class Slider extends Plugin {
         clearTimeout(this.timeout);
     }
 }
+Slider.className = 'Slider'; // ie9 back compat
 Slider.defaults = {
     /**
      * Minimum value for the slider scale.
@@ -611,18 +610,18 @@ Slider.defaults = {
      */
     changedDelay: 500,
     /**
-    * Basevalue for non-linear sliders
-    * @option
-    * @type {number}
-    * @default 5
-    */
+     * Basevalue for non-linear sliders
+     * @option
+     * @type {number}
+     * @default 5
+     */
     nonLinearBase: 5,
     /**
-    * Basevalue for non-linear sliders, possible values are: `'linear'`, `'pow'` & `'log'`. Pow and Log use the nonLinearBase setting.
-    * @option
-    * @type {string}
-    * @default 'linear'
-    */
+     * Basevalue for non-linear sliders, possible values are: `'linear'`, `'pow'` & `'log'`. Pow and Log use the nonLinearBase setting.
+     * @option
+     * @type {string}
+     * @default 'linear'
+     */
     positionValueFunction: 'linear',
 };
 function percent(frac, num) {

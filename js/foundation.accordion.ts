@@ -5,15 +5,79 @@ import { Plugin } from './foundation.plugin';
 import { GetYoDigits } from './foundation.util.core';
 import { Keyboard } from './foundation.util.keyboard';
 
+export interface AccordionOptions {
+  slideSpeed?: number;
+  multiExpand?: boolean;
+  allowAllClosed?: boolean;
+  deepLink?: boolean;
+  deepLinkSmudge?: boolean;
+  deepLinkSmudgeDelay?: number;
+  updateHistory?: boolean;
+}
+
 /**
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
  */
 
-class Accordion extends Plugin {
+export class Accordion extends Plugin {
 
   public static className = 'Accordion'; // ie9 back compat
+  public static defaults: AccordionOptions = {
+    /**
+     * Amount of time to animate the opening of an accordion pane.
+     * @option
+     * @type {number}
+     * @default 250
+     */
+    slideSpeed: 250,
+    /**
+     * Allow the accordion to have multiple open panes.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    multiExpand: false,
+    /**
+     * Allow the accordion to close all panes.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    allowAllClosed: false,
+    /**
+     * Allows the window to scroll to content of pane specified by hash anchor
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLink: false,
+
+    /**
+     * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLinkSmudge: false,
+
+    /**
+     * Animation time (ms) for the deep link adjustment
+     * @option
+     * @type {number}
+     * @default 300
+     */
+    deepLinkSmudgeDelay: 300,
+
+    /**
+     * Update the browser history with the open accordion
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    updateHistory: false,
+  };
 
   /**
    * Creates a new instance of an accordion.
@@ -23,7 +87,7 @@ class Accordion extends Plugin {
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - a plain object with settings to override the default options.
    */
-  public _setup(element, options) {
+  public _setup(element: JQuery, options: AccordionOptions) {
     this.$element = element;
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
@@ -272,60 +336,3 @@ class Accordion extends Plugin {
 
   }
 }
-
-Accordion.defaults = {
-  /**
-   * Amount of time to animate the opening of an accordion pane.
-   * @option
-   * @type {number}
-   * @default 250
-   */
-  slideSpeed: 250,
-  /**
-   * Allow the accordion to have multiple open panes.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  multiExpand: false,
-  /**
-   * Allow the accordion to close all panes.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  allowAllClosed: false,
-  /**
-   * Allows the window to scroll to content of pane specified by hash anchor
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  deepLink: false,
-
-  /**
-   * Adjust the deep link scroll to make sure the top of the accordion panel is visible
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  deepLinkSmudge: false,
-
-  /**
-   * Animation time (ms) for the deep link adjustment
-   * @option
-   * @type {number}
-   * @default 300
-   */
-  deepLinkSmudgeDelay: 300,
-
-  /**
-   * Update the browser history with the open accordion
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  updateHistory: false,
-};
-
-export {Accordion};

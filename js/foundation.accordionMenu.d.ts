@@ -1,4 +1,8 @@
 import { Plugin } from './foundation.plugin';
+export interface AccordionMenuOptions {
+    slideSpeed?: number;
+    multiOpen?: boolean;
+}
 /**
  * AccordionMenu module.
  * @module foundation.accordionMenu
@@ -14,7 +18,7 @@ declare class AccordionMenu extends Plugin {
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: AccordionMenuOptions): void;
     /**
      * Initializes the accordion menu by hiding all nested menus.
      * @private

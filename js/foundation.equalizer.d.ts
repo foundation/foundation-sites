@@ -1,11 +1,23 @@
 import { Plugin } from './foundation.plugin';
+export interface EqualizerOptions {
+    equalizeOnStack?: boolean;
+    equalizeByRow?: boolean;
+    equalizeOn?: string;
+}
 /**
  * Equalizer module.
  * @module foundation.equalizer
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.imageLoader if equalizer contains images
  */
-declare class Equalizer extends Plugin {
+export declare class Equalizer extends Plugin {
+    isOn: boolean;
+    private _bindHandler;
+    static className: string;
+    /**
+     * Default settings for plugin
+     */
+    static defaults: EqualizerOptions;
     /**
      * Creates a new instance of Equalizer.
      * @class
@@ -14,7 +26,7 @@ declare class Equalizer extends Plugin {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: EqualizerOptions): void;
     /**
      * Initializes the Equalizer plugin and calls functions to get equalizer functioning on load.
      * @private
@@ -94,4 +106,3 @@ declare class Equalizer extends Plugin {
      */
     _destroy(): void;
 }
-export { Equalizer };

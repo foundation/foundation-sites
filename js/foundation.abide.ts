@@ -1,6 +1,20 @@
 import $ from 'jquery';
 import { Plugin } from './foundation.plugin';
 
+export interface AbideOptions {
+  validateOn?: string;
+  labelErrorClass?: string;
+  inputErrorClass?: string;
+  formErrorSelector?: string;
+  formErrorClass?: string;
+  liveValidate?: boolean;
+  validateOnBlur?: boolean;
+  validators?: any;
+  patterns?: {
+    [key: string]: RegExp | object;
+  }
+}
+
 /**
  * Abide module.
  * @module foundation.abide
@@ -9,12 +23,13 @@ import { Plugin } from './foundation.plugin';
 export class Abide extends Plugin {
 
   public $element: JQuery;
-  public options;
+  public $inputs: JQuery;
+  public options: AbideOptions;
   public static className = 'Abide'; // ie9 back compat
   /**
    * Default settings for plugin
    */
-  public static defaults = {
+  public static defaults: AbideOptions = {
     /**
      * The default event to validate inputs. Checkboxes and radios validate immediately.
      * Remove or change this value for manual validation.
@@ -120,7 +135,7 @@ export class Abide extends Plugin {
      * @option
      */
     validators: {
-      equalTo(el, required, parent) {
+      equalTo(el: JQuery, required: boolean, parent: JQuery) {
         return $(`#${el.attr('data-equalto')}`).val() === el.val();
       },
     },
@@ -134,7 +149,7 @@ export class Abide extends Plugin {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  public _setup(element: JQuery, options = {}) {
+  public _setup(element: JQuery, options: AbideOptions = {}) {
     this.$element = element;
     this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
     this._init();
@@ -339,7 +354,8 @@ export class Abide extends Plugin {
    */
   public removeErrorClasses($el: JQuery) {
     // radios need to clear all of the els
-    if ($el[0].type == 'radio') {
+    const element = $el[0];
+    if (element instanceof HTMLInputElement && element.type === 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
     }
 
@@ -411,10 +427,9 @@ export class Abide extends Plugin {
       // Re-validate inputs that depend on this one with equalto
       const dependentElements = this.$element.find(`[data-equalto="${$el.attr('id')}"]`);
       if (dependentElements.length) {
-        const _this = this;
-        dependentElements.each(function() {
-          if ($(this).val()) {
-            _this.validateInput($(this));
+        dependentElements.each((element) => {
+          if ($(element).val()) {
+            this.validateInput($(element));
           }
         });
       }
@@ -440,11 +455,10 @@ export class Abide extends Plugin {
    * @fires Abide#forminvalid
    */
   public validateForm() {
-    const acc = [];
-    const _this = this;
+    const acc: Array<boolean> = [];
 
-    this.$inputs.each(function() {
-      acc.push(_this.validateInput($(this)));
+    this.$inputs.each((element) => {
+      acc.push(this.validateInput($(element)));
     });
 
     const noError = acc.indexOf(false) === -1;
@@ -468,7 +482,7 @@ export class Abide extends Plugin {
    * @param {String} pattern - string value of one of the RegEx patterns in Abide.options.patterns
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
-  public validateText($el, pattern) {
+  public validateText($el: JQuery, pattern: string) {
     // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
     pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
     const inputText = $el.val();
@@ -482,8 +496,7 @@ export class Abide extends Plugin {
       // If the pattern name isn't also the type attribute of the field, then test it as a regexp
       else if (pattern !== $el.attr('type')) {
         valid = new RegExp(pattern).test(inputText);
-      }
-      else {
+      } else {
         valid = true;
       }
     }
@@ -500,7 +513,7 @@ export class Abide extends Plugin {
    * @param {String} groupName - A string that specifies the name of a radio button group
    * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
    */
-  public validateRadio(groupName) {
+  public validateRadio(groupName: string) {
     // If at least one radio in the group has the `required` attribute, the group is considered required
     // Per W3C spec, all radio buttons in a group should have `required`, but we're being nice
     const $group = this.$element.find(`:radio[name="${groupName}"]`);
@@ -533,9 +546,7 @@ export class Abide extends Plugin {
    * @param {Boolean} required - self explanatory?
    * @returns {Boolean} - true if validations passed.
    */
-  public matchValidation($el, validators, required) {
-    required = required ? true : false;
-
+  public matchValidation($el: JQuery, validators: string, required: boolean) {
     const clear = validators.split(' ').map((v) => {
       return this.options.validators[v]($el, required, $el.parent());
     });

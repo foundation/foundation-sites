@@ -1,4 +1,17 @@
 import { Plugin } from './foundation.plugin';
+export interface StickyOptions {
+    container?: string;
+    stickTo?: string;
+    anchor?: string;
+    topAnchor?: string;
+    btmAnchor?: string;
+    marginTop?: number;
+    marginBottom?: number;
+    stickyOn?: string;
+    stickyClass?: string;
+    containerClass?: string;
+    checkEvery?: number;
+}
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -7,19 +20,7 @@ import { Plugin } from './foundation.plugin';
  */
 declare class Sticky extends Plugin {
     static className: string;
-    static defaults: {
-        container: string;
-        stickTo: string;
-        anchor: string;
-        topAnchor: string;
-        btmAnchor: string;
-        marginTop: number;
-        marginBottom: number;
-        stickyOn: string;
-        stickyClass: string;
-        containerClass: string;
-        checkEvery: number;
-    };
+    static defaults: StickyOptions;
     /**
      * Creates a new instance of a sticky thing.
      * @class
@@ -27,7 +28,7 @@ declare class Sticky extends Plugin {
      * @param {jQuery} element - jQuery object to make sticky.
      * @param {Object} options - options object passed when creating the element programmatically.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: StickyOptions): void;
     /**
      * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
      * @function

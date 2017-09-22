@@ -1,4 +1,3 @@
-'use strict';
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';

@@ -1,4 +1,17 @@
 import { Plugin } from './foundation.plugin';
+export interface OffCanvasOptions {
+    closeOnClick?: boolean;
+    contentOverlay?: boolean;
+    contentId?: string;
+    transitionTime?: number;
+    position?: string;
+    forceTop?: boolean;
+    isRevealed?: boolean;
+    revealOn?: string;
+    autoFocus?: boolean;
+    revealClass?: string;
+    trapFocus?: boolean;
+}
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
@@ -6,7 +19,9 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
-declare class OffCanvas extends Plugin {
+export declare class OffCanvas extends Plugin {
+    static className: string;
+    static defaults: OffCanvasOptions;
     /**
      * Creates a new instance of an off-canvas wrapper.
      * @class
@@ -15,7 +30,7 @@ declare class OffCanvas extends Plugin {
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: OffCanvasOptions): void;
     /**
      * Initializes the off-canvas wrapper by adding the exit overlay (if needed).
      * @function
@@ -94,4 +109,3 @@ declare class OffCanvas extends Plugin {
      */
     _destroy(): void;
 }
-export { OffCanvas };

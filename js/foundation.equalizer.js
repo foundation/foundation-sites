@@ -1,4 +1,3 @@
-'use strict';
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { onImagesLoaded } from './foundation.util.imageLoader';
@@ -10,7 +9,7 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.imageLoader if equalizer contains images
  */
-class Equalizer extends Plugin {
+export class Equalizer extends Plugin {
     /**
      * Creates a new instance of Equalizer.
      * @class
@@ -22,7 +21,6 @@ class Equalizer extends Plugin {
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, Equalizer.defaults, this.$element.data(), options);
-        this.className = 'Equalizer'; // ie9 back compat
         this._init();
     }
     /**
@@ -44,7 +42,7 @@ class Equalizer extends Plugin {
             onPostEqualizedBound: this._onPostEqualized.bind(this)
         };
         var imgs = this.$element.find('img');
-        var tooSmall;
+        let tooSmall;
         if (this.options.equalizeOn) {
             tooSmall = this._checkMQ();
             $(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
@@ -110,7 +108,7 @@ class Equalizer extends Plugin {
      * @private
      */
     _checkMQ() {
-        var tooSmall = !MediaQuery.is(this.options.equalizeOn);
+        const tooSmall = !MediaQuery.is(this.options.equalizeOn);
         if (tooSmall) {
             if (this.isOn) {
                 this._pauseEvents();
@@ -266,6 +264,7 @@ class Equalizer extends Plugin {
         this.$watched.css('height', 'auto');
     }
 }
+Equalizer.className = 'Equalizer'; // ie9 back compat
 /**
  * Default settings for plugin
  */
@@ -292,4 +291,3 @@ Equalizer.defaults = {
      */
     equalizeOn: ''
 };
-export { Equalizer };

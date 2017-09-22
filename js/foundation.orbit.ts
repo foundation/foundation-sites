@@ -9,6 +9,26 @@ import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 import { Touch } from './foundation.util.touch'
 
+export interface OrbitOptions {
+  bullets?: boolean;
+  navButtons?: boolean;
+  animInFromRight?: string;
+  animOutToRight?: string;
+  animInFromLeft?: string;
+  animOutToLeft?: string;
+  autoPlay?: boolean;
+  timerDelay?: number;
+  infiniteWrap?: boolean;
+  swipe?: boolean;
+  pauseOnHover?: boolean;
+  accessible?: boolean;
+  containerClass?: string;
+  slideClass?: string;
+  boxOfBullets?: string;
+  nextClass?: string;
+  prevClass?: string;
+  useMUI?: boolean;
+}
 
 /**
  * Orbit module.
@@ -28,7 +48,7 @@ class Orbit extends Plugin {
   * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
   * @param {Object} options - Overrides to the default plugin settings.
   */
-  _setup(element, options){
+  _setup(element: JQuery, options: OrbitOptions) {
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
     this.className = 'Orbit'; // ie9 back compat

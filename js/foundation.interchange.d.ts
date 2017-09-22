@@ -1,4 +1,7 @@
 import { Plugin } from './foundation.plugin';
+export interface InterchangeOptions {
+    rules?: Array<any>;
+}
 /**
  * Interchange module.
  * @module foundation.interchange
@@ -13,7 +16,7 @@ declare class Interchange extends Plugin {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: InterchangeOptions): void;
     /**
      * Initializes the Interchange plugin and calls functions to get interchange functioning on load.
      * @function

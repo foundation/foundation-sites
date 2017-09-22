@@ -1,4 +1,7 @@
 import { Plugin } from './foundation.plugin';
+export interface TogglerOptions {
+    animate?: boolean;
+}
 /**
  * Toggler module.
  * @module foundation.toggler
@@ -14,7 +17,7 @@ declare class Toggler extends Plugin {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: TogglerOptions): void;
     /**
      * Initializes the Toggler plugin by parsing the toggle class from data-toggler, or animation classes from data-animate.
      * @function

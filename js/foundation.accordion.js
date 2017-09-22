@@ -8,7 +8,7 @@ import { Keyboard } from './foundation.util.keyboard';
  * @module foundation.accordion
  * @requires foundation.util.keyboard
  */
-class Accordion extends Plugin {
+export class Accordion extends Plugin {
     /**
      * Creates a new instance of an accordion.
      * @class
@@ -287,4 +287,3 @@ Accordion.defaults = {
      */
     updateHistory: false,
 };
-export { Accordion };

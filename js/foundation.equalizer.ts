@@ -1,10 +1,14 @@
-'use strict';
-
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { onImagesLoaded } from './foundation.util.imageLoader';
 import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
+
+export interface EqualizerOptions {
+  equalizeOnStack?: boolean;
+  equalizeByRow?: boolean;
+  equalizeOn?: string;
+}
 
 /**
  * Equalizer module.
@@ -13,7 +17,38 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.imageLoader if equalizer contains images
  */
 
-class Equalizer extends Plugin {
+export class Equalizer extends Plugin {
+  public isOn: boolean;
+  private _bindHandler: any;
+
+  public static className = 'Equalizer'; // ie9 back compat
+  /**
+   * Default settings for plugin
+   */
+  public static defaults: EqualizerOptions = {
+    /**
+     * Enable height equalization when stacked on smaller screens.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    equalizeOnStack: false,
+    /**
+     * Enable height equalization row by row.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    equalizeByRow: false,
+    /**
+     * String representing the minimum breakpoint size the plugin should equalize heights on.
+     * @option
+     * @type {string}
+     * @default ''
+     */
+    equalizeOn: ''
+  };
+
   /**
    * Creates a new instance of Equalizer.
    * @class
@@ -22,11 +57,9 @@ class Equalizer extends Plugin {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options){
+  _setup(element: JQuery, options: EqualizerOptions) {
     this.$element = element;
     this.options  = $.extend({}, Equalizer.defaults, this.$element.data(), options);
-    this.className = 'Equalizer'; // ie9 back compat
-
     this._init();
   }
 
@@ -53,7 +86,7 @@ class Equalizer extends Plugin {
     };
 
     var imgs = this.$element.find('img');
-    var tooSmall;
+    let tooSmall;
     if(this.options.equalizeOn){
       tooSmall = this._checkMQ();
       $(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
@@ -78,7 +111,7 @@ class Equalizer extends Plugin {
     this.$element.off({
       '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
       'resizeme.zf.trigger': this._bindHandler.onResizeMeBound,
-	  'mutateme.zf.trigger': this._bindHandler.onResizeMeBound
+      'mutateme.zf.trigger': this._bindHandler.onResizeMeBound
     });
   }
 
@@ -119,7 +152,7 @@ class Equalizer extends Plugin {
    * @private
    */
   _checkMQ() {
-    var tooSmall = !MediaQuery.is(this.options.equalizeOn);
+    const tooSmall = !MediaQuery.is(this.options.equalizeOn);
     if(tooSmall){
       if(this.isOn){
         this._pauseEvents();
@@ -287,32 +320,3 @@ class Equalizer extends Plugin {
     this.$watched.css('height', 'auto');
   }
 }
-
-/**
- * Default settings for plugin
- */
-Equalizer.defaults = {
-  /**
-   * Enable height equalization when stacked on smaller screens.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  equalizeOnStack: false,
-  /**
-   * Enable height equalization row by row.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  equalizeByRow: false,
-  /**
-   * String representing the minimum breakpoint size the plugin should equalize heights on.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  equalizeOn: ''
-};
-
-export {Equalizer};

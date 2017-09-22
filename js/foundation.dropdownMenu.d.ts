@@ -1,4 +1,16 @@
 import { Plugin } from './foundation.plugin';
+export interface DropdownMenuOptions {
+    disableHover?: boolean;
+    autoclose?: boolean;
+    hoverDelay?: number;
+    clickOpen?: boolean;
+    closingTime?: number;
+    alignment?: string;
+    closeOnClick?: boolean;
+    verticalClass?: string;
+    rightClass?: string;
+    forceFollow?: boolean;
+}
 /**
  * DropdownMenu module.
  * @module foundation.dropdown-menu
@@ -15,7 +27,7 @@ declare class DropdownMenu extends Plugin {
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: DropdownMenuOptions): void;
     /**
      * Initializes the plugin, and calls _prepareMenu
      * @private
@@ -23,7 +35,7 @@ declare class DropdownMenu extends Plugin {
      */
     _init(): void;
     _isVertical(): boolean;
-    _isRtl(): any;
+    _isRtl(): boolean;
     /**
      * Adds event listeners to elements within the menu
      * @private

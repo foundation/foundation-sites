@@ -1,4 +1,12 @@
-import { Positionable } from './foundation.positionable';
+import { Positionable, PositionableOptions } from './foundation.positionable';
+export interface DropdownOptions extends PositionableOptions {
+    hover?: boolean;
+    hoverPane?: boolean;
+    positionClass?: string;
+    trapFocus?: boolean;
+    autoFocus?: boolean;
+    closeOnClick?: boolean;
+}
 /**
  * Dropdown module.
  * @module foundation.dropdown
@@ -6,7 +14,24 @@ import { Positionable } from './foundation.positionable';
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
-declare class Dropdown extends Positionable {
+export declare class Dropdown extends Positionable {
+    static className: string;
+    static defaults: {
+        parentClass: null;
+        hoverDelay: number;
+        hover: boolean;
+        hoverPane: boolean;
+        vOffset: number;
+        hOffset: number;
+        positionClass: string;
+        position: string;
+        alignment: string;
+        allowOverlap: boolean;
+        allowBottomOverlap: boolean;
+        trapFocus: boolean;
+        autoFocus: boolean;
+        closeOnClick: boolean;
+    };
     /**
      * Creates a new instance of a dropdown.
      * @class
@@ -15,14 +40,14 @@ declare class Dropdown extends Positionable {
      *        Object should be of the dropdown panel, rather than its anchor.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: any, options: DropdownOptions): void;
     /**
      * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
      * @function
      * @private
      */
     _init(): void;
-    _getDefaultPosition(): any;
+    _getDefaultPosition(): string;
     _getDefaultAlignment(): string | undefined;
     /**
      * Sets the position and orientation of the dropdown pane, checks for collisions if allow-overlap is not true.
@@ -75,4 +100,3 @@ declare class Dropdown extends Positionable {
      */
     _destroy(): void;
 }
-export { Dropdown };

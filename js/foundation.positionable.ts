@@ -21,8 +21,17 @@ function nextItem(item, array) {
     return array[currentIdx + 1];
   }
 }
+export interface PositionableOptions {
+  position?: string;
+  alignment?: string;
+  allowOverlap?: boolean;
+  allowBottomOverlap?: boolean;
+  vOffset?: number;
+  hOffset?: number;
+  hoverDelay?: number;
+}
 
-export class Positionable extends Plugin {
+export abstract class Positionable extends Plugin {
 
   public static defaults = {
     /**

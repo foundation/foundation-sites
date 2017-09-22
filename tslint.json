@@ -1,6 +1,8 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "array-type": [true, "generic"],
+    "interface-name": [true, "never-prefix"],
     "quotemark": [true, "single", "avoid-escape", "avoid-template"]
   }
 }

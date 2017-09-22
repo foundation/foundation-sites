@@ -1,4 +1,10 @@
 import { Plugin } from './foundation.plugin';
+export interface DrilldownOptions {
+    backButton?: string;
+    wrapper?: string;
+    parentLink?: boolean;
+    closeOnClick?: boolean;
+}
 /**
  * Drilldown module.
  * @module foundation.drilldown
@@ -14,7 +20,7 @@ declare class Drilldown extends Plugin {
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: DrilldownOptions): void;
     /**
      * Initializes the drilldown by creating jQuery collections of elements
      * @private

@@ -5,7 +5,26 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';
-import { Positionable } from './foundation.positionable';
+import { Positionable, PositionableOptions } from './foundation.positionable';
+
+export interface TooltipOptions extends PositionableOptions {
+  disableForTouch?: boolean;
+  fadeInDuration?: number;
+  fadeOutDuration?: number;
+  disableHover?: boolean;
+  templateClasses?: string;
+  tooltipClass?: string;
+  triggerClass?: string;
+  showOn?: string;
+  template?: string;
+  tipText?: string;
+  touchCloseText?: string;
+  tooltipHeight?: number;
+  tooltipWidth?: number;
+  clickOpen?: boolean;
+  positionClass?: string;
+  allowHtml?: boolean;
+}
 
 /**
  * Tooltip module.
@@ -16,6 +35,165 @@ import { Positionable } from './foundation.positionable';
  */
 
 class Tooltip extends Positionable {
+
+  public static className = 'Tooltip'; // ie9 back compat
+  public static defaults: TooltipOptions = {
+    disableForTouch: false,
+    /**
+     * Time, in ms, before a tooltip should open on hover.
+     * @option
+     * @type {number}
+     * @default 200
+     */
+    hoverDelay: 200,
+    /**
+     * Time, in ms, a tooltip should take to fade into view.
+     * @option
+     * @type {number}
+     * @default 150
+     */
+    fadeInDuration: 150,
+    /**
+     * Time, in ms, a tooltip should take to fade out of view.
+     * @option
+     * @type {number}
+     * @default 150
+     */
+    fadeOutDuration: 150,
+    /**
+     * Disables hover events from opening the tooltip if set to true
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    disableHover: false,
+    /**
+     * Optional addtional classes to apply to the tooltip template on init.
+     * @option
+     * @type {string}
+     * @default ''
+     */
+    templateClasses: '',
+    /**
+     * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
+     * @option
+     * @type {string}
+     * @default 'tooltip'
+     */
+    tooltipClass: 'tooltip',
+    /**
+     * Class applied to the tooltip anchor element.
+     * @option
+     * @type {string}
+     * @default 'has-tip'
+     */
+    triggerClass: 'has-tip',
+    /**
+     * Minimum breakpoint size at which to open the tooltip.
+     * @option
+     * @type {string}
+     * @default 'small'
+     */
+    showOn: 'small',
+    /**
+     * Custom template to be used to generate markup for tooltip.
+     * @option
+     * @type {string}
+     * @default ''
+     */
+    template: '',
+    /**
+     * Text displayed in the tooltip template on open.
+     * @option
+     * @type {string}
+     * @default ''
+     */
+    tipText: '',
+    touchCloseText: 'Tap to close.',
+    /**
+     * Allows the tooltip to remain open if triggered with a click or touch event.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    clickOpen: true,
+    /**
+     * DEPRECATED Additional positioning classes, set by the JS
+     * @option
+     * @type {string}
+     * @default ''
+     */
+    positionClass: '',
+    /**
+     * Position of tooltip. Can be left, right, bottom, top, or auto.
+     * @option
+     * @type {string}
+     * @default 'auto'
+     */
+    position: 'auto',
+    /**
+     * Alignment of tooltip relative to anchor. Can be left, right, bottom, top, center, or auto.
+     * @option
+     * @type {string}
+     * @default 'auto'
+     */
+    alignment: 'auto',
+    /**
+     * Allow overlap of container/window. If false, tooltip will first try to
+     * position as defined by data-position and data-alignment, but reposition if
+     * it would cause an overflow.  @option
+     * @type {boolean}
+     * @default false
+     */
+    allowOverlap: false,
+    /**
+     * Allow overlap of only the bottom of the container. This is the most common
+     * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+     * screen but not otherwise influence or break out of the container.
+     * Less common for tooltips.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    allowBottomOverlap: false,
+    /**
+     * Distance, in pixels, the template should push away from the anchor on the Y axis.
+     * @option
+     * @type {number}
+     * @default 0
+     */
+    vOffset: 0,
+    /**
+     * Distance, in pixels, the template should push away from the anchor on the X axis
+     * @option
+     * @type {number}
+     * @default 0
+     */
+    hOffset: 0,
+    /**
+     * Distance, in pixels, the template spacing auto-adjust for a vertical tooltip
+     * @option
+     * @type {number}
+     * @default 14
+     */
+    tooltipHeight: 14,
+    /**
+     * Distance, in pixels, the template spacing auto-adjust for a horizontal tooltip
+     * @option
+     * @type {number}
+     * @default 12
+     */
+    tooltipWidth: 12,
+    /**
+     * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
+     * allowing HTML may open yourself up to XSS attacks.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    allowHtml: false
+  };
+
   /**
    * Creates a new instance of a Tooltip.
    * @class
@@ -24,10 +202,9 @@ class Tooltip extends Positionable {
    * @param {jQuery} element - jQuery object to attach a tooltip to.
    * @param {Object} options - object to extend the default configuration.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: TooltipOptions) {
     this.$element = element;
     this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
-    this.className = 'Tooltip'; // ie9 back compat
 
     this.isActive = false;
     this.isClick = false;
@@ -297,166 +474,3 @@ class Tooltip extends Positionable {
     this.template.remove();
   }
 }
-
-Tooltip.defaults = {
-  disableForTouch: false,
-  /**
-   * Time, in ms, before a tooltip should open on hover.
-   * @option
-   * @type {number}
-   * @default 200
-   */
-  hoverDelay: 200,
-  /**
-   * Time, in ms, a tooltip should take to fade into view.
-   * @option
-   * @type {number}
-   * @default 150
-   */
-  fadeInDuration: 150,
-  /**
-   * Time, in ms, a tooltip should take to fade out of view.
-   * @option
-   * @type {number}
-   * @default 150
-   */
-  fadeOutDuration: 150,
-  /**
-   * Disables hover events from opening the tooltip if set to true
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  disableHover: false,
-  /**
-   * Optional addtional classes to apply to the tooltip template on init.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  templateClasses: '',
-  /**
-   * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
-   * @option
-   * @type {string}
-   * @default 'tooltip'
-   */
-  tooltipClass: 'tooltip',
-  /**
-   * Class applied to the tooltip anchor element.
-   * @option
-   * @type {string}
-   * @default 'has-tip'
-   */
-  triggerClass: 'has-tip',
-  /**
-   * Minimum breakpoint size at which to open the tooltip.
-   * @option
-   * @type {string}
-   * @default 'small'
-   */
-  showOn: 'small',
-  /**
-   * Custom template to be used to generate markup for tooltip.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  template: '',
-  /**
-   * Text displayed in the tooltip template on open.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  tipText: '',
-  touchCloseText: 'Tap to close.',
-  /**
-   * Allows the tooltip to remain open if triggered with a click or touch event.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  clickOpen: true,
-  /**
-   * DEPRECATED Additional positioning classes, set by the JS
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
-  /**
-   * Position of tooltip. Can be left, right, bottom, top, or auto.
-   * @option
-   * @type {string}
-   * @default 'auto'
-   */
-  position: 'auto',
-  /**
-   * Alignment of tooltip relative to anchor. Can be left, right, bottom, top, center, or auto.
-   * @option
-   * @type {string}
-   * @default 'auto'
-   */
-  alignment: 'auto',
-  /**
-   * Allow overlap of container/window. If false, tooltip will first try to
-   * position as defined by data-position and data-alignment, but reposition if
-   * it would cause an overflow.  @option
-   * @type {boolean}
-   * @default false
-   */
-  allowOverlap: false,
-  /**
-   * Allow overlap of only the bottom of the container. This is the most common
-   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
-   * screen but not otherwise influence or break out of the container.
-   * Less common for tooltips.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  allowBottomOverlap: false,
-  /**
-   * Distance, in pixels, the template should push away from the anchor on the Y axis.
-   * @option
-   * @type {number}
-   * @default 0
-   */
-  vOffset: 0,
-  /**
-   * Distance, in pixels, the template should push away from the anchor on the X axis
-   * @option
-   * @type {number}
-   * @default 0
-   */
-  hOffset: 0,
-  /**
-   * Distance, in pixels, the template spacing auto-adjust for a vertical tooltip
-   * @option
-   * @type {number}
-   * @default 14
-   */
-  tooltipHeight: 14,
-  /**
-   * Distance, in pixels, the template spacing auto-adjust for a horizontal tooltip
-   * @option
-   * @type {number}
-   * @default 12
-   */
-  tooltipWidth: 12,
-    /**
-   * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
-   * allowing HTML may open yourself up to XSS attacks.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  allowHtml: false
-};
-
-/**
- * TODO utilize resize event trigger
- */
-
-export {Tooltip};

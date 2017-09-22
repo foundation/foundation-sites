@@ -1,11 +1,21 @@
 import { Plugin } from './foundation.plugin';
+export interface AccordionOptions {
+    slideSpeed?: number;
+    multiExpand?: boolean;
+    allowAllClosed?: boolean;
+    deepLink?: boolean;
+    deepLinkSmudge?: boolean;
+    deepLinkSmudgeDelay?: number;
+    updateHistory?: boolean;
+}
 /**
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
  */
-declare class Accordion extends Plugin {
+export declare class Accordion extends Plugin {
     static className: string;
+    static defaults: AccordionOptions;
     /**
      * Creates a new instance of an accordion.
      * @class
@@ -14,7 +24,7 @@ declare class Accordion extends Plugin {
      * @param {jQuery} element - jQuery object to make into an accordion.
      * @param {Object} options - a plain object with settings to override the default options.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: AccordionOptions): void;
     /**
      * Initializes the accordion by animating the preset active pane(s).
      * @private
@@ -53,4 +63,3 @@ declare class Accordion extends Plugin {
      */
     _destroy(): void;
 }
-export { Accordion };

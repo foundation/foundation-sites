@@ -1,11 +1,16 @@
-'use strict';
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { GetYoDigits, transitionend } from './foundation.util.core';
 import { Box } from './foundation.util.box';
 import { Plugin } from './foundation.plugin';
+
+export interface DrilldownOptions {
+  backButton?: string;
+  wrapper?: string;
+  parentLink?: boolean;
+  closeOnClick?: boolean;
+}
 
 /**
  * Drilldown module.
@@ -23,7 +28,7 @@ class Drilldown extends Plugin {
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: DrilldownOptions) {
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
     this.className = 'Drilldown'; // ie9 back compat

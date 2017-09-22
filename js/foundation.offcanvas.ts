@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
@@ -7,6 +5,20 @@ import { transitionend } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
 import { Triggers } from './foundation.util.triggers';
+
+export interface OffCanvasOptions {
+  closeOnClick?: boolean;
+  contentOverlay?: boolean;
+  contentId?: string;
+  transitionTime?: number;
+  position?: string;
+  forceTop?: boolean;
+  isRevealed?: boolean;
+  revealOn?: string;
+  autoFocus?: boolean;
+  revealClass?: string;
+  trapFocus?: boolean;
+}
 
 /**
  * OffCanvas module.
@@ -16,7 +28,116 @@ import { Triggers } from './foundation.util.triggers';
  * @requires foundation.util.triggers
  */
 
-class OffCanvas extends Plugin {
+export class OffCanvas extends Plugin {
+
+  public static className = 'OffCanvas'; // ie9 back compat
+  public static defaults: OffCanvasOptions = {
+    /**
+     * Allow the user to click outside of the menu to close it.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    closeOnClick: true,
+
+    /**
+     * Adds an overlay on top of `[data-off-canvas-content]`.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    contentOverlay: true,
+
+    /**
+     * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
+     * @option
+     * @type {?string}
+     * @default null
+     */
+    contentId: null,
+
+    /**
+     * Define the off-canvas element is nested in an off-canvas content. This is required when using the contentId option for a nested element.
+     * @option
+     * @type {boolean}
+     * @default null
+     */
+    nested: null,
+
+    /**
+     * Enable/disable scrolling of the main content when an off canvas panel is open.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    contentScroll: true,
+
+    /**
+     * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
+     * @option
+     * @type {number}
+     * @default null
+     */
+    transitionTime: null,
+
+    /**
+     * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
+     * @option
+     * @type {string}
+     * @default push
+     */
+    transition: 'push',
+
+    /**
+     * Force the page to scroll to top or bottom on open.
+     * @option
+     * @type {?string}
+     * @default null
+     */
+    forceTo: null,
+
+    /**
+     * Allow the offcanvas to remain open for certain breakpoints.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    isRevealed: false,
+
+    /**
+     * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
+     * @option
+     * @type {?string}
+     * @default null
+     */
+    revealOn: null,
+
+    /**
+     * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    autoFocus: true,
+
+    /**
+     * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
+     * @option
+     * @type {string}
+     * @default reveal-for-
+     * @todo improve the regex testing for this.
+     */
+    revealClass: 'reveal-for-',
+
+    /**
+     * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    trapFocus: false
+  };
+
   /**
    * Creates a new instance of an off-canvas wrapper.
    * @class
@@ -25,8 +146,7 @@ class OffCanvas extends Plugin {
    * @param {Object} element - jQuery object to initialize.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
-    this.className = 'OffCanvas'; // ie9 back compat
+  _setup(element: JQuery, options: OffCanvasOptions) {
     this.$element = element;
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
     this.contentClasses = { base: [], reveal: [] };
@@ -438,112 +558,3 @@ class OffCanvas extends Plugin {
     this.$overlay.off('.zf.offcanvas');
   }
 }
-
-OffCanvas.defaults = {
-  /**
-   * Allow the user to click outside of the menu to close it.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  closeOnClick: true,
-
-  /**
-   * Adds an overlay on top of `[data-off-canvas-content]`.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  contentOverlay: true,
-
-  /**
-   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
-   * @option
-   * @type {?string}
-   * @default null
-   */
-  contentId: null,
-
-  /**
-   * Define the off-canvas element is nested in an off-canvas content. This is required when using the contentId option for a nested element.
-   * @option
-   * @type {boolean}
-   * @default null
-   */
-  nested: null,
-
-  /**
-   * Enable/disable scrolling of the main content when an off canvas panel is open.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  contentScroll: true,
-
-  /**
-   * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
-   * @option
-   * @type {number}
-   * @default null
-   */
-  transitionTime: null,
-
-  /**
-   * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
-   * @option
-   * @type {string}
-   * @default push
-   */
-  transition: 'push',
-
-  /**
-   * Force the page to scroll to top or bottom on open.
-   * @option
-   * @type {?string}
-   * @default null
-   */
-  forceTo: null,
-
-  /**
-   * Allow the offcanvas to remain open for certain breakpoints.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  isRevealed: false,
-
-  /**
-   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
-   * @option
-   * @type {?string}
-   * @default null
-   */
-  revealOn: null,
-
-  /**
-   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  autoFocus: true,
-
-  /**
-   * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
-   * @option
-   * @type {string}
-   * @default reveal-for-
-   * @todo improve the regex testing for this.
-   */
-  revealClass: 'reveal-for-',
-
-  /**
-   * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
-  trapFocus: false
-}
-
-export {OffCanvas};

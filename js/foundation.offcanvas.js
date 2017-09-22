@@ -1,4 +1,3 @@
-'use strict';
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
@@ -12,7 +11,7 @@ import { Triggers } from './foundation.util.triggers';
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
-class OffCanvas extends Plugin {
+export class OffCanvas extends Plugin {
     /**
      * Creates a new instance of an off-canvas wrapper.
      * @class
@@ -22,7 +21,6 @@ class OffCanvas extends Plugin {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     _setup(element, options) {
-        this.className = 'OffCanvas'; // ie9 back compat
         this.$element = element;
         this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
         this.contentClasses = { base: [], reveal: [] };
@@ -388,6 +386,7 @@ class OffCanvas extends Plugin {
         this.$overlay.off('.zf.offcanvas');
     }
 }
+OffCanvas.className = 'OffCanvas'; // ie9 back compat
 OffCanvas.defaults = {
     /**
      * Allow the user to click outside of the menu to close it.
@@ -482,4 +481,3 @@ OffCanvas.defaults = {
      */
     trapFocus: false
 };
-export { OffCanvas };

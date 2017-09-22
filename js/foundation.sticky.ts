@@ -6,6 +6,20 @@ import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';
 import { Triggers } from './foundation.util.triggers';
 
+export interface StickyOptions {
+  container?: string;
+  stickTo?: string;
+  anchor?: string;
+  topAnchor?: string;
+  btmAnchor?: string;
+  marginTop?: number;
+  marginBottom?: number;
+  stickyOn?: string;
+  stickyClass?: string;
+  containerClass?: string;
+  checkEvery?: number;
+}
+
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -16,7 +30,7 @@ import { Triggers } from './foundation.util.triggers';
 class Sticky extends Plugin {
 
   public static className = 'Sticky'; // ie9 back compat
-  public static defaults = {
+  public static defaults: StickyOptions = {
     /**
      * Customizable container template. Add your own classes for styling and sizing.
      * @option
@@ -103,7 +117,7 @@ class Sticky extends Plugin {
    * @param {jQuery} element - jQuery object to make sticky.
    * @param {Object} options - options object passed when creating the element programmatically.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: StickyOptions) {
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
 

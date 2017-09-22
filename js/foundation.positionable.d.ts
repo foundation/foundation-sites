@@ -1,5 +1,14 @@
 import { Plugin } from './foundation.plugin';
-export declare class Positionable extends Plugin {
+export interface PositionableOptions {
+    position?: string;
+    alignment?: string;
+    allowOverlap?: boolean;
+    allowBottomOverlap?: boolean;
+    vOffset?: number;
+    hOffset?: number;
+    hoverDelay?: number;
+}
+export declare abstract class Positionable extends Plugin {
     static defaults: {
         position: string;
         alignment: string;

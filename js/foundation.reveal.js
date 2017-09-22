@@ -1,4 +1,3 @@
-'use strict';
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
@@ -13,7 +12,7 @@ import { Triggers } from './foundation.util.triggers';
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
  */
-class Reveal extends Plugin {
+export class Reveal extends Plugin {
     /**
      * Creates a new instance of Reveal.
      * @class
@@ -24,7 +23,6 @@ class Reveal extends Plugin {
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
-        this.className = 'Reveal'; // ie9 back compat
         this._init();
         // Triggers init is idempotent, just need to make sure it is initialized
         Triggers.init($);
@@ -415,6 +413,7 @@ class Reveal extends Plugin {
     }
     ;
 }
+Reveal.className = 'Reveal'; // ie9 back compat
 Reveal.defaults = {
     /**
      * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
@@ -521,11 +520,11 @@ Reveal.defaults = {
      */
     updateHistory: false,
     /**
-   * Allows the modal to append to custom div.
-   * @option
-   * @type {string}
-   * @default "body"
-   */
+     * Allows the modal to append to custom div.
+     * @option
+     * @type {string}
+     * @default "body"
+     */
     appendTo: "body",
     /**
      * Allows adding additional class names to the reveal overlay.
@@ -535,4 +534,3 @@ Reveal.defaults = {
      */
     additionalOverlayClasses: ''
 };
-export { Reveal };

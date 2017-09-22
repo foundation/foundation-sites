@@ -1,4 +1,11 @@
 import { Plugin } from './foundation.plugin';
+export interface TabsOptions {
+    autoFocus?: boolean;
+    wrapOnKeys?: boolean;
+    matchHeight?: boolean;
+    linkClass?: string;
+    panelClass?: string;
+}
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -14,7 +21,7 @@ declare class Tabs extends Plugin {
      * @param {jQuery} element - jQuery object to make into tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: TabsOptions): void;
     /**
      * Initializes the tabs by showing and focusing (if autoFocus=true) the preset active tab.
      * @private

@@ -23,7 +23,6 @@ class Tooltip extends Positionable {
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
-        this.className = 'Tooltip'; // ie9 back compat
         this.isActive = false;
         this.isClick = false;
         // Triggers init is idempotent, just need to make sure it is initialized
@@ -270,6 +269,7 @@ class Tooltip extends Positionable {
         this.template.remove();
     }
 }
+Tooltip.className = 'Tooltip'; // ie9 back compat
 Tooltip.defaults = {
     disableForTouch: false,
     /**
@@ -418,15 +418,11 @@ Tooltip.defaults = {
      */
     tooltipWidth: 12,
     /**
-   * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
-   * allowing HTML may open yourself up to XSS attacks.
-   * @option
-   * @type {boolean}
-   * @default false
-   */
+     * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
+     * allowing HTML may open yourself up to XSS attacks.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
     allowHtml: false
 };
-/**
- * TODO utilize resize event trigger
- */
-export { Tooltip };

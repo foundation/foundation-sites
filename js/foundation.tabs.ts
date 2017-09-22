@@ -4,6 +4,14 @@ import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
 import { Plugin } from './foundation.plugin';
+
+export interface TabsOptions {
+  autoFocus?: boolean;
+  wrapOnKeys?: boolean;
+  matchHeight?: boolean;
+  linkClass?: string;
+  panelClass?: string;
+}
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -20,7 +28,7 @@ class Tabs extends Plugin {
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: TabsOptions) {
     this.$element = element;
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
     this.className = 'Tabs'; // ie9 back compat

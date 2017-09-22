@@ -11,7 +11,7 @@ import { Triggers } from './foundation.util.triggers';
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
-class Dropdown extends Positionable {
+export class Dropdown extends Positionable {
     /**
      * Creates a new instance of a dropdown.
      * @class
@@ -23,7 +23,6 @@ class Dropdown extends Positionable {
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
-        this.className = 'Dropdown'; // ie9 back compat
         // Triggers init is idempotent, just need to make sure it is initialized
         Triggers.init($);
         this._init();
@@ -270,6 +269,7 @@ class Dropdown extends Positionable {
         $(document.body).off('click.zf.dropdown');
     }
 }
+Dropdown.className = 'Dropdown'; // ie9 back compat
 Dropdown.defaults = {
     /**
      * Class that designates bounding container of Dropdown (default: window)
@@ -372,4 +372,3 @@ Dropdown.defaults = {
      */
     closeOnClick: false
 };
-export { Dropdown };

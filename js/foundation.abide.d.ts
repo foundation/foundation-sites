@@ -1,48 +1,30 @@
 import { Plugin } from './foundation.plugin';
+export interface AbideOptions {
+    validateOn?: string;
+    labelErrorClass?: string;
+    inputErrorClass?: string;
+    formErrorSelector?: string;
+    formErrorClass?: string;
+    liveValidate?: boolean;
+    validateOnBlur?: boolean;
+    validators?: any;
+    patterns?: {
+        [key: string]: RegExp | object;
+    };
+}
 /**
  * Abide module.
  * @module foundation.abide
  */
 export declare class Abide extends Plugin {
     $element: JQuery;
-    options: any;
+    $inputs: JQuery;
+    options: AbideOptions;
     static className: string;
     /**
      * Default settings for plugin
      */
-    static defaults: {
-        validateOn: string;
-        labelErrorClass: string;
-        inputErrorClass: string;
-        formErrorSelector: string;
-        formErrorClass: string;
-        liveValidate: boolean;
-        validateOnBlur: boolean;
-        patterns: {
-            alpha: RegExp;
-            alpha_numeric: RegExp;
-            integer: RegExp;
-            number: RegExp;
-            card: RegExp;
-            cvv: RegExp;
-            email: RegExp;
-            url: RegExp;
-            domain: RegExp;
-            datetime: RegExp;
-            date: RegExp;
-            time: RegExp;
-            dateISO: RegExp;
-            month_day_year: RegExp;
-            day_month_year: RegExp;
-            color: RegExp;
-            website: {
-                test: (text: any) => boolean;
-            };
-        };
-        validators: {
-            equalTo(el: any, required: any, parent: any): boolean;
-        };
-    };
+    static defaults: AbideOptions;
     /**
      * Creates a new instance of Abide.
      * @class
@@ -51,7 +33,7 @@ export declare class Abide extends Plugin {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: JQuery, options?: {}): void;
+    _setup(element: JQuery, options?: AbideOptions): void;
     /**
      * Initializes the Abide plugin and calls functions to get Abide functioning on load.
      * @private
@@ -142,13 +124,13 @@ export declare class Abide extends Plugin {
      * @param {String} pattern - string value of one of the RegEx patterns in Abide.options.patterns
      * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
      */
-    validateText($el: any, pattern: any): boolean;
+    validateText($el: JQuery, pattern: string): boolean;
     /**
      * Determines whether or a not a radio input is valid based on whether or not it is required and selected. Although the function targets a single `<input>`, it validates by checking the `required` and `checked` properties of all radio buttons in its group.
      * @param {String} groupName - A string that specifies the name of a radio button group
      * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
      */
-    validateRadio(groupName: any): boolean;
+    validateRadio(groupName: string): boolean;
     /**
      * Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator="foo bar baz"` in a space separated listed.
      * @param {Object} $el - jQuery input element.
@@ -156,7 +138,7 @@ export declare class Abide extends Plugin {
      * @param {Boolean} required - self explanatory?
      * @returns {Boolean} - true if validations passed.
      */
-    matchValidation($el: any, validators: any, required: any): boolean;
+    matchValidation($el: JQuery, validators: string, required: boolean): boolean;
     /**
      * Resets form inputs and styles
      * @fires Abide#formreset

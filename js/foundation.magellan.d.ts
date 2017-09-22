@@ -1,4 +1,12 @@
 import { Plugin } from './foundation.plugin';
+export interface MagellanOptions {
+    animationDuration?: number;
+    animationEasing?: string;
+    threshold?: number;
+    activeClass?: string;
+    deepLinking?: boolean;
+    barOffset?: number;
+}
 /**
  * Magellan module.
  * @module foundation.magellan
@@ -13,7 +21,7 @@ declare class Magellan extends Plugin {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: MagellanOptions): void;
     /**
      * Initializes the Magellan plugin and calls functions to get equalizer functioning on load.
      * @private

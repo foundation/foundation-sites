@@ -5,6 +5,10 @@ import { Motion } from './foundation.util.motion';
 import { Plugin } from './foundation.plugin';
 import { Triggers } from './foundation.util.triggers';
 
+export interface TogglerOptions {
+  animate?: boolean;
+}
+
 /**
  * Toggler module.
  * @module foundation.toggler
@@ -21,7 +25,7 @@ class Toggler extends Plugin {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: TogglerOptions) {
     this.$element = element;
     this.options = $.extend({}, Toggler.defaults, element.data(), options);
     this.className = '';

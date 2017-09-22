@@ -187,7 +187,8 @@ export class Abide extends Plugin {
      */
     removeErrorClasses($el) {
         // radios need to clear all of the els
-        if ($el[0].type == 'radio') {
+        const element = $el[0];
+        if (element instanceof HTMLInputElement && element.type === 'radio') {
             return this.removeRadioErrorClasses($el.attr('name'));
         }
         const $label = this.findLabel($el);
@@ -241,10 +242,9 @@ export class Abide extends Plugin {
             // Re-validate inputs that depend on this one with equalto
             const dependentElements = this.$element.find(`[data-equalto="${$el.attr('id')}"]`);
             if (dependentElements.length) {
-                const _this = this;
-                dependentElements.each(function () {
-                    if ($(this).val()) {
-                        _this.validateInput($(this));
+                dependentElements.each((element) => {
+                    if ($(element).val()) {
+                        this.validateInput($(element));
                     }
                 });
             }
@@ -267,9 +267,8 @@ export class Abide extends Plugin {
      */
     validateForm() {
         const acc = [];
-        const _this = this;
-        this.$inputs.each(function () {
-            acc.push(_this.validateInput($(this)));
+        this.$inputs.each((element) => {
+            acc.push(this.validateInput($(element)));
         });
         const noError = acc.indexOf(false) === -1;
         this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
@@ -346,7 +345,6 @@ export class Abide extends Plugin {
      * @returns {Boolean} - true if validations passed.
      */
     matchValidation($el, validators, required) {
-        required = required ? true : false;
         const clear = validators.split(' ').map((v) => {
             return this.options.validators[v]($el, required, $el.parent());
         });

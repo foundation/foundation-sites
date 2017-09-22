@@ -1,4 +1,20 @@
 import { Plugin } from './foundation.plugin';
+export interface RevealOptions {
+    animationIn?: string;
+    animationOut?: string;
+    showDelay?: number;
+    hideDelay?: number;
+    closeOnClick?: boolean;
+    closeOnEsc?: boolean;
+    multipleOpened?: boolean;
+    vOffset?: number;
+    hOffset?: number;
+    fullScreen?: boolean;
+    btmOffsetPct?: number;
+    overlay?: boolean;
+    resetOnClose?: boolean;
+    deepLink?: boolean;
+}
 /**
  * Reveal module.
  * @module foundation.reveal
@@ -7,7 +23,9 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
  */
-declare class Reveal extends Plugin {
+export declare class Reveal extends Plugin {
+    static className: string;
+    static defaults: RevealOptions;
     /**
      * Creates a new instance of Reveal.
      * @class
@@ -15,7 +33,7 @@ declare class Reveal extends Plugin {
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: RevealOptions): void;
     /**
      * Initializes the modal by adding the overlay and close buttons, (if selected).
      * @private
@@ -79,4 +97,3 @@ declare class Reveal extends Plugin {
      */
     _destroy(): void;
 }
-export { Reveal };

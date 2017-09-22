@@ -1,11 +1,13 @@
-'use strict';
-
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
+
+export interface AccordionMenuOptions {
+  slideSpeed?: number;
+  multiOpen?: boolean;
+}
 
 /**
  * AccordionMenu module.
@@ -23,7 +25,7 @@ class AccordionMenu extends Plugin {
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: AccordionMenuOptions) {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
     this.className = 'AccordionMenu'; // ie9 back compat

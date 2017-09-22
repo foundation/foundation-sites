@@ -1,10 +1,11 @@
-'use strict';
-
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';
 import { GetYoDigits } from './foundation.util.core';
 
+export interface InterchangeOptions {
+  rules?: Array<any>;
+}
 
 /**
  * Interchange module.
@@ -21,7 +22,7 @@ class Interchange extends Plugin {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: InterchangeOptions) {
     this.$element = element;
     this.options = $.extend({}, Interchange.defaults, options);
     this.rules = [];

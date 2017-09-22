@@ -6,6 +6,15 @@ import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 import { SmoothScroll } from './foundation.smoothScroll';
 
+export interface MagellanOptions {
+  animationDuration?: number;
+  animationEasing?: string;
+  threshold?: number;
+  activeClass?: string;
+  deepLinking?: boolean;
+  barOffset?: number;
+}
+
 /**
  * Magellan module.
  * @module foundation.magellan
@@ -21,7 +30,7 @@ class Magellan extends Plugin {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element: JQuery, options: MagellanOptions) {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
     this.className = 'Magellan'; // ie9 back compat

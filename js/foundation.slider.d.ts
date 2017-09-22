@@ -1,4 +1,20 @@
 import { Plugin } from './foundation.plugin';
+export interface SliderOptions {
+    start?: number;
+    end?: number;
+    step?: number;
+    initialStart?: number;
+    initialEnd?: number;
+    binding?: boolean;
+    clickSelect?: boolean;
+    vertical?: boolean;
+    draggable?: boolean;
+    disabled?: boolean;
+    doubleSided?: boolean;
+    decimal?: number;
+    moveTime?: number;
+    disabledClass?: string;
+}
 /**
  * Slider module.
  * @module foundation.slider
@@ -8,6 +24,8 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.touch
  */
 declare class Slider extends Plugin {
+    static className: string;
+    static defaults: SliderOptions;
     /**
      * Creates a new instance of a slider control.
      * @class
@@ -15,7 +33,7 @@ declare class Slider extends Plugin {
      * @param {jQuery} element - jQuery object to make into a slider control.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    _setup(element: any, options: any): void;
+    _setup(element: JQuery, options: SliderOptions): void;
     /**
      * Initilizes the plugin by reading/setting attributes, creating collections and setting the initial position of the handle(s).
      * @function
