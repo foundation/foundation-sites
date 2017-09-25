@@ -92,6 +92,6 @@ Style Sherpa has a dedicated page here in the docs that explains its various fea
 
 ### Tutorials
 
-- [What the ZURB Stack Does](https://foundation.zurb.com/learn/foundation-6-zurb-stack-part-1.html)
-- [Overview of Foundation's ZURB Stack and File via ZURB Structure](https://foundation.zurb.com/learn/foundation-6-stack-file-structure.html) via ZURB
+- [What the ZURB Stack Does](https://foundation.zurb.com/learn/foundation-6-zurb-stack-part-1.html) via ZURB
+- [Overview of Foundation's ZURB Stack and File Structure](https://foundation.zurb.com/learn/foundation-6-stack-file-structure.html) via ZURB
 - [All about the ZURB Template](https://zendev.com/2017/09/05/front-end-development-kickstarter-zurb-template.html#scss) via Kevin Ball
