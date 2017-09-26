@@ -34,7 +34,7 @@ When configuring Babel to work with Foundation, you only need to include the `es
 
 ### File Structure
 
-All of Foundation's plugins ship both as importable ES2016 modules, and as individual precompiled "drop in" files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.  The precompiled files live in the `dist` folder, while the importable modules live in the `src` folder.
+All of Foundation's plugins ship both as importable ES2016 modules, and as individual precompiled "drop in" files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.  The precompiled files live in the `dist` folder, while the importable modules live in the `js` folder.
 
 If you're not familiar with module bundling, you'll probably want to reference the precompiled files from `dist`. 
 
