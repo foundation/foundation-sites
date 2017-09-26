@@ -82,7 +82,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
 /// Additional responsive classes for .expanded
 /// @type Boolean
-$responsive-expanded-button: true !default;
+$button-responsive-expanded: false !default;
 
 // TODO: Document button-base() mixin
 @mixin button-base {
@@ -275,22 +275,22 @@ $responsive-expanded-button: true !default;
 
     &.expanded { @include button-expand; }
 
-    @if $responsive-expanded-button {
+    @if $button-responsive-expanded {
       @each $size in $breakpoint-classes {
         @include breakpoint(#{$size} only) {
-          &.expanded-for-#{$size} {
+          &.expanded-#{$size} {
             @include button-expand;
           }
         }
         @if $size != $-zf-zero-breakpoint {
           @include breakpoint(#{$size} down) {
-            &.expanded-for-#{$size}-down {
+            &.expanded-#{$size}-down {
               @include button-expand;
             }
           }
 
           @include breakpoint(#{$size}) {
-            &.expanded-for-#{$size}-up {
+            &.expanded-#{$size}-up {
               @include button-expand;
             }
           }
