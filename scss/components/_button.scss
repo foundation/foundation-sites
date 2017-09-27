@@ -107,7 +107,6 @@ $button-responsive-expanded: false !default;
   border: 1px solid transparent;
   border-radius: $button-radius;
   transition: $button-transition;
-
   font-size: map-get($button-sizes, default);
   line-height: 1;
   text-align: center;
@@ -160,7 +159,8 @@ $button-responsive-expanded: false !default;
 /// Removes background fill on hover and focus for hollow buttons.
 @mixin button-hollow {
   &,
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
   }
 
@@ -278,19 +278,19 @@ $button-responsive-expanded: false !default;
     @if $button-responsive-expanded {
       @each $size in $breakpoint-classes {
         @include breakpoint(#{$size} only) {
-          &.expanded-#{$size} {
+          &.#{$size}-only-expanded {
             @include button-expand;
           }
         }
         @if $size != $-zf-zero-breakpoint {
           @include breakpoint(#{$size} down) {
-            &.expanded-#{$size}-down {
+            &.#{$size}-down-expanded {
               @include button-expand;
             }
           }
 
           @include breakpoint(#{$size}) {
-            &.expanded-#{$size}-up {
+            &.#{$size}-expanded {
               @include button-expand;
             }
           }
