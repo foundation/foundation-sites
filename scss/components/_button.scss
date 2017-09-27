@@ -80,6 +80,10 @@ $button-hollow-hover-lightness: -50% !default;
 /// @type List
 $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !default;
 
+/// Additional responsive classes for .expanded
+/// @type Boolean
+$button-responsive-expanded: false !default;
+
 // TODO: Document button-base() mixin
 @mixin button-base {
   @include disable-mouse-outline;
@@ -270,6 +274,29 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     }
 
     &.expanded { @include button-expand; }
+
+    @if $button-responsive-expanded {
+      @each $size in $breakpoint-classes {
+        @include breakpoint(#{$size} only) {
+          &.expanded-#{$size} {
+            @include button-expand;
+          }
+        }
+        @if $size != $-zf-zero-breakpoint {
+          @include breakpoint(#{$size} down) {
+            &.expanded-#{$size}-down {
+              @include button-expand;
+            }
+          }
+
+          @include breakpoint(#{$size}) {
+            &.expanded-#{$size}-up {
+              @include button-expand;
+            }
+          }
+        }
+      }
+    }
 
     // Colors
     @each $name, $color in $button-palette {
