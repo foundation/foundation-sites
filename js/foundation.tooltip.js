@@ -1,5 +1,4 @@
-'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';
@@ -11,7 +10,7 @@ import { Positionable } from './foundation.positionable';
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
-class Tooltip extends Positionable {
+export class Tooltip extends Positionable {
     /**
      * Creates a new instance of a Tooltip.
      * @class

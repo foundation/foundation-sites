@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Move } from './foundation.util.motion';
 import { GetYoDigits, rtl as Rtl } from './foundation.util.core';

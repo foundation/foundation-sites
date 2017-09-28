@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { onImagesLoaded } from './foundation.util.imageLoader';
 import { GetYoDigits } from './foundation.util.core';

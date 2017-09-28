@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 /**
  * Runs a callback function when images are fully loaded.

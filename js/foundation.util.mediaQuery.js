@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 // Default set of media queries
 const defaultQueries = {
     'default': 'only screen',

@@ -3,7 +3,7 @@
 //**Done by Yohai Ararat ***************************
 //**************************************************
 
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 var Touch = {};
 

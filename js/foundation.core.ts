@@ -1,13 +1,21 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { GetYoDigits, hyphenate } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin, PluginConstructor } from './foundation.plugin';
+
+export interface FoundationCore {
+  version: string;
+  plugin(plugin: PluginConstructor, name: string): void;
+  registerPlugin(plugin: Plugin, name: string): void;
+  unregisterPlugin(plugin: Plugin): void;
+  [key: string]: Plugin | any;
+}
 
 const FOUNDATION_VERSION = '6.4.3';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
-const Foundation = {
+const Foundation: FoundationCore = {
   version: FOUNDATION_VERSION,
 
   /**
@@ -45,7 +53,7 @@ const Foundation = {
    * @param {String} name - the name of the plugin, passed as a camelCased string.
    * @fires Plugin#init
    */
-  registerPlugin(plugin: Plugin, name: string){
+  registerPlugin(plugin: Plugin, name: string) {
     const pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
     plugin.uuid = GetYoDigits(6, pluginName);
 
@@ -69,7 +77,7 @@ const Foundation = {
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @fires Plugin#destroyed
    */
-  unregisterPlugin(plugin: Plugin){
+  unregisterPlugin(plugin: Plugin) {
     let pluginName = hyphenate(functionName(plugin.$element.data('zfPlugin').constructor));
 
     this._uuids.splice(this._uuids.indexOf(plugin.uuid), 1);
@@ -91,14 +99,14 @@ const Foundation = {
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
-   reInit(plugins){
-     let isJQ = plugins instanceof $;
+   reInit(plugins?: string) {
+     const isJQ = plugins instanceof $;
      try{
        if (isJQ){
          plugins.each(function(){
            $(this).data('zfPlugin')._init();
          });
-       }else{
+       } else {
          let type = typeof plugins,
          _this = this,
          fns = {
@@ -118,9 +126,9 @@ const Foundation = {
          };
          fns[type](plugins);
        }
-     }catch (err){
+     } catch (err) {
        console.error(err);
-     }finally{
+     } finally {
        return plugins;
      }
    },
@@ -130,7 +138,7 @@ const Foundation = {
    * @param {Object} elem - jQuery object containing the element to check inside. Also checks the element itself, unless it's the `document` object.
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
    */
-  reflow(elem, plugins) {
+  reflow(elem: JQuery, plugins: string | Array<string>) {
 
     // If plugins is undefined, just grab everything
     if (typeof plugins === 'undefined') {

@@ -43,7 +43,7 @@ export declare class Reveal extends Plugin {
      * Creates an overlay div to display behind the modal.
      * @private
      */
-    _makeOverlay(): any;
+    _makeOverlay(): JQuery<HTMLElement>;
     /**
      * Updates position of modal
      * TODO:  Figure out if we actually need to cache these values or if it doesn't matter

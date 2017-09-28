@@ -1,4 +1,7 @@
 import { Plugin } from './foundation.plugin';
+export interface PseudoRegEx {
+    test: (text: string) => boolean;
+}
 export interface AbideOptions {
     validateOn?: string;
     labelErrorClass?: string;
@@ -9,7 +12,7 @@ export interface AbideOptions {
     validateOnBlur?: boolean;
     validators?: any;
     patterns?: {
-        [key: string]: RegExp | object;
+        [key: string]: RegExp | PseudoRegEx;
     };
 }
 /**
@@ -85,7 +88,7 @@ export declare class Abide extends Plugin {
      * @param {Object} $els - jQuery object to check for required attribute
      * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
      */
-    findRadioLabels($els: JQuery): any;
+    findRadioLabels($els: JQuery): JQuery<HTMLElement>;
     /**
      * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
      * @param {Object} $el - jQuery object to add the class to

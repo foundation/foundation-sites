@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 import { Foundation } from '../foundation.core';
 Foundation.addToJquery($);

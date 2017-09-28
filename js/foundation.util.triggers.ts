@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Motion } from './foundation.util.motion';
 
 const MutationObserver = (function() {

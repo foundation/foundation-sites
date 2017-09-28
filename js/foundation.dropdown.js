@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { GetYoDigits } from './foundation.util.core';
 import { Positionable } from './foundation.positionable';

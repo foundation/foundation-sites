@@ -1,14 +1,10 @@
 import { Plugin, PluginConstructor } from './foundation.plugin';
-declare const Foundation: {
+export interface FoundationCore {
     version: string;
-    _plugins: {};
-    _uuids: never[];
     plugin(plugin: PluginConstructor, name: string): void;
     registerPlugin(plugin: Plugin, name: string): void;
     unregisterPlugin(plugin: Plugin): void;
-    reInit(plugins: any): any;
-    reflow(elem: any, plugins: any): void;
-    getFnName: (fn: any) => any;
-    addToJquery($: any): any;
-};
+    [key: string]: Plugin | any;
+}
+declare const Foundation: FoundationCore;
 export { Foundation };

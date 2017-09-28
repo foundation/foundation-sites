@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 // Core Foundation Utilities, utilized in a number of places.
 

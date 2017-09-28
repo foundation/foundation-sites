@@ -1,4 +1,5 @@
 import { Plugin } from './foundation.plugin';
+export declare type Alignment = 'left' | 'right' | 'top' | 'bottom' | 'center' | 'auto';
 export interface PositionableOptions {
     position?: string;
     alignment?: string;
@@ -17,8 +18,8 @@ export declare abstract class Positionable extends Plugin {
         vOffset: number;
         hOffset: number;
     };
-    position: string;
-    alignment: string;
+    position: Alignment;
+    alignment: Alignment;
     /**
      * Abstract class encapsulating the tether-like explicit positioning logic
      * including repositioning based on overlap.
@@ -29,8 +30,8 @@ export declare abstract class Positionable extends Plugin {
      *
      **/
     _init(): void;
-    _getDefaultPosition(): string;
-    _getDefaultAlignment(): "left" | "right" | "bottom" | undefined;
+    _getDefaultPosition(): Alignment;
+    _getDefaultAlignment(): Alignment;
     /**
      * Adjusts the positionable possible positions by iterating through alignments
      * and positions.

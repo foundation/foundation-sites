@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 function Timer(elem, options, cb) {
   var _this = this,

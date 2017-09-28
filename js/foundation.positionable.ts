@@ -2,9 +2,11 @@ import { Plugin } from './foundation.plugin';
 import { Box } from './foundation.util.box';
 import { rtl as Rtl } from './foundation.util.core';
 
-const POSITIONS = ['left', 'right', 'top', 'bottom'];
-const VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
-const HORIZONTAL_ALIGNMENTS = ['left', 'right', 'center'];
+export type Alignment = 'left' | 'right' | 'top' | 'bottom' | 'center' | 'auto';
+
+const POSITIONS: Array<Alignment> = ['left', 'right', 'top', 'bottom'];
+const VERTICAL_ALIGNMENTS: Array<Alignment> = ['top', 'bottom', 'center'];
+const HORIZONTAL_ALIGNMENTS: Array<Alignment> = ['left', 'right', 'center'];
 
 const ALIGNMENTS = {
   left: VERTICAL_ALIGNMENTS,
@@ -82,8 +84,8 @@ export abstract class Positionable extends Plugin {
     hOffset: 0,
   };
 
-  public position: string;
-  public alignment: string;
+  public position: Alignment;
+  public alignment: Alignment;
 
   /**
    * Abstract class encapsulating the tether-like explicit positioning logic
@@ -103,11 +105,11 @@ export abstract class Positionable extends Plugin {
     this.originalAlignment = this.alignment;
   }
 
-  public _getDefaultPosition() {
+  public _getDefaultPosition(): Alignment {
     return 'bottom';
   }
 
-  public _getDefaultAlignment() {
+  public _getDefaultAlignment(): Alignment {
     switch (this.position) {
       case 'bottom':
       case 'top':

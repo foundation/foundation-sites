@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { GetYoDigits, hyphenate } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 const FOUNDATION_VERSION = '6.4.3';
@@ -80,7 +80,7 @@ const Foundation = {
      * @default If no argument is passed, reflow all currently active plugins.
      */
     reInit(plugins) {
-        let isJQ = plugins instanceof $;
+        const isJQ = plugins instanceof $;
         try {
             if (isJQ) {
                 plugins.each(function () {

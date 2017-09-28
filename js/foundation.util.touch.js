@@ -2,7 +2,7 @@
 //**Work inspired by multiple jquery swipe plugins**
 //**Done by Yohai Ararat ***************************
 //**************************************************
-import $ from 'jquery';
+import * as $ from 'jquery';
 var Touch = {};
 var startPosX, startPosY, startTime, elapsedTime, isMoving = false;
 function onTouchEnd() {

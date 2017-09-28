@@ -1,6 +1,6 @@
 'use strict';
 
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { GetYoDigits, hyphenate } from './foundation.util.core';
 
 export interface PluginConstructor {

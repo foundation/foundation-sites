@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { transitionend } from './foundation.util.core';

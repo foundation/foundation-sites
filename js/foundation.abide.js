@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Plugin } from './foundation.plugin';
 /**
  * Abide module.
@@ -293,7 +293,7 @@ export class Abide extends Plugin {
         pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
         const inputText = $el.val();
         let valid = false;
-        if (inputText.length) {
+        if (typeof inputText !== 'undefined') {
             // If the pattern attribute on the element is in Abide's list of patterns, then test that regexp
             if (this.options.patterns.hasOwnProperty(pattern)) {
                 valid = this.options.patterns[pattern].test(inputText);

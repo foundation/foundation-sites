@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 /**
  * Runs a callback function when images are fully loaded.
  * @param {Object} images - Image(s) to check if loaded.

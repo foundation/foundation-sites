@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { transitionend } from './foundation.util.core';
 /**
  * Motion module.

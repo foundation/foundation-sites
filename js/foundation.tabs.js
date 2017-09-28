@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
 import { Plugin } from './foundation.plugin';

@@ -1,6 +1,4 @@
-'use strict';
-
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 import { GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
@@ -34,7 +32,7 @@ export interface TooltipOptions extends PositionableOptions {
  * @requires foundation.util.triggers
  */
 
-class Tooltip extends Positionable {
+export class Tooltip extends Positionable {
 
   public static className = 'Tooltip'; // ie9 back compat
   public static defaults: TooltipOptions = {

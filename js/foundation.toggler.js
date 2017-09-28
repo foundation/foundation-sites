@@ -1,5 +1,5 @@
 'use strict';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Motion } from './foundation.util.motion';
 import { Plugin } from './foundation.plugin';
 import { Triggers } from './foundation.util.triggers';

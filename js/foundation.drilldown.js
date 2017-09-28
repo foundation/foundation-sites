@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { GetYoDigits, transitionend } from './foundation.util.core';

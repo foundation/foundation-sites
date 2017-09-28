@@ -8,7 +8,7 @@
 
 'use strict';
 
-import $ from 'jquery';
+import * as $ from 'jquery';
 import { rtl as Rtl } from './foundation.util.core';
 
 const keyCodes = {
