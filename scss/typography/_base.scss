@@ -455,17 +455,21 @@ $abbr-underline: 1px dotted $black !default;
       line-height: $paragraph-lineheight;
       color: $blockquote-color;
     }
+
+    // Citations
+    cite {
+      display: block;
+      font-size: $cite-font-size;
+
+      &:before {
+        content: $cite-pseudo-content;
+      }
+    }
   }
 
-  // Citations
+  // Inline Citations
   cite {
-    display: block;
-    font-size: $cite-font-size;
     color: $cite-color;
-
-    &:before {
-      content: $cite-pseudo-content;
-    }
   }
 
   // Abbreviations
