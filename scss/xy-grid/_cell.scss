@@ -44,7 +44,7 @@
 
 /// Sets base flex properties for cells.
 ///
-/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto` or `shrink`.
+/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink` or `grow`.
 @mixin xy-cell-base($size: full) {
   @if($size == 'full') {
     // This is the base style, all others inherit from it
