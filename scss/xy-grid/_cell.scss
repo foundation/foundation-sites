@@ -58,6 +58,9 @@
   @elseif ($size == 'shrink') {
     flex: 0 0 auto;
   }
+  @elseif ($size == 'grow') {
+    flex: 1 0 auto;
+  }
 }
 
 /// Resets a cells width (or height if vertical is true) as well as strips its gutters.
