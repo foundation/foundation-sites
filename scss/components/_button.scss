@@ -10,6 +10,10 @@
 /// @type Font
 $button-font-family: inherit !default;
 
+/// Font weight for button elements.
+/// @type Font-Weight
+$button-font-weight: inherit !default;
+
 /// Padding inside buttons.
 /// @type List
 $button-padding: 0.85em 1em !default;
@@ -91,6 +95,9 @@ $button-responsive-expanded: false !default;
   vertical-align: middle;
   margin: $button-margin;
   font-family: $button-font-family;
+  @if ($button-font-weight != inherit && $button-font-weight != $global-weight-normal) {
+    font-weight: $button-font-weight;
+  }
 
   @if (type-of($button-padding) == 'map') {
     @each $size, $padding in $button-padding {
