@@ -1,4 +1,4 @@
-import { Positionable, PositionableOptions } from './foundation.positionable';
+import { Alignment, Positionable, PositionableOptions } from './foundation.positionable';
 export interface DropdownOptions extends PositionableOptions {
     hover?: boolean;
     hoverPane?: boolean;
@@ -50,8 +50,8 @@ export declare class Dropdown extends Positionable {
      * @private
      */
     _init(): void;
-    _getDefaultPosition(): string;
-    _getDefaultAlignment(): string | undefined;
+    _getDefaultPosition(): Alignment;
+    _getDefaultAlignment(): Alignment;
     /**
      * Sets the position and orientation of the dropdown pane, checks for collisions if allow-overlap is not true.
      * Recursively calls itself if a collision is detected, with a new position class.
