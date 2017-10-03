@@ -66,6 +66,7 @@
 @mixin xy-cell-reset($vertical: true) {
   $direction: if($vertical == true, width, height);
   #{$direction}: auto;
+  max-#{$direction}: none;
 }
 
 // Sets our cell widths or heights depending on gutter type.
