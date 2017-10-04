@@ -262,7 +262,7 @@ The internal cells will shift automatically to provide spacing vertically rather
 You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y` to apply spacing to the top and bottom of cells.
 
 <div class="callout">
-  <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100 vertical height grid (or 100% height if nested).</p>
+  <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100% viewport height vertical grid (or height:100%; if nested).</p>
 </div>
 
 
