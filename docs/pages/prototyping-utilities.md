@@ -123,12 +123,12 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 
 #### Switches
 
-Please note that you need to add `rounded` class with `switch-paddle` and not `switch`.
+Add the `.rounded` class to `.switch` to make it rounded.
 
 ```html_example
-<div class="switch">
+<div class="switch rounded">
   <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
-  <label class="switch-paddle rounded" for="exampleSwitch">
+  <label class="switch-paddle" for="exampleSwitch">
     <span class="show-for-sr">Download Kittens</span>
   </label>
 </div>
@@ -818,4 +818,3 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include odd-between($first, $last) {} // applies style to all odd children except first and last
 @include number-between($num, $first, $last) {} // applies style to every n children from first child and last child
 ```
-
