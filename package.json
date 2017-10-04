@@ -22,7 +22,11 @@
     "deploy:beta": "gulp deploy:beta"
   },
   "dependencies": {
+    "dateformat": "^3.0.0",
+    "gaze": "^1.1.2",
     "jquery": ">=3.0.0",
+    "process-nextick-args": "^1.0.7",
+    "util-deprecate": "^1.0.2",
     "what-input": "^4.1.3"
   },
   "license": "MIT",

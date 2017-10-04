@@ -25,7 +25,7 @@ It's also possible to download the template files directly from GitHub. Run `npm
 
 ---
 
-## ZURB Template
+## ZURB Stack (Template)
 
 <div class="responsive-embed widescreen mb1">
   <iframe id="zurb-template-starter" data-linkable-video='3Uj74uJ3GSQ' width="500" height="315" src="https://www.youtube.com/embed/3Uj74uJ3GSQ?enablejsapi=1" enablejsapi="1" frameborder="0" allowfullscreen ></iframe>
@@ -89,3 +89,9 @@ The template creates a [BrowserSync](http://www.browsersync.io/) server, which i
 Under `src/styleguide` are two files to create a style guide for your project. The style guide is generated using Style Sherpa, a small plugin created by ZURB.
 
 Style Sherpa has a dedicated page here in the docs that explains its various features. **[Learn more about Style Sherpa.](style-sherpa.html)**
+
+### Tutorials
+
+- [What the ZURB Stack Does](https://foundation.zurb.com/learn/foundation-6-zurb-stack-part-1.html) via ZURB
+- [Overview of Foundation's ZURB Stack and File Structure](https://foundation.zurb.com/learn/foundation-6-stack-file-structure.html) via ZURB
+- [All about the ZURB Template](https://zendev.com/2017/09/05/front-end-development-kickstarter-zurb-template.html#scss) via Kevin Ball

@@ -12,6 +12,7 @@
 @import 'motion-ui';
 
 @include foundation-everything($flex: false);
+@include foundation-xy-grid-classes;
 @include foundation-flex-classes;
 @include foundation-prototype-classes;
 @include foundation-range-input;

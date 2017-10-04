@@ -17,7 +17,7 @@ You can change the float behavior of an element by adding the `.float-left` or `
 </div>
 
 <div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving Float classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus Float classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+  <p><strong>Deprecation Notice:</strong> From v6.5.x, we are moving Float classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus Float classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 ```html_example
