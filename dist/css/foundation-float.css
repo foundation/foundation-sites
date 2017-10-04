@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.3
+ * Version 6.4.4-rc1
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -1737,8 +1737,7 @@ label {
     border-left: 0; }
 
 .input-group-field {
-  border-radius: 0;
-  height: 2.5rem; }
+  border-radius: 0; }
 
 .input-group-button {
   padding-top: 0;
@@ -1750,7 +1749,7 @@ label {
   .input-group-button input,
   .input-group-button button,
   .input-group-button label {
-    height: 2.5rem;
+    height: 2.4375rem;
     padding-top: 0;
     padding-bottom: 0;
     font-size: 1rem; }
@@ -3814,18 +3813,12 @@ a.button:hover, a.button:focus {
   .sticky.is-anchored.is-at-bottom {
     bottom: 0; }
 
-body.is-reveal-open {
-  overflow: hidden; }
-
-html.is-reveal-open,
-html.is-reveal-open body {
-  min-height: 100%;
-  overflow: hidden;
+html.is-reveal-open {
   position: fixed;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
+  width: 100%;
+  overflow-y: scroll; }
+  html.is-reveal-open body {
+    overflow: hidden; }
 
 .reveal-overlay {
   position: fixed;

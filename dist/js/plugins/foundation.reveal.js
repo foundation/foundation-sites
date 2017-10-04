@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 93);
+/******/ 	return __webpack_require__(__webpack_require__.s = 62);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -89,21 +86,6 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 27:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_reveal__ = __webpack_require__(57);
-
-
-
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_reveal__["a" /* Reveal */], 'Reveal');
-
-/***/ }),
-
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -118,7 +100,37 @@ module.exports = {Keyboard: window.Foundation.Keyboard};
 
 /***/ }),
 
-/***/ 57:
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = {MediaQuery: window.Foundation.MediaQuery};
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(63);
+
+
+/***/ }),
+
+/***/ 63:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_reveal__ = __webpack_require__(64);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_reveal__["a" /* Reveal */], 'Reveal');
+
+/***/ }),
+
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -205,7 +217,6 @@ var Reveal = function (_Plugin) {
       this.id = this.$element.attr('id');
       this.isActive = false;
       this.cached = { mq: __WEBPACK_IMPORTED_MODULE_2__foundation_util_mediaQuery__["MediaQuery"].current };
-      this.isMobile = mobileSniff();
 
       this.$anchor = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-open="' + this.id + '"]').length ? __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-open="' + this.id + '"]') : __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-toggle="' + this.id + '"]');
       this.$anchor.attr({
@@ -271,7 +282,8 @@ var Reveal = function (_Plugin) {
       var outerWidth = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width();
       var height = this.$element.outerHeight();
       var outerHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height();
-      var left, top;
+      var left,
+          top = null;
       if (this.options.hOffset === 'auto') {
         left = parseInt((outerWidth - width) / 2, 10);
       } else {
@@ -283,11 +295,15 @@ var Reveal = function (_Plugin) {
         } else {
           top = parseInt((outerHeight - height) / 4, 10);
         }
-      } else {
+      } else if (this.options.vOffset !== null) {
         top = parseInt(this.options.vOffset, 10);
       }
-      this.$element.css({ top: top + 'px' });
-      // only worry about left if we don't have an overlay or we havea  horizontal offset,
+
+      if (top !== null) {
+        this.$element.css({ top: top + 'px' });
+      }
+
+      // only worry about left if we don't have an overlay or we have a horizontal offset,
       // otherwise we're perfectly in the middle
       if (!this.$overlay || this.options.hOffset !== 'auto') {
         this.$element.css({ left: left + 'px' });
@@ -350,6 +366,33 @@ var Reveal = function (_Plugin) {
     }
 
     /**
+    * Disables the scroll when Reveal is shown to prevent the background from shifting
+    */
+
+  }, {
+    key: '_disableScroll',
+    value: function _disableScroll() {
+      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).height() > __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height()) {
+        var scrollTop = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scrollTop();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("html").css("top", -scrollTop);
+      }
+    }
+
+    /**
+    * Reenables the scroll when Reveal closes
+    */
+
+  }, {
+    key: '_enableScroll',
+    value: function _enableScroll() {
+      if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).height() > __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height()) {
+        var scrollTop = parseInt(__WEBPACK_IMPORTED_MODULE_0_jquery___default()("html").css("top"));
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()("html").css("top", "");
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scrollTop(-scrollTop);
+      }
+    }
+
+    /**
      * Opens the modal controlled by `this.$anchor`, and closes all others by default.
      * @function
      * @fires Reveal#closeme
@@ -406,18 +449,15 @@ var Reveal = function (_Plugin) {
         this.$element.trigger('closeme.zf.reveal', this.id);
       }
 
+      this._disableScroll();
+
       var _this = this;
 
       function addRevealOpenClasses() {
-        if (_this.isMobile) {
-          if (!_this.originalScrollPos) {
-            _this.originalScrollPos = window.pageYOffset;
-          }
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html, body').addClass('is-reveal-open');
-        } else {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').addClass('is-reveal-open');
-        }
+
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').addClass('is-reveal-open');
       }
+
       // Motion UI method of reveal
       if (this.options.animationIn) {
         var afterAnimation = function () {
@@ -547,23 +587,16 @@ var Reveal = function (_Plugin) {
       this.$element.off('keydown.zf.reveal');
 
       function finishUp() {
-        if (_this.isMobile) {
-          if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.reveal:visible').length === 0) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html, body').removeClass('is-reveal-open');
-          }
-          if (_this.originalScrollPos) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').scrollTop(_this.originalScrollPos);
-            _this.originalScrollPos = null;
-          }
-        } else {
-          if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.reveal:visible').length === 0) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').removeClass('is-reveal-open');
-          }
+
+        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.reveal:visible').length === 0) {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html').removeClass('is-reveal-open');
         }
 
         __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].releaseFocus(_this.$element);
 
         _this.$element.attr('aria-hidden', true);
+
+        _this._enableScroll();
 
         /**
         * Fires when the modal is done closing.
@@ -749,28 +782,7 @@ Reveal.defaults = {
   additionalOverlayClasses: ''
 };
 
-function iPhoneSniff() {
-  return (/iP(ad|hone|od).*OS/.test(window.navigator.userAgent)
-  );
-}
 
-function androidSniff() {
-  return (/Android/.test(window.navigator.userAgent)
-  );
-}
-
-function mobileSniff() {
-  return iPhoneSniff() || androidSniff();
-}
-
-
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports) {
-
-module.exports = {MediaQuery: window.Foundation.MediaQuery};
 
 /***/ }),
 
@@ -1050,14 +1062,6 @@ Triggers.init = function ($, Foundation) {
   }
 };
 
-
-
-/***/ }),
-
-/***/ 93:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(27);
 
 
 /***/ })

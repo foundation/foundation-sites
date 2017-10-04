@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 91);
+/******/ 	return __webpack_require__(__webpack_require__.s = 53);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -89,7 +86,22 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 25:
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(54);
+
+
+/***/ }),
+
+/***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101,13 +113,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_responsiveMenu__["a" /* ResponsiveMenu */], 'ResponsiveMenu');
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports) {
-
-module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
 
 /***/ }),
 
@@ -124,11 +129,11 @@ module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.Get
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_plugin__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__foundation_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__foundation_dropdownMenu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_drilldown__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_drilldown__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_drilldown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__foundation_drilldown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__foundation_accordionMenu__);
 
 
@@ -242,7 +247,7 @@ var ResponsiveMenu = function (_Plugin) {
         this._checkMediaQueries();
       }
       // Add data-mutate since children may need it.
-      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["GetYoDigits"])(6, 'responsive-menu'));
+      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || Object(__WEBPACK_IMPORTED_MODULE_2__foundation_util_core__["GetYoDigits"])(6, 'responsive-menu'));
     }
 
     /**
@@ -323,39 +328,31 @@ ResponsiveMenu.defaults = {};
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports) {
-
-module.exports = {MediaQuery: window.Foundation.MediaQuery};
-
-/***/ }),
-
-/***/ 73:
-/***/ (function(module, exports) {
-
-module.exports = {AccordionMenu: window.Foundation.AccordionMenu};
-
-/***/ }),
-
-/***/ 74:
-/***/ (function(module, exports) {
-
-module.exports = {Drilldown: window.Foundation.Drilldown};
-
-/***/ }),
-
-/***/ 75:
+/***/ 56:
 /***/ (function(module, exports) {
 
 module.exports = {DropdownMenu: window.Foundation.DropdownMenu};
 
 /***/ }),
 
-/***/ 91:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 57:
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(25);
+module.exports = {Drilldown: window.Foundation.Drilldown};
 
+/***/ }),
+
+/***/ 58:
+/***/ (function(module, exports) {
+
+module.exports = {AccordionMenu: window.Foundation.AccordionMenu};
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = {MediaQuery: window.Foundation.MediaQuery};
 
 /***/ })
 
