@@ -29,30 +29,30 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <div class="row">
     <div class="small-12 columns">
       <label>Number Required
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
-        <span class="form-error">
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpText1" aria-errormessage="exampleErrorText1" required pattern="number">
+        <span class="form-error" id="exampleErrorText1">
           Yo, you had better fill this out, it's required.
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+      <p class="help-text" id="exampleHelpText1">Here's how you use this input field!</p>
     </div>
     <div class="small-12 columns">
       <label>Password Required
-        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
-        <span class="form-error">
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" aria-errormessage="exampleErrorText2" required >
+        <span class="form-error" id="exampleErrorText2">
           I'm required!
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
+      <p class="help-text" id="exampleHelpText2">Enter a password please.</p>
     </div>
     <div class="small-12 columns">
       <label>Re-enter Password
-        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
-        <span class="form-error">
+        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText3" aria-errormessage="exampleErrorText3" required pattern="alpha_numeric" data-equalto="password">
+        <span class="form-error" id="exampleErrorText3">
           Hey, passwords are supposed to match!
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+      <p class="help-text" id="exampleHelpText3">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
     </div>
   </div>
   <div class="row">
