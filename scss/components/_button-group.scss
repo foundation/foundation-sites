@@ -255,5 +255,16 @@ $buttongroup-radius-on-each: true !default;
         }
       }
     }
+
+    &.stacked-for-medium.expanded { // sass-lint:disable-line force-element-nesting
+      @include breakpoint(medium down) {
+        display: block;
+
+        #{$buttongroup-child-selector} {
+          display: block;
+          margin-#{$global-right}: 0;
+        }
+      }
+    }
   }
 }
