@@ -156,13 +156,17 @@
     }
 
     // Positioning
-    .#{$-zf-size}-#{$center} {
-      @include grid-col-pos(center);
+    @if $center {
+      .#{$-zf-size}-#{$center} {
+        @include grid-col-pos(center);
+      }
     }
 
     // Gutter adjustment
-    .#{$-zf-size}-#{$uncenter} {
-      @include grid-col-unpos;
+    @if $uncenter {
+      .#{$-zf-size}-#{$uncenter} {
+        @include grid-col-unpos;
+      }
     }
 
     @if $push {
