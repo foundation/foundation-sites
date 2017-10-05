@@ -80,4 +80,54 @@ describe('Abide', function() {
       plugin.validateInput($html.find("select")).should.equal(false);
     });
   });
+
+  describe('addErrorClasses()', function() {
+    it('adds aria-invalid attribute to element', function() {
+      $html = $('<form data-abide><input type="text"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.addErrorClasses($html.find('input'));
+
+      $html.find('input').should.have.attr('aria-invalid', 'true')
+    });
+  });
+
+  describe('removeErrorClasses()', function() {
+    it('removes aria-invalid attribute from element', function() {
+      $html = $('<form data-abide><input type="text"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.removeErrorClasses($html.find('input'));
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
+
+  describe('removeRadioErrorClasses()', function() {
+    it('removes aria-invalid attribute from radio group', function() {
+      $html = $('<form data-abide><input type="radio" name="groupName"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.removeRadioErrorClasses('groupName');
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
+
+  describe('resetForm()', function() {
+    it('removes aria-invalid attribute from elements', function() {
+      $html = $('<form data-abide><input type="text"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.resetForm();
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
 });
