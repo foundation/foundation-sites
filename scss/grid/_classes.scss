@@ -161,10 +161,20 @@
     }
 
     // Gutter adjustment
-    .#{$-zf-size}-#{$uncenter},
-    .#{$-zf-size}-#{$push}-0,
-    .#{$-zf-size}-#{$pull}-0 {
+    #{$-zf-size}-#{$uncenter} {
       @include grid-col-unpos;
+    }
+
+    @if $push {
+      .#{$-zf-size}-#{$push}-0 {
+        @include grid-col-unpos;
+      }
+    }
+
+    @if $pull {
+      .#{$-zf-size}-#{$pull}-0 {
+        @include grid-col-unpos;
+      }
     }
   }
 
