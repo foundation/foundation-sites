@@ -161,7 +161,7 @@
     }
 
     // Gutter adjustment
-    #{$-zf-size}-#{$uncenter} {
+    .#{$-zf-size}-#{$uncenter} {
       @include grid-col-unpos;
     }
 
