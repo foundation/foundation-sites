@@ -18,7 +18,7 @@ $buttongroup-spacing: 1px !default;
 /// @type String
 $buttongroup-child-selector: '.button' !default;
 
-/// Maximum number of buttons that can be in an even-width button group.
+/// Maximum number of buttons that can be in an even-width button group. (Only needed when $global-flexbox: false;)
 /// @type Number
 $buttongroup-expand-max: 6 !default;
 
