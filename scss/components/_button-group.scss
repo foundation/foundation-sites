@@ -168,7 +168,7 @@ $buttongroup-radius-on-each: true !default;
 ) {
   #{$selector} {
     @if $global-flexbox {
-      flex: 1 1 0px; // sass-lint:disable-line zero-unit
+      flex: 0 0 auto;
     }
     @else {
       width: auto;
@@ -204,7 +204,9 @@ $buttongroup-radius-on-each: true !default;
     }
 
     // Even-width Group
-    &.expanded { @include button-group-expand; }
+    &.expanded {
+      @include button-group-expand;
+    }
 
     // Colors
     @each $name, $color in $foundation-palette {
@@ -225,6 +227,10 @@ $buttongroup-radius-on-each: true !default;
     &.stacked-for-small,
     &.stacked-for-medium {
       @include button-group-stack;
+
+      &.expanded {
+        @include button-group-expand;
+      }
     }
 
     &.stacked-for-small {
