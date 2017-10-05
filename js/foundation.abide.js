@@ -192,7 +192,10 @@ class Abide extends Plugin {
       $formError.addClass(this.options.formErrorClass);
     }
 
-    $el.addClass(this.options.inputErrorClass).attr('data-invalid', '');
+    $el.addClass(this.options.inputErrorClass).attr({
+      'data-invalid': '',
+      'aria-invalid': true
+    });
   }
 
   /**
@@ -214,7 +217,10 @@ class Abide extends Plugin {
       $formErrors.removeClass(this.options.formErrorClass);
     }
 
-    $els.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $els.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
 
   }
 
@@ -239,7 +245,10 @@ class Abide extends Plugin {
       $formError.removeClass(this.options.formErrorClass);
     }
 
-    $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $el.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
   }
 
   /**
@@ -440,9 +449,18 @@ class Abide extends Plugin {
     $(`.${opts.inputErrorClass}`, $form).not('small').removeClass(opts.inputErrorClass);
     $(`${opts.formErrorSelector}.${opts.formErrorClass}`).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
-    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
-    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
-    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
+    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
     /**
      * Fires when the form has been reset.
      * @event Abide#formreset
