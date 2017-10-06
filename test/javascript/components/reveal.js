@@ -105,7 +105,7 @@ describe('Reveal', function() {
       plugin = new Foundation.Reveal($html, {});
 
       $html.on('open.zf.reveal', function() {
-        $('body').should.have.class('is-reveal-open');
+        $('html').should.have.class('is-reveal-open');
         done();
       });
 
@@ -220,7 +220,7 @@ describe('Reveal', function() {
 
 
       $html.on('closed.zf.reveal', function() {
-        $('body').should.not.have.class('is-reveal-open');
+        $('html').should.not.have.class('is-reveal-open');
         done();
       });
 
@@ -240,7 +240,7 @@ describe('Reveal', function() {
 
       $html.on('closed.zf.reveal', function() {
 
-        $('body').should.have.class('is-reveal-open');
+        $('html').should.have.class('is-reveal-open');
         plugin2.destroy();
         $html2.remove();
         done();
