@@ -1,6 +1,7 @@
 ---
 title: XY Grid
 description: A fully reworked new grid system in v6.4 which has all the variety inbuilt in the form of multiple grid types which includes margin grid, padding grid, frame grid, block grid and vertical grid.
+video: tjjVKGeoi3A
 sass: scss/xy-grid/*.scss
 ---
 
@@ -13,11 +14,19 @@ sass: scss/xy-grid/*.scss
 
 The XY grid works very similarly to the standard float grid, but includes a number of useful features only possible with Flexbox, like horizontal and vertical alignment, automatic sizing and a full vertical grid.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="0:36"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
+
 ---
 
 ## Browser support
 
 The XY grid is supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View Flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the XY grid on projects that can live with purely cutting-edge browser support.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="2:31"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
 
 ---
 
@@ -51,6 +60,10 @@ These are:
 
 The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Without [defining a gutter type](#gutters) the cells will simply split up the space without any gutters.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="3:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
+
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gRYeMQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -76,6 +89,10 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
 To define a grid type, simply set `.grid-margin-x` or `.grid-padding-x` on the grid.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="5:31"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/owvqYp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -260,6 +277,10 @@ The XY grid also supports vertical grids. Simply apply `.grid-y` instead of `.gr
 The internal cells will shift automatically to provide spacing vertically rather than horizontally.
 
 You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y` to apply spacing to the top and bottom of cells.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="10:31"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
 
 <div class="callout">
   <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100% viewport height vertical grid (or height:100%; if nested).</p>
