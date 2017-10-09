@@ -37,8 +37,17 @@ class Magellan extends Plugin {
   _init() {
     var id = this.$element[0].id || GetYoDigits(6, 'magellan');
     var _this = this;
-    this.$targets = $('[data-magellan-target]');
-    this.$links = this.$element.find('a');
+    
+    _this.lnks = $();
+    _this.tgts = $();
+    this.$element.find('a').each(function(index,elem) {
+            _this.lnks = _this.lnks.add(elem);
+            _this.tgts = _this.tgts.add($('[data-magellan-target="'+  elem.hash.slice(1) +'"]'));
+    });
+
+        this.$links = _this.lnks;
+        this.$targets = _this.tgts;    
+
     this.$element.attr({
       'data-resize': id,
       'data-scroll': id,
