@@ -1,6 +1,7 @@
 ---
 title: Prototyping Utilities
 description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
+video: Xhc_KUJMEuk
 sass:
   - scss/prototype/*.scss
 ---
@@ -110,6 +111,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 <div class="primary callout">
 	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](http://codepen.io/IamManchanda/pen/XMRMwo)
 </div>
+
+<p>
+  <a class="" data-open-video="1:06"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 #### Buttons
 
@@ -428,6 +433,10 @@ Generate spacing around elements with these easy to use margin classes.
 <div class="primary callout">
 	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
 </div>
+
+<p>
+  <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 #### Margin (All Sides)
 
