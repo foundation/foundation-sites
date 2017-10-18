@@ -16,7 +16,7 @@ The container for an accordion needs the class `.accordion`, and the attribute `
 
 Inside the accordion, place a series of panes with the class `.accordion-item` and the attribute `data-accordion-item`. To mark which pane should be open by default, add the class `.is-active` to that pane.
 
-Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-tab-content`.
+Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-accordion-content`.
 
 <p>
   <a class="" data-open-video="1:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -33,7 +33,7 @@ Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **c
     <a href="#" class="accordion-title">Accordion 1</a>
 
     <!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
     </div>
@@ -47,21 +47,21 @@ Once you put it all together, here's what you get!
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content >
+    <div class="accordion-content" data-accordion-content >
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 2</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       <textarea></textarea>
       <button class="button">I do nothing!</button>
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 3</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Type your name!
       <input type="text"></input>
     </div>
@@ -94,19 +94,19 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 <ul class="accordion" data-accordion data-multi-expand='true'>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content >
+    <div class="accordion-content" data-accordion-content >
       Panel 1. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 2</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 2. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 3</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 3. Lorem ipsum dolor
     </div>
   </li>
@@ -135,19 +135,19 @@ By default, at least one pane in an accordion must be open. This can be changed 
 <ul class="accordion" data-accordion data-allow-all-closed='true'>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content >
+    <div class="accordion-content" data-accordion-content >
       Panel 1. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 2</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 2. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 3</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 3. Lorem ipsum dolor
     </div>
   </li>
@@ -167,19 +167,19 @@ There may be times where you want to disable pane switching on an accordion. Thi
 <ul class="accordion" data-accordion disabled>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 1. I'm open because I'm loaded that way, but you can't close me
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 2, you can't open me.</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 2. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 3, you can't open me.</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-accordion-content>
       Panel 3. Lorem ipsum dolor
     </div>
   </li>
@@ -193,7 +193,7 @@ There may be times where you want to disable pane switching on an accordion. Thi
 
 When the `data-deep-link` option is set to `true`, the current state of the accordion is recorded by adding a hash with the accordion panel ID to the browser URL when a accordion opens. By default, accordion *replace* the browser history (using `history.replaceState()`). Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each click that opens a accordion panel.
 
-By using deep linking (see below), the open state of a page's tabset may be shared by copy-pasting the browser URL.
+By using deep linking (see below), the open state of a page's accordion may be shared by copy-pasting the browser URL.
 
 ### Deep linking
 
@@ -205,19 +205,19 @@ Add the attribute `data-deep-link="true"` to a accordion to:
 <ul class="accordion" data-accordion data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" id="deeplinked-accordion">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#deeplink1" class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content id="deeplink1">
+    <div class="accordion-content" data-accordion-content id="deeplink1">
       Panel 1. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#deeplink2" class="accordion-title">Accordion 2</a>
-    <div class="accordion-content" data-tab-content id="deeplink2">
+    <div class="accordion-content" data-accordion-content id="deeplink2">
       Panel 2. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
     <a href="#deeplink3" class="accordion-title">Accordion 3</a>
-    <div class="accordion-content" data-tab-content id="deeplink3">
+    <div class="accordion-content" data-accordion-content id="deeplink3">
       Panel 3. Lorem ipsum dolor
     </div>
   </li>
