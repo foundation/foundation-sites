@@ -6,6 +6,15 @@
 /// @group typography-helpers
 ////
 
+
+/// Font size for `<cite>` elements.
+/// @type Number
+$cite-font-size: rem-calc(13) !default;
+
+/// Pseudo content for `<cite>` elements.
+/// @type String
+$cite-pseudo-content: '\2014 \0020' !default;
+
 /// Default font size for lead paragraphs.
 /// @type Number
 $lead-font-size: $global-font-size * 1.25 !default;
@@ -76,5 +85,15 @@ $stat-font-size: 2.5rem !default;
       margin-#{$global-left}: 0;
       list-style: none;
     }
+  }
+}
+
+@mixin block-citation {
+  // Use to restore the block version of cite elements
+  display: block;
+  font-size: $cite-font-size;
+
+  &:before {
+    content: $cite-pseudo-content;
   }
 }

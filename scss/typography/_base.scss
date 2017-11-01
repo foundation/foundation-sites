@@ -215,17 +215,9 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 /// @type List
 $blockquote-border: 1px solid $medium-gray !default;
 
-/// Font size for `<cite>` elements.
-/// @type Number
-$cite-font-size: rem-calc(13) !default;
-
 /// Text color for `<cite>` elements.
 /// @type Color
 $cite-color: $dark-gray !default;
-
-/// Pseudo content for `<cite>` elements.
-/// @type String
-$cite-pseudo-content: '\2014 \0020' !default;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
@@ -458,12 +450,7 @@ $abbr-underline: 1px dotted $black !default;
 
     // Citations
     cite {
-      display: block;
-      font-size: $cite-font-size;
-
-      &:before {
-        content: $cite-pseudo-content;
-      }
+      @include block-citation;
     }
   }
 
