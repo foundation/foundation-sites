@@ -445,6 +445,7 @@ Here's an example:
 
 ```scss
 .gallery {
+  @include xy-grid;
   @include xy-grid-layout(3, '.gallery-item');
 }
 ```
