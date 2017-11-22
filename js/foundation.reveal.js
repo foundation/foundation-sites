@@ -380,7 +380,7 @@ class Reveal extends Plugin {
           $('html, body').removeClass('is-reveal-open');
         }
         if(_this.originalScrollPos) {
-          $('body').scrollTop(_this.originalScrollPos);
+          $('html, body').scrollTop(_this.originalScrollPos);
           _this.originalScrollPos = null;
         }
       }
