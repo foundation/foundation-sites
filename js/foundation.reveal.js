@@ -184,10 +184,10 @@ class Reveal extends Plugin {
 
   /**
   * Disables the scroll when Reveal is shown to prevent the background from shifting
+  * @param {number} scrollTop
   */
-  _disableScroll(){
+  _disableScroll(scrollTop){
     if ($(document).height() > $(window).height()) {
-      var scrollTop = $(window).scrollTop();
       $("html")
         .css("top", -scrollTop);
     }
@@ -195,10 +195,10 @@ class Reveal extends Plugin {
 
   /**
   * Reenables the scroll when Reveal closes
+  * @param {number} scrollTop
   */
-  _enableScroll(){
+  _enableScroll(scrollTop){
     if ($(document).height() > $(window).height()) {
-      var scrollTop = parseInt($("html").css("top"));
       $("html")
         .css("top", "");
       $(window).scrollTop(-scrollTop);
@@ -264,7 +264,9 @@ class Reveal extends Plugin {
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
 
-    this._disableScroll();
+    var scrollTop = $(window).scrollTop();
+
+    this._disableScroll(scrollTop);
 
     var _this = this;
 
@@ -398,6 +400,8 @@ class Reveal extends Plugin {
 
     function finishUp() {
 
+      var scrollTop = parseInt($("html").css("top"));
+
       if ($('.reveal:visible').length  === 0) {
         $('html').removeClass('is-reveal-open');
       }
@@ -406,7 +410,7 @@ class Reveal extends Plugin {
 
       _this.$element.attr('aria-hidden', true);
 
-      _this._enableScroll();
+      _this._enableScroll(scrollTop);
 
       /**
       * Fires when the modal is done closing.
