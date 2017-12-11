@@ -277,8 +277,8 @@ class Drilldown extends Plugin {
         handled: function(preventDefault) {
           if (preventDefault) {
             e.preventDefault();
+            e.stopImmediatePropagation();
           }
-          e.stopImmediatePropagation();
         }
       });
     }); // end keyboardAccess
