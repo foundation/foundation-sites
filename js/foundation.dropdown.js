@@ -178,8 +178,8 @@ export class Dropdown extends Positionable {
             if (_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
                 return;
             }
-            if (_this.$element.find(e.target).length) {
-                return;
+            if(_this.$element.is(e.target) || _this.$element.find(e.target).length) {
+              return;
             }
             _this.close();
             $body.off('click.zf.dropdown');

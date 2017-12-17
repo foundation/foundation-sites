@@ -44,7 +44,7 @@
 
 /// Sets base flex properties for cells.
 ///
-/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto` or `shrink`.
+/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink` or `grow`.
 @mixin xy-cell-base($size: full) {
   @if($size == 'full') {
     // This is the base style, all others inherit from it
@@ -58,6 +58,9 @@
   @elseif ($size == 'shrink') {
     flex: 0 0 auto;
   }
+  @elseif ($size == 'grow') {
+    flex: 1 0 auto;
+  }
 }
 
 /// Resets a cells width (or height if vertical is true) as well as strips its gutters.
@@ -66,6 +69,7 @@
 @mixin xy-cell-reset($vertical: true) {
   $direction: if($vertical == true, width, height);
   #{$direction}: auto;
+  max-#{$direction}: none;
 }
 
 // Sets our cell widths or heights depending on gutter type.

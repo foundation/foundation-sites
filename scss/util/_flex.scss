@@ -1,10 +1,15 @@
-$-zf-flex-justify: (
-  'left': flex-start,
-  'right': flex-end,
-  'center': center,
-  'justify': space-between,
-  'spaced': space-around,
-);
+@function -zf-flex-justify($text-direction){
+  $-zf-flex-justify: (
+    'left': if($text-direction == rtl, flex-end, flex-start),
+    'right': if($text-direction == rtl, flex-start, flex-end),
+    'center': center,
+    'justify': space-between,
+    'spaced': space-around,
+  );
+
+  @return $-zf-flex-justify;
+}
+
 
 $-zf-flex-align: (
   'top': flex-start,

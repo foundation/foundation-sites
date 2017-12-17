@@ -77,4 +77,24 @@ describe('Dropdown', function() {
       plugin.alignment.should.equal('right')
     });
   });
+
+  describe('closeOnClick option', function() {
+    it('not closes a dropdown by clicking on the dropdown if closeOnClick option is true', function(done) {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {closeOnClick: true});
+
+      // Open it first...
+      plugin.open();
+
+      let spy = sinon.spy(plugin, 'close');
+
+      plugin.$element.trigger("click");
+
+      setTimeout(function() {
+        sinon.assert.notCalled(spy);
+        done();
+      }, 2);
+    });
+  });
 });
