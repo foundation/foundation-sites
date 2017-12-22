@@ -32,7 +32,7 @@
 /// Reset a position definition.
 @mixin grid-column-unposition {
   position: static;
-  float: left;
+  float: $global-left;
   margin-right: 0;
   margin-left: 0;
 }

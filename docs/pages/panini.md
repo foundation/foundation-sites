@@ -1,6 +1,7 @@
 ---
 title: Panini
 description: A flat file compiler that powers our prototyping template. Create pages with consistent layouts and reusable partials with ease.
+video: 't_ekdBMj4cc'
 library:
   github: https://github.com/zurb/panini
   docs: https://github.com/zurb/panini
@@ -125,6 +126,8 @@ Displays the HTML inside the helper if the two values are equal.
 ```handlebars
 {{#ifequal foo bar}}
   <p>foo and bar are equal</p>
+{{else}}
+  <p>foo and bar are not equal}}  
 {{/ifequal}}
 ```
 

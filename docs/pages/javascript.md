@@ -1,6 +1,7 @@
 ---
 title: JavaScript
 description: Our JavaScript is easy to set up and only requires jQuery to get going.
+video: 'Mf5ZZfKTe-I'
 ---
 
 ## Installing
@@ -33,7 +34,9 @@ When configuring Babel to work with Foundation, you only need to include the `es
 
 ### File Structure
 
-All of Foundation's plugins ship as individual files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.
+All of Foundation's plugins ship both as importable ES2016 modules, and as individual precompiled "drop in" files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.  The precompiled files live in the `dist` folder, while the importable modules live in the `js` folder.
+
+If you're not familiar with module bundling, you'll probably want to reference the precompiled files from `dist`. 
 
 If you're only using certain plugins, know that they all require `foundation.core.js` and `foundation.util.mediaQuery.js` to be loaded *first*. Some plugins also require specific utility libraries that ship with Foundation&mdash;refer to a plugin's documentation to find out which plugins require what, and see the [JavaScript Utilities](javascript-utilities.html) page for more information.
 

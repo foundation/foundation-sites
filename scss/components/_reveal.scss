@@ -38,6 +38,18 @@ $reveal-zindex: 1005 !default;
 /// @type Color
 $reveal-overlay-background: rgba($black, 0.45) !default;
 
+
+// Placeholder selector for medium-and-up modals
+// Prevents duplicate CSS when defining multiple Reveal sizes
+@include breakpoint(medium) {
+  %reveal-centered {
+    right: auto;
+    left: auto;
+    margin: 0 auto;
+  }
+}
+
+
 /// Adds styles for a modal overlay.
 /// @param {Color} $background [$reveal-overlay-background] - Background color of the overlay.
 @mixin reveal-overlay($background: $reveal-overlay-background) {
@@ -92,7 +104,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   @include breakpoint(medium) {
     @extend %reveal-centered;
     width: $width;
-    max-width: $reveal-max-width;
+    max-width: $max-width;
   }
 }
 
@@ -113,17 +125,16 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 }
 
 @mixin foundation-reveal {
-  // [TODO] Is this necessary?
-  body.is-reveal-open { // sass-lint:disable-line no-qualifying-elements
-    overflow: hidden;
-  }
 
-  // html gets this class only in iOS
-  html.is-reveal-open,
-  html.is-reveal-open body {
-    min-height: 100%;
-    overflow: hidden;
-    user-select: none;
+  /// Disables the scroll when Reveal is shown to prevent the background from shifting
+  html.is-reveal-open {
+    position: fixed;
+    width: 100%;
+    overflow-y: scroll;
+
+    body { // sass-lint:disable-line no-qualifying-elements
+      overflow: hidden;
+    }
   }
 
   // Overlay
@@ -140,16 +151,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     margin-right: auto;
     margin-left: auto;
     overflow-y: auto;
-
-    // Placeholder selector for medium-and-up modals
-    // Prevents duplicate CSS when defining multiple Reveal sizes
-    @include breakpoint(medium) {
-      %reveal-centered {
-        right: auto;
-        left: auto;
-        margin: 0 auto;
-      }
-    }
 
     // Remove padding
     &.collapse {

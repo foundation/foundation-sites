@@ -1,11 +1,17 @@
 ---
 title: Starter Projects
 description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!
+video: 'lFrpnk0Oo_8'
 ---
 
 Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](http://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.
 
 ## Basic Template
+
+<div class="responsive-embed widescreen mb1">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/ofSZUKkjPRY" frameborder="0" allowfullscreen></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/ofSZUKkjPRY"></a>
+</div>
 
 Our basic project template is a lot like the Sass template from Foundation 5. The project has a flat directory structure and only compiles Sass. It's great if you want to quickly put together a simple project and only need to use Sass.
 
@@ -19,7 +25,12 @@ It's also possible to download the template files directly from GitHub. Run `npm
 
 ---
 
-## ZURB Template
+## ZURB Stack (Template)
+
+<div class="responsive-embed widescreen mb1">
+  <iframe id="zurb-template-starter" data-linkable-video='3Uj74uJ3GSQ' width="500" height="315" src="https://www.youtube.com/embed/3Uj74uJ3GSQ?enablejsapi=1" enablejsapi="1" frameborder="0" allowfullscreen ></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://www.youtube.com/watch?v=3Uj74uJ3GSQ"></a>
+</div>
 
 The official ZURB Template includes not only Sass processing, but also JavaScript processing, Handlebars templating, and image compression. We use this exact template at ZURB for our client work!
 
@@ -59,11 +70,9 @@ The CSS is output in the `nested` style, which is readable like normal CSS. A so
 
 ### JavaScript Compilation
 
-All JavaScript files in the `src/assets/js` folder, along with Foundation and its dependencies, are bundled into one file called `app.js`. The files are bundled in this order:
+All JavaScript files in the `src/assets/js` folder, along with Foundation and its dependencies, are bundled into one file called `app.js`. The files are imported using module dependency with [webpack](https://webpack.js.org/) as the module bundler.
 
-- Foundation's dependencies (including jQuery)
-- All files in `src/assets/js`
-- `app.js`
+If you're unfamiliar with modules and module bundling, check out [this resource for node style require/exports](http://openmymind.net/2012/2/3/Node-Require-and-Exports/) and [this resource to understand ES6 modules](http://exploringjs.com/es6/ch_modules.html)
 
 A source map is created that maps back to the original files. By default, the bundled `app.js` is uncompressed. When building for production, the file is run through [UglifyJS](https://github.com/mishoo/UglifyJS) for compression.
 
@@ -80,3 +89,9 @@ The template creates a [BrowserSync](http://www.browsersync.io/) server, which i
 Under `src/styleguide` are two files to create a style guide for your project. The style guide is generated using Style Sherpa, a small plugin created by ZURB.
 
 Style Sherpa has a dedicated page here in the docs that explains its various features. **[Learn more about Style Sherpa.](style-sherpa.html)**
+
+### Tutorials
+
+- [What the ZURB Stack Does](https://foundation.zurb.com/learn/foundation-6-zurb-stack-part-1.html) via ZURB
+- [Overview of Foundation's ZURB Stack and File Structure](https://foundation.zurb.com/learn/foundation-6-stack-file-structure.html) via ZURB
+- [All about the ZURB Template](https://zendev.com/2017/09/05/front-end-development-kickstarter-zurb-template.html#scss) via Kevin Ball

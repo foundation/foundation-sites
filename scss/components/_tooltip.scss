@@ -6,6 +6,10 @@
 /// @group tooltip
 ////
 
+/// Default cursor of the defined term.
+/// @type Keyword
+$has-tip-cursor: help !default;
+
 /// Default font weight of the defined term.
 /// @type Keyword | Number
 $has-tip-font-weight: $global-weight-bold !default;
@@ -25,6 +29,10 @@ $tooltip-color: $white !default;
 /// Default padding of the tooltip background.
 /// @type Number
 $tooltip-padding: 0.75rem !default;
+
+/// Default max width for tooltips.
+/// @type Number
+$tooltip-max-width: 10rem !default;
 
 /// Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.
 /// @type Number
@@ -48,7 +56,7 @@ $tooltip-radius: $global-radius !default;
 
   border-bottom: $has-tip-border-bottom;
   font-weight: $has-tip-font-weight;
-  cursor: help;
+  cursor: $has-tip-cursor;
 }
 
 @mixin tooltip {
@@ -56,7 +64,7 @@ $tooltip-radius: $global-radius !default;
   top: calc(100% + #{$tooltip-pip-height});
   z-index: 1200;
 
-  max-width: 10rem;
+  max-width: $tooltip-max-width;
   padding: $tooltip-padding;
 
   border-radius: $tooltip-radius;
@@ -65,34 +73,79 @@ $tooltip-radius: $global-radius !default;
   color: $tooltip-color;
 
   &::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
     position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
-  &.top::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
-    top: 100%;
-    bottom: auto;
+  &.bottom {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
+      bottom: 100%;
+    }
+
+    &.align-center::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
-  &.left::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
-    top: 50%;
-    bottom: auto;
-    left: 100%;
-    transform: translateY(-50%);
+  &.top {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
+      top: 100%;
+      bottom: auto;
+    }
+
+    &.align-center::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
-  &.right::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
-    top: 50%;
-    right: 100%;
+  &.left {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
+      left: 100%;
+    }
+
+    &.align-center::before {
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.right {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
+      right: 100%;
+      left: auto;
+    }
+
+    &.align-center::before {
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.align-top::before {
     bottom: auto;
+    top: 10%;
+  }
+
+  &.align-bottom::before {
+    bottom: 10%;
+    top: auto;
+  }
+
+  &.align-left::before {
+    left: 10%;
+    right: auto;
+  }
+
+  &.align-right::before {
     left: auto;
-    transform: translateY(-50%);
+    right: 10%;
   }
 }
 

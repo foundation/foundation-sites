@@ -1,27 +1,28 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Abide module.
  * @module foundation.abide
  */
 
-class Abide {
+class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
+   * @name Abide
    * @fires Abide#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options = {}) {
+  _setup(element, options = {}) {
     this.$element = element;
-    this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
+    this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
 
+    this.className = 'Abide'; // ie9 back compat
     this._init();
-
-    Foundation.registerPlugin(this, 'Abide');
   }
 
   /**
@@ -242,7 +243,7 @@ class Abide {
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
    * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
@@ -453,7 +454,7 @@ class Abide {
    * Destroys an instance of Abide.
    * Removes error styles and classes from elements, without resetting their values.
    */
-  destroy() {
+  _destroy() {
     var _this = this;
     this.$element
       .off('.abide')
@@ -465,8 +466,6 @@ class Abide {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -538,7 +537,7 @@ Abide.defaults = {
     number : /^[-+]?\d*(?:[\.\,]\d+)?$/,
 
     // amex, visa, diners
-    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|(?:222[1-9]|2[3-6][0-9]{2}|27[0-1][0-9]|2720)[0-9]{12}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
     cvv : /^([0-9]){3,4}$/,
 
     // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
@@ -560,7 +559,14 @@ Abide.defaults = {
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
-    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+
+    // Domain || URL
+    website: {
+      test: (text) => {
+        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+      }
+    }
   },
 
   /**
@@ -578,7 +584,4 @@ Abide.defaults = {
   }
 }
 
-// Window exports
-Foundation.plugin(Abide, 'Abide');
-
-}(jQuery);
+export {Abide};
