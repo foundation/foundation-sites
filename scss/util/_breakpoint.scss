@@ -172,12 +172,7 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 
-  @if $old-zf-size != null {
-    // Restore the old breakpoint size
-    $-zf-size: $old-zf-size !global;
-  } @else {
-    $-zf-size: null !global;
-  }
+  $-zf-size: $old-zf-size !global;
 }
 
 /// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
