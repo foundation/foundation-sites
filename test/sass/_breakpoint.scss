@@ -60,15 +60,15 @@
   // --- Breakpoint: HiDPI/Retina ---
 
   @include test('Breakpoint (Retina) [function]') {
-    $expect-2: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+    $expect-2: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi)';
 
     @include assert-equal(breakpoint(retina), $expect-2,
       'Creates a x2 HiDPI range out of the retina alias breakpoint');
   }
 
   @include test('Breakpoint (HIDPI Default/Up Range) [function]') {
-    $expect-1-5: '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)';
-    $expect-2: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+    $expect-1-5: '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 108dpi)';
+    $expect-2: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi)';
 
     @include assert-equal(breakpoint(hidpi-1-5 up), $expect-1-5,
       'Creates a x1.5 HiDPI up range out of a x1.5 HiDPI breakpoint');
@@ -84,9 +84,9 @@
   }
 
   @include test('Breakpoint (HIDPI Only Range) [function]') {
-    $expect-1-5: '(-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 1.98958), (min-resolution: 144dpi) and (max-resolution: 191dpi)';
-    $expect-2: '(-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.98958), (min-resolution: 192dpi) and (max-resolution: 287dpi)';
-    $expect-highest: '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi)';
+    $expect-1-5: '(-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 1.98958), (min-resolution: 108dpi) and (max-resolution: 143.25dpi)';
+    $expect-2: '(-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.98958), (min-resolution: 144dpi) and (max-resolution: 215.25dpi)';
+    $expect-highest: '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 216dpi)';
 
     @include assert-equal(breakpoint(hidpi-1-5 only), $expect-1-5,
       'Creates a x1.5 HiDPI only range out of a x1.5 HiDPI breakpoint');
@@ -99,8 +99,8 @@
   }
 
   @include test('Breakpoint (HIDPI Down Range) [function]') {
-    $expect-1-5: '(-webkit-max-device-pixel-ratio: 1.98958), (max-resolution: 191dpi)';
-    $expect-2: '(-webkit-max-device-pixel-ratio: 2.98958), (max-resolution: 287dpi)';
+    $expect-1-5: '(-webkit-max-device-pixel-ratio: 1.98958), (max-resolution: 143.25dpi)';
+    $expect-2: '(-webkit-max-device-pixel-ratio: 2.98958), (max-resolution: 215.25dpi)';
     $expect-highest: '';
 
     @include assert-equal(breakpoint(hidpi-1-5 down), $expect-1-5,

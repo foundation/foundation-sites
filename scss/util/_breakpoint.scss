@@ -49,6 +49,11 @@ $breakpoint-classes: (small medium large) !default;
 ///
 /// @param {Keyword|Number} $val [small] - Breakpoint name, or px, rem, or em value to process.
 @function breakpoint($val: $-zf-zero-breakpoint) {
+  // Web standard Dots per inch and Pixels per inch. (1 / $std-web-ppi) = 1px
+  // See https://www.w3.org/TR/css-values-3/#absolute-lengths
+  $std-web-dpi: 72;
+  $std-web-ppi: 96;
+
   // Size or keyword
   $bp: nth($val, 1);
   // Value of the following breakpoint
@@ -105,14 +110,16 @@ $breakpoint-classes: (small medium large) !default;
     }
     // If the breakpoint is named, the max limit is the following breakpoint - 1px.
     @else if $bp-next {
-      $bp-max: if($hidpi, $bp-next - (1/96), -zf-bp-to-em($bp-next) - (1/16));
+      $bp-max: if($hidpi, $bp-next - (1/$std-web-ppi), -zf-bp-to-em($bp-next) - (1/16));
     }
   }
 
   // Generate the media query string from min and max limits.
   @if $hidpi {
-    $bp-min-dpi: if($bp-min, $bp-min * 96dpi, $bp-min);
-    $bp-max-dpi: if($bp-max, $bp-max * 96dpi, $bp-max);
+    // Generate values in DPI instead of DPPX for an IE9-11/Opera mini compatibility.
+    // See https://caniuse.com/#feat=css-media-resolution
+    $bp-min-dpi: if($bp-min, $bp-min * $std-web-dpi * 1dpi, $bp-min);
+    $bp-max-dpi: if($bp-max, $bp-max * $std-web-dpi * 1dpi, $bp-max);
     @return zf-str-join(
       -zf-bp-join($bp-min, $bp-max, '-webkit-min-device-pixel-ratio', '-webkit-max-device-pixel-ratio'),
       -zf-bp-join($bp-min-dpi, $bp-max-dpi, 'min-resolution', 'max-resolution'),
