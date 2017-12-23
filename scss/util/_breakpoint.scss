@@ -17,6 +17,7 @@ $breakpoints: (
 ) !default;
 
 /// A list of named HiDPI breakpoints. You can use these with the `breakpoint()` mixin to quickly create media queries for resolutions.
+/// Values must represent the device pixels / web pixels ration and be unitless or in DPPX.
 /// @type Map
 $breakpoints-hidpi: (
   hidpi-1: 1,
@@ -74,7 +75,7 @@ $breakpoint-classes: (small medium large) !default;
     @return '(orientation: #{$bp})';
   }
 
-  // If a breakpoint name is given, get its value from the $breakpoints map.
+  // If a breakpoint name is given, get its value from the $breakpoints/$breakpoints-hidpi map.
   @if type-of($bp) == 'string' {
     @if map-has-key($breakpoints, $bp) {
       $name: $bp;
@@ -100,13 +101,13 @@ $breakpoint-classes: (small medium large) !default;
 
   // Only 'only' and 'up' have a min limit.
   @if $dir == 'only' or $dir == 'up' {
-    $bp-min: if($hidpi, $bp, -zf-bp-to-em($bp));
+    $bp-min: if($hidpi, unitless($bp), -zf-bp-to-em($bp));
   }
   // Only 'only' and 'down' have a max limit.
   @if $dir == 'only' or $dir == 'down' {
     // If the breakpoint is a value, use it as max limit.
     @if not $name {
-      $bp-max: if($hidpi, $bp, -zf-bp-to-em($bp));
+      $bp-max: if($hidpi, unitless($bp), -zf-bp-to-em($bp));
     }
     // If the breakpoint is named, the max limit is the following breakpoint - 1px.
     @else if $bp-next {
@@ -131,7 +132,7 @@ $breakpoint-classes: (small medium large) !default;
 }
 
 /// Wraps a media query around the content you put inside the mixin. This mixin accepts a number of values:
-///  - If a string is passed, the mixin will look for it in the `$breakpoints` map, and use a media query there.
+///  - If a string is passed, the mixin will look for it in the `$breakpoints` and `$breakpoints-hidpi` maps, and use a media query there.
 ///  - If a pixel value is passed, it will be converted to an em value using `$global-font-size` as the base.
 ///  - If a rem value is passed, the unit will be changed to em.
 ///  - If an em value is passed, the value will be used as-is.

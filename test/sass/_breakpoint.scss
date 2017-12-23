@@ -59,6 +59,26 @@
 
   // --- Breakpoint: HiDPI/Retina ---
 
+  //
+  // Note for the following "magic numbers":
+  //
+  // We expect maximum values to have 1px less (px it is the most precise web unit we have).
+  // But sinces values are not in pixels, we have to calculate what 1px is in these units.
+  // See https://www.w3.org/TR/css-values-3/#absolute-lengths
+  //
+  // For a x2 resolution (device pixels per web pixels)
+  // 2dppx - 1px
+  // = 2 - (1 / 96)           = 1.98958(...)dppx
+  // = (2 - (1 / 96)) * 72    = 143.25(...)dpi
+  //
+  // For a x3 resolution (device pixels per web pixels)
+  // 3dppx - 1px
+  // = 3 - (1 / 96)           = 2.98958(...)dppx
+  // = (3 - (1 / 96)) * 72    = 215.25(...)dpi
+  //
+  // etc...
+  //
+
   @include test('Breakpoint (Retina) [function]') {
     $expect-2: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi)';
 
