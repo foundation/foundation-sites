@@ -101,13 +101,13 @@ $breakpoint-classes: (small medium large) !default;
 
   // Only 'only' and 'up' have a min limit.
   @if $dir == 'only' or $dir == 'up' {
-    $bp-min: if($hidpi, unitless($bp), -zf-bp-to-em($bp));
+    $bp-min: if($hidpi, strip-unit($bp), -zf-bp-to-em($bp));
   }
   // Only 'only' and 'down' have a max limit.
   @if $dir == 'only' or $dir == 'down' {
     // If the breakpoint is a value, use it as max limit.
     @if not $name {
-      $bp-max: if($hidpi, unitless($bp), -zf-bp-to-em($bp));
+      $bp-max: if($hidpi, strip-unit($bp), -zf-bp-to-em($bp));
     }
     // If the breakpoint is named, the max limit is the following breakpoint - 1px.
     @else if $bp-next {
