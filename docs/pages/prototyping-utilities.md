@@ -300,13 +300,13 @@ You can use font styling to style your text. You can change the font styling by 
 ## List Styling
 
 <div class="primary callout">
-	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullets` is enabled by default for both ordered and unordered lists.
+	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullet` is enabled by default for both ordered and unordered lists.
 </div>
 
 #### Unordered Lists
 
 ```html
-<ul class="no-bullets"></ul>
+<ul class="no-bullet"></ul>
 <ul class="list-disc"></ul>
 <ul class="list-circle"></ul>
 <ul class="list-square"></ul>
@@ -315,7 +315,7 @@ You can use font styling to style your text. You can change the font styling by 
 #### Ordered Lists
 
 ```html
-<ol class="no-bullets"></ol>
+<ol class="no-bullet"></ol>
 <ol class="list-decimal"></ol>
 <ol class="list-lower-alpha"></ol>
 <ol class="list-lower-latin"></ol>
