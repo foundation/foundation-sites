@@ -42,7 +42,8 @@ These are:
   $block-grid: true,
   $collapse: true,
   $offset: true,
-  $vertical-grid: true
+  $vertical-grid: true,
+  $frame-grid: true
 );
 ```
 ---
