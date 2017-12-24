@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "es2015",
+        "target": "es6",
+        "strict": true,
+        "declaration": true,
+        "sourceMap": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
