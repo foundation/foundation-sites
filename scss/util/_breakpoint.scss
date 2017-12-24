@@ -50,10 +50,9 @@ $breakpoint-classes: (small medium large) !default;
 ///
 /// @param {Keyword|Number} $val [small] - Breakpoint name, or px, rem, or em value to process.
 @function breakpoint($val: $-zf-zero-breakpoint) {
-  // Web standard Dots per inch and Pixels per inch. (1 / $std-web-ppi) = 1px
+  // Web standard Pixels per inch. (1ddpx / $std-web-dpi) = 1dpi
   // See https://www.w3.org/TR/css-values-3/#absolute-lengths
-  $std-web-dpi: 72;
-  $std-web-ppi: 96;
+  $std-web-dpi: 96;
 
   // Size or keyword
   $bp: nth($val, 1);
@@ -111,7 +110,7 @@ $breakpoint-classes: (small medium large) !default;
     }
     // If the breakpoint is named, the max limit is the following breakpoint - 1px.
     @else if $bp-next {
-      $bp-max: if($hidpi, $bp-next - (1/$std-web-ppi), -zf-bp-to-em($bp-next) - (1/16));
+      $bp-max: if($hidpi, $bp-next - (1/$std-web-dpi), -zf-bp-to-em($bp-next) - (1/16));
     }
   }
 
