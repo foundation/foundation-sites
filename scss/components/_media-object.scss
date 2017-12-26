@@ -38,6 +38,12 @@ $mediaobject-image-width-stacked: 100% !default;
       }
     }
   }
+
+  &.stack-for-#{$-zf-zero-breakpoint} .media-object-section {
+    @include breakpoint($-zf-zero-breakpoint only) {
+      @include media-object-stack;
+    }
+  }
 }
 
 /// Adds styles for sections within a media object.
@@ -61,12 +67,6 @@ $mediaobject-image-width-stacked: 100% !default;
 
   > :last-child {
     margin-bottom: 0;
-  }
-
-  .stack-for-#{$-zf-zero-breakpoint} & {
-    @include breakpoint($-zf-zero-breakpoint only) {
-      @include media-object-stack;
-    }
   }
 
   @if $global-flexbox {
