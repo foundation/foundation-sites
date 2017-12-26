@@ -79,7 +79,7 @@ $header-styles: (
   @each $size, $headers in $header-sizes {
     $header-map: ();
     @each $header, $font-size in $headers {
-      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));  
+      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));
     }
     $header-styles: map-merge($header-styles, ($size: $header-map));
   }
@@ -215,9 +215,9 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 /// @type List
 $blockquote-border: 1px solid $medium-gray !default;
 
-/// Text color for `<cite>` elements.
-/// @type Color
-$cite-color: $dark-gray !default;
+/// Use the `.cite-block` component as default for `<cite>` elements.
+/// @type Boolean
+$enable-cite-block: true;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
@@ -447,16 +447,15 @@ $abbr-underline: 1px dotted $black !default;
       line-height: $paragraph-lineheight;
       color: $blockquote-color;
     }
-
-    // Citations
-    cite {
-      @include block-citation;
-    }
   }
 
   // Inline Citations
-  cite {
-    color: $cite-color;
+  @if ($enable-cite-block == true) {
+    cite {
+      // Extending a class is not recommanded.
+      // TODO: Break the typography-base/typography-helpers separation
+      @extend .cite-block;
+    }
   }
 
   // Abbreviations
@@ -470,7 +469,7 @@ $abbr-underline: 1px dotted $black !default;
   figure {
     margin: 0;
   }
-  
+
   // Code
   code {
     padding: $code-padding;
