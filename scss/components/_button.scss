@@ -42,10 +42,13 @@ $button-color-alt: $black !default;
 /// @type Number
 $button-radius: $global-radius !default;
 
+/// Border for buttons, transparent by default
+/// @type List
+$button-border: 1px solid transparent !default;
+
 /// Border width for hollow outline buttons
 /// @type Number
-$button-border-width: 1px !default;
-$button-hollow-border-width: $button-border-width !default;
+$button-hollow-border-width: 1px !default;
 
 /// Sizes for buttons.
 /// @type Map
@@ -101,7 +104,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   }
 
   -webkit-appearance: none;
-  border: $button-border-width solid transparent;
+  border: $button-border;
   border-radius: $button-radius;
   transition: $button-transition;
 
