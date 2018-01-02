@@ -304,6 +304,18 @@ describe('Drilldown Menu', function() {
 
       $html.find('> li:nth-child(1) > ul').should.have.class('is-active');
     });
+    it('focuses parent link if parentLink is true', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {parentLink: true});
+
+      $html.find('> li:nth-child(1) > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+      
+      setTimeout(function() { // Timeout to make sure transition has ended
+        $html.find('> li:nth-child(1) > ul > li[data-is-parent-link] a')[0].should.be.equal(document.activeElement);
+        done();
+      }, 500);
+    });
     it('closes child element on ARROW_LEFT', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Drilldown($html, {});

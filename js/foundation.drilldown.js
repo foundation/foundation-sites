@@ -226,7 +226,7 @@ class Drilldown extends Plugin {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(transitionend($element), function(){
-              $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
+              $element.parent('li').find('ul li a').not('.js-drilldown-back a').first().focus();
             });
             return true;
           }
@@ -258,7 +258,9 @@ class Drilldown extends Plugin {
           }
         },
         open: function() {
-          if (!$element.is(_this.$menuItems)) { // not menu item means back button
+          if (_this.options.parentLink && $element.attr('href')) { // Link with href
+            return false;
+          } else if (!$element.is(_this.$menuItems)) { // not menu item means back button
             _this._hide($element.parent('li').parent('ul'));
             $element.parent('li').parent('ul').one(transitionend($element), function(){
               setTimeout(function() {
@@ -266,10 +268,10 @@ class Drilldown extends Plugin {
               }, 1);
             });
             return true;
-          } else if ($element.is(_this.$submenuAnchors)) {
+          } else if ($element.is(_this.$submenuAnchors)) { // Sub menu item
             _this._show($element.parent('li'));
             $element.parent('li').one(transitionend($element), function(){
-              $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
+              $element.parent('li').find('ul li a').not('.js-drilldown-back a').first().focus();
             });
             return true;
           }
