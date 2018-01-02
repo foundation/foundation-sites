@@ -253,9 +253,9 @@ Magellan.defaults = {
    * Update the browser history with the active link, if deep linking is enabled.
    * @option
    * @type {boolean}
-   * @default true
+   * @default false
    */
-  updateHistory: true,
+  updateHistory: false,
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option
