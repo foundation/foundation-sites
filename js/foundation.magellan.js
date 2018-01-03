@@ -179,7 +179,11 @@ class Magellan extends Plugin {
       if(hash !== window.location.hash) {
         if(window.history.pushState){
           var url = curIdx !== undefined ? hash : window.location.pathname;
-          window.history.pushState(null, null, url);
+          if(this.options.updateHistory){
+            window.history.pushState({}, '', url);
+          }else{
+            window.history.replaceState({}, '', url);
+          }
         }else{
           window.location.hash = hash;
         }
@@ -250,6 +254,13 @@ Magellan.defaults = {
    * @default false
    */
   deepLinking: false,
+  /**
+   * Update the browser history with the active link, if deep linking is enabled.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false,
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option

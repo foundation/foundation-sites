@@ -86,3 +86,10 @@ This below example is a simplified version of the table of contents on the right
 </div>
 ```
 
+---
+
+## Browser history
+
+When the `data-deep-link` option is set to `true`, the active section of the magellan is recorded by adding a hash with the active magellan section ID to the browser URL. By default, magellan *replace* the browser history (using `history.replaceState()`).
+
+Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each section the magellan gone through (in most case, this is not recommended).
