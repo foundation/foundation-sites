@@ -165,7 +165,11 @@ class Magellan extends Plugin {
     }
 
     this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+    if(curIdx !== undefined){
+      this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+    }else{
+      this.$active = $();
+    }
 
     if(this.options.deepLinking){
       var hash = "";
@@ -174,7 +178,8 @@ class Magellan extends Plugin {
       }
       if(hash !== window.location.hash) {
         if(window.history.pushState){
-          window.history.pushState(null, null, hash);
+          var url = curIdx !== undefined ? hash : window.location.pathname;
+          window.history.pushState(null, null, url);
         }else{
           window.location.hash = hash;
         }
