@@ -169,7 +169,7 @@ class Magellan extends Plugin {
 
     if(this.options.deepLinking){
       var hash = "";
-      if(curIdx != undefined){
+      if(curIdx !== undefined){
         hash = this.$active[0].getAttribute('href');
       }
       if(hash !== window.location.hash) {
