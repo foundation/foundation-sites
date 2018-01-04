@@ -178,7 +178,10 @@ class Magellan extends Plugin {
       }
       if(hash !== window.location.hash) {
         if(window.history.pushState){
-          var url = curIdx !== undefined ? hash : window.location.pathname;
+          // If there is no active idx, move to the same url without hash
+          // https://stackoverflow.com/a/5298684/4317384
+          var url = curIdx !== undefined ? hash : window.location.pathname + window.location.search;
+
           if(this.options.updateHistory){
             window.history.pushState({}, '', url);
           }else{
