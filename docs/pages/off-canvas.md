@@ -15,6 +15,11 @@ tags:
 flex: true
 ---
 
+<div class="callout training-callout">
+  <p>Off-canvas layouts are common and useful for mobile and desktop layouts. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+</div>
+
 <div class="primary callout">
   <p>Good news! We've updated Off-canvas to offer more and better functionality. Another bonus is the markup is simplified. This new version applies to version 6.3+. We work hard to avoid breaking changes, so any markup updates are listed in the <a href="#migrating-from-versions-prior-to-v6-3">migration section</a> of this page.</p>
 </div>
@@ -250,7 +255,10 @@ You can switch the default transition of the off-canvas from pushing the page ov
 There are 2 available transitions: push (`data-transition="push"`) which is the default, and overlap (`data-transition="overlap"`).
 
 ```html
-<div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas>
+<div class="off-canvas position-left" id="offCanvasLeftOverlap" data-off-canvas data-transition="overlap">
+  <!-- Your menu or Off-canvas content goes here -->
+</div>
+<div class="off-canvas position-right" id="offCanvasRightPush" data-off-canvas data-transition="push">
   <!-- Your menu or Off-canvas content goes here -->
 </div>
 ```
@@ -258,7 +266,7 @@ There are 2 available transitions: push (`data-transition="push"`) which is the 
 <button type="button" class="button" data-toggle="offCanvasOverlap">Open Left with Overlap</button>
 <button class="button" type="button" data-toggle="offCanvasRight">Open Right with Push</button>
 
-<div class="off-canvas position-left" id="offCanvasOverlap" data-off-canvas data-transition="overlap">
+<div class="off-canvas position-left is-closed" id="offCanvasOverlap" data-off-canvas data-transition="overlap">
   <ul class="vertical menu">
     <li><a href="#">Foundation</a></li>
     <li><a href="#">Dot</a></li>
@@ -330,9 +338,95 @@ If you need a simple bar to contain your hamburger icon/s and toggle the off-can
 
 ---
 
-#### Responsive Off-Canvas (Putting it all together)
+#### Off-Canvas (Putting it all together)
 
-For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, check out this Building Block: http://zurb.com/building-blocks/top-bar-with-off-canvas
+For an example of off-canvas, checkout this top bar with off-canvas navigation and dropdowns for submenus building block: http://foundation.zurb.com/building-blocks/blocks/multilevel-offcanvas-menu.html
+
+---
+
+## In-Canvas to Off-Canvas
+
+With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. This differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+
+```html_example
+<button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
+  Open in-canvas that is off-canvas now
+</button>
+<div class="off-canvas in-canvas-for-large position-right" id="inCanvasExample" data-off-canvas>
+  <div class="callout">I'm in-canvas for medium screen size and move off-canvas for medium down.</div>
+</div>
+```
+
+---
+
+## Nested Off-Canvas
+
+In v6.4 the off-canvas component has been heavily extended. Apart from the <a href="#in-canvas">In-Canvas</a> feature it is now possible to nest the element in the content instead of using it only as a sibling. This is handy if you want to use the same element e.g. for small screens as off-canvas and for large screens as usual page element without duplicate content.
+
+Another improvement is the support of several off-canvas elements that share the same position e.g. two elements with `position-left`.
+
+Advanced off-canvas users may use the new `contentId` option to bind an element to a content. This lets you place the element much more flexibly as it may be a sibling of the content, a child or none of it.<br>
+<strong>Important:</strong> when using the `contentId` on a nested element you must also use the new `nested` option and tell the JavaScript it's nested!
+
+<div class="callout warning">
+  Please note that it's currently not possible to use the push transition for a nested off-canvas element.
+</div>
+
+```html_example
+<button type="button" class="button" data-toggle="offCanvasNestedPush">
+  Open Nested Off-Canvas Push
+</button>
+<button type="button" class="button" data-toggle="offCanvasNestedOverlap">
+  Open Nested Off-Canvas Overlap
+</button>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+<div class="off-canvas position-left is-closed" id="offCanvasNestedPush" data-off-canvas>
+  <div class="callout">
+    <p>I'm a nested off-canvas that mustn't be a sibling of the off-canvas content anymore.</p>
+    <p>Since push transition is currently not possible for nested elements, I'm forced to use overlayp transition.</p>
+  </div>
+</div>
+<div class="off-canvas position-left is-closed" data-transition="overlap" id="offCanvasNestedOverlap" data-off-canvas>
+  <div class="callout">I'm a nested off-canvas that uses overlap transition and the same position as the other nested off-canvas.</div>
+</div>
+
+<p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
+```
+
+---
+
+## Off-canvas Sizes
+
+In v6.4.2 the type of the off-canvas size variables has changed from number to map. This lets you define breakpoint specific sizes instead of one value for all.
+The map may contain every key that is defined in `$breakpoint-classes`.
+
+<div class="warning callout">
+  Please note the sizes maps do currently not work perfectly for the reveal classes. If sizes are defined for medium and large, `.reveal-for-medium` will only consider the medium value. This is going to get fixed in a future release.
+</div>
+
+```scss
+$offcanvas-sizes: (
+  small: 250px,
+  medium: 350px,
+);
+$offcanvas-vertical-sizes: (
+  small: 250px,
+  medium: 350px,
+);
+```
+
+---
+
+## Migrating from versions prior to v6.4
+
+If you're upgrading from v6.3 there's nothing to do unless you haven't changed the default value of `$offcanvas-shadow`. Prior to v6.4 this variable was used for both, overlap and push off-canvas elements. Now it's only used for the overlap element whereas the push element uses two new variables:
+
+- `$offcanvas-inner-shadow-size` which is a number (mostly px)
+- `$offcanvas-inner-shadow-color` which is a color (mostly rgba)
+
+So if you have changed the default off-canvas shadow you have to adjust the value of these variables in your settings.
 
 ---
 

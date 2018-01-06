@@ -9,9 +9,18 @@ import { Plugin } from './foundation.plugin';
  * @module foundation.smooth-scroll
  */
 class SmoothScroll extends Plugin {
+  /**
+   * Creates a new instance of SmoothScroll.
+   * @class
+   * @name SmoothScroll
+   * @fires SmoothScroll#init
+   * @param {Object} element - jQuery object to add the trigger to.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
     _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+        this.className = 'SmoothScroll'; // ie9 back compat
 
         this._init();
     }
@@ -43,15 +52,15 @@ class SmoothScroll extends Plugin {
             if(!$(this).is('a[href^="#"]'))  {
                 return false;
             }
-            
+
             var arrival = this.getAttribute('href');
-            
+
             _this._inTransition = true;
 
             SmoothScroll.scrollToLoc(arrival, _this.options, function() {
                 _this._inTransition = false;
             });
-            
+
             e.preventDefault();
         };
 

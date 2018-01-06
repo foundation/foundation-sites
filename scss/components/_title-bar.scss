@@ -42,7 +42,7 @@ $titlebar-icon-spacing: 0.25rem !default;
 
     @if $global-flexbox {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
     }
     @else {

@@ -5,6 +5,11 @@ sass: scss/grid/_flex-grid.scss
 video: tpmQcZSPw4Q
 ---
 
+<div class="callout training-callout">
+  <p>Become a master of the Foundation Grids to create complex layouts faster and with less code. The new XY Grid is the newest and most powerful version. Stay up-to-date with all the new features in Foundation 6.4 and learn how to migrate to the XY Grid with our online webinar training. You’ll also learn all the useful UI components and Foundation JavaScript to really crush your projects.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Get registered for an upcomming Foundation training →</a>
+</div>
+
 The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing, and easier source ordering.
 
 ---
@@ -311,7 +316,7 @@ Similar alignment classes can also be applied to individual columns, which use t
 
 The `.collapse` class lets you remove column gutters (padding).
 
-There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
+There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows gutters at small and medium and no gutters on large and up.
 
 The `.is-collapse-child` class removes negative margins from nested row under collapsed parent.
 
@@ -363,43 +368,6 @@ Offsets work identically to the float grid, by applying `margin-left` to a colum
 <div class="row">
   <div class="small-4 large-offset-2 columns">Offset 2 on large</div>
   <div class="small-4 columns">4 columns</div>
-</div>
-```
-
----
-
-## Source Ordering
-
-Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without weird relative positioning tricks.
-
-The CSS property is easy enough to remember.
-
-```scss
-.element {
-  order: 1;
-}
-```
-
-Columns within a row will be sorted by their `order` property. Lower numbers are placed first. If multiple columns have the same number, they're sorted in the order they appear in the HTML.
-
-We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
-
-<p>
-  <a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-</p>
-
-<div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/gWedmK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
-</div>
-
-```html_example
-<div class="row">
-  <div class="column small-order-2 medium-order-1">
-    This column will come second on small, and first on medium and larger.
-  </div>
-  <div class="column small-order-1 medium-order-2">
-    This column will come first on small, and second on medium and larger.
-  </div>
 </div>
 ```
 

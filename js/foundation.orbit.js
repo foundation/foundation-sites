@@ -24,12 +24,14 @@ class Orbit extends Plugin {
   /**
   * Creates a new instance of an orbit carousel.
   * @class
+  * @name Orbit
   * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
   * @param {Object} options - Overrides to the default plugin settings.
   */
   _setup(element, options){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
+    this.className = 'Orbit'; // ie9 back compat
 
     Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
 
@@ -147,7 +149,7 @@ class Orbit extends Plugin {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (_this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
+      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
         $(this).css({'position': 'relative', 'display': 'none'});
       }
       max = temp > max ? temp : max;

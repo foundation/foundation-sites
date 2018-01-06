@@ -12,6 +12,11 @@ tags:
 flex: true
 ---
 
+<div class="callout training-callout">
+  <p>Navigation is one the most crucial part of your site. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+</div>
+
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
 
 ---
@@ -64,27 +69,21 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 
 <br>
 
-To align items in the middle, add a wrapping element with the class `.menu-centered`.
+To align items in the middle, add `.align-center` to the `.menu` class.
 
 <a class="" data-open-video="2:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-<div class="primary callout">
-  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="https://codepen.io/IamManchanda/pen/bWMXKQ?editors=1100">codepen</a> or instead you can use the default wrapper class below.</p>
-</div>
-
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxXxO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbOypm?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<div class="menu-centered">
-  <ul class="menu">
-    <li><a href="#">One</a></li>
-    <li><a href="#">Two</a></li>
-    <li><a href="#">Three</a></li>
-    <li><a href="#">Four</a></li>
-  </ul>
-</div>
+<ul class="menu align-center">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
 ```
 
 <br>
@@ -135,6 +134,39 @@ Add the `.vertical` class to a Menu to switch its orientation.
 
 ```html_example
 <ul class="vertical menu">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+```
+
+<br>
+
+Add `align-right` class for making the vertical menu aligned to the right.
+
+```html_example
+<ul class="vertical menu align-right">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
+```
+
+<br>
+
+Add `align-center` class for making the vertical menu aligned to the center.
+
+<div class="warning callout">
+  <p>
+    The above vertically left &amp; right aligned menu are supported in all types of menu's. <br>
+    But `align-center` for vertical menu&rsquo;s is only available for basic menu and is not available for dropdown, accordion or a drilldown menu.
+  </p>
+</div>
+
+```html_example
+<ul class="vertical menu align-center">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -267,18 +299,71 @@ Menu items can have icons. Wrap the text of the item in a `<span>`, and then add
 
 ---
 
-Add the class `.icon-top` to the Menu to orient icons above the text.
+Add the class `.icons` to the parent menu container to specify that the menu contains icons. Along with this, add your choice of layout class, such as `.icon-top`.
+
+When using any of the menu icon layout classes, ensure that the icon and the text are in the correct order. For `.icon-right` and `.icon-bottom`, the icon must come AFTER the text.
 
 <p>
   <a class="" data-open-video="10:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
+<br>
+
+### Icon Top
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmrYjN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EXLmxO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<ul class="menu icon-top">
+<ul class="menu icons icon-top">
+  <li><a href="#"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
+</ul>
+```
+
+<br>
+
+### Icon Right
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vZjmEE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="menu icons icon-right">
+  <li><a href="#"><span>One</span> <i class="fi-list"></i></a></li>
+  <li><a href="#"><span>Two</span> <i class="fi-list"></i></a></li>
+  <li><a href="#"><span>Three</span> <i class="fi-list"></i></a></li>
+  <li><a href="#"><span>Four</span> <i class="fi-list"></i></a></li>
+</ul>
+```
+
+<br>
+
+### Icon Bottom
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vZjmOE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="menu icons icon-bottom">
+  <li><a href="#"><span>One</span> <i class="fi-list"></i></a></li>
+  <li><a href="#"><span>Two</span> <i class="fi-list"></i></a></li>
+  <li><a href="#"><span>Three</span> <i class="fi-list"></i></a></li>
+  <li><a href="#"><span>Four</span> <i class="fi-list"></i></a></li>
+</ul>
+```
+
+<br>
+
+### Icon Left
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qjYmdG?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="menu icons icon-left">
   <li><a href="#"><i class="fi-list"></i> <span>One</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Two</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>

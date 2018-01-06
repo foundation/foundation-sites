@@ -148,7 +148,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 </div>
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.3.1</small></h3>
+<h3>Foundation for Sites <small>Version 6.4.0</small></h3>
 ```
 
 ---
@@ -260,6 +260,10 @@ A definition list (`<dl>`) is used to display name-value pairs, like metadata or
 ## Blockquotes
 
 Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
+
+<div class="callout">
+  By default, `<cite>` takes the look of the `.cite-block` component. In Sass, you can customize it with <a href="#sass-variables">`$cite-*` variables</a> or disable it by setting `$enable-cite-block` to false.
+</div>
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKoJMb" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -379,4 +383,4 @@ On top of that, Foundation includes a couple of simple classes you can use to co
 
 <div class="callout primary">
   <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
-+</div>
+</div>

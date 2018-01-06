@@ -16,6 +16,10 @@ tags:
   <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can't Detect a Touchscreen</a></p>
 </div>
 
+<div class="callout alert">
+  <p><strong>Deprecation Notice:</strong> From v6.5.x, we are moving visibility classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+</div>
+
 ## Show by Screen Size
 
 In this example, we use the `.show` visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class's conditions, the element will be shown. If not, it will be hidden.
@@ -116,7 +120,7 @@ To hide text from assistive technology, while still keeping it visible, add the 
 
 If your site has a lot of navigation, a screen reader will have to read through the entire navigation to get to your site's content. To remedy this, you can add a *skip link* at the very top of your page, which will send the user farther down the page, past the navigation when clicked on.
 
-Use the class `.show-on-focus` to hide an element, except when it has focus. Adding tabindex="0" to the target element makes if focusable.
+Use the class `.show-on-focus` to hide an element, except when it has focus. Adding `tabindex="-1"` to the target element makes it focusable. (Or set it to `0` if the user should be able to tab to that element as well. See also [the MDN docs on `tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).)
 
 ```html_example
 <p><a class="show-on-focus" href="#mainContent">Skip to Content</a></p>

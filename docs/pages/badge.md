@@ -98,14 +98,14 @@ $badge-palette: (
 The text color for each badge class is determined by either `$badge-color` or `$badge-color-alt`, whichever settings variable has more contrast.
 
 <div class="primary callout">
-  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all badges the same color text, set `$badge-color` and `$badge-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](https://webaim.org/resources/contrastchecker/) when changing color variables. To give all badges the same color text, set `$badge-color` and `$badge-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
 </div>
 
 ---
 
 ## Icons
 
-An icon can be used in place of text. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
+An icon can be used in place of text. We're using the [Foundation icon font](https://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 
 <p>
   <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

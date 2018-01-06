@@ -18,7 +18,7 @@ $buttongroup-spacing: 1px !default;
 /// @type String
 $buttongroup-child-selector: '.button' !default;
 
-/// Maximum number of buttons that can be in an even-width button group.
+/// Maximum number of buttons that can be in an even-width button group. (Only needed when $global-flexbox: false;)
 /// @type Number
 $buttongroup-expand-max: 6 !default;
 
@@ -122,7 +122,7 @@ $buttongroup-radius-on-each: true !default;
     @else {
       // One child
       &:first-child:last-child {
-        width: 100%
+        width: 100%;
       }
 
       // Two or more childreen
@@ -190,7 +190,7 @@ $buttongroup-radius-on-each: true !default;
 ) {
   #{$selector} {
     @if $global-flexbox {
-      flex: 1 1 0px; // sass-lint:disable-line zero-unit
+      flex: 0 0 auto;
     }
     @else {
       width: auto;
@@ -226,10 +226,12 @@ $buttongroup-radius-on-each: true !default;
     }
 
     // Even-width Group
-    &.expanded { @include button-group-expand; }
+    &.expanded {
+      @include button-group-expand;
+    }
 
     // Colors
-    @each $name, $color in $foundation-palette {
+    @each $name, $color in $button-palette {
       @if $button-fill != hollow {
         &.#{$name} #{$buttongroup-child-selector} {
           @include button-style($color, auto, auto);
@@ -247,6 +249,10 @@ $buttongroup-radius-on-each: true !default;
     &.stacked-for-small,
     &.stacked-for-medium {
       @include button-group-stack;
+
+      &.expanded {
+        @include button-group-expand;
+      }
     }
 
     &.stacked-for-small {
@@ -263,6 +269,17 @@ $buttongroup-radius-on-each: true !default;
 
     &.stacked-for-small.expanded { // sass-lint:disable-line force-element-nesting
       @include breakpoint(small only) {
+        display: block;
+
+        #{$buttongroup-child-selector} {
+          display: block;
+          margin-#{$global-right}: 0;
+        }
+      }
+    }
+
+    &.stacked-for-medium.expanded { // sass-lint:disable-line force-element-nesting
+      @include breakpoint(medium down) {
         display: block;
 
         #{$buttongroup-child-selector} {

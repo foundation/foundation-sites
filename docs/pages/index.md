@@ -19,6 +19,11 @@ There are a number of ways to install Foundation for Sites. Our installation pag
 
 ## New to Foundation for Sites?
 
+<div class="callout training-callout">
+  <p>The number one way to learn your way around Foundation and start mastering responsive web development is via the training courses offered by the ZURB team.</p>
+  <a class="button" href="http://zurb.com/university/foundation-intro" target="_blank">Check out the next Foundation training →</a>
+</div>
+
 With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
 
 <ul class="accordion welcome-accordion" data-accordion data-allow-all-closed="true">
@@ -29,7 +34,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a href="{{root}}starter-projects.html?video=lFrpnk0Oo_8" target="_blank">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/lFrpnk0Oo_8/maxresdefault.jpg" class="" height="" width="" alt="">
+            <img src="https://i3.ytimg.com/vi/lFrpnk0Oo_8/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Starter Projects - CSS Download</h5>
@@ -42,7 +47,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a href="{{root}}starter-projects.html?video=3Uj74uJ3GSQ" target="_blank">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/3Uj74uJ3GSQ/maxresdefault.jpg" class="" height="" width="" alt="">
+            <img src="https://i3.ytimg.com/vi/3Uj74uJ3GSQ/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Starter Projects - ZURB Stack</h5>
@@ -91,7 +96,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <!-- <div class="row accordion-content-item">
         <div class="medium-4 columns accordion-content-item-thumbnail">
           <div class="responsive-embed widescreen">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            <img src="https://placehold.it/300x300" class="" height="" width="" alt="">
           </div>
         </div>
         <div class="medium-8 columns">
@@ -113,7 +118,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://foundation.zurb.com/templates.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://foundation.zurb.com/assets/img/sites-templates/foundation6-templates-07.svg">
+            <img src="https://foundation.zurb.com/assets/img/sites-templates/foundation6-templates-07.svg">
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Templates</h5>
@@ -126,7 +131,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="" style="height: 142px;">
+            <img src="https://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="" style="height: 142px;">
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Building Blocks</h5>
@@ -181,7 +186,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
+    </div>
   </li>
 
 </ul>
@@ -197,14 +202,14 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Latest Foundation Updates</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://zurb.us/2gFxwrP">
+      <a target="_blank" href="http://zurb.com/blog/foundation-6-4-a-new-grid-javascript-upgrades-and-slick-new-prototyping-mode">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="{{root}}assets/img/docs-630.png" class="" height="" width="" alt="">
+            <img src="https://i3.ytimg.com/vi/vrvt9xMFjIE/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
-            <h5>Foundation 6.3 Update: Cards, Mutation Observers, Off Canvas and More</h5>
-            <p>Our biggest update since we first released Foundation 6 last year, the 6.3 update adds loads of new components including Cards, Mutation Observers, an improved Off Canvas and more. Big thanks to our international community for all of their hard work!</p>
+            <h5>Foundation 6.4.0 Update: A New Grid, JavaScript Upgrades, and Slick New Prototyping Mode</h5>
+            <p>Foundation 6.4 has dropped and it is AWESOME. This new release is jampacked with some incredible new features that enable you to build layouts and designs with Foundation that weren’t possible before.</p>
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
@@ -233,7 +238,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="">
+            <img src="https://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Building Blocks Accelerate Your Development</h5>
@@ -246,7 +251,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://foundation.zurb.com/building-blocks/how-to.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/adLpmsU9v2g/maxresdefault.jpg" class="" height="" width="" alt="">
+            <img src="https://i3.ytimg.com/vi/adLpmsU9v2g/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>How to Use ZURB Foundation's Building Blocks</h5>
@@ -350,7 +355,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://foundation.zurb.com/showcase/case-studies.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://foundation.zurb.com/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
+            <img src="https://foundation.zurb.com/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Case Studies</h5>

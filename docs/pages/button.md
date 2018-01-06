@@ -1,11 +1,16 @@
 ---
 title: Button
 description: Buttons are convenient tools when you need more traditional actions. To that end, Foundation has many easy to use button styles that you can customize or override to fit your needs.
-video: Qe8KHC2ZtMM
+video: iEAtuFk4-LQ
 sass: scss/components/_button.scss
 tags:
   - dropdown button
 ---
+
+<div class="callout training-callout">
+  <p>To help you get the most out of Foundation and create responsive websites and apps like us we’ve put together some unique online webinar training. Learn Foundation’s Grid, how to use and modify Foundation's UI components, Foundation’s JavaScript options and functions, and tons of tips and tricks we learned from major client projects.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Learn more about Foundation training →</a>
+</div>
 
 ## Basics
 
@@ -14,7 +19,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 - Use the `<a>` tag if the button is a link to another page, or a link to an anchor within a page. Generally anchors don't require JavaScript to work.
 - Use the `<button>` tag if the button performs an action that changes something on the current page. `<button>` elements almost always require JavaScript to function.
 
-<a class="" data-open-video="0:51"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="0:34"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="primary callout">
   <p>Add the attribute <code>type="button"</code> to <code>&lt;button&gt;</code> elements, unless the button submits a form, in which case you use <code>type="submit"</code></p>
 </div>
@@ -40,7 +45,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 Additional classes can be added to your button to change its size and shape.
 
 <p>
-  <a class="" data-open-video="2:08"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="3:23"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -56,6 +61,24 @@ Additional classes can be added to your button to change its size and shape.
 <a class="button small expanded" href="#">Wow, Small Expand</a>
 ```
 
+### Responsive Expanded buttons
+
+If you are using the Sass version, you can activate these additional responsive button expand classes by changing the `$button-responsive-expanded` variable to true. (It is false by default to reduce CSS file size.)
+
+For CSS download users, you can [get the CSS here](https://gist.github.com/rafibomb/2497ca75ceedfa3f5ccf3ba146eae295) and add it to your stylesheet.
+
+```html_example
+<a class="button small small-only-expanded" href="#">Wow, Expand only on small viewport</a>
+<a class="button small medium-only-expanded" href="#">Expand only on medium viewport</a>
+<a class="button small large-only-expanded" href="#">Expand only on large viewport</a>
+
+<a class="button small medium-expanded" href="#">Wow, Expand on medium and larger</a>
+<a class="button small large-expanded" href="#">Expand on large and larger</a>
+
+<a class="button small medium-down-expanded" href="#">Expand on medium and smaller</a>
+<a class="button small large-down-expanded" href="#">Expand on large and smaller</a>
+```
+
 ---
 
 ## Coloring
@@ -63,7 +86,7 @@ Additional classes can be added to your button to change its size and shape.
 Add color classes to give buttons additional meaning.
 
 <p>
-  <a class="" data-open-video="2:52"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="5:41"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 
@@ -144,7 +167,7 @@ Add the `.hollow` class to a button to give it a hollow style. Change the `$butt
 The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
 
 <p>
-  <a class="" data-open-video="3:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="8:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-video-codepen-container">
@@ -178,7 +201,7 @@ Alternatively, you can also use disabled hollow buttons.
 Add the `.clear` class to a button to give it a clear style. Change the `$button-fill` variable in your settings file to `clear` to make this the default style. Changing this setting will remove the `.clear` class from your CSS.
 
 <p>
-  <a class="" data-open-video="4:04"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="7:37"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 

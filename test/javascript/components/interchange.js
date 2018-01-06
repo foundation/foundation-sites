@@ -12,7 +12,7 @@ describe('Interchange', function() {
     switch (type) {
       case 'image':
       case 'background':
-        return `_build/assets/img/interchange/${size}.jpg`;
+        return `_build/assets/img/interchange/strip_icc()/${size}.jpg`;
       default:
         return `_build/assets/partials/interchange-${size}.html`;
     }
@@ -79,7 +79,7 @@ describe('Interchange', function() {
 
       plugin.replace(getPath('background', 'large'));
 
-      $html[0].style.backgroundImage.should.contain(getPath('background', 'large'));
+      $html[0].style.backgroundImage.should.contain(getPath('background', 'large').replace(/\(/g, '%28').replace(/\)/g, '%29'));
     });
 
     it('replaces contents of div with templates', function() {
@@ -132,7 +132,7 @@ describe('Interchange', function() {
       plugin.rules.length.should.be.equal(3);
     });
 
-     it('extracts special queries from the plugin element', function() {
+    it('extracts special queries from the plugin element', function() {
       $html = $(generateTemplate('image')).attr('data-interchange', '[image.png, retina]').appendTo('body');
       plugin = new Foundation.Interchange($html, {});
 

@@ -15,6 +15,7 @@ class Accordion extends Plugin {
   /**
    * Creates a new instance of an accordion.
    * @class
+   * @name Accordion
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - a plain object with settings to override the default options.
@@ -23,6 +24,7 @@ class Accordion extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
+    this.className = 'Accordion'; // ie9 back compat
     this._init();
 
     Keyboard.register('Accordion', {
@@ -80,7 +82,7 @@ class Accordion extends Plugin {
           //roll up a little to show the titles
           if (this.options.deepLinkSmudge) {
             var _this = this;
-            $(window).load(function() {
+            $(window).on('load', function() {
               var offset = _this.$element.offset();
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });

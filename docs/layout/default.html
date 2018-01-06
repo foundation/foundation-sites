@@ -9,13 +9,12 @@
   <link rel="icon" href="assets/img/icons/foundation-favicon.ico" type="image/x-icon">
   <title>{{#unlesspage 'index'}}{{title}} | {{/unlesspage}}Foundation for Sites 6 Docs</title>
   <link href="assets/css/docs.css?t=1" rel="stylesheet" />
-  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
 
-  <!-- Info Banner For Announcements or Links -->
   <!-- <a href="http://zurb.com/wired" id="notice">
     <div class="info">
       <div id="clockdiv" class="countdown">
@@ -31,19 +30,17 @@
   </a> -->
 
   <div class="off-canvas-wrapper">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-      {{> off-canvi}}
-    </div>
+    {{> off-canvi}}
 
     <div class="docs-off-canvas-content off-canvas-content" data-off-canvas-content>
-      <!-- Info Banner For Announcements or Links -->
-      <!-- <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
-        <div class="info">
-          <h5>Foundation 6 is here!</h5>
-        </div>
-      </a> -->
-
       <div class="docs-sticky-top-bar">
+        <!-- Info Banner For Announcements or Links -->
+ <!--        <a href="http://zurb.com/university/foundation-intro" class="docs-banner course-banner">
+          <div class="info">
+            <h5 class=""><strong>To master everything new in 6.4, along with the rest of Foundation register for our August 8th Webinar Class &rsaquo;</strong></h5>
+          </div>
+        </a>
+ -->
         {{> navigation}}
         {{> mobile-navigation}}
         {{> search-bar}}
@@ -62,6 +59,8 @@
         </div>
       </div>
 
+      {{> newsletter-signup-rr}}
+      {{> footer-contact}}
       {{> footer}}
     </div>
   </div>
@@ -118,7 +117,6 @@
   <script src="assets/js/plugins/foundation.responsiveAccordionTabs.js"></script>
 
   <script src="assets/js/docs.js"></script>
-  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
   <script type="text/javascript">
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -139,7 +137,6 @@
     twq('track','PageView');
   </script>
   <!-- End Twitter universal website tag code -->
-
 
 </body>
 </html>
