@@ -241,6 +241,19 @@ $buttongroup-radius-on-each: true !default;
         }
       }
     }
+
+    // Clear style
+    @if $button-fill != clear {
+      &.clear {
+        #{$buttongroup-child-selector} {
+          @include button-clear;
+          @include button-clear-style;
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} #{$buttongroup-child-selector} {
+            @include button-clear-style($color);
+          }
         }
       }
     }
