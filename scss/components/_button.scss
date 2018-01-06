@@ -212,6 +212,10 @@ $button-responsive-expanded: false !default;
   }
 }
 
+/// Sets the visual style of a hollow button.
+/// @param {Color} $color [$button-background] - Text and border color of the button.
+/// @param {Color} $hover-lightness [$button-hollow-hover-lightness] - Color lightness on hover.
+/// @param {Color} $border-width [$button-hollow-border-width] - Border width of the button.
 @mixin button-hollow-style(
   $color: $button-background,
   $hover-lightness: $button-hollow-hover-lightness,
