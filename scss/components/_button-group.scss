@@ -81,10 +81,10 @@ $buttongroup-radius-on-each: true !default;
   $selector: $buttongroup-child-selector
 ) {
   #{$selector} {
-    margin-#{$global-right}: 0;
+    margin-#{$global-right}: -1px;
 
     + #{$child-selector} {
-      border-#{$global-left}: 0;
+      border-#{$global-left}-color: transparent;
     }
   }
 }
