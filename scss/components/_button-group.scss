@@ -73,19 +73,8 @@ $buttongroup-radius-on-each: true !default;
       }
     }
   }
+}
 
-  // Hollow style
-  &.hollow {
-    @each $name, $color in $button-palette {
-      &.#{$name} #{$child-selector},
-      &.#{$name} #{$child-selector}:hover,
-      &.#{$name} #{$child-selector}:focus {
-        @include button-hollow-style($color);
-        background-color: $white;
-      }
-    }
-  }
-  
   // No Gaps
   &.no-gaps {
     #{$child-selector} {
@@ -230,17 +219,28 @@ $buttongroup-radius-on-each: true !default;
       @include button-group-expand;
     }
 
-    // Colors
+    // Default style (according to $button-fill)
     @each $name, $color in $button-palette {
-      @if $button-fill != hollow {
-        &.#{$name} #{$buttongroup-child-selector} {
-          @include button-style($color, auto, auto);
+      &.#{$name} #{$buttongroup-child-selector} {
+        @include button-fill-style($button-fill, $color, auto, auto);
+      }
+    }
+
+    // Hollow style
+    @if $button-fill != hollow {
+      &.hollow {
+        #{$buttongroup-child-selector} {
+          @include button-hollow;
+          @include button-hollow-style;
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} #{$buttongroup-child-selector} {
+            @include button-hollow-style($color);
+          }
         }
       }
-      @else {
-        &.#{$name} #{$buttongroup-child-selector} {
-          @include button-hollow;
-          @include button-hollow-style($color);
+    }
         }
       }
     }
