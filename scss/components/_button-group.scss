@@ -83,7 +83,7 @@ $buttongroup-radius-on-each: true !default;
   #{$selector} {
     margin-#{$global-right}: -1px;
 
-    + #{$child-selector} {
+    + #{$selector} {
       border-#{$global-left}-color: transparent;
     }
   }
