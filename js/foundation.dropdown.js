@@ -94,7 +94,7 @@ class Dropdown extends Positionable {
 
   _getDefaultAlignment() {
     // handle legacy float approach
-    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.className);
+    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.attr('class'));
     if(horizontalPosition) {
       return horizontalPosition[1];
     }
