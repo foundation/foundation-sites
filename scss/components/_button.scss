@@ -193,8 +193,14 @@ $button-responsive-expanded: false !default;
     $background-hover: scale-color($background, $lightness: $background-hover-lightness);
   }
 
-  background-color: $background;
-  color: $color;
+  // Default and disabled states
+  &,
+  &.disabled, &[disabled],
+  &.disabled:hover, &[disabled]:hover,
+  &.disabled:focus, &[disabled]:focus {
+    background-color: $background;
+    color: $color;
+  }
 
   &:hover, &:focus {
     background-color: $background-hover;
@@ -223,18 +229,18 @@ $button-responsive-expanded: false !default;
 ) {
   $color-hover: scale-color($color, $lightness: $hover-lightness);
 
-  border: $border-width solid $color;
-  color: $color;
+  // Default and disabled states
+  &,
+  &.disabled, &[disabled],
+  &.disabled:hover, &[disabled]:hover,
+  &.disabled:focus, &[disabled]:focus {
+    border: $border-width solid $color;
+    color: $color;
+  }
 
   &:hover, &:focus {
     border-color: $color-hover;
     color: $color-hover;
-  }
-  &, &:hover, &:focus {
-    &.disabled, &[disabled] {
-      border: $border-width solid $color;
-      color: $color;
-    }
   }
 }
 
@@ -258,36 +264,26 @@ $button-responsive-expanded: false !default;
 ) {
   $color-hover: scale-color($color, $lightness: $hover-lightness);
 
-  color: $color;
+  // Default and disabled states
+  &,
+  &.disabled, &[disabled],
+  &.disabled:hover, &[disabled]:hover,
+  &.disabled:focus, &[disabled]:focus {
+    color: $color;
+  }
 
   &:hover, &:focus {
     color: $color-hover;
   }
-  &, &:hover, &:focus {
-    &.disabled, &[disabled] {
-      color: $color;
-    }
-  }
 }
 
-/// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-/// @param {Color} $background [$button-background] - Background color of the disabled button.
-/// @param {Color} $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a color based on the background color.
+/// Adds disabled styles to a button by fading the element and reseting the cursor.
+/// @param {Number} $opacity [$button-opacity-disabled] - Opacity of the disabled button.
 @mixin button-disabled(
-  $background: $button-background,
-  $color: $button-color
+  $opacity: $button-opacity-disabled
 ) {
-  @if $color == auto {
-    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
-  }
-
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
-
-  &, &:hover, &:focus {
-    background-color: $background;
-    color: $color;
-  }
 }
 
 /// Adds a dropdown arrow to a button.
@@ -375,18 +371,6 @@ $button-responsive-expanded: false !default;
       }
     }
 
-    // Disabled style
-    &.disabled,
-    &[disabled] {
-      @include button-disabled;
-
-      @each $name, $color in $button-palette {
-        &.#{$name} {
-          @include button-disabled($color, auto);
-        }
-      }
-    }
-
     // Hollow styles
     @if $button-fill != hollow {
       &.hollow {
@@ -413,6 +397,11 @@ $button-responsive-expanded: false !default;
           }
         }
       }
+    }
+
+    // Disabled state
+    &.disabled, &[disabled] {
+      @include button-disabled;
     }
 
     // Dropdown arrow
