@@ -78,10 +78,11 @@ $buttongroup-radius-on-each: true !default;
 /// Make buttons bonded without gap between them. Borders between buttons are merged
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group-no-gap(
-  $selector: $buttongroup-child-selector
+  $selector: $buttongroup-child-selector,
+  $border-width: $button-hollow-border-width
 ) {
   #{$selector} {
-    margin-#{$global-right}: -1px;
+    margin-#{$global-right}: rem-calc(-$border-width);
 
     + #{$selector} {
       border-#{$global-left}-color: transparent;
