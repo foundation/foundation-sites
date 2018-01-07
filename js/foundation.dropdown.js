@@ -66,12 +66,18 @@ class Dropdown extends Positionable {
       this.$parent = null;
     }
 
+    // Do not change the `labelledby` if it is defined
+    var labelledby = this.$element.attr('aria-labelledby')
+      || this.$currentAnchor.attr('id')
+      || GetYoDigits(6, 'dd-anchor');
+
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': this.$currentAnchor.id || GetYoDigits(6, 'dd-anchor')
+      'aria-labelledby': labelledby
     });
+
     super._init();
     this._events();
   }
