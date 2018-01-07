@@ -77,7 +77,7 @@ $buttongroup-radius-on-each: true !default;
 
 /// Make buttons bonded without gap between them. Borders between buttons are merged
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
-@mixin button-group-no-gap(
+@mixin button-group-no-gaps(
   $selector: $buttongroup-child-selector,
   $border-width: $button-hollow-border-width
 ) {
@@ -247,7 +247,7 @@ $buttongroup-radius-on-each: true !default;
     }
 
     &.no-gaps {
-      @include button-group-no-gap;
+      @include button-group-no-gaps;
     }
 
     &.stacked,
