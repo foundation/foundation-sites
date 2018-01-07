@@ -237,7 +237,8 @@ $buttongroup-radius-on-each: true !default;
         }
 
         @each $name, $color in $button-palette {
-          &.#{$name} #{$buttongroup-child-selector} {
+          &.#{$name} #{$buttongroup-child-selector},
+          #{$buttongroup-child-selector}.#{$name} {
             @include button-hollow-style($color);
           }
         }
@@ -253,7 +254,8 @@ $buttongroup-radius-on-each: true !default;
         }
 
         @each $name, $color in $button-palette {
-          &.#{$name} #{$buttongroup-child-selector} {
+          &.#{$name} #{$buttongroup-child-selector},
+          #{$buttongroup-child-selector}.#{$name} {
             @include button-clear-style($color);
           }
         }
