@@ -29,30 +29,30 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <div class="row">
     <div class="small-12 columns">
       <label>Number Required
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpText1" aria-errormessage="exampleErrorText1" required pattern="number">
-        <span class="form-error" id="exampleErrorText1">
+        <input type="text" placeholder="1234" aria-describedby="example1Hint1" aria-errormessage="example1Error1" required pattern="number">
+        <span class="form-error" id="example1Error1">
           Yo, you had better fill this out, it's required.
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText1">Here's how you use this input field!</p>
+      <p class="help-text" id="example1Hint1">Here's how you use this input field!</p>
     </div>
     <div class="small-12 columns">
       <label>Password Required
-        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" aria-errormessage="exampleErrorText2" required >
-        <span class="form-error" id="exampleErrorText2">
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="example1Hint2" aria-errormessage="example1Error2" required >
+        <span class="form-error" id="example1Error2">
           I'm required!
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText2">Enter a password please.</p>
+      <p class="help-text" id="example1Hint2">Enter a password please.</p>
     </div>
     <div class="small-12 columns">
       <label>Re-enter Password
-        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText3" aria-errormessage="exampleErrorText3" required pattern="alpha_numeric" data-equalto="password">
-        <span class="form-error" id="exampleErrorText3">
+        <input type="password" placeholder="yeti4preZ" aria-describedby="example1Hint3" aria-errormessage="example1Error3" required pattern="alpha_numeric" data-equalto="password">
+        <span class="form-error" id="example1Error3">
           Hey, passwords are supposed to match!
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText3">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+      <p class="help-text" id="example1Hint3">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
     </div>
   </div>
   <div class="row">
@@ -120,15 +120,15 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 <label class="is-invalid-label">
   Required Thing
-  <input type="text" class="is-invalid-input">
-  <span class="form-error is-visible">
+  <input type="text" class="is-invalid-input" aria-describedby="exemple2Error" data-invalid aria-invalid="true">
+  <span class="form-error is-visible" id="exemple2Error">
     Yo, you had better fill this out.
   </span>
 </label>
 
 <label class="is-invalid-label">
   Required Thing
-  <textarea type="text" class="is-invalid-input"></textarea>
+  <textarea type="text" class="is-invalid-input" data-invalid aria-invalid="true"></textarea>
 </label>
 
 ---
@@ -141,14 +141,19 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 
 ```html_example
 <form data-abide novalidate>
+  <div data-abide-error class="sr-only" aria-live="assertive">
+    There are some errors in your form.
+  </div>
+
   <label>
     Amount
     <div class="input-group">
       <span class="input-group-label">$</span>
-      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+      <input class="input-group-field" id="example3Input" type="number" required pattern="number" aria-describedby="example3Error"/>
     </div>
-    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
+    <span class="form-error" id="example3Error" data-form-error-for="example3Input">Amount is required.</span>
   </label>
+
   <button class="button" type="submit" value="Submit">Submit</button>
 </form>
 ```
@@ -159,13 +164,13 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 ```html
 <form data-abide>
   <!-- Add "display: none" right away -->
-  <div data-abide-error class="alert callout" style="display: none;">
+  <div data-abide-error class="alert callout" aria-live="assertive" style="display: none;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <label>
     Name
-    <input type="text" required>
-    <span class="form-error">This field is required.</span>
+    <input id="example4Input" aria-describedby="example4Error" type="text" required>
+    <span id="example4Error" class="form-error">This field is required.</span>
   </label>
 </form>
 ```
@@ -176,19 +181,23 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 <form data-abide>
   <!-- Add role="alert" -->
   <!-- Add "display: block" -->
-  <div data-abide-error role="alert" class="alert callout" style="display: block;">
+  <div data-abide-error class="alert callout" aria-live="assertive" role="alert" style="display: block;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <!-- Add "is-invalid-label" -->
   <label class="is-invalid-label">
     Name
     <!-- Add "is-invalid-input" -->
-    <input type="text" class="is-invalid-input" required aria-invalid aria-describedby="uuid">
+    <!-- Add aria-invalid="true" -->
+    <input id="example4Input" aria-describedby="example4Error" type="text" required
+      class="is-invalid-input" aria-invalid="true">
     <!-- Add "is-visible" -->
-    <span class="form-error is-visible" id="uuid">This field is required.</span>
+    <span id="example4Error" class="form-error is-visible">This field is required.</span>
   </label>
 </form>
 ```
+
+---
 
 ## Ignored Inputs
 
@@ -196,21 +205,21 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 <form data-abide>
     <div class="small-12 columns">
       <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+        <input type="text" placeholder="Use me, or don't" aria-describedby="example5Hint1" data-abide-ignore>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+      <p class="help-text" id="example5Hint1">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="small-12 columns">
       <label>Disabled!
-        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+        <input type="text" placeholder="Disabled input" aria-describedby="example5Hint2" disabled>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+      <p class="help-text" id="example5Hint2">This input is ignored by Abide using `disabled`</p>
     </div>
     <div class="small-12 columns">
       <label>Hidden!
-        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+        <input type="hidden" placeholder="Hidden input" aria-describedby="example5Hint3" >
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+      <p class="help-text" id="example5Hint3">This input is ignored by Abide using `type="hidden"`</p>
     </div>
   <div class="row">
     <fieldset class="large-6 columns">
