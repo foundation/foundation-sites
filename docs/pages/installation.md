@@ -119,9 +119,26 @@ The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and J
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
 ```
 
+From Foundation 6.4, flex is enabled by default and **only the new XY Grid is availaible**. However, others CSS versions are availaible for backward compatibility and the msot common usage cases. For others uses and advanced customization, we recommand to build Foundation with custom settings (see others installation methods).
+
+```html
+<!-- foundation-float.css: Compressed CSS with legacy Float Grid -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css" integrity="sha256-+8r1EkvIoWpxT8CKbSw/rCQWttnazW9mLPg6xT+/2EM=" crossorigin="anonymous" />
+
+<!-- foundation-prototype.css: Compressed CSS with prototyping classes -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.css" integrity="sha256-IHU5CkoOGpVMODA9ql3Lz609uhGwwFlLNSpAMoOY2us=" crossorigin="anonymous" />
+
+<!-- foundation-rtl.css: Compressed CSS with right-to-left reading direction -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-rtl.min.css" integrity="sha256-Az+E7JXW71Srarkum5QPTdnobddg2GqI1i8+nMusgLk=" crossorigin="anonymous" />
+```
+
+<div class="text-center">
+  <a href="https://cdnjs.com/libraries/foundation" class="button" target="_blank">See all CDN files and versions</a>
+</div>
+
 ---
 
-## Package Managers
+## Install with Package Managers
 
 Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
 
@@ -130,8 +147,6 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 - Meteor: `meteor add zurb:foundation-sites`
 - Composer: `php composer.phar require zurb/foundation`
 - NuGet: `Install-Package foundation-sites`
-
-### Package Contents
 
 Here's what comes in the package.
 
