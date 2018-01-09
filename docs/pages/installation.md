@@ -150,12 +150,14 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 
 Here's what comes in the package.
 
-- `scss/`: Source Sass files. Use this folder as a load path in Sass.
-- `js/`: Source JavaScript files. If you're using a build system, make sure `foundation.core.js` is loaded first.
-- `dist/`: Compiled files.
-  - `css/`: Compiled CSS files. Includes minified and unminified files.
-  - `js/`: Concatenated JavaScript files. Includes minified and unminified files.
-    - `plugins/`: Standalone JavaScript plugins.
+```
+├─ scss       Source Sass files. Use this folder as a load path in Sass.
+├─ js         Source JavaScript files. If you're using a build system, make sure `foundation.core.js` is loaded first.
+└─ dist       Compiled files:
+   ├─ css        * Compiled CSS files. Includes minified and unminified files.
+   ├─ js         * Concatenated JavaScript files. Includes minified and unminified files.
+   └─ plugins    * Standalone JavaScript plugins.
+```
 
 ---
 
