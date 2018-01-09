@@ -32,45 +32,53 @@ foundation new
 
 ---
 
-## Manual Setup
+## Install with a template
 
 ### Basic Template
 
-To manually set up the basic template, first download it with Git:
+The basic template includes Foundation and a build process for Sass.
+
+To manually set up [the basic template](https://github.com/zurb/foundation-sites-template):
 
 ```bash
+# Download the template with Git
 git clone https://github.com/zurb/foundation-sites-template projectname
-```
 
-Then open the folder in your command line, and install the needed dependencies:
-
-```bash
+# Move to the project folter, and install the needed dependencies
 cd projectname
 npm install
+
+# Build the Sass files
+npm start
 ```
 
-Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+Your project will be recompiled every time you save a Sass file in `dist/.
+
 
 ### ZURB Template
 
-To manually set up the ZURB template, first download it with Git:
+The basic template includes Foundation and a build process with:
+* Handlebars HTML templates with Panini
+* Sass compilation and prefixing
+* JavaScript module bundling with webpack
+* Built-in BrowserSync
+* Production build with CSS, Javascript and Image compression
+
+To manually set up [the ZURB template](https://github.com/zurb/foundation-zurb-template):
 
 ```bash
+# Download the ZURB template with Git
 git clone https://github.com/zurb/foundation-zurb-template projectname
-```
 
-Then open the folder in your command line, and install the needed dependencies:
-
-```bash
+# Move to the project folter, and install the needed dependencies
 cd projectname
 npm install
+
+# Build the project
+npm start
 ```
 
-Finally, run `npm start` to run Gulp. Your finished site will be created in a folder called `dist`, viewable at this URL:
-
-```
-http://localhost:8000
-```
+Your finished site will be created in a folder called `dist.`, viewable at this URL: [http://localhost:8000](http://localhost:8000)
 
 To create compressed, production-ready assets, run `npm run build`.
 
