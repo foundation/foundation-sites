@@ -77,7 +77,8 @@ Finally, add an `@import` statement to the top of your primary Sass file. Refer 
 @import 'foundation';
 ```
 
-You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself.
+You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself. 
+For users of npm, you need to change `@import util/util` to a full path to the util (node_modules/foundation-sites/scss/util/util) in the settings file in order to compile it.
 
 ```scss
 @import 'settings';
