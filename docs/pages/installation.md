@@ -4,6 +4,80 @@ description: There are many ways to install Foundation, but if you're just getti
 video: '6KwsGcEHVTE'
 ---
 
+## Install with Package Managers
+
+Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
+
+<div class="row">
+  <div class="column small-2 text-right">
+    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-npm.svg" alt="NPM">
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        npm install foundation-sites
+      </code>
+    </div>
+  </div>
+
+  <div class="column small-2 text-right">
+    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-bower.svg" alt="Bower">
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        bower install foundation-sites
+      </code>
+    </div>
+  </div>
+
+  <div class="column small-2 text-right">
+    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        meteor add zurb:foundation-sites
+      </code>
+    </div>
+  </div>
+
+  <div class="column small-2 text-right">
+    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-composer.svg" alt="Composer">
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        php composer.phar require zurb/foundation
+      </code>
+    </div>
+  </div>
+
+  <div class="column small-2 text-right">
+    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-nuget.svg" alt="NuGet">
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        Install-Package foundation-sites
+      </code>
+    </div>
+  </div>
+</div>
+
+Here's what comes in the package.
+
+```
+├─ scss       Source Sass files. Use this folder as a load path in Sass.
+├─ js         Source JavaScript files. If you're using a build system, make sure `foundation.core.js` is loaded first.
+└─ dist       Compiled files:
+   ├─ css        * Compiled CSS files. Includes minified and unminified files.
+   ├─ js         * Concatenated JavaScript files. Includes minified and unminified files.
+   └─ plugins    * Standalone JavaScript plugins.
+```
+
+---
+
 ## Install with Foundation CLI
 
 Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you.
@@ -137,29 +211,6 @@ From Foundation 6.4, flex is enabled by default and **only the new XY Grid is av
 <div class="text-center">
   <a href="https://cdnjs.com/libraries/foundation" class="button" target="_blank">See all CDN files and versions</a>
 </div>
-
----
-
-## Install with Package Managers
-
-Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
-
-- npm: `npm install foundation-sites`
-- Bower: `bower install foundation-sites`
-- Meteor: `meteor add zurb:foundation-sites`
-- Composer: `php composer.phar require zurb/foundation`
-- NuGet: `Install-Package foundation-sites`
-
-Here's what comes in the package.
-
-```
-├─ scss       Source Sass files. Use this folder as a load path in Sass.
-├─ js         Source JavaScript files. If you're using a build system, make sure `foundation.core.js` is loaded first.
-└─ dist       Compiled files:
-   ├─ css        * Compiled CSS files. Includes minified and unminified files.
-   ├─ js         * Concatenated JavaScript files. Includes minified and unminified files.
-   └─ plugins    * Standalone JavaScript plugins.
-```
 
 ---
 
