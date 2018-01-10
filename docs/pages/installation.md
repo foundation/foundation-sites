@@ -10,7 +10,9 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 
 <div class="row">
   <div class="column small-2 text-right">
-    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-npm.svg" alt="NPM">
+    <a href="https://www.npmjs.com/package/foundation-sites">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-npm.svg" alt="NPM">
+    </a>
   </div>
   <div class="column small-10">
     <div class="docs-code">
@@ -21,7 +23,9 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="column small-2 text-right">
-    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-yarn.svg" alt="Yarn">
+    <a href="https://yarnpkg.com/en/package/foundation-sites">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-yarn.svg" alt="Yarn">
+    </a>
   </div>
   <div class="column small-10">
     <div class="docs-code">
@@ -32,7 +36,9 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="column small-2 text-right">
-    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-bower.svg" alt="Bower">
+    <a href="https://bower.io/search/?q=foundation-sites">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-bower.svg" alt="Bower">
+    </a>
   </div>
   <div class="column small-10">
     <div class="docs-code">
@@ -43,7 +49,9 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="column small-2 text-right">
-    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
+    <a href="https://atmospherejs.com/zurb/foundation-sites">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
+    </a>
   </div>
   <div class="column small-10">
     <div class="docs-code">
@@ -54,7 +62,9 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="column small-2 text-right">
-    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-composer.svg" alt="Composer">
+    <a href="https://packagist.org/packages/zurb/foundation">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-composer.svg" alt="Composer">
+    </a>
   </div>
   <div class="column small-10">
     <div class="docs-code">
@@ -65,7 +75,9 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="column small-2 text-right">
-    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-nuget.svg" alt="NuGet">
+    <a href="https://www.nuget.org/packages/foundation-sites/">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-nuget.svg" alt="NuGet">
+    </a>
   </div>
   <div class="column small-10">
     <div class="docs-code">
