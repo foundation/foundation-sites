@@ -21,6 +21,17 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="column small-2 text-right">
+    <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-yarn.svg" alt="Yarn">
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        yarn install foundation-sites
+      </code>
+    </div>
+  </div>
+
+  <div class="column small-2 text-right">
     <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-bower.svg" alt="Bower">
   </div>
   <div class="column small-10">
