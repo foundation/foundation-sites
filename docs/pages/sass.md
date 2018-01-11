@@ -111,46 +111,60 @@ Our [starter projects](starter-projects.html) include the full list of imports, 
 ```scss
 @import 'foundation';
 
+// Global styles
 @include foundation-global-styles;
+
+// Grids (choose one)
 @include foundation-xy-grid-classes;
-//@include foundation-grid;
-//@include foundation-flex-grid;
-@include foundation-flex-classes;
+// @include foundation-flex-grid;
+// @include foundation-grid;
+
+// Generic components
+@include foundation-table;
 @include foundation-typography;
 @include foundation-forms;
+@include foundation-label;
+@include foundation-slider;
+@include foundation-progress-bar;
+@include foundation-switch;
 @include foundation-button;
-@include foundation-accordion;
-@include foundation-accordion-menu;
-@include foundation-badge;
-@include foundation-breadcrumbs;
+@include foundation-close-button;
 @include foundation-button-group;
+// Basic components
+@include foundation-tooltip;
+@include foundation-badge;
 @include foundation-callout;
 @include foundation-card;
-@include foundation-close-button;
+@include foundation-dropdown;
+@include foundation-pagination;
+@include foundation-breadcrumbs;
+
+// Containers
+@include foundation-accordion;
+@include foundation-orbit;
+@include foundation-thumbnail;
+@include foundation-tabs;
+@include foundation-media-object;
+@include foundation-responsive-embed;
+// Menu-based containers
 @include foundation-menu;
 @include foundation-menu-icon;
-@include foundation-drilldown-menu;
-@include foundation-dropdown;
+@include foundation-accordion-menu;
 @include foundation-dropdown-menu;
-@include foundation-responsive-embed;
-@include foundation-label;
-@include foundation-media-object;
+@include foundation-drilldown-menu;
+
+// Layout components
+@include foundation-top-bar;
+@include foundation-title-bar;
 @include foundation-off-canvas;
-@include foundation-orbit;
-@include foundation-pagination;
-@include foundation-progress-bar;
-@include foundation-slider;
 @include foundation-sticky;
 @include foundation-reveal;
-@include foundation-switch;
-@include foundation-table;
-@include foundation-tabs;
-@include foundation-thumbnail;
-@include foundation-title-bar;
-@include foundation-tooltip;
-@include foundation-top-bar;
-@include foundation-visibility-classes;
+
+// Helpers
 @include foundation-float-classes;
+@include foundation-flex-classes;
+@include foundation-visibility-classes;
+// @include foundation-prototype-classes;
 ```
 
 ---
