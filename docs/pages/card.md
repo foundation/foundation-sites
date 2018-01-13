@@ -167,7 +167,7 @@ You can either set the width of cards with custom css or add them into the Found
 
 ```html_example
 <div class="grid-container">
-  <div class="grid-x grid-padding-x small-up-2 medium-up-3">
+  <div class="grid-x grid-margin-x small-up-2 medium-up-3">
     <div class="cell">
       <div class="card">
         <img src="assets/img/generic/rectangle-1.jpg">
@@ -196,32 +196,32 @@ You can either set the width of cards with custom css or add them into the Found
       </div>
     </div>
   </div>
-</div>
-<div class="row small-up-2 medium-up-3">
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a row of cards.</h4>
-        <p>This row of cards is embedded in an Flex Block Grid.</p>
+  <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+    <div class="cell">
+      <div class="card">
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4>This is a row of cards.</h4>
+          <p>This row of cards is embedded in an Flex Block Grid.</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+    <div class="cell">
+      <div class="card">
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4>This is a card.</h4>
+          <p>It has an easy to override visual style, and is appropriately subdued.</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
+    <div class="cell">
+      <div class="card">
+        <img src="assets/img/generic/rectangle-1.jpg">
+        <div class="card-section">
+          <h4>This is a card.</h4>
+          <p>It has an easy to override visual style, and is appropriately subdued.</p>
+        </div>
       </div>
     </div>
   </div>

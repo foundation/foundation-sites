@@ -165,16 +165,28 @@ class Magellan extends Plugin {
     }
 
     this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+    if(curIdx !== undefined){
+      this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+    }else{
+      this.$active = $();
+    }
 
     if(this.options.deepLinking){
       var hash = "";
-      if(curIdx != undefined){
+      if(curIdx !== undefined){
         hash = this.$active[0].getAttribute('href');
       }
       if(hash !== window.location.hash) {
         if(window.history.pushState){
-          window.history.pushState(null, null, hash);
+          // If there is no active idx, move to the same url without hash
+          // https://stackoverflow.com/a/5298684/4317384
+          var url = curIdx !== undefined ? hash : window.location.pathname + window.location.search;
+
+          if(this.options.updateHistory){
+            window.history.pushState({}, '', url);
+          }else{
+            window.history.replaceState({}, '', url);
+          }
         }else{
           window.location.hash = hash;
         }
@@ -245,6 +257,13 @@ Magellan.defaults = {
    * @default false
    */
   deepLinking: false,
+  /**
+   * Update the browser history with the active link, if deep linking is enabled.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false,
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option

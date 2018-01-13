@@ -38,6 +38,29 @@ $subheader-margin-bottom: 0.5rem !default;
 /// @type Number
 $stat-font-size: 2.5rem !default;
 
+/// Text color for `.cite-block` component.
+/// @type Color
+$cite-color: $dark-gray !default;
+
+/// Font size for `.cite-block` component.
+/// @type Number
+$cite-font-size: rem-calc(13) !default;
+
+/// Pseudo content for `.cite-block` component.
+/// @type String
+$cite-pseudo-content: '\2014 \0020' !default;
+
+
+@mixin cite-block {
+  display: block;
+  color: $cite-color;
+  font-size: $cite-font-size;
+
+  &:before {
+    content: $cite-pseudo-content;
+  }
+}
+
 @mixin foundation-typography-helpers {
   // Use to create a subheading under a main header
   // Make sure you pair the two elements in a <header> element, like this:
@@ -76,5 +99,9 @@ $stat-font-size: 2.5rem !default;
       margin-#{$global-left}: 0;
       list-style: none;
     }
+  }
+
+  .cite-block {
+    @include cite-block;
   }
 }

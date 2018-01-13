@@ -47,7 +47,6 @@ class Reveal extends Plugin {
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: MediaQuery.current};
-    this.isMobile = mobileSniff();
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
@@ -109,7 +108,7 @@ class Reveal extends Plugin {
     var outerWidth = $(window).width();
     var height = this.$element.outerHeight();
     var outerHeight = $(window).height();
-    var left, top;
+    var left, top = null;
     if (this.options.hOffset === 'auto') {
       left = parseInt((outerWidth - width) / 2, 10);
     } else {
@@ -121,13 +120,17 @@ class Reveal extends Plugin {
       } else {
         top = parseInt((outerHeight - height) / 4, 10);
       }
-    } else {
+    } else if (this.options.vOffset !== null) {
       top = parseInt(this.options.vOffset, 10);
     }
-    this.$element.css({top: top + 'px'});
-    // only worry about left if we don't have an overlay or we havea  horizontal offset,
+
+    if (top !== null) {
+      this.$element.css({top: top + 'px'});
+    }
+
+    // only worry about left if we don't have an overlay or we have a horizontal offset,
     // otherwise we're perfectly in the middle
-    if(!this.$overlay || (this.options.hOffset !== 'auto')) {
+    if (!this.$overlay || (this.options.hOffset !== 'auto')) {
       this.$element.css({left: left + 'px'});
       this.$element.css({margin: '0px'});
     }
@@ -179,6 +182,29 @@ class Reveal extends Plugin {
     else{ this.close(); }
   }
 
+  /**
+  * Disables the scroll when Reveal is shown to prevent the background from shifting
+  */
+  _disableScroll(){
+    if ($(document).height() > $(window).height()) {
+      var scrollTop = $(window).scrollTop();
+      $("html")
+        .css("top", -scrollTop);
+    }
+  }
+
+  /**
+  * Reenables the scroll when Reveal closes
+  */
+  _enableScroll(){
+    if ($(document).height() > $(window).height()) {
+      var scrollTop = parseInt($("html").css("top"));
+      $("html")
+        .css("top", "");
+      $(window).scrollTop(-scrollTop);
+    }
+  }
+
 
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
@@ -201,6 +227,9 @@ class Reveal extends Plugin {
         window.location.hash = hash;
       }
     }
+
+    // Remember anchor that opened it to set focus back later, have general anchors as fallback
+    this.$activeAnchor = $(document.activeElement).is(this.$anchor) ? $(document.activeElement) : this.$anchor;
 
     this.isActive = true;
 
@@ -238,19 +267,15 @@ class Reveal extends Plugin {
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
 
+    this._disableScroll();
+
     var _this = this;
 
     function addRevealOpenClasses() {
-      if (_this.isMobile) {
-        if(!_this.originalScrollPos) {
-          _this.originalScrollPos = window.pageYOffset;
-        }
-        $('html, body').addClass('is-reveal-open');
-      }
-      else {
-        $('body').addClass('is-reveal-open');
-      }
+
+      $('html').addClass('is-reveal-open');
     }
+
     // Motion UI method of reveal
     if (this.options.animationIn) {
       function afterAnimation(){
@@ -375,25 +400,16 @@ class Reveal extends Plugin {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (_this.isMobile) {
-        if ($('.reveal:visible').length === 0) {
-          $('html, body').removeClass('is-reveal-open');
-        }
-        if(_this.originalScrollPos) {
-          $('body').scrollTop(_this.originalScrollPos);
-          _this.originalScrollPos = null;
-        }
-      }
-      else {
-        if ($('.reveal:visible').length  === 0) {
-          $('body').removeClass('is-reveal-open');
-        }
-      }
 
+      if ($('.reveal:visible').length  === 0) {
+        $('html').removeClass('is-reveal-open');
+      }
 
       Keyboard.releaseFocus(_this.$element);
 
       _this.$element.attr('aria-hidden', true);
+
+      _this._enableScroll();
 
       /**
       * Fires when the modal is done closing.
@@ -419,7 +435,7 @@ class Reveal extends Plugin {
        }
      }
 
-    this.$anchor.focus();
+    this.$activeAnchor.focus();
   }
 
   /**
@@ -569,17 +585,5 @@ Reveal.defaults = {
    */
   additionalOverlayClasses: ''
 };
-
-function iPhoneSniff() {
-  return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
-}
-
-function androidSniff() {
-  return /Android/.test(window.navigator.userAgent);
-}
-
-function mobileSniff() {
-  return iPhoneSniff() || androidSniff();
-}
 
 export {Reveal};

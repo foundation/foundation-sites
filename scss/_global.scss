@@ -8,6 +8,8 @@
 /// @group global
 ////
 
+@import 'util/util';
+
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
 $global-font-size: 100% !default;
@@ -121,16 +123,15 @@ $global-button-cursor: auto !default;
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
+// Internal variable that contains the flex justifying options
+$-zf-flex-justify: -zf-flex-justify($global-text-direction);
+
 /// Global tolerance for color pick contrast.
 /// @type Number
 $global-color-pick-contrast-tolerance: 0 !default;
 
 // Internal variables used for colors
-$primary-color: get-color(primary);
-$secondary-color: get-color(secondary);
-$success-color: get-color(success);
-$warning-color: get-color(warning);
-$alert-color: get-color(alert);
+@include add-foundation-colors;
 
 @mixin foundation-global-styles {
   @include -zf-normalize;

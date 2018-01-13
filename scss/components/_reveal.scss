@@ -125,18 +125,16 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 }
 
 @mixin foundation-reveal {
-  // [TODO] Is this necessary?
-  body.is-reveal-open { // sass-lint:disable-line no-qualifying-elements
-    overflow: hidden;
-  }
 
-  // html gets this class only in iOS
-  html.is-reveal-open,
-  html.is-reveal-open body {
-    min-height: 100%;
-    overflow: hidden;
+  /// Disables the scroll when Reveal is shown to prevent the background from shifting
+  html.is-reveal-open {
     position: fixed;
-    user-select: none;
+    width: 100%;
+    overflow-y: scroll;
+
+    body { // sass-lint:disable-line no-qualifying-elements
+      overflow: hidden;
+    }
   }
 
   // Overlay

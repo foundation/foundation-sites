@@ -316,7 +316,7 @@ Similar alignment classes can also be applied to individual columns, which use t
 
 The `.collapse` class lets you remove column gutters (padding).
 
-There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
+There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows gutters at small and medium and no gutters on large and up.
 
 The `.is-collapse-child` class removes negative margins from nested row under collapsed parent.
 

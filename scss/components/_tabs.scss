@@ -91,6 +91,7 @@ $tab-content-padding: 1rem !default;
   float: #{$global-left};
 
   > a {
+    @include disable-mouse-outline;
     display: block;
     padding: $padding;
     font-size: $font-size;

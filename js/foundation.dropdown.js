@@ -66,12 +66,18 @@ class Dropdown extends Positionable {
       this.$parent = null;
     }
 
+    // Do not change the `labelledby` if it is defined
+    var labelledby = this.$element.attr('aria-labelledby')
+      || this.$currentAnchor.attr('id')
+      || GetYoDigits(6, 'dd-anchor');
+
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': this.$currentAnchor.id || GetYoDigits(6, 'dd-anchor')
+      'aria-labelledby': labelledby
     });
+
     super._init();
     this._events();
   }
@@ -88,7 +94,7 @@ class Dropdown extends Positionable {
 
   _getDefaultAlignment() {
     // handle legacy float approach
-    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.className);
+    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.attr('class'));
     if(horizontalPosition) {
       return horizontalPosition[1];
     }
@@ -105,7 +111,9 @@ class Dropdown extends Positionable {
    * @private
    */
   _setPosition() {
+    this.$element.removeClass(`has-position-${this.position} has-alignment-${this.alignment}`);
     super._setPosition(this.$currentAnchor, this.$element, this.$parent);
+    this.$element.addClass(`has-position-${this.position} has-alignment-${this.alignment}`);
   }
 
   /**
@@ -203,7 +211,7 @@ class Dropdown extends Positionable {
             if(_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
               return;
             }
-            if(_this.$element.find(e.target).length) {
+            if(_this.$element.is(e.target) || _this.$element.find(e.target).length) {
               return;
             }
             _this.close();
