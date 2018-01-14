@@ -79,6 +79,7 @@ Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
 export {
   Foundation,
+  CoreUtils,
   Box,
   onImagesLoaded,
   Keyboard,
