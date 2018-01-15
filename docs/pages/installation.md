@@ -112,15 +112,59 @@ npm install --global foundation-cli
 # or sudo npm install --global foundation-cli
 ```
 
+<div class="callout info">
+  Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the commands with `sudo` at the beginning.
+</div>
+
 Then use to create a new Foundation project:
 
 ```bash
 foundation new
 ```
 
-<div class="callout info">
-  Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the commands with `sudo` at the beginning.
+After you selected "Foundation for Sites", Foundation CLI will ask you which template you want to use. You can choose between:
+
+<div class="row">
+  <div class="column small-6">
+    <h3>Basic template</h3>
+    <p>
+      <b>Recommended for beginners</b><br>
+      A basic template to begin to use Foundation. It includes:
+      <ul>
+        <li>
+          Foundation for Sites pre-configured.
+        </li>
+        <li>
+          Sass compilation<br>
+          A tool to convert your SASS/SCSS files to CSS.
+        </li>
+        <li>
+          Starter HTML file<br>
+          A basic file to help you to use basic Foundation component (including the new XY grid !)
+        </li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="column small-6">
+    <h3>ZURB template</h3>
+    <p>
+      <b>Recommended for experienced (or curious) users</b><br>
+      A more advanced project including Foundation and a build process with:
+      <ul>
+        <li>Handlebars HTML templates with Panini</li>
+        <li>Sass compilation and prefixing</li>
+        <li>JavaScript module bundling with webpack</li>
+        <li>Built-in BrowserSync</li>
+        <li>Production build with CSS, Javascript and Image compression</li>
+      </ul>
+    </p>
+  </div>
 </div>
+
+<p class="text-center">
+  <a href="/starter-projects.html" class="button">See advanced Template installations</a>
+</p>
 
 <div class="callout info">
   <p><strong>Foundation 5 users</strong>: if you already have the Foundation 5 CLI on your machine, you will only be able to access one of the commands, depending on how your command line environment is configured.</p>
@@ -128,61 +172,7 @@ foundation new
   <p>To remove the Foundation 5 CLI, run <code>gem uninstall foundation</code>. After testing this new CLI, if you want to go back to the old CLI. To remove the Foundation 6 CLI, run <code>npm uninstall foundation-cli --global</code>.</p>
 </div>
 
-
 ---
-
-## Install with a template
-
-### Basic Template
-
-The basic template includes Foundation and a build process for Sass.
-
-To manually set up [the basic template](https://github.com/zurb/foundation-sites-template):
-
-```bash
-# Download the template with Git
-git clone https://github.com/zurb/foundation-sites-template projectname
-
-# Move to the project folter, and install the needed dependencies
-cd projectname
-npm install
-
-# Build the Sass files
-npm start
-```
-
-Your project will be recompiled every time you save a Sass file in `dist/.
-
-
-### ZURB Template
-
-The basic template includes Foundation and a build process with:
-* Handlebars HTML templates with Panini
-* Sass compilation and prefixing
-* JavaScript module bundling with webpack
-* Built-in BrowserSync
-* Production build with CSS, Javascript and Image compression
-
-To manually set up [the ZURB template](https://github.com/zurb/foundation-zurb-template):
-
-```bash
-# Download the ZURB template with Git
-git clone https://github.com/zurb/foundation-zurb-template projectname
-
-# Move to the project folter, and install the needed dependencies
-cd projectname
-npm install
-
-# Build the project
-npm start
-```
-
-Your finished site will be created in a folder called `dist.`, viewable at this URL: [http://localhost:8000](http://localhost:8000)
-
-To create compressed, production-ready assets, run `npm run build`.
-
----
-
 
 ## Download
 
