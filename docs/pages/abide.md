@@ -375,3 +375,9 @@ function($el,required,parent) {
 <input id="min" type="number" required >
 <input id="max" type="number" data-validator="greater_than" data-greater-than="min" required>
 ```
+
+## Accessibility
+
+By default, Abide will add some accessibility attributes to your form elements. It is highly recommended to keep this option active as it improve the usability of your forms for disabled people. [Lean more about Accessibility in Foundation](accessibility.html).
+
+However, if you think the attributes added by Abide are not correct, you can disable it by setting `a11yAttributes` (or `[data-a11y-attributes]`) to `false`.
