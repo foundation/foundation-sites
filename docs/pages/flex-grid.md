@@ -26,14 +26,21 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 
 ## Importing
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
-
-If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
-
 <div class="docs-video-codepen-container">
   <a class="" data-open-video="2:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </div>
 
+<div class="alert callout">
+  **From Foundation v6.4, the Flex Grid is disabled by default**, replaced by the new [XY Grid](/xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
+</div>
+
+To use the Flex Grid in Foundation v6.4+, you need to:
+* In CDN link or package managers: import `foundation-flex.css` in place of `foundation.css`.
+* In Sass: set `$xy-grid` to `false`.
+
+If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
+
+You can manually generate the Flex Grid with:
 ```scss
 @import 'foundation';
 

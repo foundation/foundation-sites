@@ -14,6 +14,18 @@ tags:
   <a href="http://zurb.com/university/foundation-intro" target="_blank">Get registered for an upcoming Foundation training →</a>
 </div>
 
+
+## Importing
+
+<div class="alert callout">
+  **From Foundation v6.4, the Float Grid is disabled by default**, replaced by the new [XY Grid](/xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
+</div>
+
+To use the Float Grid in Foundation v6.4+, you need to:
+* In CDN link or package managers: import `foundation-float.css` in place of `foundation.css`.
+* In Sass: set both `$xy-grid` and `$global-flex` to `false`.
+
+
 ## Basics
 
 Start by adding an element with a class of `.row`. This will create a horizontal block to contain vertical columns. Then add elements with a `.column` class within that row. Specify the widths of each column with the `.small-#`, `.medium-#`, and `.large-#` classes.
