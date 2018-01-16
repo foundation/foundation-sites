@@ -32,10 +32,12 @@ class Abide extends Plugin {
    */
   _init() {
     this.$inputs = this.$element.find('input, textarea, select');
+    const $globalErrors = this.$element.find('[data-abide-error]');
 
     // Add a11y attributes to all fields
     if (this.options.a11yAttributes) {
       this.$inputs.each((i, input) => this.addA11yAttributes($(input)));
+      $globalErrors.each((i, error) => this.addGlobalErrorA11yAttributes($(error)));
     }
 
     this._events();
@@ -245,11 +247,19 @@ class Abide extends Plugin {
   }
 
   /**
+   * Adds [aria-live] attribute to the given global form error $el.
+   * @param {Object} $el - jQuery object to add the attribute to
+   */
+  addGlobalErrorA11yAttributes($el) {
+    if (typeof $el.attr('aria-live') === 'undefined')
+      $el.attr('aria-live', this.options.a11yErrorLevel);
+  }
+
+  /**
    * Remove CSS error classes etc from an entire radio button group
    * @param {String} groupName - A string that specifies the name of a radio button group
    *
    */
-
   removeRadioErrorClasses(groupName) {
     var $els = this.$element.find(`:radio[name="${groupName}"]`);
     var $labels = this.findRadioLabels($els);
@@ -392,9 +402,9 @@ class Abide extends Plugin {
 
     this.$element.find('[data-abide-error]').each((i, elem) => {
       const $elem = $(elem);
-      if (this.options.a11yAttributes) {
-        $elem.attr('aria-live', $elem.attr('data-aria-level') || this.options.a11yErrorLevel);
-      }
+      // Ensure a11y attributes are set
+      if (this.options.a11yAttributes) this.addGlobalErrorA11yAttributes($elem);
+      // Show or hide the error
       $elem.css('display', (noError ? 'none' : 'block'));
     });
 
