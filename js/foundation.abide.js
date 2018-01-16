@@ -34,9 +34,9 @@ class Abide extends Plugin {
     this.$inputs = this.$element.find('input, textarea, select');
 
     // Add a11y attributes to all fields
-    this.$inputs.each((i, input) => {
-      this.addA11yAttributes($(input));
-    });
+    if (this.options.a11yAttributes) {
+      this.$inputs.each((i, input) => this.addA11yAttributes($(input)));
+    }
 
     this._events();
   }
@@ -392,7 +392,9 @@ class Abide extends Plugin {
 
     this.$element.find('[data-abide-error]').each((i, elem) => {
       const $elem = $(elem);
-      $elem.attr('aria-live', $elem.attr('data-aria-level') || this.options.globalErrorAriaLevel);
+      if (this.options.a11yAttributes) {
+        $elem.attr('aria-live', $elem.attr('data-aria-level') || this.options.a11yErrorLevel);
+      }
       $elem.css('display', (noError ? 'none' : 'block'));
     });
 
@@ -583,14 +585,23 @@ Abide.defaults = {
   formErrorClass: 'is-visible',
 
   /**
-   * Aria-live level to be applied on global errors `[data-abide-error]`.
+   * If true, automatically insert when possible `[aria-describedby]` on fields, `[for]` on label
+   * and [aria-live] on global errors `[data-abide-error]` (see option `a11yErrorLevel`).
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  a11yAttributes: true,
+
+  /**
+   * [aria-live] attribute value to be applied on global errors `[data-abide-error]`.
    * Options are: 'assertive', 'polite' and 'off'/null
    * @option
    * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
    * @type {string}
    * @default 'assertive'
    */
-  globalErrorAriaLevel: 'assertive',
+  a11yErrorLevel: 'assertive',
 
   /**
    * Set to true to validate text inputs on any value change.
