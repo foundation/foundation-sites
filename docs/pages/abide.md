@@ -141,18 +141,18 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 
 ```html_example
 <form data-abide novalidate>
-  <div data-abide-error class="sr-only" aria-live="assertive">
+  <div data-abide-error class="sr-only">
     There are some errors in your form.
   </div>
 
-  <label>
+  <div>
     Amount
     <div class="input-group">
       <span class="input-group-label">$</span>
-      <input class="input-group-field" id="example3Input" type="number" required pattern="number" aria-describedby="example3Error"/>
+      <input class="input-group-field" id="example3Input" type="number" required pattern="number"/>
     </div>
-    <span class="form-error" id="example3Error" data-form-error-for="example3Input">Amount is required.</span>
-  </label>
+    <label class="form-error" data-form-error-for="example3Input">Amount is required.</label>
+  </div>
 
   <button class="button" type="submit" value="Submit">Submit</button>
 </form>

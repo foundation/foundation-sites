@@ -2,6 +2,7 @@
 
 import $ from 'jquery';
 import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.util.core';
 
 /**
  * Abide module.
@@ -31,6 +32,11 @@ class Abide extends Plugin {
    */
   _init() {
     this.$inputs = this.$element.find('input, textarea, select');
+
+    // Add a11y attributes to all fields
+    this.$inputs.each((i, input) => {
+      this.addA11yAttributes($(input));
+    });
 
     this._events();
   }
@@ -196,6 +202,46 @@ class Abide extends Plugin {
       'data-invalid': '',
       'aria-invalid': true
     });
+  }
+
+  /**
+   * Adds [for] attributes to all form error targetting $el,
+   * and [aria-describedby] attribute to $el toward the first form error.
+   * @param {Object} $el - jQuery object
+   */
+  addA11yAttributes($el) {
+    let $errors = this.findFormError($el);
+    let $labels = $errors.filter('label');
+    let $error = $errors.first();
+    if (!$errors.length) return;
+
+    // Set [aria-describedby] on the input toward the first form error if it is not set
+    if (typeof $el.attr('aria-describedby') === 'undefined') {
+      // Get the first error ID or create one
+      let errorId = $error.attr('id');
+      if (typeof errorId === 'undefined') {
+        errorId = GetYoDigits(6, 'abide-error');
+        $error.attr('id', errorId);
+      };
+
+      $el.attr('aria-describedby', errorId);
+    }
+
+    if ($labels.filter('[for]').length < $labels.length) {
+      // Get the input ID or create one
+      let elemId = $el.attr('id');
+      if (typeof elemId === 'undefined') {
+        elemId = GetYoDigits(6, 'abide-input');
+        $el.attr('id', elemId);
+      };
+
+      // For each label targeting $el, set [for] if it is not set.
+      $labels.each((i, label) => {
+        const $label = $(label);
+        if (typeof $label.attr('for') === 'undefined')
+          $label.attr('for', elemId);
+      });
+    }
   }
 
   /**
