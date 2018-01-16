@@ -344,7 +344,11 @@ class Abide extends Plugin {
 
     var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
+    this.$element.find('[data-abide-error]').each((i, elem) => {
+      const $elem = $(elem);
+      $elem.attr('aria-live', $elem.attr('data-aria-level') || this.options.globalErrorAriaLevel);
+      $elem.css('display', (noError ? 'none' : 'block'));
+    });
 
     /**
      * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
@@ -531,6 +535,16 @@ Abide.defaults = {
    * @default 'is-visible'
    */
   formErrorClass: 'is-visible',
+
+  /**
+   * Aria-live level to be applied on global errors `[data-abide-error]`.
+   * Options are: 'assertive', 'polite' and 'off'/null
+   * @option
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+   * @type {string}
+   * @default 'assertive'
+   */
+  globalErrorAriaLevel: 'assertive',
 
   /**
    * Set to true to validate text inputs on any value change.
