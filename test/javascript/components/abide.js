@@ -92,6 +92,41 @@ describe('Abide', function() {
     });
   });
 
+  describe('addA11yAttributes()', function () {
+    it('adds [aria-describedby] attribute to field and [for] attribute to form error', function() {
+      $html = $(`
+        <form data-abide>
+          <input type="text" id="test-input">
+          <label class="form-error" id="test-error">Form error</label>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+
+      $html.find('input').should.have.attr('aria-describedby', 'test-error');
+      $html.find('label.form-error').should.have.attr('for', 'test-input');
+    });
+
+    it('adds attributes and ids when no id is set', function() {
+      $html = $(`
+        <form data-abide>
+          <input type="text">
+          <label class="form-error">Form error</label>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+
+      const errorId = $html.find('.form-error').attr('id');
+      $html.find('.form-error').should.have.attr('id').exist;
+      $html.find('input').should.have.attr('aria-describedby', errorId);
+
+      const inputId = $html.find('input').attr('id');
+      $html.find('input').should.have.attr('id').exist;
+      $html.find('.form-error').should.have.attr('for', inputId);
+    });
+  });
+
   describe('removeErrorClasses()', function() {
     it('removes aria-invalid attribute from element', function() {
       $html = $('<form data-abide><input type="text"></form>').appendTo('body');
