@@ -92,6 +92,16 @@ describe('Abide', function() {
     });
   });
 
+  describe('addGlobalErrorA11yAttributes()', function () {
+    it('adds [aria-live] attribute on element', function () {
+      $html = $(`<form data-abide><span data-abide-error></span></form>`).appendTo('body');
+      plugin = new Foundation.Abide($html, { a11yErrorLevel: 'test-level' });
+      plugin.addA11yAttributes($html.find('[data-abide-error]'));
+
+      $html.find('[data-abide-error]').should.have.attr('aria-live', 'test-level');
+    });
+  });
+
   describe('addA11yAttributes()', function () {
     it('adds [aria-describedby] attribute to field and [for] attribute to form error', function() {
       $html = $(`
