@@ -122,9 +122,8 @@ class OffCanvas extends Plugin {
 
     // Get the revealOn option from the class / ensure the `reveal-on-*` class is set.
     if (this.options.isRevealed === true) {
-      if (this.options.revealOn)
       this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
-      this.$element.first().addClass(`reveal-for-${this.options.revealOn}`);
+      if (this.options.revealOn) this.$element.first().addClass(`reveal-for-${this.options.revealOn}`);
       this._setMQChecker();
     }
 
