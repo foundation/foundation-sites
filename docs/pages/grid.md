@@ -17,7 +17,7 @@ tags:
 
 ## Importing
 
-<div class=" calloutalert">
+<div class="callout alert">
   **From Foundation v6.4, the Float Grid is disabled by default**, replaced by the new [XY Grid](/xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
 </div>
 
@@ -36,7 +36,7 @@ Start by adding an element with a class of `.row`. This will create a horizontal
   <a class="" data-open-video="1:07"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
-<div class=" calloutprimary">
+<div class="callout primary">
   <p>By default `.column` has an alias `.columns` (see the <a href="#sass-reference">`$grid-column-alias` option</a>) &mdash;the only difference is grammar.</p>
   <p>Disabling the alias can reduce the Foundation CSS file size from 3 to 5%. It is recommended if the alias is not used.</p>
 </div>
@@ -187,7 +187,7 @@ Medium sized screens will inherit styles from small, unless you specify a differ
 
 If you have just a single column, you can save some markup by combining the `.row` and `.column` classes together on the same element. You can still nest more grids inside this container like usual.
 
-<div class=" calloutwarning">
+<div class="callout warning">
   <p>Column rows can use sizing classes like <code>.small-8</code>, but only when used as a top-level container&mdash;not when nested inside another row.</p>
 </div>
 
