@@ -119,7 +119,8 @@ class OffCanvas extends Plugin {
     }
 
     // Get the revealOn option from the class.
-    var revealOnClass = this.$element[0].className.match(RegExpEscape(this.options.revealClass) + '([^\s])+', 'g');
+    var revealOnRegExp = new RegExp(RegExpEscape(this.options.revealClass) + '([^\\s]+)', 'g');
+    var revealOnClass = revealOnRegExp.exec(this.$element[0].className);
     if (revealOnClass) {
       this.options.isRevealed = true;
       this.options.revealOn = this.options.revealOn || revealOnClass[1];
