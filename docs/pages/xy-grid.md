@@ -59,12 +59,12 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
   <div class="cell">full width cell</div>
 </div>
 <div class="grid-x">
-  <div class="small-6 cell">6 cells</div>
-  <div class="small-6 cell">6 cells</div>
+  <div class="cell small-6">6 cells</div>
+  <div class="cell small-6">6 cells</div>
 </div>
 <div class="grid-x">
-  <div class="medium-6 large-4 cell">12/6/4 cells</div>
-  <div class="medium-6 large-8 cell">12/6/8 cells</div>
+  <div class="cell medium-6 large-4">12/6/4 cells</div>
+  <div class="cell medium-6 large-8">12/6/8 cells</div>
 </div>
 ```
 
@@ -81,12 +81,12 @@ To define a grid type, simply set `.grid-margin-x` or `.grid-padding-x` on the g
 
 ```html_example
 <div class="grid-x grid-margin-x">
-  <div class="medium-6 large-4 cell">12/6/4 cells</div>
-  <div class="medium-6 large-8 cell">12/6/8 cells</div>
+  <div class="cell medium-6 large-4">12/6/4 cells</div>
+  <div class="cell medium-6 large-8">12/6/8 cells</div>
 </div>
 <div class="grid-x grid-padding-x">
-  <div class="medium-6 large-4 cell">12/6/4 cells</div>
-  <div class="medium-6 large-8 cell">12/6/8 cells</div>
+  <div class="cell medium-6 large-4">12/6/4 cells</div>
+  <div class="cell medium-6 large-8">12/6/8 cells</div>
 </div>
 ```
 ---
@@ -144,8 +144,8 @@ If the class `.auto` or `.[size]-auto` is added to the cell, it will take up the
 
 ```html_example
 <div class="grid-x grid-margin-x">
-  <div class="small-4 cell">4 cells</div>
-  <div class="auto cell">Whatever's left!</div>
+  <div class="cell small-4">4 cells</div>
+  <div class="cell auto">Whatever's left!</div>
 </div>
 ```
 
@@ -155,9 +155,9 @@ Multiple expanding cells will share the leftover space equally.
 
 ```html_example
 <div class="grid-x grid-margin-x">
-  <div class="small-4 cell">4 cells</div>
-  <div class="auto cell">Whatever's left!</div>
-  <div class="auto cell">Whatever's left!</div>
+  <div class="cell small-4">4 cells</div>
+  <div class="cell auto">Whatever's left!</div>
+  <div class="cell auto">Whatever's left!</div>
 </div>
 ```
 
@@ -167,8 +167,8 @@ A cell can also be made to *shrink*, by adding the `.shrink` or `.[size]-shrink`
 
 ```html_example
 <div class="grid-x grid-margin-x">
-  <div class="shrink cell">Shrink!</div>
-  <div class="auto cell">Expand!</div>
+  <div class="cell shrink">Shrink!</div>
+  <div class="cell auto">Expand!</div>
 </div>
 ```
 
@@ -180,12 +180,12 @@ To switch back to the auto behavior from a percentage or shrink behavior, use th
 
 ```html_example
 <div class="grid-x">
-  <div class="large-auto cell">One</div>
-  <div class="large-auto cell">Two</div>
-  <div class="large-auto cell">Three</div>
-  <div class="large-auto cell">Four</div>
-  <div class="large-auto cell">Five</div>
-  <div class="large-auto cell">Six</div>
+  <div class="cell large-auto">One</div>
+  <div class="cell large-auto">Two</div>
+  <div class="cell large-auto">Three</div>
+  <div class="cell large-auto">Four</div>
+  <div class="cell large-auto">Five</div>
+  <div class="cell large-auto">Six</div>
 </div>
 ```
 
@@ -199,10 +199,10 @@ There are times when you won't want each media query to be collapsed. In this ca
 
 ```html_example
 <div class="grid-x grid-margin-x medium-margin-collapse">
-  <div class="small-6 cell">
+  <div class="cell small-6">
     Gutters at small no gutters at medium.
   </div>
-  <div class="small-6 cell">
+  <div class="cell small-6">
     Gutters at small no gutters at medium.
   </div>
 </div>
@@ -216,8 +216,8 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 ```html_example
 <div class="grid-x grid-margin-x">
-  <div class="small-4 large-offset-2 cell">Offset 2 on large</div>
-  <div class="small-4 cell">4 cells</div>
+  <div class="cell small-4 large-offset-2">Offset 2 on large</div>
+  <div class="cell small-4">4 cells</div>
 </div>
 ```
 
@@ -227,7 +227,7 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 To define cell widths within a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x` or `grid-y`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
 
-<div class="primary callout">This example uses padding grid but this can be used with margin grid too.</div>
+<div class="callout primary">This example uses padding grid but this can be used with margin grid too.</div>
 
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/PjBLxE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
