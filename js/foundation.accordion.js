@@ -47,7 +47,7 @@ class Accordion extends Plugin {
       var $el = $(el),
           $content = $el.children('[data-tab-content]'),
           id = $content[0].id || GetYoDigits(6, 'accordion'),
-          linkId = el.id || `${id}-label`;
+          linkId = (el.id) ? `${el.id}-label` : `${id}-label`;
 
       $el.find('a:first').attr({
         'aria-controls': id,
