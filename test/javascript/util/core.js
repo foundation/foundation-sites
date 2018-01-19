@@ -69,6 +69,17 @@ describe('Foundation core', function() {
     });
   });
 
+  describe('RegExpEscape()', function() {
+    it('escape all special characters in a string for RegExp', function () {
+      const str = 'abc012-[]{}()*+?.,\\^$|#\s\t\r\n';
+      const notstr = 'abc012-[]{}not-the-escaped-string';
+      const reg = new RegExp(Foundation.RegExpEscape(str), 'g');
+
+      reg.test(str).should.be.true;
+      reg.test(notstr).should.be.false;
+    });
+  });
+
   describe('reflow()', function() {
   });
 
