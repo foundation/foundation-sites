@@ -186,7 +186,8 @@ class Reveal extends Plugin {
   * Disables the scroll when Reveal is shown to prevent the background from shifting
   * @param {number} scrollTop
   */
-  _disableScroll(scrollTop){
+  _disableScroll(scrollTop) {
+    scrollTop = scrollTop || $(window).scrollTop();
     if ($(document).height() > $(window).height()) {
       $("html")
         .css("top", -scrollTop);
@@ -197,7 +198,8 @@ class Reveal extends Plugin {
   * Reenables the scroll when Reveal closes
   * @param {number} scrollTop
   */
-  _enableScroll(scrollTop){
+  _enableScroll(scrollTop) {
+    scrollTop = scrollTop || parseInt($("html").css("top"));
     if ($(document).height() > $(window).height()) {
       $("html")
         .css("top", "");
@@ -264,9 +266,7 @@ class Reveal extends Plugin {
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
 
-    var scrollTop = $(window).scrollTop();
-
-    this._disableScroll(scrollTop);
+    this._disableScroll();
 
     var _this = this;
 
