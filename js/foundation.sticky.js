@@ -494,8 +494,8 @@ Sticky.defaults = {
   /**
    * If true (by default), keep the sticky container the same height as the element. Otherwise, the container height is set once and does not change.
    * @option
-   * @type {number}
-   * @default -1
+   * @type {boolean}
+   * @default true
    */
   dynamicHeight: true,
   /**
