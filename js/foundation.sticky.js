@@ -305,10 +305,17 @@ class Sticky extends Plugin {
    * @private
    */
   _setSizes(cb) {
+    // If an height is already calculated and should not be dynamic, stop there
+    if (!this.options.dynamicHeight && this.containerHeight) {
+      if (cb && typeof cb === 'function') { cb(); }
+      return;
+    }
+
     this.canStick = MediaQuery.is(this.options.stickyOn);
     if (!this.canStick) {
       if (cb && typeof cb === 'function') { cb(); }
     }
+
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         comp = window.getComputedStyle(this.$container[0]),
@@ -325,14 +332,11 @@ class Sticky extends Plugin {
       'max-width': `${newElemWidth - pdngl - pdngr}px`
     });
 
+    // Get the sticked element height and apply it to the container to "hold the place"
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-    if (this.$element.css("display") == "none") {
-      newContainerHeight = 0;
-    }
+    newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+    this.$container.css('height', newContainerHeight);
     this.containerHeight = newContainerHeight;
-    this.$container.css({
-      height: newContainerHeight
-    });
     this.elemHeight = newContainerHeight;
 
     if (!this.isStuck) {
@@ -487,6 +491,13 @@ Sticky.defaults = {
    * @default 'sticky-container'
    */
   containerClass: 'sticky-container',
+  /**
+   * If true (by default), keep the sticky container the same height as the element. Otherwise, the container height is set once and does not change.
+   * @option
+   * @type {number}
+   * @default -1
+   */
+  dynamicHeight: true,
   /**
    * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
    * @option
