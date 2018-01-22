@@ -305,12 +305,6 @@ class Sticky extends Plugin {
    * @private
    */
   _setSizes(cb) {
-    // If an height is already calculated and should not be dynamic, stop there
-    if (!this.options.dynamicHeight && this.containerHeight) {
-      if (cb && typeof cb === 'function') { cb(); }
-      return;
-    }
-
     this.canStick = MediaQuery.is(this.options.stickyOn);
     if (!this.canStick) {
       if (cb && typeof cb === 'function') { cb(); }
@@ -332,12 +326,15 @@ class Sticky extends Plugin {
       'max-width': `${newElemWidth - pdngl - pdngr}px`
     });
 
-    // Get the sticked element height and apply it to the container to "hold the place"
-    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-    newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
-    this.$container.css('height', newContainerHeight);
-    this.containerHeight = newContainerHeight;
-    this.elemHeight = newContainerHeight;
+    // Recalculate the height only if it is "dynamic"
+    if (this.options.dynamicHeight || !this.containerHeight) {
+      // Get the sticked element height and apply it to the container to "hold the place"
+      var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+      newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+      this.$container.css('height', newContainerHeight);
+      this.containerHeight = newContainerHeight;
+    }
+    this.elemHeight = this.containerHeight;
 
     if (!this.isStuck) {
       if (this.$element.hasClass('is-at-bottom')) {
@@ -346,7 +343,7 @@ class Sticky extends Plugin {
       }
     }
 
-    this._setBreakPoints(newContainerHeight, function() {
+    this._setBreakPoints(this.containerHeight, function() {
       if (cb && typeof cb === 'function') { cb(); }
     });
   }
