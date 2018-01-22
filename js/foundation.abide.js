@@ -207,7 +207,7 @@ class Abide extends Plugin {
   }
 
   /**
-   * Adds [for] attributes to all form error targetting $el,
+   * Adds [for] and [role=alert] attributes to all form error targetting $el,
    * and [aria-describedby] attribute to $el toward the first form error.
    * @param {Object} $el - jQuery object
    */
@@ -244,6 +244,13 @@ class Abide extends Plugin {
           $label.attr('for', elemId);
       }).end();
     }
+
+    // For each error targeting $el, set [role=alert] if it is not set.
+    $errors.each((i, label) => {
+      const $label = $(label);
+      if (typeof $label.attr('role') === 'undefined')
+        $label.attr('role', 'alert');
+    }).end();
   }
 
   /**
@@ -595,8 +602,10 @@ Abide.defaults = {
   formErrorClass: 'is-visible',
 
   /**
-   * If true, automatically insert when possible `[aria-describedby]` on fields, `[for]` on label
-   * and [aria-live] on global errors `[data-abide-error]` (see option `a11yErrorLevel`).
+   * If true, automatically insert when possible:
+   * - `[aria-describedby]` on fields
+   * - `[role=alert]` on form errors and `[for]` on form error labels
+   * - `[aria-live]` on global errors `[data-abide-error]` (see option `a11yErrorLevel`).
    * @option
    * @type {boolean}
    * @default true
