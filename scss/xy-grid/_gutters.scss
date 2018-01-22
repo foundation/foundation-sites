@@ -30,7 +30,7 @@
 
       // Loop through each gutter position
       @each $value in $gutter-position {
-        #{$gutter-type}-#{$value}: #{$operator}$gutter;
+        #{$gutter-type}-#{$value}: unquote("#{$operator}#{$gutter}");
       }
     }
   }
@@ -39,7 +39,7 @@
 
     // Loop through each gutter position
     @each $value in $gutter-position {
-      #{$gutter-type}-#{$value}: #{$operator}$gutter;
+      #{$gutter-type}-#{$value}: unquote("#{$operator}#{$gutter}");
     }
   }
 }

@@ -102,7 +102,7 @@ Touch.setupSpotSwipe = function($) {
 Touch.setupTouchHandler = function($) {
   $.fn.addTouch = function(){
     this.each(function(i,el){
-      $(el).bind('touchstart touchmove touchend touchcancel',function(){
+      $(el).bind('touchstart touchmove touchend touchcancel', function(event)  {
         //we pass the original event object because the jQuery event
         //object is normalized to w3c specs and does not provide the TouchList
         handleTouch(event);

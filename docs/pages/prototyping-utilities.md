@@ -1,6 +1,7 @@
 ---
 title: Prototyping Utilities
 description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
+video: Xhc_KUJMEuk
 sass:
   - scss/prototype/*.scss
 ---
@@ -111,6 +112,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](http://codepen.io/IamManchanda/pen/XMRMwo)
 </div>
 
+<p>
+  <a class="" data-open-video="1:06"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
 #### Buttons
 
 ```html_example
@@ -119,6 +124,19 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 <button type="button" class="button radius bordered shadow success">Success</button>
 <button type="button" class="button rounded bordered shadow alert">Alert</button>
 <button type="button" class="button radius bordered shadow warning">Warning</button>
+```
+
+#### Switches
+
+Add the `.rounded` class to `.switch` to make it rounded.
+
+```html_example
+<div class="switch rounded">
+  <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+  <label class="switch-paddle" for="exampleSwitch">
+    <span class="show-for-sr">Download Kittens</span>
+  </label>
+</div>
 ```
 
 #### Cards
@@ -415,6 +433,10 @@ Generate spacing around elements with these easy to use margin classes.
 <div class="primary callout">
 	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
 </div>
+
+<p>
+  <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 #### Margin (All Sides)
 
@@ -805,4 +827,3 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include odd-between($first, $last) {} // applies style to all odd children except first and last
 @include number-between($num, $first, $last) {} // applies style to every n children from first child and last child
 ```
-
