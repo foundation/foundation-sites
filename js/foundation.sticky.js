@@ -309,6 +309,7 @@ class Sticky extends Plugin {
     if (!this.canStick) {
       if (cb && typeof cb === 'function') { cb(); }
     }
+
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         comp = window.getComputedStyle(this.$container[0]),
@@ -325,15 +326,15 @@ class Sticky extends Plugin {
       'max-width': `${newElemWidth - pdngl - pdngr}px`
     });
 
-    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-    if (this.$element.css("display") == "none") {
-      newContainerHeight = 0;
+    // Recalculate the height only if it is "dynamic"
+    if (this.options.dynamicHeight || !this.containerHeight) {
+      // Get the sticked element height and apply it to the container to "hold the place"
+      var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+      newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+      this.$container.css('height', newContainerHeight);
+      this.containerHeight = newContainerHeight;
     }
-    this.containerHeight = newContainerHeight;
-    this.$container.css({
-      height: newContainerHeight
-    });
-    this.elemHeight = newContainerHeight;
+    this.elemHeight = this.containerHeight;
 
     if (!this.isStuck) {
       if (this.$element.hasClass('is-at-bottom')) {
@@ -342,7 +343,7 @@ class Sticky extends Plugin {
       }
     }
 
-    this._setBreakPoints(newContainerHeight, function() {
+    this._setBreakPoints(this.containerHeight, function() {
       if (cb && typeof cb === 'function') { cb(); }
     });
   }
@@ -487,6 +488,13 @@ Sticky.defaults = {
    * @default 'sticky-container'
    */
   containerClass: 'sticky-container',
+  /**
+   * If true (by default), keep the sticky container the same height as the element. Otherwise, the container height is set once and does not change.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  dynamicHeight: true,
   /**
    * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
    * @option
