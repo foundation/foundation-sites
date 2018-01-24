@@ -141,11 +141,13 @@ class Dropdown extends Positionable {
       .on('click.zf.trigger', function(e) {
         _this._setCurrentAnchor(this);
 
-        if (_this.options.forceFollow && hasTouch && _this.options.hover) {
-          var hasClicked = $(this).attr('data-is-click') === true;
-          if (hasClicked === false && _this.$element.attr('aria-hidden') === 'true') {
-            e.preventDefault();
-          }
+        if (_this.options.forceFollow === false) {
+          // if forceFollow false, always prevent default action
+          e.preventDefault();
+        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          // if forceFollow true and hover option true, only prevent default action on 1st click
+          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          e.preventDefault();
         }
     });
 
@@ -419,7 +421,7 @@ Dropdown.defaults = {
    */
   closeOnClick: false,
   /**
-   * Boolean to force overide the clicking of toggle link (href) to perform default action, on second touch event for mobile.
+   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click. 
    * @option
    * @type {boolean}
    * @default true
