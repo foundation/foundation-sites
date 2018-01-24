@@ -133,7 +133,9 @@ class Dropdown extends Positionable {
    * @private
    */
   _events() {
-    var _this = this;
+    var _this = this,
+        hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined');
+
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
@@ -142,7 +144,18 @@ class Dropdown extends Positionable {
     });
 
     this.$anchors.off('click.zf.trigger')
-      .on('click.zf.trigger', function() { _this._setCurrentAnchor(this); });
+      .on('click.zf.trigger', function(e) {
+        _this._setCurrentAnchor(this);
+
+        if (_this.options.forceFollow === false) {
+          // if forceFollow false, always prevent default action
+          e.preventDefault();
+        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          // if forceFollow true and hover option true, only prevent default action on 1st click
+          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          e.preventDefault();
+        }
+    });
 
     if(this.options.hover){
       this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
@@ -362,7 +375,6 @@ Dropdown.defaults = {
    * @default ''
    */
   positionClass: '',
-
   /**
    * Position of dropdown. Can be left, right, bottom, top, or auto.
    * @option
@@ -413,7 +425,14 @@ Dropdown.defaults = {
    * @type {boolean}
    * @default false
    */
-  closeOnClick: false
-}
+  closeOnClick: false,
+  /**
+   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click. 
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  forceFollow: true
+};
 
 export {Dropdown};
