@@ -46,6 +46,7 @@ class Interchange extends Plugin {
       'id': id
     });
 
+    this._parseOptions();
     this._addBreakpoints();
     this._generateRules();
     this._reflow();
@@ -80,6 +81,23 @@ class Interchange extends Plugin {
 
     if (match) {
       this.replace(match.path);
+    }
+  }
+
+  /**
+   * Check options valifity and set defaults for:
+   * - `data-interchange-type`: if set, enforce the type of remplacement (auto, src, background or html)
+   * @function
+   * @private
+   */
+  _parseOptions() {
+    // [data-interchange-type]
+    var types = ['auto', 'src', 'background', 'html'];
+    if (typeof this.options.type === undefined)
+      this.options.type = 'auto';
+    else if (types.indexOf(this.options.type) !== -1) {
+      console.log(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
+      this.options.type = 'auto';
     }
   }
 
@@ -146,29 +164,39 @@ class Interchange extends Plugin {
   replace(path) {
     if (this.currentPath === path) return;
 
-    var _this = this,
-        trigger = 'replaced.zf.interchange';
+    var trigger = 'replaced.zf.interchange';
+
+    var type = this.options.type;
+    if (type === 'auto') {
+      if (this.$element[0].nodeName === 'IMG')
+        type = 'src';
+      else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i))
+        type = 'background';
+      else
+        type = 'html';
+    }
 
     // Replacing images
-    if (this.$element[0].nodeName === 'IMG') {
-      this.$element.attr('src', path).on('load', function() {
-        _this.currentPath = path;
-      })
-      .trigger(trigger);
+    if (type === 'src') {
+      this.$element.attr('src', path)
+        .on('load', () => { this.currentPath = path; })
+        .trigger(trigger);
     }
     // Replacing background images
-    else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+    else if (type === 'background') {
       path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
-      this.$element.css({ 'background-image': 'url('+path+')' })
-          .trigger(trigger);
+      this.$element
+        .css({ 'background-image': 'url(' + path + ')' })
+        .trigger(trigger);
     }
     // Replacing HTML
-    else {
-      $.get(path, function(response) {
-        _this.$element.html(response)
-             .trigger(trigger);
+    else if (type === 'html') {
+      $.get(path, (response) => {
+        this.$element
+          .html(response)
+          .trigger(trigger);
         $(response).foundation();
-        _this.currentPath = path;
+        this.currentPath = path;
       });
     }
 
@@ -198,7 +226,19 @@ Interchange.defaults = {
    * @type {?array}
    * @default null
    */
-  rules: null
+  rules: null,
+
+  /**
+   * Type of the responsive ressource to remplace. It can takes the following options:
+   * - `auto` (default): choose the type according to the element tag or the ressource extention
+   * - `src`: replace the `[src]` attribute, recommanded for images `<img>`.
+   * - `background`: replace the `background-image` CSS property.
+   * - `html`: replace the element content.
+   * @option
+   * @type {?array}
+   * @default 'auto'
+   */
+  type: 'auto'
 };
 
 Interchange.SPECIAL_QUERIES = {
