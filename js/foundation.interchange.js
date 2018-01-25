@@ -234,7 +234,7 @@ Interchange.defaults = {
    * - `background`: replace the `background-image` CSS property.
    * - `html`: replace the element content.
    * @option
-   * @type {?array}
+   * @type {string}
    * @default 'auto'
    */
   type: 'auto'
