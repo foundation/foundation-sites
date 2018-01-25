@@ -23,7 +23,7 @@ class Interchange extends Plugin {
    */
   _setup(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Interchange.defaults, options);
+    this.options = $.extend({}, Interchange.defaults, this.$element.data(), options);
     this.rules = [];
     this.currentPath = '';
     this.className = 'Interchange'; // ie9 back compat
@@ -91,11 +91,10 @@ class Interchange extends Plugin {
    * @private
    */
   _parseOptions() {
-    // [data-interchange-type]
     var types = ['auto', 'src', 'background', 'html'];
     if (typeof this.options.type === undefined)
       this.options.type = 'auto';
-    else if (types.indexOf(this.options.type) !== -1) {
+    else if (types.indexOf(this.options.type) === -1) {
       console.log(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
       this.options.type = 'auto';
     }
