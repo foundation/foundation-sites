@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.4.3",
+  "version": "",
   "main": "dist/js/npm.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",

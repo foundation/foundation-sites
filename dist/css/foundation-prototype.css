@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.3
+ * Version 
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -1456,7 +1456,8 @@ textarea {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap; }
   .grid-y > .cell {
-    width: auto; }
+    width: auto;
+    max-width: none; }
   .grid-y > .auto {
     height: auto; }
   .grid-y > .shrink {
@@ -1737,6 +1738,7 @@ textarea {
 .cell-block-y {
   overflow-y: auto;
   max-height: 100%;
+  height: 100%;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-stype: -ms-autohiding-scrollbar; }
 
@@ -1795,6 +1797,7 @@ textarea {
   .medium-cell-block-y {
     overflow-y: auto;
     max-height: 100%;
+    height: 100%;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-stype: -ms-autohiding-scrollbar; } }
 
@@ -1836,6 +1839,7 @@ textarea {
   .large-cell-block-y {
     overflow-y: auto;
     max-height: 100%;
+    height: 100%;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-stype: -ms-autohiding-scrollbar; } }
 
@@ -2206,13 +2210,6 @@ blockquote {
     line-height: 1.6;
     color: #8a8a8a; }
 
-cite {
-  display: block;
-  font-size: 0.8125rem;
-  color: #8a8a8a; }
-  cite:before {
-    content: "— "; }
-
 abbr, abbr[title] {
   border-bottom: 1px dotted #0a0a0a;
   cursor: help;
@@ -2256,6 +2253,13 @@ kbd {
 ul.no-bullet, ol.no-bullet {
   margin-left: 0;
   list-style: none; }
+
+.cite-block, cite {
+  display: block;
+  color: #8a8a8a;
+  font-size: 0.8125rem; }
+  .cite-block:before, cite:before {
+    content: "— "; }
 
 .text-left {
   text-align: left; }
@@ -2515,7 +2519,6 @@ label {
   -webkit-flex: 1 1 0px;
       -ms-flex: 1 1 0px;
           flex: 1 1 0px;
-  height: auto;
   min-width: 0; }
 
 .input-group-button {
@@ -3025,15 +3028,15 @@ a.button:hover, a.button:focus {
 
 .submenu-toggle-text {
   position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  border: 0; }
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  border: 0 !important; }
 
 .badge {
   display: inline-block;
@@ -3183,24 +3186,35 @@ a.button:hover, a.button:focus {
               flex: 0 0 100%; }
       .button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
         margin-bottom: 0; }
-  @media print, screen and (min-width: 40em) {
-    .button-group.stacked-for-small .button {
+    .button-group.stacked.expanded .button, .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-medium.expanded .button {
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 0px;
           -ms-flex: 1 1 0px;
-              flex: 1 1 0px;
+              flex: 1 1 0px; }
+  @media print, screen and (min-width: 40em) {
+    .button-group.stacked-for-small .button {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 auto;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
       margin-bottom: 0; } }
   @media print, screen and (min-width: 64em) {
     .button-group.stacked-for-medium .button {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1 1 0px;
-          -ms-flex: 1 1 0px;
-              flex: 1 1 0px;
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 auto;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
       margin-bottom: 0; } }
   @media screen and (max-width: 39.9375em) {
     .button-group.stacked-for-small.expanded {
       display: block; }
       .button-group.stacked-for-small.expanded .button {
+        display: block;
+        margin-right: 0; } }
+  @media screen and (max-width: 63.9375em) {
+    .button-group.stacked-for-medium.expanded {
+      display: block; }
+      .button-group.stacked-for-medium.expanded .button {
         display: block;
         margin-right: 0; } }
 
@@ -4065,16 +4079,6 @@ a.button:hover, a.button:focus {
       -webkit-flex-wrap: wrap;
           -ms-flex-wrap: wrap;
               flex-wrap: wrap; } }
-  @media screen and (max-width: 39.9375em) {
-    .media-object.stack-for-small .media-object-section {
-      padding: 0;
-      padding-bottom: 1rem;
-      -webkit-flex-basis: 100%;
-          -ms-flex-preferred-size: 100%;
-              flex-basis: 100%;
-      max-width: 100%; }
-      .media-object.stack-for-small .media-object-section img {
-        width: 100%; } }
 
 .media-object-section {
   -webkit-box-flex: 0;
@@ -4087,6 +4091,16 @@ a.button:hover, a.button:focus {
     padding-left: 1rem; }
   .media-object-section > :last-child {
     margin-bottom: 0; }
+  @media screen and (max-width: 39.9375em) {
+    .stack-for-small .media-object-section {
+      padding: 0;
+      padding-bottom: 1rem;
+      -webkit-flex-basis: 100%;
+          -ms-flex-preferred-size: 100%;
+              flex-basis: 100%;
+      max-width: 100%; }
+      .stack-for-small .media-object-section img {
+        width: 100%; } }
   .media-object-section.main-section {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
@@ -4756,18 +4770,12 @@ a.button:hover, a.button:focus {
   .sticky.is-anchored.is-at-bottom {
     bottom: 0; }
 
-body.is-reveal-open {
-  overflow: hidden; }
-
-html.is-reveal-open,
-html.is-reveal-open body {
-  min-height: 100%;
-  overflow: hidden;
+html.is-reveal-open {
   position: fixed;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
+  width: 100%;
+  overflow-y: scroll; }
+  html.is-reveal-open body {
+    overflow: hidden; }
 
 .reveal-overlay {
   position: fixed;
@@ -5079,6 +5087,8 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
     font-size: 0.75rem;
     line-height: 1;
     color: #1779ba; }
+    [data-whatinput='mouse'] .tabs-title > a {
+      outline: 0; }
     .tabs-title > a:hover {
       background: #fefefe;
       color: #1468a0; }
@@ -5108,7 +5118,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 1rem;
-  border: solid 4px #fefefe;
+  border: 4px solid #fefefe;
   border-radius: 0;
   -webkit-box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
           box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
@@ -5400,25 +5410,25 @@ a.thumbnail {
 .show-for-sr,
 .show-on-focus {
   position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  border: 0; }
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  border: 0 !important; }
 
 .show-on-focus:active, .show-on-focus:focus {
   position: static !important;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  -webkit-clip-path: none;
-          clip-path: none; }
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  -webkit-clip-path: none !important;
+          clip-path: none !important; }
 
 .show-for-landscape,
 .hide-for-portrait {
@@ -5469,6 +5479,12 @@ a.thumbnail {
 .clearfix::after {
   clear: both; }
 
+.align-left {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
 .align-right {
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
@@ -5491,6 +5507,12 @@ a.thumbnail {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around; }
+
+.align-left.vertical.menu > li > a {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
 
 .align-right.vertical.menu > li > a {
   -webkit-box-pack: end;
@@ -5888,6 +5910,10 @@ ol.list-upper-roman {
 
 .rounded {
   border-radius: 5000px !important; }
+  .rounded .switch-paddle {
+    border-radius: 5000px !important; }
+    .rounded .switch-paddle:after {
+      border-radius: 50%; }
 
 .radius {
   border-radius: 0.1875rem; }
@@ -6107,208 +6133,184 @@ ol.list-upper-roman {
   max-height: 100% !important; }
 
 .margin-0 {
-  margin-top: 0rem !important;
-  margin-right: 0rem !important;
-  margin-bottom: 0rem !important;
-  margin-left: 0rem !important; }
-
-.padding-0 {
-  padding-top: 0rem !important;
-  padding-right: 0rem !important;
-  padding-bottom: 0rem !important;
-  padding-left: 0rem !important; }
+  margin: 0rem; }
 
 .margin-top-0 {
   margin-top: 0rem !important; }
 
-.padding-top-0 {
-  padding-top: 0rem !important; }
-
 .margin-right-0 {
   margin-right: 0rem !important; }
-
-.padding-right-0 {
-  padding-right: 0rem !important; }
 
 .margin-bottom-0 {
   margin-bottom: 0rem !important; }
 
-.padding-bottom-0 {
-  padding-bottom: 0rem !important; }
-
 .margin-left-0 {
   margin-left: 0rem !important; }
-
-.padding-left-0 {
-  padding-left: 0rem !important; }
 
 .margin-horizontal-0 {
   margin-right: 0rem !important;
   margin-left: 0rem !important; }
 
-.padding-horizontal-0 {
-  padding-right: 0rem !important;
-  padding-left: 0rem !important; }
-
 .margin-vertical-0 {
   margin-top: 0rem !important;
   margin-bottom: 0rem !important; }
+
+.padding-0 {
+  padding: 0rem; }
+
+.padding-top-0 {
+  padding-top: 0rem !important; }
+
+.padding-right-0 {
+  padding-right: 0rem !important; }
+
+.padding-bottom-0 {
+  padding-bottom: 0rem !important; }
+
+.padding-left-0 {
+  padding-left: 0rem !important; }
+
+.padding-horizontal-0 {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important; }
 
 .padding-vertical-0 {
   padding-top: 0rem !important;
   padding-bottom: 0rem !important; }
 
 .margin-1 {
-  margin-top: 1rem !important;
-  margin-right: 1rem !important;
-  margin-bottom: 1rem !important;
-  margin-left: 1rem !important; }
-
-.padding-1 {
-  padding-top: 1rem !important;
-  padding-right: 1rem !important;
-  padding-bottom: 1rem !important;
-  padding-left: 1rem !important; }
+  margin: 1rem; }
 
 .margin-top-1 {
   margin-top: 1rem !important; }
 
-.padding-top-1 {
-  padding-top: 1rem !important; }
-
 .margin-right-1 {
   margin-right: 1rem !important; }
-
-.padding-right-1 {
-  padding-right: 1rem !important; }
 
 .margin-bottom-1 {
   margin-bottom: 1rem !important; }
 
-.padding-bottom-1 {
-  padding-bottom: 1rem !important; }
-
 .margin-left-1 {
   margin-left: 1rem !important; }
-
-.padding-left-1 {
-  padding-left: 1rem !important; }
 
 .margin-horizontal-1 {
   margin-right: 1rem !important;
   margin-left: 1rem !important; }
 
-.padding-horizontal-1 {
-  padding-right: 1rem !important;
-  padding-left: 1rem !important; }
-
 .margin-vertical-1 {
   margin-top: 1rem !important;
   margin-bottom: 1rem !important; }
+
+.padding-1 {
+  padding: 1rem; }
+
+.padding-top-1 {
+  padding-top: 1rem !important; }
+
+.padding-right-1 {
+  padding-right: 1rem !important; }
+
+.padding-bottom-1 {
+  padding-bottom: 1rem !important; }
+
+.padding-left-1 {
+  padding-left: 1rem !important; }
+
+.padding-horizontal-1 {
+  padding-right: 1rem !important;
+  padding-left: 1rem !important; }
 
 .padding-vertical-1 {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important; }
 
 .margin-2 {
-  margin-top: 2rem !important;
-  margin-right: 2rem !important;
-  margin-bottom: 2rem !important;
-  margin-left: 2rem !important; }
-
-.padding-2 {
-  padding-top: 2rem !important;
-  padding-right: 2rem !important;
-  padding-bottom: 2rem !important;
-  padding-left: 2rem !important; }
+  margin: 2rem; }
 
 .margin-top-2 {
   margin-top: 2rem !important; }
 
-.padding-top-2 {
-  padding-top: 2rem !important; }
-
 .margin-right-2 {
   margin-right: 2rem !important; }
-
-.padding-right-2 {
-  padding-right: 2rem !important; }
 
 .margin-bottom-2 {
   margin-bottom: 2rem !important; }
 
-.padding-bottom-2 {
-  padding-bottom: 2rem !important; }
-
 .margin-left-2 {
   margin-left: 2rem !important; }
-
-.padding-left-2 {
-  padding-left: 2rem !important; }
 
 .margin-horizontal-2 {
   margin-right: 2rem !important;
   margin-left: 2rem !important; }
 
-.padding-horizontal-2 {
-  padding-right: 2rem !important;
-  padding-left: 2rem !important; }
-
 .margin-vertical-2 {
   margin-top: 2rem !important;
   margin-bottom: 2rem !important; }
+
+.padding-2 {
+  padding: 2rem; }
+
+.padding-top-2 {
+  padding-top: 2rem !important; }
+
+.padding-right-2 {
+  padding-right: 2rem !important; }
+
+.padding-bottom-2 {
+  padding-bottom: 2rem !important; }
+
+.padding-left-2 {
+  padding-left: 2rem !important; }
+
+.padding-horizontal-2 {
+  padding-right: 2rem !important;
+  padding-left: 2rem !important; }
 
 .padding-vertical-2 {
   padding-top: 2rem !important;
   padding-bottom: 2rem !important; }
 
 .margin-3 {
-  margin-top: 3rem !important;
-  margin-right: 3rem !important;
-  margin-bottom: 3rem !important;
-  margin-left: 3rem !important; }
-
-.padding-3 {
-  padding-top: 3rem !important;
-  padding-right: 3rem !important;
-  padding-bottom: 3rem !important;
-  padding-left: 3rem !important; }
+  margin: 3rem; }
 
 .margin-top-3 {
   margin-top: 3rem !important; }
 
-.padding-top-3 {
-  padding-top: 3rem !important; }
-
 .margin-right-3 {
   margin-right: 3rem !important; }
-
-.padding-right-3 {
-  padding-right: 3rem !important; }
 
 .margin-bottom-3 {
   margin-bottom: 3rem !important; }
 
-.padding-bottom-3 {
-  padding-bottom: 3rem !important; }
-
 .margin-left-3 {
   margin-left: 3rem !important; }
-
-.padding-left-3 {
-  padding-left: 3rem !important; }
 
 .margin-horizontal-3 {
   margin-right: 3rem !important;
   margin-left: 3rem !important; }
 
-.padding-horizontal-3 {
-  padding-right: 3rem !important;
-  padding-left: 3rem !important; }
-
 .margin-vertical-3 {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important; }
+
+.padding-3 {
+  padding: 3rem; }
+
+.padding-top-3 {
+  padding-top: 3rem !important; }
+
+.padding-right-3 {
+  padding-right: 3rem !important; }
+
+.padding-bottom-3 {
+  padding-bottom: 3rem !important; }
+
+.padding-left-3 {
+  padding-left: 3rem !important; }
+
+.padding-horizontal-3 {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important; }
 
 .padding-vertical-3 {
   padding-top: 3rem !important;

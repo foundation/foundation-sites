@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 107);
+/******/ 	return __webpack_require__(__webpack_require__.s = 104);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -75,22 +72,22 @@ module.exports = jQuery;
 
 /***/ }),
 
-/***/ 107:
+/***/ 104:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(41);
+module.exports = __webpack_require__(105);
 
 
 /***/ }),
 
-/***/ 41:
+/***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_touch__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_touch__ = __webpack_require__(106);
 
 
 
@@ -101,7 +98,7 @@ window.Foundation.Touch = __WEBPACK_IMPORTED_MODULE_1__foundation_util_touch__["
 
 /***/ }),
 
-/***/ 71:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -225,7 +222,7 @@ Touch.setupSpotSwipe = function ($) {
 Touch.setupTouchHandler = function ($) {
   $.fn.addTouch = function () {
     this.each(function (i, el) {
-      $(el).bind('touchstart touchmove touchend touchcancel', function () {
+      $(el).bind('touchstart touchmove touchend touchcancel', function (event) {
         //we pass the original event object because the jQuery event
         //object is normalized to w3c specs and does not provide the TouchList
         handleTouch(event);

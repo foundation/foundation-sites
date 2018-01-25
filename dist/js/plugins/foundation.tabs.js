@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 97);
+/******/ 	return __webpack_require__(__webpack_require__.s = 74);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -96,21 +93,6 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 31:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_tabs__ = __webpack_require__(61);
-
-
-
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_tabs__["a" /* Tabs */], 'Tabs');
-
-/***/ }),
-
 /***/ 5:
 /***/ (function(module, exports) {
 
@@ -118,7 +100,30 @@ module.exports = {Keyboard: window.Foundation.Keyboard};
 
 /***/ }),
 
-/***/ 61:
+/***/ 74:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(75);
+
+
+/***/ }),
+
+/***/ 75:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_tabs__ = __webpack_require__(76);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_tabs__["a" /* Tabs */], 'Tabs');
+
+/***/ }),
+
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -234,7 +239,7 @@ var Tabs = function (_Plugin) {
         }
 
         if (isActive && _this.options.autoFocus) {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).load(function () {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load', function () {
             __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, function () {
               $link.focus();
             });
@@ -245,7 +250,7 @@ var Tabs = function (_Plugin) {
         var $images = this.$tabContent.find('img');
 
         if ($images.length) {
-          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__foundation_util_imageLoader__["onImagesLoaded"])($images, this._setHeight.bind(this));
+          Object(__WEBPACK_IMPORTED_MODULE_2__foundation_util_imageLoader__["onImagesLoaded"])($images, this._setHeight.bind(this));
         } else {
           this._setHeight();
         }
@@ -256,7 +261,8 @@ var Tabs = function (_Plugin) {
         var anchor = window.location.hash;
         //need a hash and a relevant anchor in this tabset
         if (anchor.length) {
-          var $link = _this3.$element.find('[href$="' + anchor + '"]');
+          var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
+          var $link = _this3.$element.find('[href$="' + anchor + '"],[data-tabs-target="' + anchorNoHash + '"]').first();
           if ($link.length) {
             _this3.selectTab(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(anchor), true);
 
@@ -486,7 +492,7 @@ var Tabs = function (_Plugin) {
   }, {
     key: 'selectTab',
     value: function selectTab(elem, historyHandled) {
-      var idStr;
+      var idStr, hashIdStr;
 
       if (typeof elem === 'object') {
         idStr = elem[0].id;
@@ -495,10 +501,13 @@ var Tabs = function (_Plugin) {
       }
 
       if (idStr.indexOf('#') < 0) {
-        idStr = '#' + idStr;
+        hashIdStr = '#' + idStr;
+      } else {
+        hashIdStr = idStr;
+        idStr = idStr.slice(1);
       }
 
-      var $target = this.$tabTitles.find('[href$="' + idStr + '"]').parent('.' + this.options.linkClass);
+      var $target = this.$tabTitles.find('[href$="' + hashIdStr + '"],[data-tabs-target="' + idStr + '"]').first().parent('.' + this.options.linkClass);
 
       this._handleTabChange($target, historyHandled);
     }
@@ -663,14 +672,6 @@ Tabs.defaults = {
   panelActiveClass: 'is-active'
 };
 
-
-
-/***/ }),
-
-/***/ 97:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(31);
 
 
 /***/ })

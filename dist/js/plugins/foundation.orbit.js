@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 89);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -103,21 +100,6 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 23:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_orbit__ = __webpack_require__(53);
-
-
-
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_orbit__["a" /* Orbit */], 'Orbit');
-
-/***/ }),
-
 /***/ 3:
 /***/ (function(module, exports) {
 
@@ -132,14 +114,30 @@ module.exports = {Motion: window.Foundation.Motion, Move: window.Foundation.Move
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports) {
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = {Keyboard: window.Foundation.Keyboard};
+module.exports = __webpack_require__(45);
+
 
 /***/ }),
 
-/***/ 53:
+/***/ 45:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_orbit__ = __webpack_require__(46);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_orbit__["a" /* Orbit */], 'Orbit');
+
+/***/ }),
+
+/***/ 46:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -150,7 +148,7 @@ module.exports = {Keyboard: window.Foundation.Keyboard};
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_timer__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_timer__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_timer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__foundation_util_timer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__);
@@ -246,7 +244,7 @@ var Orbit = function (_Plugin) {
 
       var $images = this.$element.find('img'),
           initActive = this.$slides.filter('.is-active'),
-          id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__foundation_util_core__["GetYoDigits"])(6, 'orbit');
+          id = this.$element[0].id || Object(__WEBPACK_IMPORTED_MODULE_5__foundation_util_core__["GetYoDigits"])(6, 'orbit');
 
       this.$element.attr({
         'data-resize': id,
@@ -262,7 +260,7 @@ var Orbit = function (_Plugin) {
       }
 
       if ($images.length) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__["onImagesLoaded"])($images, this._prepareForOrbit.bind(this));
+        Object(__WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__["onImagesLoaded"])($images, this._prepareForOrbit.bind(this));
       } else {
         this._prepareForOrbit(); //hehe
       }
@@ -749,18 +747,17 @@ Orbit.defaults = {
 
 /***/ }),
 
-/***/ 78:
+/***/ 47:
 /***/ (function(module, exports) {
 
 module.exports = {Timer: window.Foundation.Timer};
 
 /***/ }),
 
-/***/ 89:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 5:
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(23);
-
+module.exports = {Keyboard: window.Foundation.Keyboard};
 
 /***/ })
 

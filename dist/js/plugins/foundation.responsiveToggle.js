@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 92);
+/******/ 	return __webpack_require__(__webpack_require__.s = 59);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -89,21 +86,6 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 26:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_responsiveToggle__ = __webpack_require__(56);
-
-
-
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_responsiveToggle__["a" /* ResponsiveToggle */], 'ResponsiveToggle');
-
-/***/ }),
-
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -111,7 +93,37 @@ module.exports = {Motion: window.Foundation.Motion, Move: window.Foundation.Move
 
 /***/ }),
 
-/***/ 56:
+/***/ 59:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(60);
+
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+module.exports = {MediaQuery: window.Foundation.MediaQuery};
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_responsiveToggle__ = __webpack_require__(61);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_responsiveToggle__["a" /* ResponsiveToggle */], 'ResponsiveToggle');
+
+/***/ }),
+
+/***/ 61:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -314,21 +326,6 @@ ResponsiveToggle.defaults = {
   animate: false
 };
 
-
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports) {
-
-module.exports = {MediaQuery: window.Foundation.MediaQuery};
-
-/***/ }),
-
-/***/ 92:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(26);
 
 
 /***/ })

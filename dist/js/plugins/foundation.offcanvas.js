@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 88);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -89,21 +86,6 @@ module.exports = {Plugin: window.Foundation.Plugin};
 
 /***/ }),
 
-/***/ 22:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_offcanvas__ = __webpack_require__(52);
-
-
-
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_offcanvas__["a" /* OffCanvas */], 'OffCanvas');
-
-/***/ }),
-
 /***/ 3:
 /***/ (function(module, exports) {
 
@@ -118,14 +100,30 @@ module.exports = {Motion: window.Foundation.Motion, Move: window.Foundation.Move
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports) {
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = {Keyboard: window.Foundation.Keyboard};
+module.exports = __webpack_require__(42);
+
 
 /***/ }),
 
-/***/ 52:
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_offcanvas__ = __webpack_require__(43);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_offcanvas__["a" /* OffCanvas */], 'OffCanvas');
+
+/***/ }),
+
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -280,10 +278,17 @@ var OffCanvas = function (_Plugin) {
         }
       }
 
-      this.options.isRevealed = this.options.isRevealed || new RegExp(this.options.revealClass, 'g').test(this.$element[0].className);
+      // Get the revealOn option from the class.
+      var revealOnRegExp = new RegExp(Object(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["RegExpEscape"])(this.options.revealClass) + '([^\\s]+)', 'g');
+      var revealOnClass = revealOnRegExp.exec(this.$element[0].className);
+      if (revealOnClass) {
+        this.options.isRevealed = true;
+        this.options.revealOn = this.options.revealOn || revealOnClass[1];
+      }
 
-      if (this.options.isRevealed === true) {
-        this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
+      // Ensure the `reveal-on-*` class is set.
+      if (this.options.isRevealed === true && this.options.revealOn) {
+        this.$element.first().addClass('' + this.options.revealClass + this.options.revealOn);
         this._setMQChecker();
       }
 
@@ -510,7 +515,7 @@ var OffCanvas = function (_Plugin) {
       }
 
       if (this.options.autoFocus === true) {
-        this.$element.one(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["transitionend"])(this.$element), function () {
+        this.$element.one(Object(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["transitionend"])(this.$element), function () {
           if (!_this.$element.hasClass('is-open')) {
             return; // exit if prematurely closed
           }
@@ -581,7 +586,7 @@ var OffCanvas = function (_Plugin) {
       }
 
       // Listen to transitionEnd and add class when done.
-      this.$element.one(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["transitionend"])(this.$element), function (e) {
+      this.$element.one(Object(__WEBPACK_IMPORTED_MODULE_3__foundation_util_core__["transitionend"])(this.$element), function (e) {
         _this.$element.addClass('is-closed');
         _this._removeContentClasses();
       });
@@ -753,6 +758,13 @@ OffCanvas.defaults = {
 };
 
 
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports) {
+
+module.exports = {Keyboard: window.Foundation.Keyboard};
 
 /***/ }),
 
@@ -1039,14 +1051,6 @@ Triggers.init = function ($, Foundation) {
   }
 };
 
-
-
-/***/ }),
-
-/***/ 88:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(22);
 
 
 /***/ })

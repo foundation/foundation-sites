@@ -33,9 +33,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -63,55 +60,95 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 84);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports) {
 
 module.exports = jQuery;
 
 /***/ }),
-
-/***/ 1:
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = {Foundation: window.Foundation};
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
 
-/***/ 18:
+module.exports = {Plugin: window.Foundation.Plugin};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
+
+/***/ }),
+/* 4 */,
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = {Keyboard: window.Foundation.Keyboard};
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = {Box: window.Foundation.Box};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = {Nest: window.Foundation.Nest};
+
+/***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(29);
+
+
+/***/ }),
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_dropdownMenu__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_dropdownMenu__ = __webpack_require__(30);
 
 
 
 __WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_dropdownMenu__["a" /* DropdownMenu */], 'DropdownMenu');
 
 /***/ }),
-
-/***/ 2:
-/***/ (function(module, exports) {
-
-module.exports = {Plugin: window.Foundation.Plugin};
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports) {
-
-module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
-
-/***/ }),
-
-/***/ 48:
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -210,7 +247,7 @@ var DropdownMenu = function (_Plugin) {
       this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
       if (this.options.alignment === 'auto') {
-        if (this.$element.hasClass(this.options.rightClass) || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
+        if (this.$element.hasClass(this.options.rightClass) || Object(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
           this.options.alignment = 'right';
           subs.addClass('opens-left');
         } else {
@@ -235,7 +272,7 @@ var DropdownMenu = function (_Plugin) {
   }, {
     key: '_isRtl',
     value: function _isRtl() {
-      return this.$element.hasClass('align-right') || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])() && !this.$element.hasClass('align-left');
+      return this.$element.hasClass('align-right') || Object(__WEBPACK_IMPORTED_MODULE_4__foundation_util_core__["rtl"])() && !this.$element.hasClass('align-left');
     }
 
     /**
@@ -643,35 +680,5 @@ DropdownMenu.defaults = {
 
 
 
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports = {Keyboard: window.Foundation.Keyboard};
-
-/***/ }),
-
-/***/ 8:
-/***/ (function(module, exports) {
-
-module.exports = {Box: window.Foundation.Box};
-
-/***/ }),
-
-/***/ 84:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(18);
-
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports) {
-
-module.exports = {Nest: window.Foundation.Nest};
-
 /***/ })
-
-/******/ });
+/******/ ]);

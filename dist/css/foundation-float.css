@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.3
+ * Version 
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -837,9 +837,7 @@ textarea {
     float: none;
     clear: both; }
 
-.small-uncentered,
-.small-push-0,
-.small-pull-0 {
+.small-uncentered, .small-push-0, .small-pull-0 {
   position: static;
   float: left;
   margin-right: 0;
@@ -1050,9 +1048,7 @@ textarea {
     .medium-centered, .medium-centered:last-child:not(:first-child) {
       float: none;
       clear: both; }
-  .medium-uncentered,
-  .medium-push-0,
-  .medium-pull-0 {
+  .medium-uncentered, .medium-push-0, .medium-pull-0 {
     position: static;
     float: left;
     margin-right: 0;
@@ -1263,9 +1259,7 @@ textarea {
     .large-centered, .large-centered:last-child:not(:first-child) {
       float: none;
       clear: both; }
-  .large-uncentered,
-  .large-push-0,
-  .large-pull-0 {
+  .large-uncentered, .large-push-0, .large-pull-0 {
     position: static;
     float: left;
     margin-right: 0;
@@ -1448,13 +1442,6 @@ blockquote {
     line-height: 1.6;
     color: #8a8a8a; }
 
-cite {
-  display: block;
-  font-size: 0.8125rem;
-  color: #8a8a8a; }
-  cite:before {
-    content: "— "; }
-
 abbr, abbr[title] {
   border-bottom: 1px dotted #0a0a0a;
   cursor: help;
@@ -1498,6 +1485,13 @@ kbd {
 ul.no-bullet, ol.no-bullet {
   margin-left: 0;
   list-style: none; }
+
+.cite-block, cite {
+  display: block;
+  color: #8a8a8a;
+  font-size: 0.8125rem; }
+  .cite-block:before, cite:before {
+    content: "— "; }
 
 .text-left {
   text-align: left; }
@@ -1737,8 +1731,7 @@ label {
     border-left: 0; }
 
 .input-group-field {
-  border-radius: 0;
-  height: 2.5rem; }
+  border-radius: 0; }
 
 .input-group-button {
   padding-top: 0;
@@ -1750,7 +1743,7 @@ label {
   .input-group-button input,
   .input-group-button button,
   .input-group-button label {
-    height: 2.5rem;
+    height: 2.4375rem;
     padding-top: 0;
     padding-bottom: 0;
     font-size: 1rem; }
@@ -2240,15 +2233,15 @@ a.button:hover, a.button:focus {
 
 .submenu-toggle-text {
   position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  border: 0; }
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  border: 0 !important; }
 
 .badge {
   display: inline-block;
@@ -2329,7 +2322,7 @@ a.button:hover, a.button:focus {
     .button-group.expanded::before, .button-group.expanded::after {
       display: none; }
     .button-group.expanded .button:first-child:last-child {
-      width: 100%; }
+      width: calc(100% - 1px); }
     .button-group.expanded .button:first-child:nth-last-child(2), .button-group.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button {
       display: inline-block;
       width: calc(50% - 1px);
@@ -2394,6 +2387,42 @@ a.button:hover, a.button:focus {
     width: 100%; }
     .button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
       margin-bottom: 0; }
+  .button-group.stacked.expanded, .button-group.stacked-for-small.expanded, .button-group.stacked-for-medium.expanded {
+    margin-right: -1px; }
+    .button-group.stacked.expanded::before, .button-group.stacked.expanded::after, .button-group.stacked-for-small.expanded::before, .button-group.stacked-for-small.expanded::after, .button-group.stacked-for-medium.expanded::before, .button-group.stacked-for-medium.expanded::after {
+      display: none; }
+    .button-group.stacked.expanded .button:first-child:last-child, .button-group.stacked-for-small.expanded .button:first-child:last-child, .button-group.stacked-for-medium.expanded .button:first-child:last-child {
+      width: calc(100% - 1px); }
+    .button-group.stacked.expanded .button:first-child:nth-last-child(2), .button-group.stacked.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(2), .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(2), .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button {
+      display: inline-block;
+      width: calc(50% - 1px);
+      margin-right: 1px; }
+      .button-group.stacked.expanded .button:first-child:nth-last-child(2):last-child, .button-group.stacked.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button:last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(2):last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button:last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(2):last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(2):first-child:nth-last-child(2) ~ .button:last-child {
+        margin-right: -6px; }
+    .button-group.stacked.expanded .button:first-child:nth-last-child(3), .button-group.stacked.expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(3), .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(3), .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button {
+      display: inline-block;
+      width: calc(33.33333% - 1px);
+      margin-right: 1px; }
+      .button-group.stacked.expanded .button:first-child:nth-last-child(3):last-child, .button-group.stacked.expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button:last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(3):last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button:last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(3):last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(3):first-child:nth-last-child(3) ~ .button:last-child {
+        margin-right: -6px; }
+    .button-group.stacked.expanded .button:first-child:nth-last-child(4), .button-group.stacked.expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(4), .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(4), .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button {
+      display: inline-block;
+      width: calc(25% - 1px);
+      margin-right: 1px; }
+      .button-group.stacked.expanded .button:first-child:nth-last-child(4):last-child, .button-group.stacked.expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button:last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(4):last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button:last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(4):last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(4):first-child:nth-last-child(4) ~ .button:last-child {
+        margin-right: -6px; }
+    .button-group.stacked.expanded .button:first-child:nth-last-child(5), .button-group.stacked.expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(5), .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(5), .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button {
+      display: inline-block;
+      width: calc(20% - 1px);
+      margin-right: 1px; }
+      .button-group.stacked.expanded .button:first-child:nth-last-child(5):last-child, .button-group.stacked.expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button:last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(5):last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button:last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(5):last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(5):first-child:nth-last-child(5) ~ .button:last-child {
+        margin-right: -6px; }
+    .button-group.stacked.expanded .button:first-child:nth-last-child(6), .button-group.stacked.expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(6), .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(6), .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button {
+      display: inline-block;
+      width: calc(16.66667% - 1px);
+      margin-right: 1px; }
+      .button-group.stacked.expanded .button:first-child:nth-last-child(6):last-child, .button-group.stacked.expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button:last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(6):last-child, .button-group.stacked-for-small.expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button:last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(6):last-child, .button-group.stacked-for-medium.expanded .button:first-child:nth-last-child(6):first-child:nth-last-child(6) ~ .button:last-child {
+        margin-right: -6px; }
   @media print, screen and (min-width: 40em) {
     .button-group.stacked-for-small .button {
       width: auto;
@@ -2406,6 +2435,12 @@ a.button:hover, a.button:focus {
     .button-group.stacked-for-small.expanded {
       display: block; }
       .button-group.stacked-for-small.expanded .button {
+        display: block;
+        margin-right: 0; } }
+  @media screen and (max-width: 63.9375em) {
+    .button-group.stacked-for-medium.expanded {
+      display: block; }
+      .button-group.stacked-for-medium.expanded .button {
         display: block;
         margin-right: 0; } }
 
@@ -3136,13 +3171,6 @@ a.button:hover, a.button:focus {
   margin-bottom: 1rem; }
   .media-object img {
     max-width: none; }
-  @media screen and (max-width: 39.9375em) {
-    .media-object.stack-for-small .media-object-section {
-      padding: 0;
-      padding-bottom: 1rem;
-      display: block; }
-      .media-object.stack-for-small .media-object-section img {
-        width: 100%; } }
 
 .media-object-section {
   display: table-cell;
@@ -3153,6 +3181,13 @@ a.button:hover, a.button:focus {
     padding-left: 1rem; }
   .media-object-section > :last-child {
     margin-bottom: 0; }
+  @media screen and (max-width: 39.9375em) {
+    .stack-for-small .media-object-section {
+      padding: 0;
+      padding-bottom: 1rem;
+      display: block; }
+      .stack-for-small .media-object-section img {
+        width: 100%; } }
   .media-object-section.middle {
     vertical-align: middle; }
   .media-object-section.bottom {
@@ -3814,18 +3849,12 @@ a.button:hover, a.button:focus {
   .sticky.is-anchored.is-at-bottom {
     bottom: 0; }
 
-body.is-reveal-open {
-  overflow: hidden; }
-
-html.is-reveal-open,
-html.is-reveal-open body {
-  min-height: 100%;
-  overflow: hidden;
+html.is-reveal-open {
   position: fixed;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
+  width: 100%;
+  overflow-y: scroll; }
+  html.is-reveal-open body {
+    overflow: hidden; }
 
 .reveal-overlay {
   position: fixed;
@@ -4130,6 +4159,8 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
     font-size: 0.75rem;
     line-height: 1;
     color: #1779ba; }
+    [data-whatinput='mouse'] .tabs-title > a {
+      outline: 0; }
     .tabs-title > a:hover {
       background: #fefefe;
       color: #1468a0; }
@@ -4159,7 +4190,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 1rem;
-  border: solid 4px #fefefe;
+  border: 4px solid #fefefe;
   border-radius: 0;
   -webkit-box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
           box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
@@ -4394,25 +4425,25 @@ a.thumbnail {
 .show-for-sr,
 .show-on-focus {
   position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  border: 0; }
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  border: 0 !important; }
 
 .show-on-focus:active, .show-on-focus:focus {
   position: static !important;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  -webkit-clip-path: none;
-          clip-path: none; }
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  -webkit-clip-path: none !important;
+          clip-path: none !important; }
 
 .show-for-landscape,
 .hide-for-portrait {
