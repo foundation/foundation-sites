@@ -14,7 +14,7 @@ describe('Abide', function() {
     it('stores the element & plugin options', function() {
       $html = $('<form data-abide novalidate></form>').appendTo('body');
       plugin = new Foundation.Abide($html, {});
-
+this.timeout(1000);
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
     });
