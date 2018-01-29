@@ -51,8 +51,10 @@ class Toggler extends Plugin {
     // Otherwise, parse toggle class
     else {
       input = this.$element.data('toggler');
-      // Allow for a . at the beginning of the string
-      this.className = input[0] === '.' ? input.slice(1) : input;
+      if (input) {
+        // Allow for a . at the beginning of the string
+        this.className = input[0] === '.' ? input.slice(1) : input;
+      }
     }
 
     // Add ARIA attributes to triggers
