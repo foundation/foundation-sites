@@ -81,6 +81,9 @@
   }
   @elseif ($size == 'auto') {
     #{$direction}: auto;
+    @if ($vertical) {
+      flex-basis: auto;
+    }
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
   }
   @elseif ($size == 'shrink') {
