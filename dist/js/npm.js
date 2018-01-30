@@ -1,3 +1,25 @@
+/* TO USE:
+ *
+ * This entry-point assumes that you are doing 1 of 2 things:
+ * 1. Your webpack (or other transpilation library) config is setup to transform
+ *    Node modules installed for your project (usually located in /path/to/project/node_modules)
+ *    or at least: just this module
+ *
+ * 2. You have forked this library, transpiled this file yourself, updated the
+ *    "main" entry in the package.json of your fork, and are pointing to your
+ *    specific fork in your package.json
+ *
+ * Attempts to `import Foundation from 'foundation-sites';` will fail in a non-ES6
+ * environment (possibly, most notably: trying to precompile assets in Rails)
+ *
+ * If you do not wish to do the above steps you may do the following:
+ * 1. `import 'foundation-sites/dist/js/foundation'` in your webpack (or other
+ *    transpilation library) entry-point file.
+ *
+ * 2. Anywhere you are calling `$.fn.foundation()` (most commonly as
+ *    `$(document).foundation()`) add `window.Foundation.addToJquery($)` where
+ *    `$` is either specific to the file or is on the window
+ */
 import $ from 'jquery';
 
 import { Foundation } from '../../js/foundation.core';
