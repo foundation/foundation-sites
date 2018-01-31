@@ -171,25 +171,32 @@ class Dropdown extends Positionable {
             });
       }
     }
-    this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
-      var $target = $(this),
-        visibleFocusableElements = Keyboard.findFocusable(_this.$element);
+    this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
+      var $target = $(this);
 
       Keyboard.handleKey(e, 'Dropdown', {
-        open: function() {
-          if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
-            _this.open();
-            _this.$element.attr('tabindex', -1).focus();
-            e.preventDefault();
-          }
+        open: function () {
+          if (!_this.options.openOnKeyPress) return;
+          // For "openOnKeyPress=auto", ignore keys pressed in input/textarea
+          if (_this.options.openOnKeyPress === 'auto' && $target.is('input, textarea')) return;
+          // Ignore keys pressed in the dropdown
+          if (!$target.is(_this.$anchors)) return;
+
+          _this.open();
+          _this.$element.attr('tabindex', -1).focus();
+          e.preventDefault();
         },
-        close: function() {
+        close: function () {
+          if (!_this.options.closeOnKeyPress) return;
+
           _this.close();
           _this.$anchors.focus();
+          e.preventDefault();
         }
       });
     });
+
   }
 
   /**
@@ -401,6 +408,21 @@ Dropdown.defaults = {
    * @default false
    */
   autoFocus: false,
+  /**
+   * Allows `space` or `enter` keys on the anchor to open the dropdown.
+   * If set to `auto` (default), this is enabled for all anchors but `<input>` and `<textarea>`
+   * @option
+   * @type {string|boolean}
+   * @default 'auto'
+   */
+  openOnKeyPress: 'auto',
+  /**
+   * Allows `escape` key to close the dropdown.
+   * @option
+   * @type boolean
+   * @default true
+   */
+  closeOnKeyPress: true,
   /**
    * Allows a click on the body to close the dropdown.
    * @option
