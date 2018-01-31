@@ -178,7 +178,7 @@ class Dropdown extends Positionable {
 
       Keyboard.handleKey(e, 'Dropdown', {
         open: function() {
-          if ($target.is(_this.$anchors) && !$target.is('input')) {
+          if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
             _this.open();
             _this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
