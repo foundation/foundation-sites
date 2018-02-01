@@ -8,40 +8,61 @@ var webpack2 = require('webpack');
 var named = require('vinyl-named');
 
 var CONFIG = require('../config.js');
+var BUNDLE_PREFIX = '__FOUNDATION_EXTERNALS_';
+var BUNDLE_SUFFIX = '__';
 
-// Compiles JavaScript into a single file
-gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
-
-// NOTE: This sets up all imports from within Foundation as externals, for the purpose
+// ----- WEBPACK CONFIGURATION -----
+//
+// The following sets up all imports from within Foundation as externals, for the purpose
 // of replicating the "drop in dist file" approach of prior versions.
 // THIS IS NOT RECOMMENDED FOR MOST USERS. Chances are you either want everything
 // (just throw in foundation.js or foundation.min.js) or you should be using a build
 // system.
-var pluginsAsExternals = {
-  'jquery': 'jQuery',
-  './foundation.core': '{Foundation: window.Foundation}',
-  './foundation.util.core' : '{rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend, RegExpEscape: window.Foundation.RegExpEscape}',
-  './foundation.util.imageLoader' : '{onImagesLoaded: window.Foundation.onImagesLoaded}',
-  './foundation.util.keyboard' : '{Keyboard: window.Foundation.Keyboard}',
-  './foundation.util.mediaQuery' : '{MediaQuery: window.Foundation.MediaQuery}',
-  './foundation.util.motion' : '{Motion: window.Foundation.Motion, Move: window.Foundation.Move}',
-  './foundation.util.nest' : '{Nest: window.Foundation.Nest}',
-  './foundation.util.timer' : '{Timer: window.Foundation.Timer}',
-  './foundation.util.touch' : '{Touch: window.Foundation.Touch}',
-  './foundation.util.box' : '{Box: window.Foundation.Box}',
-  './foundation.plugin' : '{Plugin: window.Foundation.Plugin}',
-  './foundation.dropdownMenu' : '{DropdownMenu: window.Foundation.DropdownMenu}',
-  './foundation.drilldown' : '{Drilldown: window.Foundation.Drilldown}',
-  './foundation.accordionMenu' : '{AccordionMenu: window.Foundation.AccordionMenu}',
-  './foundation.accordion' : '{Accordion: window.Foundation.Accordion}',
-  './foundation.tabs' : '{Tabs: window.Foundation.Tabs}',
-  './foundation.smoothScroll' : '{SmoothScroll: window.Foundation.SmoothScroll}',
+
+// Convert an external config object for UMD modules
+// See: https://webpack.js.org/configuration/externals/#object
+function umdExternals(externals, options) {
+  options = Object.assign({ prefix: '', suffix: '' }, options);
+
+  return Object.keys(externals).reduce(function(obj, k) {
+    obj[k] = {
+      root: `${options.prefix}${externals[k]}${options.suffix}`,
+      amd: k,
+      commonjs: k,
+      commonjs2: k,
+    };
+    return obj;
+  }, {});
 };
 
+// Generate plugin Externals config for UMD modules
+var pluginsAsExternals = Object.assign(
+  umdExternals({
+    'jquery': 'jQuery',
+  }),
+  umdExternals({
+    './foundation.core': 'foundation.core',
+    './foundation.util.imageLoader': 'foundation.util.imageLoader',
+    './foundation.util.keyboard': 'foundation.util.keyboard',
+    './foundation.util.mediaQuery': 'foundation.util.mediaQuery',
+    './foundation.util.motion': 'foundation.util.motion',
+    './foundation.util.nest': 'foundation.util.nest',
+    './foundation.util.timer': 'foundation.util.timer',
+    './foundation.util.touch': 'foundation.util.touch',
+    './foundation.util.box': 'foundation.util.box',
+    './foundation.dropdownMenu': 'foundation.dropdownMenu',
+    './foundation.drilldown': 'foundation.drilldown',
+    './foundation.accordionMenu': 'foundation.accordionMenu',
+    './foundation.accordion': 'foundation.accordion',
+    './foundation.tabs': 'foundation.tabs',
+    './foundation.smoothScroll': 'foundation.smoothScroll',
+  }, { prefix: BUNDLE_PREFIX, suffix: BUNDLE_SUFFIX })
+);
+
 var webpackConfig = {
-  externals: {
+  externals: umdExternals({
     'jquery': 'jQuery'
-  },
+  }),
   module: {
     rules: [
       {
@@ -55,14 +76,16 @@ var webpackConfig = {
     ]
   },
   output: {
-    // ---
-    // FIXME: to resolve before the next release
-    // Temporary disable UMD bundling, waiting for a way to import plugins are externals
-    // See https://github.com/zurb/foundation-sites/pull/10903
-    // ---
-    // libraryTarget: 'umd',
+    library: `${BUNDLE_PREFIX}[name]${BUNDLE_SUFFIX}`,
+    libraryTarget: 'umd',
   }
 }
+
+// ----- TASKS -----
+//
+
+// Compiles JavaScript into a single file
+gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
 // and the dependency on foundation.util.core
