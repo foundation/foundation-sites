@@ -151,6 +151,7 @@ class Magellan extends Plugin {
   _updateActive(/*evt, elem, scrollPos*/) {
     if(this._inTransition) {return;}
     var winPos = /*scrollPos ||*/ parseInt(window.pageYOffset, 10),
+        changed = false,
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
@@ -166,6 +167,9 @@ class Magellan extends Plugin {
 
     this.$active.removeClass(this.options.activeClass);
     if(curIdx !== undefined){
+      if ($(this.$active[0]).attr("href") !== $(this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]')[0]).attr("href")) {
+		    changed = true;
+	    }
       this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
     }else{
       this.$active = $();
@@ -198,7 +202,9 @@ class Magellan extends Plugin {
      * Fires when magellan is finished updating to the new active element.
      * @event Magellan#update
      */
-    this.$element.trigger('update.zf.magellan', [this.$active]);
+    if (changed === true) {
+    	this.$element.trigger('update.zf.magellan', [this.$active]);
+	  }
   }
 
   /**
