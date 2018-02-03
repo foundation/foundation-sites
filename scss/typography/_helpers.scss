@@ -92,6 +92,8 @@ $code-block-margin-bottom: 1.5rem !default;
   }
 }
 
+/// Add basic styles for a code helper.
+/// See `code-inline` and `code-block` mixins.
 @mixin code-style {
   border: $code-border;
   background-color: $code-background;
@@ -101,6 +103,8 @@ $code-block-margin-bottom: 1.5rem !default;
   color: $code-color;
 }
 
+/// Make code helper from the `code-style` mixin inline.
+/// Used to generate `.code-inline`
 @mixin code-inline {
   display: inline;
   max-width: 100%;
@@ -109,6 +113,8 @@ $code-block-margin-bottom: 1.5rem !default;
   padding: $code-padding;
 }
 
+/// Make code helper from the `code-style` mixin a block.
+/// Used to generate `.code-block`
 @mixin code-block {
   display: block;
   overflow: auto;
