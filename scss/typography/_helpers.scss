@@ -70,10 +70,17 @@ $code-background: $light-gray !default;
 /// @type List
 $code-border: 1px solid $medium-gray !default;
 
-/// Padding around text of `.code-inline` and `.code-block` components.
+/// Padding around text of the `.code-inline` component.
 /// @type Number | List
 $code-padding: rem-calc(2 5 1) !default;
 
+/// Padding around text of the `.code-block` component.
+/// @type Number | List
+$code-block-padding: 1rem !default;
+
+/// Margin under the `.code-block` component.
+/// @type Number
+$code-block-margin-bottom: 1.5rem !default;
 
 @mixin cite-block {
   display: block;
@@ -85,9 +92,7 @@ $code-padding: rem-calc(2 5 1) !default;
   }
 }
 
-@mixin code-base {
-  padding: $code-padding;
-
+@mixin code-style {
   border: $code-border;
   background-color: $code-background;
 
@@ -100,12 +105,17 @@ $code-padding: rem-calc(2 5 1) !default;
   display: inline;
   max-width: 100%;
   word-wrap: break-word;
+
+  padding: $code-padding;
 }
 
 @mixin code-block {
   display: block;
   overflow: auto;
   white-space: pre;
+
+  padding: $code-block-padding;
+  margin-bottom: $code-block-margin-bottom;
 }
 
 @mixin foundation-typography-helpers {
@@ -153,12 +163,12 @@ $code-padding: rem-calc(2 5 1) !default;
   }
 
   .code-inline {
-    @include code-base;
+    @include code-style;
     @include code-inline;
   }
 
   .code-block {
-    @include code-base;
+    @include code-style;
     @include code-block;
   }
 }
