@@ -71,7 +71,7 @@ gulp.task('javascript:plugin-core', function() {
 gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
-    .pipe(webpackStream(Object.assign({ externals: pluginsAsExternals }, webpackConfig), webpack2))
+    .pipe(webpackStream(Object.assign({}, webpackConfig, { externals: pluginsAsExternals }), webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 
