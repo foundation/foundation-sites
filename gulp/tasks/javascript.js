@@ -55,7 +55,12 @@ var webpackConfig = {
     ]
   },
   output: {
-    libraryTarget: 'umd',
+    // ---
+    // FIXME: to resolve before the next release
+    // Temporary disable UMD bundling, waiting for a way to import plugins are externals
+    // See https://github.com/zurb/foundation-sites/pull/10903
+    // ---
+    // libraryTarget: 'umd',
   }
 }
 
