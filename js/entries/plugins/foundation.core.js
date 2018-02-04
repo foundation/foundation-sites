@@ -20,3 +20,5 @@ Foundation.Plugin = Plugin;
 
 
 window.Foundation = Foundation;
+
+export { Foundation };
