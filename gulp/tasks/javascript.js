@@ -20,7 +20,7 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 var pluginsAsExternals = {
   'jquery': 'jQuery',
   './foundation.core': '{Foundation: window.Foundation}',
-  './foundation.util.core' : '{rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend}',
+  './foundation.util.core' : '{rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend, RegExpEscape: window.Foundation.RegExpEscape}',
   './foundation.util.imageLoader' : '{onImagesLoaded: window.Foundation.onImagesLoaded}',
   './foundation.util.keyboard' : '{Keyboard: window.Foundation.Keyboard}',
   './foundation.util.mediaQuery' : '{MediaQuery: window.Foundation.MediaQuery}',
