@@ -221,7 +221,6 @@
   overflow: hidden #{$important};
   clip: rect(0,0,0,0) #{$important};
   white-space: nowrap #{$important};
-  clip-path: inset(50%) #{$important};
   border: 0 #{$important};
 }
 
@@ -238,7 +237,6 @@
   overflow: visible #{$important};
   clip: auto #{$important};
   white-space: normal #{$important};
-  clip-path: none #{$important};
 }
 
 /// Vertically centers the element inside of its first non-static parent,
