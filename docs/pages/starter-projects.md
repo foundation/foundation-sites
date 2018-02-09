@@ -101,11 +101,15 @@ Here's an overview of what the ZURB Template can do:
 
 * **JavaScript Compilation**
 
-  All JavaScript files in the `src/assets/js` folder, along with Foundation and its dependencies, are bundled into one file called `app.js`. The files are imported using module dependency with [webpack](https://webpack.js.org/) as the module bundler.
-
-  If you're unfamiliar with modules and module bundling, check out [this resource for node style require/exports](http://openmymind.net/2012/2/3/Node-Require-and-Exports/) and [this resource to understand ES6 modules](http://exploringjs.com/es6/ch_modules.html)
+  Javascript is transpiled using and [Babel](https://babeljs.io) (with the [es2015 plugin](https://babeljs.io/docs/plugins/#es2015)) so you can use [ES2015 features](https://babeljs.io/learn-es2015/).
+  The main Js file is under `src/assets/js/app.js`, and imports Foundation, jQuery and whatInput. You can import there installed packages and custom files, they will be included in the build.
 
   A source map is created that maps back to the original files. By default, the bundled `app.js` is uncompressed. When building for production, the file is run through [UglifyJS](https://github.com/mishoo/UglifyJS) for compression.
+
+  The whole bundling process is handled by [WebPack](https://webpack.js.org): it manages all assets and dependencies for you and compile them into one single file. If you're unfamiliar with imports or module bundling, check out:
+  * [What are ES6 imports](http://2ality.com/2014/09/es6-modules-final.html)
+  * [Beginner’s guide to Webpack](https://medium.com/javascript-training/beginner-s-guide-to-webpack-b1f1a3638460)
+  * [Beginner’s guide to Javascript Modules](https://medium.freecodecamp.org/javascript-modules-a-beginner-s-guide-783f7d7a5fcc).
 
 * **Image Compression**
 
