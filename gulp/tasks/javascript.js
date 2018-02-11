@@ -109,14 +109,6 @@ gulp.task('javascript:foundation', ['javascript:plugins'], function() {
     .pipe(webpackStream(webpackConfig, webpack2))
     .pipe(gulp.dest('_build/assets/js'));
 });
-//gulp.task('javascript:foundation', function() {
-//  return gulp.src(CONFIG.JS_FILES)
-//    .pipe(babel()
-//      .on('error', onBabelError))
-//    .pipe(gulp.dest('_build/assets/js/plugins'))
-//    .pipe(concat('foundation.js'))
-//    .pipe(gulp.dest('_build/assets/js'));
-//});
 
 gulp.task('javascript:deps', function() {
   return gulp.src(CONFIG.JS_DEPS)
