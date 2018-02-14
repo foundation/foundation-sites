@@ -139,40 +139,43 @@ $breakpoint-classes: (small medium large) !default;
 /// @param {Keyword|Number} $value - Breakpoint name, or px, rem, or em value to process.
 ///
 /// @output If the breakpoint is "0px and larger", outputs the content as-is. Otherwise, outputs the content wrapped in a media query.
-@mixin breakpoint($value) {
-  $str: breakpoint($value);
-  $bp: index($-zf-breakpoints-keys, $value);
-  $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
+@mixin breakpoint($value-list...) {
+  @for $i from 1 through length($value-list) {
+    $value: nth($value-list, $i);
+    $str: breakpoint($value);
+    $bp: index($-zf-breakpoints-keys, $value);
+    $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
 
-  $old-zf-size: null;
+    $old-zf-size: null;
 
-  // Make breakpoint size available as a variable
-  @if global-variable-exists(-zf-size) {
-    $old-zf-size: $-zf-size;
-  }
-  $-zf-size: nth($value, 1) !global; // get the first value to account for `only` and `down` keywords
-
-  // If $str is still an empty string, no media query is needed
-  @if $str == '' {
-    @content;
-  }
-
-  // Otherwise, wrap the content in a media query
-  @else {
-    // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
-    @if $bp != null and $bp <= $pbp {
-      @media print, screen and #{$str} {
-        @content;
-       }
+    // Make breakpoint size available as a variable
+    @if global-variable-exists(-zf-size) {
+      $old-zf-size: $-zf-size;
     }
+    $-zf-size: nth($value, 1) !global; // get the first value to account for `only` and `down` keywords
+
+    // If $str is still an empty string, no media query is needed
+    @if $str == '' {
+      @content;
+    }
+
+    // Otherwise, wrap the content in a media query
     @else {
-      @media screen and #{$str} {
-        @content;
+      // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
+      @if $bp != null and $bp <= $pbp {
+        @media print, screen and #{$str} {
+          @content;
+        }
+      }
+      @else {
+        @media screen and #{$str} {
+          @content;
+        }
       }
     }
-  }
 
-  $-zf-size: $old-zf-size !global;
+    $-zf-size: $old-zf-size !global;
+  }
 }
 
 /// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
