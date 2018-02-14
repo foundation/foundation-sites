@@ -229,7 +229,7 @@ class Abide extends Plugin {
       $el.attr('aria-describedby', errorId);
     }
 
-    if ($labels.filter('[for]').end().length < $labels.length) {
+    if ($labels.filter('[for]').length < $labels.length) {
       // Get the input ID or create one
       let elemId = $el.attr('id');
       if (typeof elemId === 'undefined') {
