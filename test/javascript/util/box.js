@@ -33,8 +33,8 @@ describe('Foundation box', function () {
 
       var dims = Foundation.Box.GetDimensions($("#rect-test"));
 
-      dims.width.should.equal(200);
-      dims.height.should.equal(100);
+      Math.round(dims.width).should.equal(200); // Math.round fix for IE 11 (probably because of rem)
+      Math.round(dims.height).should.equal(100); // Math.round fix for IE 11 (probably because of rem)
     });
 
     it('parent height of element', function () {
