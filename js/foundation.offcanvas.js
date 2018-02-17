@@ -356,21 +356,23 @@ class OffCanvas extends Plugin {
    * Closes the off-canvas menu.
    * @function
    * @param {Function} cb - optional cb to fire after closure.
+   * @fires OffCanvas#close
    * @fires OffCanvas#closed
    */
   close(cb) {
     if (!this.$element.hasClass('is-open') || this.isRevealed) { return; }
 
+    /**
+     * Fires when the off-canvas menu closes.
+     * @event OffCanvas#close
+     */
+    this.$element.trigger('close.zf.offcanvas');
+
     var _this = this;
 
     this.$element.removeClass('is-open');
 
-    this.$element.attr('aria-hidden', 'true')
-      /**
-       * Fires when the off-canvas menu opens.
-       * @event OffCanvas#closed
-       */
-        .trigger('closed.zf.offCanvas');
+    this.$element.attr('aria-hidden', 'true');
 
     this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
@@ -400,6 +402,11 @@ class OffCanvas extends Plugin {
     this.$element.one(transitionend(this.$element), function(e) {
       _this.$element.addClass('is-closed');
       _this._removeContentClasses();
+      /**
+       * Fires when the off-canvas menu is closed.
+       * @event OffCanvas#closed
+       */
+      _this.$element.trigger('closed.zf.offcanvas');
     });
   }
 
