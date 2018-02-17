@@ -30,7 +30,7 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   <div class="column small-10">
     <div class="docs-code">
       <code class="bash">
-        yarn install foundation-sites
+        yarn add foundation-sites
       </code>
     </div>
   </div>
