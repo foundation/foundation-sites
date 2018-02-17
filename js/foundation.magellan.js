@@ -151,7 +151,6 @@ class Magellan extends Plugin {
   _updateActive(/*evt, elem, scrollPos*/) {
     if(this._inTransition) {return;}
     var winPos = /*scrollPos ||*/ parseInt(window.pageYOffset, 10),
-        changed = false,
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
@@ -165,15 +164,14 @@ class Magellan extends Plugin {
       curIdx = curVisible.length ? curVisible.length - 1 : 0;
     }
 
+    var $oldActive = this.$active;
     this.$active.removeClass(this.options.activeClass);
     if(curIdx !== undefined){
-      if ($(this.$active[0]).attr("href") !== $(this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]')[0]).attr("href")) {
-		    changed = true;
-	    }
       this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
     }else{
       this.$active = $();
     }
+    var changed = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
 
     if(this.options.deepLinking){
       var hash = "";
