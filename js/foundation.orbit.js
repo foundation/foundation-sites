@@ -303,7 +303,7 @@ class Orbit extends Plugin {
   /**
   * Changes the current slide to a new one.
   * @function
-  * @param {Boolean} isLTR - flag if the slide should move left to right.
+  * @param {Boolean} isLTR - if true the slide moves from right to left, if false the slide moves from left to right.
   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
   * @fires Orbit#slidechange
