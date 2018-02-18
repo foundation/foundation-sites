@@ -449,6 +449,10 @@ We also have a shorthand option for the above which outputs the same CSS:
 }
 ```
 
+<div class="callout warning">
+  If you pass multiple breakpoints to the <code>breakpoint</code> mixin, it will duplicate its content for each of them. Be careful to only use <code>breakpoint</code> with properties that should change across breakpoints.
+</div>
+
 ### Custom Block Grid
 
 Use the `xy-grid-layout()` mixin to create your own block grid.

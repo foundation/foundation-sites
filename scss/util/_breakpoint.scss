@@ -137,6 +137,9 @@ $breakpoint-classes: (small medium large) !default;
 ///  - If an em value is passed, the value will be used as-is.
 ///
 /// If multiple values are passed, the mixin will generate a media query for each of them as described above.
+/// Since the content is duplicated for each breakpoint, this mixin should only be used with properties that
+/// change across breakpoints.
+///
 /// @param {Keyword|Number} $values... - Breakpoint name or px/rem/em value to process.
 ///
 /// @output If the breakpoint is "0px and larger", outputs the content as-is. Otherwise, outputs the content wrapped in a media query.
