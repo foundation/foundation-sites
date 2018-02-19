@@ -135,6 +135,14 @@ class Tooltip extends Positionable {
     }
 
     var _this = this;
+
+    // Update Tooltip text if title attribute has changed since init 
+    if (this.$element.attr('title') !== '') {
+      this.options.tipText = this.$element.attr('title');
+      this.template.text(this.options.tipText);
+      this.$element.attr('title', '');
+    }
+
     this.template.css('visibility', 'hidden').show();
     this._setPosition();
     this.template.removeClass('top bottom left right').addClass(this.position)
@@ -145,7 +153,6 @@ class Tooltip extends Positionable {
      * @event Closeme#tooltip
      */
     this.$element.trigger('closeme.zf.tooltip', this.template.attr('id'));
-
 
     this.template.attr({
       'data-is-active': true,
