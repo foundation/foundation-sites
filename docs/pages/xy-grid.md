@@ -411,17 +411,34 @@ The cell size calculator can also be accessed as a function. This gives you the 
 
 ### Responsive Grids
 
-Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
+Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive. The `xy-grid` mixin will automatically detect the breakpoint in which it is, but you can force it with the `$breakpoint` option.
 Refer to the Sass documentation below to learn how each mixin works and the available arguments.
 
 ```scss
-.main-content {
+.my-cell-medium-only-8 {
   @include xy-cell();
 
+  // Generate a cell with a 8/12 width on medium breakpoint only
   @include breakpoint(medium) {
     @include xy-cell(8);
   }
 }
+```
+
+You can also use for more advanced responsive cells:
+
+```scss
+  // ... with a 8/12 width on medium breakpoint and above (with the medium gutters)
+  @include breakpoint(medium up) {
+    @include xy-cell(8);
+  }
+```
+
+```scss
+  // ... with a 8/12 width on medium, large and xlarge (with the corresponding gutters)
+  @include breakpoint(medium, large, xlarge up) {
+    @include xy-cell(8);
+  }
 ```
 
 We also have a shorthand option for the above which outputs the same CSS:
@@ -431,6 +448,10 @@ We also have a shorthand option for the above which outputs the same CSS:
   @include xy-cell-breakpoints((small: full, medium: 8));
 }
 ```
+
+<div class="callout warning">
+  If you pass multiple breakpoints to the <code>breakpoint</code> mixin, it will duplicate its content for each of them. Be careful to only use <code>breakpoint</code> with properties that should change across breakpoints.
+</div>
 
 ### Custom Block Grid
 
