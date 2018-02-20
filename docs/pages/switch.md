@@ -24,7 +24,29 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <label class="switch-paddle" for="exampleSwitch">
     <span class="show-for-sr">Download Kittens</span>
   </label>
-</div> 
+</div>
+```
+
+---
+
+## Disabled
+
+There may be times when you want to fix a switch into a position.  This can be accomplished by setting the `disabled` option on the switch input.
+
+```html_example
+<div class="switch">
+  <input class="switch-input" disabled checked="checked" id="exampleCheckedDisabledSwitch" type="checkbox" name="exampleSwitch">
+  <label class="switch-paddle" for="exampleCheckedDisabledSwitch">
+    <span class="show-for-sr">Can't Touch This Checked</span>
+  </label>
+</div>
+
+<div class="switch">
+  <input class="switch-input" disabled id="exampleUncheckedDisabledSwitch" type="checkbox" name="exampleSwitch">
+  <label class="switch-paddle" for="exampleUncheckedDisabledSwitch">
+    <span class="show-for-sr">Can't Touch This Unchecked</span>
+  </label>
+</div>
 ```
 
 ---

@@ -208,6 +208,10 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   // <input> element
   .switch-input {
     @include switch-input;
+      // indicate a disabled switch
+    &:disabled ~ label {
+      cursor: not-allowed;
+    }
   }
 
   // <label> element
