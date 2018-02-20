@@ -273,7 +273,7 @@ class Tabs extends Plugin {
 
   /**
    * Opens the tab `$targetContent` defined by `$target`.
-   * @param {jQuery} $target - Tab to Open.
+   * @param {jQuery} $target - Tab to open.
    * @function
    */
   _openTab($target) {
@@ -294,7 +294,7 @@ class Tabs extends Plugin {
 
   /**
    * Collapses `$targetContent` defined by `$target`.
-   * @param {jQuery} $target - Tab to Open.
+   * @param {jQuery} $target - Tab to collapse.
    * @function
    */
   _collapseTab($target) {
@@ -373,7 +373,7 @@ class Tabs extends Plugin {
   }
 
   /**
-   * Destroys an instance of an tabs.
+   * Destroys an instance of tabs.
    * @fires Tabs#destroyed
    */
   _destroy() {
