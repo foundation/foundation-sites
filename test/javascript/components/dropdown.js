@@ -8,6 +8,12 @@ describe('Dropdown', function() {
   const getDropdownContainer = (dropdownClasses = '') =>
     `<div class="${dropdownClasses}" data-dropdown id="my-dropdown">Dropdown</div>`;
 
+  const getHoverDropdownContainer = (dropdownClasses = '') =>
+    `<div class="${dropdownClasses}" data-dropdown data-hover="true" data-hover-pane="true" id="my-dropdown">Dropdown</div>`;
+
+  const getAutoFocusDropdownContainer = (dropdownClasses = '') =>
+    `<div class="${dropdownClasses}" data-dropdown data-auto-focus="true" id="my-dropdown">Dropdown<input type="text" placeholder="should auto focus" id="focus-text" /></div>`;
+
   afterEach(function() {
     plugin.destroy();
     $dropdownController.remove();
@@ -19,6 +25,7 @@ describe('Dropdown', function() {
       $dropdownController = $(getDropdownController()).appendTo('body');
       $dropdownContainer = $(getDropdownContainer()).appendTo('body');
       plugin = new Foundation.Dropdown($dropdownContainer, {});
+      console.log('dropdown constructor');
 
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
@@ -36,6 +43,54 @@ describe('Dropdown', function() {
 
       sinon.assert.called(spy);
       Foundation.Keyboard.trapFocus.restore();
+    });
+
+    it('should open dropdown on button click', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      plugin.open();
+
+      $dropdownController.on('show.zf.dropdown', function() {
+        $('#my-dropdown').should.not.be.hidden;
+        $('#my-dropdown').should.have.attr('aria-hidden', 'false');
+        $('#my-dropdown').should.have.class('is-open');
+        done();
+      });
+      plugin.close();
+    });
+
+    it('should open dropdown on hover', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getHoverDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      plugin.open();
+
+      $dropdownController.on('show.zf.dropdown', function() {
+        $('#my-dropdown').should.not.be.hidden;
+        $('#my-dropdown').should.have.attr('aria-hidden', 'false');
+        $('#my-dropdown').should.have.class('is-open');
+        done();
+      });
+      plugin.close();
+    });
+
+    it('should autofocus input on open', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getAutoFocusDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      plugin.open();
+
+      $focusedElement = '<input type="text" placeholder="should auto focus" id="focus-text" />';
+
+      $dropdownController.on('show.zf.dropdown', function() {
+        $('#my-dropdown').should.not.be.hidden;
+        $('#my-dropdown').should.have.attr('aria-hidden', 'false');
+        $('#my-dropdown').should.have.class('is-open');
+        document.activeElement.should.be.equal($focusedElement);
+        done();
+      });
+      plugin.close();
     });
   });
 
