@@ -137,11 +137,14 @@ class OffCanvas extends Plugin {
       this.$element.css('transition-duration', this.options.transitionTime);
     }
 
-    let inCanvasFor = this.$element[0].className.match(/\bin-canvas-for-(\w+)/);
+    let inCanvasFor = this.$element.attr('class').match(/\bin-canvas-for-(\w+)/);
 
     if (!this.options.inCanvasOn && inCanvasFor && inCanvasFor.length === 2) {
       // Extract breakpoint name from CSS class if no inCanvasOn option set but using .in-canvas-for-[BREAKPOINT]
       this.options.inCanvasOn = inCanvasFor[1];
+    } else if (this.options.inCanvasOn && !inCanvasFor) {
+      // Add CSS class if only inCanvasOn option set
+      this.$element.addClass(`in-canvas-for-${this.options.inCanvasOn}`);
     }
 
     if (this.options.inCanvasOn) {
