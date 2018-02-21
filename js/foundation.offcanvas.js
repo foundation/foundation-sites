@@ -328,6 +328,12 @@ class OffCanvas extends Plugin {
       this.$overlay.addClass('is-closable');
     }
 
+    /**
+     * Fires when the off-canvas menu opens.
+     * @event OffCanvas#opened
+     */
+    this.$element.trigger('opened.zf.offcanvas');
+
     if (this.options.autoFocus === true) {
       this.$element.one(transitionend(this.$element), function() {
         if (!_this.$element.hasClass('is-open')) {
@@ -348,12 +354,6 @@ class OffCanvas extends Plugin {
     }
 
     this._addContentClasses();
-
-    /**
-     * Fires when the off-canvas menu opens.
-     * @event OffCanvas#opened
-     */
-    this.$element.trigger('opened.zf.offcanvas');
   }
 
   /**
