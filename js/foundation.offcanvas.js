@@ -301,11 +301,15 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
+    /**
+     * Fires when the off-canvas menu opens.
+     * @event OffCanvas#opened
+     */
     this.$element.addClass('is-open').removeClass('is-closed');
+
     this.$triggers.attr('aria-expanded', 'true');
-    this.$element.attr('aria-hidden', 'false');
-
-
+    this.$element.attr('aria-hidden', 'false')
+        .trigger('opened.zf.offcanvas');
 
     this.$content.addClass('is-open-' + this.position);
 
