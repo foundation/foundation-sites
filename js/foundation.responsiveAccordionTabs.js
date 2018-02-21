@@ -33,8 +33,9 @@ class ResponsiveAccordionTabs extends Plugin{
   /**
    * Creates a new instance of a responsive accordion tabs.
    * @class
+   * @name ResponsiveAccordionTabs
    * @fires ResponsiveAccordionTabs#init
-   * @param {jQuery} element - jQuery object to make into a dropdown menu.
+   * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   _setup(element, options) {
@@ -43,6 +44,7 @@ class ResponsiveAccordionTabs extends Plugin{
     this.rules = this.$element.data('responsive-accordion-tabs');
     this.currentMq = null;
     this.currentPlugin = null;
+    this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
     if (!this.$element.attr('id')) {
       this.$element.attr('id',GetYoDigits(6, 'responsiveaccordiontabs'));
     };
@@ -57,6 +59,8 @@ class ResponsiveAccordionTabs extends Plugin{
    * @private
    */
   _init() {
+    MediaQuery._init();
+
     // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
     if (typeof this.rules === 'string') {
       let rulesTree = {};
@@ -115,11 +119,8 @@ class ResponsiveAccordionTabs extends Plugin{
    * @private
    */
   _events() {
-    var _this = this;
-
-    $(window).on('changed.zf.mediaquery', function() {
-      _this._checkMediaQueries();
-    });
+    this._changedZfMediaQueryHandler = this._checkMediaQueries.bind(this);
+    $(window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
   }
 
   /**
@@ -189,7 +190,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if (toSet === 'accordion') {
       $panels.each(function(key,value){
         $(value).appendTo($liHeads.get(key)).addClass('accordion-content').attr('data-tab-content','').removeClass('is-active').css({height:''});
-        $('[data-tabs-content='+_this.$element.attr('id')+']').after('<div id="tabs-placeholder-'+_this.$element.attr('id')+'"></div>').remove();
+        $('[data-tabs-content='+_this.$element.attr('id')+']').after('<div id="tabs-placeholder-'+_this.$element.attr('id')+'"></div>').detach();
         $liHeads.addClass('accordion-item').attr('data-accordion-item','');
         $liHeadsA.addClass('accordion-title');
       });
@@ -230,7 +231,7 @@ class ResponsiveAccordionTabs extends Plugin{
    */
   _destroy() {
     if (this.currentPlugin) this.currentPlugin.destroy();
-    $(window).off('.zf.ResponsiveAccordionTabs');
+    $(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
   }
 }
 

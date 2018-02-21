@@ -53,7 +53,7 @@ Triggers.Listeners.Basic  = {
     let animation = $(this).data('closable');
 
     if(animation !== ''){
-      Foundation.Motion.animateOut($(this), animation, function() {
+      Motion.animateOut($(this), animation, function() {
         $(this).trigger('closed.zf');
       });
     }else{
@@ -88,7 +88,7 @@ Triggers.Initializers.addToggleListener = ($elem) => {
 // Elements with [data-closable] will respond to close.zf.trigger events.
 Triggers.Initializers.addCloseableListener = ($elem) => {
   $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable], [data-closable]', Triggers.Listeners.Basic.closeableListener);
 }
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus
@@ -240,24 +240,28 @@ Triggers.Initializers.addGlobalListeners = function() {
 }
 
 
-Triggers.init = function(Foundation, $) {
+Triggers.init = function($, Foundation) {
   if (typeof($.triggersInitialized) === 'undefined') {
     let $document = $(document);
 
-    Triggers.Initializers.addSimpleListeners();
-
     if(document.readyState === "complete") {
+      Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
     } else {
       $(window).on('load', () => {
+        Triggers.Initializers.addSimpleListeners();
         Triggers.Initializers.addGlobalListeners();
       });
     }
-    Foundation.Triggers = Triggers;
 
+
+    $.triggersInitialized = true;
+  }
+
+  if(Foundation) {
+    Foundation.Triggers = Triggers;
     // Legacy included to be backwards compatible for now.
     Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
-    $.triggersInitialized = true;
   }
 }
 

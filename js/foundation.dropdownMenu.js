@@ -20,6 +20,7 @@ class DropdownMenu extends Plugin {
   /**
    * Creates a new instance of DropdownMenu.
    * @class
+   * @name DropdownMenu
    * @fires DropdownMenu#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -27,8 +28,8 @@ class DropdownMenu extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+    this.className = 'DropdownMenu'; // ie9 back compat
 
-    Nest.Feather(this.$element, 'dropdown');
     this._init();
 
     Keyboard.register('DropdownMenu', {
@@ -48,6 +49,8 @@ class DropdownMenu extends Plugin {
    * @function
    */
   _init() {
+    Nest.Feather(this.$element, 'dropdown');
+
     var subs = this.$element.find('li.is-dropdown-submenu-parent');
     this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
 
@@ -55,18 +58,31 @@ class DropdownMenu extends Plugin {
     this.$tabs = this.$element.children('[role="menuitem"]');
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-    if (this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
-      this.options.alignment = 'right';
-      subs.addClass('opens-left');
+    if (this.options.alignment === 'auto') {
+        if (this.$element.hasClass(this.options.rightClass) || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
+            this.options.alignment = 'right';
+            subs.addClass('opens-left');
+        } else {
+            this.options.alignment = 'left';
+            subs.addClass('opens-right');
+        }
     } else {
-      subs.addClass('opens-right');
+      if (this.options.alignment === 'right') {
+          subs.addClass('opens-left');
+      } else {
+          subs.addClass('opens-right');
+      }
     }
     this.changed = false;
     this._events();
   };
 
   _isVertical() {
-    return this.$tabs.css('display') === 'block';
+    return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
+  }
+
+  _isRtl() {
+    return this.$element.hasClass('align-right') || (Rtl() && !this.$element.hasClass('align-left'));
   }
 
   /**
@@ -158,10 +174,8 @@ class DropdownMenu extends Plugin {
       });
 
       var nextSibling = function() {
-        if (!$element.is(':last-child')) {
-          $nextElement.children('a:first').focus();
-          e.preventDefault();
-        }
+        $nextElement.children('a:first').focus();
+        e.preventDefault();
       }, prevSibling = function() {
         $prevElement.children('a:first').focus();
         e.preventDefault();
@@ -194,7 +208,7 @@ class DropdownMenu extends Plugin {
 
       if (isTab) {
         if (_this._isVertical()) { // vertical menu
-          if (Rtl()) { // right aligned
+          if (_this._isRtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
@@ -210,7 +224,7 @@ class DropdownMenu extends Plugin {
             });
           }
         } else { // horizontal menu
-          if (Rtl()) { // right aligned
+          if (_this._isRtl()) { // right aligned
             $.extend(functions, {
               next: prevSibling,
               previous: nextSibling,
@@ -227,7 +241,7 @@ class DropdownMenu extends Plugin {
           }
         }
       } else { // not tabs -> one sub
-        if (Rtl()) { // right aligned
+        if (_this._isRtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
@@ -397,12 +411,12 @@ DropdownMenu.defaults = {
 
   closingTime: 500,
   /**
-   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
+   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'auto'`, `'left'` or `'right'`.
    * @option
    * @type {string}
-   * @default 'left'
+   * @default 'auto'
    */
-  alignment: 'left',
+  alignment: 'auto',
   /**
    * Allow clicks on the body to close any open submenus.
    * @option

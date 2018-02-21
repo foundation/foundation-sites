@@ -1,6 +1,7 @@
 ---
 title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
+video: '6KwsGcEHVTE'
 ---
 
 ### Command-Line Tool
@@ -46,7 +47,6 @@ Then open the folder in your command line, and install the needed dependencies:
 ```bash
 cd projectname
 npm install
-bower install
 ```
 
 Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
@@ -64,7 +64,6 @@ Then open the folder in your command line, and install the needed dependencies:
 ```bash
 cd projectname
 npm install
-bower install
 ```
 
 Finally, run `npm start` to run Gulp. Your finished site will be created in a folder called `dist`, viewable at this URL:
@@ -78,6 +77,11 @@ To create compressed, production-ready assets, run `npm run build`.
 ---
 
 ## CSS Download
+
+<div class="responsive-embed widescreen mb1">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/lFrpnk0Oo_8"></a>
+</div>
 
 If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
 
@@ -121,10 +125,10 @@ The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and J
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" integrity="sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+" crossorigin="anonymous" />
 
 <!-- Compressed JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" integrity="sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV" crossorigin="anonymous"></script>
 ```
 
 ---

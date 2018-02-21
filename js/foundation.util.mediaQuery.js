@@ -18,7 +18,7 @@ const defaultQueries = {
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.
 // Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
-let matchMedia = window.matchMedia || function() {
+let matchMedia = window.matchMedia || (function() {
   'use strict';
 
   // For browsers that support matchMedium api such as IE 9 and webkit
@@ -61,7 +61,7 @@ let matchMedia = window.matchMedia || function() {
       media: media || 'all'
     };
   }
-}
+})();
 
 var MediaQuery = {
   queries: [],
@@ -75,6 +75,11 @@ var MediaQuery = {
    */
   _init() {
     var self = this;
+    var $meta = $('meta.foundation-mq');
+    if(!$meta.length){
+      $('<meta class="foundation-mq">').appendTo(document.head);
+    }
+
     var extractedStyles = $('.foundation-mq').css('font-family');
     var namedQueries;
 
@@ -173,7 +178,7 @@ var MediaQuery = {
    * @private
    */
   _watcher() {
-    $(window).on('resize.zf.mediaquery', () => {
+    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
       var newSize = this._getCurrentSize(), currentSize = this.current;
 
       if (newSize !== currentSize) {

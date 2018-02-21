@@ -1,13 +1,22 @@
 ---
 title: Media Object
 description: Media objects are super useful components for displaying an item, usually an image, alongside some content, usually text. You could put lists, grids, or even other media objects inside.
+video: 'H74_A6eI-wY'
 sass: scss/components/_media-object.scss
 flex: true
 ---
 
 ## Basics
 
-A media object is a container with the class `.media-object`, and two or three sections with the class `.media-object-section`.
+Foundation's Media Object will help you create this common repeatable pattern and can be used several different ways. A media object is a container with the class `.media-object`, and two or three sections with the class `.media-object-section`.
+
+<p>
+  <a class="" data-open-video="1:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjzbEG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="media-object">
@@ -47,6 +56,14 @@ A media object is a container with the class `.media-object`, and two or three s
 
 Each section aligns to the top by default, but individual sections can also be middle- or bottom-aligned with the `.middle` and `.bottom` classes.
 
+<p>
+  <a class="" data-open-video="3:33"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="media-object">
   <div class="media-object-section middle">
@@ -71,7 +88,7 @@ In flexbox mode, you can use the <a href="flexbox.html#helper-classes">flexbox h
 
 ```html
 <div class="media-object">
-  <div class="media-object-section align-self-center">
+  <div class="media-object-section align-self-middle">
     <div class="thumbnail">
       <img src= "assets/img/media-object/avatar-2.jpg">
     </div>
@@ -95,6 +112,14 @@ In flexbox mode, you can use the <a href="flexbox.html#helper-classes">flexbox h
 
 By adding the `.stack-for-small` class, you can make your media object responsive. Images will get a width of 100%, but this can be changed.
 
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="media-object stack-for-small">
   <div class="media-object-section">
@@ -114,6 +139,10 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 ### Nesting Media Objects
 
 By nesting a media object into the media-object-section section, you can easily indent it. This is great for comment strings.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="media-object">

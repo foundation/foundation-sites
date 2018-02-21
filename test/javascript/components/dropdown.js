@@ -56,40 +56,75 @@ describe('Dropdown', function() {
     });
   });
 
-  describe('getPositionClass()', function() {
-    it('has no orientation', function() {
+  describe('inferred positioning', function() {
+    it('default orientation should be bottom', function() {
       $dropdownController = $(getDropdownController()).appendTo('body');
       $dropdownContainer = $(getDropdownContainer()).appendTo('body');
       plugin = new Foundation.Dropdown($dropdownContainer, {});
 
-      plugin.getPositionClass().trim().should.equal('');
+      plugin.open()
+      plugin.position.should.equal('bottom');
     });
 
-    it('has vertical position', function() {
-      $dropdownController = $(getDropdownController()).appendTo('body');
-      $dropdownContainer = $(getDropdownContainer('custom-style-before bottom custom-style-after'))
-        .appendTo('body');
-      plugin = new Foundation.Dropdown($dropdownContainer, {});
-
-      plugin.getPositionClass().trim().should.equal('bottom');
-    });
-
-    it('has horizontal position', function() {
+    it('gets right alignment from float-right', function() {
       $dropdownController = $(getDropdownController('custom-style-before float-right custom-style-after'))
         .appendTo('body');
       $dropdownContainer = $(getDropdownContainer()).appendTo('body');
       plugin = new Foundation.Dropdown($dropdownContainer, {});
 
-      plugin.getPositionClass().trim().should.equal('right');
-    });
-
-    it('has horizontal position and only one class', function() {
-      $dropdownController = $(getDropdownController('float-right'))
-        .appendTo('body');
-      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
-      plugin = new Foundation.Dropdown($dropdownContainer, {});
-
-      plugin.getPositionClass().trim().should.equal('right');
+      plugin.open()
+      plugin.position.should.equal('bottom')
+      plugin.alignment.should.equal('right')
     });
   });
+
+  describe('closeOnClick option', function() {
+    it('not closes a dropdown by clicking on the dropdown if closeOnClick option is true', function(done) {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {closeOnClick: true});
+
+      // Open it first...
+      plugin.open();
+
+      let spy = sinon.spy(plugin, 'close');
+
+      plugin.$element.trigger("click");
+
+      setTimeout(function() {
+        sinon.assert.notCalled(spy);
+        done();
+      }, 2);
+    });
+  });
+
+  describe('keyboard events', function () {
+    it('opens Dropdown on SPACE', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      $dropdownContainer.should.be.visible;
+    });
+    it('focuses Dropdown on SPACE', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      document.activeElement.should.be.equal($dropdownContainer[0]);
+    });
+    it('does not focus Dropdown when anchor is an input', function() {
+      $dropdownController = $('<input type="text" data-toggle="my-dropdown">').appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      document.activeElement.should.be.equal($dropdownController[0]);
+    });
+  })
 });
