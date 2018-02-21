@@ -327,13 +327,7 @@ class OffCanvas extends Plugin {
     if (this.options.closeOnClick === true && this.options.contentOverlay === true) {
       this.$overlay.addClass('is-closable');
     }
-
-    /**
-     * Fires when the off-canvas menu opens.
-     * @event OffCanvas#opened
-     */
-    this.$element.trigger('opened.zf.offcanvas');
-
+    
     if (this.options.autoFocus === true) {
       this.$element.one(transitionend(this.$element), function() {
         if (!_this.$element.hasClass('is-open')) {
