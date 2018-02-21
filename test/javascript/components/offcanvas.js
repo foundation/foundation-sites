@@ -252,7 +252,7 @@ describe('Off Canvas', function() {
       plugin.toggle();
     });
   });
-
+  
   describe('keyboard events', function() {
     it('closes Off Canvas on ESCAPE', function(done) {
       $html = $(template).appendTo('body');
