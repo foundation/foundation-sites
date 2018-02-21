@@ -8,8 +8,6 @@ var webpack2 = require('webpack');
 var named = require('vinyl-named');
 
 var CONFIG = require('../config.js');
-var BUNDLE_PREFIX = '__FOUNDATION_EXTERNALS_';
-var BUNDLE_SUFFIX = '__';
 
 // ----- WEBPACK CONFIGURATION -----
 //
@@ -22,11 +20,12 @@ var BUNDLE_SUFFIX = '__';
 // Convert an external config object for UMD modules
 // See: https://webpack.js.org/configuration/externals/#object
 function umdExternals(externals, options) {
-  options = Object.assign({ prefix: '', suffix: '' }, options);
+  options = Object.assign({ namespace: '' }, options);
+  const umdExternalPath = (...args) => [...args].filter(v => v && !!v.length);
 
   return Object.keys(externals).reduce(function(obj, k) {
     obj[k] = {
-      root: `${options.prefix}${externals[k]}${options.suffix}`,
+      root: umdExternalPath(options.namespace, externals[k]),
       amd: k,
       commonjs: k,
       commonjs2: k,
@@ -56,7 +55,7 @@ var pluginsAsExternals = Object.assign(
     './foundation.accordion': 'foundation.accordion',
     './foundation.tabs': 'foundation.tabs',
     './foundation.smoothScroll': 'foundation.smoothScroll',
-  }, { prefix: BUNDLE_PREFIX, suffix: BUNDLE_SUFFIX })
+  }, { namespace: CONFIG.JS_BUNDLE_NAMESPACE })
 );
 
 var webpackConfig = {
@@ -76,7 +75,7 @@ var webpackConfig = {
     ]
   },
   output: {
-    library: `${BUNDLE_PREFIX}[name]${BUNDLE_SUFFIX}`,
+    library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
     libraryTarget: 'umd',
   }
 }

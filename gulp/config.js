@@ -1,6 +1,8 @@
 module.exports = {
 
   // Javascript
+  JS_BUNDLE_NAMESPACE: '__FOUNDATION_EXTERNAL__',
+
   JS_FILES: [
     'js/foundation.core.js',
     'js/foundation.util.core.js',
