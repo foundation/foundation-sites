@@ -140,6 +140,12 @@ $switch-cursor-disabled: not-allowed !default;
     }
   }
 
+  // indicate a disabled switch
+  input:disabled ~ & {
+    cursor: $switch-cursor-disabled;
+    opacity: $switch-opacity-disabled;
+  }
+
   input:focus ~ & {
     @include disable-mouse-outline;
   }
@@ -216,11 +222,6 @@ $switch-cursor-disabled: not-allowed !default;
   // <input> element
   .switch-input {
     @include switch-input;
-    // indicate a disabled switch
-    &:disabled ~ .switch-paddle {
-      cursor: $switch-cursor-disabled;
-      opacity: $switch-opacity-disabled;
-    }
   }
 
   // <label> element
