@@ -280,6 +280,7 @@ class OffCanvas extends Plugin {
    * @param {Object} event - Event object passed from listener.
    * @param {jQuery} trigger - element that triggered the off-canvas to open.
    * @fires OffCanvas#opened
+   * @todo also trigger 'open' event?
    */
   open(event, trigger) {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
@@ -301,15 +302,10 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
-    /**
-     * Fires when the off-canvas menu opens.
-     * @event OffCanvas#opened
-     */
     this.$element.addClass('is-open').removeClass('is-closed');
 
     this.$triggers.attr('aria-expanded', 'true');
-    this.$element.attr('aria-hidden', 'false')
-        .trigger('opened.zf.offcanvas');
+    this.$element.attr('aria-hidden', 'false');
 
     this.$content.addClass('is-open-' + this.position);
 
@@ -348,6 +344,12 @@ class OffCanvas extends Plugin {
     }
 
     this._addContentClasses();
+
+    /**
+     * Fires when the off-canvas menu opens.
+     * @event OffCanvas#opened
+     */
+    this.$element.trigger('opened.zf.offcanvas');
   }
 
   /**
