@@ -327,7 +327,7 @@ class OffCanvas extends Plugin {
     if (this.options.closeOnClick === true && this.options.contentOverlay === true) {
       this.$overlay.addClass('is-closable');
     }
-    
+
     if (this.options.autoFocus === true) {
       this.$element.one(transitionend(this.$element), function() {
         if (!_this.$element.hasClass('is-open')) {
