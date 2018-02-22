@@ -147,8 +147,10 @@ $breakpoint-classes: (small medium large) !default;
   @for $i from 1 through length($values) {
     $value: nth($values, $i);
     $str: breakpoint($value);
-    $bp: index($-zf-breakpoints-keys, $value);
+    $bp: index($-zf-breakpoints-keys, nth($value, 1));
     $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
+    // Direction of media query (up, down, or only)
+    $dir: if(length($value) > 1, nth($value, 2), up);
 
     $old-zf-size: null;
 
@@ -166,7 +168,7 @@ $breakpoint-classes: (small medium large) !default;
     // Otherwise, wrap the content in a media query
     @else {
       // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
-      @if $bp != null and $bp <= $pbp {
+      @if ($bp != null and $bp == $pbp and ($dir == '' or $dir == 'up' or $dir == 'only')) or ($bp != null and $bp < $pbp and ($dir == '' or $dir == 'up'))  or ($bp != null and $bp >= $pbp and ($dir == 'down')) {
         @media print, screen and #{$str} {
           @content;
         }
