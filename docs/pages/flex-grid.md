@@ -31,7 +31,7 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 </div>
 
 <div class="callout alert">
-  **From Foundation v6.4, the Flex Grid is disabled by default**, replaced by the new [XY Grid](/xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
+  **From Foundation v6.4, the Flex Grid is disabled by default**, replaced by the new [XY Grid](xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
 </div>
 
 To use the Flex Grid in Foundation v6.4+, you need to:
