@@ -3,7 +3,7 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs

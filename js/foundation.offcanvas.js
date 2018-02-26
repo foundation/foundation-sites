@@ -3,8 +3,8 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { transitionend, RegExpEscape } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { transitionend, RegExpEscape } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 import { Triggers } from './foundation.util.triggers';
 

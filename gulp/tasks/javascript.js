@@ -87,7 +87,7 @@ var webpackConfig = {
 gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
-// and the dependency on foundation.util.core
+// and the dependency on foundation.core.utils
 //
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')

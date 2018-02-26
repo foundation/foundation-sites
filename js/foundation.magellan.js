@@ -2,8 +2,8 @@
 
 
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 import { SmoothScroll } from './foundation.smoothScroll';
 
 /**

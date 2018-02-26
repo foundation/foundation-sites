@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 import { Triggers } from './foundation.util.triggers';
 
 /**
