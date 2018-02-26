@@ -347,7 +347,7 @@ class OffCanvas extends Plugin {
     }
 
     this._addContentClasses();
-    
+
     /**
      * Fires when the off-canvas menu opens.
      * @event OffCanvas#opened
