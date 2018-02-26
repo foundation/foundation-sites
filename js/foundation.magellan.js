@@ -100,11 +100,15 @@ class Magellan extends Plugin {
         e.preventDefault();
         var arrival   = this.getAttribute('href');
         _this.scrollToLoc(arrival);
+        _this.calcPoints();
+        _this._updateActive();
       });
 
     this._deepLinkScroll = function(e) {
       if(_this.options.deepLinking) {
         _this.scrollToLoc(window.location.hash);
+        _this.calcPoints();
+        _this._updateActive();
       }
     };
 
@@ -129,7 +133,7 @@ class Magellan extends Plugin {
 
     SmoothScroll.scrollToLoc(loc, options, function() {
       _this._inTransition = false;
-      _this._updateActive();
+      //_this._updateActive();
     })
   }
 
