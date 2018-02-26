@@ -92,9 +92,8 @@ describe('Foundation core', function() {
       name.should.be.equal('A');
     });
 
-    it('should handle a function expression', function() {
-      var B = function(){}; 
-      var name = Foundation.getFnName(B);
+    it('should handle an anonymouse function expression', function() {
+      var name = Foundation.getFnName(function(){});
 
       name.should.be.a('string');
       name.should.be.equal('');
