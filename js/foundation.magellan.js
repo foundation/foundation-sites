@@ -133,7 +133,6 @@ class Magellan extends Plugin {
 
     SmoothScroll.scrollToLoc(loc, options, function() {
       _this._inTransition = false;
-      //_this._updateActive();
     })
   }
 
