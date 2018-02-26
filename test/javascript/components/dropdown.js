@@ -97,4 +97,34 @@ describe('Dropdown', function() {
       }, 2);
     });
   });
+
+  describe('keyboard events', function () {
+    it('opens Dropdown on SPACE', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      $dropdownContainer.should.be.visible;
+    });
+    it('focuses Dropdown on SPACE', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      document.activeElement.should.be.equal($dropdownContainer[0]);
+    });
+    it('does not focus Dropdown when anchor is an input', function() {
+      $dropdownController = $('<input type="text" data-toggle="my-dropdown">').appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      document.activeElement.should.be.equal($dropdownController[0]);
+    });
+  })
 });

@@ -213,8 +213,8 @@ class Abide extends Plugin {
    */
   addA11yAttributes($el) {
     let $errors = this.findFormError($el);
-    let $labels = $errors.filter('label').end();
-    let $error = $errors.first().end();
+    let $labels = $errors.filter('label');
+    let $error = $errors.first();
     if (!$errors.length) return;
 
     // Set [aria-describedby] on the input toward the first form error if it is not set
@@ -229,7 +229,7 @@ class Abide extends Plugin {
       $el.attr('aria-describedby', errorId);
     }
 
-    if ($labels.filter('[for]').end().length < $labels.length) {
+    if ($labels.filter('[for]').length < $labels.length) {
       // Get the input ID or create one
       let elemId = $el.attr('id');
       if (typeof elemId === 'undefined') {
@@ -242,7 +242,7 @@ class Abide extends Plugin {
         const $label = $(label);
         if (typeof $label.attr('for') === 'undefined')
           $label.attr('for', elemId);
-      }).end();
+      });
     }
 
     // For each error targeting $el, set [role=alert] if it is not set.
