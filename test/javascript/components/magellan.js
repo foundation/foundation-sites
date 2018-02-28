@@ -56,7 +56,9 @@ describe('Magellan', function() {
 
       // Jump to last section
       var target = $html.find('a').eq(-1).attr('href');
-      plugin.scrollToLoc(target);      
+      $html.one('load', function(){
+        plugin.scrollToLoc(target);
+			});
 
       // The `update` event doesn't work properly because it fires too often
       setTimeout(function() {
@@ -82,7 +84,9 @@ describe('Magellan', function() {
       var hasError = false;
       try {
 				var target = $html.find('a').eq(-1).attr('href');
-	      plugin.scrollToLoc(target); 
+        $html.one('load', function(){
+          plugin.scrollToLoc(target);
+        });
       } catch (err) {
       	hasError = true;
       }
