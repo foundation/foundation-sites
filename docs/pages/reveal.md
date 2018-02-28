@@ -64,7 +64,7 @@ You can use our handy [close button](close-button.html) styles to do this:
 
 ## Sizing
 
-On small screens, a modal is always 100% of the width of the screen. On medium-sized screens and larger, the width changes to 80%.
+On small screens, a modal is always 100% of the width of the screen. On medium-sized screens and larger, the width changes to 600px. If you're using the Sass version of Foundation, edit the `$reveal-width` variable to change this. This can be a percentage value, or a pixel value.
 
 The size of a modal can be changed with these sizing classes, which are added to the modal container:
 
