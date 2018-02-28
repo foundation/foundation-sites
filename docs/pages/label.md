@@ -116,5 +116,5 @@ An icon can be dropped into a label just fine. We're using the [Foundation icon 
 ```html_example
 <span class="label alert"><i class="fi-x-circle"></i> Alert Label</span>
 <span class="label warning"><i class="fi-x"></i> Warning Label</span>
-<span class="label info"><i class="fi-widget"></i> Info Label</span>
+<span class="label"><i class="fi-widget"></i> Default Label</span>
 ```
