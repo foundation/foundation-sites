@@ -69,7 +69,8 @@
 
 @mixin foundation-everything(
   $flex: true,
-  $prototype: false
+  $prototype: false,
+  $xy-grid: true
 ) {
   @if $flex {
     $global-flexbox: true !global;
