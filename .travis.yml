@@ -1,6 +1,11 @@
 language: node_js
 node_js:
+  - "4"
+  - "5"
   - "6"
+  - "7"
+  - "8"
+  - "9"
 install:
   - npm install -g bower browserstack-runner
   - npm install
