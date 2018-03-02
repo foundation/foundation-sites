@@ -52,28 +52,23 @@ describe('Magellan', function() {
       	animationDuration: duration
       });
 
-
-
       // Jump to last section
       var target = $html.find('a').eq(-1).attr('href');
-      $html.one('load', function(){
-        plugin.scrollToLoc(target);
-			});
-
+      plugin.scrollToLoc(target);
       // The `update` event doesn't work properly because it fires too often
       setTimeout(function() {
-      	var isInViewport = false;
-      	if ($content.find('div').eq(-1).offset().top > $('body').scrollTop() && $content.offset().top < $('body').scrollTop() + $('body').innerHeight()) {
-      		isInViewport = true;
-      	}
-      	isInViewport.should.equal(true);
-      	done();
+        var isInViewport = false;
+        if ($content.find('div').eq(-1).offset().top > $('body').scrollTop() && $content.offset().top < $('body').scrollTop() + $('body').innerHeight()) {
+          isInViewport = true;
+        }
+        isInViewport.should.equal(true);
+        done();
       }, duration);
 
     });
 
 
-    it('fails gracefully when target does not exist', function() {
+    it('fails gracefully when target does not exist', function(done) {
     	var count = 5, duration = 200;
       $html = $(generateUl(count)).appendTo('body');
       $content = $(generateContent(count - 1)).appendTo('body');
@@ -82,15 +77,17 @@ describe('Magellan', function() {
       });
 
       var hasError = false;
-      try {
-				var target = $html.find('a').eq(-1).attr('href');
-        $html.one('load', function(){
-          plugin.scrollToLoc(target);
-        });
-      } catch (err) {
-      	hasError = true;
-      }
-      hasError.should.equal(false);
+      var targets = $html.find('a');
+      if(targets.length){
+        var target = $(targets).eq(-1).attr('href');
+        plugin.scrollToLoc(target);
+        hasError.should.equal(false);
+        done();
+			} else {
+        hasError = true;
+        hasError.should.equal(false);
+        done();
+			}
       
     });
 
