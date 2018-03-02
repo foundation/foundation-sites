@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - "lts/*"
+  - "lts/boron"
+  - "lts/carbon"
   - "stable"
 install:
   - npm install -g bower browserstack-runner
