@@ -72,12 +72,12 @@
   $prototype: false,
   $xy-grid: true
 ) {
-  @if $xy-grid {
-    $xy-grid: true !global;
-  }
-
   @if $flex {
     $global-flexbox: true !global;
+  }
+
+  @if $xy-grid {
+    $xy-grid: true !global;
   }
 
   @include foundation-global-styles;
