@@ -60,7 +60,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(gulp.dest('./dist/css'))
     .pipe(cssFilter.restore)
     .pipe(sourcemapFilter)
-    .pipe(gulp.dest('./dist/css'))
+      .pipe(gulp.dest('./dist/css'))
     .pipe(sourcemapFilter.restore)
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist/js'))
