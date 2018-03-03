@@ -143,7 +143,16 @@ class Tabs extends Plugin {
     }
 
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      // bug in IE
+      // @see https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/3740423/
+      // checks from http://browserhacks.com/ for IE11 and older which does not fire popstate on hashchange
+      var isIE_3_10 = /*@cc_on!@*/false;
+      var isIE_11 = '-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style;
+      if(isIE_3_10 || isIE_11){
+        $(window).on('hashchange', this._checkDeepLink);
+      } else {
+        $(window).on('popstate', this._checkDeepLink);
+      }
     }
   }
 
@@ -394,7 +403,16 @@ class Tabs extends Plugin {
     }
 
     if (this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      // bug in IE
+      // @see https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/3740423/
+      // checks from http://browserhacks.com/ for IE11 and older which does not fire popstate on hashchange
+      var isIE_3_10 = /*@cc_on!@*/false;
+      var isIE_11 = '-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style;
+      if(isIE_3_10 || isIE_11){
+        $(window).off('hashchange', this._checkDeepLink);
+      } else {
+        $(window).off('popstate', this._checkDeepLink);
+      }
     }
 
   }
