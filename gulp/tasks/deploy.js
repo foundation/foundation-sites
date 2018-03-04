@@ -45,22 +45,32 @@ gulp.task('deploy:version', function() {
     .pipe(gulp.dest('.'));
 });
 
-// Generates compiled CSS and JS files and puts them in the dist/ folder
+// Generates compiled CSS and JS files and sourcemaps and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
   var cssFilter = filter(['**/*.css'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
   var cssSourcemapFilter = filter(['**/*.css.map'], { restore: true });
   var jsSourcemapFilter = filter(['**/*.js.map'], { restore: true });
 
-  console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
+
+    // --- Source maps ---
+    // * Copy sourcemaps to the dist folder
+    // This is done first to avoid collision with minified-sourcemaps.
     .pipe(cssSourcemapFilter)
       .pipe(gulp.dest('./dist/css'))
       .pipe(cssSourcemapFilter.restore)
     .pipe(jsSourcemapFilter)
       .pipe(gulp.dest('./dist/js'))
       .pipe(jsSourcemapFilter.restore)
+
+    // --- Source files ---
+    // * Copy source files to dist folder
+    // * Create minified files
+    // * Create minified-sourcemaps based on standard sourcemaps.
+    //   Sourcemaps are initialized before the ".min" renaming to be able retrieve
+    //   original sourcemaps (based on the source name), then renamed manually.
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
       .pipe(sourcemaps.init({ loadMaps: true }))
