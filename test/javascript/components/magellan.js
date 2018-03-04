@@ -55,7 +55,7 @@ describe('Magellan', function() {
       // Jump to last section
       var target = $html.find('a').eq(-1).attr('href');
       plugin.scrollToLoc(target);
-      // The `update` event doesn't work properly because it fires too often
+
       setTimeout(function() {
         var isInViewport = false;
         if ($content.find('div').eq(-1).offset().top > $('body').scrollTop() && $content.offset().top < $('body').scrollTop() + $('body').innerHeight()) {
