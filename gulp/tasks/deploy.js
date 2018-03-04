@@ -11,6 +11,7 @@ var sequence = require('run-sequence');
 var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
 var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
 
 var CONFIG = require('../config.js');
 var CURRENT_VERSION = require('../../package.json').version;
@@ -54,23 +55,32 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
-    .pipe(cssFilter)
-      .pipe(gulp.dest('./dist/css'))
-      .pipe(cleancss({ compatibility: 'ie9' }))
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(gulp.dest('./dist/css'))
-    .pipe(cssFilter.restore)
     .pipe(cssSourcemapFilter)
       .pipe(gulp.dest('./dist/css'))
-    .pipe(cssSourcemapFilter.restore)
-    .pipe(jsFilter)
-      .pipe(gulp.dest('./dist/js'))
-      .pipe(uglify())
-      .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('./dist/js'))
+      .pipe(cssSourcemapFilter.restore)
     .pipe(jsSourcemapFilter)
       .pipe(gulp.dest('./dist/js'))
-    .pipe(jsSourcemapFilter.restore);
+      .pipe(jsSourcemapFilter.restore)
+    .pipe(cssFilter)
+      .pipe(gulp.dest('./dist/css'))
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(cleancss({ compatibility: 'ie9' }))
+      .pipe(sourcemaps.write('.', {
+        mapFile: function(path) { return path.replace('.css.map', '.min.css.map'); }
+      }))
+      .pipe(gulp.dest('./dist/css'))
+      .pipe(cssFilter.restore)
+
+    .pipe(jsFilter)
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(uglify())
+      .pipe(sourcemaps.write('.', {
+        mapFile: function(path) { return path.replace('.js.map', '.min.js.map'); }
+      }))
+      .pipe(gulp.dest('./dist/js'));
 });
 
 // Copies standalone JavaScript plugins to dist/ folder
