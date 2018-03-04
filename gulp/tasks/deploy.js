@@ -47,6 +47,7 @@ gulp.task('deploy:version', function() {
 // Generates compiled CSS and JS files and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
   var cssFilter = filter(['**/*.css'], { restore: true });
+  var sourcemapFilter = filter(['**/*.css.map'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
 
   console.log(CONFIG.DIST_FILES)
@@ -58,6 +59,9 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist/css'))
     .pipe(cssFilter.restore)
+    .pipe(sourcemapFilter)
+      .pipe(gulp.dest('./dist/css'))
+    .pipe(sourcemapFilter.restore)
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist/js'))
       .pipe(uglify())
