@@ -1,6 +1,6 @@
 describe('Magellan', function() {
 	var plugin;
-	var $html, $content; 	
+	var $html, $content;
 
   var generateUl = function(count) {
   	var html = '';
@@ -68,7 +68,7 @@ describe('Magellan', function() {
     });
 
 
-    it('fails gracefully when target does not exist', function(done) {
+    it('fails gracefully when target does not exist', function() {
     	var count = 5, duration = 200;
       $html = $(generateUl(count)).appendTo('body');
       $content = $(generateContent(count - 1)).appendTo('body');
@@ -78,17 +78,14 @@ describe('Magellan', function() {
 
       var hasError = false;
       var targets = $html.find('a');
-      if(targets.length){
+      try {
         var target = $(targets).eq(-1).attr('href');
         plugin.scrollToLoc(target);
-        hasError.should.equal(false);
-        done();
-			} else {
+      }
+      catch (err) {
         hasError = true;
-        hasError.should.equal(false);
-        done();
-			}
-      
+      }
+      hasError.should.equal(false);
     });
 
   });
