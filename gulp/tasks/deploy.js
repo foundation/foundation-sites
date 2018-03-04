@@ -47,8 +47,9 @@ gulp.task('deploy:version', function() {
 // Generates compiled CSS and JS files and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
   var cssFilter = filter(['**/*.css'], { restore: true });
-  var sourcemapFilter = filter(['**/*.css.map'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
+  var cssSourcemapFilter = filter(['**/*.css.map'], { restore: true });
+  var jsSourcemapFilter = filter(['**/*.js.map'], { restore: true });
 
   console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
@@ -59,14 +60,17 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist/css'))
     .pipe(cssFilter.restore)
-    .pipe(sourcemapFilter)
+    .pipe(cssSourcemapFilter)
       .pipe(gulp.dest('./dist/css'))
-    .pipe(sourcemapFilter.restore)
+    .pipe(cssSourcemapFilter.restore)
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist/js'))
       .pipe(uglify())
       .pipe(rename({ suffix: '.min' }))
-      .pipe(gulp.dest('./dist/js'));
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(jsSourcemapFilter)
+      .pipe(gulp.dest('./dist/js'))
+    .pipe(jsSourcemapFilter.restore);
 });
 
 // Copies standalone JavaScript plugins to dist/ folder
