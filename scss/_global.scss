@@ -134,7 +134,6 @@ $global-color-pick-contrast-tolerance: 0 !default;
 @include add-foundation-colors;
 
 @mixin foundation-global-styles {
-  @include -zf-normalize;
 
   // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
   .foundation-mq {
@@ -241,10 +240,4 @@ $global-color-pick-contrast-tolerance: 0 !default;
   .is-hidden {
     display: none !important;
   }
-}
-
-/// Loads normalize.css.
-/// @access private
-@mixin -zf-normalize {
-  @include normalize();
 }
