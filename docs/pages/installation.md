@@ -202,23 +202,23 @@ The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and J
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous" />
 
 <!-- Compressed JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA==" crossorigin="anonymous"></script>
 ```
 
 From Foundation 6.4, flex is enabled by default and **only the new XY Grid is availaible**. However, others CSS versions are availaible for backward compatibility and the most common usage cases. For others uses and advanced customization, we recommand to build Foundation with custom settings (see others installation methods).
 
 ```html
 <!-- foundation-float.css: Compressed CSS with legacy Float Grid -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css" integrity="sha256-+8r1EkvIoWpxT8CKbSw/rCQWttnazW9mLPg6xT+/2EM=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css" integrity="sha256-+8r1EkvIoWpxT8CKbSw/rCQWttnazW9mLPg6xT+/2EM= sha384-/oMoU6QUFos1xR2dsyh5fVXoR6wHSKUxQdbvR1ARssj8Crq8z39z3dGnGiI3O807 sha512-8QyAfdtYntymd5OgASE6/GHuN3hbySbEJaORYvMjfki5uwRCpUPiAsWv/BzHS7O3aZCmlYJzkY9lYQnUT6sw/Q==" crossorigin="anonymous" />
 
 <!-- foundation-prototype.css: Compressed CSS with prototyping classes -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.css" integrity="sha256-IHU5CkoOGpVMODA9ql3Lz609uhGwwFlLNSpAMoOY2us=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.css" integrity="sha256-IHU5CkoOGpVMODA9ql3Lz609uhGwwFlLNSpAMoOY2us= sha384-5YVbhp4eWqCZTvk9iGqw9BkE2y1uCHERnmqPZvhLCL9i6KQnOx81Om6HTedy5umY sha512-8OOpCEIwIj4l3EltIZSpEQe5sqoppE02Tv1PsnCFPI5SOZ7qVGeT0nvxRlUfCkvPD5ZzMD3aOpuGkd/fM4rJ0A==" crossorigin="anonymous" />
 
 <!-- foundation-rtl.css: Compressed CSS with right-to-left reading direction -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-rtl.min.css" integrity="sha256-Az+E7JXW71Srarkum5QPTdnobddg2GqI1i8+nMusgLk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-rtl.min.css" integrity="sha256-Az+E7JXW71Srarkum5QPTdnobddg2GqI1i8+nMusgLk= sha384-eBKuNtkGVmsJD0uNnWoKYYVnzDT0PXV+XNyAgmmZwYVn7MSNcaR4i5HjOpSRd0o6 sha512-d0RjiDZM/0NlD+7Y2DhUGuAUdwDIL5lS3GPAD0HEayEcrhuLuRiPYOgFWZik+gsFzsykxSn0KO6jim7ev8kIig==" crossorigin="anonymous" />
 ```
 
 <div class="text-center">
