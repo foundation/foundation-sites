@@ -74,6 +74,7 @@ class DropdownMenu extends Plugin {
       }
     }
     this.changed = false;
+    this.isTouchMove = false;
     this._events();
   };
 
@@ -270,13 +271,20 @@ class DropdownMenu extends Plugin {
   _addBodyHandler() {
     var $body = $(document.body),
         _this = this;
-    $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
+    $body.off('touchmove.zf.dropdownmenu')
+         .on('touchmove.zf.dropdownmenu', function(){
+           _this.isTouchMove = true;
+         })
+         .off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
          .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
            var $link = _this.$element.find(e.target);
-           if ($link.length) { return; }
+           if ($link.length || _this.isTouchMove){
+             _this.isTouchMove = false;
+             return;
+           }
 
            _this._hide();
-           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
+           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu touchmove.zf.dropdownmenu');
          });
   }
 
