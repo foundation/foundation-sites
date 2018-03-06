@@ -108,7 +108,7 @@ class Magellan extends Plugin {
       }
     };
 
-    $(window).on('popstate', this._deepLinkScroll);
+    $(window).on('hashchange', this._deepLinkScroll);
   }
 
   /**
@@ -222,7 +222,7 @@ class Magellan extends Plugin {
       var hash = this.$active[0].getAttribute('href');
       window.location.hash.replace(hash, '');
     }
-    $(window).off('popstate', this._deepLinkScroll);
+    $(window).off('hashchange', this._deepLinkScroll);
   }
 }
 
