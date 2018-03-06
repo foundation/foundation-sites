@@ -34,10 +34,6 @@ $menu-item-background-active: get-color(primary) !default;
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
 
-/// Background color for an hovered menu item.
-/// @type Color
-$menu-item-background-hover: $light-gray !default;
-
 /// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
 /// But please note that `active` will be removed in upcoming versions.
 /// @type Boolean
