@@ -25,7 +25,6 @@ describe('Dropdown', function() {
       $dropdownController = $(getDropdownController()).appendTo('body');
       $dropdownContainer = $(getDropdownContainer()).appendTo('body');
       plugin = new Foundation.Dropdown($dropdownContainer, {});
-      console.log('dropdown constructor');
 
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
