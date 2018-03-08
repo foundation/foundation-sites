@@ -2,7 +2,13 @@
 title: Flex Grid
 description: New in Foundation 6 is a Flexbox-powered grid, which you can use instead of the traditional float grid.
 sass: scss/grid/_flex-grid.scss
+video: tpmQcZSPw4Q
 ---
+
+<div class="callout training-callout">
+  <p>Become a master of the Foundation Grids to create complex layouts faster and with less code. The new XY Grid is the newest and most powerful version. Stay up-to-date with all the new features in Foundation 6.4 and learn how to migrate to the XY Grid with our online webinar training. You’ll also learn all the useful UI components and Foundation JavaScript to really crush your projects.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Get registered for an upcomming Foundation training →</a>
+</div>
 
 The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing, and easier source ordering.
 
@@ -23,6 +29,10 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
 
 If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="2:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
 
 ```scss
 @import 'foundation';
@@ -46,6 +56,14 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 
 The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column` (or `.columns`). Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
+<p>
+  <a class="" data-open-video="6:09"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <div class="small-6 columns">6 columns</div>
@@ -63,6 +81,14 @@ The structure of the flex grid is identical to that of the float grid. Rows use 
 
 If no sizing class is added to the column, it will simply expand to fill the leftover space. We call this an *expand behavior*.
 
+<p>
+  <a class="" data-open-video="10:29"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XREzBv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <div class="small-4 columns">4 columns</div>
@@ -73,6 +99,14 @@ If no sizing class is added to the column, it will simply expand to fill the lef
 ---
 
 Multiple expanding columns will share the leftover space equally.
+
+<p>
+  <a class="" data-open-video="11:04"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLdYY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">
@@ -85,6 +119,14 @@ Multiple expanding columns will share the leftover space equally.
 ---
 
 A column can also be made to *shrink*, by adding the `.shrink` class. This means it will only take up the horizontal space its contents need.
+
+<p>
+  <a class="" data-open-video="13:34"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWYVgd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">
@@ -100,6 +142,10 @@ A column can also be made to *shrink*, by adding the `.shrink` class. This means
 Columns in a flex grid will not wrap if not given an explicit size&mdash;this is what allows the magical auto-sizing to work. To make columns stack on smaller screens, add the class `.small-12` manually.
 
 To switch back to the expand behavior from a percentage or shrink behavior, use the classes `.medium-expand` or `.large-expand`. In the below example, the columns stack on small screens, and become even-width on large screens.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/vmRpBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">
@@ -117,6 +163,10 @@ To switch back to the expand behavior from a percentage or shrink behavior, use 
 ### Automatic Stacking
 
 We have a few shorthand classes for the above behavior. Use the `.[size]-unstack` classes to stack all columns in the row by default, and then unstack them on a larger screen size, making each one equal-width.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdWpER?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row medium-unstack">
@@ -138,6 +188,15 @@ Columns in a flex grid can be aligned across the horizontal or vertical axis of 
 ### Horizontal Alignment
 
 Columns can be aligned the same way you would align text in a paragraph. By default, all columns align to the left (or the right in RTL), but this can be overridden with by adding the `.align-[dir]` class to the flex row.
+
+<p>
+  <a class="" data-open-video="13:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/mmxpGz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row">
@@ -203,6 +262,14 @@ Your options for vertical alignment are `top`, `middle`, `bottom`, and `stretch`
 
 Applying a vertical alignment class to the flex row will affect every column directly inside it.
 
+<p>
+  <a class="" data-open-video="13:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/BRrYQy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row align-middle">
   <div class="columns">I'm in the middle!</div>
@@ -219,10 +286,19 @@ Applying a vertical alignment class to the flex row will affect every column dir
 
 ---
 
+### Vertical Alignment of child columns (individually)
+
 Similar alignment classes can also be applied to individual columns, which use the format `.align-self-*` instead of `.align-*`.
 
+<a class="" data-open-video="13:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="warning callout">
-  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes will be removed completely in Foundation 6.3.</p>
+  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes have been removed completely in Foundation 6.3.</p>
+</div>
+
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLaPe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -240,9 +316,13 @@ Similar alignment classes can also be applied to individual columns, which use t
 
 The `.collapse` class lets you remove column gutters (padding).
 
-There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
+There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows gutters at small and medium and no gutters on large and up.
 
 The `.is-collapse-child` class removes negative margins from nested row under collapsed parent.
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLaWP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row small-collapse medium-uncollapse">
@@ -280,6 +360,10 @@ The `.is-collapse-child` class removes negative margins from nested row under co
 
 Offsets work identically to the float grid, by applying `margin-left` to a column.
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/mmxXpb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <div class="small-4 large-offset-2 columns">Offset 2 on large</div>
@@ -289,41 +373,18 @@ Offsets work identically to the float grid, by applying `margin-left` to a colum
 
 ---
 
-## Source Ordering
-
-Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without weird relative positioning tricks.
-
-The CSS property is easy enough to remember.
-
-```scss
-.element {
-  order: 1;
-}
-```
-
-Columns within a row will be sorted by their `order` property. Lower numbers are placed first. If multiple columns have the same number, they're sorted in the order they appear in the HTML.
-
-We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
-
-```html_example
-<div class="row">
-  <div class="column small-order-2 medium-order-1">
-    This column will come second on small, and first on medium and larger.
-  </div>
-  <div class="column small-order-1 medium-order-2">
-    This column will come first on small, and second on medium and larger.
-  </div>
-</div>
-```
-
----
-
 ## Block Grids
 
 To define column widths at the row-level, instead of the individual column level, add the class `.[size]-up-[n]` to a row, where `[n]` is the number of columns to display per row, and `[size]` is the breakpoint at which to apply the effect.
 
+<a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="primary callout">
   <p>A block grid row has the property <code>align-items: stretch</code> by default, meaning the columns in each row are equal height. To change this, change the <code>align-items</code> property of the row, or use one of the <a href="flexbox.html#vertical-alignment">vertical alignment flexbox classes</a>.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmRdOy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

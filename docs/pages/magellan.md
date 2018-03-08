@@ -1,35 +1,33 @@
 ---
 title: Magellan
 description: Magellan allows you to create navigation that tracks the active section of a page your user is in. Pair it with our Sticky plugin to create a fixed navigation element.
+video: 'eT-WWX74SY0'
 js: js/foundation.magellan.js
 tags:
   - navigation
 ---
 
-<div data-sticky-container>
-  <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom" data-sticky-on="small">
-    <nav data-magellan class="sticky-mag" data-offset="25">
-      <ul class="horizontal menu expanded">
-        <li><a href="#setup">Setup</a></li>
-        <li><a href="#sticky-navigation">Sticky Navigation</a></li>
-        <li><a href="#javascript-reference">JavaScript Reference</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-
-<br>
-
 ## Setup
 
 You can use Magellan with any navigation element, like our [Menu](menu.html) or your own custom component. Just add the attribute `data-magellan` to the container, and links to specific sections of your page. Each section needs a unique ID.
 
+<p>
+  <a class="" data-open-video="0:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
-<ul class="horizontal menu" data-magellan>
+<!-- Add a Menu -->
+<ul class="menu expanded" data-magellan>
   <li><a href="#first">First Arrival</a></li>
   <li><a href="#second">Second Arrival</a></li>
   <li><a href="#third">Third Arrival</a></li>
 </ul>
+
+<!-- Add content where magellan will be linked -->
 <div class="sections">
   <section id="first" data-magellan-target="first">First Section</section>
   <section id="second" data-magellan-target="second">Second Section</section>
@@ -43,7 +41,38 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 
 You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar.
 
-This first example is a simplified version of the table of contents on the right side of this page:
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html 
+<!-- Add a Sticky Menu -->
+<div data-sticky-container>
+  <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">Site Title</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu" data-magellan>
+        <li><a href="#first">One</a></li>
+        <li><a href="#second">Two</a></li>
+        <li><a href="#third">Three</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Add content where magellan will be linked -->
+<div class="sections">
+  <section id="first" data-magellan-target="first">First Section</section>
+  <section id="second" data-magellan-target="second">Second Section</section>
+  <section id="third" data-magellan-target="third">Third Section</section>
+</div>
+```
+
+This below example is a simplified version of the table of contents on the right side of this page.
 
 ```html
 <div class="large-3 columns" data-sticky-container>
@@ -57,18 +86,10 @@ This first example is a simplified version of the table of contents on the right
 </div>
 ```
 
-This example is the menu bar floating at the top of the page.
+---
 
-```html
-<div data-sticky-container>
-  <div class="sticky" id="example" data-sticky data-margin-top="0" style="width:100%;" data-margin-bottom="0" data-top-anchor="topAnchorExample" data-btm-anchor="bottomOfContentId:bottom">
-    <nav data-magellan>
-      <ul class="horizontal menu expanded">
-      <li><a href="#first">First Arrival</a></li>
-      <li><a href="#second">Second Arrival</a></li>
-      <li><a href="#third">Third Arrival</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-```
+## Browser history
+
+When the `data-deep-link` option is set to `true`, the active section of the magellan is recorded by adding a hash with the active magellan section ID to the browser URL. By default, magellan *replace* the browser history (using `history.replaceState()`).
+
+Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each section the magellan gone through (in most case, this is not recommended).

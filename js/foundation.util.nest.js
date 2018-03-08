@@ -9,16 +9,18 @@ const Nest = {
     var items = menu.find('li').attr({'role': 'menuitem'}),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
-        hasSubClass = `is-${type}-submenu-parent`;
+        hasSubClass = `is-${type}-submenu-parent`,
+        applyAria = (type !== 'accordion'); // Accordions handle their own ARIA attriutes.
 
     items.each(function() {
       var $item = $(this),
           $sub = $item.children('ul');
 
       if ($sub.length) {
-        $item
-          .addClass(hasSubClass)
-          .attr({
+        $item.addClass(hasSubClass);
+        $sub.addClass(`submenu ${subMenuClass}`).attr({'data-submenu': ''});
+        if(applyAria) {
+          $item.attr({
             'aria-haspopup': true,
             'aria-label': $item.children('a:first').text()
           });
@@ -28,7 +30,7 @@ const Nest = {
           if(type === 'drilldown') {
             $item.attr({'aria-expanded': false});
           }
-
+        }
         $sub
           .addClass(`submenu ${subMenuClass}`)
           .attr({
@@ -55,7 +57,7 @@ const Nest = {
         hasSubClass = `is-${type}-submenu-parent`;
 
     menu
-      .find('>li, .menu, .menu > li')
+      .find('>li, > li > ul, .menu, .menu > li')
       .removeClass(`${subMenuClass} ${subItemClass} ${hasSubClass} is-submenu-item submenu is-active`)
       .removeAttr('data-submenu').css('display', '');
 

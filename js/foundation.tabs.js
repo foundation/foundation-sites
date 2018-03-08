@@ -15,6 +15,7 @@ class Tabs extends Plugin {
   /**
    * Creates a new instance of tabs.
    * @class
+   * @name Tabs
    * @fires Tabs#init
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -22,6 +23,7 @@ class Tabs extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
+    this.className = 'Tabs'; // ie9 back compat
 
     this._init();
     Keyboard.register('Tabs', {
@@ -75,7 +77,7 @@ class Tabs extends Plugin {
       }
 
       if(isActive && _this.options.autoFocus){
-        $(window).load(function() {
+        $(window).on('load', function() {
           $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
             $link.focus();
           });
@@ -92,12 +94,13 @@ class Tabs extends Plugin {
       }
     }
 
-     //current context-bound function to open tabs on page load or history popstate
+     //current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
       //need a hash and a relevant anchor in this tabset
       if(anchor.length) {
-        var $link = this.$element.find('[href$="'+anchor+'"]');
+        var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
+        var $link = this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
         if ($link.length) {
           this.selectTab($(anchor), true);
 
@@ -140,7 +143,7 @@ class Tabs extends Plugin {
     }
 
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      $(window).on('hashchange', this._checkDeepLink);
     }
   }
 
@@ -316,7 +319,7 @@ class Tabs extends Plugin {
    * @function
    */
   selectTab(elem, historyHandled) {
-    var idStr;
+    var idStr, hashIdStr;
 
     if (typeof elem === 'object') {
       idStr = elem[0].id;
@@ -325,10 +328,13 @@ class Tabs extends Plugin {
     }
 
     if (idStr.indexOf('#') < 0) {
-      idStr = `#${idStr}`;
+      hashIdStr = `#${idStr}`;
+    } else {
+      hashIdStr = idStr;
+      idStr = idStr.slice(1);
     }
 
-    var $target = this.$tabTitles.find(`[href$="${idStr}"]`).parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.find(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first().parent(`.${this.options.linkClass}`);
 
     this._handleTabChange($target, historyHandled);
   };
@@ -388,7 +394,7 @@ class Tabs extends Plugin {
     }
 
     if (this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      $(window).off('hashchange', this._checkDeepLink);
     }
 
   }

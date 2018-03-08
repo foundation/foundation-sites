@@ -3,15 +3,14 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { transitionend } from './foundation.util.core';
+import { transitionend, RegExpEscape } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
-  // import "foundation.util.triggers.js";
-  // TODO: Figure out what triggers import should actually do, given how indirect their use is
+import { Triggers } from './foundation.util.triggers';
 
 /**
  * OffCanvas module.
- * @module foundation.offcanvas
+ * @module foundation.offCanvas
  * @requires foundation.util.keyboard
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
@@ -21,15 +20,34 @@ class OffCanvas extends Plugin {
   /**
    * Creates a new instance of an off-canvas wrapper.
    * @class
+   * @name OffCanvas
    * @fires OffCanvas#init
    * @param {Object} element - jQuery object to initialize.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   _setup(element, options) {
+    this.className = 'OffCanvas'; // ie9 back compat
     this.$element = element;
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
+    this.contentClasses = { base: [], reveal: [] };
     this.$lastTrigger = $();
     this.$triggers = $();
+    this.position = 'left';
+    this.$content = $();
+    this.nested = !!(this.options.nested);
+
+    // Defines the CSS transition/position classes of the off-canvas content container.
+    $(['push', 'overlap']).each((index, val) => {
+      this.contentClasses.base.push('has-transition-'+val);
+    });
+    $(['left', 'right', 'top', 'bottom']).each((index, val) => {
+      this.contentClasses.base.push('has-position-'+val);
+      this.contentClasses.reveal.push('has-reveal-'+val);
+    });
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+    MediaQuery._init();
 
     this._init();
     this._events();
@@ -50,13 +68,42 @@ class OffCanvas extends Plugin {
 
     this.$element.attr('aria-hidden', 'true');
 
-    this.$element.addClass(`is-transition-${this.options.transition}`);
+    // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
+    if (this.options.contentId) {
+      this.$content = $('#'+this.options.contentId);
+    } else if (this.$element.siblings('[data-off-canvas-content]').length) {
+      this.$content = this.$element.siblings('[data-off-canvas-content]').first();
+    } else {
+      this.$content = this.$element.closest('[data-off-canvas-content]').first();
+    }
+
+    if (!this.options.contentId) {
+      // Assume that the off-canvas element is nested if it isn't a sibling of the content
+      this.nested = this.$element.siblings('[data-off-canvas-content]').length === 0;
+
+    } else if (this.options.contentId && this.options.nested === null) {
+      // Warning if using content ID without setting the nested option
+      // Once the element is nested it is required to work properly in this case
+      console.warn('Remember to use the nested option if using the content ID option!');
+    }
+
+    if (this.nested === true) {
+      // Force transition overlap if nested
+      this.options.transition = 'overlap';
+      // Remove appropriate classes if already assigned in markup
+      this.$element.removeClass('is-transition-push');
+    }
+
+    this.$element.addClass(`is-transition-${this.options.transition} is-closed`);
 
     // Find triggers that affect this element and add aria-expanded to them
     this.$triggers = $(document)
       .find('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
       .attr('aria-expanded', 'false')
       .attr('aria-controls', id);
+
+    // Get position by checking for related CSS class
+    this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position;
 
     // Add an overlay over the content if necessary
     if (this.options.contentOverlay === true) {
@@ -65,22 +112,32 @@ class OffCanvas extends Plugin {
       overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
       this.$overlay = $(overlay);
       if(overlayPosition === 'is-overlay-fixed') {
-        $('body').append(this.$overlay);
+        $(this.$overlay).insertAfter(this.$element);
       } else {
-        this.$element.siblings('[data-off-canvas-content]').append(this.$overlay);
+        this.$content.append(this.$overlay);
       }
     }
 
-    this.options.isRevealed = this.options.isRevealed || new RegExp(this.options.revealClass, 'g').test(this.$element[0].className);
+    // Get the revealOn option from the class.
+    var revealOnRegExp = new RegExp(RegExpEscape(this.options.revealClass) + '([^\\s]+)', 'g');
+    var revealOnClass = revealOnRegExp.exec(this.$element[0].className);
+    if (revealOnClass) {
+      this.options.isRevealed = true;
+      this.options.revealOn = this.options.revealOn || revealOnClass[1];
+    }
 
-    if (this.options.isRevealed === true) {
-      this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
+    // Ensure the `reveal-on-*` class is set.
+    if (this.options.isRevealed === true && this.options.revealOn) {
+      this.$element.first().addClass(`${this.options.revealClass}${this.options.revealOn}`);
       this._setMQChecker();
     }
 
     if (this.options.transitionTime) {
       this.$element.css('transition-duration', this.options.transitionTime);
     }
+
+    // Initally remove all transition/position CSS classes from off-canvas content container.
+    this._removeContentClasses();
   }
 
   /**
@@ -89,16 +146,16 @@ class OffCanvas extends Plugin {
    * @private
    */
   _events() {
-    this.$element.off('.zf.trigger .zf.offcanvas').on({
+    this.$element.off('.zf.trigger .zf.offCanvas').on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
+      'keydown.zf.offCanvas': this._handleKeyboard.bind(this)
     });
 
     if (this.options.closeOnClick === true) {
-      var $target = this.options.contentOverlay ? this.$overlay : $('[data-off-canvas-content]');
-      $target.on({'click.zf.offcanvas': this.close.bind(this)});
+      var $target = this.options.contentOverlay ? this.$overlay : this.$content;
+      $target.on({'click.zf.offCanvas': this.close.bind(this)});
     }
   }
 
@@ -115,11 +172,40 @@ class OffCanvas extends Plugin {
       } else {
         _this.reveal(false);
       }
-    }).one('load.zf.offcanvas', function() {
+    }).one('load.zf.offCanvas', function() {
       if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       }
     });
+  }
+
+  /**
+   * Removes the CSS transition/position classes of the off-canvas content container.
+   * Removing the classes is important when another off-canvas gets opened that uses the same content container.
+   * @param {Boolean} hasReveal - true if related off-canvas element is revealed.
+   * @private
+   */
+  _removeContentClasses(hasReveal) {
+    if (typeof hasReveal !== 'boolean') {
+      this.$content.removeClass(this.contentClasses.base.join(' '));
+    } else if (hasReveal === false) {
+      this.$content.removeClass(`has-reveal-${this.position}`);
+    }
+  }
+
+  /**
+   * Adds the CSS transition/position classes of the off-canvas content container, based on the opening off-canvas element.
+   * Beforehand any transition/position class gets removed.
+   * @param {Boolean} hasReveal - true if related off-canvas element is revealed.
+   * @private
+   */
+  _addContentClasses(hasReveal) {
+    this._removeContentClasses(hasReveal);
+    if (typeof hasReveal !== 'boolean') {
+      this.$content.addClass(`has-transition-${this.options.transition} has-position-${this.position}`);
+    } else if (hasReveal === true) {
+      this.$content.addClass(`has-reveal-${this.position}`);
+    }
   }
 
   /**
@@ -128,13 +214,12 @@ class OffCanvas extends Plugin {
    * @function
    */
   reveal(isRevealed) {
-    var $closer = this.$element.find('[data-close]');
     if (isRevealed) {
       this.close();
       this.isRevealed = true;
       this.$element.attr('aria-hidden', 'false');
       this.$element.off('open.zf.trigger toggle.zf.trigger');
-      if ($closer.length) { $closer.hide(); }
+      this.$element.removeClass('is-closed');
     } else {
       this.isRevealed = false;
       this.$element.attr('aria-hidden', 'true');
@@ -142,14 +227,13 @@ class OffCanvas extends Plugin {
         'open.zf.trigger': this.open.bind(this),
         'toggle.zf.trigger': this.toggle.bind(this)
       });
-      if ($closer.length) {
-        $closer.show();
-      }
+      this.$element.addClass('is-closed');
     }
+    this._addContentClasses(isRevealed);
   }
 
   /**
-   * Stops scrolling of the body when offcanvas is open on mobile Safari and other troublesome browsers.
+   * Stops scrolling of the body when OffCanvas is open on mobile Safari and other troublesome browsers.
    * @private
    */
   _stopScrolling(event) {
@@ -196,6 +280,7 @@ class OffCanvas extends Plugin {
    * @param {Object} event - Event object passed from listener.
    * @param {jQuery} trigger - element that triggered the off-canvas to open.
    * @fires OffCanvas#opened
+   * @todo also trigger 'open' event?
    */
   open(event, trigger) {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
@@ -217,15 +302,12 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
-    /**
-     * Fires when the off-canvas menu opens.
-     * @event OffCanvas#opened
-     */
-    _this.$element.addClass('is-open')
+    this.$element.addClass('is-open').removeClass('is-closed');
 
     this.$triggers.attr('aria-expanded', 'true');
-    this.$element.attr('aria-hidden', 'false')
-        .trigger('opened.zf.offcanvas');
+    this.$element.attr('aria-hidden', 'false');
+
+    this.$content.addClass('is-open-' + this.position);
 
     // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
     if (this.options.contentScroll === false) {
@@ -244,6 +326,9 @@ class OffCanvas extends Plugin {
 
     if (this.options.autoFocus === true) {
       this.$element.one(transitionend(this.$element), function() {
+        if (!_this.$element.hasClass('is-open')) {
+          return; // exit if prematurely closed
+        }
         var canvasFocus = _this.$element.find('[data-autofocus]');
         if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
@@ -254,9 +339,17 @@ class OffCanvas extends Plugin {
     }
 
     if (this.options.trapFocus === true) {
-      this.$element.siblings('[data-off-canvas-content]').attr('tabindex', '-1');
+      this.$content.attr('tabindex', '-1');
       Keyboard.trapFocus(this.$element);
     }
+
+    this._addContentClasses();
+
+    /**
+     * Fires when the off-canvas menu opens.
+     * @event OffCanvas#opened
+     */
+    this.$element.trigger('opened.zf.offCanvas');
   }
 
   /**
@@ -270,14 +363,16 @@ class OffCanvas extends Plugin {
 
     var _this = this;
 
-    _this.$element.removeClass('is-open');
+    this.$element.removeClass('is-open');
 
     this.$element.attr('aria-hidden', 'true')
       /**
        * Fires when the off-canvas menu opens.
        * @event OffCanvas#closed
        */
-        .trigger('closed.zf.offcanvas');
+        .trigger('closed.zf.offCanvas');
+
+    this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
     // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
     if (this.options.contentScroll === false) {
@@ -297,9 +392,15 @@ class OffCanvas extends Plugin {
     this.$triggers.attr('aria-expanded', 'false');
 
     if (this.options.trapFocus === true) {
-      this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
+      this.$content.removeAttr('tabindex');
       Keyboard.releaseFocus(this.$element);
     }
+
+    // Listen to transitionEnd and add class when done.
+    this.$element.one(transitionend(this.$element), function(e) {
+      _this.$element.addClass('is-closed');
+      _this._removeContentClasses();
+    });
   }
 
   /**
@@ -337,13 +438,13 @@ class OffCanvas extends Plugin {
   }
 
   /**
-   * Destroys the offcanvas plugin.
+   * Destroys the OffCanvas plugin.
    * @function
    */
   _destroy() {
     this.close();
-    this.$element.off('.zf.trigger .zf.offcanvas');
-    this.$overlay.off('.zf.offcanvas');
+    this.$element.off('.zf.trigger .zf.offCanvas');
+    this.$overlay.off('.zf.offCanvas');
   }
 }
 
@@ -365,6 +466,22 @@ OffCanvas.defaults = {
   contentOverlay: true,
 
   /**
+   * Target an off-canvas content container by ID that may be placed anywhere. If null the closest content container will be taken.
+   * @option
+   * @type {?string}
+   * @default null
+   */
+  contentId: null,
+
+  /**
+   * Define the off-canvas element is nested in an off-canvas content. This is required when using the contentId option for a nested element.
+   * @option
+   * @type {boolean}
+   * @default null
+   */
+  nested: null,
+
+  /**
    * Enable/disable scrolling of the main content when an off canvas panel is open.
    * @option
    * @type {boolean}
@@ -381,7 +498,7 @@ OffCanvas.defaults = {
   transitionTime: null,
 
   /**
-   * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
+   * Type of transition for the OffCanvas menu. Options are 'push', 'detached' or 'slide'.
    * @option
    * @type {string}
    * @default push
@@ -397,7 +514,7 @@ OffCanvas.defaults = {
   forceTo: null,
 
   /**
-   * Allow the offcanvas to remain open for certain breakpoints.
+   * Allow the OffCanvas to remain open for certain breakpoints.
    * @option
    * @type {boolean}
    * @default false
@@ -413,7 +530,7 @@ OffCanvas.defaults = {
   revealOn: null,
 
   /**
-   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
+   * Force focus to the OffCanvas on open. If true, will focus the opening trigger on close.
    * @option
    * @type {boolean}
    * @default true
@@ -421,7 +538,7 @@ OffCanvas.defaults = {
   autoFocus: true,
 
   /**
-   * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
+   * Class used to force an OffCanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
    * @option
    * @type {string}
    * @default reveal-for-
@@ -430,7 +547,7 @@ OffCanvas.defaults = {
   revealClass: 'reveal-for-',
 
   /**
-   * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
+   * Triggers optional focus trapping when opening an OffCanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
    * @option
    * @type {boolean}
    * @default false

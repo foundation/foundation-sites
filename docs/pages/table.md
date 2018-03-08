@@ -1,12 +1,21 @@
 ---
 title: Tables
 description: Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course). They have responsive modifiers to help solve some of your layout issues based on your tables needs.
+video: '-Omv7c3Qg4s'
 sass: scss/components/_table.scss
 ---
 
 ## Basics
 
 No bells or whistles here, just a straight up table for all of your basic table needs.
+
+<p>
+  <a class="" data-open-video="0:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwaazZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <table>
@@ -46,6 +55,14 @@ No bells or whistles here, just a straight up table for all of your basic table 
 ## Hover State
 
 Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
+
+<p>
+  <a class="" data-open-video="2:49"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdzzgr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <table class="hover">
@@ -89,6 +106,14 @@ Need to spiff up the table just a tad? Just add the class `.hover` to lightly da
 
 By default, table rows are striped. There's an `.unstriped` class to remove the stripes. If you change `$table-is-striped` to `false` to remove stripes from all tables, use the `.striped` class to add stripes.
 
+<p>
+  <a class="" data-open-video="2:18"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/MmBQag?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <table class="unstriped">
 </table>
@@ -130,6 +155,14 @@ By default, table rows are striped. There's an `.unstriped` class to remove the 
 ## Stacked Table
 
 To stack a table on small screens, add the class `.stack`.
+
+<p>
+  <a class="" data-open-video="3:23"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/EmpQPK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <table class="stack">
@@ -173,8 +206,17 @@ To stack a table on small screens, add the class `.stack`.
 
 Got a lot of tubular tabular data? Add a wrapper element with the class `.table-scroll` around your table to enable horizontal scrolling.
 
+
+<p>
+  <a class="" data-open-video="3:48"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
 <div class="primary callout">
   <p>The wrapping element was added in Foundation 6.2&mdash;prior to that, you just added the class <code>.scroll</code> to the table itself. However, this method doesn't work great with Internet Explorer 9. <strong>If you don't need IE9 support, you can just add <code>.scroll</code> to your table, and the wrapping element isn't necessary.</strong>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/vmadKp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html

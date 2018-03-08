@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var filter = require('gulp-filter');
-var cssnano = require('gulp-cssnano');
+var cleancss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var confirm = require('gulp-prompt').confirm;
@@ -47,6 +47,7 @@ gulp.task('deploy:version', function() {
 // Generates compiled CSS and JS files and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
   var cssFilter = filter(['**/*.css'], { restore: true });
+  var sourcemapFilter = filter(['**/*.css.map'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
 
   console.log(CONFIG.DIST_FILES)
@@ -54,10 +55,13 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
     .pipe(plumber())
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
-      .pipe(cssnano())
+      .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist/css'))
     .pipe(cssFilter.restore)
+    .pipe(sourcemapFilter)
+      .pipe(gulp.dest('./dist/css'))
+    .pipe(sourcemapFilter.restore)
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist/js'))
       .pipe(uglify())
@@ -115,7 +119,20 @@ gulp.task('deploy:docs', ['build'], function() {
       hostname: 'deployer@72.32.134.77',
       destination: '/home/deployer/sites/foundation-sites-6-docs'
     }));
+  });
+
+// Uploads the documentation to the live server in beta env
+gulp.task('deploy:beta', ['build'], function() {
+  return gulp.src('./_build/**')
+    .pipe(confirm('Make sure everything looks right before you deploy.'))
+    .pipe(rsync({
+      root: './_build',
+      hostname: 'deployer@72.32.134.77',
+      destination: '/home/deployer/sites/scalingsexiness/foundation-sites-6-docs'
+    }));
 });
+
+
 
 // This part of the deploy process hasn't been tested! It should be done manually for now
 gulp.task('deploy:templates', function(done) {
@@ -140,7 +157,7 @@ gulp.task('deploy:templates', function(done) {
 // The Customizer runs this function to generate files it needs
 gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
   gulp.src('./_build/assets/css/foundation.css')
-      .pipe(cssnano())
+      .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename('foundation.min.css'))
       .pipe(gulp.dest('./_build/assets/css'));
 

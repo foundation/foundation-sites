@@ -27,6 +27,7 @@ module.exports = {
     'node_modules/@(normalize-scss)/sass/**/*.scss',
     'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
     'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_contain.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_purge.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_remove.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_replace.scss',
@@ -71,8 +72,13 @@ module.exports = {
 
   DIST_FILES: [
     './_build/assets/css/foundation.css',
-    './_build/assets/css/foundation-flex.css',
+    './_build/assets/css/foundation.css.map',
+    './_build/assets/css/foundation-float.css',
+    './_build/assets/css/foundation-float.css.map',
+    './_build/assets/css/foundation-prototype.css',
+    './_build/assets/css/foundation-prototype.css.map',
     './_build/assets/css/foundation-rtl.css',
+    './_build/assets/css/foundation-rtl.css.map',
     '_build/assets/js/foundation.js'
   ],
 

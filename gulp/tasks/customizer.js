@@ -1,7 +1,7 @@
 var addSrc = require('gulp-add-src');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
-var cssnano = require('gulp-cssnano');
+var cleancss = require('gulp-clean-css');
 var customizer = require('../../customizer/lib');
 var Vinyl = require('vinyl');
 var fs = require('fs');
@@ -70,6 +70,7 @@ gulp.task('customizer:prepareSassDeps', function() {
       'node_modules/@(normalize-scss)/sass/**/*.scss',
       'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
       'node_modules/@(sassy-lists)/stylesheets/helpers/true',
+      'node_modules/@(sassy-lists)/stylesheets/functions/contain',
       'node_modules/@(sassy-lists)/stylesheets/functions/purge',
       'node_modules/@(sassy-lists)/stylesheets/functions/remove',
       'node_modules/@(sassy-lists)/stylesheets/functions/replace',
@@ -95,7 +96,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
       browsers: COMPATIBILITY
     })]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
-    .pipe(cssnano())
+    .pipe(cleancss({ compatibility: 'ie9' }))
     .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
 });

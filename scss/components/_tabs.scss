@@ -37,10 +37,6 @@ $tab-item-background-hover: $white !default;
 /// @type Number
 $tab-item-padding: 1.25rem 1.5rem !default;
 
-/// Maximum number of `expand-n` classes to include in the CSS.
-/// @type Number
-$tab-expand-max: 6 !default;
-
 /// Default background color of tab content.
 /// @type Color
 $tab-content-background: $white !default;
@@ -91,6 +87,7 @@ $tab-content-padding: 1rem !default;
   float: #{$global-left};
 
   > a {
+    @include disable-mouse-outline;
     display: block;
     padding: $padding;
     font-size: $font-size;

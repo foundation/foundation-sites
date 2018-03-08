@@ -3,6 +3,7 @@ title: Abide
 description: Abide is a form validation library that extends the HTML5 validation API with custom validators.
 sass: scss/forms/_error.scss
 js: js/foundation.abide.js
+video: '4bN0qr5pxjs'
 tags:
   - forms
   - validation
@@ -12,6 +13,14 @@ tags:
 
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url` and `week`. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.
 
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/wdXRWP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <form data-abide novalidate>
   <div data-abide-error class="alert callout" style="display: none;">
@@ -20,40 +29,41 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <div class="row">
     <div class="small-12 columns">
       <label>Number Required
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
-        <span class="form-error">
+        <input type="text" placeholder="1234" aria-describedby="example1Hint1" aria-errormessage="example1Error1" required pattern="number">
+        <span class="form-error" id="example1Error1">
           Yo, you had better fill this out, it's required.
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+      <p class="help-text" id="example1Hint1">Here's how you use this input field!</p>
     </div>
     <div class="small-12 columns">
       <label>Password Required
-        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
-        <span class="form-error">
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="example1Hint2" aria-errormessage="example1Error2" required >
+        <span class="form-error" id="example1Error2">
           I'm required!
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
+      <p class="help-text" id="example1Hint2">Enter a password please.</p>
     </div>
     <div class="small-12 columns">
       <label>Re-enter Password
-        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
-        <span class="form-error">
+        <input type="password" placeholder="yeti4preZ" aria-describedby="example1Hint3" aria-errormessage="example1Error3" required pattern="alpha_numeric" data-equalto="password">
+        <span class="form-error" id="example1Error3">
           Hey, passwords are supposed to match!
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+      <p class="help-text" id="example1Hint3">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
     </div>
   </div>
   <div class="row">
     <div class="large-6 columns">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-      <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+        <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
+      </label>
     </div>
     <div class="large-6 columns">
       <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
-        <input type="text" placeholder="http://zurb.com or zurb.com" pattern="website">
+        <input type="text" placeholder="https://zurb.com or zurb.com" pattern="website">
       </label>
     </div>
   </div>
@@ -110,15 +120,15 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 <label class="is-invalid-label">
   Required Thing
-  <input type="text" class="is-invalid-input">
-  <span class="form-error is-visible">
+  <input type="text" class="is-invalid-input" aria-describedby="exemple2Error" data-invalid aria-invalid="true">
+  <span class="form-error is-visible" id="exemple2Error">
     Yo, you had better fill this out.
   </span>
 </label>
 
 <label class="is-invalid-label">
   Required Thing
-  <textarea type="text" class="is-invalid-input"></textarea>
+  <textarea type="text" class="is-invalid-input" data-invalid aria-invalid="true"></textarea>
 </label>
 
 ---
@@ -131,14 +141,19 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 
 ```html_example
 <form data-abide novalidate>
-  <label>
+  <div data-abide-error class="sr-only">
+    There are some errors in your form.
+  </div>
+
+  <div>
     Amount
     <div class="input-group">
       <span class="input-group-label">$</span>
-      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+      <input class="input-group-field" id="example3Input" type="number" required pattern="number"/>
     </div>
-    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
-  </label>
+    <label class="form-error" data-form-error-for="example3Input">Amount is required.</label>
+  </div>
+
   <button class="button" type="submit" value="Submit">Submit</button>
 </form>
 ```
@@ -149,13 +164,13 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 ```html
 <form data-abide>
   <!-- Add "display: none" right away -->
-  <div data-abide-error class="alert callout" style="display: none;">
+  <div data-abide-error class="alert callout" aria-live="assertive" style="display: none;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <label>
     Name
-    <input type="text" required>
-    <span class="form-error">This field is required.</span>
+    <input id="example4Input" aria-describedby="example4Error" type="text" required>
+    <span id="example4Error" class="form-error">This field is required.</span>
   </label>
 </form>
 ```
@@ -166,19 +181,23 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 <form data-abide>
   <!-- Add role="alert" -->
   <!-- Add "display: block" -->
-  <div data-abide-error role="alert" class="alert callout" style="display: block;">
+  <div data-abide-error class="alert callout" aria-live="assertive" role="alert" style="display: block;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <!-- Add "is-invalid-label" -->
   <label class="is-invalid-label">
     Name
     <!-- Add "is-invalid-input" -->
-    <input type="text" class="is-invalid-input" required aria-invalid aria-describedby="uuid">
+    <!-- Add aria-invalid="true" -->
+    <input id="example4Input" aria-describedby="example4Error" type="text" required
+      class="is-invalid-input" aria-invalid="true">
     <!-- Add "is-visible" -->
-    <span class="form-error is-visible" id="uuid">This field is required.</span>
+    <span id="example4Error" class="form-error is-visible">This field is required.</span>
   </label>
 </form>
 ```
+
+---
 
 ## Ignored Inputs
 
@@ -186,21 +205,21 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 <form data-abide>
     <div class="small-12 columns">
       <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+        <input type="text" placeholder="Use me, or don't" aria-describedby="example5Hint1" data-abide-ignore>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+      <p class="help-text" id="example5Hint1">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="small-12 columns">
       <label>Disabled!
-        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+        <input type="text" placeholder="Disabled input" aria-describedby="example5Hint2" disabled>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+      <p class="help-text" id="example5Hint2">This input is ignored by Abide using `disabled`</p>
     </div>
     <div class="small-12 columns">
       <label>Hidden!
-        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+        <input type="hidden" placeholder="Hidden input" aria-describedby="example5Hint3" >
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+      <p class="help-text" id="example5Hint3">This input is ignored by Abide using `type="hidden"`</p>
     </div>
   <div class="row">
     <fieldset class="large-6 columns">
@@ -335,9 +354,14 @@ website: {
 * Add new patterns and validators before or after foundation is initialized
 
 ```javascript
-$(document).foundation();
+
+// Set paramaters
 Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
 Foundation.Abide.defaults.validators['greater_than'] =
+
+// Init Foundation
+$(document).foundation();
+
 function($el,required,parent) {
   // parameter 1 is jQuery selector
   if (!required) return true;
@@ -351,3 +375,9 @@ function($el,required,parent) {
 <input id="min" type="number" required >
 <input id="max" type="number" data-validator="greater_than" data-greater-than="min" required>
 ```
+
+## Accessibility
+
+By default, Abide will add some accessibility attributes to your form elements. It is highly recommended to keep this option active as it improve the usability of your forms for disabled people. [Lean more about Accessibility in Foundation](accessibility.html).
+
+However, if you think the attributes added by Abide are not correct, you can disable it by setting `a11yAttributes` (or `[data-a11y-attributes]`) to `false`.

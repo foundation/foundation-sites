@@ -121,7 +121,7 @@ $pagination-arrow-next: '\00BB' !default;
   button {
     display: block;
     padding: $padding;
-    border-radius: $global-radius;
+    border-radius: $radius;
     color: $color;
 
     &:hover {

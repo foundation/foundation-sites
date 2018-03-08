@@ -15,6 +15,7 @@ class Accordion extends Plugin {
   /**
    * Creates a new instance of an accordion.
    * @class
+   * @name Accordion
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - a plain object with settings to override the default options.
@@ -23,6 +24,7 @@ class Accordion extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
+    this.className = 'Accordion'; // ie9 back compat
     this._init();
 
     Keyboard.register('Accordion', {
@@ -45,7 +47,7 @@ class Accordion extends Plugin {
       var $el = $(el),
           $content = $el.children('[data-tab-content]'),
           id = $content[0].id || GetYoDigits(6, 'accordion'),
-          linkId = el.id || `${id}-label`;
+          linkId = (el.id) ? `${el.id}-label` : `${id}-label`;
 
       $el.find('a:first').attr({
         'aria-controls': id,
@@ -80,7 +82,7 @@ class Accordion extends Plugin {
           //roll up a little to show the titles
           if (this.options.deepLinkSmudge) {
             var _this = this;
-            $(window).load(function() {
+            $(window).on('load', function() {
               var offset = _this.$element.offset();
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });
@@ -144,7 +146,7 @@ class Accordion extends Plugin {
       }
     });
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      $(window).on('hashchange', this._checkDeepLink);
     }
   }
 
@@ -263,7 +265,7 @@ class Accordion extends Plugin {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
     if(this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      $(window).off('hashchange', this._checkDeepLink);
     }
 
   }

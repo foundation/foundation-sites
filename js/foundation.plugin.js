@@ -10,7 +10,7 @@ class Plugin {
 
   constructor(element, options) {
     this._setup(element, options);
-    var pluginName = hyphenate(this.constructor.name);
+    var pluginName = getPluginName(this);
     this.uuid = GetYoDigits(6, pluginName);
 
     if(!this.$element.attr(`data-${pluginName}`)){ this.$element.attr(`data-${pluginName}`, this.uuid); }
@@ -24,7 +24,7 @@ class Plugin {
 
   destroy() {
     this._destroy();
-    var pluginName = hyphenate(this.constructor.name);
+    var pluginName = getPluginName(this);
     this.$element.removeAttr(`data-${pluginName}`).removeData('zfPlugin')
         /**
          * Fires when the plugin has been destroyed.
@@ -41,6 +41,14 @@ class Plugin {
 // Thank you: http://stackoverflow.com/a/8955580
 function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function getPluginName(obj) {
+  if(typeof(obj.constructor.name) !== 'undefined') {
+    return hyphenate(obj.constructor.name);
+  } else {
+    return hyphenate(obj.className);
+  }
 }
 
 export {Plugin};

@@ -10,7 +10,7 @@ import { Plugin } from './foundation.plugin';
 
 /**
  * DropdownMenu module.
- * @module foundation.dropdown-menu
+ * @module foundation.dropdownMenu
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
  * @requires foundation.util.nest
@@ -20,6 +20,7 @@ class DropdownMenu extends Plugin {
   /**
    * Creates a new instance of DropdownMenu.
    * @class
+   * @name DropdownMenu
    * @fires DropdownMenu#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -27,8 +28,8 @@ class DropdownMenu extends Plugin {
   _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+    this.className = 'DropdownMenu'; // ie9 back compat
 
-    Nest.Feather(this.$element, 'dropdown');
     this._init();
 
     Keyboard.register('DropdownMenu', {
@@ -48,6 +49,8 @@ class DropdownMenu extends Plugin {
    * @function
    */
   _init() {
+    Nest.Feather(this.$element, 'dropdown');
+
     var subs = this.$element.find('li.is-dropdown-submenu-parent');
     this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
 
@@ -55,18 +58,31 @@ class DropdownMenu extends Plugin {
     this.$tabs = this.$element.children('[role="menuitem"]');
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-    if (this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
-      this.options.alignment = 'right';
-      subs.addClass('opens-left');
+    if (this.options.alignment === 'auto') {
+        if (this.$element.hasClass(this.options.rightClass) || Rtl() || this.$element.parents('.top-bar-right').is('*')) {
+            this.options.alignment = 'right';
+            subs.addClass('opens-left');
+        } else {
+            this.options.alignment = 'left';
+            subs.addClass('opens-right');
+        }
     } else {
-      subs.addClass('opens-right');
+      if (this.options.alignment === 'right') {
+          subs.addClass('opens-left');
+      } else {
+          subs.addClass('opens-right');
+      }
     }
     this.changed = false;
     this._events();
   };
 
   _isVertical() {
-    return this.$tabs.css('display') === 'block';
+    return this.$tabs.css('display') === 'block' || this.$element.css('flex-direction') === 'column';
+  }
+
+  _isRtl() {
+    return this.$element.hasClass('align-right') || (Rtl() && !this.$element.hasClass('align-left'));
   }
 
   /**
@@ -104,12 +120,12 @@ class DropdownMenu extends Plugin {
     };
 
     if (this.options.clickOpen || hasTouch) {
-      this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+      this.$menuItems.on('click.zf.dropdownMenu touchstart.zf.dropdownMenu', handleClickFn);
     }
 
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('click.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){
@@ -119,7 +135,7 @@ class DropdownMenu extends Plugin {
     }
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('mouseenter.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
 
@@ -129,7 +145,7 @@ class DropdownMenu extends Plugin {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
+      }).on('mouseleave.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -142,7 +158,7 @@ class DropdownMenu extends Plugin {
         }
       });
     }
-    this.$menuItems.on('keydown.zf.dropdownmenu', function(e) {
+    this.$menuItems.on('keydown.zf.dropdownMenu', function(e) {
       var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
           isTab = _this.$tabs.index($element) > -1,
           $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
@@ -158,10 +174,8 @@ class DropdownMenu extends Plugin {
       });
 
       var nextSibling = function() {
-        if (!$element.is(':last-child')) {
-          $nextElement.children('a:first').focus();
-          e.preventDefault();
-        }
+        $nextElement.children('a:first').focus();
+        e.preventDefault();
       }, prevSibling = function() {
         $prevElement.children('a:first').focus();
         e.preventDefault();
@@ -194,7 +208,7 @@ class DropdownMenu extends Plugin {
 
       if (isTab) {
         if (_this._isVertical()) { // vertical menu
-          if (Rtl()) { // right aligned
+          if (_this._isRtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
@@ -210,7 +224,7 @@ class DropdownMenu extends Plugin {
             });
           }
         } else { // horizontal menu
-          if (Rtl()) { // right aligned
+          if (_this._isRtl()) { // right aligned
             $.extend(functions, {
               next: prevSibling,
               previous: nextSibling,
@@ -227,7 +241,7 @@ class DropdownMenu extends Plugin {
           }
         }
       } else { // not tabs -> one sub
-        if (Rtl()) { // right aligned
+        if (_this._isRtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
@@ -256,13 +270,13 @@ class DropdownMenu extends Plugin {
   _addBodyHandler() {
     var $body = $(document.body),
         _this = this;
-    $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
-         .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+    $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu')
+         .on('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu', function(e) {
            var $link = _this.$element.find(e.target);
            if ($link.length) { return; }
 
            _this._hide();
-           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
+           $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu');
          });
   }
 
@@ -298,7 +312,7 @@ class DropdownMenu extends Plugin {
      * Fires when the new dropdown pane is visible.
      * @event DropdownMenu#show
      */
-    this.$element.trigger('show.zf.dropdownmenu', [$sub]);
+    this.$element.trigger('show.zf.dropdownMenu', [$sub]);
   }
 
   /**
@@ -340,7 +354,7 @@ class DropdownMenu extends Plugin {
        * Fires when the open menus are closed.
        * @event DropdownMenu#hide
        */
-      this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
+      this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
     }
   }
 
@@ -349,9 +363,9 @@ class DropdownMenu extends Plugin {
    * @function
    */
   _destroy() {
-    this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
+    this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-    $(document.body).off('.zf.dropdownmenu');
+    $(document.body).off('.zf.dropdownMenu');
     Nest.Burn(this.$element, 'dropdown');
   }
 }
@@ -397,12 +411,12 @@ DropdownMenu.defaults = {
 
   closingTime: 500,
   /**
-   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
+   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'auto'`, `'left'` or `'right'`.
    * @option
    * @type {string}
-   * @default 'left'
+   * @default 'auto'
    */
-  alignment: 'left',
+  alignment: 'auto',
   /**
    * Allow clicks on the body to close any open submenus.
    * @option
