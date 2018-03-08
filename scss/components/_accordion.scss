@@ -16,11 +16,11 @@ $accordion-plusminus: true !default;
 
 /// Default indicator for plus when $accordion-plusminus is true
 /// @type String
-$accordion-plus-character: '\002B' !default;
+$accordion-plus-content: '\002B' !default;
 
 /// Default indicator for minus when $accordion-plusminus is true
 /// @type String
-$accordion-minus-character: '\2013' !default;
+$accordion-minus-content: '\2013' !default;
 
 /// Font size of accordion titles.
 /// @type Number
@@ -114,11 +114,11 @@ $accordion-content-padding: 1rem !default;
       top: 50%;
       #{$global-right}: 1rem;
       margin-top: -0.5rem;
-      content: $accordion-plus-character;
+      content: $accordion-plus-content;
     }
 
     .is-active > &::before {
-      content: $accordion-minus-character;
+      content: $accordion-minus-content;
     }
   }
 }
