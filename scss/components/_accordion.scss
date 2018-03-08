@@ -14,11 +14,11 @@ $accordion-background: $white !default;
 /// @type Boolean
 $accordion-plusminus: true !default;
 
-/// Default indicator for plus when $accordion-plusminus is true
+/// Content for the plus icon when `$accordion-plusminus` is `true`
 /// @type String
 $accordion-plus-content: '\002B' !default;
 
-/// Default indicator for minus when $accordion-plusminus is true
+/// Content for the minus icon when `$accordion-plusminus` is `true`
 /// @type String
 $accordion-minus-content: '\2013' !default;
 
