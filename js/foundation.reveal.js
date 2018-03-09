@@ -521,13 +521,6 @@ Reveal.defaults = {
    */
   fullScreen: false,
   /**
-   * Percentage of screen height the modal should push up from the bottom of the view.
-   * @option
-   * @type {number}
-   * @default 10
-   */
-  btmOffsetPct: 10,
-  /**
    * Allows the modal to generate an overlay div, which will cover the view when modal opens.
    * @option
    * @type {boolean}
