@@ -8,7 +8,7 @@ video: 'wHpZCrpKlBc'
 
 ## Toggle a CSS class
 
-To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle (supports `.classname` and `classname`). Also give the element a unique ID so it can be targeted.
+To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle (like `.classname` and `classname`). Also give the element a unique ID so it can be targeted.
 
 <p>
   <a class="" data-open-video="0:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
