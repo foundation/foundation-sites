@@ -350,9 +350,6 @@ website: {
 Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
 Foundation.Abide.defaults.validators['greater_than'] =
 
-// Init Foundation
-$(document).foundation();
-
 function($el,required,parent) {
   // parameter 1 is jQuery selector
   if (!required) return true;
@@ -360,6 +357,10 @@ function($el,required,parent) {
       to = $el.val();
   return (parseInt(to) > parseInt(from));
 };
+
+// Init Foundation
+$(document).foundation();
+
 ```
 ```html
 <input id="phone" type="text" pattern="dashes_only" required >
