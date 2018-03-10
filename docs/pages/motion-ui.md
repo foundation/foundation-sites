@@ -19,13 +19,13 @@ Motion UI is a standalone library that powers the transition effects used in a n
 ```
 
 <button type="button" class="button" data-toggle="motion-example-1">Fade</button><button type="button" class="button" data-toggle="motion-example-2">Slide</button>
-<div class="row">
-  <div class="small-6 columns">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
     <div data-toggler data-animate="fade-in fade-out" class="callout secondary ease" id="motion-example-1">
       <p>This panel <strong>fades</strong>.</p>
     </div>
   </div>
-  <div class="small-6 columns">
+  <div class="cell small-6">
     <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary ease" id="motion-example-2">
       <p>This panel <strong>slides</strong>.</p>
     </div>
@@ -155,14 +155,14 @@ Custom transition classes can be made using Motion UI's mixin library. Here's an
 You can use the same five transition effects to create CSS animations as well. The library also allows you to create series effects, with animations on multiple elements happening in a queue. **Refer to [Motion UI's animation documentation](https://github.com/zurb/motion-ui/blob/master/docs/animations.md) to learn more.**
 
 <button type="button" class="button" data-docs-example-series>Play Animation</button>
-<div class="row" id="series-example">
-  <div class="small-4 columns">
+<div class="grid-x grid-margin-x" id="series-example">
+  <div class="cell small-4">
     <img class="thumbnail" src= "assets/img/generic/square-1.jpg" id="series-example-1">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" src= "assets/img/generic/square-2.jpg" id="series-example-2">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" src= "assets/img/generic/square-3.jpg" id="series-example-3">
   </div>
 </div>

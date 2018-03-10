@@ -19,62 +19,62 @@ The default font size is set to 100% of the browser style sheet, usually 16 pixe
 
 Foundation has an accessible default color palette. The primary color is used for interactive elements, such as links and buttons. The secondary, success, warning, and alert colors are used to give more context to UI elements and actions.
 
-<div class="row small-up-1 medium-up-3 large-up-5">
-  <div class="column column-block">
+<div class="grid-x grid-margin-x small-up-1 medium-up-3 large-up-5">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-primary"></div>
       <p>Primary</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-secondary"></div>
       <p>Secondary</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-success"></div>
       <p>Success</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-warning"></div>
       <p>Warning</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-alert"></div>
       <p>Alert</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-white"></div>
       <p>White</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-light-gray"></div>
       <p>Light Gray</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-medium-gray"></div>
       <p>Medium Gray</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-dark-gray"></div>
       <p>Dark Gray</p>
     </div>
   </div>
-  <div class="column column-block">
+  <div class="cell">
     <div class="docs-color-block">
       <div class="docs-color-block-black"></div>
       <p>Black</p>

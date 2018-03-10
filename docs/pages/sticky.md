@@ -18,15 +18,14 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 </div>
 
 ```html
-<div class="columns small-6 right" data-sticky-container>
+<div class="cell small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-margin-top="0">
     <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     <!-- This sticky element would stick to the window, with a marginTop of 0 -->
   </div>
 </div>
 
-
-<div class="columns small-6 right" data-sticky-container>
+<div class="cell small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-anchor="foo">
     <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     <!-- This sticky element would stick to the window for the height of the element #foo, with a 1em marginTop -->
@@ -35,8 +34,8 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 ```
 
 <!-- ```html_example -->
-<div class="row">
-  <div class="columns small-6" id="example1" data-something>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6" id="example1" data-something>
     <p id="doodle">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
@@ -50,7 +49,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </div>
-  <div class="columns small-6 right" data-sticky-container>
+  <div class="cell small-6 right" data-sticky-container>
     <div class="sticky" data-sticky data-margin-top="6" data-anchor="example1" data-sticky-on="small">
       <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     </div>
@@ -70,7 +69,7 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
 </div>
 
 ```html
-<div class="columns small-6 right" data-sticky-container>
+<div class="cell small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo:bottom">
     <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
   </div>
@@ -78,8 +77,8 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
 ```
 
 
-<div class="row">
-  <div class="columns small-6">    
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">    
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
@@ -98,7 +97,7 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
   </div>
-  <div class="columns small-6 right" data-sticky-container>
+  <div class="cell small-6 right" data-sticky-container>
     <div class="sticky" data-sticky data-margin-top="6" data-top-anchor="example2:top" data-btm-anchor="foo:bottom">
       <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
     </div>
@@ -111,7 +110,7 @@ You can also stick to bottom.
 Using `data-stick-to="bottom"`.
 Here is an example using two anchors (like above) with a stick to bottom.
 ```html
-<div class="columns small-6 right" data-sticky-container>
+<div class="cell small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
     <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
   </div>
@@ -119,8 +118,8 @@ Here is an example using two anchors (like above) with a stick to bottom.
 ```
 
 
-<div class="row">
-  <div class="columns small-6">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
@@ -135,7 +134,7 @@ Here is an example using two anchors (like above) with a stick to bottom.
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </div>
-  <div class="columns small-6 right" data-sticky-container>
+  <div class="cell small-6 right" data-sticky-container>
     <div class="sticky" data-sticky data-margin-top="6" data-top-anchor="example3:top" data-btm-anchor="foo2:top" data-stick-to="bottom">
       <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
     </div>

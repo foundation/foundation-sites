@@ -8,13 +8,13 @@ video: '6KwsGcEHVTE'
 
 Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
 
-<div class="row">
-  <div class="column small-2 text-right">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-2 text-right">
     <a href="https://www.npmjs.com/package/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-npm.svg" alt="NPM">
     </a>
   </div>
-  <div class="column small-10">
+  <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
         npm install foundation-sites
@@ -22,12 +22,12 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
     </div>
   </div>
 
-  <div class="column small-2 text-right">
+  <div class="cell small-2 text-right">
     <a href="https://yarnpkg.com/en/package/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-yarn.svg" alt="Yarn">
     </a>
   </div>
-  <div class="column small-10">
+  <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
         yarn add foundation-sites
@@ -35,12 +35,12 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
     </div>
   </div>
 
-  <div class="column small-2 text-right">
+  <div class="cell small-2 text-right">
     <a href="https://bower.io/search/?q=foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-bower.svg" alt="Bower">
     </a>
   </div>
-  <div class="column small-10">
+  <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
         bower install foundation-sites
@@ -48,12 +48,12 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
     </div>
   </div>
 
-  <div class="column small-2 text-right">
+  <div class="cell small-2 text-right">
     <a href="https://atmospherejs.com/zurb/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
     </a>
   </div>
-  <div class="column small-10">
+  <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
         meteor add zurb:foundation-sites
@@ -61,12 +61,12 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
     </div>
   </div>
 
-  <div class="column small-2 text-right">
+  <div class="cell small-2 text-right">
     <a href="https://packagist.org/packages/zurb/foundation">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-composer.svg" alt="Composer">
     </a>
   </div>
-  <div class="column small-10">
+  <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
         php composer.phar require zurb/foundation
@@ -74,12 +74,12 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
     </div>
   </div>
 
-  <div class="column small-2 text-right">
+  <div class="cell small-2 text-right">
     <a href="https://www.nuget.org/packages/foundation-sites/">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-nuget.svg" alt="NuGet">
     </a>
   </div>
-  <div class="column small-10">
+  <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
         Install-Package foundation-sites
@@ -124,8 +124,8 @@ foundation new
 
 After you selected "Foundation for Sites", Foundation CLI will ask you which template you want to use. You can choose between:
 
-<div class="row">
-  <div class="column small-6">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
     <h3>Basic template</h3>
     <p>
       <b>Recommended for beginners</b><br>
@@ -146,7 +146,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
     </p>
   </div>
 
-  <div class="column small-6">
+  <div class="cell small-6">
     <h3>ZURB template</h3>
     <p>
       <b>Recommended for experienced (or curious) users</b><br>
@@ -176,15 +176,15 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
 
 ## Download
 
-<div class="row">
-  <div class="column small-6">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
     <div class="responsive-embed widescreen mb1">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
       <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/lFrpnk0Oo_8"></a>
     </div>
   </div>
 
-  <div class="column small-6">
+  <div class="cell small-6">
     <p>
       If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
     </p>
