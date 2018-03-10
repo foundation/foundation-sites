@@ -22,13 +22,13 @@ The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>
 ```
 
 <div class="row">
-  <div class="small-4 columns">
+  <div class="small-4 columns text-center">
     <img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="small-4 columns">
+  <div class="small-4 columns text-center">
     <a href="#" class="thumbnail"><img src="assets/img/thumbnail/02.jpg" alt="Photo of Neptune."></a>
   </div>
-  <div class="small-4 columns">
+  <div class="small-4 columns text-center">
     <img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
   </div>
 </div>
