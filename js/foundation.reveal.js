@@ -278,6 +278,11 @@ class Reveal extends Plugin {
       $('html').addClass('is-reveal-open');
     }
 
+    function removeRevealOpenClasses() {
+
+      $('html').removeClass('is-reveal-open');
+    }
+
     // Motion UI method of reveal
     if (this.options.animationIn) {
       function afterAnimation(){
@@ -409,7 +414,7 @@ class Reveal extends Plugin {
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {
-        $('html').removeClass('is-reveal-open');
+        removeRevealOpenClasses();
       }
 
       Keyboard.releaseFocus(_this.$element);
@@ -469,6 +474,10 @@ class Reveal extends Plugin {
     this.$element.hide().off();
     this.$anchor.off('.zf');
     $(window).off(`.zf.reveal:${this.id}`);
+
+    if ($('.reveal:visible').length  === 0) {
+      removeRevealOpenClasses();
+    }
   };
 }
 
