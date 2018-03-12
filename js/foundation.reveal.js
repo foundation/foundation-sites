@@ -412,7 +412,7 @@ class Reveal extends Plugin {
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {
-        this.removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
+        _this.removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
       }
 
       Keyboard.releaseFocus(_this.$element);
@@ -474,7 +474,7 @@ class Reveal extends Plugin {
     $(window).off(`.zf.reveal:${this.id}`);
 
     if ($('.reveal:visible').length  === 0) {
-      this.removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
+      _this.removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
     }
   };
 }
