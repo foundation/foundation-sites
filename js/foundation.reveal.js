@@ -274,12 +274,10 @@ class Reveal extends Plugin {
     var _this = this;
 
     function addRevealOpenClasses() {
-
       $('html').addClass('is-reveal-open');
     }
 
     function removeRevealOpenClasses() {
-
       $('html').removeClass('is-reveal-open');
     }
 
@@ -414,7 +412,7 @@ class Reveal extends Plugin {
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {
-        removeRevealOpenClasses();
+        this.removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
       }
 
       Keyboard.releaseFocus(_this.$element);
@@ -476,7 +474,7 @@ class Reveal extends Plugin {
     $(window).off(`.zf.reveal:${this.id}`);
 
     if ($('.reveal:visible').length  === 0) {
-      removeRevealOpenClasses();
+      this.removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
     }
   };
 }
