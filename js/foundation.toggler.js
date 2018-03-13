@@ -126,7 +126,11 @@ class Toggler extends Plugin {
   }
 
   _updateARIA(isOn) {
-    this.$element.attr('aria-expanded', isOn ? true : false);
+    var id = this.$element[0].id;
+    $(`[data-open="${id}"], [data-close="${id}"], [data-toggle="${id}"]`)
+      .attr({
+        'aria-expanded': isOn ? true : false
+      });
   }
 
   /**
