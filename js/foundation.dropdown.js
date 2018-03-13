@@ -348,14 +348,6 @@ Dropdown.defaults = {
    */
   hOffset: 0,
   /**
-   * DEPRECATED: Class applied to adjust open position.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
-
-  /**
    * Position of dropdown. Can be left, right, bottom, top, or auto.
    * @option
    * @type {string}
