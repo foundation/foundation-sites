@@ -1,4 +1,4 @@
-// Type definitions for Foundation Sites v6.3.0-rc2
+// Type definitions for Foundation Sites v6.3.1
 // Project: http://foundation.zurb.com/
 // Github: https://github.com/zurb/foundation-sites
 //
@@ -22,6 +22,18 @@ declare module FoundationSites {
     matchValidation(element: JQuery, validators: string, required: boolean): boolean;
     resetForm(): void;
     destroy(): void;
+  }
+
+  interface AbideDefaults {
+    validateOn: string;
+    labelErrorClass: string;
+    inputErrorClass: string;
+    formErrorSelector: string;
+    formErrorClass: string;
+    liveValidate: boolean;
+    validateOnBlur: boolean;
+    patterns: IAbidePatterns;
+    validators: any; // TODO, maybe there is a better solution to describe how this object may look like
   }
 
   interface IAbidePatterns {
@@ -347,7 +359,7 @@ declare module FoundationSites {
     GetOffsets(element: Object, anchor: Object, position: string, vOffset: number, hOffset: number, isOverflow: boolean): Object;
   }
 
-  interface KeyBoard {
+  interface Keyboard {
     parseKey(event: any): string;
     handleKey(event: any, component: any, functions: any): void;
     findFocusable($element: Object): Object;
@@ -407,6 +419,7 @@ declare module FoundationSites {
 
     Abide: {
       new(element: JQuery, options?: IAbideOptions): Abide;
+      defaults: AbideDefaults;
     }
     Accordion: {
       new(element: JQuery, options?: IAccordionOptions): Accordion;
@@ -459,7 +472,7 @@ declare module FoundationSites {
 
     // utils
     Box: Box;
-    KeyBoard: KeyBoard;
+    Keyboard: Keyboard;
     MediaQuery: MediaQuery;
     Motion: Motion;
     Move: Move;

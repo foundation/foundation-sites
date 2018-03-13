@@ -3,7 +3,7 @@ babel-runtime@0.1.8
 caching-compiler@1.0.4
 ecmascript@0.4.3
 ecmascript-runtime@0.2.10
-fourseven:scss@3.4.1
+fourseven:scss@4.5.4
 jquery@1.11.8
 meteor@1.1.14
 modules@0.6.1

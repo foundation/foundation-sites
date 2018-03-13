@@ -12,7 +12,7 @@ describe('Interchange', function() {
     switch (type) {
       case 'image':
       case 'background':
-        return `_build/assets/img/interchange/${size}.jpg`;  
+        return `_build/assets/img/interchange/strip_icc()/${size}.jpg`;
       default:
         return `_build/assets/partials/interchange-${size}.html`;
     }
@@ -32,7 +32,7 @@ describe('Interchange', function() {
             [${getPath(type, 'small')}, small],
             [${getPath(type, 'medium')}, medium],
             [${getPath(type, 'large')}, large]
-          ">`;  
+          ">`;
       case 'background':
         return `<div data-interchange="
             [${getPath(type, 'small')}, small],
@@ -79,7 +79,7 @@ describe('Interchange', function() {
 
       plugin.replace(getPath('background', 'large'));
 
-      $html[0].style.backgroundImage.should.contain(getPath('background', 'large'));
+      $html[0].style.backgroundImage.should.contain(getPath('background', 'large').replace(/\(/g, '%28').replace(/\)/g, '%29'));
     });
 
     it('replaces contents of div with templates', function() {
@@ -87,12 +87,12 @@ describe('Interchange', function() {
       plugin = new Foundation.Interchange($html, {});
 
       var spy = sinon.spy($, 'get');
-      
+
       plugin.replace(getPath('template', 'large'));
 
       sinon.assert.calledWith(spy, getPath('template', 'large'));
 
-      spy.restore();      
+      spy.restore();
     });
 
     it('fires replaced.zf.interchange event', function() {
@@ -103,7 +103,7 @@ describe('Interchange', function() {
       $html.on('replaced.zf.interchange', spy);
 
       plugin.replace(getPath('image', 'large'));
-      
+
       sinon.assert.called(spy);
     });
   });
@@ -132,7 +132,7 @@ describe('Interchange', function() {
       plugin.rules.length.should.be.equal(3);
     });
 
-     it('extracts special queries from the plugin element', function() {
+    it('extracts special queries from the plugin element', function() {
       $html = $(generateTemplate('image')).attr('data-interchange', '[image.png, retina]').appendTo('body');
       plugin = new Foundation.Interchange($html, {});
 
@@ -170,24 +170,25 @@ describe('Interchange', function() {
     it('calls reflow on viewport size change once', function(done) {
       $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
-
+      Foundation.IHearYou();
       let spy = sinon.spy(plugin, '_reflow');
-      
-      $(window).trigger('resize');
 
       setTimeout(function() {
         $(window).trigger('resize');
-      }, 30);
+      }, 1);
 
       setTimeout(function() {
         $(window).trigger('resize');
-      }, 60);
+      }, 5);
+
+      setTimeout(function() {
+        $(window).trigger('resize');
+      }, 10);
 
       setTimeout(function() { // Wait for third trigger...
-        $(window).trigger('resize');
         sinon.assert.calledOnce(spy);
         done();
-      }, 60);
+      }, 50);
     });
   });
 

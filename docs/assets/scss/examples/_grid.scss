@@ -74,3 +74,35 @@
     }
   }
 }
+
+// XY Grid & Flexbox Utilities
+[id^="docs-xy"].docs-component .docs-code-live,
+[id^="docs-flexbox-utilities"].docs-component .docs-code-live {
+  @include foundation-flex-grid;
+  @include foundation-xy-grid-classes;
+
+  .grid-x,
+  .grid-y {
+    background: lighten($primary-color, 50%);
+    font-size: 12px;
+    line-height: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid-y .grid-x {
+    margin-bottom: 0;
+  }
+
+  .cell {
+    &:nth-child(odd) {
+      background: lighten($primary-color, 30%);
+      color: $black;
+    }
+    &:nth-child(even) {
+      background: $primary-color;
+      color: $white;
+    }
+  }
+}
+
+$button-responsive-expanded: true;

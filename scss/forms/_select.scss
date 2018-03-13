@@ -19,11 +19,11 @@ $select-triangle-color: $dark-gray !default;
 $select-radius: $global-radius !default;
 
 @mixin form-select {
-  $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  $height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
 
   height: $height;
   margin: 0 0 $form-spacing;
-  padding: ($form-spacing / 2);
+  padding: $input-padding;
 
   appearance: none;
   border: $input-border;
@@ -32,7 +32,8 @@ $select-radius: $global-radius !default;
 
   font-family: $input-font-family;
   font-size: $input-font-size;
-  line-height: normal;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
   color: $input-color;
 
   @if $select-triangle-color != transparent {

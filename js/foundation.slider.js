@@ -1,7 +1,15 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { Move } from './foundation.util.motion';
+import { GetYoDigits, rtl as Rtl } from './foundation.util.core';
 
+import { Plugin } from './foundation.plugin';
+
+import { Touch } from './foundation.util.touch';
+
+import { Triggers } from './foundation.util.triggers';
 /**
  * Slider module.
  * @module foundation.slider
@@ -11,21 +19,26 @@
  * @requires foundation.util.touch
  */
 
-class Slider {
+class Slider extends Plugin {
   /**
    * Creates a new instance of a slider control.
    * @class
+   * @name Slider
    * @param {jQuery} element - jQuery object to make into a slider control.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
+    this.className = 'Slider'; // ie9 back compat
+
+  // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
+    Touch.init($);
+    Triggers.init($);
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Slider');
-    Foundation.Keyboard.register('Slider', {
+    Keyboard.register('Slider', {
       'ltr': {
         'ARROW_RIGHT': 'increase',
         'ARROW_UP': 'increase',
@@ -34,7 +47,9 @@ class Slider {
         'SHIFT_ARROW_RIGHT': 'increase_fast',
         'SHIFT_ARROW_UP': 'increase_fast',
         'SHIFT_ARROW_DOWN': 'decrease_fast',
-        'SHIFT_ARROW_LEFT': 'decrease_fast'
+        'SHIFT_ARROW_LEFT': 'decrease_fast',
+        'HOME': 'min',
+        'END': 'max'
       },
       'rtl': {
         'ARROW_LEFT': 'increase',
@@ -138,7 +153,7 @@ class Slider {
       pctOfBar = this._logTransform(pctOfBar);
       break;
     }
-    var value = (this.options.end - this.options.start) * pctOfBar + this.options.start;
+    var value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
 
     return value
   }
@@ -185,6 +200,12 @@ class Slider {
 
     var isDbl = this.options.doubleSided;
 
+    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
+    //for click and drag events, it's weird due to the scale(-1, 1) css property
+    if (this.options.vertical && !noInvert) {
+      location = this.options.end - location;
+    }
+
     if (isDbl) { //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if (this.handles.index($hndl) === 0) {
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
@@ -193,12 +214,6 @@ class Slider {
         var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
         location = location <= h1Val ? h1Val + this.options.step : location;
       }
-    }
-
-    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
-    //for click and drag events, it's weird due to the scale(-1, 1) css property
-    if (this.options.vertical && !noInvert) {
-      location = this.options.end - location;
     }
 
     var _this = this,
@@ -258,7 +273,7 @@ class Slider {
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
-    Foundation.Move(moveTime, $hndl, function() {
+    Move(moveTime, $hndl, function() {
       // adjusting the left/top property of the handle, based on the percentage calculated above
       // if movement isNaN, that is because the slider is hidden and we cannot determine handle width,
       // fall back to next best guess.
@@ -297,7 +312,7 @@ class Slider {
    */
   _setInitAttr(idx) {
     var initVal = (idx === 0 ? this.options.initialStart : this.options.initialEnd)
-    var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
+    var id = this.inputs.eq(idx).attr('id') || GetYoDigits(6, 'slider');
     this.inputs.eq(idx).attr({
       'id': id,
       'max': this.options.end,
@@ -373,7 +388,7 @@ class Slider {
       value = this._value(offsetPct);
 
       // turn everything around for RTL, yay math!
-      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+      if (Rtl() && !this.options.vertical) {value = this.options.end - value;}
 
       value = _this._adjustValue(null, value);
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
@@ -504,7 +519,7 @@ class Slider {
           newValue;
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Slider', {
+      Keyboard.handleKey(e, 'Slider', {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },
@@ -516,6 +531,12 @@ class Slider {
         },
         increase_fast: function() {
           newValue = oldValue + _this.options.step * 10;
+        },
+        min: function() {
+          newValue = _this.options.start;
+        },
+        max: function() {
+          newValue = _this.options.end;
         },
         handled: function() { // only set handle pos when event was handled specially
           e.preventDefault();
@@ -532,14 +553,12 @@ class Slider {
   /**
    * Destroys the slider plugin.
    */
-  destroy() {
+  _destroy() {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
 
     clearTimeout(this.timeout);
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -547,67 +566,78 @@ Slider.defaults = {
   /**
    * Minimum value for the slider scale.
    * @option
-   * @example 0
+   * @type {number}
+   * @default 0
    */
   start: 0,
   /**
    * Maximum value for the slider scale.
    * @option
-   * @example 100
+   * @type {number}
+   * @default 100
    */
   end: 100,
   /**
    * Minimum value change per change event.
    * @option
-   * @example 1
+   * @type {number}
+   * @default 1
    */
   step: 1,
   /**
    * Value at which the handle/input *(left handle/first input)* should be set to on initialization.
    * @option
-   * @example 0
+   * @type {number}
+   * @default 0
    */
   initialStart: 0,
   /**
    * Value at which the right handle/second input should be set to on initialization.
    * @option
-   * @example 100
+   * @type {number}
+   * @default 100
    */
   initialEnd: 100,
   /**
    * Allows the input to be located outside the container and visible. Set to by the JS
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   binding: false,
   /**
    * Allows the user to click/tap on the slider bar to select a value.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   clickSelect: true,
   /**
    * Set to true and use the `vertical` class to change alignment to vertical.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   vertical: false,
   /**
    * Allows the user to drag the slider handle(s) to select a value.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   draggable: true,
   /**
    * Disables the slider and prevents event listeners from being applied. Double checked by JS with `disabledClass`.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   disabled: false,
   /**
    * Allows the use of two handles. Double checked by the JS. Changes some logic handling.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   doubleSided: false,
   /**
@@ -617,7 +647,8 @@ Slider.defaults = {
   /**
    * Number of decimal places the plugin should go to for floating point precision.
    * @option
-   * @example 2
+   * @type {number}
+   * @default 2
    */
   decimal: 2,
   /**
@@ -627,37 +658,43 @@ Slider.defaults = {
   /**
    * Time, in ms, to animate the movement of a slider handle if user clicks/taps on the bar. Needs to be manually set if updating the transition time in the Sass settings.
    * @option
-   * @example 200
+   * @type {number}
+   * @default 200
    */
   moveTime: 200,//update this if changing the transition time in the sass
   /**
    * Class applied to disabled sliders.
    * @option
-   * @example 'disabled'
+   * @type {string}
+   * @default 'disabled'
    */
   disabledClass: 'disabled',
   /**
    * Will invert the default layout for a vertical<span data-tooltip title="who would do this???"> </span>slider.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   invertVertical: false,
   /**
    * Milliseconds before the `changed.zf-slider` event is triggered after value change.
    * @option
-   * @example 500
+   * @type {number}
+   * @default 500
    */
   changedDelay: 500,
   /**
   * Basevalue for non-linear sliders
   * @option
-  * @example 5
+  * @type {number}
+  * @default 5
   */
   nonLinearBase: 5,
   /**
-  * Basevalue for non-linear sliders, possible values are: 'linear', 'pow' & 'log'. Pow and Log use the nonLinearBase setting.
+  * Basevalue for non-linear sliders, possible values are: `'linear'`, `'pow'` & `'log'`. Pow and Log use the nonLinearBase setting.
   * @option
-  * @example 'linear'
+  * @type {string}
+  * @default 'linear'
   */
   positionValueFunction: 'linear',
 };
@@ -672,8 +709,4 @@ function baseLog(base, value) {
   return Math.log(value)/Math.log(base)
 }
 
-// Window exports
-Foundation.plugin(Slider, 'Slider');
-
-}(jQuery);
-
+export {Slider};

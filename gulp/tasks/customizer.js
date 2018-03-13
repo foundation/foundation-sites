@@ -1,7 +1,7 @@
 var addSrc = require('gulp-add-src');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
-var cssnano = require('gulp-cssnano');
+var cleancss = require('gulp-clean-css');
 var customizer = require('../../customizer/lib');
 var Vinyl = require('vinyl');
 var fs = require('fs');
@@ -21,6 +21,10 @@ var yargs = require('yargs');
 var zip = require('gulp-zip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
+var webpackStream = require('webpack-stream');
+var webpack2 = require('webpack');
+var named = require('vinyl-named');
+
 
 var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
@@ -33,6 +37,19 @@ var COMPATIBILITY = [
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
+
+var WEBPACK_MODULE_CONFIG = {
+  rules: [
+    {
+      test: /.js$/,
+      use: [
+        {
+          loader: 'babel-loader'
+        }
+      ]
+    }
+  ]
+}
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
@@ -53,6 +70,7 @@ gulp.task('customizer:prepareSassDeps', function() {
       'node_modules/@(normalize-scss)/sass/**/*.scss',
       'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
       'node_modules/@(sassy-lists)/stylesheets/helpers/true',
+      'node_modules/@(sassy-lists)/stylesheets/functions/contain',
       'node_modules/@(sassy-lists)/stylesheets/functions/purge',
       'node_modules/@(sassy-lists)/stylesheets/functions/remove',
       'node_modules/@(sassy-lists)/stylesheets/functions/replace',
@@ -65,14 +83,7 @@ gulp.task('customizer:prepareSassDeps', function() {
 gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
-  // Create a stream with our makeshift Sass file
-  var stream = new Readable({ objectMode: true });
-  stream._read = function() {};
-  stream.push(new Vinyl({
-    path: 'foundation.scss',
-    contents: new Buffer(sassFile)
-  }));
-  stream.push(null);
+  var stream = createStream('foundation.scss', sassFile);
 
   return stream
     .pipe(sass({
@@ -85,18 +96,25 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
       browsers: COMPATIBILITY
     })]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
-    .pipe(cssnano())
+    .pipe(cleancss({ compatibility: 'ie9' }))
     .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
 });
 
 // Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
-gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
-  var jsPaths = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
+gulp.task('customizer:javascript-entry', ['customizer:loadConfig'], function() {
+  var entryFile = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
+  // Create a stream with our entry file
+  var stream = createStream('foundation.js', entryFile);
 
-  return gulp.src(jsPaths)
-    .pipe(babel())
-    .pipe(concat('foundation.js'))
+  return stream
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
+});
+
+gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
+  return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
+    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: WEBPACK_MODULE_CONFIG}, webpack2))
+    .pipe(rename('foundation.js'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
     .pipe(rename('foundation.min.js'))
@@ -136,4 +154,16 @@ gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer
     .on('finish', function() {
       rimraf(OUTPUT_DIR, done);
     });
-});
+  });
+
+function createStream(name, content) {
+  // Create a stream with our entry file
+  var stream = new Readable({ objectMode: true });
+  stream._read = function() {};
+  stream.push(new Vinyl({
+    path: name,
+    contents: new Buffer(content)
+  }));
+  stream.push(null);
+  return stream;
+}

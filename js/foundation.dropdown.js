@@ -1,6 +1,12 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { GetYoDigits } from './foundation.util.core';
+import { Positionable } from './foundation.positionable';
+
+import { Triggers } from './foundation.util.triggers';
+
 
 /**
  * Dropdown module.
@@ -9,22 +15,26 @@
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
-
-class Dropdown {
+class Dropdown extends Positionable {
   /**
    * Creates a new instance of a dropdown.
    * @class
+   * @name Dropdown
    * @param {jQuery} element - jQuery object to make into a dropdown.
    *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
+    this.className = 'Dropdown'; // ie9 back compat
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+
     this._init();
 
-    Foundation.registerPlugin(this, 'Dropdown');
-    Foundation.Keyboard.register('Dropdown', {
+    Keyboard.register('Dropdown', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ESCAPE': 'close'
@@ -39,129 +49,82 @@ class Dropdown {
   _init() {
     var $id = this.$element.attr('id');
 
-    this.$anchor = $(`[data-toggle="${$id}"]`).length ? $(`[data-toggle="${$id}"]`) : $(`[data-open="${$id}"]`);
-    this.$anchor.attr({
+    this.$anchors = $(`[data-toggle="${$id}"]`).length ? $(`[data-toggle="${$id}"]`) : $(`[data-open="${$id}"]`);
+    this.$anchors.attr({
       'aria-controls': $id,
       'data-is-focus': false,
       'data-yeti-box': $id,
       'aria-haspopup': true,
       'aria-expanded': false
-
     });
+
+    this._setCurrentAnchor(this.$anchors.first());
 
     if(this.options.parentClass){
       this.$parent = this.$element.parents('.' + this.options.parentClass);
     }else{
       this.$parent = null;
     }
-    this.options.positionClass = this.getPositionClass();
-    this.counter = 4;
-    this.usedPositions = [];
+
+    // Do not change the `labelledby` if it is defined
+    var labelledby = this.$element.attr('aria-labelledby')
+      || this.$currentAnchor.attr('id')
+      || GetYoDigits(6, 'dd-anchor');
+
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': this.$anchor[0].id || Foundation.GetYoDigits(6, 'dd-anchor')
+      'aria-labelledby': labelledby
     });
+
+    super._init();
     this._events();
   }
 
-  /**
-   * Helper function to determine current orientation of dropdown pane.
-   * @function
-   * @returns {String} position - string value of a position class.
-   */
-  getPositionClass() {
-    var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
-        verticalPosition = verticalPosition ? verticalPosition[0] : '';
-    var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
-        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
-    var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
-
-    return position;
+  _getDefaultPosition() {
+    // handle legacy classnames
+    var position = this.$element[0].className.match(/(top|left|right|bottom)/g);
+    if(position) {
+      return position[0];
+    } else {
+      return 'bottom'
+    }
   }
 
-  /**
-   * Adjusts the dropdown panes orientation by adding/removing positioning classes.
-   * @function
-   * @private
-   * @param {String} position - position class to remove.
-   */
-  _reposition(position) {
-    this.usedPositions.push(position ? position : 'bottom');
-    //default, try switching to opposite side
-    if(!position && (this.usedPositions.indexOf('top') < 0)){
-      this.$element.addClass('top');
-    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }else if(position === 'left' && (this.usedPositions.indexOf('right') < 0)){
-      this.$element.removeClass(position)
-          .addClass('right');
-    }else if(position === 'right' && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.removeClass(position)
-          .addClass('left');
+  _getDefaultAlignment() {
+    // handle legacy float approach
+    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.attr('class'));
+    if(horizontalPosition) {
+      return horizontalPosition[1];
     }
 
-    //if default change didn't work, try bottom or left first
-    else if(!position && (this.usedPositions.indexOf('top') > -1) && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.addClass('left');
-    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') > -1) && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.removeClass(position)
-          .addClass('left');
-    }else if(position === 'left' && (this.usedPositions.indexOf('right') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }
-    //if nothing cleared, set to bottom
-    else{
-      this.$element.removeClass(position);
-    }
-    this.classChanged = true;
-    this.counter--;
+    return super._getDefaultAlignment();
   }
 
+
+
   /**
-   * Sets the position and orientation of the dropdown pane, checks for collisions.
+   * Sets the position and orientation of the dropdown pane, checks for collisions if allow-overlap is not true.
    * Recursively calls itself if a collision is detected, with a new position class.
    * @function
    * @private
    */
   _setPosition() {
-    if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
-    var position = this.getPositionClass(),
-        $eleDims = Foundation.Box.GetDimensions(this.$element),
-        $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
-        _this = this,
-        direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
-        param = (direction === 'top') ? 'height' : 'width',
-        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
+    this.$element.removeClass(`has-position-${this.position} has-alignment-${this.alignment}`);
+    super._setPosition(this.$currentAnchor, this.$element, this.$parent);
+    this.$element.addClass(`has-position-${this.position} has-alignment-${this.alignment}`);
+  }
 
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, this.$parent))){
-      var newWidth = $eleDims.windowDims.width,
-          parentHOffset = 0;
-      if(this.$parent){
-        var $parentDims = Foundation.Box.GetDimensions(this.$parent),
-            parentHOffset = $parentDims.offset.left;
-        if ($parentDims.width < newWidth){
-          newWidth = $parentDims.width;
-        }
-      }
-
-      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + parentHOffset, true)).css({
-        'width': newWidth - (this.options.hOffset * 2),
-        'height': 'auto'
-      });
-      this.classChanged = true;
-      return false;
-    }
-
-    this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
-
-    while(!Foundation.Box.ImNotTouchingYou(this.$element, this.$parent, true) && this.counter){
-      this._reposition(position);
-      this._setPosition();
-    }
+  /**
+   * Make it a current anchor.
+   * Current anchor as the reference for the position of Dropdown panes.
+   * @param {HTML} el - DOM element of the anchor.
+   * @function
+   * @private
+   */
+  _setCurrentAnchor(el) {
+    this.$currentAnchor = $(el);
   }
 
   /**
@@ -170,7 +133,9 @@ class Dropdown {
    * @private
    */
   _events() {
-    var _this = this;
+    var _this = this,
+        hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined');
+
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
@@ -178,22 +143,38 @@ class Dropdown {
       'resizeme.zf.trigger': this._setPosition.bind(this)
     });
 
+    this.$anchors.off('click.zf.trigger')
+      .on('click.zf.trigger', function(e) {
+        _this._setCurrentAnchor(this);
+
+        if (_this.options.forceFollow === false) {
+          // if forceFollow false, always prevent default action
+          e.preventDefault();
+        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          // if forceFollow true and hover option true, only prevent default action on 1st click
+          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          e.preventDefault();
+        }
+    });
+
     if(this.options.hover){
-      this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
+      this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
       .on('mouseenter.zf.dropdown', function(){
+        _this._setCurrentAnchor(this);
+
         var bodyData = $('body').data();
         if(typeof(bodyData.whatinput) === 'undefined' || bodyData.whatinput === 'mouse') {
           clearTimeout(_this.timeout);
           _this.timeout = setTimeout(function(){
             _this.open();
-            _this.$anchor.data('hover', true);
+            _this.$anchors.data('hover', true);
           }, _this.options.hoverDelay);
         }
       }).on('mouseleave.zf.dropdown', function(){
         clearTimeout(_this.timeout);
         _this.timeout = setTimeout(function(){
           _this.close();
-          _this.$anchor.data('hover', false);
+          _this.$anchors.data('hover', false);
         }, _this.options.hoverDelay);
       });
       if(this.options.hoverPane){
@@ -204,19 +185,19 @@ class Dropdown {
               clearTimeout(_this.timeout);
               _this.timeout = setTimeout(function(){
                 _this.close();
-                _this.$anchor.data('hover', false);
+                _this.$anchors.data('hover', false);
               }, _this.options.hoverDelay);
             });
       }
     }
-    this.$anchor.add(this.$element).on('keydown.zf.dropdown', function(e) {
+    this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
       var $target = $(this),
-        visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
+        visibleFocusableElements = Keyboard.findFocusable(_this.$element);
 
-      Foundation.Keyboard.handleKey(e, 'Dropdown', {
+      Keyboard.handleKey(e, 'Dropdown', {
         open: function() {
-          if ($target.is(_this.$anchor)) {
+          if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
             _this.open();
             _this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
@@ -224,7 +205,7 @@ class Dropdown {
         },
         close: function() {
           _this.close();
-          _this.$anchor.focus();
+          _this.$anchors.focus();
         }
       });
     });
@@ -240,10 +221,10 @@ class Dropdown {
          _this = this;
      $body.off('click.zf.dropdown')
           .on('click.zf.dropdown', function(e){
-            if(_this.$anchor.is(e.target) || _this.$anchor.find(e.target).length) {
+            if(_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
               return;
             }
-            if(_this.$element.find(e.target).length) {
+            if(_this.$element.is(e.target) || _this.$element.find(e.target).length) {
               return;
             }
             _this.close();
@@ -264,15 +245,17 @@ class Dropdown {
      * @event Dropdown#closeme
      */
     this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
-    this.$anchor.addClass('hover')
+    this.$anchors.addClass('hover')
         .attr({'aria-expanded': true});
     // this.$element/*.show()*/;
+
+    this.$element.addClass('is-opening');
     this._setPosition();
-    this.$element.addClass('is-open')
+    this.$element.removeClass('is-opening').addClass('is-open')
         .attr({'aria-hidden': false});
 
     if(this.options.autoFocus){
-      var $focusable = Foundation.Keyboard.findFocusable(this.$element);
+      var $focusable = Keyboard.findFocusable(this.$element);
       if($focusable.length){
         $focusable.eq(0).focus();
       }
@@ -281,7 +264,7 @@ class Dropdown {
     if(this.options.closeOnClick){ this._addBodyHandler(); }
 
     if (this.options.trapFocus) {
-      Foundation.Keyboard.trapFocus(this.$element);
+      Keyboard.trapFocus(this.$element);
     }
 
     /**
@@ -303,20 +286,9 @@ class Dropdown {
     this.$element.removeClass('is-open')
         .attr({'aria-hidden': true});
 
-    this.$anchor.removeClass('hover')
+    this.$anchors.removeClass('hover')
         .attr('aria-expanded', false);
 
-    if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
-      if(curPositionClass){
-        this.$element.removeClass(curPositionClass);
-      }
-      this.$element.addClass(this.options.positionClass)
-          /*.hide()*/.css({height: '', width: ''});
-      this.classChanged = false;
-      this.counter = 4;
-      this.usedPositions.length = 0;
-    }
     /**
      * Fires once the dropdown is no longer visible.
      * @event Dropdown#hide
@@ -324,7 +296,7 @@ class Dropdown {
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
 
     if (this.options.trapFocus) {
-      Foundation.Keyboard.releaseFocus(this.$element);
+      Keyboard.releaseFocus(this.$element);
     }
   }
 
@@ -334,7 +306,7 @@ class Dropdown {
    */
   toggle() {
     if(this.$element.hasClass('is-open')){
-      if(this.$anchor.data('hover')) return;
+      if(this.$anchors.data('hover')) return;
       this.close();
     }else{
       this.open();
@@ -345,78 +317,122 @@ class Dropdown {
    * Destroys the dropdown.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.trigger').hide();
-    this.$anchor.off('.zf.dropdown');
+    this.$anchors.off('.zf.dropdown');
+    $(document.body).off('click.zf.dropdown');
 
-    Foundation.unregisterPlugin(this);
   }
 }
 
 Dropdown.defaults = {
   /**
-   * Class that designates bounding container of Dropdown (Default: window)
+   * Class that designates bounding container of Dropdown (default: window)
    * @option
-   * @example 'dropdown-parent'
+   * @type {?string}
+   * @default null
    */
   parentClass: null,
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option
-   * @example 250
+   * @type {number}
+   * @default 250
    */
   hoverDelay: 250,
   /**
    * Allow submenus to open on hover events
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   hover: false,
   /**
    * Don't close dropdown when hovering over dropdown pane
    * @option
-   * @example true
+   * @type {boolean}
+   * @default false
    */
   hoverPane: false,
   /**
    * Number of pixels between the dropdown pane and the triggering element on open.
    * @option
-   * @example 1
+   * @type {number}
+   * @default 0
    */
-  vOffset: 1,
+  vOffset: 0,
   /**
    * Number of pixels between the dropdown pane and the triggering element on open.
    * @option
-   * @example 1
+   * @type {number}
+   * @default 0
    */
-  hOffset: 1,
+  hOffset: 0,
   /**
-   * Class applied to adjust open position. JS will test and fill this in.
+   * DEPRECATED: Class applied to adjust open position.
    * @option
-   * @example 'top'
+   * @type {string}
+   * @default ''
    */
   positionClass: '',
   /**
+   * Position of dropdown. Can be left, right, bottom, top, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  position: 'auto',
+  /**
+   * Alignment of dropdown relative to anchor. Can be left, right, bottom, top, center, or auto.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  alignment: 'auto',
+  /**
+   * Allow overlap of container/window. If false, dropdown will first try to position as defined by data-position and data-alignment, but reposition if it would cause an overflow.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  allowOverlap: false,
+  /**
+   * Allow overlap of only the bottom of the container. This is the most common
+   * behavior for dropdowns, allowing the dropdown to extend the bottom of the
+   * screen but not otherwise influence or break out of the container.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  allowBottomOverlap: true,
+  /**
    * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   trapFocus: false,
   /**
    * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default false
    */
   autoFocus: false,
   /**
    * Allows a click on the body to close the dropdown.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
-  closeOnClick: false
-}
+  closeOnClick: false,
+  /**
+   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click. 
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  forceFollow: true
+};
 
-// Window exports
-Foundation.plugin(Dropdown, 'Dropdown');
-
-}(jQuery);
+export {Dropdown};

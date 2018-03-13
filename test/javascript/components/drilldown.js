@@ -62,8 +62,10 @@ describe('Drilldown Menu', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Drilldown($html, {});
 
+      plugin.$element.should.have.attr('role', 'tree');
+
       plugin.$element.find('[data-submenu]').each(function() {
-        $(this).should.have.attr('role', 'menu');
+        $(this).should.have.attr('role', 'group');
         $(this).should.have.attr('aria-hidden', 'true');
       });
 
@@ -71,6 +73,10 @@ describe('Drilldown Menu', function() {
         $(this).should.have.attr('aria-haspopup', 'true');
         $(this).should.have.attr('aria-expanded', 'false');
         $(this).should.have.attr('aria-label', $(this).children('a').first().text());
+      });
+
+      plugin.$element.find('li:not(.js-drilldown-back)').each(function() {
+        $(this).should.have.attr('role', 'treeitem');
       });
     });
   });
@@ -212,4 +218,115 @@ describe('Drilldown Menu', function() {
   });
 
 
+  describe('keyboard events', function() {
+    // Currently not testable, as triggered event won't move on focus
+    it.skip('does not trap focus on root element going down', function() {
+      $html = $(template).appendTo('body');
+      let $dummyElement = $('<a tabindex="0">Dummy</a>').appendTo('body'); // Dummy target to see if focus is not trapped
+      plugin = new Foundation.Drilldown($html, {});
+
+      // Focus last element
+      $dummyElement.focus();
+      $html.find('> li:last-child > a').trigger(window.mockKeyboardEvent('TAB'));
+
+      document.activeElement.should.not.be.equal($html.find('> li:last-child > a')[0]);
+
+      $dummyElement.remove();
+    });
+    // Currently not testable, as triggered event won't move on focus
+    it.skip('does not trap focus on root element going up', function() {
+      let $dummyElement = $('<a tabindex="0">Dummy</a>').appendTo('body'); // Dummy target to see if focus is not trapped
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      // Focus first element
+      $dummyElement.focus();
+      $html.find('> li:first-child > a').trigger(window.mockKeyboardEvent('TAB', {shift: true}));
+
+      document.activeElement.should.not.be.equal($html.find('> li:first-child > a')[0]);
+
+      $dummyElement.remove();
+    });
+    it('closes current sub menu using ESC', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      // Open it first
+      plugin._show($html.find('> li:nth-child(1)'))
+
+      $html.find('> li:nth-child(1) > ul > li:first-child > a').focus()
+        .trigger(window.mockKeyboardEvent('ESCAPE'));
+
+      $html.find('> li:nth-child(1) > ul').should.have.class('is-closing');
+    });
+    it('moves focus to next element on TAB', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      $html.find('> li:nth-child(1) > a').focus()
+        .trigger(window.mockKeyboardEvent('TAB'));
+
+      document.activeElement.should.be.equal($html.find('> li:nth-child(2) > a')[0]);
+    });
+    it('moves focus to previous element on TAB', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      $html.find('> li:nth-child(2) > a').focus()
+        .trigger(window.mockKeyboardEvent('TAB', {shift: true}));
+
+      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
+    });
+    it('moves focus to next element on ARROW_DOWN', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      $html.find('> li:nth-child(1) > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+
+      document.activeElement.should.be.equal($html.find('> li:nth-child(2) > a')[0]);
+    });
+    it('moves focus to previous element on ARROW_UP', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      $html.find('> li:nth-child(2) > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_UP'));
+
+      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
+    });
+    it('opens child element on ARROW_RIGHT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      $html.find('> li:nth-child(1) > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+
+      $html.find('> li:nth-child(1) > ul').should.have.class('is-active');
+    });
+    it('focuses parent link if parentLink is true', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {parentLink: true});
+
+      $html.find('> li:nth-child(1) > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+      
+      setTimeout(function() { // Timeout to make sure transition has ended
+        $html.find('> li:nth-child(1) > ul > li[data-is-parent-link] a')[0].should.be.equal(document.activeElement);
+        done();
+      }, 500);
+    });
+    it('closes child element on ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      // Open it first
+      plugin._show($html.find('> li:nth-child(1)'))
+
+      $html.find('> li:nth-child(1) > ul > li:first-child > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
+
+      $html.find('> li:nth-child(1) > ul').should.have.class('is-closing');
+    });
+  });
 });

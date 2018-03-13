@@ -1,27 +1,29 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.util.core';
 
 /**
  * Abide module.
  * @module foundation.abide
  */
 
-class Abide {
+class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
+   * @name Abide
    * @fires Abide#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options = {}) {
+  _setup(element, options = {}) {
     this.$element = element;
-    this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
+    this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
 
+    this.className = 'Abide'; // ie9 back compat
     this._init();
-
-    Foundation.registerPlugin(this, 'Abide');
   }
 
   /**
@@ -30,6 +32,13 @@ class Abide {
    */
   _init() {
     this.$inputs = this.$element.find('input, textarea, select');
+    const $globalErrors = this.$element.find('[data-abide-error]');
+
+    // Add a11y attributes to all fields
+    if (this.options.a11yAttributes) {
+      this.$inputs.each((i, input) => this.addA11yAttributes($(input)));
+      $globalErrors.each((i, error) => this.addGlobalErrorA11yAttributes($(error)));
+    }
 
     this._events();
   }
@@ -110,9 +119,11 @@ class Abide {
   }
 
   /**
-   * Based on $el, get the first element with selector in this order:
-   * 1. The element's direct sibling('s).
-   * 3. The element's parent's children.
+   * Get:
+   * - Based on $el, the first element(s) corresponding to `formErrorSelector` in this order:
+   *   1. The element's direct sibling('s).
+   *   2. The element's parent's children.
+   * - Element(s) with the attribute `[data-form-error-for]` set with the element's id.
    *
    * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
    *
@@ -120,11 +131,14 @@ class Abide {
    * @returns {Object} jQuery object with the selector.
    */
   findFormError($el) {
+    var id = $el[0].id;
     var $error = $el.siblings(this.options.formErrorSelector);
 
     if (!$error.length) {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
+
+    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
 
     return $error;
   }
@@ -186,7 +200,66 @@ class Abide {
       $formError.addClass(this.options.formErrorClass);
     }
 
-    $el.addClass(this.options.inputErrorClass).attr('data-invalid', '');
+    $el.addClass(this.options.inputErrorClass).attr({
+      'data-invalid': '',
+      'aria-invalid': true
+    });
+  }
+
+  /**
+   * Adds [for] and [role=alert] attributes to all form error targetting $el,
+   * and [aria-describedby] attribute to $el toward the first form error.
+   * @param {Object} $el - jQuery object
+   */
+  addA11yAttributes($el) {
+    let $errors = this.findFormError($el);
+    let $labels = $errors.filter('label');
+    let $error = $errors.first();
+    if (!$errors.length) return;
+
+    // Set [aria-describedby] on the input toward the first form error if it is not set
+    if (typeof $el.attr('aria-describedby') === 'undefined') {
+      // Get the first error ID or create one
+      let errorId = $error.attr('id');
+      if (typeof errorId === 'undefined') {
+        errorId = GetYoDigits(6, 'abide-error');
+        $error.attr('id', errorId);
+      };
+
+      $el.attr('aria-describedby', errorId);
+    }
+
+    if ($labels.filter('[for]').length < $labels.length) {
+      // Get the input ID or create one
+      let elemId = $el.attr('id');
+      if (typeof elemId === 'undefined') {
+        elemId = GetYoDigits(6, 'abide-input');
+        $el.attr('id', elemId);
+      };
+
+      // For each label targeting $el, set [for] if it is not set.
+      $labels.each((i, label) => {
+        const $label = $(label);
+        if (typeof $label.attr('for') === 'undefined')
+          $label.attr('for', elemId);
+      });
+    }
+
+    // For each error targeting $el, set [role=alert] if it is not set.
+    $errors.each((i, label) => {
+      const $label = $(label);
+      if (typeof $label.attr('role') === 'undefined')
+        $label.attr('role', 'alert');
+    }).end();
+  }
+
+  /**
+   * Adds [aria-live] attribute to the given global form error $el.
+   * @param {Object} $el - jQuery object to add the attribute to
+   */
+  addGlobalErrorA11yAttributes($el) {
+    if (typeof $el.attr('aria-live') === 'undefined')
+      $el.attr('aria-live', this.options.a11yErrorLevel);
   }
 
   /**
@@ -194,7 +267,6 @@ class Abide {
    * @param {String} groupName - A string that specifies the name of a radio button group
    *
    */
-
   removeRadioErrorClasses(groupName) {
     var $els = this.$element.find(`:radio[name="${groupName}"]`);
     var $labels = this.findRadioLabels($els);
@@ -208,7 +280,10 @@ class Abide {
       $formErrors.removeClass(this.options.formErrorClass);
     }
 
-    $els.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $els.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
 
   }
 
@@ -233,11 +308,15 @@ class Abide {
       $formError.removeClass(this.options.formErrorClass);
     }
 
-    $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $el.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
+   * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
    * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -250,8 +329,8 @@ class Abide {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
-    // don't validate ignored inputs or hidden inputs
-    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+    // don't validate ignored inputs or hidden inputs or disabled inputs
+    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
     }
 
@@ -328,7 +407,13 @@ class Abide {
 
     var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
+    this.$element.find('[data-abide-error]').each((i, elem) => {
+      const $elem = $(elem);
+      // Ensure a11y attributes are set
+      if (this.options.a11yAttributes) this.addGlobalErrorA11yAttributes($elem);
+      // Show or hide the error
+      $elem.css('display', (noError ? 'none' : 'block'));
+    });
 
     /**
      * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
@@ -433,9 +518,18 @@ class Abide {
     $(`.${opts.inputErrorClass}`, $form).not('small').removeClass(opts.inputErrorClass);
     $(`${opts.formErrorSelector}.${opts.formErrorClass}`).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
-    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
-    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
-    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
+    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
     /**
      * Fires when the form has been reset.
      * @event Abide#formreset
@@ -447,7 +541,7 @@ class Abide {
    * Destroys an instance of Abide.
    * Removes error styles and classes from elements, without resetting their values.
    */
-  destroy() {
+  _destroy() {
     var _this = this;
     this.$element
       .off('.abide')
@@ -459,8 +553,6 @@ class Abide {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -472,49 +564,77 @@ Abide.defaults = {
    * The default event to validate inputs. Checkboxes and radios validate immediately.
    * Remove or change this value for manual validation.
    * @option
-   * @example 'fieldChange'
+   * @type {?string}
+   * @default 'fieldChange'
    */
   validateOn: 'fieldChange',
 
   /**
    * Class to be applied to input labels on failed validation.
    * @option
-   * @example 'is-invalid-label'
+   * @type {string}
+   * @default 'is-invalid-label'
    */
   labelErrorClass: 'is-invalid-label',
 
   /**
    * Class to be applied to inputs on failed validation.
    * @option
-   * @example 'is-invalid-input'
+   * @type {string}
+   * @default 'is-invalid-input'
    */
   inputErrorClass: 'is-invalid-input',
 
   /**
    * Class selector to use to target Form Errors for show/hide.
    * @option
-   * @example '.form-error'
+   * @type {string}
+   * @default '.form-error'
    */
   formErrorSelector: '.form-error',
 
   /**
    * Class added to Form Errors on failed validation.
    * @option
-   * @example 'is-visible'
+   * @type {string}
+   * @default 'is-visible'
    */
   formErrorClass: 'is-visible',
 
   /**
+   * If true, automatically insert when possible:
+   * - `[aria-describedby]` on fields
+   * - `[role=alert]` on form errors and `[for]` on form error labels
+   * - `[aria-live]` on global errors `[data-abide-error]` (see option `a11yErrorLevel`).
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  a11yAttributes: true,
+
+  /**
+   * [aria-live] attribute value to be applied on global errors `[data-abide-error]`.
+   * Options are: 'assertive', 'polite' and 'off'/null
+   * @option
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+   * @type {string}
+   * @default 'assertive'
+   */
+  a11yErrorLevel: 'assertive',
+
+  /**
    * Set to true to validate text inputs on any value change.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   liveValidate: false,
 
   /**
    * Set to true to validate inputs on blur.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   validateOnBlur: false,
 
@@ -525,7 +645,7 @@ Abide.defaults = {
     number : /^[-+]?\d*(?:[\.\,]\d+)?$/,
 
     // amex, visa, diners
-    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+    card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|(?:222[1-9]|2[3-6][0-9]{2}|27[0-1][0-9]|2720)[0-9]{12}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
     cvv : /^([0-9]){3,4}$/,
 
     // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
@@ -547,7 +667,14 @@ Abide.defaults = {
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
-    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+
+    // Domain || URL
+    website: {
+      test: (text) => {
+        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+      }
+    }
   },
 
   /**
@@ -565,7 +692,4 @@ Abide.defaults = {
   }
 }
 
-// Window exports
-Foundation.plugin(Abide, 'Abide');
-
-}(jQuery);
+export {Abide};

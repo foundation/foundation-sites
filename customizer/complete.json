@@ -1,6 +1,7 @@
 {
   "modules": [
-    "grid",
+    "xy_grid",
+    "flex_classes",
     "typography",
     "button",
     "forms",
@@ -30,7 +31,6 @@
     "progress_bar",
     "responsive_menu",
     "responsive_toggle",
-    "responsive_accordion_tabs",
     "reveal",
     "slider",
     "sticky",
@@ -43,6 +43,7 @@
     "tooltip",
     "top_bar",
     "visibility",
+    "responsive_accordion_tabs",
     "float"
   ]
 }

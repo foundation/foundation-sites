@@ -136,32 +136,49 @@ $breakpoint-classes: (small medium large) !default;
 ///  - If a rem value is passed, the unit will be changed to em.
 ///  - If an em value is passed, the value will be used as-is.
 ///
-/// @param {Keyword|Number} $value - Breakpoint name, or px, rem, or em value to process.
+/// If multiple values are passed, the mixin will generate a media query for each of them as described above.
+/// Since the content is duplicated for each breakpoint, this mixin should only be used with properties that
+/// change across breakpoints.
+///
+/// @param {Keyword|Number} $values... - Breakpoint name or px/rem/em value to process.
 ///
 /// @output If the breakpoint is "0px and larger", outputs the content as-is. Otherwise, outputs the content wrapped in a media query.
-@mixin breakpoint($value) {
-  $str: breakpoint($value);
-  $bp: index($-zf-breakpoints-keys, $value);
-  $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
+@mixin breakpoint($values...) {
+  @for $i from 1 through length($values) {
+    $value: nth($values, $i);
+    $str: breakpoint($value);
+    $bp: index($-zf-breakpoints-keys, $value);
+    $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
 
-  // If $str is still an empty string, no media query is needed
-  @if $str == '' {
-    @content;
-  }
+    $old-zf-size: null;
 
-  // Otherwise, wrap the content in a media query
-  @else {
-    // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
-    @if $bp != null and $bp <= $pbp {
-      @media print, screen and #{$str} {
-        @content;
-       }
+    // Make breakpoint size available as a variable
+    @if global-variable-exists(-zf-size) {
+      $old-zf-size: $-zf-size;
     }
+    $-zf-size: nth($value, 1) !global; // get the first value to account for `only` and `down` keywords
+
+    // If $str is still an empty string, no media query is needed
+    @if $str == '' {
+      @content;
+    }
+
+    // Otherwise, wrap the content in a media query
     @else {
-      @media screen and #{$str} {
-        @content;
+      // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
+      @if $bp != null and $bp <= $pbp {
+        @media print, screen and #{$str} {
+          @content;
+        }
+      }
+      @else {
+        @media screen and #{$str} {
+          @content;
+        }
       }
     }
+
+    $-zf-size: $old-zf-size !global;
   }
 }
 
@@ -211,6 +228,53 @@ $breakpoint-classes: (small medium large) !default;
 
 }
 
+/// Return a list of our named breakpoints less than $key. Useful for dealing with
+/// responsive gutters for the grid.
+/// @access private
+///
+/// @param {String} $key - Key to use as last breakpoint.
+///
+/// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -zf-breakpoints-less-than($key) {
+  $list: ();
+  $found_key: false;
+
+  @each $name in $-zf-breakpoints-keys {
+    @if ($name == $key) {
+      $found_key: true;
+    }
+    @if not $found_key {
+      $list: append($list, $name);
+    }
+  }
+  @return $list;
+}
+
+/// Return a list of our named breakpoints less than $key. Useful for dealing with
+/// responsive gutters for the grid.
+/// @access private
+///
+/// @param {String} $breakpoing - a named or non-named breakpoing.
+///
+/// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -zf-closest-named-breakpoint($breakpoint) {
+  $last: $-zf-zero-breakpoint;
+  $found: false;
+
+  $value: unitless-calc($breakpoint, 1px);
+  @each $key, $val in $breakpoints {
+    @if not $found {
+      @if unitless-calc($val) > $value {
+        $found: true;
+      } @else {
+        $last: $key;
+      }
+    }
+  }
+
+  @return $last;
+}
+
 /// Get a value for a breakpoint from a responsive config map or single value.
 /// - If the config is a single value, return it regardless of `$value`.
 /// - If the config is a map and has the key `$value`, the exact breakpoint value is returned.
@@ -227,9 +291,14 @@ $breakpoint-classes: (small medium large) !default;
     @return $map;
   }
 
+
   // Check if the breakpoint name exists globally
   @if not map-has-key($breakpoints, $value) {
-    @return null;
+    @if type-of($value) == 'number' {
+      $value: -zf-closest-named-breakpoint($value);
+    } @else {
+      @return null;
+    }
   }
   // Check if the breakpoint name exists in the local config map
   @else if map-has-key($map, $value) {
@@ -256,25 +325,39 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
+$small-up: '';
+$small-only: '';
+
 @if map-has-key($breakpoints, small) {
   $small-up: screen;
   $small-only: unquote('screen and #{breakpoint(small only)}');
 }
+
+$medium-up: '';
+$medium-only: '';
 
 @if map-has-key($breakpoints, medium) {
   $medium-up: unquote('screen and #{breakpoint(medium)}');
   $medium-only: unquote('screen and #{breakpoint(medium only)}');
 }
 
+$large-up: '';
+$large-only: '';
+
 @if map-has-key($breakpoints, large) {
   $large-up: unquote('screen and #{breakpoint(large)}');
   $large-only: unquote('screen and #{breakpoint(large only)}');
 }
 
+$xlarge-up: '';
+$xlarge-only: '';
+
 @if map-has-key($breakpoints, xlarge) {
   $xlarge-up: unquote('screen and #{breakpoint(xlarge)}');
   $xlarge-only: unquote('screen and #{breakpoint(xlarge only)}');
 }
+
+$xxlarge-up: '';
 
 @if map-has-key($breakpoints, xxlarge) {
   $xxlarge-up: unquote('screen and #{breakpoint(xxlarge)}');

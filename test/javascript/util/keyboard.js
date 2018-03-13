@@ -6,22 +6,7 @@ describe('Keyboard util', function() {
    * @param  {object} opts    Options that say if modifiers are pressed.
    * @return {Event}          Event to use.
    */
-  const createEvent = function(keyCode, opts) {
-    let options = opts || {},
-        isCtrl = !!options.ctrl,
-        isAlt = !!options.alt,
-        isShift = !!options.shift,
-        isMeta = !!options.meta,
-        event = {
-          shiftKey: isShift,
-          altKey: isAlt,
-          ctrlKey: isCtrl,
-          metaKey: isMeta,
-          keyCode: keyCode,
-          which: keyCode
-        };
-    return new $.Event('keydown', event);
-  };
+  const createEvent = window.mockKeyboardEvent;
   const keyCodes = {
     'A': 65,
     'TAB': 9,
