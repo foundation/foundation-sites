@@ -62,7 +62,7 @@ $breakpoint-classes: (small medium large) !default;
   @if type-of($bp) == 'string' {
     @if map-has-key($breakpoints, $bp) {
       @if $dir == 'only' or $dir == 'down' {
-        $bp-max: -zf-map-next($breakpoints, $bp);
+        $bp-max: -zf-get-bp-val($breakpoints, $bp);
       }
 
       $bp: map-get($breakpoints, $bp);
