@@ -292,7 +292,7 @@ class Tooltip extends Positionable {
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tooltip')
                  .removeClass('has-tip top right left')
-                 .removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
+                 .removeAttr('aria-describedby data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
     this.template.remove();
   }
