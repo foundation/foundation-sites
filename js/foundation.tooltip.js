@@ -102,7 +102,7 @@ class Tooltip extends Positionable {
    * @private
    */
   _buildTemplate(id) {
-    var templateClasses = (`${this.options.tooltipClass} ${this.options.positionClass} ${this.options.templateClasses}`).trim();
+    var templateClasses = (`${this.options.tooltipClass} ${this.options.templateClasses}`).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
@@ -378,13 +378,6 @@ Tooltip.defaults = {
    * @default true
    */
   clickOpen: true,
-  /**
-   * DEPRECATED Additional positioning classes, set by the JS
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
   /**
    * Position of tooltip. Can be left, right, bottom, top, or auto.
    * @option
