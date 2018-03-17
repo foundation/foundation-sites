@@ -32,7 +32,8 @@ var OUTPUT_DIR = ARGS.output || 'custom-build';
 var COMPATIBILITY = [
   'last 2 versions',
   'ie >= 9',
-  'android >= 2.3'
+  'android >= 4.4',
+  'ios >= 7'
 ];
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
