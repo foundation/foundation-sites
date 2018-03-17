@@ -190,6 +190,14 @@ $orbit-control-zindex: 10 !default;
     @include orbit-next;
   }
 
+  // RTL support
+  @if $global-text-direction == rtl {
+    .orbit-previous,
+    .orbit-next {
+      transform: scale(-1, 1);
+    }
+  }
+
   .orbit-bullets {
     @include orbit-bullets;
   }
