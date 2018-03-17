@@ -35,7 +35,7 @@ function umdExternals(externals, options) {
 };
 
 // Generate plugin Externals config for UMD modules
-var pluginsAsExternals = Object.assign(
+const webpackExternalPlugins = Object.assign(
   umdExternals({
     'jquery': 'jQuery',
   }),
@@ -61,6 +61,11 @@ var pluginsAsExternals = Object.assign(
   }, { namespace: CONFIG.JS_BUNDLE_NAMESPACE })
 );
 
+const webpackOutputAsExternal = {
+  library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
+  libraryTarget: 'umd',
+};
+
 var webpackConfig = {
   externals: umdExternals({
     'jquery': 'jQuery'
@@ -78,7 +83,6 @@ var webpackConfig = {
     ]
   },
   output: {
-    library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
     libraryTarget: 'umd',
   }
 }
@@ -95,13 +99,18 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
-    .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe(webpackStream(Object.assign({}, webpackConfig, {
+        output: webpackOutputAsExternal,
+      }), webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
-    .pipe(webpackStream(Object.assign({}, webpackConfig, { externals: pluginsAsExternals }), webpack2))
+    .pipe(webpackStream(Object.assign({}, webpackConfig, {
+        externals: webpackExternalPlugins,
+        output: webpackOutputAsExternal,
+      }), webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 
