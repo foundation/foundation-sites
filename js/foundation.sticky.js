@@ -60,7 +60,7 @@ class Sticky extends Plugin {
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    if (document.readyState === "complete") {
+    if (document.readyState === 'complete') {
 	  //We calculate the container height to have correct values for anchor points offset calculation.
       _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
       _this.$container.css('height', _this.containerHeight);

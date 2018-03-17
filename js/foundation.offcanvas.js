@@ -159,6 +159,14 @@ class OffCanvas extends Plugin {
   _setMQChecker() {
     var _this = this;
 
+    if (document.readyState === 'complete') {
+      if (MediaQuery.atLeast(_this.options.revealOn)) {
+        _this.reveal(true);
+      } else {
+        _this.reveal(false);
+      }
+    }
+
     $(window).on('changed.zf.mediaquery', function() {
       if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);

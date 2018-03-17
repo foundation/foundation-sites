@@ -78,7 +78,11 @@ class Reveal extends Plugin {
     }
     this._events();
     if (this.options.deepLink && window.location.hash === ( `#${this.id}`)) {
-      $(window).one('load.zf.reveal', this.open.bind(this));
+      if (document.readyState === 'complete') {
+        this.open.bind(this)
+      } else {
+        $(window).one('load.zf.reveal', this.open.bind(this));
+      }
     }
   }
 
