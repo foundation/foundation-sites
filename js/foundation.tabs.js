@@ -94,7 +94,7 @@ class Tabs extends Plugin {
       }
     }
 
-     //current context-bound function to open tabs on page load or history popstate
+     //current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
       //need a hash and a relevant anchor in this tabset
@@ -143,7 +143,7 @@ class Tabs extends Plugin {
     }
 
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      $(window).on('hashchange', this._checkDeepLink);
     }
   }
 
@@ -394,7 +394,7 @@ class Tabs extends Plugin {
     }
 
     if (this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      $(window).off('hashchange', this._checkDeepLink);
     }
 
   }

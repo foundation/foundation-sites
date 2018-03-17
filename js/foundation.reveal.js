@@ -169,12 +169,12 @@ class Reveal extends Plugin {
       });
     }
     if (this.options.deepLink) {
-      $(window).on(`popstate.zf.reveal:${this.id}`, this._handleState.bind(this));
+      $(window).on(`hashchange.zf.reveal:${this.id}`, this._handleState.bind(this));
     }
   }
 
   /**
-   * Handles modal methods on back/forward button clicks or any other event that triggers popstate.
+   * Handles modal methods on back/forward button clicks or any other event that triggers hashchange.
    * @private
    */
   _handleState(e) {
@@ -273,11 +273,6 @@ class Reveal extends Plugin {
 
     var _this = this;
 
-    function addRevealOpenClasses() {
-
-      $('html').addClass('is-reveal-open');
-    }
-
     // Motion UI method of reveal
     if (this.options.animationIn) {
       function afterAnimation(){
@@ -287,7 +282,7 @@ class Reveal extends Plugin {
             'tabindex': -1
           })
           .focus();
-        addRevealOpenClasses();
+        _this.addRevealOpenClasses();
         Keyboard.trapFocus(_this.$element);
       }
       if (this.options.overlay) {
@@ -317,7 +312,7 @@ class Reveal extends Plugin {
       .focus();
     Keyboard.trapFocus(this.$element);
 
-    addRevealOpenClasses();
+    this._addRevealOpenClasses();
 
     this._extraHandlers();
 
@@ -326,6 +321,14 @@ class Reveal extends Plugin {
      * @event Reveal#open
      */
     this.$element.trigger('open.zf.reveal');
+  }
+
+  _addRevealOpenClasses() {
+    $('html').addClass('is-reveal-open');
+  }
+
+  _removeRevealOpenClasses() {
+    $('html').removeClass('is-reveal-open');
   }
 
   /**
@@ -409,7 +412,7 @@ class Reveal extends Plugin {
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {
-        $('html').removeClass('is-reveal-open');
+        _this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
       }
 
       Keyboard.releaseFocus(_this.$element);
@@ -469,6 +472,10 @@ class Reveal extends Plugin {
     this.$element.hide().off();
     this.$anchor.off('.zf');
     $(window).off(`.zf.reveal:${this.id}`);
+
+    if ($('.reveal:visible').length  === 0) {
+      this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
+    }
   };
 }
 
