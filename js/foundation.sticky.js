@@ -60,8 +60,8 @@ class Sticky extends Plugin {
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    $(window).one('load.zf.sticky', function(){
-      //We calculate the container height to have correct values for anchor points offset calculation.
+    if (document.readyState === 'complete') {
+	  //We calculate the container height to have correct values for anchor points offset calculation.
       _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
       _this.$container.css('height', _this.containerHeight);
       _this.elemHeight = _this.containerHeight;
@@ -80,7 +80,29 @@ class Sticky extends Plugin {
         }
       });
       _this._events(id.split('-').reverse().join('-'));
-    });
+    } else {
+      $(window).one('load.zf.sticky', function(){
+        //We calculate the container height to have correct values for anchor points offset calculation.
+        _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+        _this.$container.css('height', _this.containerHeight);
+        _this.elemHeight = _this.containerHeight;
+        if(_this.options.anchor !== ''){
+          _this.$anchor = $('#' + _this.options.anchor);
+        }else{
+          _this._parsePoints();
+        }
+      
+        _this._setSizes(function(){
+          var scroll = window.pageYOffset;
+          _this._calc(false, scroll);
+          //Unstick the element will ensure that proper classes are set.
+          if (!_this.isStuck) {
+            _this._removeSticky((scroll >= _this.topPoint) ? false : true);
+          }
+        });
+        _this._events(id.split('-').reverse().join('-'));
+      });
+    }
   }
 
   /**

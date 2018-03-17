@@ -83,7 +83,7 @@ class Magellan extends Plugin {
           duration: _this.options.animationDuration,
           easing:   _this.options.animationEasing
         };
-    $(window).one('load', function(){
+    if (document.readyState === 'complete') {
       if(_this.options.deepLinking){
         if(location.hash){
           _this.scrollToLoc(location.hash);
@@ -91,7 +91,17 @@ class Magellan extends Plugin {
       }
       _this.calcPoints();
       _this._updateActive();
-    });
+    } else {
+      $(window).one('load', function(){
+        if(_this.options.deepLinking){
+          if(location.hash){
+            _this.scrollToLoc(location.hash);
+          }
+        }
+        _this.calcPoints();
+        _this._updateActive();
+      });
+    }
 
     if (document.readyState === "complete") {
       _this.$element.on({
