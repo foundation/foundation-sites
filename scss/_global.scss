@@ -43,6 +43,7 @@ $medium-gray: #cacaca !default;
 /// Color used for dark gray UI items.
 /// @type Color
 $dark-gray: #8a8a8a !default;
+$dark-gray: #8a8a8a !default;
 
 /// Color used for black ui items.
 /// @type Color
@@ -135,6 +136,11 @@ $global-color-pick-contrast-tolerance: 0 !default;
 
 @mixin foundation-global-styles {
   @include -zf-normalize;
+
+  // Add the search input cancel button in Chrome/Safari again
+  [type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
 
   // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
   .foundation-mq {
