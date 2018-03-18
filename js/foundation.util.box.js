@@ -74,21 +74,27 @@ function GetDimensions(elem){
   }
 
   var rect = elem.getBoundingClientRect(),
-      parRect = elem.parentNode.getBoundingClientRect(),
-      winRect = document.body.getBoundingClientRect(),
+      par = elem.parentNode,
+      parRect = par.getBoundingClientRect(),
+      win = document.body,
+      winRect = win.getBoundingClientRect(),
+      elemWidth = Math.max(elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+      elemHeight = Math.max(elem.scrollHeight, elem.offsetHeight, elem.clientHeight),
+      parWidth = Math.max(par.scrollWidth, par.offsetWidth, par.clientWidth),
+      parHeight = Math.max(par.scrollHeight, par.offsetHeight, par.clientHeight),
       winY = window.pageYOffset,
       winX = window.pageXOffset;
 
   return {
-    width: rect.width,
-    height: rect.height,
+    width: elemWidth,
+    height: elemHeight,
     offset: {
       top: rect.top + winY,
       left: rect.left + winX
     },
     parentDims: {
-      width: parRect.width,
-      height: parRect.height,
+      width: parWidth,
+      height: parHeight,
       offset: {
         top: parRect.top + winY,
         left: parRect.left + winX
