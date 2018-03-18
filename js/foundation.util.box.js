@@ -76,25 +76,20 @@ function GetDimensions(elem){
   var rect = elem.getBoundingClientRect(),
       par = elem.parentNode,
       parRect = par.getBoundingClientRect(),
-      win = document.body,
-      winRect = win.getBoundingClientRect(),
-      elemWidth = Math.max(elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-      elemHeight = Math.max(elem.scrollHeight, elem.offsetHeight, elem.clientHeight),
-      parWidth = Math.max(par.scrollWidth, par.offsetWidth, par.clientWidth),
-      parHeight = Math.max(par.scrollHeight, par.offsetHeight, par.clientHeight),
+      winRect = document.body.getBoundingClientRect(),
       winY = window.pageYOffset,
       winX = window.pageXOffset;
 
   return {
-    width: elemWidth,
-    height: elemHeight,
+    width: elem.clientWidth,
+    height: elem.clientHeight,
     offset: {
       top: rect.top + winY,
       left: rect.left + winX
     },
     parentDims: {
-      width: parWidth,
-      height: parHeight,
+      width: par.clientWidth,
+      height: par.clientHeight,
       offset: {
         top: parRect.top + winY,
         left: parRect.left + winX
