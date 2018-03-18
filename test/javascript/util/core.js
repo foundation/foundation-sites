@@ -100,7 +100,7 @@ describe('Foundation core', function() {
       name.should.be.a('string');
       name.should.be.equal('');
     });
-    
+
     it('should handle a named function expression', function() {
       var D = function foo(){};
       var name = Foundation.getFnName(D);
@@ -109,8 +109,11 @@ describe('Foundation core', function() {
       name.should.be.equal('foo');
     });
   });
-  
+
   describe('transitionEnd()', function() {
+  });
+
+  describe('onLoad()', function (done) {
   });
 
   describe('throttle()', function() {

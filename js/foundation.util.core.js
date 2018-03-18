@@ -61,4 +61,18 @@ function transitionend($elem){
   }
 }
 
-export {rtl, GetYoDigits, RegExpEscape, transitionend};
+/**
+ * Call the given function once the window is loaded,
+ * or immediately if the window is already loaded.
+ * @function
+ *
+ * @param {Function} fn - function to call on window load.
+ */
+function onLoad(fn) {
+  if (document.readyState === 'complete')
+    setTimeout(() => fn(), 0);
+  else
+    $(window).one('load', () => fn());
+}
+
+export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad};

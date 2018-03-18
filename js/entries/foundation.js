@@ -41,6 +41,7 @@ Foundation.rtl = CoreUtils.rtl;
 Foundation.GetYoDigits = CoreUtils.GetYoDigits;
 Foundation.transitionend = CoreUtils.transitionend;
 Foundation.RegExpEscape = CoreUtils.RegExpEscape;
+Foundation.onLoad = CoreUtils.onLoad;
 
 Foundation.Box = Box;
 Foundation.onImagesLoaded = onImagesLoaded;
