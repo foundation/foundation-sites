@@ -2,7 +2,7 @@
 
 
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
+import { onLoad, GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 import { SmoothScroll } from './foundation.smoothScroll';
 
@@ -83,6 +83,7 @@ class Magellan extends Plugin {
           duration: _this.options.animationDuration,
           easing:   _this.options.animationEasing
         };
+
     $(window).one('load', function(){
       if(_this.options.deepLinking){
         if(location.hash){
@@ -93,28 +94,17 @@ class Magellan extends Plugin {
       _this._updateActive();
     });
 
-    if (document.readyState === "complete") {
+    onLoad(function () {
       _this.$element.on({
         'resizeme.zf.trigger': _this.reflow.bind(_this),
         'scrollme.zf.trigger': _this._updateActive.bind(_this)
-      }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
+      }).on('click.zf.magellan', 'a[href^="#"]', function (e) {
         e.preventDefault();
         var arrival   = _this.getAttribute('href');
         _this.scrollToLoc(arrival);
       });
-    } else {
-      $(window).one('load', function(){
-        _this.$element.on({
-          'resizeme.zf.trigger': _this.reflow.bind(_this),
-          'scrollme.zf.trigger': _this._updateActive.bind(_this)
-        }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
-          e.preventDefault();
-          var arrival   = _this.getAttribute('href');
-          _this.scrollToLoc(arrival);
-        });
-      });
-    }
-    
+    });
+
     this._deepLinkScroll = function(e) {
       if(_this.options.deepLinking) {
         _this.scrollToLoc(window.location.hash);

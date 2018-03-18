@@ -1,6 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
+import { onLoad } from './foundation.util.core';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
@@ -78,7 +79,7 @@ class Reveal extends Plugin {
     }
     this._events();
     if (this.options.deepLink && window.location.hash === ( `#${this.id}`)) {
-      $(window).one('load.zf.reveal', this.open.bind(this));
+      onLoad(() => this.open());
     }
   }
 

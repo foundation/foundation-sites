@@ -1,9 +1,9 @@
 'use strict';
 
 import $ from 'jquery';
+import { onLoad, transitionend, RegExpEscape } from './foundation.util.core';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { transitionend, RegExpEscape } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
 import { Triggers } from './foundation.util.triggers';
@@ -166,15 +166,17 @@ class OffCanvas extends Plugin {
   _setMQChecker() {
     var _this = this;
 
-    $(window).on('changed.zf.mediaquery', function() {
+    onLoad(function () {
+      if (MediaQuery.atLeast(_this.options.revealOn)) {
+        _this.reveal(true);
+      }
+    });
+
+    $(window).on('changed.zf.mediaquery', function () {
       if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       } else {
         _this.reveal(false);
-      }
-    }).one('load.zf.offCanvas', function() {
-      if (MediaQuery.atLeast(_this.options.revealOn)) {
-        _this.reveal(true);
       }
     });
   }
