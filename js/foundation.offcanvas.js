@@ -139,16 +139,16 @@ class OffCanvas extends Plugin {
 
     let inCanvasFor = this.$element.attr('class').match(/\bin-canvas-for-(\w+)/);
 
-    if (!this.options.inCanvasOn && inCanvasFor && inCanvasFor.length === 2) {
-      // Extract breakpoint name from CSS class if no inCanvasOn option set but using .in-canvas-for-[BREAKPOINT]
+    if (inCanvasFor && inCanvasFor.length === 2) {
+      // Set `inCanvasOn` option if found in-canvas-for-[BREAKPONT] CSS class
       this.options.inCanvasOn = inCanvasFor[1];
-    } else if (this.options.inCanvasOn && !inCanvasFor) {
-      // Add CSS class if only inCanvasOn option set
+    } else if (this.options.inCanvasOn) {
+      // Ensure the CSS class is set
       this.$element.addClass(`in-canvas-for-${this.options.inCanvasOn}`);
     }
 
     if (this.options.inCanvasOn) {
-      this.isInCanvas = MediaQuery.atLeast(this.options.inCanvasOn);
+      this._checkInCanvas();
     }
 
     // Initally remove all transition/position CSS classes from off-canvas content container.
@@ -175,12 +175,7 @@ class OffCanvas extends Plugin {
 
     if (this.options.inCanvasOn) {
       $(window).on('changed.zf.mediaquery', () => {
-        if(MediaQuery.atLeast(this.options.inCanvasOn)) {
-          this.close();
-          this.isInCanvas = true;
-        } else {
-          this.isInCanvas = false;
-        }
+        this._checkInCanvas();
       });
     }
 
@@ -204,6 +199,17 @@ class OffCanvas extends Plugin {
         _this.reveal(true);
       }
     });
+  }
+
+  /**
+   * Checks if InCanvas on current breakpoint and adjust off-canvas accordingly
+   * @private
+   */
+  _checkInCanvas() {
+    this.isInCanvas = MediaQuery.atLeast(this.options.inCanvasOn);
+    if (this.isInCanvas === true) {
+      this.close();
+    }
   }
 
   /**
