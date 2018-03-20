@@ -26,9 +26,5 @@
     ".versions",
     ".babelrc",
     "yarn.lock"
-  ],
-  "dependencies": {
-    "jquery": ">= 3.0.0",
-    "what-input": "~4.1.3"
-  }
+  ]
 }
