@@ -59,7 +59,7 @@
     "gulp-check-deps": "^1.4.1",
     "gulp-clean-css": "^3.4.1",
     "gulp-concat": "^2.4.3",
-    "gulp-eslint": "^3.0.1",
+    "gulp-eslint": "^4.0.2",
     "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.5.0",
