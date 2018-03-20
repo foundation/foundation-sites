@@ -25,6 +25,7 @@ var webpackStream = require('webpack-stream');
 var webpack2 = require('webpack');
 var named = require('vinyl-named');
 
+var utils = require('../utils.js');
 
 var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
@@ -38,18 +39,26 @@ var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
 
-var WEBPACK_MODULE_CONFIG = {
-  rules: [
-    {
-      test: /.js$/,
-      use: [
-        {
-          loader: 'babel-loader'
-        }
-      ]
-    }
-  ]
-}
+var WEBPACK_CONFIG = {
+  externals: utils.umdExternals({
+    'jquery': 'jQuery'
+  }),
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      }
+    ]
+  },
+  output: {
+    libraryTarget: 'umd',
+  }
+};
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
@@ -113,7 +122,7 @@ gulp.task('customizer:javascript-entry', ['customizer:loadConfig'], function() {
 
 gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
   return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
-    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: WEBPACK_MODULE_CONFIG}, webpack2))
+    .pipe(webpackStream(WEBPACK_CONFIG, webpack2))
     .pipe(rename('foundation.js'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())

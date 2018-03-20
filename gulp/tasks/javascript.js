@@ -7,6 +7,7 @@ var webpackStream = require('webpack-stream');
 var webpack2 = require('webpack');
 var named = require('vinyl-named');
 
+var utils = require('../utils.js');
 var CONFIG = require('../config.js');
 
 // ----- WEBPACK CONFIGURATION -----
@@ -17,29 +18,12 @@ var CONFIG = require('../config.js');
 // (just throw in foundation.js or foundation.min.js) or you should be using a build
 // system.
 
-// Convert an external config object for UMD modules
-// See: https://webpack.js.org/configuration/externals/#object
-function umdExternals(externals, options) {
-  options = Object.assign({ namespace: '' }, options);
-  const umdExternalPath = (...args) => [...args].filter(v => v && !!v.length);
-
-  return Object.keys(externals).reduce(function(obj, k) {
-    obj[k] = {
-      root: umdExternalPath(options.namespace, externals[k]),
-      amd: k,
-      commonjs: k,
-      commonjs2: k,
-    };
-    return obj;
-  }, {});
-};
-
 // Generate plugin Externals config for UMD modules
-const webpackExternalPlugins = Object.assign(
-  umdExternals({
+var webpackExternalPlugins = Object.assign(
+  utils.umdExternals({
     'jquery': 'jQuery',
   }),
-  umdExternals({
+  utils.umdExternals({
     // Import path                    | Exported file
     './foundation.core':              'foundation.core',
     './foundation.core.utils':        'foundation.core',
@@ -61,13 +45,13 @@ const webpackExternalPlugins = Object.assign(
   }, { namespace: CONFIG.JS_BUNDLE_NAMESPACE })
 );
 
-const webpackOutputAsExternal = {
+var webpackOutputAsExternal = {
   library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
   libraryTarget: 'umd',
 };
 
 var webpackConfig = {
-  externals: umdExternals({
+  externals: utils.umdExternals({
     'jquery': 'jQuery'
   }),
   module: {
