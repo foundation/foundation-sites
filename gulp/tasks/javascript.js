@@ -6,6 +6,7 @@ var rename = require('gulp-rename');
 var webpackStream = require('webpack-stream');
 var webpack2 = require('webpack');
 var named = require('vinyl-named');
+var sourcemaps = require('gulp-sourcemaps');
 
 var utils = require('../utils.js');
 var CONFIG = require('../config.js');
@@ -68,7 +69,9 @@ var webpackConfig = {
   },
   output: {
     libraryTarget: 'umd',
-  }
+  },
+  // https://github.com/shama/webpack-stream#source-maps
+  devtool: 'source-map'
 }
 
 // ----- TASKS -----
@@ -83,25 +86,31 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
+    .pipe(sourcemaps.init())
     .pipe(webpackStream(Object.assign({}, webpackConfig, {
         output: webpackOutputAsExternal,
       }), webpack2))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
+    .pipe(sourcemaps.init())
     .pipe(webpackStream(Object.assign({}, webpackConfig, {
         externals: webpackExternalPlugins,
         output: webpackOutputAsExternal,
       }), webpack2))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 
 gulp.task('javascript:foundation', ['javascript:plugins'], function() {
   return gulp.src('js/entries/foundation.js')
     .pipe(named())
+    .pipe(sourcemaps.init())
     .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js'));
 });
 
