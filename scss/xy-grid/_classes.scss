@@ -83,6 +83,7 @@
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
+        @include xy-cell-base(shrink);
         @include xy-cell-static($i, false, $gutter-type: padding);
       }
     }
