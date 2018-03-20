@@ -70,15 +70,13 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
     // * Create minified files
     // * Create minified-sourcemaps based on standard sourcemaps.
     //   Sourcemaps are initialized before the ".min" renaming to be able retrieve
-    //   original sourcemaps (based on the source name), then renamed manually.
+    //   original sourcemaps from source names.
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(rename({ suffix: '.min' }))
       .pipe(cleancss({ compatibility: 'ie9' }))
-      .pipe(sourcemaps.write('.', {
-        mapFile: function(path) { return path.replace('.css.map', '.min.css.map'); }
-      }))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/css'))
       .pipe(cssFilter.restore)
 
@@ -87,9 +85,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(rename({ suffix: '.min' }))
       .pipe(uglify())
-      .pipe(sourcemaps.write('.', {
-        mapFile: function(path) { return path.replace('.js.map', '.min.js.map'); }
-      }))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/js'));
 });
 
