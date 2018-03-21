@@ -127,7 +127,7 @@
     // Base flex properties
     @include xy-cell-base($size);
 
-    @if($gutter-type == 'margin') {
+    @if($gutter-output == true && $gutter-type == 'margin') {
       @include -xy-cell-properties($size, $gutter, $vertical);
     }
     @else {
@@ -163,7 +163,7 @@
   $gutter: -zf-get-bp-val($gutters, $breakpoint);
   $gutter-position: if($vertical == true, top bottom, left right);
 
-  @if($gutter-type == 'margin') {
+  @if($gutter-output == true and $gutter-type == 'margin') {
     @include -xy-cell-properties($size, $gutter, $vertical);
   }
   @else {
