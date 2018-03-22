@@ -23,7 +23,7 @@ $select-radius: $global-radius !default;
 
   height: $height;
   margin: 0 0 $form-spacing;
-  padding: 0 $input-padding;
+  padding: $input-padding;
 
   appearance: none;
   border: $input-border;
@@ -76,6 +76,10 @@ $select-radius: $global-radius !default;
   &[multiple] {
     height: auto;
     background-image: none;
+  }
+  &:not([multiple]) {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
