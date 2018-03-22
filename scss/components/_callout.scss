@@ -26,6 +26,14 @@ $callout-margin: 0 0 1rem 0 !default;
 /// @type Number
 $callout-padding: 1rem !default;
 
+/// Default inner padding for small callouts.
+/// @type Number
+$callout-small-padding: 0.5rem !default;
+
+/// Default inner padding for large callouts.
+/// @type Number
+$callout-large-padding: 3rem !default;
+
 /// Default font color for callouts.
 /// @type Color
 $callout-font-color: $body-font-color !default;
@@ -96,11 +104,11 @@ $callout-link-tint: 30% !default;
     }
 
     &.small {
-      @include callout-size(0.5rem);
+      @include callout-size($callout-small-padding);
     }
 
     &.large {
-      @include callout-size(3rem);
+      @include callout-size($callout-large-padding);
     }
   }
 }
