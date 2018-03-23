@@ -3,14 +3,14 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { transitionend } from './foundation.util.core';
+import { transitionend, RegExpEscape } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
 import { Triggers } from './foundation.util.triggers';
 
 /**
  * OffCanvas module.
- * @module foundation.offcanvas
+ * @module foundation.offCanvas
  * @requires foundation.util.keyboard
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
@@ -118,10 +118,17 @@ class OffCanvas extends Plugin {
       }
     }
 
-    this.options.isRevealed = this.options.isRevealed || new RegExp(this.options.revealClass, 'g').test(this.$element[0].className);
+    // Get the revealOn option from the class.
+    var revealOnRegExp = new RegExp(RegExpEscape(this.options.revealClass) + '([^\\s]+)', 'g');
+    var revealOnClass = revealOnRegExp.exec(this.$element[0].className);
+    if (revealOnClass) {
+      this.options.isRevealed = true;
+      this.options.revealOn = this.options.revealOn || revealOnClass[1];
+    }
 
-    if (this.options.isRevealed === true) {
-      this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
+    // Ensure the `reveal-on-*` class is set.
+    if (this.options.isRevealed === true && this.options.revealOn) {
+      this.$element.first().addClass(`${this.options.revealClass}${this.options.revealOn}`);
       this._setMQChecker();
     }
 
@@ -139,16 +146,16 @@ class OffCanvas extends Plugin {
    * @private
    */
   _events() {
-    this.$element.off('.zf.trigger .zf.offcanvas').on({
+    this.$element.off('.zf.trigger .zf.offCanvas').on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
+      'keydown.zf.offCanvas': this._handleKeyboard.bind(this)
     });
 
     if (this.options.closeOnClick === true) {
       var $target = this.options.contentOverlay ? this.$overlay : this.$content;
-      $target.on({'click.zf.offcanvas': this.close.bind(this)});
+      $target.on({'click.zf.offCanvas': this.close.bind(this)});
     }
   }
 
@@ -165,7 +172,7 @@ class OffCanvas extends Plugin {
       } else {
         _this.reveal(false);
       }
-    }).one('load.zf.offcanvas', function() {
+    }).one('load.zf.offCanvas', function() {
       if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       }
@@ -226,7 +233,7 @@ class OffCanvas extends Plugin {
   }
 
   /**
-   * Stops scrolling of the body when offcanvas is open on mobile Safari and other troublesome browsers.
+   * Stops scrolling of the body when OffCanvas is open on mobile Safari and other troublesome browsers.
    * @private
    */
   _stopScrolling(event) {
@@ -273,6 +280,7 @@ class OffCanvas extends Plugin {
    * @param {Object} event - Event object passed from listener.
    * @param {jQuery} trigger - element that triggered the off-canvas to open.
    * @fires OffCanvas#opened
+   * @todo also trigger 'open' event?
    */
   open(event, trigger) {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
@@ -294,15 +302,10 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
-    /**
-     * Fires when the off-canvas menu opens.
-     * @event OffCanvas#opened
-     */
     this.$element.addClass('is-open').removeClass('is-closed');
 
     this.$triggers.attr('aria-expanded', 'true');
-    this.$element.attr('aria-hidden', 'false')
-        .trigger('opened.zf.offcanvas');
+    this.$element.attr('aria-hidden', 'false');
 
     this.$content.addClass('is-open-' + this.position);
 
@@ -341,6 +344,12 @@ class OffCanvas extends Plugin {
     }
 
     this._addContentClasses();
+
+    /**
+     * Fires when the off-canvas menu opens.
+     * @event OffCanvas#opened
+     */
+    this.$element.trigger('opened.zf.offCanvas');
   }
 
   /**
@@ -361,7 +370,7 @@ class OffCanvas extends Plugin {
        * Fires when the off-canvas menu opens.
        * @event OffCanvas#closed
        */
-        .trigger('closed.zf.offcanvas');
+        .trigger('closed.zf.offCanvas');
 
     this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
@@ -429,13 +438,13 @@ class OffCanvas extends Plugin {
   }
 
   /**
-   * Destroys the offcanvas plugin.
+   * Destroys the OffCanvas plugin.
    * @function
    */
   _destroy() {
     this.close();
-    this.$element.off('.zf.trigger .zf.offcanvas');
-    this.$overlay.off('.zf.offcanvas');
+    this.$element.off('.zf.trigger .zf.offCanvas');
+    this.$overlay.off('.zf.offCanvas');
   }
 }
 
@@ -489,7 +498,7 @@ OffCanvas.defaults = {
   transitionTime: null,
 
   /**
-   * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
+   * Type of transition for the OffCanvas menu. Options are 'push', 'detached' or 'slide'.
    * @option
    * @type {string}
    * @default push
@@ -505,7 +514,7 @@ OffCanvas.defaults = {
   forceTo: null,
 
   /**
-   * Allow the offcanvas to remain open for certain breakpoints.
+   * Allow the OffCanvas to remain open for certain breakpoints.
    * @option
    * @type {boolean}
    * @default false
@@ -521,7 +530,7 @@ OffCanvas.defaults = {
   revealOn: null,
 
   /**
-   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
+   * Force focus to the OffCanvas on open. If true, will focus the opening trigger on close.
    * @option
    * @type {boolean}
    * @default true
@@ -529,7 +538,7 @@ OffCanvas.defaults = {
   autoFocus: true,
 
   /**
-   * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
+   * Class used to force an OffCanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
    * @option
    * @type {string}
    * @default reveal-for-
@@ -538,7 +547,7 @@ OffCanvas.defaults = {
   revealClass: 'reveal-for-',
 
   /**
-   * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
+   * Triggers optional focus trapping when opening an OffCanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
    * @option
    * @type {boolean}
    * @default false

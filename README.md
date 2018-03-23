@@ -44,7 +44,7 @@ Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Re
 These commands will run the various tests:
 
 - `npm run test:sass`
-- `npm run test:javascript:phantomjs`
+- `npm run test:javascript:units`
 - `npm run test:visual`
 
 Testing Supported By<br/>

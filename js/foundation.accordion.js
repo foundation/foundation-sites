@@ -47,7 +47,7 @@ class Accordion extends Plugin {
       var $el = $(el),
           $content = $el.children('[data-tab-content]'),
           id = $content[0].id || GetYoDigits(6, 'accordion'),
-          linkId = el.id || `${id}-label`;
+          linkId = (el.id) ? `${el.id}-label` : `${id}-label`;
 
       $el.find('a:first').attr({
         'aria-controls': id,
@@ -146,7 +146,7 @@ class Accordion extends Plugin {
       }
     });
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      $(window).on('hashchange', this._checkDeepLink);
     }
   }
 
@@ -265,7 +265,7 @@ class Accordion extends Plugin {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
     if(this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      $(window).off('hashchange', this._checkDeepLink);
     }
 
   }

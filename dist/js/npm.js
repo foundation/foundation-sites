@@ -6,10 +6,11 @@ Foundation.addToJquery($);
 // Add Foundation Utils to Foundation global namespace for backwards
 // compatibility.
 
-import { rtl, GetYoDigits, transitionend } from '../../js/foundation.util.core';
+import { rtl, GetYoDigits, transitionend, RegExpEscape } from '../../js/foundation.util.core';
 Foundation.rtl = rtl;
 Foundation.GetYoDigits = GetYoDigits;
 Foundation.transitionend = transitionend;
+Foundation.RegExpEscape = RegExpEscape;
 
 import { Box } from '../../js/foundation.util.box'
 import { onImagesLoaded } from '../../js/foundation.util.imageLoader';

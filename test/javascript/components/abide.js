@@ -80,4 +80,99 @@ describe('Abide', function() {
       plugin.validateInput($html.find("select")).should.equal(false);
     });
   });
+
+  describe('addErrorClasses()', function() {
+    it('adds aria-invalid attribute to element', function() {
+      $html = $('<form data-abide><input type="text"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.addErrorClasses($html.find('input'));
+
+      $html.find('input').should.have.attr('aria-invalid', 'true')
+    });
+  });
+
+  describe('addGlobalErrorA11yAttributes()', function () {
+    it('adds [aria-live] attribute on element', function () {
+      $html = $(`<form data-abide><span data-abide-error></span></form>`).appendTo('body');
+      plugin = new Foundation.Abide($html, { a11yErrorLevel: 'test-level' });
+      plugin.addA11yAttributes($html.find('[data-abide-error]'));
+
+      $html.find('[data-abide-error]').should.have.attr('aria-live', 'test-level');
+    });
+  });
+
+  describe('addA11yAttributes()', function () {
+    it('adds [aria-describedby] attribute to field and [for] attribute to form error', function() {
+      $html = $(`
+        <form data-abide>
+          <input type="text" id="test-input">
+          <label class="form-error" id="test-error">Form error</label>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+
+      $html.find('input').should.have.attr('aria-describedby', 'test-error');
+      $html.find('label.form-error').should.have.attr('for', 'test-input');
+    });
+
+    it('adds attributes and ids when no id is set', function() {
+      $html = $(`
+        <form data-abide>
+          <input type="text">
+          <label class="form-error">Form error</label>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+
+      const errorId = $html.find('.form-error').attr('id');
+      $html.find('.form-error').should.have.attr('id').exist;
+      $html.find('input').should.have.attr('aria-describedby', errorId);
+
+      const inputId = $html.find('input').attr('id');
+      $html.find('input').should.have.attr('id').exist;
+      $html.find('.form-error').should.have.attr('for', inputId);
+    });
+  });
+
+  describe('removeErrorClasses()', function() {
+    it('removes aria-invalid attribute from element', function() {
+      $html = $('<form data-abide><input type="text"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.removeErrorClasses($html.find('input'));
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
+
+  describe('removeRadioErrorClasses()', function() {
+    it('removes aria-invalid attribute from radio group', function() {
+      $html = $('<form data-abide><input type="radio" name="groupName"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.removeRadioErrorClasses('groupName');
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
+
+  describe('resetForm()', function() {
+    it('removes aria-invalid attribute from elements', function() {
+      $html = $('<form data-abide><input type="text"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.resetForm();
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
 });

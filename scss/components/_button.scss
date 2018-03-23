@@ -135,6 +135,46 @@ $button-responsive-expanded: false !default;
   }
 }
 
+/// Sets the base styles of a hollow or clear button filling according to `$fill`.
+/// See mixin `button-fill-style` for the filling styles.
+/// @param {Keyword} $fill [$button-fill] - Type of filling between `hollow` and `clear`. `solid` has no effects.
+@mixin button-fill(
+  $fill: $button-fill
+) {
+  @if $fill == solid {
+    // No base style is required for solid buttons, do nothing
+  }
+  @else if $fill == hollow {
+    @include button-hollow;
+  }
+  @else if $fill == clear {
+    @include button-clear;
+  }
+}
+
+/// Sets the visual styles of a solid/hollow/clear button filling according to `$fill`.
+/// See mixins `button-style`, `button-hollow-style` and `button-clear-style` for effects of visual styling parameters.
+/// @param {Keyword} $fill [$button-fill] - Type of filling between `hollow` and `clear`.
+/// @param {Color} $background [$button-background] - -
+/// @param {Color} $background-hover [$button-background-hover] - -
+/// @param {Color} $color [$button-color] - -
+@mixin button-fill-style(
+  $fill: $button-fill,
+  $background: $button-background,
+  $background-hover: $button-background-hover,
+  $color: $button-color
+) {
+  @if $fill == solid {
+    @include button-style($background, $background-hover, $color);
+  }
+  @else if $fill == hollow {
+    @include button-hollow-style($background);
+  }
+  @else if $fill == clear {
+    @include button-clear-style($background);
+  }
+}
+
 /// Sets the visual style of a button.
 /// @param {Color} $background [$button-background] - Background color of the button.
 /// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
@@ -153,8 +193,14 @@ $button-responsive-expanded: false !default;
     $background-hover: scale-color($background, $lightness: $background-hover-lightness);
   }
 
-  background-color: $background;
-  color: $color;
+  // Default and disabled states
+  &,
+  &.disabled, &[disabled],
+  &.disabled:hover, &[disabled]:hover,
+  &.disabled:focus, &[disabled]:focus {
+    background-color: $background;
+    color: $color;
+  }
 
   &:hover, &:focus {
     background-color: $background-hover;
@@ -162,23 +208,20 @@ $button-responsive-expanded: false !default;
   }
 }
 
-/// Removes background fill on hover and focus for hollow buttons.
+/// Sets the base styles of a hollow button.
+/// See mixin `button-hollow-style` for the filling styles.
 @mixin button-hollow {
-  &,
-  &:hover,
-  &:focus {
-    background-color: transparent;
-  }
-
-  &.disabled,
-  &[disabled] {
-    &,
-    &:hover, &:focus {
+  &, &.disabled, &[disabled] {
+    &, &:hover, &:focus {
       background-color: transparent;
     }
   }
 }
 
+/// Sets the visual style of a hollow button.
+/// @param {Color} $color [$button-background] - Text and border color of the button.
+/// @param {Color} $hover-lightness [$button-hollow-hover-lightness] - Color lightness on hover.
+/// @param {Color} $border-width [$button-hollow-border-width] - Border width of the button.
 @mixin button-hollow-style(
   $color: $button-background,
   $hover-lightness: $button-hollow-hover-lightness,
@@ -186,38 +229,61 @@ $button-responsive-expanded: false !default;
 ) {
   $color-hover: scale-color($color, $lightness: $hover-lightness);
 
-  border: $border-width solid $color;
-  color: $color;
+  // Default and disabled states
+  &,
+  &.disabled, &[disabled],
+  &.disabled:hover, &[disabled]:hover,
+  &.disabled:focus, &[disabled]:focus {
+    border: $border-width solid $color;
+    color: $color;
+  }
 
   &:hover, &:focus {
     border-color: $color-hover;
     color: $color-hover;
-    &.disabled,
-    &[disabled] {
-      border: $border-width solid $color;
-      color: $color;
+  }
+}
+
+/// Sets the base styles of a clear button.
+/// See mixin `button-clear-style` for the filling styles.
+@mixin button-clear {
+  &, &.disabled, &[disabled] {
+    &, &:hover, &:focus {
+      border-color: transparent;
+      background-color: transparent;
     }
   }
 }
 
-/// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-/// @param {Color} $background [$button-background] - Background color of the disabled button.
-/// @param {Color} $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a color based on the background color.
-@mixin button-disabled(
-  $background: $button-background,
-  $color: $button-color
+/// Sets the visual style of a clear button.
+/// @param {Color} $color [$button-background] - Text color of the button.
+/// @param {Color} $hover-lightness [$button-hollow-hover-lightness] - Color lightness on hover.
+@mixin button-clear-style(
+  $color: $button-background,
+  $hover-lightness: $button-hollow-hover-lightness
 ) {
-  @if $color == auto {
-    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
-  }
+  $color-hover: scale-color($color, $lightness: $hover-lightness);
 
-  opacity: $button-opacity-disabled;
-  cursor: not-allowed;
-
-  &, &:hover, &:focus {
-    background-color: $background;
+  // Default and disabled states
+  &,
+  &.disabled, &[disabled],
+  &.disabled:hover, &[disabled]:hover,
+  &.disabled:focus, &[disabled]:focus {
     color: $color;
   }
+
+  &:hover, &:focus {
+    color: $color-hover;
+  }
+}
+
+/// Adds disabled styles to a button by fading the element and reseting the cursor.
+/// @param {Number} $opacity [$button-opacity-disabled] - Opacity of the disabled button.
+@mixin button-disabled(
+  $opacity: $button-opacity-disabled
+) {
+  opacity: $button-opacity-disabled;
+  cursor: not-allowed;
 }
 
 /// Adds a dropdown arrow to a button.
@@ -254,14 +320,8 @@ $button-responsive-expanded: false !default;
   $style: $button-fill
 ) {
   @include button-base;
-
-  @if $style == solid {
-    @include button-style($background, $background-hover, $color);
-  }
-  @else if $style == hollow {
-    @include button-hollow;
-    @include button-hollow-style($background);
-  }
+  @include button-fill($style);
+  @include button-fill-style($style, $background, $background-hover, $color);
 
   @if $expand {
     @include button-expand;
@@ -270,7 +330,7 @@ $button-responsive-expanded: false !default;
 
 @mixin foundation-button {
   .button {
-    @include button;
+    @include button($style: none);
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
@@ -304,77 +364,25 @@ $button-responsive-expanded: false !default;
       }
     }
 
-    // Colors
-    @each $name, $color in $button-palette {
-      @if $button-fill != hollow {
-        &.#{$name} {
-          @include button-style($color, auto, auto);
-        }
-      }
-      @else {
-        &.#{$name} {
-          @include button-hollow-style($color);
-        }
+    // Solid, hollow & clear styles
+    @each $filling in (solid hollow clear) {
+      $selector: if($button-fill == $filling, null, '.#{$filling}');
 
-        &.#{$name}.dropdown::after {
-          border-top-color: $color;
+      &#{$selector} {
+        @include button-fill($filling);
+        @include button-fill-style($filling);
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            @include button-fill-style($filling, $color, auto, auto);
+          }
         }
       }
     }
 
-    // Disabled style
-    &.disabled,
-    &[disabled] {
+    // Disabled state
+    &.disabled, &[disabled] {
       @include button-disabled;
-
-      @each $name, $color in $button-palette {
-        &.#{$name} {
-          @include button-disabled($color, auto);
-        }
-      }
-    }
-
-    // Hollow style
-    @if $button-fill != hollow {
-      &.hollow {
-        @include button-hollow;
-        @include button-hollow-style;
-
-        @each $name, $color in $button-palette {
-          &.#{$name} {
-            @include button-hollow-style($color);
-          }
-        }
-      }
-    }
-
-    // Clear style
-    @if $button-fill != clear {
-      &.clear {
-        @include button-hollow;
-        @include button-hollow-style;
-
-        &, &:hover, &:focus {
-          &, &.disabled, &[disabled] {
-            border-color: transparent;
-          }
-        }
-
-        @each $name, $color in $button-palette {
-          &.#{$name} {
-            @include button-hollow-style($color);
-
-            &, &:hover,
-            &:focus {
-              &,
-              &.disabled,
-              &[disabled] {
-                border-color: transparent;
-              }
-            }
-          }
-        }
-      }
     }
 
     // Dropdown arrow

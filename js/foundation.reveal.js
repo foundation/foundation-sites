@@ -169,12 +169,12 @@ class Reveal extends Plugin {
       });
     }
     if (this.options.deepLink) {
-      $(window).on(`popstate.zf.reveal:${this.id}`, this._handleState.bind(this));
+      $(window).on(`hashchange.zf.reveal:${this.id}`, this._handleState.bind(this));
     }
   }
 
   /**
-   * Handles modal methods on back/forward button clicks or any other event that triggers popstate.
+   * Handles modal methods on back/forward button clicks or any other event that triggers hashchange.
    * @private
    */
   _handleState(e) {
@@ -184,10 +184,11 @@ class Reveal extends Plugin {
 
   /**
   * Disables the scroll when Reveal is shown to prevent the background from shifting
+  * @param {number} scrollTop - Scroll to visually apply, window current scroll by default
   */
-  _disableScroll(){
+  _disableScroll(scrollTop) {
+    scrollTop = scrollTop || $(window).scrollTop();
     if ($(document).height() > $(window).height()) {
-      var scrollTop = $(window).scrollTop();
       $("html")
         .css("top", -scrollTop);
     }
@@ -195,10 +196,11 @@ class Reveal extends Plugin {
 
   /**
   * Reenables the scroll when Reveal closes
+  * @param {number} scrollTop - Scroll to restore, html "top" property by default (as set by `_disableScroll`)
   */
-  _enableScroll(){
+  _enableScroll(scrollTop) {
+    scrollTop = scrollTop || parseInt($("html").css("top"));
     if ($(document).height() > $(window).height()) {
-      var scrollTop = parseInt($("html").css("top"));
       $("html")
         .css("top", "");
       $(window).scrollTop(-scrollTop);
@@ -271,11 +273,6 @@ class Reveal extends Plugin {
 
     var _this = this;
 
-    function addRevealOpenClasses() {
-
-      $('html').addClass('is-reveal-open');
-    }
-
     // Motion UI method of reveal
     if (this.options.animationIn) {
       function afterAnimation(){
@@ -285,7 +282,7 @@ class Reveal extends Plugin {
             'tabindex': -1
           })
           .focus();
-        addRevealOpenClasses();
+        _this.addRevealOpenClasses();
         Keyboard.trapFocus(_this.$element);
       }
       if (this.options.overlay) {
@@ -315,7 +312,7 @@ class Reveal extends Plugin {
       .focus();
     Keyboard.trapFocus(this.$element);
 
-    addRevealOpenClasses();
+    this._addRevealOpenClasses();
 
     this._extraHandlers();
 
@@ -324,6 +321,14 @@ class Reveal extends Plugin {
      * @event Reveal#open
      */
     this.$element.trigger('open.zf.reveal');
+  }
+
+  _addRevealOpenClasses() {
+    $('html').addClass('is-reveal-open');
+  }
+
+  _removeRevealOpenClasses() {
+    $('html').removeClass('is-reveal-open');
   }
 
   /**
@@ -401,15 +406,20 @@ class Reveal extends Plugin {
 
     function finishUp() {
 
+      // Get the current top before the modal is closed and restore the scroll after.
+      // TODO: use component properties instead of HTML properties
+      // See https://github.com/zurb/foundation-sites/pull/10786
+      var scrollTop = parseInt($("html").css("top"));
+
       if ($('.reveal:visible').length  === 0) {
-        $('html').removeClass('is-reveal-open');
+        _this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
       }
 
       Keyboard.releaseFocus(_this.$element);
 
       _this.$element.attr('aria-hidden', true);
 
-      _this._enableScroll();
+      _this._enableScroll(scrollTop);
 
       /**
       * Fires when the modal is done closing.
@@ -462,6 +472,10 @@ class Reveal extends Plugin {
     this.$element.hide().off();
     this.$anchor.off('.zf');
     $(window).off(`.zf.reveal:${this.id}`);
+
+    if ($('.reveal:visible').length  === 0) {
+      this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
+    }
   };
 }
 
