@@ -6,6 +6,7 @@ var rename = require('gulp-rename');
 var webpackStream = require('webpack-stream');
 var webpack2 = require('webpack');
 var named = require('vinyl-named');
+var sourcemaps = require('gulp-sourcemaps');
 
 var CONFIG = require('../config.js');
 
@@ -61,7 +62,9 @@ var webpackConfig = {
     // See https://github.com/zurb/foundation-sites/pull/10903
     // ---
     // libraryTarget: 'umd',
-  }
+  },
+  // https://github.com/shama/webpack-stream#source-maps
+  devtool: 'source-map'
 }
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
@@ -70,20 +73,26 @@ var webpackConfig = {
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
+    .pipe(sourcemaps.init())
     .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
+    .pipe(sourcemaps.init())
     .pipe(webpackStream(Object.assign({}, webpackConfig, { externals: pluginsAsExternals }), webpack2))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 
 gulp.task('javascript:foundation', ['javascript:plugins'], function() {
   return gulp.src('js/entries/foundation.js')
     .pipe(named())
+    .pipe(sourcemaps.init())
     .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js'));
 });
 //gulp.task('javascript:foundation', function() {

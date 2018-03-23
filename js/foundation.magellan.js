@@ -102,7 +102,7 @@ class Magellan extends Plugin {
         })
         .on('click.zf.magellan', 'a[href^="#"]', function (e) {
           e.preventDefault();
-          var arrival   = _this.getAttribute('href');
+          var arrival = this.getAttribute('href');
           _this.scrollToLoc(arrival);
         });
     });

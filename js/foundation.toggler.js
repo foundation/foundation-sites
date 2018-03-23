@@ -58,9 +58,10 @@ class Toggler extends Plugin {
     // Add ARIA attributes to triggers
     var id = this.$element[0].id;
     $(`[data-open="${id}"], [data-close="${id}"], [data-toggle="${id}"]`)
-      .attr('aria-controls', id);
-    // If the target is hidden, add aria-hidden
-    this.$element.attr('aria-expanded', this.$element.is(':hidden') ? false : true);
+      .attr({
+        'aria-controls': id,
+        'aria-expanded': this.$element.is(':hidden') ? false : true
+      });
   }
 
   /**
@@ -125,7 +126,11 @@ class Toggler extends Plugin {
   }
 
   _updateARIA(isOn) {
-    this.$element.attr('aria-expanded', isOn ? true : false);
+    var id = this.$element[0].id;
+    $(`[data-open="${id}"], [data-close="${id}"], [data-toggle="${id}"]`)
+      .attr({
+        'aria-expanded': isOn ? true : false
+      });
   }
 
   /**
