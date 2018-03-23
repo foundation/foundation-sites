@@ -166,7 +166,7 @@ class OffCanvas extends Plugin {
   _setMQChecker() {
     var _this = this;
 
-    onLoad(function () {
+    this.onLoadListener = onLoad($(window), function () {
       if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       }
@@ -447,6 +447,7 @@ class OffCanvas extends Plugin {
     this.close();
     this.$element.off('.zf.trigger .zf.offCanvas');
     this.$overlay.off('.zf.offCanvas');
+    $(window).off(this.onLoadListener);
   }
 }
 

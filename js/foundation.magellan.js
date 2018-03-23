@@ -94,15 +94,17 @@ class Magellan extends Plugin {
       _this._updateActive();
     });
 
-    onLoad(function () {
-      _this.$element.on({
-        'resizeme.zf.trigger': _this.reflow.bind(_this),
-        'scrollme.zf.trigger': _this._updateActive.bind(_this)
-      }).on('click.zf.magellan', 'a[href^="#"]', function (e) {
-        e.preventDefault();
-        var arrival   = _this.getAttribute('href');
-        _this.scrollToLoc(arrival);
-      });
+    _this.onLoadListener = onLoad($(window), function () {
+      _this.$element
+        .on({
+          'resizeme.zf.trigger': _this.reflow.bind(_this),
+          'scrollme.zf.trigger': _this._updateActive.bind(_this)
+        })
+        .on('click.zf.magellan', 'a[href^="#"]', function (e) {
+          e.preventDefault();
+          var arrival   = _this.getAttribute('href');
+          _this.scrollToLoc(arrival);
+        });
     });
 
     this._deepLinkScroll = function(e) {
@@ -224,7 +226,10 @@ class Magellan extends Plugin {
       var hash = this.$active[0].getAttribute('href');
       window.location.hash.replace(hash, '');
     }
-    $(window).off('hashchange', this._deepLinkScroll);
+
+    $(window)
+      .off('hashchange', this._deepLinkScroll)
+      .off(this.onLoadListener);
   }
 }
 

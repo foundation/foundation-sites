@@ -60,7 +60,7 @@ class Sticky extends Plugin {
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    onLoad(function () {
+    this.onLoadListener = onLoad($(window), function () {
       //We calculate the container height to have correct values for anchor points offset calculation.
       _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
       _this.$container.css('height', _this.containerHeight);
@@ -403,7 +403,9 @@ class Sticky extends Plugin {
     if (this.$anchor && this.$anchor.length) {
       this.$anchor.off('change.zf.sticky');
     }
-    $(window).off(this.scrollListener);
+    $(window)
+      .off(this.scrollListener)
+      .off(this.onLoadListener);
 
     if (this.wasWrapped) {
       this.$element.unwrap();

@@ -245,7 +245,7 @@ Triggers.init = function($, Foundation) {
   if (typeof($.triggersInitialized) === 'undefined') {
     let $document = $(document);
 
-    onLoad(function () {
+    onLoad($(window), function () {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
     });

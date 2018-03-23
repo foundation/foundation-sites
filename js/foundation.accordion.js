@@ -82,7 +82,7 @@ class Accordion extends Plugin {
           //roll up a little to show the titles
           if (this.options.deepLinkSmudge) {
             var _this = this;
-            onLoad(function() {
+            onLoad($(window), function() {
               var offset = _this.$element.offset();
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });

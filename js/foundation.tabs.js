@@ -78,7 +78,7 @@ class Tabs extends Plugin {
       }
 
       if(isActive && _this.options.autoFocus){
-        onLoad(function() {
+        _this.onLoadListener = onLoad($(window), function() {
           $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
             $link.focus();
           });
@@ -398,6 +398,7 @@ class Tabs extends Plugin {
       $(window).off('hashchange', this._checkDeepLink);
     }
 
+    $(window).off(this.onLoadListener);
   }
 }
 
