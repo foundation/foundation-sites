@@ -25,50 +25,50 @@
 @import 'util/util';
 // Global styles
 @import 'global';
+@import 'forms/forms';
+@import 'typography/typography';
 
 // Grids
 @import 'grid/grid';
 @import 'xy-grid/xy-grid';
 // Generic components
-@import 'typography/typography';
-@import 'forms/forms';
-@import 'components/table';
-@import 'components/label';
-@import 'components/slider';
-@import 'components/progress-bar';
-@import 'components/switch';
 @import 'components/button';
-@import 'components/close-button';
 @import 'components/button-group';
+@import 'components/close-button';
+@import 'components/label';
+@import 'components/progress-bar';
+@import 'components/slider';
+@import 'components/switch';
+@import 'components/table';
 // Basic components
-@import 'components/tooltip';
 @import 'components/badge';
+@import 'components/breadcrumbs';
 @import 'components/callout';
 @import 'components/card';
 @import 'components/dropdown';
 @import 'components/pagination';
-@import 'components/breadcrumbs';
+@import 'components/tooltip';
 
 // Containers
 @import 'components/accordion';
-@import 'components/orbit';
-@import 'components/thumbnail';
-@import 'components/tabs';
 @import 'components/media-object';
+@import 'components/orbit';
 @import 'components/responsive-embed';
+@import 'components/tabs';
+@import 'components/thumbnail';
 // Menu-based containers
 @import 'components/menu';
 @import 'components/menu-icon';
 @import 'components/accordion-menu';
-@import 'components/dropdown-menu';
 @import 'components/drilldown';
+@import 'components/dropdown-menu';
 
 // Layout components
-@import 'components/top-bar';
-@import 'components/title-bar';
 @import 'components/off-canvas';
-@import 'components/sticky';
 @import 'components/reveal';
+@import 'components/sticky';
+@import 'components/title-bar';
+@import 'components/top-bar';
 
 // Helpers
 @import 'components/float';
@@ -92,6 +92,8 @@
 
   // Global styles
   @include foundation-global-styles;
+  @include foundation-forms;
+  @include foundation-typography;
 
   // Grids
   @if not $flex {
@@ -107,45 +109,43 @@
   }
 
   // Generic components
-  @include foundation-table;
-  @include foundation-typography;
-  @include foundation-forms;
-  @include foundation-label;
-  @include foundation-slider;
-  @include foundation-progress-bar;
-  @include foundation-switch;
   @include foundation-button;
-  @include foundation-close-button;
   @include foundation-button-group;
+  @include foundation-close-button;
+  @include foundation-label;
+  @include foundation-progress-bar;
+  @include foundation-slider;
+  @include foundation-switch;
+  @include foundation-table;
   // Basic components
-  @include foundation-tooltip;
   @include foundation-badge;
+  @include foundation-breadcrumbs;
   @include foundation-callout;
   @include foundation-card;
   @include foundation-dropdown;
   @include foundation-pagination;
-  @include foundation-breadcrumbs;
+  @include foundation-tooltip;
 
   // Containers
   @include foundation-accordion;
-  @include foundation-orbit;
-  @include foundation-thumbnail;
-  @include foundation-tabs;
   @include foundation-media-object;
+  @include foundation-orbit;
   @include foundation-responsive-embed;
+  @include foundation-tabs;
+  @include foundation-thumbnail;
   // Menu-based containers
   @include foundation-menu;
   @include foundation-menu-icon;
   @include foundation-accordion-menu;
-  @include foundation-dropdown-menu;
   @include foundation-drilldown-menu;
+  @include foundation-dropdown-menu;
 
   // Layout components
-  @include foundation-top-bar;
-  @include foundation-title-bar;
   @include foundation-off-canvas;
-  @include foundation-sticky;
   @include foundation-reveal;
+  @include foundation-sticky;
+  @include foundation-title-bar;
+  @include foundation-top-bar;
 
   // Helpers
   @include foundation-float-classes;

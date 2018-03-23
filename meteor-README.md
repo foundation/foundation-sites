@@ -33,58 +33,60 @@ Each component has an export mixin which prints out the CSS for that component. 
 Or you can comment out the components you don't need:
 
 ```
+@import 'foundation';
+
 // Global styles
 @include foundation-global-styles;
+@include foundation-forms;
+@include foundation-typography;
 
 // Grids (choose one)
 @include foundation-xy-grid-classes;
-// @include foundation-flex-grid;
 // @include foundation-grid;
+// @include foundation-flex-grid;
 
 // Generic components
-@include foundation-table;
-@include foundation-typography;
-@include foundation-forms;
-@include foundation-label;
-@include foundation-slider;
-@include foundation-progress-bar;
-@include foundation-switch;
 @include foundation-button;
-@include foundation-close-button;
 @include foundation-button-group;
+@include foundation-close-button;
+@include foundation-label;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-switch;
+@include foundation-table;
 // Basic components
-@include foundation-tooltip;
 @include foundation-badge;
+@include foundation-breadcrumbs;
 @include foundation-callout;
 @include foundation-card;
 @include foundation-dropdown;
 @include foundation-pagination;
-@include foundation-breadcrumbs;
+@include foundation-tooltip;
 
 // Containers
 @include foundation-accordion;
-@include foundation-orbit;
-@include foundation-thumbnail;
-@include foundation-tabs;
 @include foundation-media-object;
+@include foundation-orbit;
 @include foundation-responsive-embed;
+@include foundation-tabs;
+@include foundation-thumbnail;
 // Menu-based containers
 @include foundation-menu;
 @include foundation-menu-icon;
 @include foundation-accordion-menu;
-@include foundation-dropdown-menu;
 @include foundation-drilldown-menu;
+@include foundation-dropdown-menu;
 
 // Layout components
-@include foundation-top-bar;
-@include foundation-title-bar;
 @include foundation-off-canvas;
-@include foundation-sticky;
 @include foundation-reveal;
+@include foundation-sticky;
+@include foundation-title-bar;
+@include foundation-top-bar;
 
 // Helpers
 @include foundation-float-classes;
-@include foundation-flex-classes;
+// @include foundation-flex-classes;
 @include foundation-visibility-classes;
 // @include foundation-prototype-classes;
 ```
