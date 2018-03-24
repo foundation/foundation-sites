@@ -1,10 +1,18 @@
 language: node_js
-node_js:
-  - "lts/boron"
-  - "lts/carbon"
-  - "stable"
-install:
-  - npm install
-script: npm run test:ci
+
+matrix:
+  include:
+  - node_js: "lts/boron"
+    env: ZF_TRAVIS_COMMAND=test:javascript:units
+  - node_js: "lts/carbon"
+    env: ZF_TRAVIS_COMMAND=test:javascript:units
+  - node_js: "stable"
+    env: ZF_TRAVIS_COMMAND=test:javascript:units
+  - node_js: "stable"
+    env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
+
+install: npm install
+script: npm run $ZF_TRAVIS_COMMAND
+
 notifications:
   email: false

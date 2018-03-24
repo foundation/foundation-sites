@@ -1,6 +1,7 @@
 {
     "test_path": "test/javascript/index.html",
     "test_framework": "mocha",
+    "exit_with_fail": true,
     "browsers": [
         {
             "browser": "chrome",
