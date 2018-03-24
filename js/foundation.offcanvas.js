@@ -366,7 +366,7 @@ class OffCanvas extends Plugin {
      * Fires when the off-canvas menu closes.
      * @event OffCanvas#close
      */
-    this.$element.trigger('close.zf.offcanvas');
+    this.$element.trigger('close.zf.offCanvas');
 
     var _this = this;
 
@@ -406,7 +406,7 @@ class OffCanvas extends Plugin {
        * Fires when the off-canvas menu is closed.
        * @event OffCanvas#closed
        */
-      _this.$element.trigger('closed.zf.offcanvas');
+      _this.$element.trigger('closed.zf.offCanvas');
     });
   }
 
