@@ -21,15 +21,14 @@ The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>
 <img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
 ```
 
-
 <div class="grid-x grid-margin-x">
-  <div class="cell small-4">
+  <div class="cell small-4 text-center">
     <img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="cell small-4">
+  <div class="cell small-4 text-center">
     <a href="#" class="thumbnail"><img src="assets/img/thumbnail/02.jpg" alt="Photo of Neptune."></a>
   </div>
-  <div class="cell small-4">
+  <div class="cell small-4 text-center">
     <img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
   </div>
 </div>

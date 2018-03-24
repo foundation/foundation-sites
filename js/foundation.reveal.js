@@ -521,13 +521,6 @@ Reveal.defaults = {
    */
   fullScreen: false,
   /**
-   * Percentage of screen height the modal should push up from the bottom of the view.
-   * @option
-   * @type {number}
-   * @default 10
-   */
-  btmOffsetPct: 10,
-  /**
    * Allows the modal to generate an overlay div, which will cover the view when modal opens.
    * @option
    * @type {boolean}
@@ -542,14 +535,15 @@ Reveal.defaults = {
    */
   resetOnClose: false,
   /**
-   * Allows the modal to alter the url on open/close, and allows the use of the `back` button to close modals. ALSO, allows a modal to auto-maniacally open on page load IF the hash === the modal's user-set id.
+   * Link the location hash to the modal.
+   * Set the location hash when the modal is opened/closed, and open/close the modal when the location changes.
    * @option
    * @type {boolean}
    * @default false
    */
   deepLink: false,
   /**
-   * Update the browser history with the open modal
+   * If `deepLink` is enabled, update the browser history with the open modal
    * @option
    * @default false
    */

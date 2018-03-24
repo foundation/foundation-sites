@@ -42,7 +42,7 @@ Your project will be recompiled every time you save a Sass file in `dist/.
 ## ZURB Template
 
 <div class="responsive-embed widescreen mb1">
-  <iframe id="zurb-template-starter" data-linkable-video='3Uj74uJ3GSQ' width="500" height="315" src="https://www.youtube.com/embed/3Uj74uJ3GSQ?enablejsapi=1" enablejsapi="1" frameborder="0" allowfullscreen ></iframe>
+  <iframe id="zurb-template-starter" data-linkable-video="3Uj74uJ3GSQ" width="500" height="315" src="https://www.youtube.com/embed/3Uj74uJ3GSQ?enablejsapi=1" enablejsapi="1" frameborder="0" allowfullscreen ></iframe>
   <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://www.youtube.com/watch?v=3Uj74uJ3GSQ"></a>
 </div>
 

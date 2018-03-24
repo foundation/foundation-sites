@@ -192,7 +192,66 @@ class Abide extends Plugin {
       $formError.addClass(this.options.formErrorClass);
     }
 
-    $el.addClass(this.options.inputErrorClass).attr('data-invalid', '');
+    $el.addClass(this.options.inputErrorClass).attr({
+      'data-invalid': '',
+      'aria-invalid': true
+    });
+  }
+
+  /**
+   * Adds [for] and [role=alert] attributes to all form error targetting $el,
+   * and [aria-describedby] attribute to $el toward the first form error.
+   * @param {Object} $el - jQuery object
+   */
+  addA11yAttributes($el) {
+    let $errors = this.findFormError($el);
+    let $labels = $errors.filter('label').end();
+    let $error = $errors.first().end();
+    if (!$errors.length) return;
+
+    // Set [aria-describedby] on the input toward the first form error if it is not set
+    if (typeof $el.attr('aria-describedby') === 'undefined') {
+      // Get the first error ID or create one
+      let errorId = $error.attr('id');
+      if (typeof errorId === 'undefined') {
+        errorId = GetYoDigits(6, 'abide-error');
+        $error.attr('id', errorId);
+      };
+
+      $el.attr('aria-describedby', errorId);
+    }
+
+    if ($labels.filter('[for]').length < $labels.length) {
+      // Get the input ID or create one
+      let elemId = $el.attr('id');
+      if (typeof elemId === 'undefined') {
+        elemId = GetYoDigits(6, 'abide-input');
+        $el.attr('id', elemId);
+      };
+
+      // For each label targeting $el, set [for] if it is not set.
+      $labels.each((i, label) => {
+        const $label = $(label);
+        if (typeof $label.attr('for') === 'undefined')
+          $label.attr('for', elemId);
+      }).end();
+    }
+
+    // For each error targeting $el, set [role=alert] if it is not set.
+    $errors.each((i, label) => {
+      const $label = $(label);
+      if (typeof $label.attr('role') === 'undefined')
+        $label.attr('role', 'alert');
+    }).end();
+  }
+
+  /**
+   * Adds [aria-live] attribute to the given global form error $el.
+   * @param {Object} $el - jQuery object to add the attribute to
+   */
+  addGlobalErrorA11yAttributes($el) {
+    if (typeof $el.attr('aria-live') === 'undefined')
+      $el.attr('aria-live', this.options.a11yErrorLevel);
   }
 
   /**

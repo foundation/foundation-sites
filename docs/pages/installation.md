@@ -49,6 +49,19 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="cell small-2 text-right">
+    <a href="https://rubygems.org/gems/foundation-rails">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-rubygems.svg" alt="Ruby Gems">
+    </a>
+  </div>
+  <div class="column small-10">
+    <div class="docs-code">
+      <code class="bash">
+        gem install foundation-rails
+      </code>
+    </div>
+  </div>
+
+  <div class="cell small-2 text-right">
     <a href="https://atmospherejs.com/zurb/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
     </a>

@@ -93,15 +93,28 @@ class Magellan extends Plugin {
       _this._updateActive();
     });
 
-    this.$element.on({
-      'resizeme.zf.trigger': this.reflow.bind(this),
-      'scrollme.zf.trigger': this._updateActive.bind(this)
-    }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
+    if (document.readyState === "complete") {
+      _this.$element.on({
+        'resizeme.zf.trigger': _this.reflow.bind(_this),
+        'scrollme.zf.trigger': _this._updateActive.bind(_this)
+      }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
-        var arrival   = this.getAttribute('href');
+        var arrival   = _this.getAttribute('href');
         _this.scrollToLoc(arrival);
       });
-
+    } else {
+      $(window).one('load', function(){
+        _this.$element.on({
+          'resizeme.zf.trigger': _this.reflow.bind(_this),
+          'scrollme.zf.trigger': _this._updateActive.bind(_this)
+        }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
+          e.preventDefault();
+          var arrival   = _this.getAttribute('href');
+          _this.scrollToLoc(arrival);
+        });
+      });
+    }
+    
     this._deepLinkScroll = function(e) {
       if(_this.options.deepLinking) {
         _this.scrollToLoc(window.location.hash);
@@ -129,7 +142,6 @@ class Magellan extends Plugin {
 
     SmoothScroll.scrollToLoc(loc, options, function() {
       _this._inTransition = false;
-      _this._updateActive();
     })
   }
 
