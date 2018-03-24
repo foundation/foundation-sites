@@ -30,21 +30,22 @@ To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of 
 <div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
   Example form in a dropdown.
   <form>
-    <div class="row">
-      <div class="medium-6 columns">
-        <label>Name
-          <input type="text" placeholder="Kirk, James T.">
-        </label>
-      </div>
-      <div class="medium-6 columns">
-        <label>Rank
-          <input type="text" placeholder="Captain">
-        </label>
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-6">
+          <label>Name
+            <input type="text" placeholder="Kirk, James T.">
+          </label>
+        </div>
+        <div class="cell medium-6">
+          <label>Rank
+            <input type="text" placeholder="Captain">
+          </label>
+        </div>
       </div>
     </div>
   </form>
 </div>
-
 
 <button class="button" type="button" data-toggle="example-dropdown-1">Hoverable Dropdown</button>
 <div class="dropdown-pane" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
@@ -145,52 +146,49 @@ These dropdowns test various positioning and alignments. Valid positions are lef
 </div>
 ```
 
-<div class="row small-up-1 medium-up-3">
-  <div class="column">
-    <p>Bottom Left</p>
-    <button class="button" type="button" data-toggle="example-dropdown-bottom-left">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="bottom" data-alignment="left" id="example-dropdown-bottom-left" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position bottom and alignment left should align with its top left corner at the bottom left of the button</p>
+<div class="grid-container">
+  <div class="grid-x grid-margin-x small-up-1 medium-up-3">
+    <div class="cell">
+      <p>Bottom Left</p>
+      <button class="button" type="button" data-toggle="example-dropdown-bottom-left">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="bottom" data-alignment="left" id="example-dropdown-bottom-left" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position bottom and alignment left should align with its top left corner at the bottom left of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Bottom Center</p>
-    <button class="button" type="button" data-toggle="example-dropdown-bottom-center">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="bottom" data-alignment="center" id="example-dropdown-bottom-center" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position bottom and alignment center should align below the button with its center aligned with the center of the button</p>
+    <div class="cell">
+      <p>Bottom Center</p>
+      <button class="button" type="button" data-toggle="example-dropdown-bottom-center">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="bottom" data-alignment="center" id="example-dropdown-bottom-center" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position bottom and alignment center should align below the button with its center aligned with the center of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Bottom Right</p>
-    <button class="button" type="button" data-toggle="example-dropdown-bottom-right">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="bottom" data-alignment="right" id="example-dropdown-bottom-right" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position bottom and alignment right should align with its top right corner at the bottom right of the button</p>
+    <div class="cell">
+      <p>Bottom Right</p>
+      <button class="button" type="button" data-toggle="example-dropdown-bottom-right">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="bottom" data-alignment="right" id="example-dropdown-bottom-right" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position bottom and alignment right should align with its top right corner at the bottom right of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Top Left</p>
-    <button class="button" type="button" data-toggle="example-dropdown-top-left">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="top" data-alignment="left" id="example-dropdown-top-left" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position top and alignment left should align with its bottom left corner at the top left of the button</p>
+    <div class="cell">
+      <p>Top Left</p>
+      <button class="button" type="button" data-toggle="example-dropdown-top-left">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="top" data-alignment="left" id="example-dropdown-top-left" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position top and alignment left should align with its bottom left corner at the top left of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Top Center</p>
-    <button class="button" type="button" data-toggle="example-dropdown-top-center">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="top" data-alignment="center" id="example-dropdown-top-center" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position top and alignment center should align above with its center aligned with the center of the button</p>
+    <div class="cell">
+      <p>Top Center</p>
+      <button class="button" type="button" data-toggle="example-dropdown-top-center">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="top" data-alignment="center" id="example-dropdown-top-center" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position top and alignment center should align above with its center aligned with the center of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Top Right</p>
-    <button class="button" type="button" data-toggle="example-dropdown-top-right">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="top" data-alignment="right" id="example-dropdown-top-right" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position top and alignment right should align with its bottom right corner at the top right of the button</p>
+    <div class="cell">
+      <p>Top Right</p>
+      <button class="button" type="button" data-toggle="example-dropdown-top-right">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="top" data-alignment="right" id="example-dropdown-top-right" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position top and alignment right should align with its bottom right corner at the top right of the button</p>
+      </div>
     </div>
   </div>
 </div>
@@ -231,49 +229,49 @@ These dropdowns test various positioning and alignments. Valid positions are lef
 </div>
 ```
 
-<div class="row small-up-1 medium-up-2">
-  <div class="column">
-    <p>Right Top</p>
-    <button class="button" type="button" data-toggle="example-dropdown-right-top">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="right" data-alignment="top" id="example-dropdown-right-top" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position right and alignment top should align with its top left corner at the top right of the button</p>
+<div class="grid-container">
+  <div class="grid-x grid-margin-x small-up-1 medium-up-2">
+    <div class="cell">
+      <p>Right Top</p>
+      <button class="button" type="button" data-toggle="example-dropdown-right-top">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="right" data-alignment="top" id="example-dropdown-right-top" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position right and alignment top should align with its top left corner at the top right of the button</p>
+      </div>
     </div>
-  </div>
-  <div class="column">
-    <p>Left Top</p>
-    <button class="button" type="button" data-toggle="example-dropdown-left-top">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="left" data-alignment="top" id="example-dropdown-left-top" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position left and alignment top should align with its top right corner at the top left of the button</p>
+    <div class="cell">
+      <p>Left Top</p>
+      <button class="button" type="button" data-toggle="example-dropdown-left-top">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="left" data-alignment="top" id="example-dropdown-left-top" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position left and alignment top should align with its top right corner at the top left of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Right Center</p>
-    <button class="button" type="button" data-toggle="example-dropdown-right-center">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="right" data-alignment="center" id="example-dropdown-right-center" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position right and alignment center should align to the right of the button with the center of the dropdown vertically aligned with the center of the button</p>
+    <div class="cell">
+      <p>Right Center</p>
+      <button class="button" type="button" data-toggle="example-dropdown-right-center">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="right" data-alignment="center" id="example-dropdown-right-center" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position right and alignment center should align to the right of the button with the center of the dropdown vertically aligned with the center of the button</p>
+      </div>
     </div>
-  </div>
-  <div class="column">
-    <p>Left Center</p>
-    <button class="button" type="button" data-toggle="example-dropdown-left-center">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="left" data-alignment="center" id="example-dropdown-left-center" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position left and alignment center should align to the left of the button with the center of the dropdown vertically aligned with the center of the button</p>
+    <div class="cell">
+      <p>Left Center</p>
+      <button class="button" type="button" data-toggle="example-dropdown-left-center">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="left" data-alignment="center" id="example-dropdown-left-center" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position left and alignment center should align to the left of the button with the center of the dropdown vertically aligned with the center of the button</p>
+      </div>
     </div>
-  </div>
-
-  <div class="column">
-    <p>Right Bottom</p>
-    <button class="button" type="button" data-toggle="example-dropdown-right-bottom">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="right" data-alignment="bottom" id="example-dropdown-right-bottom" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position right and alignment bottom should align with its bottom left corner at the bottom right of the button</p>
+    <div class="cell">
+      <p>Right Bottom</p>
+      <button class="button" type="button" data-toggle="example-dropdown-right-bottom">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="right" data-alignment="bottom" id="example-dropdown-right-bottom" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position right and alignment bottom should align with its bottom left corner at the bottom right of the button</p>
+      </div>
     </div>
-  </div>
-  <div class="column">
-    <p>Left Bottom</p>
-    <button class="button" type="button" data-toggle="example-dropdown-left-bottom">Toggle Dropdown</button>
-    <div class="dropdown-pane" data-position="left" data-alignment="bottom" id="example-dropdown-left-bottom" data-dropdown data-auto-focus="true">
-      <p>This dropdown has position left and alignment bottom should align with its bottom right corner at the bottom left of the button</p>
+    <div class="cell">
+      <p>Left Bottom</p>
+      <button class="button" type="button" data-toggle="example-dropdown-left-bottom">Toggle Dropdown</button>
+      <div class="dropdown-pane" data-position="left" data-alignment="bottom" id="example-dropdown-left-bottom" data-dropdown data-auto-focus="true">
+        <p>This dropdown has position left and alignment bottom should align with its bottom right corner at the bottom left of the button</p>
+      </div>
     </div>
   </div>
 </div>

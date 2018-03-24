@@ -148,14 +148,14 @@ The `data-toggle`, `data-close`, and `data-open` attributes can now target multi
 Then the elements with ids of `foo`, `bar`, and `baz` will be toggled any time your button, (or any other element you choose), is clicked.
 
 <button class="button primary" data-toggle="thumb1 thumb2 thumb3">Toggle All These</button>
-<div class="row">
-  <div class="small-4 columns">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-4">
     <img class="thumbnail" id="thumb1" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" id="thumb2" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/02.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" id="thumb3" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/03.jpg" alt="Photo of Uranus.">
   </div>
 </div>
