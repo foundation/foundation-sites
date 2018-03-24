@@ -41,13 +41,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 // Placeholder selector for medium-and-up modals
 // Prevents duplicate CSS when defining multiple Reveal sizes
-@include breakpoint(medium) {
-  %reveal-centered {
-    right: auto;
-    left: auto;
-    margin: 0 auto;
-  }
-}
+
 
 
 /// Adds styles for a modal overlay.
@@ -169,6 +163,14 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
     &.without-overlay {
       position: fixed;
+    }
+  }
+
+  @include breakpoint(medium) {
+    %reveal-centered {
+      right: auto;
+      left: auto;
+      margin: 0 auto;
     }
   }
 }
