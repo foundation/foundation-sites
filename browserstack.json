@@ -1,6 +1,4 @@
 {
-    "username": "rafibenkual1",
-    "key": "t42z8wSsqUfpumsyRcyV",
     "test_path": "test/javascript/index.html",
     "test_framework": "mocha",
     "browsers": [
