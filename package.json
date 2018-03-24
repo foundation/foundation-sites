@@ -44,6 +44,7 @@
     "babel-plugin-transform-es2015-spread": "^6.22.0",
     "babel-plugin-transform-es2015-template-literals": "^6.22.0",
     "browser-sync": "^2.18.12",
+    "browserstack-runner": "^0.7.0",
     "chai-jquery": "^2.0.0",
     "chalk": "^1.1.1",
     "clipboard": "^1.7.1",
