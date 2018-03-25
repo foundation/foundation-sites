@@ -348,7 +348,8 @@ class DropdownMenu extends Plugin {
     var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
 
     if (somethingToClose) {
-      $toClose.find('li.is-active').add($toClose).attr({
+      var $activeItem = $toClose.find('li.is-active');
+      $activeItem.add($toClose).attr({
         'data-is-click': false
       }).removeClass('is-active');
 
@@ -361,6 +362,8 @@ class DropdownMenu extends Plugin {
                 .addClass(`opens-${oldClass}`);
         this.changed = false;
       }
+
+      clearTimeout($activeItem.data('_delay'));
       this._removeBodyHandler();
 
       /**
