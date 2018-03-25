@@ -272,15 +272,23 @@ class DropdownMenu extends Plugin {
    */
   _addBodyHandler() {
     const $body = $(document.body);
-    $body
-      .off('click.zf.dropdownMenu tap.zf.dropdownMenu')
-      .on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
-        var $link = this.$element.find(e.target);
-        if ($link.length) return;
+    this._removeBodyHandler();
+    $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
+      var $link = this.$element.find(e.target);
+      if ($link.length) return;
 
-        this._hide();
-        $body.off('click.zf.dropdownMenu tap.zf.dropdownMenu');
-      });
+      this._hide();
+      this._removeBodyHandler();
+    });
+  }
+
+  /**
+   * Remove the body event handler. See `_addBodyHandler`.
+   * @function
+   * @private
+   */
+  _removeBodyHandler() {
+    $(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
   }
 
   /**
@@ -353,6 +361,8 @@ class DropdownMenu extends Plugin {
                 .addClass(`opens-${oldClass}`);
         this.changed = false;
       }
+      this._removeBodyHandler();
+
       /**
        * Fires when the open menus are closed.
        * @event DropdownMenu#hide
