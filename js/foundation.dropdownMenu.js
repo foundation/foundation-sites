@@ -6,7 +6,7 @@ import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
 import { rtl as Rtl } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
-
+import { Touch } from './foundation.util.touch'
 
 /**
  * DropdownMenu module.
@@ -14,6 +14,7 @@ import { Plugin } from './foundation.plugin';
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
  * @requires foundation.util.nest
+ * @requires foundation.util.touch
  */
 
 class DropdownMenu extends Plugin {
@@ -29,6 +30,8 @@ class DropdownMenu extends Plugin {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
     this.className = 'DropdownMenu'; // ie9 back compat
+
+    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
 
     this._init();
 
@@ -74,7 +77,6 @@ class DropdownMenu extends Plugin {
       }
     }
     this.changed = false;
-    this.isTouchMove = false;
     this._events();
   };
 
@@ -269,19 +271,16 @@ class DropdownMenu extends Plugin {
    * @private
    */
   _addBodyHandler() {
-    var $body = $(document.body),
-        _this = this;
-    $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu')
-         .on('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu', function(e) {
-           var $link = _this.$element.find(e.target);
-           if ($link.length || _this.isTouchMove){
-             _this.isTouchMove = false;
-             return;
-           }
+    const $body = $(document.body);
+    $body
+      .off('click.zf.dropdownMenu tap.zf.dropdownMenu')
+      .on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
+        var $link = this.$element.find(e.target);
+        if ($link.length) return;
 
-           _this._hide();
-           $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu');
-         });
+        this._hide();
+        $body.off('click.zf.dropdownMenu tap.zf.dropdownMenu');
+      });
   }
 
   /**
