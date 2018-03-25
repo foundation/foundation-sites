@@ -10,7 +10,7 @@ import { Plugin } from './foundation.plugin';
 
 /**
  * DropdownMenu module.
- * @module foundation.dropdown-menu
+ * @module foundation.dropdownMenu
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
  * @requires foundation.util.nest
@@ -121,12 +121,12 @@ class DropdownMenu extends Plugin {
     };
 
     if (this.options.clickOpen || hasTouch) {
-      this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+      this.$menuItems.on('click.zf.dropdownMenu touchstart.zf.dropdownMenu', handleClickFn);
     }
 
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('click.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){
@@ -136,7 +136,7 @@ class DropdownMenu extends Plugin {
     }
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('mouseenter.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
 
@@ -146,7 +146,7 @@ class DropdownMenu extends Plugin {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
+      }).on('mouseleave.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -159,7 +159,7 @@ class DropdownMenu extends Plugin {
         }
       });
     }
-    this.$menuItems.on('keydown.zf.dropdownmenu', function(e) {
+    this.$menuItems.on('keydown.zf.dropdownMenu', function(e) {
       var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
           isTab = _this.$tabs.index($element) > -1,
           $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
@@ -271,12 +271,8 @@ class DropdownMenu extends Plugin {
   _addBodyHandler() {
     var $body = $(document.body),
         _this = this;
-    $body.off('touchmove.zf.dropdownmenu')
-         .on('touchmove.zf.dropdownmenu', function(){
-           _this.isTouchMove = true;
-         })
-         .off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
-         .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+    $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu')
+         .on('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu', function(e) {
            var $link = _this.$element.find(e.target);
            if ($link.length || _this.isTouchMove){
              _this.isTouchMove = false;
@@ -284,7 +280,7 @@ class DropdownMenu extends Plugin {
            }
 
            _this._hide();
-           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu touchmove.zf.dropdownmenu');
+           $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu');
          });
   }
 
@@ -320,7 +316,7 @@ class DropdownMenu extends Plugin {
      * Fires when the new dropdown pane is visible.
      * @event DropdownMenu#show
      */
-    this.$element.trigger('show.zf.dropdownmenu', [$sub]);
+    this.$element.trigger('show.zf.dropdownMenu', [$sub]);
   }
 
   /**
@@ -362,7 +358,7 @@ class DropdownMenu extends Plugin {
        * Fires when the open menus are closed.
        * @event DropdownMenu#hide
        */
-      this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
+      this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
     }
   }
 
@@ -371,9 +367,9 @@ class DropdownMenu extends Plugin {
    * @function
    */
   _destroy() {
-    this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
+    this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-    $(document.body).off('.zf.dropdownmenu');
+    $(document.body).off('.zf.dropdownMenu');
     Nest.Burn(this.$element, 'dropdown');
   }
 }

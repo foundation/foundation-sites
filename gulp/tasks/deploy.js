@@ -11,6 +11,7 @@ var sequence = require('run-sequence');
 var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
 var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
 
 var CONFIG = require('../config.js');
 var CURRENT_VERSION = require('../../package.json').version;
@@ -44,24 +45,47 @@ gulp.task('deploy:version', function() {
     .pipe(gulp.dest('.'));
 });
 
-// Generates compiled CSS and JS files and puts them in the dist/ folder
+// Generates compiled CSS and JS files and sourcemaps and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
   var cssFilter = filter(['**/*.css'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
+  var cssSourcemapFilter = filter(['**/*.css.map'], { restore: true });
+  var jsSourcemapFilter = filter(['**/*.js.map'], { restore: true });
 
-  console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
+
+    // --- Source maps ---
+    // * Copy sourcemaps to the dist folder
+    // This is done first to avoid collision with minified-sourcemaps.
+    .pipe(cssSourcemapFilter)
+      .pipe(gulp.dest('./dist/css'))
+      .pipe(cssSourcemapFilter.restore)
+    .pipe(jsSourcemapFilter)
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(jsSourcemapFilter.restore)
+
+    // --- Source files ---
+    // * Copy source files to dist folder
+    // * Create minified files
+    // * Create minified-sourcemaps based on standard sourcemaps.
+    //   Sourcemaps are initialized before the ".min" renaming to be able retrieve
+    //   original sourcemaps from source names.
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
-      .pipe(cleancss({ compatibility: 'ie9' }))
+      .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(rename({ suffix: '.min' }))
+      .pipe(cleancss({ compatibility: 'ie9' }))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/css'))
-    .pipe(cssFilter.restore)
+      .pipe(cssFilter.restore)
+
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist/js'))
-      .pipe(uglify())
+      .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(rename({ suffix: '.min' }))
+      .pipe(uglify())
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/js'));
 });
 
