@@ -216,8 +216,8 @@ class Reveal extends Plugin {
    */
   open() {
     // either update or replace browser history
-    if (this.options.deepLink) {
-      var hash = `#${this.id}`;
+    const hash = `#${this.id}`;
+    if (this.options.deepLink && window.location.hash !== hash) {
 
       if (window.history.pushState) {
         if (this.options.updateHistory) {
