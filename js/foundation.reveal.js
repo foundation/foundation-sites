@@ -437,13 +437,20 @@ class Reveal extends Plugin {
     }
 
     this.isActive = false;
-     if (_this.options.deepLink) {
-       if (window.history.replaceState) {
-         window.history.replaceState('', document.title, window.location.href.replace(`#${this.id}`, ''));
-       } else {
-         window.location.hash = '';
-       }
-     }
+    // If deepLink and we did not switched to an other modal...
+    if (_this.options.deepLink && window.location.hash === `#${this.id}`) {
+      // Remove the history hash
+      if (window.history.replaceState) {
+        const urlWithoutHash = window.location.pathname + window.location.search;
+        if (this.options.updateHistory) {
+          window.history.pushState({}, '', urlWithoutHash); // remove the hash
+        } else {
+          window.history.replaceState('', document.title, urlWithoutHash);
+        }
+      } else {
+        window.location.hash = '';
+      }
+    }
 
     this.$activeAnchor.focus();
   }
