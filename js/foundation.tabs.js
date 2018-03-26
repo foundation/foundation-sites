@@ -1,6 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
+import { onLoad } from './foundation.util.core';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
 import { Plugin } from './foundation.plugin';
@@ -77,7 +78,7 @@ class Tabs extends Plugin {
       }
 
       if(isActive && _this.options.autoFocus){
-        $(window).on('load', function() {
+        _this.onLoadListener = onLoad($(window), function() {
           $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
             $link.focus();
           });
@@ -397,6 +398,7 @@ class Tabs extends Plugin {
       $(window).off('hashchange', this._checkDeepLink);
     }
 
+    $(window).off(this.onLoadListener);
   }
 }
 

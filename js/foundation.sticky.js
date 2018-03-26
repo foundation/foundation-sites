@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
+import { onLoad, GetYoDigits } from './foundation.util.core';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.plugin';
 import { Triggers } from './foundation.util.triggers';
@@ -60,18 +60,18 @@ class Sticky extends Plugin {
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    $(window).one('load.zf.sticky', function(){
+    this.onLoadListener = onLoad($(window), function () {
       //We calculate the container height to have correct values for anchor points offset calculation.
       _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
       _this.$container.css('height', _this.containerHeight);
       _this.elemHeight = _this.containerHeight;
-      if(_this.options.anchor !== ''){
+      if (_this.options.anchor !== '') {
         _this.$anchor = $('#' + _this.options.anchor);
-      }else{
+      } else {
         _this._parsePoints();
       }
 
-      _this._setSizes(function(){
+      _this._setSizes(function () {
         var scroll = window.pageYOffset;
         _this._calc(false, scroll);
         //Unstick the element will ensure that proper classes are set.
@@ -403,7 +403,9 @@ class Sticky extends Plugin {
     if (this.$anchor && this.$anchor.length) {
       this.$anchor.off('change.zf.sticky');
     }
-    $(window).off(this.scrollListener);
+    $(window)
+      .off(this.scrollListener)
+      .off(this.onLoadListener);
 
     if (this.wasWrapped) {
       this.$element.unwrap();
