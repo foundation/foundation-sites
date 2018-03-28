@@ -4,7 +4,7 @@
 import $ from 'jquery';
 import { Foundation } from '../../foundation.core';
 import { Plugin } from '../../foundation.core.plugin';
-import { rtl, GetYoDigits, transitionend, RegExpEscape } from '../../foundation.core.utils';
+import { rtl, GetYoDigits, transitionend, RegExpEscape, onLoad } from '../../foundation.core.utils';
 
 Foundation.addToJquery($);
 
@@ -19,6 +19,7 @@ Foundation.rtl = rtl;
 Foundation.GetYoDigits = GetYoDigits;
 Foundation.transitionend = transitionend;
 Foundation.RegExpEscape = RegExpEscape;
+Foundation.onLoad = onLoad;
 
 window.Foundation = Foundation;
 
