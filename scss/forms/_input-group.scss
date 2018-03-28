@@ -34,11 +34,21 @@ $input-prefix-padding: 1rem !default;
     }
 
     > :first-child {
-      border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
+      &:not(.input-group-button){
+        border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
+      }
+
+      &.input-group-button > * {
+        border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
+      }
     }
 
     > :last-child {
-      > * {
+      &:not(.input-group-button){
+        border-radius: if($global-text-direction == rtl, $input-radius 0 0 $input-radius, 0 $input-radius $input-radius 0);
+      }
+
+      &.input-group-button > * {
         border-radius: if($global-text-direction == rtl, $input-radius 0 0 $input-radius, 0 $input-radius $input-radius 0);
       }
     }
