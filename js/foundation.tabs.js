@@ -96,11 +96,12 @@ class Tabs extends Plugin {
     }
 
      //current context-bound function to open tabs on page load or history hashchange
-    this._checkDeepLink = (useDefaultTabIfNoHash) => {
+    this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      if (!anchor.length && useDefaultTabIfNoHash !== false) {
-        anchor = this.$element.find(`.${this.options.linkDefaultClass} a`).attr('href') || '';
+      if (!anchor.length && this._defaultAnchor) {
+        // if we don't have an anchor, use the default.
+        anchor = this._defaultAnchor;
       }
 
       //need a hash and a relevant anchor in this tabset
@@ -127,7 +128,15 @@ class Tabs extends Plugin {
 
     //use browser to open a tab, if it exists in this tabset
     if (this.options.deepLink) {
-      this._checkDeepLink(false); // do not useDefaultTabIfNoHash on init
+      // The active tab on page load will be our default
+      var activeHash = this.$tabTitles.filter(`.${this.options.linkActiveClass}`).find('a').attr('href');
+
+      this._checkDeepLink();
+
+      if (this.options.updateHistory) {
+        // set this after _checkDeepLink because we don't want to interfere with page load.
+        this._defaultAnchor = activeHash;
+      }
     }
 
     this._events();
@@ -489,15 +498,6 @@ Tabs.defaults = {
    * @default 'is-active'
    */
   linkActiveClass: 'is-active',
-
-  /**
-   * Class applied to the default `li` in tab link list.
-   * Used for when deepLink is true
-   * @option
-   * @type {string}
-   * @default 'is-default'
-   */
-  linkDefaultClass: 'is-default',
 
   /**
    * Class applied to the content containers.
