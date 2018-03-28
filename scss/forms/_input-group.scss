@@ -34,21 +34,13 @@ $input-prefix-padding: 1rem !default;
     }
 
     > :first-child {
-      &:not(.input-group-button){
-        border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
-      }
-
-      &.input-group-button > * {
+      &:not(.input-group-button), &.input-group-button > * {
         border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
       }
     }
 
     > :last-child {
-      &:not(.input-group-button){
-        border-radius: if($global-text-direction == rtl, $input-radius 0 0 $input-radius, 0 $input-radius $input-radius 0);
-      }
-
-      &.input-group-button > * {
+      &:not(.input-group-button), &.input-group-button > * {
         border-radius: if($global-text-direction == rtl, $input-radius 0 0 $input-radius, 0 $input-radius $input-radius 0);
       }
     }
