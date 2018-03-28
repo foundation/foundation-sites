@@ -25,7 +25,7 @@ $-zf-zero-breakpoint: small !default;
 $-zf-breakpoints-keys: map-to-list($breakpoints, 'keys');
 
 @if nth(map-values($breakpoints), 1) != 0 {
-  @error 'Your smallest breakpoint (defined in $breakpoints) must be set to "0".';
+  @error 'The first key in the $breakpoints map must have a value of "0".';
 }
 @else {
   $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
