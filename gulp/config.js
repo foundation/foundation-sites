@@ -1,11 +1,13 @@
 module.exports = {
 
   // Javascript
+  JS_BUNDLE_NAMESPACE: '__FOUNDATION_EXTERNAL__',
+
   JS_FILES: [
-  'js/foundation.core.js',
-  'js/foundation.util.core.js',
-  'js/foundation.util.*.js',
-  'js/*.js'
+    'js/foundation.core.js',
+    'js/foundation.core.utils.js',
+    'js/foundation.util.*.js',
+    'js/*.js'
   ],
 
   JS_DEPS: [
@@ -24,7 +26,6 @@ module.exports = {
 
   // Sass
   SASS_DEPS_FILES: [
-    'node_modules/@(normalize-scss)/sass/**/*.scss',
     'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
     'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_contain.scss',
@@ -85,7 +86,8 @@ module.exports = {
 
   // Tests
   TEST_JS_FILES: [
-    'test/javascript/components/**/*.js',
-    'test/javascript/util/**/*.js'
+    'test/javascript/core/**/*.js',
+    'test/javascript/util/**/*.js',
+    'test/javascript/components/**/*.js'
   ]
 };
