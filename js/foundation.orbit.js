@@ -344,11 +344,10 @@ class Orbit extends Plugin {
 
       if (this.options.useMUI && !this.$element.is(':hidden')) {
         Motion.animateIn(
-          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+          $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.css({'position': 'relative', 'display': 'block'})
-            .attr('aria-live', 'polite');
+            $newSlide.attr('aria-live', 'polite');
         });
 
         Motion.animateOut(
