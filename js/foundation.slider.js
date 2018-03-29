@@ -460,10 +460,10 @@ class Slider extends Plugin {
         curHandle,
         timer;
 
-        const handleChangeEvent = function(e) {
-          const idx = _this.inputs.index($(this));
-          _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
-        };
+      const handleChangeEvent = function(e) {
+        const idx = _this.inputs.index($(this));
+        _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
+      };
 
       // IE only triggers the change event when the input loses focus which strictly follows the HTML specification
       // listen for the enter key and trigger a change
