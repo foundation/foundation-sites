@@ -460,6 +460,16 @@ class Slider extends Plugin {
         curHandle,
         timer;
 
+      // IE only triggers the change event when the input loses focus which strictly follows the HTML specification
+      // listen for the enter key and trigger a change
+      // @see https://html.spec.whatwg.org/multipage/input.html#common-input-element-events
+      this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
+        if(e.keyCode == 13) {
+          var idx = _this.inputs.index($(this));
+          _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
+        }
+      });
+
       this.inputs.off('change.zf.slider').on('change.zf.slider', function(e) {
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
