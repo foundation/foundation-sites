@@ -3,9 +3,9 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
-import { GetYoDigits, transitionend } from './foundation.util.core';
+import { GetYoDigits, transitionend } from './foundation.core.utils';
 import { Box } from './foundation.util.box';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * Drilldown module.

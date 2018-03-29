@@ -1,10 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
-import { onLoad } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { Plugin } from './foundation.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs

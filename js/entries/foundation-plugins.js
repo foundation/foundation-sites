@@ -1,5 +1,5 @@
 import { Foundation as Core } from '../foundation.core';
-import * as CoreUtils from '../foundation.util.core';
+import * as CoreUtils from '../foundation.core.utils';
 import { Box } from '../foundation.util.box'
 import { onImagesLoaded } from '../foundation.util.imageLoader';
 import { Keyboard } from '../foundation.util.keyboard';

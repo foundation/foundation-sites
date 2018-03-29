@@ -3,9 +3,9 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Move } from './foundation.util.motion';
-import { GetYoDigits, rtl as Rtl } from './foundation.util.core';
+import { GetYoDigits, rtl as Rtl } from './foundation.core.utils';
 
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 
 import { Touch } from './foundation.util.touch';
 

@@ -1,10 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
-import { onLoad, transitionend, RegExpEscape } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad, transitionend, RegExpEscape } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { Plugin } from './foundation.plugin';
 
 import { Triggers } from './foundation.util.triggers';
 

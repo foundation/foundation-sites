@@ -1,9 +1,9 @@
 'use strict';
 
 import $ from 'jquery';
-import { onLoad, GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
-import { Plugin } from './foundation.plugin';
 
 /**
  * Accordion module.
