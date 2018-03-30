@@ -1,11 +1,12 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.core.utils';
-import { Plugin } from './foundation.core.plugin';
+import { Touch } from './foundation.util.touch'
 
 
 /**
@@ -14,6 +15,7 @@ import { Plugin } from './foundation.core.plugin';
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
  * @requires foundation.util.nest
+ * @requires foundation.util.touch
  */
 
 class DropdownMenu extends Plugin {
@@ -29,6 +31,8 @@ class DropdownMenu extends Plugin {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
     this.className = 'DropdownMenu'; // ie9 back compat
+
+    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
 
     this._init();
 
@@ -268,16 +272,24 @@ class DropdownMenu extends Plugin {
    * @private
    */
   _addBodyHandler() {
-    var $body = $(document.body),
-        _this = this;
-    $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu')
-         .on('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu', function(e) {
-           var $link = _this.$element.find(e.target);
-           if ($link.length) { return; }
+    const $body = $(document.body);
+    this._removeBodyHandler();
+    $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
+      var $link = this.$element.find(e.target);
+      if ($link.length) return;
 
-           _this._hide();
-           $body.off('mouseup.zf.dropdownMenu touchend.zf.dropdownMenu');
-         });
+      this._hide();
+      this._removeBodyHandler();
+    });
+  }
+
+  /**
+   * Remove the body event handler. See `_addBodyHandler`.
+   * @function
+   * @private
+   */
+  _removeBodyHandler() {
+    $(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
   }
 
   /**
@@ -337,7 +349,8 @@ class DropdownMenu extends Plugin {
     var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
 
     if (somethingToClose) {
-      $toClose.find('li.is-active').add($toClose).attr({
+      var $activeItem = $toClose.find('li.is-active');
+      $activeItem.add($toClose).attr({
         'data-is-click': false
       }).removeClass('is-active');
 
@@ -350,6 +363,10 @@ class DropdownMenu extends Plugin {
                 .addClass(`opens-${oldClass}`);
         this.changed = false;
       }
+
+      clearTimeout($activeItem.data('_delay'));
+      this._removeBodyHandler();
+
       /**
        * Fires when the open menus are closed.
        * @event DropdownMenu#hide
