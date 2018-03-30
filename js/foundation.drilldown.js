@@ -177,7 +177,7 @@ class Drilldown extends Plugin {
   _registerEvents() {
     if(this.options.scrollTop){
       this._bindHandler = this._scrollTop.bind(this);
-      this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
+      this.$element.on('open.zf.drilldown hide.zf.drilldown close.zf.drilldown closed.zf.drilldown',this._bindHandler);
     }
     this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
@@ -289,6 +289,7 @@ class Drilldown extends Plugin {
   /**
    * Closes all open elements, and returns to root menu.
    * @function
+   * @fires Drilldown#close
    * @fires Drilldown#closed
    */
   _hideAll() {
@@ -296,12 +297,17 @@ class Drilldown extends Plugin {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     $elem.one(transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
+	  /**
+       * Fires when the menu is fully closed.
+       * @event Drilldown#close
+       */
+      this.$element.trigger('closed.zf.drilldown');
     });
         /**
-         * Fires when the menu is fully closed.
-         * @event Drilldown#closed
+         * Fires when the menu is closing.
+         * @event Drilldown#close
          */
-    this.$element.trigger('closed.zf.drilldown');
+    this.$element.trigger('close.zf.drilldown');
   }
 
   /**

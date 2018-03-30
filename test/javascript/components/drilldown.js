@@ -171,14 +171,14 @@ describe('Drilldown Menu', function() {
         $(this).should.have.class('is-closing');
       });
     });
-    it('fires closed.zf.drilldown event', function(done) {
+    it('fires close.zf.drilldown event', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Drilldown($html, {});
 
       // Open one first
       plugin._show($html.find('li.is-drilldown-submenu-parent').eq(2));
       
-      $html.one('closed.zf.drilldown', function() {
+      $html.one('close.zf.drilldown', function() {
         $html.find('ul[data-submenu].is-active').each(function() {
           // Checking with .be.hidden is not possible because they don't have display: block but z-index: -1
           $(this).should.have.class('is-closing');
@@ -187,6 +187,30 @@ describe('Drilldown Menu', function() {
       });
 
       plugin._hideAll();
+    });
+    it('fires closed.zf.drilldown event', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {});
+
+      // Open one first
+      plugin._show($html.find('li.is-drilldown-submenu-parent').eq(2));
+      
+      $html.one('close.zf.drilldown', function() {
+        $html.find('ul[data-submenu].is-active').each(function() {
+          // Checking with .be.hidden is not possible because they don't have display: block but z-index: -1
+          $(this).should.have.class('is-closing');
+		  plugin.$element.one(Foundation.transitionend(plugin.$element), function() {
+            $html.one('closed.zf.drilldown', function () {
+              done();
+            });
+          });
+        });
+        done();
+      });
+
+      plugin._hideAll();
+	  // fake transitionend for console tests
+      plugin.$element.triggerHandler(Foundation.transitionend(plugin.$element));
     });
   });
 
