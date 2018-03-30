@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * ResponsiveToggle module.

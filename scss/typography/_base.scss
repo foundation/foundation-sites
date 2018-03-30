@@ -115,29 +115,9 @@ $paragraph-margin-bottom: 1rem !default;
 /// @type String
 $paragraph-text-rendering: optimizeLegibility !default;
 
-/// Text color of code samples.
-/// @type Color
-$code-color: $black !default;
-
-/// Font family of code samples.
-/// @type String | List
-$code-font-family: $font-family-monospace !default;
-
-/// Font weight of text in code samples.
-/// @type String
-$code-font-weight: $global-weight-normal !default;
-
-/// Background color of code samples.
-/// @type Color
-$code-background: $light-gray !default;
-
-/// Border around code samples.
-/// @type List
-$code-border: 1px solid $medium-gray !default;
-
-/// Padding around text of code samples.
-/// @type Number | List
-$code-padding: rem-calc(2 5 1) !default;
+/// Use the `.code-inline` component as default for `<code>` elements.
+/// @type Boolean
+$enable-code-inline: true;
 
 /// Default color for links.
 /// @type Color
@@ -471,15 +451,10 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Code
-  code {
-    padding: $code-padding;
-
-    border: $code-border;
-    background-color: $code-background;
-
-    font-family: $code-font-family;
-    font-weight: $code-font-weight;
-    color: $code-color;
+  @if ($enable-code-inline == true) {
+    code {
+      @extend .code-inline;
+    }
   }
 
   // Keystrokes

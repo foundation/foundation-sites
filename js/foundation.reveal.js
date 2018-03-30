@@ -1,10 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
 import { Triggers } from './foundation.util.triggers';
 
 /**
@@ -78,7 +79,7 @@ class Reveal extends Plugin {
     }
     this._events();
     if (this.options.deepLink && window.location.hash === ( `#${this.id}`)) {
-      $(window).one('load.zf.reveal', this.open.bind(this));
+      this.onLoadListener = onLoad($(window), () => this.open());
     }
   }
 
@@ -216,8 +217,8 @@ class Reveal extends Plugin {
    */
   open() {
     // either update or replace browser history
-    if (this.options.deepLink) {
-      var hash = `#${this.id}`;
+    const hash = `#${this.id}`;
+    if (this.options.deepLink && window.location.hash !== hash) {
 
       if (window.history.pushState) {
         if (this.options.updateHistory) {
@@ -437,13 +438,20 @@ class Reveal extends Plugin {
     }
 
     this.isActive = false;
-     if (_this.options.deepLink) {
-       if (window.history.replaceState) {
-         window.history.replaceState('', document.title, window.location.href.replace(`#${this.id}`, ''));
-       } else {
-         window.location.hash = '';
-       }
-     }
+    // If deepLink and we did not switched to an other modal...
+    if (_this.options.deepLink && window.location.hash === `#${this.id}`) {
+      // Remove the history hash
+      if (window.history.replaceState) {
+        const urlWithoutHash = window.location.pathname + window.location.search;
+        if (this.options.updateHistory) {
+          window.history.pushState({}, '', urlWithoutHash); // remove the hash
+        } else {
+          window.history.replaceState('', document.title, urlWithoutHash);
+        }
+      } else {
+        window.location.hash = '';
+      }
+    }
 
     this.$activeAnchor.focus();
   }
@@ -471,7 +479,9 @@ class Reveal extends Plugin {
     }
     this.$element.hide().off();
     this.$anchor.off('.zf');
-    $(window).off(`.zf.reveal:${this.id}`);
+    $(window)
+      .off(`.zf.reveal:${this.id}`)
+      .off(this.onLoadListener);
 
     if ($('.reveal:visible').length  === 0) {
       this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
