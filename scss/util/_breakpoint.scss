@@ -77,7 +77,7 @@ $breakpoint-classes: (small medium large) !default;
   // Convert any pixel, rem, or unitless value to em
   $bp: -zf-bp-to-em($bp);
   @if $bp-max {
-    $bp-max: -zf-bp-to-em($bp-max) - .000001;
+    $bp-max: -zf-bp-to-em($bp-max) - .00001;
   }
 
   // Conditions to skip media query creation

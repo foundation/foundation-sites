@@ -24,10 +24,10 @@
 
   @include test('Breakpoint (Only Range) [function]') {
     $test: breakpoint(medium only);
-    $expect: '(min-width: 40em) and (max-width: 63.9999em)';
+    $expect: '(min-width: 40em) and (max-width: 63.99999em)';
 
     $test-lowest: breakpoint(small only);
-    $expect-lowest: '(max-width: 39.9999em)';
+    $expect-lowest: '(max-width: 39.99999em)';
 
     $test-highest: breakpoint(xxlarge only);
     $expect-highest: '(min-width: 90em)';
@@ -44,13 +44,13 @@
 
   @include test('Breakpoint (Named Down Range) [function]') {
     $test: breakpoint(medium down);
-    $expect: '(max-width: 63.9999em)';
+    $expect: '(max-width: 63.99999em)';
 
     @include assert-equal($test, $expect,
       'Creates a down range out of a medium breakpoint');
 
     $test-lowest: breakpoint(small down);
-    $expect-lowest: '(max-width: 39.9999em)';
+    $expect-lowest: '(max-width: 39.99999em)';
 
     @include assert-equal($test-lowest, $expect-lowest,
       'Creates a down range out of a small breakpoint');
