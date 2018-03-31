@@ -32,9 +32,15 @@
 /// Reset a position definition.
 @mixin grid-column-unposition {
   position: static;
-  float: $global-left;
   margin-right: 0;
   margin-left: 0;
+
+  float: $global-left;
+  @if $grid-column-align-edge {
+    &:last-child:not(:first-child) {
+      float: $global-right;
+    }
+  }
 }
 
 /// Offsets a column to the right by `$n` columns.
