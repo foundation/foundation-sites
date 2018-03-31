@@ -17,8 +17,10 @@
 @mixin grid-column-position($position) {
   // Auto positioning
   @if $position == auto {
-    float: $global-left;
-    clear: none;
+    &, &:last-child:not(:first-child) {
+      float: $global-left;
+      clear: none;
+    }
 
     // Last column alignment
     @if $grid-column-align-edge {
