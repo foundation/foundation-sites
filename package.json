@@ -13,7 +13,7 @@
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript:units",
     "test:ci": "npm run test:sass && npm run test:javascript:ci",
-    "test:sass": "mocha test/sass/test_sass.js",
+    "test:sass": "mocha test/sass/test_sass.js --colors",
     "test:javascript:transpile": "gulp sass:foundation && gulp test:transpile-js",
     "test:javascript:units": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -f test/javascript/index.html",
     "test:javascript:browserstack": "npm run test:javascript:transpile && browserstack-runner",

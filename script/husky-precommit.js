@@ -11,7 +11,7 @@ child.stdout.on('data', function (data) {
 
 child.on('exit', function (code) {
   if(code === 0){
-    console.log(chalk.yellow(code, '🐶  ✓ Tests run well, we can commit...'))
+    console.log(chalk.yellow('🐶  ✓ Tests run well, we can commit...'))
   } else {
     console.log(chalk.yellow('🐶  ✗ Tests are failing, please fix them before committing.'))
   }
