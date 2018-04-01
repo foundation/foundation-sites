@@ -24,7 +24,7 @@
     "deploy:docs": "gulp deploy:docs",
     "deploy:beta": "gulp deploy:beta",
     "precommit": "node ./script/husky-precommit.js",
-    "prepush": "./script/husky-prepush"
+    "prepush": "node ./script/husky-precommit.js"
   },
   "dependencies": {
     "jquery": ">=3.0.0",
