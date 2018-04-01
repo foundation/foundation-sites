@@ -23,8 +23,8 @@
     "deploy:prep": "gulp deploy:prep",
     "deploy:docs": "gulp deploy:docs",
     "deploy:beta": "gulp deploy:beta",
-    "precommit": "npm test",
-    "prepush": "npm test"
+    "precommit": "./script/husky-precommit",
+    "prepush": "./script/husky-prepush"
   },
   "dependencies": {
     "jquery": ">=3.0.0",
