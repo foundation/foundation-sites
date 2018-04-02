@@ -31,7 +31,10 @@ class Abide extends Plugin {
    * @private
    */
   _init() {
-    this.$inputs = this.$element.find('input, textarea, select');
+    this.$inputs = $.merge(                               // Consider as input to validate:
+      this.$element.find('input').not('[type=submit]'),   // * all input fields expect submit
+      this.$element.find('textarea, select')              // * all textareas and select fields
+    );
     const $globalErrors = this.$element.find('[data-abide-error]');
 
     // Add a11y attributes to all fields
