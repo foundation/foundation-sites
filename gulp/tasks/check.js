@@ -4,10 +4,12 @@ var gulp = require('gulp');
 var checkDeps = require('gulp-check-deps');
 var postcss = require('gulp-postcss');
 var doiuse = require('doiuse');
-
+var sequence = require('run-sequence');
 var CONFIG = require('../config.js');
 
-gulp.task('check', ['check:deps', 'check:browserSupport']);
+gulp.task('check', function(cb) {
+  sequence('check:deps', 'check:browserSupport', cb)
+});
 
 // Check npm dependencies
 gulp.task('check:deps', function() {

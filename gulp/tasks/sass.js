@@ -9,12 +9,15 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
 var postcss = require('gulp-postcss');
+var sequence = require('run-sequence');
 var autoprefixer = require('autoprefixer');
 
 var CONFIG = require('../config.js');
 
 // Compiles Sass files into CSS
-gulp.task('sass', ['sass:foundation', 'sass:docs']);
+gulp.task('sass', function(cb) {
+  sequence('sass:foundation', 'sass:docs', cb)
+});
 
 // Prepare dependencies
 gulp.task('sass:deps', function() {

@@ -6,6 +6,7 @@ var rename = require('gulp-rename');
 var webpackStream = require('webpack-stream');
 var webpack2 = require('webpack');
 var named = require('vinyl-named');
+var sequence = require('run-sequence');
 var sourcemaps = require('gulp-sourcemaps');
 
 var utils = require('../utils.js');
@@ -78,7 +79,9 @@ var webpackConfig = {
 //
 
 // Compiles JavaScript into a single file
-gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
+gulp.task('javascript', function(cb) {
+  sequence('javascript:foundation', 'javascript:deps', 'javascript:docs', cb)
+});
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
 // and the dependency on foundation.core.utils
