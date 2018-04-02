@@ -141,7 +141,9 @@ class Abide extends Plugin {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
 
-    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    if (id) {
+      $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    }
 
     return $error;
   }
