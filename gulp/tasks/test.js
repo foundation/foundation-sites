@@ -23,7 +23,7 @@ gulp.task('test', function(cb) {
     }
   });
   gulp.watch(['test/visual/**/*'], ['test:reload']);
-}, cb)
+})
 });
 
 gulp.task('test:reload', function(done) {
@@ -40,5 +40,5 @@ gulp.task('test:transpile-js', function(cb) {
   		.on('error', onBabelError))
   	.pipe(concat('js-tests.js'))
   	.pipe(gulp.dest('test/javascript'));
-}, cb)
+})
 });
