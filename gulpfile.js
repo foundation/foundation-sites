@@ -18,12 +18,12 @@ gulp.task('serve', ['build'], function(){
 
 // Watch files for changes
 gulp.task('watch', function() {
-  gulp.watch('docs/**/*', ['docs', browser.reload]);
-  gulp.watch(['docs/layout/*.html', 'docs/partials/*{html,hbs}', 'docs/assets/partials/*{html,hbs}', 'node_modules/foundation-docs/templates/*{html,hbs}'], ['docs:all', browser.reload]);
-  gulp.watch('scss/**/*', ['sass', browser.reload]);
-  gulp.watch(['docs/assets/scss/**/*', 'node_modules/foundation-docs/scss/**/*'], ['sass:docs', browser.reload]);
-  gulp.watch('js/**/*', ['javascript:foundation', browser.reload]);
-  gulp.watch(['docs/assets/js/**/*', 'node_modules/foundation-docs/js/**/*'], ['javascript:docs', browser.reload]);
+  gulp.watch('docs/**/*', function(){ sequence('docs', browser.reload) });
+  gulp.watch(['docs/layout/*.html', 'docs/partials/*{html,hbs}', 'docs/assets/partials/*{html,hbs}', 'node_modules/foundation-docs/templates/*{html,hbs}'], function(){ sequence('docs:all', browser.reload) });
+  gulp.watch('scss/**/*', function(){ sequence('sass', browser.reload) });
+  gulp.watch(['docs/assets/scss/**/*', 'node_modules/foundation-docs/scss/**/*'], function(){ sequence('sass:docs', browser.reload) });
+  gulp.watch('js/**/*', function(){ sequence('javascript:foundation', browser.reload) });
+  gulp.watch(['docs/assets/js/**/*', 'node_modules/foundation-docs/js/**/*'], function(){ sequence('javascript:docs', browser.reload) });
 });
 
 // Runs all of the above tasks and then waits for files to change
