@@ -3,7 +3,6 @@ var foundationDocs = require('foundation-docs');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
 var panini = require('panini');
-var sequence = require('run-sequence');
 var supercollider = require('supercollider');
 
 var PANINI_CONFIG = {

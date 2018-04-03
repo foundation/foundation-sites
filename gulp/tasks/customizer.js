@@ -6,6 +6,7 @@ var customizer = require('../../customizer/lib');
 var Vinyl = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
+var sequence = require('run-sequence');
 var If = require('gulp-if');
 var path = require('path');
 var Readable = require('stream').Readable;
@@ -88,7 +89,8 @@ gulp.task('customizer:prepareSassDeps', function() {
 });
 
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
+gulp.task('customizer:sass', function() {
+  sequence('customizer:loadConfig', 'customizer:prepareSassDeps', function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
   var stream = createStream('foundation.scss', sassFile);
@@ -107,6 +109,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
     .pipe(cleancss({ compatibility: 'ie9' }))
     .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
+  });
 });
 
 // Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
@@ -148,7 +151,8 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 //   - Copying the index.html file
 //   - Creating a blank app.css file
 //   - Creating an app.js file with Foundation initialization code
-gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
+gulp.task('customizer', function() {
+  sequence('customizer:sass', 'customizer:javascript', 'customizer:html', function(done) {
   var outputFolder = path.dirname(OUTPUT_DIR);
   var outputFileName = path.basename(OUTPUT_DIR);
 
@@ -163,6 +167,7 @@ gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer
       rimraf(OUTPUT_DIR, done);
     });
   });
+});
 
 function createStream(name, content) {
   // Create a stream with our entry file
