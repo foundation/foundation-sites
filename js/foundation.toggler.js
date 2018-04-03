@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 import { Triggers } from './foundation.util.triggers';
 
 /**
@@ -50,7 +50,10 @@ class Toggler extends Plugin {
     }
     // Otherwise, parse toggle class
     else {
-      input = this.$element.data('toggler');
+      input = this.options.toggler;
+      if (typeof input !== 'string' || !input.length) {
+        throw new Error(`The 'toogler' option containing the target class is required, got "${input}"`);
+      }
       // Allow for a . at the beginning of the string
       this.className = input[0] === '.' ? input.slice(1) : input;
     }
@@ -143,6 +146,12 @@ class Toggler extends Plugin {
 }
 
 Toggler.defaults = {
+  /**
+   * Class of the element to toggle. It can be provided with or without "."
+   * @option
+   * @type {string}
+   */
+  toggler: undefined,
   /**
    * Tells the plugin if the element should animated when toggled.
    * @option

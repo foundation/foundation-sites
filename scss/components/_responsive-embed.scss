@@ -17,9 +17,6 @@ $responsive-embed-ratios: (
   widescreen: 16 by 9,
 ) !default;
 
-// WARNING: Will be removed in version 6.4
-$responsive-embed-ratio: default;
-
 /// Creates a responsive embed container.
 /// @param {String|List} $ratio [default] - Ratio of the container. Can be a key from the `$responsive-embed-ratios` map or a list formatted as `x by y`.
 @mixin responsive-embed($ratio: default) {
@@ -57,14 +54,4 @@ $responsive-embed-ratio: default;
       }
     }
   }
-}
-
-@mixin foundation-flex-video {
-  @warn 'This mixin is being replaced by foundation-responsive-embed(). foundation-flex-video() will be removed in Foundation 6.4.';
-  @include foundation-responsive-embed;
-}
-
-@mixin flex-video($ratio: $responsive-embed-ratio) {
-  @warn 'This mixin is being replaced by responsive-embed(). flex-video() will be removed in Foundation 6.4.';
-  @include responsive-embed($ratio);
 }

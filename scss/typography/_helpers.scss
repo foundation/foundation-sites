@@ -50,6 +50,37 @@ $cite-font-size: rem-calc(13) !default;
 /// @type String
 $cite-pseudo-content: '\2014 \0020' !default;
 
+/// Text color of `.code-inline` and `.code-block` components.
+/// @type Color
+$code-color: $black !default;
+
+/// Font family of `.code-inline` and `.code-block` components.
+/// @type String | List
+$code-font-family: $font-family-monospace !default;
+
+/// Font weight of text in `.code-inline` and `.code-block` components.
+/// @type String
+$code-font-weight: $global-weight-normal !default;
+
+/// Background color of `.code-inline` and `.code-block` components.
+/// @type Color
+$code-background: $light-gray !default;
+
+/// Border around `.code-inline` and `.code-block` components.
+/// @type List
+$code-border: 1px solid $medium-gray !default;
+
+/// Padding around text of the `.code-inline` component.
+/// @type Number | List
+$code-padding: rem-calc(2 5 1) !default;
+
+/// Padding around text of the `.code-block` component.
+/// @type Number | List
+$code-block-padding: 1rem !default;
+
+/// Margin under the `.code-block` component.
+/// @type Number
+$code-block-margin-bottom: 1.5rem !default;
 
 @mixin cite-block {
   display: block;
@@ -59,6 +90,38 @@ $cite-pseudo-content: '\2014 \0020' !default;
   &:before {
     content: $cite-pseudo-content;
   }
+}
+
+/// Add basic styles for a code helper.
+/// See `code-inline` and `code-block` mixins.
+@mixin code-style {
+  border: $code-border;
+  background-color: $code-background;
+
+  font-family: $code-font-family;
+  font-weight: $code-font-weight;
+  color: $code-color;
+}
+
+/// Make code helper from the `code-style` mixin inline.
+/// Used to generate `.code-inline`
+@mixin code-inline {
+  display: inline;
+  max-width: 100%;
+  word-wrap: break-word;
+
+  padding: $code-padding;
+}
+
+/// Make code helper from the `code-style` mixin a block.
+/// Used to generate `.code-block`
+@mixin code-block {
+  display: block;
+  overflow: auto;
+  white-space: pre;
+
+  padding: $code-block-padding;
+  margin-bottom: $code-block-margin-bottom;
 }
 
 @mixin foundation-typography-helpers {
@@ -103,5 +166,15 @@ $cite-pseudo-content: '\2014 \0020' !default;
 
   .cite-block {
     @include cite-block;
+  }
+
+  .code-inline {
+    @include code-style;
+    @include code-inline;
+  }
+
+  .code-block {
+    @include code-style;
+    @include code-block;
   }
 }
