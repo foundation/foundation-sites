@@ -52,7 +52,7 @@
     "clipboard": "^1.7.1",
     "corejs-typeahead": "^1.1.1",
     "dateformat": "^3.0.0",
-    "doiuse": "^2.6.0",
+    "doiuse": "^4.1.0",
     "foundation-docs": "github:zurb/foundation-docs#e95141823f1248fd62a83ed5999cdd979cacd9e5",
     "gaze": "^1.1.2",
     "gulp": "^3.8.10",
