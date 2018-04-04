@@ -14,7 +14,6 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
