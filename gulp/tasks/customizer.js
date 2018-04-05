@@ -22,7 +22,7 @@ var zip = require('gulp-zip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var webpackStream = require('webpack-stream');
-var webpack2 = require('webpack');
+var webpack = require('webpack');
 var named = require('vinyl-named');
 
 var utils = require('../utils.js');
@@ -40,6 +40,7 @@ var MODULE_LIST;
 var VARIABLE_LIST;
 
 var WEBPACK_CONFIG = {
+  mode: 'development',
   externals: utils.umdExternals({
     'jquery': 'jQuery'
   }),
@@ -123,7 +124,7 @@ gulp.task('customizer:javascript-entry', ['customizer:loadConfig'], function() {
 
 gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
   return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
-    .pipe(webpackStream(WEBPACK_CONFIG, webpack2))
+    .pipe(webpackStream(WEBPACK_CONFIG, webpack))
     .pipe(rename('foundation.js'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
