@@ -63,12 +63,8 @@
   // Gutters
   @include grid-column-gutter($gutters: $gutters);
 
-  // Last column alignment
-  @if $grid-column-align-edge {
-    &:last-child:not(:first-child) {
-      float: $global-right;
-    }
-  }
+  // Position
+  @include grid-col-pos(auto);
 }
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.
