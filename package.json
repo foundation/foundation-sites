@@ -57,7 +57,7 @@
     "gaze": "^1.1.2",
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",
-    "gulp-babel": "^6.1.1",
+    "gulp-babel": "^7.0.1",
     "gulp-cache-bust": "~1.0.2",
     "gulp-check-deps": "^1.4.1",
     "gulp-clean-css": "^3.4.1",
