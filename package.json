@@ -69,7 +69,7 @@
     "gulp-newer": "^1.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^7.0.0",
-    "gulp-prompt": "^0.2.0",
+    "gulp-prompt": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-rsync": "^0.0.7",
