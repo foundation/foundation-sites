@@ -347,7 +347,7 @@ class Orbit extends Plugin {
           $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.attr('aria-live', 'polite');
+            $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
         });
 
         Motion.animateOut(
