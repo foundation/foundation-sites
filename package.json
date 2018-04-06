@@ -33,7 +33,7 @@
   "license": "MIT",
   "devDependencies": {
     "array-uniq": "^1.0.2",
-    "autoprefixer": "^6.7.7",
+    "autoprefixer": "^8.2.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
