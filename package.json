@@ -95,7 +95,7 @@
     "process-nextick-args": "^1.0.7",
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.1",
-    "run-sequence": "^1.1.4",
+    "run-sequence": "^2.2.1",
     "sass-true": "^2.2.2",
     "sassy-lists": "3.0.0",
     "sinon": "^1.17.7",
