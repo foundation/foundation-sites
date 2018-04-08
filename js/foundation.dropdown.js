@@ -35,8 +35,8 @@ class Dropdown extends Positionable {
     this._init();
 
     Keyboard.register('Dropdown', {
-      'ENTER': 'open',
-      'SPACE': 'open',
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
       'ESCAPE': 'close'
     });
   }

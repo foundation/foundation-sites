@@ -7,6 +7,8 @@ describe('Dropdown', function() {
     `<button class="${buttonClasses}" type="button" data-toggle="my-dropdown">toggle</button>`;
   const getDropdownContainer = (dropdownClasses = '') =>
     `<div class="${dropdownClasses}" data-dropdown id="my-dropdown">Dropdown</div>`;
+  const getFocusableDropdownContainer = (dropdownClasses = '', inputId = '') =>
+    `<div class="${dropdownClasses}" data-dropdown id="my-dropdown">Dropdown${getFocusableInput(inputId)}</div>`;
 
   const getFocusableInput = (inputId = '') =>
     `<input type="text" placeholder="should auto focus" id="${inputId}" />`;
@@ -182,14 +184,23 @@ describe('Dropdown', function() {
 
       $dropdownContainer.should.be.visible;
     });
-    it('focuses Dropdown on SPACE', function() {
+    it('does not focus Dropdown on SPACE by default', function() {
       $dropdownController = $(getDropdownController()).appendTo('body');
       $dropdownContainer = $(getDropdownContainer()).appendTo('body');
       plugin = new Foundation.Dropdown($dropdownContainer, {});
       $dropdownController.focus()
         .trigger(window.mockKeyboardEvent('SPACE'));
 
-      document.activeElement.should.be.equal($dropdownContainer[0]);
+      document.activeElement.should.be.equal($dropdownController[0]);
+    });
+    it('focuses Dropdown on SPACE when container has a focusable element', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getFocusableDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+      $dropdownController.focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      document.activeElement.should.be.equal($dropdownController[0]);
     });
     it('does not focus Dropdown when anchor is an input', function() {
       $dropdownController = $('<input type="text" data-toggle="my-dropdown">').appendTo('body');
