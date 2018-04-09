@@ -346,13 +346,17 @@ For an example of off-canvas, checkout this top bar with off-canvas navigation a
 
 ## In-Canvas to Off-Canvas
 
-With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. This differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the <code>inCanvasOn</code> option for this. In-Canvas differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature as it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens only.
+
+<div class="primary callout">
+  <p>The <code>inCanvasOn</code> option will automatically add the <code>.in-canvas-for-[BREAKPOINT]</code> class since most of the work is done via CSS only. However you may also add this class yourself which will override the option.</p>
+</div>
 
 ```html_example
 <button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
   Open in-canvas that is off-canvas now
 </button>
-<div class="off-canvas in-canvas-for-large position-right" id="inCanvasExample" data-off-canvas>
+<div class="off-canvas position-right" id="inCanvasExample" data-off-canvas data-options="inCanvasFor:large;">
   <div class="callout">I'm in-canvas for medium screen size and move off-canvas for medium down.</div>
 </div>
 ```

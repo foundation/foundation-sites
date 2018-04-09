@@ -35,6 +35,7 @@ class OffCanvas extends Plugin {
     this.position = 'left';
     this.$content = $();
     this.nested = !!(this.options.nested);
+    this.isInCanvas = false;
 
     // Defines the CSS transition/position classes of the off-canvas content container.
     $(['push', 'overlap']).each((index, val) => {
@@ -136,6 +137,20 @@ class OffCanvas extends Plugin {
       this.$element.css('transition-duration', this.options.transitionTime);
     }
 
+    let inCanvasFor = this.$element.attr('class').match(/\bin-canvas-for-(\w+)/);
+
+    if (inCanvasFor && inCanvasFor.length === 2) {
+      // Set `inCanvasOn` option if found in-canvas-for-[BREAKPONT] CSS class
+      this.options.inCanvasOn = inCanvasFor[1];
+    } else if (this.options.inCanvasOn) {
+      // Ensure the CSS class is set
+      this.$element.addClass(`in-canvas-for-${this.options.inCanvasOn}`);
+    }
+
+    if (this.options.inCanvasOn) {
+      this._checkInCanvas();
+    }
+
     // Initally remove all transition/position CSS classes from off-canvas content container.
     this._removeContentClasses();
   }
@@ -157,6 +172,13 @@ class OffCanvas extends Plugin {
       var $target = this.options.contentOverlay ? this.$overlay : this.$content;
       $target.on({'click.zf.offCanvas': this.close.bind(this)});
     }
+
+    if (this.options.inCanvasOn) {
+      $(window).on('changed.zf.mediaquery', () => {
+        this._checkInCanvas();
+      });
+    }
+
   }
 
   /**
@@ -179,6 +201,17 @@ class OffCanvas extends Plugin {
         _this.reveal(false);
       }
     });
+  }
+
+  /**
+   * Checks if InCanvas on current breakpoint and adjust off-canvas accordingly
+   * @private
+   */
+  _checkInCanvas() {
+    this.isInCanvas = MediaQuery.atLeast(this.options.inCanvasOn);
+    if (this.isInCanvas === true) {
+      this.close();
+    }
   }
 
   /**
@@ -285,7 +318,7 @@ class OffCanvas extends Plugin {
    * @todo also trigger 'open' event?
    */
   open(event, trigger) {
-    if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
+    if (this.$element.hasClass('is-open') || this.isRevealed || this.isInCanvas) { return; }
     var _this = this;
 
     if (trigger) {
@@ -533,7 +566,15 @@ OffCanvas.defaults = {
   revealOn: null,
 
   /**
-   * Force focus to the OffCanvas on open. If true, will focus the opening trigger on close.
+   * Breakpoint at which the off-canvas gets moved into canvas content and acts as regular page element.
+   * @option
+   * @type {?string}
+   * @default null
+   */
+  inCanvasOn: null,
+
+  /**
+   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
    * @option
    * @type {boolean}
    * @default true
