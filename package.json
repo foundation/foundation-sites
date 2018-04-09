@@ -74,7 +74,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-rsync": "^0.0.7",
     "gulp-ruby-sass": "^2.0.6",
-    "gulp-sass": "^2.1.0",
+    "gulp-sass": "^4.0.1",
     "gulp-sass-lint": "^1.3.2",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^2.1.2",
