@@ -96,7 +96,7 @@
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.1",
     "run-sequence": "^1.1.4",
-    "sass-true": "^2.2.2",
+    "sass-true": "^4.0.0",
     "sassy-lists": "3.0.0",
     "sinon": "^1.17.7",
     "supercollider": "^1.4.4",
