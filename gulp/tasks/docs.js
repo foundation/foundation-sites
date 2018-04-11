@@ -50,7 +50,9 @@ gulp.task('docs', function() {
     }))
     .pipe(supercollider.init())
     .pipe(panini(PANINI_CONFIG))
-    .pipe(cacheBust())
+    .pipe(cacheBust({
+        basePath: '_build/'
+    }))
     .pipe(gulp.dest('_build'))
     .on('finish', buildSearch);
 });
@@ -61,7 +63,9 @@ gulp.task('docs:all', function() {
   return gulp.src('docs/pages/**/*')
     .pipe(supercollider.init())
     .pipe(panini(PANINI_CONFIG))
-    .pipe(cacheBust())
+    .pipe(cacheBust({
+        basePath: '_build/'
+    }))
     .pipe(gulp.dest('_build'))
     .on('finish', buildSearch);
 });

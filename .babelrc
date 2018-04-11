@@ -1,13 +1,14 @@
 {
-	"plugins": [
-  	"transform-es2015-arrow-functions",
-  	"transform-es2015-block-scoped-functions",
-  	"transform-es2015-block-scoping",
-  	"transform-es2015-classes",
-  	"transform-es2015-destructuring",
-  	"transform-es2015-template-literals",
-  	"transform-es2015-parameters",
-  	"transform-es2015-shorthand-properties",
-  	"transform-es2015-spread"
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "ie >= 9",
+          "ios >= 7",
+          "android >= 4.4"
+        ]
+      }
+    }]
   ]
 }
