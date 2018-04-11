@@ -56,7 +56,7 @@
     "foundation-docs": "github:zurb/foundation-docs#e95141823f1248fd62a83ed5999cdd979cacd9e5",
     "gaze": "^1.1.2",
     "gulp": "^3.8.10",
-    "gulp-add-src": "^0.2.0",
+    "gulp-add-src": "^1.0.0",
     "gulp-babel": "^6.1.1",
     "gulp-cache-bust": "~1.0.2",
     "gulp-check-deps": "^1.4.1",
