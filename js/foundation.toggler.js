@@ -65,6 +65,21 @@ class Toggler extends Plugin {
         'aria-controls': id,
         'aria-expanded': this.$element.is(':hidden') ? false : true
       });
+
+    // Add ARIA attributes to triggers
+    var id = this.$element[0].id,
+        $triggers = $(`[data-open~="${id}"], [data-close~="${id}"], [data-toggle~="${id}"]`),
+        that = this;
+
+    $triggers.each(function(index, element) {
+      var $this = $(element);
+
+      //make sure not to duplicate id in aria-controls
+      $this.attr({
+        'aria-controls': `${$this.attr('aria-controls') ? $this.attr('aria-controls').replace(id, '') : ''} ${id}`.trim(),
+        'aria-expanded': that.$element.is(':hidden') ? false : true
+      });
+    });
   }
 
   /**
