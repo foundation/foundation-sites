@@ -149,8 +149,9 @@ class Orbit extends Plugin {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
-        $(this).css({'position': 'relative', 'display': 'none'});
+      // hide all slides but the active one
+      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+        $(this).css({'display': 'none'});
       }
       max = temp > max ? temp : max;
       counter++;
@@ -344,11 +345,10 @@ class Orbit extends Plugin {
 
       if (this.options.useMUI && !this.$element.is(':hidden')) {
         Motion.animateIn(
-          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+          $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.css({'position': 'relative', 'display': 'block'})
-            .attr('aria-live', 'polite');
+            $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
         });
 
         Motion.animateOut(
