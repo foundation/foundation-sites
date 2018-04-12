@@ -59,14 +59,6 @@ class Toggler extends Plugin {
     }
 
     // Add ARIA attributes to triggers
-    var id = this.$element[0].id;
-    $(`[data-open="${id}"], [data-close="${id}"], [data-toggle="${id}"]`)
-      .attr({
-        'aria-controls': id,
-        'aria-expanded': this.$element.is(':hidden') ? false : true
-      });
-
-    // Add ARIA attributes to triggers
     var id = this.$element[0].id,
         $triggers = $(`[data-open~="${id}"], [data-close~="${id}"], [data-toggle~="${id}"]`),
         that = this;
