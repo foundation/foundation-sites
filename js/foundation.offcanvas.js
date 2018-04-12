@@ -402,7 +402,7 @@ class OffCanvas extends Plugin {
 
     this.$element.attr('aria-hidden', 'true')
       /**
-       * Fires when the off-canvas menu opens.
+       * Fires when the off-canvas menu closes.
        * @event OffCanvas#closed
        */
         .trigger('closed.zf.offCanvas');
