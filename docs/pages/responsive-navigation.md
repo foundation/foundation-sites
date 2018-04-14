@@ -190,21 +190,6 @@ Just like foundation docs itself (see left sidenav), an accordion menu is great 
 </ul>
 ```
 
-<br>
-<div class="alert callout">
-  <p>
-    <strong>Bug(v6.3.1):</strong> There is a bug within <strong>drilldown-accordion menu</strong> combo. If you set up a responsive menu with drilldown on small, then accordion for medium up, and resize to small and then back to medium the accordions will not work. The bug can be reproduced <a href="http://codepen.io/IamManchanda/pen/OmawKe?editors=1000">here</a> <br>
-    <strong>Good News:</strong> The Bug will be fixed with the upcoming foundation release. If you are specifically using <strong>v6.3.1</strong>, we recommend to use this below patch to fix this.
-  </p>
-</div>
-
-```javascript
-// Patch for a Bug in v6.3.1
-$(window).on('changed.zf.mediaquery', function() {
-  $('.is-accordion-submenu.invisible').removeClass('invisible');
-});
-```
-
 ---
 
 ## Responsive Toggle

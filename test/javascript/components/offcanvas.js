@@ -104,7 +104,7 @@ describe('Off Canvas', function() {
           plugin.$element.should.have.class('is-open');
           $('body').should.have.class('is-off-canvas-open');
           done();
-        }, 1);
+        }, 30);
       });
 
       plugin.open();
