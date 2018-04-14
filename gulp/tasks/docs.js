@@ -30,7 +30,7 @@ supercollider
     pageRoot: 'docs/pages',
     data: {
       repoName: 'foundation-sites',
-      editBranch: 'master'
+      editBranch: 'develop'
     }
   })
   .searchConfig({
