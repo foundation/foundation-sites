@@ -73,7 +73,7 @@ The `.foundation()` function on the jQuery object will kick off every Foundation
 $(document).foundation();
 ```
 
-You can also selectively initialize plugins by call the `.foundation();` method on one or more elements with a plugin.
+You can also selectively initialize plugins by calling the `.foundation();` method on one or more elements with a plugin.
 
 ```js
 $('#foo').foundation(); // initialize all plugins within the element `#foo`
@@ -191,7 +191,7 @@ $('#reveal').foundation('open'); //will open a Reveal modal with id `reveal`.
 
 $('[data-tabs]').eq(0).foundation('selectTab', $('#example')); //will change the first Tabs on the page to whatever panel you choose.
 
-$('.tooltip').foundation('destroy'); //will destroy all Tooltips on the page.
+$('.tooltip').foundation('_destroy'); //will destroy all Tooltips on the page.
 
 ```
 You can use any jQuery selector you like, and if the selector encompasses multiple plugins, they will all have the same the chosen method invoked. You pass arguments just like you would any in other JavaScript `function(comma, delimited, so, easy)`. We did make an effort to reduce the number of public methods that require arguments, but check the plugin's page to see if it requires additional information.

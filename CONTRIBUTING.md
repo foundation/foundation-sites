@@ -25,11 +25,11 @@ When you submit a pull request, @mention a few people you’d like to help you r
 ## Git Workflow
 
 Foundation uses a git workflow close to [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). The workflow relies on three branches:
-- **`master`**: The stable branch. It only contains the latest stable version released. Pull requests for docs improvements can be opened on it.
-- **`develop`**: The developing branch is used to prepare the next minor/major version. It always contains all the new features and bug fixes previously made, and constitutes the most up-to-date version of Foundation. Almost every pull request should be opened on this branch. When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
-- **`support/*`**: Support branches are used to support the previous versions (i.e. `support/6.3` for `v6.3.0`) and prepare patches (i.e. `v6.3.1`). When a bug fix is compatible with supported versions, it is also merged on their support branches and patch versions can be released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported version.
+- **`master`**: The stable branch. It only contains the latest stable version released. Do NOT open pull requests on it.
+- **`develop`**: The developing branch is used to prepare the next minor/major version. It always contains all the new features and bug fixes, and is the most up-to-date version of Foundation. Almost every pull request should be opened on this branch (fixes, features, documentation...). When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
+- **`support/*`**: Support branches are used to support the previous versions (i.e. `support/v6.5` for `v6.5.0`) and prepare patches (i.e. `v6.5.1`). When a pull request for a bug fix is merged on `develop` and is compatible with supported versions, its commits must be added on the compatible `support/*` branches too. A patch version can be then released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported `support/*` branch.
 
-This git workflow was adopted as of `v6.3`, so `v6.2` and previous versions are not supported.
+This git workflow was fully adopted as of `v6.5`, so `v6.4` and previous versions are not supported.
 
 ## Coding Standards
 
