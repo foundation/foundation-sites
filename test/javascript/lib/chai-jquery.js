@@ -228,4 +228,13 @@
       };
     }
   );
+
+  chai.Assertion.addMethod('focus', function () {
+    this.assert(
+      // Can't use `$().is(':focus')` because of certain webkit browsers
+      // see https://github.com/ariya/phantomjs/issues/10427
+      flag(this, 'object').get(0) === document.activeElement
+      , 'expected #{this} to have focus'
+      , 'expected #{this} not to have focus');
+  });
 }));
