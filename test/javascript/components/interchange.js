@@ -170,12 +170,10 @@ describe('Interchange', function() {
     it('calls reflow on viewport size change once', function(done) {
       $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
-      Foundation.IHearYou();
-      let spy = sinon.spy(plugin, '_reflow');
-
       setTimeout(function() {
-        $(window).trigger('resize');
+        Foundation.IHearYou();
       }, 1);
+      let spy = sinon.spy(plugin, '_reflow');
 
       setTimeout(function() {
         $(window).trigger('resize');
@@ -184,6 +182,10 @@ describe('Interchange', function() {
       setTimeout(function() {
         $(window).trigger('resize');
       }, 10);
+
+      setTimeout(function() {
+        $(window).trigger('resize');
+      }, 20);
 
       setTimeout(function() { // Wait for third trigger...
         sinon.assert.calledOnce(spy);
