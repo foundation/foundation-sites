@@ -31,7 +31,7 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 3. **Prepare a clear use case for the requested feature**.
    This will help you to make sure that this is the feature you want, and us to better understand your needs and how it would benefits to everyone the best way.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
-   Please provide a complete description of the feature you want, the use case you prepared will help you for that. After you created your issue, if you feel ready, you can start working on a pull request (please tell us so). See [Contributions](#Contributions) below.
+   Please provide a complete description of the feature you want, the use case you prepared will help you for that. After you created your issue, if you feel ready, you can start working on a pull request (please tell us so). See [Contributions](#contributions) below.
 
 ## Contributions
 
@@ -55,7 +55,7 @@ After you made these checks, please follow these advices to create your pull req
 5. **Make sure that everything works and tests pass**.
    You must absolutely check that everything still works after your changes. Please also add tests for features you added or uncovered bugs you fixed. See the [Testing](https://github.com/zurb/foundation-sites#testing) section.
 6. **Create your pull request** ([link](https://github.com/zurb/foundation-sites/compare)).
-   Make sure to open in the on right branch. Most often it will be `develop`, but you can take a look at the [Git Workflow](#Git-Workflow) below.
+   Make sure to open in the on right branch. Most often it will be `develop`, but you can take a look at the [Git Workflow](#git-workflow) below.
 
 When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
