@@ -11,7 +11,7 @@
   <a href="https://foundation.zurb.com/sites/docs/installation.html"><b>Install</b></a>
   | <a href="https://foundation.zurb.com/sites/docs">Documentation</a>
   | <a href="https://github.com/zurb/foundation-sites/releases">Releases</a>
-  | <a href="CONTRIBUTING.MD">Contributing</a>
+  | <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
 ---
