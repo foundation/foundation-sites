@@ -38,7 +38,7 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. The rule is the same for everyone, for new contributors as for Core Team members.
 
 Before working on a bug fix or a new feature, please make sure of the following:
-* [x] **There is no [similar pull request that was rejected or is not merged yet]** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Apr)).
+* [x] **There is no similar pull request that was rejected or is not merged yet** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Apr)).
   Add a comment on this pull request otherwise. Explain us why this pull request is urgent or important to you.
 * [x] **There is an open issue related to this bug or feature**.
   Please create one otherwise. It is often useful to talk about the bug fix or feature and the best way to implement it before working on it. You can skip this step for obvious changes (like typo in the documentation).
