@@ -2,14 +2,6 @@
 
 Although Foundation is maintained by ZURB, it’s also a community effort. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
 
-A select group of our contributors have been dubbed *Yetinauts*. They have direct write access to the codebase and support the core Foundation team on the development of the framework. Are you interested in making your mark on the Foundation framework? Whether you’re just submitting bugs or helping us write new features, there are many ways to contribute to Foundation.
-
-## Terms
-
-- The **community** is anyone commenting on issues or opening pull requests. That includes you!
-- A **Yetinaut** is anyone with write access to the repository.
-- The **Core Team** is anyone on the Foundation Team.
-
 ## Issues
 
 Open an issue for any problem you have with the framework. If there's anything missing from your issue, such as extra context, a code sample, etc. a team member will ask for more info in the comments.
@@ -35,9 +27,9 @@ This git workflow was fully adopted as of `v6.5`, so `v6.4` and previous version
 
 If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/zurb/foundation-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
 
-## Becoming a Yetinaut
+## Core Team
 
-Want to join our crack team of Yetinauts? The Core Team is inviting active community members to become Yetinauts  on a case-by-case basis. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
+Want to help us making Foundation the best framework ever? The Core Team is inviting active community members join it. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
 
 If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
 
