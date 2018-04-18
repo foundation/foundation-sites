@@ -1,16 +1,61 @@
 # Foundation Contributing Guidelines
 
-Although Foundation is maintained by ZURB, it’s also a community effort. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
+Although Foundation was built and maintained by ZURB for years, it is today a community project. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
 
 ## Issues
 
-Open an issue for any problem you have with the framework. If there's anything missing from your issue, such as extra context, a code sample, etc. a team member will ask for more info in the comments.
+For **bugs**, **features requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](http://foundation.zurb.com/forum) would be more appropriate. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
 
-Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com/forum), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
+Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
+
+### Report a bug
+
+1. **Search for similar [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)**
+   It is likely that someone else got the same problem as you before and already reported it.
+2. **Make sure of the following:**
+   * [x] There is no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to this bug
+   * [x] This is a bug and not a missing feature
+   * [x] This bug comes from Foundation and not the browser or an other library
+   * [x] This bug is still present in the latest Foundation release
+3. **Prepare a [test case](https://codepen.io/ncoden/pen/YLzjeq) with your bug**
+   Trying to reproduce a bug is often time-consuming. Please isolate your bug in a dedicated test case. The simpler is the test case, the best it is.
+4. **[Create your issue](https://github.com/zurb/foundation-sites/issues/new)**
+   Please provide a complete description of your bug: What do you expect ? What happends instead ? Which version of Foundation do you use, which ones are affected by the bug ? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
+
+### Request for a new feature
+1. **Search for similar [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)**
+   It is likely that someone else needed a similar feature as yours and already requested it.
+2. **Make sure of the following:**
+   * [x] There is no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to your request
+   * [x] This is a missing feature and not a bug
+3. **Prepare a clear use case for the requested feature**
+   This will help you to make sure that this is the feature you want, and us to better understand your needs and how it would benefits to everyone the best way.
+4. **[Create your issue](https://github.com/zurb/foundation-sites/issues/new)**
+   Please provide a complete description of the feature you want, the use case you prepared will help you for that. After you created your issue, if you feel ready, you can start working on a pull request (please tell us so). See [Contributions](#Contributions) below.
 
 ## Contributions
 
-All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. Core Team members can commit directly to the repository for very small changes, but should generally also submit new code as a pull request.
+All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. The rule is the same for everyone, for new contributors as for Core Team members.
+
+Before working on a bug fix or a new feature, please make sure of the following:
+* [x] **There is no [similar pull request that was rejected or is not merged yet](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Apr)**
+  Add a comment on this pull request otherwise. Explain us why this pull request is urgent or important to you.
+* [x] **There is an open issue related to this bug or feature**
+  Please create one otherwise. It is often useful to talk about the bug fix or feature and the best way to implement it before working on it. You can skip this step for obvious changes (like typo in the documentation).
+
+After you made these checks, please follow these advices to create your pull requests:
+1. **Work on a dedicated Git branch**
+   So you default `develop` branch stay clean and you can open multiple Pull Requests at the same time for various issues. See (2) below for the branch name format.
+2. **Use our standard format for branch, commits and pull request names**
+   It must reference the related issue, be written in the "imperative" form (like if it was completing `now the software should...`) and be prefixed by a type (`feat` for new feature, `fix` if you repair something, `docs` documentation, `refactor` for non-breaking code cleaning, `style` for code formatting, `tests` for units or visual tests or `chore` for boring day-to-day tasks not affecting the actual code. See the [AngularJs Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)). For example: `docs: improve Dropdown usage example #123` for commit/pull request names and `docs/dropdown-improve-usage-example-123` for the branch name.
+3. **Describe everything you did and why in your commits and pull request body**
+   Even if you already mentionned it in the related issue, please explains what you did and for which reasons. Give references to related issues, comments, test cases or any useful ressources.
+4. **Provide a clear and readable code**
+   Make sure that the code you changed is consistent across components and that anyone can easily understand its behavior. Split it in abstract functions, avoid code duplication and add comments when needed. You can open a "work-in-progress" pull request (prefix it with "[WIP]") if you need any help with that.
+5. **Make sure that everything works and tests pass**
+   You must absolutely check that everything still works after your changes. Please also add tests for features you added or uncovered bugs you fixed. See the [Testing](https://github.com/zurb/foundation-sites#testing) section.
+6. **[Create your pull request](https://github.com/zurb/foundation-sites/compare)**
+   Make sure to open in the on right branch. Most often it will be `develop`, but you can take a look at the [Git Workflow](#Git-Workflow) below.
 
 When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
