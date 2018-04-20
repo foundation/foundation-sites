@@ -55,16 +55,27 @@ After you made these checks, please follow these advices to create your pull req
 5. **Make sure that everything works and tests pass**.
    You must absolutely check that everything still works after your changes. Please also add tests for features you added or uncovered bugs you fixed. See the [Testing](https://github.com/zurb/foundation-sites#testing) section.
 6. **Create your pull request** ([link](https://github.com/zurb/foundation-sites/compare)).
-   Make sure to open in the on right branch. Most often it will be `develop`, but you can take a look at the [Git Workflow](#git-workflow) below.
+   Make sure it targets the right branch: most often `develop`, unless you provide a fix for an older version and it should be `support/*`. Take a look at our [Git Workflow](#git-workflow) below.
 
 When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
 ## Git Workflow
 
-Foundation uses a git workflow close to [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). The workflow relies on three branches:
-- **`master`**: The stable branch. It only contains the latest stable version released. Do NOT open pull requests on it.
-- **`develop`**: The developing branch is used to prepare the next minor/major version. It always contains all the new features and bug fixes, and is the most up-to-date version of Foundation. Almost every pull request should be opened on this branch (fixes, features, documentation...). When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
-- **`support/*`**: Support branches are used to support the previous versions (i.e. `support/v6.5` for `v6.5.0`) and prepare patches (i.e. `v6.5.1`). When a pull request for a bug fix is merged on `develop` and is compatible with supported versions, its commits must be added on the compatible `support/*` branches too. A patch version can be then released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported `support/*` branch.
+Foundation uses a git workflow close to the the successful [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) branching model, to which we added "support" branches to be able to release patches for older Foundation versions. Most of the time you will not have to care about this workflow and can simply open your pull request on `develop`.
+
+The workflow relies on three branches:
+
+- **`master`**
+
+  The stable branch. It only contains the latest stable version released. **Do NOT open pull requests on it**.
+
+- **`develop`**
+
+  Used to prepare the next minor/major version. It always contains all the new features and bug fixes, and is the most up-to-date version of Foundation. Almost every pull request should be opened on this branch (fixes, features, documentation...). When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
+
+- **`support/<version>`**
+
+  Used to support the previous versions (i.e. `support/v6.5` for `v6.5.0`) and prepare patches (i.e. `v6.5.1`). When a pull request for a bug fix is merged on `develop` and is compatible with supported versions, its commits must be added on the compatible `support/*` branches too. A patch version can be then released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported `support/*` branch.
 
 This git workflow was fully adopted as of `v6.5`, so `v6.4` and previous versions are not supported.
 
