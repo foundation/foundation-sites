@@ -13,10 +13,10 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 1. **Search for similar opened or closed issues** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
    It is likely that someone else got the same problem as you before and already reported it.
 2. **Make sure of the following:**
-   * [x] There is no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to this bug
-   * [x] This is a bug and not a missing feature
-   * [x] This bug comes from Foundation and not the browser or an other library
-   * [x] This bug is still present in the latest Foundation release
+   * [ ] There are no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to this bug
+   * [ ] This is a bug and not a missing feature
+   * [ ] This bug comes from Foundation and not the browser or an other library
+   * [ ] This bug is still present in the latest Foundation release
 3. **Prepare a test case with your bug** ([link](https://codepen.io/ncoden/pen/YLzjeq)).
    Trying to reproduce a bug is often time-consuming. Please isolate your bug in a dedicated test case. The simpler is the test case, the best it is.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
@@ -26,8 +26,8 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 1. **Search for similar opened or closed issues** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
    It is likely that someone else needed a similar feature as yours and already requested it.
 2. **Make sure of the following:**
-   * [x] There is no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to your request
-   * [x] This is a missing feature and not a bug
+   * [ ] There are no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to your request
+   * [ ] This is a missing feature and not a bug
 3. **Prepare a clear use case for the requested feature**.
    This will help you to make sure that this is the feature you want, and us to better understand your needs and how it would benefit to everyone the best way.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
@@ -38,9 +38,9 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. The rule is the same for everyone, for new contributors as for Core Team members.
 
 Before working on a bug fix or a new feature, please make sure of the following:
-* [x] **There is no similar pull request that was rejected or is not merged yet** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Apr)).
+* [ ] **There is no similar pull request that was rejected or is not merged yet** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Apr)).
   Add a comment on this pull request otherwise. Explain us why this pull request is urgent or important to you.
-* [x] **There is an open issue related to this bug or feature**.
+* [ ] **There is an open issue related to this bug or feature**.
   Please create one otherwise. It is often useful to talk about the bug fix or feature and the best way to implement it before working on it. You can skip this step for obvious changes (like typo in the documentation).
 
 After you made these checks, please follow these advices to create your pull requests:
