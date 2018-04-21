@@ -31,7 +31,7 @@
 ## Checklist (all required):
 <!--- Go over all the following points, and put an `x` in the boxes.        -->
 <!--- If you're unsure about any of these, don't hesitate to ask.           -->
-- [ ] I have read the [CONTRIBUTING](CONTRIBUTING.md) document.
+- [ ] I have read and follow the [CONTRIBUTING](CONTRIBUTING.md) document.
 - [ ] There is no other pull request similar to this one.
 - [ ] The pull request title is descriptive.
 - [ ] The template is fully and correctly filled.
