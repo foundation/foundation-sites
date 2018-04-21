@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://foundation.zurb.com/">
-    <img src="https://user-images.githubusercontent.com/9939075/38782856-2a64a43e-40fa-11e8-89cd-e873af03b3c4.png" alt="Foundation for Sites 6" style="width: 100%; max-width: 384px;"/>
+    <img src="https://user-images.githubusercontent.com/9939075/38782856-2a64a43e-40fa-11e8-89cd-e873af03b3c4.png" alt="Foundation for Sites 6" width="448px" style="max-width:100%;"/>
   </a>
 </p>
  
