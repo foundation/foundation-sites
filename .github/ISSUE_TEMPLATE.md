@@ -47,7 +47,7 @@ How to reproduce:
 ## Checklist (all required):
 <!--- Go over all the following points, and put an `x` in the boxes.        -->
 <!--- If you're unsure about any of these, don't hesitate to ask.           -->
-- [ ] I have read the [CONTRIBUTING](CONTRIBUTING.md) document.
+- [ ] I have read and follow the [CONTRIBUTING](CONTRIBUTING.md) document.
 - [ ] This is a bug report or a feature request.
 - [ ] There is no other issues similar to this one.
 - [ ] The issue title is descriptive.
