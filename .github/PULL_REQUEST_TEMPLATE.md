@@ -36,6 +36,7 @@
 - [ ] The pull request title is descriptive.
 - [ ] The template is fully and correctly filled.
 - [ ] The pull request target the right branch (`develop` or `support/*`).
+- [ ] My commits are correctly titled and contains all relevant information.
 - [ ] My code follows the code style of this project.
 - [ ] I have updated the documentation accordingly to my changes (if relevant).
 - [ ] I have added tests to cover my changes (if relevant).
