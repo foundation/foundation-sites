@@ -32,11 +32,11 @@
 <!--- Go over all the following points, and put an `x` in the boxes.        -->
 <!--- If you're unsure about any of these, don't hesitate to ask.           -->
 - [ ] I have read and follow the [CONTRIBUTING](CONTRIBUTING.md) document.
-- [ ] There is no other pull request similar to this one.
+- [ ] There are no other pull request similar to this one.
 - [ ] The pull request title is descriptive.
 - [ ] The template is fully and correctly filled.
-- [ ] The pull request target the right branch (`develop` or `support/*`).
-- [ ] My commits are correctly titled and contains all relevant information.
+- [ ] The pull request targets the right branch (`develop` or `support/*`).
+- [ ] My commits are correctly titled and contain all relevant information.
 - [ ] My code follows the code style of this project.
 - [ ] I have updated the documentation accordingly to my changes (if relevant).
 - [ ] I have added tests to cover my changes (if relevant).

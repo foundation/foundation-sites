@@ -4,7 +4,7 @@ Although Foundation was built and maintained by ZURB for years, it is today a co
 
 ## Issues
 
-For **bugs**, **features requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](http://foundation.zurb.com/forum) would be more appropriate. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
+For **bugs**, **feature requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](https://foundation.zurb.com/forum) would be more appropriate. If you aren't sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
 
 Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
 
@@ -20,7 +20,7 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 3. **Prepare a test case with your bug** ([link](https://codepen.io/ncoden/pen/YLzjeq)).
    Trying to reproduce a bug is often time-consuming. Please isolate your bug in a dedicated test case. The simpler is the test case, the best it is.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
-   Please provide a complete description of your bug: What do you expect ? What happends instead ? Which version of Foundation do you use, which ones are affected by the bug ? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
+   Please provide a complete description of your bug: What do you expect? What happends instead? Which version of Foundation do you use, which ones are affected by the bug? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
 
 ### Request for a new feature
 1. **Search for similar opened or closed issues** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
@@ -29,7 +29,7 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
    * [x] There is no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to your request
    * [x] This is a missing feature and not a bug
 3. **Prepare a clear use case for the requested feature**.
-   This will help you to make sure that this is the feature you want, and us to better understand your needs and how it would benefits to everyone the best way.
+   This will help you to make sure that this is the feature you want, and us to better understand your needs and how it would benefit to everyone the best way.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
    Please provide a complete description of the feature you want, the use case you prepared will help you for that. After you created your issue, if you feel ready, you can start working on a pull request (please tell us so). See [Contributions](#contributions) below.
 
@@ -46,10 +46,10 @@ Before working on a bug fix or a new feature, please make sure of the following:
 After you made these checks, please follow these advices to create your pull requests:
 1. **Work on a dedicated Git branch**.
    So you default `develop` branch stay clean and you can open multiple Pull Requests at the same time for various issues. See (2) below for the branch name format.
-2. **Use our standard format for branch, commits and pull request names**.
-   It must reference the related issue, be written in the "imperative" form (like if it was completing `now the software should...`) and be prefixed by a type (`feat` for new feature, `fix` if you repair something, `docs` documentation, `refactor` for non-breaking code cleaning, `style` for code formatting, `tests` for units or visual tests or `chore` for boring day-to-day tasks not affecting the actual code. See the [AngularJs Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)). For example: `docs: improve Dropdown usage example #123` for commit/pull request names and `docs/dropdown-improve-usage-example-123` for the branch name.
-3. **Describe everything you did and why in your commits and pull request body**.
-   Even if you already mentionned it in the related issue, please explains what you did and for which reasons. Give references to related issues, comments, test cases or any useful ressources.
+2. **Use our standard format for branch, commit and pull request names**.
+   It must reference the related issue, be written in the "imperative" form (like if it was completing `now the software should...`) and be prefixed by a type (`feat` for new feature, `fix` if you repair something, `docs` for documentation, `refactor` for non-breaking code cleaning, `style` for code formatting, `tests` for units or visual tests or `chore` for boring day-to-day tasks not affecting the actual code. See the [AngularJs Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)). For example: `docs: improve Dropdown usage example #123` for commit/pull request names and `docs/dropdown-improve-usage-example-123` for the branch name.
+3. **Describe everything you did and why in your commit and pull request body**.
+   Even if you already mentionned it in the related issue, please explain what you did and for which reasons. Give references to related issues, comments, test cases or any useful resources.
 4. **Provide a clear and readable code**.
    Make sure that the code you changed is consistent across components and that anyone can easily understand its behavior. Split it in abstract functions, avoid code duplication and add comments when needed. You can open a "work-in-progress" pull request (prefix it with "[WIP]") if you need any help with that.
 5. **Make sure that everything works and tests pass**.
@@ -61,7 +61,7 @@ When you submit a pull request, @mention a few people you’d like to help you r
 
 ## Git Workflow
 
-Foundation uses a git workflow close to the the successful [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) branching model, to which we added "support" branches to be able to release patches for older Foundation versions. Most of the time you will not have to care about this workflow and can simply open your pull request on `develop`.
+Foundation uses a Git workflow close to the the successful [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) branching model, to which we added "support" branches to be able to release patches for older Foundation versions. Most of the time you will not have to care about this workflow and can simply open your pull request on `develop`.
 
 The workflow relies on three branches:
 
@@ -85,7 +85,7 @@ If you aren't sure how a feature should be implemented, we recommend checking ou
 
 ## Core Team
 
-Want to help us making Foundation the best framework ever? The Core Team is inviting active community members join it. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
+Want to help us making Foundation the best framework ever? The Core Team is inviting active community members to join it. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
 
 If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
 

@@ -2,7 +2,7 @@
 <!---                 Please fill the following template                    -->
 <!---                 Your issue may be ignored otherwise                   -->
 <!--- --------------------------------------------------------------------- -->
-<!---  Only submit here bug or feature requests. For help or questions to   -->
+<!---  Only submit bug or feature requests here. For help or questions to   -->
 <!---  the community, see the forum: https://foundation.zurb.com/forum      -->
 
 ## Expected Behavior
@@ -19,7 +19,7 @@
 <!--- or ideas how to implement the addition or change.                     -->
 
 ## Test Case and/or Steps to Reproduce (for bugs)
-<!--- We highly recommand you to provide a live example of your bug so we   -->
+<!--- We highly recommend you to provide a live example of your bug so we   -->
 <!--- can reproduce it. You can create a test case with the last Foundation -->
 <!--- version by forking https://codepen.io/ncoden/pen/YLzjeq               -->
 Test Case: <!-- https://... -->
@@ -40,7 +40,7 @@ How to reproduce:
 <!--- Include as many relevant details about the context and environment    -->
 <!--- you experienced the bug in. You can also provide logs.                -->
 - Foundation version(s) used:
-- Browser(s) Name and version(s):
+- Browser(s) name and version(s):
 - Operating System and version (desktop or mobile):
 - Link to your project:
 
@@ -49,7 +49,7 @@ How to reproduce:
 <!--- If you're unsure about any of these, don't hesitate to ask.           -->
 - [ ] I have read and follow the [CONTRIBUTING](CONTRIBUTING.md) document.
 - [ ] This is a bug report or a feature request.
-- [ ] There is no other issues similar to this one.
+- [ ] There are no other issues similar to this one.
 - [ ] The issue title is descriptive.
 - [ ] The template is fully and correctly filled.
 
