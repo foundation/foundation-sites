@@ -4,16 +4,14 @@
 <!--- --------------------------------------------------------------------- -->
 
 ## Description
-<!--- Describe your changes in detail -->
+<!--- Describe your changes in detail. Include any relevant information     -->
+<!--- (reasons, difficulties, links to web references, related issues...)   -->
 
 
 
-<!--- This project only accepts pull requests related to open issues.       -->
-<!--- * If improving the documentation or fixing typo, you can ignore this. -->
-<!--- * If suggesting a new feature or change, please discuss it in an      -->
-<!---   issue first.                                                        -->
-<!--- * If fixing a bug, there should be an issue describing it with steps  -->
-<!---   to reproduce.                                                       -->
+<!--- Bugs and new features/improvements must be presented and discussed in -->
+<!--- an issue first. Please create one if there is no issue related to     -->
+<!--- this pull request.                                                    -->
 - Closes <!--- link to issue... -->
 
 ## Motivation and Context
