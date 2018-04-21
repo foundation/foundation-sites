@@ -282,16 +282,25 @@ $abbr-underline: 1px dotted $black !default;
     @include header();
   }
 
-  // Heading styles
+  // Heading placeholders
   @each $size, $headers in $header-styles {
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
-        #{$header}, .#{$header} {
+        %#{$header} {
           @if $size == $-zf-zero-breakpoint {
             @extend %header;
           }
           @include header-style($header-defs);
         }
+      }
+    }
+  }
+
+  // Heading styles
+  @each $size, $headers in $header-styles {
+    @each $header, $header-defs in $headers {
+      #{$header}, .#{$header} {
+        @extend %#{$header};
       }
     }
   }
