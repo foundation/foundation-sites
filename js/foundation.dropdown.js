@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
@@ -35,8 +35,8 @@ class Dropdown extends Positionable {
     this._init();
 
     Keyboard.register('Dropdown', {
-      'ENTER': 'open',
-      'SPACE': 'open',
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
       'ESCAPE': 'close'
     });
   }
@@ -369,13 +369,6 @@ Dropdown.defaults = {
    */
   hOffset: 0,
   /**
-   * DEPRECATED: Class applied to adjust open position.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
-  /**
    * Position of dropdown. Can be left, right, bottom, top, or auto.
    * @option
    * @type {string}
@@ -427,7 +420,7 @@ Dropdown.defaults = {
    */
   closeOnClick: false,
   /**
-   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click. 
+   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click.
    * @option
    * @type {boolean}
    * @default true

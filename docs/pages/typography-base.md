@@ -306,6 +306,29 @@ Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
 
 ---
 
+Use `.code-inline` component to apply the code style when you want.
+
+```html_example
+<span class="code-inline">I am not code, but I am displayed as if.</span>
+```
+
+---
+
+Use the `.code-block` component to create a block of code.
+
+```html_example
+<code class="code-block">{
+    "What I am": "I am a big chunk of code. I can have very long lines, I will not break and show a scrollbar instead.",
+    ...
+}</code>
+```
+
+<div class="callout info">
+  <p>It is recommanded to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
+</div>
+
+---
+
 ## Keystrokes
 
 Use the `<kbd>` element to annotate a key stroke or combination.

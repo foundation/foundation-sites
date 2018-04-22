@@ -1,28 +1,59 @@
-<!-- For replicatable bugs or feature requests GitHub is the right place. The [Foundation Forum](http://foundation.zurb.com/forum) would be a great place to seek some help with general questions or help with your code. There you can reach out to the community to share your insights or ask questions. -->
+<!--- --------------------------------------------------------------------- -->
+<!---                 Please fill the following template                    -->
+<!---                 Your issue may be ignored otherwise                   -->
+<!--- --------------------------------------------------------------------- -->
+<!---  Only submit bug or feature requests here. For help or questions to   -->
+<!---  the community, see the forum: https://foundation.zurb.com/forum      -->
 
-#### How to reproduce this bug:
+## Expected Behavior
+<!--- If describing a bug, tell us what should happen.                      -->
+<!--- If suggesting a change/feature, tell us why and how it should work.   -->
 
-1. Step one
-2. Step two
-3. Step three
+## Current Behavior
+<!--- If describing a bug, tell us what happens instead.                    -->
+<!--- If suggesting a change/feature, explain the difference from           -->
+<!--- current behavior.                                                     -->
 
-#### What should happen:
+## Possible Solution
+<!--- Not obligatory, but suggest a fix/reason for the bug,                 -->
+<!--- or ideas how to implement the addition or change.                     -->
 
-#### What happened instead:
+## Test Case and/or Steps to Reproduce (for bugs)
+<!--- We highly recommend you to provide a live example of your bug so we   -->
+<!--- can reproduce it. You can create a test case with the last Foundation -->
+<!--- version by forking https://codepen.io/ncoden/pen/YLzjeq               -->
+Test Case: <!-- https://... -->
 
-#### Browser(s) and Device(s) tested on:
+<!--- If you cannot provide a test case, provide an unambiguous set of      -->
+<!--- steps to reproduce, with your code and configuration.                 -->
+How to reproduce:
+1.
+2.
+3.
 
-#### Foundation Version(s) you are using:
+## Context
+<!--- How has this issue affected you? What are you trying to accomplish?   -->
+<!--- Providing context helps us come up with a solution that is most       -->
+<!--- useful in the real world                                              -->
 
-#### Test case link:
+## Your Environment
+<!--- Include as many relevant details about the context and environment    -->
+<!--- you experienced the bug in. You can also provide logs.                -->
+- Foundation version(s) used:
+- Browser(s) name and version(s):
+- Operating System and version (desktop or mobile):
+- Link to your project:
 
-<!-- Give us a link to a CodePen or JSFiddle that recreates the issue. -->
+## Checklist (all required):
+<!--- Go over all the following points, and put an `x` in the boxes.        -->
+<!--- If you're unsure about any of these, don't hesitate to ask.           -->
+- [ ] I have read and follow the [CONTRIBUTING](CONTRIBUTING.md) document.
+- [ ] This is a bug report or a feature request.
+- [ ] There are no other issues similar to this one.
+- [ ] The issue title is descriptive.
+- [ ] The template is fully and correctly filled.
 
-- [CodePen with Foundation 6.3.1, Float Grid and MotionUI](http://codepen.io/IamManchanda/pen/LWGZxR)
-- [CodePen with Foundation 6.3.1, Float Grid with RTL Direction and MotionUI](http://codepen.io/IamManchanda/pen/bRYOMv)
-- [CodePen with Foundation 6.3.1, Flexbox grid and MotionUI](http://codepen.io/IamManchanda/pen/zZrBEv)
-
-- [CodePen with Foundation 6.4.1, XY Flexbox grid and MotionUI](http://codepen.io/IamManchanda/pen/EXbGKJ)
-- [CodePen with Foundation 6.4.1, XY Flexbox grid with RTL Direction and MotionUI](http://codepen.io/IamManchanda/pen/qjVLoO)
-- [CodePen with Foundation 6.4.1, XY Flexbox grid with Prototype Mode and MotionUI](http://codepen.io/IamManchanda/pen/XgzopG)
-- [CodePen with Foundation 6.4.1, Float Grid and MotionUI](http://codepen.io/IamManchanda/pen/qjVLrB)
+<!--- --------------------------------------------------------------------- -->
+<!---       For more information, see the CONTRIBUTING.md document          -->
+<!---            Thank you for your issue and happy coding ;)               -->
+<!--- --------------------------------------------------------------------- -->

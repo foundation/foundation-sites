@@ -5,8 +5,8 @@ import { Keyboard } from './foundation.util.keyboard';
 import { Motion } from './foundation.util.motion';
 import { Timer } from './foundation.util.timer';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 import { Touch } from './foundation.util.touch'
 
 
@@ -149,8 +149,9 @@ class Orbit extends Plugin {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
-        $(this).css({'position': 'relative', 'display': 'none'});
+      // hide all slides but the active one
+      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+        $(this).css({'display': 'none'});
       }
       max = temp > max ? temp : max;
       counter++;
@@ -303,7 +304,7 @@ class Orbit extends Plugin {
   /**
   * Changes the current slide to a new one.
   * @function
-  * @param {Boolean} isLTR - flag if the slide should move left to right.
+  * @param {Boolean} isLTR - if true the slide moves from right to left, if false the slide moves from left to right.
   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
   * @fires Orbit#slidechange
@@ -344,11 +345,10 @@ class Orbit extends Plugin {
 
       if (this.options.useMUI && !this.$element.is(':hidden')) {
         Motion.animateIn(
-          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+          $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.css({'position': 'relative', 'display': 'block'})
-            .attr('aria-live', 'polite');
+            $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
         });
 
         Motion.animateOut(
@@ -520,7 +520,7 @@ Orbit.defaults = {
   */
   prevClass: 'orbit-previous',
   /**
-  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatibility.
   * @option
    * @type {boolean}
   * @default true

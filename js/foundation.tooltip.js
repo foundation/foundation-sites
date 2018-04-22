@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';
 import { Positionable } from './foundation.positionable';
@@ -102,7 +102,7 @@ class Tooltip extends Positionable {
    * @private
    */
   _buildTemplate(id) {
-    var templateClasses = (`${this.options.tooltipClass} ${this.options.positionClass} ${this.options.templateClasses}`).trim();
+    var templateClasses = (`${this.options.tooltipClass} ${this.options.templateClasses}`).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
@@ -191,12 +191,15 @@ class Tooltip extends Positionable {
    * @private
    */
   _events() {
-    var _this = this;
-    var $template = this.template;
+    const _this = this;
+    const hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined');
+    const $template = this.template;
     var isFocus = false;
 
-    if (!this.options.disableHover) {
+    // `disableForTouch: Fully disable the tooltip on touch devices
+    if (hasTouch && this.options.disableForTouch) return;
 
+    if (!this.options.disableHover) {
       this.$element
       .on('mouseenter.zf.tooltip', function(e) {
         if (!_this.isActive) {
@@ -210,6 +213,13 @@ class Tooltip extends Positionable {
         if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
         }
+      });
+    }
+
+    if (hasTouch) {
+      this.$element
+      .on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
+        _this.isActive ? _this.hide() : _this.show();
       });
     }
 
@@ -230,13 +240,6 @@ class Tooltip extends Positionable {
       this.$element.on('mousedown.zf.tooltip', function(e) {
         e.stopImmediatePropagation();
         _this.isClick = true;
-      });
-    }
-
-    if (!this.options.disableForTouch) {
-      this.$element
-      .on('tap.zf.tooltip touchend.zf.tooltip', function(e) {
-        _this.isActive ? _this.hide() : _this.show();
       });
     }
 
@@ -291,15 +294,15 @@ class Tooltip extends Positionable {
   _destroy() {
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tooltip')
-                 .removeClass('has-tip top right left')
-                 .removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
+                 .removeClass(this.options.triggerClass)
+                 .removeClass('top right left bottom')
+                 .removeAttr('aria-describedby data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
     this.template.remove();
   }
 }
 
 Tooltip.defaults = {
-  disableForTouch: false,
   /**
    * Time, in ms, before a tooltip should open on hover.
    * @option
@@ -328,6 +331,15 @@ Tooltip.defaults = {
    * @default false
    */
   disableHover: false,
+  /**
+   * Disable the tooltip for touch devices.
+   * This can be useful to make elements with a tooltip on it trigger their
+   * action on the first tap instead of displaying the tooltip.
+   * @option
+   * @type {booelan}
+   * @default false
+   */
+  disableForTouch: false,
   /**
    * Optional addtional classes to apply to the tooltip template on init.
    * @option
@@ -378,13 +390,6 @@ Tooltip.defaults = {
    * @default true
    */
   clickOpen: true,
-  /**
-   * DEPRECATED Additional positioning classes, set by the JS
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
   /**
    * Position of tooltip. Can be left, right, bottom, top, or auto.
    * @option

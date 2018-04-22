@@ -9,7 +9,7 @@
 'use strict';
 
 import $ from 'jquery';
-import { rtl as Rtl } from './foundation.util.core';
+import { rtl as Rtl } from './foundation.core.utils';
 
 const keyCodes = {
   9: 'TAB',

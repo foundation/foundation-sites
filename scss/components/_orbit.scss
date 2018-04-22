@@ -67,6 +67,7 @@ $orbit-control-zindex: 10 !default;
 /// Adds styles for the individual slides of an Orbit slider. These styles are used on the `.orbit-slide` class.
 @mixin orbit-slide {
   width: 100%;
+  position: absolute;
 
   &.no-motionui {
     &.is-active {

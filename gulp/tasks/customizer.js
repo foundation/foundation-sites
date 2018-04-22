@@ -6,6 +6,7 @@ var customizer = require('../../customizer/lib');
 var Vinyl = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
+var sequence = require('run-sequence');
 var If = require('gulp-if');
 var path = require('path');
 var Readable = require('stream').Readable;
@@ -13,7 +14,6 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
@@ -22,9 +22,10 @@ var zip = require('gulp-zip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var webpackStream = require('webpack-stream');
-var webpack2 = require('webpack');
+var webpack = require('webpack');
 var named = require('vinyl-named');
 
+var utils = require('../utils.js');
 
 var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
@@ -39,18 +40,27 @@ var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
 
-var WEBPACK_MODULE_CONFIG = {
-  rules: [
-    {
-      test: /.js$/,
-      use: [
-        {
-          loader: 'babel-loader'
-        }
-      ]
-    }
-  ]
-}
+var WEBPACK_CONFIG = {
+  mode: 'development',
+  externals: utils.umdExternals({
+    'jquery': 'jQuery'
+  }),
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      }
+    ]
+  },
+  output: {
+    libraryTarget: 'umd',
+  }
+};
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
@@ -68,7 +78,6 @@ gulp.task('customizer:loadConfig', function(done) {
 // Prepare dependencies
 gulp.task('customizer:prepareSassDeps', function() {
   return gulp.src([
-      'node_modules/@(normalize-scss)/sass/**/*.scss',
       'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
       'node_modules/@(sassy-lists)/stylesheets/helpers/true',
       'node_modules/@(sassy-lists)/stylesheets/functions/contain',
@@ -81,7 +90,8 @@ gulp.task('customizer:prepareSassDeps', function() {
 });
 
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
+gulp.task('customizer:sass', function() {
+  sequence('customizer:loadConfig', 'customizer:prepareSassDeps', function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
   var stream = createStream('foundation.scss', sassFile);
@@ -100,6 +110,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
     .pipe(cleancss({ compatibility: 'ie9' }))
     .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
+  });
 });
 
 // Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
@@ -114,7 +125,7 @@ gulp.task('customizer:javascript-entry', ['customizer:loadConfig'], function() {
 
 gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
   return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
-    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: WEBPACK_MODULE_CONFIG}, webpack2))
+    .pipe(webpackStream(WEBPACK_CONFIG, webpack))
     .pipe(rename('foundation.js'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
@@ -141,7 +152,8 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 //   - Copying the index.html file
 //   - Creating a blank app.css file
 //   - Creating an app.js file with Foundation initialization code
-gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
+gulp.task('customizer', function() {
+  sequence('customizer:sass', 'customizer:javascript', 'customizer:html', function(done) {
   var outputFolder = path.dirname(OUTPUT_DIR);
   var outputFileName = path.basename(OUTPUT_DIR);
 
@@ -156,6 +168,7 @@ gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer
       rimraf(OUTPUT_DIR, done);
     });
   });
+});
 
 function createStream(name, content) {
   // Create a stream with our entry file

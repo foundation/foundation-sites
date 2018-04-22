@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import { Foundation } from '../foundation.core';
-import * as CoreUtils from '../foundation.util.core';
+import * as CoreUtils from '../foundation.core.utils';
 import { Box } from '../foundation.util.box'
 import { onImagesLoaded } from '../foundation.util.imageLoader';
 import { Keyboard } from '../foundation.util.keyboard';
@@ -41,6 +41,7 @@ Foundation.rtl = CoreUtils.rtl;
 Foundation.GetYoDigits = CoreUtils.GetYoDigits;
 Foundation.transitionend = CoreUtils.transitionend;
 Foundation.RegExpEscape = CoreUtils.RegExpEscape;
+Foundation.onLoad = CoreUtils.onLoad;
 
 Foundation.Box = Box;
 Foundation.onImagesLoaded = onImagesLoaded;

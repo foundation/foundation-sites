@@ -47,6 +47,10 @@ $button-color-alt: $black !default;
 /// @type Number
 $button-radius: $global-radius !default;
 
+/// Border for buttons, transparent by default
+/// @type List
+$button-border: 1px solid transparent !default;
+
 /// Border width for hollow outline buttons
 /// @type Number
 $button-hollow-border-width: 1px !default;
@@ -110,7 +114,7 @@ $button-responsive-expanded: false !default;
   }
 
   -webkit-appearance: none;
-  border: 1px solid transparent;
+  border: $button-border;
   border-radius: $button-radius;
   transition: $button-transition;
   font-size: map-get($button-sizes, default);
