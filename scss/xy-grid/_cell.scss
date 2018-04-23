@@ -127,7 +127,7 @@
     // Base flex properties
     @include xy-cell-base($size);
 
-    @if($gutter-output == true && $gutter-type == 'margin') {
+    @if($gutter-output == true and $gutter-type == 'margin') {
       @include -xy-cell-properties($size, $gutter, $vertical);
     }
     @else {
