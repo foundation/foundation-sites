@@ -23,6 +23,7 @@
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",
     "deploy:beta": "gulp deploy:beta --color",
+    "commitmsg": "node ./script/husky-commitmsg.js --color -e $GIT_PARAMS",
     "precommit": "node ./script/husky-precommit.js  --color",
     "prepush": "node ./script/husky-prepush.js  --color"
   },
@@ -32,6 +33,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^6.1.3",
+    "@commitlint/config-conventional": "^6.1.3",
     "array-uniq": "^1.0.2",
     "autoprefixer": "^8.2.0",
     "babel-core": "^6.26.0",
