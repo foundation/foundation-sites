@@ -486,6 +486,7 @@ declare module FoundationSites {
 }
 
 interface JQuery {
+  foundation(method: "selectTab", $element: JQuery | string, historyHandled?: boolean): JQuery;
   foundation(method?: string|Array<any>, $element?: JQuery): JQuery;
 }
 
