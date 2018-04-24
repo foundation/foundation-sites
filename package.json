@@ -22,10 +22,7 @@
     "deploy": "gulp deploy --color",
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",
-    "deploy:beta": "gulp deploy:beta --color",
-    "commitmsg": "node ./script/husky-commitmsg.js --color -e $GIT_PARAMS",
-    "precommit": "node ./script/husky-precommit.js  --color",
-    "prepush": "node ./script/husky-prepush.js  --color"
+    "deploy:beta": "gulp deploy:beta --color"
   },
   "dependencies": {
     "jquery": ">=2.2.0",
@@ -74,7 +71,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0-rc.2",
     "inquirer": "^5.2.0",
     "is-empty-object": "^1.1.1",
     "js-yaml": "^3.8.4",
