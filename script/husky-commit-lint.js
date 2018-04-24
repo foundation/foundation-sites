@@ -3,7 +3,7 @@ const spawn = require('child_process').spawn
 
 const args = process.argv.splice(process.execArgv.length + 2);
 
-console.log(chalk.yellow('🐶  Checking your commit message...'))
+console.log(chalk.yellow('🐶  Checking the commit message...'))
 
 const child = spawn('commitlint', args, { shell: true })
 
