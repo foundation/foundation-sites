@@ -1,4 +1,6 @@
 hooks:
-  commit-msg: 'node ./script/husky-commitmsg.js --color -e $GIT_PARAMS'
-  pre-commit: 'node ./script/husky-precommit.js  --color'
-  pre-push: 'node ./script/husky-prepush.js  --color'
+  commit-msg: >
+    node ./script/husky-commitmsg.js --color -e $GIT_PARAMS &&
+    node ./script/husky-precommit.js  --color
+  pre-push:
+    node ./script/husky-prepush.js  --color
