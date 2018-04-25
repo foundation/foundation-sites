@@ -90,26 +90,26 @@ gulp.task('customizer:prepareSassDeps', function() {
 });
 
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', function() {
+gulp.task('customizer:sass', function(done) {
   sequence('customizer:loadConfig', 'customizer:prepareSassDeps', function() {
-  var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
+    var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
+    var stream = createStream('foundation.scss', sassFile);
 
-  var stream = createStream('foundation.scss', sassFile);
-
-  return stream
-    .pipe(sass({
-      includePaths: [
-        'scss',
-        'node_modules/motion-ui/src'
-      ]
-    }))
-    .pipe(postcss([autoprefixer({
-      browsers: COMPATIBILITY
-    })]))
-    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
-    .pipe(cleancss({ compatibility: 'ie9' }))
-    .pipe(rename('foundation.min.css'))
-    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
+    return stream
+      .pipe(sass({
+        includePaths: [
+          'scss',
+          'node_modules/motion-ui/src'
+        ]
+      }))
+      .pipe(postcss([autoprefixer({
+        browsers: COMPATIBILITY
+      })]))
+      .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
+      .pipe(cleancss({ compatibility: 'ie9' }))
+      .pipe(rename('foundation.min.css'))
+      .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
+      .on('end', done);
   });
 });
 
@@ -152,21 +152,21 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 //   - Copying the index.html file
 //   - Creating a blank app.css file
 //   - Creating an app.js file with Foundation initialization code
-gulp.task('customizer', function() {
-  sequence('customizer:sass', 'customizer:javascript', 'customizer:html', function(done) {
-  var outputFolder = path.dirname(OUTPUT_DIR);
-  var outputFileName = path.basename(OUTPUT_DIR);
+gulp.task('customizer', function(done) {
+  sequence('customizer:sass', 'customizer:javascript', 'customizer:html', function() {
+    var outputFolder = path.dirname(OUTPUT_DIR);
+    var outputFileName = path.basename(OUTPUT_DIR);
 
-  touch(path.join(OUTPUT_DIR, 'css/app.css'));
-  touch(path.join(OUTPUT_DIR, 'js/app.js'));
-  fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
+    touch(path.join(OUTPUT_DIR, 'css/app.css'));
+    touch(path.join(OUTPUT_DIR, 'js/app.js'));
+    fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
-  gulp.src(path.join(OUTPUT_DIR, '/**/*'))
-    .pipe(zip(path.basename(outputFileName) + '.zip'))
-    .pipe(gulp.dest(outputFolder))
-    .on('finish', function() {
-      rimraf(OUTPUT_DIR, done);
-    });
+    gulp.src(path.join(OUTPUT_DIR, '/**/*'))
+      .pipe(zip(path.basename(outputFileName) + '.zip'))
+      .pipe(gulp.dest(outputFolder))
+      .on('finish', function() {
+        rimraf(OUTPUT_DIR, done);
+      });
   });
 });
 
