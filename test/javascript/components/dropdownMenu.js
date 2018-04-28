@@ -42,6 +42,7 @@ describe('Dropdown Menu', function () {
 
   afterEach(function () {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
