@@ -143,6 +143,7 @@ describe('Dropdown Menu', function () {
         document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
       });
       it('moves focus to previous sub element on ARROW_UP', function () {
+        // Open it first
         plugin._show($html.find('> li:nth-child(1) > ul'));
 
         $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
@@ -151,6 +152,7 @@ describe('Dropdown Menu', function () {
         document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
       });
       it('opens child element of sub menu on ARROW_RIGHT', function() {
+        // Open it first
         plugin._show($html.find('> li:nth-child(1) > ul'));
 
         $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
