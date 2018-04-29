@@ -41,6 +41,6 @@ gulp.task('test:transpile-js', function(done) {
         .on('error', onBabelError))
       .pipe(concat('js-tests.js'))
       .pipe(gulp.dest('test/javascript'))
-      .on('end', done);
+      .on('finish', done);
   });
 });

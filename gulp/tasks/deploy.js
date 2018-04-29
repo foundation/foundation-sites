@@ -89,7 +89,7 @@ gulp.task('deploy:dist', function(done) {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dist/js'))
 
-      .pipe(done);
+      .on('finish', done);
   });
 });
 
@@ -190,6 +190,6 @@ gulp.task('deploy:custom', function(done) {
         .pipe(uglify())
         .pipe(rename('foundation.min.js'))
         .pipe(gulp.dest('./_build/assets/js'))
-        .on('end', done);
+        .on('finish', done);
   });
 });

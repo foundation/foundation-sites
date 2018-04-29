@@ -109,7 +109,7 @@ gulp.task('customizer:sass', function(done) {
       .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename('foundation.min.css'))
       .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
-      .on('end', done);
+      .on('finish', done);
   });
 });
 
