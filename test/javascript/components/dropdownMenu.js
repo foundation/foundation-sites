@@ -42,6 +42,7 @@ describe('Dropdown Menu', function () {
 
   afterEach(function () {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -93,7 +94,7 @@ describe('Dropdown Menu', function () {
 
         $html.find('> li:nth-child(1)').should.have.class('is-active');
         $html.find('> li:nth-child(1) > ul').should.have.class('js-dropdown-active');
-        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);	
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
       });
       it('moves focus to previous sub element on ARROW_UP', function () {
         // Open it first
@@ -113,7 +114,7 @@ describe('Dropdown Menu', function () {
 
         $html.find('> li:nth-child(1) > ul > li:nth-child(2)').should.have.class('is-active');
         $html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul').should.have.class('js-dropdown-active');
-        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);	
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);
       });
     });
     describe('vertical', function() {
@@ -139,12 +140,9 @@ describe('Dropdown Menu', function () {
 
         $html.find('> li:nth-child(1)').should.have.class('is-active');
         $html.find('> li:nth-child(1) > ul').should.have.class('js-dropdown-active');
-        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);	
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
       });
       it('moves focus to previous sub element on ARROW_UP', function () {
-        $html = $(template).appendTo('body');
-        plugin = new Foundation.DropdownMenu($html, {});
-
         // Open it first
         plugin._show($html.find('> li:nth-child(1) > ul'));
 
@@ -154,9 +152,6 @@ describe('Dropdown Menu', function () {
         document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
       });
       it('opens child element of sub menu on ARROW_RIGHT', function() {
-        $html = $(template).appendTo('body');
-        plugin = new Foundation.DropdownMenu($html, {});
-
         // Open it first
         plugin._show($html.find('> li:nth-child(1) > ul'));
 
@@ -165,7 +160,7 @@ describe('Dropdown Menu', function () {
 
         $html.find('> li:nth-child(1) > ul > li:nth-child(2)').should.have.class('is-active');
         $html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul').should.have.class('js-dropdown-active');
-        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);	
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);
       });
     });
   });

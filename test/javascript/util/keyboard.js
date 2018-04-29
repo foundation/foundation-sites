@@ -19,6 +19,10 @@ describe('Keyboard util', function() {
     'ARROW_DOWN': 40
   };
 
+  afterEach(function() {
+    document.activeElement.blur();
+  });
+
   it('exists on the Foundation API', function() {
     (window.Foundation.Keyboard).should.be.an('object');
   });
