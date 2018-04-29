@@ -148,23 +148,28 @@ body {
   padding: 15px;
   border: 1px solid #eee;
   max-width: 85%; /*(1)*/
+  max-width: -webkit-calc(100% - 42px);
+  max-width: -moz-calc(100% - 42px);
   max-width: calc(100% - 42px); /*(2)*/
   max-height: 300px;
   word-wrap: break-word;
   border-bottom-color: #ddd;
-  -webkit-border-radius: 3px;
   -webkit-box-shadow: 0 1px 3px #eee;
-  -moz-border-radius: 3px;
   -moz-box-shadow: 0 1px 3px #eee;
+  box-shadow: 0 1px 3px #eee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
 #mocha .test .html-error pre.error {
   border: none;
-  -webkit-border-radius: none;
-  -webkit-box-shadow: none;
-  -moz-border-radius: none;
-  -moz-box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
   padding: 0;
   margin: 0;
   margin-top: 18px;
@@ -185,13 +190,16 @@ body {
   padding: 15px;
   border: 1px solid #eee;
   max-width: 85%; /*(1)*/
+  max-width: -webkit-calc(100% - 42px);
+  max-width: -moz-calc(100% - 42px);
   max-width: calc(100% - 42px); /*(2)*/
   word-wrap: break-word;
   border-bottom-color: #ddd;
-  -webkit-border-radius: 3px;
   -webkit-box-shadow: 0 1px 3px #eee;
-  -moz-border-radius: 3px;
   -moz-box-shadow: 0 1px 3px #eee;
+  box-shadow: 0 1px 3px #eee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
 }
 
@@ -212,10 +220,12 @@ body {
   text-align: center;
   background: #eee;
   font-size: 15px;
+  -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  -webkit-transition: opacity 200ms;
-  -moz-transition: opacity 200ms;
+  -webkit-transition:opacity 200ms;
+  -moz-transition:opacity 200ms;
+  -o-transition:opacity 200ms;
   transition: opacity 200ms;
   opacity: 0.3;
   color: #888;
@@ -261,6 +271,17 @@ body {
 #mocha-stats .progress {
   float: right;
   padding-top: 0;
+
+  /**
+   * Set safe initial values, so mochas .progress does not inherit these
+   * properties from Bootstrap .progress (which causes .progress height to
+   * equal line height set in Bootstrap).
+   */
+  height: auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: initial;
 }
 
 #mocha-stats em {

@@ -190,7 +190,7 @@ describe('Interchange', function() {
       setTimeout(function() { // Wait for third trigger...
         sinon.assert.calledOnce(spy);
         done();
-      }, 50);
+      }, 150);
     });
   });
 

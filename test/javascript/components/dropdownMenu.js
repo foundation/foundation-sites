@@ -69,7 +69,8 @@ describe('Dropdown Menu', function () {
 
       $html.find('> li:nth-child(1)').should.not.have.class('is-active');
       $html.find('> li:nth-child(1) > ul').should.not.have.class('js-dropdown-active');
-      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
+      if(document.activeElement === $('body')[0])document.activeElement.should.be.equal($('body')[0]);
+      else document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
     });
     describe('horizontal', function() {
       beforeEach(function() {
