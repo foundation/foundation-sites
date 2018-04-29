@@ -10,7 +10,7 @@ describe('Reveal', function() {
 
   afterEach(function() {
     plugin.destroy();
-    if(document.activeElement)document.activeElement.blur();
+    if(document.activeElement) document.activeElement.blur();
     $html.remove();
   });
 
