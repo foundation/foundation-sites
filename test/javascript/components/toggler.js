@@ -54,7 +54,6 @@ describe('Toggler', function() {
       plugin = new Foundation.Toggler($html, {});
 
       $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-controls', 'toggler');
-
       $triggers.remove();
     });
 
@@ -64,6 +63,7 @@ describe('Toggler', function() {
       plugin = new Foundation.Toggler($html, {});
 
       $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'true');
+      $triggers.remove();
     });
 
     it('sets aria-expanded to false if the element is invisible', function() {
@@ -73,6 +73,7 @@ describe('Toggler', function() {
       plugin = new Foundation.Toggler($html, {});
 
       $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'false');
+      $triggers.remove();
       $css.remove();
     });
   });
@@ -104,6 +105,8 @@ describe('Toggler', function() {
 
       plugin._toggleClass();
       $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'false');
+
+      $triggers.remove();
     });
   });
 

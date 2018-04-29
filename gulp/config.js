@@ -48,7 +48,7 @@ module.exports = {
   CSS_COMPATIBILITY: [
     'last 2 versions',
     'ie >= 9',
-    'Android >= 2.3',
+    'android >= 4.4',
     'ios >= 7'
   ],
 
