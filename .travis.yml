@@ -1,5 +1,8 @@
 language: node_js
 
+git:
+  depth: 3
+
 matrix:
   include:
   - node_js: "lts/boron"
