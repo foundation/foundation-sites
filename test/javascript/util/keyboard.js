@@ -20,7 +20,7 @@ describe('Keyboard util', function() {
   };
 
   afterEach(function() {
-    document.activeElement.blur();
+    if(document.activeElement)document.activeElement.blur();
   });
 
   it('exists on the Foundation API', function() {
