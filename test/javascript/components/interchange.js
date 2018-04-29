@@ -172,7 +172,7 @@ describe('Interchange', function() {
       plugin = new Foundation.Interchange($html, {});
       setTimeout(function () {
         Foundation.IHearYou();
-      }, 10);
+      }, 1);
       let spy = sinon.spy(plugin, '_reflow');
 
       setTimeout(function () {
