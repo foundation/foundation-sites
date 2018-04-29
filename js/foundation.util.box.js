@@ -74,21 +74,22 @@ function GetDimensions(elem){
   }
 
   var rect = elem.getBoundingClientRect(),
-      parRect = elem.parentNode.getBoundingClientRect(),
+      par = elem.parentNode,
+      parRect = par.getBoundingClientRect(),
       winRect = document.body.getBoundingClientRect(),
       winY = window.pageYOffset,
       winX = window.pageXOffset;
 
   return {
-    width: rect.width,
-    height: rect.height,
+    width: elem.clientWidth,
+    height: elem.clientHeight,
     offset: {
       top: rect.top + winY,
       left: rect.left + winX
     },
     parentDims: {
-      width: parRect.width,
-      height: parRect.height,
+      width: par.clientWidth,
+      height: par.clientHeight,
       offset: {
         top: parRect.top + winY,
         left: parRect.left + winX
