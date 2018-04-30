@@ -95,7 +95,7 @@
 /// Creates a cell for your grid.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
-/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters
+/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters. Always `true` for margin gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
 /// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
@@ -143,7 +143,7 @@
 /// Creates a single breakpoint sized grid. Used to generate our grid classes.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
-/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters
+/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters. Always `true` for margin gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
 /// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
