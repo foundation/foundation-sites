@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 const spawn = require('child_process').spawn
 
-console.log(chalk.yellow('🐶  Checking tests before pushing with Husky...'))
+console.log(chalk.yellow('🐶  Checking tests before pushing...'))
 
 const child = spawn('npm run test', [], { shell: true })
 
