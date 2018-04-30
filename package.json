@@ -39,6 +39,7 @@
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.18.12",
     "browserstack-runner": "^0.7.0",
+    "chai": "^4.1.2",
     "chai-jquery": "^2.0.0",
     "chalk": "^2.3.2",
     "clipboard": "^2.0.0",
