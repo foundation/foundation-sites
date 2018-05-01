@@ -90,7 +90,7 @@
     "run-sequence": "^2.2.1",
     "sass-true": "^4.0.0",
     "sassy-lists": "^3.0.1",
-    "sinon": "^4.5.0",
+    "sinon": "^5.0.1",
     "supercollider": "^1.4.4",
     "touch": "^3.1.0",
     "util-deprecate": "^1.0.2",
