@@ -45,6 +45,7 @@ $input-error-font-weight: $global-weight-bold !default;
   &:not(:focus) {
     border-color: $background;
     background-color: mix($background, $white, $background-lighten);
+
     &::placeholder {
       color: $background;
     }

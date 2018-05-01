@@ -61,6 +61,7 @@ $accordion-content-padding: 1rem !default;
   margin-#{$global-left}: 0;
   background: $background;
   list-style-type: none;
+
   &[disabled] {
     .accordion-title {
       cursor: not-allowed;
@@ -98,9 +99,11 @@ $accordion-content-padding: 1rem !default;
   line-height: 1;
   color: $color;
 
-  :last-child:not(.is-active) > & {
-    border-bottom: $border;
-    border-radius: 0 0 $global-radius $global-radius;
+  :last-child {
+    &:not(.is-active) > & {
+      border-bottom: $border;
+      border-radius: 0 0 $global-radius $global-radius;
+    }
   }
 
   &:hover,

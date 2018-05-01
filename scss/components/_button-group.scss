@@ -113,14 +113,16 @@ $buttongroup-radius-on-each: true !default;
     }
     @else {
       // One child
-      &:first-child:last-child {
-        width: calc(100% - #{$spacing});
+      &:first-child {
+        &:last-child {
+          width: calc(100% - #{$spacing});
+        }
       }
 
       // Two or more childreen
       @for $i from 2 through $buttongroup-expand-max {
-        &:first-child:nth-last-child(#{$i}) {
-          &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
+        &:first-child:nth-last-child(#{$i}) { // sass-lint:disable-line force-pseudo-nesting
+          &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} { // sass-lint:disable-line force-pseudo-nesting
             display: inline-block;
             width: calc(#{percentage(1 / $i)} - #{$spacing});
             margin-#{$global-right}: $spacing;
@@ -160,7 +162,7 @@ $buttongroup-radius-on-each: true !default;
     @if not $buttongroup-radius-on-each {
       border-radius: 0;
 
-      &:first-child{
+      &:first-child {
         border-top-#{$global-left}-radius: $global-radius;
         border-top-#{$global-right}-radius: $global-radius;
       }
@@ -212,7 +214,7 @@ $buttongroup-radius-on-each: true !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} #{$buttongroup-child-selector} {
+      &.#{$size} #{$buttongroup-child-selector} { // sass-lint:disable-line force-element-nesting
         font-size: $value;
       }
     }
@@ -238,7 +240,7 @@ $buttongroup-radius-on-each: true !default;
         @each $name, $color in $button-palette {
           $individual-selector: if($button-fill == $filling, null, ' #{$buttongroup-child-selector}.#{$name}');
 
-          &.#{$name} #{$buttongroup-child-selector}, #{$individual-selector} {
+          &.#{$name} #{$buttongroup-child-selector}, #{$individual-selector} { // sass-lint:disable-line force-element-nesting
             @include button-fill-style($filling, $color, auto, auto);
           }
         }
@@ -272,7 +274,7 @@ $buttongroup-radius-on-each: true !default;
       }
     }
 
-    &.stacked-for-small.expanded { // sass-lint:disable-line force-element-nesting
+    &.stacked-for-small.expanded {
       @include breakpoint(small only) {
         display: block;
 
@@ -283,7 +285,7 @@ $buttongroup-radius-on-each: true !default;
       }
     }
 
-    &.stacked-for-medium.expanded { // sass-lint:disable-line force-element-nesting
+    &.stacked-for-medium.expanded {
       @include breakpoint(medium down) {
         display: block;
 
