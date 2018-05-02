@@ -43,11 +43,12 @@ $dropdown-sizes: (
   position: absolute;
   z-index: 10;
 
+  display: none;
+
   width: $dropdown-width;
   padding: $dropdown-padding;
 
   visibility: hidden;
-  display: none;
   border: $dropdown-border;
   border-radius: $dropdown-radius;
   background-color: $dropdown-background;
@@ -61,8 +62,8 @@ $dropdown-sizes: (
   }
 
   &.is-open {
-    visibility: visible;
     display: block;
+    visibility: visible;
   }
 }
 
@@ -72,8 +73,10 @@ $dropdown-sizes: (
   }
 
   @each $name, $size in $dropdown-sizes {
-    .dropdown-pane.#{$name} {
-      width: $size;
+    .dropdown-pane {
+      &.#{$name} {
+        width: $size;
+      }
     }
   }
 }

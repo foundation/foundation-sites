@@ -99,8 +99,6 @@ $button-responsive-expanded: false !default;
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
-  font-family: $button-font-family;
-  font-weight: $button-font-weight;
 
   @if (type-of($button-padding) == 'map') {
     @each $size, $padding in $button-padding {
@@ -113,11 +111,13 @@ $button-responsive-expanded: false !default;
     padding: $button-padding;
   }
 
-  -webkit-appearance: none;
   border: $button-border;
   border-radius: $button-radius;
   transition: $button-transition;
+  font-family: $button-font-family;
   font-size: map-get($button-sizes, default);
+  font-weight: $button-font-weight;
+  -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
   line-height: 1;
   text-align: center;
   cursor: pointer;
@@ -145,10 +145,7 @@ $button-responsive-expanded: false !default;
 @mixin button-fill(
   $fill: $button-fill
 ) {
-  @if $fill == solid {
-    // No base style is required for solid buttons, do nothing
-  }
-  @else if $fill == hollow {
+  @if $fill == hollow {
     @include button-hollow;
   }
   @else if $fill == clear {
@@ -421,7 +418,8 @@ $button-responsive-expanded: false !default;
       margin-#{$global-left}: 0;
     }
   }
-  a.button {
+
+  a.button { // sass-lint:disable-line no-qualifying-elements
     &:hover,
     &:focus {
       text-decoration: none;
