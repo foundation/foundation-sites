@@ -3,11 +3,11 @@
 
 
 "@commitlint/cli@^6.1.3":
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-6.1.3.tgz#4606e138b05b43034dc84af15da18e2139058537"
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-6.2.0.tgz#b2f8190eb08ccd78eea65114b864f3c65eca466a"
   dependencies:
     "@commitlint/format" "^6.1.3"
-    "@commitlint/lint" "^6.1.3"
+    "@commitlint/lint" "^6.2.0"
     "@commitlint/load" "^6.1.3"
     "@commitlint/read" "^6.1.3"
     babel-polyfill "6.26.0"
@@ -15,7 +15,7 @@
     get-stdin "5.0.1"
     lodash.merge "4.6.1"
     lodash.pick "4.4.0"
-    meow "3.7.0"
+    meow "4.0.0"
 
 "@commitlint/config-conventional@^6.1.3":
   version "6.1.3"
@@ -50,13 +50,13 @@
   dependencies:
     semver "5.5.0"
 
-"@commitlint/lint@^6.1.3":
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-6.1.3.tgz#6a7788eae381ada873f7421e31559e7203caadf3"
+"@commitlint/lint@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-6.2.0.tgz#d78f219745b77362e1b814d5f4cec2ecc3266619"
   dependencies:
     "@commitlint/is-ignored" "^6.1.3"
     "@commitlint/parse" "^6.1.3"
-    "@commitlint/rules" "^6.1.3"
+    "@commitlint/rules" "^6.2.0"
     babel-runtime "^6.23.0"
     lodash.topairs "4.3.0"
 
@@ -105,9 +105,9 @@
     resolve-from "^4.0.0"
     resolve-global "^0.1.0"
 
-"@commitlint/rules@^6.1.3":
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/rules/-/rules-6.1.3.tgz#34ebd262c0370d48309e516799424d32c33f984b"
+"@commitlint/rules@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/rules/-/rules-6.2.0.tgz#9391f65a16552822048d45a33ab6ce374686e06b"
   dependencies:
     "@commitlint/ensure" "^6.1.3"
     "@commitlint/message" "^6.1.3"
@@ -5888,7 +5888,21 @@ memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
     errno "^0.1.3"
     readable-stream "^2.0.1"
 
-meow@3.7.0, meow@^3.7.0:
+meow@4.0.0, meow@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-4.0.0.tgz#fd5855dd008db5b92c552082db1c307cba20b29d"
+  dependencies:
+    camelcase-keys "^4.0.0"
+    decamelize-keys "^1.0.0"
+    loud-rejection "^1.0.0"
+    minimist "^1.1.3"
+    minimist-options "^3.0.1"
+    normalize-package-data "^2.3.4"
+    read-pkg-up "^3.0.0"
+    redent "^2.0.0"
+    trim-newlines "^2.0.0"
+
+meow@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
   dependencies:
@@ -5902,20 +5916,6 @@ meow@3.7.0, meow@^3.7.0:
     read-pkg-up "^1.0.1"
     redent "^1.0.0"
     trim-newlines "^1.0.0"
-
-meow@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/meow/-/meow-4.0.0.tgz#fd5855dd008db5b92c552082db1c307cba20b29d"
-  dependencies:
-    camelcase-keys "^4.0.0"
-    decamelize-keys "^1.0.0"
-    loud-rejection "^1.0.0"
-    minimist "^1.1.3"
-    minimist-options "^3.0.1"
-    normalize-package-data "^2.3.4"
-    read-pkg-up "^3.0.0"
-    redent "^2.0.0"
-    trim-newlines "^2.0.0"
 
 merge-stream@^0.1.7:
   version "0.1.8"
