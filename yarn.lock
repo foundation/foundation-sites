@@ -9399,8 +9399,8 @@ webpack@^4.5.0:
     webpack-sources "^1.0.1"
 
 what-input@>=4.1.0:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/what-input/-/what-input-5.0.5.tgz#6f5fd14baef0354cae7c3ceaa949886a86a456d9"
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/what-input/-/what-input-5.0.7.tgz#c935c7e422dea8b1f8fb50f5268444d5bf2aeb65"
 
 whatwg-url-compat@~0.6.5:
   version "0.6.5"
