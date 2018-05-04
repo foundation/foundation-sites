@@ -1252,8 +1252,8 @@ browser-sync-ui@v1.0.1:
     stream-throttle "^0.1.3"
 
 browser-sync@^2.18.12:
-  version "2.24.2"
-  resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.24.2.tgz#e6a452012f8021fa52b93fadb4f65713d7c27ef6"
+  version "2.24.4"
+  resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.24.4.tgz#e6e1544c8a6c088dc76f49f7059bc3df967e0ae0"
   dependencies:
     browser-sync-ui v1.0.1
     bs-recipes "1.3.4"
