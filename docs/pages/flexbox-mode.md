@@ -17,10 +17,9 @@ Flexbox mode is only supported in these browsers:
 
 - The latest Chrome and Firefox
 - Safari 6+
-- IE 10+
+- IE/Edge 10+
 - iOS 7+
 - Android 4.4+
-- Edge 12+
 
 ---
 
