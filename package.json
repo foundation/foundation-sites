@@ -32,7 +32,7 @@
   "devDependencies": {
     "@commitlint/cli": "^6.1.3",
     "@commitlint/config-conventional": "^6.1.3",
-    "array-uniq": "^1.0.2",
+    "array-uniq": "^2.0.0",
     "autoprefixer": "^8.2.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
