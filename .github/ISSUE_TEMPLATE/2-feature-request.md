@@ -15,7 +15,7 @@ about: Something is missing or could be improved
 <!--- What you want to be added or improved and how you would use it?       -->
 
 ## Why is it important?
-<!--- Why would this feature benefits to everyone? What is the current      -->
+<!--- Why would this feature benefit everyone? What is the current          -->
 <!--- workaround and how is it insufficient or inadequate?                  -->
 
 ## Possible Solution

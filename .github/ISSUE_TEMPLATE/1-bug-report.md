@@ -14,7 +14,7 @@ about: Something is broken or doesn't work as expected
 ## What should happen?
 
 
-## What happends instead?
+## What happens instead?
 
 
 ## Possible Solution

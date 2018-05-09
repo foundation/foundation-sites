@@ -8,7 +8,7 @@ about: Tests, dependencies, workflow...
 <!---                 Please fill the following template                    -->
 <!---                 Your issue may be ignored otherwise                   -->
 <!--- --------------------------------------------------------------------- -->
-<!---  Only submit maintainance issue here. For help or questions to the.   -->
+<!---  Only submit maintainance issues here. For help or questions to the.  -->
 <!---  community, see the forum: https://foundation.zurb.com/forum          -->
 
 ## Description
