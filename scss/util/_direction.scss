@@ -21,7 +21,7 @@
     @return null;
   }
 
-  // Calcul the opposite place in a circle, with a starting index of 1
+  // Calculate the opposite place in a circle, with a starting index of 1
   $length: length($dirs);
   $demi: $length / 2;
   $opposite-place: (($place + $demi - 1) % $length) + 1;
