@@ -254,7 +254,7 @@ $breakpoint-classes: (small medium large) !default;
 /// responsive gutters for the grid.
 /// @access private
 ///
-/// @param {String} $breakpoing - a named or non-named breakpoing.
+/// @param {String} $breakpoint - a named or non-named breakpoint.
 ///
 /// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
 @function -zf-closest-named-breakpoint($breakpoint) {
