@@ -166,33 +166,41 @@ describe('Interchange', function() {
     });
   });
 
- describe('events()', function() {
-    it('calls reflow on viewport size change once', function(done) {
+  describe('events()', function () {
+    it('calls reflow on viewport size change once', function (done) {
       $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
-      setTimeout(function() {
-        Foundation.IHearYou();
-      }, 1);
-      let spy = sinon.spy(plugin, '_reflow');
 
-      setTimeout(function() {
+      // Debounce: time Triggers is waiting for an other event without firing anything (10 by default)
+      const debounce = 10;
+      // Initialize Triggers manually to control and test the debounce time
+      Foundation.Triggers.Initializers.addMutationEventsListener($(document));
+      Foundation.Triggers.Initializers.addResizeListener(debounce);
+      $.triggersInitialized = true;
+
+      // Trigger several window resize synchrnously and asynchronously.
+      // ---
+      // Functions are nested to control when the check is made after the last resize
+      // more precisely (after 10ms). Timeout delays are most often not respected
+      // and the differences between several timeouts running in parrallel can be huge.
+      setTimeout(function () {
+        let spy = sinon.spy(plugin, '_reflow');
         $(window).trigger('resize');
-      }, 5);
-
-      setTimeout(function() {
         $(window).trigger('resize');
-      }, 10);
 
-      setTimeout(function() {
-        $(window).trigger('resize');
-      }, 20);
+        setTimeout(function () {
+          $(window).trigger('resize');
+          $(window).trigger('resize');
 
-      setTimeout(function() { // Wait for third trigger...
-        sinon.assert.calledOnce(spy);
-        done();
-      }, 50);
+          setTimeout(function () {
+            sinon.assert.calledOnce(spy);
+
+            $.triggersInitialized = false;
+            done();
+          }, debounce + 1);
+        });
+      });
     });
   });
-
 
 });
