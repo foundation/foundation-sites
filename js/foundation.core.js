@@ -149,18 +149,15 @@ var Foundation = {
       var plugin = _this._plugins[name];
 
       // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
-      var $elem = $(elem).find('[data-'+name+']').addBack('[data-'+name+']');
+      var $elem = $(elem).find('[data-'+name+']').addBack('[data-'+name+']').filter(function () {
+        return typeof $(this).data("zfPlugin") === "undefined";
+      });
 
       // For each plugin found, initialize it
       $elem.each(function() {
         var $el = $(this),
             opts = {};
-        // Don't double-dip on plugins
-        if ($el.data('zfPlugin')) {
-          console.warn("Tried to initialize "+name+" on an element that already has a Foundation plugin.");
-          return;
-        }
-
+            
         if($el.attr('data-options')){
           var thing = $el.attr('data-options').split(';').forEach(function(e, i){
             var opt = e.split(':').map(function(el){ return el.trim(); });
