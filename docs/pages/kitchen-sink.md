@@ -553,15 +553,15 @@ description: Everything but.
   <div class="grid-x grid-margin-x">
     <fieldset class="cell large-6">
       <legend>Choose Your Favorite</legend>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed" required><label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
-      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
+      <input type="radio" name="pokemon" value="Red" id="formRed" required><label for="formRed">Red</label>
+      <input type="radio" name="pokemon" value="Blue" id="formBlue"><label for="formBlue">Blue</label>
+      <input type="radio" name="pokemon" value="Yellow" id="formYellow"><label for="formYellow">Yellow</label>
     </fieldset>
     <fieldset class="cell large-6">
       <legend>Check these out</legend>
-      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+      <input id="formCheckbox1" type="checkbox"><label for="formCheckbox1">Checkbox 1</label>
+      <input id="formCheckbox2" type="checkbox"><label for="formCheckbox2">Checkbox 2</label>
+      <input id="formCheckbox3" type="checkbox"><label for="formCheckbox3">Checkbox 3</label>
     </fieldset>
   </div>
   <div class="grid-x grid-margin-x">
