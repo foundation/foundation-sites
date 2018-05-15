@@ -13,11 +13,11 @@ Foundation components use a combination of floats, vertical alignment, table cel
 
 Enabling **flexbox mode** replaces those hacks with flexbox properties, streamlining how layouts are made, and making sizing and alignment of elements much easier.
 
-Flexbox mode is only supported these browsers:
+Flexbox mode is only supported in these browsers:
 
 - The latest Chrome and Firefox
 - Safari 6+
-- IE 10+
+- IE/Edge 10+
 - iOS 7+
 - Android 4.4+
 
