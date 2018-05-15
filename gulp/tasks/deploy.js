@@ -52,6 +52,7 @@ gulp.task('deploy:dist', function(done) {
     var jsFilter  = filter(['**/*.js'], { restore: true });
     var cssSourcemapFilter = filter(['**/*.css.map'], { restore: true });
     var jsSourcemapFilter = filter(['**/*.js.map'], { restore: true });
+    var tsFilter  = filter(['**/*.ts'], { restore: true });
 
     return gulp.src(CONFIG.DIST_FILES)
       .pipe(plumber())
@@ -88,6 +89,13 @@ gulp.task('deploy:dist', function(done) {
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dist/js'))
+        .pipe(jsFilter.restore)
+
+      // --- TypeScript files ---
+      // * Copy typescript files to the dist folder
+      .pipe(tsFilter)
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(tsFilter.restore)
 
       .on('finish', done);
   });
