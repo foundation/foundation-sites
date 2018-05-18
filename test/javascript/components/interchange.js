@@ -1,4 +1,4 @@
-describe('Interchange', function() {
+describe('Interchange', function () {
   var plugin;
   var $html;
 
@@ -180,9 +180,11 @@ describe('Interchange', function() {
 
       // Trigger several window resize synchrnously and asynchronously.
       // ---
-      // Functions are nested to control when the check is made after the last resize
-      // more precisely (after 10ms). Timeout delays are most often not respected
-      // and the differences between several timeouts running in parrallel can be huge.
+      // Timeout delays are most often not respected and the differences between several
+      // timeouts running in parrallel can be huge. To prevent race conditions we:
+      // * nest timeout in order to make the delay between them more precise
+      // * run the test several time to wait for the debounce, which may be finally
+      //   called way after the expected time.
       setTimeout(function () {
         let spy = sinon.spy(plugin, '_reflow');
         $(window).trigger('resize');
@@ -192,12 +194,18 @@ describe('Interchange', function() {
           $(window).trigger('resize');
           $(window).trigger('resize');
 
-          setTimeout(function () {
-            sinon.assert.calledOnce(spy);
+          tryInterval({
+            interval: debounce,
+            timeout: 1000,
+            try: () => {
+              sinon.assert.calledOnce(spy);
+            },
+            then: () => {
+              $.triggersInitialized = false;
+              done();
+            },
+          });
 
-            $.triggersInitialized = false;
-            done();
-          }, debounce + 1);
         });
       });
     });
