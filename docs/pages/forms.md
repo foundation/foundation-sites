@@ -150,13 +150,13 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 ```html_example
 <div class="grid-x grid-padding-x">
-  <fieldset class="large-6 cell">
+  <fieldset class="large-5 cell">
     <legend>Choose Your Favorite</legend>
     <input type="radio" name="pokemon" value="Red" id="pokemonRed" required><label for="pokemonRed">Red</label>
     <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
     <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
   </fieldset>
-  <fieldset class="large-6 cell">
+  <fieldset class="large-7 cell">
     <legend>Check these out</legend>
     <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
     <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
