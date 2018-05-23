@@ -65,7 +65,7 @@
     "gulp-postcss": "^7.0.0",
     "gulp-prompt": "^1.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.6.1",
+    "gulp-replace": "^1.0.0",
     "gulp-rsync": "0.0.8",
     "gulp-sass": "^4.0.1",
     "gulp-sass-lint": "^1.3.2",
