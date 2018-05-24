@@ -486,7 +486,7 @@ declare module FoundationSites {
 }
 
 interface JQuery {
-  foundation(method?: string|Array<any>, $element?: JQuery): JQuery;
+  foundation(method?: string | Array<any>, ...args: any[]): JQuery;
 }
 
 declare var Foundation: FoundationSites.FoundationSitesStatic;
