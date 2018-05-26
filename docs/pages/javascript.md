@@ -149,6 +149,8 @@ $.ajax('assets/partials/kitten-carousel.html', function(data) {
 });
 ```
 
+Plugins that are already initialized will be ignored. However for performances reasons, we recommend calling `.foundation()` only on the DOM nodes that changed.
+
 ---
 
 ## Adding Content to Plugins
