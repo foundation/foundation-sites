@@ -3527,9 +3527,10 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
-"foundation-docs@git+https://github.com/zurb/foundation-docs.git#60e24283f3d578a97a8507b2263cb685948613b1":
+"foundation-docs@git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad":
   version "0.2.1"
-  resolved "git+https://github.com/zurb/foundation-docs.git#60e24283f3d578a97a8507b2263cb685948613b1"
+  uid "7a978ff933086df4826285ea60301937a7e81aad"
+  resolved "git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad"
   dependencies:
     cheerio "^0.20.0"
     handlebars "^4.0.11"
@@ -4170,10 +4171,10 @@ gulp-rsync@0.0.8:
     through2 "^0.6.1"
 
 gulp-sass-lint@^1.3.2:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/gulp-sass-lint/-/gulp-sass-lint-1.3.4.tgz#a9950c2dd050fd00fbf2ebc063016434a22100e2"
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/gulp-sass-lint/-/gulp-sass-lint-1.4.0.tgz#6f7096c5abcbc0ce99ddf060c9e1a99067a47ebe"
   dependencies:
-    gulp-util "^3.0.6"
+    plugin-error "^0.1.2"
     sass-lint "^1.12.0"
     through2 "^2.0.2"
 
@@ -4228,7 +4229,7 @@ gulp-uglify@^3.0.0:
     uglify-js "^3.0.5"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@^3.0.0, gulp-util@^3.0.6, gulp-util@^3.0.7:
+gulp-util@^3.0.0, gulp-util@^3.0.7:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
