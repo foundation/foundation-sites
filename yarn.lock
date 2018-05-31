@@ -2418,10 +2418,6 @@ dateformat@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
 
-dateformat@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
-
 debug-fabulous@1.X:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/debug-fabulous/-/debug-fabulous-1.1.0.tgz#af8a08632465224ef4174a9f06308c3c2a1ebc8e"
@@ -3537,7 +3533,6 @@ form-data@~2.3.1:
 
 "foundation-docs@git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad":
   version "0.2.1"
-  uid "7a978ff933086df4826285ea60301937a7e81aad"
   resolved "git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad"
   dependencies:
     cheerio "^0.20.0"
@@ -3697,7 +3692,7 @@ gaze@^0.5.1:
   dependencies:
     globule "~0.1.0"
 
-gaze@^1.0.0, gaze@^1.1.2:
+gaze@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/gaze/-/gaze-1.1.2.tgz#847224677adb8870d679257ed3388fdb61e40105"
   dependencies:
