@@ -105,7 +105,7 @@ $global-text-direction: ltr !default;
 
 /// Enables flexbox for components that support it.
 /// @type Boolean
-$global-flexbox: false !default;
+$global-flexbox: true !default;
 
 /// Enabled responsive breakpoints for prototypes if applicable
 /// @type Boolean
