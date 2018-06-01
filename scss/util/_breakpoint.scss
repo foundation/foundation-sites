@@ -76,8 +76,11 @@ $breakpoint-classes: (small medium large) !default;
 
   // Convert any pixel, rem, or unitless value to em
   $bp: -zf-bp-to-em($bp);
+  // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
+  // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
+  // See https://github.com/zurb/foundation-sites/issues/11313
   @if $bp-max {
-    $bp-max: -zf-bp-to-em($bp-max) - .00001;
+    $bp-max: -zf-bp-to-em($bp-max) - .00125;
   }
 
   // Conditions to skip media query creation
