@@ -45,13 +45,6 @@ module.exports = {
     'scss/**/*.scss',
   ],
 
-  CSS_COMPATIBILITY: [
-    'last 2 versions',
-    'ie >= 9',
-    'android >= 4.4',
-    'ios >= 7'
-  ],
-
   // Assets
   ASSETS_FILES: [
     'docs/assets/**/*',

@@ -83,9 +83,7 @@ gulp.task('sass', function() {
       outputStyle: isProduction ? 'compressed' : 'nested'
     })
       .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9', 'android >= 4.4', 'ios >= 7']
-    }))
+    .pipe($.autoprefixer()) // uses ".browserslistrc"
     // .pipe(uncss)
     .pipe(gulp.dest('./dist/assets/css'));
 });
