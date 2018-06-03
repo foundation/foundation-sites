@@ -6,4 +6,5 @@ Touch.init($);
 
 window.Foundation.Touch = Touch;
 
-export { Foundation, Touch };
+export { Foundation } from './foundation.core';
+export { Touch };
