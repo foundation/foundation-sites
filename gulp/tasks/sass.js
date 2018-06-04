@@ -31,9 +31,7 @@ gulp.task('sass:foundation', ['sass:deps'], function() {
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([autoprefixer({
-      browsers: CONFIG.CSS_COMPATIBILITY
-    })]))
+    .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'))
     .on('finish', function() {
@@ -52,9 +50,7 @@ gulp.task('sass:docs', ['sass:deps'], function() {
     .pipe(sass({
       includePaths: CONFIG.SASS_DOC_PATHS
     }).on('error', sass.logError))
-    .pipe(postcss([autoprefixer({
-      browsers: CONFIG.CSS_COMPATIBILITY
-    })]))
+    .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
 });
