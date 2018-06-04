@@ -71,7 +71,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
     "husky": "^1.0.0-rc.2",
-    "inquirer": "^5.2.0",
+    "inquirer": "^6.0.0",
     "is-empty-object": "^1.1.1",
     "jquery": ">=2.2.0",
     "js-yaml": "^3.8.4",
