@@ -110,6 +110,8 @@
   $breakpoint: null,
   $vertical: false
 ) {
+  $bp-is-fallback: false;
+
   @if($breakpoint == null) {
     // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
     @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') and $-zf-size != null {
@@ -117,11 +119,16 @@
     }
     @else {
       $breakpoint: $-zf-zero-breakpoint;
+      $bp-is-fallback: true;
     }
   }
 
-  // Get the gutter for the passed breakpoint/value.
+  // Get the gutter for the given breakpoint/value.
   $gutter: -zf-get-bp-val($gutters, $breakpoint);
+  // If the breakpoint is a fallback, use a fallback gutter as well
+  @if ($bp-is-fallback == true and $gutter == null) {
+    $gutter: 0;
+  }
 
   @if($gutter != null) {
     // Base flex properties
