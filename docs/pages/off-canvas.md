@@ -105,7 +105,7 @@ To create a click trigger that opens the panel, add the attribute `data-open` or
 </div>
 
 ```html_example
-<button type="button" class="button" data-toggle="offCanvasLeft">Open Menu</button>
+<button type="button" class="button" data-toggle="offCanvas">Open Menu</button>
 ```
 
 ### Close Button
