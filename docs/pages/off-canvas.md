@@ -254,6 +254,10 @@ A design can have multiple panels. Be sure that all panels come *before* the `.o
 You can switch the default transition of the off-canvas from pushing the page over as it open to overlapping the page by adding the `data-transition="overlap"` to the `.off-canvas`.
 There are 2 available transitions: push (`data-transition="push"`) which is the default, and overlap (`data-transition="overlap"`).
 
+<div class="primary callout">
+  <p>When placing the off-canvas within the off-canvas-content container as <a href="#nested-off-canvas">Nested Off-Canvas</a>, only overlap transition is possible. If you've explicitely defined push transition it will be replaced with overlap automatically.</p>
+</div>
+
 ```html
 <div class="off-canvas position-left" id="offCanvasLeftOverlap" data-off-canvas data-transition="overlap">
   <!-- Your menu or Off-canvas content goes here -->
@@ -369,7 +373,7 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 <strong>Important:</strong> when using the `contentId` on a nested element you must also use the new `nested` option and tell the JavaScript it's nested!
 
 <div class="callout warning">
-  Please note that it's currently not possible to use the push transition for a nested off-canvas element.
+  <p>Please note that it's not possible to use the push transition for a nested off-canvas element.</p>
 </div>
 
 ```html_example
