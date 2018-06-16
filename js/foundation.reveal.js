@@ -228,6 +228,9 @@ class Reveal extends Plugin {
       }
     }
 
+    // Remember anchor that opened it to set focus back later, have general anchors as fallback
+    this.$activeAnchor = $(document.activeElement).is(this.$anchor) ? $(document.activeElement) : this.$anchor;
+
     this.isActive = true;
 
     // Make elements invisible, but remove display: none so we can get size and positioning
@@ -432,7 +435,7 @@ class Reveal extends Plugin {
        }
      }
 
-    this.$anchor.focus();
+    this.$activeAnchor.focus();
   }
 
   /**
