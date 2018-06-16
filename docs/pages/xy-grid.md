@@ -258,7 +258,7 @@ To define cell widths within a direction-level, instead of the individual cell l
 
 ---
 
-## Looking for Push Pull
+## Looking for Push/Pull?
 
 Push and pull are a bit of a hack solution and was only necessary for Float based grids. But for flexbox, this hack is not needed as [source ordering](flexbox-utilities.html#source-ordering) does this with ease.
 
