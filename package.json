@@ -47,7 +47,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "dateformat": "^3.0.0",
     "doiuse": "^4.1.0",
-    "foundation-docs": "git+https://github.com/zurb/foundation-docs.git#60e24283f3d578a97a8507b2263cb685948613b1",
+    "foundation-docs": "git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad",
     "gaze": "^1.1.2",
     "gulp": "^3.8.10",
     "gulp-add-src": "^1.0.0",
