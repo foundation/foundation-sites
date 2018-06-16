@@ -520,7 +520,7 @@ Orbit.defaults = {
   */
   prevClass: 'orbit-previous',
   /**
-  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatibility.
   * @option
    * @type {boolean}
   * @default true
