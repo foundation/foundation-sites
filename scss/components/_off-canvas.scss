@@ -416,10 +416,10 @@ $breakpoint: small
   visibility: visible;
   height: auto;
   position: static;
-  background: inherit;
-  width: inherit;
-  overflow: inherit;
-  transition: inherit;
+  background: none;
+  width: auto;
+  overflow: visible;
+  transition: none;
 
   // Increase CSS specificity
   &.position-left,
