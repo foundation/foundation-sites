@@ -24,6 +24,18 @@ function GetYoDigits(length, namespace){
   return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
 }
 
+/**
+ * Escape a string so it can be used as a regexp pattern
+ * @function
+ * @see https://stackoverflow.com/a/9310752/4317384
+ *
+ * @param {String} str - string to escape.
+ * @returns {String} - escaped string
+ */
+function RegExpEscape(str){
+  return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
 function transitionend($elem){
   var transitions = {
     'transition': 'transitionend',
@@ -49,4 +61,4 @@ function transitionend($elem){
   }
 }
 
-export {rtl, GetYoDigits, transitionend};
+export {rtl, GetYoDigits, RegExpEscape, transitionend};
