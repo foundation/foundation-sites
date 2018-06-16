@@ -30,7 +30,7 @@ To get the proper browser support, use these Autoprefixer settings:
 
 ```js
 autoprefixer({
-  browsers: ['last 2 versions', 'ie >= 9', 'Android >= 2.3', 'ios >= 7']
+  browsers: ['last 2 versions', 'ie >= 9', 'android >= 4.4', 'ios >= 7']
 });
 ```
 
