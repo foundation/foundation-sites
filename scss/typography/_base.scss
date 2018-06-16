@@ -79,7 +79,7 @@ $header-styles: (
   @each $size, $headers in $header-sizes {
     $header-map: ();
     @each $header, $font-size in $headers {
-      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));  
+      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));
     }
     $header-styles: map-merge($header-styles, ($size: $header-map));
   }
@@ -479,7 +479,7 @@ $abbr-underline: 1px dotted $black !default;
   figure {
     margin: 0;
   }
-  
+
   // Code
   code {
     padding: $code-padding;
