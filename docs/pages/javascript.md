@@ -63,7 +63,7 @@ The `.foundation()` function on the jQuery object will kick off every Foundation
 $(document).foundation();
 ```
 
-You can also selectively initialize plugins by call the `.foundation();` method on one or more elements with a plugin.
+You can also selectively initialize plugins by calling the `.foundation();` method on one or more elements with a plugin.
 
 ```js
 $('#foo').foundation(); // initialize all plugins within the element `#foo`
