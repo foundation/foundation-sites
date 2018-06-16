@@ -27,7 +27,7 @@ You can manually install the template with:
 # Download the template with Git
 git clone https://github.com/zurb/foundation-sites-template projectname
 
-# Move to the project folter, and install dependencies
+# Move to the project folder, and install dependencies
 cd projectname
 npm install
 
@@ -59,10 +59,9 @@ You can manually install the template with:
 # Download the ZURB template with Git
 git clone https://github.com/zurb/foundation-zurb-template projectname
 
-# Move to the project folter, and install dependencies
+# Move to the project folder, and install dependencies
 cd projectname
 npm install
-bower install
 
 # Build the project
 npm start
