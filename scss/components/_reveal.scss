@@ -41,6 +41,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 // Placeholder selector for medium-and-up modals
 // Prevents duplicate CSS when defining multiple Reveal sizes
+// This should be in the same breakpoint then `@mixin reveal-modal-width`
 @include breakpoint(medium) {
   %reveal-centered {
     right: auto;
@@ -101,8 +102,9 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   $width: $reveal-width,
   $max-width: $reveal-max-width
 ) {
+  // Extends must be made outside of breakpoints for compatibility with newer Sass versions (libsass v3.5)
+  @extend %reveal-centered;
   @include breakpoint(medium) {
-    @extend %reveal-centered;
     width: $width;
     max-width: $max-width;
   }
