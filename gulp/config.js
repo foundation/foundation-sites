@@ -81,7 +81,8 @@ module.exports = {
     './_build/assets/css/foundation-rtl.css',
     './_build/assets/css/foundation-rtl.css.map',
     '_build/assets/js/foundation.js',
-    '_build/assets/js/foundation.js.map'
+    '_build/assets/js/foundation.js.map',
+    'js/typescript/foundation.d.ts'
   ],
 
   // Tests
