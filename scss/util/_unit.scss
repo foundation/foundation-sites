@@ -20,7 +20,7 @@ $global-font-size: 100% !default;
 /// Converts one or more pixel values into matching rem values.
 ///
 /// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
-/// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+/// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$global-font-size` variable as the base.
 ///
 /// @returns {List} A list of converted values.
 @function rem-calc($values, $base: null) {
