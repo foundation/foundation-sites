@@ -8,8 +8,8 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
-  api.imply('fourseven:scss@3.4.1');
-  api.use(['ecmascript', 'jquery', 'fourseven:scss@3.4.1'], 'client');
+  api.imply('fourseven:scss@4.5.4');
+  api.use(['ecmascript', 'jquery', 'fourseven:scss@4.5.4'], 'client');
   api.addFiles('dist/js/foundation.js', 'client');
   api.addFiles([
 
