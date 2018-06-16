@@ -46,7 +46,8 @@ gulp.task('deploy:version', function() {
 });
 
 // Generates compiled CSS and JS files and sourcemaps and puts them in the dist/ folder
-gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
+gulp.task('deploy:dist', function() {
+  sequence('sass:foundation', 'javascript:foundation', function() {
   var cssFilter = filter(['**/*.css'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
   var cssSourcemapFilter = filter(['**/*.css.map'], { restore: true });
@@ -87,6 +88,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(uglify())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/js'));
+  });
 });
 
 // Copies standalone JavaScript plugins to dist/ folder
@@ -175,7 +177,8 @@ gulp.task('deploy:templates', function(done) {
 });
 
 // The Customizer runs this function to generate files it needs
-gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
+gulp.task('deploy:custom', function() {
+  sequence('sass:foundation', 'javascript:foundation', function() {
   gulp.src('./_build/assets/css/foundation.css')
       .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename('foundation.min.css'))
@@ -185,4 +188,5 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
       .pipe(uglify())
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./_build/assets/js'));
+  });
 });
