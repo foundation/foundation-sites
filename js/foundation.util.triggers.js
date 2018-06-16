@@ -1,6 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
+import { onLoad } from './foundation.util.core';
 import { Motion } from './foundation.util.motion';
 
 const MutationObserver = (function () {
@@ -244,16 +245,10 @@ Triggers.init = function($, Foundation) {
   if (typeof($.triggersInitialized) === 'undefined') {
     let $document = $(document);
 
-    if(document.readyState === "complete") {
+    onLoad($(window), function () {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-    } else {
-      $(window).on('load', () => {
-        Triggers.Initializers.addSimpleListeners();
-        Triggers.Initializers.addGlobalListeners();
-      });
-    }
-
+    });
 
     $.triggersInitialized = true;
   }

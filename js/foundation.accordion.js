@@ -1,8 +1,8 @@
 'use strict';
 
 import $ from 'jquery';
+import { onLoad, GetYoDigits } from './foundation.util.core';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
 
 /**
@@ -82,7 +82,7 @@ class Accordion extends Plugin {
           //roll up a little to show the titles
           if (this.options.deepLinkSmudge) {
             var _this = this;
-            $(window).on('load', function() {
+            onLoad($(window), function() {
               var offset = _this.$element.offset();
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });
