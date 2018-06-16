@@ -27,15 +27,15 @@ A label will typically be describing another element on the page. To bind the tw
 
 ```html
 <p aria-describedby="emailLabel">Re: re: re: you won't believe what's in this email!</p>
-<span class="label" id="emailLabel">High Priority<span>
+<span class="label" id="emailLabel">High Priority</span>
 ```
 
 If an element is described by multiple labels, place multiple IDs inside of `aria-describedby`.
 
 ```html
 <p aria-describedby="emailLabel1 emailLabel2">Re: re: re: you won't believe what's in this email!</p>
-<span class="label" id="emailLabel1">High Priority<span>
-<span class="label" id="emailLabel2">Unread<span>
+<span class="label" id="emailLabel1">High Priority</span>
+<span class="label" id="emailLabel2">Unread</span>
 ```
 
 ---
