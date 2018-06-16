@@ -310,7 +310,7 @@ class DropdownMenu extends Plugin {
     if (this.options.closeOnClick) { this._addBodyHandler(); }
     /**
      * Fires when the new dropdown pane is visible.
-     * @event DropdownMenu#show
+     * @event Dropdownmenu#show
      */
     this.$element.trigger('show.zf.dropdownmenu', [$sub]);
   }
@@ -352,7 +352,7 @@ class DropdownMenu extends Plugin {
       }
       /**
        * Fires when the open menus are closed.
-       * @event DropdownMenu#hide
+       * @event Dropdownmenu#hide
        */
       this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
     }
