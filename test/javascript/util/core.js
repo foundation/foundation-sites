@@ -92,10 +92,11 @@ describe('Foundation core', function() {
       name.should.be.equal('A');
     });
 
-    it('should handle a function expression', function() {
-      var B = function(){}; 
-      var name = Foundation.getFnName(B);
+    it('should handle an anonymous function expression', function() {
+      var name = Foundation.getFnName(function(){});
 
+      // Inferred names (i.e. `var name = function() {}`) are not tested as they are widely supported
+      // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name#Inferred_function_names
       name.should.be.a('string');
       name.should.be.equal('');
     });
