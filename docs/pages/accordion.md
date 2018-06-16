@@ -91,7 +91,7 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 </ul>
 ```
 
-<ul class="accordion" data-accordion data-multi-expand='true'>
+<ul class="accordion" data-accordion data-multi-expand="true">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content >
@@ -132,7 +132,7 @@ By default, at least one pane in an accordion must be open. This can be changed 
 </ul>
 ```
 
-<ul class="accordion" data-accordion data-allow-all-closed='true'>
+<ul class="accordion" data-accordion data-allow-all-closed="true">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content >

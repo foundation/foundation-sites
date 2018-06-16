@@ -212,7 +212,7 @@ To use animations from the Motion UI library, include the <code>data-animation-i
 
 <div class="reveal" id="animatedModal10" data-reveal data-close-on-click="true" data-animation-in="spin-in" data-animation-out="spin-out">
   <h1>Whoa, I'm dizzy!</h1>
-  <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
+  <p class="lead">There are many options for animating modals, check out the Motion UI library to see them all</p>
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>

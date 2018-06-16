@@ -381,19 +381,19 @@ description: Everything but.
       <li><a href="#0">Item 1A Loooong</a></li>
       <li>
         <a href='#0'> Item 1 sub</a>
-        <ul class='menu'>
+        <ul class="menu">
           <li><a href='#0'>Item 1 subA</a></li>
           <li><a href='#0'>Item 1 subB</a></li>
           <li>
             <a href='#0'> Item 1 sub</a>
-            <ul class='menu'>
+            <ul class="menu">
               <li><a href='#0'>Item 1 subA</a></li>
               <li><a href='#0'>Item 1 subB</a></li>
             </ul>
           </li>
           <li>
             <a href='#0'> Item 1 sub</a>
-            <ul class='menu'>
+            <ul class="menu">
               <li><a href='#0'>Item 1 subA</a></li>
             </ul>
           </li>
@@ -970,19 +970,19 @@ description: Everything but.
 </div>
 
 ```html_example
-<div class="slider" data-slider data-initial-start='50' data-end='200'>
+<div class="slider" data-slider data-initial-start="50" data-end="200">
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 
-<div class="slider vertical" data-slider data-initial-start='25' data-end='200' data-vertical="true">
+<div class="slider vertical" data-slider data-initial-start="25" data-end="200" data-vertical="true">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 
-<div class="slider" data-slider data-initial-start='25' data-initial-end='75'>
+<div class="slider" data-slider data-initial-start="25" data-initial-end="75">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
@@ -1219,7 +1219,7 @@ description: Everything but.
 </div>
 
 ```html_example
-<p>The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>
+<p>The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>
 ```
 
 ---
