@@ -18,7 +18,7 @@ The flex grid works very similarly to the standard float grid, but includes a nu
 
 The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
-<div class="warning callout">
+<div class="callout warning">
   <p>In Firefox 43+, images in flex columns may overflow their container. To fix this, add a defined <code>width</code> to any images inside a flex column, or use <code>width: 100%</code> for full-bleed images.</p>
 </div>
 
@@ -26,14 +26,21 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 
 ## Importing
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
-
-If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
-
 <div class="docs-video-codepen-container">
   <a class="" data-open-video="2:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </div>
 
+<div class="callout alert">
+  **From Foundation v6.4, the Flex Grid is disabled by default**, replaced by the new [XY Grid](/xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
+</div>
+
+To use the Flex Grid in Foundation v6.4+, you need to:
+* In CDN link or package managers: import `foundation-flex.css` in place of `foundation.css`.
+* In Sass: set `$xy-grid` to `false`.
+
+If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
+
+You can manually generate the Flex Grid with:
 ```scss
 @import 'foundation';
 
@@ -42,11 +49,11 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 @include foundation-flex-grid;
 ```
 
-<div class="primary callout">
+<div class="callout primary">
   <p>The flex grid uses the same settings variables as the float grid to adjust gutter size, column count, and so on. Refer to the <a href="grid.html#sass-variables">Sass variable reference</a> for the default grid to see how the flex grid can be customized.</p>
 </div>
 
-<div class="warning callout">
+<div class="callout warning">
   <p>The standard grid and flex grid use some of the same classes, namely <code>.row</code> and <code>.column</code>, and don't play nice together. If you want to use both in the same project, we recommend using the Sass mixins for each grid, instead of the default CSS.</p>
 </div>
 
@@ -66,12 +73,12 @@ The structure of the flex grid is identical to that of the float grid. Rows use 
 
 ```html_example
 <div class="row">
-  <div class="small-6 columns">6 columns</div>
-  <div class="small-6 columns">6 columns</div>
+  <div class="columns small-6">6 columns</div>
+  <div class="columns small-6">6 columns</div>
 </div>
 <div class="row">
-  <div class="medium-6 large-4 columns">12/6/4 columns</div>
-  <div class="medium-6 large-8 columns">12/6/8 columns</div>
+  <div class="columns medium-6 large-4">12/6/4 columns</div>
+  <div class="columns medium-6 large-8">12/6/8 columns</div>
 </div>
 ```
 
@@ -91,7 +98,7 @@ If no sizing class is added to the column, it will simply expand to fill the lef
 
 ```html_example
 <div class="row">
-  <div class="small-4 columns">4 columns</div>
+  <div class="columns small-4">4 columns</div>
   <div class="columns">Whatever's left!</div>
 </div>
 ```
@@ -110,7 +117,7 @@ Multiple expanding columns will share the leftover space equally.
 
 ```html_example
 <div class="row">
-  <div class="small-4 columns">4 columns</div>
+  <div class="columns small-4">4 columns</div>
   <div class="columns">Whatever's left!</div>
   <div class="columns">Whatever's left!</div>
 </div>
@@ -130,7 +137,7 @@ A column can also be made to *shrink*, by adding the `.shrink` class. This means
 
 ```html_example
 <div class="row">
-  <div class="shrink columns">Shrink!</div>
+  <div class="columns shrink">Shrink!</div>
   <div class="columns">Expand!</div>
 </div>
 ```
@@ -149,12 +156,12 @@ To switch back to the expand behavior from a percentage or shrink behavior, use 
 
 ```html_example
 <div class="row">
-  <div class="small-12 large-expand columns">One</div>
-  <div class="small-12 large-expand columns">Two</div>
-  <div class="small-12 large-expand columns">Three</div>
-  <div class="small-12 large-expand columns">Four</div>
-  <div class="small-12 large-expand columns">Five</div>
-  <div class="small-12 large-expand columns">Six</div>
+  <div class="columns small-12 large-expand">One</div>
+  <div class="columns small-12 large-expand">Two</div>
+  <div class="columns small-12 large-expand">Three</div>
+  <div class="columns small-12 large-expand">Four</div>
+  <div class="columns small-12 large-expand">Five</div>
+  <div class="columns small-12 large-expand">Six</div>
 </div>
 ```
 
@@ -292,7 +299,7 @@ Similar alignment classes can also be applied to individual columns, which use t
 
 <a class="" data-open-video="13:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-<div class="warning callout">
+<div class="callout warning">
   <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes have been removed completely in Foundation 6.3.</p>
 </div>
 
@@ -326,10 +333,10 @@ The `.is-collapse-child` class removes negative margins from nested row under co
 
 ```html
 <div class="row small-collapse medium-uncollapse">
-  <div class="small-6 columns">
+  <div class="columns small-6">
     Removes gutter at small media query and adds at medium.
   </div>
-  <div class="small-6 columns">
+  <div class="columns small-6">
     Removes gutter at small media query and adds at medium.
   </div>
 </div>
@@ -338,14 +345,14 @@ The `.is-collapse-child` class removes negative margins from nested row under co
 <p class="lead">Scale the browser down to a medium size to see the difference.</p>
 
 <div class="row medium-uncollapse large-collapse">
-  <div class="small-6 columns">
+  <div class="columns small-6">
     <div class="callout secondary">
       <p class="show-for-small-only">On a small screen, I have gutters!</p>
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
       <p class="show-for-large">On a large screen, I have no gutters!</p>
     </div>
   </div>
-  <div class="small-6 columns">
+  <div class="columns small-6">
     <div class="callout secondary">
       <p class="show-for-small-only">On a small screen, I have gutters!</p>
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
@@ -366,8 +373,8 @@ Offsets work identically to the float grid, by applying `margin-left` to a colum
 
 ```html_example
 <div class="row">
-  <div class="small-4 large-offset-2 columns">Offset 2 on large</div>
-  <div class="small-4 columns">4 columns</div>
+  <div class="columns small-4 large-offset-2">Offset 2 on large</div>
+  <div class="columns small-4">4 columns</div>
 </div>
 ```
 
@@ -379,7 +386,7 @@ To define column widths at the row-level, instead of the individual column level
 
 <a class="" data-open-video="27:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-<div class="primary callout">
+<div class="callout primary">
   <p>A block grid row has the property <code>align-items: stretch</code> by default, meaning the columns in each row are equal height. To change this, change the <code>align-items</code> property of the row, or use one of the <a href="flexbox.html#vertical-alignment">vertical alignment flexbox classes</a>.</p>
 </div>
 
