@@ -62,7 +62,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
   display: none;
   background-color: $background;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 /// Adds base styles for a modal.
@@ -130,11 +130,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   html.is-reveal-open {
     position: fixed;
     width: 100%;
-    overflow-y: scroll;
-
-    body { // sass-lint:disable-line no-qualifying-elements
-      overflow: hidden;
-    }
+    overflow: hidden;
   }
 
   // Overlay
