@@ -100,7 +100,7 @@ $buttongroup-radius-on-each: true !default;
     @else {
       // One child
       &:first-child:last-child {
-        width: 100%;
+        width: calc(100% - #{$spacing});
       }
 
       // Two or more childreen
