@@ -425,14 +425,6 @@ Refer to the Sass documentation below to learn how each mixin works and the avai
 }
 ```
 
-We also have a shorthand option for the above which outputs the same CSS:
-
-```scss
-.main-content {
-  @include xy-cell-breakpoints((small: full, medium: 8));
-}
-```
-
 ### Custom Block Grid
 
 Use the `xy-grid-layout()` mixin to create your own block grid.
