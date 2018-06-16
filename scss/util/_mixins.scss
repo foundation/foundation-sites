@@ -7,7 +7,7 @@
 ////
 
 /// Creates an inner box-shadow for only one side
-/// 
+///
 /// @param {Keyword} $side - Side the shadow is supposed to appear. Can be `top`, `left`, `right` or `bottom`.
 /// @param {Number} $size - Width for the target side.
 /// @param {Color} $color - Color of the shadow.
@@ -267,6 +267,10 @@
   }
 
   @each $name in $list {
+    $old-zf-size: null;
+    @if global-variable-exists(-zf-size) {
+      $old-zf-size: $-zf-size;
+    }
     $-zf-size: $name !global;
 
     @if $auto-insert-breakpoints {
@@ -277,6 +281,8 @@
     @else {
       @content;
     }
+
+    $-zf-size: $old-zf-size !global;
   }
 }
 
