@@ -155,8 +155,8 @@ Please note that you need to add `rounded` class with `switch-paddle` and not `s
 ```
 
 <div class="docs-code-live">
-	<div class="row">
-		<div class="medium-4 columns">
+	<div class="grid-x grid-margin-x">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -168,7 +168,7 @@ Please note that you need to add `rounded` class with `switch-paddle` and not `s
 			  </div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -180,7 +180,7 @@ Please note that you need to add `rounded` class with `switch-paddle` and not `s
 			  </div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -287,14 +287,14 @@ This creates a tiny separator below the heading of an element and is usually use
 ```
 
 <div class="docs-code-live">
-	<div class="row">
-		<div class="small-12 medium-4 columns">
+	<div class="grid-x grid-margin-x">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-left">Lorem</h3>
 		</div>
-		<div class="small-12 medium-4 columns">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-center">Ipsum Dolor</h3>
 		</div>
-		<div class="small-12 medium-4 columns">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-right">Tempor</h3>
 		</div>
 	</div>

@@ -132,38 +132,38 @@ These dropdowns sets various positioning and alignments. Valid positions are lef
 </button>
 ```
 
-<div class="row small-up-1 medium-up-3">
-  <div class="column">
+<div class="grid-x grid-margin-x small-up-1 medium-up-3">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="bottom" data-alignment="left">
       Bottom Left
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button"  data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="bottom" data-alignment="center">
       Bottom Center
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="bottom" data-alignment="right">
       Bottom Right
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="top" data-alignment="left">
       Top Left
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="top" data-alignment="center">
       Top Center
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="top" data-alignment="right">
       Top Right
     </button>
@@ -200,35 +200,35 @@ These dropdowns sets various positioning and alignments. Valid positions are lef
 </button>
 ```
 
-<div class="row small-up-1 medium-up-2">
-  <div class="column">
+<div class="grid-x grid-margin-x small-up-1 medium-up-2">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="right" data-alignment="top">
       Right Top
     </button>
   </div>
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="left" data-alignment="top">
       Left Top
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="right" data-alignment="center">
       Right Center
     </button>
   </div>
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="left" data-alignment="center">
       Left Center
     </button>
   </div>
 
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="right" data-alignment="bottom">
       Right Bottom
     </button>
   </div>
-  <div class="column">
+  <div class="cell">
     <button class="button" type="button" data-tooltip tabindex="1" title="Fancy word for a beetle." data-position="left" data-alignment="bottom">
       Left Bottom
     </button>

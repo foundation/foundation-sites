@@ -162,8 +162,8 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
 <button type="button" class="button" data-toggle="offCanvasLeftSplit1">Open Left</button>
 <button type="button" class="button" data-toggle="offCanvasRightSplit2">Open Right</button>
 
-<div class="row">
-  <div class="small-6 columns">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
     <div class="off-canvas-wrapper">
       <div class="off-canvas-absolute position-left" id="offCanvasLeftSplit1" data-off-canvas>
         <!-- Your menu or Off-canvas content goes here -->
@@ -173,7 +173,7 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
       </div>
     </div>
   </div>
-  <div class="small-6 columns">
+  <div class="cell small-6">
     <div class="off-canvas-wrapper">
       <div class="off-canvas-absolute position-right" id="offCanvasRightSplit2" data-off-canvas>
         <!-- Your menu or Off-canvas content goes here -->
@@ -205,7 +205,7 @@ The Off-canvas container requires a positioning class to determine which side of
 <button type="button" class="button" data-toggle="offCanvasTop1">Open Top</button>
 <button type="button" class="button" data-toggle="offCanvasBottom1">Open Bottom</button>
 
-<div class="row column">
+<div class="cell">
   <div class="off-canvas-wrapper">
     <div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas>
       <!-- Your menu or Off-canvas content goes here -->
