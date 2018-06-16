@@ -4,7 +4,7 @@ node_js:
   - "lts/carbon"
   - "stable"
 install:
-  - npm install -g bower browserstack-runner
+  - npm install -g browserstack-runner
   - npm install
 script: npm run test:ci
 notifications:
