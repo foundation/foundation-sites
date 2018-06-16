@@ -184,10 +184,11 @@ class Reveal extends Plugin {
 
   /**
   * Disables the scroll when Reveal is shown to prevent the background from shifting
+  * @param {number} scrollTop - Scroll to visually apply, window current scroll by default
   */
-  _disableScroll(){
+  _disableScroll(scrollTop) {
+    scrollTop = scrollTop || $(window).scrollTop();
     if ($(document).height() > $(window).height()) {
-      var scrollTop = $(window).scrollTop();
       $("html")
         .css("top", -scrollTop);
     }
@@ -195,10 +196,11 @@ class Reveal extends Plugin {
 
   /**
   * Reenables the scroll when Reveal closes
+  * @param {number} scrollTop - Scroll to restore, html "top" property by default (as set by `_disableScroll`)
   */
-  _enableScroll(){
+  _enableScroll(scrollTop) {
+    scrollTop = scrollTop || parseInt($("html").css("top"));
     if ($(document).height() > $(window).height()) {
-      var scrollTop = parseInt($("html").css("top"));
       $("html")
         .css("top", "");
       $(window).scrollTop(-scrollTop);
@@ -401,6 +403,11 @@ class Reveal extends Plugin {
 
     function finishUp() {
 
+      // Get the current top before the modal is closed and restore the scroll after.
+      // TODO: use component properties instead of HTML properties
+      // See https://github.com/zurb/foundation-sites/pull/10786
+      var scrollTop = parseInt($("html").css("top"));
+
       if ($('.reveal:visible').length  === 0) {
         $('html').removeClass('is-reveal-open');
       }
@@ -409,7 +416,7 @@ class Reveal extends Plugin {
 
       _this.$element.attr('aria-hidden', true);
 
-      _this._enableScroll();
+      _this._enableScroll(scrollTop);
 
       /**
       * Fires when the modal is done closing.
