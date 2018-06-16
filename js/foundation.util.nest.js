@@ -35,7 +35,7 @@ const Nest = {
           .addClass(`submenu ${subMenuClass}`)
           .attr({
             'data-submenu': '',
-            'role': 'menu'
+            'role': 'menubar'
           });
         if(type === 'drilldown') {
           $sub.attr({'aria-hidden': true});
