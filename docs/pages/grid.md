@@ -23,7 +23,7 @@ tags:
 
 To use the Float Grid in Foundation v6.4+, you need to:
 * In CDN link or package managers: import `foundation-float.css` in place of `foundation.css`.
-* In Sass: set both `$xy-grid` and `$global-flex` to `false`.
+* In Sass: set both `$xy-grid` and `$global-flexbox` to `false`.
 
 
 ## Basics
