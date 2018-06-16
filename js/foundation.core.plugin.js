@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 
 // Abstract class for providing lifecycle hooks. Expect plugins to define AT LEAST
 // {function} _setup (replaces previous constructor),

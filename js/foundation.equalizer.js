@@ -3,8 +3,8 @@
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * Equalizer module.

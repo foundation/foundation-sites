@@ -8,41 +8,53 @@ var webpack2 = require('webpack');
 var named = require('vinyl-named');
 var sourcemaps = require('gulp-sourcemaps');
 
+var utils = require('../utils.js');
 var CONFIG = require('../config.js');
 
-// Compiles JavaScript into a single file
-gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
-
-// NOTE: This sets up all imports from within Foundation as externals, for the purpose
+// ----- WEBPACK CONFIGURATION -----
+//
+// The following sets up all imports from within Foundation as externals, for the purpose
 // of replicating the "drop in dist file" approach of prior versions.
 // THIS IS NOT RECOMMENDED FOR MOST USERS. Chances are you either want everything
 // (just throw in foundation.js or foundation.min.js) or you should be using a build
 // system.
-var pluginsAsExternals = {
-  'jquery': 'jQuery',
-  './foundation.core': '{Foundation: window.Foundation}',
-  './foundation.util.core' : '{rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend, RegExpEscape: window.Foundation.RegExpEscape, onLoad: window.Foundation.onLoad}',
-  './foundation.util.imageLoader' : '{onImagesLoaded: window.Foundation.onImagesLoaded}',
-  './foundation.util.keyboard' : '{Keyboard: window.Foundation.Keyboard}',
-  './foundation.util.mediaQuery' : '{MediaQuery: window.Foundation.MediaQuery}',
-  './foundation.util.motion' : '{Motion: window.Foundation.Motion, Move: window.Foundation.Move}',
-  './foundation.util.nest' : '{Nest: window.Foundation.Nest}',
-  './foundation.util.timer' : '{Timer: window.Foundation.Timer}',
-  './foundation.util.touch' : '{Touch: window.Foundation.Touch}',
-  './foundation.util.box' : '{Box: window.Foundation.Box}',
-  './foundation.plugin' : '{Plugin: window.Foundation.Plugin}',
-  './foundation.dropdownMenu' : '{DropdownMenu: window.Foundation.DropdownMenu}',
-  './foundation.drilldown' : '{Drilldown: window.Foundation.Drilldown}',
-  './foundation.accordionMenu' : '{AccordionMenu: window.Foundation.AccordionMenu}',
-  './foundation.accordion' : '{Accordion: window.Foundation.Accordion}',
-  './foundation.tabs' : '{Tabs: window.Foundation.Tabs}',
-  './foundation.smoothScroll' : '{SmoothScroll: window.Foundation.SmoothScroll}',
+
+// Generate plugin Externals config for UMD modules
+var webpackExternalPlugins = Object.assign(
+  utils.umdExternals({
+    'jquery': 'jQuery',
+  }),
+  utils.umdExternals({
+    // Import path                    | Exported file
+    './foundation.core':              'foundation.core',
+    './foundation.core.utils':        'foundation.core',
+    './foundation.core.plugin':       'foundation.core',
+    './foundation.util.imageLoader':  'foundation.util.imageLoader',
+    './foundation.util.keyboard':     'foundation.util.keyboard',
+    './foundation.util.mediaQuery':   'foundation.util.mediaQuery',
+    './foundation.util.motion':       'foundation.util.motion',
+    './foundation.util.nest':         'foundation.util.nest',
+    './foundation.util.timer':        'foundation.util.timer',
+    './foundation.util.touch':        'foundation.util.touch',
+    './foundation.util.box':          'foundation.util.box',
+    './foundation.dropdownMenu':      'foundation.dropdownMenu',
+    './foundation.drilldown':         'foundation.drilldown',
+    './foundation.accordionMenu':     'foundation.accordionMenu',
+    './foundation.accordion':         'foundation.accordion',
+    './foundation.tabs':              'foundation.tabs',
+    './foundation.smoothScroll':      'foundation.smoothScroll',
+  }, { namespace: CONFIG.JS_BUNDLE_NAMESPACE })
+);
+
+var webpackOutputAsExternal = {
+  library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
+  libraryTarget: 'umd',
 };
 
 var webpackConfig = {
-  externals: {
+  externals: utils.umdExternals({
     'jquery': 'jQuery'
-  },
+  }),
   module: {
     rules: [
       {
@@ -56,25 +68,28 @@ var webpackConfig = {
     ]
   },
   output: {
-    // ---
-    // FIXME: to resolve before the next release
-    // Temporary disable UMD bundling, waiting for a way to import plugins are externals
-    // See https://github.com/zurb/foundation-sites/pull/10903
-    // ---
-    // libraryTarget: 'umd',
+    libraryTarget: 'umd',
   },
   // https://github.com/shama/webpack-stream#source-maps
   devtool: 'source-map'
 }
 
+// ----- TASKS -----
+//
+
+// Compiles JavaScript into a single file
+gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
+
 // Core has to be dealt with slightly differently due to bootstrapping externals
-// and the dependency on foundation.util.core
+// and the dependency on foundation.core.utils
 //
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
     .pipe(sourcemaps.init())
-    .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe(webpackStream(Object.assign({}, webpackConfig, {
+        output: webpackOutputAsExternal,
+      }), webpack2))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
@@ -82,7 +97,10 @@ gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
     .pipe(sourcemaps.init())
-    .pipe(webpackStream(Object.assign({}, webpackConfig, { externals: pluginsAsExternals }), webpack2))
+    .pipe(webpackStream(Object.assign({}, webpackConfig, {
+        externals: webpackExternalPlugins,
+        output: webpackOutputAsExternal,
+      }), webpack2))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
@@ -95,14 +113,6 @@ gulp.task('javascript:foundation', ['javascript:plugins'], function() {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js'));
 });
-//gulp.task('javascript:foundation', function() {
-//  return gulp.src(CONFIG.JS_FILES)
-//    .pipe(babel()
-//      .on('error', onBabelError))
-//    .pipe(gulp.dest('_build/assets/js/plugins'))
-//    .pipe(concat('foundation.js'))
-//    .pipe(gulp.dest('_build/assets/js'));
-//});
 
 gulp.task('javascript:deps', function() {
   return gulp.src(CONFIG.JS_DEPS)

@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
@@ -406,6 +406,6 @@ Dropdown.defaults = {
    * @default false
    */
   closeOnClick: false
-}
+};
 
 export {Dropdown};

@@ -11,47 +11,57 @@ You can get the Foundation JavaScript files from a ZIP download, package manager
 Once you have the files, add links to jQuery and Foundation as `<script>` tags at the bottom of your page, just before the closing `<body>` tag.
 
 ```html
+<!-- jQuery must be imported before Foundation -->
 <script src="js/jquery.min.js"></script>
 <!-- this will include every plugin and utility required by Foundation -->
 <script src="js/foundation.min.js"></script>
 ```
 
-<div class="callout warning">
-  <p>Make sure Foundation loads <em>after</em> jQuery.</p>
-</div>
 
-### Babel Required
+### Import in HTML
 
-Our JavaScript uses some features of ECMAScript 2015. **If you use Foundation with a build system, you'll need to compile our code to ES5.** We use [Babel](https://babeljs.io/) in our templates to do this. Babel has [plugins](https://babeljs.io/docs/setup/) for every build system imaginable, so integrating it into an existing setup is easy.
-
-When configuring Babel to work with Foundation, you only need to include the `es2015` preset. At the root of your project, add a file called `.babelrc` with these contents to load that configuration:
-
-```json
-{
-  "presets": ["es2015"]
-}
-```
-
-### File Structure
-
-All of Foundation's plugins ship both as importable ES2016 modules, and as individual precompiled "drop in" files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.  The precompiled files live in the `dist` folder, while the importable modules live in the `js` folder.
-
-If you're not familiar with module bundling, you'll probably want to reference the precompiled files from `dist`. 
-
-If you're only using certain plugins, know that they all require `foundation.core.js` and `foundation.util.mediaQuery.js` to be loaded *first*. Some plugins also require specific utility libraries that ship with Foundation&mdash;refer to a plugin's documentation to find out which plugins require what, and see the [JavaScript Utilities](javascript-utilities.html) page for more information.
+You can import in your HTML the complete Foundation library `foundation.min.js` like above, but also each plugin individually.
 
 ```html
 <!-- Example of selectively including files -->
-<script src="js/jquery.min.js"></script>
-<script src="js/foundation.core.js"></script>
-<script src="js/foundation.util.mediaQuery.js"></script>
-<script src="js/foundation.tabs.js"></script>
-<script src="js/foundation.accordion.js"></script>
+<script src="js/jquery.min.js"></script> <!-- Required -->
+<script src="js/foundation.core.min.js"></script>  <!-- Required -->
+<script src="js/foundation.util.mediaQuery.min.js"></script>
+<script src="js/foundation.tabs.min.js"></script>
+<script src="js/foundation.accordion.min.js"></script>
 ```
+
+Know that they all require `foundation.core.js` to be loaded *first*. Some plugins also require specific utility libraries that ship with Foundation&mdash;refer to a plugin's documentation to find out which plugins require what, and see the [JavaScript Utilities](javascript-utilities.html) page for more information.
 
 <div class="callout warning">
   <p>Loading many individual files like this creates a lot of network overhead, especially for users on mobile networks. To keep your pages loading quick, we recommend using a tool like <a href="http://gruntjs.com">Grunt</a> or <a href="http://gulpjs.com">Gulp</a> to combine all of your JavaScript files into one.</p>
 </div>
+
+### Import in JavaScript
+
+Foundation is exported as [UMD modules](http://bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported in any JavaScript environnement.
+
+For example with [ES6](https://github.com/lukehoban/es6features#readme) (the ESM format):
+```js
+import Foundation from 'foundation-sites';
+const $dropdown = new Foundation.Dropdown('#mydropdown');
+// Or
+import { Dropdown } from 'foundation-sites';
+const $dropdown = new Dropdown('#mydropdown');
+```
+
+With [RequireJs](http://requirejs.org/) (the AMD format):
+```js
+define(['foundation'], function(Foundation) {
+  var $dropdown = new Foundation.Dropdown('#mydropdown');
+});
+```
+
+With [Node.js](https://www.safaribooksonline.com/library/view/learning-javascript-design/9781449334840/ch11s03.html) (the CommonJs format):
+```js
+var Foundation = require('foundation-sites');
+var $dropdown = new Dropdown('#mydropdown');
+```
 
 ---
 

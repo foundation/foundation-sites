@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 import { Triggers } from './foundation.util.triggers';
 
 /**

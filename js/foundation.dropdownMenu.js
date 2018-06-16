@@ -4,8 +4,8 @@ import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { rtl as Rtl } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 
 /**

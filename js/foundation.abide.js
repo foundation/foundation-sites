@@ -1,8 +1,8 @@
 'use strict';
 
 import $ from 'jquery';
-import { Plugin } from './foundation.plugin';
-import { GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { GetYoDigits } from './foundation.core.utils';
 
 /**
  * Abide module.

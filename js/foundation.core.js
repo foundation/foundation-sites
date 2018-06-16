@@ -1,7 +1,7 @@
 "use strict";
 
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
 var FOUNDATION_VERSION = '6.4.3';
