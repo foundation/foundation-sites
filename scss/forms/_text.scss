@@ -155,7 +155,7 @@ $form-button-radius: $global-radius !default;
   }
 
   // Reset Normalize setting content-box to search elements
-  input[type='search'] { // sass-lint:disable-line no-qualifying-elements force-attribute-nesting
+  input[type='search'] { // sass-lint:disable-line no-qualifying-elements
     box-sizing: border-box;
   }
 

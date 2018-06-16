@@ -39,7 +39,7 @@ $slider-opacity-disabled: 0.25 !default;
 $slider-radius: $global-radius !default;
 
 @mixin foundation-range-input {
-  input[type='range'] {  // sass-lint:disable-line no-qualifying-elements force-attribute-nesting
+  input[type='range'] {  // sass-lint:disable-line no-qualifying-elements
     $margin: ($slider-handle-height - $slider-height) / 2;
 
     display: block;

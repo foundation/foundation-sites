@@ -107,8 +107,8 @@ $buttongroup-radius-on-each: true !default;
 
       // Two or more childreen
       @for $i from 2 through $buttongroup-expand-max {
-        &:first-child:nth-last-child(#{$i}) { // sass-lint:disable-line force-pseudo-nesting
-          &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} { // sass-lint:disable-line force-pseudo-nesting
+        &:first-child:nth-last-child(#{$i}) {
+          &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
             width: calc(#{percentage(1 / $i)} - #{$spacing});
             margin-#{$global-right}: $spacing;
@@ -200,7 +200,7 @@ $buttongroup-radius-on-each: true !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} #{$buttongroup-child-selector} { // sass-lint:disable-line force-element-nesting
+      &.#{$size} #{$buttongroup-child-selector} {
         font-size: $value;
       }
     }
@@ -218,7 +218,7 @@ $buttongroup-radius-on-each: true !default;
         }
       }
       @else {
-        &.#{$name} #{$buttongroup-child-selector} { // sass-lint:disable-line force-element-nesting
+        &.#{$name} #{$buttongroup-child-selector} {
           @include button-hollow;
           @include button-hollow-style($color);
         }
