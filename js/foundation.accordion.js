@@ -294,31 +294,29 @@ Accordion.defaults = {
    */
   allowAllClosed: false,
   /**
-   * Allows the window to scroll to content of pane specified by hash anchor
+   * Link the location hash to the open pane.
+   * Set the location hash when the opened pane changes, and open and scroll to the corresponding pane when the location changes.
    * @option
    * @type {boolean}
    * @default false
    */
   deepLink: false,
-
   /**
-   * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+   * If `deepLink` is enabled, adjust the deep link scroll to make sure the top of the accordion panel is visible
    * @option
    * @type {boolean}
    * @default false
    */
   deepLinkSmudge: false,
-
   /**
-   * Animation time (ms) for the deep link adjustment
+   * If `deepLinkSmudge` is enabled, animation time (ms) for the deep link adjustment
    * @option
    * @type {number}
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
-
   /**
-   * Update the browser history with the open accordion
+   * If `deepLink` is enabled, update the browser history with the open accordion
    * @option
    * @type {boolean}
    * @default false

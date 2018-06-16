@@ -398,7 +398,8 @@ class Tabs extends Plugin {
 
 Tabs.defaults = {
   /**
-   * Allows the window to scroll to content of pane specified by hash anchor
+   * Link the location hash to the active pane.
+   * Set the location hash when the active pane changes, and open the corresponding pane when the location changes.
    * @option
    * @type {boolean}
    * @default false
@@ -406,7 +407,7 @@ Tabs.defaults = {
   deepLink: false,
 
   /**
-   * Adjust the deep link scroll to make sure the top of the tab panel is visible
+   * If `deepLink` is enabled, adjust the deep link scroll to make sure the top of the tab panel is visible
    * @option
    * @type {boolean}
    * @default false
@@ -414,7 +415,7 @@ Tabs.defaults = {
   deepLinkSmudge: false,
 
   /**
-   * Animation time (ms) for the deep link adjustment
+   * If `deepLinkSmudge` is enabled, animation time (ms) for the deep link adjustment
    * @option
    * @type {number}
    * @default 300
@@ -422,7 +423,7 @@ Tabs.defaults = {
   deepLinkSmudgeDelay: 300,
 
   /**
-   * Update the browser history with the open tab
+   * If `deepLink` is enabled, update the browser history with the open tab
    * @option
    * @type {boolean}
    * @default false
@@ -430,7 +431,7 @@ Tabs.defaults = {
   updateHistory: false,
 
   /**
-   * Allows the window to scroll to content of active pane on load if set to true.
+   * Allows the window to scroll to content of active pane on load.
    * Not recommended if more than one tab panel per page.
    * @option
    * @type {boolean}
