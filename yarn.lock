@@ -2268,10 +2268,6 @@ dateformat@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
 
-dateformat@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
-
 debug-fabulous@1.X:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/debug-fabulous/-/debug-fabulous-1.1.0.tgz#af8a08632465224ef4174a9f06308c3c2a1ebc8e"
@@ -3377,9 +3373,9 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
-"foundation-docs@github:zurb/foundation-docs#e95141823f1248fd62a83ed5999cdd979cacd9e5":
+"foundation-docs@git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad":
   version "0.2.1"
-  resolved "https://codeload.github.com/zurb/foundation-docs/tar.gz/e95141823f1248fd62a83ed5999cdd979cacd9e5"
+  resolved "git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad"
   dependencies:
     cheerio "^0.20.0"
     handlebars "^4.0.11"
@@ -3542,7 +3538,7 @@ gaze@^0.5.1:
   dependencies:
     globule "~0.1.0"
 
-gaze@^1.0.0, gaze@^1.1.2:
+gaze@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/gaze/-/gaze-1.1.2.tgz#847224677adb8870d679257ed3388fdb61e40105"
   dependencies:
@@ -6795,15 +6791,15 @@ path-type@^2.0.0:
   dependencies:
     pify "^2.0.0"
 
-pathval@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/pathval/-/pathval-1.1.0.tgz#b942e6d4bde653005ef6b71361def8727d0645e0"
-
 path-type@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-3.0.0.tgz#cef31dc8e0a1a3bb0d105c0cd97cf3bf47f4e36f"
   dependencies:
     pify "^3.0.0"
+
+pathval@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pathval/-/pathval-1.1.0.tgz#b942e6d4bde653005ef6b71361def8727d0645e0"
 
 pause-stream@0.0.11:
   version "0.0.11"
@@ -8479,7 +8475,7 @@ supports-color@^4.0.0, supports-color@^4.2.1:
   dependencies:
     has-flag "^2.0.0"
 
-supports-color@^5.2.0, supports-color@^5.3.0:
+supports-color@^5.1.0, supports-color@^5.2.0, supports-color@^5.3.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.4.0.tgz#1c6b337402c2137605efe19f10fec390f6faab54"
   dependencies:
