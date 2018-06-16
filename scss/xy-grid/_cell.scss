@@ -120,21 +120,26 @@
     }
   }
 
-  // Get our gutters from map if available, if not map just return the value.
+  // Get the gutter for the passed breakpoint/value.
   $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
-  // Base flex properties
-  @include xy-cell-base($size);
+  @if($gutter != null) {
+    // Base flex properties
+    @include xy-cell-base($size);
 
-  @if($gutter-type == 'margin') {
-    @include -xy-cell-properties($size, $gutter, $vertical);
+    @if($gutter-type == 'margin') {
+      @include -xy-cell-properties($size, $gutter, $vertical);
+    }
+    @else {
+      @include -xy-cell-properties($size, 0, $vertical);
+    }
+
+    @if $gutter-output {
+      @include xy-gutters($gutter, $gutter-type, $gutter-position);
+    }
   }
   @else {
-    @include -xy-cell-properties($size, 0, $vertical);
-  }
-
-  @if $gutter-output {
-    @include xy-gutters($gutter, $gutter-type, $gutter-position);
+    @warn 'xy-cell: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}", cell was not generated`'
   }
 }
 
