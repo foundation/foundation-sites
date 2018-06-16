@@ -17,6 +17,7 @@ describe('Dropdown', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $dropdownController.remove();
     $dropdownContainer.remove();
   });
