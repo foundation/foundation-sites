@@ -5,7 +5,7 @@ sass: scss/xy-grid/*.scss
 ---
 
 <div class="callout training-callout">
-  <p>The XY Grid is huge advancement in Grids. Stay up-to-date with all the new features in Foundation 6.4 with our online webinar training. You’ll come away knowing the ins and outs of the XY Grid to create complex layouts faster and with less code. Not to mention all the useful UI components and Foundation JavaScript you’ll learn. You’ll make your coworkers jealous.</p>
+  <p>The XY Grid is a huge advancement in Grids. Stay up-to-date with all the new features in Foundation 6.4 with our online webinar training. You’ll come away knowing the ins and outs of the XY Grid to create complex layouts faster and with less code. Not to mention all the useful UI components and Foundation JavaScript you’ll learn. You’ll make your coworkers jealous.</p>
   <a href="http://zurb.com/university/foundation-intro" target="_blank">Don’t miss out on the upcoming Foundation trainings →</a>
 </div>
 
