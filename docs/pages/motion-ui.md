@@ -72,7 +72,7 @@ Or, another way to start using Motion UI is through a CDN.
 
 ```html
 <!-- Insert this within your head tag and after foundation.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
 
 ```
 

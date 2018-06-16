@@ -4,7 +4,6 @@
 [![npm version](https://badge.fury.io/js/foundation-sites.svg)](https://badge.fury.io/js/foundation-sites)
 [![Bower version](https://badge.fury.io/bo/foundation-sites.svg)](https://badge.fury.io/bo/foundation-sites)
 [![Gem Version](https://badge.fury.io/rb/foundation-rails.svg)](https://badge.fury.io/rb/foundation-rails)
-[![CDNJS](https://img.shields.io/cdnjs/v/foundation.svg)](https://cdnjs.com/libraries/foundation)
 [![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/foundation-sites/badge?style=rounded)](https://www.jsdelivr.com/package/npm/foundation-sites)
 [![dependencies Status](https://david-dm.org/zurb/foundation-sites/status.svg)](https://david-dm.org/zurb/foundation-sites)
 [![devDependencies Status](https://david-dm.org/zurb/foundation-sites/dev-status.svg)](https://david-dm.org/zurb/foundation-sites?type=dev)
