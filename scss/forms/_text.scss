@@ -155,18 +155,18 @@ $form-button-radius: $global-radius !default;
   }
 
   // Reset Normalize setting content-box to search elements
-  input[type='search'] { // sass-lint:disable-line no-qualifying-elements
+  input[type='search'] { // sass-lint:disable-line no-qualifying-elements force-attribute-nesting
     box-sizing: border-box;
   }
 
   // Number input styles
   [type='number'] {
     @if not $input-number-spinners {
-      -moz-appearance: textfield; // sass-lint:disable-line no-vendor-prefix
+      -moz-appearance: textfield; // sass-lint:disable-line no-vendor-prefixes
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
-        -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefix
+        -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
         margin: 0;
       }
     }
