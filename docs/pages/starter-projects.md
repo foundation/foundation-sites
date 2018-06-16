@@ -40,7 +40,7 @@ You can set up an advanced project through the Foundation CLI with this command:
 foundation new --framework sites --template zurb
 ```
 
-It's also possible to download the template files directly from GitHub. Run `npm install` and `bower install` first to set it up, then `npm start` to run it. [Download advanced template](https://github.com/zurb/foundation-zurb-template/archive/master.zip).
+It's also possible to download the template files directly from GitHub. Run `npm install` first to set it up, then `npm start` to run it. [Download advanced template](https://github.com/zurb/foundation-zurb-template/archive/master.zip).
 
 The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `npm run build`.
 
