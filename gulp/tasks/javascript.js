@@ -38,17 +38,25 @@ var pluginsAsExternals = {
   './foundation.smoothScroll' : '{SmoothScroll: window.Foundation.SmoothScroll}',
 };
 
-var moduleConfig = {
-  rules: [
-    {
-      test: /.js$/,
-      use: [
-        {
-          loader: 'babel-loader'
-        }
-      ]
-    }
-  ]
+var webpackConfig = {
+  externals: {
+    'jquery': 'jQuery'
+  },
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      }
+    ]
+  },
+  output: {
+    libraryTarget: 'umd',
+  }
 }
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
@@ -57,20 +65,20 @@ var moduleConfig = {
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
-    .pipe(webpackStream({externals: {'jquery': 'jQuery'}, module: moduleConfig}, webpack2))
+    .pipe(webpackStream(webpackConfig, webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
-gulp.task('javascript:plugins', ['javascript:plugin-core'], function() {
+gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
-    .pipe(webpackStream({externals: pluginsAsExternals, module: moduleConfig}, webpack2))
+    .pipe(webpackStream(Object.assign({ externals: pluginsAsExternals }, webpackConfig), webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 
 gulp.task('javascript:foundation', ['javascript:plugins'], function() {
   return gulp.src('js/entries/foundation.js')
     .pipe(named())
-    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: moduleConfig}, webpack2))
+    .pipe(webpackStream(webpackConfig, webpack2))
     .pipe(gulp.dest('_build/assets/js'));
 });
 //gulp.task('javascript:foundation', function() {
