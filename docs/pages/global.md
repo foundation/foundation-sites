@@ -9,10 +9,6 @@ sass: scss/_global.scss
 
 The default font size is set to 100% of the browser style sheet, usually 16 pixels. This ensures compatibility with browser-based text zoom or user-set defaults. If you're using the Sass version of Foundation, edit the `$global-font-size` variable to change the base font size. This can be a percentage value, or a pixel value.
 
-<div class="alert callout">
-  <p><code>$rem-base</code> was deprecated in version 6.1, in favor of using <code>$global-font-size</code> to define rem calculation.</p>
-</div>
-
 ---
 
 ## Colors
