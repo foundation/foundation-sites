@@ -40,7 +40,7 @@ Foundation.addToJquery($);
 Foundation.rtl = CoreUtils.rtl;
 Foundation.GetYoDigits = CoreUtils.GetYoDigits;
 Foundation.transitionend = CoreUtils.transitionend;
-Foundation.RegExpEscape = RegExpEscape;
+Foundation.RegExpEscape = CoreUtils.RegExpEscape;
 
 Foundation.Box = Box;
 Foundation.onImagesLoaded = onImagesLoaded;
