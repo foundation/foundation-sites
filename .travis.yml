@@ -11,7 +11,8 @@ matrix:
   - node_js: "stable"
     env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
-install: npm install
+before_install:  npm install -g npm@latest
+install: npm ci
 script: npm run $ZF_TRAVIS_COMMAND
 
 notifications:
