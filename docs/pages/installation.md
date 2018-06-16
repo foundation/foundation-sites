@@ -163,7 +163,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
 </div>
 
 <p class="text-center">
-  <a href="/starter-projects.html" class="button">See advanced Template installations</a>
+  <a href="starter-projects.html" class="button">See advanced Template installations</a>
 </p>
 
 <div class="callout info">
