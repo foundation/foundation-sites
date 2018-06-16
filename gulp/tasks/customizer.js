@@ -30,12 +30,6 @@ var utils = require('../utils.js');
 var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
-var COMPATIBILITY = [
-  'last 2 versions',
-  'ie >= 9',
-  'android >= 4.4',
-  'ios >= 7'
-];
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
@@ -102,9 +96,7 @@ gulp.task('customizer:sass', function(done) {
           'node_modules/motion-ui/src'
         ]
       }))
-      .pipe(postcss([autoprefixer({
-        browsers: COMPATIBILITY
-      })]))
+      .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
       .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
       .pipe(cleancss({ compatibility: 'ie9' }))
       .pipe(rename('foundation.min.css'))
