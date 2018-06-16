@@ -283,7 +283,7 @@ class Reveal extends Plugin {
             'tabindex': -1
           })
           .focus();
-        _this.addRevealOpenClasses();
+        _this._addRevealOpenClasses();
         Keyboard.trapFocus(_this.$element);
       }
       if (this.options.overlay) {
