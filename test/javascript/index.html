@@ -17,7 +17,10 @@
     <script src="../../node_modules/chai-jquery/chai-jquery.js"></script>
     <script src="../../node_modules/sinon/pkg/sinon-no-sourcemaps.js"></script>
     <script>
-      mocha.setup('bdd');
+      mocha.setup({
+        ui: 'bdd',
+        timeout: 5000,
+      });
       chai.should();
     </script>
     <script src="lib/keyboard-event-mock.js"></script>
