@@ -132,7 +132,15 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   html.is-reveal-open {
     position: fixed;
     width: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
+
+    &.zf-has-scroll {
+      overflow-y: scroll;
+    }
+
+    body { // sass-lint:disable-line no-qualifying-elements
+      overflow-y: hidden;
+    }
   }
 
   // Overlay

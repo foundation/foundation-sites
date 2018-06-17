@@ -325,11 +325,15 @@ class Reveal extends Plugin {
   }
 
   _addRevealOpenClasses() {
+    if ($(document).height() > $(window).height()) {
+      $('html').addClass('zf-has-scroll');
+    }
     $('html').addClass('is-reveal-open');
   }
 
   _removeRevealOpenClasses() {
     $('html').removeClass('is-reveal-open');
+    $('html').removeClass('zf-has-scroll');
   }
 
   /**
