@@ -324,6 +324,17 @@ class Reveal extends Plugin {
     this.$element.trigger('open.zf.reveal');
   }
 
+  /**
+   * Adds classes and listeners on document required by open modals.
+   *
+   * The following classes are added and updated:
+   * - `.is-reveal-open` - Prevents the scroll on document
+   * - `.zf-has-scroll`  - Displays a disabled scrollbar on document if required like if the
+   *                       scroll was not disabled. This prevent a "shift" of the page content due
+   *                       the scrollbar disappearing when the modal opens.
+   *
+   * @private
+   */
   _addGlobalClasses() {
     const updateScrollbarClass = () => {
       $('html').toggleClass('zf-has-scroll', !!($(document).height() > $(window).height()));
@@ -334,6 +345,10 @@ class Reveal extends Plugin {
     $('html').addClass('is-reveal-open');
   }
 
+  /**
+   * Removes classes and listeners on document that were required by open modals.
+   * @private
+   */
   _removeGlobalClasses() {
     this.$element.off('resizeme.zf.trigger.revealScrollbarListener');
     $('html').removeClass('is-reveal-open');
