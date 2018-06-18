@@ -325,13 +325,17 @@ class Reveal extends Plugin {
   }
 
   _addRevealOpenClasses() {
-    if ($(document).height() > $(window).height()) {
-      $('html').addClass('zf-has-scroll');
-    }
+    const updateScrollbarClass = () => {
+      $('html').toggleClass('zf-has-scroll', !!($(document).height() > $(window).height()));
+    };
+
+    this.$element.on('resizeme.zf.trigger.revealScrollbarListener', () => updateScrollbarClass());
+    updateScrollbarClass();
     $('html').addClass('is-reveal-open');
   }
 
   _removeRevealOpenClasses() {
+    this.$element.off('resizeme.zf.trigger.revealScrollbarListener');
     $('html').removeClass('is-reveal-open');
     $('html').removeClass('zf-has-scroll');
   }
