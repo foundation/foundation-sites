@@ -96,8 +96,6 @@ gulp.task('deploy:dist', function(done) {
       .pipe(tsFilter)
         .pipe(gulp.dest('./dist/js'))
         .pipe(tsFilter.restore)
-
-      .on('finish', done);
   });
 });
 
