@@ -283,7 +283,7 @@ class Reveal extends Plugin {
             'tabindex': -1
           })
           .focus();
-        _this._addRevealOpenClasses();
+        _this._addGlobalClasses();
         Keyboard.trapFocus(_this.$element);
       }
       if (this.options.overlay) {
@@ -313,9 +313,9 @@ class Reveal extends Plugin {
       .focus();
     Keyboard.trapFocus(this.$element);
 
-    this._addRevealOpenClasses();
+    this._addGlobalClasses();
 
-    this._extraHandlers();
+    this._addGlobalListeners();
 
     /**
      * Fires when the modal has successfully opened.
@@ -324,19 +324,42 @@ class Reveal extends Plugin {
     this.$element.trigger('open.zf.reveal');
   }
 
-  _addRevealOpenClasses() {
+  /**
+   * Adds classes and listeners on document required by open modals.
+   *
+   * The following classes are added and updated:
+   * - `.is-reveal-open` - Prevents the scroll on document
+   * - `.zf-has-scroll`  - Displays a disabled scrollbar on document if required like if the
+   *                       scroll was not disabled. This prevent a "shift" of the page content due
+   *                       the scrollbar disappearing when the modal opens.
+   *
+   * @private
+   */
+  _addGlobalClasses() {
+    const updateScrollbarClass = () => {
+      $('html').toggleClass('zf-has-scroll', !!($(document).height() > $(window).height()));
+    };
+
+    this.$element.on('resizeme.zf.trigger.revealScrollbarListener', () => updateScrollbarClass());
+    updateScrollbarClass();
     $('html').addClass('is-reveal-open');
   }
 
-  _removeRevealOpenClasses() {
+  /**
+   * Removes classes and listeners on document that were required by open modals.
+   * @private
+   */
+  _removeGlobalClasses() {
+    this.$element.off('resizeme.zf.trigger.revealScrollbarListener');
     $('html').removeClass('is-reveal-open');
+    $('html').removeClass('zf-has-scroll');
   }
 
   /**
    * Adds extra event handlers for the body and window if necessary.
    * @private
    */
-  _extraHandlers() {
+  _addGlobalListeners() {
     var _this = this;
     if(!this.$element) { return; } // If we're in the middle of cleanup, don't freak out
     this.focusableElements = Keyboard.findFocusable(this.$element);
@@ -413,7 +436,7 @@ class Reveal extends Plugin {
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {
-        _this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
+        _this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
       }
 
       Keyboard.releaseFocus(_this.$element);
@@ -484,7 +507,7 @@ class Reveal extends Plugin {
       .off(this.onLoadListener);
 
     if ($('.reveal:visible').length  === 0) {
-      this._removeRevealOpenClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
+      this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
     }
   };
 }
