@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.4.3",
+  "version": "6.5.0-rc.1",
   "main": "dist/js/foundation.js",
   "browser": "dist/js/foundation.js",
   "module": "js/entries/foundation.js",
