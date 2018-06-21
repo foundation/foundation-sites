@@ -13,6 +13,7 @@
 .grunt
 .idea
 .sass-cache/*
+.eyeglass_cache/*
 .yardoc
 _build
 .customizer
