@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// sass-lint:disable force-attribute-nesting, force-pseudo-nesting, no-color-literals, no-qualifying-elements
+// sass-lint:disable no-color-literals, no-qualifying-elements
 
 ////
 /// @group global
@@ -134,7 +134,7 @@ $global-color-pick-contrast-tolerance: 0 !default;
 @include add-foundation-colors;
 
 @mixin foundation-global-styles {
-  @include -zf-normalize;
+  @include foundation-normalize;
 
   // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
   .foundation-mq {
@@ -166,8 +166,8 @@ $global-color-pick-contrast-tolerance: 0 !default;
     color: $body-font-color;
 
     @if ($body-antialiased) {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+      -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
     }
   }
 
@@ -241,10 +241,4 @@ $global-color-pick-contrast-tolerance: 0 !default;
   .is-hidden {
     display: none !important;
   }
-}
-
-/// Loads normalize.css.
-/// @access private
-@mixin -zf-normalize {
-  @include normalize();
 }

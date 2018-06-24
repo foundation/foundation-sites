@@ -9,12 +9,15 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
 var postcss = require('gulp-postcss');
+var sequence = require('run-sequence');
 var autoprefixer = require('autoprefixer');
 
 var CONFIG = require('../config.js');
 
 // Compiles Sass files into CSS
-gulp.task('sass', ['sass:foundation', 'sass:docs']);
+gulp.task('sass', function(cb) {
+  sequence('sass:foundation', 'sass:docs', cb)
+});
 
 // Prepare dependencies
 gulp.task('sass:deps', function() {
@@ -28,9 +31,7 @@ gulp.task('sass:foundation', ['sass:deps'], function() {
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([autoprefixer({
-      browsers: CONFIG.CSS_COMPATIBILITY
-    })]))
+    .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'))
     .on('finish', function() {
@@ -49,9 +50,7 @@ gulp.task('sass:docs', ['sass:deps'], function() {
     .pipe(sass({
       includePaths: CONFIG.SASS_DOC_PATHS
     }).on('error', sass.logError))
-    .pipe(postcss([autoprefixer({
-      browsers: CONFIG.CSS_COMPATIBILITY
-    })]))
+    .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
 });

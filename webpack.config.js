@@ -1,8 +1,9 @@
 module.exports = {
-  entry: './js/entries/all.js',
+  entry: './js/entries/foundation.js',
   output: {
-      path: './_build/assets/js/',
-      filename: 'foundation.js'
+    path: './_build/assets/js/',
+    filename: 'foundation.js',
+    libraryTarget: 'umd'
   },
   externals: {
     jquery: 'jQuery'

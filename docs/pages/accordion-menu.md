@@ -70,7 +70,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 
 ## Submenu Toggle
 
-Accordion menus can have a seperate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
+Accordion menus can have a separate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
 You need to add the class `accordion-menu` as well as the data attribute `data-submenu-toggle="true"` for this to work correctly.
 
 ```html

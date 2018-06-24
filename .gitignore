@@ -13,6 +13,7 @@
 .grunt
 .idea
 .sass-cache/*
+.eyeglass_cache/*
 .yardoc
 _build
 .customizer
@@ -54,4 +55,4 @@ pizza/
 data.json
 npm-debug.log
 foundation-docs
-vendor
+./vendor

@@ -28,6 +28,7 @@ describe('Drilldown Menu', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -177,7 +178,7 @@ describe('Drilldown Menu', function() {
 
       // Open one first
       plugin._show($html.find('li.is-drilldown-submenu-parent').eq(2));
-      
+
       $html.one('closed.zf.drilldown', function() {
         $html.find('ul[data-submenu].is-active').each(function() {
           // Checking with .be.hidden is not possible because they don't have display: block but z-index: -1
@@ -303,6 +304,18 @@ describe('Drilldown Menu', function() {
         .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
 
       $html.find('> li:nth-child(1) > ul').should.have.class('is-active');
+    });
+    it('focuses parent link if parentLink is true', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Drilldown($html, {parentLink: true});
+
+      $html.find('> li:nth-child(1) > a').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+
+      setTimeout(function() { // Timeout to make sure transition has ended
+        $html.find('> li:nth-child(1) > ul > li[data-is-parent-link] a')[0].should.be.equal(document.activeElement);
+        done();
+      }, 500);
     });
     it('closes child element on ARROW_LEFT', function() {
       $html = $(template).appendTo('body');

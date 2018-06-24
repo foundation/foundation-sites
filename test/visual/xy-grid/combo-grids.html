@@ -76,6 +76,28 @@
       <div class="cell medium-auto"><div class="demo">Auto on medium</div></div>
     </div>
 
+    <h2>Auto/Shrink with static widths</h2>
+
+    <div class="grid-x grid-padding-x">
+      <div class="cell shrink medium-6 large-12"><div class="demo">Shrink, medium:6, large:12</div></div>
+      <div class="cell auto medium-4 large-12"><div class="demo">Auto, medium:4, large:12</div></div>
+    </div>
+
+    <br>
+
+    <div class="grid-x grid-padding-x">
+      <div class="cell shrink medium-auto large-7"><div class="demo">Shrink, medium:auto, large:7</div></div>
+      <div class="cell auto medium-shrink large-5"><div class="demo">Auto, medium:shrink, large:5</div></div>
+    </div>
+
+    <br>
+
+    <p>The following example must be tested without paddings/margins. See <a href"https://github.com/zurb/foundation-sites/issues/10891">#10891</a></p>
+    <div class="grid-x">
+      <div class="cell medium-auto large-12"><div class="demo">medium:auto, large:12</div></div>
+      <div class="cell medium-shrink large-12"><div class="demo">medium:shrink, large:12</div></div>
+    </div>
+
     <h2>Collapse</h2>
 
     <div class="grid-x grid-margin-x large-margin-collapse">

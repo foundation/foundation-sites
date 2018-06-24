@@ -10,6 +10,7 @@ describe('Reveal', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -292,6 +293,27 @@ describe('Reveal', function() {
         setTimeout(function() {
           $anchor[0].should.be.equal(document.activeElement);
           $anchor.remove();
+          done();
+        }, 0);
+      });
+
+      plugin.close();
+    });
+    it('sets focus to anchor that opened it', function(done) {
+      $html = $(template).appendTo('body');
+      var $anchor = $('<button data-open="exampleModal1">Open</button>').appendTo('body');
+      var $anchor2 = $('<button data-open="exampleModal1">Open2</button>').appendTo('body');
+      plugin = new Foundation.Reveal($html, {});
+      $anchor.focus();
+
+      // Open it first
+      plugin.open();
+
+      $html.on('closed.zf.reveal', function() {
+        setTimeout(function() {
+          $anchor[0].should.be.equal(document.activeElement);
+          $anchor.remove();
+          $anchor2.remove();
           done();
         }, 0);
       });

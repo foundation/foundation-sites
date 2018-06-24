@@ -4,8 +4,8 @@ import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { rtl as Rtl } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 
 /**
@@ -310,7 +310,7 @@ class DropdownMenu extends Plugin {
     if (this.options.closeOnClick) { this._addBodyHandler(); }
     /**
      * Fires when the new dropdown pane is visible.
-     * @event DropdownMenu#show
+     * @event Dropdownmenu#show
      */
     this.$element.trigger('show.zf.dropdownmenu', [$sub]);
   }
@@ -352,7 +352,7 @@ class DropdownMenu extends Plugin {
       }
       /**
        * Fires when the open menus are closed.
-       * @event DropdownMenu#hide
+       * @event Dropdownmenu#hide
        */
       this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
     }

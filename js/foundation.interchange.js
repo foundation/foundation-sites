@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { Plugin } from './foundation.plugin';
-import { GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { GetYoDigits } from './foundation.core.utils';
 
 
 /**

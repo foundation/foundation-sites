@@ -7,7 +7,7 @@
 ////
 
 /// Creates an inner box-shadow for only one side
-/// 
+///
 /// @param {Keyword} $side - Side the shadow is supposed to appear. Can be `top`, `left`, `right` or `bottom`.
 /// @param {Number} $size - Width for the target side.
 /// @param {Color} $color - Color of the shadow.
@@ -215,7 +215,6 @@
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  clip-path: inset(50%);
   border: 0;
 }
 
@@ -227,7 +226,6 @@
   overflow: visible;
   clip: auto;
   white-space: normal;
-  clip-path: none;
 }
 
 /// Vertically centers the element inside of its first non-static parent,
@@ -267,6 +265,10 @@
   }
 
   @each $name in $list {
+    $old-zf-size: null;
+    @if global-variable-exists(-zf-size) {
+      $old-zf-size: $-zf-size;
+    }
     $-zf-size: $name !global;
 
     @if $auto-insert-breakpoints {
@@ -277,6 +279,8 @@
     @else {
       @content;
     }
+
+    $-zf-size: $old-zf-size !global;
   }
 }
 

@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
@@ -35,8 +35,8 @@ class Dropdown extends Positionable {
     this._init();
 
     Keyboard.register('Dropdown', {
-      'ENTER': 'open',
-      'SPACE': 'open',
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
       'ESCAPE': 'close'
     });
   }
@@ -66,12 +66,18 @@ class Dropdown extends Positionable {
       this.$parent = null;
     }
 
+    // Do not change the `labelledby` if it is defined
+    var labelledby = this.$element.attr('aria-labelledby')
+      || this.$currentAnchor.attr('id')
+      || GetYoDigits(6, 'dd-anchor');
+
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': this.$currentAnchor.id || GetYoDigits(6, 'dd-anchor')
+      'aria-labelledby': labelledby
     });
+
     super._init();
     this._events();
   }
@@ -88,7 +94,7 @@ class Dropdown extends Positionable {
 
   _getDefaultAlignment() {
     // handle legacy float approach
-    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.className);
+    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.attr('class'));
     if(horizontalPosition) {
       return horizontalPosition[1];
     }
@@ -178,7 +184,7 @@ class Dropdown extends Positionable {
 
       Keyboard.handleKey(e, 'Dropdown', {
         open: function() {
-          if ($target.is(_this.$anchors)) {
+          if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
             _this.open();
             _this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
@@ -350,14 +356,6 @@ Dropdown.defaults = {
    */
   hOffset: 0,
   /**
-   * DEPRECATED: Class applied to adjust open position.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
-
-  /**
    * Position of dropdown. Can be left, right, bottom, top, or auto.
    * @option
    * @type {string}
@@ -408,6 +406,6 @@ Dropdown.defaults = {
    * @default false
    */
   closeOnClick: false
-}
+};
 
 export {Dropdown};

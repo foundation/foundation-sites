@@ -2,7 +2,8 @@
 
 import $ from 'jquery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
+import { RegExpEscape } from './foundation.core.utils';
 import { Triggers } from './foundation.util.triggers';
 
 /**
@@ -55,12 +56,20 @@ class Toggler extends Plugin {
       this.className = input[0] === '.' ? input.slice(1) : input;
     }
 
-    // Add ARIA attributes to triggers
-    var id = this.$element[0].id;
-    $(`[data-open="${id}"], [data-close="${id}"], [data-toggle="${id}"]`)
-      .attr('aria-controls', id);
-    // If the target is hidden, add aria-hidden
-    this.$element.attr('aria-expanded', this.$element.is(':hidden') ? false : true);
+    // Add ARIA attributes to triggers:
+    var id = this.$element[0].id,
+      $triggers = $(`[data-open~="${id}"], [data-close~="${id}"], [data-toggle~="${id}"]`);
+
+    // - aria-expanded: according to the element visibility.
+    $triggers.attr('aria-expanded', !this.$element.is(':hidden'));
+    // - aria-controls: adding the element id to it if not already in it.
+    $triggers.each((index, trigger) => {
+      const $trigger = $(trigger);
+      const controls = $trigger.attr('aria-controls') || '';
+
+      const containsId = new RegExp(`\\b${RegExpEscape(id)}\\b`).test(controls);
+      if (!containsId) $trigger.attr('aria-controls', controls ? `${controls} ${id}` : id);
+    });
   }
 
   /**
@@ -125,7 +134,11 @@ class Toggler extends Plugin {
   }
 
   _updateARIA(isOn) {
-    this.$element.attr('aria-expanded', isOn ? true : false);
+    var id = this.$element[0].id;
+    $(`[data-open="${id}"], [data-close="${id}"], [data-toggle="${id}"]`)
+      .attr({
+        'aria-expanded': isOn ? true : false
+      });
   }
 
   /**
