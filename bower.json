@@ -1,11 +1,36 @@
 {
   "name": "foundation-sites",
   "version": "6.4.3",
+  "description": "The most advanced responsive front-end framework in the world.",
+  "homepage": "http://foundation.zurb.com/sites",
   "license": "MIT",
+  "keywords": [
+    "css",
+    "scss",
+    "sass",
+    "js",
+    "responsive",
+    "mobile-first",
+    "framework",
+    "eyeglass-module"
+  ],
+  "authors": [
+    "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
+  ],
   "main": [
     "scss/foundation.scss",
     "dist/js/foundation.js"
   ],
+  "moduleType": [
+    "globals",
+    "amd",
+    "node",
+    "es6"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zurb/foundation-sites"
+  },
   "ignore": [
     ".babelrc",
     ".browserslistrc",
@@ -26,6 +51,7 @@
     "gulpfile.js",
     "meteor-README.md",
     "package.js",
+    "package.json",
     "package-lock.json",
     "sache.json",
     "webpack.config.js",
