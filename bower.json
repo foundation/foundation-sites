@@ -15,7 +15,7 @@
     "eyeglass-module"
   ],
   "authors": [
-    "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
+    "ZURB <foundation@zurb.com> (http://foundation.zurb.com)"
   ],
   "main": [
     "scss/foundation.scss",
