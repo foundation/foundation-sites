@@ -1,6 +1,7 @@
 ---
 title: Prototyping Utilities
 description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
+video: Xhc_KUJMEuk
 sass:
   - scss/prototype/*.scss
 ---
@@ -111,6 +112,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](http://codepen.io/IamManchanda/pen/XMRMwo)
 </div>
 
+<p>
+  <a class="" data-open-video="1:06"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
 #### Buttons
 
 ```html_example
@@ -150,8 +155,8 @@ Add the `.rounded` class to `.switch` to make it rounded.
 ```
 
 <div class="docs-code-live">
-	<div class="row">
-		<div class="medium-4 columns">
+	<div class="grid-x grid-margin-x">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -163,7 +168,7 @@ Add the `.rounded` class to `.switch` to make it rounded.
 			  </div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -175,7 +180,7 @@ Add the `.rounded` class to `.switch` to make it rounded.
 			  </div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -282,14 +287,14 @@ This creates a tiny separator below the heading of an element and is usually use
 ```
 
 <div class="docs-code-live">
-	<div class="row">
-		<div class="small-12 medium-4 columns">
+	<div class="grid-x grid-margin-x">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-left">Lorem</h3>
 		</div>
-		<div class="small-12 medium-4 columns">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-center">Ipsum Dolor</h3>
 		</div>
-		<div class="small-12 medium-4 columns">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-right">Tempor</h3>
 		</div>
 	</div>
@@ -313,13 +318,13 @@ You can use font styling to style your text. You can change the font styling by 
 ## List Styling
 
 <div class="primary callout">
-	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullets` is enabled by default for both ordered and unordered lists.
+	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullet` is enabled by default for both ordered and unordered lists.
 </div>
 
 #### Unordered Lists
 
 ```html
-<ul class="no-bullets"></ul>
+<ul class="no-bullet"></ul>
 <ul class="list-disc"></ul>
 <ul class="list-circle"></ul>
 <ul class="list-square"></ul>
@@ -328,7 +333,7 @@ You can use font styling to style your text. You can change the font styling by 
 #### Ordered Lists
 
 ```html
-<ol class="no-bullets"></ol>
+<ol class="no-bullet"></ol>
 <ol class="list-decimal"></ol>
 <ol class="list-lower-alpha"></ol>
 <ol class="list-lower-latin"></ol>
@@ -428,6 +433,10 @@ Generate spacing around elements with these easy to use margin classes.
 <div class="primary callout">
 	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
 </div>
+
+<p>
+  <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 #### Margin (All Sides)
 

@@ -95,24 +95,27 @@ The boilerplate uses Foundation's Vertical Menu&mdash;one item is made for each 
 
 {{{{raw}}}}
 ```handlebars
-<div class="column row"><div class="row collapse">
-  <div class="large-3 medium-4 columns" data-sticky-container>
-    <ul class="vertical menu">
+<div class="row">
+      
+  <div class="large-3 medium-4 columns">
+    <dl class="vertical tabs" data-tab>
       {{#each pages}}
-        <li><a href="#{{ anchor }}">{{ title }}</a></li>
+        <dd{{#if @first}} class="active"{{/if}}><a href="#{{ anchor }}">{{ title }}</a></dd>
       {{/each}}
-    </ul>
+    </dl>
   </div>
 
   <div class="large-9 medium-8 columns">
-    {{#each pages}}
-      <section class="ss-section" id="{{ anchor }}">
-        {{ body }}
-      </section>
-    {{/each}}
+    <div class="tabs-content">
+      {{#each pages}}
+        <section class="content {{#if @first}}active{{/if}}" id="{{ anchor }}">
+          {{ body }}
+        </section>
+      {{/each}}
+    </div>
   </div>
 
-</div></div>
+</div>
 ```
 
 The template has access to a `pages` variable, which is an array with the data for each page. When looping through `pages` using `{{#each}}`, you have access to these variables:

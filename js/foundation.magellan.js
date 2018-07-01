@@ -2,8 +2,8 @@
 
 
 import $ from 'jquery';
-import { onLoad, GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { SmoothScroll } from './foundation.smoothScroll';
 
 /**
@@ -177,7 +177,7 @@ class Magellan extends Plugin {
     let activeHash = '';
     if(activeIdx !== undefined){
       this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
-      activeHash = this.$active[0].getAttribute('href');
+      if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
     }else{
       this.$active = $();
     }

@@ -1,30 +1,73 @@
 {
   "name": "foundation-sites",
   "version": "6.4.3",
+  "description": "The most advanced responsive front-end framework in the world.",
+  "homepage": "http://foundation.zurb.com/sites",
   "license": "MIT",
+  "keywords": [
+    "css",
+    "scss",
+    "sass",
+    "js",
+    "responsive",
+    "mobile-first",
+    "framework",
+    "eyeglass-module"
+  ],
+  "authors": [
+    "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
+  ],
   "main": [
     "scss/foundation.scss",
     "dist/js/foundation.js"
   ],
+  "moduleType": [
+    "globals",
+    "amd",
+    "node",
+    "es6"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zurb/foundation-sites"
+  },
+ "dependencies": {
+   "jquery": ">=2.2.0",
+   "what-input": ">=4.1.0"
+  },
   "ignore": [
-    "config",
-    "docs",
-    "gulp",
-    "lib",
-    "test",
+    ".babelrc",
+    ".browserslistrc",
+    ".commitlintrc.yml",
+    ".editorconfig",
+    ".eslintrc",
+    ".huskyrc.yml",
+    ".jshintrc",
+    ".sass-lint.yml",
+    ".travis.yml",
+    ".versions",
+    "bower.json",
+    "browserstack.json",
+    "code-of-conduct.md",
     "composer.json",
     "CONTRIBUTING.md",
+    "docslink.sh",
     "gulpfile.js",
     "meteor-README.md",
     "package.js",
     "package.json",
+    "package-lock.json",
     "sache.json",
-    ".editorconfig",
-    ".npm",
-    ".gitignore",
-    ".npmignore",
-    ".versions",
-    ".babelrc",
-    "yarn.lock"
+    "webpack.config.js",
+    "yarn.lock",
+    ".github",
+    "config",
+    "customizer",
+    "docs",
+    "gulp",
+    "lib",
+    "spec",
+    "script",
+    "test"
   ]
 }

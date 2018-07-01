@@ -113,8 +113,10 @@ $buttongroup-radius-on-each: true !default;
     }
     @else {
       // One child
-      &:first-child:last-child {
-        width: calc(100% - #{$spacing});
+      &:first-child {
+        &:last-child {
+          width: calc(100% - #{$spacing});
+        }
       }
 
       // Two or more childreen
@@ -160,7 +162,7 @@ $buttongroup-radius-on-each: true !default;
     @if not $buttongroup-radius-on-each {
       border-radius: 0;
 
-      &:first-child{
+      &:first-child {
         border-top-#{$global-left}-radius: $global-radius;
         border-top-#{$global-right}-radius: $global-radius;
       }
@@ -272,7 +274,7 @@ $buttongroup-radius-on-each: true !default;
       }
     }
 
-    &.stacked-for-small.expanded { // sass-lint:disable-line force-element-nesting
+    &.stacked-for-small.expanded {
       @include breakpoint(small only) {
         display: block;
 
@@ -283,7 +285,7 @@ $buttongroup-radius-on-each: true !default;
       }
     }
 
-    &.stacked-for-medium.expanded { // sass-lint:disable-line force-element-nesting
+    &.stacked-for-medium.expanded {
       @include breakpoint(medium down) {
         display: block;
 

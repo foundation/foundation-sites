@@ -1,11 +1,13 @@
 module.exports = {
 
   // Javascript
+  JS_BUNDLE_NAMESPACE: '__FOUNDATION_EXTERNAL__',
+
   JS_FILES: [
-  'js/foundation.core.js',
-  'js/foundation.util.core.js',
-  'js/foundation.util.*.js',
-  'js/*.js'
+    'js/foundation.core.js',
+    'js/foundation.core.utils.js',
+    'js/foundation.util.*.js',
+    'js/*.js'
   ],
 
   JS_DEPS: [
@@ -43,13 +45,6 @@ module.exports = {
     'scss/**/*.scss',
   ],
 
-  CSS_COMPATIBILITY: [
-    'last 2 versions',
-    'ie >= 9',
-    'Android >= 2.3',
-    'ios >= 7'
-  ],
-
   // Assets
   ASSETS_FILES: [
     'docs/assets/**/*',
@@ -79,12 +74,14 @@ module.exports = {
     './_build/assets/css/foundation-rtl.css',
     './_build/assets/css/foundation-rtl.css.map',
     '_build/assets/js/foundation.js',
-    '_build/assets/js/foundation.js.map'
+    '_build/assets/js/foundation.js.map',
+    'js/typescript/foundation.d.ts'
   ],
 
   // Tests
   TEST_JS_FILES: [
-    'test/javascript/components/**/*.js',
-    'test/javascript/util/**/*.js'
+    'test/javascript/core/**/*.js',
+    'test/javascript/util/**/*.js',
+    'test/javascript/components/**/*.js'
   ]
 };

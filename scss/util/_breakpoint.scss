@@ -25,7 +25,7 @@ $-zf-zero-breakpoint: small !default;
 $-zf-breakpoints-keys: map-to-list($breakpoints, 'keys');
 
 @if nth(map-values($breakpoints), 1) != 0 {
-  @error 'Your smallest breakpoint (defined in $breakpoints) must be set to "0".';
+  @error 'The first key in the $breakpoints map must have a value of "0".';
 }
 @else {
   $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
@@ -76,8 +76,11 @@ $breakpoint-classes: (small medium large) !default;
 
   // Convert any pixel, rem, or unitless value to em
   $bp: -zf-bp-to-em($bp);
+  // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
+  // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
+  // See https://github.com/zurb/foundation-sites/issues/11313
   @if $bp-max {
-    $bp-max: -zf-bp-to-em($bp-max) - (1/16);
+    $bp-max: -zf-bp-to-em($bp-max) - .00125;
   }
 
   // Conditions to skip media query creation
@@ -254,7 +257,7 @@ $breakpoint-classes: (small medium large) !default;
 /// responsive gutters for the grid.
 /// @access private
 ///
-/// @param {String} $breakpoing - a named or non-named breakpoing.
+/// @param {String} $breakpoint - a named or non-named breakpoint.
 ///
 /// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
 @function -zf-closest-named-breakpoint($breakpoint) {

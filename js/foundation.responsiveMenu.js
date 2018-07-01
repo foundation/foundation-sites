@@ -3,8 +3,8 @@
 import $ from 'jquery';
 
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 import { DropdownMenu } from './foundation.dropdownMenu';
 import { Drilldown } from './foundation.drilldown';

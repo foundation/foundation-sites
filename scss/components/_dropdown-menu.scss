@@ -69,9 +69,9 @@ $dropdown-menu-item-background-active: transparent !default;
   }
 
   &.opens-left > a::after {
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
     right: auto;
     left: 5px;
-    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
   }
 
   &.opens-right > a::after {
@@ -81,7 +81,7 @@ $dropdown-menu-item-background-active: transparent !default;
 
 @mixin dropdown-menu-direction($dir: horizontal) {
   @if $dir == horizontal {
-    > li.opens-left {
+    > li.opens-left { // sass-lint:disable-line no-qualifying-elements
       > .is-dropdown-submenu {
         top: 100%;
         right: 0;
@@ -89,7 +89,7 @@ $dropdown-menu-item-background-active: transparent !default;
       }
     }
 
-    > li.opens-right {
+    > li.opens-right { // sass-lint:disable-line no-qualifying-elements
       > .is-dropdown-submenu {
         top: 100%;
         right: auto;
@@ -98,12 +98,12 @@ $dropdown-menu-item-background-active: transparent !default;
     }
 
     @if $dropdownmenu-arrows {
-      > li.is-dropdown-submenu-parent > a {
+      > li.is-dropdown-submenu-parent > a { // sass-lint:disable-line no-qualifying-elements
         position: relative;
         padding-#{$global-right}: $dropdownmenu-arrow-padding;
       }
 
-      > li.is-dropdown-submenu-parent > a::after {
+      > li.is-dropdown-submenu-parent > a::after { // sass-lint:disable-line no-qualifying-elements
         @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
         #{$global-right}: 5px;
         #{$global-left}: auto;
@@ -119,9 +119,9 @@ $dropdown-menu-item-background-active: transparent !default;
 
       &.opens-left {
         > .is-dropdown-submenu {
+          top: 0;
           right: 100%;
           left: auto;
-          top: 0;
         }
       }
 
