@@ -480,7 +480,7 @@ class OffCanvas extends Plugin {
     this.close();
     this.$element.off('.zf.trigger .zf.offCanvas');
     this.$overlay.off('.zf.offCanvas');
-    $(window).off(this.onLoadListener);
+    if (this.onLoadListener) $(window).off(this.onLoadListener);
   }
 }
 

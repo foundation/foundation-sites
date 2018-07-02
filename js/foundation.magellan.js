@@ -227,9 +227,8 @@ class Magellan extends Plugin {
       window.location.hash.replace(hash, '');
     }
 
-    $(window)
-      .off('hashchange', this._deepLinkScroll)
-      .off(this.onLoadListener);
+    $(window).off('hashchange', this._deepLinkScroll)
+    if (this.onLoadListener) $(window).off(this.onLoadListener);
   }
 }
 
