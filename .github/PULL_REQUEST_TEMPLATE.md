@@ -35,7 +35,7 @@
 - [ ] There are no other pull request similar to this one.
 - [ ] The pull request title is descriptive.
 - [ ] The template is fully and correctly filled.
-- [ ] The pull request targets the right branch (`develop` or `support/*`).
+- [ ] The pull request targets the right branch (`develop` or `develop/v...`).
 - [ ] My commits are correctly titled and contain all relevant information.
 - [ ] My code follows the code style of this project.
 - [ ] I have updated the documentation accordingly to my changes (if relevant).
