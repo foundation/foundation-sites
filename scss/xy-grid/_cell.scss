@@ -26,7 +26,7 @@
   }
 
   // Parsing "n of n" or "n/n" expressions
-  @elseif type-of($size) == 'list' {
+  @else if type-of($size) == 'list' {
     @if length($size) != 3 {
       @error 'Wrong syntax for xy-cell-size(). Use the format "n of n" or "n/n".';
     }
@@ -52,13 +52,13 @@
     min-height: 0px;
     min-width: 0px;
   }
-  @elseif ($size == 'auto') {
+  @else if ($size == 'auto') {
     flex: 1 1 0px; // sass-lint:disable-line zero-unit
   }
-  @elseif ($size == 'shrink') {
+  @else if ($size == 'shrink') {
     flex: 0 0 auto;
   }
-  @elseif ($size == 'grow') {
+  @else if ($size == 'grow') {
     flex: 1 0 auto;
   }
 }
@@ -79,11 +79,11 @@
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
     #{$direction}: $val;
   }
-  @elseif ($size == 'auto') {
+  @else if ($size == 'auto') {
     #{$direction}: auto;
     $val: if($margin-gutter == 0, 100%, calc(100% - #{rem-calc($margin-gutter)}));
   }
-  @elseif ($size == 'shrink') {
+  @else if ($size == 'shrink') {
     #{$direction}: auto;
   }
   @else {
