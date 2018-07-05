@@ -187,6 +187,10 @@ This can be used to combine multiple media queries together.
 
 The Foundation JavaScript includes a set of helper functions for working with media queries. They're all on the `Foundation.MediaQuery` object.
 
+<div class="callout warning">
+  The MediaQuery utility uses the Sass breakpoint settings and requires the Foundation CSS to be imported. For Sass users, you need to include either `foundation-everything()` or `foundation-global-styles()`.
+</div>
+
 Get the name of the current breakpoint with `MediaQuery.current`.
 
 ```js
