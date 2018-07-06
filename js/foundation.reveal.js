@@ -502,9 +502,8 @@ class Reveal extends Plugin {
     }
     this.$element.hide().off();
     this.$anchor.off('.zf');
-    $(window)
-      .off(`.zf.reveal:${this.id}`)
-      .off(this.onLoadListener);
+    $(window).off(`.zf.reveal:${this.id}`)
+    if (this.onLoadListener) $(window).off(this.onLoadListener);
 
     if ($('.reveal:visible').length  === 0) {
       this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
