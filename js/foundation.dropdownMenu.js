@@ -326,7 +326,7 @@ class DropdownMenu extends Plugin {
     var $toClose;
     if ($elem && $elem.length) {
       $toClose = $elem;
-    } else if (idx !== undefined) {
+    } else if (typeof idx !== 'undefined') {
       $toClose = this.$tabs.not(function(i, el) {
         return i === idx;
       });

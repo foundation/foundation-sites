@@ -216,7 +216,7 @@ function parseStyleToObject(str) {
 
     // missing `=` should be `null`:
     // http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
-    val = val === undefined ? null : decodeURIComponent(val);
+    val = typeof val === 'undefined' ? null : decodeURIComponent(val);
 
     if (!ret.hasOwnProperty(key)) {
       ret[key] = val;
