@@ -69,7 +69,7 @@ $menu-icons-back-compat: true !default;
     @include disable-mouse-outline;
   }
 
-  a,
+  li > a,
   .button {
     line-height: 1;
     text-decoration: none;
@@ -80,7 +80,7 @@ $menu-icons-back-compat: true !default;
   // Reset styles of inner elements
   input,
   select,
-  a,
+  li > a,
   button {
     margin-bottom: 0;
   }
