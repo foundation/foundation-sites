@@ -273,11 +273,11 @@
     }
 
     > .auto {
-      @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+      @include xy-cell-static(auto, false, $vertical: true);
     }
 
     > .shrink {
-      @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+      @include xy-cell-static(shrink, false, $vertical: true);
     }
 
 
