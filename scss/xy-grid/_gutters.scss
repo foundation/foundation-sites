@@ -34,7 +34,7 @@
       }
     }
   }
-  @elseif (type-of($gutters) == 'number') {
+  @else if (type-of($gutters) == 'number') {
     $gutter: rem-calc($gutters) / 2;
 
     // Loop through each gutter position
