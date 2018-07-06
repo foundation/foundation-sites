@@ -146,7 +146,7 @@ $dropdown-menu-item-background-active: transparent !default;
   .dropdown.menu {
     @include dropdown-menu-direction(horizontal);
 
-    a {
+    li > a {
       @include disable-mouse-outline;
       background: $dropdownmenu-background;
       padding: $dropdownmenu-padding;
