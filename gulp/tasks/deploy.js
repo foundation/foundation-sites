@@ -7,7 +7,6 @@ var confirm = require('gulp-prompt').confirm;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
 var octophant = require('octophant');
-var sequence = require('run-sequence');
 var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
 var plumber = require('gulp-plumber');
@@ -17,17 +16,10 @@ var CONFIG = require('../config.js');
 var CURRENT_VERSION = require('../../package.json').version;
 var NEXT_VERSION;
 
-gulp.task('deploy', function(cb) {
-  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
-});
+gulp.task('deploy', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates'));
 
-gulp.task('deploy:prep', function(cb) {
-  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', cb);
-});
-
-gulp.task('deploy:dist', function (cb) {
-  sequence('sass:foundation', 'javascript:foundation', 'deploy:dist:files', cb);
-});
+gulp.task('deploy:prep', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings'));
+gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:files'));
 
 gulp.task('deploy:prompt', function(cb) {
   inquirer.prompt([{
@@ -102,7 +94,7 @@ gulp.task('deploy:dist:files', function() {
 
 // Copies standalone JavaScript plugins to dist/ folder
 gulp.task('deploy:plugins', function() {
-  gulp.src('_build/assets/js/plugins/*.js')
+  return gulp.src('_build/assets/js/plugins/*.js')
     .pipe(gulp.dest('dist/js/plugins'))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
@@ -110,7 +102,7 @@ gulp.task('deploy:plugins', function() {
 });
 
 // Generates a settings file
-gulp.task('deploy:settings', function(cb) {
+gulp.task('deploy:settings', function(done) {
   var options = {
     title: 'Foundation for Sites Settings',
     output: './scss/settings/_settings.scss',
@@ -130,19 +122,18 @@ gulp.task('deploy:settings', function(cb) {
     _foundationShim: true
   }
 
-  octophant('./scss', options, cb);
+  octophant('./scss', options, done);
 });
 
 // Writes a commit with the changes to the version numbers
-gulp.task('deploy:commit', function(cb) {
+gulp.task('deploy:commit', function() {
   exec('git commit -am "Bump to version "' + NEXT_VERSION);
   exec('git tag v' + NEXT_VERSION);
   exec('git push origin develop --follow-tags');
-  cb();
 });
 
 // Uploads the documentation to the live server
-gulp.task('deploy:docs', ['build'], function() {
+gulp.task('deploy:docs', gulp.series('build', function() {
   return gulp.src('./_build/**')
     .pipe(confirm('Make sure everything looks right before you deploy.'))
     .pipe(rsync({
@@ -150,10 +141,10 @@ gulp.task('deploy:docs', ['build'], function() {
       hostname: 'deployer@72.32.134.77',
       destination: '/home/deployer/sites/foundation-sites-6-docs'
     }));
-  });
+}));
 
 // Uploads the documentation to the live server in beta env
-gulp.task('deploy:beta', ['build'], function() {
+gulp.task('deploy:beta', gulp.series('build', function() {
   return gulp.src('./_build/**')
     .pipe(confirm('Make sure everything looks right before you deploy.'))
     .pipe(rsync({
@@ -161,7 +152,7 @@ gulp.task('deploy:beta', ['build'], function() {
       hostname: 'deployer@72.32.134.77',
       destination: '/home/deployer/sites/scalingsexiness/foundation-sites-6-docs'
     }));
-});
+}));
 
 
 
@@ -186,17 +177,17 @@ gulp.task('deploy:templates', function(done) {
 });
 
 // The Customizer runs this function to generate files it needs
-gulp.task('deploy:custom', function(done) {
-  sequence('sass:foundation', 'javascript:foundation', function() {
-    gulp.src('./_build/assets/css/foundation.css')
-        .pipe(cleancss({ compatibility: 'ie9' }))
-        .pipe(rename('foundation.min.css'))
-        .pipe(gulp.dest('./_build/assets/css'));
-
+gulp.task('deploy:custom', gulp.series('sass:foundation', 'javascript:foundation', gulp.parallel(
+  function () {
+    return gulp.src('./_build/assets/css/foundation.css')
+      .pipe(cleancss({ compatibility: 'ie9' }))
+      .pipe(rename('foundation.min.css'))
+      .pipe(gulp.dest('./_build/assets/css'));
+  },
+  function () {
     return gulp.src('_build/assets/js/foundation.js')
-        .pipe(uglify())
-        .pipe(rename('foundation.min.js'))
-        .pipe(gulp.dest('./_build/assets/js'))
-        .on('finish', done);
-  });
-});
+      .pipe(uglify())
+      .pipe(rename('foundation.min.js'))
+      .pipe(gulp.dest('./_build/assets/js'));
+  }
+)));
