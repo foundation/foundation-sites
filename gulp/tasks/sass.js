@@ -9,15 +9,12 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
 var postcss = require('gulp-postcss');
-var sequence = require('run-sequence');
 var autoprefixer = require('autoprefixer');
 
 var CONFIG = require('../config.js');
 
 // Compiles Sass files into CSS
-gulp.task('sass', function(cb) {
-  sequence('sass:foundation', 'sass:docs', cb)
-});
+gulp.task('sass', gulp.series('sass:foundation', 'sass:docs'));
 
 // Prepare dependencies
 gulp.task('sass:deps', function() {
@@ -26,7 +23,7 @@ gulp.task('sass:deps', function() {
 });
 
 // Compiles Foundation Sass
-gulp.task('sass:foundation', ['sass:deps'], function() {
+gulp.task('sass:foundation', gulp.series('sass:deps', function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
@@ -41,10 +38,10 @@ gulp.task('sass:foundation', ['sass:deps'], function() {
           }))
         .pipe(sassLint.format());
     });
-});
+}));
 
 // Compiles docs Sass (includes Foundation code also)
-gulp.task('sass:docs', ['sass:deps'], function() {
+gulp.task('sass:docs', gulp.series('sass:deps', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -53,14 +50,14 @@ gulp.task('sass:docs', ['sass:deps'], function() {
     .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
-});
+}));
 
 // Audits CSS filesize, selector count, specificity, etc.
-gulp.task('sass:audit', ['sass:foundation'], function(cb) {
+gulp.task('sass:audit', gulp.series('sass:foundation', function(done) {
   fs.readFile('./_build/assets/css/foundation.css', function(err, data) {
     var parker = new Parker(require('parker/metrics/All'));
     var results = parker.run(data.toString());
     console.log(prettyJSON.render(results));
-    cb();
+    done();
   });
-});
+}));

@@ -74,7 +74,7 @@ function buildSearch() {
   supercollider.buildSearch('_build/data/search.json', function() {});
 }
 
-gulp.task('docs:debug', ['docs:all'], function(cb) {
+gulp.task('docs:debug', gulp.series('docs:all', function(done) {
   var output = JSON.stringify(supercollider.tree, null, '  ');
-  require('fs').writeFile('./_debug.json', output, cb);
-});
+  require('fs').writeFile('./_debug.json', output, done);
+}));
