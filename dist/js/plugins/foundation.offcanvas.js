@@ -237,7 +237,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /**
  * OffCanvas module.
@@ -254,7 +258,7 @@ function (_Plugin) {
   function OffCanvas() {
     _classCallCheck(this, OffCanvas);
 
-    return _possibleConstructorReturn(this, (OffCanvas.__proto__ || Object.getPrototypeOf(OffCanvas)).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(OffCanvas).apply(this, arguments));
   }
 
   _createClass(OffCanvas, [{
@@ -730,7 +734,7 @@ function (_Plugin) {
       this.close();
       this.$element.off('.zf.trigger .zf.offcanvas');
       this.$overlay.off('.zf.offcanvas');
-      (0, _jquery.default)(window).off(this.onLoadListener);
+      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
     }
   }]);
 
