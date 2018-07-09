@@ -18,7 +18,7 @@ const defaultQueries = {
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.
 // Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
-let matchMedia = window.matchMedia || (function() {
+window.matchMedia = window.matchMedia || (function() {
   'use strict';
 
   // For browsers that support matchMedium api such as IE 9 and webkit
@@ -109,7 +109,7 @@ var MediaQuery = {
     var query = this.get(size);
 
     if (query) {
-      return matchMedia(query).matches;
+      return window.matchMedia(query).matches;
     }
 
     return false;
@@ -160,7 +160,7 @@ var MediaQuery = {
     for (var i = 0; i < this.queries.length; i++) {
       var query = this.queries[i];
 
-      if (matchMedia(query.value).matches) {
+      if (window.matchMedia(query.value).matches) {
         matched = query;
       }
     }
