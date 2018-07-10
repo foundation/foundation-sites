@@ -394,7 +394,9 @@ class Tabs extends Plugin {
       $(window).off('hashchange', this._checkDeepLink);
     }
 
-    $(window).off(this.onLoadListener);
+    if (this.onLoadListener) {
+      $(window).off(this.onLoadListener);
+    }
   }
 }
 

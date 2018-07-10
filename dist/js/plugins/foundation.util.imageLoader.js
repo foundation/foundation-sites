@@ -175,7 +175,7 @@ function onImagesLoaded(images, callback) {
 
   images.each(function () {
     // Check if image is loaded
-    if (this.complete && this.naturalWidth !== undefined) {
+    if (this.complete && typeof this.naturalWidth !== 'undefined') {
       singleImageLoaded();
     } else {
       // If the above check failed, simulate loading on detached element.

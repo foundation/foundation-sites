@@ -403,9 +403,8 @@ class Sticky extends Plugin {
     if (this.$anchor && this.$anchor.length) {
       this.$anchor.off('change.zf.sticky');
     }
-    $(window)
-      .off(this.scrollListener)
-      .off(this.onLoadListener);
+    if (this.scrollListener) $(window).off(this.scrollListener)
+    if (this.onLoadListener) $(window).off(this.onLoadListener)
 
     if (this.wasWrapped) {
       this.$element.unwrap();

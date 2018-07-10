@@ -246,7 +246,7 @@ $table-stack-breakpoint: medium !default;
     }
 
     // Darkens the odd striped table rows.
-    @elseif($table-stripe == odd) {
+    @else if($table-stripe == odd) {
       &:not(.unstriped) tr:nth-of-type(odd):hover {
         background-color: $table-row-stripe-hover;
       }
@@ -262,7 +262,7 @@ $table-stack-breakpoint: medium !default;
     }
 
     // Darkens the odd striped table rows.
-    @elseif($table-stripe == odd) {
+    @else if($table-stripe == odd) {
       &.striped tr:nth-of-type(odd):hover {
         background-color: $table-row-stripe-hover;
       }

@@ -56,6 +56,7 @@ Foundation.Timer = Timer;
 // so no need to add it to Foundation, just init them.
 Touch.init($);
 Triggers.init($, Foundation);
+MediaQuery._init();
 
 Foundation.plugin(Abide, 'Abide');
 Foundation.plugin(Accordion, 'Accordion');

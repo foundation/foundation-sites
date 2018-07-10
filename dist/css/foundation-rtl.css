@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.5.0-rc.1
+ * Version 6.5.0-rc.2
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -362,9 +362,9 @@ label {
   -webkit-align-items: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
-  .input-group > :first-child {
+  .input-group > :first-child, .input-group > :first-child.input-group-button > * {
     border-radius: 0 0 0 0; }
-  .input-group > :last-child > * {
+  .input-group > :last-child, .input-group > :last-child.input-group-button > * {
     border-radius: 0 0 0 0; }
 
 .input-group-label, .input-group-field, .input-group-button, .input-group-button a,
@@ -4373,6 +4373,7 @@ a.thumbnail {
   margin-top: -3px; }
 
 .dropdown.menu a {
+  background: #fefefe;
   padding: 0.7rem 1rem; }
   [data-whatinput='mouse'] .dropdown.menu a {
     outline: 0; }

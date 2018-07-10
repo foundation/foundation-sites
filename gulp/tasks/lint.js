@@ -2,13 +2,10 @@ var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var sassLint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
-var sequence = require('run-sequence');
 var CONFIG = require('../config.js');
 
 // Lints Sass and JavaScript files for formatting issues
-gulp.task('lint', function(cb) {
-  sequence('lint:sass', 'lint:javascript', cb)
-});
+gulp.task('lint', gulp.series('lint:sass', 'lint:javascript'));
 
 gulp.task('lint:sass', function() {
   return gulp.src(CONFIG.SASS_LINT_FILES)

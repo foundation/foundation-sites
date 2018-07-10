@@ -102,7 +102,7 @@ class Magellan extends Plugin {
         })
         .on('click.zf.magellan', 'a[href^="#"]', function (e) {
           e.preventDefault();
-          var arrival   = _this.getAttribute('href');
+          var arrival   = this.getAttribute('href');
           _this.scrollToLoc(arrival);
         });
     });
@@ -175,7 +175,7 @@ class Magellan extends Plugin {
     // Get the new active link
     const $oldActive = this.$active;
     let activeHash = '';
-    if(activeIdx !== undefined){
+    if(typeof activeIdx !== 'undefined'){
       this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
       if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
     }else{
@@ -223,9 +223,8 @@ class Magellan extends Plugin {
       window.location.hash.replace(hash, '');
     }
 
-    $(window)
-      .off('hashchange', this._deepLinkScroll)
-      .off(this.onLoadListener);
+    $(window).off('hashchange', this._deepLinkScroll)
+    if (this.onLoadListener) $(window).off(this.onLoadListener);
   }
 }
 
