@@ -68,22 +68,31 @@
   }
 
   @include -zf-each-breakpoint() {
+    // Responsive "auto" modifier
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-auto {
         @include xy-cell-base(auto);
         @include xy-cell-static(auto, false);
       }
+    }
 
+    %-xy-cell-base-shrink-#{$-zf-size} {
+      @include xy-cell-base(shrink);
+    }
+
+    // Responsive "shrink" modifier
+    @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-shrink {
-        @include xy-cell-base(shrink);
+        @extend %-xy-cell-base-shrink-#{$-zf-size};
         @include xy-cell-static(shrink, false);
       }
     }
 
+    // Responsive width modifiers
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
-        @include xy-cell-base(shrink);
+        @extend %-xy-cell-base-shrink-#{$-zf-size};
         @include xy-cell-static($i, false, $gutter-type: padding);
       }
     }
