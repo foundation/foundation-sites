@@ -76,14 +76,14 @@
       }
     }
 
-    %-xy-cell-base-shrink-#{$-zf-size} {
+    %-xy-cell-base-shrink-horizontal-#{$-zf-size} {
       @include xy-cell-base(shrink);
     }
 
     // Responsive "shrink" modifier
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-shrink {
-        @extend %-xy-cell-base-shrink-#{$-zf-size};
+        @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
         @include xy-cell-static(shrink, false);
       }
     }
@@ -92,7 +92,7 @@
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
-        @extend %-xy-cell-base-shrink-#{$-zf-size};
+        @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
         @include xy-cell-static($i, false, $gutter-type: padding);
       }
     }
@@ -305,21 +305,31 @@
     }
 
     @include -zf-each-breakpoint() {
+      // Responsive "auto" modifier
       @if not($-zf-size == small) {
         > .#{$-zf-size}-auto {
           @include xy-cell-base(auto);
           @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
-
-        > .#{$-zf-size}-shrink {
-          @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
-        }
-
       }
 
+      %-xy-cell-base-shrink-vertical-#{$-zf-size} {
+        @include xy-cell-base(shrink);
+      }
+
+      // Responsive "shrink" modifier
+      @if not($-zf-size == small) {
+        > .#{$-zf-size}-shrink {
+          @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
+          @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+        }
+      }
+
+      // Responsive width modifiers
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
+          @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
           @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }
