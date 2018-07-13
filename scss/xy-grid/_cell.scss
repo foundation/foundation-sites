@@ -95,22 +95,32 @@
 /// Creates a cell for your grid.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
-/// @param {Boolean} $gutter-output [true] - Whether or not to output gutters. Always `true` for margin gutters.
+/// @param {Boolean} $gutter-output [null] - [DEPRECATED] Whether or not to output gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
 /// @param {List} $gutter-position [null] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination. By default `right left` for horizontal cells and `top bottom` for vertical cells.
 /// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
+/// @param {List} $output [(base size gutters)] - Cell parts to output. You will need to generate others parts of the cell seperately, it may not work correctly otherwise.
 @mixin xy-cell(
   $size: full,
-  $gutter-output: true,
+  $gutter-output: null,
   $gutters: $grid-margin-gutters,
   $gutter-type: margin,
   $gutter-position: null,
   $breakpoint: null,
-  $vertical: false
+  $vertical: false,
+  $output: (base size gutters)
 ) {
   $bp-is-fallback: false;
+
+  // Default for $gutter-output
+  @if ($gutter-output != null) {
+    @warn 'xy-cell: $gutter-output is deprecated and will be removed. See migration notes at https://git.io/foundation-6-6-0';
+    @if ($gutter-output == false) {
+      $output: sl-remove($output, gutters);
+    }
+  }
 
   @if($breakpoint == null) {
     // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
@@ -136,14 +146,16 @@
   }
 
   @if($gutter != null) {
-    // Base flex properties
-    @include xy-cell-base($size);
-
-    $-gutter-output: if($gutter-type == 'margin', true, $gutter-output);
     $-gutter-margin: if($gutter-type == 'margin', $gutter, 0);
 
-    @include -xy-cell-properties($size, $-gutter-margin, $vertical);
-    @if ($gutter-output and $gutter-type and $gutter-type != none) {
+    // Base flex properties
+    @if (index($output, base)) {
+      @include xy-cell-base($size);
+    }
+    @if (index($output, size)) {
+      @include -xy-cell-properties($size, $-gutter-margin, $vertical);
+    }
+    @if (index($output, gutters) and $gutter-type and $gutter-type != none) {
       @include xy-gutters($gutter, $gutter-type, $gutter-position);
     }
   }
