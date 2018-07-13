@@ -98,7 +98,7 @@
 /// @param {Boolean} $gutter-output [true] - Whether or not to output gutters. Always `true` for margin gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
-/// @param {List} $gutter-position [right left] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
+/// @param {List} $gutter-position [null] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination. By default `right left` for horizontal cells and `top bottom` for vertical cells.
 /// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin xy-cell(
@@ -106,7 +106,7 @@
   $gutter-output: true,
   $gutters: $grid-margin-gutters,
   $gutter-type: margin,
-  $gutter-position: right left,
+  $gutter-position: null,
   $breakpoint: null,
   $vertical: false
 ) {
@@ -121,6 +121,11 @@
       $breakpoint: $-zf-zero-breakpoint;
       $bp-is-fallback: true;
     }
+  }
+
+  // Get the default gutter position according to cell direction
+  @if($gutter-position == null) {
+    $gutter-position: if($vertical == true, top bottom, left right);
   }
 
   // Get the gutter for the given breakpoint/value.
