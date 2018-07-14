@@ -160,7 +160,7 @@
     }
   }
   @else {
-    @warn 'xy-cell: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}", cell was not generated`'
+    @warn 'xy-cell: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}", cell was not generated`';
   }
 }
 
