@@ -166,6 +166,12 @@
 
 /// Creates a single breakpoint sized grid. Used to generate our grid classes.
 ///
+/// `xy-cell-static()` is deprecated and will be removed.
+/// Use `xy-cell()` instead with `$output: (size gutters)` to not generate the cell base.
+/// See migration notes at https://git.io/foundation-6-6-0
+///
+/// @deprecated v6.6.0
+///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
 /// @param {Boolean} $gutter-output [true] - Whether or not to output gutters. Always `true` for margin gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
@@ -180,6 +186,7 @@
   $breakpoint: $-zf-zero-breakpoint,
   $vertical: false
 ) {
+  @warn 'xy-cell-static() mixin is deprecated and will be removed. Use "xy-cell()" instead. See migration notes at https://git.io/foundation-6-6-0';
 
   $gutter: -zf-get-bp-val($gutters, $breakpoint);
   $gutter-position: if($vertical == true, top bottom, left right);
