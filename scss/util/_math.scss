@@ -70,3 +70,46 @@
   $h: nth($ratio, 3);
   @return $h / $w * 100%;
 }
+
+/// Calculate a percentage from a given fraction.
+///
+/// @param {Number|List} $fraction - Value representing a fraction to use to calculate the percentage, formatted as `50` (relative to `$denominator`), `50%`, `1 of 2` or `1/2`.
+/// @param {Number|List} $denominator - Default value to use as denominator when `$fraction` represents an absolute value.
+@function fraction-to-percentage(
+  $fraction,
+  $denominator: null
+) {
+  $pc: null;
+
+  // Parsing percents, decimals, n of n and number counts
+  @if type-of($fraction) == 'number' {
+    @if unit($fraction) == '%' {
+      $pc: $fraction;
+    }
+    @else if $fraction < 1 {
+      $pc: percentage($fraction);
+    }
+    @else if type-of($denominator) == 'number' {
+      $pc: percentage($fraction / $denominator);
+    }
+    @else {
+      @error 'Error with "fraction-to-percentage()". A default "$denominator" is required to support absolute values';
+    }
+  }
+
+  // Parsing "n of n" or "n/n" expressions
+  @else if type-of($fraction) == 'list' {
+    @if length($fraction) != 3 {
+      @error 'Wrong syntax for "fraction-to-percentage()". Use a number, decimal, percentage, or "n of n" / "n/n".';
+    }
+    @else {
+      $pc: percentage(nth($fraction, 1) / nth($fraction, 3));
+    }
+  }
+  // Anything else is incorrect
+  @else {
+    @error 'Wrong syntax for "fraction-to-percentage()". Use a number, decimal, percentage, or "n of n" / "n/n".';
+  }
+
+  @return $pc;
+}

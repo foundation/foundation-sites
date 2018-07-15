@@ -12,34 +12,7 @@
 @function xy-cell-size(
   $size: $grid-columns
 ) {
-  // Parsing percents, decimals, n of n and number counts
-  @if type-of($size) == 'number' {
-    @if unit($size) == '%' {
-      $size: $size;
-    }
-    @else if $size < 1 {
-      $size: percentage($size);
-    }
-    @else {
-      $size: percentage($size / $grid-columns);
-    }
-  }
-
-  // Parsing "n of n" or "n/n" expressions
-  @else if type-of($size) == 'list' {
-    @if length($size) != 3 {
-      @error 'Wrong syntax for xy-cell-size(). Use the format "n of n" or "n/n".';
-    }
-    @else {
-      $size: percentage(nth($size, 1) / nth($size, 3));
-    }
-  }
-  // Anything else is incorrect
-  @else {
-    @error 'Wrong syntax for xy-cell-size(). Use a number, decimal, percentage, or "n of n" / "n/n".';
-  }
-
-  @return $size;
+  @return fraction-to-percentage($size, $denominator: $grid-columns);
 }
 
 /// Sets base flex properties for cells.
