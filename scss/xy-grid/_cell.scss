@@ -122,15 +122,11 @@
     }
   }
 
+  // Use the contextual breakpoint by default. Otherwise revert to the smallest breakpoint
+  $breakpoint: -zf-current-breakpoint($breakpoint);
   @if($breakpoint == null) {
-    // If `$bp-size` is available then use this, otherwise revert to the smallest bp.
-    @if(variable-exists(-zf-size) and type-of($-zf-size) != 'number') and $-zf-size != null {
-      $breakpoint: $-zf-size;
-    }
-    @else {
-      $breakpoint: $-zf-zero-breakpoint;
-      $bp-is-fallback: true;
-    }
+    $breakpoint: $-zf-zero-breakpoint;
+    $bp-is-fallback: true;
   }
 
   // Get the default gutter position according to cell direction
