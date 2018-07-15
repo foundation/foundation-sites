@@ -101,7 +101,7 @@
 /// @param {List} $gutter-position [null] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination. By default `right left` for horizontal cells and `top bottom` for vertical cells.
 /// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
-/// @param {List} $output [(base size gutters)] - Cell parts to output. You will need to generate others parts of the cell seperately, it may not work correctly otherwise.
+/// @param {List} $output [(base size gutters)] - Cell parts to output. You will need to generate others parts of the cell seperately, it may not work properly otherwise.
 @mixin xy-cell(
   $size: full,
   $gutter-output: null,
