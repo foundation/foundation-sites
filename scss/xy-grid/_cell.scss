@@ -40,7 +40,7 @@
 ///
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin xy-cell-reset($vertical: true) {
-  $direction: if($vertical == true, width, height);
+  $direction: if($vertical == true, height, width);
   #{$direction}: auto;
   max-#{$direction}: none;
 }
