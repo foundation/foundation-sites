@@ -428,7 +428,7 @@ class Slider extends Plugin {
     }
     if (val >= 0) {
       left = val % step;
-    } else if (val < 0) {
+    } else {
       left = step + (val % step);
     }
     prev_val = val - left;
