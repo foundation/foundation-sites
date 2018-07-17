@@ -250,11 +250,11 @@
       $o: $i - 1;
 
       .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
+        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding);
       }
 
       .grid-margin-x > .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $breakpoint: $-zf-size);
+        @include xy-cell-offset($o);
       }
     }
   }
