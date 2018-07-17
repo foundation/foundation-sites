@@ -30,6 +30,8 @@
 /// Returns the percentage size of a cell.
 ///
 /// @param {Number|List} $size [$grid-columns] - Size to make the cell. You can pass a value in multiple formats, such as `6`, `50%`, `1 of 2` or `1/3`.
+///
+/// @returns {Number} Size of the cell (in percent).
 @function xy-cell-size(
   $size: $grid-columns
 ) {
