@@ -154,6 +154,10 @@ class DropdownMenu extends Plugin {
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
+          // Check for hovering over input dropdown options
+          if(e.relatedTarget === null && document.hasFocus && document.hasFocus()) {
+            return false;
+          }
 
           clearTimeout($elem.data('_delay'));
           $elem.data('_delay', setTimeout(function() {
