@@ -64,7 +64,7 @@
   @if ($gutter-type == 'margin') {
     $margin-gutter: xy-cell-gutters($gutters, $breakpoint);
     @if ($margin-gutter == null) {
-      @error 'xy-cell-size: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}"`';
+      @error 'xy-cell-size: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}"';
     }
   }
 
@@ -149,7 +149,7 @@
   // Get the gutter width for this breakpoint
   $gutter-width: xy-cell-gutters($gutters, $breakpoint);
   @if ($gutter-width == null) {
-    @error 'xy-cell-gutters: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}"`';
+    @error 'xy-cell-gutters: no gutters were found in `$gutters` for "$breakpoint: #{$breakpoint}"';
   }
 
   @if ($gutter-type and $gutter-type != none) {
