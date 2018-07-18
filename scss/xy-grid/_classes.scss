@@ -41,11 +41,11 @@
   }
   .grid-x {
     > .auto {
-      @include xy-cell(auto, $gutter-type: none, $output: (size gutters));
+      @include xy-cell-size(auto, $gutter-type: none);
     }
 
     > .shrink {
-      @include xy-cell(shrink, $gutter-type: none, $output: (size gutters));
+      @include xy-cell-size(shrink, $gutter-type: none);
     }
   }
 
@@ -82,7 +82,7 @@
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-shrink {
         @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
-        @include xy-cell(shrink, $gutter-type: none, $output: (size gutters));
+        @include xy-cell-size(shrink, $gutter-type: none);
       }
     }
 
@@ -91,7 +91,7 @@
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
         @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
-        @include xy-cell($i, $gutter-type: none, $output: (size gutters));
+        @include xy-cell-size($i, $gutter-type: none);
       }
     }
   }
@@ -110,11 +110,11 @@
 @mixin -xy-breakpoint-cell-classes($class-breakpoint, $gutter-breakpoint, $vertical) {
   $prefix: if($class-breakpoint == $-zf-zero-breakpoint, '', '#{$class-breakpoint}-');
   > .#{$prefix}auto {
-    @include xy-cell(auto, $vertical: $vertical, $output: (size));
+    @include xy-cell-size(auto, $vertical: $vertical);
   }
 
   > .#{$prefix}shrink {
-    @include xy-cell(shrink, $vertical: $vertical, $output: (size));
+    @include xy-cell-size(shrink, $vertical: $vertical);
   }
 
   @for $i from 1 through $grid-columns {
@@ -122,7 +122,7 @@
     $classname: if($vertical, '.#{$class-breakpoint}-#{$i}', '.#{$class-breakpoint}-#{$i}');
 
     > #{$classname} {
-      @include xy-cell($i, $vertical: $vertical, $output: (size));
+      @include xy-cell-size($i, $vertical: $vertical);
     }
   }
 }
@@ -280,11 +280,11 @@
     }
 
     > .auto {
-      @include xy-cell(auto, $gutter-type: none, $vertical: true, $output: (size gutters));
+      @include xy-cell-size(auto, $gutter-type: none, $vertical: true);
     }
 
     > .shrink {
-      @include xy-cell(shrink, $gutter-type: none, $vertical: true, $output: (size gutters));
+      @include xy-cell-size(shrink, $gutter-type: none, $vertical: true);
     }
 
 
@@ -318,7 +318,7 @@
       @if not($-zf-size == small) {
         > .#{$-zf-size}-shrink {
           @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
-          @include xy-cell(shrink, $gutter-type: none, $vertical: true, $output: (size gutters));
+          @include xy-cell-size(shrink, $gutter-type: none, $vertical: true);
         }
       }
 
@@ -327,7 +327,7 @@
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
           @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
-          @include xy-cell($i, $gutter-type: none, $vertical: true, $output: (size gutters));
+          @include xy-cell-size($i, $gutter-type: none, $vertical: true);
         }
       }
 
