@@ -107,6 +107,18 @@
   @return (null, null);
 }
 
+/// Returns whether the given `$value` represents a fraction. Supports formats like `50%`, `1 of 2`, `1 per 2` or `1/2`.
+///
+/// @param {*} $value - Value to test.
+/// @param {Boolean} $allow-no-denominator [false] - If `true`, simple numbers without denominators like `50` are supported.
+///
+/// @return {Boolean} `true` if `$value` represents a fraction, `false` otherwise.
+@function zf-is-fraction($value, $allow-no-denominator: false) {
+  $parsed: zf-parse-fraction($value);
+  @return not(nth($parsed, 1) == null
+    or (nth($parsed, 2) == null and $allow-no-denominator == false));
+}
+
 /// Calculate a percentage from a given fraction.
 ///
 /// @param {Number|List} $fraction - Value representing a fraction to use to calculate the percentage, formatted as `50` (relative to `$denominator`), `50%`, `1 of 2` or `1/2`.
