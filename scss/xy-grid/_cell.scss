@@ -95,7 +95,7 @@
 
 /// Sets base flex properties for cells.
 ///
-/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink` or `grow`.
+/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink`, `grow`, or any other value representing a cell size (it will be treated as `shrink`).
 @mixin xy-cell-base($size: full) {
   $base: xy-cell-base($size);
 
@@ -171,7 +171,7 @@
 
 /// Creates a cell for your grid.
 ///
-/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
+/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (100% width), `auto` (use all available space), `shrink` (use only the required space) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 /// @param {Boolean} $gutter-output [null] - [DEPRECATED] Whether or not to output gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
@@ -216,7 +216,7 @@
 ///
 /// @deprecated v6.6.0
 ///
-/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
+/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (100% width), `auto` (use all available space), `shrink` (use only the required space) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 /// @param {Boolean} $gutter-output [true] - Whether or not to output gutters. Always `true` for margin gutters.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Map or single value for gutters.
