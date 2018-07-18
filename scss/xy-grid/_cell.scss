@@ -8,7 +8,7 @@
 
 /// Returns the appropriate CSS flex value for a cell base.
 ///
-/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink` or `grow`.
+/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink`, `grow`, or any other value representing a cell size (it will be treated as `shrink`).
 ///
 /// @returns {List} The cell flex property value.
 @function xy-cell-base($size: full) {
@@ -18,7 +18,7 @@
   @else if ($size == 'grow') {
     @return 1 0 auto;
   }
-  @else if ($size == 'shrink' or $size == 'full') {
+  @else if ($size == 'shrink' or $size == 'full' or zf-is-fraction($size, $allow-no-denominator: true)) {
     @return 0 0 auto;
   }
   @return null;
@@ -121,7 +121,7 @@
 ///
 /// Gutters-related arguments are required for cells with margin gutters (by default) as the gutter is included in the width.
 ///
-/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
+/// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (100% width), `auto` (use all available space), `shrink` (use only the required space) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
 /// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
