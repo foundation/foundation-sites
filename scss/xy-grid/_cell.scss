@@ -6,6 +6,24 @@
 /// @group xy-grid
 ////
 
+/// Returns the appropriate CSS flex value for a cell base.
+///
+/// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink` or `grow`.
+///
+/// @returns {List} The cell flex property value.
+@function xy-cell-base($size: full) {
+  @if ($size == 'auto') {
+    @return 1 1 0px;
+  }
+  @else if ($size == 'grow') {
+    @return 1 0 auto;
+  }
+  @else if ($size == 'shrink' or $size == 'full') {
+    @return 0 0 auto;
+  }
+  @return null;
+}
+
 /// Calculate the size of a cell gutters.
 ///
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
@@ -79,20 +97,14 @@
 ///
 /// @param {Keyword} $size [full] - The size of your cell. Accepts `full`, `auto`, `shrink` or `grow`.
 @mixin xy-cell-base($size: full) {
+  $base: xy-cell-base($size);
+
+  flex: #{$base};
+
+  // Set base styles for "full" only
   @if($size == 'full') {
-    // This is the base style, all others inherit from it
-    flex: 0 0 auto;
     min-height: 0px;
     min-width: 0px;
-  }
-  @else if ($size == 'auto') {
-    flex: 1 1 0px; // sass-lint:disable-line zero-unit
-  }
-  @else if ($size == 'shrink') {
-    flex: 0 0 auto;
-  }
-  @else if ($size == 'grow') {
-    flex: 1 0 auto;
   }
 }
 
