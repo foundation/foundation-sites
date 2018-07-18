@@ -195,7 +195,7 @@
     @include -zf-each-breakpoint {
       @for $i from 1 through $xy-block-grid-max {
         .#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: padding, $output: (base size));
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: padding, $output: (size));
         }
       }
     }
@@ -210,7 +210,7 @@
           @each $bp in -zf-breakpoints-less-than($-zf-size) {
             @if(map-has-key($grid-margin-gutters, $bp)) {
               .grid-margin-x.#{$bp}-up-#{$i} {
-                @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (base size));
+                @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (size));
               }
             }
           }
@@ -218,7 +218,7 @@
       }
       @for $i from 1 through $xy-block-grid-max {
         .grid-margin-x.#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (base size));
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (size));
         }
       }
     }
