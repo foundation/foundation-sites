@@ -71,6 +71,42 @@
   @return $h / $w * 100%;
 }
 
+/// Parse the given `$fraction` to numerators and denumerators.
+///
+/// @param {*} $fraction - Value representing a fraction to parse. It can be formatted as `50%`, `1 of 2`, `1/2` or `50` (no denominator would be returned).
+///
+/// @return {List} List of parsed values with numerator at first position and denumerator as second. These values may be null.
+@function zf-parse-fraction($fraction) {
+
+  @if type-of($fraction) == 'number' {
+    // "50%"
+    @if unit($fraction) == '%' {
+      @return (strip-unit($fraction), 100);
+    }
+    @else if (unit($fraction) == '') {
+      // "0.5"
+      @if $fraction < 1 {
+        @return ($fraction * 100, 100);
+      }
+      // "50"
+      @else {
+        @return ($fraction, null);
+      }
+    }
+  }
+
+  @else if type-of($fraction) == 'list' {
+    // "50 of 100", "50/100"...
+    @if length($fraction) == 3
+      and type-of(nth($fraction, 1) == 'number')
+      and type-of(nth($fraction, 3) == 'number') {
+      @return (nth($fraction, 1), nth($fraction, 3));
+    }
+  }
+
+  @return (null, null);
+}
+
 /// Calculate a percentage from a given fraction.
 ///
 /// @param {Number|List} $fraction - Value representing a fraction to use to calculate the percentage, formatted as `50` (relative to `$denominator`), `50%`, `1 of 2` or `1/2`.
@@ -79,37 +115,21 @@
   $fraction,
   $denominator: null
 ) {
-  $pc: null;
+  $parsed: zf-parse-fraction($fraction);
+  $parsed-nominator: nth($parsed, 1);
+  $parsed-denominator: nth($parsed, 2);
 
-  // Parsing percents, decimals, n of n and number counts
-  @if type-of($fraction) == 'number' {
-    @if unit($fraction) == '%' {
-      $pc: $fraction;
-    }
-    @else if $fraction < 1 {
-      $pc: percentage($fraction);
-    }
-    @else if type-of($denominator) == 'number' {
-      $pc: percentage($fraction / $denominator);
+  @if $parsed-nominator == null {
+    @error 'Wrong syntax for "fraction-to-percentage()". Use a number, decimal, percentage, or "n of n" / "n/n".';
+  }
+  @if $parsed-denominator == null {
+    @if type-of($denominator) == 'number' {
+      $parsed-denominator: $denominator;
     }
     @else {
       @error 'Error with "fraction-to-percentage()". A default "$denominator" is required to support absolute values';
     }
   }
 
-  // Parsing "n of n" or "n/n" expressions
-  @else if type-of($fraction) == 'list' {
-    @if length($fraction) != 3 {
-      @error 'Wrong syntax for "fraction-to-percentage()". Use a number, decimal, percentage, or "n of n" / "n/n".';
-    }
-    @else {
-      $pc: percentage(nth($fraction, 1) / nth($fraction, 3));
-    }
-  }
-  // Anything else is incorrect
-  @else {
-    @error 'Wrong syntax for "fraction-to-percentage()". Use a number, decimal, percentage, or "n of n" / "n/n".';
-  }
-
-  @return $pc;
+  @return percentage($parsed-nominator / $parsed-denominator);
 }
