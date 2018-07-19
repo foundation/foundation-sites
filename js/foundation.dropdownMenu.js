@@ -156,13 +156,14 @@ class DropdownMenu extends Plugin {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
+
             // Check for hovering over input dropdown options
-            if(e.relatedTarget === null && document.hasFocus && document.hasFocus()) {
-              return false;
-            }
+            if (e.relatedTarget === null && document.hasFocus && document.hasFocus()) { return false; }
             _this._hide($elem);
+
           }, _this.options.closingTime));
+
         }
       });
     }
