@@ -156,9 +156,20 @@ class DropdownMenu extends Plugin {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
+
+            // Ignore "magic mouseleave": when the mouse simply disapear from the document
+            // (like when entering in browser input suggestions See https://git.io/zf-11410),
+            // unless we actually left the window (and document lost focus).
+            //
+            // In firefox, document will not focus at the time the event is triggered, so we have
+            // to make this test after the delay.
+            if (e.relatedTarget === null && document.hasFocus && document.hasFocus()) { return false; }
+
             _this._hide($elem);
+
           }, _this.options.closingTime));
+
         }
       });
     }
