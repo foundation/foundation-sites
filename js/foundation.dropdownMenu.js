@@ -160,7 +160,7 @@ class DropdownMenu extends Plugin {
 
             // Ignore "magic mouseleave": when the mouse simply disapear from the document
             // (like when entering in browser input suggestions See https://git.io/zf-11410),
-            // unless we actually leaved the window (and document lost focus).
+            // unless we actually left the window (and document lost focus).
             //
             // In firefox, document will not focus at the time the event is triggered, so we have
             // to make this test after the delay.
