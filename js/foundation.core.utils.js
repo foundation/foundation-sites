@@ -90,6 +90,21 @@ function onLoad($elem, handler) {
   return eventType;
 }
 
+/**
+ * Watch for the mouse leaving the jQuery element `$elem` and triggers the given `handler` it so.
+ * When the mouse desapear from the document (like when going on a browser UI element, See https://git.io/zf-11410),
+ * nothing is triggered. If the mouse reapear later on the document outside of `$elem`, the given handler is triggered.
+ *
+ * If the `leaveWindow` option is `true` (by default), the given handler is triggered when the mouse desapeared because
+ * the window lost focus (like with [Alt]+[Tab]).
+ *
+ * @function
+ *
+ * @param {Object} [] $elem - jQuery element to watch.
+ * @param {Function} [] handler - function to trigger when the mouse left the element.
+ * @param {Object} [{leaveWindow = true}] object - options
+ * @returns {String} - event type attached to the given element.
+ */
 function onLeaveElement($elem, handler, { leaveWindow = true } = {}) {
   const eventType = 'mouseleave.zf.util.onLeaveElement';
 
