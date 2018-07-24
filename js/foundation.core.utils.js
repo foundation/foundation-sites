@@ -91,46 +91,48 @@ function onLoad($elem, handler) {
 }
 
 /**
- * Watch for the mouse leaving the jQuery element `$elem` and triggers the given `handler` it so.
- * When the mouse desapear from the document (like when going on a browser UI element, See https://git.io/zf-11410),
- * nothing is triggered. If the mouse reapear later on the document outside of `$elem`, the given handler is triggered.
+ * Retuns an handler for the `mouseleave` that ignore disappeared mouses.
  *
- * If the `leaveWindow` option is `true` (by default), the given handler is triggered when the mouse desapeared because
- * the window lost focus (like with [Alt]+[Tab]).
+ * If the mouse "disappeared" from the document (like when going on a browser UI element, See https://git.io/zf-11410),
+ * the event is ignored.
+ * - If the `ignoreLeaveWindow` is `true`, the event is ignored when the user actually left the window
+ *   (like by switching to an other window with [Alt]+[Tab]).
+ * - If the `ignoreReappear` is `true`, the event will be ignored when the mouse will reappear later on the document
+ *   outside of the element it left.
  *
  * @function
  *
- * @param {Object} [] $elem - jQuery element to watch.
- * @param {Function} [] handler - function to trigger when the mouse left the element.
- * @param {Object} [{leaveWindow = true}] object - options
- * @returns {String} - event type attached to the given element.
+ * @param {Function} [] handler - handler for the filtered `mouseleave` event to watch.
+ * @param {Object} [] options - object of options:
+ * - {Boolean} [false] ignoreLeaveWindow - also ignore when the user switched windows.
+ * - {Boolean} [false] ignoreReappear - also ignore when the mouse reappeared outside of the element it left.
+ * @returns {Function} - filtered handler to use to listen on the `mouseleave` event.
  */
-function onLeaveElement($elem, handler, { leaveWindow = true } = {}) {
-  const eventType = 'mouseleave.zf.util.onLeaveElement';
+function ignoreMousedisappear(handler, { ignoreLeaveWindow = false, ignoreReappear = false } = {}) {
+  return function leaveEventHandler(eEnter, ...rest) {
+    const callback = handler.bind(this, eEnter, ...rest);
+    setTimeout(function leaveEventDebouncer() {
 
-  if ($elem && handler) {
+      if (eEnter.relatedTarget !== null
+      // - if the user switched to an other window (and we don't ignore it)
+        || !ignoreLeaveWindow && document.hasFocus && !document.hasFocus()) {
+        callback();
+      }
 
-    $elem.on(eventType, function leaveHandler(e, ...rest) {
-      const _this = this;
-      setTimeout(function leaveEventDebouncer() {
+      else if (!ignoreReappear) {
+        $(document).one('mouseenter', function reenterEventHandler(eReenter) {
+          if (!$(eEnter.currentTarget).has(eReenter.target).length) {
 
-        if (e.relatedTarget === null && leaveWindow && document.hasFocus && document.hasFocus()) {
+            eEnter.relatedTarget = eReenter.target;
+            callback();
 
-          $(document).one('mouseenter', function reenterHandler(reeenterE) {
-            if ($elem.has(reeenterE.target).length) { return false };
-            e.relatedTarget = reeenterE.target;
-            handler.call(_this, e, ...rest);
-          });
-
-          return false;
-        }
-
-        handler.call(_this, e, ...rest);
-      });
+          }
+        });
+      }
     });
-  }
 
-  return eventType;
+  };
 }
 
-export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement};
+
+export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, ignoreMousedisappear};
