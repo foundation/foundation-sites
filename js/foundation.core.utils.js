@@ -112,33 +112,31 @@ function ignoreMousedisappear(handler, { ignoreLeaveWindow = false, ignoreReappe
   return function leaveEventHandler(eLeave, ...rest) {
     const callback = handler.bind(this, eLeave, ...rest);
 
+    // The mouse left: call the given callback if the mouse entered elsewhere
+    if (eLeave.relatedTarget !== null) {
+      return callback();
+    }
+
+    // Otherwise, check if the mouse actually left the window
     // In firefox if the user switched between windows, the window sill have the focus by the time
     // the event is triggered. We have to debounce the event to test this case.
     setTimeout(function leaveEventDebouncer() {
-
-      // The mouse left: call the given callback...
-      // - if the mouse entered elsewhere (`relatedTarget` is where)
-      if (eLeave.relatedTarget !== null
-      // - if the user switched to an other window (and we don't ignore it)
-        || !ignoreLeaveWindow && document.hasFocus && !document.hasFocus()) {
-        callback();
+      if (!ignoreLeaveWindow && document.hasFocus && !document.hasFocus()) {
+        return callback();
       }
 
-      // Otherwise, when the mouse will reenter (and if we don't ignore it), call the given callback...
-      else if (!ignoreReappear) {
+      // Otherwise, wait for the mouse to reenter into the element it left
+      if (!ignoreReappear) {
         $(document).one('mouseenter', function reenterEventHandler(eReenter) {
-          // - if the mouse reentered outside of the element it left.
           if (!$(eLeave.currentTarget).has(eReenter.target).length) {
-
             // Fill where the mouse finally entered.
             eLeave.relatedTarget = eReenter.target;
             callback();
-
           }
         });
       }
-    });
 
+    }, 0);
   };
 }
 
