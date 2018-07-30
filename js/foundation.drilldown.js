@@ -128,6 +128,10 @@ class Drilldown extends Plugin {
     // set wrapper
     this.$wrapper = this.$element.parent();
     this.$wrapper.css(this._getMaxDims());
+
+    // Set the main menu as current by default (unless a submenu is selected)
+    // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
+    this.$currentMenu = this.$element;
   }
 
   _resize() {
@@ -392,6 +396,9 @@ class Drilldown extends Plugin {
       _this._setHideSubMenuClasses($(this));
     });
 
+    // Save the menu as the currently displayed one.
+    this.$currentMenu = $elem;
+
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
       if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
@@ -433,9 +440,16 @@ class Drilldown extends Plugin {
    * @param {jQuery} $elem - the current element with a submenu to open, i.e. the `li` tag.
    */
   _show($elem) {
-    if(this.options.autoHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
+    const $submenu = $elem.children('[data-submenu]');
+
     $elem.attr('aria-expanded', true);
-    $elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+
+    this.$currentMenu = $submenu;
+    $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+    if (this.options.autoHeight) {
+      this.$wrapper.css({ height: $submenu.data('calcHeight') });
+    }
+
     /**
      * Fires when the submenu has opened.
      * @event Drilldown#open
@@ -473,18 +487,24 @@ class Drilldown extends Plugin {
    * @private
    */
   _getMaxDims() {
-    var  maxHeight = 0, result = {}, _this = this;
+    var maxHeight = 0, result = {}, _this = this;
+
+    // Recalculate menu heights and total max height
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
       var height = Box.GetDimensions(this).height;
+
       maxHeight = height > maxHeight ? height : maxHeight;
+
       if(_this.options.autoHeight) {
         $(this).data('calcHeight',height);
-        if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = height;
       }
     });
 
-    if(!this.options.autoHeight) result['min-height'] = `${maxHeight}px`;
+    if (this.options.autoHeight)
+      result['height'] = this.$currentMenu.data('calcHeight');
+    else
+      result['min-height'] = `${maxHeight}px`;
 
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
