@@ -230,23 +230,25 @@ describe('Drilldown Menu', function() {
   describe('toggle events', function () {
 
     this.timeout(0);
-    var $trigger, $target, $menu, togglerPlugin;
+    var $trigger, $target, $wrapper, togglerPlugin;
 
     beforeEach(function () {
       $html = $(templateWithToggler).appendTo('body');
       $trigger = $html.find('#trigger');
       $target = $html.find('#target');
-      $menu = $html.find('#m1');
+      $target = $html.find('#target');
 
       togglerPlugin = new Foundation.Toggler($target, {});
-      plugin = new Foundation.Drilldown($menu, {});
+      plugin = new Foundation.Drilldown($html.find('[data-drilldown]'), { autoHeight: true });
+
+      $wrapper = $html.find('.is-drilldown');
     });
 
     it('correctly resize when opened', function () {
       // Open the Drilldown
       $trigger.focus().trigger('click');
 
-      $menu.height().should.be.within(110, 120);
+      $wrapper.height().should.be.within(110, 120);
     });
 
     it('correctly resize when closed', function () {
@@ -254,7 +256,7 @@ describe('Drilldown Menu', function() {
       $trigger.focus().trigger('click');
       $trigger.focus().trigger('click');
 
-      $menu.height().should.be.equal(0);
+      $wrapper.height().should.be.equal(0);
     });
 
     afterEach(function () {
