@@ -61,6 +61,11 @@ class Drilldown extends Plugin {
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
+
+    // Set the main menu as current by default (unless a submenu is selected)
+    // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
+    this.$currentMenu = this.$element;
+
     this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
@@ -128,10 +133,6 @@ class Drilldown extends Plugin {
     // set wrapper
     this.$wrapper = this.$element.parent();
     this.$wrapper.css(this._getMaxDims());
-
-    // Set the main menu as current by default (unless a submenu is selected)
-    // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
-    this.$currentMenu = this.$element;
   }
 
   _resize() {
