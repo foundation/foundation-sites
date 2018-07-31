@@ -26,6 +26,15 @@ describe('Drilldown Menu', function() {
     <li><a href="#Item-3"> Item 3</a></li>
   </ul>`;
 
+  var templateWithToggler = `
+    <div>
+      <button id="trigger" data-toggle="target" type="button">Toggler</button>
+      <div id="target" class="is-hidden" data-toggler="is-hidden">
+        ${template}
+      </div>
+    </div>
+  `;
+
   afterEach(function() {
     plugin.destroy();
     document.activeElement.blur();
@@ -218,6 +227,41 @@ describe('Drilldown Menu', function() {
     });
   });
 
+  describe('toggle events', function () {
+
+    this.timeout(0);
+    var $trigger, $target, $menu, togglerPlugin;
+
+    beforeEach(function () {
+      $html = $(templateWithToggler).appendTo('body');
+      $trigger = $html.find('#trigger');
+      $target = $html.find('#target');
+      $menu = $html.find('#m1');
+
+      togglerPlugin = new Foundation.Toggler($target, {});
+      plugin = new Foundation.Drilldown($menu, {});
+    });
+
+    it('correctly resize when opened', function () {
+      // Open the Drilldown
+      $trigger.focus().trigger('click');
+
+      $menu.height().should.be.within(110, 120);
+    });
+
+    it('correctly resize when closed', function () {
+      // Open then close the Drilldown
+      $trigger.focus().trigger('click');
+      $trigger.focus().trigger('click');
+
+      $menu.height().should.be.equal(0);
+    });
+
+    afterEach(function () {
+      togglerPlugin.destroy();
+    });
+
+  });
 
   describe('keyboard events', function() {
     // Currently not testable, as triggered event won't move on focus
