@@ -29,7 +29,8 @@ class Dropdown extends Positionable {
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this.className = 'Dropdown'; // ie9 back compat
 
-    // Triggers init is idempotent, just need to make sure it is initialized
+    // Touch and Triggers init are idempotent, just need to make sure they are initialized
+    Touch.init($);
     Triggers.init($);
 
     this._init();
@@ -219,8 +220,8 @@ class Dropdown extends Positionable {
   _addBodyHandler() {
      var $body = $(document.body).not(this.$element),
          _this = this;
-     $body.off('click.zf.dropdown')
-          .on('click.zf.dropdown', function(e){
+     $body.off('click.zf.dropdown tap.zf.dropdown')
+          .on('click.zf.dropdown tap.zf.dropdown', function (e) {
             if(_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
               return;
             }
@@ -228,7 +229,7 @@ class Dropdown extends Positionable {
               return;
             }
             _this.close();
-            $body.off('click.zf.dropdown');
+            $body.off('click.zf.dropdown tap.zf.dropdown');
           });
   }
 
@@ -320,7 +321,7 @@ class Dropdown extends Positionable {
   _destroy() {
     this.$element.off('.zf.trigger').hide();
     this.$anchors.off('.zf.dropdown');
-    $(document.body).off('click.zf.dropdown');
+    $(document.body).off('click.zf.dropdown tap.zf.dropdown');
 
   }
 }
