@@ -13,6 +13,7 @@ import { Triggers } from './foundation.util.triggers';
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
+ * @requires foundation.util.touch
  * @requires foundation.util.triggers
  */
 class Dropdown extends Positionable {
