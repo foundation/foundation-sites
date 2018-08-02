@@ -228,7 +228,6 @@ describe('Drilldown Menu', function() {
 
   describe('toggle events', function () {
 
-    this.timeout(0);
     var $trigger, $target, $wrapper, togglerPlugin;
 
     beforeEach(function () {
