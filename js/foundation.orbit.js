@@ -383,8 +383,10 @@ class Orbit extends Plugin {
   * @param {Number} idx - the index of the current slide.
   */
   _updateBullets(idx) {
-    var $oldBullet = this.$element.find(`.${this.options.boxOfBullets}`)
-      .find('.is-active').removeClass('is-active').blur();
+    var $oldBullet = this.$bullets.filter('.is-active');
+    var $newBullet = this.$bullets.eq(idx);
+    $oldBullet.removeClass('is-active').blur();
+    $newBullet.addClass('is-active');
 
     var activeStateDescriptor = $oldBullet.children('[data-slide-active-label]').last();
     if (!activeStateDescriptor.length) {
@@ -392,8 +394,6 @@ class Orbit extends Plugin {
       activeStateDescriptor.attr('data-slide-active-label', '');
     }
 
-    activeStateDescriptor.detach();
-    $newBullet = this.$bullets.eq(idx).addClass('is-active').append(activeStateDescriptor);
   }
 
   /**
