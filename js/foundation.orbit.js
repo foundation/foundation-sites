@@ -384,9 +384,16 @@ class Orbit extends Plugin {
   */
   _updateBullets(idx) {
     var $oldBullet = this.$element.find(`.${this.options.boxOfBullets}`)
-    .find('.is-active').removeClass('is-active').blur(),
-    span = $oldBullet.find('span:last').detach(),
-    $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+      .find('.is-active').removeClass('is-active').blur();
+
+    var activeStateDescriptor = $oldBullet.children('[data-slide-active-label]').last();
+    if (!activeStateDescriptor.length) {
+      activeStateDescriptor = $oldBullet.find('span:last');
+      activeStateDescriptor.attr('data-slide-active-label', '');
+    }
+
+    activeStateDescriptor.detach();
+    $newBullet = this.$bullets.eq(idx).addClass('is-active').append(activeStateDescriptor);
   }
 
   /**
