@@ -426,6 +426,24 @@ The cell size calculator can also be accessed as a function. This gives you the 
 }
 ```
 
+A cell is composed of 3 parts: the base, the size and the gutters. In order to avoid duplicating properties, you can choose the parts to generate with the `$output` option, or call the XY cell mixins dedicated to each part individually.
+
+```scss
+.my-cell {
+  @include xy-cell(12, $gutters: none);
+}
+.my-cell.half-size {
+  @include xy-cell(6, $gutters: none, $output: (size));
+  // Or @include xy-cell-size(6);
+}
+```
+
+<div class="callout warn">
+  XY cell with margin gutters (by default) has gutters defined within their width/height. For this reason, you need to generate the gutter part of cells with margin gutters even when you only want to change the size.
+</div>
+
+Refer to the Sass documentation of the [xy-cell](#xy-cell) mixin for the full list of arguments. See also [xy-cell-base](#xy-cell-base), [xy-cell-size](#xy-cell-size) and [xy-cellgutters](#xy-cellgutters).
+
 ---
 
 ### Responsive Grids
