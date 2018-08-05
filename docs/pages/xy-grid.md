@@ -400,7 +400,7 @@ This is especially powerful as you can specify where you want the gutters, like 
 ### Cells
 
 Use the `xy-cell()` mixin to create a cell. There are a number of ways to define the size of a cell.
-`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs).
+`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 
 ```scss
 .main-content {
