@@ -8,8 +8,13 @@ library:
 
 Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html).
 
+<div class="text-center">
+  <button type="button" class="button" data-toggle="motion-header-example">Animate!</button>
+  <div data-toggler data-animate="fade-in fade-out" id="motion-header-example" style="display: none;">
+    <img src="/assets/img/generic/rectangle-7.jpg" style="width: 100%;">
   </div>
 </div>
+
 
 ---
 
