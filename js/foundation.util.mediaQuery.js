@@ -149,13 +149,22 @@ var MediaQuery = {
    * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
    */
   is(size) {
-    size = size.trim().split(' ');
-    if(size.length > 1 && size[1] === 'only') {
-      if(size[0] === this._getCurrentSize()) return true;
-    } else {
-      return this.atLeast(size[0]);
+    const parts = size.trim().split(' ').filter(p => !!p.length);
+    const [bpSize, bpModifier = ''] = parts;
+
+    // Only the breakpont
+    if (bpModifier === 'only') {
+      return bpSize === this._getCurrentSize();
     }
-    return false;
+    // Up to the breakpoint (included)
+    if (bpModifier === 'down') {
+      return this.atLeast(bpSize);
+    }
+
+    throw new Error(`
+      invalid breakpoint passed to MediaQuery.is().
+      Expected a breakpoint breakpoint name formatted like "<size> <modifier>", got "${size}".
+    `);
   },
 
   /**
