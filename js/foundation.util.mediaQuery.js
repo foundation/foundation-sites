@@ -143,6 +143,23 @@ var MediaQuery = {
   },
 
   /**
+   * Checks if the screen is as wide as a breakpoint or smaller.
+   * @function
+   * @param {String} size - Name of the breakpoint to check.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's wider.
+   */
+  upTo(size) {
+    const firstMatch = this.queries.find((query) => {
+      return window.matchMedia(query.value).matches
+    });
+    const firstMatchName = (typeof matched === 'object')
+      ? firstMatch.name
+      : firstMatch;
+
+    return size === firstMatchName;
+  },
+
+  /**
    * Checks if the screen matches to a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
@@ -159,6 +176,10 @@ var MediaQuery = {
     // Up to the breakpoint (included)
     if (bpModifier === 'down') {
       return this.atLeast(bpSize);
+    }
+    // At leat the breakpoint  (included)
+    if (!bpModifier || bpModifier === 'up') {
+      return this.upTo(bpSize);
     }
 
     throw new Error(`
