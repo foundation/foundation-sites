@@ -53,10 +53,7 @@ class AccordionMenu extends Plugin {
     var _this = this;
 
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
-    this.$element.attr({
-      'role': 'tree',
-      'aria-multiselectable': this.options.multiOpen
-    });
+    this.$element.attr({ 'role': 'tree' });
 
     this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
     this.$menuLinks.each(function(){
