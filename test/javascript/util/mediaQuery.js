@@ -52,5 +52,35 @@ describe('MediaQuery utils', function () {
     $iframe.remove();
   });
 
+  describe('atLeast()', function () {
+
+    it('returns "false" when smaller than the given breakpoint', function () {
+      $iframe.attr('width', 639); // just before the "medium" breakpoint
+      (_window.innerWidth); // force the browser to handle the new width synchronously
+
+      plugin.atLeast('small').should.be.true;
+      plugin.atLeast('medium').should.be.false;
+      plugin.atLeast('large').should.be.false;
+    });
+
+    it('returns "true" when being precisely on the given breakpoint', function () {
+      $iframe.attr('width', 1024); // just on the "large" breakpoint
+      (_window.innerWidth); // force the browser to handle the new width synchronously
+
+      plugin.atLeast('medium').should.be.true;
+      plugin.atLeast('large').should.be.true;
+      plugin.atLeast('xlarge').should.be.false;
+    });
+
+    it('returns "true" when wider than the given breakpoint', function () {
+      $iframe.attr('width', 1201); // just after the "xlarge" breakpoint
+      (_window.innerWidth); // force the browser to handle the new width synchronously
+
+      plugin.atLeast('large').should.be.true;
+      plugin.atLeast('xlarge').should.be.true;
+      plugin.atLeast('xxlarge').should.be.false;
+    });
+
+  });
 
 });
