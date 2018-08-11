@@ -19,6 +19,8 @@ describe('MediaQuery utils', function () {
   `;
 
   beforeEach(function (done) {
+    // Versionize scripts to prevent browser caching
+    const randomHash = (Math.random() * Math.pow(2, 54)).toString(36);
 
     // Create an Iframe so we can resize it to test mediaQueries
     const iframe = document.createElement("iframe");
@@ -33,10 +35,10 @@ describe('MediaQuery utils', function () {
 
     // Inject jQuery and Foundation
     injectScriptIn(_document.body, {
-      src: 'http://127.0.0.1:3042/node_modules/jquery/dist/jquery.js',
+      src: `http://127.0.0.1:3042/node_modules/jquery/dist/jquery.js?v=${randomHash}`,
     });
     injectScriptIn(_document.body, {
-      src: 'http://127.0.0.1:3042/_build/assets/js/foundation.js',
+      src: `http://127.0.0.1:3042/_build/assets/js/foundation.js?v=${randomHash}`,
       onload: () => {
         plugin = _window.Foundation.MediaQuery;
         plugin._init();
@@ -47,7 +49,7 @@ describe('MediaQuery utils', function () {
   });
 
   afterEach(function() {
-    // $iframe.remove();
+    $iframe.remove();
   });
 
 
