@@ -83,6 +83,37 @@ describe('MediaQuery utils', function () {
 
   });
 
+  describe('only()', function () {
+
+    it('returns "false" when smaller than the given breakpoint', function () {
+      $iframe.attr('width', 639); // just before the "medium" breakpoint
+      (_window.innerWidth); // force the browser to handle the new width synchronously
+
+      plugin.only('small').should.be.true;
+      plugin.only('medium').should.be.false;
+      plugin.only('large').should.be.false;
+    });
+
+    it('returns "true" when within the given breakpoint', function () {
+      $iframe.attr('width', 832); // within the "medium" breakpoint
+      (_window.innerWidth); // force the browser to handle the new width synchronously
+
+      plugin.only('small').should.be.false;
+      plugin.only('medium').should.be.true;
+      plugin.only('large').should.be.false;
+    });
+
+    it('returns "false" when wider than given breakpoint', function () {
+      $iframe.attr('width', 1024); // just after the "medium" breakpoint
+      (_window.innerWidth); // force the browser to handle the new width synchronously
+
+      plugin.only('small').should.be.false;
+      plugin.only('medium').should.be.false;
+      plugin.only('large').should.be.true;
+    });
+
+  });
+
   describe('upTo()', function () {
 
     it('returns "true" when smaller than the next breakpoint', function () {
