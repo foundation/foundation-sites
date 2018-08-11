@@ -143,20 +143,23 @@ var MediaQuery = {
   },
 
   /**
-   * Checks if the screen is as wide as a breakpoint or smaller.
+   * Checks if the screen is within a breakpoint or smaller.
    * @function
    * @param {String} size - Name of the breakpoint to check.
    * @returns {Boolean} `true` if the breakpoint matches, `false` if it's wider.
    */
   upTo(size) {
-    const firstMatch = this.queries.find((query) => {
-      return window.matchMedia(query.value).matches
-    });
-    const firstMatchName = (typeof matched === 'object')
-      ? firstMatch.name
-      : firstMatch;
+    const nextSize = this.next(size);
 
-    return size === firstMatchName;
+    // If the next breakpoint do not match, the screen is smaller than
+    // the upper limit of this breakpoint.
+    if (nextSize) {
+      return !this.atLeast(nextSize);
+    }
+
+    // If there is no next breakpoint, the "size" breakpoint does not have
+    // an upper limit and the screen will always be within it or smaller.
+    return true;
   },
 
   /**
@@ -203,6 +206,25 @@ var MediaQuery = {
     }
 
     return null;
+  },
+
+  /**
+   * Get the breakpoint following the given breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint.
+   * @returns {String|null} - The name of the following breakpoint, or `null` if the passed breakpoint was the last one.
+   */
+  next(size) {
+    const queryIndex = this.queries.findIndex((q) => this._getQueryName(q) === size);
+    if (queryIndex === -1) {
+      throw new Error(`
+        unknown breakpoint "${size}" passed to MediaQuery.next().
+        Ensure it is present in your Sass settings "$breakpoints".
+      `);
+    }
+
+    const nextQuery = this.queries[queryIndex + 1];
+    return nextQuery ? nextQuery.name : null;
   },
 
   /**
