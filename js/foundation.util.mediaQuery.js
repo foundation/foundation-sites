@@ -206,6 +206,24 @@ var MediaQuery = {
   },
 
   /**
+   * Returns the name of the breakpoint related to the given value.
+   * @function
+   * @private
+   * @param {String|Object} value - Breakpoint name or query object.
+   * @returns {String} Name of the breakpoint.
+   */
+  _getQueryName(value) {
+    if (typeof value === 'string')
+      return value;
+    if (typeof value === 'object')
+      return value.name;
+    throw new TypeError(`
+      invalid value passed to MediaQuery._getQueryName().
+      Expected a breakpoint name (String) or a query object, got "${value}"
+    `);
+  },
+
+  /**
    * Gets the current breakpoint name by testing every breakpoint and returning the last one to match (the biggest one).
    * @function
    * @private
@@ -222,11 +240,7 @@ var MediaQuery = {
       }
     }
 
-    if (typeof matched === 'object') {
-      return matched.name;
-    } else {
-      return matched;
-    }
+    return matched && this._getQueryName(matched);
   },
 
   /**
