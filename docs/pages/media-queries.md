@@ -197,22 +197,24 @@ Get the name of the current breakpoint with `MediaQuery.current`.
 Foundation.MediaQuery.current // => 'small', 'medium', etc.
 ```
 
-To see if the screen is currently a certain breakpoint or larger, use `MediaQuery.atLeast`.
-
+You can use `MediaQuery.is()` to check the breakpoint the screen is at.
 ```js
-if (Foundation.MediaQuery.atLeast('medium')) {
-  // True if medium or large
-  // False if small
-}
+Foundation.MediaQuery.is('medium') // => True for "medium" or wider
 ```
 
-To see if the screen is currently a certain breakpoint, use `MediaQuery.is`.
-
+You can also use the `up` (default), `only` and `down` modifiers like in Sass, or use the equivalent `MediaQuery.atLeast()`, `MediaQuery.only()` and `MediaQuery.upTo()`.
 ```js
-if (Foundation.MediaQuery.is('small only')) {
-  // True if small
-  // False if medium or large
-}
+// ↑ True for "medium" or wider (by default)
+Foundation.MediaQuery.is('medium up');
+Foundation.MediaQuery.atLeast('medium');
+
+// → True for "medium" only
+Foundation.MediaQuery.is('medium only');
+Foundation.MediaQuery.only('medium');
+
+// ↓ True for "medium" or smaller
+Foundation.MediaQuery.is('medium down');
+Foundation.MediaQuery.upTo('medium');
 ```
 
 To get the media query of a breakpoint, use `MediaQuery.get`.
