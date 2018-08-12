@@ -40,6 +40,7 @@ export {
   Keyboard,
   MediaQuery,
   Motion,
+  Move,
   Nest,
   Timer,
   Touch,
