@@ -513,4 +513,5 @@ function emCalc(em) {
   return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
 }
 
-export {Sticky};
+export { Sticky };
+export default Sticky;

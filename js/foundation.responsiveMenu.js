@@ -152,4 +152,5 @@ class ResponsiveMenu extends Plugin {
 
 ResponsiveMenu.defaults = {};
 
-export {ResponsiveMenu};
+export { ResponsiveMenu };
+export default ResponsiveMenu;

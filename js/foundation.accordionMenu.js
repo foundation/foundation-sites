@@ -337,4 +337,5 @@ AccordionMenu.defaults = {
   multiOpen: true
 };
 
-export {AccordionMenu};
+export { AccordionMenu };
+export default AccordionMenu;

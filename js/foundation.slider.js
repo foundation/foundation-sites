@@ -722,4 +722,5 @@ function baseLog(base, value) {
   return Math.log(value)/Math.log(base)
 }
 
-export {Slider};
+export { Slider };
+export default Slider;

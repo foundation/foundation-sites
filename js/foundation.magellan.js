@@ -288,4 +288,5 @@ Magellan.defaults = {
   offset: 0
 }
 
-export {Magellan};
+export { Magellan };
+export default Magellan;

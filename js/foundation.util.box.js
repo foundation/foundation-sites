@@ -228,4 +228,5 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
   return {top: topVal, left: leftVal};
 }
 
-export {Box};
+export { Box };
+export default Box;

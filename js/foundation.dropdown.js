@@ -428,4 +428,5 @@ Dropdown.defaults = {
   forceFollow: true
 };
 
-export {Dropdown};
+export { Dropdown };
+export default Dropdown;

@@ -237,4 +237,5 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-export {MediaQuery};
+export { MediaQuery };
+export default MediaQuery;

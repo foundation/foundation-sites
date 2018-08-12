@@ -100,5 +100,5 @@ function animate(isIn, element, animation, cb) {
   }
 }
 
-export {Move, Motion};
-
+export { Motion, Move }
+export default { Motion, Move };

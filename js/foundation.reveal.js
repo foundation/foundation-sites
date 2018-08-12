@@ -626,4 +626,5 @@ Reveal.defaults = {
   additionalOverlayClasses: ''
 };
 
-export {Reveal};
+export { Reveal };
+export default Reveal;

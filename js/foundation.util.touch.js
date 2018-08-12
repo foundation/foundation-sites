@@ -153,4 +153,5 @@ Touch.init = function($) {
   }
 };
 
-export {Touch};
+export { Touch };
+export default Touch;

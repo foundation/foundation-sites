@@ -315,4 +315,5 @@ Equalizer.defaults = {
   equalizeOn: ''
 };
 
-export {Equalizer};
+export { Equalizer };
+export default Equalizer;

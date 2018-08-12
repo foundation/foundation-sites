@@ -211,4 +211,5 @@ Positionable.defaults = {
   hOffset: 0,
 }
 
-export {Positionable};
+export { Positionable };
+export default Positionable;

@@ -324,4 +324,5 @@ Accordion.defaults = {
   updateHistory: false
 };
 
-export {Accordion};
+export { Accordion };
+export default Accordion;

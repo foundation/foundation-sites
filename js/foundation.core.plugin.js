@@ -51,4 +51,5 @@ function getPluginName(obj) {
   }
 }
 
-export {Plugin};
+export { Plugin };
+export default Plugin;
