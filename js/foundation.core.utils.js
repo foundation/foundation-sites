@@ -91,4 +91,3 @@ function onLoad($elem, handler) {
 }
 
 export { rtl, GetYoDigits, RegExpEscape, transitionend, onLoad };
-export default { rtl, GetYoDigits, RegExpEscape, transitionend, onLoad };

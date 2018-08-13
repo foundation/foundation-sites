@@ -101,4 +101,3 @@ function animate(isIn, element, animation, cb) {
 }
 
 export { Motion, Move }
-export default { Motion, Move };
