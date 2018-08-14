@@ -85,9 +85,14 @@ class AccordionMenu extends Plugin {
         'id': subId
       });
     });
+
+    // Set a11y attributes for all items
     this.$element.find('li').attr({
-      'role': 'treeitem'
+      'role': 'treeitem',
+      // [aria-selected] is required for `treeitem`. See https://git.io/zf-11440.
+      'aria-selected': false,
     });
+
     var initPanes = this.$element.find('.is-active');
     if(initPanes.length){
       var _this = this;

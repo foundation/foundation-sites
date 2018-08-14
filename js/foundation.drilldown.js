@@ -56,14 +56,23 @@ class Drilldown extends Plugin {
 
     this.$element.attr({ 'role': 'tree' });
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
-    this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
+    this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
+    this.$menuLis = this.$element.find('li').not('.js-drilldown-back');
+    this.$menuItems = this.$menuLis.find('a');
 
     // Set the main menu as current by default (unless a submenu is selected)
     // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
     this.$currentMenu = this.$element;
 
     this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || GetYoDigits(6, 'drilldown')));
+
+    // Set a11y attributes
+    this.$submenus.attr('role', 'group');
+    this.$menuLis.attr({
+      'role': 'treeitem',
+      // [aria-selected] is required for `treeitem`. See https://git.io/zf-11440.
+      'aria-selected': false,
+    });
 
     this._prepareMenu();
     this._registerEvents();
