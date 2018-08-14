@@ -152,8 +152,8 @@ $dropdown-menu-item-background-active: transparent !default;
 
     // Top-level item
     > li > a {
-      background: $dropdownmenu-background;
       padding: $dropdownmenu-padding;
+      background: $dropdownmenu-background;
     }
 
     // Top-level item active state
