@@ -68,21 +68,31 @@
   }
 
   @include -zf-each-breakpoint() {
+    // Responsive "auto" modifier
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-auto {
         @include xy-cell-base(auto);
         @include xy-cell-static(auto, false);
       }
+    }
 
+    %-xy-cell-base-shrink-horizontal-#{$-zf-size} {
+      @include xy-cell-base(shrink);
+    }
+
+    // Responsive "shrink" modifier
+    @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-shrink {
-        @include xy-cell-base(shrink);
+        @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
         @include xy-cell-static(shrink, false);
       }
     }
 
+    // Responsive width modifiers
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
+        @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
         @include xy-cell-static($i, false, $gutter-type: padding);
       }
     }
@@ -145,12 +155,12 @@
     @include -zf-each-breakpoint() {
 
       // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
-      // for prior breakpoints based on the responsive gutter.
+      // for all prior breakpoints.
+      // As their gutter is defined with their width/height, even breakpoint without a new margin must be
+      // generated to not having their width/height overrided by re-adjusted smaller breakpoints.
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
-          @if(map-has-key($grid-margin-gutters, $bp)) {
-            @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
-          }
+          @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
         }
       }
 
@@ -187,7 +197,7 @@
     @include -zf-each-breakpoint {
       @for $i from 1 through $xy-block-grid-max {
         .#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($i, '.cell', false, $gutter-type: padding);
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-output: false, $gutter-type: padding, $breakpoint: $-zf-size);
         }
       }
     }
@@ -202,7 +212,7 @@
           @each $bp in -zf-breakpoints-less-than($-zf-size) {
             @if(map-has-key($grid-margin-gutters, $bp)) {
               .grid-margin-x.#{$bp}-up-#{$i} {
-                @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $bp);
+                @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-output: false, $gutter-type: margin, $breakpoint: $-zf-size);
               }
             }
           }
@@ -210,7 +220,7 @@
       }
       @for $i from 1 through $xy-block-grid-max {
         .grid-margin-x.#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $-zf-size);
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-output: false, $gutter-type: margin, $breakpoint: $-zf-size);
         }
       }
     }
@@ -272,11 +282,11 @@
     }
 
     > .auto {
-      @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+      @include xy-cell-static(auto, false, $vertical: true);
     }
 
     > .shrink {
-      @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+      @include xy-cell-static(shrink, false, $vertical: true);
     }
 
 
@@ -295,21 +305,31 @@
     }
 
     @include -zf-each-breakpoint() {
+      // Responsive "auto" modifier
       @if not($-zf-size == small) {
         > .#{$-zf-size}-auto {
           @include xy-cell-base(auto);
           @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
         }
-
-        > .#{$-zf-size}-shrink {
-          @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
-        }
-
       }
 
+      %-xy-cell-base-shrink-vertical-#{$-zf-size} {
+        @include xy-cell-base(shrink);
+      }
+
+      // Responsive "shrink" modifier
+      @if not($-zf-size == small) {
+        > .#{$-zf-size}-shrink {
+          @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
+          @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+        }
+      }
+
+      // Responsive width modifiers
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
+          @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
           @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
         }
       }

@@ -1,9 +1,9 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
 
 /**
  * Accordion module.
@@ -82,7 +82,7 @@ class Accordion extends Plugin {
           //roll up a little to show the titles
           if (this.options.deepLinkSmudge) {
             var _this = this;
-            $(window).on('load', function() {
+            onLoad($(window), function() {
               var offset = _this.$element.offset();
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });
@@ -146,7 +146,7 @@ class Accordion extends Plugin {
       }
     });
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      $(window).on('hashchange', this._checkDeepLink);
     }
   }
 
@@ -265,7 +265,7 @@ class Accordion extends Plugin {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
     if(this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      $(window).off('hashchange', this._checkDeepLink);
     }
 
   }
@@ -294,31 +294,29 @@ Accordion.defaults = {
    */
   allowAllClosed: false,
   /**
-   * Allows the window to scroll to content of pane specified by hash anchor
+   * Link the location hash to the open pane.
+   * Set the location hash when the opened pane changes, and open and scroll to the corresponding pane when the location changes.
    * @option
    * @type {boolean}
    * @default false
    */
   deepLink: false,
-
   /**
-   * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+   * If `deepLink` is enabled, adjust the deep link scroll to make sure the top of the accordion panel is visible
    * @option
    * @type {boolean}
    * @default false
    */
   deepLinkSmudge: false,
-
   /**
-   * Animation time (ms) for the deep link adjustment
+   * If `deepLinkSmudge` is enabled, animation time (ms) for the deep link adjustment
    * @option
    * @type {number}
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
-
   /**
-   * Update the browser history with the open accordion
+   * If `deepLink` is enabled, update the browser history with the open accordion
    * @option
    * @type {boolean}
    * @default false

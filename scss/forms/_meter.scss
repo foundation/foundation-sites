@@ -42,8 +42,8 @@ $meter-fill-bad: $alert-color !default;
     // `-moz-appearance: none` as a prefix and neglecting the webkit.
     
     /*! autoprefixer: off */
-    -moz-appearance: none;
-         appearance: none;
+    -moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+    appearance: none;
 
     @if has-value($meter-radius) {
       border-radius: $meter-radius;
@@ -101,15 +101,15 @@ $meter-fill-bad: $alert-color !default;
       }
     }
 
-    &:-moz-meter-optimum::-moz-meter-bar { // sass-lint:disable-line force-pseudo-nesting
+    &:-moz-meter-optimum::-moz-meter-bar {
       background: $meter-fill-good;
     }
 
-    &:-moz-meter-sub-optimum::-moz-meter-bar { // sass-lint:disable-line force-pseudo-nesting
+    &:-moz-meter-sub-optimum::-moz-meter-bar {
       background: $meter-fill-medium;
     }
 
-    &:-moz-meter-sub-sub-optimum::-moz-meter-bar { // sass-lint:disable-line force-pseudo-nesting
+    &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
       background: $meter-fill-bad;
     }
   }

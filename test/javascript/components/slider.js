@@ -153,6 +153,30 @@ describe('Slider', function() {
     });
   });
 
+  describe('adjustValue()', function() {
+    it('handles positive values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin._adjustValue(null, 1).should.equal(1);
+      plugin._adjustValue(null, 2).should.equal(2);
+      plugin._adjustValue(null, 1.2).should.equal(1);
+      plugin._adjustValue(null, 1.9).should.equal(2);
+      plugin._adjustValue(null, 1.5).should.equal(2);
+    });
+
+    it('handles negative values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin._adjustValue(null, -1).should.equal(-1);
+      plugin._adjustValue(null, -2).should.equal(-2);
+      plugin._adjustValue(null, -1.2).should.equal(-1);
+      plugin._adjustValue(null, -1.9).should.equal(-2);
+      plugin._adjustValue(null, -1.5).should.equal(-1);
+    });
+  });
+
   describe('keyboard events', function() {
     it('sets value to minimum using HOME', function() {
       $html = $(template).appendTo('body');

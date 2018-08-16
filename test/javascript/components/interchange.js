@@ -1,4 +1,4 @@
-describe('Interchange', function() {
+describe('Interchange', function () {
   var plugin;
   var $html;
 
@@ -201,31 +201,49 @@ describe('Interchange', function() {
     });
   });
 
- describe('events()', function() {
-    it('calls reflow on viewport size change once', function(done) {
+  describe('events()', function () {
+    it('calls reflow on viewport size change once', function (done) {
       $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
-      Foundation.IHearYou();
-      let spy = sinon.spy(plugin, '_reflow');
 
-      setTimeout(function() {
+      // Debounce: time Triggers is waiting for an other event without firing anything (10 by default)
+      const debounce = 10;
+      // Initialize Triggers manually to control and test the debounce time
+      Foundation.Triggers.Initializers.addMutationEventsListener($(document));
+      Foundation.Triggers.Initializers.addResizeListener(debounce);
+      $.triggersInitialized = true;
+
+      // Trigger several window resize synchrnously and asynchronously.
+      // ---
+      // Timeout delays are most often not respected and the differences between several
+      // timeouts running in parrallel can be huge. To prevent race conditions we:
+      // * nest timeout in order to make the delay between them more precise
+      // * run the test several time to wait for the debounce, which may be finally
+      //   called way after the expected time.
+      setTimeout(function () {
+        let spy = sinon.spy(plugin, '_reflow');
         $(window).trigger('resize');
-      }, 1);
-
-      setTimeout(function() {
         $(window).trigger('resize');
-      }, 5);
 
-      setTimeout(function() {
-        $(window).trigger('resize');
-      }, 10);
+        setTimeout(function () {
+          $(window).trigger('resize');
+          $(window).trigger('resize');
 
-      setTimeout(function() { // Wait for third trigger...
-        sinon.assert.calledOnce(spy);
-        done();
-      }, 50);
+          tryInterval({
+            interval: debounce,
+            timeout: 1000,
+            try: () => {
+              sinon.assert.calledOnce(spy);
+            },
+            then: () => {
+              $.triggersInitialized = false;
+              done();
+            },
+          });
+
+        });
+      });
     });
   });
-
 
 });

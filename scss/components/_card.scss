@@ -6,7 +6,7 @@
 /// @group card
 ////
 
-/// Defualt background color.
+/// Default background color.
 /// @type Color
 $card-background: $white !default;
 
@@ -81,8 +81,8 @@ $card-margin-bottom: $global-margin !default;
   $padding: $card-padding
 ) {
   @if $global-flexbox {
-    flex: 0 1 auto;
     display: flex;
+    flex: 0 1 auto;
   }
 
   padding: $padding;

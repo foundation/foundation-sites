@@ -77,6 +77,10 @@ $select-radius: $global-radius !default;
     height: auto;
     background-image: none;
   }
+  &:not([multiple]) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 @mixin foundation-form-select {

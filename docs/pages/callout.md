@@ -56,25 +56,25 @@ Callouts can be colored using the `.secondary`, `.primary`, `.success`, `.warnin
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
-<div class="primary callout">
+<div class="callout primary">
   <h5>This is a primary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
-<div class="success callout">
+<div class="callout success">
   <h5>This is a success callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
-<div class="warning callout">
+<div class="callout warning">
   <h5>This is a warning callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
-<div class="alert callout">
+<div class="callout alert">
   <h5>This is an alert callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
@@ -111,7 +111,7 @@ Callouts can be sized using the `.small` and `.large` classes. These will affect
 Pair the callout with the [close button](close-button.html) component and `data-closable` attribute to create a dismissable alert box.
 
 <a class="" data-open-video="4:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-<div class="primary callout">
+<div class="callout primary">
   <p>Any element can be used as a close trigger, not just close button. Adding the attribute <code>data-close</code> to any element within the callout will turn it into a close trigger.</p>
   <p>When using the <code>data-closable</code> attribute, you can optionally add <a href="http://foundation.zurb.com/sites/docs/motion-ui.html">Motion UI</a> classes to the attribute to change the closing animation. If no class is added, the plugin defaults to jQuery's <code>.fadeOut()</code> function.</p>
 </div>
@@ -121,7 +121,7 @@ Pair the callout with the [close button](close-button.html) component and `data-
 </div>
 
 ```html_example
-<div class="alert callout" data-closable>
+<div class="callout alert" data-closable>
   <h5>This is Important!</h5>
   <p>But when you're done reading it, click the close button in the corner to dismiss this alert.</p>
   <p>I'm using the default <code>data-closable</code> parameters, and simply fade out.</p>
@@ -129,7 +129,7 @@ Pair the callout with the [close button](close-button.html) component and `data-
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="success callout" data-closable="slide-out-right">
+<div class="callout success" data-closable="slide-out-right">
   <h5>This a friendly message.</h5>
   <p>And when you're done with me, I can be closed using a Motion UI animation.</p>
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>

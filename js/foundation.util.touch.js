@@ -22,6 +22,8 @@ function onTouchEnd() {
 
 function onTouchMove(e) {
   if ($.spotSwipe.preventDefault) { e.preventDefault(); }
+
+  // Moved: swipe
   if(isMoving) {
     var x = e.touches[0].pageX;
     var y = e.touches[0].pageY;
@@ -41,6 +43,11 @@ function onTouchMove(e) {
       $(this).trigger('swipe', dir).trigger(`swipe${dir}`);
     }
   }
+  // Otherwise: tap
+  else {
+    $(this).trigger('tap');
+  }
+
 }
 
 function onTouchStart(e) {

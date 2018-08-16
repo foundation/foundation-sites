@@ -61,4 +61,33 @@ function transitionend($elem){
   }
 }
 
-export {rtl, GetYoDigits, RegExpEscape, transitionend};
+/**
+ * Return an event type to listen for window load.
+ *
+ * If `$elem` is passed, an event will be triggered on `$elem`. If window is already loaded, the event will still be triggered.
+ * If `handler` is passed, attach it to the event on `$elem`.
+ * Calling `onLoad` without handler allows you to get the event type that will be triggered before attaching the handler by yourself.
+ * @function
+ *
+ * @param {Object} [] $elem - jQuery element on which the event will be triggered if passed.
+ * @param {Function} [] handler - function to attach to the event.
+ * @returns {String} - event type that should or will be triggered.
+ */
+function onLoad($elem, handler) {
+  const didLoad = document.readyState === 'complete';
+  const eventType = (didLoad ? '_didLoad' : 'load') + '.zf.util.onLoad';
+  const cb = () => $elem.triggerHandler(eventType);
+
+  if ($elem) {
+    if (handler) $elem.one(eventType, handler);
+
+    if (didLoad)
+      setTimeout(cb);
+    else
+      $(window).one('load', cb);
+  }
+
+  return eventType;
+}
+
+export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad};

@@ -1,8 +1,8 @@
 'use strict';
 
 import { Box } from './foundation.util.box';
-import { Plugin } from './foundation.plugin';
-import { rtl as Rtl } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl } from './foundation.core.utils';
 
 const POSITIONS = ['left', 'right', 'top', 'bottom'];
 const VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
