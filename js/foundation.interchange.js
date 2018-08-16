@@ -86,7 +86,7 @@ class Interchange extends Plugin {
 
   /**
    * Check options valifity and set defaults for:
-   * - `data-interchange-type`: if set, enforce the type of remplacement (auto, src, background or html)
+   * - `data-interchange-type`: if set, enforce the type of replacement (auto, src, background or html)
    * @function
    * @private
    */
@@ -228,9 +228,9 @@ Interchange.defaults = {
   rules: null,
 
   /**
-   * Type of the responsive ressource to remplace. It can takes the following options:
-   * - `auto` (default): choose the type according to the element tag or the ressource extention
-   * - `src`: replace the `[src]` attribute, recommanded for images `<img>`.
+   * Type of the responsive ressource to replace. It can take the following options:
+   * - `auto` (default): choose the type according to the element tag or the ressource extension,
+   * - `src`: replace the `[src]` attribute, recommended for images `<img>`.
    * - `background`: replace the `background-image` CSS property.
    * - `html`: replace the element content.
    * @option

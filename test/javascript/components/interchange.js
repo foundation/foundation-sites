@@ -98,7 +98,7 @@ describe('Interchange', function() {
       spy.restore();
     });
 
-    it('replaces following the `type` option', function() {
+    it('replaces the following the `type` option', function() {
       $html = $(generateTemplate('background')).attr('data-interchange', '').appendTo('body');
       plugin = new Foundation.Interchange($html, { type: 'src' });
 
