@@ -169,7 +169,7 @@ class Interchange extends Plugin {
     if (type === 'auto') {
       if (this.$element[0].nodeName === 'IMG')
         type = 'src';
-      else if (path.match(/\.(gif|jpe?g|jpeg|png|svg|tiff)([?#].*)?/i))
+      else if (path.match(/\.(gif|jpe?g|png|svg|tiff)([?#].*)?/i))
         type = 'background';
       else
         type = 'html';
