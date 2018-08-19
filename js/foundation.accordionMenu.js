@@ -190,7 +190,6 @@ class AccordionMenu extends Plugin {
           if (preventDefault) {
             e.preventDefault();
           }
-          e.stopImmediatePropagation();
         }
       });
     });//.attr('tabindex', 0);
