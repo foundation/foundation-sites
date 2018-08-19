@@ -484,7 +484,6 @@ class OffCanvas extends Plugin {
         return true;
       },
       handled: () => {
-        e.stopPropagation();
         e.preventDefault();
       }
     });

@@ -208,7 +208,6 @@ class Tabs extends Plugin {
           _this._handleTabChange($nextElement);
         },
         handled: function() {
-          e.stopPropagation();
           e.preventDefault();
         }
       });
