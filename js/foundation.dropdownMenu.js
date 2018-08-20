@@ -284,7 +284,7 @@ class DropdownMenu extends Plugin {
     const $body = $(document.body);
     this._removeBodyHandler();
     $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
-      var isItself = this.$element.andSelf().find(e.target).length;
+      var isItself = !!$(e.target).closest(this.$element).length;
       if (isItself) return;
 
       this._hide();
