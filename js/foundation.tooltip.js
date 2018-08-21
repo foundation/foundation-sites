@@ -225,7 +225,6 @@ class Tooltip extends Positionable {
 
     if (this.options.clickOpen) {
       this.$element.on('mousedown.zf.tooltip', function(e) {
-        e.stopImmediatePropagation();
         if (_this.isClick) {
           //_this.hide();
           // _this.isClick = false;
@@ -238,7 +237,6 @@ class Tooltip extends Positionable {
       });
     } else {
       this.$element.on('mousedown.zf.tooltip', function(e) {
-        e.stopImmediatePropagation();
         _this.isClick = true;
       });
     }

@@ -153,7 +153,6 @@ class Drilldown extends Plugin {
     $elem.off('click.zf.drilldown')
     .on('click.zf.drilldown', function(e){
       if($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')){
-        e.stopImmediatePropagation();
         e.preventDefault();
       }
 
@@ -285,7 +284,6 @@ class Drilldown extends Plugin {
           if (preventDefault) {
             e.preventDefault();
           }
-          e.stopImmediatePropagation();
         }
       });
     }); // end keyboardAccess
@@ -320,7 +318,6 @@ class Drilldown extends Plugin {
     $elem.off('click.zf.drilldown');
     $elem.children('.js-drilldown-back')
       .on('click.zf.drilldown', function(e){
-        e.stopImmediatePropagation();
         // console.log('mouseup on back');
         _this._hide($elem);
 
@@ -342,7 +339,6 @@ class Drilldown extends Plugin {
     this.$menuItems.not('.is-drilldown-submenu-parent')
         .off('click.zf.drilldown')
         .on('click.zf.drilldown', function(e){
-          // e.stopImmediatePropagation();
           setTimeout(function(){
             _this._hideAll();
           }, 0);

@@ -159,7 +159,6 @@ class Tabs extends Plugin {
       .off('click.zf.tabs')
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
-        e.stopPropagation();
         _this._handleTabChange($(this));
       });
   }
@@ -208,7 +207,6 @@ class Tabs extends Plugin {
           _this._handleTabChange($nextElement);
         },
         handled: function() {
-          e.stopPropagation();
           e.preventDefault();
         }
       });
