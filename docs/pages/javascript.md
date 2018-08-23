@@ -67,7 +67,7 @@ var $dropdown = new Dropdown('#mydropdown');
 
 Many bundlers like Webpack, Rollup or Parcel support tree shaking. It consists of the removing the unused code parts from your codebase or your dependencies. Take a look at these articles to know how it works and how to enable it: [How To Clean Up Your JavaScript Build With Tree Shaking](https://www.engineyard.com/blog/tree-shaking), [Why Webpack 2's Tree Shaking is not as effective as you think](https://advancedweb.hu/2017/02/07/treeshaking/) and [Reduce JavaScript Payloads with Tree Shaking](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/).
 
-Sadly, the "static analysis" promised by these bundlers to detect unused code in dependencies does not usually work, so we recommend you to manually import the Foundation plugins instead, like the following:
+Sadly, the "static analysis" promised by these bundlers to detect unused code in dependencies does not always work. Depending on your build environment, you may have to manually import the Foundation plugins to make it work correctly:
 
 ```js 
 import Dropdown from 'foundation-sites/js/foundation.dropdown';
