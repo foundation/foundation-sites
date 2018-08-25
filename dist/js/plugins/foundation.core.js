@@ -198,7 +198,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var FOUNDATION_VERSION = '6.5.0-rc.1'; // Global Foundation object
+var FOUNDATION_VERSION = '6.5.0-rc.2'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -410,7 +410,7 @@ var Foundation = {
 
         var plugClass = this.data('zfPlugin'); //determine the class of plugin
 
-        if (plugClass !== undefined && plugClass[method] !== undefined) {
+        if (typeof plugClass !== 'undefined' && typeof plugClass[method] !== 'undefined') {
           //make sure both the class and method exist
           if (this.length === 1) {
             //if there's only one, call it directly.
@@ -530,11 +530,11 @@ if (!Function.prototype.bind) {
 
 
 function functionName(fn) {
-  if (Function.prototype.name === undefined) {
+  if (typeof Function.prototype.name === 'undefined') {
     var funcNameRegex = /function\s([^(]{1,})\(/;
     var results = funcNameRegex.exec(fn.toString());
     return results && results.length > 1 ? results[1].trim() : "";
-  } else if (fn.prototype === undefined) {
+  } else if (typeof fn.prototype === 'undefined') {
     return fn.constructor.name;
   } else {
     return fn.prototype.constructor.name;
@@ -989,7 +989,7 @@ function parseStyleToObject(str) {
     key = decodeURIComponent(key); // missing `=` should be `null`:
     // http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
 
-    val = val === undefined ? null : decodeURIComponent(val);
+    val = typeof val === 'undefined' ? null : decodeURIComponent(val);
 
     if (!ret.hasOwnProperty(key)) {
       ret[key] = val;

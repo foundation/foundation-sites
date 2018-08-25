@@ -211,7 +211,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /**
  * Magellan module.
@@ -226,7 +230,7 @@ function (_Plugin) {
   function Magellan() {
     _classCallCheck(this, Magellan);
 
-    return _possibleConstructorReturn(this, (Magellan.__proto__ || Object.getPrototypeOf(Magellan)).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Magellan).apply(this, arguments));
   }
 
   _createClass(Magellan, [{
@@ -329,8 +333,7 @@ function (_Plugin) {
           'scrollme.zf.trigger': _this._updateActive.bind(_this)
         }).on('click.zf.magellan', 'a[href^="#"]', function (e) {
           e.preventDefault();
-
-          var arrival = _this.getAttribute('href');
+          var arrival = this.getAttribute('href');
 
           _this.scrollToLoc(arrival);
         });
@@ -417,7 +420,7 @@ function (_Plugin) {
       var $oldActive = this.$active;
       var activeHash = '';
 
-      if (activeIdx !== undefined) {
+      if (typeof activeIdx !== 'undefined') {
         this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
         if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
       } else {
@@ -466,7 +469,8 @@ function (_Plugin) {
         window.location.hash.replace(hash, '');
       }
 
-      (0, _jquery.default)(window).off('hashchange', this._deepLinkScroll).off(this.onLoadListener);
+      (0, _jquery.default)(window).off('hashchange', this._deepLinkScroll);
+      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
     }
   }]);
 

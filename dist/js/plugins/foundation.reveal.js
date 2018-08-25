@@ -239,7 +239,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /**
  * Reveal module.
@@ -257,7 +261,7 @@ function (_Plugin) {
   function Reveal() {
     _classCallCheck(this, Reveal);
 
-    return _possibleConstructorReturn(this, (Reveal.__proto__ || Object.getPrototypeOf(Reveal)).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Reveal).apply(this, arguments));
   }
 
   _createClass(Reveal, [{
@@ -814,7 +818,8 @@ function (_Plugin) {
 
       this.$element.hide().off();
       this.$anchor.off('.zf');
-      (0, _jquery.default)(window).off(".zf.reveal:".concat(this.id)).off(this.onLoadListener);
+      (0, _jquery.default)(window).off(".zf.reveal:".concat(this.id));
+      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
 
       if ((0, _jquery.default)('.reveal:visible').length === 0) {
         this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal

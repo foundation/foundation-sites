@@ -215,23 +215,23 @@ The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.1/dist/css/foundation.min.css" integrity="sha256-5B4hbMU9OJUxbUEvafv7D53WeubxzKZBqPfQNMh6Iw8= sha384-n7bC26QCtUZ5T9AHXtZrl7FcPQL5BkGi/JXbs6FVnUexlfniI0xH42VZxa4OxPD1 sha512-AnfTqiknRiK8BIwGSIegiguDX0838ShwXn8bEmTGPb31OPyYMzBbtnuekO6qSFzP/J8a0bMe4V6FcfM7n/YONQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/css/foundation.min.css" integrity="sha256-iJQ8dZac/jUYHxiEnZJsyVpKcdq2sQvdA7t02QFmp30= sha384-SplqNBo/0ZlvSdwrP/riIPDozO5ck8+yIm++KVqyMAC53S6m3BaV+2OLpi7ULOOh sha512-ho6hK4sAWdCeqopNZWNy1d9Ok2hzfTLQLcGSr8ZlRzDzh6tNHkVoqSl6wgLsqls3yazwiG9H9dBCtSfPuiLRCQ==" crossorigin="anonymous">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.1/dist/js/foundation.min.js" integrity="sha256-wTcu2ZVTDMsVW8yIi4MAEPKsX04ZNW4Ahr0xZtFaBOA= sha384-jeQsPA9S1co5+XspMVKVhtst1k8mzjk63i2h2rtMEpZBOVE5i22Gdjj8IF7x8e1R sha512-th5Nh7lAgv9W5pWVbKvGpb5o0NUA/ozLF7f9uxboNqVyn5DG/azSVE8k0lKR2w7Ww648/Wnb4CsgPO4SZ7OdTw==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/js/foundation.min.js" integrity="sha256-G6jsRyH1fxbsvFIXSCuwYmI1aIDYBa28xscrvmYjJy0= sha384-vtoG68NvPc9azmFJr447vvY8qgdyA4FdaJ5/bqvzIM4eAdZfO0iyRRF8l2AAscYI sha512-43seCcNrHA0BQgrtyajB9sp8yOdv5c8QdYvgjP7zJ7v+dmzAcxYDQ2gupb9aztsNWBq1COIp/3NHYkQs4l/dkg==" crossorigin="anonymous"></script>
 ```
 
 From Foundation 6.4, flex is enabled by default and **only the new XY Grid is availaible**. However, others CSS versions are availaible for backward compatibility and the most common usage cases. For others uses and advanced customization, we recommand to build Foundation with custom settings (see others installation methods).
 
 ```html
 <!-- foundation-float.min.css: Compressed CSS with legacy Float Grid -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.1/dist/css/foundation-float.min.css" integrity="sha256-/Sxsx7bfDa1aSklVIGchmIapwWon0O0uvEc84snEtR0= sha384-qt5LYGgnSQcsev81WQekRaQVdqWbtH3zy0LthBQ/NmNyoV1+jxiVVVqTEXeMVtJg sha512-6D9iew99pH/+eCsrtOQ/J4PDcFZ5hQGOsUzclJMdBklQr3Hqvke1l+EAZKns/bx4P5wnznaTiDJZRQZPdeE+sg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/css/foundation-float.min.css" integrity="sha256-SXzNzz68b8cy/1oRvdP128/5VlvegrZO5QDmBiqhlQc= sha384-5EVTk1nWllg1T/XoVEd82fhnOxUhRUOquz4AyO3+M0kbhUzhruouReQWPnihRxPs sha512-y0IHToRgzE99SfoteKLXR0MUOTRPMQHwc4nmU2/Uqhu4KulOzK18RbuicuhlgzPDdj23skwxTWUv7CJs+psXig==" crossorigin="anonymous">
 
 <!-- foundation-prototype.min.css: Compressed CSS with prototyping classes -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.1/dist/css/foundation-prototype.min.css" integrity="sha256-VCcHX+bUKCrIzvGkwrgRkfag04/f/ZmRgdEW2YPxnD0= sha384-gpm9JwGgN0u1brKkzWQkDgfoXHxUaKP5gRpaBoePAAKR/yhSTgMBfwQ5MSwXfA24 sha512-ZkXjlW2qtebfXynlFwUFEYCf87SaZ+KCaKuZ7PhijIx8ms0HuOqICB4alTIBd4H5HXjt/Bq4YqvSjWv5JlEQEQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/css/foundation-prototype.min.css" integrity="sha256-iP8NlnMIi6jl4DMvyYpLbsqyWDYl1Q8tVZveKJ/iTlo= sha384-E/I8NnHrg+VfwywRTDOqIKYxhzeffpdDsimI5Nquhpn2CeyKxcx4nXrzzI5gHrop sha512-GX5/wNoFVsGHdYirCCCrvWYFBsB/O+gK+7XOcAnd5fGLh8L3s1D0Zh6rVvRA6nKtnzyTEp4y12fSejpSvTOCeA==" crossorigin="anonymous">
 
 <!-- foundation-rtl.min.css: Compressed CSS with right-to-left reading direction -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.1/dist/css/foundation-rtl.min.css" integrity="sha256-9asvJMGI9FZgwWRzzeFy9w7Xv5Vb9a/DIGHYxhCJPpE= sha384-Vlk479c4x4oJIyKfhOuT7LwYiAkYYnOOHxB5uTWYZSDdtxs5XaWVOEiOPqkDeftQ sha512-UB5MKn6xVIhZTFvL9tFUl44VHkk2FKkRqKfV44iNtGS2mY4Ml+Yii4cSDL7s1o377XdFethfbQ4QejV3iu67YA==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/css/foundation-rtl.min.css" integrity="sha256-80rANnp5GyEv0uG8KN9vvV/bVcFIraHVWPi5x+gxVeo= sha384-aYblAem3RHdEnPvfqN2QS+Ha8P+pBBtb38g0BXaoBz6D7W2N3tliaJOrKtm3R/Aj sha512-7N+idIc9dM7Insu/knBFhfRMQ+mog/niglz38GYI54HN6UnZkASL/IUwKVuq1X52k3K4XwBhEY2GpCIDnZOGmA==" crossorigin="anonymous">
 ```
 
 <div class="text-center">
