@@ -24,8 +24,9 @@ gulp.task('test:watch', function () {
   gulp.watch(['test/visual/**/*'], gulp.series('test:reload'));
 });
 
-gulp.task('test:reload', function() {
+gulp.task('test:reload', function(done) {
   browser.reload();
+  done();
 });
 
 gulp.task('test:transpile-js', gulp.series('javascript:foundation', 'javascript:deps', function () {
