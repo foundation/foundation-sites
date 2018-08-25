@@ -30,14 +30,7 @@ gulp.task('sass:foundation', gulp.series('sass:deps', function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('_build/assets/css'))
-    .on('finish', function() {
-      gulp.src(CONFIG.SASS_LINT_FILES)
-        .pipe(sassLint({
-            config: './.sass-lint.yml'
-          }))
-        .pipe(sassLint.format());
-    });
+    .pipe(gulp.dest('_build/assets/css'));
 }));
 
 // Compiles docs Sass (includes Foundation code also)
