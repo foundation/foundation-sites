@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.5.0-rc.2",
+  "version": "6.5.0-rc.3",
   "main": "dist/js/foundation.js",
   "module": "js/foundation.js",
   "jsnext:main": "js/foundation.js",
