@@ -98,6 +98,12 @@ class Tabs extends Plugin {
      //current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
+
+      if (!anchor.length && this._defaultAnchor) {
+        // if we don't have an anchor, use the default.
+        anchor = this._defaultAnchor;
+      }
+
       //need a hash and a relevant anchor in this tabset
       if(anchor.length) {
         var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
@@ -122,7 +128,15 @@ class Tabs extends Plugin {
 
     //use browser to open a tab, if it exists in this tabset
     if (this.options.deepLink) {
+      // The active tab on page load will be our default
+      var activeHash = this.$tabTitles.filter(`.${this.options.linkActiveClass}`).find('a').attr('href');
+
       this._checkDeepLink();
+
+      if (this.options.updateHistory) {
+        // set this after _checkDeepLink because we don't want to interfere with page load.
+        this._defaultAnchor = activeHash;
+      }
     }
 
     this._events();
@@ -304,7 +318,8 @@ class Tabs extends Plugin {
       .attr({
         'aria-selected': 'false',
         'tabindex': -1
-      });
+      })
+      .blur();  // blur to make sure tab loses focus state on deepLink hashchange
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
