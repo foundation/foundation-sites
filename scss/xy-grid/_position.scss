@@ -25,7 +25,7 @@
   @include -zf-breakpoint-value($breakpoint, $gutters) {
     $gutter: rem-calc($-zf-bp-value) / 2;
     $gutter-margin: if($gutter-type == 'margin', $gutter, 0);
-    $size: if($gutter-margin == 0, #{xy-cell-size($n)}, calc(#{xy-cell-size($n)} - #{rem-calc($gutter-margin)}));
+    $size: if($gutter-margin == 0, #{xy-cell-size($n)}, calc(#{xy-cell-size($n)} + #{$gutter-margin}));
 
     margin-#{$direction}: #{$size};
   }
