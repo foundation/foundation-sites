@@ -73,6 +73,11 @@ class Tabs extends Plugin {
         'aria-labelledby': linkId
       });
 
+      // Save up the initial hash to return to it later when going back in history
+      if (isActive) {
+        _this._initialAnchor = `#${hash}`;
+      }
+
       if(!isActive) {
         $tabContent.attr('aria-hidden', 'true');
       }
@@ -85,6 +90,7 @@ class Tabs extends Plugin {
         });
       }
     });
+
     if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
 
@@ -98,8 +104,14 @@ class Tabs extends Plugin {
      //current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
+
+      // if there is no anchor, return to the initial tab
+      if (!anchor.length && this._initialAnchor) {
+        anchor = this._initialAnchor;
+      }
+
       //need a hash and a relevant anchor in this tabset
-      if(anchor.length) {
+      if (anchor.length) {
         var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
         var $link = this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
         if ($link.length) {

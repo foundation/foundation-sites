@@ -59,15 +59,25 @@ class Accordion extends Plugin {
 
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
+
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
     this.firstTimeInit = true;
-    if($initActive.length){
+    if ($initActive.length) {
+      // Save up the initial hash to return to it later when going back in history
+      this._initialAnchor = $initActive.prev('a').attr('href');
+
       this.down($initActive, this.firstTimeInit);
       this.firstTimeInit = false;
     }
 
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
+
+      // if there is no anchor, return to the initial panel
+      if (!anchor.length && this._initialAnchor) {
+        anchor = this._initialAnchor;
+      }
+
       //need a hash and a relevant anchor in this tabset
       if(anchor.length) {
         var $link = this.$element.find('[href$="'+anchor+'"]'),
