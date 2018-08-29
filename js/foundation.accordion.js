@@ -61,6 +61,10 @@ class Accordion extends Plugin {
     });
 
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+    // Remember if we already set up the initial state of the Accordion as it
+    // gives additional privileges in the Accordion methods (like opening
+    // multiple panels even with the "multiExpand" option is disabled)
+    // TODO: refactor and clean this
     this.firstTimeInit = true;
     if ($initActive.length) {
       // Save up the initial hash to return to it later when going back in history
@@ -113,6 +117,7 @@ class Accordion extends Plugin {
     }
 
     this._events();
+    this.firstTimeInit = false;
   }
 
   /**
