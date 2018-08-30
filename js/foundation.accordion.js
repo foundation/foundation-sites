@@ -207,18 +207,61 @@ class Accordion extends Plugin {
       console.info('Cannot call down on an accordion that is disabled.');
       return;
     }
-    $target
-      .attr('aria-hidden', false)
-      .parent('[data-tab-content]')
-      .addBack()
-      .parent().addClass('is-active');
 
     if (!this.options.multiExpand && !firstTime) {
-      var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
-      if ($currentActive.length) {
-        this.up($currentActive.not($target));
+      var $activeContents = this.$element.children('.is-active').children('[data-tab-content]');
+      if ($activeContents.length) {
+        this._closeTab($activeContents.not($target));
       }
     }
+
+    this._openTab($target);
+  }
+
+  /**
+   * Closes the tab defined by `$target`.
+   * It may be ignored if the Accordion options don't allow it.
+   *
+   * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
+   * @fires Accordion#up
+   * @function
+   */
+  up($target) {
+
+    if (this.$element.is('[disabled]')) {
+      console.info('Cannot call up on an accordion that is disabled.');
+      return;
+    }
+
+    // Don't close the item if it is already closed
+    const $targetItem = $target.parent();
+    if (!$targetItem.hasClass('is-active')) return;
+
+    // Don't close the item if there is no other active item (unless with `allowAllClosed`)
+    const $othersItems = $targetItem.siblings();
+    if (!this.options.allowAllClosed && !$othersItems.hasClass('is-active')) return;
+
+    this._closeTab($target);
+  }
+
+  /**
+   * Opens the tab defined by `$target`.
+   * @param {jQuery} $target - Accordion tab to open (`.accordion-content`).
+   * @fires Accordion#down
+   * @function
+   * @private
+   */
+  _openTab($target) {
+    const $targetItem = $target.parent();
+    const targetContentId = $target.attr('aria-labelledby');
+
+    $target.attr('aria-hidden', false);
+    $targetItem.addClass('is-active');
+
+    $(`#${targetContentId}`).attr({
+      'aria-expanded': true,
+      'aria-selected': true
+    });
 
     $target.slideDown(this.options.slideSpeed, () => {
       /**
@@ -227,11 +270,6 @@ class Accordion extends Plugin {
        */
       this.$element.trigger('down.zf.accordion', [$target]);
     });
-
-    $(`#${$target.attr('aria-labelledby')}`).attr({
-      'aria-expanded': true,
-      'aria-selected': true
-    });
   }
 
   /**
@@ -239,35 +277,40 @@ class Accordion extends Plugin {
    * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
    * @fires Accordion#up
    * @function
+   * @private
    */
-  up($target) {
-    if ($target.closest('[data-accordion]').is('[disabled]')) {
-      console.info('Cannot call up on an accordion that is disabled.');
-      return;
-    }
+  _closeTab($target) {
+    const $targetItem = $target.parent();
+    const targetContentId = $target.attr('aria-labelledby');
 
-    var $aunts = $target.parent().siblings(),
-        _this = this;
+    $target.attr('aria-hidden', true)
+    $targetItem.removeClass('is-active');
 
-    if((!this.options.allowAllClosed && !$aunts.hasClass('is-active')) || !$target.parent().hasClass('is-active')) {
-      return;
-    }
+    $(`#${targetContentId}`).attr({
+     'aria-expanded': false,
+     'aria-selected': false
+    });
 
-    $target.slideUp(_this.options.slideSpeed, function () {
+    $target.slideUp(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done collapsing up.
        * @event Accordion#up
        */
-      _this.$element.trigger('up.zf.accordion', [$target]);
+      this.$element.trigger('up.zf.accordion', [$target]);
     });
+  }
 
-    $target.attr('aria-hidden', true)
-           .parent().removeClass('is-active');
-
-    $(`#${$target.attr('aria-labelledby')}`).attr({
-     'aria-expanded': false,
-     'aria-selected': false
-   });
+  /**
+   * Closes all active tabs
+   * @fires Accordion#up
+   * @function
+   * @private
+   */
+  _closeAllTabs() {
+    var $activeTabs = this.$element.children('.is-active').children('[data-tab-content]');
+    if ($activeTabs.length) {
+      this._closeTab($activeTabs);
+    }
   }
 
   /**
