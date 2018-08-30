@@ -61,53 +61,48 @@ class Accordion extends Plugin {
     });
 
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
-    // Remember if we already set up the initial state of the Accordion as it
-    // gives additional privileges in the Accordion methods (like opening
-    // multiple panels even with the "multiExpand" option is disabled)
-    // TODO: refactor and clean this
-    this.firstTimeInit = true;
     if ($initActive.length) {
       // Save up the initial hash to return to it later when going back in history
       this._initialAnchor = $initActive.prev('a').attr('href');
-
-      this.down($initActive, this.firstTimeInit);
-      this.firstTimeInit = false;
+      this._openSingleTab($initActive);
     }
 
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      // if there is no anchor, return to the initial panel
+      // If there is no anchor, return to the initial panel
       if (!anchor.length && this._initialAnchor) {
         anchor = this._initialAnchor;
       }
 
-      //need a hash and a relevant anchor in this tabset
-      if(anchor.length) {
-        var $link = this.$element.find('[href$="'+anchor+'"]'),
-        $anchor = $(anchor);
+      var $anchor = anchor && $(anchor);
+      var $link = anchor && this.$element.find(`[href$="${anchor}"]`);
 
-        if ($link.length && $anchor) {
-          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
-            this.down($anchor, this.firstTimeInit);
-            this.firstTimeInit = false;
-          };
+      // If there is an anchor for the hash, open it (if not already active)
+      if ($anchor && $link && $link.length) {
+        if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+          this._openSingleTab($anchor);
+        };
+      }
+      // Otherwise, close everything
+      else {
+        this._closeAllTabs();
+      }
 
-          //roll up a little to show the titles
-          if (this.options.deepLinkSmudge) {
-            var _this = this;
-            onLoad($(window), function() {
-              var offset = _this.$element.offset();
-              $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
-            });
-          }
+      // Roll up a little to show the titles
+      if (this.options.deepLinkSmudge) {
+        onLoad($(window), () => {
+          var offset = this.$element.offset();
+          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+        });
+      }
 
-          /**
-            * Fires when the zplugin has deeplinked at pageload
-            * @event Accordion#deeplink
-            */
-          this.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
-        }
+      if ($anchor && $link) {
+        /**
+         * Fires when the zplugin has deeplinked at pageload
+         * @event Accordion#deeplink
+         */
+        this.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
       }
     }
 
@@ -117,7 +112,6 @@ class Accordion extends Plugin {
     }
 
     this._events();
-    this.firstTimeInit = false;
   }
 
   /**
@@ -194,28 +188,23 @@ class Accordion extends Plugin {
   /**
    * Opens the accordion tab defined by `$target`.
    * @param {jQuery} $target - Accordion pane to open (`.accordion-content`).
-   * @param {Boolean} firstTime - flag to determine if reflow should happen.
    * @fires Accordion#down
    * @function
    */
-  down($target, firstTime) {
+  down($target) {
     /**
      * checking firstTime allows for initial render of the accordion
      * to render preset is-active panes.
      */
-    if ($target.closest('[data-accordion]').is('[disabled]') && !firstTime)  {
+    if ($target.closest('[data-accordion]').is('[disabled]'))  {
       console.info('Cannot call down on an accordion that is disabled.');
       return;
     }
 
-    if (!this.options.multiExpand && !firstTime) {
-      var $activeContents = this.$element.children('.is-active').children('[data-tab-content]');
-      if ($activeContents.length) {
-        this._closeTab($activeContents.not($target));
-      }
-    }
-
-    this._openTab($target);
+    if (this.options.multiExpand)
+      this._openTab($target);
+    else
+      this._openSingleTab($target);
   }
 
   /**
@@ -242,6 +231,23 @@ class Accordion extends Plugin {
     if (!this.options.allowAllClosed && !$othersItems.hasClass('is-active')) return;
 
     this._closeTab($target);
+  }
+
+  /**
+   * Make the tab defined by `$target` the only opened tab, closing all others tabs.
+   * @param {jQuery} $target - Accordion tab to open (`.accordion-content`).
+   * @function
+   * @private
+   */
+  _openSingleTab($target) {
+    // Close all the others active tabs.
+    const $activeContents = this.$element.children('.is-active').children('[data-tab-content]');
+    if ($activeContents.length) {
+      this._closeTab($activeContents.not($target));
+    }
+
+    // Then open the target.
+    this._openTab($target);
   }
 
   /**
