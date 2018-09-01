@@ -333,7 +333,7 @@ class Tabs extends Plugin {
       idStr = idStr.slice(1);
     }
 
-    var $target = this.$tabTitles.find(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first().parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.find(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first().parents(`.${this.options.linkClass}`);
 
     this._handleTabChange($target, historyHandled);
   };
