@@ -2,7 +2,6 @@
   "name": "foundation-sites",
   "version": "6.4.3",
   "main": "dist/js/foundation.js",
-  "browser": "dist/js/foundation.js",
   "module": "js/foundation.js",
   "jsnext:main": "js/foundation.js",
   "typings": "dist/js/foundation.d.ts",
