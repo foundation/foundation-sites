@@ -139,7 +139,6 @@ class Accordion extends Plugin {
             },
             handled: function() {
               e.preventDefault();
-              e.stopPropagation();
             }
           });
         });

@@ -269,14 +269,23 @@ class OffCanvas extends Plugin {
 
   /**
    * Stops scrolling of the body when OffCanvas is open on mobile Safari and other troublesome browsers.
+   * @function
    * @private
    */
   _stopScrolling(event) {
     return false;
   }
 
-  // Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
-  // Only really works for y, not sure how to extend to x or if we need to.
+  /**
+   * Tag the element given as context whether it can be scrolled up and down.
+   * Used to allow or prevent it to scroll. See `_stopScrollPropagation`.
+   *
+   * Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
+   * Only really works for y, not sure how to extend to x or if we need to.
+   *
+   * @function
+   * @private
+   */
   _recordScrollable(event) {
     let elem = this; // called from event handler context with this as elem
 
@@ -296,6 +305,13 @@ class OffCanvas extends Plugin {
     elem.lastY = event.originalEvent.pageY;
   }
 
+  /**
+   * Prevent the given event propagation if the element given as context can scroll.
+   * Used to preserve the element scrolling on mobile (`touchmove`) when the document
+   * scrolling is prevented. See https://git.io/zf-9707.
+   * @function
+   * @private
+   */
   _stopScrollPropagation(event) {
     let elem = this; // called from event handler context with this as elem
     let up = event.pageY < elem.lastY;
@@ -303,6 +319,8 @@ class OffCanvas extends Plugin {
     elem.lastY = event.pageY;
 
     if((up && elem.allowUp) || (down && elem.allowDown)) {
+      // It is not recommended to stop event propagation (the user cannot watch it),
+      // but in this case this is the only solution we have.
       event.stopPropagation();
     } else {
       event.preventDefault();
@@ -466,7 +484,6 @@ class OffCanvas extends Plugin {
         return true;
       },
       handled: () => {
-        e.stopPropagation();
         e.preventDefault();
       }
     });

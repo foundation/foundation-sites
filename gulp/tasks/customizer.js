@@ -131,13 +131,8 @@ gulp.task('customizer:html', gulp.series('customizer:loadConfig', function() {
     .pipe(gulp.dest(OUTPUT_DIR));
 }));
 
-// Creates a custom build by:
-//   - Generating a CSS file
-//   - Generating a JS file
-//   - Copying the index.html file
-//   - Creating a blank app.css file
-//   - Creating an app.js file with Foundation initialization code
-gulp.task('customizer', gulp.series('customizer:sass', 'customizer:javascript', 'customizer:html', function(done) {
+// Add main CSS and JS files to the build directory and create a ZIP file from it.
+gulp.task('customizer:zip', function (done) {
   var outputFolder = path.dirname(OUTPUT_DIR);
   var outputFileName = path.basename(OUTPUT_DIR);
 
@@ -145,13 +140,23 @@ gulp.task('customizer', gulp.series('customizer:sass', 'customizer:javascript', 
   touch(path.join(OUTPUT_DIR, 'js/app.js'));
   fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
-  gulp.src(path.join(OUTPUT_DIR, '/**/*'))
+  return gulp.src(path.join(OUTPUT_DIR, '/**/*'))
     .pipe(zip(path.basename(outputFileName) + '.zip'))
-    .pipe(gulp.dest(outputFolder))
-    .on('finish', function() {
-      rimraf(OUTPUT_DIR, done);
-    });
-}));
+    .pipe(gulp.dest(outputFolder));
+});
+
+// Clean the build directory
+gulp.task('customizer:clean', function(done) {
+  rimraf(OUTPUT_DIR, done);
+});
+
+// Creates a custom build by:
+//   - Generating a CSS file
+//   - Generating a JS file
+//   - Copying the index.html file
+//   - Creating a blank app.css file
+//   - Creating an app.js file with Foundation initialization code
+gulp.task('customizer', gulp.series('customizer:sass', 'customizer:javascript', 'customizer:html', 'customizer:zip', 'customizer:clean'));
 
 function createStream(name, content) {
   // Create a stream with our entry file

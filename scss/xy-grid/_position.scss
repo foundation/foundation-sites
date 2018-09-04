@@ -26,7 +26,7 @@
   $offset: $size;
   @if ($gutter-type == 'margin') {
     $gutter: rem-calc(xy-cell-gutters($gutters, $breakpoint) / 2);
-    $offset: calc(#{$size} + #{$gutter});
+    $offset: if($gutter == 0, $size, calc(#{$size} + #{$gutter}));
   }
   @return $offset;
 }
