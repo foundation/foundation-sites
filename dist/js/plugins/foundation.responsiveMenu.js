@@ -190,6 +190,7 @@ var ResponsiveMenu = function (_Plugin) {
     /**
      * Creates a new instance of a responsive menu.
      * @class
+     * @name ResponsiveMenu
      * @fires ResponsiveMenu#init
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.

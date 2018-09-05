@@ -175,6 +175,7 @@ var Reveal = function (_Plugin) {
     /**
      * Creates a new instance of Reveal.
      * @class
+     * @name Reveal
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
@@ -911,10 +912,9 @@ Triggers.Listeners.Global = {
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
   }
-};
 
-// Global, parses whole document.
-Triggers.Initializers.addClosemeListener = function (pluginName) {
+  // Global, parses whole document.
+};Triggers.Initializers.addClosemeListener = function (pluginName) {
   var yetiBoxes = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 

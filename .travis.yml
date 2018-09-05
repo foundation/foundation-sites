@@ -1,9 +1,19 @@
 language: node_js
-node_js:
-  - "6"
-install:
-  - npm install -g bower browserstack-runner
-  - npm install
-script: npm run test:ci
+
+matrix:
+  include:
+  - node_js: "lts/boron"
+    env: ZF_TRAVIS_COMMAND=test:javascript:units
+  - node_js: "lts/carbon"
+    env: ZF_TRAVIS_COMMAND=test:javascript:units
+  - node_js: "stable"
+    env: ZF_TRAVIS_COMMAND=test:javascript:units
+  - node_js: "stable"
+    env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
+
+before_install: npm install -g npm@latest
+install: npm ci
+script: npm run $ZF_TRAVIS_COMMAND
+
 notifications:
   email: false

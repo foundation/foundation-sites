@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * ResponsiveToggle module.
@@ -17,6 +17,7 @@ class ResponsiveToggle extends Plugin {
   /**
    * Creates a new instance of Tab Bar.
    * @class
+   * @name ResponsiveToggle
    * @fires ResponsiveToggle#init
    * @param {jQuery} element - jQuery object to attach tab bar functionality to.
    * @param {Object} options - Overrides to the default plugin settings.

@@ -3,9 +3,9 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Move } from './foundation.util.motion';
-import { GetYoDigits, rtl as Rtl } from './foundation.util.core';
+import { GetYoDigits, rtl as Rtl } from './foundation.core.utils';
 
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
 
 import { Touch } from './foundation.util.touch';
 
@@ -23,6 +23,7 @@ class Slider extends Plugin {
   /**
    * Creates a new instance of a slider control.
    * @class
+   * @name Slider
    * @param {jQuery} element - jQuery object to make into a slider control.
    * @param {Object} options - Overrides to the default plugin settings.
    */
@@ -152,7 +153,7 @@ class Slider extends Plugin {
       pctOfBar = this._logTransform(pctOfBar);
       break;
     }
-    var value = (this.options.end - this.options.start) * pctOfBar + this.options.start;
+    var value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
 
     return value
   }
@@ -199,6 +200,12 @@ class Slider extends Plugin {
 
     var isDbl = this.options.doubleSided;
 
+    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
+    //for click and drag events, it's weird due to the scale(-1, 1) css property
+    if (this.options.vertical && !noInvert) {
+      location = this.options.end - location;
+    }
+
     if (isDbl) { //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if (this.handles.index($hndl) === 0) {
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
@@ -207,12 +214,6 @@ class Slider extends Plugin {
         var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
         location = location <= h1Val ? h1Val + this.options.step : location;
       }
-    }
-
-    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
-    //for click and drag events, it's weird due to the scale(-1, 1) css property
-    if (this.options.vertical && !noInvert) {
-      location = this.options.end - location;
     }
 
     var _this = this,
@@ -425,7 +426,11 @@ class Slider extends Plugin {
     else {
       val = value;
     }
-    left = val % step;
+    if (val >= 0) {
+      left = val % step;
+    } else {
+      left = step + (val % step);
+    }
     prev_val = val - left;
     next_val = prev_val + step;
     if (left === 0) {
@@ -459,10 +464,19 @@ class Slider extends Plugin {
         curHandle,
         timer;
 
-      this.inputs.off('change.zf.slider').on('change.zf.slider', function(e) {
-        var idx = _this.inputs.index($(this));
+      const handleChangeEvent = function(e) {
+        const idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
+      };
+
+      // IE only triggers the change event when the input loses focus which strictly follows the HTML specification
+      // listen for the enter key and trigger a change
+      // @see https://html.spec.whatwg.org/multipage/input.html#common-input-element-events
+      this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
+        if(e.keyCode == 13) handleChangeEvent.call(this, e);
       });
+
+      this.inputs.off('change.zf.slider').on('change.zf.slider', handleChangeEvent);
 
       if (this.options.clickSelect) {
         this.$element.off('click.zf.slider').on('click.zf.slider', function(e) {

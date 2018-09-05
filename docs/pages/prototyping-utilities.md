@@ -1,15 +1,16 @@
 ---
 title: Prototyping Utilities
 description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
+video: Xhc_KUJMEuk
 sass:
   - scss/prototype/*.scss
 ---
 
 <h4><strong>Prototype to Production</strong></h4>
 
-Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implimentation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
+Prototyping allows us to see problems more clearly—and often earlier—in the development process. Designs in sketches or wireframes only get us so far in understanding the behavior, feasibility, and cost (time or resources) of implementation. Prototyping processes foster collaboration where designers and developers work closely together find better solutions.
 
-Sometimes prototype code is meant the be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scruitiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
+Sometimes prototype code is meant to be thrown away, and that's ok. While in early stage development it's extremely valuable to get ideas and interactions up and shared with stakeholders for scrutiny. This is how ideas get fleshed out and improved. It's not code we're delivering, it's a solution to a problem. Get the idea out, get feedback, iterate, repeat. Then when all parties are satisfied the right approach is being taken, go back to clean it up and refactor.
 
 Foundation's Prototyping Utilities help you build coded prototypes from scratch ultra-fast. This allows you to get to right answer faster through feedback and experimentation. From positioning to visual styles, there are a range of utilities to choose from. Every Utility has a mixin, so you can use your own custom classes or swap classes for mixins in production for cleaner markup.
 
@@ -76,7 +77,30 @@ You can instead import only the specific utility classes that you need. To make 
 @include foundation-prototype-spacing;
 ```
 
-Looking for more customization including **responsive breakpoints?** Click here for the [Sass Reference](#sass-reference)
+Looking for more customization? Click here for the [Sass Reference](#sass-reference)
+
+---
+
+## Responsive breakpoints
+
+<div class="alert callout">
+  <p>Responsive breakpoints is disabled by default.</p>
+</div>
+
+These prototype classes also have an optional mobile first responsive classes  so that setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint. <br>
+You can easily enable these classes by setting `$global-prototype-breakpoints` to `true`.
+
+```html
+<p class="medium-text-uppercase">This text will be uppercase for medium and up.</p>
+<p class="large-text-lowercase">This text will be lowercase for large breakpoint.</p>
+```
+
+You can also customise things by choosing to add responsive breakpoints only for specific prototype helpers that you would need as responsive classes. <br>
+For example, text transformation classes have a breakpoint variable `$prototype-transformation-breakpoints` which is set to `$global-prototype-breakpoints` which is set to `false` by default. For enabling responsive breakpoints for text transformation classes, simply set:
+
+```scss
+$prototype-transformation-breakpoints: true;
+```
 
 ---
 
@@ -88,6 +112,10 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](http://codepen.io/IamManchanda/pen/XMRMwo)
 </div>
 
+<p>
+  <a class="" data-open-video="1:06"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
 #### Buttons
 
 ```html_example
@@ -98,11 +126,24 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 <button type="button" class="button radius bordered shadow warning">Warning</button>
 ```
 
+#### Switches
+
+Add the `.rounded` class to `.switch` to make it rounded.
+
+```html_example
+<div class="switch rounded">
+  <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+  <label class="switch-paddle" for="exampleSwitch">
+    <span class="show-for-sr">Download Kittens</span>
+  </label>
+</div>
+```
+
 #### Cards
 
 ```html
 <div class="radius bordered shadow card">
-  <img src="http://placehold.it/500x250">
+  <img src="https://placehold.it/500x250">
   <div class="card-divider">
     Styled Card
   </div>
@@ -114,8 +155,8 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 ```
 
 <div class="docs-code-live">
-	<div class="row">
-		<div class="medium-4 columns">
+	<div class="grid-x grid-margin-x">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -127,7 +168,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 			  </div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -139,7 +180,7 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 			  </div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
+		<div class="cell medium-4">
 			<div class="radius bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
@@ -204,11 +245,11 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 #### Images
 
 ```html
-<img src="http://placehold.it/150x150" class="radius">
+<img src="https://placehold.it/150x150" class="radius">
 ```
 
 <div class="docs-code-live margin-bottom-1">
-	<img src="http://placehold.it/150x150" class="radius">
+	<img src="https://placehold.it/150x150" class="radius">
 </div>
 
 ---
@@ -246,14 +287,14 @@ This creates a tiny separator below the heading of an element and is usually use
 ```
 
 <div class="docs-code-live">
-	<div class="row">
-		<div class="small-12 medium-4 columns">
+	<div class="grid-x grid-margin-x">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-left">Lorem</h3>
 		</div>
-		<div class="small-12 medium-4 columns">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-center">Ipsum Dolor</h3>
 		</div>
-		<div class="small-12 medium-4 columns">
+		<div class="cell small-12 medium-4">
 			<h3 class="separator-right">Tempor</h3>
 		</div>
 	</div>
@@ -274,47 +315,16 @@ You can use font styling to style your text. You can change the font styling by 
 
 ---
 
-## Typescale
-
-Adjust font-size by overriding an element’s default size. This can be useful to size a `<p>` or `<h1>` through `<h6>` using Foundation's existing header sizes.
-
-<div class="callout primary">
-  <p><strong>Especially useful because:</strong> It's important to avoid skipping heading levels when structuring your document, as it confuses screen readers. For example, after using an <code>&lt;h2&gt;</code> in your code, the next heading used should be either <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.</p>
-</div>
-
-For headers:
-
-```html
-<h2 class="h1">Lorem Ipsum Dolor</h2>
-<h3 class="h2">Lorem Ipsum Dolor</h3>
-<h4 class="h3">Lorem Ipsum Dolor</h4>
-<h5 class="h4">Lorem Ipsum Dolor</h5>
-<h6 class="h5">Lorem Ipsum Dolor</h6>
-```
-
-For text:
-
-```html_example
-<p class="h1">Lorem Ipsum Dolor</p>
-<p class="h2">Lorem Ipsum Dolor</p>
-<p class="h3">Lorem Ipsum Dolor</p>
-<p class="h4">Lorem Ipsum Dolor</p>
-<p class="h5">Lorem Ipsum Dolor</p>
-<p class="h6">Lorem Ipsum Dolor</p>
-```
-
----
-
 ## List Styling
 
 <div class="primary callout">
-	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullets` is enabled by default for both ordered and unordered lists.
+	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullet` is enabled by default for both ordered and unordered lists.
 </div>
 
 #### Unordered Lists
 
 ```html
-<ul class="no-bullets"></ul>
+<ul class="no-bullet"></ul>
 <ul class="list-disc"></ul>
 <ul class="list-circle"></ul>
 <ul class="list-square"></ul>
@@ -323,7 +333,7 @@ For text:
 #### Ordered Lists
 
 ```html
-<ol class="no-bullets"></ol>
+<ol class="no-bullet"></ol>
 <ol class="list-decimal"></ol>
 <ol class="list-lower-alpha"></ol>
 <ol class="list-lower-latin"></ol>
@@ -343,7 +353,7 @@ You can include an image with visually hidden helper text for the sake of access
 
 ```html
 <a href="#" class="text-hide">
-  <img src="http://placehold.it/100x30" alt="zurb logo">
+  <img src="https://placehold.it/100x30" alt="zurb logo">
   Zurb <!-- Logo Text  -->
 </a>
 ```
@@ -423,6 +433,10 @@ Generate spacing around elements with these easy to use margin classes.
 <div class="primary callout">
 	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
 </div>
+
+<p>
+  <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 #### Margin (All Sides)
 
@@ -776,15 +790,15 @@ These Rotate mixins lets you rotate an element to a certain degree. Clockwise is
 }
 
 .bar {
-	@include rotateX(60); // 60 Degree
+	@include rotateX(60); // 60 Degree on X axis
 }
 
 .baz {
-	@include rotateY(90); // 90 Degree
+	@include rotateY(90); // 90 Degree on Y axis
 }
 
 .shaz {
-	@include rotateZ(120); // 120 Degree
+	@include rotateZ(120); // 120 Degree on Z axis
 }
 ```
 
@@ -813,4 +827,3 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include odd-between($first, $last) {} // applies style to all odd children except first and last
 @include number-between($num, $first, $last) {} // applies style to every n children from first child and last child
 ```
-

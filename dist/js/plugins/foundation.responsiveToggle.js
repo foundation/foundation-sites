@@ -162,6 +162,7 @@ var ResponsiveToggle = function (_Plugin) {
     /**
      * Creates a new instance of Tab Bar.
      * @class
+     * @name ResponsiveToggle
      * @fires ResponsiveToggle#init
      * @param {jQuery} element - jQuery object to attach tab bar functionality to.
      * @param {Object} options - Overrides to the default plugin settings.

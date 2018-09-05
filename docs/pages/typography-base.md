@@ -261,6 +261,10 @@ A definition list (`<dl>`) is used to display name-value pairs, like metadata or
 
 Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
 
+<div class="callout">
+  By default, `<cite>` takes the look of the `.cite-block` component. In Sass, you can customize it with <a href="#sass-variables">`$cite-*` variables</a> or disable it by setting `$enable-cite-block` to false.
+</div>
+
 <div class="docs-codepen-container">
 <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKoJMb" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -299,6 +303,29 @@ Format references to code with the `<code>` tag. In order for angle brackets `<>
 ```html_example
 Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
 ```
+
+---
+
+Use `.code-inline` component to apply the code style when you want.
+
+```html_example
+<span class="code-inline">I am not code, but I am displayed as if.</span>
+```
+
+---
+
+Use the `.code-block` component to create a block of code.
+
+```html_example
+<code class="code-block">{
+    "What I am": "I am a big chunk of code. I can have very long lines, I will not break and show a scrollbar instead.",
+    ...
+}</code>
+```
+
+<div class="callout info">
+  <p>It is recommanded to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
+</div>
 
 ---
 

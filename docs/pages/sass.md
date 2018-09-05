@@ -4,6 +4,11 @@ description: Foundation is written in Sass, which allows us to make the codebase
 video: mYiyunVQdMY
 ---
 
+<div class="callout training-callout">
+  <p>Get trained up on Foundation's Sass with our online webinar training. Sass allows you to write dramatically more efficient code. We'll go over things like how to install and start compiling Sass, nesting mixins and functions, and writing fully semantic CSS using Foundation mixins for insanely maintainable code.</p>
+  <a href="http://zurb.com/university/advanced-foundation-training" target="_blank">Reserve your spot →</a>
+</div>
+
 <div class="primary callout">
   <p>Not familiar with Sass? The [official tutorial](http://sass-lang.com/guide) on sass-lang.com is a great place to start.</p>
 </div>
@@ -25,7 +30,7 @@ To get the proper browser support, use these Autoprefixer settings:
 
 ```js
 autoprefixer({
-  browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+  browsers: ['last 2 versions', 'ie >= 9', 'android >= 4.4', 'ios >= 7']
 });
 ```
 
@@ -72,7 +77,11 @@ Finally, add an `@import` statement to the top of your primary Sass file. Refer 
 @import 'foundation';
 ```
 
-You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself.
+You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself. 
+
+<div class="callout">
+The settings file needs to import `util/util` from Foundation. Please ensure that the Foundation folder is included in Sass or change `@import util/util` for it to points to the full path of the file. For example, NPM users may need to change the import to `node_modules/foundation-sites/scss/util/util`.
+</div>
 
 ```scss
 @import 'settings';
@@ -101,50 +110,65 @@ Each component has an **export mixin** which prints out the CSS for that compone
 @include foundation-everything;
 ```
 
-Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below. 
+Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below.
 
 ```scss
 @import 'foundation';
 
+// Global styles
 @include foundation-global-styles;
-@include foundation-grid;
-@include foundation-flex-grid;
-@include foundation-flex-classes;
-@include foundation-typography;
 @include foundation-forms;
+@include foundation-typography;
+
+// Grids (choose one)
+@include foundation-xy-grid-classes;
+// @include foundation-grid;
+// @include foundation-flex-grid;
+
+// Generic components
 @include foundation-button;
-@include foundation-accordion;
-@include foundation-accordion-menu;
-@include foundation-badge;
-@include foundation-breadcrumbs;
 @include foundation-button-group;
-@include foundation-callout;
-@include foundation-card;
 @include foundation-close-button;
-@include foundation-menu;
-@include foundation-menu-icon;
-@include foundation-drilldown-menu;
-@include foundation-dropdown;
-@include foundation-dropdown-menu;
-@include foundation-responsive-embed;
 @include foundation-label;
-@include foundation-media-object;
-@include foundation-off-canvas;
-@include foundation-orbit;
-@include foundation-pagination;
 @include foundation-progress-bar;
 @include foundation-slider;
-@include foundation-sticky;
-@include foundation-reveal;
 @include foundation-switch;
 @include foundation-table;
+// Basic components
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-dropdown;
+@include foundation-pagination;
+@include foundation-tooltip;
+
+// Containers
+@include foundation-accordion;
+@include foundation-media-object;
+@include foundation-orbit;
+@include foundation-responsive-embed;
 @include foundation-tabs;
 @include foundation-thumbnail;
+// Menu-based containers
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-accordion-menu;
+@include foundation-drilldown-menu;
+@include foundation-dropdown-menu;
+
+// Layout components
+@include foundation-off-canvas;
+@include foundation-reveal;
+@include foundation-sticky;
 @include foundation-title-bar;
-@include foundation-tooltip;
 @include foundation-top-bar;
-@include foundation-visibility-classes;
+
+// Helpers
 @include foundation-float-classes;
+// @include foundation-flex-classes;
+@include foundation-visibility-classes;
+// @include foundation-prototype-classes;
 ```
 
 ---

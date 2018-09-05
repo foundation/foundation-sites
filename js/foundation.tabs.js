@@ -1,9 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { Plugin } from './foundation.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -15,6 +16,7 @@ class Tabs extends Plugin {
   /**
    * Creates a new instance of tabs.
    * @class
+   * @name Tabs
    * @fires Tabs#init
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
@@ -76,7 +78,7 @@ class Tabs extends Plugin {
       }
 
       if(isActive && _this.options.autoFocus){
-        $(window).load(function() {
+        _this.onLoadListener = onLoad($(window), function() {
           $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
             $link.focus();
           });
@@ -93,12 +95,13 @@ class Tabs extends Plugin {
       }
     }
 
-     //current context-bound function to open tabs on page load or history popstate
+     //current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
       //need a hash and a relevant anchor in this tabset
       if(anchor.length) {
-        var $link = this.$element.find('[href$="'+anchor+'"]');
+        var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
+        var $link = this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
         if ($link.length) {
           this.selectTab($(anchor), true);
 
@@ -141,7 +144,7 @@ class Tabs extends Plugin {
     }
 
     if(this.options.deepLink) {
-      $(window).on('popstate', this._checkDeepLink);
+      $(window).on('hashchange', this._checkDeepLink);
     }
   }
 
@@ -156,7 +159,6 @@ class Tabs extends Plugin {
       .off('click.zf.tabs')
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
-        e.stopPropagation();
         _this._handleTabChange($(this));
       });
   }
@@ -205,7 +207,6 @@ class Tabs extends Plugin {
           _this._handleTabChange($nextElement);
         },
         handled: function() {
-          e.stopPropagation();
           e.preventDefault();
         }
       });
@@ -251,12 +252,10 @@ class Tabs extends Plugin {
 
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
-      var anchor = $target.find('a').attr('href');
-
       if (this.options.updateHistory) {
-        history.pushState({}, '', anchor);
+        history.pushState({}, '', hash);
       } else {
-        history.replaceState({}, '', anchor);
+        history.replaceState({}, '', hash);
       }
     }
 
@@ -272,7 +271,7 @@ class Tabs extends Plugin {
 
   /**
    * Opens the tab `$targetContent` defined by `$target`.
-   * @param {jQuery} $target - Tab to Open.
+   * @param {jQuery} $target - Tab to open.
    * @function
    */
   _openTab($target) {
@@ -293,7 +292,7 @@ class Tabs extends Plugin {
 
   /**
    * Collapses `$targetContent` defined by `$target`.
-   * @param {jQuery} $target - Tab to Open.
+   * @param {jQuery} $target - Tab to collapse.
    * @function
    */
   _collapseTab($target) {
@@ -317,7 +316,7 @@ class Tabs extends Plugin {
    * @function
    */
   selectTab(elem, historyHandled) {
-    var idStr;
+    var idStr, hashIdStr;
 
     if (typeof elem === 'object') {
       idStr = elem[0].id;
@@ -326,10 +325,13 @@ class Tabs extends Plugin {
     }
 
     if (idStr.indexOf('#') < 0) {
-      idStr = `#${idStr}`;
+      hashIdStr = `#${idStr}`;
+    } else {
+      hashIdStr = idStr;
+      idStr = idStr.slice(1);
     }
 
-    var $target = this.$tabTitles.find(`[href$="${idStr}"]`).parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.has(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first();
 
     this._handleTabChange($target, historyHandled);
   };
@@ -372,7 +374,7 @@ class Tabs extends Plugin {
   }
 
   /**
-   * Destroys an instance of an tabs.
+   * Destroys an instance of tabs.
    * @fires Tabs#destroyed
    */
   _destroy() {
@@ -389,15 +391,19 @@ class Tabs extends Plugin {
     }
 
     if (this.options.deepLink) {
-      $(window).off('popstate', this._checkDeepLink);
+      $(window).off('hashchange', this._checkDeepLink);
     }
 
+    if (this.onLoadListener) {
+      $(window).off(this.onLoadListener);
+    }
   }
 }
 
 Tabs.defaults = {
   /**
-   * Allows the window to scroll to content of pane specified by hash anchor
+   * Link the location hash to the active pane.
+   * Set the location hash when the active pane changes, and open the corresponding pane when the location changes.
    * @option
    * @type {boolean}
    * @default false
@@ -405,7 +411,7 @@ Tabs.defaults = {
   deepLink: false,
 
   /**
-   * Adjust the deep link scroll to make sure the top of the tab panel is visible
+   * If `deepLink` is enabled, adjust the deep link scroll to make sure the top of the tab panel is visible
    * @option
    * @type {boolean}
    * @default false
@@ -413,7 +419,7 @@ Tabs.defaults = {
   deepLinkSmudge: false,
 
   /**
-   * Animation time (ms) for the deep link adjustment
+   * If `deepLinkSmudge` is enabled, animation time (ms) for the deep link adjustment
    * @option
    * @type {number}
    * @default 300
@@ -421,7 +427,7 @@ Tabs.defaults = {
   deepLinkSmudgeDelay: 300,
 
   /**
-   * Update the browser history with the open tab
+   * If `deepLink` is enabled, update the browser history with the open tab
    * @option
    * @type {boolean}
    * @default false
@@ -429,7 +435,7 @@ Tabs.defaults = {
   updateHistory: false,
 
   /**
-   * Allows the window to scroll to content of active pane on load if set to true.
+   * Allows the window to scroll to content of active pane on load.
    * Not recommended if more than one tab panel per page.
    * @option
    * @type {boolean}

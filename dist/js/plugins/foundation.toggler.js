@@ -160,6 +160,7 @@ var Toggler = function (_Plugin) {
     /**
      * Creates a new instance of Toggler.
      * @class
+     * @name Toggler
      * @fires Toggler#init
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -447,10 +448,9 @@ Triggers.Listeners.Global = {
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
   }
-};
 
-// Global, parses whole document.
-Triggers.Initializers.addClosemeListener = function (pluginName) {
+  // Global, parses whole document.
+};Triggers.Initializers.addClosemeListener = function (pluginName) {
   var yetiBoxes = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 

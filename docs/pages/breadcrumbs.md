@@ -20,6 +20,11 @@ To mark a disabled item, add the class `.disabled` to the `<li>`, and just use p
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGeMx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
+<div class="warning callout">
+  <p>If your site is visited by search engines, then you should consider adding Schema.org structure data. This will allow your site to appear more attractive in search results. </p>
+  <p>For more information, see <a href="https://developers.google.com/search/docs/data-types/breadcrumbs">Breadcrumbs - Google Developers</a>, <a href="http://schema.org/BreadcrumbList">BreadcrumbList - schema.org</a>.</p>
+</div>
+
 ```html_example
 <nav aria-label="You are here:" role="navigation">
   <ul class="breadcrumbs">

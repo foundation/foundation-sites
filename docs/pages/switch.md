@@ -15,7 +15,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <p>Inside the switch label is screen reader-only text, which uses the <code>.show-for-sr</code> class to visually mask the text.</p>
 </div>
 
-<div class='primary callout'>
+<div class="primary callout">
   <p>Inspecting the value of the underlying input should be done by evaluating the <code>checked</code> property of said input.</p>
 </div>
 
@@ -36,6 +36,28 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="exampleSwitch">
     <span class="show-for-sr">Download Kittens</span>
+  </label>
+</div>
+```
+
+---
+
+## Disabled
+
+There may be times when you want to fix a switch into a position.  This can be accomplished by setting the `disabled` option on the switch input.
+
+```html_example
+<div class="switch">
+  <input class="switch-input" disabled checked="checked" id="exampleCheckedDisabledSwitch" type="checkbox" name="exampleCheckedDisabledSwitch">
+  <label class="switch-paddle" for="exampleCheckedDisabledSwitch">
+    <span class="show-for-sr">Can't Touch This Checked</span>
+  </label>
+</div>
+
+<div class="switch">
+  <input class="switch-input" disabled id="exampleUncheckedDisabledSwitch" type="checkbox" name="exampleUncheckedDisabledSwitch">
+  <label class="switch-paddle" for="exampleUncheckedDisabledSwitch">
+    <span class="show-for-sr">Can't Touch This Unchecked</span>
   </label>
 </div>
 ```

@@ -204,6 +204,7 @@ var Orbit = function (_Plugin) {
     /**
     * Creates a new instance of an orbit carousel.
     * @class
+    * @name Orbit
     * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
     * @param {Object} options - Overrides to the default plugin settings.
     */
@@ -345,7 +346,7 @@ var Orbit = function (_Plugin) {
         temp = this.getBoundingClientRect().height;
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('data-slide', counter);
 
-        if (_this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+        if (!/mui/g.test(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
           //if not the active slide, set css position and display property
           __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).css({ 'position': 'relative', 'display': 'none' });
         }

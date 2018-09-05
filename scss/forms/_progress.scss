@@ -35,7 +35,7 @@ $progress-radius: $global-radius !default;
 
     appearance: none;
 
-    @if hasvalue($progress-radius) {
+    @if has-value($progress-radius) {
       border-radius: $progress-radius;
     }
 
@@ -46,7 +46,7 @@ $progress-radius: $global-radius !default;
     &::-webkit-progress-bar {
       background: $progress-background;
 
-      @if hasvalue($progress-radius) {
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
     }
@@ -54,7 +54,7 @@ $progress-radius: $global-radius !default;
     &::-webkit-progress-value {
       background: $progress-meter-background;
 
-      @if hasvalue($progress-radius) {
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
     }
@@ -62,7 +62,7 @@ $progress-radius: $global-radius !default;
     &::-moz-progress-bar {
       background: $progress-meter-background;
 
-      @if hasvalue($progress-radius) {
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
     }
@@ -83,8 +83,8 @@ $progress-radius: $global-radius !default;
     }
 
     // For IE and Edge
-    &::-ms-fill {
-      @if hasvalue($progress-radius) {
+    &::-ms-fill { // sass-lint:disable-line no-vendor-prefixes
+      @if has-value($progress-radius) {
         border-radius: $progress-radius;
       }
 

@@ -26,86 +26,97 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
-  <div class="row">
-    <div class="small-12 columns">
-      <label>Number Required
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
-        <span class="form-error">
-          Yo, you had better fill this out, it's required.
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Password Required
-        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
-        <span class="form-error">
-          I'm required!
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Re-enter Password
-        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
-        <span class="form-error">
-          Hey, passwords are supposed to match!
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-6 columns">
-      <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-      <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
-    </div>
-    <div class="large-6 columns">
-      <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
-        <input type="text" placeholder="http://zurb.com or zurb.com" pattern="website">
-      </label>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell small-12">
+        <label>Number Required
+          <input type="text" placeholder="1234" aria-describedby="example1Hint1" aria-errormessage="example1Error1" required pattern="number">
+          <span class="form-error">
+            Yo, you had better fill this out, it's required.
+          </span>
+        </label>
+      <p class="help-text" id="example1Hint1">Here's how you use this input field!</p>
+      </div>
+      <div class="cell small-12">
+        <label>Password Required
+          <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="example1Hint2" aria-errormessage="example1Error2" required >
+          <span class="form-error">
+            I'm required!
+          </span>
+        </label>
+        <p class="help-text" id="example1Hint2">Enter a password please.</p>
+      </div>
+      <div class="cell small-12">
+        <label>Re-enter Password
+          <input type="password" placeholder="yeti4preZ" aria-describedby="example1Hint3" aria-errormessage="example1Error3" required pattern="alpha_numeric" data-equalto="password">
+          <span class="form-error">
+            Hey, passwords are supposed to match!
+          </span>
+        </label>
+        <p class="help-text" id="example1Hint3">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="large-6 columns">
-      <label>European Cars, Choose One, it can't be the blank option.
-        <select id="select" required>
-          <option value=""></option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </label>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell large-6">
+        <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
+          <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
+        </label>
+      </div>
+      <div class="cell large-6">
+        <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
+          <input type="text" placeholder="https://zurb.com or zurb.com" pattern="website">
+        </label>
+      </div>
     </div>
-    <fieldset class="large-6 columns">
-      <legend>Check these out</legend>
-      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
-      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
-    </fieldset>
   </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
-      <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
-      <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
-      <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
-      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
-    </fieldset>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="cell large-6">
+        <label>European Cars, Choose One, it can't be the blank option.
+          <select id="select" required>
+            <option value=""></option>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </label>
+      </div>
+      <fieldset class="cell large-6">
+        <legend>Check these out</legend>
+        <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+        <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
+        <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+      </fieldset>
+    </div>
   </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
-      <button class="button" type="submit" value="Submit">Submit</button>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <button class="button" type="reset" value="Reset">Reset</button>
-    </fieldset>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <fieldset class="cell large-6">
+        <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
+        <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
+        <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
+        <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
+      </fieldset>
+      <fieldset class="cell large-6">
+        <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
+        <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
+        <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
+        <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
+      </fieldset>
+    </div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <fieldset class="cell large-6">
+        <button class="button" type="submit" value="Submit">Submit</button>
+      </fieldset>
+      <fieldset class="cell large-6">
+        <button class="button" type="reset" value="Reset">Reset</button>
+      </fieldset>
+    </div>
   </div>
 </form>
 ```
@@ -119,15 +130,15 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 <label class="is-invalid-label">
   Required Thing
-  <input type="text" class="is-invalid-input">
-  <span class="form-error is-visible">
+  <input type="text" class="is-invalid-input" aria-describedby="exemple2Error" data-invalid aria-invalid="true">
+  <span class="form-error is-visible" id="exemple2Error">
     Yo, you had better fill this out.
   </span>
 </label>
 
 <label class="is-invalid-label">
   Required Thing
-  <textarea type="text" class="is-invalid-input"></textarea>
+  <textarea type="text" class="is-invalid-input" data-invalid aria-invalid="true"></textarea>
 </label>
 
 ---
@@ -140,14 +151,19 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 
 ```html_example
 <form data-abide novalidate>
-  <label>
+  <div data-abide-error class="sr-only">
+    There are some errors in your form.
+  </div>
+
+  <div>
     Amount
     <div class="input-group">
       <span class="input-group-label">$</span>
-      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+      <input class="input-group-field" id="example3Input" type="number" required pattern="number"/>
     </div>
-    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
-  </label>
+    <label class="form-error" data-form-error-for="example3Input">Amount is required.</label>
+  </div>
+
   <button class="button" type="submit" value="Submit">Submit</button>
 </form>
 ```
@@ -158,13 +174,13 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 ```html
 <form data-abide>
   <!-- Add "display: none" right away -->
-  <div data-abide-error class="alert callout" style="display: none;">
+  <div data-abide-error class="alert callout" aria-live="assertive" style="display: none;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <label>
     Name
-    <input type="text" required>
-    <span class="form-error">This field is required.</span>
+    <input id="example4Input" aria-describedby="example4Error" type="text" required>
+    <span id="example4Error" class="form-error">This field is required.</span>
   </label>
 </form>
 ```
@@ -175,49 +191,57 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 <form data-abide>
   <!-- Add role="alert" -->
   <!-- Add "display: block" -->
-  <div data-abide-error role="alert" class="alert callout" style="display: block;">
+  <div data-abide-error class="alert callout" aria-live="assertive" role="alert" style="display: block;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <!-- Add "is-invalid-label" -->
   <label class="is-invalid-label">
     Name
     <!-- Add "is-invalid-input" -->
-    <input type="text" class="is-invalid-input" required aria-invalid aria-describedby="uuid">
+    <!-- Add aria-invalid="true" -->
+    <input id="example4Input" aria-describedby="example4Error" type="text" required
+      class="is-invalid-input" aria-invalid="true">
     <!-- Add "is-visible" -->
-    <span class="form-error is-visible" id="uuid">This field is required.</span>
+    <span id="example4Error" class="form-error is-visible">This field is required.</span>
   </label>
 </form>
 ```
+
+---
 
 ## Ignored Inputs
 
 ```html
 <form data-abide>
-    <div class="small-12 columns">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-12">
       <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+        <input type="text" placeholder="Use me, or don't" aria-describedby="example5Hint1" data-abide-ignore>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+      <p class="help-text" id="example5Hint1">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
-    <div class="small-12 columns">
+    <div class="cell small-12">
       <label>Disabled!
-        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+        <input type="text" placeholder="Disabled input" aria-describedby="example5Hint2" disabled>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+      <p class="help-text" id="example5Hint2">This input is ignored by Abide using `disabled`</p>
     </div>
-    <div class="small-12 columns">
+    <div class="cell small-12">
       <label>Hidden!
-        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+        <input type="hidden" placeholder="Hidden input" aria-describedby="example5Hint3" >
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+      <p class="help-text" id="example5Hint3">This input is ignored by Abide using `type="hidden"`</p>
     </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
-      <button class="button" type="submit" value="Submit">Submit</button>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <button class="button" type="reset" value="Reset">Reset</button>
-    </fieldset>
+  </div>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <fieldset class="cell small-12">
+        <button class="button" type="submit" value="Submit">Submit</button>
+      </fieldset>
+      <fieldset class="cell small-12">
+        <button class="button" type="reset" value="Reset">Reset</button>
+      </fieldset>
+    </div>
   </div>
 </form>
 ```
@@ -312,7 +336,11 @@ cvv : /^([0-9]){3,4}$/,
 // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
 email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/,
 
-url : /^(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/,
+// From CommonRegexJS (@talyssonoc)
+// https://github.com/talyssonoc/CommonRegexJS/blob/e2901b9f57222bc14069dc8f0598d5f412555411/lib/commonregex.js#L76
+// For more restrictive URL Regexs, see https://mathiasbynens.be/demo/url-regex.
+url: /^((?:(https?|ftps?|file|ssh|sftp):\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))$/,
+
 // abc.de
 domain : /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,8}$/,
 
@@ -344,19 +372,32 @@ website: {
 * Add new patterns and validators before or after foundation is initialized
 
 ```javascript
-$(document).foundation();
-Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
-Foundation.Abide.defaults.validators['greater_than'] =
-function($el,required,parent) {
-  // parameter 1 is jQuery selector
+function myCustomValidator(
+  $el,      /* jQuery element to validate */
+  required, /* is the element required according to the `[required]` attribute */
+  parent    /* parent of the jQuery element `$el` */
+) {
   if (!required) return true;
   var from = $('#'+$el.attr('data-greater-than')).val(),
       to = $el.val();
   return (parseInt(to) > parseInt(from));
 };
+
+// Set default options
+Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
+Foundation.Abide.defaults.validators['greater_than'] = myCustomValidator;
+
+// Initialize Foundation
+$(document).foundation();
 ```
 ```html
 <input id="phone" type="text" pattern="dashes_only" required >
 <input id="min" type="number" required >
 <input id="max" type="number" data-validator="greater_than" data-greater-than="min" required>
 ```
+
+## Accessibility
+
+By default, Abide will add some accessibility attributes to your form elements. It is highly recommended to keep this option active as it improve the usability of your forms for disabled people. [Lean more about Accessibility in Foundation](accessibility.html).
+
+However, if you think the attributes added by Abide are not correct, you can disable it by setting `a11yAttributes` (or `[data-a11y-attributes]`) to `false`.

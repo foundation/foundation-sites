@@ -168,6 +168,7 @@ var DropdownMenu = function (_Plugin) {
     /**
      * Creates a new instance of DropdownMenu.
      * @class
+     * @name DropdownMenu
      * @fires DropdownMenu#init
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -177,7 +178,6 @@ var DropdownMenu = function (_Plugin) {
       this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
 
-      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["Nest"].Feather(this.$element, 'dropdown');
       this._init();
 
       __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].register('DropdownMenu', {
@@ -200,6 +200,8 @@ var DropdownMenu = function (_Plugin) {
   }, {
     key: '_init',
     value: function _init() {
+      __WEBPACK_IMPORTED_MODULE_2__foundation_util_nest__["Nest"].Feather(this.$element, 'dropdown');
+
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
 
@@ -331,10 +333,8 @@ var DropdownMenu = function (_Plugin) {
         });
 
         var nextSibling = function () {
-          if (!$element.is(':last-child')) {
-            $nextElement.children('a:first').focus();
-            e.preventDefault();
-          }
+          $nextElement.children('a:first').focus();
+          e.preventDefault();
         },
             prevSibling = function () {
           $prevElement.children('a:first').focus();

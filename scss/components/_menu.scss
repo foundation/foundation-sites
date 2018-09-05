@@ -26,6 +26,10 @@ $menu-simple-margin: 1rem !default;
 /// @type Color
 $menu-item-color-active: $white !default;
 
+/// Alternative text color of an active menu item..
+/// @type Color
+$menu-item-color-alt-active: $black !default;
+
 /// Background color of an active menu item.
 /// @type Color
 $menu-item-background-active: get-color(primary) !default;
@@ -33,10 +37,6 @@ $menu-item-background-active: get-color(primary) !default;
 /// Spacing between an icon and text in a menu item.
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
-
-/// Background color for an hovered menu item.
-/// @type Color
-$menu-item-background-hover: $light-gray !default;
 
 /// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
 /// But please note that `active` will be removed in upcoming versions.
@@ -47,6 +47,11 @@ $menu-state-back-compat: true !default;
 /// But please note that `menu-centered` will be removed in upcoming versions.
 /// @type Boolean
 $menu-centered-back-compat: true !default;
+
+/// Backward compatibility for using `icon-*` classes without `.icons` classes
+/// But please note that this backward compatibility will be removed in upcoming versions.
+/// @type Boolean
+$menu-icons-back-compat: true !default;
 
 /// Creates the base styles for a Menu.
 @mixin menu-base {
@@ -68,7 +73,6 @@ $menu-centered-back-compat: true !default;
   .button {
     line-height: 1;
     text-decoration: none;
-    white-space: nowrap;
     display: block;
     padding: $menu-items-padding;
   }
@@ -350,7 +354,7 @@ $menu-centered-back-compat: true !default;
 
 @mixin menu-state-active {
   background: $menu-item-background-active;
-  color: $menu-item-color-active;
+  color: color-pick-contrast($menu-item-background-active, ($menu-item-color-active, $menu-item-color-alt-active));
 }
 
 @mixin foundation-menu {
@@ -404,6 +408,16 @@ $menu-centered-back-compat: true !default;
     // Icon Base Styles
     &.icons {
       @include menu-icons;
+    }
+
+    // Backward Compatibility for active state
+    @if $menu-icons-back-compat {
+      &.icon-top,
+      &.icon-right,
+      &.icon-bottom,
+      &.icon-left {
+        @include menu-icons;
+      }
     }
 
     // Icon Left

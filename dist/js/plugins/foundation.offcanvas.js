@@ -182,6 +182,7 @@ var OffCanvas = function (_Plugin) {
     /**
      * Creates a new instance of an off-canvas wrapper.
      * @class
+     * @name OffCanvas
      * @fires OffCanvas#init
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
@@ -342,15 +343,17 @@ var OffCanvas = function (_Plugin) {
     /**
      * Removes the CSS transition/position classes of the off-canvas content container.
      * Removing the classes is important when another off-canvas gets opened that uses the same content container.
+     * @param {Boolean} hasReveal - true if related off-canvas element is revealed.
      * @private
      */
 
   }, {
     key: '_removeContentClasses',
     value: function _removeContentClasses(hasReveal) {
-      this.$content.removeClass(this.contentClasses.base.join(' '));
-      if (hasReveal === true) {
-        this.$content.removeClass(this.contentClasses.reveal.join(' '));
+      if (typeof hasReveal !== 'boolean') {
+        this.$content.removeClass(this.contentClasses.base.join(' '));
+      } else if (hasReveal === false) {
+        this.$content.removeClass('has-reveal-' + this.position);
       }
     }
 
@@ -364,9 +367,10 @@ var OffCanvas = function (_Plugin) {
   }, {
     key: '_addContentClasses',
     value: function _addContentClasses(hasReveal) {
-      this._removeContentClasses();
-      this.$content.addClass('has-transition-' + this.options.transition + ' has-position-' + this.position);
-      if (hasReveal === true) {
+      this._removeContentClasses(hasReveal);
+      if (typeof hasReveal !== 'boolean') {
+        this.$content.addClass('has-transition-' + this.options.transition + ' has-position-' + this.position);
+      } else if (hasReveal === true) {
         this.$content.addClass('has-reveal-' + this.position);
       }
     }
@@ -897,10 +901,9 @@ Triggers.Listeners.Global = {
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
   }
-};
 
-// Global, parses whole document.
-Triggers.Initializers.addClosemeListener = function (pluginName) {
+  // Global, parses whole document.
+};Triggers.Initializers.addClosemeListener = function (pluginName) {
   var yetiBoxes = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 

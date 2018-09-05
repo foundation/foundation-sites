@@ -9,6 +9,12 @@ tags:
   - modal
 ---
 
+
+<div class="callout training-callout">
+  <p>We hope you’re loving these free documentation videos! If you’d like to really accelerate your learning and master the world of front-end development, our Foundation online webinar training is the answer.</p>
+  <a href="http://zurb.com/university/courses" target="_blank">See the upcoming Foundation trainings →</a>
+</div>
+
 ## Basics
 
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to video to an entire grid.
@@ -58,7 +64,7 @@ You can use our handy [close button](close-button.html) styles to do this:
 
 ## Sizing
 
-On small screens, a modal is always 100% of the width of the screen. On medium-sized screens and larger, the width changes to 80%.
+On small screens, a modal is always 100% of the width of the screen. On medium-sized screens and larger, the width changes to 600px (see the `$reveal-width` setting).
 
 The size of a modal can be changed with these sizing classes, which are added to the modal container:
 
@@ -159,7 +165,7 @@ A full-screen modal is 100% of the width *and* height of the window. Add the `.f
 
 <div class="full reveal" id="exampleModal8" data-reveal>
   <p>OH I'M SO FUUUUL</p>
-  <img src="http://placekitten.com/1920/1280" alt="Introspective Cage">
+  <img src="https://placekitten.com/1920/1280" alt="Introspective Cage">
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -206,7 +212,7 @@ To use animations from the Motion UI library, include the <code>data-animation-i
 
 <div class="reveal" id="animatedModal10" data-reveal data-close-on-click="true" data-animation-in="spin-in" data-animation-out="spin-out">
   <h1>Whoa, I'm dizzy!</h1>
-  <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
+  <p class="lead">There are many options for animating modals, check out the Motion UI library to see them all</p>
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>

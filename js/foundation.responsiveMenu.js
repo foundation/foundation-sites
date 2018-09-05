@@ -3,8 +3,8 @@
 import $ from 'jquery';
 
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 import { DropdownMenu } from './foundation.dropdownMenu';
 import { Drilldown } from './foundation.drilldown';
@@ -39,6 +39,7 @@ class ResponsiveMenu extends Plugin {
   /**
    * Creates a new instance of a responsive menu.
    * @class
+   * @name ResponsiveMenu
    * @fires ResponsiveMenu#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.

@@ -75,14 +75,23 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
 This below example is a simplified version of the table of contents on the right side of this page.
 
 ```html
-<div class="large-3 columns" data-sticky-container>
-  <nav class="columns sticky" data-sticky data-anchor="exampleId" data-sticky-on="large">
-    <ul class="vertical menu" data-magellan>
-      <li><a href="#first">First Arrival</a></li>
-      <li><a href="#second">Second Arrival</a></li>
-      <li><a href="#third">Third Arrival</a></li>
-    </ul>
+<div class="cell large-3">
+  <nav class="sticky-container" data-sticky-container>
+    <div class="sticky" data-sticky data-anchor="exampleId" data-sticky-on="large">
+      <ul class="vertical menu" data-magellan>
+        <li><a href="#first">First Arrival</a></li>
+        <li><a href="#second">Second Arrival</a></li>
+        <li><a href="#third">Third Arrival</a></li>
+      </ul>
+    </div>
   </nav>
 </div>
 ```
 
+---
+
+## Browser history
+
+When the `data-deep-link` option is set to `true`, the active section of the magellan is recorded by adding a hash with the active magellan section ID to the browser URL. By default, magellan *replace* the browser history (using `history.replaceState()`).
+
+Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each section the magellan gone through (in most case, this is not recommended).
