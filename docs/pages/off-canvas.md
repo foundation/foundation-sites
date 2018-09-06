@@ -420,6 +420,7 @@ You only have to add the attribute `data-off-canvas-sticky` to every sticky / fi
 <div class="top-bar sticky" data-sticky data-off-canvas-sticky>
   Sticky top bar that will remain sticky after having opened an off-canvas
 </div>
+```
 
 ---
 
