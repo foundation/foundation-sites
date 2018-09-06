@@ -139,7 +139,7 @@ class OffCanvas extends Plugin {
     }
 
     // Find fixed elements that should stay fixed while off-canvas is opened
-    this.$sticky = $('[data-off-canvas-sticky]');
+    this.$sticky = this.$content.find('[data-off-canvas-sticky]');
     if (this.$sticky.length > 0 && this.options.transition === 'push') {
       // If there's at least one match force contentScroll:false because the absolute top value doesn't get recalculated on scroll
       // Limit to push transition since there's no transform scope for overlap
