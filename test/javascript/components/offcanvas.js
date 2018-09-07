@@ -146,6 +146,19 @@ describe('Off Canvas', function() {
 
       plugin.open();
     });
+
+    it('fires openedEnd.zf.offCanvas event', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+
+      $html.one('opened.zf.offCanvas', function () {
+        $html.one('openedEnd.zf.offCanvas', function () {
+          done();
+        });
+      });
+
+      plugin.open();
+    });
   });
 
   describe('close()', function() {
@@ -186,6 +199,22 @@ describe('Off Canvas', function() {
 
       $html.one('opened.zf.offCanvas', function() {
         $html.one('closed.zf.offCanvas', function() {
+          done();
+        });
+
+        plugin.close();
+      });
+
+      // Open it first
+      plugin.open();
+    });
+
+    it('fires closedEnd.zf.offCanvas event', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+
+      $html.one('openedEnd.zf.offCanvas', function() {
+        $html.one('closedEnd.zf.offCanvas', function() {
           done();
         });
 
