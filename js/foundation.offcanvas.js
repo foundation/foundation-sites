@@ -473,7 +473,7 @@ class OffCanvas extends Plugin {
      */
     this.$element.removeClass('is-open');
     this.$element.attr('aria-hidden', 'true');
-    this.$element.trigger('closed.zf.offcanvas');
+    this.$element.trigger('closed.zf.offCanvas');
 
     this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
@@ -514,7 +514,7 @@ class OffCanvas extends Plugin {
        * Fires when the off-canvas menu close transition is done.
        * @event OffCanvas#closedEnd
        */
-      this.$element.trigger('closedEnd.zf.offcanvas');
+      this.$element.trigger('closedEnd.zf.offCanvas');
     });
   }
 
