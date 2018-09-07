@@ -177,17 +177,16 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offCanvas', function() {
-        setTimeout(function() {
-          plugin.close();
-
+      $html.one(Foundation.transitionend($html), function() {
+        $html.one('closedEnd.zf.offCanvas', function() {
           plugin.$element.should.not.have.class('is-open');
           $('body').should.not.have.class('is-off-canvas-open');
           done();
-        }, 1);
+        });
+        plugin.close();
       });
 
-      // Open it first
+      // Open and close the off-canvas
       plugin.open();
     });
 
