@@ -456,6 +456,14 @@ class OffCanvas extends Plugin {
      * @event OffCanvas#opened
      */
     this.$element.trigger('opened.zf.offCanvas');
+
+    /**
+     * Fires when the off-canvas menu close transition is done.
+     * @event OffCanvas#closedEnd
+     */
+    this.$element.one(transitionend(this.$element), () => {
+      this.$element.trigger('openedEnd.zf.offCanvas');
+    });
   }
 
   /**
