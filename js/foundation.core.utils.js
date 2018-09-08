@@ -90,4 +90,4 @@ function onLoad($elem, handler) {
   return eventType;
 }
 
-export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad};
+export { rtl, GetYoDigits, RegExpEscape, transitionend, onLoad };

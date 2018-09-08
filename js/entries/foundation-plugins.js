@@ -1,3 +1,4 @@
+// TODO: remove in v6.6.0 in favor of "js/foundation"
 import { Foundation as Core } from '../foundation.core';
 import * as CoreUtils from '../foundation.core.utils';
 import { Box } from '../foundation.util.box'
@@ -39,6 +40,7 @@ export {
   Keyboard,
   MediaQuery,
   Motion,
+  Move,
   Nest,
   Timer,
   Touch,
