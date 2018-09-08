@@ -701,5 +701,4 @@ Abide.defaults = {
   }
 }
 
-export { Abide };
-export default Abide;
+export {Abide};

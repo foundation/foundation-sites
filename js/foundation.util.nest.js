@@ -64,5 +64,4 @@ const Nest = {
   }
 }
 
-export { Nest };
-export default Nest;
+export {Nest};

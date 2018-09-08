@@ -159,5 +159,4 @@ function getKeyCodes(kcs) {
   return k;
 }
 
-export { Keyboard };
-export default Keyboard;
+export {Keyboard};

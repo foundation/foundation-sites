@@ -169,5 +169,4 @@ Toggler.defaults = {
   animate: false
 };
 
-export { Toggler };
-export default Toggler;
+export {Toggler};

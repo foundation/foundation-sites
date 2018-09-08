@@ -639,5 +639,4 @@ Drilldown.defaults = {
   // holdOpen: false
 };
 
-export { Drilldown };
-export default Drilldown;
+export {Drilldown};

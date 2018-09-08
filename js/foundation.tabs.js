@@ -504,5 +504,4 @@ Tabs.defaults = {
   panelActiveClass: 'is-active'
 };
 
-export { Tabs };
-export default Tabs;
+export {Tabs};

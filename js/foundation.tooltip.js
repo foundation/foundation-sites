@@ -464,5 +464,4 @@ Tooltip.defaults = {
  * TODO utilize resize event trigger
  */
 
-export { Tooltip };
-export default Tooltip;
+export {Tooltip};

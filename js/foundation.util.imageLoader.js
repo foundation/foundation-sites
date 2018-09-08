@@ -42,5 +42,4 @@ function onImagesLoaded(images, callback){
   }
 }
 
-export {  onImagesLoaded  };
-export default  onImagesLoaded ;
+export { onImagesLoaded };

@@ -599,5 +599,4 @@ OffCanvas.defaults = {
   trapFocus: false
 }
 
-export { OffCanvas };
-export default OffCanvas;
+export {OffCanvas};

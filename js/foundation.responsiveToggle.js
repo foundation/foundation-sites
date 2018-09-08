@@ -153,5 +153,4 @@ ResponsiveToggle.defaults = {
   animate: false
 };
 
-export {  ResponsiveToggle  };
-export default  ResponsiveToggle ;
+export { ResponsiveToggle };

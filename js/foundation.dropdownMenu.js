@@ -482,5 +482,4 @@ DropdownMenu.defaults = {
   forceFollow: true
 };
 
-export { DropdownMenu };
-export default DropdownMenu;
+export {DropdownMenu};

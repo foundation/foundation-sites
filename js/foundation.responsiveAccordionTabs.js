@@ -237,5 +237,4 @@ class ResponsiveAccordionTabs extends Plugin{
 
 ResponsiveAccordionTabs.defaults = {};
 
-export { ResponsiveAccordionTabs };
-export default ResponsiveAccordionTabs;
+export {ResponsiveAccordionTabs};

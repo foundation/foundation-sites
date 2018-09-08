@@ -257,5 +257,4 @@ Triggers.init = function ($, Foundation) {
   }
 }
 
-export { Triggers };
-export default Triggers;
+export {Triggers};

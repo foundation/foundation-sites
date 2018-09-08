@@ -528,5 +528,4 @@ Orbit.defaults = {
   useMUI: true
 };
 
-export { Orbit };
-export default Orbit;
+export {Orbit};
