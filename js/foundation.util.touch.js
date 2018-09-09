@@ -19,7 +19,6 @@ function onTouchEnd(e) {
   this.removeEventListener('touchmove', onTouchMove);
   this.removeEventListener('touchend', onTouchEnd);
 
-
   // If the touch did not moved, consider it as a "tap"
   if (!didMoved) {
     var tapEvent = $.Event('tap', startEvent || e);
