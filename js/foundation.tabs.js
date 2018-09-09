@@ -101,36 +101,38 @@ class Tabs extends Plugin {
       }
     }
 
-     //current context-bound function to open tabs on page load or history hashchange
+     // Current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      // if there is no anchor, return to the initial tab
+      // If there is no anchor, return to the initial panel
       if (!anchor.length && this._initialAnchor) {
         anchor = this._initialAnchor;
       }
 
-      //need a hash and a relevant anchor in this tabset
-      if (anchor.length) {
-        var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
-        var $link = this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
-        if ($link.length) {
-          this.selectTab($(anchor), true);
+      var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
+      var $anchor = anchorNoHash && $(`#${anchorNoHash}`);
+      var $link = anchor && this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
 
-          //roll up a little to show the titles
-          if (this.options.deepLinkSmudge) {
-            var offset = this.$element.offset();
-            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
-          }
+      // If there is an anchor for the hash, select it
+      if ($anchor && $anchor.length && $link && $link.length) {
+        this.selectTab($anchor, true);
+      }
 
-          /**
-            * Fires when the zplugin has deeplinked at pageload
-            * @event Tabs#deeplink
-            */
-           this.$element.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
-         }
-       }
-     }
+      // Roll up a little to show the titles
+      if (this.options.deepLinkSmudge) {
+        var offset = this.$element.offset();
+        $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+      }
+
+      if ($anchor && $link) {
+        /**
+         * Fires when the zplugin has deeplinked at pageload
+         * @event Tabs#deeplink
+         */
+        this.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
+      }
+    }
 
     //use browser to open a tab, if it exists in this tabset
     if (this.options.deepLink) {
@@ -360,6 +362,7 @@ class Tabs extends Plugin {
 
     this._handleTabChange($target, historyHandled);
   };
+
   /**
    * Sets the height of each panel to the height of the tallest panel.
    * If enabled in options, gets called on media query change.
