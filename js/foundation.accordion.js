@@ -99,7 +99,7 @@ class Accordion extends Plugin {
 
       if ($anchor && $link) {
         /**
-         * Fires when the zplugin has deeplinked at pageload
+         * Fires when the plugin has deeplinked at pageload
          * @event Accordion#deeplink
          */
         this.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);

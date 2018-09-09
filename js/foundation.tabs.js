@@ -131,7 +131,7 @@ class Tabs extends Plugin {
 
       if ($anchor && $link) {
         /**
-         * Fires when the zplugin has deeplinked at pageload
+         * Fires when the plugin has deeplinked at pageload
          * @event Tabs#deeplink
          */
         this.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
@@ -333,7 +333,7 @@ class Tabs extends Plugin {
       this._collapseTab($activeTab);
 
       /**
-      * Fires when the zplugin has successfully collapsed tabs.
+      * Fires when the plugin has successfully collapsed tabs.
       * @event Tabs#collapse
       */
       this.$element.trigger('collapse.zf.tabs', [$activeTab]);
