@@ -118,6 +118,10 @@ class Tabs extends Plugin {
       if ($anchor && $anchor.length && $link && $link.length) {
         this.selectTab($anchor, true);
       }
+      // Otherwise, collapse everything
+      else {
+        this._collapse();
+      }
 
       // Roll up a little to show the titles
       if (this.options.deepLinkSmudge) {
