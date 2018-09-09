@@ -234,18 +234,10 @@ class Tabs extends Plugin {
    */
   _handleTabChange($target, historyHandled) {
 
-    /**
-     * Check for active class on target. Collapse if exists.
-     */
+    // With `activeCollapse`, if the target is the active Tab, collapse it.
     if ($target.hasClass(`${this.options.linkActiveClass}`)) {
         if(this.options.activeCollapse) {
-            this._collapseTab($target);
-
-           /**
-            * Fires when the zplugin has successfully collapsed tabs.
-            * @event Tabs#collapse
-            */
-            this.$element.trigger('collapse.zf.tabs', [$target]);
+            this._collapse();
         }
         return;
     }
@@ -321,6 +313,25 @@ class Tabs extends Plugin {
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
       .attr({ 'aria-hidden': 'true' })
+  }
+
+  /**
+   * Collapses the active Tab.
+   * @fires Tabs#collapse
+   * @function
+   */
+  _collapse() {
+    var $activeTab = this.$element.find(`.${this.options.linkClass}.${this.options.linkActiveClass}`);
+
+    if ($activeTab.length) {
+      this._collapseTab($activeTab);
+
+      /**
+      * Fires when the zplugin has successfully collapsed tabs.
+      * @event Tabs#collapse
+      */
+      this.$element.trigger('collapse.zf.tabs', [$activeTab]);
+    }
   }
 
   /**
