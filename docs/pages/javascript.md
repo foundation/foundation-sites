@@ -79,8 +79,8 @@ Sadly, the "static analysis" promised by these bundlers to detect unused code in
 ```js
 // /!\ Don't use this if tree shaking works with standard named imports.
 // Only Dropdown and DropdownMenu will be included in your application.
-import Dropdown from 'foundation-sites/js/foundation.dropdown';
-import DropdownMenu from 'foundation-sites/js/foundation.dropdownMenu';
+import { Dropdown } from 'foundation-sites/js/foundation.dropdown';
+import { DropdownMenu } from 'foundation-sites/js/foundation.dropdownMenu';
 ```
 
 ---
