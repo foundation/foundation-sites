@@ -63,6 +63,26 @@ var Foundation = require('foundation-sites');
 var $dropdown = new Dropdown('#mydropdown');
 ```
 
+#### Tree Shaking
+
+Many bundlers like Webpack, Rollup or Parcel support tree shaking. It consists of the removing the unused code parts from your codebase or your dependencies. Take a look at these articles to know how it works and how to enable it: [How To Clean Up Your JavaScript Build With Tree Shaking](https://www.engineyard.com/blog/tree-shaking), [Why Webpack 2's Tree Shaking is not as effective as you think](https://advancedweb.hu/2017/02/07/treeshaking/) and [Reduce JavaScript Payloads with Tree Shaking](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/).
+
+As tree shaking is only available in ES6, we recommend to import plugins like the following:
+
+```js
+// Only Dropdown and DropdownMenu will be included in your application.
+import { Dropdown, DropdownMenu } from 'foundation-sites';
+```
+
+Sadly, the "static analysis" promised by these bundlers to detect unused code in dependencies does not always work. Depending on your build environment, you may have to manually import the Foundation plugins to make it work correctly:
+
+```js
+// /!\ Don't use this if tree shaking works with standard named imports.
+// Only Dropdown and DropdownMenu will be included in your application.
+import Dropdown from 'foundation-sites/js/foundation.dropdown';
+import DropdownMenu from 'foundation-sites/js/foundation.dropdownMenu';
+```
+
 ---
 
 ## Initializing
