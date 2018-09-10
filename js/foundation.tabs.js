@@ -331,7 +331,7 @@ class Tabs extends Plugin {
       idStr = `#${idStr}`;
     }
 
-    var $target = this.$tabTitles.find(`[href$="${idStr}"]`).parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.has(`[href$="${idStr}"]`);
 
     this._handleTabChange($target, historyHandled);
   };
