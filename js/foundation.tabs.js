@@ -253,12 +253,10 @@ class Tabs extends Plugin {
 
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
-      var anchor = $target.find('a').attr('href');
-
       if (this.options.updateHistory) {
-        history.pushState({}, '', anchor);
+        history.pushState({}, '', hash);
       } else {
-        history.replaceState({}, '', anchor);
+        history.replaceState({}, '', hash);
       }
     }
 
