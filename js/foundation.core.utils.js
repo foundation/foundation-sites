@@ -141,4 +141,4 @@ function ignoreMousedisappear(handler, { ignoreLeaveWindow = false, ignoreReappe
 }
 
 
-export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, ignoreMousedisappear};
+export { rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, ignoreMousedisappear };

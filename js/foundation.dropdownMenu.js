@@ -108,15 +108,16 @@ class DropdownMenu extends Plugin {
 
       if (hasSub) {
         if (hasClicked) {
-          if (!_this.options.closeOnClick || (!_this.options.clickOpen && !hasTouch) || (_this.options.forceFollow && hasTouch)) { return; }
-          else {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            _this._hide($elem);
+          if (!_this.options.closeOnClick
+            || (!_this.options.clickOpen && !hasTouch)
+            || (_this.options.forceFollow && hasTouch)) {
+            return;
           }
-        } else {
           e.preventDefault();
-          e.stopImmediatePropagation();
+          _this._hide($elem);
+        }
+        else {
+          e.preventDefault();
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
@@ -204,9 +205,6 @@ class DropdownMenu extends Plugin {
           _this._hide(_this.$element);
           _this.$menuItems.eq(0).children('a').focus(); // focus to first element
           e.preventDefault();
-        },
-        handled: function() {
-          e.stopImmediatePropagation();
         }
       };
 
@@ -275,8 +273,8 @@ class DropdownMenu extends Plugin {
     const $body = $(document.body);
     this._removeBodyHandler();
     $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
-      var $link = this.$element.find(e.target);
-      if ($link.length) return;
+      var isItself = !!$(e.target).closest(this.$element).length;
+      if (isItself) return;
 
       this._hide();
       this._removeBodyHandler();
