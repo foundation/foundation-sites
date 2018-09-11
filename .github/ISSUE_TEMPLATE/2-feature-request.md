@@ -4,45 +4,69 @@ about: Something is missing or could be improved
 
 ---
 
-<!--- --------------------------------------------------------------------- -->
-<!---                 Please fill the following template                    -->
-<!---                 Your issue may be ignored otherwise                   -->
-<!--- --------------------------------------------------------------------- -->
-<!---  Only submit feature requests here. For help or questions to the      -->
-<!---  community, see the forum: https://foundation.zurb.com/forum          -->
+<!------------------------------------------------------------------------------
+│                  Please fill the following template.
+│           For more information, see the CONTRIBUTING.md document
+│            
+│       ⚠ Only submit feature requests here. For help or questions to
+│       the community, see the forum: https://foundation.zurb.com/forum
+└------------------------------------------------------------------------------>
 
 ## What is missing?
-<!--- What you want to be added or improved and how you would use it?       -->
+<!-------------------------------------------------------------------
+│   How the feature should work / how you would use it ?
+└------------------------------------------------------------------->
 
-## Why is it important?
-<!--- Why would this feature benefit everyone? What is the current          -->
-<!--- workaround and how is it insufficient or inadequate?                  -->
+...
+
+
+## What is wrong now ?
+<!-------------------------------------------------------------------
+|   What are the current workarounds and how are they insufficient ?
+└------------------------------------------------------------------->
+
+...
+
 
 ## Possible Solution
-<!--- Not obligatory, but suggest a fix/reason for the bug,                 -->
-<!--- or ideas how to implement the addition or change.                     -->
+<!-------------------------------------------------------------------
+│   [Optional] You can suggest ideas how to implement the feature.
+└------------------------------------------------------------------->
+
+...
+
 
 ## Context
-<!--- How has this issue affected you? What are you trying to accomplish?   -->
-<!--- Providing context helps us come up with a solution that is most       -->
-<!--- useful in the real world                                              -->
+<!-------------------------------------------------------------------
+│   [Optional] How has this issue affected you? What are you trying
+│   to accomplish? Providing context helps us come up with a solution
+│   that is most useful in the real world.
+└------------------------------------------------------------------->
+
+...
+
 
 ## Your Environment
-<!--- Include as many relevant details about the context and environment    -->
-<!--- you're using. You can also provide logs if relevant.                  -->
-- Foundation version(s) used:
-- Browser(s) name and version(s):
-- Operating System and version (desktop or mobile):
+<!-------------------------------------------------------------------
+│   Include as many relevant details about the context and environment
+│   you are using. You can also provide logs if relevant.
+└------------------------------------------------------------------->
+- Foundation version(s) used: 
+- Browser(s) name and version(s): 
+- Device, Operating System and version: 
 
-## Checklist (all required):
-<!--- Go over all the following points, and put an `x` in the boxes.        -->
-<!--- If you're unsure about any of these, don't hesitate to ask.           -->
+
+## Checklist
+<!-------------------------------------------------------------------
+│   Please ensure that all the following points are respected.
+│   Fill with [x] the boxes once the rule is respected.
+└------------------------------------------------------------------->
 - [ ] I have read and follow the CONTRIBUTING.md document.
-- [ ] There are no other issues similar to this one.
-- [ ] The issue title is descriptive.
-- [ ] The template is correctly filled.
+- [ ] here are no other issues similar to this one.
+- [ ] The issue title and template are correctly filled.
 
-<!--- --------------------------------------------------------------------- -->
-<!---       For more information, see the CONTRIBUTING.md document          -->
-<!---            Thank you for your issue and happy coding ;)               -->
-<!--- --------------------------------------------------------------------- -->
+
+<!------------------------------------------------------------------------------
+            For more information, see the CONTRIBUTING.md document
+              Thank you for your pull request and happy coding ;)
+------------------------------------------------------------------------------->

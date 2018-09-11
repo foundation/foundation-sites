@@ -237,7 +237,7 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 ## Block Grids
 
-To define cell widths within a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x` or `grid-y`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
+To define cell widths within a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
 
 <div class="callout primary">This example uses padding grid but this can be used with margin grid too.</div>
 
@@ -255,6 +255,8 @@ To define cell widths within a direction-level, instead of the individual cell l
   <div class="cell">cell</div>
 </div>
 ```
+
+Block Grids are not availaible for the vertical grids. Use the [basic layout](#vertical-grids) with a size applied on each cell of the grid instead.
 
 ---
 

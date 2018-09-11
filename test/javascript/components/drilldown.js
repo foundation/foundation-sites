@@ -4,12 +4,11 @@ describe('Drilldown Menu', function() {
   var template = `<ul class="menu" data-drilldown style="width: 200px" id="m1">
     <li>
       <a href="#">Item 1</a>
-      <ul class="menu">
+      <ul id="Menu-1" class="menu">
         <li>
           <a href="#">Item 1A</a>
-          <ul class="menu">
+          <ul id="Menu-1A" class="menu">
             <li><a href="#Item-1Aa">Item 1Aa</a></li>
-            <li><a href="#Item-1Ba">Item 1Ba</a></li>
           </ul>
         </li>
         <li><a href="#Item-1B">Item 1B</a></li>
@@ -18,13 +17,22 @@ describe('Drilldown Menu', function() {
     </li>
     <li>
       <a href="#">Item 2</a>
-      <ul class="menu">
+      <ul id="Menu-2" class="menu">
         <li><a href="#Item-2A">Item 2A</a></li>
         <li><a href="#Item-2B">Item 2B</a></li>
       </ul>
     </li>
     <li><a href="#Item-3"> Item 3</a></li>
   </ul>`;
+
+  var templateWithToggler = `
+    <div>
+      <button id="trigger" data-toggle="target" type="button">Toggler</button>
+      <div id="target" class="is-hidden" data-toggler="is-hidden">
+        ${template}
+      </div>
+    </div>
+  `;
 
   afterEach(function() {
     plugin.destroy();
@@ -218,6 +226,56 @@ describe('Drilldown Menu', function() {
     });
   });
 
+  describe('toggle events', function () {
+
+    var $trigger, $target, $wrapper, togglerPlugin;
+
+    beforeEach(function () {
+      $html = $(templateWithToggler).appendTo('body');
+      $trigger = $html.find('#trigger');
+      $target = $html.find('#target');
+      $target = $html.find('#target');
+
+      togglerPlugin = new Foundation.Toggler($target, {});
+      plugin = new Foundation.Drilldown($html.find('[data-drilldown]'), { autoHeight: true });
+
+      $wrapper = $html.find('.is-drilldown');
+    });
+
+    it('correctly resize when opened', function () {
+      // Open the Drilldown
+      $trigger.focus().trigger('click');
+
+      // 3 items (including the back button) is around 115px height
+      $wrapper.height().should.be.within(110, 120);
+    });
+
+    it('correctly resize when closed', function () {
+      // Open then close the Drilldown
+      $trigger.focus().trigger('click');
+      $trigger.focus().trigger('click');
+
+      $wrapper.height().should.be.equal(0);
+    });
+
+    it('correctly resize when reopened on a submenu', function () {
+      // Open the Drilldown
+      $trigger.focus().trigger('click');
+      // Show a submenu with a smaller height
+      plugin._showMenu($html.find('#Menu-1A'));
+      // Close then reopen the the Drilldown
+      $trigger.focus().trigger('click');
+      $trigger.focus().trigger('click');
+
+      // 2 items (including the back button) is around 75px height
+      $wrapper.height().should.be.within(70, 80);
+    });
+
+    afterEach(function () {
+      togglerPlugin.destroy();
+    });
+
+  });
 
   describe('keyboard events', function() {
     // Currently not testable, as triggered event won't move on focus

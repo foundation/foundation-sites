@@ -41,8 +41,13 @@ supercollider
   .adapter('sass')
   .adapter('js');
 
-// Assembles the layout, pages, and partials in the docs folder
-gulp.task('docs', function() {
+// Build the search entries
+gulp.task('docs:search', function (done) {
+  supercollider.buildSearch('_build/data/search.json', done);
+});
+
+// Assembles the modified layout, pages, and partials in the docs folder
+gulp.task('docs:pages', function() {
   return gulp.src('docs/pages/**/*')
     .pipe(newer({
       dest: '_build',
@@ -51,30 +56,28 @@ gulp.task('docs', function() {
     .pipe(supercollider.init())
     .pipe(panini(PANINI_CONFIG))
     .pipe(cacheBust({
-        basePath: '_build/'
+      basePath: '_build/'
     }))
-    .pipe(gulp.dest('_build'))
-    .on('finish', buildSearch);
+    .pipe(gulp.dest('_build'));
 });
 
-gulp.task('docs:all', function() {
+// Assembles layout, pages, and partials in the docs folder, even if not modified
+gulp.task('docs:pages:all', function() {
   panini.refresh();
 
   return gulp.src('docs/pages/**/*')
     .pipe(supercollider.init())
     .pipe(panini(PANINI_CONFIG))
     .pipe(cacheBust({
-        basePath: '_build/'
+      basePath: '_build/'
     }))
-    .pipe(gulp.dest('_build'))
-    .on('finish', buildSearch);
+    .pipe(gulp.dest('_build'));
 });
 
-function buildSearch() {
-  supercollider.buildSearch('_build/data/search.json', function() {});
-}
-
-gulp.task('docs:debug', ['docs:all'], function(cb) {
+gulp.task('docs:debug', gulp.series('docs:all', function(done) {
   var output = JSON.stringify(supercollider.tree, null, '  ');
-  require('fs').writeFile('./_debug.json', output, cb);
-});
+  require('fs').writeFile('./_debug.json', output, done);
+}));
+
+gulp.task('docs', gulp.series('docs:pages', 'docs:search'));
+gulp.task('docs:all', gulp.series('docs:pages:all', 'docs:search'));

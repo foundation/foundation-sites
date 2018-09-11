@@ -159,7 +159,6 @@ class Tabs extends Plugin {
       .off('click.zf.tabs')
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
-        e.stopPropagation();
         _this._handleTabChange($(this));
       });
   }
@@ -208,7 +207,6 @@ class Tabs extends Plugin {
           _this._handleTabChange($nextElement);
         },
         handled: function() {
-          e.stopPropagation();
           e.preventDefault();
         }
       });
@@ -254,12 +252,10 @@ class Tabs extends Plugin {
 
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
-      var anchor = $target.find('a').attr('href');
-
       if (this.options.updateHistory) {
-        history.pushState({}, '', anchor);
+        history.pushState({}, '', hash);
       } else {
-        history.replaceState({}, '', anchor);
+        history.replaceState({}, '', hash);
       }
     }
 
@@ -335,7 +331,7 @@ class Tabs extends Plugin {
       idStr = idStr.slice(1);
     }
 
-    var $target = this.$tabTitles.find(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first().parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.has(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first();
 
     this._handleTabChange($target, historyHandled);
   };

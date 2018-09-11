@@ -19,7 +19,10 @@ describe('Orbit', function() {
       </li>
     </ul>
     <nav class="orbit-bullets">
-      <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+      <button class="is-active" data-slide="0">
+        <span class="show-for-sr">First slide details.</span>
+        <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+      </button>
       <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
       <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
       <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
@@ -141,7 +144,7 @@ describe('Orbit', function() {
   });
 
   describe('updateBullets()', function() {
-    it('updates the bullets', function() {
+    it('updates the active bullet', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Orbit($html, {});
 
@@ -149,6 +152,41 @@ describe('Orbit', function() {
 
       $html.find('.orbit-bullets [data-slide]').eq(0).should.not.have.class('is-active');
       $html.find('.orbit-bullets [data-slide]').eq(1).should.have.class('is-active');
+    });
+
+    it('moves the explicit active slide label to the active bullet', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Orbit($html, {});
+
+      plugin.changeSlide(true);
+
+      $html.find('.orbit-bullets [data-slide]').eq(0).children('span').length.should.equal(1);
+      $html.find('.orbit-bullets [data-slide]').eq(1).children('span').length.should.equal(2);
+    });
+
+    it('moves the implicit active slide label to the active bullet', function() {
+      $html = $(template).appendTo('body');
+      // Remove the explicit attribute to make this test
+      // The "implicit" active slide label is the exceeding `span` element
+      $html.find('[data-slide-active-label]').removeAttr('data-slide-active-label');
+      plugin = new Foundation.Orbit($html, {});
+
+      plugin.changeSlide(true);
+
+      $html.find('.orbit-bullets [data-slide]').eq(0).children('span').length.should.equal(1);
+      $html.find('.orbit-bullets [data-slide]').eq(1).children('span').length.should.equal(2);
+    });
+
+    it('moves nothing if there is no implicit active slide label', function() {
+      $html = $(template).appendTo('body');
+      // Remove the active slide label to make this test
+      $html.find('[data-slide-active-label]').remove();
+      plugin = new Foundation.Orbit($html, {});
+
+      plugin.changeSlide(true);
+
+      $html.find('.orbit-bullets [data-slide]').eq(0).children('span').length.should.equal(1);
+      $html.find('.orbit-bullets [data-slide]').eq(1).children('span').length.should.equal(1);
     });
   });
 
