@@ -19,6 +19,8 @@
     "test:javascript:browserstack": "npm run test:javascript:transpile && browserstack-runner",
     "test:javascript:ci": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html && browserstack-runner",
     "test:visual": "gulp test --color",
+    "lockdeps": "npm i && rimraf yarn.lock && yarn import && rimraf shrinkwrap.yaml && pnpm import",
+    "relockdeps": "rimraf package-lock.json && npm run lockdeps",
     "deploy": "gulp deploy --color",
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",

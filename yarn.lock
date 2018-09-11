@@ -886,11 +886,11 @@ acorn@5.X, acorn@^5.0.0, acorn@^5.0.3, acorn@^5.5.0, acorn@^5.6.0, acorn@^5.6.2:
 
 acorn@^2.1.0, acorn@^2.4.0:
   version "2.7.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
+  resolved "http://registry.npmjs.org/acorn/-/acorn-2.7.0.tgz#ab6e7d9d886aaca8b085bc3312b79a198433f0e7"
 
 acorn@^3.0.4, acorn@^3.3.0:
   version "3.3.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
+  resolved "http://registry.npmjs.org/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
 
 after@0.8.2:
   version "0.8.2"
@@ -2139,7 +2139,7 @@ commander@*, commander@2.17.x, commander@^2.11.0, commander@^2.2.0, commander@^2
 
 commander@2.15.1:
   version "2.15.1"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
+  resolved "http://registry.npmjs.org/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
 
 commander@~2.13.0:
   version "2.13.0"
@@ -2189,7 +2189,7 @@ concat-with-sourcemaps@^1.0.0:
 
 config-chain@~1.1.5:
   version "1.1.11"
-  resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.11.tgz#aba09747dfbe4c3e70e766a6e41586e1859fc6f2"
+  resolved "http://registry.npmjs.org/config-chain/-/config-chain-1.1.11.tgz#aba09747dfbe4c3e70e766a6e41586e1859fc6f2"
   dependencies:
     ini "^1.3.4"
     proto-list "~1.2.1"
@@ -3025,7 +3025,7 @@ es6-map@^0.1.3:
 
 es6-promise@^3.0.2:
   version "3.3.1"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
+  resolved "http://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
 
 es6-promise@^4.0.3, es6-promise@^4.0.5:
   version "4.2.4"
@@ -4578,7 +4578,7 @@ htmlparser2@~3.8.1:
 
 http-errors@1.6.3, http-errors@~1.6.2:
   version "1.6.3"
-  resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
+  resolved "http://registry.npmjs.org/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
   dependencies:
     depd "~1.1.2"
     inherits "2.0.3"
@@ -5340,7 +5340,7 @@ json5@^0.5.0:
 
 jsonfile@^2.1.0:
   version "2.4.0"
-  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
+  resolved "http://registry.npmjs.org/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
   optionalDependencies:
     graceful-fs "^4.1.6"
 
@@ -5552,7 +5552,7 @@ loader-utils@^1.0.2, loader-utils@^1.1.0:
 
 localtunnel@1.9.0:
   version "1.9.0"
-  resolved "https://registry.yarnpkg.com/localtunnel/-/localtunnel-1.9.0.tgz#8ffecdcf8c8a14f62df1056cf9d54acbb0bb9a8f"
+  resolved "http://registry.npmjs.org/localtunnel/-/localtunnel-1.9.0.tgz#8ffecdcf8c8a14f62df1056cf9d54acbb0bb9a8f"
   dependencies:
     axios "0.17.1"
     debug "2.6.8"
@@ -6486,7 +6486,7 @@ natural-compare@^1.4.0:
 
 needle@^2.2.0:
   version "2.2.0"
-  resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.0.tgz#f14efc69cee1024b72c8b21c7bdf94a731dc12fa"
+  resolved "http://registry.npmjs.org/needle/-/needle-2.2.0.tgz#f14efc69cee1024b72c8b21c7bdf94a731dc12fa"
   dependencies:
     debug "^2.1.2"
     iconv-lite "^0.4.4"
@@ -7551,7 +7551,7 @@ read-pkg@^4.0.1:
 
 "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.5, readable-stream@^2.3.6:
   version "2.3.6"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.3"
@@ -7563,7 +7563,7 @@ read-pkg@^4.0.1:
 
 readable-stream@1.1, "readable-stream@>=1.1.13-1 <1.2.0-0", readable-stream@^1.0.33, readable-stream@~1.1.9:
   version "1.1.14"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -7572,7 +7572,7 @@ readable-stream@1.1, "readable-stream@>=1.1.13-1 <1.2.0-0", readable-stream@^1.0
 
 "readable-stream@>=1.0.33-1 <1.1.0-0", readable-stream@~1.0.17, readable-stream@~1.0.33:
   version "1.0.34"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -7581,7 +7581,7 @@ readable-stream@1.1, "readable-stream@>=1.1.13-1 <1.2.0-0", readable-stream@^1.0
 
 readable-stream@~2.0.0:
   version "2.0.6"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.0.6.tgz#8f90341e68a53ccc928788dacfcd11b36eb9b78e"
+  resolved "http://registry.npmjs.org/readable-stream/-/readable-stream-2.0.6.tgz#8f90341e68a53ccc928788dacfcd11b36eb9b78e"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -8835,7 +8835,7 @@ swig@1.4.0:
 
 table@^3.7.8:
   version "3.8.3"
-  resolved "https://registry.yarnpkg.com/table/-/table-3.8.3.tgz#2bbc542f0fda9861a755d3947fefd8b3f513855f"
+  resolved "http://registry.npmjs.org/table/-/table-3.8.3.tgz#2bbc542f0fda9861a755d3947fefd8b3f513855f"
   dependencies:
     ajv "^4.7.0"
     ajv-keywords "^1.0.0"
@@ -8846,7 +8846,7 @@ table@^3.7.8:
 
 table@^4.0.3:
   version "4.0.3"
-  resolved "https://registry.yarnpkg.com/table/-/table-4.0.3.tgz#00b5e2b602f1794b9acaf9ca908a76386a7813bc"
+  resolved "http://registry.npmjs.org/table/-/table-4.0.3.tgz#00b5e2b602f1794b9acaf9ca908a76386a7813bc"
   dependencies:
     ajv "^6.0.1"
     ajv-keywords "^3.0.0"
@@ -9133,7 +9133,7 @@ tunnel-agent@^0.6.0:
 
 tunnel@0.0.3:
   version "0.0.3"
-  resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.3.tgz#e8f988115ca7be9d076c7a1fae4788be708f0cf1"
+  resolved "http://registry.npmjs.org/tunnel/-/tunnel-0.0.3.tgz#e8f988115ca7be9d076c7a1fae4788be708f0cf1"
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
@@ -9849,7 +9849,7 @@ yargs@12.0.1, yargs@^12.0.1:
 
 yargs@6.4.0:
   version "6.4.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.4.0.tgz#816e1a866d5598ccf34e5596ddce22d92da490d4"
+  resolved "http://registry.npmjs.org/yargs/-/yargs-6.4.0.tgz#816e1a866d5598ccf34e5596ddce22d92da490d4"
   dependencies:
     camelcase "^3.0.0"
     cliui "^3.2.0"
@@ -9868,7 +9868,7 @@ yargs@6.4.0:
 
 yargs@6.6.0:
   version "6.6.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
+  resolved "http://registry.npmjs.org/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
   dependencies:
     camelcase "^3.0.0"
     cliui "^3.2.0"
@@ -9922,13 +9922,13 @@ yargs@^8.0.1:
 
 yargs@~1.2.6:
   version "1.2.6"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-1.2.6.tgz#9c7b4a82fd5d595b2bf17ab6dcc43135432fe34b"
+  resolved "http://registry.npmjs.org/yargs/-/yargs-1.2.6.tgz#9c7b4a82fd5d595b2bf17ab6dcc43135432fe34b"
   dependencies:
     minimist "^0.1.0"
 
 yargs@~3.10.0:
   version "3.10.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
+  resolved "http://registry.npmjs.org/yargs/-/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
   dependencies:
     camelcase "^1.0.2"
     cliui "^2.1.0"
@@ -9937,7 +9937,7 @@ yargs@~3.10.0:
 
 yargs@~3.5.4:
   version "3.5.4"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-3.5.4.tgz#d8aff8f665e94c34bd259bdebd1bfaf0ddd35361"
+  resolved "http://registry.npmjs.org/yargs/-/yargs-3.5.4.tgz#d8aff8f665e94c34bd259bdebd1bfaf0ddd35361"
   dependencies:
     camelcase "^1.0.2"
     decamelize "^1.0.0"
