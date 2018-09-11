@@ -23,6 +23,19 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="cell small-2 text-right">
+    <a href="https://www.npmjs.com/package/foundation-sites">
+      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-pnpm.svg" alt="PNPM">
+    </a>
+  </div>
+  <div class="cell small-10">
+    <div class="docs-code">
+      <code class="bash">
+        pnpm install foundation-sites
+      </code>
+    </div>
+  </div>
+
+  <div class="cell small-2 text-right">
     <a href="https://yarnpkg.com/en/package/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-yarn.svg" alt="Yarn">
     </a>
