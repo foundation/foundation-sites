@@ -1,12 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl, onLeaveElement } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.core.utils';
-import { Plugin } from './foundation.core.plugin';
-
 
 /**
  * DropdownMenu module.
@@ -135,17 +134,19 @@ class DropdownMenu extends Plugin {
     }
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
         var $elem = $(this),
-            hasSub = $elem.hasClass(parClass);
+          hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
+      });
+
+      onLeaveElement(this.$menuItems, function (e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -153,19 +154,8 @@ class DropdownMenu extends Plugin {
 
           clearTimeout($elem.data('_delay'));
           $elem.data('_delay', setTimeout(function () {
-
-            // Ignore "magic mouseleave": when the mouse simply disapear from the document
-            // (like when entering in browser input suggestions See https://git.io/zf-11410),
-            // unless we actually left the window (and document lost focus).
-            //
-            // In firefox, document will not focus at the time the event is triggered, so we have
-            // to make this test after the delay.
-            if (e.relatedTarget === null && document.hasFocus && document.hasFocus()) { return false; }
-
             _this._hide($elem);
-
           }, _this.options.closingTime));
-
         }
       });
     }
