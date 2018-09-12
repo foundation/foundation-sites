@@ -73,6 +73,11 @@ class Tabs extends Plugin {
         'aria-labelledby': linkId
       });
 
+      // Save up the initial hash to return to it later when going back in history
+      if (isActive) {
+        _this._initialAnchor = `#${hash}`;
+      }
+
       if(!isActive) {
         $tabContent.attr('aria-hidden', 'true');
       }
@@ -85,6 +90,7 @@ class Tabs extends Plugin {
         });
       }
     });
+
     if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
 
@@ -95,30 +101,42 @@ class Tabs extends Plugin {
       }
     }
 
-     //current context-bound function to open tabs on page load or history hashchange
+     // Current context-bound function to open tabs on page load or history hashchange
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
-      //need a hash and a relevant anchor in this tabset
-      if(anchor.length) {
-        var anchorNoHash = (anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor);
-        var $link = this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
-        if ($link.length) {
-          this.selectTab($(anchor), true);
 
-          //roll up a little to show the titles
-          if (this.options.deepLinkSmudge) {
-            var offset = this.$element.offset();
-            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
-          }
+      // If there is no anchor, return to the initial panel
+      if (!anchor.length && this._initialAnchor) {
+        anchor = this._initialAnchor;
+      }
 
-          /**
-            * Fires when the zplugin has deeplinked at pageload
-            * @event Tabs#deeplink
-            */
-           this.$element.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
-         }
-       }
-     }
+      var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
+      var $anchor = anchorNoHash && $(`#${anchorNoHash}`);
+      var $link = anchor && this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
+
+      // If there is an anchor for the hash, select it
+      if ($anchor && $anchor.length && $link && $link.length) {
+        this.selectTab($anchor, true);
+      }
+      // Otherwise, collapse everything
+      else {
+        this._collapse();
+      }
+
+      // Roll up a little to show the titles
+      if (this.options.deepLinkSmudge) {
+        var offset = this.$element.offset();
+        $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+      }
+
+      if ($anchor && $link) {
+        /**
+         * Fires when the plugin has deeplinked at pageload
+         * @event Tabs#deeplink
+         */
+        this.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
+      }
+    }
 
     //use browser to open a tab, if it exists in this tabset
     if (this.options.deepLink) {
@@ -222,18 +240,10 @@ class Tabs extends Plugin {
    */
   _handleTabChange($target, historyHandled) {
 
-    /**
-     * Check for active class on target. Collapse if exists.
-     */
+    // With `activeCollapse`, if the target is the active Tab, collapse it.
     if ($target.hasClass(`${this.options.linkActiveClass}`)) {
         if(this.options.activeCollapse) {
-            this._collapseTab($target);
-
-           /**
-            * Fires when the zplugin has successfully collapsed tabs.
-            * @event Tabs#collapse
-            */
-            this.$element.trigger('collapse.zf.tabs', [$target]);
+            this._collapse();
         }
         return;
     }
@@ -310,6 +320,25 @@ class Tabs extends Plugin {
   }
 
   /**
+   * Collapses the active Tab.
+   * @fires Tabs#collapse
+   * @function
+   */
+  _collapse() {
+    var $activeTab = this.$element.find(`.${this.options.linkClass}.${this.options.linkActiveClass}`);
+
+    if ($activeTab.length) {
+      this._collapseTab($activeTab);
+
+      /**
+      * Fires when the plugin has successfully collapsed tabs.
+      * @event Tabs#collapse
+      */
+      this.$element.trigger('collapse.zf.tabs', [$activeTab]);
+    }
+  }
+
+  /**
    * Public method for selecting a content pane to display.
    * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
    * @param {boolean} historyHandled - browser has already handled a history update
@@ -335,6 +364,7 @@ class Tabs extends Plugin {
 
     this._handleTabChange($target, historyHandled);
   };
+
   /**
    * Sets the height of each panel to the height of the tallest panel.
    * If enabled in options, gets called on media query change.
