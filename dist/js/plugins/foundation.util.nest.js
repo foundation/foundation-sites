@@ -111,33 +111,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 /*!****************************************************!*\
   !*** ./js/entries/plugins/foundation.util.nest.js ***!
   \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Nest */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.nest */ "./js/foundation.util.nest.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Nest", function() { return _foundation_util_nest__WEBPACK_IMPORTED_MODULE_1__["Nest"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Nest", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil.Nest;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].Nest = _foundation_util_nest__WEBPACK_IMPORTED_MODULE_1__["Nest"];
 
-var _foundationUtil = __webpack_require__(/*! ../../foundation.util.nest */ "./js/foundation.util.nest.js");
-
-_foundation.Foundation.Nest = _foundationUtil.Nest;
 
 /***/ }),
 
@@ -145,20 +134,16 @@ _foundation.Foundation.Nest = _foundationUtil.Nest;
 /*!************************************!*\
   !*** ./js/foundation.util.nest.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Nest */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nest", function() { return Nest; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Nest = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Nest = {
   Feather: function Feather(menu) {
@@ -173,7 +158,7 @@ var Nest = {
         applyAria = type !== 'accordion'; // Accordions handle their own ARIA attriutes.
 
     items.each(function () {
-      var $item = (0, _jquery.default)(this),
+      var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
           $sub = $item.children('ul');
 
       if ($sub.length) {
@@ -220,10 +205,10 @@ var Nest = {
     subMenuClass = "is-".concat(type, "-submenu"),
         subItemClass = "".concat(subMenuClass, "-item"),
         hasSubClass = "is-".concat(type, "-submenu-parent");
-    menu.find('>li, > li > ul, .menu, .menu > li').removeClass("".concat(subMenuClass, " ").concat(subItemClass, " ").concat(hasSubClass, " is-submenu-item submenu is-active")).removeAttr('data-submenu').css('display', '');
+    menu.find('>li, > li > ul, .menu, .menu > li, [data-submenu] > li').removeClass("".concat(subMenuClass, " ").concat(subItemClass, " ").concat(hasSubClass, " is-submenu-item submenu is-active")).removeAttr('data-submenu').css('display', '');
   }
 };
-exports.Nest = Nest;
+
 
 /***/ }),
 

@@ -155,33 +155,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
 /*!***********************************************!*\
   !*** ./js/entries/plugins/foundation.tabs.js ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Tabs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.tabs */ "./js/foundation.tabs.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return _foundation_tabs__WEBPACK_IMPORTED_MODULE_1__["Tabs"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Tabs", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Tabs;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_tabs__WEBPACK_IMPORTED_MODULE_1__["Tabs"], 'Tabs');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.tabs */ "./js/foundation.tabs.js");
-
-_foundation.Foundation.plugin(_foundation2.Tabs, 'Tabs');
 
 /***/ }),
 
@@ -189,28 +178,23 @@ _foundation.Foundation.plugin(_foundation2.Tabs, 'Tabs');
 /*!*******************************!*\
   !*** ./js/foundation.tabs.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Tabs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return Tabs; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Tabs = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -230,12 +214,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
  * @requires foundation.util.imageLoader if tabs contain images
  */
+
 var Tabs =
 /*#__PURE__*/
 function (_Plugin) {
@@ -260,12 +250,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Tabs.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Tabs.defaults, this.$element.data(), options);
       this.className = 'Tabs'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Tabs', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Tabs', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -292,14 +282,14 @@ function (_Plugin) {
         'role': 'tablist'
       });
       this.$tabTitles = this.$element.find(".".concat(this.options.linkClass));
-      this.$tabContent = (0, _jquery.default)("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
+      this.$tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
       this.$tabTitles.each(function () {
-        var $elem = (0, _jquery.default)(this),
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $link = $elem.find('a'),
             isActive = $elem.hasClass("".concat(_this.options.linkActiveClass)),
             hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
             linkId = $link[0].id ? $link[0].id : "".concat(hash, "-label"),
-            $tabContent = (0, _jquery.default)("#".concat(hash));
+            $tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(hash));
         $elem.attr({
           'role': 'presentation'
         });
@@ -313,15 +303,19 @@ function (_Plugin) {
         $tabContent.attr({
           'role': 'tabpanel',
           'aria-labelledby': linkId
-        });
+        }); // Save up the initial hash to return to it later when going back in history
+
+        if (isActive) {
+          _this._initialAnchor = "#".concat(hash);
+        }
 
         if (!isActive) {
           $tabContent.attr('aria-hidden', 'true');
         }
 
         if (isActive && _this.options.autoFocus) {
-          _this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
-            (0, _jquery.default)('html, body').animate({
+          _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
               scrollTop: $elem.offset().top
             }, _this.options.deepLinkSmudgeDelay, function () {
               $link.focus();
@@ -334,38 +328,47 @@ function (_Plugin) {
         var $images = this.$tabContent.find('img');
 
         if ($images.length) {
-          (0, _foundationUtil2.onImagesLoaded)($images, this._setHeight.bind(this));
+          Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__["onImagesLoaded"])($images, this._setHeight.bind(this));
         } else {
           this._setHeight();
         }
-      } //current context-bound function to open tabs on page load or history hashchange
+      } // Current context-bound function to open tabs on page load or history hashchange
 
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; //need a hash and a relevant anchor in this tabset
+        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
 
-        if (anchor.length) {
-          var $link = _this2.$element.find('[href$="' + anchor + '"]');
+        if (!anchor.length && _this2._initialAnchor) {
+          anchor = _this2._initialAnchor;
+        }
 
-          if ($link.length) {
-            _this2.selectTab((0, _jquery.default)(anchor), true); //roll up a little to show the titles
+        var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-
-            if (_this2.options.deepLinkSmudge) {
-              var offset = _this2.$element.offset();
-
-              (0, _jquery.default)('html, body').animate({
-                scrollTop: offset.top
-              }, _this2.options.deepLinkSmudgeDelay);
-            }
-            /**
-              * Fires when the zplugin has deeplinked at pageload
-              * @event Tabs#deeplink
-              */
+        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // If there is an anchor for the hash, select it
 
 
-            _this2.$element.trigger('deeplink.zf.tabs', [$link, (0, _jquery.default)(anchor)]);
-          }
+        if ($anchor && $anchor.length && $link && $link.length) {
+          _this2.selectTab($anchor, true);
+        } // Otherwise, collapse everything
+        else {
+            _this2._collapse();
+          } // Roll up a little to show the titles
+
+
+        if (_this2.options.deepLinkSmudge) {
+          var offset = _this2.$element.offset();
+
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+            scrollTop: offset.top
+          }, _this2.options.deepLinkSmudgeDelay);
+        }
+
+        if ($anchor && $link) {
+          /**
+           * Fires when the plugin has deeplinked at pageload
+           * @event Tabs#deeplink
+           */
+          _this2.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
 
@@ -392,11 +395,11 @@ function (_Plugin) {
 
       if (this.options.matchHeight) {
         this._setHeightMqHandler = this._setHeight.bind(this);
-        (0, _jquery.default)(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
       }
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).on('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._checkDeepLink);
       }
     }
     /**
@@ -413,7 +416,7 @@ function (_Plugin) {
         e.preventDefault();
         e.stopPropagation();
 
-        _this._handleTabChange((0, _jquery.default)(this));
+        _this._handleTabChange(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
       });
     }
     /**
@@ -428,12 +431,12 @@ function (_Plugin) {
 
       this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
         if (e.which === 9) return;
-        var $element = (0, _jquery.default)(this),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('ul').children('li'),
             $prevElement,
             $nextElement;
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             if (_this.options.wrapOnKeys) {
               $prevElement = i === 0 ? $elements.last() : $elements.eq(i - 1);
               $nextElement = i === $elements.length - 1 ? $elements.first() : $elements.eq(i + 1);
@@ -446,7 +449,7 @@ function (_Plugin) {
           }
         }); // handle keyboard event with keyboard util
 
-        _foundationUtil.Keyboard.handleKey(e, 'Tabs', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Tabs', {
           open: function open() {
             $element.find('[role="tab"]').focus();
 
@@ -480,19 +483,10 @@ function (_Plugin) {
   }, {
     key: "_handleTabChange",
     value: function _handleTabChange($target, historyHandled) {
-      /**
-       * Check for active class on target. Collapse if exists.
-       */
+      // With `activeCollapse`, if the target is the active Tab, collapse it.
       if ($target.hasClass("".concat(this.options.linkActiveClass))) {
         if (this.options.activeCollapse) {
-          this._collapseTab($target);
-          /**
-           * Fires when the zplugin has successfully collapsed tabs.
-           * @event Tabs#collapse
-           */
-
-
-          this.$element.trigger('collapse.zf.tabs', [$target]);
+          this._collapse();
         }
 
         return;
@@ -510,12 +504,10 @@ function (_Plugin) {
 
 
       if (this.options.deepLink && !historyHandled) {
-        var anchor = $target.find('a').attr('href');
-
         if (this.options.updateHistory) {
-          history.pushState({}, '', anchor);
+          history.pushState({}, '', hash);
         } else {
-          history.replaceState({}, '', anchor);
+          history.replaceState({}, '', hash);
         }
       }
       /**
@@ -560,9 +552,31 @@ function (_Plugin) {
         'aria-selected': 'false',
         'tabindex': -1
       });
-      (0, _jquery.default)("#".concat($target_anchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat($target_anchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
         'aria-hidden': 'true'
       });
+    }
+    /**
+     * Collapses the active Tab.
+     * @fires Tabs#collapse
+     * @function
+     */
+
+  }, {
+    key: "_collapse",
+    value: function _collapse() {
+      var $activeTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass));
+
+      if ($activeTab.length) {
+        this._collapseTab($activeTab);
+        /**
+        * Fires when the plugin has successfully collapsed tabs.
+        * @event Tabs#collapse
+        */
+
+
+        this.$element.trigger('collapse.zf.tabs', [$activeTab]);
+      }
     }
     /**
      * Public method for selecting a content pane to display.
@@ -586,7 +600,7 @@ function (_Plugin) {
         idStr = "#".concat(idStr);
       }
 
-      var $target = this.$tabTitles.find("[href$=\"".concat(idStr, "\"]")).parent(".".concat(this.options.linkClass));
+      var $target = this.$tabTitles.has("[href$=\"".concat(idStr, "\"]"));
 
       this._handleTabChange($target, historyHandled);
     }
@@ -607,7 +621,7 @@ function (_Plugin) {
 
 
       this.$tabContent.find(".".concat(this.options.panelClass)).css('height', '').each(function () {
-        var panel = (0, _jquery.default)(this),
+        var panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
 
         if (!isActive) {
@@ -641,24 +655,23 @@ function (_Plugin) {
 
       if (this.options.matchHeight) {
         if (this._setHeightMqHandler != null) {
-          (0, _jquery.default)(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
         }
       }
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).off('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._checkDeepLink);
       }
 
       if (this.onLoadListener) {
-        (0, _jquery.default)(window).off(this.onLoadListener);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
       }
     }
   }]);
 
   return Tabs;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 
-exports.Tabs = Tabs;
 Tabs.defaults = {
   /**
    * Link the location hash to the active pane.
@@ -758,6 +771,7 @@ Tabs.defaults = {
    */
   panelActiveClass: 'is-active'
 };
+
 
 /***/ }),
 

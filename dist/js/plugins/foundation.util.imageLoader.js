@@ -111,33 +111,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 /*!***********************************************************!*\
   !*** ./js/entries/plugins/foundation.util.imageLoader.js ***!
   \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, onImagesLoaded */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onImagesLoaded", function() { return _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_1__["onImagesLoaded"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "onImagesLoaded", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil.onImagesLoaded;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].onImagesLoaded = _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_1__["onImagesLoaded"];
 
-var _foundationUtil = __webpack_require__(/*! ../../foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
-
-_foundation.Foundation.onImagesLoaded = _foundationUtil.onImagesLoaded;
 
 /***/ }),
 
@@ -145,26 +134,23 @@ _foundation.Foundation.onImagesLoaded = _foundationUtil.onImagesLoaded;
 /*!*******************************************!*\
   !*** ./js/foundation.util.imageLoader.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: onImagesLoaded */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onImagesLoaded", function() { return onImagesLoaded; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.onImagesLoaded = onImagesLoaded;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Runs a callback function when images are fully loaded.
  * @param {Object} images - Image(s) to check if loaded.
  * @param {Func} callback - Function to execute when image is fully loaded.
  */
+
 function onImagesLoaded(images, callback) {
   var self = this,
       unloaded = images.length;
@@ -182,12 +168,12 @@ function onImagesLoaded(images, callback) {
       var image = new Image(); // Still count image as loaded if it finalizes with an error.
 
       var events = "load.zf.images error.zf.images";
-      (0, _jquery.default)(image).one(events, function me(event) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(image).one(events, function me(event) {
         // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
-        (0, _jquery.default)(this).off(events, me);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).off(events, me);
         singleImageLoaded();
       });
-      image.src = (0, _jquery.default)(this).attr('src');
+      image.src = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('src');
     }
   });
 
@@ -199,6 +185,8 @@ function onImagesLoaded(images, callback) {
     }
   }
 }
+
+
 
 /***/ }),
 

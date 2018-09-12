@@ -111,35 +111,25 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 /*!**********************************************************!*\
   !*** ./js/entries/plugins/foundation.util.mediaQuery.js ***!
   \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, MediaQuery */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "MediaQuery", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil.MediaQuery;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].MediaQuery = _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"];
 
-var _foundationUtil = __webpack_require__(/*! ../../foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].MediaQuery._init();
 
-_foundation.Foundation.MediaQuery = _foundationUtil.MediaQuery;
 
-_foundation.Foundation.MediaQuery._init();
 
 /***/ }),
 
@@ -147,34 +137,32 @@ _foundation.Foundation.MediaQuery._init();
 /*!******************************************!*\
   !*** ./js/foundation.util.mediaQuery.js ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: MediaQuery */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return MediaQuery; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MediaQuery = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// Default set of media queries
+ // Default set of media queries
+
 var defaultQueries = {
   'default': 'only screen',
   landscape: 'only screen and (orientation: landscape)',
   portrait: 'only screen and (orientation: portrait)',
   retina: 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 'only screen and (min--moz-device-pixel-ratio: 2),' + 'only screen and (-o-min-device-pixel-ratio: 2/1),' + 'only screen and (min-device-pixel-ratio: 2),' + 'only screen and (min-resolution: 192dpi),' + 'only screen and (min-resolution: 2dppx)'
 }; // matchMedia() polyfill - Test a CSS media type/query in JS.
-// Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
+// Authors & copyright(c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 
-var matchMedia = window.matchMedia || function () {
-  'use strict'; // For browsers that support matchMedium api such as IE 9 and webkit
+/* eslint-disable */
+
+window.matchMedia || (window.matchMedia = function () {
+  "use strict"; // For browsers that support matchMedium api such as IE 9 and webkit
 
   var styleMedia = window.styleMedia || window.media; // For those that don't support matchMedium
 
@@ -184,12 +172,18 @@ var matchMedia = window.matchMedia || function () {
         info = null;
     style.type = 'text/css';
     style.id = 'matchmediajs-test';
-    script && script.parentNode && script.parentNode.insertBefore(style, script); // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
+    if (!script) {
+      document.head.appendChild(style);
+    } else {
+      script.parentNode.insertBefore(style, script);
+    } // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
 
     info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
     styleMedia = {
       matchMedium: function matchMedium(media) {
-        var text = "@media ".concat(media, "{ #matchmediajs-test { width: 1px; } }"); // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }'; // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
 
         if (style.styleSheet) {
           style.styleSheet.cssText = text;
@@ -209,7 +203,8 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-}();
+}());
+/* eslint-enable */
 
 var MediaQuery = {
   queries: [],
@@ -222,13 +217,13 @@ var MediaQuery = {
    */
   _init: function _init() {
     var self = this;
-    var $meta = (0, _jquery.default)('meta.foundation-mq');
+    var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
     if (!$meta.length) {
-      (0, _jquery.default)('<meta class="foundation-mq">').appendTo(document.head);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq">').appendTo(document.head);
     }
 
-    var extractedStyles = (0, _jquery.default)('.foundation-mq').css('font-family');
+    var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
 
@@ -256,7 +251,7 @@ var MediaQuery = {
     var query = this.get(size);
 
     if (query) {
-      return matchMedia(query).matches;
+      return window.matchMedia(query).matches;
     }
 
     return false;
@@ -309,7 +304,7 @@ var MediaQuery = {
     for (var i = 0; i < this.queries.length; i++) {
       var query = this.queries[i];
 
-      if (matchMedia(query.value).matches) {
+      if (window.matchMedia(query.value).matches) {
         matched = query;
       }
     }
@@ -329,7 +324,7 @@ var MediaQuery = {
   _watcher: function _watcher() {
     var _this = this;
 
-    (0, _jquery.default)(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
       var newSize = _this._getCurrentSize(),
           currentSize = _this.current;
 
@@ -337,13 +332,11 @@ var MediaQuery = {
         // Change the current media query
         _this.current = newSize; // Broadcast the media query change on the window
 
-        (0, _jquery.default)(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
 }; // Thank you: https://github.com/sindresorhus/query-string
-
-exports.MediaQuery = MediaQuery;
 
 function parseStyleToObject(str) {
   var styleObject = {};
@@ -379,6 +372,8 @@ function parseStyleToObject(str) {
   }, {});
   return styleObject;
 }
+
+
 
 /***/ }),
 

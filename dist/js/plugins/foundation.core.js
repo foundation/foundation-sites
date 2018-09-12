@@ -100,76 +100,58 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!***********************************************!*\
   !*** ./js/entries/plugins/foundation.core.js ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Plugin, rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.core */ "./js/foundation.core.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]; });
 
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Plugin", function() { return _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]; });
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _exportNames = {
-  Foundation: true
-};
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rtl", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["rtl"]; });
 
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GetYoDigits", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"]; });
 
-var _foundation = __webpack_require__(/*! ../../foundation.core */ "./js/foundation.core.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RegExpEscape", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["RegExpEscape"]; });
 
-var _foundationCore = __webpack_require__(/*! ../../foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "transitionend", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"]; });
 
-Object.keys(_foundationCore).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _foundationCore[key];
-    }
-  });
-});
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onLoad", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["onLoad"]; });
 
-var _foundationCore2 = __webpack_require__(/*! ../../foundation.core.utils */ "./js/foundation.core.utils.js");
-
-Object.keys(_foundationCore2).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _foundationCore2[key];
-    }
-  });
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onLeaveElement", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["onLeaveElement"]; });
 
 // --- Foundation Core API ---
 // Initialize Foundation and add some utilities to its public API for backward compatibility.
 // Please note that every utility do not have to be added to the core API.
-_foundation.Foundation.addToJquery(_jquery.default); // Every plugin depends on plugin now, we can include that on the core for the
+
+
+
+
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].addToJquery(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Every plugin depends on plugin now, we can include that on the core for the
 // script inclusion path.
 
-
-_foundation.Foundation.Plugin = _foundationCore.Plugin; // These are now separated out, but historically were a part of this module,
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Plugin = _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]; // These are now separated out, but historically were a part of this module,
 // and since this is here for backwards compatibility we include them in
 // this entry.
 
-_foundation.Foundation.rtl = _foundationCore2.rtl;
-_foundation.Foundation.GetYoDigits = _foundationCore2.GetYoDigits;
-_foundation.Foundation.transitionend = _foundationCore2.transitionend;
-_foundation.Foundation.RegExpEscape = _foundationCore2.RegExpEscape;
-_foundation.Foundation.onLoad = _foundationCore2.onLoad;
-window.Foundation = _foundation.Foundation; // --- Foundation Core exports ---
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].rtl = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["rtl"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].GetYoDigits = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].transitionend = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].RegExpEscape = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["RegExpEscape"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].onLoad = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["onLoad"];
+window.Foundation = _foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]; // --- Foundation Core exports ---
 // Export "Plugin" and all core utilities, since the `foundation.core` entry plays the role of
 // all core source files.
+
+
+
+
 
 /***/ }),
 
@@ -177,28 +159,24 @@ window.Foundation = _foundation.Foundation; // --- Foundation Core exports ---
 /*!*******************************!*\
   !*** ./js/foundation.core.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return Foundation; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Foundation = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var FOUNDATION_VERSION = '6.5.0-rc.2'; // Global Foundation object
+
+
+
+var FOUNDATION_VERSION = '6.5.0-rc.3'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -240,7 +218,7 @@ var Foundation = {
    */
   registerPlugin: function registerPlugin(plugin, name) {
     var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
-    plugin.uuid = (0, _foundationCore.GetYoDigits)(6, pluginName);
+    plugin.uuid = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, pluginName);
 
     if (!plugin.$element.attr("data-".concat(pluginName))) {
       plugin.$element.attr("data-".concat(pluginName), plugin.uuid);
@@ -296,12 +274,12 @@ var Foundation = {
    * @default If no argument is passed, reflow all currently active plugins.
    */
   reInit: function reInit(plugins) {
-    var isJQ = plugins instanceof _jquery.default;
+    var isJQ = plugins instanceof jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
     try {
       if (isJQ) {
         plugins.each(function () {
-          (0, _jquery.default)(this).data('zfPlugin')._init();
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('zfPlugin')._init();
         });
       } else {
         var type = _typeof(plugins),
@@ -310,12 +288,12 @@ var Foundation = {
           'object': function object(plgs) {
             plgs.forEach(function (p) {
               p = hyphenate(p);
-              (0, _jquery.default)('[data-' + p + ']').foundation('_init');
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-' + p + ']').foundation('_init');
             });
           },
           'string': function string() {
             plugins = hyphenate(plugins);
-            (0, _jquery.default)('[data-' + plugins + ']').foundation('_init');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-' + plugins + ']').foundation('_init');
           },
           'undefined': function undefined() {
             this['object'](Object.keys(_this._plugins));
@@ -348,14 +326,14 @@ var Foundation = {
     var _this = this; // Iterate through each plugin
 
 
-    _jquery.default.each(plugins, function (i, name) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(plugins, function (i, name) {
       // Get the current plugin
       var plugin = _this._plugins[name]; // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
 
-      var $elem = (0, _jquery.default)(elem).find('[data-' + name + ']').addBack('[data-' + name + ']'); // For each plugin found, initialize it
+      var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem).find('[data-' + name + ']').addBack('[data-' + name + ']'); // For each plugin found, initialize it
 
       $elem.each(function () {
-        var $el = (0, _jquery.default)(this),
+        var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             opts = {}; // Don't double-dip on plugins
 
         if ($el.data('zfPlugin')) {
@@ -373,7 +351,7 @@ var Foundation = {
         }
 
         try {
-          $el.data('zfPlugin', new plugin((0, _jquery.default)(this), opts));
+          $el.data('zfPlugin', new plugin(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), opts));
         } catch (er) {
           console.error(er);
         } finally {
@@ -401,7 +379,7 @@ var Foundation = {
 
       if (type === 'undefined') {
         //needs to initialize the Foundation object, or an individual plugin.
-        _foundationUtil.MediaQuery._init();
+        _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__["MediaQuery"]._init();
 
         Foundation.reflow(this);
       } else if (type === 'string') {
@@ -437,7 +415,6 @@ var Foundation = {
     return $;
   }
 };
-exports.Foundation = Foundation;
 Foundation.util = {
   /**
    * Function for applying a debounce effect to a function call.
@@ -552,28 +529,24 @@ function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.core.plugin.js":
 /*!**************************************!*\
   !*** ./js/foundation.core.plugin.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Plugin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Plugin", function() { return Plugin; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Plugin = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -581,9 +554,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// Abstract class for providing lifecycle hooks. Expect plugins to define AT LEAST
+
+ // Abstract class for providing lifecycle hooks. Expect plugins to define AT LEAST
 // {function} _setup (replaces previous constructor),
 // {function} _destroy (replaces previous destroy)
+
 var Plugin =
 /*#__PURE__*/
 function () {
@@ -593,7 +568,7 @@ function () {
     this._setup(element, options);
 
     var pluginName = getPluginName(this);
-    this.uuid = (0, _foundationCore.GetYoDigits)(6, pluginName);
+    this.uuid = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, pluginName);
 
     if (!this.$element.attr("data-".concat(pluginName))) {
       this.$element.attr("data-".concat(pluginName), this.uuid);
@@ -635,8 +610,6 @@ function () {
 // Thank you: http://stackoverflow.com/a/8955580
 
 
-exports.Plugin = Plugin;
-
 function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
@@ -649,38 +622,37 @@ function getPluginName(obj) {
   }
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.core.utils.js":
 /*!*************************************!*\
   !*** ./js/foundation.core.utils.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rtl", function() { return rtl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetYoDigits", function() { return GetYoDigits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegExpEscape", function() { return RegExpEscape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transitionend", function() { return transitionend; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoad", function() { return onLoad; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLeaveElement", function() { return onLeaveElement; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.rtl = rtl;
-exports.GetYoDigits = GetYoDigits;
-exports.RegExpEscape = RegExpEscape;
-exports.transitionend = transitionend;
-exports.onLoad = onLoad;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Core Foundation Utilities, utilized in a number of places.
+ // Core Foundation Utilities, utilized in a number of places.
 
 /**
  * Returns a boolean for RTL support
  */
+
 function rtl() {
-  return (0, _jquery.default)('html').attr('dir') === 'rtl';
+  return jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').attr('dir') === 'rtl';
 }
 /**
  * returns a random base-36 uid with namespacing
@@ -759,11 +731,50 @@ function onLoad($elem, handler) {
 
   if ($elem) {
     if (handler) $elem.one(eventType, handler);
-    if (didLoad) setTimeout(cb);else (0, _jquery.default)(window).one('load', cb);
+    if (didLoad) setTimeout(cb);else jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).one('load', cb);
   }
 
   return eventType;
 }
+
+function onLeaveElement($elem, handler) {
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      _ref$leaveWindow = _ref.leaveWindow,
+      leaveWindow = _ref$leaveWindow === void 0 ? true : _ref$leaveWindow;
+
+  var eventType = 'mouseleave.zf.util.onLeaveElement';
+
+  if ($elem && handler) {
+    $elem.on(eventType, function leaveHandler(e) {
+      for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        rest[_key - 1] = arguments[_key];
+      }
+
+      var _this = this;
+
+      setTimeout(function leaveEventDebouncer() {
+        if (e.relatedTarget === null && leaveWindow && document.hasFocus && document.hasFocus()) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).one('mouseenter', function reenterHandler(reeenterE) {
+            if ($elem.has(reeenterE.target).length) {
+              return false;
+            }
+
+            ;
+            e.relatedTarget = reeenterE.target;
+            handler.call.apply(handler, [_this, e].concat(rest));
+          });
+          return false;
+        }
+
+        handler.call.apply(handler, [_this, e].concat(rest));
+      });
+    });
+  }
+
+  return eventType;
+}
+
+
 
 /***/ }),
 
@@ -771,34 +782,32 @@ function onLoad($elem, handler) {
 /*!******************************************!*\
   !*** ./js/foundation.util.mediaQuery.js ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: MediaQuery */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return MediaQuery; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MediaQuery = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// Default set of media queries
+ // Default set of media queries
+
 var defaultQueries = {
   'default': 'only screen',
   landscape: 'only screen and (orientation: landscape)',
   portrait: 'only screen and (orientation: portrait)',
   retina: 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 'only screen and (min--moz-device-pixel-ratio: 2),' + 'only screen and (-o-min-device-pixel-ratio: 2/1),' + 'only screen and (min-device-pixel-ratio: 2),' + 'only screen and (min-resolution: 192dpi),' + 'only screen and (min-resolution: 2dppx)'
 }; // matchMedia() polyfill - Test a CSS media type/query in JS.
-// Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
+// Authors & copyright(c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 
-var matchMedia = window.matchMedia || function () {
-  'use strict'; // For browsers that support matchMedium api such as IE 9 and webkit
+/* eslint-disable */
+
+window.matchMedia || (window.matchMedia = function () {
+  "use strict"; // For browsers that support matchMedium api such as IE 9 and webkit
 
   var styleMedia = window.styleMedia || window.media; // For those that don't support matchMedium
 
@@ -808,12 +817,18 @@ var matchMedia = window.matchMedia || function () {
         info = null;
     style.type = 'text/css';
     style.id = 'matchmediajs-test';
-    script && script.parentNode && script.parentNode.insertBefore(style, script); // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
+    if (!script) {
+      document.head.appendChild(style);
+    } else {
+      script.parentNode.insertBefore(style, script);
+    } // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
 
     info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
     styleMedia = {
       matchMedium: function matchMedium(media) {
-        var text = "@media ".concat(media, "{ #matchmediajs-test { width: 1px; } }"); // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }'; // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
 
         if (style.styleSheet) {
           style.styleSheet.cssText = text;
@@ -833,7 +848,8 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-}();
+}());
+/* eslint-enable */
 
 var MediaQuery = {
   queries: [],
@@ -846,13 +862,13 @@ var MediaQuery = {
    */
   _init: function _init() {
     var self = this;
-    var $meta = (0, _jquery.default)('meta.foundation-mq');
+    var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
     if (!$meta.length) {
-      (0, _jquery.default)('<meta class="foundation-mq">').appendTo(document.head);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq">').appendTo(document.head);
     }
 
-    var extractedStyles = (0, _jquery.default)('.foundation-mq').css('font-family');
+    var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
 
@@ -880,7 +896,7 @@ var MediaQuery = {
     var query = this.get(size);
 
     if (query) {
-      return matchMedia(query).matches;
+      return window.matchMedia(query).matches;
     }
 
     return false;
@@ -933,7 +949,7 @@ var MediaQuery = {
     for (var i = 0; i < this.queries.length; i++) {
       var query = this.queries[i];
 
-      if (matchMedia(query.value).matches) {
+      if (window.matchMedia(query.value).matches) {
         matched = query;
       }
     }
@@ -953,7 +969,7 @@ var MediaQuery = {
   _watcher: function _watcher() {
     var _this = this;
 
-    (0, _jquery.default)(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
       var newSize = _this._getCurrentSize(),
           currentSize = _this.current;
 
@@ -961,13 +977,11 @@ var MediaQuery = {
         // Change the current media query
         _this.current = newSize; // Broadcast the media query change on the window
 
-        (0, _jquery.default)(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
 }; // Thank you: https://github.com/sindresorhus/query-string
-
-exports.MediaQuery = MediaQuery;
 
 function parseStyleToObject(str) {
   var styleObject = {};
@@ -1003,6 +1017,8 @@ function parseStyleToObject(str) {
   }, {});
   return styleObject;
 }
+
+
 
 /***/ }),
 
