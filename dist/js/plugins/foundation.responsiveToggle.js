@@ -144,33 +144,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__;
 /*!***********************************************************!*\
   !*** ./js/entries/plugins/foundation.responsiveToggle.js ***!
   \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, ResponsiveToggle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_responsiveToggle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.responsiveToggle */ "./js/foundation.responsiveToggle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ResponsiveToggle", function() { return _foundation_responsiveToggle__WEBPACK_IMPORTED_MODULE_1__["ResponsiveToggle"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "ResponsiveToggle", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.ResponsiveToggle;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_responsiveToggle__WEBPACK_IMPORTED_MODULE_1__["ResponsiveToggle"], 'ResponsiveToggle');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.responsiveToggle */ "./js/foundation.responsiveToggle.js");
-
-_foundation.Foundation.plugin(_foundation2.ResponsiveToggle, 'ResponsiveToggle');
 
 /***/ }),
 
@@ -178,26 +167,21 @@ _foundation.Foundation.plugin(_foundation2.ResponsiveToggle, 'ResponsiveToggle')
 /*!*******************************************!*\
   !*** ./js/foundation.responsiveToggle.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: ResponsiveToggle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResponsiveToggle", function() { return ResponsiveToggle; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ResponsiveToggle = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -217,12 +201,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * ResponsiveToggle module.
  * @module foundation.responsiveToggle
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion
  */
+
 var ResponsiveToggle =
 /*#__PURE__*/
 function (_Plugin) {
@@ -246,8 +235,8 @@ function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
-      this.$element = (0, _jquery.default)(element);
-      this.options = _jquery.default.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+      this.$element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
       this.className = 'ResponsiveToggle'; // ie9 back compat
 
       this._init();
@@ -263,7 +252,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init();
 
       var targetID = this.$element.data('responsive-toggle');
 
@@ -271,12 +260,12 @@ function (_Plugin) {
         console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
       }
 
-      this.$targetMenu = (0, _jquery.default)("#".concat(targetID));
+      this.$targetMenu = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(targetID));
       this.$toggler = this.$element.find('[data-toggle]').filter(function () {
-        var target = (0, _jquery.default)(this).data('toggle');
+        var target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle');
         return target === targetID || target === "";
       });
-      this.options = _jquery.default.extend({}, this.options, this.$targetMenu.data()); // If they were set, parse the animation classes
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, this.options, this.$targetMenu.data()); // If they were set, parse the animation classes
 
       if (this.options.animate) {
         var input = this.options.animate.split(' ');
@@ -298,7 +287,7 @@ function (_Plugin) {
       var _this = this;
 
       this._updateMqHandler = this._update.bind(this);
-      (0, _jquery.default)(window).on('changed.zf.mediaquery', this._updateMqHandler);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._updateMqHandler);
       this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
     }
     /**
@@ -311,7 +300,7 @@ function (_Plugin) {
     key: "_update",
     value: function _update() {
       // Mobile
-      if (!_foundationUtil.MediaQuery.atLeast(this.options.hideFor)) {
+      if (!_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(this.options.hideFor)) {
         this.$element.show();
         this.$targetMenu.hide();
       } // Desktop
@@ -331,20 +320,20 @@ function (_Plugin) {
     value: function toggleMenu() {
       var _this2 = this;
 
-      if (!_foundationUtil.MediaQuery.atLeast(this.options.hideFor)) {
+      if (!_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(this.options.hideFor)) {
         /**
          * Fires when the element attached to the tab bar toggles.
          * @event ResponsiveToggle#toggled
          */
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
-            _foundationUtil2.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
+            _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateIn(this.$targetMenu, this.animationIn, function () {
               _this2.$element.trigger('toggled.zf.responsiveToggle');
 
               _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });
           } else {
-            _foundationUtil2.Motion.animateOut(this.$targetMenu, this.animationOut, function () {
+            _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(this.$targetMenu, this.animationOut, function () {
               _this2.$element.trigger('toggled.zf.responsiveToggle');
             });
           }
@@ -360,14 +349,13 @@ function (_Plugin) {
     value: function _destroy() {
       this.$element.off('.zf.responsiveToggle');
       this.$toggler.off('.zf.responsiveToggle');
-      (0, _jquery.default)(window).off('changed.zf.mediaquery', this._updateMqHandler);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('changed.zf.mediaquery', this._updateMqHandler);
     }
   }]);
 
   return ResponsiveToggle;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.ResponsiveToggle = ResponsiveToggle;
 ResponsiveToggle.defaults = {
   /**
    * The breakpoint after which the menu is always shown, and the tab bar is hidden.
@@ -385,6 +373,7 @@ ResponsiveToggle.defaults = {
    */
   animate: false
 };
+
 
 /***/ }),
 

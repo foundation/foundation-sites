@@ -144,33 +144,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__;
 /*!**************************************************!*\
   !*** ./js/entries/plugins/foundation.toggler.js ***!
   \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Toggler */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_toggler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.toggler */ "./js/foundation.toggler.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Toggler", function() { return _foundation_toggler__WEBPACK_IMPORTED_MODULE_1__["Toggler"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Toggler", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Toggler;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_toggler__WEBPACK_IMPORTED_MODULE_1__["Toggler"], 'Toggler');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.toggler */ "./js/foundation.toggler.js");
-
-_foundation.Foundation.plugin(_foundation2.Toggler, 'Toggler');
 
 /***/ }),
 
@@ -178,28 +167,22 @@ _foundation.Foundation.plugin(_foundation2.Toggler, 'Toggler');
 /*!**********************************!*\
   !*** ./js/foundation.toggler.js ***!
   \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Toggler */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Toggler", function() { return Toggler; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Toggler = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -219,12 +202,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Toggler module.
  * @module foundation.toggler
  * @requires foundation.util.motion
  * @requires foundation.util.triggers
  */
+
 var Toggler =
 /*#__PURE__*/
 function (_Plugin) {
@@ -249,12 +238,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Toggler.defaults, element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
       this.className = 'Toggler'; // ie9 back compat
       // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil2.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
 
@@ -284,14 +273,14 @@ function (_Plugin) {
 
 
       var id = this.$element[0].id,
-          $triggers = (0, _jquery.default)("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]")); // - aria-expanded: according to the element visibility.
+          $triggers = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]")); // - aria-expanded: according to the element visibility.
 
       $triggers.attr('aria-expanded', !this.$element.is(':hidden')); // - aria-controls: adding the element id to it if not already in it.
 
       $triggers.each(function (index, trigger) {
-        var $trigger = (0, _jquery.default)(trigger);
+        var $trigger = jquery__WEBPACK_IMPORTED_MODULE_0___default()(trigger);
         var controls = $trigger.attr('aria-controls') || '';
-        var containsId = new RegExp("\\b".concat((0, _foundationCore2.RegExpEscape)(id), "\\b")).test(controls);
+        var containsId = new RegExp("\\b".concat(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["RegExpEscape"])(id), "\\b")).test(controls);
         if (!containsId) $trigger.attr('aria-controls', controls ? "".concat(controls, " ").concat(id) : id);
       });
     }
@@ -348,14 +337,14 @@ function (_Plugin) {
       var _this = this;
 
       if (this.$element.is(':hidden')) {
-        _foundationUtil.Motion.animateIn(this.$element, this.animationIn, function () {
+        _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Motion"].animateIn(this.$element, this.animationIn, function () {
           _this._updateARIA(true);
 
           this.trigger('on.zf.toggler');
           this.find('[data-mutate]').trigger('mutateme.zf.trigger');
         });
       } else {
-        _foundationUtil.Motion.animateOut(this.$element, this.animationOut, function () {
+        _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Motion"].animateOut(this.$element, this.animationOut, function () {
           _this._updateARIA(false);
 
           this.trigger('off.zf.toggler');
@@ -367,7 +356,7 @@ function (_Plugin) {
     key: "_updateARIA",
     value: function _updateARIA(isOn) {
       var id = this.$element[0].id;
-      (0, _jquery.default)("[data-open=\"".concat(id, "\"], [data-close=\"").concat(id, "\"], [data-toggle=\"").concat(id, "\"]")).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat(id, "\"], [data-close=\"").concat(id, "\"], [data-toggle=\"").concat(id, "\"]")).attr({
         'aria-expanded': isOn ? true : false
       });
     }
@@ -384,9 +373,8 @@ function (_Plugin) {
   }]);
 
   return Toggler;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 
-exports.Toggler = Toggler;
 Toggler.defaults = {
   /**
    * Tells the plugin if the element should animated when toggled.
@@ -397,32 +385,32 @@ Toggler.defaults = {
   animate: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.util.triggers.js":
 /*!****************************************!*\
   !*** ./js/foundation.util.triggers.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Triggers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Triggers", function() { return Triggers; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Triggers = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
 
 var MutationObserver = function () {
   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
@@ -438,7 +426,7 @@ var MutationObserver = function () {
 
 var triggers = function triggers(el, type) {
   el.data(type).split(' ').forEach(function (id) {
-    (0, _jquery.default)("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
   });
 };
 
@@ -449,44 +437,43 @@ var Triggers = {
   },
   Initializers: {}
 };
-exports.Triggers = Triggers;
 Triggers.Listeners.Basic = {
   openListener: function openListener() {
-    triggers((0, _jquery.default)(this), 'open');
+    triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'open');
   },
   closeListener: function closeListener() {
-    var id = (0, _jquery.default)(this).data('close');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('close');
 
     if (id) {
-      triggers((0, _jquery.default)(this), 'close');
+      triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'close');
     } else {
-      (0, _jquery.default)(this).trigger('close.zf.trigger');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('close.zf.trigger');
     }
   },
   toggleListener: function toggleListener() {
-    var id = (0, _jquery.default)(this).data('toggle');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle');
 
     if (id) {
-      triggers((0, _jquery.default)(this), 'toggle');
+      triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'toggle');
     } else {
-      (0, _jquery.default)(this).trigger('toggle.zf.trigger');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('toggle.zf.trigger');
     }
   },
   closeableListener: function closeableListener(e) {
     e.stopPropagation();
-    var animation = (0, _jquery.default)(this).data('closable');
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
-      _foundationUtil.Motion.animateOut((0, _jquery.default)(this), animation, function () {
-        (0, _jquery.default)(this).trigger('closed.zf');
+      _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('closed.zf');
       });
     } else {
-      (0, _jquery.default)(this).fadeOut().trigger('closed.zf');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).fadeOut().trigger('closed.zf');
     }
   },
   toggleFocusListener: function toggleFocusListener() {
-    var id = (0, _jquery.default)(this).data('toggle-focus');
-    (0, _jquery.default)("#".concat(id)).triggerHandler('toggle.zf.trigger', [(0, _jquery.default)(this)]);
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle-focus');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(id)).triggerHandler('toggle.zf.trigger', [jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)]);
   }
 }; // Elements with [data-open] will reveal a plugin that supports it when clicked.
 
@@ -526,7 +513,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        (0, _jquery.default)(this).triggerHandler('resizeme.zf.trigger');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).triggerHandler('resizeme.zf.trigger');
       });
     } //trigger all listening elements and signal a resize event
 
@@ -537,7 +524,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        (0, _jquery.default)(this).triggerHandler('scrollme.zf.trigger');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).triggerHandler('scrollme.zf.trigger');
       });
     } //trigger all listening elements and signal a scroll event
 
@@ -546,9 +533,9 @@ Triggers.Listeners.Global = {
   },
   closeMeListener: function closeMeListener(e, pluginId) {
     var plugin = e.namespace.split('.')[0];
-    var plugins = (0, _jquery.default)("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
+    var plugins = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
     plugins.each(function () {
-      var _this = (0, _jquery.default)(this);
+      var _this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
 
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
@@ -557,7 +544,7 @@ Triggers.Listeners.Global = {
 };
 
 Triggers.Initializers.addClosemeListener = function (pluginName) {
-  var yetiBoxes = (0, _jquery.default)('[data-yeti-box]'),
+  var yetiBoxes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 
   if (pluginName) {
@@ -574,14 +561,14 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
     var listeners = plugNames.map(function (name) {
       return "closeme.zf.".concat(name);
     }).join(' ');
-    (0, _jquery.default)(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
   }
 };
 
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  (0, _jquery.default)(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
     if (timer) {
       clearTimeout(timer);
     }
@@ -593,7 +580,7 @@ function debounceGlobalListener(debounce, trigger, listener) {
 }
 
 Triggers.Initializers.addResizeListener = function (debounce) {
-  var $nodes = (0, _jquery.default)('[data-resize]');
+  var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-resize]');
 
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'resize.zf.trigger', Triggers.Listeners.Global.resizeListener, $nodes);
@@ -601,7 +588,7 @@ Triggers.Initializers.addResizeListener = function (debounce) {
 };
 
 Triggers.Initializers.addScrollListener = function (debounce) {
-  var $nodes = (0, _jquery.default)('[data-scroll]');
+  var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-scroll]');
 
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'scroll.zf.trigger', Triggers.Listeners.Global.scrollListener, $nodes);
@@ -616,7 +603,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
   var $nodes = $elem.find('[data-resize], [data-scroll], [data-mutate]'); //element callback
 
   var listeningElementsMutation = function listeningElementsMutation(mutationRecordsList) {
-    var $target = (0, _jquery.default)(mutationRecordsList[0].target); //trigger the event handler for the element depending on type
+    var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(mutationRecordsList[0].target); //trigger the event handler for the element depending on type
 
     switch (mutationRecordsList[0].type) {
       case "attributes":
@@ -662,7 +649,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
 };
 
 Triggers.Initializers.addSimpleListeners = function () {
-  var $document = (0, _jquery.default)(document);
+  var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addOpenListener($document);
   Triggers.Initializers.addCloseListener($document);
   Triggers.Initializers.addToggleListener($document);
@@ -671,7 +658,7 @@ Triggers.Initializers.addSimpleListeners = function () {
 };
 
 Triggers.Initializers.addGlobalListeners = function () {
-  var $document = (0, _jquery.default)(document);
+  var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
   Triggers.Initializers.addResizeListener();
   Triggers.Initializers.addScrollListener();
@@ -679,7 +666,7 @@ Triggers.Initializers.addGlobalListeners = function () {
 };
 
 Triggers.init = function ($, Foundation) {
-  (0, _foundationCore.onLoad)($(window), function () {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
     if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
@@ -693,6 +680,8 @@ Triggers.init = function ($, Foundation) {
     Foundation.IHearYou = Triggers.Initializers.addGlobalListeners;
   }
 };
+
+
 
 /***/ }),
 

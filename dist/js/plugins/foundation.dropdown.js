@@ -166,33 +166,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__;
 /*!***************************************************!*\
   !*** ./js/entries/plugins/foundation.dropdown.js ***!
   \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Dropdown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.dropdown */ "./js/foundation.dropdown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return _foundation_dropdown__WEBPACK_IMPORTED_MODULE_1__["Dropdown"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Dropdown", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Dropdown;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_dropdown__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], 'Dropdown');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.dropdown */ "./js/foundation.dropdown.js");
-
-_foundation.Foundation.plugin(_foundation2.Dropdown, 'Dropdown');
 
 /***/ }),
 
@@ -200,28 +189,21 @@ _foundation.Foundation.plugin(_foundation2.Dropdown, 'Dropdown');
 /*!***********************************!*\
   !*** ./js/foundation.dropdown.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Dropdown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return Dropdown; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_positionable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.positionable */ "./js/foundation.positionable.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Dropdown = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundation = __webpack_require__(/*! ./foundation.positionable */ "./js/foundation.positionable.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -245,6 +227,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Dropdown module.
  * @module foundation.dropdown
@@ -252,6 +239,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
+
 var Dropdown =
 /*#__PURE__*/
 function (_Positionable) {
@@ -276,15 +264,15 @@ function (_Positionable) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Dropdown.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
       this.className = 'Dropdown'; // ie9 back compat
       // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil2.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Dropdown', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Dropdown', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ESCAPE': 'close'
@@ -300,7 +288,7 @@ function (_Positionable) {
     key: "_init",
     value: function _init() {
       var $id = this.$element.attr('id');
-      this.$anchors = (0, _jquery.default)("[data-toggle=\"".concat($id, "\"]")).length ? (0, _jquery.default)("[data-toggle=\"".concat($id, "\"]")) : (0, _jquery.default)("[data-open=\"".concat($id, "\"]"));
+      this.$anchors = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat($id, "\"]")).length ? jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat($id, "\"]")) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat($id, "\"]"));
       this.$anchors.attr({
         'aria-controls': $id,
         'data-is-focus': false,
@@ -318,7 +306,7 @@ function (_Positionable) {
       } // Do not change the `labelledby` if it is defined
 
 
-      var labelledby = this.$element.attr('aria-labelledby') || this.$currentAnchor.attr('id') || (0, _foundationCore.GetYoDigits)(6, 'dd-anchor');
+      var labelledby = this.$element.attr('aria-labelledby') || this.$currentAnchor.attr('id') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'dd-anchor');
       this.$element.attr({
         'aria-hidden': 'true',
         'data-yeti-box': $id,
@@ -381,7 +369,7 @@ function (_Positionable) {
   }, {
     key: "_setCurrentAnchor",
     value: function _setCurrentAnchor(el) {
-      this.$currentAnchor = (0, _jquery.default)(el);
+      this.$currentAnchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el);
     }
     /**
      * Adds event listeners to the element utilizing the triggers utility library.
@@ -408,7 +396,7 @@ function (_Positionable) {
         this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
           _this._setCurrentAnchor(this);
 
-          var bodyData = (0, _jquery.default)('body').data();
+          var bodyData = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data();
 
           if (typeof bodyData.whatinput === 'undefined' || bodyData.whatinput === 'mouse') {
             clearTimeout(_this.timeout);
@@ -442,10 +430,9 @@ function (_Positionable) {
       }
 
       this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
-        var $target = (0, _jquery.default)(this),
-            visibleFocusableElements = _foundationUtil.Keyboard.findFocusable(_this.$element);
-
-        _foundationUtil.Keyboard.handleKey(e, 'Dropdown', {
+        var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+            visibleFocusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(_this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Dropdown', {
           open: function open() {
             if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
               _this.open();
@@ -472,7 +459,7 @@ function (_Positionable) {
   }, {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
-      var $body = (0, _jquery.default)(document.body).not(this.$element),
+      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).not(this.$element),
           _this = this;
 
       $body.off('click.zf.dropdown').on('click.zf.dropdown', function (e) {
@@ -519,7 +506,7 @@ function (_Positionable) {
       });
 
       if (this.options.autoFocus) {
-        var $focusable = _foundationUtil.Keyboard.findFocusable(this.$element);
+        var $focusable = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(this.$element);
 
         if ($focusable.length) {
           $focusable.eq(0).focus();
@@ -531,7 +518,7 @@ function (_Positionable) {
       }
 
       if (this.options.trapFocus) {
-        _foundationUtil.Keyboard.trapFocus(this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].trapFocus(this.$element);
       }
       /**
        * Fires once the dropdown is visible.
@@ -566,7 +553,7 @@ function (_Positionable) {
       this.$element.trigger('hide.zf.dropdown', [this.$element]);
 
       if (this.options.trapFocus) {
-        _foundationUtil.Keyboard.releaseFocus(this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].releaseFocus(this.$element);
       }
     }
     /**
@@ -594,14 +581,13 @@ function (_Positionable) {
     value: function _destroy() {
       this.$element.off('.zf.trigger').hide();
       this.$anchors.off('.zf.dropdown');
-      (0, _jquery.default)(document.body).off('click.zf.dropdown');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown');
     }
   }]);
 
   return Dropdown;
-}(_foundation.Positionable);
+}(_foundation_positionable__WEBPACK_IMPORTED_MODULE_3__["Positionable"]);
 
-exports.Dropdown = Dropdown;
 Dropdown.defaults = {
   /**
    * Class that designates bounding container of Dropdown (default: window)
@@ -710,28 +696,26 @@ Dropdown.defaults = {
   closeOnClick: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.positionable.js":
 /*!***************************************!*\
   !*** ./js/foundation.positionable.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Positionable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Positionable", function() { return Positionable; });
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Positionable = void 0;
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -750,6 +734,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 var POSITIONS = ['left', 'right', 'top', 'bottom'];
 var VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
@@ -812,7 +799,7 @@ function (_Plugin) {
       switch (this.position) {
         case 'bottom':
         case 'top':
-          return (0, _foundationCore2.rtl)() ? 'right' : 'left';
+          return Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() ? 'right' : 'left';
 
         case 'left':
         case 'right':
@@ -895,8 +882,8 @@ function (_Plugin) {
         return false;
       }
 
-      var $eleDims = _foundationUtil.Box.GetDimensions($element),
-          $anchorDims = _foundationUtil.Box.GetDimensions($anchor);
+      var $eleDims = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetDimensions($element),
+          $anchorDims = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetDimensions($anchor);
 
       if (!this.options.allowOverlap) {
         // restore original position & alignment before checking overlap
@@ -904,7 +891,7 @@ function (_Plugin) {
         this.alignment = this.originalAlignment;
       }
 
-      $element.offset(_foundationUtil.Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+      $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
 
       if (!this.options.allowOverlap) {
         var overlaps = {};
@@ -916,7 +903,7 @@ function (_Plugin) {
         };
 
         while (!this._positionsExhausted()) {
-          var overlap = _foundationUtil.Box.OverlapArea($element, $parent, false, false, this.options.allowBottomOverlap);
+          var overlap = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].OverlapArea($element, $parent, false, false, this.options.allowBottomOverlap);
 
           if (overlap === 0) {
             return;
@@ -932,22 +919,21 @@ function (_Plugin) {
 
           this._reposition();
 
-          $element.offset(_foundationUtil.Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+          $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
         } // If we get through the entire loop, there was no non-overlapping
         // position available. Pick the version with least overlap.
 
 
         this.position = minCoordinates.position;
         this.alignment = minCoordinates.alignment;
-        $element.offset(_foundationUtil.Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+        $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
       }
     }
   }]);
 
   return Positionable;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 
-exports.Positionable = Positionable;
 Positionable.defaults = {
   /**
    * Position of positionable relative to anchor. Can be left, right, bottom, top, or auto.
@@ -1002,32 +988,32 @@ Positionable.defaults = {
   hOffset: 0
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.util.triggers.js":
 /*!****************************************!*\
   !*** ./js/foundation.util.triggers.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Triggers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Triggers", function() { return Triggers; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Triggers = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
 
 var MutationObserver = function () {
   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
@@ -1043,7 +1029,7 @@ var MutationObserver = function () {
 
 var triggers = function triggers(el, type) {
   el.data(type).split(' ').forEach(function (id) {
-    (0, _jquery.default)("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
   });
 };
 
@@ -1054,44 +1040,43 @@ var Triggers = {
   },
   Initializers: {}
 };
-exports.Triggers = Triggers;
 Triggers.Listeners.Basic = {
   openListener: function openListener() {
-    triggers((0, _jquery.default)(this), 'open');
+    triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'open');
   },
   closeListener: function closeListener() {
-    var id = (0, _jquery.default)(this).data('close');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('close');
 
     if (id) {
-      triggers((0, _jquery.default)(this), 'close');
+      triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'close');
     } else {
-      (0, _jquery.default)(this).trigger('close.zf.trigger');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('close.zf.trigger');
     }
   },
   toggleListener: function toggleListener() {
-    var id = (0, _jquery.default)(this).data('toggle');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle');
 
     if (id) {
-      triggers((0, _jquery.default)(this), 'toggle');
+      triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'toggle');
     } else {
-      (0, _jquery.default)(this).trigger('toggle.zf.trigger');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('toggle.zf.trigger');
     }
   },
   closeableListener: function closeableListener(e) {
     e.stopPropagation();
-    var animation = (0, _jquery.default)(this).data('closable');
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
-      _foundationUtil.Motion.animateOut((0, _jquery.default)(this), animation, function () {
-        (0, _jquery.default)(this).trigger('closed.zf');
+      _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('closed.zf');
       });
     } else {
-      (0, _jquery.default)(this).fadeOut().trigger('closed.zf');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).fadeOut().trigger('closed.zf');
     }
   },
   toggleFocusListener: function toggleFocusListener() {
-    var id = (0, _jquery.default)(this).data('toggle-focus');
-    (0, _jquery.default)("#".concat(id)).triggerHandler('toggle.zf.trigger', [(0, _jquery.default)(this)]);
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle-focus');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(id)).triggerHandler('toggle.zf.trigger', [jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)]);
   }
 }; // Elements with [data-open] will reveal a plugin that supports it when clicked.
 
@@ -1131,7 +1116,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        (0, _jquery.default)(this).triggerHandler('resizeme.zf.trigger');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).triggerHandler('resizeme.zf.trigger');
       });
     } //trigger all listening elements and signal a resize event
 
@@ -1142,7 +1127,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        (0, _jquery.default)(this).triggerHandler('scrollme.zf.trigger');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).triggerHandler('scrollme.zf.trigger');
       });
     } //trigger all listening elements and signal a scroll event
 
@@ -1151,9 +1136,9 @@ Triggers.Listeners.Global = {
   },
   closeMeListener: function closeMeListener(e, pluginId) {
     var plugin = e.namespace.split('.')[0];
-    var plugins = (0, _jquery.default)("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
+    var plugins = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
     plugins.each(function () {
-      var _this = (0, _jquery.default)(this);
+      var _this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
 
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
@@ -1162,7 +1147,7 @@ Triggers.Listeners.Global = {
 };
 
 Triggers.Initializers.addClosemeListener = function (pluginName) {
-  var yetiBoxes = (0, _jquery.default)('[data-yeti-box]'),
+  var yetiBoxes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 
   if (pluginName) {
@@ -1179,14 +1164,14 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
     var listeners = plugNames.map(function (name) {
       return "closeme.zf.".concat(name);
     }).join(' ');
-    (0, _jquery.default)(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
   }
 };
 
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  (0, _jquery.default)(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
     if (timer) {
       clearTimeout(timer);
     }
@@ -1198,7 +1183,7 @@ function debounceGlobalListener(debounce, trigger, listener) {
 }
 
 Triggers.Initializers.addResizeListener = function (debounce) {
-  var $nodes = (0, _jquery.default)('[data-resize]');
+  var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-resize]');
 
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'resize.zf.trigger', Triggers.Listeners.Global.resizeListener, $nodes);
@@ -1206,7 +1191,7 @@ Triggers.Initializers.addResizeListener = function (debounce) {
 };
 
 Triggers.Initializers.addScrollListener = function (debounce) {
-  var $nodes = (0, _jquery.default)('[data-scroll]');
+  var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-scroll]');
 
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'scroll.zf.trigger', Triggers.Listeners.Global.scrollListener, $nodes);
@@ -1221,7 +1206,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
   var $nodes = $elem.find('[data-resize], [data-scroll], [data-mutate]'); //element callback
 
   var listeningElementsMutation = function listeningElementsMutation(mutationRecordsList) {
-    var $target = (0, _jquery.default)(mutationRecordsList[0].target); //trigger the event handler for the element depending on type
+    var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(mutationRecordsList[0].target); //trigger the event handler for the element depending on type
 
     switch (mutationRecordsList[0].type) {
       case "attributes":
@@ -1267,7 +1252,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
 };
 
 Triggers.Initializers.addSimpleListeners = function () {
-  var $document = (0, _jquery.default)(document);
+  var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addOpenListener($document);
   Triggers.Initializers.addCloseListener($document);
   Triggers.Initializers.addToggleListener($document);
@@ -1276,7 +1261,7 @@ Triggers.Initializers.addSimpleListeners = function () {
 };
 
 Triggers.Initializers.addGlobalListeners = function () {
-  var $document = (0, _jquery.default)(document);
+  var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
   Triggers.Initializers.addResizeListener();
   Triggers.Initializers.addScrollListener();
@@ -1284,7 +1269,7 @@ Triggers.Initializers.addGlobalListeners = function () {
 };
 
 Triggers.init = function ($, Foundation) {
-  (0, _foundationCore.onLoad)($(window), function () {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
     if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
@@ -1298,6 +1283,8 @@ Triggers.init = function ($, Foundation) {
     Foundation.IHearYou = Triggers.Initializers.addGlobalListeners;
   }
 };
+
+
 
 /***/ }),
 

@@ -144,33 +144,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_smoothScroll__;
 /*!***************************************************!*\
   !*** ./js/entries/plugins/foundation.magellan.js ***!
   \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Magellan */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_magellan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.magellan */ "./js/foundation.magellan.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Magellan", function() { return _foundation_magellan__WEBPACK_IMPORTED_MODULE_1__["Magellan"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Magellan", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Magellan;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_magellan__WEBPACK_IMPORTED_MODULE_1__["Magellan"], 'Magellan');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.magellan */ "./js/foundation.magellan.js");
-
-_foundation.Foundation.plugin(_foundation2.Magellan, 'Magellan');
 
 /***/ }),
 
@@ -178,26 +167,21 @@ _foundation.Foundation.plugin(_foundation2.Magellan, 'Magellan');
 /*!***********************************!*\
   !*** ./js/foundation.magellan.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Magellan */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Magellan", function() { return Magellan; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.smoothScroll */ "./foundation.smoothScroll");
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_3__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Magellan = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-var _foundation = __webpack_require__(/*! ./foundation.smoothScroll */ "./foundation.smoothScroll");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -217,11 +201,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * Magellan module.
  * @module foundation.magellan
  * @requires foundation.smoothScroll
  */
+
 var Magellan =
 /*#__PURE__*/
 function (_Plugin) {
@@ -246,7 +235,7 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
       this.className = 'Magellan'; // ie9 back compat
 
       this._init();
@@ -261,18 +250,18 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      var id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'magellan');
+      var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'magellan');
 
       var _this = this;
 
-      this.$targets = (0, _jquery.default)('[data-magellan-target]');
+      this.$targets = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-magellan-target]');
       this.$links = this.$element.find('a');
       this.$element.attr({
         'data-resize': id,
         'data-scroll': id,
         'id': id
       });
-      this.$active = (0, _jquery.default)();
+      this.$active = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       this.scrollPos = parseInt(window.pageYOffset, 10);
 
       this._events();
@@ -294,7 +283,7 @@ function (_Plugin) {
       this.winHeight = Math.round(Math.max(window.innerHeight, html.clientHeight));
       this.docHeight = Math.round(Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight));
       this.$targets.each(function () {
-        var $tar = (0, _jquery.default)(this),
+        var $tar = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             pt = Math.round($tar.offset().top - _this.options.threshold);
         $tar.targetPoint = pt;
 
@@ -310,13 +299,13 @@ function (_Plugin) {
     key: "_events",
     value: function _events() {
       var _this = this,
-          $body = (0, _jquery.default)('html, body'),
+          $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body'),
           opts = {
         duration: _this.options.animationDuration,
         easing: _this.options.animationEasing
       };
 
-      (0, _jquery.default)(window).one('load', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).one('load', function () {
         if (_this.options.deepLinking) {
           if (location.hash) {
             _this.scrollToLoc(location.hash);
@@ -327,7 +316,7 @@ function (_Plugin) {
 
         _this._updateActive();
       });
-      _this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
+      _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
         _this.$element.on({
           'resizeme.zf.trigger': _this.reflow.bind(_this),
           'scrollme.zf.trigger': _this._updateActive.bind(_this)
@@ -345,7 +334,7 @@ function (_Plugin) {
         }
       };
 
-      (0, _jquery.default)(window).on('hashchange', this._deepLinkScroll);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._deepLinkScroll);
     }
     /**
      * Function to scroll to a given location on the page.
@@ -366,8 +355,7 @@ function (_Plugin) {
         threshold: this.options.threshold,
         offset: this.options.offset
       };
-
-      _foundation.SmoothScroll.scrollToLoc(loc, options, function () {
+      _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_3__["SmoothScroll"].scrollToLoc(loc, options, function () {
         _this._inTransition = false;
       });
     }
@@ -424,7 +412,7 @@ function (_Plugin) {
         this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
         if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
       } else {
-        this.$active = (0, _jquery.default)();
+        this.$active = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       }
 
       var isNewActive = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
@@ -469,19 +457,18 @@ function (_Plugin) {
         window.location.hash.replace(hash, '');
       }
 
-      (0, _jquery.default)(window).off('hashchange', this._deepLinkScroll);
-      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._deepLinkScroll);
+      if (this.onLoadListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
     }
   }]);
 
   return Magellan;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 /**
  * Default settings for plugin
  */
 
 
-exports.Magellan = Magellan;
 Magellan.defaults = {
   /**
    * Amount of time, in ms, the animated scrolling should take between locations.
@@ -532,6 +519,7 @@ Magellan.defaults = {
    */
   offset: 0
 };
+
 
 /***/ }),
 
