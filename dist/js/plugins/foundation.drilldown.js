@@ -166,33 +166,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__;
 /*!****************************************************!*\
   !*** ./js/entries/plugins/foundation.drilldown.js ***!
   \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Drilldown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.drilldown */ "./js/foundation.drilldown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Drilldown", function() { return _foundation_drilldown__WEBPACK_IMPORTED_MODULE_1__["Drilldown"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Drilldown", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Drilldown;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_drilldown__WEBPACK_IMPORTED_MODULE_1__["Drilldown"], 'Drilldown');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.drilldown */ "./js/foundation.drilldown.js");
-
-_foundation.Foundation.plugin(_foundation2.Drilldown, 'Drilldown');
 
 /***/ }),
 
@@ -200,30 +189,25 @@ _foundation.Foundation.plugin(_foundation2.Drilldown, 'Drilldown');
 /*!************************************!*\
   !*** ./js/foundation.drilldown.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Drilldown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Drilldown", function() { return Drilldown; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.nest */ "./foundation.util.nest");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_box__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Drilldown = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.nest */ "./foundation.util.nest");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -243,6 +227,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
 /**
  * Drilldown module.
  * @module foundation.drilldown
@@ -250,6 +240,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.nest
  * @requires foundation.util.box
  */
+
 var Drilldown =
 /*#__PURE__*/
 function (_Plugin) {
@@ -273,12 +264,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Drilldown.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
       this.className = 'Drilldown'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Drilldown', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Drilldown', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -298,7 +289,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil2.Nest.Feather(this.$element, 'drilldown');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Feather(this.$element, 'drilldown');
 
       if (this.options.autoApplyClass) {
         this.$element.addClass('drilldown');
@@ -310,8 +301,11 @@ function (_Plugin) {
       });
       this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
       this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
-      this.$element.attr('data-mutate', this.$element.attr('data-drilldown') || (0, _foundationCore.GetYoDigits)(6, 'drilldown'));
+      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a'); // Set the main menu as current by default (unless a submenu is selected)
+      // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
+
+      this.$currentMenu = this.$element;
+      this.$element.attr('data-mutate', this.$element.attr('data-drilldown') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'drilldown'));
 
       this._prepareMenu();
 
@@ -336,7 +330,7 @@ function (_Plugin) {
 
 
       this.$submenuAnchors.each(function () {
-        var $link = (0, _jquery.default)(this);
+        var $link = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         var $sub = $link.parent();
 
         if (_this.options.parentLink) {
@@ -353,7 +347,7 @@ function (_Plugin) {
         _this._events($link);
       });
       this.$submenus.each(function () {
-        var $menu = (0, _jquery.default)(this),
+        var $menu = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $back = $menu.find('.js-drilldown-back');
 
         if (!$back.length) {
@@ -381,7 +375,7 @@ function (_Plugin) {
 
 
       if (!this.$element.parent().hasClass('is-drilldown')) {
-        this.$wrapper = (0, _jquery.default)(this.options.wrapper).addClass('is-drilldown');
+        this.$wrapper = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.options.wrapper).addClass('is-drilldown');
         if (this.options.animateHeight) this.$wrapper.addClass('animate-height');
         this.$element.wrap(this.$wrapper);
       } // set wrapper
@@ -413,7 +407,7 @@ function (_Plugin) {
       var _this = this;
 
       $elem.off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
-        if ((0, _jquery.default)(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
           e.stopImmediatePropagation();
           e.preventDefault();
         } // if(e.target !== e.currentTarget.firstElementChild){
@@ -424,9 +418,9 @@ function (_Plugin) {
         _this._show($elem.parent('li'));
 
         if (_this.options.closeOnClick) {
-          var $body = (0, _jquery.default)('body');
+          var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
           $body.off('.zf.drilldown').on('click.zf.drilldown', function (e) {
-            if (e.target === _this.$element[0] || _jquery.default.contains(_this.$element[0], e.target)) {
+            if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target)) {
               return;
             }
 
@@ -466,16 +460,16 @@ function (_Plugin) {
     value: function _scrollTop() {
       var _this = this;
 
-      var $scrollTopElement = _this.options.scrollTopElement != '' ? (0, _jquery.default)(_this.options.scrollTopElement) : _this.$element,
+      var $scrollTopElement = _this.options.scrollTopElement != '' ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this.options.scrollTopElement) : _this.$element,
           scrollPos = parseInt($scrollTopElement.offset().top + _this.options.scrollTopOffset, 10);
-      (0, _jquery.default)('html, body').stop(true).animate({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, _this.options.animationDuration, _this.options.animationEasing, function () {
         /**
           * Fires after the menu has scrolled
           * @event Drilldown#scrollme
           */
-        if (this === (0, _jquery.default)('html')[0]) _this.$element.trigger('scrollme.zf.drilldown');
+        if (this === jquery__WEBPACK_IMPORTED_MODULE_0___default()('html')[0]) _this.$element.trigger('scrollme.zf.drilldown');
       });
     }
     /**
@@ -489,24 +483,23 @@ function (_Plugin) {
       var _this = this;
 
       this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function (e) {
-        var $element = (0, _jquery.default)(this),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('li').parent('ul').children('li').children('a'),
             $prevElement,
             $nextElement;
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             $prevElement = $elements.eq(Math.max(0, i - 1));
             $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1));
             return;
           }
         });
-
-        _foundationUtil.Keyboard.handleKey(e, 'Drilldown', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Drilldown', {
           next: function next() {
             if ($element.is(_this.$submenuAnchors)) {
               _this._show($element.parent('li'));
 
-              $element.parent('li').one((0, _foundationCore.transitionend)($element), function () {
+              $element.parent('li').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
                 $element.parent('li').find('ul li a').not('.js-drilldown-back a').first().focus();
               });
               return true;
@@ -515,7 +508,7 @@ function (_Plugin) {
           previous: function previous() {
             _this._hide($element.parent('li').parent('ul'));
 
-            $element.parent('li').parent('ul').one((0, _foundationCore.transitionend)($element), function () {
+            $element.parent('li').parent('ul').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
               setTimeout(function () {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
@@ -548,7 +541,7 @@ function (_Plugin) {
               // not menu item means back button
               _this._hide($element.parent('li').parent('ul'));
 
-              $element.parent('li').parent('ul').one((0, _foundationCore.transitionend)($element), function () {
+              $element.parent('li').parent('ul').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
                 setTimeout(function () {
                   $element.parent('li').parent('ul').parent('li').children('a').first().focus();
                 }, 1);
@@ -558,7 +551,7 @@ function (_Plugin) {
               // Sub menu item
               _this._show($element.parent('li'));
 
-              $element.parent('li').one((0, _foundationCore.transitionend)($element), function () {
+              $element.parent('li').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
                 $element.parent('li').find('ul li a').not('.js-drilldown-back a').first().focus();
               });
               return true;
@@ -587,7 +580,7 @@ function (_Plugin) {
       if (this.options.autoHeight) this.$wrapper.css({
         height: $elem.parent().closest('ul').data('calcHeight')
       });
-      $elem.one((0, _foundationCore.transitionend)($elem), function (e) {
+      $elem.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function (e) {
         $elem.removeClass('is-active is-closing');
       });
       /**
@@ -694,8 +687,10 @@ function (_Plugin) {
 
       var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
       $expandedSubmenus.each(function (index) {
-        _this._setHideSubMenuClasses((0, _jquery.default)(this));
-      }); // If target menu is root, focus first link & exit
+        _this._setHideSubMenuClasses(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
+      }); // Save the menu as the currently displayed one.
+
+      this.$currentMenu = $elem; // If target menu is root, focus first link & exit
 
       if ($elem.is('[data-drilldown]')) {
         if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
@@ -709,21 +704,21 @@ function (_Plugin) {
       $submenus.each(function (index) {
         // Update height of first child (target menu) if autoHeight option true
         if (index === 0 && _this.options.autoHeight) {
-          _this.$wrapper.css('height', (0, _jquery.default)(this).data('calcHeight'));
+          _this.$wrapper.css('height', jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('calcHeight'));
         }
 
         var isLastChild = index == $submenus.length - 1; // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
         // Last child makes sure the event gets always triggered even if going through several menus
 
         if (isLastChild === true) {
-          (0, _jquery.default)(this).one((0, _foundationCore.transitionend)((0, _jquery.default)(this)), function () {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)), function () {
             if (autoFocus === true) {
               $elem.find('li[role="treeitem"] > a').first().focus();
             }
           });
         }
 
-        _this._setShowSubMenuClasses((0, _jquery.default)(this), isLastChild);
+        _this._setShowSubMenuClasses(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), isLastChild);
       });
     }
     /**
@@ -736,15 +731,21 @@ function (_Plugin) {
   }, {
     key: "_show",
     value: function _show($elem) {
-      if (this.options.autoHeight) this.$wrapper.css({
-        height: $elem.children('[data-submenu]').data('calcHeight')
-      });
+      var $submenu = $elem.children('[data-submenu]');
       $elem.attr('aria-expanded', true);
-      $elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+      this.$currentMenu = $submenu;
+      $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+
+      if (this.options.autoHeight) {
+        this.$wrapper.css({
+          height: $submenu.data('calcHeight')
+        });
+      }
       /**
        * Fires when the submenu has opened.
        * @event Drilldown#open
        */
+
 
       this.$element.trigger('open.zf.drilldown', [$elem]);
     }
@@ -766,7 +767,7 @@ function (_Plugin) {
 
       $elem.parent('li').attr('aria-expanded', false);
       $elem.attr('aria-hidden', true);
-      $elem.addClass('is-closing').one((0, _foundationCore.transitionend)($elem), function () {
+      $elem.addClass('is-closing').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function () {
         $elem.removeClass('is-active is-closing');
         $elem.blur().addClass('invisible');
       });
@@ -789,21 +790,19 @@ function (_Plugin) {
     value: function _getMaxDims() {
       var maxHeight = 0,
           result = {},
-          _this = this;
+          _this = this; // Recalculate menu heights and total max height
+
 
       this.$submenus.add(this.$element).each(function () {
-        var numOfElems = (0, _jquery.default)(this).children('li').length;
-
-        var height = _foundationUtil3.Box.GetDimensions(this).height;
-
+        var numOfElems = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('li').length;
+        var height = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__["Box"].GetDimensions(this).height;
         maxHeight = height > maxHeight ? height : maxHeight;
 
         if (_this.options.autoHeight) {
-          (0, _jquery.default)(this).data('calcHeight', height);
-          if (!(0, _jquery.default)(this).hasClass('is-drilldown-submenu')) result['height'] = height;
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('calcHeight', height);
         }
       });
-      if (!this.options.autoHeight) result['min-height'] = "".concat(maxHeight, "px");
+      if (this.options.autoHeight) result['height'] = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
       result['max-width'] = "".concat(this.$element[0].getBoundingClientRect().width, "px");
       return result;
     }
@@ -820,17 +819,15 @@ function (_Plugin) {
       this._hideAll();
 
       this.$element.off('mutateme.zf.trigger');
-
-      _foundationUtil2.Nest.Burn(this.$element, 'drilldown');
-
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Burn(this.$element, 'drilldown');
       this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
       this.$submenuAnchors.each(function () {
-        (0, _jquery.default)(this).off('.zf.drilldown');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).off('.zf.drilldown');
       });
       this.$element.find('[data-is-parent-link]').detach();
       this.$submenus.removeClass('drilldown-submenu-cover-previous invisible');
       this.$element.find('a').each(function () {
-        var $link = (0, _jquery.default)(this);
+        var $link = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         $link.removeAttr('tabindex');
 
         if ($link.data('savedHref')) {
@@ -843,9 +840,8 @@ function (_Plugin) {
   }]);
 
   return Drilldown;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__["Plugin"]);
 
-exports.Drilldown = Drilldown;
 Drilldown.defaults = {
   /**
    * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
@@ -954,6 +950,7 @@ Drilldown.defaults = {
   animationEasing: 'swing' // holdOpen: false
 
 };
+
 
 /***/ }),
 

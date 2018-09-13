@@ -188,33 +188,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__;
 /*!************************************************!*\
   !*** ./js/entries/plugins/foundation.orbit.js ***!
   \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Orbit */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_orbit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.orbit */ "./js/foundation.orbit.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Orbit", function() { return _foundation_orbit__WEBPACK_IMPORTED_MODULE_1__["Orbit"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Orbit", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Orbit;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_orbit__WEBPACK_IMPORTED_MODULE_1__["Orbit"], 'Orbit');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.orbit */ "./js/foundation.orbit.js");
-
-_foundation.Foundation.plugin(_foundation2.Orbit, 'Orbit');
 
 /***/ }),
 
@@ -222,34 +211,29 @@ _foundation.Foundation.plugin(_foundation2.Orbit, 'Orbit');
 /*!********************************!*\
   !*** ./js/foundation.orbit.js ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Orbit */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Orbit", function() { return Orbit; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.timer */ "./foundation.util.timer");
+/* harmony import */ var _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./foundation.util.touch */ "./foundation.util.touch");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_touch__WEBPACK_IMPORTED_MODULE_7__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Orbit = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.timer */ "./foundation.util.timer");
-
-var _foundationUtil4 = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-var _foundationUtil5 = __webpack_require__(/*! ./foundation.util.touch */ "./foundation.util.touch");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -269,6 +253,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
+
+
 /**
  * Orbit module.
  * @module foundation.orbit
@@ -278,6 +270,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.imageLoader
  * @requires foundation.util.touch
  */
+
 var Orbit =
 /*#__PURE__*/
 function (_Plugin) {
@@ -301,15 +294,14 @@ function (_Plugin) {
     */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Orbit.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Orbit.defaults, this.$element.data(), options);
       this.className = 'Orbit'; // ie9 back compat
 
-      _foundationUtil5.Touch.init(_jquery.default); // Touch init is idempotent, we just need to make sure it's initialied.
-
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_7__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Orbit', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Orbit', {
         'ltr': {
           'ARROW_RIGHT': 'next',
           'ARROW_LEFT': 'previous'
@@ -336,7 +328,7 @@ function (_Plugin) {
       this.$slides = this.$element.find(".".concat(this.options.slideClass));
       var $images = this.$element.find('img'),
           initActive = this.$slides.filter('.is-active'),
-          id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'orbit');
+          id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__["GetYoDigits"])(6, 'orbit');
       this.$element.attr({
         'data-resize': id,
         'id': id
@@ -351,7 +343,7 @@ function (_Plugin) {
       }
 
       if ($images.length) {
-        (0, _foundationUtil4.onImagesLoaded)($images, this._prepareForOrbit.bind(this));
+        Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__["onImagesLoaded"])($images, this._prepareForOrbit.bind(this));
       } else {
         this._prepareForOrbit(); //hehe
 
@@ -393,7 +385,7 @@ function (_Plugin) {
     value: function geoSync() {
       var _this = this;
 
-      this.timer = new _foundationUtil3.Timer(this.$element, {
+      this.timer = new _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__["Timer"](this.$element, {
         duration: this.options.timerDelay,
         infinite: false
       }, function () {
@@ -432,10 +424,10 @@ function (_Plugin) {
 
       this.$slides.each(function () {
         temp = this.getBoundingClientRect().height;
-        (0, _jquery.default)(this).attr('data-slide', counter); // hide all slides but the active one
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-slide', counter); // hide all slides but the active one
 
-        if (!/mui/g.test((0, _jquery.default)(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
-          (0, _jquery.default)(this).css({
+        if (!/mui/g.test(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).css({
             'display': 'none'
           });
         }
@@ -465,7 +457,7 @@ function (_Plugin) {
     key: "_setSlideHeight",
     value: function _setSlideHeight(height) {
       this.$slides.each(function () {
-        (0, _jquery.default)(this).css('max-height', height);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).css('max-height', height);
       });
     }
     /**
@@ -526,7 +518,7 @@ function (_Plugin) {
           .on('click.zf.orbit touchend.zf.orbit', function (e) {
             e.preventDefault();
 
-            _this.changeSlide((0, _jquery.default)(this).hasClass(_this.options.nextClass));
+            _this.changeSlide(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass(_this.options.nextClass));
           });
         }
 
@@ -537,7 +529,7 @@ function (_Plugin) {
             } //if this is active, kick out of function.
 
 
-            var idx = (0, _jquery.default)(this).data('slide'),
+            var idx = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('slide'),
                 ltr = idx > _this.$slides.filter('.is-active').data('slide'),
                 $slide = _this.$slides.eq(idx);
 
@@ -548,7 +540,7 @@ function (_Plugin) {
         if (this.options.accessible) {
           this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
             // handle keyboard event with keyboard util
-            _foundationUtil.Keyboard.handleKey(e, 'Orbit', {
+            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Orbit', {
               next: function next() {
                 _this.changeSlide(true);
               },
@@ -557,7 +549,7 @@ function (_Plugin) {
               },
               handled: function handled() {
                 // if bullet is focused, make sure focus moves
-                if ((0, _jquery.default)(e.target).is(_this.$bullets)) {
+                if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).is(_this.$bullets)) {
                   _this.$bullets.filter('.is-active').focus();
                 }
               }
@@ -588,7 +580,7 @@ function (_Plugin) {
 
 
         this.$slides.each(function (el) {
-          (0, _jquery.default)(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
         }); // Show the first slide
 
         this.$slides.first().addClass('is-active').show(); // Triggers when the slide has finished animating
@@ -654,13 +646,12 @@ function (_Plugin) {
         }
 
         if (this.options.useMUI && !this.$element.is(':hidden')) {
-          _foundationUtil2.Motion.animateIn($newSlide.addClass('is-active'), this.options["animInFrom".concat(dirIn)], function () {
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateIn($newSlide.addClass('is-active'), this.options["animInFrom".concat(dirIn)], function () {
             $newSlide.css({
               'display': 'block'
             }).attr('aria-live', 'polite');
           });
-
-          _foundationUtil2.Motion.animateOut($curSlide.removeClass('is-active'), this.options["animOutTo".concat(dirOut)], function () {
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut($curSlide.removeClass('is-active'), this.options["animOutTo".concat(dirOut)], function () {
             $curSlide.removeAttr('aria-live');
 
             if (_this.options.autoPlay && !_this.timer.isPaused) {
@@ -712,9 +703,8 @@ function (_Plugin) {
   }]);
 
   return Orbit;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_6__["Plugin"]);
 
-exports.Orbit = Orbit;
 Orbit.defaults = {
   /**
   * Tells the JS to look for and loadBullets.
@@ -861,6 +851,7 @@ Orbit.defaults = {
   */
   useMUI: true
 };
+
 
 /***/ }),
 

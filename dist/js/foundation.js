@@ -100,344 +100,187 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!**********************************!*\
   !*** ./js/entries/foundation.js ***!
   \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, CoreUtils, Box, onImagesLoaded, Keyboard, MediaQuery, Motion, Nest, Timer, Touch, Triggers, Abide, Accordion, AccordionMenu, Drilldown, Dropdown, DropdownMenu, Equalizer, Interchange, Magellan, OffCanvas, Orbit, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Toggler, Tooltip, ResponsiveAccordionTabs, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../foundation.core */ "./js/foundation.core.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]; });
+
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "CoreUtils", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__; });
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../foundation.util.box */ "./js/foundation.util.box.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Box", function() { return _foundation_util_box__WEBPACK_IMPORTED_MODULE_3__["Box"]; });
+
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onImagesLoaded", function() { return _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__["onImagesLoaded"]; });
+
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Keyboard", function() { return _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_5__["Keyboard"]; });
+
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_6__["MediaQuery"]; });
+
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../foundation.util.motion */ "./js/foundation.util.motion.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Motion", function() { return _foundation_util_motion__WEBPACK_IMPORTED_MODULE_7__["Motion"]; });
+
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../foundation.util.nest */ "./js/foundation.util.nest.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Nest", function() { return _foundation_util_nest__WEBPACK_IMPORTED_MODULE_8__["Nest"]; });
+
+/* harmony import */ var _foundation_util_timer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../foundation.util.timer */ "./js/foundation.util.timer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Timer", function() { return _foundation_util_timer__WEBPACK_IMPORTED_MODULE_9__["Timer"]; });
+
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../foundation.util.touch */ "./js/foundation.util.touch.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Touch", function() { return _foundation_util_touch__WEBPACK_IMPORTED_MODULE_10__["Touch"]; });
+
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../foundation.util.triggers */ "./js/foundation.util.triggers.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Triggers", function() { return _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_11__["Triggers"]; });
+
+/* harmony import */ var _foundation_abide__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../foundation.abide */ "./js/foundation.abide.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Abide", function() { return _foundation_abide__WEBPACK_IMPORTED_MODULE_12__["Abide"]; });
+
+/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../foundation.accordion */ "./js/foundation.accordion.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return _foundation_accordion__WEBPACK_IMPORTED_MODULE_13__["Accordion"]; });
+
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../foundation.accordionMenu */ "./js/foundation.accordionMenu.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AccordionMenu", function() { return _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_14__["AccordionMenu"]; });
+
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../foundation.drilldown */ "./js/foundation.drilldown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Drilldown", function() { return _foundation_drilldown__WEBPACK_IMPORTED_MODULE_15__["Drilldown"]; });
+
+/* harmony import */ var _foundation_dropdown__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../foundation.dropdown */ "./js/foundation.dropdown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return _foundation_dropdown__WEBPACK_IMPORTED_MODULE_16__["Dropdown"]; });
+
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../foundation.dropdownMenu */ "./js/foundation.dropdownMenu.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DropdownMenu", function() { return _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_17__["DropdownMenu"]; });
+
+/* harmony import */ var _foundation_equalizer__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../foundation.equalizer */ "./js/foundation.equalizer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Equalizer", function() { return _foundation_equalizer__WEBPACK_IMPORTED_MODULE_18__["Equalizer"]; });
+
+/* harmony import */ var _foundation_interchange__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../foundation.interchange */ "./js/foundation.interchange.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Interchange", function() { return _foundation_interchange__WEBPACK_IMPORTED_MODULE_19__["Interchange"]; });
+
+/* harmony import */ var _foundation_magellan__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../foundation.magellan */ "./js/foundation.magellan.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Magellan", function() { return _foundation_magellan__WEBPACK_IMPORTED_MODULE_20__["Magellan"]; });
+
+/* harmony import */ var _foundation_offcanvas__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../foundation.offcanvas */ "./js/foundation.offcanvas.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OffCanvas", function() { return _foundation_offcanvas__WEBPACK_IMPORTED_MODULE_21__["OffCanvas"]; });
+
+/* harmony import */ var _foundation_orbit__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../foundation.orbit */ "./js/foundation.orbit.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Orbit", function() { return _foundation_orbit__WEBPACK_IMPORTED_MODULE_22__["Orbit"]; });
+
+/* harmony import */ var _foundation_responsiveMenu__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../foundation.responsiveMenu */ "./js/foundation.responsiveMenu.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ResponsiveMenu", function() { return _foundation_responsiveMenu__WEBPACK_IMPORTED_MODULE_23__["ResponsiveMenu"]; });
+
+/* harmony import */ var _foundation_responsiveToggle__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../foundation.responsiveToggle */ "./js/foundation.responsiveToggle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ResponsiveToggle", function() { return _foundation_responsiveToggle__WEBPACK_IMPORTED_MODULE_24__["ResponsiveToggle"]; });
+
+/* harmony import */ var _foundation_reveal__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../foundation.reveal */ "./js/foundation.reveal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Reveal", function() { return _foundation_reveal__WEBPACK_IMPORTED_MODULE_25__["Reveal"]; });
+
+/* harmony import */ var _foundation_slider__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../foundation.slider */ "./js/foundation.slider.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return _foundation_slider__WEBPACK_IMPORTED_MODULE_26__["Slider"]; });
+
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../foundation.smoothScroll */ "./js/foundation.smoothScroll.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SmoothScroll", function() { return _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_27__["SmoothScroll"]; });
+
+/* harmony import */ var _foundation_sticky__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../foundation.sticky */ "./js/foundation.sticky.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Sticky", function() { return _foundation_sticky__WEBPACK_IMPORTED_MODULE_28__["Sticky"]; });
+
+/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../foundation.tabs */ "./js/foundation.tabs.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return _foundation_tabs__WEBPACK_IMPORTED_MODULE_29__["Tabs"]; });
+
+/* harmony import */ var _foundation_toggler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../foundation.toggler */ "./js/foundation.toggler.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Toggler", function() { return _foundation_toggler__WEBPACK_IMPORTED_MODULE_30__["Toggler"]; });
+
+/* harmony import */ var _foundation_tooltip__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../foundation.tooltip */ "./js/foundation.tooltip.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tooltip", function() { return _foundation_tooltip__WEBPACK_IMPORTED_MODULE_31__["Tooltip"]; });
+
+/* harmony import */ var _foundation_responsiveAccordionTabs__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../foundation.responsiveAccordionTabs */ "./js/foundation.responsiveAccordionTabs.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ResponsiveAccordionTabs", function() { return _foundation_responsiveAccordionTabs__WEBPACK_IMPORTED_MODULE_32__["ResponsiveAccordionTabs"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Box", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil.Box;
-  }
-});
-Object.defineProperty(exports, "onImagesLoaded", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil2.onImagesLoaded;
-  }
-});
-Object.defineProperty(exports, "Keyboard", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil3.Keyboard;
-  }
-});
-Object.defineProperty(exports, "MediaQuery", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil4.MediaQuery;
-  }
-});
-Object.defineProperty(exports, "Motion", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil5.Motion;
-  }
-});
-Object.defineProperty(exports, "Nest", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil6.Nest;
-  }
-});
-Object.defineProperty(exports, "Timer", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil7.Timer;
-  }
-});
-Object.defineProperty(exports, "Touch", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil8.Touch;
-  }
-});
-Object.defineProperty(exports, "Triggers", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil9.Triggers;
-  }
-});
-Object.defineProperty(exports, "Abide", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Abide;
-  }
-});
-Object.defineProperty(exports, "Accordion", {
-  enumerable: true,
-  get: function get() {
-    return _foundation3.Accordion;
-  }
-});
-Object.defineProperty(exports, "AccordionMenu", {
-  enumerable: true,
-  get: function get() {
-    return _foundation4.AccordionMenu;
-  }
-});
-Object.defineProperty(exports, "Drilldown", {
-  enumerable: true,
-  get: function get() {
-    return _foundation5.Drilldown;
-  }
-});
-Object.defineProperty(exports, "Dropdown", {
-  enumerable: true,
-  get: function get() {
-    return _foundation6.Dropdown;
-  }
-});
-Object.defineProperty(exports, "DropdownMenu", {
-  enumerable: true,
-  get: function get() {
-    return _foundation7.DropdownMenu;
-  }
-});
-Object.defineProperty(exports, "Equalizer", {
-  enumerable: true,
-  get: function get() {
-    return _foundation8.Equalizer;
-  }
-});
-Object.defineProperty(exports, "Interchange", {
-  enumerable: true,
-  get: function get() {
-    return _foundation9.Interchange;
-  }
-});
-Object.defineProperty(exports, "Magellan", {
-  enumerable: true,
-  get: function get() {
-    return _foundation10.Magellan;
-  }
-});
-Object.defineProperty(exports, "OffCanvas", {
-  enumerable: true,
-  get: function get() {
-    return _foundation11.OffCanvas;
-  }
-});
-Object.defineProperty(exports, "Orbit", {
-  enumerable: true,
-  get: function get() {
-    return _foundation12.Orbit;
-  }
-});
-Object.defineProperty(exports, "ResponsiveMenu", {
-  enumerable: true,
-  get: function get() {
-    return _foundation13.ResponsiveMenu;
-  }
-});
-Object.defineProperty(exports, "ResponsiveToggle", {
-  enumerable: true,
-  get: function get() {
-    return _foundation14.ResponsiveToggle;
-  }
-});
-Object.defineProperty(exports, "Reveal", {
-  enumerable: true,
-  get: function get() {
-    return _foundation15.Reveal;
-  }
-});
-Object.defineProperty(exports, "Slider", {
-  enumerable: true,
-  get: function get() {
-    return _foundation16.Slider;
-  }
-});
-Object.defineProperty(exports, "SmoothScroll", {
-  enumerable: true,
-  get: function get() {
-    return _foundation17.SmoothScroll;
-  }
-});
-Object.defineProperty(exports, "Sticky", {
-  enumerable: true,
-  get: function get() {
-    return _foundation18.Sticky;
-  }
-});
-Object.defineProperty(exports, "Tabs", {
-  enumerable: true,
-  get: function get() {
-    return _foundation19.Tabs;
-  }
-});
-Object.defineProperty(exports, "Toggler", {
-  enumerable: true,
-  get: function get() {
-    return _foundation20.Toggler;
-  }
-});
-Object.defineProperty(exports, "Tooltip", {
-  enumerable: true,
-  get: function get() {
-    return _foundation21.Tooltip;
-  }
-});
-Object.defineProperty(exports, "ResponsiveAccordionTabs", {
-  enumerable: true,
-  get: function get() {
-    return _foundation22.ResponsiveAccordionTabs;
-  }
-});
-exports.CoreUtils = exports.default = void 0;
 
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
 
-var _foundation = __webpack_require__(/*! ../foundation.core */ "./js/foundation.core.js");
 
-var CoreUtils = _interopRequireWildcard(__webpack_require__(/*! ../foundation.core.utils */ "./js/foundation.core.utils.js"));
 
-exports.CoreUtils = CoreUtils;
 
-var _foundationUtil = __webpack_require__(/*! ../foundation.util.box */ "./js/foundation.util.box.js");
 
-var _foundationUtil2 = __webpack_require__(/*! ../foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
 
-var _foundationUtil3 = __webpack_require__(/*! ../foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
 
-var _foundationUtil4 = __webpack_require__(/*! ../foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
 
-var _foundationUtil5 = __webpack_require__(/*! ../foundation.util.motion */ "./js/foundation.util.motion.js");
 
-var _foundationUtil6 = __webpack_require__(/*! ../foundation.util.nest */ "./js/foundation.util.nest.js");
 
-var _foundationUtil7 = __webpack_require__(/*! ../foundation.util.timer */ "./js/foundation.util.timer.js");
 
-var _foundationUtil8 = __webpack_require__(/*! ../foundation.util.touch */ "./js/foundation.util.touch.js");
 
-var _foundationUtil9 = __webpack_require__(/*! ../foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-var _foundation2 = __webpack_require__(/*! ../foundation.abide */ "./js/foundation.abide.js");
 
-var _foundation3 = __webpack_require__(/*! ../foundation.accordion */ "./js/foundation.accordion.js");
 
-var _foundation4 = __webpack_require__(/*! ../foundation.accordionMenu */ "./js/foundation.accordionMenu.js");
 
-var _foundation5 = __webpack_require__(/*! ../foundation.drilldown */ "./js/foundation.drilldown.js");
 
-var _foundation6 = __webpack_require__(/*! ../foundation.dropdown */ "./js/foundation.dropdown.js");
 
-var _foundation7 = __webpack_require__(/*! ../foundation.dropdownMenu */ "./js/foundation.dropdownMenu.js");
 
-var _foundation8 = __webpack_require__(/*! ../foundation.equalizer */ "./js/foundation.equalizer.js");
 
-var _foundation9 = __webpack_require__(/*! ../foundation.interchange */ "./js/foundation.interchange.js");
 
-var _foundation10 = __webpack_require__(/*! ../foundation.magellan */ "./js/foundation.magellan.js");
 
-var _foundation11 = __webpack_require__(/*! ../foundation.offcanvas */ "./js/foundation.offcanvas.js");
 
-var _foundation12 = __webpack_require__(/*! ../foundation.orbit */ "./js/foundation.orbit.js");
 
-var _foundation13 = __webpack_require__(/*! ../foundation.responsiveMenu */ "./js/foundation.responsiveMenu.js");
 
-var _foundation14 = __webpack_require__(/*! ../foundation.responsiveToggle */ "./js/foundation.responsiveToggle.js");
 
-var _foundation15 = __webpack_require__(/*! ../foundation.reveal */ "./js/foundation.reveal.js");
 
-var _foundation16 = __webpack_require__(/*! ../foundation.slider */ "./js/foundation.slider.js");
 
-var _foundation17 = __webpack_require__(/*! ../foundation.smoothScroll */ "./js/foundation.smoothScroll.js");
 
-var _foundation18 = __webpack_require__(/*! ../foundation.sticky */ "./js/foundation.sticky.js");
 
-var _foundation19 = __webpack_require__(/*! ../foundation.tabs */ "./js/foundation.tabs.js");
 
-var _foundation20 = __webpack_require__(/*! ../foundation.toggler */ "./js/foundation.toggler.js");
-
-var _foundation21 = __webpack_require__(/*! ../foundation.tooltip */ "./js/foundation.tooltip.js");
-
-var _foundation22 = __webpack_require__(/*! ../foundation.responsiveAccordionTabs */ "./js/foundation.responsiveAccordionTabs.js");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_foundation.Foundation.addToJquery(_jquery.default); // Add Foundation Utils to Foundation global namespace for backwards
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].addToJquery(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Add Foundation Utils to Foundation global namespace for backwards
 // compatibility.
 
-
-_foundation.Foundation.rtl = CoreUtils.rtl;
-_foundation.Foundation.GetYoDigits = CoreUtils.GetYoDigits;
-_foundation.Foundation.transitionend = CoreUtils.transitionend;
-_foundation.Foundation.RegExpEscape = CoreUtils.RegExpEscape;
-_foundation.Foundation.onLoad = CoreUtils.onLoad;
-_foundation.Foundation.Box = _foundationUtil.Box;
-_foundation.Foundation.onImagesLoaded = _foundationUtil2.onImagesLoaded;
-_foundation.Foundation.Keyboard = _foundationUtil3.Keyboard;
-_foundation.Foundation.MediaQuery = _foundationUtil4.MediaQuery;
-_foundation.Foundation.Motion = _foundationUtil5.Motion;
-_foundation.Foundation.Move = _foundationUtil5.Move;
-_foundation.Foundation.Nest = _foundationUtil6.Nest;
-_foundation.Foundation.Timer = _foundationUtil7.Timer; // Touch and Triggers previously were almost purely sede effect driven,
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].rtl = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].GetYoDigits = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].transitionend = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["transitionend"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].RegExpEscape = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["RegExpEscape"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].onLoad = _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["onLoad"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Box = _foundation_util_box__WEBPACK_IMPORTED_MODULE_3__["Box"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].onImagesLoaded = _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__["onImagesLoaded"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Keyboard = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_5__["Keyboard"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].MediaQuery = _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_6__["MediaQuery"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Motion = _foundation_util_motion__WEBPACK_IMPORTED_MODULE_7__["Motion"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Move = _foundation_util_motion__WEBPACK_IMPORTED_MODULE_7__["Move"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Nest = _foundation_util_nest__WEBPACK_IMPORTED_MODULE_8__["Nest"];
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].Timer = _foundation_util_timer__WEBPACK_IMPORTED_MODULE_9__["Timer"]; // Touch and Triggers previously were almost purely sede effect driven,
 // so no need to add it to Foundation, just init them.
 
-_foundationUtil8.Touch.init(_jquery.default);
+_foundation_util_touch__WEBPACK_IMPORTED_MODULE_10__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+_foundation_util_triggers__WEBPACK_IMPORTED_MODULE_11__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a, _foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]);
 
-_foundationUtil9.Triggers.init(_jquery.default, _foundation.Foundation);
+_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_6__["MediaQuery"]._init();
 
-_foundationUtil4.MediaQuery._init();
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_abide__WEBPACK_IMPORTED_MODULE_12__["Abide"], 'Abide');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_accordion__WEBPACK_IMPORTED_MODULE_13__["Accordion"], 'Accordion');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_14__["AccordionMenu"], 'AccordionMenu');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_drilldown__WEBPACK_IMPORTED_MODULE_15__["Drilldown"], 'Drilldown');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_dropdown__WEBPACK_IMPORTED_MODULE_16__["Dropdown"], 'Dropdown');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_17__["DropdownMenu"], 'DropdownMenu');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_equalizer__WEBPACK_IMPORTED_MODULE_18__["Equalizer"], 'Equalizer');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_interchange__WEBPACK_IMPORTED_MODULE_19__["Interchange"], 'Interchange');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_magellan__WEBPACK_IMPORTED_MODULE_20__["Magellan"], 'Magellan');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_offcanvas__WEBPACK_IMPORTED_MODULE_21__["OffCanvas"], 'OffCanvas');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_orbit__WEBPACK_IMPORTED_MODULE_22__["Orbit"], 'Orbit');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_responsiveMenu__WEBPACK_IMPORTED_MODULE_23__["ResponsiveMenu"], 'ResponsiveMenu');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_responsiveToggle__WEBPACK_IMPORTED_MODULE_24__["ResponsiveToggle"], 'ResponsiveToggle');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_reveal__WEBPACK_IMPORTED_MODULE_25__["Reveal"], 'Reveal');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_slider__WEBPACK_IMPORTED_MODULE_26__["Slider"], 'Slider');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_27__["SmoothScroll"], 'SmoothScroll');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_sticky__WEBPACK_IMPORTED_MODULE_28__["Sticky"], 'Sticky');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_tabs__WEBPACK_IMPORTED_MODULE_29__["Tabs"], 'Tabs');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_toggler__WEBPACK_IMPORTED_MODULE_30__["Toggler"], 'Toggler');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_tooltip__WEBPACK_IMPORTED_MODULE_31__["Tooltip"], 'Tooltip');
+_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"].plugin(_foundation_responsiveAccordionTabs__WEBPACK_IMPORTED_MODULE_32__["ResponsiveAccordionTabs"], 'ResponsiveAccordionTabs');
 
-_foundation.Foundation.plugin(_foundation2.Abide, 'Abide');
-
-_foundation.Foundation.plugin(_foundation3.Accordion, 'Accordion');
-
-_foundation.Foundation.plugin(_foundation4.AccordionMenu, 'AccordionMenu');
-
-_foundation.Foundation.plugin(_foundation5.Drilldown, 'Drilldown');
-
-_foundation.Foundation.plugin(_foundation6.Dropdown, 'Dropdown');
-
-_foundation.Foundation.plugin(_foundation7.DropdownMenu, 'DropdownMenu');
-
-_foundation.Foundation.plugin(_foundation8.Equalizer, 'Equalizer');
-
-_foundation.Foundation.plugin(_foundation9.Interchange, 'Interchange');
-
-_foundation.Foundation.plugin(_foundation10.Magellan, 'Magellan');
-
-_foundation.Foundation.plugin(_foundation11.OffCanvas, 'OffCanvas');
-
-_foundation.Foundation.plugin(_foundation12.Orbit, 'Orbit');
-
-_foundation.Foundation.plugin(_foundation13.ResponsiveMenu, 'ResponsiveMenu');
-
-_foundation.Foundation.plugin(_foundation14.ResponsiveToggle, 'ResponsiveToggle');
-
-_foundation.Foundation.plugin(_foundation15.Reveal, 'Reveal');
-
-_foundation.Foundation.plugin(_foundation16.Slider, 'Slider');
-
-_foundation.Foundation.plugin(_foundation17.SmoothScroll, 'SmoothScroll');
-
-_foundation.Foundation.plugin(_foundation18.Sticky, 'Sticky');
-
-_foundation.Foundation.plugin(_foundation19.Tabs, 'Tabs');
-
-_foundation.Foundation.plugin(_foundation20.Toggler, 'Toggler');
-
-_foundation.Foundation.plugin(_foundation21.Tooltip, 'Tooltip');
-
-_foundation.Foundation.plugin(_foundation22.ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
-
-var _default = _foundation.Foundation;
-exports.default = _default;
+/* harmony default export */ __webpack_exports__["default"] = (_foundation_core__WEBPACK_IMPORTED_MODULE_1__["Foundation"]);
 
 /***/ }),
 
@@ -445,24 +288,17 @@ exports.default = _default;
 /*!********************************!*\
   !*** ./js/foundation.abide.js ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Abide */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Abide", function() { return Abide; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Abide = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -482,10 +318,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
 /**
  * Abide module.
  * @module foundation.abide
  */
+
 var Abide =
 /*#__PURE__*/
 function (_Plugin) {
@@ -511,7 +351,7 @@ function (_Plugin) {
     value: function _setup(element) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       this.$element = element;
-      this.options = _jquery.default.extend(true, {}, Abide.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(true, {}, Abide.defaults, this.$element.data(), options);
       this.className = 'Abide'; // ie9 back compat
 
       this._init();
@@ -526,7 +366,7 @@ function (_Plugin) {
     value: function _init() {
       var _this2 = this;
 
-      this.$inputs = _jquery.default.merge( // Consider as input to validate:
+      this.$inputs = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.merge( // Consider as input to validate:
       this.$element.find('input').not('[type=submit]'), // * all input fields expect submit
       this.$element.find('textarea, select') // * all textareas and select fields
       );
@@ -534,10 +374,10 @@ function (_Plugin) {
 
       if (this.options.a11yAttributes) {
         this.$inputs.each(function (i, input) {
-          return _this2.addA11yAttributes((0, _jquery.default)(input));
+          return _this2.addA11yAttributes(jquery__WEBPACK_IMPORTED_MODULE_0___default()(input));
         });
         $globalErrors.each(function (i, error) {
-          return _this2.addGlobalErrorA11yAttributes((0, _jquery.default)(error));
+          return _this2.addGlobalErrorA11yAttributes(jquery__WEBPACK_IMPORTED_MODULE_0___default()(error));
         });
       }
 
@@ -561,19 +401,19 @@ function (_Plugin) {
 
       if (this.options.validateOn === 'fieldChange') {
         this.$inputs.off('change.zf.abide').on('change.zf.abide', function (e) {
-          _this3.validateInput((0, _jquery.default)(e.target));
+          _this3.validateInput(jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target));
         });
       }
 
       if (this.options.liveValidate) {
         this.$inputs.off('input.zf.abide').on('input.zf.abide', function (e) {
-          _this3.validateInput((0, _jquery.default)(e.target));
+          _this3.validateInput(jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target));
         });
       }
 
       if (this.options.validateOnBlur) {
         this.$inputs.off('blur.zf.abide').on('blur.zf.abide', function (e) {
-          _this3.validateInput((0, _jquery.default)(e.target));
+          _this3.validateInput(jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target));
         });
       }
     }
@@ -687,12 +527,12 @@ function (_Plugin) {
         var $label = _this4.$element.find("label[for=\"".concat(id, "\"]"));
 
         if (!$label.length) {
-          $label = (0, _jquery.default)(el).closest('label');
+          $label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).closest('label');
         }
 
         return $label[0];
       });
-      return (0, _jquery.default)(labels);
+      return jquery__WEBPACK_IMPORTED_MODULE_0___default()(labels);
     }
     /**
      * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
@@ -737,7 +577,7 @@ function (_Plugin) {
         var errorId = $error.attr('id');
 
         if (typeof errorId === 'undefined') {
-          errorId = (0, _foundationCore2.GetYoDigits)(6, 'abide-error');
+          errorId = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'abide-error');
           $error.attr('id', errorId);
         }
 
@@ -750,21 +590,21 @@ function (_Plugin) {
         var elemId = $el.attr('id');
 
         if (typeof elemId === 'undefined') {
-          elemId = (0, _foundationCore2.GetYoDigits)(6, 'abide-input');
+          elemId = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'abide-input');
           $el.attr('id', elemId);
         }
 
         ; // For each label targeting $el, set [for] if it is not set.
 
         $labels.each(function (i, label) {
-          var $label = (0, _jquery.default)(label);
+          var $label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(label);
           if (typeof $label.attr('for') === 'undefined') $label.attr('for', elemId);
         });
       } // For each error targeting $el, set [role=alert] if it is not set.
 
 
       $errors.each(function (i, label) {
-        var $label = (0, _jquery.default)(label);
+        var $label = jquery__WEBPACK_IMPORTED_MODULE_0___default()(label);
         if (typeof $label.attr('role') === 'undefined') $label.attr('role', 'alert');
       }).end();
     }
@@ -893,8 +733,8 @@ function (_Plugin) {
           var _this = this;
 
           dependentElements.each(function () {
-            if ((0, _jquery.default)(this).val()) {
-              _this.validateInput((0, _jquery.default)(this));
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val()) {
+              _this.validateInput(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
             }
           });
         }
@@ -928,11 +768,11 @@ function (_Plugin) {
       var _this = this;
 
       this.$inputs.each(function () {
-        acc.push(_this.validateInput((0, _jquery.default)(this)));
+        acc.push(_this.validateInput(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)));
       });
       var noError = acc.indexOf(false) === -1;
       this.$element.find('[data-abide-error]').each(function (i, elem) {
-        var $elem = (0, _jquery.default)(elem); // Ensure a11y attributes are set
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem); // Ensure a11y attributes are set
 
         if (_this5.options.a11yAttributes) _this5.addGlobalErrorA11yAttributes($elem); // Show or hide the error
 
@@ -996,7 +836,7 @@ function (_Plugin) {
           required = false; // For the group to be required, at least one radio needs to be required
 
       $group.each(function (i, e) {
-        if ((0, _jquery.default)(e).attr('required')) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e).attr('required')) {
           required = true;
         }
       });
@@ -1005,7 +845,7 @@ function (_Plugin) {
       if (!valid) {
         // For the group to be valid, at least one radio needs to be checked
         $group.each(function (i, e) {
-          if ((0, _jquery.default)(e).prop('checked')) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e).prop('checked')) {
             valid = true;
           }
         });
@@ -1043,19 +883,19 @@ function (_Plugin) {
     value: function resetForm() {
       var $form = this.$element,
           opts = this.options;
-      (0, _jquery.default)(".".concat(opts.labelErrorClass), $form).not('small').removeClass(opts.labelErrorClass);
-      (0, _jquery.default)(".".concat(opts.inputErrorClass), $form).not('small').removeClass(opts.inputErrorClass);
-      (0, _jquery.default)("".concat(opts.formErrorSelector, ".").concat(opts.formErrorClass)).removeClass(opts.formErrorClass);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".".concat(opts.labelErrorClass), $form).not('small').removeClass(opts.labelErrorClass);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".".concat(opts.inputErrorClass), $form).not('small').removeClass(opts.inputErrorClass);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("".concat(opts.formErrorSelector, ".").concat(opts.formErrorClass)).removeClass(opts.formErrorClass);
       $form.find('[data-abide-error]').css('display', 'none');
-      (0, _jquery.default)(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
         'data-invalid': null,
         'aria-invalid': null
       });
-      (0, _jquery.default)(':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).attr({
         'data-invalid': null,
         'aria-invalid': null
       });
-      (0, _jquery.default)(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).attr({
         'data-invalid': null,
         'aria-invalid': null
       });
@@ -1078,19 +918,18 @@ function (_Plugin) {
 
       this.$element.off('.abide').find('[data-abide-error]').css('display', 'none');
       this.$inputs.off('.abide').each(function () {
-        _this.removeErrorClasses((0, _jquery.default)(this));
+        _this.removeErrorClasses(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
       });
     }
   }]);
 
   return Abide;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 /**
  * Default settings for plugin
  */
 
 
-exports.Abide = Abide;
 Abide.defaults = {
   /**
    * The default event to validate inputs. Checkboxes and radios validate immediately.
@@ -1215,10 +1054,11 @@ Abide.defaults = {
    */
   validators: {
     equalTo: function equalTo(el, required, parent) {
-      return (0, _jquery.default)("#".concat(el.attr('data-equalto'))).val() === el.val();
+      return jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(el.attr('data-equalto'))).val() === el.val();
     }
   }
 };
+
 
 /***/ }),
 
@@ -1226,26 +1066,18 @@ Abide.defaults = {
 /*!************************************!*\
   !*** ./js/foundation.accordion.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Accordion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return Accordion; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Accordion = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -1265,11 +1097,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
  */
+
 var Accordion =
 /*#__PURE__*/
 function (_Plugin) {
@@ -1294,12 +1131,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Accordion.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Accordion.defaults, this.$element.data(), options);
       this.className = 'Accordion'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Accordion', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Accordion', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ARROW_DOWN': 'next',
@@ -1319,9 +1156,9 @@ function (_Plugin) {
       this.$element.attr('role', 'tablist');
       this.$tabs = this.$element.children('[data-accordion-item]');
       this.$tabs.each(function (idx, el) {
-        var $el = (0, _jquery.default)(el),
+        var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el),
             $content = $el.children('[data-tab-content]'),
-            id = $content[0].id || (0, _foundationCore.GetYoDigits)(6, 'accordion'),
+            id = $content[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'accordion'),
             linkId = el.id ? "".concat(el.id, "-label") : "".concat(id, "-label");
         $el.find('a:first').attr({
           'aria-controls': id,
@@ -1338,47 +1175,54 @@ function (_Plugin) {
         });
       });
       var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
-      this.firstTimeInit = true;
 
       if ($initActive.length) {
-        this.down($initActive, this.firstTimeInit);
-        this.firstTimeInit = false;
+        // Save up the initial hash to return to it later when going back in history
+        this._initialAnchor = $initActive.prev('a').attr('href');
+
+        this._openSingleTab($initActive);
       }
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; //need a hash and a relevant anchor in this tabset
+        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
 
-        if (anchor.length) {
-          var $link = _this2.$element.find('[href$="' + anchor + '"]'),
-              $anchor = (0, _jquery.default)(anchor);
+        if (!anchor.length && _this2._initialAnchor) {
+          anchor = _this2._initialAnchor;
+        }
 
-          if ($link.length && $anchor) {
-            if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
-              _this2.down($anchor, _this2.firstTimeInit);
+        var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-              _this2.firstTimeInit = false;
-            }
-
-            ; //roll up a little to show the titles
-
-            if (_this2.options.deepLinkSmudge) {
-              var _this = _this2;
-              (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
-                var offset = _this.$element.offset();
-
-                (0, _jquery.default)('html, body').animate({
-                  scrollTop: offset.top
-                }, _this.options.deepLinkSmudgeDelay);
-              });
-            }
-            /**
-              * Fires when the zplugin has deeplinked at pageload
-              * @event Accordion#deeplink
-              */
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // If there is an anchor for the hash, open it (if not already active)
 
 
-            _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
+        if ($anchor && $link && $link.length) {
+          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+            _this2._openSingleTab($anchor);
           }
+
+          ;
+        } // Otherwise, close everything
+        else {
+            _this2._closeAllTabs();
+          } // Roll up a little to show the titles
+
+
+        if (_this2.options.deepLinkSmudge) {
+          Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+            var offset = _this2.$element.offset();
+
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+              scrollTop: offset.top
+            }, _this2.options.deepLinkSmudgeDelay);
+          });
+        }
+
+        if ($anchor && $link) {
+          /**
+           * Fires when the plugin has deeplinked at pageload
+           * @event Accordion#deeplink
+           */
+          _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
 
@@ -1400,7 +1244,7 @@ function (_Plugin) {
       var _this = this;
 
       this.$tabs.each(function () {
-        var $elem = (0, _jquery.default)(this);
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         var $tabContent = $elem.children('[data-tab-content]');
 
         if ($tabContent.length) {
@@ -1409,7 +1253,7 @@ function (_Plugin) {
 
             _this.toggle($tabContent);
           }).on('keydown.zf.accordion', function (e) {
-            _foundationUtil.Keyboard.handleKey(e, 'Accordion', {
+            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Accordion', {
               toggle: function toggle() {
                 _this.toggle($tabContent);
               },
@@ -1437,7 +1281,7 @@ function (_Plugin) {
       });
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).on('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._checkDeepLink);
       }
     }
     /**
@@ -1474,49 +1318,24 @@ function (_Plugin) {
     /**
      * Opens the accordion tab defined by `$target`.
      * @param {jQuery} $target - Accordion pane to open (`.accordion-content`).
-     * @param {Boolean} firstTime - flag to determine if reflow should happen.
      * @fires Accordion#down
      * @function
      */
 
   }, {
     key: "down",
-    value: function down($target, firstTime) {
-      var _this3 = this;
-
-      /**
-       * checking firstTime allows for initial render of the accordion
-       * to render preset is-active panes.
-       */
-      if ($target.closest('[data-accordion]').is('[disabled]') && !firstTime) {
+    value: function down($target) {
+      if ($target.closest('[data-accordion]').is('[disabled]')) {
         console.info('Cannot call down on an accordion that is disabled.');
         return;
       }
 
-      $target.attr('aria-hidden', false).parent('[data-tab-content]').addBack().parent().addClass('is-active');
-
-      if (!this.options.multiExpand && !firstTime) {
-        var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
-
-        if ($currentActive.length) {
-          this.up($currentActive.not($target));
-        }
-      }
-
-      $target.slideDown(this.options.slideSpeed, function () {
-        /**
-         * Fires when the tab is done opening.
-         * @event Accordion#down
-         */
-        _this3.$element.trigger('down.zf.accordion', [$target]);
-      });
-      (0, _jquery.default)("#".concat($target.attr('aria-labelledby'))).attr({
-        'aria-expanded': true,
-        'aria-selected': true
-      });
+      if (this.options.multiExpand) this._openTab($target);else this._openSingleTab($target);
     }
     /**
      * Closes the tab defined by `$target`.
+     * It may be ignored if the Accordion options don't allow it.
+     *
      * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
      * @fires Accordion#up
      * @function
@@ -1525,30 +1344,113 @@ function (_Plugin) {
   }, {
     key: "up",
     value: function up($target) {
-      if ($target.closest('[data-accordion]').is('[disabled]')) {
+      if (this.$element.is('[disabled]')) {
         console.info('Cannot call up on an accordion that is disabled.');
         return;
-      }
+      } // Don't close the item if it is already closed
 
-      var $aunts = $target.parent().siblings(),
-          _this = this;
 
-      if (!this.options.allowAllClosed && !$aunts.hasClass('is-active') || !$target.parent().hasClass('is-active')) {
-        return;
-      }
+      var $targetItem = $target.parent();
+      if (!$targetItem.hasClass('is-active')) return; // Don't close the item if there is no other active item (unless with `allowAllClosed`)
 
-      $target.slideUp(_this.options.slideSpeed, function () {
+      var $othersItems = $targetItem.siblings();
+      if (!this.options.allowAllClosed && !$othersItems.hasClass('is-active')) return;
+
+      this._closeTab($target);
+    }
+    /**
+     * Make the tab defined by `$target` the only opened tab, closing all others tabs.
+     * @param {jQuery} $target - Accordion tab to open (`.accordion-content`).
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_openSingleTab",
+    value: function _openSingleTab($target) {
+      // Close all the others active tabs.
+      var $activeContents = this.$element.children('.is-active').children('[data-tab-content]');
+
+      if ($activeContents.length) {
+        this._closeTab($activeContents.not($target));
+      } // Then open the target.
+
+
+      this._openTab($target);
+    }
+    /**
+     * Opens the tab defined by `$target`.
+     * @param {jQuery} $target - Accordion tab to open (`.accordion-content`).
+     * @fires Accordion#down
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_openTab",
+    value: function _openTab($target) {
+      var _this3 = this;
+
+      var $targetItem = $target.parent();
+      var targetContentId = $target.attr('aria-labelledby');
+      $target.attr('aria-hidden', false);
+      $targetItem.addClass('is-active');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(targetContentId)).attr({
+        'aria-expanded': true,
+        'aria-selected': true
+      });
+      $target.slideDown(this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done opening.
+         * @event Accordion#down
+         */
+        _this3.$element.trigger('down.zf.accordion', [$target]);
+      });
+    }
+    /**
+     * Closes the tab defined by `$target`.
+     * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
+     * @fires Accordion#up
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_closeTab",
+    value: function _closeTab($target) {
+      var _this4 = this;
+
+      var $targetItem = $target.parent();
+      var targetContentId = $target.attr('aria-labelledby');
+      $target.attr('aria-hidden', true);
+      $targetItem.removeClass('is-active');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(targetContentId)).attr({
+        'aria-expanded': false,
+        'aria-selected': false
+      });
+      $target.slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done collapsing up.
          * @event Accordion#up
          */
-        _this.$element.trigger('up.zf.accordion', [$target]);
+        _this4.$element.trigger('up.zf.accordion', [$target]);
       });
-      $target.attr('aria-hidden', true).parent().removeClass('is-active');
-      (0, _jquery.default)("#".concat($target.attr('aria-labelledby'))).attr({
-        'aria-expanded': false,
-        'aria-selected': false
-      });
+    }
+    /**
+     * Closes all active tabs
+     * @fires Accordion#up
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_closeAllTabs",
+    value: function _closeAllTabs() {
+      var $activeTabs = this.$element.children('.is-active').children('[data-tab-content]');
+
+      if ($activeTabs.length) {
+        this._closeTab($activeTabs);
+      }
     }
     /**
      * Destroys an instance of an accordion.
@@ -1563,15 +1465,14 @@ function (_Plugin) {
       this.$element.find('a').off('.zf.accordion');
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).off('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._checkDeepLink);
       }
     }
   }]);
 
   return Accordion;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.Accordion = Accordion;
 Accordion.defaults = {
   /**
    * Amount of time to animate the opening of an accordion pane.
@@ -1631,34 +1532,26 @@ Accordion.defaults = {
   updateHistory: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.accordionMenu.js":
 /*!****************************************!*\
   !*** ./js/foundation.accordionMenu.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: AccordionMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccordionMenu", function() { return AccordionMenu; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.nest */ "./js/foundation.util.nest.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AccordionMenu = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.nest */ "./js/foundation.util.nest.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -1678,12 +1571,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * AccordionMenu module.
  * @module foundation.accordionMenu
  * @requires foundation.util.keyboard
  * @requires foundation.util.nest
  */
+
 var AccordionMenu =
 /*#__PURE__*/
 function (_Plugin) {
@@ -1708,12 +1607,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, AccordionMenu.defaults, this.$element.data(), options);
       this.className = 'AccordionMenu'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('AccordionMenu', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('AccordionMenu', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ARROW_RIGHT': 'open',
@@ -1731,7 +1630,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil2.Nest.Feather(this.$element, 'accordion');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Feather(this.$element, 'accordion');
 
       var _this = this;
 
@@ -1743,10 +1642,10 @@ function (_Plugin) {
       });
       this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
       this.$menuLinks.each(function () {
-        var linkId = this.id || (0, _foundationCore.GetYoDigits)(6, 'acc-menu-link'),
-            $elem = (0, _jquery.default)(this),
+        var linkId = this.id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'acc-menu-link'),
+            $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $sub = $elem.children('[data-submenu]'),
-            subId = $sub[0].id || (0, _foundationCore.GetYoDigits)(6, 'acc-menu'),
+            subId = $sub[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'acc-menu'),
             isActive = $sub.hasClass('is-active');
 
         if (_this.options.parentLink) {
@@ -1781,7 +1680,7 @@ function (_Plugin) {
         var _this = this;
 
         initPanes.each(function () {
-          _this.down((0, _jquery.default)(this));
+          _this.down(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
         });
       }
 
@@ -1798,15 +1697,15 @@ function (_Plugin) {
       var _this = this;
 
       this.$element.find('li').each(function () {
-        var $submenu = (0, _jquery.default)(this).children('[data-submenu]');
+        var $submenu = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('[data-submenu]');
 
         if ($submenu.length) {
           if (_this.options.submenuToggle) {
-            (0, _jquery.default)(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
               _this.toggle($submenu);
             });
           } else {
-            (0, _jquery.default)(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
               e.preventDefault();
 
               _this.toggle($submenu);
@@ -1814,22 +1713,22 @@ function (_Plugin) {
           }
         }
       }).on('keydown.zf.accordionmenu', function (e) {
-        var $element = (0, _jquery.default)(this),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('ul').children('li'),
             $prevElement,
             $nextElement,
             $target = $element.children('[data-submenu]');
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             $prevElement = $elements.eq(Math.max(0, i - 1)).find('a').first();
             $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1)).find('a').first();
 
-            if ((0, _jquery.default)(this).children('[data-submenu]:visible').length) {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('[data-submenu]:visible').length) {
               // has open sub menu
               $nextElement = $element.find('li:first-child').find('a').first();
             }
 
-            if ((0, _jquery.default)(this).is(':first-child')) {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is(':first-child')) {
               // is first element of sub menu
               $prevElement = $element.parents('li').first().find('a').first();
             } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) {
@@ -1837,7 +1736,7 @@ function (_Plugin) {
               $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
             }
 
-            if ((0, _jquery.default)(this).is(':last-child')) {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is(':last-child')) {
               // is last element of sub menu
               $nextElement = $element.parents('li').first().next('li').find('a').first();
             }
@@ -1845,8 +1744,7 @@ function (_Plugin) {
             return;
           }
         });
-
-        _foundationUtil.Keyboard.handleKey(e, 'AccordionMenu', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'AccordionMenu', {
           open: function open() {
             if ($target.is(':hidden')) {
               _this.down($target);
@@ -2014,14 +1912,13 @@ function (_Plugin) {
         this.$element.find('.submenu-toggle').remove();
       }
 
-      _foundationUtil2.Nest.Burn(this.$element, 'accordion');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Burn(this.$element, 'accordion');
     }
   }]);
 
   return AccordionMenu;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 
-exports.AccordionMenu = AccordionMenu;
 AccordionMenu.defaults = {
   /**
    * Adds the parent link to the submenu.
@@ -2062,34 +1959,31 @@ AccordionMenu.defaults = {
   multiOpen: true
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.core.js":
 /*!*******************************!*\
   !*** ./js/foundation.core.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return Foundation; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Foundation = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var FOUNDATION_VERSION = '6.5.0-rc.2'; // Global Foundation object
+
+
+
+var FOUNDATION_VERSION = '6.5.0-rc.3'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -2131,7 +2025,7 @@ var Foundation = {
    */
   registerPlugin: function registerPlugin(plugin, name) {
     var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
-    plugin.uuid = (0, _foundationCore.GetYoDigits)(6, pluginName);
+    plugin.uuid = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, pluginName);
 
     if (!plugin.$element.attr("data-".concat(pluginName))) {
       plugin.$element.attr("data-".concat(pluginName), plugin.uuid);
@@ -2187,12 +2081,12 @@ var Foundation = {
    * @default If no argument is passed, reflow all currently active plugins.
    */
   reInit: function reInit(plugins) {
-    var isJQ = plugins instanceof _jquery.default;
+    var isJQ = plugins instanceof jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
     try {
       if (isJQ) {
         plugins.each(function () {
-          (0, _jquery.default)(this).data('zfPlugin')._init();
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('zfPlugin')._init();
         });
       } else {
         var type = _typeof(plugins),
@@ -2201,12 +2095,12 @@ var Foundation = {
           'object': function object(plgs) {
             plgs.forEach(function (p) {
               p = hyphenate(p);
-              (0, _jquery.default)('[data-' + p + ']').foundation('_init');
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-' + p + ']').foundation('_init');
             });
           },
           'string': function string() {
             plugins = hyphenate(plugins);
-            (0, _jquery.default)('[data-' + plugins + ']').foundation('_init');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-' + plugins + ']').foundation('_init');
           },
           'undefined': function undefined() {
             this['object'](Object.keys(_this._plugins));
@@ -2239,14 +2133,14 @@ var Foundation = {
     var _this = this; // Iterate through each plugin
 
 
-    _jquery.default.each(plugins, function (i, name) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(plugins, function (i, name) {
       // Get the current plugin
       var plugin = _this._plugins[name]; // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
 
-      var $elem = (0, _jquery.default)(elem).find('[data-' + name + ']').addBack('[data-' + name + ']'); // For each plugin found, initialize it
+      var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem).find('[data-' + name + ']').addBack('[data-' + name + ']'); // For each plugin found, initialize it
 
       $elem.each(function () {
-        var $el = (0, _jquery.default)(this),
+        var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             opts = {}; // Don't double-dip on plugins
 
         if ($el.data('zfPlugin')) {
@@ -2264,7 +2158,7 @@ var Foundation = {
         }
 
         try {
-          $el.data('zfPlugin', new plugin((0, _jquery.default)(this), opts));
+          $el.data('zfPlugin', new plugin(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), opts));
         } catch (er) {
           console.error(er);
         } finally {
@@ -2292,7 +2186,7 @@ var Foundation = {
 
       if (type === 'undefined') {
         //needs to initialize the Foundation object, or an individual plugin.
-        _foundationUtil.MediaQuery._init();
+        _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__["MediaQuery"]._init();
 
         Foundation.reflow(this);
       } else if (type === 'string') {
@@ -2328,7 +2222,6 @@ var Foundation = {
     return $;
   }
 };
-exports.Foundation = Foundation;
 Foundation.util = {
   /**
    * Function for applying a debounce effect to a function call.
@@ -2443,28 +2336,24 @@ function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.core.plugin.js":
 /*!**************************************!*\
   !*** ./js/foundation.core.plugin.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Plugin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Plugin", function() { return Plugin; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Plugin = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2472,9 +2361,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// Abstract class for providing lifecycle hooks. Expect plugins to define AT LEAST
+
+ // Abstract class for providing lifecycle hooks. Expect plugins to define AT LEAST
 // {function} _setup (replaces previous constructor),
 // {function} _destroy (replaces previous destroy)
+
 var Plugin =
 /*#__PURE__*/
 function () {
@@ -2484,7 +2375,7 @@ function () {
     this._setup(element, options);
 
     var pluginName = getPluginName(this);
-    this.uuid = (0, _foundationCore.GetYoDigits)(6, pluginName);
+    this.uuid = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, pluginName);
 
     if (!this.$element.attr("data-".concat(pluginName))) {
       this.$element.attr("data-".concat(pluginName), this.uuid);
@@ -2526,8 +2417,6 @@ function () {
 // Thank you: http://stackoverflow.com/a/8955580
 
 
-exports.Plugin = Plugin;
-
 function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
@@ -2540,38 +2429,37 @@ function getPluginName(obj) {
   }
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.core.utils.js":
 /*!*************************************!*\
   !*** ./js/foundation.core.utils.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rtl", function() { return rtl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetYoDigits", function() { return GetYoDigits; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegExpEscape", function() { return RegExpEscape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transitionend", function() { return transitionend; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoad", function() { return onLoad; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLeaveElement", function() { return onLeaveElement; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.rtl = rtl;
-exports.GetYoDigits = GetYoDigits;
-exports.RegExpEscape = RegExpEscape;
-exports.transitionend = transitionend;
-exports.onLoad = onLoad;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Core Foundation Utilities, utilized in a number of places.
+ // Core Foundation Utilities, utilized in a number of places.
 
 /**
  * Returns a boolean for RTL support
  */
+
 function rtl() {
-  return (0, _jquery.default)('html').attr('dir') === 'rtl';
+  return jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').attr('dir') === 'rtl';
 }
 /**
  * returns a random base-36 uid with namespacing
@@ -2650,11 +2538,50 @@ function onLoad($elem, handler) {
 
   if ($elem) {
     if (handler) $elem.one(eventType, handler);
-    if (didLoad) setTimeout(cb);else (0, _jquery.default)(window).one('load', cb);
+    if (didLoad) setTimeout(cb);else jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).one('load', cb);
   }
 
   return eventType;
 }
+
+function onLeaveElement($elem, handler) {
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      _ref$leaveWindow = _ref.leaveWindow,
+      leaveWindow = _ref$leaveWindow === void 0 ? true : _ref$leaveWindow;
+
+  var eventType = 'mouseleave.zf.util.onLeaveElement';
+
+  if ($elem && handler) {
+    $elem.on(eventType, function leaveHandler(e) {
+      for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        rest[_key - 1] = arguments[_key];
+      }
+
+      var _this = this;
+
+      setTimeout(function leaveEventDebouncer() {
+        if (e.relatedTarget === null && leaveWindow && document.hasFocus && document.hasFocus()) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).one('mouseenter', function reenterHandler(reeenterE) {
+            if ($elem.has(reeenterE.target).length) {
+              return false;
+            }
+
+            ;
+            e.relatedTarget = reeenterE.target;
+            handler.call.apply(handler, [_this, e].concat(rest));
+          });
+          return false;
+        }
+
+        handler.call.apply(handler, [_this, e].concat(rest));
+      });
+    });
+  }
+
+  return eventType;
+}
+
+
 
 /***/ }),
 
@@ -2662,30 +2589,20 @@ function onLoad($elem, handler) {
 /*!************************************!*\
   !*** ./js/foundation.drilldown.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Drilldown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Drilldown", function() { return Drilldown; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.nest */ "./js/foundation.util.nest.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.box */ "./js/foundation.util.box.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Drilldown = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.nest */ "./js/foundation.util.nest.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.box */ "./js/foundation.util.box.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2705,6 +2622,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
 /**
  * Drilldown module.
  * @module foundation.drilldown
@@ -2712,6 +2635,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.nest
  * @requires foundation.util.box
  */
+
 var Drilldown =
 /*#__PURE__*/
 function (_Plugin) {
@@ -2735,12 +2659,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Drilldown.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
       this.className = 'Drilldown'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Drilldown', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Drilldown', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -2760,7 +2684,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil2.Nest.Feather(this.$element, 'drilldown');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Feather(this.$element, 'drilldown');
 
       if (this.options.autoApplyClass) {
         this.$element.addClass('drilldown');
@@ -2772,8 +2696,11 @@ function (_Plugin) {
       });
       this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
       this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
-      this.$element.attr('data-mutate', this.$element.attr('data-drilldown') || (0, _foundationCore.GetYoDigits)(6, 'drilldown'));
+      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a'); // Set the main menu as current by default (unless a submenu is selected)
+      // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
+
+      this.$currentMenu = this.$element;
+      this.$element.attr('data-mutate', this.$element.attr('data-drilldown') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'drilldown'));
 
       this._prepareMenu();
 
@@ -2798,7 +2725,7 @@ function (_Plugin) {
 
 
       this.$submenuAnchors.each(function () {
-        var $link = (0, _jquery.default)(this);
+        var $link = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         var $sub = $link.parent();
 
         if (_this.options.parentLink) {
@@ -2815,7 +2742,7 @@ function (_Plugin) {
         _this._events($link);
       });
       this.$submenus.each(function () {
-        var $menu = (0, _jquery.default)(this),
+        var $menu = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $back = $menu.find('.js-drilldown-back');
 
         if (!$back.length) {
@@ -2843,7 +2770,7 @@ function (_Plugin) {
 
 
       if (!this.$element.parent().hasClass('is-drilldown')) {
-        this.$wrapper = (0, _jquery.default)(this.options.wrapper).addClass('is-drilldown');
+        this.$wrapper = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.options.wrapper).addClass('is-drilldown');
         if (this.options.animateHeight) this.$wrapper.addClass('animate-height');
         this.$element.wrap(this.$wrapper);
       } // set wrapper
@@ -2875,7 +2802,7 @@ function (_Plugin) {
       var _this = this;
 
       $elem.off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
-        if ((0, _jquery.default)(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
           e.stopImmediatePropagation();
           e.preventDefault();
         } // if(e.target !== e.currentTarget.firstElementChild){
@@ -2886,9 +2813,9 @@ function (_Plugin) {
         _this._show($elem.parent('li'));
 
         if (_this.options.closeOnClick) {
-          var $body = (0, _jquery.default)('body');
+          var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
           $body.off('.zf.drilldown').on('click.zf.drilldown', function (e) {
-            if (e.target === _this.$element[0] || _jquery.default.contains(_this.$element[0], e.target)) {
+            if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target)) {
               return;
             }
 
@@ -2928,16 +2855,16 @@ function (_Plugin) {
     value: function _scrollTop() {
       var _this = this;
 
-      var $scrollTopElement = _this.options.scrollTopElement != '' ? (0, _jquery.default)(_this.options.scrollTopElement) : _this.$element,
+      var $scrollTopElement = _this.options.scrollTopElement != '' ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this.options.scrollTopElement) : _this.$element,
           scrollPos = parseInt($scrollTopElement.offset().top + _this.options.scrollTopOffset, 10);
-      (0, _jquery.default)('html, body').stop(true).animate({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, _this.options.animationDuration, _this.options.animationEasing, function () {
         /**
           * Fires after the menu has scrolled
           * @event Drilldown#scrollme
           */
-        if (this === (0, _jquery.default)('html')[0]) _this.$element.trigger('scrollme.zf.drilldown');
+        if (this === jquery__WEBPACK_IMPORTED_MODULE_0___default()('html')[0]) _this.$element.trigger('scrollme.zf.drilldown');
       });
     }
     /**
@@ -2951,24 +2878,23 @@ function (_Plugin) {
       var _this = this;
 
       this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function (e) {
-        var $element = (0, _jquery.default)(this),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('li').parent('ul').children('li').children('a'),
             $prevElement,
             $nextElement;
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             $prevElement = $elements.eq(Math.max(0, i - 1));
             $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1));
             return;
           }
         });
-
-        _foundationUtil.Keyboard.handleKey(e, 'Drilldown', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Drilldown', {
           next: function next() {
             if ($element.is(_this.$submenuAnchors)) {
               _this._show($element.parent('li'));
 
-              $element.parent('li').one((0, _foundationCore.transitionend)($element), function () {
+              $element.parent('li').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
                 $element.parent('li').find('ul li a').not('.js-drilldown-back a').first().focus();
               });
               return true;
@@ -2977,7 +2903,7 @@ function (_Plugin) {
           previous: function previous() {
             _this._hide($element.parent('li').parent('ul'));
 
-            $element.parent('li').parent('ul').one((0, _foundationCore.transitionend)($element), function () {
+            $element.parent('li').parent('ul').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
               setTimeout(function () {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
@@ -3010,7 +2936,7 @@ function (_Plugin) {
               // not menu item means back button
               _this._hide($element.parent('li').parent('ul'));
 
-              $element.parent('li').parent('ul').one((0, _foundationCore.transitionend)($element), function () {
+              $element.parent('li').parent('ul').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
                 setTimeout(function () {
                   $element.parent('li').parent('ul').parent('li').children('a').first().focus();
                 }, 1);
@@ -3020,7 +2946,7 @@ function (_Plugin) {
               // Sub menu item
               _this._show($element.parent('li'));
 
-              $element.parent('li').one((0, _foundationCore.transitionend)($element), function () {
+              $element.parent('li').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($element), function () {
                 $element.parent('li').find('ul li a').not('.js-drilldown-back a').first().focus();
               });
               return true;
@@ -3049,7 +2975,7 @@ function (_Plugin) {
       if (this.options.autoHeight) this.$wrapper.css({
         height: $elem.parent().closest('ul').data('calcHeight')
       });
-      $elem.one((0, _foundationCore.transitionend)($elem), function (e) {
+      $elem.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function (e) {
         $elem.removeClass('is-active is-closing');
       });
       /**
@@ -3156,8 +3082,10 @@ function (_Plugin) {
 
       var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
       $expandedSubmenus.each(function (index) {
-        _this._setHideSubMenuClasses((0, _jquery.default)(this));
-      }); // If target menu is root, focus first link & exit
+        _this._setHideSubMenuClasses(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
+      }); // Save the menu as the currently displayed one.
+
+      this.$currentMenu = $elem; // If target menu is root, focus first link & exit
 
       if ($elem.is('[data-drilldown]')) {
         if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
@@ -3171,21 +3099,21 @@ function (_Plugin) {
       $submenus.each(function (index) {
         // Update height of first child (target menu) if autoHeight option true
         if (index === 0 && _this.options.autoHeight) {
-          _this.$wrapper.css('height', (0, _jquery.default)(this).data('calcHeight'));
+          _this.$wrapper.css('height', jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('calcHeight'));
         }
 
         var isLastChild = index == $submenus.length - 1; // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
         // Last child makes sure the event gets always triggered even if going through several menus
 
         if (isLastChild === true) {
-          (0, _jquery.default)(this).one((0, _foundationCore.transitionend)((0, _jquery.default)(this)), function () {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)), function () {
             if (autoFocus === true) {
               $elem.find('li[role="treeitem"] > a').first().focus();
             }
           });
         }
 
-        _this._setShowSubMenuClasses((0, _jquery.default)(this), isLastChild);
+        _this._setShowSubMenuClasses(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), isLastChild);
       });
     }
     /**
@@ -3198,15 +3126,21 @@ function (_Plugin) {
   }, {
     key: "_show",
     value: function _show($elem) {
-      if (this.options.autoHeight) this.$wrapper.css({
-        height: $elem.children('[data-submenu]').data('calcHeight')
-      });
+      var $submenu = $elem.children('[data-submenu]');
       $elem.attr('aria-expanded', true);
-      $elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+      this.$currentMenu = $submenu;
+      $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+
+      if (this.options.autoHeight) {
+        this.$wrapper.css({
+          height: $submenu.data('calcHeight')
+        });
+      }
       /**
        * Fires when the submenu has opened.
        * @event Drilldown#open
        */
+
 
       this.$element.trigger('open.zf.drilldown', [$elem]);
     }
@@ -3228,7 +3162,7 @@ function (_Plugin) {
 
       $elem.parent('li').attr('aria-expanded', false);
       $elem.attr('aria-hidden', true);
-      $elem.addClass('is-closing').one((0, _foundationCore.transitionend)($elem), function () {
+      $elem.addClass('is-closing').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function () {
         $elem.removeClass('is-active is-closing');
         $elem.blur().addClass('invisible');
       });
@@ -3251,21 +3185,19 @@ function (_Plugin) {
     value: function _getMaxDims() {
       var maxHeight = 0,
           result = {},
-          _this = this;
+          _this = this; // Recalculate menu heights and total max height
+
 
       this.$submenus.add(this.$element).each(function () {
-        var numOfElems = (0, _jquery.default)(this).children('li').length;
-
-        var height = _foundationUtil3.Box.GetDimensions(this).height;
-
+        var numOfElems = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('li').length;
+        var height = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__["Box"].GetDimensions(this).height;
         maxHeight = height > maxHeight ? height : maxHeight;
 
         if (_this.options.autoHeight) {
-          (0, _jquery.default)(this).data('calcHeight', height);
-          if (!(0, _jquery.default)(this).hasClass('is-drilldown-submenu')) result['height'] = height;
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('calcHeight', height);
         }
       });
-      if (!this.options.autoHeight) result['min-height'] = "".concat(maxHeight, "px");
+      if (this.options.autoHeight) result['height'] = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
       result['max-width'] = "".concat(this.$element[0].getBoundingClientRect().width, "px");
       return result;
     }
@@ -3282,17 +3214,15 @@ function (_Plugin) {
       this._hideAll();
 
       this.$element.off('mutateme.zf.trigger');
-
-      _foundationUtil2.Nest.Burn(this.$element, 'drilldown');
-
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Burn(this.$element, 'drilldown');
       this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
       this.$submenuAnchors.each(function () {
-        (0, _jquery.default)(this).off('.zf.drilldown');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).off('.zf.drilldown');
       });
       this.$element.find('[data-is-parent-link]').detach();
       this.$submenus.removeClass('drilldown-submenu-cover-previous invisible');
       this.$element.find('a').each(function () {
-        var $link = (0, _jquery.default)(this);
+        var $link = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         $link.removeAttr('tabindex');
 
         if ($link.data('savedHref')) {
@@ -3305,9 +3235,8 @@ function (_Plugin) {
   }]);
 
   return Drilldown;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__["Plugin"]);
 
-exports.Drilldown = Drilldown;
 Drilldown.defaults = {
   /**
    * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
@@ -3417,34 +3346,26 @@ Drilldown.defaults = {
 
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.dropdown.js":
 /*!***********************************!*\
   !*** ./js/foundation.dropdown.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Dropdown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return Dropdown; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_positionable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.positionable */ "./js/foundation.positionable.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Dropdown = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundation = __webpack_require__(/*! ./foundation.positionable */ "./js/foundation.positionable.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -3468,6 +3389,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Dropdown module.
  * @module foundation.dropdown
@@ -3475,6 +3401,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
+
 var Dropdown =
 /*#__PURE__*/
 function (_Positionable) {
@@ -3499,15 +3426,15 @@ function (_Positionable) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Dropdown.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
       this.className = 'Dropdown'; // ie9 back compat
       // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil2.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Dropdown', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Dropdown', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ESCAPE': 'close'
@@ -3523,7 +3450,7 @@ function (_Positionable) {
     key: "_init",
     value: function _init() {
       var $id = this.$element.attr('id');
-      this.$anchors = (0, _jquery.default)("[data-toggle=\"".concat($id, "\"]")).length ? (0, _jquery.default)("[data-toggle=\"".concat($id, "\"]")) : (0, _jquery.default)("[data-open=\"".concat($id, "\"]"));
+      this.$anchors = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat($id, "\"]")).length ? jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat($id, "\"]")) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat($id, "\"]"));
       this.$anchors.attr({
         'aria-controls': $id,
         'data-is-focus': false,
@@ -3541,7 +3468,7 @@ function (_Positionable) {
       } // Do not change the `labelledby` if it is defined
 
 
-      var labelledby = this.$element.attr('aria-labelledby') || this.$currentAnchor.attr('id') || (0, _foundationCore.GetYoDigits)(6, 'dd-anchor');
+      var labelledby = this.$element.attr('aria-labelledby') || this.$currentAnchor.attr('id') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'dd-anchor');
       this.$element.attr({
         'aria-hidden': 'true',
         'data-yeti-box': $id,
@@ -3604,7 +3531,7 @@ function (_Positionable) {
   }, {
     key: "_setCurrentAnchor",
     value: function _setCurrentAnchor(el) {
-      this.$currentAnchor = (0, _jquery.default)(el);
+      this.$currentAnchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el);
     }
     /**
      * Adds event listeners to the element utilizing the triggers utility library.
@@ -3631,7 +3558,7 @@ function (_Positionable) {
         this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
           _this._setCurrentAnchor(this);
 
-          var bodyData = (0, _jquery.default)('body').data();
+          var bodyData = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data();
 
           if (typeof bodyData.whatinput === 'undefined' || bodyData.whatinput === 'mouse') {
             clearTimeout(_this.timeout);
@@ -3665,10 +3592,9 @@ function (_Positionable) {
       }
 
       this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
-        var $target = (0, _jquery.default)(this),
-            visibleFocusableElements = _foundationUtil.Keyboard.findFocusable(_this.$element);
-
-        _foundationUtil.Keyboard.handleKey(e, 'Dropdown', {
+        var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+            visibleFocusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(_this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Dropdown', {
           open: function open() {
             if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
               _this.open();
@@ -3695,7 +3621,7 @@ function (_Positionable) {
   }, {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
-      var $body = (0, _jquery.default)(document.body).not(this.$element),
+      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).not(this.$element),
           _this = this;
 
       $body.off('click.zf.dropdown').on('click.zf.dropdown', function (e) {
@@ -3742,7 +3668,7 @@ function (_Positionable) {
       });
 
       if (this.options.autoFocus) {
-        var $focusable = _foundationUtil.Keyboard.findFocusable(this.$element);
+        var $focusable = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(this.$element);
 
         if ($focusable.length) {
           $focusable.eq(0).focus();
@@ -3754,7 +3680,7 @@ function (_Positionable) {
       }
 
       if (this.options.trapFocus) {
-        _foundationUtil.Keyboard.trapFocus(this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].trapFocus(this.$element);
       }
       /**
        * Fires once the dropdown is visible.
@@ -3789,7 +3715,7 @@ function (_Positionable) {
       this.$element.trigger('hide.zf.dropdown', [this.$element]);
 
       if (this.options.trapFocus) {
-        _foundationUtil.Keyboard.releaseFocus(this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].releaseFocus(this.$element);
       }
     }
     /**
@@ -3817,14 +3743,13 @@ function (_Positionable) {
     value: function _destroy() {
       this.$element.off('.zf.trigger').hide();
       this.$anchors.off('.zf.dropdown');
-      (0, _jquery.default)(document.body).off('click.zf.dropdown');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown');
     }
   }]);
 
   return Dropdown;
-}(_foundation.Positionable);
+}(_foundation_positionable__WEBPACK_IMPORTED_MODULE_3__["Positionable"]);
 
-exports.Dropdown = Dropdown;
 Dropdown.defaults = {
   /**
    * Class that designates bounding container of Dropdown (default: window)
@@ -3933,36 +3858,27 @@ Dropdown.defaults = {
   closeOnClick: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.dropdownMenu.js":
 /*!***************************************!*\
   !*** ./js/foundation.dropdownMenu.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: DropdownMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownMenu", function() { return DropdownMenu; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.nest */ "./js/foundation.util.nest.js");
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.box */ "./js/foundation.util.box.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DropdownMenu = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.nest */ "./js/foundation.util.nest.js");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.box */ "./js/foundation.util.box.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -3982,6 +3898,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
 /**
  * DropdownMenu module.
  * @module foundation.dropdown-menu
@@ -3989,6 +3911,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.box
  * @requires foundation.util.nest
  */
+
 var DropdownMenu =
 /*#__PURE__*/
 function (_Plugin) {
@@ -4013,12 +3936,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('DropdownMenu', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].register('DropdownMenu', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -4037,8 +3960,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil2.Nest.Feather(this.$element, 'dropdown');
-
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__["Nest"].Feather(this.$element, 'dropdown');
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
       this.$menuItems = this.$element.find('[role="menuitem"]');
@@ -4046,7 +3968,7 @@ function (_Plugin) {
       this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
       if (this.options.alignment === 'auto') {
-        if (this.$element.hasClass(this.options.rightClass) || (0, _foundationCore.rtl)() || this.$element.parents('.top-bar-right').is('*')) {
+        if (this.$element.hasClass(this.options.rightClass) || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
           this.options.alignment = 'right';
           subs.addClass('opens-left');
         } else {
@@ -4073,7 +3995,7 @@ function (_Plugin) {
   }, {
     key: "_isRtl",
     value: function _isRtl() {
-      return this.$element.hasClass('align-right') || (0, _foundationCore.rtl)() && !this.$element.hasClass('align-left');
+      return this.$element.hasClass('align-right') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() && !this.$element.hasClass('align-left');
     }
     /**
      * Adds event listeners to elements within the menu
@@ -4090,7 +4012,7 @@ function (_Plugin) {
 
 
       var handleClickFn = function handleClickFn(e) {
-        var $elem = (0, _jquery.default)(e.target).parentsUntil('ul', ".".concat(parClass)),
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', ".".concat(parClass)),
             hasSub = $elem.hasClass(parClass),
             hasClicked = $elem.attr('data-is-click') === 'true',
             $sub = $elem.children('.is-dropdown-submenu');
@@ -4123,7 +4045,7 @@ function (_Plugin) {
 
       if (_this.options.closeOnClickInside) {
         this.$menuItems.on('click.zf.dropdownmenu', function (e) {
-          var $elem = (0, _jquery.default)(this),
+          var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
           if (!hasSub) {
@@ -4134,7 +4056,7 @@ function (_Plugin) {
 
       if (!this.options.disableHover) {
         this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
-          var $elem = (0, _jquery.default)(this),
+          var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
           if (hasSub) {
@@ -4143,8 +4065,9 @@ function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownmenu', function (e) {
-          var $elem = (0, _jquery.default)(this),
+        });
+        Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["onLeaveElement"])(this.$menuItems, function (e) {
+          var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
           if (hasSub && _this.options.autoclose) {
@@ -4161,13 +4084,13 @@ function (_Plugin) {
       }
 
       this.$menuItems.on('keydown.zf.dropdownmenu', function (e) {
-        var $element = (0, _jquery.default)(e.target).parentsUntil('ul', '[role="menuitem"]'),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', '[role="menuitem"]'),
             isTab = _this.$tabs.index($element) > -1,
             $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
             $prevElement,
             $nextElement;
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             $prevElement = $elements.eq(i - 1);
             $nextElement = $elements.eq(i + 1);
             return;
@@ -4224,7 +4147,7 @@ function (_Plugin) {
             // vertical menu
             if (_this._isRtl()) {
               // right aligned
-              _jquery.default.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
                 down: nextSibling,
                 up: prevSibling,
                 next: closeSub,
@@ -4232,7 +4155,7 @@ function (_Plugin) {
               });
             } else {
               // left aligned
-              _jquery.default.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
                 down: nextSibling,
                 up: prevSibling,
                 next: openSub,
@@ -4243,7 +4166,7 @@ function (_Plugin) {
             // horizontal menu
             if (_this._isRtl()) {
               // right aligned
-              _jquery.default.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
                 next: prevSibling,
                 previous: nextSibling,
                 down: openSub,
@@ -4251,7 +4174,7 @@ function (_Plugin) {
               });
             } else {
               // left aligned
-              _jquery.default.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
                 next: nextSibling,
                 previous: prevSibling,
                 down: openSub,
@@ -4263,7 +4186,7 @@ function (_Plugin) {
           // not tabs -> one sub
           if (_this._isRtl()) {
             // right aligned
-            _jquery.default.extend(functions, {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
               next: closeSub,
               previous: openSub,
               down: nextSibling,
@@ -4271,7 +4194,7 @@ function (_Plugin) {
             });
           } else {
             // left aligned
-            _jquery.default.extend(functions, {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
               next: openSub,
               previous: closeSub,
               down: nextSibling,
@@ -4280,7 +4203,7 @@ function (_Plugin) {
           }
         }
 
-        _foundationUtil.Keyboard.handleKey(e, 'DropdownMenu', functions);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_3__["Keyboard"].handleKey(e, 'DropdownMenu', functions);
       });
     }
     /**
@@ -4292,7 +4215,7 @@ function (_Plugin) {
   }, {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
-      var $body = (0, _jquery.default)(document.body),
+      var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body),
           _this = this;
 
       $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu').on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function (e) {
@@ -4319,21 +4242,20 @@ function (_Plugin) {
     key: "_show",
     value: function _show($sub) {
       var idx = this.$tabs.index(this.$tabs.filter(function (i, el) {
-        return (0, _jquery.default)(el).find($sub).length > 0;
+        return jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).find($sub).length > 0;
       }));
       var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
 
       this._hide($sibs, idx);
 
       $sub.css('visibility', 'hidden').addClass('js-dropdown-active').parent('li.is-dropdown-submenu-parent').addClass('is-active');
-
-      var clear = _foundationUtil3.Box.ImNotTouchingYou($sub, null, true);
+      var clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__["Box"].ImNotTouchingYou($sub, null, true);
 
       if (!clear) {
         var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
             $parentLi = $sub.parent('.is-dropdown-submenu-parent');
         $parentLi.removeClass("opens".concat(oldClass)).addClass("opens-".concat(this.options.alignment));
-        clear = _foundationUtil3.Box.ImNotTouchingYou($sub, null, true);
+        clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_5__["Box"].ImNotTouchingYou($sub, null, true);
 
         if (!clear) {
           $parentLi.removeClass("opens-".concat(this.options.alignment)).addClass('opens-inner');
@@ -4409,20 +4331,18 @@ function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click').removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-      (0, _jquery.default)(document.body).off('.zf.dropdownmenu');
-
-      _foundationUtil2.Nest.Burn(this.$element, 'dropdown');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('.zf.dropdownmenu');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_4__["Nest"].Burn(this.$element, 'dropdown');
     }
   }]);
 
   return DropdownMenu;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 /**
  * Default settings for plugin
  */
 
 
-exports.DropdownMenu = DropdownMenu;
 DropdownMenu.defaults = {
   /**
    * Disallows hover events from opening submenus
@@ -4513,34 +4433,26 @@ DropdownMenu.defaults = {
   forceFollow: true
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.equalizer.js":
 /*!************************************!*\
   !*** ./js/foundation.equalizer.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Equalizer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Equalizer", function() { return Equalizer; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Equalizer = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -4560,12 +4472,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Equalizer module.
  * @module foundation.equalizer
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.imageLoader if equalizer contains images
  */
+
 var Equalizer =
 /*#__PURE__*/
 function (_Plugin) {
@@ -4590,7 +4508,7 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Equalizer.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Equalizer.defaults, this.$element.data(), options);
       this.className = 'Equalizer'; // ie9 back compat
 
       this._init();
@@ -4606,11 +4524,11 @@ function (_Plugin) {
       var eqId = this.$element.attr('data-equalizer') || '';
       var $watched = this.$element.find("[data-equalizer-watch=\"".concat(eqId, "\"]"));
 
-      _foundationUtil.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init();
 
       this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
-      this.$element.attr('data-resize', eqId || (0, _foundationCore.GetYoDigits)(6, 'eq'));
-      this.$element.attr('data-mutate', eqId || (0, _foundationCore.GetYoDigits)(6, 'eq'));
+      this.$element.attr('data-resize', eqId || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'eq'));
+      this.$element.attr('data-mutate', eqId || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'eq'));
       this.hasNested = this.$element.find('[data-equalizer]').length > 0;
       this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
       this.isOn = false;
@@ -4623,14 +4541,14 @@ function (_Plugin) {
 
       if (this.options.equalizeOn) {
         tooSmall = this._checkMQ();
-        (0, _jquery.default)(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
       } else {
         this._events();
       }
 
       if (typeof tooSmall !== 'undefined' && tooSmall === false || typeof tooSmall === 'undefined') {
         if (imgs.length) {
-          (0, _foundationUtil2.onImagesLoaded)(imgs, this._reflow.bind(this));
+          Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_2__["onImagesLoaded"])(imgs, this._reflow.bind(this));
         } else {
           this._reflow();
         }
@@ -4702,7 +4620,7 @@ function (_Plugin) {
   }, {
     key: "_checkMQ",
     value: function _checkMQ() {
-      var tooSmall = !_foundationUtil.MediaQuery.is(this.options.equalizeOn);
+      var tooSmall = !_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].is(this.options.equalizeOn);
 
       if (tooSmall) {
         if (this.isOn) {
@@ -4799,7 +4717,7 @@ function (_Plugin) {
       for (var i = 0, len = this.$watched.length; i < len; i++) {
         this.$watched[i].style.height = 'auto'; //maybe could use this.$watched[i].offsetTop
 
-        var elOffsetTop = (0, _jquery.default)(this.$watched[i]).offset().top;
+        var elOffsetTop = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.$watched[i]).offset().top;
 
         if (elOffsetTop != lastElTopOffset) {
           group++;
@@ -4811,7 +4729,7 @@ function (_Plugin) {
       }
 
       for (var j = 0, ln = groups.length; j < ln; j++) {
-        var heights = (0, _jquery.default)(groups[j]).map(function () {
+        var heights = jquery__WEBPACK_IMPORTED_MODULE_0___default()(groups[j]).map(function () {
           return this[1];
         }).get();
         var max = Math.max.apply(null, heights);
@@ -4867,7 +4785,7 @@ function (_Plugin) {
             max = groups[i][groupsILength - 1];
 
         if (groupsILength <= 2) {
-          (0, _jquery.default)(groups[i][0][0]).css({
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(groups[i][0][0]).css({
             'height': 'auto'
           });
           continue;
@@ -4881,7 +4799,7 @@ function (_Plugin) {
         this.$element.trigger('preequalizedrow.zf.equalizer');
 
         for (var j = 0, lenJ = groupsILength - 1; j < lenJ; j++) {
-          (0, _jquery.default)(groups[i][j][0]).css({
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(groups[i][j][0]).css({
             'height': max
           });
         }
@@ -4915,13 +4833,12 @@ function (_Plugin) {
   }]);
 
   return Equalizer;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 /**
  * Default settings for plugin
  */
 
 
-exports.Equalizer = Equalizer;
 Equalizer.defaults = {
   /**
    * Enable height equalization when stacked on smaller screens.
@@ -4948,32 +4865,25 @@ Equalizer.defaults = {
   equalizeOn: ''
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.interchange.js":
 /*!**************************************!*\
   !*** ./js/foundation.interchange.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Interchange */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Interchange", function() { return Interchange; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Interchange = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -4993,11 +4903,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * Interchange module.
  * @module foundation.interchange
  * @requires foundation.util.mediaQuery
  */
+
 var Interchange =
 /*#__PURE__*/
 function (_Plugin) {
@@ -5022,7 +4937,7 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Interchange.defaults, options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Interchange.defaults, options);
       this.rules = [];
       this.currentPath = '';
       this.className = 'Interchange'; // ie9 back compat
@@ -5040,9 +4955,9 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init();
 
-      var id = this.$element[0].id || (0, _foundationCore2.GetYoDigits)(6, 'interchange');
+      var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'interchange');
       this.$element.attr({
         'data-resize': id,
         'id': id
@@ -5103,9 +5018,9 @@ function (_Plugin) {
   }, {
     key: "_addBreakpoints",
     value: function _addBreakpoints() {
-      for (var i in _foundationUtil.MediaQuery.queries) {
-        if (_foundationUtil.MediaQuery.queries.hasOwnProperty(i)) {
-          var query = _foundationUtil.MediaQuery.queries[i];
+      for (var i in _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].queries) {
+        if (_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].queries.hasOwnProperty(i)) {
+          var query = _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].queries[i];
           Interchange.SPECIAL_QUERIES[query.name] = query.value;
         }
       }
@@ -5179,10 +5094,10 @@ function (_Plugin) {
           }).trigger(trigger);
         } // Replacing HTML
         else {
-            _jquery.default.get(path, function (response) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get(path, function (response) {
               _this.$element.html(response).trigger(trigger);
 
-              (0, _jquery.default)(response).foundation();
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(response).foundation();
               _this.currentPath = path;
             });
           }
@@ -5206,13 +5121,12 @@ function (_Plugin) {
   }]);
 
   return Interchange;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 /**
  * Default settings for plugin
  */
 
 
-exports.Interchange = Interchange;
 Interchange.defaults = {
   /**
    * Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.
@@ -5228,32 +5142,25 @@ Interchange.SPECIAL_QUERIES = {
   'retina': 'only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)'
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.magellan.js":
 /*!***********************************!*\
   !*** ./js/foundation.magellan.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Magellan */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Magellan", function() { return Magellan; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.smoothScroll */ "./js/foundation.smoothScroll.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Magellan = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundation = __webpack_require__(/*! ./foundation.smoothScroll */ "./js/foundation.smoothScroll.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -5273,11 +5180,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * Magellan module.
  * @module foundation.magellan
  * @requires foundation.smoothScroll
  */
+
 var Magellan =
 /*#__PURE__*/
 function (_Plugin) {
@@ -5302,7 +5214,7 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
       this.className = 'Magellan'; // ie9 back compat
 
       this._init();
@@ -5317,18 +5229,18 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      var id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'magellan');
+      var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'magellan');
 
       var _this = this;
 
-      this.$targets = (0, _jquery.default)('[data-magellan-target]');
+      this.$targets = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-magellan-target]');
       this.$links = this.$element.find('a');
       this.$element.attr({
         'data-resize': id,
         'data-scroll': id,
         'id': id
       });
-      this.$active = (0, _jquery.default)();
+      this.$active = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       this.scrollPos = parseInt(window.pageYOffset, 10);
 
       this._events();
@@ -5350,7 +5262,7 @@ function (_Plugin) {
       this.winHeight = Math.round(Math.max(window.innerHeight, html.clientHeight));
       this.docHeight = Math.round(Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight));
       this.$targets.each(function () {
-        var $tar = (0, _jquery.default)(this),
+        var $tar = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             pt = Math.round($tar.offset().top - _this.options.threshold);
         $tar.targetPoint = pt;
 
@@ -5366,13 +5278,13 @@ function (_Plugin) {
     key: "_events",
     value: function _events() {
       var _this = this,
-          $body = (0, _jquery.default)('html, body'),
+          $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body'),
           opts = {
         duration: _this.options.animationDuration,
         easing: _this.options.animationEasing
       };
 
-      (0, _jquery.default)(window).one('load', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).one('load', function () {
         if (_this.options.deepLinking) {
           if (location.hash) {
             _this.scrollToLoc(location.hash);
@@ -5383,7 +5295,7 @@ function (_Plugin) {
 
         _this._updateActive();
       });
-      _this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
+      _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
         _this.$element.on({
           'resizeme.zf.trigger': _this.reflow.bind(_this),
           'scrollme.zf.trigger': _this._updateActive.bind(_this)
@@ -5401,7 +5313,7 @@ function (_Plugin) {
         }
       };
 
-      (0, _jquery.default)(window).on('hashchange', this._deepLinkScroll);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._deepLinkScroll);
     }
     /**
      * Function to scroll to a given location on the page.
@@ -5422,8 +5334,7 @@ function (_Plugin) {
         threshold: this.options.threshold,
         offset: this.options.offset
       };
-
-      _foundation.SmoothScroll.scrollToLoc(loc, options, function () {
+      _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_3__["SmoothScroll"].scrollToLoc(loc, options, function () {
         _this._inTransition = false;
       });
     }
@@ -5480,7 +5391,7 @@ function (_Plugin) {
         this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
         if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
       } else {
-        this.$active = (0, _jquery.default)();
+        this.$active = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       }
 
       var isNewActive = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
@@ -5525,19 +5436,18 @@ function (_Plugin) {
         window.location.hash.replace(hash, '');
       }
 
-      (0, _jquery.default)(window).off('hashchange', this._deepLinkScroll);
-      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._deepLinkScroll);
+      if (this.onLoadListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
     }
   }]);
 
   return Magellan;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 /**
  * Default settings for plugin
  */
 
 
-exports.Magellan = Magellan;
 Magellan.defaults = {
   /**
    * Amount of time, in ms, the animated scrolling should take between locations.
@@ -5589,36 +5499,27 @@ Magellan.defaults = {
   offset: 0
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.offcanvas.js":
 /*!************************************!*\
   !*** ./js/foundation.offcanvas.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: OffCanvas */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OffCanvas", function() { return OffCanvas; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.OffCanvas = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -5638,6 +5539,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
@@ -5645,6 +5552,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
+
 var OffCanvas =
 /*#__PURE__*/
 function (_Plugin) {
@@ -5673,35 +5581,35 @@ function (_Plugin) {
       this.className = 'OffCanvas'; // ie9 back compat
 
       this.$element = element;
-      this.options = _jquery.default.extend({}, OffCanvas.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, OffCanvas.defaults, this.$element.data(), options);
       this.contentClasses = {
         base: [],
         reveal: []
       };
-      this.$lastTrigger = (0, _jquery.default)();
-      this.$triggers = (0, _jquery.default)();
+      this.$lastTrigger = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
+      this.$triggers = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       this.position = 'left';
-      this.$content = (0, _jquery.default)();
+      this.$content = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       this.nested = !!this.options.nested; // Defines the CSS transition/position classes of the off-canvas content container.
 
-      (0, _jquery.default)(['push', 'overlap']).each(function (index, val) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(['push', 'overlap']).each(function (index, val) {
         _this2.contentClasses.base.push('has-transition-' + val);
       });
-      (0, _jquery.default)(['left', 'right', 'top', 'bottom']).each(function (index, val) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(['left', 'right', 'top', 'bottom']).each(function (index, val) {
         _this2.contentClasses.base.push('has-position-' + val);
 
         _this2.contentClasses.reveal.push('has-reveal-' + val);
       }); // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil3.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
-      _foundationUtil2.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__["MediaQuery"]._init();
 
       this._init();
 
       this._events();
 
-      _foundationUtil.Keyboard.register('OffCanvas', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('OffCanvas', {
         'ESCAPE': 'close'
       });
     }
@@ -5718,7 +5626,7 @@ function (_Plugin) {
       this.$element.attr('aria-hidden', 'true'); // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
 
       if (this.options.contentId) {
-        this.$content = (0, _jquery.default)('#' + this.options.contentId);
+        this.$content = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#' + this.options.contentId);
       } else if (this.$element.siblings('[data-off-canvas-content]').length) {
         this.$content = this.$element.siblings('[data-off-canvas-content]').first();
       } else {
@@ -5743,25 +5651,25 @@ function (_Plugin) {
 
       this.$element.addClass("is-transition-".concat(this.options.transition, " is-closed")); // Find triggers that affect this element and add aria-expanded to them
 
-      this.$triggers = (0, _jquery.default)(document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id); // Get position by checking for related CSS class
+      this.$triggers = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id); // Get position by checking for related CSS class
 
       this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position; // Add an overlay over the content if necessary
 
       if (this.options.contentOverlay === true) {
         var overlay = document.createElement('div');
-        var overlayPosition = (0, _jquery.default)(this.$element).css("position") === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
+        var overlayPosition = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.$element).css("position") === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
         overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
-        this.$overlay = (0, _jquery.default)(overlay);
+        this.$overlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()(overlay);
 
         if (overlayPosition === 'is-overlay-fixed') {
-          (0, _jquery.default)(this.$overlay).insertAfter(this.$element);
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.$overlay).insertAfter(this.$element);
         } else {
           this.$content.append(this.$overlay);
         }
       } // Get the revealOn option from the class.
 
 
-      var revealOnRegExp = new RegExp((0, _foundationCore.RegExpEscape)(this.options.revealClass) + '([^\\s]+)', 'g');
+      var revealOnRegExp = new RegExp(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["RegExpEscape"])(this.options.revealClass) + '([^\\s]+)', 'g');
       var revealOnClass = revealOnRegExp.exec(this.$element[0].className);
 
       if (revealOnClass) {
@@ -5816,13 +5724,13 @@ function (_Plugin) {
     value: function _setMQChecker() {
       var _this = this;
 
-      this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
-        if (_foundationUtil2.MediaQuery.atLeast(_this.options.revealOn)) {
+      this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+        if (_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__["MediaQuery"].atLeast(_this.options.revealOn)) {
           _this.reveal(true);
         }
       });
-      (0, _jquery.default)(window).on('changed.zf.mediaquery', function () {
-        if (_foundationUtil2.MediaQuery.atLeast(_this.options.revealOn)) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', function () {
+        if (_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__["MediaQuery"].atLeast(_this.options.revealOn)) {
           _this.reveal(true);
         } else {
           _this.reveal(false);
@@ -5979,7 +5887,7 @@ function (_Plugin) {
       this.$content.addClass('is-open-' + this.position); // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
 
       if (this.options.contentScroll === false) {
-        (0, _jquery.default)('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
         this.$element.on('touchstart', this._recordScrollable);
         this.$element.on('touchmove', this._stopScrollPropagation);
       }
@@ -5993,7 +5901,7 @@ function (_Plugin) {
       }
 
       if (this.options.autoFocus === true) {
-        this.$element.one((0, _foundationCore.transitionend)(this.$element), function () {
+        this.$element.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["transitionend"])(this.$element), function () {
           if (!_this.$element.hasClass('is-open')) {
             return; // exit if prematurely closed
           }
@@ -6010,8 +5918,7 @@ function (_Plugin) {
 
       if (this.options.trapFocus === true) {
         this.$content.attr('tabindex', '-1');
-
-        _foundationUtil.Keyboard.trapFocus(this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].trapFocus(this.$element);
       }
 
       this._addContentClasses();
@@ -6049,7 +5956,7 @@ function (_Plugin) {
       this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom'); // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
 
       if (this.options.contentScroll === false) {
-        (0, _jquery.default)('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
         this.$element.off('touchstart', this._recordScrollable);
         this.$element.off('touchmove', this._stopScrollPropagation);
       }
@@ -6066,12 +5973,11 @@ function (_Plugin) {
 
       if (this.options.trapFocus === true) {
         this.$content.removeAttr('tabindex');
-
-        _foundationUtil.Keyboard.releaseFocus(this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].releaseFocus(this.$element);
       } // Listen to transitionEnd and add class when done.
 
 
-      this.$element.one((0, _foundationCore.transitionend)(this.$element), function (e) {
+      this.$element.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["transitionend"])(this.$element), function (e) {
         _this.$element.addClass('is-closed');
 
         _this._removeContentClasses();
@@ -6104,7 +6010,7 @@ function (_Plugin) {
     value: function _handleKeyboard(e) {
       var _this3 = this;
 
-      _foundationUtil.Keyboard.handleKey(e, 'OffCanvas', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'OffCanvas', {
         close: function close() {
           _this3.close();
 
@@ -6129,14 +6035,13 @@ function (_Plugin) {
       this.close();
       this.$element.off('.zf.trigger .zf.offcanvas');
       this.$overlay.off('.zf.offcanvas');
-      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
+      if (this.onLoadListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
     }
   }]);
 
   return OffCanvas;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 
-exports.OffCanvas = OffCanvas;
 OffCanvas.defaults = {
   /**
    * Allow the user to click outside of the menu to close it.
@@ -6244,40 +6149,29 @@ OffCanvas.defaults = {
   trapFocus: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.orbit.js":
 /*!********************************!*\
   !*** ./js/foundation.orbit.js ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Orbit */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Orbit", function() { return Orbit; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
+/* harmony import */ var _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.timer */ "./js/foundation.util.timer.js");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./foundation.util.touch */ "./js/foundation.util.touch.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Orbit = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.timer */ "./js/foundation.util.timer.js");
-
-var _foundationUtil4 = __webpack_require__(/*! ./foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationUtil5 = __webpack_require__(/*! ./foundation.util.touch */ "./js/foundation.util.touch.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -6297,6 +6191,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
+
+
 /**
  * Orbit module.
  * @module foundation.orbit
@@ -6306,6 +6208,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.imageLoader
  * @requires foundation.util.touch
  */
+
 var Orbit =
 /*#__PURE__*/
 function (_Plugin) {
@@ -6329,15 +6232,14 @@ function (_Plugin) {
     */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Orbit.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Orbit.defaults, this.$element.data(), options);
       this.className = 'Orbit'; // ie9 back compat
 
-      _foundationUtil5.Touch.init(_jquery.default); // Touch init is idempotent, we just need to make sure it's initialied.
-
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_7__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Orbit', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Orbit', {
         'ltr': {
           'ARROW_RIGHT': 'next',
           'ARROW_LEFT': 'previous'
@@ -6364,7 +6266,7 @@ function (_Plugin) {
       this.$slides = this.$element.find(".".concat(this.options.slideClass));
       var $images = this.$element.find('img'),
           initActive = this.$slides.filter('.is-active'),
-          id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'orbit');
+          id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__["GetYoDigits"])(6, 'orbit');
       this.$element.attr({
         'data-resize': id,
         'id': id
@@ -6379,7 +6281,7 @@ function (_Plugin) {
       }
 
       if ($images.length) {
-        (0, _foundationUtil4.onImagesLoaded)($images, this._prepareForOrbit.bind(this));
+        Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__["onImagesLoaded"])($images, this._prepareForOrbit.bind(this));
       } else {
         this._prepareForOrbit(); //hehe
 
@@ -6421,7 +6323,7 @@ function (_Plugin) {
     value: function geoSync() {
       var _this = this;
 
-      this.timer = new _foundationUtil3.Timer(this.$element, {
+      this.timer = new _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__["Timer"](this.$element, {
         duration: this.options.timerDelay,
         infinite: false
       }, function () {
@@ -6460,10 +6362,10 @@ function (_Plugin) {
 
       this.$slides.each(function () {
         temp = this.getBoundingClientRect().height;
-        (0, _jquery.default)(this).attr('data-slide', counter); // hide all slides but the active one
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-slide', counter); // hide all slides but the active one
 
-        if (!/mui/g.test((0, _jquery.default)(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
-          (0, _jquery.default)(this).css({
+        if (!/mui/g.test(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).css({
             'display': 'none'
           });
         }
@@ -6493,7 +6395,7 @@ function (_Plugin) {
     key: "_setSlideHeight",
     value: function _setSlideHeight(height) {
       this.$slides.each(function () {
-        (0, _jquery.default)(this).css('max-height', height);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).css('max-height', height);
       });
     }
     /**
@@ -6554,7 +6456,7 @@ function (_Plugin) {
           .on('click.zf.orbit touchend.zf.orbit', function (e) {
             e.preventDefault();
 
-            _this.changeSlide((0, _jquery.default)(this).hasClass(_this.options.nextClass));
+            _this.changeSlide(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass(_this.options.nextClass));
           });
         }
 
@@ -6565,7 +6467,7 @@ function (_Plugin) {
             } //if this is active, kick out of function.
 
 
-            var idx = (0, _jquery.default)(this).data('slide'),
+            var idx = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('slide'),
                 ltr = idx > _this.$slides.filter('.is-active').data('slide'),
                 $slide = _this.$slides.eq(idx);
 
@@ -6576,7 +6478,7 @@ function (_Plugin) {
         if (this.options.accessible) {
           this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
             // handle keyboard event with keyboard util
-            _foundationUtil.Keyboard.handleKey(e, 'Orbit', {
+            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Orbit', {
               next: function next() {
                 _this.changeSlide(true);
               },
@@ -6585,7 +6487,7 @@ function (_Plugin) {
               },
               handled: function handled() {
                 // if bullet is focused, make sure focus moves
-                if ((0, _jquery.default)(e.target).is(_this.$bullets)) {
+                if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).is(_this.$bullets)) {
                   _this.$bullets.filter('.is-active').focus();
                 }
               }
@@ -6616,7 +6518,7 @@ function (_Plugin) {
 
 
         this.$slides.each(function (el) {
-          (0, _jquery.default)(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
         }); // Show the first slide
 
         this.$slides.first().addClass('is-active').show(); // Triggers when the slide has finished animating
@@ -6682,13 +6584,12 @@ function (_Plugin) {
         }
 
         if (this.options.useMUI && !this.$element.is(':hidden')) {
-          _foundationUtil2.Motion.animateIn($newSlide.addClass('is-active'), this.options["animInFrom".concat(dirIn)], function () {
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateIn($newSlide.addClass('is-active'), this.options["animInFrom".concat(dirIn)], function () {
             $newSlide.css({
               'display': 'block'
             }).attr('aria-live', 'polite');
           });
-
-          _foundationUtil2.Motion.animateOut($curSlide.removeClass('is-active'), this.options["animOutTo".concat(dirOut)], function () {
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut($curSlide.removeClass('is-active'), this.options["animOutTo".concat(dirOut)], function () {
             $curSlide.removeAttr('aria-live');
 
             if (_this.options.autoPlay && !_this.timer.isPaused) {
@@ -6740,9 +6641,8 @@ function (_Plugin) {
   }]);
 
   return Orbit;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_6__["Plugin"]);
 
-exports.Orbit = Orbit;
 Orbit.defaults = {
   /**
   * Tells the JS to look for and loadBullets.
@@ -6890,28 +6790,23 @@ Orbit.defaults = {
   useMUI: true
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.positionable.js":
 /*!***************************************!*\
   !*** ./js/foundation.positionable.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Positionable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Positionable", function() { return Positionable; });
+/* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.util.box */ "./js/foundation.util.box.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Positionable = void 0;
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.box */ "./js/foundation.util.box.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -6930,6 +6825,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 var POSITIONS = ['left', 'right', 'top', 'bottom'];
 var VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
@@ -6992,7 +6890,7 @@ function (_Plugin) {
       switch (this.position) {
         case 'bottom':
         case 'top':
-          return (0, _foundationCore2.rtl)() ? 'right' : 'left';
+          return Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["rtl"])() ? 'right' : 'left';
 
         case 'left':
         case 'right':
@@ -7075,8 +6973,8 @@ function (_Plugin) {
         return false;
       }
 
-      var $eleDims = _foundationUtil.Box.GetDimensions($element),
-          $anchorDims = _foundationUtil.Box.GetDimensions($anchor);
+      var $eleDims = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetDimensions($element),
+          $anchorDims = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetDimensions($anchor);
 
       if (!this.options.allowOverlap) {
         // restore original position & alignment before checking overlap
@@ -7084,7 +6982,7 @@ function (_Plugin) {
         this.alignment = this.originalAlignment;
       }
 
-      $element.offset(_foundationUtil.Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+      $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
 
       if (!this.options.allowOverlap) {
         var overlaps = {};
@@ -7096,7 +6994,7 @@ function (_Plugin) {
         };
 
         while (!this._positionsExhausted()) {
-          var overlap = _foundationUtil.Box.OverlapArea($element, $parent, false, false, this.options.allowBottomOverlap);
+          var overlap = _foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].OverlapArea($element, $parent, false, false, this.options.allowBottomOverlap);
 
           if (overlap === 0) {
             return;
@@ -7112,22 +7010,21 @@ function (_Plugin) {
 
           this._reposition();
 
-          $element.offset(_foundationUtil.Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+          $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
         } // If we get through the entire loop, there was no non-overlapping
         // position available. Pick the version with least overlap.
 
 
         this.position = minCoordinates.position;
         this.alignment = minCoordinates.alignment;
-        $element.offset(_foundationUtil.Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
+        $element.offset(_foundation_util_box__WEBPACK_IMPORTED_MODULE_0__["Box"].GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
       }
     }
   }]);
 
   return Positionable;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 
-exports.Positionable = Positionable;
 Positionable.defaults = {
   /**
    * Position of positionable relative to anchor. Can be left, right, bottom, top, or auto.
@@ -7182,36 +7079,27 @@ Positionable.defaults = {
   hOffset: 0
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.responsiveAccordionTabs.js":
 /*!**************************************************!*\
   !*** ./js/foundation.responsiveAccordionTabs.js ***!
   \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: ResponsiveAccordionTabs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResponsiveAccordionTabs", function() { return ResponsiveAccordionTabs; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.accordion */ "./js/foundation.accordion.js");
+/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.tabs */ "./js/foundation.tabs.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ResponsiveAccordionTabs = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundation = __webpack_require__(/*! ./foundation.accordion */ "./js/foundation.accordion.js");
-
-var _foundation2 = __webpack_require__(/*! ./foundation.tabs */ "./js/foundation.tabs.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -7231,15 +7119,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-// The plugin matches the plugin classes with these plugin instances.
+
+
+
+
+
+ // The plugin matches the plugin classes with these plugin instances.
+
 var MenuPlugins = {
   tabs: {
     cssClass: 'tabs',
-    plugin: _foundation2.Tabs
+    plugin: _foundation_tabs__WEBPACK_IMPORTED_MODULE_5__["Tabs"]
   },
   accordion: {
     cssClass: 'accordion',
-    plugin: _foundation.Accordion
+    plugin: _foundation_accordion__WEBPACK_IMPORTED_MODULE_4__["Accordion"]
   }
 };
 /**
@@ -7273,15 +7167,15 @@ function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
-      this.$element = (0, _jquery.default)(element);
-      this.options = _jquery.default.extend({}, this.$element.data(), options);
+      this.$element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, this.$element.data(), options);
       this.rules = this.$element.data('responsive-accordion-tabs');
       this.currentMq = null;
       this.currentPlugin = null;
       this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
 
       if (!this.$element.attr('id')) {
-        this.$element.attr('id', (0, _foundationCore.GetYoDigits)(6, 'responsiveaccordiontabs'));
+        this.$element.attr('id', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'responsiveaccordiontabs'));
       }
 
       ;
@@ -7299,7 +7193,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init(); // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init(); // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
 
 
       if (typeof this.rules === 'string') {
@@ -7322,7 +7216,7 @@ function (_Plugin) {
 
       this._getAllOptions();
 
-      if (!_jquery.default.isEmptyObject(this.rules)) {
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default.a.isEmptyObject(this.rules)) {
         this._checkMediaQueries();
       }
     }
@@ -7339,7 +7233,7 @@ function (_Plugin) {
           var obj = MenuPlugins[key];
 
           try {
-            var dummyPlugin = (0, _jquery.default)('<ul></ul>');
+            var dummyPlugin = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<ul></ul>');
             var tmpPlugin = new obj.plugin(dummyPlugin, _this.options);
 
             for (var keyKey in tmpPlugin.options) {
@@ -7364,7 +7258,7 @@ function (_Plugin) {
     key: "_events",
     value: function _events() {
       this._changedZfMediaQueryHandler = this._checkMediaQueries.bind(this);
-      (0, _jquery.default)(window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
     }
     /**
      * Checks the current screen width against available media queries. If the media query has changed, and the plugin needed has changed, the plugins will swap out.
@@ -7379,21 +7273,19 @@ function (_Plugin) {
           _this = this; // Iterate through each rule and find the last matching rule
 
 
-      _jquery.default.each(this.rules, function (key) {
-        if (_foundationUtil.MediaQuery.atLeast(key)) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(this.rules, function (key) {
+        if (_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(key)) {
           matchedMq = key;
         }
       }); // No match? No dice
-
 
       if (!matchedMq) return; // Plugin already initialized? We good
 
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return; // Remove existing plugin-specific CSS classes
 
-      _jquery.default.each(MenuPlugins, function (key, value) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(MenuPlugins, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       }); // Add the CSS class for the new plugin
-
 
       this.$element.addClass(this.rules[matchedMq].cssClass); // Create an instance of the new plugin
 
@@ -7414,7 +7306,7 @@ function (_Plugin) {
       var _this = this,
           fromString = 'accordion';
 
-      var $panels = (0, _jquery.default)('[data-tabs-content=' + this.$element.attr('id') + ']');
+      var $panels = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-tabs-content=' + this.$element.attr('id') + ']');
       if ($panels.length) fromString = 'tabs';
 
       if (fromString === toSet) {
@@ -7447,44 +7339,44 @@ function (_Plugin) {
 
       if (toSet === 'accordion') {
         $panels.each(function (key, value) {
-          (0, _jquery.default)(value).appendTo($liHeads.get(key)).addClass('accordion-content').attr('data-tab-content', '').removeClass('is-active').css({
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).appendTo($liHeads.get(key)).addClass('accordion-content').attr('data-tab-content', '').removeClass('is-active').css({
             height: ''
           });
-          (0, _jquery.default)('[data-tabs-content=' + _this.$element.attr('id') + ']').after('<div id="tabs-placeholder-' + _this.$element.attr('id') + '"></div>').detach();
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-tabs-content=' + _this.$element.attr('id') + ']').after('<div id="tabs-placeholder-' + _this.$element.attr('id') + '"></div>').detach();
           $liHeads.addClass('accordion-item').attr('data-accordion-item', '');
           $liHeadsA.addClass('accordion-title');
         });
       } else if (toSet === 'tabs') {
-        var $tabsContent = (0, _jquery.default)('[data-tabs-content=' + _this.$element.attr('id') + ']');
-        var $placeholder = (0, _jquery.default)('#tabs-placeholder-' + _this.$element.attr('id'));
+        var $tabsContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-tabs-content=' + _this.$element.attr('id') + ']');
+        var $placeholder = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#tabs-placeholder-' + _this.$element.attr('id'));
 
         if ($placeholder.length) {
-          $tabsContent = (0, _jquery.default)('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content', _this.$element.attr('id'));
+          $tabsContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content', _this.$element.attr('id'));
           $placeholder.remove();
         } else {
-          $tabsContent = (0, _jquery.default)('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
+          $tabsContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
         }
 
         ;
         $panels.each(function (key, value) {
-          var tempValue = (0, _jquery.default)(value).appendTo($tabsContent).addClass(tabsPanel);
+          var tempValue = jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).appendTo($tabsContent).addClass(tabsPanel);
           var hash = $liHeadsA.get(key).hash.slice(1);
-          var id = (0, _jquery.default)(value).attr('id') || (0, _foundationCore.GetYoDigits)(6, 'accordion');
+          var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).attr('id') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'accordion');
 
           if (hash !== id) {
             if (hash !== '') {
-              (0, _jquery.default)(value).attr('id', hash);
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).attr('id', hash);
             } else {
               hash = id;
-              (0, _jquery.default)(value).attr('id', hash);
-              (0, _jquery.default)($liHeadsA.get(key)).attr('href', (0, _jquery.default)($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).attr('id', hash);
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()($liHeadsA.get(key)).attr('href', jquery__WEBPACK_IMPORTED_MODULE_0___default()($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
             }
 
             ;
           }
 
           ;
-          var isActive = (0, _jquery.default)($liHeads.get(key)).hasClass('is-active');
+          var isActive = jquery__WEBPACK_IMPORTED_MODULE_0___default()($liHeads.get(key)).hasClass('is-active');
 
           if (isActive) {
             tempValue.addClass('is-active');
@@ -7506,15 +7398,15 @@ function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       if (this.currentPlugin) this.currentPlugin.destroy();
-      (0, _jquery.default)(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
     }
   }]);
 
   return ResponsiveAccordionTabs;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.ResponsiveAccordionTabs = ResponsiveAccordionTabs;
 ResponsiveAccordionTabs.defaults = {};
+
 
 /***/ }),
 
@@ -7522,32 +7414,21 @@ ResponsiveAccordionTabs.defaults = {};
 /*!*****************************************!*\
   !*** ./js/foundation.responsiveMenu.js ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: ResponsiveMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResponsiveMenu", function() { return ResponsiveMenu; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.dropdownMenu */ "./js/foundation.dropdownMenu.js");
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.drilldown */ "./js/foundation.drilldown.js");
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.accordionMenu */ "./js/foundation.accordionMenu.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ResponsiveMenu = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundation = __webpack_require__(/*! ./foundation.dropdownMenu */ "./js/foundation.dropdownMenu.js");
-
-var _foundation2 = __webpack_require__(/*! ./foundation.drilldown */ "./js/foundation.drilldown.js");
-
-var _foundation3 = __webpack_require__(/*! ./foundation.accordionMenu */ "./js/foundation.accordionMenu.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -7567,18 +7448,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
+
 var MenuPlugins = {
   dropdown: {
     cssClass: 'dropdown',
-    plugin: _foundation.DropdownMenu
+    plugin: _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__["DropdownMenu"]
   },
   drilldown: {
     cssClass: 'drilldown',
-    plugin: _foundation2.Drilldown
+    plugin: _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__["Drilldown"]
   },
   accordion: {
     cssClass: 'accordion-menu',
-    plugin: _foundation3.AccordionMenu
+    plugin: _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__["AccordionMenu"]
   }
 }; // import "foundation.util.triggers.js";
 
@@ -7612,7 +7500,7 @@ function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
-      this.$element = (0, _jquery.default)(element);
+      this.$element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element);
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
       this.currentPlugin = null;
@@ -7631,7 +7519,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init(); // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init(); // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
 
 
       if (typeof this.rules === 'string') {
@@ -7652,12 +7540,12 @@ function (_Plugin) {
         this.rules = rulesTree;
       }
 
-      if (!_jquery.default.isEmptyObject(this.rules)) {
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default.a.isEmptyObject(this.rules)) {
         this._checkMediaQueries();
       } // Add data-mutate since children may need it.
 
 
-      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || (0, _foundationCore.GetYoDigits)(6, 'responsive-menu'));
+      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'responsive-menu'));
     }
     /**
      * Initializes events for the Menu.
@@ -7670,7 +7558,7 @@ function (_Plugin) {
     value: function _events() {
       var _this = this;
 
-      (0, _jquery.default)(window).on('changed.zf.mediaquery', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', function () {
         _this._checkMediaQueries();
       }); // $(window).on('resize.zf.ResponsiveMenu', function() {
       //   _this._checkMediaQueries();
@@ -7689,21 +7577,19 @@ function (_Plugin) {
           _this = this; // Iterate through each rule and find the last matching rule
 
 
-      _jquery.default.each(this.rules, function (key) {
-        if (_foundationUtil.MediaQuery.atLeast(key)) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(this.rules, function (key) {
+        if (_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(key)) {
           matchedMq = key;
         }
       }); // No match? No dice
-
 
       if (!matchedMq) return; // Plugin already initialized? We good
 
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return; // Remove existing plugin-specific CSS classes
 
-      _jquery.default.each(MenuPlugins, function (key, value) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(MenuPlugins, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       }); // Add the CSS class for the new plugin
-
 
       this.$element.addClass(this.rules[matchedMq].cssClass); // Create an instance of the new plugin
 
@@ -7719,15 +7605,15 @@ function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       this.currentPlugin.destroy();
-      (0, _jquery.default)(window).off('.zf.ResponsiveMenu');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('.zf.ResponsiveMenu');
     }
   }]);
 
   return ResponsiveMenu;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.ResponsiveMenu = ResponsiveMenu;
 ResponsiveMenu.defaults = {};
+
 
 /***/ }),
 
@@ -7735,26 +7621,18 @@ ResponsiveMenu.defaults = {};
 /*!*******************************************!*\
   !*** ./js/foundation.responsiveToggle.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: ResponsiveToggle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResponsiveToggle", function() { return ResponsiveToggle; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ResponsiveToggle = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -7774,12 +7652,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * ResponsiveToggle module.
  * @module foundation.responsiveToggle
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion
  */
+
 var ResponsiveToggle =
 /*#__PURE__*/
 function (_Plugin) {
@@ -7803,8 +7686,8 @@ function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
-      this.$element = (0, _jquery.default)(element);
-      this.options = _jquery.default.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+      this.$element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
       this.className = 'ResponsiveToggle'; // ie9 back compat
 
       this._init();
@@ -7820,7 +7703,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init();
 
       var targetID = this.$element.data('responsive-toggle');
 
@@ -7828,12 +7711,12 @@ function (_Plugin) {
         console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
       }
 
-      this.$targetMenu = (0, _jquery.default)("#".concat(targetID));
+      this.$targetMenu = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(targetID));
       this.$toggler = this.$element.find('[data-toggle]').filter(function () {
-        var target = (0, _jquery.default)(this).data('toggle');
+        var target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle');
         return target === targetID || target === "";
       });
-      this.options = _jquery.default.extend({}, this.options, this.$targetMenu.data()); // If they were set, parse the animation classes
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, this.options, this.$targetMenu.data()); // If they were set, parse the animation classes
 
       if (this.options.animate) {
         var input = this.options.animate.split(' ');
@@ -7855,7 +7738,7 @@ function (_Plugin) {
       var _this = this;
 
       this._updateMqHandler = this._update.bind(this);
-      (0, _jquery.default)(window).on('changed.zf.mediaquery', this._updateMqHandler);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._updateMqHandler);
       this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
     }
     /**
@@ -7868,7 +7751,7 @@ function (_Plugin) {
     key: "_update",
     value: function _update() {
       // Mobile
-      if (!_foundationUtil.MediaQuery.atLeast(this.options.hideFor)) {
+      if (!_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(this.options.hideFor)) {
         this.$element.show();
         this.$targetMenu.hide();
       } // Desktop
@@ -7888,20 +7771,20 @@ function (_Plugin) {
     value: function toggleMenu() {
       var _this2 = this;
 
-      if (!_foundationUtil.MediaQuery.atLeast(this.options.hideFor)) {
+      if (!_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(this.options.hideFor)) {
         /**
          * Fires when the element attached to the tab bar toggles.
          * @event ResponsiveToggle#toggled
          */
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
-            _foundationUtil2.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
+            _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateIn(this.$targetMenu, this.animationIn, function () {
               _this2.$element.trigger('toggled.zf.responsiveToggle');
 
               _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });
           } else {
-            _foundationUtil2.Motion.animateOut(this.$targetMenu, this.animationOut, function () {
+            _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(this.$targetMenu, this.animationOut, function () {
               _this2.$element.trigger('toggled.zf.responsiveToggle');
             });
           }
@@ -7917,14 +7800,13 @@ function (_Plugin) {
     value: function _destroy() {
       this.$element.off('.zf.responsiveToggle');
       this.$toggler.off('.zf.responsiveToggle');
-      (0, _jquery.default)(window).off('changed.zf.mediaquery', this._updateMqHandler);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('changed.zf.mediaquery', this._updateMqHandler);
     }
   }]);
 
   return ResponsiveToggle;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.ResponsiveToggle = ResponsiveToggle;
 ResponsiveToggle.defaults = {
   /**
    * The breakpoint after which the menu is always shown, and the tab bar is hidden.
@@ -7943,38 +7825,28 @@ ResponsiveToggle.defaults = {
   animate: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.reveal.js":
 /*!*********************************!*\
   !*** ./js/foundation.reveal.js ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Reveal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Reveal", function() { return Reveal; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Reveal = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationUtil4 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -7994,6 +7866,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
+
 /**
  * Reveal module.
  * @module foundation.reveal
@@ -8002,6 +7881,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
  */
+
 var Reveal =
 /*#__PURE__*/
 function (_Plugin) {
@@ -8025,15 +7905,14 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Reveal.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Reveal.defaults, this.$element.data(), options);
       this.className = 'Reveal'; // ie9 back compat
 
       this._init(); // Triggers init is idempotent, just need to make sure it is initialized
 
 
-      _foundationUtil4.Triggers.init(_jquery.default);
-
-      _foundationUtil.Keyboard.register('Reveal', {
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_6__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Reveal', {
         'ESCAPE': 'close'
       });
     }
@@ -8047,14 +7926,14 @@ function (_Plugin) {
     value: function _init() {
       var _this2 = this;
 
-      _foundationUtil2.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__["MediaQuery"]._init();
 
       this.id = this.$element.attr('id');
       this.isActive = false;
       this.cached = {
-        mq: _foundationUtil2.MediaQuery.current
+        mq: _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__["MediaQuery"].current
       };
-      this.$anchor = (0, _jquery.default)("[data-open=\"".concat(this.id, "\"]")).length ? (0, _jquery.default)("[data-open=\"".concat(this.id, "\"]")) : (0, _jquery.default)("[data-toggle=\"".concat(this.id, "\"]"));
+      this.$anchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat(this.id, "\"]")).length ? jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat(this.id, "\"]")) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-toggle=\"".concat(this.id, "\"]"));
       this.$anchor.attr({
         'aria-controls': this.id,
         'aria-haspopup': true,
@@ -8080,14 +7959,14 @@ function (_Plugin) {
       if (this.$overlay) {
         this.$element.detach().appendTo(this.$overlay);
       } else {
-        this.$element.detach().appendTo((0, _jquery.default)(this.options.appendTo));
+        this.$element.detach().appendTo(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.options.appendTo));
         this.$element.addClass('without-overlay');
       }
 
       this._events();
 
       if (this.options.deepLink && window.location.hash === "#".concat(this.id)) {
-        this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
+        this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
           return _this2.open();
         });
       }
@@ -8106,7 +7985,7 @@ function (_Plugin) {
         additionalOverlayClasses = ' ' + this.options.additionalOverlayClasses;
       }
 
-      return (0, _jquery.default)('<div></div>').addClass('reveal-overlay' + additionalOverlayClasses).appendTo(this.options.appendTo);
+      return jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div></div>').addClass('reveal-overlay' + additionalOverlayClasses).appendTo(this.options.appendTo);
     }
     /**
      * Updates position of modal
@@ -8118,9 +7997,9 @@ function (_Plugin) {
     key: "_updatePosition",
     value: function _updatePosition() {
       var width = this.$element.outerWidth();
-      var outerWidth = (0, _jquery.default)(window).width();
+      var outerWidth = jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).width();
       var height = this.$element.outerHeight();
-      var outerHeight = (0, _jquery.default)(window).height();
+      var outerHeight = jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).height();
       var left,
           top = null;
 
@@ -8172,7 +8051,7 @@ function (_Plugin) {
       this.$element.on({
         'open.zf.trigger': this.open.bind(this),
         'close.zf.trigger': function closeZfTrigger(event, $element) {
-          if (event.target === _this.$element[0] || (0, _jquery.default)(event.target).parents('[data-closable]')[0] === $element) {
+          if (event.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default()(event.target).parents('[data-closable]')[0] === $element) {
             // only close reveal when it's explicitly called
             return _this3.close.apply(_this3);
           }
@@ -8185,7 +8064,7 @@ function (_Plugin) {
 
       if (this.options.closeOnClick && this.options.overlay) {
         this.$overlay.off('.zf.reveal').on('click.zf.reveal', function (e) {
-          if (e.target === _this.$element[0] || _jquery.default.contains(_this.$element[0], e.target) || !_jquery.default.contains(document, e.target)) {
+          if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target) || !jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(document, e.target)) {
             return;
           }
 
@@ -8194,7 +8073,7 @@ function (_Plugin) {
       }
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).on("hashchange.zf.reveal:".concat(this.id), this._handleState.bind(this));
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on("hashchange.zf.reveal:".concat(this.id), this._handleState.bind(this));
       }
     }
     /**
@@ -8219,10 +8098,10 @@ function (_Plugin) {
   }, {
     key: "_disableScroll",
     value: function _disableScroll(scrollTop) {
-      scrollTop = scrollTop || (0, _jquery.default)(window).scrollTop();
+      scrollTop = scrollTop || jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop();
 
-      if ((0, _jquery.default)(document).height() > (0, _jquery.default)(window).height()) {
-        (0, _jquery.default)("html").css("top", -scrollTop);
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).height() > jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).height()) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top", -scrollTop);
       }
     }
     /**
@@ -8233,11 +8112,11 @@ function (_Plugin) {
   }, {
     key: "_enableScroll",
     value: function _enableScroll(scrollTop) {
-      scrollTop = scrollTop || parseInt((0, _jquery.default)("html").css("top"));
+      scrollTop = scrollTop || parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top"));
 
-      if ((0, _jquery.default)(document).height() > (0, _jquery.default)(window).height()) {
-        (0, _jquery.default)("html").css("top", "");
-        (0, _jquery.default)(window).scrollTop(-scrollTop);
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).height() > jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).height()) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top", "");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop(-scrollTop);
       }
     }
     /**
@@ -8268,7 +8147,7 @@ function (_Plugin) {
       } // Remember anchor that opened it to set focus back later, have general anchors as fallback
 
 
-      this.$activeAnchor = (0, _jquery.default)(document.activeElement).is(this.$anchor) ? (0, _jquery.default)(document.activeElement) : this.$anchor;
+      this.$activeAnchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.activeElement).is(this.$anchor) ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.activeElement) : this.$anchor;
       this.isActive = true; // Make elements invisible, but remove display: none so we can get size and positioning
 
       this.$element.css({
@@ -8322,17 +8201,17 @@ function (_Plugin) {
 
           _this._addGlobalClasses();
 
-          _foundationUtil.Keyboard.trapFocus(_this.$element);
+          _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].trapFocus(_this.$element);
         };
 
         if (this.options.overlay) {
-          _foundationUtil3.Motion.animateIn(this.$overlay, 'fade-in');
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_4__["Motion"].animateIn(this.$overlay, 'fade-in');
         }
 
-        _foundationUtil3.Motion.animateIn(this.$element, this.options.animationIn, function () {
+        _foundation_util_motion__WEBPACK_IMPORTED_MODULE_4__["Motion"].animateIn(this.$element, this.options.animationIn, function () {
           if (_this4.$element) {
             // protect against object having been removed
-            _this4.focusableElements = _foundationUtil.Keyboard.findFocusable(_this4.$element);
+            _this4.focusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].findFocusable(_this4.$element);
             afterAnimation();
           }
         });
@@ -8350,8 +8229,7 @@ function (_Plugin) {
         'aria-hidden': false,
         'tabindex': -1
       }).focus();
-
-      _foundationUtil.Keyboard.trapFocus(this.$element);
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].trapFocus(this.$element);
 
       this._addGlobalClasses();
 
@@ -8380,14 +8258,14 @@ function (_Plugin) {
     key: "_addGlobalClasses",
     value: function _addGlobalClasses() {
       var updateScrollbarClass = function updateScrollbarClass() {
-        (0, _jquery.default)('html').toggleClass('zf-has-scroll', !!((0, _jquery.default)(document).height() > (0, _jquery.default)(window).height()));
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').toggleClass('zf-has-scroll', !!(jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).height() > jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).height()));
       };
 
       this.$element.on('resizeme.zf.trigger.revealScrollbarListener', function () {
         return updateScrollbarClass();
       });
       updateScrollbarClass();
-      (0, _jquery.default)('html').addClass('is-reveal-open');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').addClass('is-reveal-open');
     }
     /**
      * Removes classes and listeners on document that were required by open modals.
@@ -8398,8 +8276,8 @@ function (_Plugin) {
     key: "_removeGlobalClasses",
     value: function _removeGlobalClasses() {
       this.$element.off('resizeme.zf.trigger.revealScrollbarListener');
-      (0, _jquery.default)('html').removeClass('is-reveal-open');
-      (0, _jquery.default)('html').removeClass('zf-has-scroll');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').removeClass('is-reveal-open');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html').removeClass('zf-has-scroll');
     }
     /**
      * Adds extra event handlers for the body and window if necessary.
@@ -8416,11 +8294,11 @@ function (_Plugin) {
       } // If we're in the middle of cleanup, don't freak out
 
 
-      this.focusableElements = _foundationUtil.Keyboard.findFocusable(this.$element);
+      this.focusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].findFocusable(this.$element);
 
       if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
-        (0, _jquery.default)('body').on('click.zf.reveal', function (e) {
-          if (e.target === _this.$element[0] || _jquery.default.contains(_this.$element[0], e.target) || !_jquery.default.contains(document, e.target)) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').on('click.zf.reveal', function (e) {
+          if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target) || !jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(document, e.target)) {
             return;
           }
 
@@ -8429,8 +8307,8 @@ function (_Plugin) {
       }
 
       if (this.options.closeOnEsc) {
-        (0, _jquery.default)(window).on('keydown.zf.reveal', function (e) {
-          _foundationUtil.Keyboard.handleKey(e, 'Reveal', {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('keydown.zf.reveal', function (e) {
+          _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Reveal', {
             close: function close() {
               if (_this.options.closeOnEsc) {
                 _this.close();
@@ -8458,10 +8336,10 @@ function (_Plugin) {
 
       if (this.options.animationOut) {
         if (this.options.overlay) {
-          _foundationUtil3.Motion.animateOut(this.$overlay, 'fade-out');
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_4__["Motion"].animateOut(this.$overlay, 'fade-out');
         }
 
-        _foundationUtil3.Motion.animateOut(this.$element, this.options.animationOut, finishUp);
+        _foundation_util_motion__WEBPACK_IMPORTED_MODULE_4__["Motion"].animateOut(this.$element, this.options.animationOut, finishUp);
       } // jQuery method of hiding
       else {
           this.$element.hide(this.options.hideDelay);
@@ -8475,11 +8353,11 @@ function (_Plugin) {
 
 
       if (this.options.closeOnEsc) {
-        (0, _jquery.default)(window).off('keydown.zf.reveal');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('keydown.zf.reveal');
       }
 
       if (!this.options.overlay && this.options.closeOnClick) {
-        (0, _jquery.default)('body').off('click.zf.reveal');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').off('click.zf.reveal');
       }
 
       this.$element.off('keydown.zf.reveal');
@@ -8488,14 +8366,14 @@ function (_Plugin) {
         // Get the current top before the modal is closed and restore the scroll after.
         // TODO: use component properties instead of HTML properties
         // See https://github.com/zurb/foundation-sites/pull/10786
-        var scrollTop = parseInt((0, _jquery.default)("html").css("top"));
+        var scrollTop = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top"));
 
-        if ((0, _jquery.default)('.reveal:visible').length === 0) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.reveal:visible').length === 0) {
           _this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
 
         }
 
-        _foundationUtil.Keyboard.releaseFocus(_this.$element);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].releaseFocus(_this.$element);
 
         _this.$element.attr('aria-hidden', true);
 
@@ -8560,17 +8438,17 @@ function (_Plugin) {
      */
     value: function _destroy() {
       if (this.options.overlay) {
-        this.$element.appendTo((0, _jquery.default)(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
+        this.$element.appendTo(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
 
         this.$overlay.hide().off().remove();
       }
 
       this.$element.hide().off();
       this.$anchor.off('.zf');
-      (0, _jquery.default)(window).off(".zf.reveal:".concat(this.id));
-      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(".zf.reveal:".concat(this.id));
+      if (this.onLoadListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
 
-      if ((0, _jquery.default)('.reveal:visible').length === 0) {
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.reveal:visible').length === 0) {
         this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
 
       }
@@ -8578,9 +8456,8 @@ function (_Plugin) {
   }]);
 
   return Reveal;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_5__["Plugin"]);
 
-exports.Reveal = Reveal;
 Reveal.defaults = {
   /**
    * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
@@ -8711,38 +8588,28 @@ Reveal.defaults = {
   additionalOverlayClasses: ''
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.slider.js":
 /*!*********************************!*\
   !*** ./js/foundation.slider.js ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Slider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return Slider; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.touch */ "./js/foundation.util.touch.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Slider = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationUtil3 = __webpack_require__(/*! ./foundation.util.touch */ "./js/foundation.util.touch.js");
-
-var _foundationUtil4 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -8762,6 +8629,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
+
 /**
  * Slider module.
  * @module foundation.slider
@@ -8770,6 +8644,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.keyboard
  * @requires foundation.util.touch
  */
+
 var Slider =
 /*#__PURE__*/
 function (_Plugin) {
@@ -8793,17 +8668,16 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Slider.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Slider.defaults, this.$element.data(), options);
       this.className = 'Slider'; // ie9 back compat
       // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
 
-      _foundationUtil3.Touch.init(_jquery.default);
-
-      _foundationUtil4.Triggers.init(_jquery.default);
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_6__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Slider', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Slider', {
         'ltr': {
           'ARROW_RIGHT': 'increase',
           'ARROW_UP': 'increase',
@@ -8836,7 +8710,7 @@ function (_Plugin) {
       this.inputs = this.$element.find('input');
       this.handles = this.$element.find('[data-slider-handle]');
       this.$handle = this.handles.eq(0);
-      this.$input = this.inputs.length ? this.inputs.eq(0) : (0, _jquery.default)("#".concat(this.$handle.attr('aria-controls')));
+      this.$input = this.inputs.length ? this.inputs.eq(0) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(this.$handle.attr('aria-controls')));
       this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
       var isDbl = false,
@@ -8848,7 +8722,7 @@ function (_Plugin) {
       }
 
       if (!this.inputs.length) {
-        this.inputs = (0, _jquery.default)().add(this.$input);
+        this.inputs = jquery__WEBPACK_IMPORTED_MODULE_0___default()().add(this.$input);
         this.options.binding = true;
       }
 
@@ -8857,7 +8731,7 @@ function (_Plugin) {
       if (this.handles[1]) {
         this.options.doubleSided = true;
         this.$handle2 = this.handles.eq(1);
-        this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : (0, _jquery.default)("#".concat(this.$handle2.attr('aria-controls')));
+        this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(this.$handle2.attr('aria-controls')));
 
         if (!this.inputs[1]) {
           this.inputs = this.inputs.add(this.$input2);
@@ -9065,7 +8939,7 @@ function (_Plugin) {
       }); //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
 
       var moveTime = this.$element.data('dragging') ? 1000 / 60 : this.options.moveTime;
-      (0, _foundationUtil2.Move)(moveTime, $hndl, function () {
+      Object(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Move"])(moveTime, $hndl, function () {
         // adjusting the left/top property of the handle, based on the percentage calculated above
         // if movement isNaN, that is because the slider is hidden and we cannot determine handle width,
         // fall back to next best guess.
@@ -9104,7 +8978,7 @@ function (_Plugin) {
     key: "_setInitAttr",
     value: function _setInitAttr(idx) {
       var initVal = idx === 0 ? this.options.initialStart : this.options.initialEnd;
-      var id = this.inputs.eq(idx).attr('id') || (0, _foundationCore.GetYoDigits)(6, 'slider');
+      var id = this.inputs.eq(idx).attr('id') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'slider');
       this.inputs.eq(idx).attr({
         'id': id,
         'max': this.options.end,
@@ -9165,7 +9039,7 @@ function (_Plugin) {
             eventOffset = vertical ? e.pageY : e.pageX,
             halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
             barDim = this.$element[0].getBoundingClientRect()[param],
-            windowScroll = vertical ? (0, _jquery.default)(window).scrollTop() : (0, _jquery.default)(window).scrollLeft();
+            windowScroll = vertical ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop() : jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollLeft();
 
         var elemOffset = this.$element.offset()[direction]; // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
         // best way to guess this is simulated is if clientY == pageY
@@ -9188,7 +9062,7 @@ function (_Plugin) {
         var offsetPct = percent(barXY, barDim);
         value = this._value(offsetPct); // turn everything around for RTL, yay math!
 
-        if ((0, _foundationCore.rtl)() && !this.options.vertical) {
+        if (Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["rtl"])() && !this.options.vertical) {
           value = this.options.end - value;
         }
 
@@ -9234,7 +9108,12 @@ function (_Plugin) {
         val = value;
       }
 
-      left = val % step;
+      if (val >= 0) {
+        left = val % step;
+      } else {
+        left = step + val % step;
+      }
+
       prev_val = val - left;
       next_val = prev_val + step;
 
@@ -9275,9 +9154,9 @@ function (_Plugin) {
           timer;
 
       var handleChangeEvent = function handleChangeEvent(e) {
-        var idx = _this.inputs.index((0, _jquery.default)(this));
+        var idx = _this.inputs.index(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
 
-        _this._handleEvent(e, _this.handles.eq(idx), (0, _jquery.default)(this).val());
+        _this._handleEvent(e, _this.handles.eq(idx), jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val());
       }; // IE only triggers the change event when the input loses focus which strictly follows the HTML specification
       // listen for the enter key and trigger a change
       // @see https://html.spec.whatwg.org/multipage/input.html#common-input-element-events
@@ -9294,7 +9173,7 @@ function (_Plugin) {
             return false;
           }
 
-          if (!(0, _jquery.default)(e.target).is('[data-slider-handle]')) {
+          if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).is('[data-slider-handle]')) {
             if (_this.options.doubleSided) {
               _this._handleEvent(e);
             } else {
@@ -9306,7 +9185,7 @@ function (_Plugin) {
 
       if (this.options.draggable) {
         this.handles.addTouch();
-        var $body = (0, _jquery.default)('body');
+        var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
         $handle.off('mousedown.zf.slider').on('mousedown.zf.slider', function (e) {
           $handle.addClass('is-dragging');
 
@@ -9315,7 +9194,7 @@ function (_Plugin) {
 
           _this.$element.data('dragging', true);
 
-          curHandle = (0, _jquery.default)(e.currentTarget);
+          curHandle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.currentTarget);
           $body.on('mousemove.zf.slider', function (e) {
             e.preventDefault();
 
@@ -9338,13 +9217,13 @@ function (_Plugin) {
       }
 
       $handle.off('keydown.zf.slider').on('keydown.zf.slider', function (e) {
-        var _$handle = (0, _jquery.default)(this),
+        var _$handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
             oldValue = parseFloat(_this.inputs.eq(idx).val()),
             newValue; // handle keyboard event with keyboard util
 
 
-        _foundationUtil.Keyboard.handleKey(e, 'Slider', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Slider', {
           decrease: function decrease() {
             newValue = oldValue - _this.options.step;
           },
@@ -9374,7 +9253,6 @@ function (_Plugin) {
           e.preventDefault();
           _this._setHandlePos(_$handle, newValue);
         }*/
-
       });
     }
     /**
@@ -9392,9 +9270,8 @@ function (_Plugin) {
   }]);
 
   return Slider;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 
-exports.Slider = Slider;
 Slider.defaults = {
   /**
    * Minimum value for the slider scale.
@@ -9564,30 +9441,25 @@ function baseLog(base, value) {
   return Math.log(value) / Math.log(base);
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.smoothScroll.js":
 /*!***************************************!*\
   !*** ./js/foundation.smoothScroll.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: SmoothScroll */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmoothScroll", function() { return SmoothScroll; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SmoothScroll = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -9607,10 +9479,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
 /**
  * SmoothScroll module.
  * @module foundation.smooth-scroll
  */
+
 var SmoothScroll =
 /*#__PURE__*/
 function (_Plugin) {
@@ -9635,7 +9511,7 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, SmoothScroll.defaults, this.$element.data(), options);
       this.className = 'SmoothScroll'; // ie9 back compat
 
       this._init();
@@ -9648,7 +9524,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      var id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'smooth-scroll');
+      var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'smooth-scroll');
 
       var _this = this;
 
@@ -9671,7 +9547,7 @@ function (_Plugin) {
 
       var handleLinkClick = function handleLinkClick(e) {
         // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
-        if (!(0, _jquery.default)(this).is('a[href^="#"]')) {
+        if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is('a[href^="#"]')) {
           return false;
         }
 
@@ -9702,12 +9578,12 @@ function (_Plugin) {
       var callback = arguments.length > 2 ? arguments[2] : undefined;
 
       // Do nothing if target does not exist to prevent errors
-      if (!(0, _jquery.default)(loc).length) {
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).length) {
         return false;
       }
 
-      var scrollPos = Math.round((0, _jquery.default)(loc).offset().top - options.threshold / 2 - options.offset);
-      (0, _jquery.default)('html, body').stop(true).animate({
+      var scrollPos = Math.round(jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).offset().top - options.threshold / 2 - options.offset);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, options.animationDuration, options.animationEasing, function () {
         if (callback && typeof callback == "function") {
@@ -9718,13 +9594,12 @@ function (_Plugin) {
   }]);
 
   return SmoothScroll;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 /**
  * Default settings for plugin.
  */
 
 
-exports.SmoothScroll = SmoothScroll;
 SmoothScroll.defaults = {
   /**
    * Amount of time, in ms, the animated scrolling should take between locations.
@@ -9760,34 +9635,26 @@ SmoothScroll.defaults = {
   offset: 0
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.sticky.js":
 /*!*********************************!*\
   !*** ./js/foundation.sticky.js ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Sticky */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sticky", function() { return Sticky; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Sticky = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -9807,12 +9674,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Sticky module.
  * @module foundation.sticky
  * @requires foundation.util.triggers
  * @requires foundation.util.mediaQuery
  */
+
 var Sticky =
 /*#__PURE__*/
 function (_Plugin) {
@@ -9836,11 +9709,11 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Sticky.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Sticky.defaults, this.$element.data(), options);
       this.className = 'Sticky'; // ie9 back compat
       // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil2.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
     }
@@ -9853,10 +9726,10 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__["MediaQuery"]._init();
 
       var $parent = this.$element.parent('[data-sticky-container]'),
-          id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'sticky'),
+          id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'sticky'),
           _this = this;
 
       if ($parent.length) {
@@ -9874,14 +9747,14 @@ function (_Plugin) {
       });
 
       if (this.options.anchor !== '') {
-        (0, _jquery.default)('#' + _this.options.anchor).attr({
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#' + _this.options.anchor).attr({
           'data-mutate': id
         });
       }
 
       this.scrollCount = this.options.checkEvery;
       this.isStuck = false;
-      this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
+      this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
         //We calculate the container height to have correct values for anchor points offset calculation.
         _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
 
@@ -9890,7 +9763,7 @@ function (_Plugin) {
         _this.elemHeight = _this.containerHeight;
 
         if (_this.options.anchor !== '') {
-          _this.$anchor = (0, _jquery.default)('#' + _this.options.anchor);
+          _this.$anchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#' + _this.options.anchor);
         } else {
           _this._parsePoints();
         }
@@ -9930,7 +9803,7 @@ function (_Plugin) {
           pt = pts[i];
         } else {
           var place = pts[i].split(':'),
-              anchor = (0, _jquery.default)("#".concat(place[0]));
+              anchor = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(place[0]));
           pt = anchor.offset().top;
 
           if (place[1] && place[1].toLowerCase() === 'bottom') {
@@ -9962,7 +9835,7 @@ function (_Plugin) {
 
       if (this.canStick) {
         this.isOn = true;
-        (0, _jquery.default)(window).off(scrollListener).on(scrollListener, function (e) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(scrollListener).on(scrollListener, function (e) {
           if (_this.scrollCount === 0) {
             _this.scrollCount = _this.options.checkEvery;
 
@@ -10024,7 +9897,7 @@ function (_Plugin) {
     key: "_pauseListeners",
     value: function _pauseListeners(scrollListener) {
       this.isOn = false;
-      (0, _jquery.default)(window).off(scrollListener);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(scrollListener);
       /**
        * Fires when the plugin is paused due to resize event shrinking the view.
        * @event Sticky#pause
@@ -10154,7 +10027,7 @@ function (_Plugin) {
   }, {
     key: "_setSizes",
     value: function _setSizes(cb) {
-      this.canStick = _foundationUtil.MediaQuery.is(this.options.stickyOn);
+      this.canStick = _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__["MediaQuery"].is(this.options.stickyOn);
 
       if (!this.canStick) {
         if (cb && typeof cb === 'function') {
@@ -10267,8 +10140,8 @@ function (_Plugin) {
         this.$anchor.off('change.zf.sticky');
       }
 
-      if (this.scrollListener) (0, _jquery.default)(window).off(this.scrollListener);
-      if (this.onLoadListener) (0, _jquery.default)(window).off(this.onLoadListener);
+      if (this.scrollListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.scrollListener);
+      if (this.onLoadListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
 
       if (this.wasWrapped) {
         this.$element.unwrap();
@@ -10281,9 +10154,8 @@ function (_Plugin) {
   }]);
 
   return Sticky;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.Sticky = Sticky;
 Sticky.defaults = {
   /**
    * Customizable container template. Add your own classes for styling and sizing.
@@ -10382,34 +10254,27 @@ function emCalc(em) {
   return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.tabs.js":
 /*!*******************************!*\
   !*** ./js/foundation.tabs.js ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Tabs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return Tabs; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Tabs = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.imageLoader */ "./js/foundation.util.imageLoader.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -10429,12 +10294,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
  * @requires foundation.util.imageLoader if tabs contain images
  */
+
 var Tabs =
 /*#__PURE__*/
 function (_Plugin) {
@@ -10459,12 +10330,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Tabs.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Tabs.defaults, this.$element.data(), options);
       this.className = 'Tabs'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Tabs', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Tabs', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -10491,14 +10362,14 @@ function (_Plugin) {
         'role': 'tablist'
       });
       this.$tabTitles = this.$element.find(".".concat(this.options.linkClass));
-      this.$tabContent = (0, _jquery.default)("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
+      this.$tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
       this.$tabTitles.each(function () {
-        var $elem = (0, _jquery.default)(this),
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $link = $elem.find('a'),
             isActive = $elem.hasClass("".concat(_this.options.linkActiveClass)),
             hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
             linkId = $link[0].id ? $link[0].id : "".concat(hash, "-label"),
-            $tabContent = (0, _jquery.default)("#".concat(hash));
+            $tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(hash));
         $elem.attr({
           'role': 'presentation'
         });
@@ -10512,15 +10383,19 @@ function (_Plugin) {
         $tabContent.attr({
           'role': 'tabpanel',
           'aria-labelledby': linkId
-        });
+        }); // Save up the initial hash to return to it later when going back in history
+
+        if (isActive) {
+          _this._initialAnchor = "#".concat(hash);
+        }
 
         if (!isActive) {
           $tabContent.attr('aria-hidden', 'true');
         }
 
         if (isActive && _this.options.autoFocus) {
-          _this.onLoadListener = (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
-            (0, _jquery.default)('html, body').animate({
+          _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
               scrollTop: $elem.offset().top
             }, _this.options.deepLinkSmudgeDelay, function () {
               $link.focus();
@@ -10533,38 +10408,47 @@ function (_Plugin) {
         var $images = this.$tabContent.find('img');
 
         if ($images.length) {
-          (0, _foundationUtil2.onImagesLoaded)($images, this._setHeight.bind(this));
+          Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__["onImagesLoaded"])($images, this._setHeight.bind(this));
         } else {
           this._setHeight();
         }
-      } //current context-bound function to open tabs on page load or history hashchange
+      } // Current context-bound function to open tabs on page load or history hashchange
 
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; //need a hash and a relevant anchor in this tabset
+        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
 
-        if (anchor.length) {
-          var $link = _this2.$element.find('[href$="' + anchor + '"]');
+        if (!anchor.length && _this2._initialAnchor) {
+          anchor = _this2._initialAnchor;
+        }
 
-          if ($link.length) {
-            _this2.selectTab((0, _jquery.default)(anchor), true); //roll up a little to show the titles
+        var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-
-            if (_this2.options.deepLinkSmudge) {
-              var offset = _this2.$element.offset();
-
-              (0, _jquery.default)('html, body').animate({
-                scrollTop: offset.top
-              }, _this2.options.deepLinkSmudgeDelay);
-            }
-            /**
-              * Fires when the zplugin has deeplinked at pageload
-              * @event Tabs#deeplink
-              */
+        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // If there is an anchor for the hash, select it
 
 
-            _this2.$element.trigger('deeplink.zf.tabs', [$link, (0, _jquery.default)(anchor)]);
-          }
+        if ($anchor && $anchor.length && $link && $link.length) {
+          _this2.selectTab($anchor, true);
+        } // Otherwise, collapse everything
+        else {
+            _this2._collapse();
+          } // Roll up a little to show the titles
+
+
+        if (_this2.options.deepLinkSmudge) {
+          var offset = _this2.$element.offset();
+
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+            scrollTop: offset.top
+          }, _this2.options.deepLinkSmudgeDelay);
+        }
+
+        if ($anchor && $link) {
+          /**
+           * Fires when the plugin has deeplinked at pageload
+           * @event Tabs#deeplink
+           */
+          _this2.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
 
@@ -10591,11 +10475,11 @@ function (_Plugin) {
 
       if (this.options.matchHeight) {
         this._setHeightMqHandler = this._setHeight.bind(this);
-        (0, _jquery.default)(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
       }
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).on('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._checkDeepLink);
       }
     }
     /**
@@ -10612,7 +10496,7 @@ function (_Plugin) {
         e.preventDefault();
         e.stopPropagation();
 
-        _this._handleTabChange((0, _jquery.default)(this));
+        _this._handleTabChange(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
       });
     }
     /**
@@ -10627,12 +10511,12 @@ function (_Plugin) {
 
       this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
         if (e.which === 9) return;
-        var $element = (0, _jquery.default)(this),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('ul').children('li'),
             $prevElement,
             $nextElement;
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             if (_this.options.wrapOnKeys) {
               $prevElement = i === 0 ? $elements.last() : $elements.eq(i - 1);
               $nextElement = i === $elements.length - 1 ? $elements.first() : $elements.eq(i + 1);
@@ -10645,7 +10529,7 @@ function (_Plugin) {
           }
         }); // handle keyboard event with keyboard util
 
-        _foundationUtil.Keyboard.handleKey(e, 'Tabs', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Tabs', {
           open: function open() {
             $element.find('[role="tab"]').focus();
 
@@ -10679,19 +10563,10 @@ function (_Plugin) {
   }, {
     key: "_handleTabChange",
     value: function _handleTabChange($target, historyHandled) {
-      /**
-       * Check for active class on target. Collapse if exists.
-       */
+      // With `activeCollapse`, if the target is the active Tab, collapse it.
       if ($target.hasClass("".concat(this.options.linkActiveClass))) {
         if (this.options.activeCollapse) {
-          this._collapseTab($target);
-          /**
-           * Fires when the zplugin has successfully collapsed tabs.
-           * @event Tabs#collapse
-           */
-
-
-          this.$element.trigger('collapse.zf.tabs', [$target]);
+          this._collapse();
         }
 
         return;
@@ -10709,12 +10584,10 @@ function (_Plugin) {
 
 
       if (this.options.deepLink && !historyHandled) {
-        var anchor = $target.find('a').attr('href');
-
         if (this.options.updateHistory) {
-          history.pushState({}, '', anchor);
+          history.pushState({}, '', hash);
         } else {
-          history.replaceState({}, '', anchor);
+          history.replaceState({}, '', hash);
         }
       }
       /**
@@ -10759,9 +10632,31 @@ function (_Plugin) {
         'aria-selected': 'false',
         'tabindex': -1
       });
-      (0, _jquery.default)("#".concat($target_anchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat($target_anchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
         'aria-hidden': 'true'
       });
+    }
+    /**
+     * Collapses the active Tab.
+     * @fires Tabs#collapse
+     * @function
+     */
+
+  }, {
+    key: "_collapse",
+    value: function _collapse() {
+      var $activeTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass));
+
+      if ($activeTab.length) {
+        this._collapseTab($activeTab);
+        /**
+        * Fires when the plugin has successfully collapsed tabs.
+        * @event Tabs#collapse
+        */
+
+
+        this.$element.trigger('collapse.zf.tabs', [$activeTab]);
+      }
     }
     /**
      * Public method for selecting a content pane to display.
@@ -10785,7 +10680,7 @@ function (_Plugin) {
         idStr = "#".concat(idStr);
       }
 
-      var $target = this.$tabTitles.find("[href$=\"".concat(idStr, "\"]")).parent(".".concat(this.options.linkClass));
+      var $target = this.$tabTitles.has("[href$=\"".concat(idStr, "\"]"));
 
       this._handleTabChange($target, historyHandled);
     }
@@ -10806,7 +10701,7 @@ function (_Plugin) {
 
 
       this.$tabContent.find(".".concat(this.options.panelClass)).css('height', '').each(function () {
-        var panel = (0, _jquery.default)(this),
+        var panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
 
         if (!isActive) {
@@ -10840,24 +10735,23 @@ function (_Plugin) {
 
       if (this.options.matchHeight) {
         if (this._setHeightMqHandler != null) {
-          (0, _jquery.default)(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
         }
       }
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).off('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._checkDeepLink);
       }
 
       if (this.onLoadListener) {
-        (0, _jquery.default)(window).off(this.onLoadListener);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
       }
     }
   }]);
 
   return Tabs;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 
-exports.Tabs = Tabs;
 Tabs.defaults = {
   /**
    * Link the location hash to the active pane.
@@ -10958,34 +10852,26 @@ Tabs.defaults = {
   panelActiveClass: 'is-active'
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.toggler.js":
 /*!**********************************!*\
   !*** ./js/foundation.toggler.js ***!
   \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Toggler */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Toggler", function() { return Toggler; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Toggler = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -11005,12 +10891,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Toggler module.
  * @module foundation.toggler
  * @requires foundation.util.motion
  * @requires foundation.util.triggers
  */
+
 var Toggler =
 /*#__PURE__*/
 function (_Plugin) {
@@ -11035,12 +10927,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Toggler.defaults, element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
       this.className = 'Toggler'; // ie9 back compat
       // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil2.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
 
@@ -11070,14 +10962,14 @@ function (_Plugin) {
 
 
       var id = this.$element[0].id,
-          $triggers = (0, _jquery.default)("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]")); // - aria-expanded: according to the element visibility.
+          $triggers = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]")); // - aria-expanded: according to the element visibility.
 
       $triggers.attr('aria-expanded', !this.$element.is(':hidden')); // - aria-controls: adding the element id to it if not already in it.
 
       $triggers.each(function (index, trigger) {
-        var $trigger = (0, _jquery.default)(trigger);
+        var $trigger = jquery__WEBPACK_IMPORTED_MODULE_0___default()(trigger);
         var controls = $trigger.attr('aria-controls') || '';
-        var containsId = new RegExp("\\b".concat((0, _foundationCore2.RegExpEscape)(id), "\\b")).test(controls);
+        var containsId = new RegExp("\\b".concat(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["RegExpEscape"])(id), "\\b")).test(controls);
         if (!containsId) $trigger.attr('aria-controls', controls ? "".concat(controls, " ").concat(id) : id);
       });
     }
@@ -11134,14 +11026,14 @@ function (_Plugin) {
       var _this = this;
 
       if (this.$element.is(':hidden')) {
-        _foundationUtil.Motion.animateIn(this.$element, this.animationIn, function () {
+        _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Motion"].animateIn(this.$element, this.animationIn, function () {
           _this._updateARIA(true);
 
           this.trigger('on.zf.toggler');
           this.find('[data-mutate]').trigger('mutateme.zf.trigger');
         });
       } else {
-        _foundationUtil.Motion.animateOut(this.$element, this.animationOut, function () {
+        _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Motion"].animateOut(this.$element, this.animationOut, function () {
           _this._updateARIA(false);
 
           this.trigger('off.zf.toggler');
@@ -11153,7 +11045,7 @@ function (_Plugin) {
     key: "_updateARIA",
     value: function _updateARIA(isOn) {
       var id = this.$element[0].id;
-      (0, _jquery.default)("[data-open=\"".concat(id, "\"], [data-close=\"").concat(id, "\"], [data-toggle=\"").concat(id, "\"]")).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open=\"".concat(id, "\"], [data-close=\"").concat(id, "\"], [data-toggle=\"").concat(id, "\"]")).attr({
         'aria-expanded': isOn ? true : false
       });
     }
@@ -11170,9 +11062,8 @@ function (_Plugin) {
   }]);
 
   return Toggler;
-}(_foundationCore.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 
-exports.Toggler = Toggler;
 Toggler.defaults = {
   /**
    * Tells the plugin if the element should animated when toggled.
@@ -11183,34 +11074,26 @@ Toggler.defaults = {
   animate: false
 };
 
+
 /***/ }),
 
 /***/ "./js/foundation.tooltip.js":
 /*!**********************************!*\
   !*** ./js/foundation.tooltip.js ***!
   \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Tooltip */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tooltip", function() { return Tooltip; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
+/* harmony import */ var _foundation_positionable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.positionable */ "./js/foundation.positionable.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Tooltip = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-var _foundation = __webpack_require__(/*! ./foundation.positionable */ "./js/foundation.positionable.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -11234,6 +11117,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * Tooltip module.
  * @module foundation.tooltip
@@ -11241,6 +11129,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
+
 var Tooltip =
 /*#__PURE__*/
 function (_Positionable) {
@@ -11265,13 +11154,13 @@ function (_Positionable) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Tooltip.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Tooltip.defaults, this.$element.data(), options);
       this.className = 'Tooltip'; // ie9 back compat
 
       this.isActive = false;
       this.isClick = false; // Triggers init is idempotent, just need to make sure it is initialized
 
-      _foundationUtil2.Triggers.init(_jquery.default);
+      _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_3__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
     }
@@ -11283,11 +11172,11 @@ function (_Positionable) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init();
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__["MediaQuery"]._init();
 
-      var elemId = this.$element.attr('aria-describedby') || (0, _foundationCore.GetYoDigits)(6, 'tooltip');
+      var elemId = this.$element.attr('aria-describedby') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'tooltip');
       this.options.tipText = this.options.tipText || this.$element.attr('title');
-      this.template = this.options.template ? (0, _jquery.default)(this.options.template) : this._buildTemplate(elemId);
+      this.template = this.options.template ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.options.template) : this._buildTemplate(elemId);
 
       if (this.options.allowHtml) {
         this.template.appendTo(document.body).html(this.options.tipText).hide();
@@ -11346,7 +11235,7 @@ function (_Positionable) {
     key: "_buildTemplate",
     value: function _buildTemplate(id) {
       var templateClasses = "".concat(this.options.tooltipClass, " ").concat(this.options.templateClasses).trim();
-      var $template = (0, _jquery.default)('<div></div>').addClass(templateClasses).attr({
+      var $template = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div></div>').addClass(templateClasses).attr({
         'role': 'tooltip',
         'aria-hidden': true,
         'data-is-active': false,
@@ -11376,7 +11265,7 @@ function (_Positionable) {
   }, {
     key: "show",
     value: function show() {
-      if (this.options.showOn !== 'all' && !_foundationUtil.MediaQuery.is(this.options.showOn)) {
+      if (this.options.showOn !== 'all' && !_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_2__["MediaQuery"].is(this.options.showOn)) {
         // console.error('The screen is too small to display this tooltip');
         return false;
       }
@@ -11551,9 +11440,8 @@ function (_Positionable) {
   }]);
 
   return Tooltip;
-}(_foundation.Positionable);
+}(_foundation_positionable__WEBPACK_IMPORTED_MODULE_4__["Positionable"]);
 
-exports.Tooltip = Tooltip;
 Tooltip.defaults = {
   disableForTouch: false,
 
@@ -11727,24 +11615,23 @@ Tooltip.defaults = {
  * TODO utilize resize event trigger
  */
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.box.js":
 /*!***********************************!*\
   !*** ./js/foundation.util.box.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Box */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Box", function() { return Box; });
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Box = void 0;
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
@@ -11764,7 +11651,6 @@ var Box = {
    */
 
 };
-exports.Box = Box;
 
 function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
   return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
@@ -11875,10 +11761,10 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
 
   switch (position) {
     case 'top':
-      return (0, _foundationCore.rtl)() ? GetExplicitOffsets(element, anchor, 'top', 'left', vOffset, hOffset, isOverflow) : GetExplicitOffsets(element, anchor, 'top', 'right', vOffset, hOffset, isOverflow);
+      return Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__["rtl"])() ? GetExplicitOffsets(element, anchor, 'top', 'left', vOffset, hOffset, isOverflow) : GetExplicitOffsets(element, anchor, 'top', 'right', vOffset, hOffset, isOverflow);
 
     case 'bottom':
-      return (0, _foundationCore.rtl)() ? GetExplicitOffsets(element, anchor, 'bottom', 'left', vOffset, hOffset, isOverflow) : GetExplicitOffsets(element, anchor, 'bottom', 'right', vOffset, hOffset, isOverflow);
+      return Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__["rtl"])() ? GetExplicitOffsets(element, anchor, 'bottom', 'left', vOffset, hOffset, isOverflow) : GetExplicitOffsets(element, anchor, 'bottom', 'right', vOffset, hOffset, isOverflow);
 
     case 'center top':
       return GetExplicitOffsets(element, anchor, 'top', 'center', vOffset, hOffset, isOverflow);
@@ -11921,7 +11807,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
 
     default:
       return {
-        left: (0, _foundationCore.rtl)() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset : $anchorDims.offset.left + hOffset,
+        left: Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__["rtl"])() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset : $anchorDims.offset.left + hOffset,
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       };
   }
@@ -11995,32 +11881,31 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
   };
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.imageLoader.js":
 /*!*******************************************!*\
   !*** ./js/foundation.util.imageLoader.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: onImagesLoaded */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onImagesLoaded", function() { return onImagesLoaded; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.onImagesLoaded = onImagesLoaded;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Runs a callback function when images are fully loaded.
  * @param {Object} images - Image(s) to check if loaded.
  * @param {Func} callback - Function to execute when image is fully loaded.
  */
+
 function onImagesLoaded(images, callback) {
   var self = this,
       unloaded = images.length;
@@ -12038,12 +11923,12 @@ function onImagesLoaded(images, callback) {
       var image = new Image(); // Still count image as loaded if it finalizes with an error.
 
       var events = "load.zf.images error.zf.images";
-      (0, _jquery.default)(image).one(events, function me(event) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(image).one(events, function me(event) {
         // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
-        (0, _jquery.default)(this).off(events, me);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).off(events, me);
         singleImageLoaded();
       });
-      image.src = (0, _jquery.default)(this).attr('src');
+      image.src = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('src');
     }
   });
 
@@ -12056,16 +11941,23 @@ function onImagesLoaded(images, callback) {
   }
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.keyboard.js":
 /*!****************************************!*\
   !*** ./js/foundation.util.keyboard.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Keyboard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Keyboard", function() { return Keyboard; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 /*******************************************
  *                                         *
  * This util was created by Marius Olbertz *
@@ -12075,16 +11967,7 @@ function onImagesLoaded(images, callback) {
  ******************************************/
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Keyboard = void 0;
 
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var keyCodes = {
   9: 'TAB',
@@ -12106,7 +11989,7 @@ function findFocusable($element) {
   }
 
   return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
-    if (!(0, _jquery.default)(this).is(':visible') || (0, _jquery.default)(this).attr('tabindex') < 0) {
+    if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is(':visible') || jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('tabindex') < 0) {
       return false;
     } //only have visible elements and those that have a tabindex greater or equal 0
 
@@ -12157,7 +12040,7 @@ var Keyboard = {
       cmds = commandList; // use plain list
     } else {
       // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-      if ((0, _foundationCore.rtl)()) cmds = _jquery.default.extend({}, commandList.ltr, commandList.rtl);else cmds = _jquery.default.extend({}, commandList.rtl, commandList.ltr);
+      if (Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["rtl"])()) cmds = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, commandList.ltr, commandList.rtl);else cmds = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, commandList.rtl, commandList.ltr);
     }
 
     command = cmds[keyCode];
@@ -12229,8 +12112,6 @@ var Keyboard = {
  * Can be used like Foundation.parseKey(event) === Foundation.keys.SPACE
  */
 
-exports.Keyboard = Keyboard;
-
 function getKeyCodes(kcs) {
   var k = {};
 
@@ -12241,40 +12122,40 @@ function getKeyCodes(kcs) {
   return k;
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.mediaQuery.js":
 /*!******************************************!*\
   !*** ./js/foundation.util.mediaQuery.js ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: MediaQuery */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return MediaQuery; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MediaQuery = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// Default set of media queries
+ // Default set of media queries
+
 var defaultQueries = {
   'default': 'only screen',
   landscape: 'only screen and (orientation: landscape)',
   portrait: 'only screen and (orientation: portrait)',
   retina: 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 'only screen and (min--moz-device-pixel-ratio: 2),' + 'only screen and (-o-min-device-pixel-ratio: 2/1),' + 'only screen and (min-device-pixel-ratio: 2),' + 'only screen and (min-resolution: 192dpi),' + 'only screen and (min-resolution: 2dppx)'
 }; // matchMedia() polyfill - Test a CSS media type/query in JS.
-// Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
+// Authors & copyright(c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 
-var matchMedia = window.matchMedia || function () {
-  'use strict'; // For browsers that support matchMedium api such as IE 9 and webkit
+/* eslint-disable */
+
+window.matchMedia || (window.matchMedia = function () {
+  "use strict"; // For browsers that support matchMedium api such as IE 9 and webkit
 
   var styleMedia = window.styleMedia || window.media; // For those that don't support matchMedium
 
@@ -12284,12 +12165,18 @@ var matchMedia = window.matchMedia || function () {
         info = null;
     style.type = 'text/css';
     style.id = 'matchmediajs-test';
-    script && script.parentNode && script.parentNode.insertBefore(style, script); // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
+    if (!script) {
+      document.head.appendChild(style);
+    } else {
+      script.parentNode.insertBefore(style, script);
+    } // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
 
     info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
     styleMedia = {
       matchMedium: function matchMedium(media) {
-        var text = "@media ".concat(media, "{ #matchmediajs-test { width: 1px; } }"); // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }'; // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
 
         if (style.styleSheet) {
           style.styleSheet.cssText = text;
@@ -12309,7 +12196,8 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-}();
+}());
+/* eslint-enable */
 
 var MediaQuery = {
   queries: [],
@@ -12322,13 +12210,13 @@ var MediaQuery = {
    */
   _init: function _init() {
     var self = this;
-    var $meta = (0, _jquery.default)('meta.foundation-mq');
+    var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
     if (!$meta.length) {
-      (0, _jquery.default)('<meta class="foundation-mq">').appendTo(document.head);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq">').appendTo(document.head);
     }
 
-    var extractedStyles = (0, _jquery.default)('.foundation-mq').css('font-family');
+    var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
 
@@ -12356,7 +12244,7 @@ var MediaQuery = {
     var query = this.get(size);
 
     if (query) {
-      return matchMedia(query).matches;
+      return window.matchMedia(query).matches;
     }
 
     return false;
@@ -12409,7 +12297,7 @@ var MediaQuery = {
     for (var i = 0; i < this.queries.length; i++) {
       var query = this.queries[i];
 
-      if (matchMedia(query.value).matches) {
+      if (window.matchMedia(query.value).matches) {
         matched = query;
       }
     }
@@ -12429,7 +12317,7 @@ var MediaQuery = {
   _watcher: function _watcher() {
     var _this = this;
 
-    (0, _jquery.default)(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
       var newSize = _this._getCurrentSize(),
           currentSize = _this.current;
 
@@ -12437,13 +12325,11 @@ var MediaQuery = {
         // Change the current media query
         _this.current = newSize; // Broadcast the media query change on the window
 
-        (0, _jquery.default)(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
 }; // Thank you: https://github.com/sindresorhus/query-string
-
-exports.MediaQuery = MediaQuery;
 
 function parseStyleToObject(str) {
   var styleObject = {};
@@ -12480,34 +12366,33 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.motion.js":
 /*!**************************************!*\
   !*** ./js/foundation.util.motion.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Move, Motion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Move", function() { return Move; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Motion", function() { return Motion; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Move = Move;
-exports.Motion = void 0;
 
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Motion module.
  * @module foundation.motion
  */
+
 var initClasses = ['mui-enter', 'mui-leave'];
 var activeClasses = ['mui-enter-active', 'mui-leave-active'];
 var Motion = {
@@ -12518,7 +12403,6 @@ var Motion = {
     animate(false, element, animation, cb);
   }
 };
-exports.Motion = Motion;
 
 function Move(duration, elem, fn) {
   var anim,
@@ -12559,7 +12443,7 @@ function Move(duration, elem, fn) {
 
 
 function animate(isIn, element, animation, cb) {
-  element = (0, _jquery.default)(element).eq(0);
+  element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).eq(0);
   if (!element.length) return;
   var initClass = isIn ? initClasses[0] : initClasses[1];
   var activeClass = isIn ? activeClasses[0] : activeClasses[1]; // Set up the animation
@@ -12576,7 +12460,7 @@ function animate(isIn, element, animation, cb) {
     element.css('transition', '').addClass(activeClass);
   }); // Clean up the animation when it finishes
 
-  element.one((0, _foundationCore.transitionend)(element), finish); // Hides the element (for out animations), resets the element, and runs a callback
+  element.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["transitionend"])(element), finish); // Hides the element (for out animations), resets the element, and runs a callback
 
   function finish() {
     if (!isIn) element.hide();
@@ -12591,26 +12475,24 @@ function animate(isIn, element, animation, cb) {
   }
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.nest.js":
 /*!************************************!*\
   !*** ./js/foundation.util.nest.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Nest */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nest", function() { return Nest; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Nest = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Nest = {
   Feather: function Feather(menu) {
@@ -12625,7 +12507,7 @@ var Nest = {
         applyAria = type !== 'accordion'; // Accordions handle their own ARIA attriutes.
 
     items.each(function () {
-      var $item = (0, _jquery.default)(this),
+      var $item = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
           $sub = $item.children('ul');
 
       if ($sub.length) {
@@ -12672,10 +12554,10 @@ var Nest = {
     subMenuClass = "is-".concat(type, "-submenu"),
         subItemClass = "".concat(subMenuClass, "-item"),
         hasSubClass = "is-".concat(type, "-submenu-parent");
-    menu.find('>li, > li > ul, .menu, .menu > li').removeClass("".concat(subMenuClass, " ").concat(subItemClass, " ").concat(hasSubClass, " is-submenu-item submenu is-active")).removeAttr('data-submenu').css('display', '');
+    menu.find('>li, > li > ul, .menu, .menu > li, [data-submenu] > li').removeClass("".concat(subMenuClass, " ").concat(subItemClass, " ").concat(hasSubClass, " is-submenu-item submenu is-active")).removeAttr('data-submenu').css('display', '');
   }
 };
-exports.Nest = Nest;
+
 
 /***/ }),
 
@@ -12683,20 +12565,17 @@ exports.Nest = Nest;
 /*!*************************************!*\
   !*** ./js/foundation.util.timer.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Timer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Timer", function() { return Timer; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Timer = Timer;
 
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Timer(elem, options, cb) {
   var _this = this,
@@ -12746,35 +12625,34 @@ function Timer(elem, options, cb) {
   };
 }
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.touch.js":
 /*!*************************************!*\
   !*** ./js/foundation.util.touch.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Touch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Touch = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Touch", function() { return Touch; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+//**************************************************
+//**Work inspired by multiple jquery swipe plugins**
+//**Done by Yohai Ararat ***************************
+//**************************************************
+
 var Touch = {};
-exports.Touch = Touch;
 var startPosX,
     startPosY,
     startTime,
@@ -12789,7 +12667,7 @@ function onTouchEnd() {
 }
 
 function onTouchMove(e) {
-  if (_jquery.default.spotSwipe.preventDefault) {
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault) {
     e.preventDefault();
   }
 
@@ -12801,7 +12679,7 @@ function onTouchMove(e) {
     var dir;
     elapsedTime = new Date().getTime() - startTime;
 
-    if (Math.abs(dx) >= _jquery.default.spotSwipe.moveThreshold && elapsedTime <= _jquery.default.spotSwipe.timeThreshold) {
+    if (Math.abs(dx) >= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.moveThreshold && elapsedTime <= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.timeThreshold) {
       dir = dx > 0 ? 'left' : 'right';
     } // else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
     //   dir = dy > 0 ? 'down' : 'up';
@@ -12811,7 +12689,7 @@ function onTouchMove(e) {
     if (dir) {
       e.preventDefault();
       onTouchEnd.call(this);
-      (0, _jquery.default)(this).trigger('swipe', dir).trigger("swipe".concat(dir));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('swipe', dir).trigger("swipe".concat(dir));
     }
   }
 }
@@ -12935,32 +12813,31 @@ Touch.init = function ($) {
   }
 };
 
+
+
 /***/ }),
 
 /***/ "./js/foundation.util.triggers.js":
 /*!****************************************!*\
   !*** ./js/foundation.util.triggers.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Triggers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Triggers", function() { return Triggers; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Triggers = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.motion */ "./js/foundation.util.motion.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
 
 var MutationObserver = function () {
   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
@@ -12976,7 +12853,7 @@ var MutationObserver = function () {
 
 var triggers = function triggers(el, type) {
   el.data(type).split(' ').forEach(function (id) {
-    (0, _jquery.default)("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
   });
 };
 
@@ -12987,44 +12864,43 @@ var Triggers = {
   },
   Initializers: {}
 };
-exports.Triggers = Triggers;
 Triggers.Listeners.Basic = {
   openListener: function openListener() {
-    triggers((0, _jquery.default)(this), 'open');
+    triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'open');
   },
   closeListener: function closeListener() {
-    var id = (0, _jquery.default)(this).data('close');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('close');
 
     if (id) {
-      triggers((0, _jquery.default)(this), 'close');
+      triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'close');
     } else {
-      (0, _jquery.default)(this).trigger('close.zf.trigger');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('close.zf.trigger');
     }
   },
   toggleListener: function toggleListener() {
-    var id = (0, _jquery.default)(this).data('toggle');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle');
 
     if (id) {
-      triggers((0, _jquery.default)(this), 'toggle');
+      triggers(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), 'toggle');
     } else {
-      (0, _jquery.default)(this).trigger('toggle.zf.trigger');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('toggle.zf.trigger');
     }
   },
   closeableListener: function closeableListener(e) {
     e.stopPropagation();
-    var animation = (0, _jquery.default)(this).data('closable');
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
-      _foundationUtil.Motion.animateOut((0, _jquery.default)(this), animation, function () {
-        (0, _jquery.default)(this).trigger('closed.zf');
+      _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('closed.zf');
       });
     } else {
-      (0, _jquery.default)(this).fadeOut().trigger('closed.zf');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).fadeOut().trigger('closed.zf');
     }
   },
   toggleFocusListener: function toggleFocusListener() {
-    var id = (0, _jquery.default)(this).data('toggle-focus');
-    (0, _jquery.default)("#".concat(id)).triggerHandler('toggle.zf.trigger', [(0, _jquery.default)(this)]);
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('toggle-focus');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(id)).triggerHandler('toggle.zf.trigger', [jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)]);
   }
 }; // Elements with [data-open] will reveal a plugin that supports it when clicked.
 
@@ -13064,7 +12940,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        (0, _jquery.default)(this).triggerHandler('resizeme.zf.trigger');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).triggerHandler('resizeme.zf.trigger');
       });
     } //trigger all listening elements and signal a resize event
 
@@ -13075,7 +12951,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        (0, _jquery.default)(this).triggerHandler('scrollme.zf.trigger');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).triggerHandler('scrollme.zf.trigger');
       });
     } //trigger all listening elements and signal a scroll event
 
@@ -13084,9 +12960,9 @@ Triggers.Listeners.Global = {
   },
   closeMeListener: function closeMeListener(e, pluginId) {
     var plugin = e.namespace.split('.')[0];
-    var plugins = (0, _jquery.default)("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
+    var plugins = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
     plugins.each(function () {
-      var _this = (0, _jquery.default)(this);
+      var _this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
 
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
@@ -13095,7 +12971,7 @@ Triggers.Listeners.Global = {
 };
 
 Triggers.Initializers.addClosemeListener = function (pluginName) {
-  var yetiBoxes = (0, _jquery.default)('[data-yeti-box]'),
+  var yetiBoxes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 
   if (pluginName) {
@@ -13112,14 +12988,14 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
     var listeners = plugNames.map(function (name) {
       return "closeme.zf.".concat(name);
     }).join(' ');
-    (0, _jquery.default)(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
   }
 };
 
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  (0, _jquery.default)(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
     if (timer) {
       clearTimeout(timer);
     }
@@ -13131,7 +13007,7 @@ function debounceGlobalListener(debounce, trigger, listener) {
 }
 
 Triggers.Initializers.addResizeListener = function (debounce) {
-  var $nodes = (0, _jquery.default)('[data-resize]');
+  var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-resize]');
 
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'resize.zf.trigger', Triggers.Listeners.Global.resizeListener, $nodes);
@@ -13139,7 +13015,7 @@ Triggers.Initializers.addResizeListener = function (debounce) {
 };
 
 Triggers.Initializers.addScrollListener = function (debounce) {
-  var $nodes = (0, _jquery.default)('[data-scroll]');
+  var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-scroll]');
 
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'scroll.zf.trigger', Triggers.Listeners.Global.scrollListener, $nodes);
@@ -13154,7 +13030,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
   var $nodes = $elem.find('[data-resize], [data-scroll], [data-mutate]'); //element callback
 
   var listeningElementsMutation = function listeningElementsMutation(mutationRecordsList) {
-    var $target = (0, _jquery.default)(mutationRecordsList[0].target); //trigger the event handler for the element depending on type
+    var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(mutationRecordsList[0].target); //trigger the event handler for the element depending on type
 
     switch (mutationRecordsList[0].type) {
       case "attributes":
@@ -13200,7 +13076,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
 };
 
 Triggers.Initializers.addSimpleListeners = function () {
-  var $document = (0, _jquery.default)(document);
+  var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addOpenListener($document);
   Triggers.Initializers.addCloseListener($document);
   Triggers.Initializers.addToggleListener($document);
@@ -13209,7 +13085,7 @@ Triggers.Initializers.addSimpleListeners = function () {
 };
 
 Triggers.Initializers.addGlobalListeners = function () {
-  var $document = (0, _jquery.default)(document);
+  var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
   Triggers.Initializers.addResizeListener();
   Triggers.Initializers.addScrollListener();
@@ -13217,7 +13093,7 @@ Triggers.Initializers.addGlobalListeners = function () {
 };
 
 Triggers.init = function ($, Foundation) {
-  (0, _foundationCore.onLoad)($(window), function () {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
     if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
@@ -13231,6 +13107,8 @@ Triggers.init = function ($, Foundation) {
     Foundation.IHearYou = Triggers.Initializers.addGlobalListeners;
   }
 };
+
+
 
 /***/ }),
 

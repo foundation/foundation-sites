@@ -177,33 +177,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_mediaQuery__;
 /*!*********************************************************!*\
   !*** ./js/entries/plugins/foundation.responsiveMenu.js ***!
   \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, ResponsiveMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_responsiveMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.responsiveMenu */ "./js/foundation.responsiveMenu.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ResponsiveMenu", function() { return _foundation_responsiveMenu__WEBPACK_IMPORTED_MODULE_1__["ResponsiveMenu"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "ResponsiveMenu", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.ResponsiveMenu;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_responsiveMenu__WEBPACK_IMPORTED_MODULE_1__["ResponsiveMenu"], 'ResponsiveMenu');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.responsiveMenu */ "./js/foundation.responsiveMenu.js");
-
-_foundation.Foundation.plugin(_foundation2.ResponsiveMenu, 'ResponsiveMenu');
 
 /***/ }),
 
@@ -211,32 +200,27 @@ _foundation.Foundation.plugin(_foundation2.ResponsiveMenu, 'ResponsiveMenu');
 /*!*****************************************!*\
   !*** ./js/foundation.responsiveMenu.js ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: ResponsiveMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResponsiveMenu", function() { return ResponsiveMenu; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.dropdownMenu */ "./foundation.dropdownMenu");
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.drilldown */ "./foundation.drilldown");
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.accordionMenu */ "./foundation.accordionMenu");
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ResponsiveMenu = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-var _foundation = __webpack_require__(/*! ./foundation.dropdownMenu */ "./foundation.dropdownMenu");
-
-var _foundation2 = __webpack_require__(/*! ./foundation.drilldown */ "./foundation.drilldown");
-
-var _foundation3 = __webpack_require__(/*! ./foundation.accordionMenu */ "./foundation.accordionMenu");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -256,18 +240,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
+
+
 var MenuPlugins = {
   dropdown: {
     cssClass: 'dropdown',
-    plugin: _foundation.DropdownMenu
+    plugin: _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__["DropdownMenu"]
   },
   drilldown: {
     cssClass: 'drilldown',
-    plugin: _foundation2.Drilldown
+    plugin: _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__["Drilldown"]
   },
   accordion: {
     cssClass: 'accordion-menu',
-    plugin: _foundation3.AccordionMenu
+    plugin: _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__["AccordionMenu"]
   }
 }; // import "foundation.util.triggers.js";
 
@@ -301,7 +292,7 @@ function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     value: function _setup(element, options) {
-      this.$element = (0, _jquery.default)(element);
+      this.$element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element);
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
       this.currentPlugin = null;
@@ -320,7 +311,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil.MediaQuery._init(); // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
+      _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]._init(); // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
 
 
       if (typeof this.rules === 'string') {
@@ -341,12 +332,12 @@ function (_Plugin) {
         this.rules = rulesTree;
       }
 
-      if (!_jquery.default.isEmptyObject(this.rules)) {
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default.a.isEmptyObject(this.rules)) {
         this._checkMediaQueries();
       } // Add data-mutate since children may need it.
 
 
-      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || (0, _foundationCore.GetYoDigits)(6, 'responsive-menu'));
+      this.$element.attr('data-mutate', this.$element.attr('data-mutate') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'responsive-menu'));
     }
     /**
      * Initializes events for the Menu.
@@ -359,7 +350,7 @@ function (_Plugin) {
     value: function _events() {
       var _this = this;
 
-      (0, _jquery.default)(window).on('changed.zf.mediaquery', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', function () {
         _this._checkMediaQueries();
       }); // $(window).on('resize.zf.ResponsiveMenu', function() {
       //   _this._checkMediaQueries();
@@ -378,21 +369,19 @@ function (_Plugin) {
           _this = this; // Iterate through each rule and find the last matching rule
 
 
-      _jquery.default.each(this.rules, function (key) {
-        if (_foundationUtil.MediaQuery.atLeast(key)) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(this.rules, function (key) {
+        if (_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(key)) {
           matchedMq = key;
         }
       }); // No match? No dice
-
 
       if (!matchedMq) return; // Plugin already initialized? We good
 
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return; // Remove existing plugin-specific CSS classes
 
-      _jquery.default.each(MenuPlugins, function (key, value) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(MenuPlugins, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       }); // Add the CSS class for the new plugin
-
 
       this.$element.addClass(this.rules[matchedMq].cssClass); // Create an instance of the new plugin
 
@@ -408,15 +397,15 @@ function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       this.currentPlugin.destroy();
-      (0, _jquery.default)(window).off('.zf.ResponsiveMenu');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('.zf.ResponsiveMenu');
     }
   }]);
 
   return ResponsiveMenu;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.ResponsiveMenu = ResponsiveMenu;
 ResponsiveMenu.defaults = {};
+
 
 /***/ }),
 

@@ -133,33 +133,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__;
 /*!*******************************************************!*\
   !*** ./js/entries/plugins/foundation.smoothScroll.js ***!
   \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, SmoothScroll */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.smoothScroll */ "./js/foundation.smoothScroll.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SmoothScroll", function() { return _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_1__["SmoothScroll"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "SmoothScroll", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.SmoothScroll;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_1__["SmoothScroll"], 'SmoothScroll');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.smoothScroll */ "./js/foundation.smoothScroll.js");
-
-_foundation.Foundation.plugin(_foundation2.SmoothScroll, 'SmoothScroll');
 
 /***/ }),
 
@@ -167,24 +156,19 @@ _foundation.Foundation.plugin(_foundation2.SmoothScroll, 'SmoothScroll');
 /*!***************************************!*\
   !*** ./js/foundation.smoothScroll.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: SmoothScroll */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmoothScroll", function() { return SmoothScroll; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SmoothScroll = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -204,10 +188,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
 /**
  * SmoothScroll module.
  * @module foundation.smooth-scroll
  */
+
 var SmoothScroll =
 /*#__PURE__*/
 function (_Plugin) {
@@ -232,7 +220,7 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, SmoothScroll.defaults, this.$element.data(), options);
       this.className = 'SmoothScroll'; // ie9 back compat
 
       this._init();
@@ -245,7 +233,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      var id = this.$element[0].id || (0, _foundationCore.GetYoDigits)(6, 'smooth-scroll');
+      var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'smooth-scroll');
 
       var _this = this;
 
@@ -268,7 +256,7 @@ function (_Plugin) {
 
       var handleLinkClick = function handleLinkClick(e) {
         // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
-        if (!(0, _jquery.default)(this).is('a[href^="#"]')) {
+        if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is('a[href^="#"]')) {
           return false;
         }
 
@@ -299,12 +287,12 @@ function (_Plugin) {
       var callback = arguments.length > 2 ? arguments[2] : undefined;
 
       // Do nothing if target does not exist to prevent errors
-      if (!(0, _jquery.default)(loc).length) {
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).length) {
         return false;
       }
 
-      var scrollPos = Math.round((0, _jquery.default)(loc).offset().top - options.threshold / 2 - options.offset);
-      (0, _jquery.default)('html, body').stop(true).animate({
+      var scrollPos = Math.round(jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).offset().top - options.threshold / 2 - options.offset);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, options.animationDuration, options.animationEasing, function () {
         if (callback && typeof callback == "function") {
@@ -315,13 +303,12 @@ function (_Plugin) {
   }]);
 
   return SmoothScroll;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 /**
  * Default settings for plugin.
  */
 
 
-exports.SmoothScroll = SmoothScroll;
 SmoothScroll.defaults = {
   /**
    * Amount of time, in ms, the animated scrolling should take between locations.
@@ -356,6 +343,7 @@ SmoothScroll.defaults = {
    */
   offset: 0
 };
+
 
 /***/ }),
 

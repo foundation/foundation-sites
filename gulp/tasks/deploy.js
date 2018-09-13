@@ -20,6 +20,7 @@ gulp.task('deploy', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist'
 
 gulp.task('deploy:prep', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings'));
 gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:files'));
+gulp.task('deploy:plugins', gulp.series('deploy:plugins:sources', 'deploy:plugins:sourcemaps'));
 
 gulp.task('deploy:prompt', function(cb) {
   inquirer.prompt([{
@@ -93,11 +94,19 @@ gulp.task('deploy:dist:files', function() {
 });
 
 // Copies standalone JavaScript plugins to dist/ folder
-gulp.task('deploy:plugins', function() {
+gulp.task('deploy:plugins:sources', function () {
   return gulp.src('_build/assets/js/plugins/*.js')
     .pipe(gulp.dest('dist/js/plugins'))
-    .pipe(uglify())
+    .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist/js/plugins'));
+});
+
+// Copies standalone JavaScript plugins sourcemaps to dist/ folder
+gulp.task('deploy:plugins:sourcemaps', function () {
+  return gulp.src('_build/assets/js/plugins/*.js.map')
     .pipe(gulp.dest('dist/js/plugins'));
 });
 

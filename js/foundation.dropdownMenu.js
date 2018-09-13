@@ -1,12 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl, onLeaveElement } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.core.utils';
-import { Plugin } from './foundation.core.plugin';
-
 
 /**
  * DropdownMenu module.
@@ -135,24 +134,26 @@ class DropdownMenu extends Plugin {
     }
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
         var $elem = $(this),
-            hasSub = $elem.hasClass(parClass);
+          hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
+      });
+
+      onLeaveElement(this.$menuItems, function (e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._hide($elem);
           }, _this.options.closingTime));
         }

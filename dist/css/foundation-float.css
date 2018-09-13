@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.5.0-rc.2
+ * Version 6.5.0-rc.3
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2682,7 +2682,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   font-size: 0.75rem;
   line-height: 1;
   color: #1779ba; }
-  .accordion-title :last-child:not(.is-active) > .accordion-title :last-child {
+  :last-child:not(.is-active) > .accordion-title {
     border-bottom: 1px solid #e6e6e6;
     border-radius: 0 0 0 0; }
   .accordion-title:hover, .accordion-title:focus {
@@ -3337,13 +3337,13 @@ a.thumbnail {
   left: auto;
   margin-top: -3px; }
 
-.dropdown.menu a {
-  background: #fefefe;
-  padding: 0.7rem 1rem; }
-  [data-whatinput='mouse'] .dropdown.menu a {
-    outline: 0; }
+[data-whatinput='mouse'] .dropdown.menu a {
+  outline: 0; }
 
-.dropdown.menu .is-active > a {
+.dropdown.menu > li > a {
+  padding: 0.7rem 1rem; }
+
+.dropdown.menu > li.is-active > a {
   background: transparent;
   color: #1779ba; }
 
@@ -4021,24 +4021,26 @@ html.is-reveal-open {
       max-width: 75rem; } }
   .reveal.full {
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     max-width: none;
     height: 100%;
-    height: 100vh;
-    min-height: 100vh;
+    min-height: 100%;
     margin-left: 0;
     border: 0;
     border-radius: 0; }
   @media screen and (max-width: 39.99875em) {
     .reveal {
       top: 0;
+      right: 0;
+      bottom: 0;
       left: 0;
       width: 100%;
       max-width: none;
       height: 100%;
-      height: 100vh;
-      min-height: 100vh;
+      min-height: 100%;
       margin-left: 0;
       border: 0;
       border-radius: 0; } }

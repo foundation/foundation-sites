@@ -90,4 +90,32 @@ function onLoad($elem, handler) {
   return eventType;
 }
 
-export {rtl, GetYoDigits, RegExpEscape, transitionend, onLoad};
+function onLeaveElement($elem, handler, { leaveWindow = true } = {}) {
+  const eventType = 'mouseleave.zf.util.onLeaveElement';
+
+  if ($elem && handler) {
+
+    $elem.on(eventType, function leaveHandler(e, ...rest) {
+      const _this = this;
+      setTimeout(function leaveEventDebouncer() {
+
+        if (e.relatedTarget === null && leaveWindow && document.hasFocus && document.hasFocus()) {
+
+          $(document).one('mouseenter', function reenterHandler(reeenterE) {
+            if ($elem.has(reeenterE.target).length) { return false };
+            e.relatedTarget = reeenterE.target;
+            handler.call(_this, e, ...rest);
+          });
+
+          return false;
+        }
+
+        handler.call(_this, e, ...rest);
+      });
+    });
+  }
+
+  return eventType;
+}
+
+export { rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement };

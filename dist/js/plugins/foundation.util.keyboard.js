@@ -122,33 +122,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__;
 /*!********************************************************!*\
   !*** ./js/entries/plugins/foundation.util.keyboard.js ***!
   \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Keyboard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Keyboard", function() { return _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Keyboard", {
-  enumerable: true,
-  get: function get() {
-    return _foundationUtil.Keyboard;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].Keyboard = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"];
 
-var _foundationUtil = __webpack_require__(/*! ../../foundation.util.keyboard */ "./js/foundation.util.keyboard.js");
-
-_foundation.Foundation.Keyboard = _foundationUtil.Keyboard;
 
 /***/ }),
 
@@ -156,10 +145,16 @@ _foundation.Foundation.Keyboard = _foundationUtil.Keyboard;
 /*!****************************************!*\
   !*** ./js/foundation.util.keyboard.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Keyboard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Keyboard", function() { return Keyboard; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
 /*******************************************
  *                                         *
  * This util was created by Marius Olbertz *
@@ -169,16 +164,7 @@ _foundation.Foundation.Keyboard = _foundationUtil.Keyboard;
  ******************************************/
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Keyboard = void 0;
 
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var keyCodes = {
   9: 'TAB',
@@ -200,7 +186,7 @@ function findFocusable($element) {
   }
 
   return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
-    if (!(0, _jquery.default)(this).is(':visible') || (0, _jquery.default)(this).attr('tabindex') < 0) {
+    if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is(':visible') || jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('tabindex') < 0) {
       return false;
     } //only have visible elements and those that have a tabindex greater or equal 0
 
@@ -251,7 +237,7 @@ var Keyboard = {
       cmds = commandList; // use plain list
     } else {
       // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-      if ((0, _foundationCore.rtl)()) cmds = _jquery.default.extend({}, commandList.ltr, commandList.rtl);else cmds = _jquery.default.extend({}, commandList.rtl, commandList.ltr);
+      if (Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["rtl"])()) cmds = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, commandList.ltr, commandList.rtl);else cmds = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, commandList.rtl, commandList.ltr);
     }
 
     command = cmds[keyCode];
@@ -323,8 +309,6 @@ var Keyboard = {
  * Can be used like Foundation.parseKey(event) === Foundation.keys.SPACE
  */
 
-exports.Keyboard = Keyboard;
-
 function getKeyCodes(kcs) {
   var k = {};
 
@@ -334,6 +318,8 @@ function getKeyCodes(kcs) {
 
   return k;
 }
+
+
 
 /***/ }),
 

@@ -144,33 +144,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
 /*!****************************************************!*\
   !*** ./js/entries/plugins/foundation.accordion.js ***!
   \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, Accordion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.accordion */ "./js/foundation.accordion.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return _foundation_accordion__WEBPACK_IMPORTED_MODULE_1__["Accordion"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "Accordion", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.Accordion;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_accordion__WEBPACK_IMPORTED_MODULE_1__["Accordion"], 'Accordion');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.accordion */ "./js/foundation.accordion.js");
-
-_foundation.Foundation.plugin(_foundation2.Accordion, 'Accordion');
 
 /***/ }),
 
@@ -178,26 +167,21 @@ _foundation.Foundation.plugin(_foundation2.Accordion, 'Accordion');
 /*!************************************!*\
   !*** ./js/foundation.accordion.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Accordion */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return Accordion; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Accordion = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -217,11 +201,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
 /**
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
  */
+
 var Accordion =
 /*#__PURE__*/
 function (_Plugin) {
@@ -246,12 +235,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, Accordion.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Accordion.defaults, this.$element.data(), options);
       this.className = 'Accordion'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('Accordion', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Accordion', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ARROW_DOWN': 'next',
@@ -271,9 +260,9 @@ function (_Plugin) {
       this.$element.attr('role', 'tablist');
       this.$tabs = this.$element.children('[data-accordion-item]');
       this.$tabs.each(function (idx, el) {
-        var $el = (0, _jquery.default)(el),
+        var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(el),
             $content = $el.children('[data-tab-content]'),
-            id = $content[0].id || (0, _foundationCore.GetYoDigits)(6, 'accordion'),
+            id = $content[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'accordion'),
             linkId = el.id ? "".concat(el.id, "-label") : "".concat(id, "-label");
         $el.find('a:first').attr({
           'aria-controls': id,
@@ -290,47 +279,54 @@ function (_Plugin) {
         });
       });
       var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
-      this.firstTimeInit = true;
 
       if ($initActive.length) {
-        this.down($initActive, this.firstTimeInit);
-        this.firstTimeInit = false;
+        // Save up the initial hash to return to it later when going back in history
+        this._initialAnchor = $initActive.prev('a').attr('href');
+
+        this._openSingleTab($initActive);
       }
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; //need a hash and a relevant anchor in this tabset
+        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
 
-        if (anchor.length) {
-          var $link = _this2.$element.find('[href$="' + anchor + '"]'),
-              $anchor = (0, _jquery.default)(anchor);
+        if (!anchor.length && _this2._initialAnchor) {
+          anchor = _this2._initialAnchor;
+        }
 
-          if ($link.length && $anchor) {
-            if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
-              _this2.down($anchor, _this2.firstTimeInit);
+        var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-              _this2.firstTimeInit = false;
-            }
-
-            ; //roll up a little to show the titles
-
-            if (_this2.options.deepLinkSmudge) {
-              var _this = _this2;
-              (0, _foundationCore.onLoad)((0, _jquery.default)(window), function () {
-                var offset = _this.$element.offset();
-
-                (0, _jquery.default)('html, body').animate({
-                  scrollTop: offset.top
-                }, _this.options.deepLinkSmudgeDelay);
-              });
-            }
-            /**
-              * Fires when the zplugin has deeplinked at pageload
-              * @event Accordion#deeplink
-              */
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // If there is an anchor for the hash, open it (if not already active)
 
 
-            _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
+        if ($anchor && $link && $link.length) {
+          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+            _this2._openSingleTab($anchor);
           }
+
+          ;
+        } // Otherwise, close everything
+        else {
+            _this2._closeAllTabs();
+          } // Roll up a little to show the titles
+
+
+        if (_this2.options.deepLinkSmudge) {
+          Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+            var offset = _this2.$element.offset();
+
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+              scrollTop: offset.top
+            }, _this2.options.deepLinkSmudgeDelay);
+          });
+        }
+
+        if ($anchor && $link) {
+          /**
+           * Fires when the plugin has deeplinked at pageload
+           * @event Accordion#deeplink
+           */
+          _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
 
@@ -352,7 +348,7 @@ function (_Plugin) {
       var _this = this;
 
       this.$tabs.each(function () {
-        var $elem = (0, _jquery.default)(this);
+        var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         var $tabContent = $elem.children('[data-tab-content]');
 
         if ($tabContent.length) {
@@ -361,7 +357,7 @@ function (_Plugin) {
 
             _this.toggle($tabContent);
           }).on('keydown.zf.accordion', function (e) {
-            _foundationUtil.Keyboard.handleKey(e, 'Accordion', {
+            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Accordion', {
               toggle: function toggle() {
                 _this.toggle($tabContent);
               },
@@ -389,7 +385,7 @@ function (_Plugin) {
       });
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).on('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._checkDeepLink);
       }
     }
     /**
@@ -426,49 +422,24 @@ function (_Plugin) {
     /**
      * Opens the accordion tab defined by `$target`.
      * @param {jQuery} $target - Accordion pane to open (`.accordion-content`).
-     * @param {Boolean} firstTime - flag to determine if reflow should happen.
      * @fires Accordion#down
      * @function
      */
 
   }, {
     key: "down",
-    value: function down($target, firstTime) {
-      var _this3 = this;
-
-      /**
-       * checking firstTime allows for initial render of the accordion
-       * to render preset is-active panes.
-       */
-      if ($target.closest('[data-accordion]').is('[disabled]') && !firstTime) {
+    value: function down($target) {
+      if ($target.closest('[data-accordion]').is('[disabled]')) {
         console.info('Cannot call down on an accordion that is disabled.');
         return;
       }
 
-      $target.attr('aria-hidden', false).parent('[data-tab-content]').addBack().parent().addClass('is-active');
-
-      if (!this.options.multiExpand && !firstTime) {
-        var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
-
-        if ($currentActive.length) {
-          this.up($currentActive.not($target));
-        }
-      }
-
-      $target.slideDown(this.options.slideSpeed, function () {
-        /**
-         * Fires when the tab is done opening.
-         * @event Accordion#down
-         */
-        _this3.$element.trigger('down.zf.accordion', [$target]);
-      });
-      (0, _jquery.default)("#".concat($target.attr('aria-labelledby'))).attr({
-        'aria-expanded': true,
-        'aria-selected': true
-      });
+      if (this.options.multiExpand) this._openTab($target);else this._openSingleTab($target);
     }
     /**
      * Closes the tab defined by `$target`.
+     * It may be ignored if the Accordion options don't allow it.
+     *
      * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
      * @fires Accordion#up
      * @function
@@ -477,30 +448,113 @@ function (_Plugin) {
   }, {
     key: "up",
     value: function up($target) {
-      if ($target.closest('[data-accordion]').is('[disabled]')) {
+      if (this.$element.is('[disabled]')) {
         console.info('Cannot call up on an accordion that is disabled.');
         return;
-      }
+      } // Don't close the item if it is already closed
 
-      var $aunts = $target.parent().siblings(),
-          _this = this;
 
-      if (!this.options.allowAllClosed && !$aunts.hasClass('is-active') || !$target.parent().hasClass('is-active')) {
-        return;
-      }
+      var $targetItem = $target.parent();
+      if (!$targetItem.hasClass('is-active')) return; // Don't close the item if there is no other active item (unless with `allowAllClosed`)
 
-      $target.slideUp(_this.options.slideSpeed, function () {
+      var $othersItems = $targetItem.siblings();
+      if (!this.options.allowAllClosed && !$othersItems.hasClass('is-active')) return;
+
+      this._closeTab($target);
+    }
+    /**
+     * Make the tab defined by `$target` the only opened tab, closing all others tabs.
+     * @param {jQuery} $target - Accordion tab to open (`.accordion-content`).
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_openSingleTab",
+    value: function _openSingleTab($target) {
+      // Close all the others active tabs.
+      var $activeContents = this.$element.children('.is-active').children('[data-tab-content]');
+
+      if ($activeContents.length) {
+        this._closeTab($activeContents.not($target));
+      } // Then open the target.
+
+
+      this._openTab($target);
+    }
+    /**
+     * Opens the tab defined by `$target`.
+     * @param {jQuery} $target - Accordion tab to open (`.accordion-content`).
+     * @fires Accordion#down
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_openTab",
+    value: function _openTab($target) {
+      var _this3 = this;
+
+      var $targetItem = $target.parent();
+      var targetContentId = $target.attr('aria-labelledby');
+      $target.attr('aria-hidden', false);
+      $targetItem.addClass('is-active');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(targetContentId)).attr({
+        'aria-expanded': true,
+        'aria-selected': true
+      });
+      $target.slideDown(this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done opening.
+         * @event Accordion#down
+         */
+        _this3.$element.trigger('down.zf.accordion', [$target]);
+      });
+    }
+    /**
+     * Closes the tab defined by `$target`.
+     * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
+     * @fires Accordion#up
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_closeTab",
+    value: function _closeTab($target) {
+      var _this4 = this;
+
+      var $targetItem = $target.parent();
+      var targetContentId = $target.attr('aria-labelledby');
+      $target.attr('aria-hidden', true);
+      $targetItem.removeClass('is-active');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(targetContentId)).attr({
+        'aria-expanded': false,
+        'aria-selected': false
+      });
+      $target.slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done collapsing up.
          * @event Accordion#up
          */
-        _this.$element.trigger('up.zf.accordion', [$target]);
+        _this4.$element.trigger('up.zf.accordion', [$target]);
       });
-      $target.attr('aria-hidden', true).parent().removeClass('is-active');
-      (0, _jquery.default)("#".concat($target.attr('aria-labelledby'))).attr({
-        'aria-expanded': false,
-        'aria-selected': false
-      });
+    }
+    /**
+     * Closes all active tabs
+     * @fires Accordion#up
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_closeAllTabs",
+    value: function _closeAllTabs() {
+      var $activeTabs = this.$element.children('.is-active').children('[data-tab-content]');
+
+      if ($activeTabs.length) {
+        this._closeTab($activeTabs);
+      }
     }
     /**
      * Destroys an instance of an accordion.
@@ -515,15 +569,14 @@ function (_Plugin) {
       this.$element.find('a').off('.zf.accordion');
 
       if (this.options.deepLink) {
-        (0, _jquery.default)(window).off('hashchange', this._checkDeepLink);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._checkDeepLink);
       }
     }
   }]);
 
   return Accordion;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
 
-exports.Accordion = Accordion;
 Accordion.defaults = {
   /**
    * Amount of time to animate the opening of an accordion pane.
@@ -582,6 +635,7 @@ Accordion.defaults = {
    */
   updateHistory: false
 };
+
 
 /***/ }),
 

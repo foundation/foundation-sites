@@ -155,33 +155,22 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__;
 /*!********************************************************!*\
   !*** ./js/entries/plugins/foundation.accordionMenu.js ***!
   \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: Foundation, AccordionMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.accordionMenu */ "./js/foundation.accordionMenu.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AccordionMenu", function() { return _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_1__["AccordionMenu"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Foundation", {
-  enumerable: true,
-  get: function get() {
-    return _foundation.Foundation;
-  }
-});
-Object.defineProperty(exports, "AccordionMenu", {
-  enumerable: true,
-  get: function get() {
-    return _foundation2.AccordionMenu;
-  }
-});
 
-var _foundation = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_1__["AccordionMenu"], 'AccordionMenu');
 
-var _foundation2 = __webpack_require__(/*! ../../foundation.accordionMenu */ "./js/foundation.accordionMenu.js");
-
-_foundation.Foundation.plugin(_foundation2.AccordionMenu, 'AccordionMenu');
 
 /***/ }),
 
@@ -189,28 +178,23 @@ _foundation.Foundation.plugin(_foundation2.AccordionMenu, 'AccordionMenu');
 /*!****************************************!*\
   !*** ./js/foundation.accordionMenu.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: AccordionMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccordionMenu", function() { return AccordionMenu; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.nest */ "./foundation.util.nest");
+/* harmony import */ var _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__);
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AccordionMenu = void 0;
-
-var _jquery = _interopRequireDefault(__webpack_require__(/*! jquery */ "jquery"));
-
-var _foundationUtil = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
-
-var _foundationUtil2 = __webpack_require__(/*! ./foundation.util.nest */ "./foundation.util.nest");
-
-var _foundationCore = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
-
-var _foundationCore2 = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -230,12 +214,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+
+
+
+
+
 /**
  * AccordionMenu module.
  * @module foundation.accordionMenu
  * @requires foundation.util.keyboard
  * @requires foundation.util.nest
  */
+
 var AccordionMenu =
 /*#__PURE__*/
 function (_Plugin) {
@@ -260,12 +250,12 @@ function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = _jquery.default.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, AccordionMenu.defaults, this.$element.data(), options);
       this.className = 'AccordionMenu'; // ie9 back compat
 
       this._init();
 
-      _foundationUtil.Keyboard.register('AccordionMenu', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('AccordionMenu', {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ARROW_RIGHT': 'open',
@@ -283,7 +273,7 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
-      _foundationUtil2.Nest.Feather(this.$element, 'accordion');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Feather(this.$element, 'accordion');
 
       var _this = this;
 
@@ -295,10 +285,10 @@ function (_Plugin) {
       });
       this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
       this.$menuLinks.each(function () {
-        var linkId = this.id || (0, _foundationCore.GetYoDigits)(6, 'acc-menu-link'),
-            $elem = (0, _jquery.default)(this),
+        var linkId = this.id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'acc-menu-link'),
+            $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $sub = $elem.children('[data-submenu]'),
-            subId = $sub[0].id || (0, _foundationCore.GetYoDigits)(6, 'acc-menu'),
+            subId = $sub[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["GetYoDigits"])(6, 'acc-menu'),
             isActive = $sub.hasClass('is-active');
 
         if (_this.options.parentLink) {
@@ -333,7 +323,7 @@ function (_Plugin) {
         var _this = this;
 
         initPanes.each(function () {
-          _this.down((0, _jquery.default)(this));
+          _this.down(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
         });
       }
 
@@ -350,15 +340,15 @@ function (_Plugin) {
       var _this = this;
 
       this.$element.find('li').each(function () {
-        var $submenu = (0, _jquery.default)(this).children('[data-submenu]');
+        var $submenu = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('[data-submenu]');
 
         if ($submenu.length) {
           if (_this.options.submenuToggle) {
-            (0, _jquery.default)(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
               _this.toggle($submenu);
             });
           } else {
-            (0, _jquery.default)(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
               e.preventDefault();
 
               _this.toggle($submenu);
@@ -366,22 +356,22 @@ function (_Plugin) {
           }
         }
       }).on('keydown.zf.accordionmenu', function (e) {
-        var $element = (0, _jquery.default)(this),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('ul').children('li'),
             $prevElement,
             $nextElement,
             $target = $element.children('[data-submenu]');
         $elements.each(function (i) {
-          if ((0, _jquery.default)(this).is($element)) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             $prevElement = $elements.eq(Math.max(0, i - 1)).find('a').first();
             $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1)).find('a').first();
 
-            if ((0, _jquery.default)(this).children('[data-submenu]:visible').length) {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('[data-submenu]:visible').length) {
               // has open sub menu
               $nextElement = $element.find('li:first-child').find('a').first();
             }
 
-            if ((0, _jquery.default)(this).is(':first-child')) {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is(':first-child')) {
               // is first element of sub menu
               $prevElement = $element.parents('li').first().find('a').first();
             } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) {
@@ -389,7 +379,7 @@ function (_Plugin) {
               $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
             }
 
-            if ((0, _jquery.default)(this).is(':last-child')) {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is(':last-child')) {
               // is last element of sub menu
               $nextElement = $element.parents('li').first().next('li').find('a').first();
             }
@@ -397,8 +387,7 @@ function (_Plugin) {
             return;
           }
         });
-
-        _foundationUtil.Keyboard.handleKey(e, 'AccordionMenu', {
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'AccordionMenu', {
           open: function open() {
             if ($target.is(':hidden')) {
               _this.down($target);
@@ -566,14 +555,13 @@ function (_Plugin) {
         this.$element.find('.submenu-toggle').remove();
       }
 
-      _foundationUtil2.Nest.Burn(this.$element, 'accordion');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Burn(this.$element, 'accordion');
     }
   }]);
 
   return AccordionMenu;
-}(_foundationCore2.Plugin);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_4__["Plugin"]);
 
-exports.AccordionMenu = AccordionMenu;
 AccordionMenu.defaults = {
   /**
    * Adds the parent link to the submenu.
@@ -613,6 +601,7 @@ AccordionMenu.defaults = {
    */
   multiOpen: true
 };
+
 
 /***/ }),
 
