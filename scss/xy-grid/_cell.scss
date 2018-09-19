@@ -27,13 +27,18 @@
 /// Calculate the size of a cell gutters.
 ///
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
-/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If `auto`, returns the responsive gutters map `$gutters`. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 ///
-/// @returns {Number} The cell gutter size.
+/// @returns {Number|Map} The cell gutter size or the responsive gutters map.
 @function xy-cell-gutters(
   $gutters: $grid-margin-gutters,
   $breakpoint: null
 ) {
+  // For `auto`, returns the responsive map `$gutters`.
+  @if ($breakpoint == 'auto') {
+    @return $gutters;
+  }
+
   // Use the contextual breakpoint by default.
   $breakpoint: -zf-current-breakpoint($breakpoint);
 
@@ -63,9 +68,9 @@
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full`, `auto`, `shrink` or any fraction like `6`, `50%`, `1 of 2` or `1/2`.
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
-/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If `auto`, returns a map of sizes adapted to responsive gutters. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 ///
-/// @returns {Number|String} The cell sizing property value.
+/// @returns {Number|String|Map} The cell sizing property value, or a responsive map of them.
 @function xy-cell-size-css(
   $size: full,
   $gutters: $grid-margin-gutters,
@@ -88,9 +93,24 @@
 
   // Calculate the cell size (number)
   $size-raw: if($size == 'full', 100%, xy-cell-size($size));
+
   // Calculate the cell CSS size including gutters (string)
-  $size-css: if($margin-gutter == 0, $size-raw, calc(#{$size-raw} - #{rem-calc($margin-gutter)}));
-  @return $size-css;
+  // If the cell has responsive margin gutters, return a responsive map of sizes.
+  @if type-of($margin-gutter) == 'map' {
+    $responsive-css-sizes: ();
+
+    @each $bp, $mg in $margin-gutter {
+      $size-css: if($mg == 0, $size-raw, calc(#{$size-raw} - #{rem-calc($mg)}));
+      $responsive-css-sizes: map-merge($responsive-css-sizes, ($bp: $size-css));
+    }
+
+    @return $responsive-css-sizes;
+  }
+  // Otherwise, return a single CSS size.
+  @else {
+    $css-size: if($margin-gutter == 0, $size-raw, calc(#{$size-raw} - #{rem-calc($margin-gutter)}));
+    @return $css-size;
+  }
 }
 
 /// Sets base flex properties for cells.
@@ -124,7 +144,7 @@
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (100% width), `auto` (use all available space), `shrink` (use only the required space) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
-/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If `auto`, generates sizes adapted for responsive gutters. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 @mixin xy-cell-size(
   $size: full,
@@ -133,10 +153,19 @@
   $breakpoint: null,
   $vertical: false
 ) {
-  $size: xy-cell-size-css($size, $gutters, $gutter-type, $breakpoint);
+  $sizes: xy-cell-size-css($size, $gutters, $gutter-type, $breakpoint);
   $direction: if($vertical == true, height, width);
 
-  #{$direction}: $size;
+  @if (type-of($sizes) == 'map') {
+    @debug 'gen';
+    @include -zf-breakpoint-value(auto, $sizes) {
+      @debug $-zf-bp-value;
+      #{$direction}: $-zf-bp-value;
+    }
+  }
+  @else {
+    #{$direction}: $sizes;
+  }
 }
 
 /// Sets gutters properties for cells.
@@ -144,7 +173,7 @@
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
 /// @param {List} $gutter-position [null] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination. By default `right left` for horizontal cells and `top bottom` for vertical cells.
-/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If `auto`, generates responsive gutters. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Direction of the gutters to output. See `$gutter-position`.
 @mixin xy-cell-gutters(
   $gutters: $grid-margin-gutters,
@@ -176,7 +205,7 @@
 /// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 /// @param {Keyword} $gutter-type [margin] - Type of gutter to output. Accepts `margin`, `padding` or `none`.
 /// @param {List} $gutter-position [null] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination. By default `right left` for horizontal cells and `top bottom` for vertical cells.
-/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If `auto`, generates responsive gutters. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] - Set to true to output vertical (height) styles rather than widths.
 /// @param {List} $output [(base size gutters)] - Cell parts to output. You will need to generate others parts of the cell seperately, it may not work properly otherwise.
 @mixin xy-cell(
