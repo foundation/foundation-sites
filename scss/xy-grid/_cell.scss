@@ -157,9 +157,7 @@
   $direction: if($vertical == true, height, width);
 
   @if (type-of($sizes) == 'map') {
-    @debug 'gen';
     @include -zf-breakpoint-value(auto, $sizes) {
-      @debug $-zf-bp-value;
       #{$direction}: $-zf-bp-value;
     }
   }
