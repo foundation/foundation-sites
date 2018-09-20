@@ -63,7 +63,7 @@ var Foundation = require('foundation-sites');
 var $dropdown = new Dropdown('#mydropdown');
 ```
 
-#### All Javascript bundles
+#### Available formats
 
 Foundation is proposed in bundles of various module formats so you can pick the one that match the best your needs. If you don't know these terms yet, take a look at this [10-minute introduction to module formats in JavaScript](https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/). You will find in the `dist/js` folder the following bundles:
 
