@@ -73,10 +73,10 @@ Foundation is proposed in bundles of various module formats so you can pick the 
 * `foundation.cjs.js` <span class="label secondary">CommonJS</span><br>
   Dedicated to Node.js and older bundlers like Browserify or Webpack v1.
 
-* `foundation.esm.js` <span class="label secondary">ES6 Modules</span><br>
+* `foundation.esm.js` <span class="label secondary">ES6 Modules</span>  (`module` in `package.json`)<br>
   Everything is transpiled to ES5 but the modules. Dedicated to modern bundlers, like Webpack 2+ or Rollup. They will automatically use this bundle and parse the ES6 modules to remove the unused code (see [tree shaking](#tree-shaking) below).
 
-* `foundation.es6.js` <span class="label secondary">ES6</span><br>
+* `foundation.es6.js` <span class="label secondary">ES6</span> (`esnext` in `package.json`)<br>
   Unlike the others bundles, this bundle is not transpiled. It contains all the Foundation sources in ES6 in a single file. Use it if you want to manually transpile it for your own targets.
 
 #### Tree Shaking
