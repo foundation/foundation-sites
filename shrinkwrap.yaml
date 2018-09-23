@@ -15,7 +15,7 @@ devDependencies:
   corejs-typeahead: 1.2.1
   cz-conventional-changelog: 2.1.0
   doiuse: 4.1.0
-  foundation-docs: github.com/zurb/foundation-docs/7a978ff933086df4826285ea60301937a7e81aad
+  foundation-docs: github.com/zurb/foundation-docs/5b6de9a9a0c9d3be50d0d245190692f185e5f4cc
   gulp: 4.0.0
   gulp-add-src: 1.0.0
   gulp-babel: 8.0.0
@@ -1074,6 +1074,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-r9+UiPsezvyDSPb7IvRk4ypYs2s=
+      tarball: 'http://registry.npmjs.org/acorn-jsx/-/acorn-jsx-3.0.1.tgz'
   /acorn-jsx/4.1.1:
     dependencies:
       acorn: 5.7.3
@@ -2373,6 +2374,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-vos2rvzN6LPKeqLWr8B6NyQsDS0=
+      tarball: 'http://registry.npmjs.org/circular-json/-/circular-json-0.3.1.tgz'
   /class-utils/0.3.6:
     dependencies:
       arr-union: 3.1.0
@@ -7193,6 +7195,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-ea2eGWOqNxPcXv8dyERdSr/6FmzvWwzjMxpfGB/sbMccXoct+xY+YukPD+QTUZwyvK7BZwcr4m21WBOW41pAkg==
+  /marked/0.5.0:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-UhjmkCWKu1SS/BIePL2a59BMJ7V42EYtTfksodPRXzPEGEph3Inp5dylseqt+KbU9Jglsx8xcMKmlumfJMBXAA==
   /matchdep/2.0.0:
     dependencies:
       findup-sync: 2.0.0
@@ -9227,10 +9236,6 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
-  /require-dir/0.3.2:
-    dev: true
-    resolution:
-      integrity: sha1-wdXHXp+//eny5rM+OD209ZS1pqk=
   /require-dir/1.0.0:
     dev: true
     resolution:
@@ -11691,28 +11696,24 @@ packages:
     dev: true
     resolution:
       integrity: sha1-AI4G2AlDIMNy28L47XagymyKxBk=
-  github.com/zurb/foundation-docs/7a978ff933086df4826285ea60301937a7e81aad:
+  github.com/zurb/foundation-docs/5b6de9a9a0c9d3be50d0d245190692f185e5f4cc:
     dependencies:
-      cheerio: 0.20.0
       handlebars: 4.0.12
       highlight.js: 9.12.0
       inky: 1.3.7
       js-beautify: 1.8.6
       kebab-case: 1.0.0
-      marked: 0.3.19
-      mkdirp: 0.5.1
+      marked: 0.5.0
       multiline: 1.0.2
       querystring: 0.2.0
-      require-dir: 0.3.2
+      require-dir: 1.0.0
       string-template: 1.0.0
-      strip-indent: 1.0.1
+      strip-indent: 2.0.0
     dev: true
-    engines:
-      node: '>=4'
     name: foundation-docs
     resolution:
-      tarball: 'https://codeload.github.com/zurb/foundation-docs/tar.gz/7a978ff933086df4826285ea60301937a7e81aad'
-    version: 0.2.1
+      tarball: 'https://codeload.github.com/zurb/foundation-docs/tar.gz/5b6de9a9a0c9d3be50d0d245190692f185e5f4cc'
+    version: 0.1.0
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
@@ -11733,7 +11734,7 @@ specifiers:
   corejs-typeahead: ^1.1.1
   cz-conventional-changelog: ^2.1.0
   doiuse: ^4.1.0
-  foundation-docs: 'git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad'
+  foundation-docs: 'git+https://github.com/zurb/foundation-docs.git#5b6de9a9a0c9d3be50d0d245190692f185e5f4cc'
   gulp: ^4.0.0
   gulp-add-src: ^1.0.0
   gulp-babel: ^8.0.0
