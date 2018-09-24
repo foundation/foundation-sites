@@ -2,8 +2,9 @@
   "name": "foundation-sites",
   "version": "6.4.3",
   "main": "dist/js/foundation.js",
-  "module": "js/foundation.js",
-  "jsnext:main": "js/foundation.js",
+  "module": "dist/js/foundation.esm.js",
+  "jsnext:main": "dist/js/foundation.esm.js",
+  "esnext": "dist/js/foundation.es6.js",
   "typings": "dist/js/foundation.d.ts",
   "sideEffects": false,
   "description": "The most advanced responsive front-end framework in the world.",
@@ -87,6 +88,8 @@
     "prettyjson": "^1.1.3",
     "require-dir": "^1.0.0",
     "rimraf": "^2.6.1",
+    "rollup": "^0.65.2",
+    "rollup-plugin-babel": "^4.0.3",
     "run-sequence": "^2.2.1",
     "sass-true": "^4.0.0",
     "sassy-lists": "^3.0.1",
@@ -126,15 +129,8 @@
     "exports": false
   },
   "jspm": {
-    "main": "dist/js/foundation.js",
-    "format": "global",
-    "shim": {
-      "dist/js/foundation": {
-        "deps": [
-          "jquery"
-        ]
-      }
-    }
+    "main": "dist/js/foundation.esm.js",
+    "format": "esm"
   },
   "browserify": {
     "transform": [
