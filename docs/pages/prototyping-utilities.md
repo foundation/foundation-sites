@@ -1,6 +1,6 @@
 ---
 title: Prototyping Utilities
-description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
+description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great for quickly turning sketches and mockups into coded prototypes.
 video: Xhc_KUJMEuk
 sass:
   - scss/prototype/*.scss
