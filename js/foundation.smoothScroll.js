@@ -48,10 +48,8 @@ class SmoothScroll extends Plugin {
 
         // click handler function.
         var handleLinkClick = function(e) {
-            // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
-            if(!$(this).is('a[href^="#"]'))  {
-                return false;
-            }
+            // Follow the link it does not point to an anchor.
+            if (!$(this).is('a[href^="#"]')) return;
 
             var arrival = this.getAttribute('href');
 
