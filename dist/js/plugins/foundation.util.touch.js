@@ -162,13 +162,22 @@ var startPosX,
     startPosY,
     startTime,
     elapsedTime,
-    isMoving = false;
+    startEvent,
+    isMoving = false,
+    didMoved = false;
 
-function onTouchEnd() {
-  //  alert(this);
+function onTouchEnd(e) {
   this.removeEventListener('touchmove', onTouchMove);
-  this.removeEventListener('touchend', onTouchEnd);
+  this.removeEventListener('touchend', onTouchEnd); // If the touch did not move, consider it as a "tap"
+
+  if (!didMoved) {
+    var tapEvent = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event('tap', startEvent || e);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger(tapEvent);
+  }
+
+  startEvent = null;
   isMoving = false;
+  didMoved = false;
 }
 
 function onTouchMove(e) {
@@ -182,6 +191,7 @@ function onTouchMove(e) {
     var dx = startPosX - x;
     var dy = startPosY - y;
     var dir;
+    didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
 
     if (Math.abs(dx) >= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.moveThreshold && elapsedTime <= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.timeThreshold) {
@@ -193,8 +203,8 @@ function onTouchMove(e) {
 
     if (dir) {
       e.preventDefault();
-      onTouchEnd.call(this);
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('swipe', dir).trigger("swipe".concat(dir));
+      onTouchEnd.apply(this, arguments);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event('swipe', e), dir).trigger(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event("swipe".concat(dir), e));
     }
   }
 }
@@ -203,7 +213,9 @@ function onTouchStart(e) {
   if (e.touches.length == 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
+    startEvent = e;
     isMoving = true;
+    didMoved = false;
     startTime = new Date().getTime();
     this.addEventListener('touchmove', onTouchMove, false);
     this.addEventListener('touchend', onTouchEnd, false);
@@ -239,6 +251,9 @@ function () {
     value: function _init() {
       var $ = this.$;
       $.event.special.swipe = {
+        setup: init
+      };
+      $.event.special.tap = {
         setup: init
       };
       $.each(['left', 'up', 'down', 'right'], function () {

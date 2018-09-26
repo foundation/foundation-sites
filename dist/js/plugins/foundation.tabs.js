@@ -278,6 +278,7 @@ function (_Plugin) {
 
       var _this = this;
 
+      this._isInitializing = true;
       this.$element.attr({
         'role': 'tablist'
       });
@@ -336,38 +337,44 @@ function (_Plugin) {
 
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
+        var anchor = window.location.hash;
 
-        if (!anchor.length && _this2._initialAnchor) {
-          anchor = _this2._initialAnchor;
+        if (!anchor.length) {
+          // If we are still initializing and there is no anchor, then there is nothing to do
+          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
+
+          if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
 
         var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // If there is an anchor for the hash, select it
+        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // Whether the anchor element that has been found is part of this element
 
+
+        var isOwnAnchor = !!($anchor.length && $link.length); // If there is an anchor for the hash, select it
 
         if ($anchor && $anchor.length && $link && $link.length) {
           _this2.selectTab($anchor, true);
         } // Otherwise, collapse everything
         else {
             _this2._collapse();
-          } // Roll up a little to show the titles
+          }
 
+        if (isOwnAnchor) {
+          // Roll up a little to show the titles
+          if (_this2.options.deepLinkSmudge) {
+            var offset = _this2.$element.offset();
 
-        if (_this2.options.deepLinkSmudge) {
-          var offset = _this2.$element.offset();
-
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-            scrollTop: offset.top
-          }, _this2.options.deepLinkSmudgeDelay);
-        }
-
-        if ($anchor && $link) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+              scrollTop: offset.top
+            }, _this2.options.deepLinkSmudgeDelay);
+          }
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Tabs#deeplink
            */
+
+
           _this2.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
@@ -378,6 +385,8 @@ function (_Plugin) {
       }
 
       this._events();
+
+      this._isInitializing = false;
     }
     /**
      * Adds event handlers for items within the tabs.
@@ -494,8 +503,9 @@ function (_Plugin) {
 
       var $oldTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass)),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
-          $targetContent = this.$tabContent.find("#".concat(hash)); //close old tab
+          target = $tabLink.attr('data-tabs-target'),
+          anchor = target && target.length ? "#".concat(target) : $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(anchor); //close old tab
 
       this._collapseTab($oldTab); //open new tab
 
@@ -505,9 +515,9 @@ function (_Plugin) {
 
       if (this.options.deepLink && !historyHandled) {
         if (this.options.updateHistory) {
-          history.pushState({}, '', hash);
+          history.pushState({}, '', anchor);
         } else {
-          history.replaceState({}, '', hash);
+          history.replaceState({}, '', anchor);
         }
       }
       /**

@@ -1153,6 +1153,7 @@ function (_Plugin) {
     value: function _init() {
       var _this2 = this;
 
+      this._isInitializing = true;
       this.$element.attr('role', 'tablist');
       this.$tabs = this.$element.children('[data-accordion-item]');
       this.$tabs.each(function (idx, el) {
@@ -1184,16 +1185,21 @@ function (_Plugin) {
       }
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
+        var anchor = window.location.hash;
 
-        if (!anchor.length && _this2._initialAnchor) {
-          anchor = _this2._initialAnchor;
+        if (!anchor.length) {
+          // If we are still initializing and there is no anchor, then there is nothing to do
+          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
+
+          if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
 
         var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // If there is an anchor for the hash, open it (if not already active)
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // Whether the anchor element that has been found is part of this element
 
+
+        var isOwnAnchor = !!($anchor.length && $link.length); // If there is an anchor for the hash, open it (if not already active)
 
         if ($anchor && $link && $link.length) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
@@ -1204,24 +1210,25 @@ function (_Plugin) {
         } // Otherwise, close everything
         else {
             _this2._closeAllTabs();
-          } // Roll up a little to show the titles
+          }
 
+        if (isOwnAnchor) {
+          // Roll up a little to show the titles
+          if (_this2.options.deepLinkSmudge) {
+            Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+              var offset = _this2.$element.offset();
 
-        if (_this2.options.deepLinkSmudge) {
-          Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
-            var offset = _this2.$element.offset();
-
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-              scrollTop: offset.top
-            }, _this2.options.deepLinkSmudgeDelay);
-          });
-        }
-
-        if ($anchor && $link) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+                scrollTop: offset.top
+              }, _this2.options.deepLinkSmudgeDelay);
+            });
+          }
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Accordion#deeplink
            */
+
+
           _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
@@ -1232,6 +1239,8 @@ function (_Plugin) {
       }
 
       this._events();
+
+      this._isInitializing = false;
     }
     /**
      * Adds event handlers for items within the accordion.
@@ -1983,7 +1992,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
 
-var FOUNDATION_VERSION = '6.5.0-rc.3'; // Global Foundation object
+var FOUNDATION_VERSION = '6.5.0-rc.4'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -4235,7 +4244,7 @@ function (_Plugin) {
      * @param {jQuery} $sub - ul element that is a submenu to show
      * @function
      * @private
-     * @fires DropdownMenu#show
+     * @fires Dropdownmenu#show
      */
 
   }, {
@@ -5045,7 +5054,7 @@ function (_Plugin) {
         rules = this.$element.data('interchange');
       }
 
-      rules = typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
+      rules = typeof rules === 'string' ? rules.match(/\[.*?, .*?\]/g) : rules;
 
       for (var i in rules) {
         if (rules.hasOwnProperty(i)) {
@@ -5852,7 +5861,7 @@ function (_Plugin) {
      * @function
      * @param {Object} event - Event object passed from listener.
      * @param {jQuery} trigger - element that triggered the off-canvas to open.
-     * @fires OffCanvas#opened
+     * @fires Offcanvas#opened
      * @todo also trigger 'open' event?
      */
 
@@ -5924,7 +5933,7 @@ function (_Plugin) {
       this._addContentClasses();
       /**
        * Fires when the off-canvas menu opens.
-       * @event OffCanvas#opened
+       * @event Offcanvas#opened
        */
 
 
@@ -5934,7 +5943,7 @@ function (_Plugin) {
      * Closes the off-canvas menu.
      * @function
      * @param {Function} cb - optional cb to fire after closure.
-     * @fires OffCanvas#closed
+     * @fires Offcanvas#closed
      */
 
   }, {
@@ -5950,7 +5959,7 @@ function (_Plugin) {
       this.$element.attr('aria-hidden', 'true')
       /**
        * Fires when the off-canvas menu opens.
-       * @event OffCanvas#closed
+       * @event Offcanvas#closed
        */
       .trigger('closed.zf.offcanvas');
       this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom'); // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
@@ -9459,8 +9468,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./js/foundation.core.utils.js");
 /* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./js/foundation.core.plugin.js");
-
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9525,11 +9532,8 @@ function (_Plugin) {
     key: "_init",
     value: function _init() {
       var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'smooth-scroll');
-
-      var _this = this;
-
       this.$element.attr({
-        'id': id
+        id: id
       });
 
       this._events();
@@ -9542,26 +9546,44 @@ function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this; // click handler function.
-
-
-      var handleLinkClick = function handleLinkClick(e) {
-        // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
-        if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is('a[href^="#"]')) {
-          return false;
-        }
-
-        var arrival = this.getAttribute('href');
-        _this._inTransition = true;
-        SmoothScroll.scrollToLoc(arrival, _this.options, function () {
-          _this._inTransition = false;
-        });
-        e.preventDefault();
-      };
-
-      this.$element.on('click.zf.smoothScroll', handleLinkClick);
-      this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', handleLinkClick);
+      this.$element.on('click.zf.smoothScroll', this._handleLinkClick);
+      this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
     }
+    /**
+     * Handle the given event to smoothly scroll to the anchor pointed by the event target.
+     * @param {*} e - event
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_handleLinkClick",
+    value: function _handleLinkClick(e) {
+      var _this = this;
+
+      // Follow the link if it does not point to an anchor.
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.currentTarget).is('a[href^="#"]')) return;
+      var arrival = e.currentTarget.getAttribute('href');
+      this._inTransition = true;
+      SmoothScroll.scrollToLoc(arrival, this.options, function () {
+        _this._inTransition = false;
+      });
+      e.preventDefault();
+    }
+  }, {
+    key: "_destroy",
+
+    /**
+     * Destroys the SmoothScroll instance.
+     * @function
+     */
+    value: function _destroy() {
+      this.$element.off('click.zf.smoothScroll', this._handleLinkClick);
+      this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+    }
+  }], [{
+    key: "scrollToLoc",
+
     /**
      * Function to scroll to a given location on the page.
      * @param {String} loc - A properly formatted jQuery id selector. Example: '#foo'
@@ -9570,23 +9592,17 @@ function (_Plugin) {
      * @static
      * @function
      */
-
-  }], [{
-    key: "scrollToLoc",
     value: function scrollToLoc(loc) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SmoothScroll.defaults;
       var callback = arguments.length > 2 ? arguments[2] : undefined;
+      var $loc = jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc); // Do nothing if target does not exist to prevent errors
 
-      // Do nothing if target does not exist to prevent errors
-      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).length) {
-        return false;
-      }
-
-      var scrollPos = Math.round(jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).offset().top - options.threshold / 2 - options.offset);
+      if (!$loc.length) return false;
+      var scrollPos = Math.round($loc.offset().top - options.threshold / 2 - options.offset);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, options.animationDuration, options.animationEasing, function () {
-        if (callback && typeof callback == "function") {
+        if (typeof callback === 'function') {
           callback();
         }
       });
@@ -10358,6 +10374,7 @@ function (_Plugin) {
 
       var _this = this;
 
+      this._isInitializing = true;
       this.$element.attr({
         'role': 'tablist'
       });
@@ -10416,38 +10433,44 @@ function (_Plugin) {
 
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
+        var anchor = window.location.hash;
 
-        if (!anchor.length && _this2._initialAnchor) {
-          anchor = _this2._initialAnchor;
+        if (!anchor.length) {
+          // If we are still initializing and there is no anchor, then there is nothing to do
+          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
+
+          if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
 
         var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // If there is an anchor for the hash, select it
+        var $link = anchor && _this2.$element.find('[href$="' + anchor + '"]'); // Whether the anchor element that has been found is part of this element
 
+
+        var isOwnAnchor = !!($anchor.length && $link.length); // If there is an anchor for the hash, select it
 
         if ($anchor && $anchor.length && $link && $link.length) {
           _this2.selectTab($anchor, true);
         } // Otherwise, collapse everything
         else {
             _this2._collapse();
-          } // Roll up a little to show the titles
+          }
 
+        if (isOwnAnchor) {
+          // Roll up a little to show the titles
+          if (_this2.options.deepLinkSmudge) {
+            var offset = _this2.$element.offset();
 
-        if (_this2.options.deepLinkSmudge) {
-          var offset = _this2.$element.offset();
-
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-            scrollTop: offset.top
-          }, _this2.options.deepLinkSmudgeDelay);
-        }
-
-        if ($anchor && $link) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+              scrollTop: offset.top
+            }, _this2.options.deepLinkSmudgeDelay);
+          }
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Tabs#deeplink
            */
+
+
           _this2.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
@@ -10458,6 +10481,8 @@ function (_Plugin) {
       }
 
       this._events();
+
+      this._isInitializing = false;
     }
     /**
      * Adds event handlers for items within the tabs.
@@ -10574,8 +10599,9 @@ function (_Plugin) {
 
       var $oldTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass)),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
-          $targetContent = this.$tabContent.find("#".concat(hash)); //close old tab
+          target = $tabLink.attr('data-tabs-target'),
+          anchor = target && target.length ? "#".concat(target) : $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(anchor); //close old tab
 
       this._collapseTab($oldTab); //open new tab
 
@@ -10585,9 +10611,9 @@ function (_Plugin) {
 
       if (this.options.deepLink && !historyHandled) {
         if (this.options.updateHistory) {
-          history.pushState({}, '', hash);
+          history.pushState({}, '', anchor);
         } else {
-          history.replaceState({}, '', hash);
+          history.replaceState({}, '', anchor);
         }
       }
       /**
@@ -12657,13 +12683,22 @@ var startPosX,
     startPosY,
     startTime,
     elapsedTime,
-    isMoving = false;
+    startEvent,
+    isMoving = false,
+    didMoved = false;
 
-function onTouchEnd() {
-  //  alert(this);
+function onTouchEnd(e) {
   this.removeEventListener('touchmove', onTouchMove);
-  this.removeEventListener('touchend', onTouchEnd);
+  this.removeEventListener('touchend', onTouchEnd); // If the touch did not move, consider it as a "tap"
+
+  if (!didMoved) {
+    var tapEvent = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event('tap', startEvent || e);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger(tapEvent);
+  }
+
+  startEvent = null;
   isMoving = false;
+  didMoved = false;
 }
 
 function onTouchMove(e) {
@@ -12677,6 +12712,7 @@ function onTouchMove(e) {
     var dx = startPosX - x;
     var dy = startPosY - y;
     var dir;
+    didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
 
     if (Math.abs(dx) >= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.moveThreshold && elapsedTime <= jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.timeThreshold) {
@@ -12688,8 +12724,8 @@ function onTouchMove(e) {
 
     if (dir) {
       e.preventDefault();
-      onTouchEnd.call(this);
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger('swipe', dir).trigger("swipe".concat(dir));
+      onTouchEnd.apply(this, arguments);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).trigger(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event('swipe', e), dir).trigger(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.Event("swipe".concat(dir), e));
     }
   }
 }
@@ -12698,7 +12734,9 @@ function onTouchStart(e) {
   if (e.touches.length == 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
+    startEvent = e;
     isMoving = true;
+    didMoved = false;
     startTime = new Date().getTime();
     this.addEventListener('touchmove', onTouchMove, false);
     this.addEventListener('touchend', onTouchEnd, false);
@@ -12734,6 +12772,9 @@ function () {
     value: function _init() {
       var $ = this.$;
       $.event.special.swipe = {
+        setup: init
+      };
+      $.event.special.tap = {
         setup: init
       };
       $.each(['left', 'up', 'down', 'right'], function () {
