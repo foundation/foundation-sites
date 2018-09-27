@@ -99,8 +99,8 @@ gulp.task('deploy:dist:files', function() {
 // Generates JS bundles and puts them in the dist/ folder.
 //
 // In addition to the UMD bundle coming from the build task, the following
-// formats are generared: CJS, ESM, ES6.
-// See "rollup.config.js" for more informations.
+// formats are generated: CJS, ESM, ES6.
+// See "rollup.config.js" for more information.
 //
 gulp.task('deploy:dist:bundles', gulp.series(
   // Create a subtask for each Rollup config
