@@ -14,7 +14,7 @@ var baseConfig = {
 module.exports = [
 
   // UMD
-  // Compatible with most environements and tools (AMD, CJS, ESM...),
+  // Compatible with most environments and tools (AMD, CJS, ESM...),
   // > Generated with Webpack. See the "javascript:foundation" gulp task.
   // > TODO: factorize the assets generation.
 
