@@ -91,6 +91,15 @@ class SmoothScroll extends Plugin {
             }
         );
     }
+
+    /**
+     * Destroys the SmoothScroll instance.
+     * @function
+     */
+    _destroy() {
+        this.$element.off('click.zf.smoothScroll', this._handleLinkClick)
+        this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+    }
 }
 
 /**
