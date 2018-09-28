@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.core.utils';
 import { Plugin } from './foundation.core.plugin';
@@ -30,11 +28,8 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _init() {
-        var id = this.$element[0].id || GetYoDigits(6, 'smooth-scroll');
-        var _this = this;
-        this.$element.attr({
-            'id': id
-        });
+        const id = this.$element[0].id || GetYoDigits(6, 'smooth-scroll');
+        this.$element.attr({ id });
 
         this._events();
     }
@@ -44,19 +39,16 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _events() {
-        var _this = this;
-
-        // click handler function.
-        var handleLinkClick = function(e) {
+        const handleLinkClick = (e) => {
             // Follow the link it does not point to an anchor.
-            if (!$(this).is('a[href^="#"]')) return;
+            if (!$(e.currentTarget).is('a[href^="#"]')) return;
 
-            var arrival = this.getAttribute('href');
+            const arrival = e.currentTarget.getAttribute('href');
 
-            _this._inTransition = true;
+            this._inTransition = true;
 
-            SmoothScroll.scrollToLoc(arrival, _this.options, function() {
-                _this._inTransition = false;
+            SmoothScroll.scrollToLoc(arrival, this.options, () => {
+                this._inTransition = false;
             });
 
             e.preventDefault();
@@ -75,19 +67,19 @@ class SmoothScroll extends Plugin {
      * @function
      */
     static scrollToLoc(loc, options = SmoothScroll.defaults, callback) {
-        // Do nothing if target does not exist to prevent errors
-        if (!$(loc).length) {
-            return false;
-        }
+        const $loc = $(loc);
 
-        var scrollPos = Math.round($(loc).offset().top - options.threshold / 2 - options.offset);
+        // Do nothing if target does not exist to prevent errors
+        if (!$loc.length) return false;
+
+        var scrollPos = Math.round($loc.offset().top - options.threshold / 2 - options.offset);
 
         $('html, body').stop(true).animate(
             { scrollTop: scrollPos },
             options.animationDuration,
             options.animationEasing,
-            function() {
-                if(callback && typeof callback == "function"){
+            () => {
+                if (typeof callback === 'function'){
                     callback();
                 }
             }
