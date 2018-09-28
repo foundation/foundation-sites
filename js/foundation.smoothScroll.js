@@ -50,7 +50,7 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _handleLinkClick(e) {
-        // Follow the link it does not point to an anchor.
+        // Follow the link if it does not point to an anchor.
         if (!$(e.currentTarget).is('a[href^="#"]')) return;
 
         const arrival = e.currentTarget.getAttribute('href');
