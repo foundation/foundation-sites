@@ -39,24 +39,30 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _events() {
-        const handleLinkClick = (e) => {
-            // Follow the link it does not point to an anchor.
-            if (!$(e.currentTarget).is('a[href^="#"]')) return;
-
-            const arrival = e.currentTarget.getAttribute('href');
-
-            this._inTransition = true;
-
-            SmoothScroll.scrollToLoc(arrival, this.options, () => {
-                this._inTransition = false;
-            });
-
-            e.preventDefault();
-        };
-
-        this.$element.on('click.zf.smoothScroll', handleLinkClick)
-        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', handleLinkClick);
+        this.$element.on('click.zf.smoothScroll', this._handleLinkClick)
+        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
     }
+
+    /**
+     * Handle the given event to smoothly scroll to the anchor pointed by the event target.
+     * @param {*} e - event
+     * @function
+     * @private
+     */
+    _handleLinkClick(e) {
+        // Follow the link it does not point to an anchor.
+        if (!$(e.currentTarget).is('a[href^="#"]')) return;
+
+        const arrival = e.currentTarget.getAttribute('href');
+
+        this._inTransition = true;
+
+        SmoothScroll.scrollToLoc(arrival, this.options, () => {
+            this._inTransition = false;
+        });
+
+        e.preventDefault();
+    };
 
     /**
      * Function to scroll to a given location on the page.
