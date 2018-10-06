@@ -43,8 +43,8 @@
 
   /**
   * Inject a script with the attributes of the `opts` object into the
-  * given `context` HTML element. The created script is garanted to be executed
-  * in the provided context, like inside an iframe.
+  * given `context` HTML element. The created script is guaranteed to be
+  * executed in the provided context, like inside an iframe.
   *
   * @param  {HTMLElement} context - Element to add and execute the script within.
   * @param  {object} opts - Attributes to add to the created script.

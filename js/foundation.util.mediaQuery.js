@@ -157,11 +157,12 @@ var MediaQuery = {
    * Checks if the screen is within a breakpoint or smaller.
    * @function
    * @param {String} size - Name of the breakpoint to check.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's larger.
    */
   upTo(size) {
     const nextSize = this.next(size);
 
-    // If the next breakpoint do not match, the screen is smaller than
+    // If the next breakpoint does not match, the screen is smaller than
     // the upper limit of this breakpoint.
     if (nextSize) {
       return !this.atLeast(nextSize);
@@ -190,14 +191,14 @@ var MediaQuery = {
     if (bpModifier === 'down') {
       return this.atLeast(bpSize);
     }
-    // At leat the breakpoint  (included)
+    // At leat the breakpoint (included)
     if (!bpModifier || bpModifier === 'up') {
       return this.upTo(bpSize);
     }
 
     throw new Error(`
-      invalid breakpoint passed to MediaQuery.is().
-      Expected a breakpoint breakpoint name formatted like "<size> <modifier>", got "${size}".
+      Invalid breakpoint passed to MediaQuery.is().
+      Expected a breakpoint name formatted like "<size> <modifier>", got "${size}".
     `);
   },
 
@@ -228,8 +229,8 @@ var MediaQuery = {
     const queryIndex = this.queries.findIndex((q) => this._getQueryName(q) === size);
     if (queryIndex === -1) {
       throw new Error(`
-        unknown breakpoint "${size}" passed to MediaQuery.next().
-        Ensure it is present in your Sass settings "$breakpoints".
+        Unknown breakpoint "${size}" passed to MediaQuery.next().
+        Ensure it is present in your Sass "$breakpoints" setting.
       `);
     }
 
@@ -250,8 +251,8 @@ var MediaQuery = {
     if (typeof value === 'object')
       return value.name;
     throw new TypeError(`
-      invalid value passed to MediaQuery._getQueryName().
-      Expected a breakpoint name (String) or a query object, got "${value}"
+      Invalid value passed to MediaQuery._getQueryName().
+      Expected a breakpoint name (String) or a breakpoint query (Object), got "${value}" (${typeof value})
     `);
   },
 
