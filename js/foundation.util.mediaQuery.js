@@ -144,7 +144,7 @@ var MediaQuery = {
 
   /**
    * Checks if the screen is within the given breakpoint.
-   * If smaller than the breakpoint of wider than its upper limit, returns false.
+   * If smaller than the breakpoint of larger than its upper limit it returns false.
    * @function
    * @param {String} size - Name of the breakpoint to check.
    * @returns {Boolean} `true` if the breakpoint matches, `false` otherwise.
@@ -157,7 +157,6 @@ var MediaQuery = {
    * Checks if the screen is within a breakpoint or smaller.
    * @function
    * @param {String} size - Name of the breakpoint to check.
-   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's wider.
    */
   upTo(size) {
     const nextSize = this.next(size);

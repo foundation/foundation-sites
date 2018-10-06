@@ -72,7 +72,7 @@ describe('MediaQuery utils', function () {
       plugin.atLeast('xlarge').should.be.false;
     });
 
-    it('returns "true" when wider than the given breakpoint', function () {
+    it('returns "true" when larger than the given breakpoint', function () {
       $iframe.attr('width', 1201); // just after the "xlarge" breakpoint
       (_window.innerWidth); // force the browser to handle the new width synchronously
 
@@ -103,7 +103,7 @@ describe('MediaQuery utils', function () {
       plugin.only('large').should.be.false;
     });
 
-    it('returns "false" when wider than given breakpoint', function () {
+    it('returns "false" when larger than the given breakpoint', function () {
       $iframe.attr('width', 1024); // just after the "medium" breakpoint
       (_window.innerWidth); // force the browser to handle the new width synchronously
 
@@ -134,7 +134,7 @@ describe('MediaQuery utils', function () {
       plugin.upTo('xlarge').should.be.true;
     });
 
-    it('returns "false" when wider than the next breakpoint', function () {
+    it('returns "false" when larger than the next breakpoint', function () {
       $iframe.attr('width', 1441); // just after the "xxlarge" breakpoint
       (_window.innerWidth); // force the browser to handle the new width synchronously
 
