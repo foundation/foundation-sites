@@ -330,6 +330,7 @@ class DropdownMenu extends Plugin {
    * @function
    * @param {jQuery} $elem - element with a submenu to hide
    * @param {Number} idx - index of the $tabs collection to hide
+   * @fires DropdownMenu#hide
    * @private
    */
   _hide($elem, idx) {
