@@ -320,7 +320,7 @@ class DropdownMenu extends Plugin {
     if (this.options.closeOnClick) { this._addBodyHandler(); }
     /**
      * Fires when the new dropdown pane is visible.
-     * @event Dropdownmenu#show
+     * @event DropdownMenu#show
      */
     this.$element.trigger('show.zf.dropdownMenu', [$sub]);
   }
@@ -330,6 +330,7 @@ class DropdownMenu extends Plugin {
    * @function
    * @param {jQuery} $elem - element with a submenu to hide
    * @param {Number} idx - index of the $tabs collection to hide
+   * @fires DropdownMenu#hide
    * @private
    */
   _hide($elem, idx) {
@@ -367,7 +368,7 @@ class DropdownMenu extends Plugin {
 
       /**
        * Fires when the open menus are closed.
-       * @event Dropdownmenu#hide
+       * @event DropdownMenu#hide
        */
       this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
     }
