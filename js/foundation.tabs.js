@@ -116,6 +116,8 @@ class Tabs extends Plugin {
       var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
       var $anchor = anchorNoHash && $(`#${anchorNoHash}`);
       var $link = anchor && this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
+      // Whether the anchor element that has been found is part of this element
+      var isOwnAnchor = !!($anchor.length && $link.length);
 
       // If there is an anchor for the hash, select it
       if ($anchor && $anchor.length && $link && $link.length) {
@@ -126,13 +128,13 @@ class Tabs extends Plugin {
         this._collapse();
       }
 
-      // Roll up a little to show the titles
-      if (this.options.deepLinkSmudge) {
-        var offset = this.$element.offset();
-        $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
-      }
+      if (isOwnAnchor) {
+        // Roll up a little to show the titles
+        if (this.options.deepLinkSmudge) {
+          var offset = this.$element.offset();
+          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+        }
 
-      if ($anchor && $link) {
         /**
          * Fires when the plugin has deeplinked at pageload
          * @event Tabs#deeplink
