@@ -12,6 +12,7 @@ import { Triggers } from './foundation.util.triggers';
  * Reveal module.
  * @module foundation.reveal
  * @requires foundation.util.keyboard
+ * @requires foundation.util.touch
  * @requires foundation.util.triggers
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
@@ -31,7 +32,8 @@ class Reveal extends Plugin {
     this.className = 'Reveal'; // ie9 back compat
     this._init();
 
-    // Triggers init is idempotent, just need to make sure it is initialized
+    // Touch and Triggers init are idempotent, just need to make sure they are initialized
+    Touch.init($);
     Triggers.init($);
 
     Keyboard.register('Reveal', {
@@ -160,7 +162,7 @@ class Reveal extends Plugin {
     });
 
     if (this.options.closeOnClick && this.options.overlay) {
-      this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
+      this.$overlay.off('.zf.reveal').on('click.zf.dropdown tap.zf.dropdown', function(e) {
         if (e.target === _this.$element[0] ||
           $.contains(_this.$element[0], e.target) ||
             !$.contains(document, e.target)) {
@@ -365,7 +367,7 @@ class Reveal extends Plugin {
     this.focusableElements = Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
-      $('body').on('click.zf.reveal', function(e) {
+      $('body').on('click.zf.dropdown tap.zf.dropdown', function(e) {
         if (e.target === _this.$element[0] ||
           $.contains(_this.$element[0], e.target) ||
             !$.contains(document, e.target)) { return; }
@@ -423,7 +425,7 @@ class Reveal extends Plugin {
     }
 
     if (!this.options.overlay && this.options.closeOnClick) {
-      $('body').off('click.zf.reveal');
+      $('body').off('click.zf.dropdown tap.zf.dropdown');
     }
 
     this.$element.off('keydown.zf.reveal');
