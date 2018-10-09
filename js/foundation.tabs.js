@@ -258,8 +258,9 @@ class Tabs extends Plugin {
     var $oldTab = this.$element.
           find(`.${this.options.linkClass}.${this.options.linkActiveClass}`),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
-          $targetContent = this.$tabContent.find(`#${hash}`);
+          target = $tabLink.attr('data-tabs-target'),
+          anchor = target && target.length ? `#${target}` : $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(anchor);
 
     //close old tab
     this._collapseTab($oldTab);
@@ -270,9 +271,9 @@ class Tabs extends Plugin {
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
       if (this.options.updateHistory) {
-        history.pushState({}, '', hash);
+        history.pushState({}, '', anchor);
       } else {
-        history.replaceState({}, '', hash);
+        history.replaceState({}, '', anchor);
       }
     }
 
