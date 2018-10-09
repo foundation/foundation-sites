@@ -40,6 +40,8 @@ class Accordion extends Plugin {
    * @private
    */
   _init() {
+    this._isInitializing = true;
+
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
 
@@ -70,9 +72,11 @@ class Accordion extends Plugin {
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      // If there is no anchor, return to the initial panel
-      if (!anchor.length && this._initialAnchor) {
-        anchor = this._initialAnchor;
+      if (!anchor.length) {
+        // If we are still initializing and there is no anchor, then there is nothing to do
+        if (this._isInitializing) return;
+        // Otherwise, move to the initial anchor
+        if (this._initialAnchor) anchor = this._initialAnchor;
       }
 
       var $anchor = anchor && $(anchor);
@@ -112,6 +116,8 @@ class Accordion extends Plugin {
     }
 
     this._events();
+
+    this._isInitializing = false;
   }
 
   /**

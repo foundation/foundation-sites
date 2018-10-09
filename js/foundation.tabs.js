@@ -45,6 +45,7 @@ class Tabs extends Plugin {
    */
   _init() {
     var _this = this;
+    this._isInitializing = true;
 
     this.$element.attr({'role': 'tablist'});
     this.$tabTitles = this.$element.find(`.${this.options.linkClass}`);
@@ -105,9 +106,11 @@ class Tabs extends Plugin {
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      // If there is no anchor, return to the initial panel
-      if (!anchor.length && this._initialAnchor) {
-        anchor = this._initialAnchor;
+      if (!anchor.length) {
+        // If we are still initializing and there is no anchor, then there is nothing to do
+        if (this._isInitializing) return;
+        // Otherwise, move to the initial anchor
+        if (this._initialAnchor) anchor = this._initialAnchor;
       }
 
       var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
@@ -144,6 +147,8 @@ class Tabs extends Plugin {
     }
 
     this._events();
+
+    this._isInitializing = false;
   }
 
   /**
