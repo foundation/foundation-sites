@@ -11,23 +11,33 @@ var startPosX,
     startPosY,
     startTime,
     elapsedTime,
-    isMoving = false;
+    isMoving = false,
+    didMoved = false;
 
 function onTouchEnd() {
-  //  alert(this);
   this.removeEventListener('touchmove', onTouchMove);
   this.removeEventListener('touchend', onTouchEnd);
+
+
+  // If the touch did not moved, consider it as a "tap"
+  if (!didMoved) {
+    $(this).trigger('tap');
+  }
+
   isMoving = false;
+  didMoved = false;
 }
 
 function onTouchMove(e) {
   if ($.spotSwipe.preventDefault) { e.preventDefault(); }
+
   if(isMoving) {
     var x = e.touches[0].pageX;
     var y = e.touches[0].pageY;
     var dx = startPosX - x;
     var dy = startPosY - y;
     var dir;
+    didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
     if(Math.abs(dx) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
       dir = dx > 0 ? 'left' : 'right';
@@ -41,13 +51,16 @@ function onTouchMove(e) {
       $(this).trigger('swipe', dir).trigger(`swipe${dir}`);
     }
   }
+
 }
 
 function onTouchStart(e) {
+
   if (e.touches.length == 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
     isMoving = true;
+    didMoved = false;
     startTime = new Date().getTime();
     this.addEventListener('touchmove', onTouchMove, false);
     this.addEventListener('touchend', onTouchEnd, false);
@@ -76,6 +89,7 @@ class SpotSwipe {
   _init() {
     var $ = this.$;
     $.event.special.swipe = { setup: init };
+    $.event.special.tap = { setup: init };
 
     $.each(['left', 'up', 'down', 'right'], function () {
       $.event.special[`swipe${this}`] = { setup: function(){
@@ -139,7 +153,8 @@ Touch.setupTouchHandler = function($) {
   };
 };
 
-Touch.init = function($) {
+Touch.init = function ($) {
+
   if(typeof($.spotSwipe) === 'undefined') {
     Touch.setupSpotSwipe($);
     Touch.setupTouchHandler($);
