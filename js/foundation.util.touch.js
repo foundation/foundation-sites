@@ -11,19 +11,22 @@ var startPosX,
     startPosY,
     startTime,
     elapsedTime,
+    startEvent,
     isMoving = false,
     didMoved = false;
 
-function onTouchEnd() {
+function onTouchEnd(e) {
   this.removeEventListener('touchmove', onTouchMove);
   this.removeEventListener('touchend', onTouchEnd);
 
 
   // If the touch did not moved, consider it as a "tap"
   if (!didMoved) {
-    $(this).trigger('tap');
+    var tapEvent = $.Event('tap', startEvent || e);
+    $(this).trigger(tapEvent);
   }
 
+  startEvent = null;
   isMoving = false;
   didMoved = false;
 }
@@ -47,8 +50,10 @@ function onTouchMove(e) {
     // }
     if(dir) {
       e.preventDefault();
-      onTouchEnd.call(this);
-      $(this).trigger('swipe', dir).trigger(`swipe${dir}`);
+      onTouchEnd.apply(this, arguments);
+      $(this)
+        .trigger($.Event('swipe', e), dir)
+        .trigger($.Event(`swipe${dir}`, e));
     }
   }
 
@@ -59,6 +64,7 @@ function onTouchStart(e) {
   if (e.touches.length == 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
+    startEvent = e;
     isMoving = true;
     didMoved = false;
     startTime = new Date().getTime();
