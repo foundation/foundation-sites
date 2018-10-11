@@ -45,6 +45,7 @@ class Tabs extends Plugin {
    */
   _init() {
     var _this = this;
+    this._isInitializing = true;
 
     this.$element.attr({'role': 'tablist'});
     this.$tabTitles = this.$element.find(`.${this.options.linkClass}`);
@@ -105,14 +106,18 @@ class Tabs extends Plugin {
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      // If there is no anchor, return to the initial panel
-      if (!anchor.length && this._initialAnchor) {
-        anchor = this._initialAnchor;
+      if (!anchor.length) {
+        // If we are still initializing and there is no anchor, then there is nothing to do
+        if (this._isInitializing) return;
+        // Otherwise, move to the initial anchor
+        if (this._initialAnchor) anchor = this._initialAnchor;
       }
 
       var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
       var $anchor = anchorNoHash && $(`#${anchorNoHash}`);
       var $link = anchor && this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
+      // Whether the anchor element that has been found is part of this element
+      var isOwnAnchor = !!($anchor.length && $link.length);
 
       // If there is an anchor for the hash, select it
       if ($anchor && $anchor.length && $link && $link.length) {
@@ -123,13 +128,13 @@ class Tabs extends Plugin {
         this._collapse();
       }
 
-      // Roll up a little to show the titles
-      if (this.options.deepLinkSmudge) {
-        var offset = this.$element.offset();
-        $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
-      }
+      if (isOwnAnchor) {
+        // Roll up a little to show the titles
+        if (this.options.deepLinkSmudge) {
+          var offset = this.$element.offset();
+          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+        }
 
-      if ($anchor && $link) {
         /**
          * Fires when the plugin has deeplinked at pageload
          * @event Tabs#deeplink
@@ -144,6 +149,8 @@ class Tabs extends Plugin {
     }
 
     this._events();
+
+    this._isInitializing = false;
   }
 
   /**
@@ -251,8 +258,9 @@ class Tabs extends Plugin {
     var $oldTab = this.$element.
           find(`.${this.options.linkClass}.${this.options.linkActiveClass}`),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
-          $targetContent = this.$tabContent.find(`#${hash}`);
+          target = $tabLink.attr('data-tabs-target'),
+          anchor = target && target.length ? `#${target}` : $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(anchor);
 
     //close old tab
     this._collapseTab($oldTab);
@@ -263,9 +271,9 @@ class Tabs extends Plugin {
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
       if (this.options.updateHistory) {
-        history.pushState({}, '', hash);
+        history.pushState({}, '', anchor);
       } else {
-        history.replaceState({}, '', hash);
+        history.replaceState({}, '', anchor);
       }
     }
 
