@@ -40,6 +40,8 @@ class Accordion extends Plugin {
    * @private
    */
   _init() {
+    this._isInitializing = true;
+
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
 
@@ -70,13 +72,17 @@ class Accordion extends Plugin {
     this._checkDeepLink = () => {
       var anchor = window.location.hash;
 
-      // If there is no anchor, return to the initial panel
-      if (!anchor.length && this._initialAnchor) {
-        anchor = this._initialAnchor;
+      if (!anchor.length) {
+        // If we are still initializing and there is no anchor, then there is nothing to do
+        if (this._isInitializing) return;
+        // Otherwise, move to the initial anchor
+        if (this._initialAnchor) anchor = this._initialAnchor;
       }
 
       var $anchor = anchor && $(anchor);
       var $link = anchor && this.$element.find(`[href$="${anchor}"]`);
+      // Whether the anchor element that has been found is part of this element
+      var isOwnAnchor = !!($anchor.length && $link.length);
 
       // If there is an anchor for the hash, open it (if not already active)
       if ($anchor && $link && $link.length) {
@@ -89,15 +95,15 @@ class Accordion extends Plugin {
         this._closeAllTabs();
       }
 
-      // Roll up a little to show the titles
-      if (this.options.deepLinkSmudge) {
-        onLoad($(window), () => {
-          var offset = this.$element.offset();
-          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
-        });
-      }
+      if (isOwnAnchor) {
+        // Roll up a little to show the titles
+        if (this.options.deepLinkSmudge) {
+          onLoad($(window), () => {
+            var offset = this.$element.offset();
+            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+          });
+        }
 
-      if ($anchor && $link) {
         /**
          * Fires when the plugin has deeplinked at pageload
          * @event Accordion#deeplink
@@ -112,6 +118,8 @@ class Accordion extends Plugin {
     }
 
     this._events();
+
+    this._isInitializing = false;
   }
 
   /**
