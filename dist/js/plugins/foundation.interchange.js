@@ -343,7 +343,7 @@ function (_Plugin) {
         rules = this.$element.data('interchange');
       }
 
-      rules = typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
+      rules = typeof rules === 'string' ? rules.match(/\[.*?, .*?\]/g) : rules;
 
       for (var i in rules) {
         if (rules.hasOwnProperty(i)) {

@@ -168,8 +168,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
 /* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_2__);
-
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -234,11 +232,8 @@ function (_Plugin) {
     key: "_init",
     value: function _init() {
       var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'smooth-scroll');
-
-      var _this = this;
-
       this.$element.attr({
-        'id': id
+        id: id
       });
 
       this._events();
@@ -251,26 +246,44 @@ function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this; // click handler function.
-
-
-      var handleLinkClick = function handleLinkClick(e) {
-        // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
-        if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is('a[href^="#"]')) {
-          return false;
-        }
-
-        var arrival = this.getAttribute('href');
-        _this._inTransition = true;
-        SmoothScroll.scrollToLoc(arrival, _this.options, function () {
-          _this._inTransition = false;
-        });
-        e.preventDefault();
-      };
-
-      this.$element.on('click.zf.smoothScroll', handleLinkClick);
-      this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', handleLinkClick);
+      this.$element.on('click.zf.smoothScroll', this._handleLinkClick);
+      this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
     }
+    /**
+     * Handle the given event to smoothly scroll to the anchor pointed by the event target.
+     * @param {*} e - event
+     * @function
+     * @private
+     */
+
+  }, {
+    key: "_handleLinkClick",
+    value: function _handleLinkClick(e) {
+      var _this = this;
+
+      // Follow the link if it does not point to an anchor.
+      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.currentTarget).is('a[href^="#"]')) return;
+      var arrival = e.currentTarget.getAttribute('href');
+      this._inTransition = true;
+      SmoothScroll.scrollToLoc(arrival, this.options, function () {
+        _this._inTransition = false;
+      });
+      e.preventDefault();
+    }
+  }, {
+    key: "_destroy",
+
+    /**
+     * Destroys the SmoothScroll instance.
+     * @function
+     */
+    value: function _destroy() {
+      this.$element.off('click.zf.smoothScroll', this._handleLinkClick);
+      this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+    }
+  }], [{
+    key: "scrollToLoc",
+
     /**
      * Function to scroll to a given location on the page.
      * @param {String} loc - A properly formatted jQuery id selector. Example: '#foo'
@@ -279,23 +292,17 @@ function (_Plugin) {
      * @static
      * @function
      */
-
-  }], [{
-    key: "scrollToLoc",
     value: function scrollToLoc(loc) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SmoothScroll.defaults;
       var callback = arguments.length > 2 ? arguments[2] : undefined;
+      var $loc = jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc); // Do nothing if target does not exist to prevent errors
 
-      // Do nothing if target does not exist to prevent errors
-      if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).length) {
-        return false;
-      }
-
-      var scrollPos = Math.round(jquery__WEBPACK_IMPORTED_MODULE_0___default()(loc).offset().top - options.threshold / 2 - options.offset);
+      if (!$loc.length) return false;
+      var scrollPos = Math.round($loc.offset().top - options.threshold / 2 - options.offset);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, options.animationDuration, options.animationEasing, function () {
-        if (callback && typeof callback == "function") {
+        if (typeof callback === 'function') {
           callback();
         }
       });

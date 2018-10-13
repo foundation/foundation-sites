@@ -39,7 +39,7 @@ Know that they all require `foundation.core.js` to be loaded *first*. Some plugi
 
 ### Import in JavaScript
 
-Foundation is exported as [UMD modules](http://bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported in any JavaScript environnement.
+By default, Foundation is exported as [UMD modules](http://bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported and used in any JavaScript environment.
 
 For example with [ES6](https://github.com/lukehoban/es6features#readme) (the ESM format):
 ```js
@@ -62,6 +62,22 @@ With [Node.js](https://www.safaribooksonline.com/library/view/learning-javascrip
 var Foundation = require('foundation-sites');
 var $dropdown = new Dropdown('#mydropdown');
 ```
+
+#### Available formats
+
+Foundation is provided in bundles of various module formats so you can pick the one that matches the best your needs. If you don't know these terms yet, take a look at this [10-minute introduction to module formats in JavaScript](https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/). You will find in the `dist/js` folder the following bundles:
+
+* `foundation.js` <span class="label secondary">UMD</span> <span class="label">Default</span><br>
+  Compatible with most environments and tools (AMD, CJS, ESM...). It works almost everywhere by checking the module format of your environments and then using it, which makes the bundle a little heavier.
+
+* `foundation.cjs.js` <span class="label secondary">CommonJS</span><br>
+  Dedicated to Node.js and older bundlers like Browserify or Webpack v1.
+
+* `foundation.esm.js` <span class="label secondary">ES6 Modules</span>  (`module` in `package.json`)<br>
+  Everything is transpiled to ES5 but the modules. Dedicated to modern bundlers, like Webpack 2+ or Rollup. They will automatically use this bundle and parse the ES6 modules to remove the unused code (see [tree shaking](#tree-shaking) below).
+
+* `foundation.es6.js` <span class="label secondary">ES6</span> (`esnext` in `package.json`)<br>
+  Unlike the other bundles, this bundle is not transpiled. It contains all the Foundation sources in ES6 in a single file. Use it if you want to manually transpile it for your own targets.
 
 #### Tree Shaking
 

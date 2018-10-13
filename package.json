@@ -1,9 +1,10 @@
 {
   "name": "foundation-sites",
-  "version": "6.5.0-rc.3",
+  "version": "6.5.0-rc.4",
   "main": "dist/js/foundation.js",
-  "module": "js/foundation.js",
-  "jsnext:main": "js/foundation.js",
+  "module": "dist/js/foundation.esm.js",
+  "jsnext:main": "dist/js/foundation.esm.js",
+  "esnext": "dist/js/foundation.es6.js",
   "typings": "dist/js/foundation.d.ts",
   "sideEffects": false,
   "description": "The most advanced responsive front-end framework in the world.",
@@ -48,7 +49,7 @@
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "doiuse": "^4.1.0",
-    "foundation-docs": "git+https://github.com/zurb/foundation-docs.git#7a978ff933086df4826285ea60301937a7e81aad",
+    "foundation-docs": "git+https://github.com/zurb/foundation-docs.git#9a50a61c04ae5325e0441d0b7adb880c42c9c2ff",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
     "gulp-babel": "^8.0.0",
@@ -87,6 +88,8 @@
     "prettyjson": "^1.1.3",
     "require-dir": "^1.0.0",
     "rimraf": "^2.6.1",
+    "rollup": "^0.65.2",
+    "rollup-plugin-babel": "^4.0.3",
     "run-sequence": "^2.2.1",
     "sass-true": "^4.0.0",
     "sassy-lists": "^3.0.1",
@@ -133,15 +136,8 @@
     "exports": false
   },
   "jspm": {
-    "main": "dist/js/foundation.js",
-    "format": "global",
-    "shim": {
-      "dist/js/foundation": {
-        "deps": [
-          "jquery"
-        ]
-      }
-    }
+    "main": "dist/js/foundation.esm.js",
+    "format": "esm"
   },
   "browserify": {
     "transform": [

@@ -11,7 +11,9 @@ var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
+var rollup = require('rollup');
 
+var ROLLUP_CONFIG = require('../../rollup.config.js');
 var CONFIG = require('../config.js');
 var CURRENT_VERSION = require('../../package.json').version;
 var NEXT_VERSION;
@@ -19,7 +21,7 @@ var NEXT_VERSION;
 gulp.task('deploy', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates'));
 
 gulp.task('deploy:prep', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings'));
-gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:files'));
+gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:files', 'deploy:dist:bundles'));
 gulp.task('deploy:plugins', gulp.series('deploy:plugins:sources', 'deploy:plugins:sourcemaps'));
 
 gulp.task('deploy:prompt', function(cb) {
@@ -92,6 +94,23 @@ gulp.task('deploy:dist:files', function() {
       .pipe(gulp.dest('./dist/js'))
       .pipe(tsFilter.restore);
 });
+
+//
+// Generates JS bundles and puts them in the dist/ folder.
+//
+// In addition to the UMD bundle coming from the build task, the following
+// formats are generated: CJS, ESM, ES6.
+// See "rollup.config.js" for more information.
+//
+gulp.task('deploy:dist:bundles', gulp.series(
+  // Create a subtask for each Rollup config
+  ...ROLLUP_CONFIG.map((config) => function () {
+
+    // Run rollup with the Rollup config
+    return rollup.rollup(config)
+      .then(bundle => bundle.write(config.output));
+  })
+));
 
 // Copies standalone JavaScript plugins to dist/ folder
 gulp.task('deploy:plugins:sources', function () {

@@ -286,7 +286,7 @@ class DropdownMenu extends Plugin {
    * @param {jQuery} $sub - ul element that is a submenu to show
    * @function
    * @private
-   * @fires DropdownMenu#show
+   * @fires Dropdownmenu#show
    */
   _show($sub) {
     var idx = this.$tabs.index(this.$tabs.filter(function(i, el) {
