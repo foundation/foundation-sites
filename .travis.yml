@@ -1,15 +1,29 @@
 language: node_js
 
+os:
+  - windows
+  - linux
+  - osx
+
+node_js:
+  - lts/boron
+  - lts/carbon
+  - stable
+
+env:
+  - ZF_TRAVIS_COMMAND=test:javascript:units
+
 matrix:
   include:
-  - node_js: "lts/boron"
-    env: ZF_TRAVIS_COMMAND=test:javascript:units
-  - node_js: "lts/carbon"
-    env: ZF_TRAVIS_COMMAND=test:javascript:units
-  - node_js: "stable"
-    env: ZF_TRAVIS_COMMAND=test:javascript:units
-  - node_js: "stable"
-    env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
+    - os: windows
+      node_js: stable
+      env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
+    - os: linux
+      node_js: stable
+      env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
+    - os: osx
+      node_js: stable
+      env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
 before_install: npm install -g npm@latest
 install: npm ci
