@@ -15,13 +15,7 @@ env:
 
 matrix:
   include:
-    - os: windows
-      node_js: 10
-      env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
     - os: linux
-      node_js: 10
-      env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
-    - os: osx
       node_js: 10
       env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
