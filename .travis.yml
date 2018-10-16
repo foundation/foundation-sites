@@ -19,9 +19,8 @@ matrix:
       node_js: 10
       env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
-before_install: npm install -g npm@latest
-install: npm ci
-script: npm run $ZF_TRAVIS_COMMAND
+install: yarn
+script: yarn run $ZF_TRAVIS_COMMAND
 
 notifications:
   email: false
