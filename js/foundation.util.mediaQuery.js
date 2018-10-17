@@ -80,6 +80,14 @@ var MediaQuery = {
    * @private
    */
   _init() {
+
+    // make sure the initialization is only done once to avoid overhead when calling _init() several times
+    if (this.isInitialized === true) {
+      return;
+    } else {
+      this.isInitialized = true;
+    }
+
     var self = this;
     var $meta = $('meta.foundation-mq');
     if(!$meta.length){
