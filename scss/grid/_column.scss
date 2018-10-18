@@ -16,7 +16,7 @@
 ///
 /// @returns {Number} A calculated percentage value.
 @function grid-column($columns) {
-  @return fraction-to-percentage($columns, $denominator: $grid-columns);
+  @return fraction-to-percentage($columns, $denominator: $grid-column-count);
 }
 
 /// Creates a grid column.
