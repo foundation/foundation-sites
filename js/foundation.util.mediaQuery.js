@@ -114,6 +114,16 @@ var MediaQuery = {
   },
 
   /**
+   * Reinitializes the media query helper what might be necessary if your CSS is not (completely) loaded while _init() is executed.
+   * @function
+   * @private
+   */
+  _reinit() {
+    this.isInitialized = false;
+    this._init();
+  },
+
+  /**
    * Checks if the screen is at least as wide as a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to check.
