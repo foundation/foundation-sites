@@ -81,7 +81,7 @@ var MediaQuery = {
    */
   _init() {
 
-    // make sure the initialization is only done once to avoid overhead when calling _init() several times
+    // make sure the initialization is only done once when calling _init() several times
     if (this.isInitialized === true) {
       return;
     } else {
@@ -99,6 +99,8 @@ var MediaQuery = {
 
     namedQueries = parseStyleToObject(extractedStyles);
 
+    self.queries = []; // reset
+
     for (var key in namedQueries) {
       if(namedQueries.hasOwnProperty(key)) {
         self.queries.push({
@@ -114,11 +116,12 @@ var MediaQuery = {
   },
 
   /**
-   * Reinitializes the media query helper what might be necessary if your CSS is not (completely) loaded while _init() is executed.
+   * Reinitializes the media query helper.
+   * Useful if your CSS breakpoint configuration has just been loaded or has changed since the initialization.
    * @function
    * @private
    */
-  _reinit() {
+  _reInit() {
     this.isInitialized = false;
     this._init();
   },
