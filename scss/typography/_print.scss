@@ -7,6 +7,7 @@
 /// @group global
 $print-transparent-backgrounds: true !default;
 $print-hrefs: true !default;
+$print-text-black: true !default;
 
 // sass-lint:disable-all
 
@@ -17,6 +18,9 @@ $print-hrefs: true !default;
     * {
       @if $print-transparent-backgrounds {
         background: transparent !important;
+      }
+
+      @if $print-text-black {
         color: black !important; // Black prints faster: h5bp.com/s
       }
 

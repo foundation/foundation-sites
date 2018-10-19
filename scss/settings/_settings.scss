@@ -98,6 +98,7 @@ $global-prototype-breakpoints: false;
 $global-button-cursor: pointer;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
+$print-text-black: true;
 
 @include add-foundation-colors;
 
