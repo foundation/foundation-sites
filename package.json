@@ -79,7 +79,7 @@
     "jquery": "^3.3.1",
     "js-yaml": "^3.8.4",
     "mocha": "^5.0.5",
-    "mocha-headless-chrome": "^2.0.0",
+    "mocha-headless-chrome": "^1.8.3",
     "motion-ui": "^2.0.2",
     "multiline": "^1.0.2",
     "octophant": "^1.0.0",
