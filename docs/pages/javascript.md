@@ -44,23 +44,23 @@ By default, Foundation is exported as [UMD modules](http://bob.yexley.net/umd-ja
 For example with [ES6](https://github.com/lukehoban/es6features#readme) (the ESM format):
 ```js
 import Foundation from 'foundation-sites';
-const $dropdown = new Foundation.Dropdown('#mydropdown');
+const $dropdown = new Foundation.Dropdown($('#mydropdown'));
 // Or
 import { Dropdown } from 'foundation-sites';
-const $dropdown = new Dropdown('#mydropdown');
+const $dropdown = new Dropdown($('#mydropdown'));
 ```
 
 With [RequireJs](http://requirejs.org/) (the AMD format):
 ```js
 define(['foundation'], function(Foundation) {
-  var $dropdown = new Foundation.Dropdown('#mydropdown');
+  var $dropdown = new Foundation.Dropdown($('#mydropdown'));
 });
 ```
 
 With [Node.js](https://www.safaribooksonline.com/library/view/learning-javascript-design/9781449334840/ch11s03.html) (the CommonJs format):
 ```js
 var Foundation = require('foundation-sites');
-var $dropdown = new Dropdown('#mydropdown');
+var $dropdown = new Dropdown($('#mydropdown'));
 ```
 
 #### Available formats
