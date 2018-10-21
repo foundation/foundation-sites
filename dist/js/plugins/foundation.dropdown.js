@@ -237,6 +237,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
+ * @requires foundation.util.touch
  * @requires foundation.util.triggers
  */
 
@@ -266,8 +267,9 @@ function (_Positionable) {
       this.$element = element;
       this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
       this.className = 'Dropdown'; // ie9 back compat
-      // Triggers init is idempotent, just need to make sure it is initialized
+      // Touch and Triggers init are idempotent, just need to make sure they are initialized
 
+      Touch.init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
       _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
@@ -380,7 +382,8 @@ function (_Positionable) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this;
+      var _this = this,
+          hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined';
 
       this.$element.on({
         'open.zf.trigger': this.open.bind(this),
@@ -388,8 +391,17 @@ function (_Positionable) {
         'toggle.zf.trigger': this.toggle.bind(this),
         'resizeme.zf.trigger': this._setPosition.bind(this)
       });
-      this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function () {
+      this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function (e) {
         _this._setCurrentAnchor(this);
+
+        if (_this.options.forceFollow === false) {
+          // if forceFollow false, always prevent default action
+          e.preventDefault();
+        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          // if forceFollow true and hover option true, only prevent default action on 1st click
+          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          e.preventDefault();
+        }
       });
 
       if (this.options.hover) {
@@ -406,26 +418,26 @@ function (_Positionable) {
               _this.$anchors.data('hover', true);
             }, _this.options.hoverDelay);
           }
-        }).on('mouseleave.zf.dropdown', function () {
+        }).on('mouseleave.zf.dropdown', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["ignoreMousedisappear"])(function () {
           clearTimeout(_this.timeout);
           _this.timeout = setTimeout(function () {
             _this.close();
 
             _this.$anchors.data('hover', false);
           }, _this.options.hoverDelay);
-        });
+        }));
 
         if (this.options.hoverPane) {
           this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
             clearTimeout(_this.timeout);
-          }).on('mouseleave.zf.dropdown', function () {
+          }).on('mouseleave.zf.dropdown', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["ignoreMousedisappear"])(function () {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {
               _this.close();
 
               _this.$anchors.data('hover', false);
             }, _this.options.hoverDelay);
-          });
+          }));
         }
       }
 
@@ -462,7 +474,7 @@ function (_Positionable) {
       var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).not(this.$element),
           _this = this;
 
-      $body.off('click.zf.dropdown').on('click.zf.dropdown', function (e) {
+      $body.off('click.zf.dropdown tap.zf.dropdown').on('click.zf.dropdown tap.zf.dropdown', function (e) {
         if (_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
           return;
         }
@@ -473,7 +485,7 @@ function (_Positionable) {
 
         _this.close();
 
-        $body.off('click.zf.dropdown');
+        $body.off('click.zf.dropdown tap.zf.dropdown');
       });
     }
     /**
@@ -581,7 +593,7 @@ function (_Positionable) {
     value: function _destroy() {
       this.$element.off('.zf.trigger').hide();
       this.$anchors.off('.zf.dropdown');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown tap.zf.dropdown');
     }
   }]);
 
@@ -693,7 +705,15 @@ Dropdown.defaults = {
    * @type {boolean}
    * @default false
    */
-  closeOnClick: false
+  closeOnClick: false,
+
+  /**
+   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  forceFollow: true
 };
 
 
@@ -1063,8 +1083,9 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function closeableListener(e) {
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable'); // Only close the first closable element. See https://git.io/zf-7833
+
     e.stopPropagation();
-    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
       _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {

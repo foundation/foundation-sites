@@ -462,7 +462,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.5.0-rc.4'; // Global Foundation object
+var FOUNDATION_VERSION = '6.5.0'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
