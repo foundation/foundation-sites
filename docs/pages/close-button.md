@@ -14,12 +14,12 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjEgO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ncoden/pen/vVrrjG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<div class="callout">
-  <button class="close-button" aria-label="Close alert" type="button">
+<div class="callout" data-closable>
+  <button class="close-button" aria-label="Close alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
   <p>Look at this close button!</p>
