@@ -257,6 +257,7 @@ function (_Plugin) {
     value: function _init() {
       var _this2 = this;
 
+      this._isInitializing = true;
       this.$element.attr('role', 'tablist');
       this.$tabs = this.$element.children('[data-accordion-item]');
       this.$tabs.each(function (idx, el) {
@@ -288,16 +289,21 @@ function (_Plugin) {
       }
 
       this._checkDeepLink = function () {
-        var anchor = window.location.hash; // If there is no anchor, return to the initial panel
+        var anchor = window.location.hash;
 
-        if (!anchor.length && _this2._initialAnchor) {
-          anchor = _this2._initialAnchor;
+        if (!anchor.length) {
+          // If we are still initializing and there is no anchor, then there is nothing to do
+          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
+
+          if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
 
         var $anchor = anchor && jquery__WEBPACK_IMPORTED_MODULE_0___default()(anchor);
 
-        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // If there is an anchor for the hash, open it (if not already active)
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]")); // Whether the anchor element that has been found is part of this element
 
+
+        var isOwnAnchor = !!($anchor.length && $link.length); // If there is an anchor for the hash, open it (if not already active)
 
         if ($anchor && $link && $link.length) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
@@ -308,24 +314,25 @@ function (_Plugin) {
         } // Otherwise, close everything
         else {
             _this2._closeAllTabs();
-          } // Roll up a little to show the titles
+          }
 
+        if (isOwnAnchor) {
+          // Roll up a little to show the titles
+          if (_this2.options.deepLinkSmudge) {
+            Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+              var offset = _this2.$element.offset();
 
-        if (_this2.options.deepLinkSmudge) {
-          Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
-            var offset = _this2.$element.offset();
-
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-              scrollTop: offset.top
-            }, _this2.options.deepLinkSmudgeDelay);
-          });
-        }
-
-        if ($anchor && $link) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
+                scrollTop: offset.top
+              }, _this2.options.deepLinkSmudgeDelay);
+            });
+          }
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Accordion#deeplink
            */
+
+
           _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
         }
       }; //use browser to open a tab, if it exists in this tabset
@@ -336,6 +343,8 @@ function (_Plugin) {
       }
 
       this._events();
+
+      this._isInitializing = false;
     }
     /**
      * Adds event handlers for items within the accordion.

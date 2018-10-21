@@ -539,7 +539,7 @@ function (_Plugin) {
      * @function
      * @param {Object} event - Event object passed from listener.
      * @param {jQuery} trigger - element that triggered the off-canvas to open.
-     * @fires OffCanvas#opened
+     * @fires Offcanvas#opened
      * @todo also trigger 'open' event?
      */
 
@@ -611,7 +611,7 @@ function (_Plugin) {
       this._addContentClasses();
       /**
        * Fires when the off-canvas menu opens.
-       * @event OffCanvas#opened
+       * @event Offcanvas#opened
        */
 
 
@@ -621,7 +621,7 @@ function (_Plugin) {
      * Closes the off-canvas menu.
      * @function
      * @param {Function} cb - optional cb to fire after closure.
-     * @fires OffCanvas#closed
+     * @fires Offcanvas#closed
      */
 
   }, {
@@ -637,7 +637,7 @@ function (_Plugin) {
       this.$element.attr('aria-hidden', 'true')
       /**
        * Fires when the off-canvas menu opens.
-       * @event OffCanvas#closed
+       * @event Offcanvas#closed
        */
       .trigger('closed.zf.offcanvas');
       this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom'); // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
