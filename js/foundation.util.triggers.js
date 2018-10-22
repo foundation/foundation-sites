@@ -50,8 +50,10 @@ Triggers.Listeners.Basic  = {
     }
   },
   closeableListener: function(e) {
-    e.stopPropagation();
     let animation = $(this).data('closable');
+
+    // Only close the first closable element. See https://git.io/zf-7833
+    e.stopPropagation();
 
     if(animation !== ''){
       Motion.animateOut($(this), animation, function() {
@@ -241,17 +243,14 @@ Triggers.Initializers.addGlobalListeners = function() {
 }
 
 
-Triggers.init = function($, Foundation) {
-  if (typeof($.triggersInitialized) === 'undefined') {
-    let $document = $(document);
-
-    onLoad($(window), function () {
+Triggers.init = function ($, Foundation) {
+  onLoad($(window), function () {
+    if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-    });
-
-    $.triggersInitialized = true;
-  }
+      $.triggersInitialized = true;
+    }
+  });
 
   if(Foundation) {
     Foundation.Triggers = Triggers;

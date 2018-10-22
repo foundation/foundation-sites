@@ -28,11 +28,11 @@ $dropdownmenu-min-width: 200px !default;
 
 /// Background color for top level items.
 /// @type Color
-$dropdownmenu-background: $white !default;
+$dropdownmenu-background: null !default;
 
 /// Background color for dropdowns.
 /// @type Color
-$dropdownmenu-submenu-background: $dropdownmenu-background !default;
+$dropdownmenu-submenu-background: $white !default;
 
 /// Padding for top level items.
 /// @type Number
@@ -69,9 +69,9 @@ $dropdown-menu-item-background-active: transparent !default;
   }
 
   &.opens-left > a::after {
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
     right: auto;
     left: 5px;
-    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
   }
 
   &.opens-right > a::after {
@@ -81,7 +81,7 @@ $dropdown-menu-item-background-active: transparent !default;
 
 @mixin dropdown-menu-direction($dir: horizontal) {
   @if $dir == horizontal {
-    > li.opens-left {
+    > li.opens-left { // sass-lint:disable-line no-qualifying-elements
       > .is-dropdown-submenu {
         top: 100%;
         right: 0;
@@ -89,7 +89,7 @@ $dropdown-menu-item-background-active: transparent !default;
       }
     }
 
-    > li.opens-right {
+    > li.opens-right { // sass-lint:disable-line no-qualifying-elements
       > .is-dropdown-submenu {
         top: 100%;
         right: auto;
@@ -98,12 +98,12 @@ $dropdown-menu-item-background-active: transparent !default;
     }
 
     @if $dropdownmenu-arrows {
-      > li.is-dropdown-submenu-parent > a {
+      > li.is-dropdown-submenu-parent > a { // sass-lint:disable-line no-qualifying-elements
         position: relative;
         padding-#{$global-right}: $dropdownmenu-arrow-padding;
       }
 
-      > li.is-dropdown-submenu-parent > a::after {
+      > li.is-dropdown-submenu-parent > a::after { // sass-lint:disable-line no-qualifying-elements
         @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
         #{$global-right}: 5px;
         #{$global-left}: auto;
@@ -119,9 +119,9 @@ $dropdown-menu-item-background-active: transparent !default;
 
       &.opens-left {
         > .is-dropdown-submenu {
+          top: 0;
           right: 100%;
           left: auto;
-          top: 0;
         }
       }
 
@@ -148,11 +148,16 @@ $dropdown-menu-item-background-active: transparent !default;
 
     a {
       @include disable-mouse-outline;
+    }
+
+    // Top-level item
+    > li > a {
+      background: $dropdownmenu-background;
       padding: $dropdownmenu-padding;
     }
 
-    // Active state
-    .is-active > a {
+    // Top-level item active state
+    > li.is-active > a {
       background: $dropdown-menu-item-background-active;
       color: $dropdown-menu-item-color-active;
     }

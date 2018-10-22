@@ -35,6 +35,7 @@ class OffCanvas extends Plugin {
     this.position = 'left';
     this.$content = $();
     this.nested = !!(this.options.nested);
+    this.isInCanvas = false;
 
     // Defines the CSS transition/position classes of the off-canvas content container.
     $(['push', 'overlap']).each((index, val) => {
@@ -136,6 +137,20 @@ class OffCanvas extends Plugin {
       this.$element.css('transition-duration', this.options.transitionTime);
     }
 
+    let inCanvasFor = this.$element.attr('class').match(/\bin-canvas-for-(\w+)/);
+
+    if (inCanvasFor && inCanvasFor.length === 2) {
+      // Set `inCanvasOn` option if found in-canvas-for-[BREAKPONT] CSS class
+      this.options.inCanvasOn = inCanvasFor[1];
+    } else if (this.options.inCanvasOn) {
+      // Ensure the CSS class is set
+      this.$element.addClass(`in-canvas-for-${this.options.inCanvasOn}`);
+    }
+
+    if (this.options.inCanvasOn) {
+      this._checkInCanvas();
+    }
+
     // Initally remove all transition/position CSS classes from off-canvas content container.
     this._removeContentClasses();
   }
@@ -157,6 +172,13 @@ class OffCanvas extends Plugin {
       var $target = this.options.contentOverlay ? this.$overlay : this.$content;
       $target.on({'click.zf.offCanvas': this.close.bind(this)});
     }
+
+    if (this.options.inCanvasOn) {
+      $(window).on('changed.zf.mediaquery', () => {
+        this._checkInCanvas();
+      });
+    }
+
   }
 
   /**
@@ -179,6 +201,17 @@ class OffCanvas extends Plugin {
         _this.reveal(false);
       }
     });
+  }
+
+  /**
+   * Checks if InCanvas on current breakpoint and adjust off-canvas accordingly
+   * @private
+   */
+  _checkInCanvas() {
+    this.isInCanvas = MediaQuery.atLeast(this.options.inCanvasOn);
+    if (this.isInCanvas === true) {
+      this.close();
+    }
   }
 
   /**
@@ -236,14 +269,23 @@ class OffCanvas extends Plugin {
 
   /**
    * Stops scrolling of the body when OffCanvas is open on mobile Safari and other troublesome browsers.
+   * @function
    * @private
    */
   _stopScrolling(event) {
     return false;
   }
 
-  // Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
-  // Only really works for y, not sure how to extend to x or if we need to.
+  /**
+   * Tag the element given as context whether it can be scrolled up and down.
+   * Used to allow or prevent it to scroll. See `_stopScrollPropagation`.
+   *
+   * Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
+   * Only really works for y, not sure how to extend to x or if we need to.
+   *
+   * @function
+   * @private
+   */
   _recordScrollable(event) {
     let elem = this; // called from event handler context with this as elem
 
@@ -263,6 +305,13 @@ class OffCanvas extends Plugin {
     elem.lastY = event.originalEvent.pageY;
   }
 
+  /**
+   * Prevent the given event propagation if the element given as context can scroll.
+   * Used to preserve the element scrolling on mobile (`touchmove`) when the document
+   * scrolling is prevented. See https://git.io/zf-9707.
+   * @function
+   * @private
+   */
   _stopScrollPropagation(event) {
     let elem = this; // called from event handler context with this as elem
     let up = event.pageY < elem.lastY;
@@ -270,6 +319,8 @@ class OffCanvas extends Plugin {
     elem.lastY = event.pageY;
 
     if((up && elem.allowUp) || (down && elem.allowDown)) {
+      // It is not recommended to stop event propagation (the user cannot watch it),
+      // but in this case this is the only solution we have.
       event.stopPropagation();
     } else {
       event.preventDefault();
@@ -285,7 +336,7 @@ class OffCanvas extends Plugin {
    * @todo also trigger 'open' event?
    */
   open(event, trigger) {
-    if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
+    if (this.$element.hasClass('is-open') || this.isRevealed || this.isInCanvas) { return; }
     var _this = this;
 
     if (trigger) {
@@ -440,7 +491,6 @@ class OffCanvas extends Plugin {
         return true;
       },
       handled: () => {
-        e.stopPropagation();
         e.preventDefault();
       }
     });
@@ -454,7 +504,7 @@ class OffCanvas extends Plugin {
     this.close();
     this.$element.off('.zf.trigger .zf.offCanvas');
     this.$overlay.off('.zf.offCanvas');
-    $(window).off(this.onLoadListener);
+    if (this.onLoadListener) $(window).off(this.onLoadListener);
   }
 }
 
@@ -540,7 +590,15 @@ OffCanvas.defaults = {
   revealOn: null,
 
   /**
-   * Force focus to the OffCanvas on open. If true, will focus the opening trigger on close.
+   * Breakpoint at which the off-canvas gets moved into canvas content and acts as regular page element.
+   * @option
+   * @type {?string}
+   * @default null
+   */
+  inCanvasOn: null,
+
+  /**
+   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
    * @option
    * @type {boolean}
    * @default true

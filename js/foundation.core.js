@@ -149,18 +149,15 @@ var Foundation = {
       var plugin = _this._plugins[name];
 
       // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
-      var $elem = $(elem).find('[data-'+name+']').addBack('[data-'+name+']');
+      var $elem = $(elem).find('[data-'+name+']').addBack('[data-'+name+']').filter(function () {
+        return typeof $(this).data("zfPlugin") === 'undefined';
+      });
 
       // For each plugin found, initialize it
       $elem.each(function() {
         var $el = $(this),
             opts = {};
-        // Don't double-dip on plugins
-        if ($el.data('zfPlugin')) {
-          console.warn("Tried to initialize "+name+" on an element that already has a Foundation plugin.");
-          return;
-        }
-
+            
         if($el.attr('data-options')){
           var thing = $el.attr('data-options').split(';').forEach(function(e, i){
             var opt = e.split(':').map(function(el){ return el.trim(); });
@@ -201,7 +198,7 @@ var Foundation = {
         var args = Array.prototype.slice.call(arguments, 1);//collect all the arguments, if necessary
         var plugClass = this.data('zfPlugin');//determine the class of plugin
 
-        if(plugClass !== undefined && plugClass[method] !== undefined){//make sure both the class and method exist
+        if(typeof plugClass !== 'undefined' && typeof plugClass[method] !== 'undefined'){//make sure both the class and method exist
           if(this.length === 1){//if there's only one, call it directly.
               plugClass[method].apply(plugClass, args);
           }else{
@@ -310,12 +307,12 @@ if (!Function.prototype.bind) {
 }
 // Polyfill to get the name of a function in IE9
 function functionName(fn) {
-  if (Function.prototype.name === undefined) {
+  if (typeof Function.prototype.name === 'undefined') {
     var funcNameRegex = /function\s([^(]{1,})\(/;
     var results = (funcNameRegex).exec((fn).toString());
     return (results && results.length > 1) ? results[1].trim() : "";
   }
-  else if (fn.prototype === undefined) {
+  else if (typeof fn.prototype === 'undefined') {
     return fn.constructor.name;
   }
   else {

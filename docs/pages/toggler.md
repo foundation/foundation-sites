@@ -8,7 +8,7 @@ video: 'wHpZCrpKlBc'
 
 ## Toggle a CSS class
 
-To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique ID so it can be targeted.
+To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle (like `.classname` and `classname`). Also give the element a unique ID so it can be targeted.
 
 <p>
   <a class="" data-open-video="0:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -148,14 +148,14 @@ The `data-toggle`, `data-close`, and `data-open` attributes can now target multi
 Then the elements with ids of `foo`, `bar`, and `baz` will be toggled any time your button, (or any other element you choose), is clicked.
 
 <button class="button primary" data-toggle="thumb1 thumb2 thumb3">Toggle All These</button>
-<div class="row">
-  <div class="small-4 columns">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-4">
     <img class="thumbnail" id="thumb1" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" id="thumb2" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/02.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" id="thumb3" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/03.jpg" alt="Photo of Uranus.">
   </div>
 </div>

@@ -1,10 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var babel = require('gulp-babel');
-var onBabelError = require('./babel-error.js');
-var rename = require('gulp-rename');
 var webpackStream = require('webpack-stream');
-var webpack2 = require('webpack');
+var webpack = require('webpack');
 var named = require('vinyl-named');
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -52,6 +49,7 @@ var webpackOutputAsExternal = {
 };
 
 var webpackConfig = {
+  mode: 'development',
   externals: utils.umdExternals({
     'jquery': 'jQuery'
   }),
@@ -71,14 +69,18 @@ var webpackConfig = {
     libraryTarget: 'umd',
   },
   // https://github.com/shama/webpack-stream#source-maps
-  devtool: 'source-map'
+  devtool: 'source-map',
+  stats: {
+    chunks: false,
+    entrypoints: false,
+  }
 }
 
 // ----- TASKS -----
 //
 
 // Compiles JavaScript into a single file
-gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
+gulp.task('javascript', gulp.series('javascript:foundation', 'javascript:deps', 'javascript:docs'));
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
 // and the dependency on foundation.core.utils
@@ -89,30 +91,30 @@ gulp.task('javascript:plugin-core', function() {
     .pipe(sourcemaps.init())
     .pipe(webpackStream(Object.assign({}, webpackConfig, {
         output: webpackOutputAsExternal,
-      }), webpack2))
+      }), webpack))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
-gulp.task('javascript:plugins', ['javascript:plugin-core'], function () {
+gulp.task('javascript:plugins', gulp.series('javascript:plugin-core', function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
     .pipe(sourcemaps.init())
     .pipe(webpackStream(Object.assign({}, webpackConfig, {
         externals: webpackExternalPlugins,
         output: webpackOutputAsExternal,
-      }), webpack2))
+      }), webpack))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
-});
+}));
 
-gulp.task('javascript:foundation', ['javascript:plugins'], function() {
+gulp.task('javascript:foundation', gulp.series('javascript:plugins', function() {
   return gulp.src('js/entries/foundation.js')
     .pipe(named())
     .pipe(sourcemaps.init())
-    .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe(webpackStream(webpackConfig, webpack))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js'));
-});
+}));
 
 gulp.task('javascript:deps', function() {
   return gulp.src(CONFIG.JS_DEPS)

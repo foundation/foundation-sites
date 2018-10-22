@@ -45,13 +45,6 @@ module.exports = {
     'scss/**/*.scss',
   ],
 
-  CSS_COMPATIBILITY: [
-    'last 2 versions',
-    'ie >= 9',
-    'Android >= 2.3',
-    'ios >= 7'
-  ],
-
   // Assets
   ASSETS_FILES: [
     'docs/assets/**/*',
@@ -81,7 +74,8 @@ module.exports = {
     './_build/assets/css/foundation-rtl.css',
     './_build/assets/css/foundation-rtl.css.map',
     '_build/assets/js/foundation.js',
-    '_build/assets/js/foundation.js.map'
+    '_build/assets/js/foundation.js.map',
+    'js/typescript/foundation.d.ts'
   ],
 
   // Tests

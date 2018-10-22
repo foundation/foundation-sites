@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.core.utils';
+import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
@@ -13,6 +13,7 @@ import { Triggers } from './foundation.util.triggers';
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
+ * @requires foundation.util.touch
  * @requires foundation.util.triggers
  */
 class Dropdown extends Positionable {
@@ -29,14 +30,15 @@ class Dropdown extends Positionable {
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this.className = 'Dropdown'; // ie9 back compat
 
-    // Triggers init is idempotent, just need to make sure it is initialized
+    // Touch and Triggers init are idempotent, just need to make sure they are initialized
+    Touch.init($);
     Triggers.init($);
 
     this._init();
 
     Keyboard.register('Dropdown', {
-      'ENTER': 'open',
-      'SPACE': 'open',
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
       'ESCAPE': 'close'
     });
   }
@@ -170,24 +172,24 @@ class Dropdown extends Positionable {
             _this.$anchors.data('hover', true);
           }, _this.options.hoverDelay);
         }
-      }).on('mouseleave.zf.dropdown', function(){
+      }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
         clearTimeout(_this.timeout);
         _this.timeout = setTimeout(function(){
           _this.close();
           _this.$anchors.data('hover', false);
         }, _this.options.hoverDelay);
-      });
+      }));
       if(this.options.hoverPane){
         this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
             .on('mouseenter.zf.dropdown', function(){
               clearTimeout(_this.timeout);
-            }).on('mouseleave.zf.dropdown', function(){
+            }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
               clearTimeout(_this.timeout);
               _this.timeout = setTimeout(function(){
                 _this.close();
                 _this.$anchors.data('hover', false);
               }, _this.options.hoverDelay);
-            });
+            }));
       }
     }
     this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
@@ -219,8 +221,8 @@ class Dropdown extends Positionable {
   _addBodyHandler() {
      var $body = $(document.body).not(this.$element),
          _this = this;
-     $body.off('click.zf.dropdown')
-          .on('click.zf.dropdown', function(e){
+     $body.off('click.zf.dropdown tap.zf.dropdown')
+          .on('click.zf.dropdown tap.zf.dropdown', function (e) {
             if(_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
               return;
             }
@@ -228,7 +230,7 @@ class Dropdown extends Positionable {
               return;
             }
             _this.close();
-            $body.off('click.zf.dropdown');
+            $body.off('click.zf.dropdown tap.zf.dropdown');
           });
   }
 
@@ -320,7 +322,7 @@ class Dropdown extends Positionable {
   _destroy() {
     this.$element.off('.zf.trigger').hide();
     this.$anchors.off('.zf.dropdown');
-    $(document.body).off('click.zf.dropdown');
+    $(document.body).off('click.zf.dropdown tap.zf.dropdown');
 
   }
 }
@@ -368,13 +370,6 @@ Dropdown.defaults = {
    * @default 0
    */
   hOffset: 0,
-  /**
-   * DEPRECATED: Class applied to adjust open position.
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
   /**
    * Position of dropdown. Can be left, right, bottom, top, or auto.
    * @option

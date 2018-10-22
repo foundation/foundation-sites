@@ -60,7 +60,7 @@ class Equalizer extends Plugin {
     }else{
       this._events();
     }
-    if((tooSmall !== undefined && tooSmall === false) || tooSmall === undefined){
+    if((typeof tooSmall !== 'undefined' && tooSmall === false) || typeof tooSmall === 'undefined'){
       if(imgs.length){
         onImagesLoaded(imgs, this._reflow.bind(this));
       }else{

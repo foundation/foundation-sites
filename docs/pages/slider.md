@@ -120,14 +120,16 @@ To set it all up, create an `<input>` with an ID and add `aria-controls="id"` to
 </div>
 
 ```html_example
-<div class="small-10 columns">
-  <div class="slider" data-slider data-initial-start="50">
-    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
-    <span class="slider-fill" data-slider-fill></span>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-10">
+    <div class="slider" data-slider data-initial-start="50">
+      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
+      <span class="slider-fill" data-slider-fill></span>
+    </div>
   </div>
-</div>
-<div class="small-2 columns">
-  <input type="number" id="sliderOutput1">
+  <div class="cell small-2">
+    <input type="number" id="sliderOutput1">
+  </div>
 </div>
 ```
 
@@ -136,14 +138,16 @@ To set it all up, create an `<input>` with an ID and add `aria-controls="id"` to
 Or with a step size:
 
 ```html_example
-<div class="small-10 columns">
-  <div class="slider" data-slider data-initial-start="50" data-step="5">
-    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput2"></span>
-    <span class="slider-fill" data-slider-fill></span>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-10">
+    <div class="slider" data-slider data-initial-start="50" data-step="5">
+      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput2"></span>
+      <span class="slider-fill" data-slider-fill></span>
+    </div>
   </div>
-</div>
-<div class="small-2 columns">
-  <input type="number" id="sliderOutput2">
+  <div class="cell small-2">
+    <input type="number" id="sliderOutput2">
+  </div>
 </div>
 ```
 ---
@@ -188,13 +192,15 @@ Alternatively there is also a `pow`-type position value function available, maki
 The nonLinearBase-option is optional and defaults to 5.
 
 ```html_example
-<div class="small-10 columns">
-<div class="slider" data-slider data-initial-start="50" data-step="1" data-position-value-function="log" data-non-linear-base="5">
-  <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputNonLinear"></span>
-</div>
-</div>
-<div class="small-2 columns">
-  <input type="number" id="sliderOutputNonLinear">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-10">
+    <div class="slider" data-slider data-initial-start="50" data-step="1" data-position-value-function="log" data-non-linear-base="5">
+      <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputNonLinear"></span>
+    </div>
+  </div>
+  <div class="cell small-2">
+    <input type="number" id="sliderOutputNonLinear">
+  </div>
 </div>
 ```
 
