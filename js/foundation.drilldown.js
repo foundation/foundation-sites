@@ -298,7 +298,7 @@ class Drilldown extends Plugin {
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-    $elem.one(transitionend($elem), function(e){
+    $elem.one(transitionend($elem), (e) => {
       $elem.removeClass('is-active is-closing');
 	  /**
        * Fires when the menu is fully closed.
