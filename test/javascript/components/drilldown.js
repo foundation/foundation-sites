@@ -204,17 +204,14 @@ describe('Drilldown Menu', function() {
       // Open one first
       plugin._show($html.find('li.is-drilldown-submenu-parent').eq(2));
 
-      $html.one('close.zf.drilldown', function() {
-        $html.find('ul[data-submenu].is-active').each(function() {
-          // Checking with .be.hidden is not possible because they don't have display: block but z-index: -1
-          $(this).should.have.class('is-closing');
-		      plugin.$element.one(Foundation.transitionend(plugin.$element), function() {
-            $html.one('closed.zf.drilldown', function () {
-              done();
-            });
-          });
+      const $submenus = $html.find('ul[data-submenu]');
+
+      plugin.$element.one(Foundation.transitionend(plugin.$element), function () {
+        $html.one('closed.zf.drilldown', function () {
+          $submenus.should.not.have.class('is-closing');
+          $submenus.should.not.have.class('is-active');
+          done();
         });
-        done();
       });
 
       plugin._hideAll();
