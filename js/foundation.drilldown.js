@@ -296,21 +296,29 @@ class Drilldown extends Plugin {
    * @fires Drilldown#closed
    */
   _hideAll() {
-    var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
-    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-    $elem.one(transitionend($elem), (e) => {
+    var $elem = this.$element.find('.is-drilldown-submenu.is-active')
+    $elem.addClass('is-closing');
+
+    if (this.options.autoHeight) {
+      const calcHeight = $elem.parent().closest('ul').data('calcHeight');
+      this.$wrapper.css({ height: calcHeight });
+    }
+
+    /**
+     * Fires when the menu is closing.
+     * @event Drilldown#close
+     */
+    this.$element.trigger('close.zf.drilldown');
+
+    $elem.one(transitionend($elem), () => {
       $elem.removeClass('is-active is-closing');
-	  /**
+
+      /**
        * Fires when the menu is fully closed.
        * @event Drilldown#close
        */
       this.$element.trigger('closed.zf.drilldown');
     });
-        /**
-         * Fires when the menu is closing.
-         * @event Drilldown#close
-         */
-    this.$element.trigger('close.zf.drilldown');
   }
 
   /**
