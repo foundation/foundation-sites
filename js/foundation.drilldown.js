@@ -543,7 +543,7 @@ Drilldown.defaults = {
    * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
    * on the `drilldown` class. This option auto-applies this class to the drilldown upon initialization.
    * @option
-   * @type {boolian}
+   * @type {boolean}
    * @default true
    */
   autoApplyClass: true,
