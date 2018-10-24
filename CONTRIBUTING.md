@@ -49,7 +49,7 @@ After you made these checks, please follow these advices to create your pull req
 2. **Use our standard format for branch, commit and pull request names**.
    It must reference the related issue, be written in the "imperative" form (like if it was completing `now the software should...`) and be prefixed by a type (`feat` for new feature, `fix` if you repair something, `docs` for documentation, `refactor` for non-breaking code cleaning, `style` for code formatting, `tests` for unit or visual tests or `chore` for boring day-to-day tasks not affecting the actual code. See the [AngularJs Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)). For example: `docs: improve Dropdown usage example #123` for commit/pull request names and `docs/dropdown-improve-usage-example-123` for the branch name.
 3. **Describe everything you did and why in your commit and pull request body**.
-   Even if you already mentionned it in the related issue, please explain what you did and for which reasons. Give references to related issues, comments, test cases or any useful resources.
+   Even if you already mentioned it in the related issue, please explain what you did and for which reasons. Give references to related issues, comments, test cases or any useful resources.
 4. **Provide a clear and readable code**.
    Make sure that the code you changed is consistent across components and that anyone can easily understand its behavior. Split it in abstract functions, avoid code duplication and add comments when needed. You can open a "work-in-progress" pull request (prefix it with "[WIP]") if you need any help with that.
 5. **Make sure that everything works and tests pass**.
