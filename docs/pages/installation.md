@@ -206,7 +206,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
     <li>Install <a href="https://www.python.org/downloads/">python</a> (not recommended) and add it to your system environment variables</li>
   </ol>
  
-  <p>The first way is recommended if you've not installed pythong v2.7 yet as it doesn't affect your machine outside the node environment. In case you've already installed python v2.7 you may of course skip both ways and start using foundationc-cli immediately.</p>
+  <p>The first way is recommended if you've not installed python v2.7 yet as it doesn't affect your machine outside the node environment. In case you've already installed python v2.7 you may of course skip both ways and start using foundationc-cli immediately.</p>
 </div>
 
 ---
