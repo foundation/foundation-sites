@@ -6,6 +6,10 @@
 /// @type Boolean
 /// @group global
 $print-transparent-backgrounds: true !default;
+
+/// If `true`, displays next to all links their "href" when printed.
+/// @type Boolean
+/// @group global
 $print-hrefs: true !default;
 
 // sass-lint:disable-all
