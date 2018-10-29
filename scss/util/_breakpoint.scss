@@ -328,6 +328,28 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
+/// Return the best breakpoint to use according to the calling context. It returns in order:
+/// 1. the given `$value` argument if it is not null.
+/// 2. the global breakpoint context `$-zf-size` if it is not null (like if called inside then `breakpoint()` mixin)
+/// 3. the given `$default` argument.
+/// @access private
+///
+/// @param {Keyword} $value [null] - Breakpoint to use in priority if non-null.
+/// @param {Keyword} $default [null] - Breakpoint to use by default if no other value can be used.
+///
+/// @return {Keyword} The resolved breakpoint.
+@function -zf-current-breakpoint($value: null, $default: null) {
+  @if ($value != null) {
+    @return $value;
+  }
+  @else if (variable-exists(-zf-size) and type-of($-zf-size) != 'number') and $-zf-size != null {
+    @return $-zf-size;
+  }
+  @else {
+    @return $default;
+  }
+}
+
 $small-up: '';
 $small-only: '';
 

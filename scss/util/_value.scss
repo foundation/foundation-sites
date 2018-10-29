@@ -158,3 +158,14 @@
     @error '`#{$map}` is not a valid map';
   }
 }
+
+/// Convert the given `$val` to a Boolean. Empty values are considered as false.
+////
+/// @access private
+///
+/// @param {*} $val - Value to convert.
+///
+/// @returns {Boolean} Converted Boolean value.
+@function -zf-bool($val) {
+  @return $val != false and has-value($val);
+}
