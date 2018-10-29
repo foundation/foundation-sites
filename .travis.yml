@@ -2,9 +2,11 @@ language: node_js
 
 matrix:
   include:
-  - node_js: "lts/boron"
+  - node_js: "6"
     env: ZF_TRAVIS_COMMAND=test
-  - node_js: "lts/carbon"
+  - node_js: "8"
+    env: ZF_TRAVIS_COMMAND=test
+  - node_js: "10"
     env: ZF_TRAVIS_COMMAND=test
   - node_js: "stable"
     env: ZF_TRAVIS_COMMAND=test
