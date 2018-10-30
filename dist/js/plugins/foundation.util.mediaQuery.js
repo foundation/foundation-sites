@@ -216,6 +216,13 @@ var MediaQuery = {
    * @private
    */
   _init: function _init() {
+    // make sure the initialization is only done once when calling _init() several times
+    if (this.isInitialized === true) {
+      return;
+    } else {
+      this.isInitialized = true;
+    }
+
     var self = this;
     var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
@@ -226,6 +233,7 @@ var MediaQuery = {
     var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
+    self.queries = []; // reset
 
     for (var key in namedQueries) {
       if (namedQueries.hasOwnProperty(key)) {
@@ -239,6 +247,18 @@ var MediaQuery = {
     this.current = this._getCurrentSize();
 
     this._watcher();
+  },
+
+  /**
+   * Reinitializes the media query helper.
+   * Useful if your CSS breakpoint configuration has just been loaded or has changed since the initialization.
+   * @function
+   * @private
+   */
+  _reInit: function _reInit() {
+    this.isInitialized = false;
+
+    this._init();
   },
 
   /**

@@ -738,8 +738,11 @@ function (_Positionable) {
     value: function _events() {
       var _this = this;
 
+      var hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined';
       var $template = this.template;
-      var isFocus = false;
+      var isFocus = false; // `disableForTouch: Fully disable the tooltip on touch devices
+
+      if (hasTouch && this.options.disableForTouch) return;
 
       if (!this.options.disableHover) {
         this.$element.on('mouseenter.zf.tooltip', function (e) {
@@ -748,19 +751,23 @@ function (_Positionable) {
               _this.show();
             }, _this.options.hoverDelay);
           }
-        }).on('mouseleave.zf.tooltip', function (e) {
+        }).on('mouseleave.zf.tooltip', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function (e) {
           clearTimeout(_this.timeout);
 
           if (!isFocus || _this.isClick && !_this.options.clickOpen) {
             _this.hide();
           }
+        }));
+      }
+
+      if (hasTouch) {
+        this.$element.on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
+          _this.isActive ? _this.hide() : _this.show();
         });
       }
 
       if (this.options.clickOpen) {
         this.$element.on('mousedown.zf.tooltip', function (e) {
-          e.stopImmediatePropagation();
-
           if (_this.isClick) {//_this.hide();
             // _this.isClick = false;
           } else {
@@ -773,14 +780,7 @@ function (_Positionable) {
         });
       } else {
         this.$element.on('mousedown.zf.tooltip', function (e) {
-          e.stopImmediatePropagation();
           _this.isClick = true;
-        });
-      }
-
-      if (!this.options.disableForTouch) {
-        this.$element.on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
-          _this.isActive ? _this.hide() : _this.show();
         });
       }
 
@@ -845,8 +845,6 @@ function (_Positionable) {
 }(_foundation_positionable__WEBPACK_IMPORTED_MODULE_4__["Positionable"]);
 
 Tooltip.defaults = {
-  disableForTouch: false,
-
   /**
    * Time, in ms, before a tooltip should open on hover.
    * @option
@@ -878,6 +876,16 @@ Tooltip.defaults = {
    * @default false
    */
   disableHover: false,
+
+  /**
+   * Disable the tooltip for touch devices.
+   * This can be useful to make elements with a tooltip on it trigger their
+   * action on the first tap instead of displaying the tooltip.
+   * @option
+   * @type {booelan}
+   * @default false
+   */
+  disableForTouch: false,
 
   /**
    * Optional addtional classes to apply to the tooltip template on init.
@@ -1093,8 +1101,9 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function closeableListener(e) {
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable'); // Only close the first closable element. See https://git.io/zf-7833
+
     e.stopPropagation();
-    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
       _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {

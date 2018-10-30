@@ -100,7 +100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /*!***********************************************!*\
   !*** ./js/entries/plugins/foundation.core.js ***!
   \***********************************************/
-/*! exports provided: Foundation, Plugin, rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement */
+/*! exports provided: Foundation, Plugin, rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, ignoreMousedisappear */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onLoad", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["onLoad"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onLeaveElement", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["onLeaveElement"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ignoreMousedisappear", function() { return _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["ignoreMousedisappear"]; });
 
 // --- Foundation Core API ---
 // Initialize Foundation and add some utilities to its public API for backward compatibility.
@@ -176,7 +176,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
 
-var FOUNDATION_VERSION = '6.5.0-rc.4'; // Global Foundation object
+var FOUNDATION_VERSION = '6.4.3'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -330,16 +330,13 @@ var Foundation = {
       // Get the current plugin
       var plugin = _this._plugins[name]; // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
 
-      var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem).find('[data-' + name + ']').addBack('[data-' + name + ']'); // For each plugin found, initialize it
+      var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem).find('[data-' + name + ']').addBack('[data-' + name + ']').filter(function () {
+        return typeof jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data("zfPlugin") === 'undefined';
+      }); // For each plugin found, initialize it
 
       $elem.each(function () {
         var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-            opts = {}; // Don't double-dip on plugins
-
-        if ($el.data('zfPlugin')) {
-          console.warn("Tried to initialize " + name + " on an element that already has a Foundation plugin.");
-          return;
-        }
+            opts = {};
 
         if ($el.attr('data-options')) {
           var thing = $el.attr('data-options').split(';').forEach(function (e, i) {
@@ -630,7 +627,7 @@ function getPluginName(obj) {
 /*!*************************************!*\
   !*** ./js/foundation.core.utils.js ***!
   \*************************************/
-/*! exports provided: rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, onLeaveElement */
+/*! exports provided: rtl, GetYoDigits, RegExpEscape, transitionend, onLoad, ignoreMousedisappear */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -640,7 +637,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegExpEscape", function() { return RegExpEscape; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transitionend", function() { return transitionend; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLoad", function() { return onLoad; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onLeaveElement", function() { return onLeaveElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ignoreMousedisappear", function() { return ignoreMousedisappear; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -736,42 +733,64 @@ function onLoad($elem, handler) {
 
   return eventType;
 }
+/**
+ * Retuns an handler for the `mouseleave` that ignore disappeared mouses.
+ *
+ * If the mouse "disappeared" from the document (like when going on a browser UI element, See https://git.io/zf-11410),
+ * the event is ignored.
+ * - If the `ignoreLeaveWindow` is `true`, the event is ignored when the user actually left the window
+ *   (like by switching to an other window with [Alt]+[Tab]).
+ * - If the `ignoreReappear` is `true`, the event will be ignored when the mouse will reappear later on the document
+ *   outside of the element it left.
+ *
+ * @function
+ *
+ * @param {Function} [] handler - handler for the filtered `mouseleave` event to watch.
+ * @param {Object} [] options - object of options:
+ * - {Boolean} [false] ignoreLeaveWindow - also ignore when the user switched windows.
+ * - {Boolean} [false] ignoreReappear - also ignore when the mouse reappeared outside of the element it left.
+ * @returns {Function} - filtered handler to use to listen on the `mouseleave` event.
+ */
 
-function onLeaveElement($elem, handler) {
-  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      _ref$leaveWindow = _ref.leaveWindow,
-      leaveWindow = _ref$leaveWindow === void 0 ? true : _ref$leaveWindow;
 
-  var eventType = 'mouseleave.zf.util.onLeaveElement';
+function ignoreMousedisappear(handler) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$ignoreLeaveWindo = _ref.ignoreLeaveWindow,
+      ignoreLeaveWindow = _ref$ignoreLeaveWindo === void 0 ? false : _ref$ignoreLeaveWindo,
+      _ref$ignoreReappear = _ref.ignoreReappear,
+      ignoreReappear = _ref$ignoreReappear === void 0 ? false : _ref$ignoreReappear;
 
-  if ($elem && handler) {
-    $elem.on(eventType, function leaveHandler(e) {
-      for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        rest[_key - 1] = arguments[_key];
+  return function leaveEventHandler(eLeave) {
+    for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      rest[_key - 1] = arguments[_key];
+    }
+
+    var callback = handler.bind.apply(handler, [this, eLeave].concat(rest)); // The mouse left: call the given callback if the mouse entered elsewhere
+
+    if (eLeave.relatedTarget !== null) {
+      return callback();
+    } // Otherwise, check if the mouse actually left the window.
+    // In firefox if the user switched between windows, the window sill have the focus by the time
+    // the event is triggered. We have to debounce the event to test this case.
+
+
+    setTimeout(function leaveEventDebouncer() {
+      if (!ignoreLeaveWindow && document.hasFocus && !document.hasFocus()) {
+        return callback();
+      } // Otherwise, wait for the mouse to reeapear outside of the element,
+
+
+      if (!ignoreReappear) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).one('mouseenter', function reenterEventHandler(eReenter) {
+          if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(eLeave.currentTarget).has(eReenter.target).length) {
+            // Fill where the mouse finally entered.
+            eLeave.relatedTarget = eReenter.target;
+            callback();
+          }
+        });
       }
-
-      var _this = this;
-
-      setTimeout(function leaveEventDebouncer() {
-        if (e.relatedTarget === null && leaveWindow && document.hasFocus && document.hasFocus()) {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).one('mouseenter', function reenterHandler(reeenterE) {
-            if ($elem.has(reeenterE.target).length) {
-              return false;
-            }
-
-            ;
-            e.relatedTarget = reeenterE.target;
-            handler.call.apply(handler, [_this, e].concat(rest));
-          });
-          return false;
-        }
-
-        handler.call.apply(handler, [_this, e].concat(rest));
-      });
-    });
-  }
-
-  return eventType;
+    }, 0);
+  };
 }
 
 
@@ -861,6 +880,13 @@ var MediaQuery = {
    * @private
    */
   _init: function _init() {
+    // make sure the initialization is only done once when calling _init() several times
+    if (this.isInitialized === true) {
+      return;
+    } else {
+      this.isInitialized = true;
+    }
+
     var self = this;
     var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
@@ -871,6 +897,7 @@ var MediaQuery = {
     var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
+    self.queries = []; // reset
 
     for (var key in namedQueries) {
       if (namedQueries.hasOwnProperty(key)) {
@@ -884,6 +911,18 @@ var MediaQuery = {
     this.current = this._getCurrentSize();
 
     this._watcher();
+  },
+
+  /**
+   * Reinitializes the media query helper.
+   * Useful if your CSS breakpoint configuration has just been loaded or has changed since the initialization.
+   * @function
+   * @private
+   */
+  _reInit: function _reInit() {
+    this.isInitialized = false;
+
+    this._init();
   },
 
   /**

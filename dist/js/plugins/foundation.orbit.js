@@ -678,6 +678,9 @@ function (_Plugin) {
     }
     /**
     * Updates the active state of the bullets, if displayed.
+    * Move the descriptor of the current slide `[data-slide-active-label]` to the newly active bullet.
+    * If no `[data-slide-active-label]` is set, will move the exceeding `span` element.
+    *
     * @function
     * @private
     * @param {Number} idx - the index of the current slide.
@@ -686,9 +689,33 @@ function (_Plugin) {
   }, {
     key: "_updateBullets",
     value: function _updateBullets(idx) {
-      var $oldBullet = this.$element.find(".".concat(this.options.boxOfBullets)).find('.is-active').removeClass('is-active').blur(),
-          span = $oldBullet.find('span:last').detach(),
-          $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+      var $oldBullet = this.$bullets.filter('.is-active');
+      var $othersBullets = this.$bullets.not('.is-active');
+      var $newBullet = this.$bullets.eq(idx);
+      $oldBullet.removeClass('is-active').blur();
+      $newBullet.addClass('is-active'); // Find the descriptor for the current slide to move it to the new slide button
+
+      var activeStateDescriptor = $oldBullet.children('[data-slide-active-label]').last(); // If not explicitely given, search for the last "exceeding" span element (compared to others bullets).
+
+      if (!activeStateDescriptor.length) {
+        var spans = $oldBullet.children('span');
+        var spanCountInOthersBullets = $othersBullets.toArray().map(function (b) {
+          return jquery__WEBPACK_IMPORTED_MODULE_0___default()(b).children('span').length;
+        }); // If there is an exceeding span element, use it as current slide descriptor
+
+        if (spanCountInOthersBullets.every(function (count) {
+          return count < spans.length;
+        })) {
+          activeStateDescriptor = spans.last();
+          activeStateDescriptor.attr('data-slide-active-label', '');
+        }
+      } // Move the current slide descriptor to the new slide button
+
+
+      if (activeStateDescriptor.length) {
+        activeStateDescriptor.detach();
+        $newBullet.append(activeStateDescriptor);
+      }
     }
     /**
     * Destroys the carousel and hides the element.

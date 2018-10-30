@@ -408,7 +408,6 @@ function (_Plugin) {
 
       $elem.off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
         if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
-          e.stopImmediatePropagation();
           e.preventDefault();
         } // if(e.target !== e.currentTarget.firstElementChild){
         //   return false;
@@ -561,8 +560,6 @@ function (_Plugin) {
             if (preventDefault) {
               e.preventDefault();
             }
-
-            e.stopImmediatePropagation();
           }
         });
       }); // end keyboardAccess
@@ -604,8 +601,7 @@ function (_Plugin) {
 
       $elem.off('click.zf.drilldown');
       $elem.children('.js-drilldown-back').on('click.zf.drilldown', function (e) {
-        e.stopImmediatePropagation(); // console.log('mouseup on back');
-
+        // console.log('mouseup on back');
         _this._hide($elem); // If there is a parent submenu, call show
 
 
@@ -628,7 +624,6 @@ function (_Plugin) {
       var _this = this;
 
       this.$menuItems.not('.is-drilldown-submenu-parent').off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
-        // e.stopImmediatePropagation();
         setTimeout(function () {
           _this._hideAll();
         }, 0);

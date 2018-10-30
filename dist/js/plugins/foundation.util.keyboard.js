@@ -230,10 +230,11 @@ var Keyboard = {
         cmds,
         command,
         fn;
-    if (!commandList) return console.warn('Component not defined!');
+    if (!commandList) return console.warn('Component not defined!'); // Ignore the event if it was already handled
+
+    if (event.zfIsKeyHandled === true) return; // This component does not differentiate between ltr and rtl
 
     if (typeof commandList.ltr === 'undefined') {
-      // this component does not differentiate between ltr and rtl
       cmds = commandList; // use plain list
     } else {
       // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
@@ -241,19 +242,19 @@ var Keyboard = {
     }
 
     command = cmds[keyCode];
-    fn = functions[command];
+    fn = functions[command]; // Execute the handler if found
 
     if (fn && typeof fn === 'function') {
-      // execute function  if exists
-      var returnValue = fn.apply();
+      var returnValue = fn.apply(); // Mark the event as "handled" to prevent future handlings
+
+      event.zfIsKeyHandled = true; // Execute function when event was handled
 
       if (functions.handled || typeof functions.handled === 'function') {
-        // execute function when event was handled
         functions.handled(returnValue);
       }
     } else {
+      // Execute function when event was not handled
       if (functions.unhandled || typeof functions.unhandled === 'function') {
-        // execute function when event was not handled
         functions.unhandled();
       }
     }
