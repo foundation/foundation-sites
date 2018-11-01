@@ -68,16 +68,20 @@ class Dropdown extends Positionable {
       this.$parent = null;
     }
 
-    // Do not change the `labelledby` if it is defined
-    var labelledby = this.$element.attr('aria-labelledby')
-      || this.$currentAnchor.attr('id')
-      || GetYoDigits(6, 'dd-anchor');
+    // Set [aria-describedby] on the Dropdown if it is not set
+    if (typeof this.$element.attr('aria-describedby') === 'undefined') {
+      // Get the anchor ID or create one
+      if (typeof this.$currentAnchor.attr('id') === 'undefined') {
+        this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
+      };
+
+      this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
+    }
 
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': labelledby
     });
 
     super._init();
