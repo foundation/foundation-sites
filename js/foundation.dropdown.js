@@ -68,8 +68,8 @@ class Dropdown extends Positionable {
       this.$parent = null;
     }
 
-    // Set [aria-describedby] on the Dropdown if it is not set
-    if (typeof this.$element.attr('aria-describedby') === 'undefined') {
+    // Set [aria-labelledby] on the Dropdown if it is not set
+    if (typeof this.$element.attr('aria-labelledby') === 'undefined') {
       // Get the anchor ID or create one
       if (typeof this.$currentAnchor.attr('id') === 'undefined') {
         this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
