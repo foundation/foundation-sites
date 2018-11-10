@@ -272,7 +272,7 @@ class AccordionMenu extends Plugin {
       _this.$element.trigger('up.zf.accordionMenu', [$target]);
     });
 
-    var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
+    var $menus = $target.find('[data-submenu]').slideUp(0).addBack().removeClass('is-active').attr('aria-hidden', true);
 
     if(this.options.submenuToggle) {
       $menus.prev('.submenu-toggle').attr('aria-expanded', false);
