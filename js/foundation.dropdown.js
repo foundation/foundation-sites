@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.core.utils';
+import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
@@ -157,24 +157,24 @@ class Dropdown extends Positionable {
             _this.$anchors.data('hover', true);
           }, _this.options.hoverDelay);
         }
-      }).on('mouseleave.zf.dropdown', function(){
+      }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
         clearTimeout(_this.timeout);
         _this.timeout = setTimeout(function(){
           _this.close();
           _this.$anchors.data('hover', false);
         }, _this.options.hoverDelay);
-      });
+      }));
       if(this.options.hoverPane){
         this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
             .on('mouseenter.zf.dropdown', function(){
               clearTimeout(_this.timeout);
-            }).on('mouseleave.zf.dropdown', function(){
+            }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
               clearTimeout(_this.timeout);
               _this.timeout = setTimeout(function(){
                 _this.close();
                 _this.$anchors.data('hover', false);
               }, _this.options.hoverDelay);
-            });
+            }));
       }
     }
     this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {

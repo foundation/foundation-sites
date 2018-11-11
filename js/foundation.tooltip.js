@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 
-import { GetYoDigits } from './foundation.core.utils';
+import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';
 import { Positionable } from './foundation.positionable';
@@ -205,12 +205,12 @@ class Tooltip extends Positionable {
           }, _this.options.hoverDelay);
         }
       })
-      .on('mouseleave.zf.tooltip', function(e) {
+      .on('mouseleave.zf.tooltip', ignoreMousedisappear(function(e) {
         clearTimeout(_this.timeout);
         if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
         }
-      });
+      }));
     }
 
     if (this.options.clickOpen) {
