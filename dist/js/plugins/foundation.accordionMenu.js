@@ -432,6 +432,8 @@ function (_Plugin) {
             if (preventDefault) {
               e.preventDefault();
             }
+
+            e.stopImmediatePropagation();
           }
         });
       }); //.attr('tabindex', 0);
@@ -482,7 +484,7 @@ function (_Plugin) {
   }, {
     key: "down",
     value: function down($target) {
-      var _this = this;
+      var _this2 = this;
 
       if (!this.options.multiOpen) {
         this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
@@ -502,12 +504,12 @@ function (_Plugin) {
         });
       }
 
-      $target.slideDown(_this.options.slideSpeed, function () {
+      $target.slideDown(this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done opening.
          * @event AccordionMenu#down
          */
-        _this.$element.trigger('down.zf.accordionMenu', [$target]);
+        _this2.$element.trigger('down.zf.accordionMenu', [$target]);
       });
     }
     /**
@@ -519,22 +521,26 @@ function (_Plugin) {
   }, {
     key: "up",
     value: function up($target) {
-      var _this = this;
+      var _this3 = this;
 
-      $target.slideUp(_this.options.slideSpeed, function () {
+      var $submenus = $target.find('[data-submenu]');
+      var $allmenus = $target.add($submenus);
+      $submenus.slideUp(0);
+      $allmenus.removeClass('is-active').attr('aria-hidden', true);
+
+      if (this.options.submenuToggle) {
+        $allmenus.prev('.submenu-toggle').attr('aria-expanded', false);
+      } else {
+        $allmenus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
+      }
+
+      $target.slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done collapsing up.
          * @event AccordionMenu#up
          */
-        _this.$element.trigger('up.zf.accordionMenu', [$target]);
+        _this3.$element.trigger('up.zf.accordionMenu', [$target]);
       });
-      var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
-
-      if (this.options.submenuToggle) {
-        $menus.prev('.submenu-toggle').attr('aria-expanded', false);
-      } else {
-        $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
-      }
     }
     /**
      * Destroys an instance of accordion menu.

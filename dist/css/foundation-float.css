@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.5.0
+ * Version 6.5.1
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -302,6 +302,9 @@ input[type='search'] {
 ::-webkit-input-placeholder {
   color: #cacaca; }
 
+:-ms-input-placeholder {
+  color: #cacaca; }
+
 ::-ms-input-placeholder {
   color: #cacaca; }
 
@@ -470,6 +473,8 @@ select {
   border-color: #cc4b37;
   background-color: #f9ecea; }
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
+    color: #cc4b37; }
+  .is-invalid-input:not(:focus):-ms-input-placeholder {
     color: #cc4b37; }
   .is-invalid-input:not(:focus)::-ms-input-placeholder {
     color: #cc4b37; }
@@ -1844,17 +1849,17 @@ ul.no-bullet, ol.no-bullet {
     display: inline-block;
     float: right;
     margin-left: 1em; }
-  .button.dropdown.hollow::after {
+  .button.dropdown.hollow::after, .button.dropdown.clear::after {
     border-top-color: #1779ba; }
-  .button.dropdown.hollow.primary::after {
+  .button.dropdown.hollow.primary::after, .button.dropdown.clear.primary::after {
     border-top-color: #1779ba; }
-  .button.dropdown.hollow.secondary::after {
+  .button.dropdown.hollow.secondary::after, .button.dropdown.clear.secondary::after {
     border-top-color: #767676; }
-  .button.dropdown.hollow.success::after {
+  .button.dropdown.hollow.success::after, .button.dropdown.clear.success::after {
     border-top-color: #3adb76; }
-  .button.dropdown.hollow.warning::after {
+  .button.dropdown.hollow.warning::after, .button.dropdown.clear.warning::after {
     border-top-color: #ffae00; }
-  .button.dropdown.hollow.alert::after {
+  .button.dropdown.hollow.alert::after, .button.dropdown.clear.alert::after {
     border-top-color: #cc4b37; }
   .button.arrow-only::after {
     top: -0.1em;

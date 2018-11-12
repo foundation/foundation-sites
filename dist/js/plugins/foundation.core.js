@@ -176,7 +176,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
 
-var FOUNDATION_VERSION = '6.4.3'; // Global Foundation object
+var FOUNDATION_VERSION = '6.5.1'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -330,13 +330,16 @@ var Foundation = {
       // Get the current plugin
       var plugin = _this._plugins[name]; // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
 
-      var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem).find('[data-' + name + ']').addBack('[data-' + name + ']').filter(function () {
-        return typeof jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data("zfPlugin") === 'undefined';
-      }); // For each plugin found, initialize it
+      var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(elem).find('[data-' + name + ']').addBack('[data-' + name + ']'); // For each plugin found, initialize it
 
       $elem.each(function () {
         var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-            opts = {};
+            opts = {}; // Don't double-dip on plugins
+
+        if ($el.data('zfPlugin')) {
+          console.warn("Tried to initialize " + name + " on an element that already has a Foundation plugin.");
+          return;
+        }
 
         if ($el.attr('data-options')) {
           var thing = $el.attr('data-options').split(';').forEach(function (e, i) {
@@ -880,13 +883,6 @@ var MediaQuery = {
    * @private
    */
   _init: function _init() {
-    // make sure the initialization is only done once when calling _init() several times
-    if (this.isInitialized === true) {
-      return;
-    } else {
-      this.isInitialized = true;
-    }
-
     var self = this;
     var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
@@ -897,7 +893,6 @@ var MediaQuery = {
     var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
-    self.queries = []; // reset
 
     for (var key in namedQueries) {
       if (namedQueries.hasOwnProperty(key)) {
@@ -911,18 +906,6 @@ var MediaQuery = {
     this.current = this._getCurrentSize();
 
     this._watcher();
-  },
-
-  /**
-   * Reinitializes the media query helper.
-   * Useful if your CSS breakpoint configuration has just been loaded or has changed since the initialization.
-   * @function
-   * @private
-   */
-  _reInit: function _reInit() {
-    this.isInitialized = false;
-
-    this._init();
   },
 
   /**

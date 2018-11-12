@@ -237,7 +237,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
- * @requires foundation.util.touch
  * @requires foundation.util.triggers
  */
 
@@ -267,9 +266,8 @@ function (_Positionable) {
       this.$element = element;
       this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Dropdown.defaults, this.$element.data(), options);
       this.className = 'Dropdown'; // ie9 back compat
-      // Touch and Triggers init are idempotent, just need to make sure they are initialized
+      // Triggers init is idempotent, just need to make sure it is initialized
 
-      Touch.init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
       _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 
       this._init();
@@ -305,15 +303,23 @@ function (_Positionable) {
         this.$parent = this.$element.parents('.' + this.options.parentClass);
       } else {
         this.$parent = null;
-      } // Do not change the `labelledby` if it is defined
+      } // Set [aria-labelledby] on the Dropdown if it is not set
 
 
-      var labelledby = this.$element.attr('aria-labelledby') || this.$currentAnchor.attr('id') || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'dd-anchor');
+      if (typeof this.$element.attr('aria-labelledby') === 'undefined') {
+        // Get the anchor ID or create one
+        if (typeof this.$currentAnchor.attr('id') === 'undefined') {
+          this.$currentAnchor.attr('id', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'dd-anchor'));
+        }
+
+        ;
+        this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
+      }
+
       this.$element.attr({
         'aria-hidden': 'true',
         'data-yeti-box': $id,
-        'data-resize': $id,
-        'aria-labelledby': labelledby
+        'data-resize': $id
       });
 
       _get(_getPrototypeOf(Dropdown.prototype), "_init", this).call(this);
@@ -382,8 +388,7 @@ function (_Positionable) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this,
-          hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined';
+      var _this = this;
 
       this.$element.on({
         'open.zf.trigger': this.open.bind(this),
@@ -391,17 +396,8 @@ function (_Positionable) {
         'toggle.zf.trigger': this.toggle.bind(this),
         'resizeme.zf.trigger': this._setPosition.bind(this)
       });
-      this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function (e) {
+      this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function () {
         _this._setCurrentAnchor(this);
-
-        if (_this.options.forceFollow === false) {
-          // if forceFollow false, always prevent default action
-          e.preventDefault();
-        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
-          // if forceFollow true and hover option true, only prevent default action on 1st click
-          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
-          e.preventDefault();
-        }
       });
 
       if (this.options.hover) {
@@ -474,7 +470,7 @@ function (_Positionable) {
       var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).not(this.$element),
           _this = this;
 
-      $body.off('click.zf.dropdown tap.zf.dropdown').on('click.zf.dropdown tap.zf.dropdown', function (e) {
+      $body.off('click.zf.dropdown').on('click.zf.dropdown', function (e) {
         if (_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
           return;
         }
@@ -485,7 +481,7 @@ function (_Positionable) {
 
         _this.close();
 
-        $body.off('click.zf.dropdown tap.zf.dropdown');
+        $body.off('click.zf.dropdown');
       });
     }
     /**
@@ -593,7 +589,7 @@ function (_Positionable) {
     value: function _destroy() {
       this.$element.off('.zf.trigger').hide();
       this.$anchors.off('.zf.dropdown');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown tap.zf.dropdown');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdown');
     }
   }]);
 
@@ -705,15 +701,7 @@ Dropdown.defaults = {
    * @type {boolean}
    * @default false
    */
-  closeOnClick: false,
-
-  /**
-   * If true the default action of the toggle (e.g. follow a link with href) gets executed on click. If hover option is also true the default action gets prevented on first click for mobile / touch devices and executed on second click.
-   * @option
-   * @type {boolean}
-   * @default true
-   */
-  forceFollow: true
+  closeOnClick: false
 };
 
 
@@ -1083,9 +1071,8 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function closeableListener(e) {
-    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable'); // Only close the first closable element. See https://git.io/zf-7833
-
     e.stopPropagation();
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
       _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {
