@@ -16,7 +16,9 @@ $closebutton-z-index: 10 !default;
 
 /// Button size to use as default
 /// @type String
-/// @see $closebutton-size, $closebutton-offset-horizontal, $closebutton-offset-vertical
+/// @see $closebutton-size
+/// @see $closebutton-offset-horizontal
+/// @see $closebutton-offset-vertical
 $closebutton-default-size: medium !default;
 
 /// Right (or left) offset(s) for a close button.
