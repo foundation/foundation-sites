@@ -381,7 +381,7 @@ $button-responsive-expanded: false !default;
         }
       }
 
-      &.hollow {
+      &.hollow, &.clear {
         &::after {
           border-top-color: $button-background;
         }

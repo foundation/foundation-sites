@@ -1205,12 +1205,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-06ioOzGapneTZisT52HHkRQiMG4=
+      tarball: 'http://registry.npmjs.org/ansi-escapes/-/ansi-escapes-1.4.0.tgz'
   /ansi-escapes/3.1.0:
     dev: true
     engines:
       node: '>=4'
     resolution:
       integrity: sha512-UgAb8H9D41AQnu/PbWlCofQVcnV4Gs2bBJi9eZPxfU/hgglFh3SMDMENRIqdr7H6XFnXdoknctFByVsCOotTVw==
+      tarball: 'http://registry.npmjs.org/ansi-escapes/-/ansi-escapes-3.1.0.tgz'
   /ansi-gray/0.1.1:
     dependencies:
       ansi-wrap: 0.1.0
@@ -2061,6 +2063,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Dph0MzuH+rTQzGPNT9fAnrPmMmjKfST6trxJeK7NQuHRaVw24VzPRWTmg9MpcwOVQZO0E1FBICUlFeNaKPIfHA==
+      tarball: 'http://registry.npmjs.org/cacache/-/cacache-10.0.4.tgz'
   /cache-base/1.0.1:
     dependencies:
       collection-visit: 1.0.0
@@ -2213,6 +2216,7 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-D0MEIwjddGMyvZgWSq70pPRboWc=
+      tarball: 'http://registry.npmjs.org/chai-jquery/-/chai-jquery-2.0.0.tgz'
   /chai/4.2.0:
     dependencies:
       assertion-error: 1.1.0
@@ -2581,6 +2585,7 @@ packages:
       node: '>=0.1.90'
     resolution:
       integrity: sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=
+      tarball: 'http://registry.npmjs.org/colors/-/colors-1.0.3.tgz'
   /colors/1.3.2:
     dev: true
     engines:
@@ -2714,6 +2719,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-suQnFSqCxRwyBxY68pYTsFkG0taIdinHLNEAX5ivtw8bCRnIgnpvcHmlR/yjUyZIrNPYAoXlY1WiEKWgSE4BNg==
+      tarball: 'http://registry.npmjs.org/conventional-changelog-angular/-/conventional-changelog-angular-1.6.6.tgz'
   /conventional-commit-types/2.2.0:
     dev: true
     resolution:
@@ -2731,6 +2737,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-BoMaddIEJ6B4QVMSDu9IkVImlGOSGA1I2BQyOZHeLQ6qVOJLcLKn97+fL6dGbzWEiqDzfH4OkcveULmeq2MHFQ==
+      tarball: 'http://registry.npmjs.org/conventional-commits-parser/-/conventional-commits-parser-2.1.7.tgz'
   /convert-source-map/1.6.0:
     dependencies:
       safe-buffer: 5.1.2
@@ -2844,9 +2851,11 @@ packages:
     dependencies:
       lru-cache: 4.1.3
       which: 1.3.1
+    deprecated: 'cross-spawn no longer requires a build toolchain, use it instead'
     dev: true
     resolution:
       integrity: sha1-hF/wwINKPe2dFg2sptOQkGuyiMw=
+      tarball: 'http://registry.npmjs.org/cross-spawn-async/-/cross-spawn-async-2.2.5.tgz'
   /cross-spawn/2.2.3:
     dependencies:
       cross-spawn-async: 2.2.5
@@ -3008,6 +3017,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-dUu1v+VUUdpppYuU1F9MWwRi1Y8=
+      tarball: 'http://registry.npmjs.org/d/-/d-1.0.0.tgz'
   /dargs/4.1.0:
     dependencies:
       number-is-nan: 1.0.1
@@ -3266,6 +3276,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-N53Ocw9hZvds76TmcHoVmwLFpvo=
+      tarball: 'http://registry.npmjs.org/doctrine/-/doctrine-1.5.0.tgz'
   /doctrine/2.1.0:
     dependencies:
       esutils: 2.0.2
@@ -3498,6 +3509,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-y5AbkytWeM4jQr7m/koQLc5AxpRKC1hEVUb/s1FUAWEJq5AzJJ4NLvzuKPuxtDi5Mq755WuDvZ6Iv2rXj4PTzw==
+      tarball: 'http://registry.npmjs.org/engine.io-client/-/engine.io-client-3.2.1.tgz'
   /engine.io-parser/2.1.2:
     dependencies:
       after: 0.8.2
@@ -3519,6 +3531,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-mRbgmAtQ4GAlKwuPnnAvXXwdPhEx+jkc0OBCLrXuD/CRvwNK3AxRSnqK4FSqmAMRRHryVJP8TopOvmEaA64fKw==
+      tarball: 'http://registry.npmjs.org/engine.io/-/engine.io-3.2.0.tgz'
   /enhanced-resolve/4.1.0:
     dependencies:
       graceful-fs: 4.1.11
@@ -4610,6 +4623,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-svsK26tQ8vEKnMshTDatSIQSMDdz8CxIIqKsvPqbtV23Etmw6VNaFAitu8zwZ0VrOne7FztwPyRLxK7/DIUTQg==
+      tarball: 'http://registry.npmjs.org/git-raw-commits/-/git-raw-commits-1.3.6.tgz'
   /glob-all/3.1.0:
     dependencies:
       glob: 7.1.3
@@ -4905,6 +4919,7 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha1-FaSAaldUfLLS2/J/QuiajDRRs2Q=
+      tarball: 'http://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz'
   /graceful-fs/3.0.11:
     dependencies:
       natives: 1.1.6
@@ -4914,12 +4929,14 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha1-dhPHeKGv6mLyXGMKCG1/Osu92Bg=
+      tarball: 'http://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.11.tgz'
   /graceful-fs/4.1.11:
     dev: true
     engines:
       node: '>=0.4.0'
     resolution:
       integrity: sha1-Dovf5NHduIVNZOBOp8AOKgJuVlg=
+      tarball: 'http://registry.npmjs.org/graceful-fs/-/graceful-fs-4.1.11.tgz'
   /growl/1.10.5:
     dev: true
     engines:
@@ -6343,6 +6360,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
+      tarball: 'http://registry.npmjs.org/jsesc/-/jsesc-0.5.0.tgz'
   /jsesc/2.5.1:
     dev: true
     engines:
@@ -6458,6 +6476,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-edk9LTM2PW/dKXCzNdkUGtWR15s=
+      tarball: 'http://registry.npmjs.org/kew/-/kew-0.7.0.tgz'
   /kind-of/1.1.0:
     dev: true
     engines:
@@ -7701,6 +7720,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-yobR/ogoFpsBICCOPchCS524NCw=
+      tarball: 'http://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz'
   /nice-try/1.0.5:
     dev: true
     resolution:
@@ -8135,6 +8155,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-/7xJiDNuDoM94MFox+8VISGqf7M=
+      tarball: 'http://registry.npmjs.org/os-homedir/-/os-homedir-1.0.2.tgz'
   /os-locale/1.4.0:
     dependencies:
       lcid: 1.0.0
@@ -8176,6 +8197,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
+      tarball: 'http://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz'
   /osenv/0.1.5:
     dependencies:
       os-homedir: 1.0.2
@@ -8422,6 +8444,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=
+      tarball: 'http://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz'
   /path-is-inside/1.0.2:
     dev: true
     resolution:
@@ -9239,6 +9262,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Tg1W1slmL9MeQwEcS5WqSZVUIdM=
+      tarball: 'http://registry.npmjs.org/require-uncached/-/require-uncached-1.0.3.tgz'
   /requires-port/1.0.0:
     dev: true
     resolution:
@@ -9901,6 +9925,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-FYiBx7rc/KORMJlgsXysflWx/RIvtqZbyGLlHZvjfmPTPeuD/I8MaW7cfFrj5tRltICJdgwflhfZ3NVVbVLFQA==
+      tarball: 'http://registry.npmjs.org/socket.io-parser/-/socket.io-parser-3.2.0.tgz'
   /socket.io/2.1.1:
     dependencies:
       debug: 3.1.0
@@ -10437,6 +10462,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-jk0qJWwOIYXGsYrWlK7JaLg8sdE=
+      tarball: 'http://registry.npmjs.org/tar/-/tar-2.2.1.tgz'
   /temp-path/1.0.0:
     dev: true
     resolution:
@@ -10527,6 +10553,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-2/WGYDEVHsg1K7bE22SiKSqEC5s=
+      tarball: 'http://registry.npmjs.org/through2/-/through2-0.4.2.tgz'
   /through2/0.6.5:
     dependencies:
       readable-stream: 1.0.34
@@ -10534,6 +10561,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-QaucZ7KdVyCQcUEOHXp6lozTrUg=
+      tarball: 'http://registry.npmjs.org/through2/-/through2-0.6.5.tgz'
   /through2/1.1.1:
     dependencies:
       readable-stream: 1.1.14
@@ -10541,6 +10569,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-CEfLxESfNAVXTb3M2buEG4OsNUU=
+      tarball: 'http://registry.npmjs.org/through2/-/through2-1.1.1.tgz'
   /through2/2.0.1:
     dependencies:
       readable-stream: 2.0.6
@@ -10548,6 +10577,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-OE51MU1J8y3hLuu4E2uOtrXVnak=
+      tarball: 'http://registry.npmjs.org/through2/-/through2-2.0.1.tgz'
   /through2/2.0.3:
     dependencies:
       readable-stream: 2.3.6
@@ -10555,6 +10585,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-AARWmzfHx0ujnEPzzteNGtlBQL4=
+      tarball: 'http://registry.npmjs.org/through2/-/through2-2.0.3.tgz'
   /time-stamp/1.1.0:
     dev: true
     engines:
@@ -11045,6 +11076,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-evsa/lCAUkZInj23/g7TeTNqwPk=
+      tarball: 'http://registry.npmjs.org/util/-/util-0.10.3.tgz'
   /util/0.10.4:
     dependencies:
       inherits: 2.0.3

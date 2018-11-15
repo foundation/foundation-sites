@@ -127,7 +127,7 @@ Small grids expand to large screens easier than large grids cram into small scre
 
 ```html
 <div class="row">
-  <div class="columns small-2">2 <span class=hide-for-small-only</span></div>
+  <div class="columns small-2">2</div>
   <div class="columns small-10">10</div>
 </div>
 <div class="row">

@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
-import { rtl as Rtl, onLeaveElement } from './foundation.core.utils';
+import { rtl as Rtl, ignoreMousedisappear } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
@@ -144,9 +144,7 @@ class DropdownMenu extends Plugin {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      });
-
-      onLeaveElement(this.$menuItems, function (e) {
+      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -157,7 +155,7 @@ class DropdownMenu extends Plugin {
             _this._hide($elem);
           }, _this.options.closingTime));
         }
-      });
+      }));
     }
     this.$menuItems.on('keydown.zf.dropdownmenu', function(e) {
       var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),

@@ -208,40 +208,64 @@ function onLoad($elem, handler) {
 
   return eventType;
 }
+/**
+ * Retuns an handler for the `mouseleave` that ignore disappeared mouses.
+ *
+ * If the mouse "disappeared" from the document (like when going on a browser UI element, See https://git.io/zf-11410),
+ * the event is ignored.
+ * - If the `ignoreLeaveWindow` is `true`, the event is ignored when the user actually left the window
+ *   (like by switching to an other window with [Alt]+[Tab]).
+ * - If the `ignoreReappear` is `true`, the event will be ignored when the mouse will reappear later on the document
+ *   outside of the element it left.
+ *
+ * @function
+ *
+ * @param {Function} [] handler - handler for the filtered `mouseleave` event to watch.
+ * @param {Object} [] options - object of options:
+ * - {Boolean} [false] ignoreLeaveWindow - also ignore when the user switched windows.
+ * - {Boolean} [false] ignoreReappear - also ignore when the mouse reappeared outside of the element it left.
+ * @returns {Function} - filtered handler to use to listen on the `mouseleave` event.
+ */
 
-function onLeaveElement($elem, handler) {
-  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      _ref$leaveWindow = _ref.leaveWindow,
-      leaveWindow = _ref$leaveWindow === void 0 ? true : _ref$leaveWindow;
 
-  var eventType = 'mouseleave.zf.util.onLeaveElement';
+function ignoreMousedisappear(handler) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$ignoreLeaveWindo = _ref.ignoreLeaveWindow,
+      ignoreLeaveWindow = _ref$ignoreLeaveWindo === void 0 ? false : _ref$ignoreLeaveWindo,
+      _ref$ignoreReappear = _ref.ignoreReappear,
+      ignoreReappear = _ref$ignoreReappear === void 0 ? false : _ref$ignoreReappear;
 
-  if ($elem && handler) {
-    $elem.on(eventType, function leaveHandler(e) {
-      for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        rest[_key - 1] = arguments[_key];
+  return function leaveEventHandler(eLeave) {
+    for (var _len = arguments.length, rest = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      rest[_key - 1] = arguments[_key];
+    }
+
+    var callback = handler.bind.apply(handler, [this, eLeave].concat(rest)); // The mouse left: call the given callback if the mouse entered elsewhere
+
+    if (eLeave.relatedTarget !== null) {
+      return callback();
+    } // Otherwise, check if the mouse actually left the window.
+    // In firefox if the user switched between windows, the window sill have the focus by the time
+    // the event is triggered. We have to debounce the event to test this case.
+
+
+    setTimeout(function leaveEventDebouncer() {
+      if (!ignoreLeaveWindow && document.hasFocus && !document.hasFocus()) {
+        return callback();
+      } // Otherwise, wait for the mouse to reeapear outside of the element,
+
+
+      if (!ignoreReappear) {
+        $(document).one('mouseenter', function reenterEventHandler(eReenter) {
+          if (!$(eLeave.currentTarget).has(eReenter.target).length) {
+            // Fill where the mouse finally entered.
+            eLeave.relatedTarget = eReenter.target;
+            callback();
+          }
+        });
       }
-
-      var _this = this;
-
-      setTimeout(function leaveEventDebouncer() {
-        if (e.relatedTarget === null && leaveWindow && document.hasFocus && document.hasFocus()) {
-          $(document).one('mouseenter', function reenterHandler(reeenterE) {
-            if ($elem.has(reeenterE.target).length) {
-              return false;
-            }
-            e.relatedTarget = reeenterE.target;
-            handler.call.apply(handler, [_this, e].concat(rest));
-          });
-          return false;
-        }
-
-        handler.call.apply(handler, [_this, e].concat(rest));
-      });
-    });
-  }
-
-  return eventType;
+    }, 0);
+  };
 }
 
 var foundation_core_utils = /*#__PURE__*/Object.freeze({
@@ -250,7 +274,7 @@ var foundation_core_utils = /*#__PURE__*/Object.freeze({
   RegExpEscape: RegExpEscape,
   transitionend: transitionend,
   onLoad: onLoad,
-  onLeaveElement: onLeaveElement
+  ignoreMousedisappear: ignoreMousedisappear
 });
 
 // Authors & copyright(c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
@@ -468,7 +492,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.5.0'; // Global Foundation object
+var FOUNDATION_VERSION = '6.5.1'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -3405,7 +3429,7 @@ function (_Plugin) {
   }, {
     key: "down",
     value: function down($target) {
-      var _this = this;
+      var _this2 = this;
 
       if (!this.options.multiOpen) {
         this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
@@ -3425,12 +3449,12 @@ function (_Plugin) {
         });
       }
 
-      $target.slideDown(_this.options.slideSpeed, function () {
+      $target.slideDown(this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done opening.
          * @event AccordionMenu#down
          */
-        _this.$element.trigger('down.zf.accordionMenu', [$target]);
+        _this2.$element.trigger('down.zf.accordionMenu', [$target]);
       });
     }
     /**
@@ -3442,22 +3466,26 @@ function (_Plugin) {
   }, {
     key: "up",
     value: function up($target) {
-      var _this = this;
+      var _this3 = this;
 
-      $target.slideUp(_this.options.slideSpeed, function () {
+      var $submenus = $target.find('[data-submenu]');
+      var $allmenus = $target.add($submenus);
+      $submenus.slideUp(0);
+      $allmenus.removeClass('is-active').attr('aria-hidden', true);
+
+      if (this.options.submenuToggle) {
+        $allmenus.prev('.submenu-toggle').attr('aria-expanded', false);
+      } else {
+        $allmenus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
+      }
+
+      $target.slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done collapsing up.
          * @event AccordionMenu#up
          */
-        _this.$element.trigger('up.zf.accordionMenu', [$target]);
+        _this3.$element.trigger('up.zf.accordionMenu', [$target]);
       });
-      var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
-
-      if (this.options.submenuToggle) {
-        $menus.prev('.submenu-toggle').attr('aria-expanded', false);
-      } else {
-        $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
-      }
     }
     /**
      * Destroys an instance of accordion menu.
@@ -4559,15 +4587,21 @@ function (_Positionable) {
         this.$parent = this.$element.parents('.' + this.options.parentClass);
       } else {
         this.$parent = null;
-      } // Do not change the `labelledby` if it is defined
+      } // Set [aria-labelledby] on the Dropdown if it is not set
 
 
-      var labelledby = this.$element.attr('aria-labelledby') || this.$currentAnchor.attr('id') || GetYoDigits(6, 'dd-anchor');
+      if (typeof this.$element.attr('aria-labelledby') === 'undefined') {
+        // Get the anchor ID or create one
+        if (typeof this.$currentAnchor.attr('id') === 'undefined') {
+          this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
+        }
+        this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
+      }
+
       this.$element.attr({
         'aria-hidden': 'true',
         'data-yeti-box': $id,
-        'data-resize': $id,
-        'aria-labelledby': labelledby
+        'data-resize': $id
       });
 
       _get(_getPrototypeOf(Dropdown.prototype), "_init", this).call(this);
@@ -4662,26 +4696,26 @@ function (_Positionable) {
               _this.$anchors.data('hover', true);
             }, _this.options.hoverDelay);
           }
-        }).on('mouseleave.zf.dropdown', function () {
+        }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function () {
           clearTimeout(_this.timeout);
           _this.timeout = setTimeout(function () {
             _this.close();
 
             _this.$anchors.data('hover', false);
           }, _this.options.hoverDelay);
-        });
+        }));
 
         if (this.options.hoverPane) {
           this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
             clearTimeout(_this.timeout);
-          }).on('mouseleave.zf.dropdown', function () {
+          }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function () {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {
               _this.close();
 
               _this.$anchors.data('hover', false);
             }, _this.options.hoverDelay);
-          });
+          }));
         }
       }
 
@@ -5113,8 +5147,7 @@ function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        });
-        onLeaveElement(this.$menuItems, function (e) {
+        }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
           var $elem = $(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -5128,7 +5161,7 @@ function (_Plugin) {
               _this._hide($elem);
             }, _this.options.closingTime));
           }
-        });
+        }));
       }
 
       this.$menuItems.on('keydown.zf.dropdownmenu', function (e) {
@@ -11150,13 +11183,13 @@ function (_Positionable) {
               _this.show();
             }, _this.options.hoverDelay);
           }
-        }).on('mouseleave.zf.tooltip', function (e) {
+        }).on('mouseleave.zf.tooltip', ignoreMousedisappear(function (e) {
           clearTimeout(_this.timeout);
 
           if (!isFocus || _this.isClick && !_this.options.clickOpen) {
             _this.hide();
           }
-        });
+        }));
       }
 
       if (this.options.clickOpen) {
