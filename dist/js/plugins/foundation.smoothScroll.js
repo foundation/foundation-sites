@@ -191,7 +191,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 /**
  * SmoothScroll module.
- * @module foundation.smoothScroll
+ * @module foundation.smooth-scroll
  */
 
 var SmoothScroll =
