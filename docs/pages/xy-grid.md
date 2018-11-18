@@ -402,7 +402,7 @@ This is especially powerful as you can specify where you want the gutters, like 
 ### Cells
 
 Use the `xy-cell()` mixin to create a cell. There are a number of ways to define the size of a cell.
-`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs).
+`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 
 ```scss
 .main-content {
@@ -427,6 +427,24 @@ The cell size calculator can also be accessed as a function. This gives you the 
   width: xy-cell-size(1 of 7);
 }
 ```
+
+A cell is composed of 3 parts: the base, the size and the gutters. In order to avoid duplicating properties, you can choose the parts to generate with the `$output` option, or call the XY cell mixins dedicated to each part individually.
+
+```scss
+.my-cell {
+  @include xy-cell(12, $gutters: none);
+}
+.my-cell.half-size {
+  @include xy-cell(6, $gutters: none, $output: (size));
+  // Or @include xy-cell-size(6);
+}
+```
+
+<div class="callout warn">
+  XY cell with margin gutters (by default) has gutters defined within their width/height. For this reason, you need to generate the gutter part of cells with margin gutters even when you only want to change the size.
+</div>
+
+Refer to the Sass documentation of the [xy-cell](#xy-cell) mixin for the full list of arguments. See also [xy-cell-base](#xy-cell-base), [xy-cell-size](#xy-cell-size) and [xy-cellgutters](#xy-cellgutters).
 
 ---
 

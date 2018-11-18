@@ -191,16 +191,37 @@ describe('Off Canvas', function() {
       plugin.open();
     });
 
+    it('fires close.zf.offCanvas event', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+      $html.one('opened.zf.offCanvas', function() {
+        $html.one('close.zf.offCanvas', function() {
+          done();
+        });
+
+        plugin.close();
+      });
+
+      // Open it first
+      plugin.open();
+    });
+
     it('fires closed.zf.offCanvas event', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
       $html.one('opened.zf.offCanvas', function() {
-        $html.one('closed.zf.offCanvas', function() {
-          done();
+        $html.one('close.zf.offCanvas', function() {
+          plugin.$element.one(Foundation.transitionend(plugin.$element), function() {
+            $html.one('closed.zf.offCanvas', function () {
+              done();
+            });
+          });
         });
 
         plugin.close();
+        // fake transitionend for console tests
+        plugin.$element.triggerHandler(Foundation.transitionend(plugin.$element));
       });
 
       // Open it first

@@ -10,6 +10,10 @@
 /// @type List
 $closebutton-position: right top !default;
 
+/// Default z-index for a close button.
+/// @type Number
+$closebutton-z-index: 10 !default;
+
 /// Right (or left) offset(s) for a close button.
 /// @type Number|Map
 $closebutton-offset-horizontal: (
@@ -83,6 +87,7 @@ $closebutton-color-hover: $black !default;
 
   @include disable-mouse-outline;
   position: absolute;
+  z-index: $closebutton-z-index;
   color: $closebutton-color;
   cursor: pointer;
 

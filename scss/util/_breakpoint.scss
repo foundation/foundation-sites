@@ -185,7 +185,7 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
-/// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
+/// Converts the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
 /// @access private
 ///
 /// @param {Map} $map - Map to convert.
@@ -325,6 +325,28 @@ $breakpoint-classes: (small medium large) !default;
     }
 
     @return map-get($map, $anchor);
+  }
+}
+
+/// Return the best breakpoint to use according to the calling context. It returns in order:
+/// 1. the given `$value` argument if it is not null.
+/// 2. the global breakpoint context `$-zf-size` if it is not null (like if called inside then `breakpoint()` mixin)
+/// 3. the given `$default` argument.
+/// @access private
+///
+/// @param {Keyword} $value [null] - Breakpoint to use in priority if non-null.
+/// @param {Keyword} $default [null] - Breakpoint to use by default if no other value can be used.
+///
+/// @return {Keyword} The resolved breakpoint.
+@function -zf-current-breakpoint($value: null, $default: null) {
+  @if ($value != null) {
+    @return $value;
+  }
+  @else if (variable-exists(-zf-size) and type-of($-zf-size) != 'number') and $-zf-size != null {
+    @return $-zf-size;
+  }
+  @else {
+    @return $default;
   }
 }
 

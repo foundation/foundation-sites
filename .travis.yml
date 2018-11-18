@@ -9,14 +9,15 @@ node_js:
   - 6
   - 8
   - 10
+  - 11
 
 env:
-  - ZF_TRAVIS_COMMAND=test:javascript:units
+  - ZF_TRAVIS_COMMAND=test
 
 matrix:
   include:
     - os: linux
-      node_js: 10
+      node_js: stable
       env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
 install: yarn
