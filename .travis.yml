@@ -12,7 +12,10 @@ node_js:
   - 11
 
 env:
-  - ZF_TRAVIS_COMMAND=test
+  global:
+    - YARN_GPG=no
+  matrix:
+    - ZF_TRAVIS_COMMAND=test
 
 matrix:
   include:
