@@ -66,7 +66,7 @@ class Tabs extends Plugin {
         'aria-controls': hash,
         'aria-selected': isActive,
         'id': linkId,
-        'tabindex': isActive ? '0' : '-1'
+        'tabindex': '0'
       });
 
       $tabContent.attr({
@@ -319,7 +319,7 @@ class Tabs extends Plugin {
       .find('[role="tab"]')
       .attr({
         'aria-selected': 'false',
-        'tabindex': -1
+        'tabindex': '0'
       });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
