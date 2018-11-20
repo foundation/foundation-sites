@@ -92,7 +92,7 @@ class Interchange extends Plugin {
    */
   _parseOptions() {
     var types = ['auto', 'src', 'background', 'html'];
-    if (typeof this.options.type === undefined)
+    if (typeof this.options.type === 'undefined')
       this.options.type = 'auto';
     else if (types.indexOf(this.options.type) === -1) {
       console.log(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
