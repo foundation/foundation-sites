@@ -1,21 +1,31 @@
 language: node_js
+cache: yarn
+
+os:
+  - windows
+  - linux
+  - osx
+
+node_js:
+  - 6
+  - 8
+  - 10
+  - 11
+
+env:
+  global:
+    - YARN_GPG=no
+  matrix:
+    - ZF_TRAVIS_COMMAND=test
 
 matrix:
   include:
-  - node_js: "6"
-    env: ZF_TRAVIS_COMMAND=test
-  - node_js: "8"
-    env: ZF_TRAVIS_COMMAND=test
-  - node_js: "10"
-    env: ZF_TRAVIS_COMMAND=test
-  - node_js: "stable"
-    env: ZF_TRAVIS_COMMAND=test
-  - node_js: "stable"
-    env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
+    - os: linux
+      node_js: stable
+      env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
-before_install: npm install -g npm@latest
-install: npm ci
-script: npm run $ZF_TRAVIS_COMMAND
+install: yarn
+script: yarn run $ZF_TRAVIS_COMMAND
 
 notifications:
   email: false
