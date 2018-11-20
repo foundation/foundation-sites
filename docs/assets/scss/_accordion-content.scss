@@ -29,7 +29,6 @@
   }
 
   .accordion-title {
-    background-color: #f5f5f5;
     color: darken($dark-gray,10%);
     font-size: 1.25rem;
     line-height: 1.5;
@@ -43,9 +42,7 @@
   .accordion-title:hover {
     padding-left: 1rem;
     color: $black;
-//    background: lighten($light-gray,7%);
     transition: all 0.3s ease;
-//    transition: background 0.3s ease;
   }
 
   .accordion-title::before {
