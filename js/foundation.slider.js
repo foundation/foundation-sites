@@ -69,6 +69,8 @@ class Slider extends Plugin {
     this.inputs = this.$element.find('input');
     this.handles = this.$element.find('[data-slider-handle]');
 
+    if (!this.handles.length) throw new Error('Slider cannot find its required slider element "[data-slider-handle]". At least one is required.');
+
     this.$handle = this.handles.eq(0);
     this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
