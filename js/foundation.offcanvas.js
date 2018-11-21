@@ -69,13 +69,16 @@ class OffCanvas extends Plugin {
 
     this.$element.attr('aria-hidden', 'true');
 
-    // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
+    // Find off-canvas content, either by ID (if specified), by siblings or
+    // by closest selector (fallback)
     if (this.options.contentId) {
-      this.$content = $('#'+this.options.contentId);
-    } else if (this.$element.siblings('[data-off-canvas-content]').length) {
+      this.$content = $('#' + this.options.contentId);
+      if (!this.$content.length) throw new Error(`Could not find the required OffCanvas content element with the given contentId "${this.options.contentId}".`);
+    }
+    else {
       this.$content = this.$element.siblings('[data-off-canvas-content]').first();
-    } else {
-      this.$content = this.$element.closest('[data-off-canvas-content]').first();
+      if (!this.$content.length) this.$content = this.$element.closest('[data-off-canvas-content]').first();
+      if (!this.$content.length) throw new Error('Could not find the required OffCanvas content element "[data-off-canvas-content]".');
     }
 
     if (!this.options.contentId) {
