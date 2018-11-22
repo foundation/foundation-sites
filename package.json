@@ -6,7 +6,6 @@
   "jsnext:main": "dist/js/foundation.esm.js",
   "esnext": "dist/js/foundation.es6.js",
   "typings": "dist/js/foundation.d.ts",
-  "sideEffects": false,
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
   "homepage": "http://foundation.zurb.com/sites",
