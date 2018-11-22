@@ -234,7 +234,7 @@ class AccordionMenu extends Plugin {
    */
   down($target) {
     if(!this.options.multiOpen) {
-      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
+      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target).add($target.find('.is-active'))));
     }
 
     $target
