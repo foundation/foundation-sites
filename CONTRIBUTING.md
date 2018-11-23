@@ -17,7 +17,7 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
    * [ ] This is a bug and not a missing feature
    * [ ] This bug comes from Foundation and not the browser or an other library
    * [ ] This bug is still present in the latest Foundation release
-3. **Prepare a test case with your bug** ([link](https://codepen.io/ncoden/pen/YLzjeq)).
+3. **Prepare a test case with your bug** ([link](https://codepen.io/ncoden/pen/dQmVgg)).
    Trying to reproduce a bug is often time-consuming. Please isolate your bug in a dedicated test case. The simpler is the test case, the best it is.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
    Please provide a complete description of your bug: What do you expect? What happends instead? Which version of Foundation do you use, which ones are affected by the bug? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
