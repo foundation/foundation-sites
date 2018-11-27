@@ -21,6 +21,7 @@ class Abide extends Plugin {
   _setup(element, options = {}) {
     this.$element = element;
     this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
+    this.isEnabled = true;
 
     this.className = 'Abide'; // ie9 back compat
     this._init();
@@ -32,9 +33,10 @@ class Abide extends Plugin {
    */
   _init() {
     this.$inputs = $.merge(                               // Consider as input to validate:
-      this.$element.find('input').not('[type=submit]'),   // * all input fields expect submit
+      this.$element.find('input').not('[type="submit"]'), // * all input fields expect submit
       this.$element.find('textarea, select')              // * all textareas and select fields
     );
+    this.$submitDisabler = this.$element.find('[type="submit"][formnovalidate]'); // input/button that disables validation on submit
     const $globalErrors = this.$element.find('[data-abide-error]');
 
     // Add a11y attributes to all fields
@@ -57,6 +59,14 @@ class Abide extends Plugin {
       })
       .on('submit.zf.abide', () => {
         return this.validateForm();
+      });
+
+    this.$submitDisabler
+      .off('click.zf.abide')
+      .on('click.zf.abide', (e) => {
+        e.preventDefault();
+        this.enableValidation(false);
+        this.$element.submit();
       });
 
     if (this.options.validateOn === 'fieldChange') {
@@ -90,6 +100,14 @@ class Abide extends Plugin {
    */
   _reflow() {
     this._init();
+  }
+
+  /**
+   * Enables (true) or disables (false) the whole validation
+   * @param {Boolean} enable
+   */
+  enableValidation(enable) {
+    this.isEnabled = !!enable;
   }
 
   /**
@@ -334,6 +352,11 @@ class Abide extends Plugin {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
+    // skip if whole validation is disabled
+    if (this.isEnabled === false) {
+      return true;
+    }
+
     // don't validate ignored inputs or hidden inputs or disabled inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
@@ -405,6 +428,11 @@ class Abide extends Plugin {
   validateForm() {
     var acc = [];
     var _this = this;
+
+    // skip if whole validation is disabled
+    if (this.isEnabled === false) {
+      return true;
+    }
 
     this.$inputs.each(function() {
       acc.push(_this.validateInput($(this)));
