@@ -65,7 +65,7 @@ class Abide extends Plugin {
       .off('click.zf.abide')
       .on('click.zf.abide', (e) => {
         e.preventDefault();
-        this.enableValidation(false);
+        this.disableValidation();
         this.$element.submit();
       });
 
@@ -103,11 +103,17 @@ class Abide extends Plugin {
   }
 
   /**
-   * Enables (true) or disables (false) the whole validation
-   * @param {Boolean} enable
+   * Enables the whole validation
    */
-  enableValidation(enable) {
-    this.isEnabled = !!enable;
+  disableValidation(){
+    this.isEnabled = true;
+  }
+
+  /**
+   * Disables the whole validation
+   */
+  disableValidation() {
+    this.isEnabled = false;
   }
 
   /**
