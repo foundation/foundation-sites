@@ -81,7 +81,7 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 ## Gutters
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
-To define a grid type, simply set `.grid-margin-x`/`.grid-margin-y` or `.grid-padding-x`/`.grid-margin-y` on the grid.
+To define a grid type, simply set `.grid-margin-x`/`.grid-margin-y` or `.grid-padding-x`/`.grid-padding-y` on the grid.
 
 <p>
   <a class="" data-open-video="5:43"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
