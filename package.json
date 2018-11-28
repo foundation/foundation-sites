@@ -48,7 +48,7 @@
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "doiuse": "~4.1.0",
-    "foundation-docs": "git+https://github.com/zurb/foundation-docs.git#9a50a61c04ae5325e0441d0b7adb880c42c9c2ff",
+    "foundation-docs": "github:zurb/foundation-docs#96ea89b6289767ed5e285ae037489d5c8f253b39",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
     "gulp-babel": "^8.0.0",
