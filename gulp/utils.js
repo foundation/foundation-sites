@@ -23,6 +23,20 @@ function getUmdEntry(name, config, format) {
   return name;
 }
 
+/**
+ * Generate an configuration object for Webpack Externals for UMD modules.
+ * See: https://webpack.js.org/configuration/externals/#object
+ *
+ * @param {object} externals - Configuration object for external UMD modules.
+ *  For each entry, a string or an object can be provided.
+ *  - If a string, it is used for all module formats.
+ *  - If an object, it is used as is and the module name is used for missing formats.
+ * @param {object} {} options- Additional options:
+ *  - namespace {string} '' - Global variable in which the modules must be
+ *    searched in instead of the root for module-less environments.
+ *
+ * @return {object} Generated configuration for Webpack Externals
+ */
 module.exports.umdExternals = function(externals, options) {
   options = Object.assign({ namespace: '' }, options);
 

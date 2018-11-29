@@ -16,7 +16,18 @@ var CONFIG = require('../config.js');
 // (just throw in foundation.js or foundation.min.js) or you should be using a build
 // system.
 
-// Generate plugin Externals config for UMD modules
+//
+// Generate the webpack "Externals" configuration for UMD modules.
+// This tells webpack that the modules imported with the listed paths should not
+// be included in the build but will be provided later from an external source.
+//
+// `umdExternals` generates for each module a configuration object with the
+// given external source path/object to indicate to all import solutions where
+// to retrieve the module. "root" is the global variable name to use in
+// module-less environments (or in the namespace if given).
+//
+// See https://webpack.js.org/configuration/externals/#externals
+//
 var webpackExternalPlugins = Object.assign(
   utils.umdExternals({
     // Use the global jQuery object "jQuery" in module-less environments.
@@ -47,6 +58,9 @@ var webpackExternalPlugins = Object.assign(
   })
 );
 
+// The webpack "output" configuration for UMD modules.
+// Makes the modules be exported as UMD modules and within this global
+// variable in module-less environments.
 var webpackOutputAsExternal = {
   library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
   libraryTarget: 'umd',
