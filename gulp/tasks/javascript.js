@@ -29,29 +29,28 @@ var CONFIG = require('../config.js');
 // See https://webpack.js.org/configuration/externals/#externals
 //
 var webpackExternalPlugins = Object.assign(
+  // | Module import path             | External source names and paths
   utils.umdExternals({
-    // Use the global jQuery object "jQuery" in module-less environments.
     'jquery': { root: 'jQuery' },
   }),
   utils.umdExternals({
-    // Module import path             | External source path/name
-    './foundation.core':              './foundation.core',
-    './foundation.core.utils':        './foundation.core',
-    './foundation.core.plugin':       './foundation.core',
-    './foundation.util.imageLoader':  './foundation.util.imageLoader',
-    './foundation.util.keyboard':     './foundation.util.keyboard',
-    './foundation.util.mediaQuery':   './foundation.util.mediaQuery',
-    './foundation.util.motion':       './foundation.util.motion',
-    './foundation.util.nest':         './foundation.util.nest',
-    './foundation.util.timer':        './foundation.util.timer',
-    './foundation.util.touch':        './foundation.util.touch',
-    './foundation.util.box':          './foundation.util.box',
-    './foundation.dropdownMenu':      './foundation.dropdownMenu',
-    './foundation.drilldown':         './foundation.drilldown',
-    './foundation.accordionMenu':     './foundation.accordionMenu',
-    './foundation.accordion':         './foundation.accordion',
-    './foundation.tabs':              './foundation.tabs',
-    './foundation.smoothScroll':      './foundation.smoothScroll',
+    './foundation.core':              { root: 'foundation.core', default: './foundation.core' },
+    './foundation.core.utils':        { root: 'foundation.core', default: './foundation.core' },
+    './foundation.core.plugin':       { root: 'foundation.core', default: './foundation.core' },
+    './foundation.util.imageLoader':  { root: 'foundation.util.imageLoader' },
+    './foundation.util.keyboard':     { root: 'foundation.util.keyboard' },
+    './foundation.util.mediaQuery':   { root: 'foundation.util.mediaQuery' },
+    './foundation.util.motion':       { root: 'foundation.util.motion' },
+    './foundation.util.nest':         { root: 'foundation.util.nest' },
+    './foundation.util.timer':        { root: 'foundation.util.timer' },
+    './foundation.util.touch':        { root: 'foundation.util.touch' },
+    './foundation.util.box':          { root: 'foundation.util.box' },
+    './foundation.dropdownMenu':      { root: 'foundation.dropdownMenu' },
+    './foundation.drilldown':         { root: 'foundation.drilldown' },
+    './foundation.accordionMenu':     { root: 'foundation.accordionMenu' },
+    './foundation.accordion':         { root: 'foundation.accordion' },
+    './foundation.tabs':              { root: 'foundation.tabs' },
+    './foundation.smoothScroll':      { root: 'foundation.smoothScroll' },
   }, {
     // Search for the module in this global variable in module-less environments.
     namespace: CONFIG.JS_BUNDLE_NAMESPACE
