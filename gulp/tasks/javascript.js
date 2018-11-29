@@ -19,28 +19,32 @@ var CONFIG = require('../config.js');
 // Generate plugin Externals config for UMD modules
 var webpackExternalPlugins = Object.assign(
   utils.umdExternals({
-    'jquery': 'jQuery',
+    // Use the global jQuery object "jQuery" in module-less environments.
+    'jquery': { root: 'jQuery' },
   }),
   utils.umdExternals({
-    // Import path                    | Exported file
-    './foundation.core':              'foundation.core',
-    './foundation.core.utils':        'foundation.core',
-    './foundation.core.plugin':       'foundation.core',
-    './foundation.util.imageLoader':  'foundation.util.imageLoader',
-    './foundation.util.keyboard':     'foundation.util.keyboard',
-    './foundation.util.mediaQuery':   'foundation.util.mediaQuery',
-    './foundation.util.motion':       'foundation.util.motion',
-    './foundation.util.nest':         'foundation.util.nest',
-    './foundation.util.timer':        'foundation.util.timer',
-    './foundation.util.touch':        'foundation.util.touch',
-    './foundation.util.box':          'foundation.util.box',
-    './foundation.dropdownMenu':      'foundation.dropdownMenu',
-    './foundation.drilldown':         'foundation.drilldown',
-    './foundation.accordionMenu':     'foundation.accordionMenu',
-    './foundation.accordion':         'foundation.accordion',
-    './foundation.tabs':              'foundation.tabs',
-    './foundation.smoothScroll':      'foundation.smoothScroll',
-  }, { namespace: CONFIG.JS_BUNDLE_NAMESPACE })
+    // Module import path             | External source path/name
+    './foundation.core':              './foundation.core',
+    './foundation.core.utils':        './foundation.core',
+    './foundation.core.plugin':       './foundation.core',
+    './foundation.util.imageLoader':  './foundation.util.imageLoader',
+    './foundation.util.keyboard':     './foundation.util.keyboard',
+    './foundation.util.mediaQuery':   './foundation.util.mediaQuery',
+    './foundation.util.motion':       './foundation.util.motion',
+    './foundation.util.nest':         './foundation.util.nest',
+    './foundation.util.timer':        './foundation.util.timer',
+    './foundation.util.touch':        './foundation.util.touch',
+    './foundation.util.box':          './foundation.util.box',
+    './foundation.dropdownMenu':      './foundation.dropdownMenu',
+    './foundation.drilldown':         './foundation.drilldown',
+    './foundation.accordionMenu':     './foundation.accordionMenu',
+    './foundation.accordion':         './foundation.accordion',
+    './foundation.tabs':              './foundation.tabs',
+    './foundation.smoothScroll':      './foundation.smoothScroll',
+  }, {
+    // Search for the module in this global variable in module-less environments.
+    namespace: CONFIG.JS_BUNDLE_NAMESPACE
+  })
 );
 
 var webpackOutputAsExternal = {
@@ -51,7 +55,8 @@ var webpackOutputAsExternal = {
 var webpackConfig = {
   mode: 'development',
   externals: utils.umdExternals({
-    'jquery': 'jQuery'
+    // Use the global jQuery object "jQuery" in module-less environments.
+    'jquery': { root: 'jQuery' },
   }),
   module: {
     rules: [
