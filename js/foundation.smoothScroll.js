@@ -39,8 +39,8 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _events() {
-        this.$element.on('click.zf.smoothScroll', this._handleLinkClick)
-        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+        this.$element.on('click.zf.smoothScroll', this._handleLinkClick.bind(this));
+        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick.bind(this));
     }
 
     /**
