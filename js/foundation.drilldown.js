@@ -315,7 +315,7 @@ class Drilldown extends Plugin {
 
       /**
        * Fires when the menu is fully closed.
-       * @event Drilldown#close
+       * @event Drilldown#closed
        */
       this.$element.trigger('closed.zf.drilldown');
     });
