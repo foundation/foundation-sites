@@ -5,10 +5,10 @@ function arrayClear(array) {
 /**
  * Return the import path/name of an UMD module for the given module format.
  *
- * @param {string} name - name of the module, used if other no import path/name can be found.
+ * @param {string} name - name of the module, used if no other no import path/name can be found.
  * @param {object|string} config - external configuration.
- *  - If a path/name string, used as it.
- *  - If an object, use the property within it according to the given `format`,
+ *  - If a string, returns it (we consider this is the path or name).
+ *  - If an object, returns the property within it according to the given `format`,
  *    or the "default" property.
  * @param {string} format - format of the module to look for, if the configuration is an object.
  *
