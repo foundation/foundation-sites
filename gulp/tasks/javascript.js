@@ -21,10 +21,10 @@ var CONFIG = require('../config.js');
 // This tells webpack that the modules imported with the listed paths should not
 // be included in the build but will be provided later from an external source.
 //
-// `umdExternals` generates for each module a configuration object with the
-// given external source path/object to indicate to all import solutions where
-// to retrieve the module. "root" is the global variable name to use in
-// module-less environments (or in the namespace if given).
+// `umdExternals` is used to generate the webpack "externals" configuration:
+// an object indicating to different module tools under which name our modules
+// are declared. "root" is the global variable name to use in module-less
+// environments (or in the namespace if given).
 //
 // See https://webpack.js.org/configuration/externals/#externals
 //
