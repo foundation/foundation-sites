@@ -58,8 +58,8 @@ var webpackExternalPlugins = Object.assign(
 );
 
 // The webpack "output" configuration for UMD modules.
-// Makes the modules be exported as UMD modules and within this global
-// variable in module-less environments.
+// Makes the modules being exported as UMD modules. In module-less environments,
+// modules will be stored in the global variable defined by JS_BUNDLE_NAMESPACE.
 var webpackOutputAsExternal = {
   library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
   libraryTarget: 'umd',
