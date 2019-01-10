@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../node_modules/chai/chai.js"></script>
+    <script src="../../node_modules/requirejs/require.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/mocha/mocha.js"></script>
+    <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+    <link rel="stylesheet" href="../../_build/assets/css/foundation-float.css">
+    <link rel="stylesheet" href="../../node_modules/motion-ui/dist/motion-ui.css">
+  </head>
+
+  <body>
+
+    <div id="mocha"></div>
+
+    <script>
+      mocha.setup({
+        ui: 'bdd',
+        timeout: 5000,
+      });
+
+      chai.should();
+
+      requirejs.config({
+        deps: ['test_bundle'],
+        callback: mocha.run
+      });
+    </script>
+
+  </body>
+</html>
