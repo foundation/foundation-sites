@@ -81,7 +81,7 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 ## Gutters
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
-To define a grid type, simply set `.grid-margin-x` or `.grid-padding-x` on the grid.
+To define a grid type, simply set `.grid-margin-x`/`.grid-margin-y` or `.grid-padding-x`/`.grid-padding-y` on the grid.
 
 <p>
   <a class="" data-open-video="5:43"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -105,7 +105,7 @@ To define a grid type, simply set `.grid-margin-x` or `.grid-padding-x` on the g
 
 ## Grid Container
 
-The grid defaults to the full width of the available space. To contain it use the `grid-container` class. The container will be centered and have a max-width equal to your `$grid-container` setting (1200px by default), along with padding on the left/right equal to half your `$grid-container-padding` setting.
+The grid defaults to the full width of the available space. To contain it horizontally use the `grid-container` class. The container will be centered and have a max-width equal to your `$grid-container` setting (1200px by default), along with padding on the left/right equal to half your `$grid-container-padding` setting.
 
 ```html
 <div class="grid-container">
@@ -203,7 +203,7 @@ To switch back to the auto behavior from a percentage or shrink behavior, use th
 
 ---
 
-## Collapse Cells
+## Collapse Cells <span class="label secondary">X Grid only</span>
 
 The `.[size]-[gutter-type]-collapse` class lets you remove cell gutters.
 
@@ -222,9 +222,9 @@ There are times when you won't want each media query to be collapsed. In this ca
 
 ---
 
-## Offsets
+## Offsets <span class="label secondary">X Grid only</span>
 
-Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to a grid.
+Offsets work by applying `margin-left` to a grid.
 
 ```html_example
 <div class="grid-x grid-margin-x">
@@ -235,7 +235,7 @@ Offsets work by applying `margin-left` (or `margin-top` for a vertical grid) to 
 
 ---
 
-## Block Grids
+## Block Grids <span class="label secondary">X Grid only</span>
 
 To define cell widths within a direction-level, instead of the individual cell level, add the class `.[size]-up-[n]` to a `grid-x`, where `[n]` is the number of cells to display per direction, and `[size]` is the breakpoint at which to apply the effect.
 
