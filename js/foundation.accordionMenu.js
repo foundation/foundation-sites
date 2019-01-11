@@ -234,8 +234,18 @@ class AccordionMenu extends Plugin {
    * @fires AccordionMenu#down
    */
   down($target) {
-    if(!this.options.multiOpen) {
-      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
+    // If having multiple submenus active is disabled, close all the submenus
+    // that are not parents or children of the targeted submenu.
+    if (!this.options.multiOpen) {
+      // The "branch" of the targetted submenu, from the component root to
+      // the active submenus nested in it.
+      const $targetBranch = $target.parentsUntil(this.$element)
+        .add($target)
+        .add($target.find('.is-active'));
+      // All the active submenus that are not in the branch.
+      const $othersActiveSubmenus = this.$element.find('.is-active').not($targetBranch);
+
+      this.up($othersActiveSubmenus);
     }
 
     $target
