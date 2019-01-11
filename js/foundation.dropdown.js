@@ -6,7 +6,7 @@ import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
-
+import { Touch } from './foundation.util.touch'
 
 /**
  * Dropdown module.

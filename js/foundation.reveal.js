@@ -7,6 +7,7 @@ import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
 import { Plugin } from './foundation.core.plugin';
 import { Triggers } from './foundation.util.triggers';
+import { Touch } from './foundation.util.touch'
 
 /**
  * Reveal module.
