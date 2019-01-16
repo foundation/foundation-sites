@@ -6,10 +6,13 @@ import { Plugin } from './foundation.core.plugin';
 import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { SmoothScroll } from './foundation.smoothScroll';
 
+import { Triggers } from './foundation.util.triggers';
+
 /**
  * Magellan module.
  * @module foundation.magellan
  * @requires foundation.smoothScroll
+ * @requires foundation.util.triggers
  */
 
 class Magellan extends Plugin {
@@ -25,6 +28,9 @@ class Magellan extends Plugin {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
     this.className = 'Magellan'; // ie9 back compat
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     this._init();
     this.calcPoints();
