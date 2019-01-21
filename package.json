@@ -106,6 +106,9 @@
     "what-input": ">=4.1.0",
     "yargs": "^12.0.5"
   },
+  "resolutions": {
+    "puppeteer": "^1.11.0"
+  },
   "engines": {
     "node": ">=6.4.0",
     "npm": ">=2.14.2"
