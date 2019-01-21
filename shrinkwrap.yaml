@@ -47,6 +47,7 @@ devDependencies:
   mocha: 5.2.0
   mocha-headless-chrome: 2.0.1
   motion-ui: 2.0.3
+  npm-force-resolutions: 0.0.2
   octophant: 1.0.1
   panini: 1.6.3
   parker: 1.0.0-alpha.0
@@ -6350,6 +6351,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
+  /json-format/1.0.1:
+    dev: true
+    resolution:
+      integrity: sha1-FD9n5irxKda//tKIpGJl6iPQ3ww=
   /json-parse-better-errors/1.0.2:
     dev: true
     resolution:
@@ -7833,6 +7838,14 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-vGHLtFbXnLMiB85HygUTb/Ln1u4=
+  /npm-force-resolutions/0.0.2:
+    dependencies:
+      json-format: 1.0.1
+      source-map-support: 0.5.10
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-2F1FxxDvoatn+OwBxrUGahnEECOpr5RDuF/jqfyy5dI87KmHI3zmb+cCcKDnhR7wnhaTH54/KyPlLTtUTL0Qpw==
   /npm-run-path/2.0.2:
     dependencies:
       path-key: 2.0.1
@@ -11860,6 +11873,7 @@ specifiers:
   mocha: ^5.0.5
   mocha-headless-chrome: ^2.0.1
   motion-ui: ^2.0.2
+  npm-force-resolutions: 0.0.2
   octophant: ^1.0.0
   panini: ^1.6.2
   parker: ^1.0.0-alpha.0
