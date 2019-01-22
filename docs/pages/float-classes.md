@@ -9,7 +9,7 @@ video: 'VEzXdMmqhAY'
 You can change the float behavior of an element by adding the `.float-left` or `.float-right` classes to an element. To clear floats, add the class `.clearfix` to the parent element.
 
 <div class="callout primary">
-  <p>Float Left/Right classes use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Float Left/Right classes use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>
 
 <div class="callout warning">
