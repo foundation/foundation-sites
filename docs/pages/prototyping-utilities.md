@@ -20,7 +20,7 @@ Not all projects require Prototyping Utilities and adding utility classes like t
 
 <div class="primary callout">
 	<p>
-		Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
+		Many Prototype classes use `!important` to ensure that these they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
 	</p>
 </div>
 

@@ -9,7 +9,7 @@ tags:
 ---
 
 <div class="callout primary">
-  <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Visibility classes use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>
 
 <div class="callout warning">
