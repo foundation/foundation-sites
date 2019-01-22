@@ -70,7 +70,7 @@ Various Foundation components provide options for to use Motion UI animations wh
 - [Toggler](toggler.html): `data-animate`
 - [Responsive Toggler](responsive-navigation.html): `data-animate`
 
-For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`). See all availaible classes in [build-in transitions](#built-in-transitions) below.
+For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`). See all available classes in [build-in transitions](#built-in-transitions) below.
 
 ```html
 <div data-toggler data-animate="fade-in fade-out" class="callout secondary">

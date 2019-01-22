@@ -256,7 +256,7 @@ To define cell widths within a direction-level, instead of the individual cell l
 </div>
 ```
 
-Block Grids are not availaible for the vertical grids. Use the [basic layout](#vertical-grids) with a size applied on each cell of the grid instead.
+Block Grids are not available for the vertical grids. Use the [basic layout](#vertical-grids) with a size applied on each cell of the grid instead.
 
 ---
 
