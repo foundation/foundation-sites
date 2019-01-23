@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.util.mediaQuery"), require("./foundation.core"), require("jquery"), require("./foundation.core.utils"), require("./foundation.core.plugin"), require("./foundation.dropdownMenu"), require("./foundation.drilldown"), require("./foundation.accordionMenu"));
+		module.exports = factory(require("./foundation.accordionMenu"), require("./foundation.core"), require("./foundation.drilldown"), require("./foundation.dropdownMenu"), require("./foundation.util.mediaQuery"), require("jquery"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.util.mediaQuery", "./foundation.core", "jquery", "./foundation.core.utils", "./foundation.core.plugin", "./foundation.dropdownMenu", "./foundation.drilldown", "./foundation.accordionMenu"], factory);
+		define(["./foundation.accordionMenu", "./foundation.core", "./foundation.drilldown", "./foundation.dropdownMenu", "./foundation.util.mediaQuery", "jquery"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.responsiveMenu"] = factory(require("./foundation.util.mediaQuery"), require("./foundation.core"), require("jquery"), require("./foundation.core.utils"), require("./foundation.core.plugin"), require("./foundation.dropdownMenu"), require("./foundation.drilldown"), require("./foundation.accordionMenu"));
+		exports["foundation.responsiveMenu"] = factory(require("./foundation.accordionMenu"), require("./foundation.core"), require("./foundation.drilldown"), require("./foundation.dropdownMenu"), require("./foundation.util.mediaQuery"), require("jquery"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.responsiveMenu"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.util.mediaQuery"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.dropdownMenu"], root["__FOUNDATION_EXTERNAL__"]["foundation.drilldown"], root["__FOUNDATION_EXTERNAL__"]["foundation.accordionMenu"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_util_mediaQuery__, __WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__, __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__, __WEBPACK_EXTERNAL_MODULE__foundation_core_plugin__, __WEBPACK_EXTERNAL_MODULE__foundation_dropdownMenu__, __WEBPACK_EXTERNAL_MODULE__foundation_drilldown__, __WEBPACK_EXTERNAL_MODULE__foundation_accordionMenu__) {
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.responsiveMenu"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.accordionMenu"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.drilldown"], root["__FOUNDATION_EXTERNAL__"]["foundation.dropdownMenu"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.mediaQuery"], root["jQuery"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_accordionMenu__, __WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_drilldown__, __WEBPACK_EXTERNAL_MODULE__foundation_dropdownMenu__, __WEBPACK_EXTERNAL_MODULE__foundation_util_mediaQuery__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -118,28 +118,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ "./foundation.core.plugin":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core.plugin","commonjs":"./foundation.core.plugin","commonjs2":"./foundation.core.plugin"} ***!
-  \*************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_plugin__;
-
-/***/ }),
-
-/***/ "./foundation.core.utils":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core.utils","commonjs":"./foundation.core.utils","commonjs2":"./foundation.core.utils"} ***!
-  \**********************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__;
-
-/***/ }),
-
 /***/ "./foundation.drilldown":
 /*!************************************************************************************************************************************************************************************!*\
   !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.drilldown"],"amd":"./foundation.drilldown","commonjs":"./foundation.drilldown","commonjs2":"./foundation.drilldown"} ***!
@@ -210,16 +188,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.dropdownMenu */ "./foundation.dropdownMenu");
-/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.drilldown */ "./foundation.drilldown");
-/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.accordionMenu */ "./foundation.accordionMenu");
-/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.dropdownMenu */ "./foundation.dropdownMenu");
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.drilldown */ "./foundation.drilldown");
+/* harmony import */ var _foundation_drilldown__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_drilldown__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.accordionMenu */ "./foundation.accordionMenu");
+/* harmony import */ var _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_5__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -250,15 +226,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var MenuPlugins = {
   dropdown: {
     cssClass: 'dropdown',
-    plugin: _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_4__["DropdownMenu"]
+    plugin: _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_3__["DropdownMenu"]
   },
   drilldown: {
     cssClass: 'drilldown',
-    plugin: _foundation_drilldown__WEBPACK_IMPORTED_MODULE_5__["Drilldown"]
+    plugin: _foundation_drilldown__WEBPACK_IMPORTED_MODULE_4__["Drilldown"]
   },
   accordion: {
     cssClass: 'accordion-menu',
-    plugin: _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_6__["AccordionMenu"]
+    plugin: _foundation_accordionMenu__WEBPACK_IMPORTED_MODULE_5__["AccordionMenu"]
   }
 }; // import "foundation.util.triggers.js";
 
@@ -402,7 +378,7 @@ function (_Plugin) {
   }]);
 
   return ResponsiveMenu;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
+}(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 
 ResponsiveMenu.defaults = {};
 

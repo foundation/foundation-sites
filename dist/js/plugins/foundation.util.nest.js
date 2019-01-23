@@ -163,9 +163,6 @@ var Nest = {
 
       if ($sub.length) {
         $item.addClass(hasSubClass);
-        $sub.addClass("submenu ".concat(subMenuClass)).attr({
-          'data-submenu': ''
-        });
 
         if (applyAria) {
           $item.attr({
