@@ -153,7 +153,15 @@ class Slider extends Plugin {
       pctOfBar = this._logTransform(pctOfBar);
       break;
     }
-    var value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
+
+    var value
+    if (this.options.vertical) {
+      // linear interpolation which is working with negative values for start
+      // https://math.stackexchange.com/a/1019084
+      value = parseFloat(this.options.end) + pctOfBar * (this.options.start - this.options.end)
+    } else {
+      value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
+    }
 
     return value
   }
