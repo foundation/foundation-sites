@@ -39,8 +39,9 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _events() {
-        this.$element.on('click.zf.smoothScroll', this._handleLinkClick)
-        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+        this._linkClickListener = this._handleLinkClick.bind(this);
+        this.$element.on('click.zf.smoothScroll', this._linkClickListener);
+        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
 
     /**
@@ -97,8 +98,8 @@ class SmoothScroll extends Plugin {
      * @function
      */
     _destroy() {
-        this.$element.off('click.zf.smoothScroll', this._handleLinkClick)
-        this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+        this.$element.off('click.zf.smoothScroll', this._linkClickListener)
+        this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
 }
 

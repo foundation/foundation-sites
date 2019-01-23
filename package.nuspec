@@ -3,7 +3,7 @@
 
     <metadata>
         <id>foundation-sites</id>
-        <version>6.5.1</version>
+        <version>6.5.2</version>
 
         <title>ZURB Foundation</title>
         <authors>ZURB</authors>
@@ -12,7 +12,7 @@
 
         <projectUrl>http://foundation.zurb.com/sites</projectUrl>
         <iconUrl>https://foundation.zurb.com/assets/img/icons/foundation-favicon.ico</iconUrl>
-        <releaseNotes>https://github.com/zurb/foundation-sites/releases/tag/v6.5.1</releaseNotes>
+        <releaseNotes>https://github.com/zurb/foundation-sites/releases/tag/v6.5.2</releaseNotes>
         <licenseUrl>https://github.com/zurb/foundation-sites/blob/develop/LICENSE</licenseUrl>
         <copyright>Copyright 2017-2018</copyright>
         <repository type="git" url="https://github.com/zurb/foundation-sites"/>

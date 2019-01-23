@@ -140,7 +140,7 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
     if(typeof pluginName === 'string'){
       plugNames.push(pluginName);
     }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string'){
-      plugNames.concat(pluginName);
+      plugNames = plugNames.concat(pluginName);
     }else{
       console.error('Plugin names must be strings');
     }

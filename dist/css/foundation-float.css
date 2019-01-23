@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.5.1
+ * Version 6.5.2
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -2092,7 +2092,6 @@ a.button:hover, a.button:focus {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  position: absolute;
   margin: 0;
   font-size: 0.75rem;
   font-weight: bold;
@@ -3305,7 +3304,6 @@ a.thumbnail {
   border-left-width: 0;
   border-right-style: solid;
   border-color: transparent #1779ba transparent transparent;
-  border-left-width: 0;
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.75rem; }

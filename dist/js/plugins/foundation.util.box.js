@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.core"), require("./foundation.core.utils"));
+		module.exports = factory(require("./foundation.core"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.core", "./foundation.core.utils"], factory);
+		define(["./foundation.core"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.util.box"] = factory(require("./foundation.core"), require("./foundation.core.utils"));
+		exports["foundation.util.box"] = factory(require("./foundation.core"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.box"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__) {
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.box"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -107,17 +107,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ "./foundation.core.utils":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core.utils","commonjs":"./foundation.core.utils","commonjs2":"./foundation.core.utils"} ***!
-  \**********************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__;
-
-/***/ }),
-
 /***/ "./js/entries/plugins/foundation.util.box.js":
 /*!***************************************************!*\
   !*** ./js/entries/plugins/foundation.util.box.js ***!
@@ -151,7 +140,7 @@ _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].Box = _foundation_ut
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Box", function() { return Box; });
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_0__);
 
 

@@ -148,7 +148,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 </div>
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.5.1</small></h3>
+<h3>Foundation for Sites <small>Version 6.5.2</small></h3>
 ```
 
 ---
@@ -378,5 +378,5 @@ On top of that, Foundation includes a couple of simple classes you can use to co
 <a class="" data-open-video="4:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="callout primary">
-  <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Print styles use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>

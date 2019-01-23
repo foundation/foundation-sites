@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.core"), require("./foundation.core.utils"), require("./foundation.util.motion"), require("jquery"));
+		module.exports = factory(require("./foundation.core"), require("./foundation.util.motion"), require("jquery"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.core", "./foundation.core.utils", "./foundation.util.motion", "jquery"], factory);
+		define(["./foundation.core", "./foundation.util.motion", "jquery"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.util.triggers"] = factory(require("./foundation.core"), require("./foundation.core.utils"), require("./foundation.util.motion"), require("jquery"));
+		exports["foundation.util.triggers"] = factory(require("./foundation.core"), require("./foundation.util.motion"), require("jquery"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.triggers"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.motion"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__, __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.triggers"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.motion"], root["jQuery"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -107,17 +107,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ "./foundation.core.utils":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core.utils","commonjs":"./foundation.core.utils","commonjs2":"./foundation.core.utils"} ***!
-  \**********************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__;
-
-/***/ }),
-
 /***/ "./foundation.util.motion":
 /*!********************************************************************************************************************************************************************************************!*\
   !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.motion"],"amd":"./foundation.util.motion","commonjs":"./foundation.util.motion","commonjs2":"./foundation.util.motion"} ***!
@@ -167,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Triggers", function() { return Triggers; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
@@ -318,7 +307,7 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
     if (typeof pluginName === 'string') {
       plugNames.push(pluginName);
     } else if (_typeof(pluginName) === 'object' && typeof pluginName[0] === 'string') {
-      plugNames.concat(pluginName);
+      plugNames = plugNames.concat(pluginName);
     } else {
       console.error('Plugin names must be strings');
     }

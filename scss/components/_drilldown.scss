@@ -131,7 +131,6 @@ $drilldown-arrow-size: 6px !default;
 
       .js-drilldown-back > a::before {
         @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-left);
-        border-#{$global-left}-width: 0;
         display: inline-block;
         vertical-align: middle;
         margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text

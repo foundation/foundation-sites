@@ -492,7 +492,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.5.1'; // Global Foundation object
+var FOUNDATION_VERSION = '6.5.2'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -1396,9 +1396,6 @@ var Nest = {
 
       if ($sub.length) {
         $item.addClass(hasSubClass);
-        $sub.addClass("submenu ".concat(subMenuClass)).attr({
-          'data-submenu': ''
-        });
 
         if (applyAria) {
           $item.attr({
@@ -1799,7 +1796,9 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
   if (pluginName) {
     if (typeof pluginName === 'string') {
       plugNames.push(pluginName);
-    } else if (_typeof(pluginName) === 'object' && typeof pluginName[0] === 'string') ; else {
+    } else if (_typeof(pluginName) === 'object' && typeof pluginName[0] === 'string') {
+      plugNames = plugNames.concat(pluginName);
+    } else {
       console.error('Plugin names must be strings');
     }
   }
@@ -3431,8 +3430,15 @@ function (_Plugin) {
     value: function down($target) {
       var _this2 = this;
 
+      // If having multiple submenus active is disabled, close all the submenus
+      // that are not parents or children of the targeted submenu.
       if (!this.options.multiOpen) {
-        this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
+        // The "branch" of the targetted submenu, from the component root to
+        // the active submenus nested in it.
+        var $targetBranch = $target.parentsUntil(this.$element).add($target).add($target.find('.is-active')); // All the active submenus that are not in the branch.
+
+        var $othersActiveSubmenus = this.$element.find('.is-active').not($targetBranch);
+        this.up($othersActiveSubmenus);
       }
 
       $target.addClass('is-active').attr({
@@ -6193,8 +6199,9 @@ function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      this.$element.on('click.zf.smoothScroll', this._handleLinkClick);
-      this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+      this._linkClickListener = this._handleLinkClick.bind(this);
+      this.$element.on('click.zf.smoothScroll', this._linkClickListener);
+      this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
     /**
      * Handle the given event to smoothly scroll to the anchor pointed by the event target.
@@ -6225,8 +6232,8 @@ function (_Plugin) {
      * @function
      */
     value: function _destroy() {
-      this.$element.off('click.zf.smoothScroll', this._handleLinkClick);
-      this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+      this.$element.off('click.zf.smoothScroll', this._linkClickListener);
+      this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
   }], [{
     key: "scrollToLoc",
@@ -11759,6 +11766,7 @@ Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
 exports.CoreUtils = foundation_core_utils;
 exports.Core = Foundation;
+exports.Foundation = Foundation;
 exports.Box = Box;
 exports.onImagesLoaded = onImagesLoaded;
 exports.Keyboard = Keyboard;
@@ -11790,6 +11798,5 @@ exports.Tabs = Tabs;
 exports.Toggler = Toggler;
 exports.Tooltip = Tooltip;
 exports.ResponsiveAccordionTabs = ResponsiveAccordionTabs;
-exports.Foundation = Foundation;
 exports.default = Foundation;
 //# sourceMappingURL=foundation.cjs.js.map

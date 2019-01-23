@@ -35,7 +35,7 @@ about: Something is broken or doesn't work as expected
 <!-------------------------------------------------------------------
 │   We highly recommend you to provide a live example of your bug so we
 │   can reproduce it. You can create a test case with the last Foundation
-│   version by forking https://codepen.io/ncoden/pen/YLzjeq
+│   version by forking https://codepen.io/ncoden/pen/dQmVgg
 └------------------------------------------------------------------->
 Test Case: <!-- https://... -->
 

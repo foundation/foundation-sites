@@ -367,7 +367,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.5.1';
+var FOUNDATION_VERSION = '6.5.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -1229,7 +1229,6 @@ const Nest = {
 
       if ($sub.length) {
         $item.addClass(hasSubClass);
-        $sub.addClass(`submenu ${subMenuClass}`).attr({'data-submenu': ''});
         if(applyAria) {
           $item.attr({
             'aria-haspopup': true,
@@ -1611,7 +1610,9 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
   if(pluginName){
     if(typeof pluginName === 'string'){
       plugNames.push(pluginName);
-    }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string');else{
+    }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string'){
+      plugNames = plugNames.concat(pluginName);
+    }else{
       console.error('Plugin names must be strings');
     }
   }
@@ -3081,8 +3082,18 @@ class AccordionMenu extends Plugin {
    * @fires AccordionMenu#down
    */
   down($target) {
-    if(!this.options.multiOpen) {
-      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
+    // If having multiple submenus active is disabled, close all the submenus
+    // that are not parents or children of the targeted submenu.
+    if (!this.options.multiOpen) {
+      // The "branch" of the targetted submenu, from the component root to
+      // the active submenus nested in it.
+      const $targetBranch = $target.parentsUntil(this.$element)
+        .add($target)
+        .add($target.find('.is-active'));
+      // All the active submenus that are not in the branch.
+      const $othersActiveSubmenus = this.$element.find('.is-active').not($targetBranch);
+
+      this.up($othersActiveSubmenus);
     }
 
     $target
@@ -5421,8 +5432,9 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _events() {
-        this.$element.on('click.zf.smoothScroll', this._handleLinkClick);
-        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+        this._linkClickListener = this._handleLinkClick.bind(this);
+        this.$element.on('click.zf.smoothScroll', this._linkClickListener);
+        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
 
     /**
@@ -5479,8 +5491,8 @@ class SmoothScroll extends Plugin {
      * @function
      */
     _destroy() {
-        this.$element.off('click.zf.smoothScroll', this._handleLinkClick);
-        this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._handleLinkClick);
+        this.$element.off('click.zf.smoothScroll', this._linkClickListener);
+        this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
 }
 
@@ -10357,5 +10369,5 @@ Foundation.plugin(Tooltip, 'Tooltip');
 Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
 export default Foundation;
-export { foundation_core_utils as CoreUtils, Foundation as Core, Box, onImagesLoaded, Keyboard, MediaQuery, Motion, Move, Nest, Timer, Touch, Triggers, Abide, Accordion, AccordionMenu, Drilldown, Dropdown, DropdownMenu, Equalizer, Interchange, Magellan, OffCanvas, Orbit, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Toggler, Tooltip, ResponsiveAccordionTabs, Foundation };
+export { foundation_core_utils as CoreUtils, Foundation as Core, Foundation, Box, onImagesLoaded, Keyboard, MediaQuery, Motion, Move, Nest, Timer, Touch, Triggers, Abide, Accordion, AccordionMenu, Drilldown, Dropdown, DropdownMenu, Equalizer, Interchange, Magellan, OffCanvas, Orbit, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Toggler, Tooltip, ResponsiveAccordionTabs };
 //# sourceMappingURL=foundation.es6.js.map
