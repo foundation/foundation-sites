@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.accordion"), require("./foundation.core"), require("./foundation.core.plugin"), require("./foundation.core.utils"), require("./foundation.tabs"), require("./foundation.util.mediaQuery"), require("jquery"));
+		module.exports = factory(require("./foundation.accordion"), require("./foundation.core"), require("./foundation.tabs"), require("./foundation.util.mediaQuery"), require("jquery"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.accordion", "./foundation.core", "./foundation.core.plugin", "./foundation.core.utils", "./foundation.tabs", "./foundation.util.mediaQuery", "jquery"], factory);
+		define(["./foundation.accordion", "./foundation.core", "./foundation.tabs", "./foundation.util.mediaQuery", "jquery"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.responsiveAccordionTabs"] = factory(require("./foundation.accordion"), require("./foundation.core"), require("./foundation.core.plugin"), require("./foundation.core.utils"), require("./foundation.tabs"), require("./foundation.util.mediaQuery"), require("jquery"));
+		exports["foundation.responsiveAccordionTabs"] = factory(require("./foundation.accordion"), require("./foundation.core"), require("./foundation.tabs"), require("./foundation.util.mediaQuery"), require("jquery"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.responsiveAccordionTabs"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.accordion"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.tabs"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.mediaQuery"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_accordion__, __WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_core_plugin__, __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__, __WEBPACK_EXTERNAL_MODULE__foundation_tabs__, __WEBPACK_EXTERNAL_MODULE__foundation_util_mediaQuery__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.responsiveAccordionTabs"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.accordion"], root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.tabs"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.mediaQuery"], root["jQuery"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_accordion__, __WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_tabs__, __WEBPACK_EXTERNAL_MODULE__foundation_util_mediaQuery__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -118,28 +118,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ "./foundation.core.plugin":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core.plugin","commonjs":"./foundation.core.plugin","commonjs2":"./foundation.core.plugin"} ***!
-  \*************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_plugin__;
-
-/***/ }),
-
-/***/ "./foundation.core.utils":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core.utils","commonjs":"./foundation.core.utils","commonjs2":"./foundation.core.utils"} ***!
-  \**********************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core_utils__;
-
-/***/ }),
-
 /***/ "./foundation.tabs":
 /*!****************************************************************************************************************************************************************!*\
   !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.tabs"],"amd":"./foundation.tabs","commonjs":"./foundation.tabs","commonjs2":"./foundation.tabs"} ***!
@@ -199,14 +177,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core.utils");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core.plugin");
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.accordion */ "./foundation.accordion");
-/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_accordion__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.tabs */ "./foundation.tabs");
-/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_tabs__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.accordion */ "./foundation.accordion");
+/* harmony import */ var _foundation_accordion__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_accordion__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.tabs */ "./foundation.tabs");
+/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_tabs__WEBPACK_IMPORTED_MODULE_4__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -237,11 +213,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var MenuPlugins = {
   tabs: {
     cssClass: 'tabs',
-    plugin: _foundation_tabs__WEBPACK_IMPORTED_MODULE_5__["Tabs"]
+    plugin: _foundation_tabs__WEBPACK_IMPORTED_MODULE_4__["Tabs"]
   },
   accordion: {
     cssClass: 'accordion',
-    plugin: _foundation_accordion__WEBPACK_IMPORTED_MODULE_4__["Accordion"]
+    plugin: _foundation_accordion__WEBPACK_IMPORTED_MODULE_3__["Accordion"]
   }
 };
 /**
@@ -511,7 +487,7 @@ function (_Plugin) {
   }]);
 
   return ResponsiveAccordionTabs;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_3__["Plugin"]);
+}(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["Plugin"]);
 
 ResponsiveAccordionTabs.defaults = {};
 

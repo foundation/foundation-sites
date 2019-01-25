@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.5.1
+ * Version 6.5.2
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -835,7 +835,8 @@ ul.no-bullet, ol.no-bullet {
   padding-right: 0.625rem;
   padding-left: 0.625rem;
   max-width: 75rem;
-  margin: 0 auto; }
+  margin-left: auto;
+  margin-right: auto; }
   @media print, screen and (min-width: 40em) {
     .grid-container {
       padding-right: 0.9375rem;
@@ -844,7 +845,8 @@ ul.no-bullet, ol.no-bullet {
     padding-right: 0.625rem;
     padding-left: 0.625rem;
     max-width: 100%;
-    margin: 0 auto; }
+    margin-left: auto;
+    margin-right: auto; }
     @media print, screen and (min-width: 40em) {
       .grid-container.fluid {
         padding-right: 0.9375rem;
@@ -853,7 +855,8 @@ ul.no-bullet, ol.no-bullet {
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
-    margin: 0 auto; }
+    margin-left: auto;
+    margin-right: auto; }
 
 .grid-x {
   display: -webkit-box;
@@ -2842,7 +2845,6 @@ a.button:hover, a.button:focus {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  position: absolute;
   margin: 0;
   font-size: 0.75rem;
   font-weight: bold;
@@ -4214,7 +4216,6 @@ a.thumbnail {
   border-left-width: 0;
   border-right-style: solid;
   border-color: transparent #1779ba transparent transparent;
-  border-left-width: 0;
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.75rem; }
