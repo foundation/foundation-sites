@@ -367,7 +367,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.5.2';
+var FOUNDATION_VERSION = '6.5.3';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
