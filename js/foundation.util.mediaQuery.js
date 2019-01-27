@@ -17,7 +17,7 @@ const defaultQueries = {
 
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.
-// Authors & copyright(c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
+// Authors & copyright © 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 /* eslint-disable */
 window.matchMedia || (window.matchMedia = (function () {
   "use strict";
