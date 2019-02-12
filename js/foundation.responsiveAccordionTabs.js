@@ -175,12 +175,12 @@ class ResponsiveAccordionTabs extends Plugin{
     var tabsPanel = _this.allOptions.panelClass?_this.allOptions.panelClass:'tabs-panel';
 
     this.$element.removeAttr('role');
-    var $liHeads = this.$element.children('.'+tabsTitle+',[data-accordion-item]').removeClass(tabsTitle).removeClass('accordion-item').removeAttr('data-accordion-item');
+    var $liHeads = this.$element.children('.'+tabsTitle+',[data-accordion-item]').removeClass(`${tabsTitle} accordion-item`).removeAttr('data-accordion-item');
     var $liHeadsA = $liHeads.children('a').removeClass('accordion-title');
 
     if (fromString === 'tabs') {
-      $panels = $panels.children('.'+tabsPanel).removeClass(tabsPanel).removeAttr('role').removeAttr('aria-hidden').removeAttr('aria-labelledby');
-      $panels.children('a').removeAttr('role').removeAttr('aria-controls').removeAttr('aria-selected');
+      $panels = $panels.children('.'+tabsPanel).removeClass(tabsPanel).removeAttr('role aria-hidden aria-labelledby');
+      $panels.children('a').removeAttr('role aria-controls aria-selected');
     }else{
       $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
     };

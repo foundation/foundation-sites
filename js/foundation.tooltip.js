@@ -137,8 +137,7 @@ class Tooltip extends Positionable {
     var _this = this;
     this.template.css('visibility', 'hidden').show();
     this._setPosition();
-    this.template.removeClass('top bottom left right').addClass(this.position)
-    this.template.removeClass('align-top align-bottom align-left align-right align-center').addClass('align-' + this.alignment);
+    this.template.removeClass('top bottom left right align-top align-bottom align-left align-right align-center').addClass(`${this.position} align-${this.alignment}`);
 
     /**
      * Fires to close all other open tooltips on the page
@@ -292,8 +291,7 @@ class Tooltip extends Positionable {
   _destroy() {
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tooltip')
-                 .removeClass(this.options.triggerClass)
-                 .removeClass('top right left bottom')
+                 .removeClass(`${this.options.triggerClass} top right left bottom`)
                  .removeAttr('aria-describedby data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
     this.template.remove();

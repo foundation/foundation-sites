@@ -62,7 +62,7 @@ class Accordion extends Plugin {
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
 
-    var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+    var $initActive = this.$element.find('.is-active [data-tab-content]');
     if ($initActive.length) {
       // Save up the initial hash to return to it later when going back in history
       this._initialAnchor = $initActive.prev('a').attr('href');
@@ -244,7 +244,7 @@ class Accordion extends Plugin {
    */
   _openSingleTab($target) {
     // Close all the others active tabs.
-    const $activeContents = this.$element.children('.is-active').children('[data-tab-content]');
+    const $activeContents = this.$element.find('.is-active [data-tab-content]');
     if ($activeContents.length) {
       this._closeTab($activeContents.not($target));
     }
@@ -316,7 +316,7 @@ class Accordion extends Plugin {
    * @private
    */
   _closeAllTabs() {
-    var $activeTabs = this.$element.children('.is-active').children('[data-tab-content]');
+    var $activeTabs = this.$element.find('.is-active [data-tab-content]');
     if ($activeTabs.length) {
       this._closeTab($activeTabs);
     }

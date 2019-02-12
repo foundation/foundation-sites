@@ -354,8 +354,7 @@ class Reveal extends Plugin {
    */
   _removeGlobalClasses() {
     this.$element.off('resizeme.zf.trigger.revealScrollbarListener');
-    $('html').removeClass('is-reveal-open');
-    $('html').removeClass('zf-has-scroll');
+    $('html').removeClass('is-reveal-open zf-has-scroll');
   }
 
   /**

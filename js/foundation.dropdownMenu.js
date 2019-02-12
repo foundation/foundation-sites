@@ -56,7 +56,7 @@ class DropdownMenu extends Plugin {
     Nest.Feather(this.$element, 'dropdown');
 
     var subs = this.$element.find('li.is-dropdown-submenu-parent');
-    this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
+    this.$element.find('.is-dropdown-submenu-parent .is-dropdown-submenu').addClass('first-sub');
 
     this.$menuItems = this.$element.find('[role="menuitem"]');
     this.$tabs = this.$element.children('[role="menuitem"]');

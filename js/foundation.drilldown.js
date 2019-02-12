@@ -213,7 +213,7 @@ class Drilldown extends Plugin {
 
     this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function(e){
       var $element = $(this),
-          $elements = $element.parent('li').parent('ul').children('li').children('a'),
+          $elements = $element.parent('li').parent('ul').find('li a'),
           $prevElement,
           $nextElement;
 
