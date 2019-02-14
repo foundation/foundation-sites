@@ -44,7 +44,8 @@
   width: 0;
   height: 0;
 
-  border: inset $triangle-size;
+  border-style: inset;
+  border-width: $triangle-size;
 
   content: '';
 
