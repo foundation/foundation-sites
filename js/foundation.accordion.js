@@ -44,6 +44,8 @@ class Accordion extends Plugin {
 
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
+    
+    this.$tabs.attr({'role': 'presentation'});
 
     this.$tabs.each(function(idx, el) {
       var $el = $(el),
