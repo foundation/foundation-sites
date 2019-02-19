@@ -147,7 +147,7 @@ class Orbit extends Plugin {
 
     this.$slides.each(function() {
       temp = this.getBoundingClientRect().height;
-      $(this).attr('data-slide', counter);
+      this.setAttribute('data-slide', counter);
 
       // hide all slides but the active one
       if (!/mui/g.test(this.className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
