@@ -108,11 +108,11 @@ class Slider extends Plugin {
 
   setHandles() {
     if(this.handles[1]) {
-      this._setHandlePos(this.$handle, this.inputs.eq(0).value, true, () => {
-        this._setHandlePos(this.$handle2, this.inputs.eq(1).value, true);
+      this._setHandlePos(this.$handle, this.inputs.eq(0).get(0).value, true, () => {
+        this._setHandlePos(this.$handle2, this.inputs.eq(1).get(0).value, true);
       });
     } else {
-      this._setHandlePos(this.$handle, this.inputs.eq(0).value, true);
+      this._setHandlePos(this.$handle, this.inputs.eq(0).get(0).value, true);
     }
   }
 
@@ -319,7 +319,7 @@ class Slider extends Plugin {
       'min': this.options.start,
       'step': this.options.step
     });
-    this.inputs.eq(idx).value = initVal;
+    this.inputs.eq(idx).get(0).value = initVal;
     this.handles.eq(idx).attr({
       'role': 'slider',
       'aria-controls': id,
@@ -340,7 +340,7 @@ class Slider extends Plugin {
    */
   _setValues($handle, val) {
     var idx = this.options.doubleSided ? this.handles.index($handle) : 0;
-    this.inputs.eq(idx).value = val;
+    this.inputs.eq(idx).get(0).value = val;
     $handle.attr('aria-valuenow', val);
   }
 
@@ -528,7 +528,7 @@ class Slider extends Plugin {
     $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e) {
       var _$handle = $(this),
           idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-          oldValue = parseFloat(_this.inputs.eq(idx).value),
+          oldValue = parseFloat(_this.inputs.eq(idx).get(0).value),
           newValue;
 
       // handle keyboard event with keyboard util
