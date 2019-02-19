@@ -142,7 +142,8 @@ class Orbit extends Plugin {
   * @private
   * @param {Function} cb - a callback function to fire when complete.
   */
-  _setWrapperHeight(cb) {//rewrite this to `for` loop
+  _setWrapperHeight(cb) {
+    // TODO: rewrite this to `for` loop
     var max = 0, temp, counter = 0, _this = this;
 
     this.$slides.each(function() {
