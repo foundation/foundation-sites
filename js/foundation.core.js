@@ -91,12 +91,12 @@ var Foundation = {
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
-   reInit: function(plugins){
+   reInit: function(plugins){ // TODO: test this
      var isJQ = plugins instanceof $;
      try{
        if(isJQ){
          plugins.each(function(){
-           $(this).data('zfPlugin')._init();
+           this.getAttribute('data-zfPlugin')._init();
          });
        }else{
          var type = typeof plugins,
@@ -131,6 +131,7 @@ var Foundation = {
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
    */
   reflow: function(elem, plugins) {
+    // TODO: test this
 
     // If plugins is undefined, just grab everything
     if (typeof plugins === 'undefined') {
@@ -150,7 +151,7 @@ var Foundation = {
 
       // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
       var $elem = $(elem).find('[data-'+name+']').addBack('[data-'+name+']').filter(function () {
-        return typeof $(this).data("zfPlugin") === 'undefined';
+        return typeof this.getAttribute("data-zfPlugin") === 'undefined';
       });
 
       // For each plugin found, initialize it

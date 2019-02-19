@@ -508,6 +508,7 @@ class Drilldown extends Plugin {
       maxHeight = height > maxHeight ? height : maxHeight;
 
       if(_this.options.autoHeight) {
+        // TODO: research why the value differs with getAttribute
         $(this).data('calcHeight',height);
       }
     });
