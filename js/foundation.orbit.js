@@ -235,7 +235,7 @@ class Orbit extends Plugin {
       if (this.options.bullets) {
         this.$bullets.on('click.zf.orbit touchend.zf.orbit', function() {
           if (/is-active/g.test(this.className)) { return false; }//if this is active, kick out of function.
-          var idx = $(this).data('slide'),
+          var idx = this.getAttribute('data-slide'),
           ltr = idx > _this.$slides.filter('.is-active').data('slide'),
           $slide = _this.$slides.eq(idx);
 
