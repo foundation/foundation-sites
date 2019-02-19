@@ -150,8 +150,8 @@ class Orbit extends Plugin {
       $(this).attr('data-slide', counter);
 
       // hide all slides but the active one
-      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
-        $(this).css({'display': 'none'});
+      if (!/mui/g.test(this.className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+        this.style.display = 'none';
       }
       max = temp > max ? temp : max;
       counter++;
@@ -170,7 +170,7 @@ class Orbit extends Plugin {
   */
   _setSlideHeight(height) {
     this.$slides.each(function() {
-      $(this).css('max-height', height);
+      this.style.maxHeight = height;
     });
   }
 
