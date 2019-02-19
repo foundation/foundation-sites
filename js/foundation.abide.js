@@ -111,11 +111,11 @@ class Abide extends Plugin {
       case 'select-one':
       case 'select-multiple':
         var opt = $el.find('option:selected');
-        if (!opt.length || !opt.val()) isGood = false;
+        if (!opt.length || !opt.value) isGood = false;
         break;
 
       default:
-        if(!$el.val() || !$el.val().length) isGood = false;
+        if(!$el.value || !$el.value.length) isGood = false;
     }
 
     return isGood;
@@ -376,7 +376,7 @@ class Abide extends Plugin {
       if (dependentElements.length) {
         let _this = this;
         dependentElements.each(function() {
-          if ($(this).val()) {
+          if (this.value) {
             _this.validateInput($(this));
           }
         });
@@ -440,7 +440,7 @@ class Abide extends Plugin {
   validateText($el, pattern) {
     // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
     pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
-    var inputText = $el.val();
+    var inputText = $el.value;
     var valid = false;
 
     if (inputText.length) {
@@ -696,7 +696,7 @@ Abide.defaults = {
    */
   validators: {
     equalTo: function (el, required, parent) {
-      return $(`#${el.attr('data-equalto')}`).val() === el.val();
+      return $(`#${el.attr('data-equalto')}`).value === el.value;
     }
   }
 }
