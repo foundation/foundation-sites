@@ -157,7 +157,7 @@ var Foundation = {
       $elem.each(function() {
         var $el = $(this),
             opts = {};
-            
+
         if($el.attr('data-options')){
           var thing = $el.attr('data-options').split(';').forEach(function(e, i){
             var opt = e.split(':').map(function(el){ return el.trim(); });
