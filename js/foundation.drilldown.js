@@ -300,7 +300,9 @@ class Drilldown extends Plugin {
     $elem.addClass('is-closing');
 
     if (this.options.autoHeight) {
-      const calcHeight = $elem.parent().closest('ul').data('calcHeight');
+      const closest = $elem.parent().closest('ul');
+      // TODO: test this
+      const calcHeight = closest.length ? closest.get(0).getAttribute('data-calcHeight') : "";
       this.$wrapper.css({ height: calcHeight });
     }
 
