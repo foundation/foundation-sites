@@ -204,7 +204,8 @@ var Foundation = {
               plugClass[method].apply(plugClass, args);
           }else{
             this.each(function(i, el){//otherwise loop through the jQuery collection and invoke the method on each
-              plugClass[method].apply($(el).data('zfPlugin'), args);
+              // TODO: test this
+              plugClass[method].apply(el.getAttribute('data-zfPlugin'), args);
             });
           }
         }else{//error for no class or no method
