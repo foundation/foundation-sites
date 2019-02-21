@@ -477,7 +477,7 @@ class Drilldown extends Plugin {
    * @param {jQuery} $elem - the current sub-menu to hide, i.e. the `ul` tag.
    */
   _hide($elem) {
-    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').get(0).getAttribute('data-calcHeight')}); // TODO: test this
     var _this = this;
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true);
