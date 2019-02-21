@@ -228,7 +228,7 @@ class Orbit extends Plugin {
         //also need to handle enter/return and spacebar key presses
         .on('click.zf.orbit touchend.zf.orbit', function(e){
 	  e.preventDefault();
-          _this.changeSlide($(this).hasClass(_this.options.nextClass));
+          _this.changeSlide(this.classList.contains(_this.options.nextClass));
         });
       }
 
