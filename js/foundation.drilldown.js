@@ -427,7 +427,8 @@ class Drilldown extends Plugin {
 
       // Update height of first child (target menu) if autoHeight option true
       if (index === 0 && _this.options.autoHeight) {
-        _this.$wrapper.css('height', $(this).data('calcHeight'));
+        // TODO: test this
+        _this.$wrapper.css('height', this.getAttribute('data-calcHeight'));
       }
 
       var isLastChild = index == $submenus.length - 1;
