@@ -225,7 +225,7 @@ class Orbit extends Plugin {
       if (this.options.navButtons) {
         var $controls = this.$element.find(`.${this.options.nextClass}, .${this.options.prevClass}`);
         $controls.attr('tabindex', 0)
-        //also need to handle enter/return and spacebar key presses
+        // also need to handle enter/return and spacebar key presses
         .on('click.zf.orbit touchend.zf.orbit', function(e){
 	  e.preventDefault();
           _this.changeSlide(this.classList.contains(_this.options.nextClass));
