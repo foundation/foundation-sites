@@ -176,7 +176,7 @@ class Accordion extends Plugin {
       console.info('Cannot toggle an accordion that is disabled.');
       return;
     }
-    if($target.parent().hasClass('is-active')) {
+    if($target.parent().get(0).classList.contains('is-active')) {
       this.up($target);
     } else {
       this.down($target);
