@@ -7,7 +7,8 @@ var confirm = require('gulp-prompt').confirm;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
 var octophant = require('octophant');
-var inquirer = require('inquirer');
+var readline = require('readline');
+var { green, bold } = require('kleur');
 var exec = require('child_process').execSync;
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
@@ -25,15 +26,21 @@ gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation',
 gulp.task('deploy:plugins', gulp.series('deploy:plugins:sources', 'deploy:plugins:sourcemaps'));
 
 gulp.task('deploy:prompt', function(cb) {
-  inquirer.prompt([{
-    type: 'input',
-    name: 'version',
-    message: 'What version are we moving to? (Current version is ' + CURRENT_VERSION + ')'
-  }])
-  .then(function(res) {
-    NEXT_VERSION = res.version;
-    cb();
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
   });
+
+  rl.question(
+    green('?') + ' ' + bold('What version are we moving to? (Current version is ' + CURRENT_VERSION + ') '),
+    (version) => {
+      NEXT_VERSION = version
+        ? version
+        : CURRENT_VERSION;
+      rl.close();
+      cb();
+    }
+  );
 });
 
 // Bumps the version number in any file that has one
