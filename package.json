@@ -99,7 +99,6 @@
     "supercollider": "^1.4.4",
     "touch": "^3.1.0",
     "undertaker-forward-reference": "^1.0.2",
-    "util-deprecate": "^1.0.2",
     "vinyl": "^2.0.2",
     "vinyl-named": "^1.1.0",
     "webpack": "^4.28.4",
