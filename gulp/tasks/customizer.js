@@ -11,7 +11,6 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
 var yargs = require('yargs');
@@ -136,8 +135,8 @@ gulp.task('customizer:zip', function (done) {
   var outputFolder = path.dirname(OUTPUT_DIR);
   var outputFileName = path.basename(OUTPUT_DIR);
 
-  touch(path.join(OUTPUT_DIR, 'css/app.css'));
-  touch(path.join(OUTPUT_DIR, 'js/app.js'));
+  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'css/app.css', 'w')));
+  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'js/app.js', 'w')));
   fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
   return gulp.src(path.join(OUTPUT_DIR, '/**/*'))
