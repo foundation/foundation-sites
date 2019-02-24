@@ -168,6 +168,28 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 </form>
 ```
 
+You can specify validator-specific error messages using `[data-form-error-on]`
+attribute, for example:
+
+- `data-form-error-on="required"`
+- `data-form-error-on="pattern"`
+- `data-form-error-on="equalTo"`
+- `data-form-error-on="your_custom_validator"`
+
+```html_example
+<form data-abide novalidate>
+  <label>Email Required
+    <input type="text" required pattern="email">
+    <span class="form-error" data-form-error-on="required">
+      Yo, you had better fill this out, it's required.
+    </span>
+    <span class="form-error" data-form-error-on="pattern">
+      Invalid Email
+    </span>
+  </label>
+  <button class="button" type="submit" value="Submit">Submit</button>
+</form>
+```
 
 ## Initial State
 
