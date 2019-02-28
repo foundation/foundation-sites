@@ -159,7 +159,8 @@ class Orbit extends Plugin {
     });
 
     if (counter === this.$slides.length) {
-      this.$wrapper.css({'height': max}); //only change the wrapper height property once.
+      // TODO: test this
+      this.$wrapper.get(0).style.height = max; //only change the wrapper height property once.
       if(cb) {cb(max);} //fire callback with max height dimension.
     }
   }
@@ -349,7 +350,9 @@ class Orbit extends Plugin {
           $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
+            // TODO: test this
+            $newSlide.get(0).style.display = 'block';
+            $newSlide.get(0).setAttribute('aria-live', 'polite');
         });
 
         Motion.animateOut(

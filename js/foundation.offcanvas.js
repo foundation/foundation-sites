@@ -109,7 +109,7 @@ class OffCanvas extends Plugin {
     // Add an overlay over the content if necessary
     if (this.options.contentOverlay === true) {
       var overlay = document.createElement('div');
-      var overlayPosition = $(this.$element).css("position") === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
+      var overlayPosition = this.$element.get(0).style.position === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
       overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
       this.$overlay = $(overlay);
       if(overlayPosition === 'is-overlay-fixed') {
@@ -134,7 +134,7 @@ class OffCanvas extends Plugin {
     }
 
     if (this.options.transitionTime) {
-      this.$element.css('transition-duration', this.options.transitionTime);
+      this.$element.get(0).style.transitionDuration = this.options.transitionTime; // TODO: test this
     }
 
     let inCanvasFor = this.$element.attr('class').match(/\bin-canvas-for-(\w+)/);

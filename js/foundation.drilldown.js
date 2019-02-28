@@ -416,7 +416,7 @@ class Drilldown extends Plugin {
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
       if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
-      if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
+      if (this.options.autoHeight) this.$wrapper.get(0).style.height = $elem.get(0).getAttribute('data-calcHeight'); // TODO: test this
       return;
     }
 
@@ -429,7 +429,7 @@ class Drilldown extends Plugin {
       // Update height of first child (target menu) if autoHeight option true
       if (index === 0 && _this.options.autoHeight) {
         // TODO: test this
-        _this.$wrapper.css('height', this.getAttribute('data-calcHeight'));
+        _this.$wrapper.get(0).style.height = this.getAttribute('data-calcHeight');
       }
 
       var isLastChild = index == $submenus.length - 1;
