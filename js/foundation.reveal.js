@@ -273,7 +273,9 @@ class Reveal extends Plugin {
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
 
-    this._disableScroll();
+    if ($('.reveal:visible').length === 0) {
+      this._disableScroll();
+    }
 
     var _this = this;
 
@@ -446,7 +448,9 @@ class Reveal extends Plugin {
 
       _this.$element.attr('aria-hidden', true);
 
-      _this._enableScroll(scrollTop);
+      if ($('.reveal:visible').length  === 0) {
+        _this._enableScroll(scrollTop);
+      }
 
       /**
       * Fires when the modal is done closing.
