@@ -136,7 +136,8 @@ class Drilldown extends Plugin {
   }
 
   _resize() {
-    this.$wrapper.css({'max-width': 'none', 'min-height': 'none'});
+    this.$wrapper.get(0).style.maxWidth = 'none';
+    this.$wrapper.get(0).style.minHeight = 'none';
     // _getMaxDims has side effects (boo) but calling it should update all other necessary heights & widths
     this.$wrapper.css(this._getMaxDims());
   }
