@@ -136,8 +136,8 @@ class Drilldown extends Plugin {
   }
 
   _resize() {
-    this.$wrapper.get(0).style.maxWidth = 'none';
-    this.$wrapper.get(0).style.minHeight = 'none';
+    this.$wrapper.get(0).style.maxWidth = 'none'; // TODO: test this
+    this.$wrapper.get(0).style.minHeight = 'none'; // TODO: test this
     // _getMaxDims has side effects (boo) but calling it should update all other necessary heights & widths
     this.$wrapper.css(this._getMaxDims());
   }
@@ -304,7 +304,7 @@ class Drilldown extends Plugin {
       const closest = $elem.parent().closest('ul');
       // TODO: test this
       const calcHeight = closest.length ? closest.get(0).getAttribute('data-calcHeight') : "";
-      this.$wrapper.css({ height: calcHeight });
+      this.$wrapper.get(0).style.height = calcHeight; // TODO: test this
     }
 
     /**

@@ -417,7 +417,7 @@ class Abide extends Plugin {
       // Ensure a11y attributes are set
       if (this.options.a11yAttributes) this.addGlobalErrorA11yAttributes($elem);
       // Show or hide the error
-      elem.style.display = noError ? 'none' : 'block';
+      elem.style.display = noError ? 'none' : 'block'; // TODO: test this
     });
 
     /**

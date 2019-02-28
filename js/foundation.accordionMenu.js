@@ -302,7 +302,7 @@ class AccordionMenu extends Plugin {
    * @fires AccordionMenu#destroyed
    */
   _destroy() {
-    this.$element.find('[data-submenu]').slideDown(0).css('display', '');
+    this.$element.find('[data-submenu]').slideDown(0).get(0).style.display = ''; // TODO: test this
     this.$element.find('a').off('click.zf.accordionMenu');
     this.$element.find('[data-is-parent-link]').detach();
 

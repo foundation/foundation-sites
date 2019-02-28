@@ -328,7 +328,7 @@ class Accordion extends Plugin {
    * @function
    */
   _destroy() {
-    this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
+    this.$element.find('[data-tab-content]').stop(true).slideUp(0).get(0).style.display = ''; // TODO: test this
     this.$element.find('a').off('.zf.accordion');
     if(this.options.deepLink) {
       $(window).off('hashchange', this._checkDeepLink);
