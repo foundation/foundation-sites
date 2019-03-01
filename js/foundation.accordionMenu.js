@@ -123,12 +123,12 @@ class AccordionMenu extends Plugin {
             });
         }
       }
-    }).on('keydown.zf.accordionmenu', function(e){
+    }).on('keydown.zf.accordionMenu', function(e){
       var $element = $(this),
-          $elements = $element.parent('ul').children('li'),
-          $prevElement,
-          $nextElement,
-          $target = $element.children('[data-submenu]');
+        $elements = $element.parent('ul').children('li'),
+        $prevElement,
+        $nextElement,
+        $target = $element.children('[data-submenu]');
 
       $elements.each(function(i) {
         if ($(this).is($element)) {

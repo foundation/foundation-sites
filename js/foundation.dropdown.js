@@ -165,7 +165,7 @@ class Dropdown extends Positionable {
 
     if(this.options.hover){
       this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
-      .on('mouseenter.zf.dropdown', function(){
+      .on('mouseenter.zf.dropdown', function(e){
         _this._setCurrentAnchor(this);
 
         var bodyData = $('body').data();
@@ -176,7 +176,7 @@ class Dropdown extends Positionable {
             _this.$anchors.data('hover', true);
           }, _this.options.hoverDelay);
         }
-      }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
+      }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(e){
         clearTimeout(_this.timeout);
         _this.timeout = setTimeout(function(){
           _this.close();
@@ -185,9 +185,9 @@ class Dropdown extends Positionable {
       }));
       if(this.options.hoverPane){
         this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
-            .on('mouseenter.zf.dropdown', function(){
+            .on('mouseenter.zf.dropdown', function(e){
               clearTimeout(_this.timeout);
-            }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
+            }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(e){
               clearTimeout(_this.timeout);
               _this.timeout = setTimeout(function(){
                 _this.close();
@@ -197,9 +197,8 @@ class Dropdown extends Positionable {
       }
     }
     this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
-
       var $target = $(this),
-        visibleFocusableElements = Keyboard.findFocusable(_this.$element);
+      visibleFocusableElements = Keyboard.findFocusable(_this.$element);
 
       Keyboard.handleKey(e, 'Dropdown', {
         open: function() {

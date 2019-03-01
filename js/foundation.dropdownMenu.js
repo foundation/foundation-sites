@@ -102,9 +102,9 @@ class DropdownMenu extends Plugin {
     // used for onClick and in the keyboard handlers
     var handleClickFn = function(e) {
       var $elem = $(e.target).parentsUntil('ul', `.${parClass}`),
-          hasSub = $elem.hasClass(parClass),
-          hasClicked = $elem.attr('data-is-click') === 'true',
-          $sub = $elem.children('.is-dropdown-submenu');
+        hasSub = $elem.hasClass(parClass),
+        hasClicked = $elem.attr('data-is-click') === 'true',
+        $sub = $elem.children('.is-dropdown-submenu');
 
       if (hasSub) {
         if (hasClicked) {
@@ -132,7 +132,7 @@ class DropdownMenu extends Plugin {
     if(_this.options.closeOnClickInside){
       this.$menuItems.on('click.zf.dropdownMenu', function(e) {
         var $elem = $(this),
-            hasSub = $elem.hasClass(parClass);
+          hasSub = $elem.hasClass(parClass);
         if(!hasSub){
           _this._hide();
         }
@@ -142,7 +142,7 @@ class DropdownMenu extends Plugin {
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
         var $elem = $(this),
-          hasSub = $elem.hasClass(parClass);
+        hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
           clearTimeout($elem.data('_delay'));
@@ -152,7 +152,7 @@ class DropdownMenu extends Plugin {
         }
       }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
         var $elem = $(this),
-            hasSub = $elem.hasClass(parClass);
+          hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
@@ -165,10 +165,10 @@ class DropdownMenu extends Plugin {
     }
     this.$menuItems.on('keydown.zf.dropdownMenu', function(e) {
       var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
-          isTab = _this.$tabs.index($element) > -1,
-          $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
-          $prevElement,
-          $nextElement;
+      isTab = _this.$tabs.index($element) > -1,
+      $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
+      $prevElement,
+      $nextElement;
 
       $elements.each(function(i) {
         if ($(this).is($element)) {

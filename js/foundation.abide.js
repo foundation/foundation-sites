@@ -52,10 +52,10 @@ class Abide extends Plugin {
    */
   _events() {
     this.$element.off('.abide')
-      .on('reset.zf.abide', () => {
+      .on('reset.zf.abide', (e) => {
         this.resetForm();
       })
-      .on('submit.zf.abide', () => {
+      .on('submit.zf.abide', (e) => {
         return this.validateForm();
       });
 
