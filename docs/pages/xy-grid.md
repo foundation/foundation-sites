@@ -520,3 +520,25 @@ That outputs this CSS:
   margin-left: 0.625rem;
 }
 ```
+
+### Multiple Grid Gutters
+
+Use the `xy-margin-grid-classes()` mixin to create classes for your own gutter.
+By default the mixin takes 4 parameters:
+- position of gutters
+- vertical direction
+- wrapping selector with your own class (.grid-margin-x-example)
+- gutters
+
+It also work with paddings by `xy-padding-grid-classes()` mixin.
+
+Here's an example:
+
+```scss
+$grid-margin-gutters-small: (
+    small: 16px,
+    medium: 16px
+);
+
+@include xy-margin-grid-classes($grid-margin-gutters-small, $wrapping-selector: '.grid-margin-x-small');
+```

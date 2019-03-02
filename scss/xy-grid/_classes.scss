@@ -127,15 +127,20 @@
   }
 }
 
-// Margin Grid classes
+/// Margin Grid classes
+///
+/// @param {List} $gutter-position [left right] - The position to apply gutters to. Accepts `top`, `bottom`, `left`, `right` in any combination.
+/// @param {Boolean} $vertical [false] - Direction of the gutters to output. See `$gutter-position`.
+/// @param {String} $wrapping-selector ['.grid-margin-x'] - Add margin grid classes for wrapping-selector.
+/// @param {Number|Map} $gutters [$grid-margin-gutters] - Map or single value for gutters.
 @mixin xy-margin-grid-classes(
-  $gutters: $grid-margin-gutters,
   $gutter-position: left right,
   $vertical: false,
-  $wrapping-selector: '.grid-margin-x'
+  $wrapping-selector: '.grid-margin-x',
+  $gutters: $grid-margin-gutters
 ){
   #{$wrapping-selector} {
-    @include xy-gutters($gutters, $negative: true, $gutter-position: $gutter-position);
+    @include xy-gutters($negative: true, $gutter-position: $gutter-position, $gutters: $gutters);
 
     // Base cell styles
     > .cell {
@@ -168,24 +173,28 @@
   }
 }
 
-// Padding Grid classes
-@mixin xy-padding-grid-classes {
+/// Padding Grid classes
+///
+/// @param {Number|Map} $gutters [$grid-padding-gutters] - Map or single value for gutters.
+@mixin xy-padding-grid-classes (
+  $gutters: $grid-padding-gutters
+){
   .grid-padding-x {
 
     // Negative margin for nested grids
     .grid-padding-x {
-      @include xy-gutters($negative: true);
+      @include xy-gutters($negative: true, $gutters: $gutters);
     }
 
     // Negative margin for grids within `grid-container/grid-container.fluid`
     // This allows margin and padding grids to line up with eachother
     .grid-container:not(.full) > & {
-      @include xy-gutters($negative: true);
+      @include xy-gutters($negative: true, $gutters: $gutters);
     }
 
     // Base cell styles
     > .cell {
-      @include xy-gutters($gutters: $grid-padding-gutters, $gutter-type: padding);
+      @include xy-gutters($gutters: $gutters, $gutter-type: padding);
     }
   }
 }
