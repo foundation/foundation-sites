@@ -530,7 +530,7 @@ By default the mixin takes 4 parameters:
 - wrapping selector with your own class (.grid-margin-x-example)
 - gutters
 
-It also work with paddings to by `xy-padding-grid-classes()` mixin. 
+It also works with paddings if using the `xy-padding-grid-classes()` mixin instead.
 If necessary you can expand it with the `xy-offset-cell-classes()` mixin to create offset functionality.
 
 Here's an example:
