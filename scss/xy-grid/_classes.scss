@@ -253,18 +253,25 @@
 }
 
 // Offset classes
-@mixin xy-offset-cell-classes {
+@mixin xy-offset-cell-classes(
+  $margin-grid: true,
+  $padding-grid: true,
+  $wrapping-selector: '.grid-margin-x'
+) {
   @include -zf-each-breakpoint {
     @for $i from 1 through $grid-columns {
       // Offsets
       $o: $i - 1;
 
-      .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding);
+      @if $padding-grid {
+        .#{$-zf-size}-offset-#{$o} {
+          @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
+        }
       }
-
-      .grid-margin-x > .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o);
+      @if $margin-grid {
+        #{$wrapping-selector} > .#{$-zf-size}-offset-#{$o} {
+          @include xy-cell-offset($o, $breakpoint: $-zf-size);
+        }
       }
     }
   }
@@ -489,7 +496,7 @@
 
   // Offset gutters
   @if($offset) {
-    @include xy-offset-cell-classes();
+    @include xy-offset-cell-classes($margin-grid, $padding-grid);
   }
 
   // Vertical grid
