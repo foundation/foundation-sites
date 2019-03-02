@@ -138,8 +138,10 @@ $prototype-spacers-count: 3 !default;
         }
       }
     }
+  }
 
-    @if ($prototype-spacing-breakpoints) {
+  @if ($prototype-spacing-breakpoints) {
+    @for $spacer from 0 through $prototype-spacers-count {
     // Loop through Responsive Breakpoints
       @each $size in $breakpoint-classes {
         @include breakpoint($size) {
