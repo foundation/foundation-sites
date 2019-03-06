@@ -200,6 +200,24 @@ describe('Orbit', function() {
       $html.find('.orbit-slide').eq(0).should.be.hidden;
       $html.find('.orbit-slide').eq(2).should.be.visible;
     });
+    it('changes slides on swipe with data left', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Orbit($html, {});
+
+      $html.find('.orbit-slide').eq(0).trigger('swipe', 'left');
+
+      $html.find('.orbit-slide').eq(0).should.be.hidden;
+      $html.find('.orbit-slide').eq(1).should.be.visible;
+    });
+    it('changes slides on swipeleft', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Orbit($html, {});
+
+      $html.find('.orbit-slide').eq(0).trigger('swipeleft');
+
+      $html.find('.orbit-slide').eq(0).should.be.hidden;
+      $html.find('.orbit-slide').eq(1).should.be.visible;
+    });
     it('changes slides to the previous one', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Orbit($html, {});
