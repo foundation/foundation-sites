@@ -200,6 +200,14 @@ class Orbit extends Plugin {
         }).on('swiperight.zf.orbit', function(e){
           e.preventDefault();
           _this.changeSlide(false);
+        }).on('swipe.zf.orbit', function(e, dir){
+          if(dir === 'left') {
+            e.preventDefault();
+            _this.changeSlide(true);
+          } else if (dir === 'right') {
+            e.preventDefault();
+            _this.changeSlide(false);
+          }
         });
       }
       //***************************************
