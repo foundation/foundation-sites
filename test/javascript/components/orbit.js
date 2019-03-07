@@ -200,24 +200,16 @@ describe('Orbit', function() {
       $html.find('.orbit-slide').eq(0).should.be.hidden;
       $html.find('.orbit-slide').eq(2).should.be.visible;
     });
-    it('changes slides on swipe with data left', function() {
+    /*it('changes slides on swipeleft (touchmove)', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Orbit($html, {});
 
-      $html.find('.orbit-slide').eq(0).trigger('swipe', 'left');
-
-      $html.find('.orbit-slide').eq(0).should.be.hidden;
-      $html.find('.orbit-slide').eq(1).should.be.visible;
-    });
-    it('changes slides on swipe with data right', function() {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.Orbit($html, {});
-
-      $html.find('.orbit-slide').eq(0).trigger('swipe', 'right');
-
-      $html.find('.orbit-slide').eq(0).should.be.hidden;
-      $html.find('.orbit-slide').eq(3).should.be.visible;
-    });
+      $html.find('.orbit-slide').eq(0).trigger($.Event("touchstart", {"touches": [{"pageX": 200, "pageY": 10}]}));
+      $html.find('.orbit-slide').eq(0).trigger($.Event("touchmove", {"touches": [{"pageX": 100, "pageY": 10}]}));
+      $html.find('.orbit-slide').eq(0).trigger($.Event("touchend", {"touches": [{"pageX": 0, "pageY": 10}]}));
+      $html.find('.orbit-slide').eq(0).should.be.visible;
+      $html.find('.orbit-slide').eq(1).should.be.hidden;
+    });*/
     it('changes slides on swipeleft', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Orbit($html, {});
@@ -234,7 +226,7 @@ describe('Orbit', function() {
       $html.find('.orbit-slide').eq(0).trigger('swiperight');
 
       $html.find('.orbit-slide').eq(0).should.be.hidden;
-      $html.find('.orbit-slide').eq(3).should.be.visible;
+      $html.find('.orbit-slide').eq(-1).should.be.visible;
     });
     it('changes slides to the previous one', function() {
       $html = $(template).appendTo('body');
