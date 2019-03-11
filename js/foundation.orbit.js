@@ -5,8 +5,8 @@ import { Keyboard } from './foundation.util.keyboard';
 import { Motion } from './foundation.util.motion';
 import { Timer } from './foundation.util.timer';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 import { Touch } from './foundation.util.touch'
 
 
@@ -149,8 +149,9 @@ class Orbit extends Plugin {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
-        $(this).css({'position': 'relative', 'display': 'none'});
+      // hide all slides but the active one
+      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+        $(this).css({'display': 'none'});
       }
       max = temp > max ? temp : max;
       counter++;
@@ -303,7 +304,7 @@ class Orbit extends Plugin {
   /**
   * Changes the current slide to a new one.
   * @function
-  * @param {Boolean} isLTR - flag if the slide should move left to right.
+  * @param {Boolean} isLTR - if true the slide moves from right to left, if false the slide moves from left to right.
   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
   * @fires Orbit#slidechange
@@ -344,11 +345,10 @@ class Orbit extends Plugin {
 
       if (this.options.useMUI && !this.$element.is(':hidden')) {
         Motion.animateIn(
-          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+          $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.css({'position': 'relative', 'display': 'block'})
-            .attr('aria-live', 'polite');
+            $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
         });
 
         Motion.animateOut(
@@ -378,15 +378,41 @@ class Orbit extends Plugin {
 
   /**
   * Updates the active state of the bullets, if displayed.
+  * Move the descriptor of the current slide `[data-slide-active-label]` to the newly active bullet.
+  * If no `[data-slide-active-label]` is set, will move the exceeding `span` element.
+  *
   * @function
   * @private
   * @param {Number} idx - the index of the current slide.
   */
   _updateBullets(idx) {
-    var $oldBullet = this.$element.find(`.${this.options.boxOfBullets}`)
-    .find('.is-active').removeClass('is-active').blur(),
-    span = $oldBullet.find('span:last').detach(),
-    $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+    var $oldBullet = this.$bullets.filter('.is-active');
+    var $othersBullets = this.$bullets.not('.is-active');
+    var $newBullet = this.$bullets.eq(idx);
+
+    $oldBullet.removeClass('is-active').blur();
+    $newBullet.addClass('is-active');
+
+    // Find the descriptor for the current slide to move it to the new slide button
+    var activeStateDescriptor = $oldBullet.children('[data-slide-active-label]').last();
+
+    // If not explicitely given, search for the last "exceeding" span element (compared to others bullets).
+    if (!activeStateDescriptor.length) {
+      var spans = $oldBullet.children('span');
+      var spanCountInOthersBullets = $othersBullets.toArray().map(b => $(b).children('span').length);
+
+      // If there is an exceeding span element, use it as current slide descriptor
+      if (spanCountInOthersBullets.every(count => count < spans.length)) {
+        activeStateDescriptor = spans.last();
+        activeStateDescriptor.attr('data-slide-active-label', '');
+      }
+    }
+
+    // Move the current slide descriptor to the new slide button
+    if (activeStateDescriptor.length) {
+      activeStateDescriptor.detach();
+      $newBullet.append(activeStateDescriptor);
+    }
   }
 
   /**
@@ -520,7 +546,7 @@ Orbit.defaults = {
   */
   prevClass: 'orbit-previous',
   /**
-  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatibility.
   * @option
    * @type {boolean}
   * @default true

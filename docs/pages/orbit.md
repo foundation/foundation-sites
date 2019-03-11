@@ -36,32 +36,35 @@ Orbit doesn't automatically generate any HTML for you, giving you the flexibilit
     <ul class="orbit-container">
       <li class="is-active orbit-slide">
         <figure class="orbit-figure">
-          <img class="orbit-image" src="http://placehold.it/1200x600/999?text=Slide-1" alt="Space">
+          <img class="orbit-image" src="https://placehold.it/1200x600/999?text=Slide-1" alt="Space">
           <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
         </figure>
       </li>
       <li class="orbit-slide">
         <figure class="orbit-figure">
-          <img class="orbit-image" src="http://placehold.it/1200x600/888?text=Slide-2" alt="Space">
+          <img class="orbit-image" src="https://placehold.it/1200x600/888?text=Slide-2" alt="Space">
           <figcaption class="orbit-caption">Lets Rocket!</figcaption>
         </figure>
       </li>
       <li class="orbit-slide">
         <figure class="orbit-figure">
-          <img class="orbit-image" src="http://placehold.it/1200x600/777?text=Slide-3" alt="Space">
+          <img class="orbit-image" src="https://placehold.it/1200x600/777?text=Slide-3" alt="Space">
           <figcaption class="orbit-caption">Encapsulating</figcaption>
         </figure>
       </li>
       <li class="orbit-slide">
         <figure class="orbit-figure">
-          <img class="orbit-image" src="http://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+          <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
           <figcaption class="orbit-caption">Outta This World</figcaption>
         </figure>
       </li>
     </ul>
   </div>
   <nav class="orbit-bullets">
-    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+    </button>
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
@@ -103,7 +106,10 @@ Orbit doesn't automatically generate any HTML for you, giving you the flexibilit
     </ul>
   </div>
   <nav class="orbit-bullets">
-    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+    </button>
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
@@ -150,16 +156,21 @@ Orbit controls use the class `.orbit-previous` and `.orbit-next`. The below exam
 
 ### Bullets
 
-The bullets serve two purposes: they mark the current slide, and can be clicked on to navigate to another slide. Like with the controls, the bullets also have screen reader-friendly labels.
+The bullets serve two purposes: they mark the current slide, and can be clicked on to navigate to another slide. Like with the controls, the bullets can also have screen reader-friendly labels.
 
 ```html
 <nav class="orbit-bullets">
-  <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+  <button class="is-active" data-slide="0">
+    <span class="show-for-sr">First slide details.</span>
+    <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+  </button>
   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
 </nav>
 ```
+
+Within the active bullet (a button with `is-active`), you can provide a label for the active slide with `[data-slide-active-label]`. It will be moved to others bullets when the Orbit slides. If not provided, the Orbit will move the last exceeding `span` element.
 
 <!-- <div class="callout"><p>
   The new Orbit slider was designed to be a tool for rapid prototyping. While you are welcome to use it in production, if you want something more robust, we welcome you to try [Owl Carousel](http://owlgraphic.com/owlcarousel/).
@@ -225,7 +236,10 @@ A carousel slide can contain images or HTML&mdash;you can even mix between slide
     </ul>
   </div>
   <nav class="orbit-bullets">
-    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+    </button>
     <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
     <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
@@ -246,8 +260,8 @@ There are four plugin options you can set to change the default effects:
 
 - `data-anim-in-from-left`: transition to play when a slide comes *in from the left*.
 - `data-anim-in-from-right`: transition to play when a slide comes *in from the right*.
-- `data-anim-out-from-left`: transition to play when a slide comes *out from the left*.
-- `data-anim-out-from-right`: transition to play when a slide comes *out from the right*.
+- `data-anim-out-to-left`: transition to play when a slide comes *out to the left*.
+- `data-anim-out-to-right`: transition to play when a slide comes *out to the right*.
 
 Since those option names are pretty *long*, you can also set them all in one HTML attribute, using `data-options`:
 
@@ -295,11 +309,14 @@ Since those option names are pretty *long*, you can also set them all in one HTM
     </ul>
   </div>
   <nav class="orbit-bullets">
-   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
- </nav>
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+    </button>
+    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+  </nav>
 </div>
 
 ---
@@ -351,9 +368,12 @@ To disable Motion UI, set the plugin option `useMUI` to `false`. Written as an H
     </ul>
   </div>
   <nav class="orbit-bullets">
-   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+    </button>
+    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
  </nav>
 </div>

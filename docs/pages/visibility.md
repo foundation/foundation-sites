@@ -9,15 +9,11 @@ tags:
 ---
 
 <div class="callout primary">
-  <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Visibility classes use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>
 
 <div class="callout warning">
   <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can't Detect a Touchscreen</a></p>
-</div>
-
-<div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to <a href="prototyping-utilities.html">Prototype specific mode</a> and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 ## Show by Screen Size

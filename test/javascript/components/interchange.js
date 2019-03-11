@@ -1,4 +1,4 @@
-describe('Interchange', function() {
+describe('Interchange', function () {
   var plugin;
   var $html;
 
@@ -22,29 +22,32 @@ describe('Interchange', function() {
    * @param  {string} type Type to generate, image, background or template.
    * @return {string}      Generated template.
    */
-  var generateTemplate = function(type) {
+  var generateTemplate = function(type, options = {}) {
     var type = type || 'template',
         tag = type === 'image' ? 'img' : 'div',
         path;
+    const attributes = Object.keys(options)
+      .map(k => `data-${k}="${options[k]}"`).join(' ');
+
     switch (type) {
       case 'image':
         return `<img data-interchange="
             [${getPath(type, 'small')}, small],
             [${getPath(type, 'medium')}, medium],
             [${getPath(type, 'large')}, large]
-          ">`;
+          " ${attributes}>`;
       case 'background':
         return `<div data-interchange="
             [${getPath(type, 'small')}, small],
             [${getPath(type, 'medium')}, medium],
             [${getPath(type, 'large')}, large]
-          "></div>`;
+          " ${attributes}></div>`;
       default:
         return `<div data-interchange="
             [${getPath(type, 'default')}, small],
             [${getPath(type, 'medium')}, medium],
             [${getPath(type, 'large')}, large]
-          "></div>`;
+          " ${attributes}></div>`;
     }
   };
 
@@ -95,6 +98,16 @@ describe('Interchange', function() {
       spy.restore();
     });
 
+    it('replaces the following the `type` option', function() {
+      $html = $(generateTemplate('background')).attr('data-interchange', '').appendTo('body');
+      plugin = new Foundation.Interchange($html, { type: 'src' });
+
+      plugin.replace(getPath('img', 'large'));
+
+      $html.should.have.attr('src', getPath('img', 'large'));
+      $html[0].style.backgroundImage.should.equal('');
+    });
+
     it('fires replaced.zf.interchange event', function() {
       $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
@@ -121,6 +134,28 @@ describe('Interchange', function() {
       sinon.assert.calledWith(spy, 'image.png');
     });
   });
+
+
+  describe('parseOptions()', function() {
+    it('retrieve options', function() {
+      $html = $(generateTemplate('template', { type: 'src' })).appendTo('body');
+      plugin = new Foundation.Interchange($html);
+
+      plugin._parseOptions();
+
+      plugin.options.type.should.be.equal('src');
+    });
+
+    it('use defaults for invalid options', function() {
+      $html = $(generateTemplate('template', { type: 'src' })).appendTo('body');
+      plugin = new Foundation.Interchange($html, { type: 'invalid-option' });
+
+      plugin._parseOptions();
+
+      plugin.options.type.should.be.equal('auto');
+    });
+  });
+
 
   describe('generateRules()', function() {
     it('extracts rules from the plugin element', function() {
@@ -166,31 +201,49 @@ describe('Interchange', function() {
     });
   });
 
- describe('events()', function() {
-    it('calls reflow on viewport size change once', function(done) {
+  describe('events()', function () {
+    it('calls reflow on viewport size change once', function (done) {
       $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
-      Foundation.IHearYou();
-      let spy = sinon.spy(plugin, '_reflow');
 
-      setTimeout(function() {
+      // Debounce: time Triggers is waiting for an other event without firing anything (10 by default)
+      const debounce = 10;
+      // Initialize Triggers manually to control and test the debounce time
+      Foundation.Triggers.Initializers.addMutationEventsListener($(document));
+      Foundation.Triggers.Initializers.addResizeListener(debounce);
+      $.triggersInitialized = true;
+
+      // Trigger several window resize synchrnously and asynchronously.
+      // ---
+      // Timeout delays are most often not respected and the differences between several
+      // timeouts running in parrallel can be huge. To prevent race conditions we:
+      // * nest timeout in order to make the delay between them more precise
+      // * run the test several time to wait for the debounce, which may be finally
+      //   called way after the expected time.
+      setTimeout(function () {
+        let spy = sinon.spy(plugin, '_reflow');
         $(window).trigger('resize');
-      }, 1);
-
-      setTimeout(function() {
         $(window).trigger('resize');
-      }, 5);
 
-      setTimeout(function() {
-        $(window).trigger('resize');
-      }, 10);
+        setTimeout(function () {
+          $(window).trigger('resize');
+          $(window).trigger('resize');
 
-      setTimeout(function() { // Wait for third trigger...
-        sinon.assert.calledOnce(spy);
-        done();
-      }, 50);
+          tryInterval({
+            interval: debounce,
+            timeout: 1000,
+            try: () => {
+              sinon.assert.calledOnce(spy);
+            },
+            then: () => {
+              $.triggersInitialized = false;
+              done();
+            },
+          });
+
+        });
+      });
     });
   });
-
 
 });

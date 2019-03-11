@@ -28,8 +28,7 @@
   }
 
   .cell {
-    @include xy-cell-base();
-    @include xy-cell-static($grid-columns, false, $gutter-type: padding);
+    @include xy-cell(full, $gutter-type: none);
 
     &.auto {
       @include xy-cell-base(auto);
@@ -42,11 +41,11 @@
   }
   .grid-x {
     > .auto {
-      @include xy-cell-static(auto, false);
+      @include xy-cell-size(auto, $gutter-type: none);
     }
 
     > .shrink {
-      @include xy-cell-static(shrink, false);
+      @include xy-cell-size(shrink, $gutter-type: none);
     }
   }
 
@@ -68,22 +67,31 @@
   }
 
   @include -zf-each-breakpoint() {
+    // Responsive "auto" modifier
     @if not($-zf-size == small) {
       .grid-x > .#{$-zf-size}-auto {
-        @include xy-cell-base(auto);
-        @include xy-cell-static(auto, false);
-      }
-
-      .grid-x > .#{$-zf-size}-shrink {
-        @include xy-cell-base(shrink);
-        @include xy-cell-static(shrink, false);
+        @include xy-cell(auto, $gutter-type: none);
       }
     }
 
+    %-xy-cell-base-shrink-horizontal-#{$-zf-size} {
+      @include xy-cell-base(shrink);
+    }
+
+    // Responsive "shrink" modifier
+    @if not($-zf-size == small) {
+      .grid-x > .#{$-zf-size}-shrink {
+        @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
+        @include xy-cell-size(shrink, $gutter-type: none);
+      }
+    }
+
+    // Responsive width modifiers
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
-        @include xy-cell-static($i, false, $gutter-type: padding);
+        @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
+        @include xy-cell-size($i, $gutter-type: none);
       }
     }
   }
@@ -102,11 +110,11 @@
 @mixin -xy-breakpoint-cell-classes($class-breakpoint, $gutter-breakpoint, $vertical) {
   $prefix: if($class-breakpoint == $-zf-zero-breakpoint, '', '#{$class-breakpoint}-');
   > .#{$prefix}auto {
-    @include xy-cell-static(auto, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+    @include xy-cell-size(auto, $vertical: $vertical);
   }
 
   > .#{$prefix}shrink {
-    @include xy-cell-static(shrink, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+    @include xy-cell-size(shrink, $vertical: $vertical);
   }
 
   @for $i from 1 through $grid-columns {
@@ -114,7 +122,7 @@
     $classname: if($vertical, '.#{$class-breakpoint}-#{$i}', '.#{$class-breakpoint}-#{$i}');
 
     > #{$classname} {
-      @include xy-cell-static($i, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+      @include xy-cell-size($i, $vertical: $vertical);
     }
   }
 }
@@ -130,14 +138,14 @@
 
     // Base cell styles
     > .cell {
-      @include xy-cell-static($vertical: $vertical);
+      @include xy-cell($vertical: $vertical, $output: (size gutters));
     }
 
     // base styles need to all be before the auto and shrink styles
     @include -zf-each-breakpoint() {
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size) and $-zf-size != $-zf-zero-breakpoint) {
         > .cell {
-          @include xy-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
+          @include xy-cell($vertical: $vertical, $output: (size gutters));
         }
       }
     }
@@ -145,12 +153,12 @@
     @include -zf-each-breakpoint() {
 
       // This is purely for responsive gutters - the margin grid has to go back and adjust widths (or heights)
-      // for prior breakpoints based on the responsive gutter.
+      // for all prior breakpoints.
+      // As their gutter is defined with their width/height, even breakpoint without a new margin must be
+      // generated to not having their width/height overrided by re-adjusted smaller breakpoints.
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size)) {
         @each $bp in -zf-breakpoints-less-than($-zf-size) {
-          @if(map-has-key($grid-margin-gutters, $bp)) {
-            @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
-          }
+          @include -xy-breakpoint-cell-classes($bp, $-zf-size, $vertical);
         }
       }
 
@@ -187,7 +195,7 @@
     @include -zf-each-breakpoint {
       @for $i from 1 through $xy-block-grid-max {
         .#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($i, '.cell', false, $gutter-type: padding);
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: padding, $output: (size));
         }
       }
     }
@@ -202,7 +210,7 @@
           @each $bp in -zf-breakpoints-less-than($-zf-size) {
             @if(map-has-key($grid-margin-gutters, $bp)) {
               .grid-margin-x.#{$bp}-up-#{$i} {
-                @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $bp);
+                @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (size));
               }
             }
           }
@@ -210,7 +218,7 @@
       }
       @for $i from 1 through $xy-block-grid-max {
         .grid-margin-x.#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($i, '.cell', false, $gutter-type: margin, $breakpoint: $-zf-size);
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (size));
         }
       }
     }
@@ -242,11 +250,11 @@
       $o: $i - 1;
 
       .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
+        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding);
       }
 
       .grid-margin-x > .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $breakpoint: $-zf-size);
+        @include xy-cell-offset($o);
       }
     }
   }
@@ -272,11 +280,11 @@
     }
 
     > .auto {
-      @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+      @include xy-cell-size(auto, $gutter-type: none, $vertical: true);
     }
 
     > .shrink {
-      @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+      @include xy-cell-size(shrink, $gutter-type: none, $vertical: true);
     }
 
 
@@ -295,22 +303,31 @@
     }
 
     @include -zf-each-breakpoint() {
+      // Responsive "auto" modifier
       @if not($-zf-size == small) {
         > .#{$-zf-size}-auto {
-          @include xy-cell-base(auto);
-          @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+          @include xy-cell(auto, $gutter-type: none, $vertical: true);
         }
-
-        > .#{$-zf-size}-shrink {
-          @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
-        }
-
       }
 
+      %-xy-cell-base-shrink-vertical-#{$-zf-size} {
+        @include xy-cell-base(shrink);
+      }
+
+      // Responsive "shrink" modifier
+      @if not($-zf-size == small) {
+        > .#{$-zf-size}-shrink {
+          @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
+          @include xy-cell-size(shrink, $gutter-type: none, $vertical: true);
+        }
+      }
+
+      // Responsive width modifiers
       @for $i from 1 through $grid-columns {
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
-          @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
+          @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
+          @include xy-cell-size($i, $gutter-type: none, $vertical: true);
         }
       }
 
@@ -332,7 +349,7 @@
   }
 
   @if $margin-grid {
-    @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y')
+    @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y');
   }
 
 }
@@ -411,13 +428,13 @@
     }
   }
   @if $margin-grid {
-    @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y')
+    @include xy-margin-grid-classes(top bottom, true, '.grid-margin-y');
     .grid-frame.grid-margin-y {
-      @include xy-grid-frame(true, false, $grid-margin-gutters, $include-base: false)
+      @include xy-grid-frame(true, false, $grid-margin-gutters, $include-base: false);
     }
     @include -zf-each-breakpoint(false) {
       .grid-margin-y.#{$-zf-size}-grid-frame {
-        @include xy-grid-frame(true, false, $grid-margin-gutters, $-zf-size, false)
+        @include xy-grid-frame(true, false, $grid-margin-gutters, $-zf-size, false);
       }
     }
   }

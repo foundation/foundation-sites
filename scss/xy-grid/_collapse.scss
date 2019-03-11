@@ -11,6 +11,7 @@
 /// @param {String} $selector [.cell] - The child element to remove the gutter from.
 /// @param {Keyword} $gutter-type [margin] - The type of gutter to remove.
 /// @param {List} $gutter-position [right left] - The positions to remove gutters from. Accepts `top`, `bottom`, `left`, `right` in any combination.
+/// @param {Keyword} $min-breakpoint [$-zf-zero-breakpoint] - Minimum breakpoint in `$breakpoint-classes` for which to collapse the gutter.
 @mixin xy-grid-collapse(
   $selector: '.cell',
   $gutter-type: margin,
@@ -41,7 +42,7 @@
           @for $i from 1 through $grid-columns {
             // Sizing (percentage)
             > .#{$bp}-#{$i} {
-              @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+              @include xy-cell-size($i, $gutter-type: none);
             }
           }
         }
@@ -50,11 +51,11 @@
           @for $i from 1 through $grid-columns {
             // Sizing (percentage)
             > .#{$bp}-#{$i} {
-              @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+              @include xy-cell-size($i, $gutter-type: none);
             }
           }
         }
-      } 
+      }
     }
   }
   @else {

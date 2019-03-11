@@ -26,6 +26,10 @@ $menu-simple-margin: 1rem !default;
 /// @type Color
 $menu-item-color-active: $white !default;
 
+/// Alternative text color of an active menu item..
+/// @type Color
+$menu-item-color-alt-active: $black !default;
+
 /// Background color of an active menu item.
 /// @type Color
 $menu-item-background-active: get-color(primary) !default;
@@ -33,10 +37,6 @@ $menu-item-background-active: get-color(primary) !default;
 /// Spacing between an icon and text in a menu item.
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
-
-/// Background color for an hovered menu item.
-/// @type Color
-$menu-item-background-hover: $light-gray !default;
 
 /// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
 /// But please note that `active` will be removed in upcoming versions.
@@ -354,7 +354,7 @@ $menu-icons-back-compat: true !default;
 
 @mixin menu-state-active {
   background: $menu-item-background-active;
-  color: $menu-item-color-active;
+  color: color-pick-contrast($menu-item-background-active, ($menu-item-color-active, $menu-item-color-alt-active));
 }
 
 @mixin foundation-menu {

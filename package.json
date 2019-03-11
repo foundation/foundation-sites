@@ -1,106 +1,117 @@
 {
   "name": "foundation-sites",
-  "version": "6.4.1",
-  "main": "dist/js/npm.js",
+  "version": "6.4.3",
+  "main": "dist/js/foundation.js",
+  "module": "dist/js/foundation.esm.js",
+  "jsnext:main": "dist/js/foundation.esm.js",
+  "esnext": "dist/js/foundation.es6.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
   "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
-    "test": "npm run test:sass && npm run test:javascript:phantomjs",
+    "test": "npm run test:sass && npm run test:javascript:units && npm run test:bundle",
     "test:ci": "npm run test:sass && npm run test:javascript:ci",
-    "test:sass": "mocha test/sass/test_sass.js",
-    "test:javascript:transpile": "gulp sass:foundation && gulp test:transpile-js",
-    "test:javascript:phantomjs": "npm run test:javascript:transpile && mocha-phantomjs --ignore-resource-errors test/javascript/index.html",
+    "test:sass": "mocha test/sass/test_sass.js --colors",
+    "test:javascript:transpile": "gulp sass:foundation --color && gulp test:transpile-js --color",
+    "test:javascript:units": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html",
     "test:javascript:browserstack": "npm run test:javascript:transpile && browserstack-runner",
-    "test:javascript:ci": "npm run test:javascript:transpile && mocha-phantomjs --ignore-resource-errors test/javascript/index.html && browserstack-runner",
-    "test:visual": "gulp test",
-    "deploy": "gulp deploy",
-    "deploy:prep": "gulp deploy:prep",
-    "deploy:docs": "gulp deploy:docs",
-    "deploy:beta": "gulp deploy:beta"
+    "test:javascript:ci": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html && browserstack-runner",
+    "test:bundle": "mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/bundle/index.html",
+    "test:visual": "gulp test --color",
+    "lockdeps": "npm i && npm-force-resolutions && rimraf yarn.lock && yarn import && rimraf shrinkwrap.yaml && pnpm import",
+    "relockdeps": "rimraf package-lock.json && npm run lockdeps",
+    "deploy": "gulp deploy --color",
+    "deploy:prep": "gulp deploy:prep --color",
+    "deploy:docs": "gulp deploy:docs --color",
+    "deploy:beta": "gulp deploy:beta --color"
   },
-  "dependencies": {
-    "jquery": ">=3.0.0",
-    "what-input": "^4.1.3"
+  "peerDependencies": {
+    "jquery": ">=2.2.0",
+    "what-input": ">=4.1.0"
   },
   "license": "MIT",
   "devDependencies": {
-    "array-uniq": "^1.0.2",
-    "autoprefixer": "^6.7.7",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^6.4.1",
-    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
-    "babel-plugin-transform-es2015-block-scoped-functions": "^6.22.0",
-    "babel-plugin-transform-es2015-block-scoping": "^6.24.1",
-    "babel-plugin-transform-es2015-classes": "^6.24.1",
-    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
-    "babel-plugin-transform-es2015-parameters": "^6.24.1",
-    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-spread": "^6.22.0",
-    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@commitlint/cli": "^7.3.1",
+    "@commitlint/config-conventional": "^7.3.1",
+    "array-uniq": "^2.0.0",
+    "autoprefixer": "^9.4.5",
+    "babel-loader": "^8.0.5",
     "browser-sync": "^2.18.12",
-    "chai-jquery": "^2.0.0",
-    "chalk": "^1.1.1",
-    "clipboard": "^1.7.1",
+    "browserstack-runner": "^0.9.0",
+    "chai": "^4.1.2",
+    "chai-jquery": "^2.1.0",
+    "chalk": "^2.4.2",
+    "clipboard": "^2.0.4",
     "corejs-typeahead": "^1.1.1",
-    "doiuse": "^2.6.0",
-    "foundation-docs": "zurb/foundation-docs#v0.2.2",
-    "gulp": "^3.8.10",
-    "gulp-add-src": "^0.2.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-cache-bust": "~1.0.2",
+    "cz-conventional-changelog": "^2.1.0",
+    "doiuse": "~4.1.0",
+    "foundation-docs": "github:zurb/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e",
+    "gulp": "^4.0.0",
+    "gulp-add-src": "^1.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache-bust": "^1.3.0",
     "gulp-check-deps": "^1.4.1",
-    "gulp-clean-css": "^3.4.1",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.4.3",
-    "gulp-eslint": "^3.0.1",
-    "gulp-filter": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-filter": "^5.1.0",
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-newer": "^1.1.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-postcss": "^7.0.0",
-    "gulp-prompt": "^0.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-prompt": "^1.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-rsync": "^0.0.7",
-    "gulp-ruby-sass": "^2.0.6",
-    "gulp-sass": "^2.1.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-rsync": "0.0.8",
+    "gulp-sass": "^4.0.1",
     "gulp-sass-lint": "^1.3.2",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^2.1.2",
-    "gulp-zip": "^3.2.0",
-    "inquirer": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.1.0",
+    "husky": "^1.3.1",
+    "inquirer": "^6.2.1",
     "is-empty-object": "^1.1.1",
-    "js-yaml": "^3.8.4",
-    "mocha": "^3.4.2",
-    "mocha-phantomjs": "^4.0.2",
-    "motion-ui": "^1.1.0",
-    "multiline": "^1.0.2",
-    "normalize-scss": "6.0.0",
+    "jquery": "^3.3.1",
+    "js-yaml": "^3.12.1",
+    "mocha": "^5.0.5",
+    "mocha-headless-chrome": "^2.0.1",
+    "motion-ui": "^2.0.2",
+    "npm-force-resolutions": "0.0.2",
     "octophant": "^1.0.0",
-    "opener": "^1.4.3",
-    "panini": "^1.4.0",
+    "panini": "^1.6.2",
     "parker": "^1.0.0-alpha.0",
     "prettyjson": "^1.1.3",
-    "require-dir": "^0.3.2",
-    "rimraf": "^2.6.1",
-    "run-sequence": "^1.1.4",
-    "sass-true": "^2.2.2",
-    "sassy-lists": "3.0.0",
-    "sinon": "^1.17.7",
-    "supercollider": "^1.4.0",
-    "touch": "^1.0.0",
+    "require-dir": "^1.2.0",
+    "requirejs": "^2.3.6",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "run-sequence": "^2.2.1",
+    "sass-true": "^4.0.0",
+    "sassy-lists": "^3.0.1",
+    "sinon": "^7.2.2",
+    "strip-indent": "^2.0.0",
+    "supercollider": "^1.4.4",
+    "touch": "^3.1.0",
+    "undertaker-forward-reference": "^1.0.2",
+    "util-deprecate": "^1.0.2",
     "vinyl": "^2.0.2",
     "vinyl-named": "^1.1.0",
-    "vinyl-source-stream": "^1.1.0",
-    "webpack": "^2.6.1",
-    "webpack-stream": "^3.2.0",
-    "yargs": "^6.6.0"
+    "webpack": "^4.28.4",
+    "webpack-stream": "^5.2.1",
+    "what-input": ">=4.1.0",
+    "yargs": "^12.0.5"
+  },
+  "resolutions": {
+    "puppeteer": "^1.11.0"
   },
   "engines": {
-    "node": ">=4.0",
+    "node": ">=6.4.0",
     "npm": ">=2.14.2"
   },
   "repository": {
@@ -119,19 +130,12 @@
   "eyeglass": {
     "name": "foundation",
     "sassDir": "scss",
-    "needs": "^0.8.0",
+    "needs": ">=0.8.0",
     "exports": false
   },
   "jspm": {
-    "main": "dist/js/foundation.js",
-    "format": "global",
-    "shim": {
-      "dist/js/foundation": {
-        "deps": [
-          "jquery"
-        ]
-      }
-    }
+    "main": "dist/js/foundation.esm.js",
+    "format": "esm"
   },
   "browserify": {
     "transform": [
@@ -139,10 +143,15 @@
         "babelify",
         {
           "presets": [
-            "es2015"
+            "@babel/preset-env"
           ]
         }
       ]
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

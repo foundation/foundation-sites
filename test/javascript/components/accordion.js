@@ -27,6 +27,7 @@ describe('Accordion', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -139,7 +140,7 @@ describe('Accordion', function() {
       $html.find('.accordion-content').eq(0).should.have.attr('aria-hidden', 'false');
     });
   });
-  
+
   describe('keyboard events', function() {
     it('opens next panel on ARROW_DOWN', function() {
       $html = $(template).appendTo('body');

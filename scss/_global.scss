@@ -2,11 +2,13 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// sass-lint:disable force-attribute-nesting, force-pseudo-nesting, no-color-literals, no-qualifying-elements
+// sass-lint:disable no-color-literals, no-qualifying-elements
 
 ////
 /// @group global
 ////
+
+@import 'util/util';
 
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
@@ -121,19 +123,18 @@ $global-button-cursor: auto !default;
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
+// Internal variable that contains the flex justifying options
+$-zf-flex-justify: -zf-flex-justify($global-text-direction);
+
 /// Global tolerance for color pick contrast.
 /// @type Number
 $global-color-pick-contrast-tolerance: 0 !default;
 
 // Internal variables used for colors
-$primary-color: get-color(primary);
-$secondary-color: get-color(secondary);
-$success-color: get-color(success);
-$warning-color: get-color(warning);
-$alert-color: get-color(alert);
+@include add-foundation-colors;
 
 @mixin foundation-global-styles {
-  @include -zf-normalize;
+  @include foundation-normalize;
 
   // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
   .foundation-mq {
@@ -165,8 +166,8 @@ $alert-color: get-color(alert);
     color: $body-font-color;
 
     @if ($body-antialiased) {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+      -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
     }
   }
 
@@ -240,10 +241,4 @@ $alert-color: get-color(alert);
   .is-hidden {
     display: none !important;
   }
-}
-
-/// Loads normalize.css.
-/// @access private
-@mixin -zf-normalize {
-  @include normalize();
 }

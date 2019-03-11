@@ -64,69 +64,79 @@ $prototype-spacers-count: 3 !default;
   }
 }
 
+/// Margin classes for specific direction properties
+/// @param {String} $dir [] Direction
+/// @param {Number} $spacer [] Spacer
+@mixin margin-direction($dir, $spacer) {
+  @if ($dir == top) { 
+    @include margin($top: $spacer); 
+  }
+  @else if ($dir == right) { 
+    @include margin($right: $spacer); 
+  }
+  @else if ($dir == bottom) { 
+    @include margin($bottom: $spacer); 
+  }
+  @else if ($dir == left) { 
+    @include margin($left: $spacer); 
+  }
+  @else if ($dir == horizontal) { 
+    @include margin($right: $spacer, $left: $spacer); 
+  }
+  @else if ($dir == vertical) { 
+    @include margin($top: $spacer, $bottom: $spacer); 
+  }
+}
+
+/// Padding classes for specific direction properties
+/// @param {String} $dir [] Direction
+/// @param {Number} $spacer [] Spacer
+@mixin padding-direction($dir, $spacer) {
+  @if ($dir == top) { 
+    @include padding($top: $spacer); 
+  }
+  @else if ($dir == right) { 
+    @include padding($right: $spacer); 
+  }
+  @else if ($dir == bottom) { 
+    @include padding($bottom: $spacer); 
+  }
+  @else if ($dir == left) { 
+    @include padding($left: $spacer); 
+  }
+  @else if ($dir == horizontal) { 
+    @include padding($right: $spacer, $left: $spacer); 
+  }
+  @else if ($dir == vertical) { 
+    @include padding($top: $spacer, $bottom: $spacer); 
+  }
+}
+
 @mixin foundation-prototype-spacing {
   @for $spacer from 0 through $prototype-spacers-count {
-    // All Sides
-    .margin-#{$spacer} {
-      @include margin($spacer, $spacer, $spacer, $spacer);
-    }
+    
+    @each $prop in (margin, padding) {
+      // All Sides
+      .#{$prop}-#{$spacer} {
+        @if ($prop == margin) { 
+          margin: $spacer * $global-margin; 
+        }
+        @else if ($prop == padding) { 
+          padding: $spacer * $global-padding; 
+        }
+      }
 
-    .padding-#{$spacer} {
-      @include padding($spacer, $spacer, $spacer, $spacer);
-    }
-
-    // Top Side
-    .margin-top-#{$spacer} {
-      @include margin($spacer, null, null, null);
-    }
-
-    .padding-top-#{$spacer} {
-      @include padding($spacer, null, null, null);
-    }
-
-    // Right Side
-    .margin-right-#{$spacer} {
-      @include margin(null, $spacer, null, null);
-    }
-
-    .padding-right-#{$spacer} {
-      @include padding(null, $spacer, null, null);
-    }
-
-    // Bottom Side
-    .margin-bottom-#{$spacer} {
-      @include margin(null, null, $spacer, null);
-    }
-
-    .padding-bottom-#{$spacer} {
-      @include padding(null, null, $spacer, null);
-    }
-
-    // Left Side
-    .margin-left-#{$spacer} {
-      @include margin(null, null, null, $spacer);
-    }
-
-    .padding-left-#{$spacer} {
-      @include padding(null, null, null, $spacer);
-    }
-
-    // Horizontal Axes
-    .margin-horizontal-#{$spacer} {
-      @include margin(null, $spacer, null, $spacer);
-    }
-
-    .padding-horizontal-#{$spacer} {
-      @include padding(null, $spacer, null, $spacer);
-    }
-
-    // Vertical Axes
-    .margin-vertical-#{$spacer} {
-      @include margin($spacer, null, $spacer, null)
-    }
-
-    .padding-vertical-#{$spacer} {
-      @include padding($spacer, null, $spacer, null)
+      @each $dir in (top, right, bottom, left, horizontal, vertical) {
+        // Top Side
+        .#{$prop}-#{$dir}-#{$spacer} {
+          @if ($prop == margin) { 
+            @include margin-direction($dir, $spacer);
+          }
+          @else if ($prop == padding) {
+            @include padding-direction($dir, $spacer);
+          }
+        }
+      }
     }
 
     @if ($prototype-spacing-breakpoints) {
@@ -134,67 +144,30 @@ $prototype-spacers-count: 3 !default;
       @each $size in $breakpoint-classes {
         @include breakpoint($size) {
           @if $size != $-zf-zero-breakpoint {
-            // All Sides
-            .#{$size}-margin-#{$spacer} {
-              @include margin($spacer, $spacer, $spacer, $spacer);
-            }
+            .#{$size} {
+              @each $prop in (margin, padding) {
+                // All Sides
+                &-#{$prop}-#{$spacer} {
+                  @if ($prop == margin) { 
+                    margin: $spacer * $global-margin; 
+                  }
+                  @else if ($prop == padding) { 
+                    padding: $spacer * $global-padding; 
+                  }
+                }
 
-            .#{$size}-padding-#{$spacer} {
-              @include padding($spacer, $spacer, $spacer, $spacer);
-            }
-
-            // Top Side
-            .#{$size}-margin-top-#{$spacer} {
-              @include margin($spacer, null, null, null);
-            }
-
-            .#{$size}-padding-top-#{$spacer} {
-              @include padding($spacer, null, null, null);
-            }
-
-            // Right Side
-            .#{$size}-margin-right-#{$spacer} {
-              @include margin(null, $spacer, null, null);
-            }
-
-            .#{$size}-padding-right-#{$spacer} {
-              @include padding(null, $spacer, null, null);
-            }
-
-            // Bottom Side
-            .#{$size}-margin-bottom-#{$spacer} {
-              @include margin(null, null, $spacer, null);
-            }
-
-            .#{$size}-padding-bottom-#{$spacer} {
-              @include padding(null, null, $spacer, null);
-            }
-
-            // Left Side
-            .#{$size}-margin-left-#{$spacer} {
-              @include margin(null, null, null, $spacer);
-            }
-
-            .#{$size}-padding-left-#{$spacer} {
-              @include padding(null, null, null, $spacer);
-            }
-
-            // Horizontal Axes
-            .#{$size}-margin-horizontal-#{$spacer} {
-              @include margin(null, $spacer, null, $spacer);
-            }
-
-            .#{$size}-padding-horizontal-#{$spacer} {
-              @include padding(null, $spacer, null, $spacer);
-            }
-
-            // Vertical Axes
-            .#{$size}-margin-vertical-#{$spacer} {
-              @include margin($spacer, null, $spacer, null)
-            }
-
-            .#{$size}-padding-vertical-#{$spacer} {
-              @include padding($spacer, null, $spacer, null)
+                @each $dir in (top, right, bottom, left, horizontal, vertical) {
+                  // Top Side
+                  &-#{$prop}-#{$dir}-#{$spacer} {
+                    @if ($prop == margin) { 
+                      @include margin-direction($dir, $spacer);
+                    }
+                    @else if ($prop == padding) { 
+                      @include padding-direction($dir, $spacer);
+                    }
+                  }
+                }
+              }
             }
           }
         }

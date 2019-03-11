@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.1
+ * Version 6.4.3
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -490,7 +490,8 @@ button {
   border: 0;
   border-radius: 0;
   background: transparent;
-  line-height: 1; }
+  line-height: 1;
+  cursor: auto; }
   [data-whatinput='mouse'] button {
     outline: 0; }
 
@@ -1322,74 +1323,74 @@ small {
   font-size: 80%;
   line-height: inherit; }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   color: inherit;
   text-rendering: optimizeLegibility; }
-  h1 small,
-  h2 small,
-  h3 small,
-  h4 small,
-  h5 small,
-  h6 small {
+  h1 small, .h1 small,
+  h2 small, .h2 small,
+  h3 small, .h3 small,
+  h4 small, .h4 small,
+  h5 small, .h5 small,
+  h6 small, .h6 small {
     line-height: 0;
     color: #cacaca; }
 
-h1 {
+h1, .h1 {
   font-size: 1.5rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
-h2 {
+h2, .h2 {
   font-size: 1.25rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
-h3 {
+h3, .h3 {
   font-size: 1.1875rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
-h4 {
+h4, .h4 {
   font-size: 1.125rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
-h5 {
+h5, .h5 {
   font-size: 1.0625rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
-h6 {
+h6, .h6 {
   font-size: 1rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
 @media print, screen and (min-width: 40em) {
-  h1 {
+  h1, .h1 {
     font-size: 3rem; }
-  h2 {
+  h2, .h2 {
     font-size: 2.5rem; }
-  h3 {
+  h3, .h3 {
     font-size: 1.9375rem; }
-  h4 {
+  h4, .h4 {
     font-size: 1.5625rem; }
-  h5 {
+  h5, .h5 {
     font-size: 1.25rem; }
-  h6 {
+  h6, .h6 {
     font-size: 1rem; } }
 
 a {
@@ -2105,6 +2106,9 @@ select {
     float: none;
     margin-left: 0; }
 
+a.button:hover, a.button:focus {
+  text-decoration: none; }
+
 .accordion {
   margin-left: 0;
   background: #fefefe;
@@ -2499,7 +2503,6 @@ select {
   .menu .button {
     line-height: 1;
     text-decoration: none;
-    white-space: nowrap;
     display: block;
     padding: 0.7rem 1rem; }
   .menu input,
@@ -2567,6 +2570,26 @@ select {
     .menu.icons img + span,
     .menu.icons i + span,
     .menu.icons svg + span {
+      vertical-align: middle; }
+  .menu.icon-top img,
+  .menu.icon-top i,
+  .menu.icon-top svg, .menu.icon-right img,
+  .menu.icon-right i,
+  .menu.icon-right svg, .menu.icon-bottom img,
+  .menu.icon-bottom i,
+  .menu.icon-bottom svg, .menu.icon-left img,
+  .menu.icon-left i,
+  .menu.icon-left svg {
+    vertical-align: middle; }
+    .menu.icon-top img + span,
+    .menu.icon-top i + span,
+    .menu.icon-top svg + span, .menu.icon-right img + span,
+    .menu.icon-right i + span,
+    .menu.icon-right svg + span, .menu.icon-bottom img + span,
+    .menu.icon-bottom i + span,
+    .menu.icon-bottom svg + span, .menu.icon-left img + span,
+    .menu.icon-left i + span,
+    .menu.icon-left svg + span {
       vertical-align: middle; }
   .menu.icon-left li a img,
   .menu.icon-left li a i,
@@ -2822,6 +2845,7 @@ select {
   border-top-style: solid;
   border-color: #1779ba transparent transparent;
   right: 5px;
+  left: auto;
   margin-top: -3px; }
 
 .dropdown.menu a {
@@ -2899,6 +2923,7 @@ select {
     border-top-style: solid;
     border-color: #1779ba transparent transparent;
     right: 5px;
+    left: auto;
     margin-top: -3px; }
   .dropdown.menu.medium-vertical > li .is-dropdown-submenu {
     top: 0; }
@@ -2954,6 +2979,7 @@ select {
     border-top-style: solid;
     border-color: #1779ba transparent transparent;
     right: 5px;
+    left: auto;
     margin-top: -3px; }
   .dropdown.menu.large-vertical > li .is-dropdown-submenu {
     top: 0; }
@@ -3003,6 +3029,7 @@ select {
     position: absolute;
     top: 50%;
     right: 5px;
+    left: auto;
     margin-top: -6px; }
   .is-dropdown-submenu-parent.opens-inner > .is-dropdown-submenu {
     top: 100%;
@@ -3216,12 +3243,12 @@ select {
 .position-left {
   top: 0;
   left: 0;
-  width: 250px;
   height: 100%;
+  overflow-y: auto;
+  width: 250px;
   -webkit-transform: translateX(-250px);
       -ms-transform: translateX(-250px);
-          transform: translateX(-250px);
-  overflow-y: auto; }
+          transform: translateX(-250px); }
   .off-canvas-content .off-canvas.position-left {
     -webkit-transform: translateX(-250px);
         -ms-transform: translateX(-250px);
@@ -3241,12 +3268,12 @@ select {
 .position-right {
   top: 0;
   right: 0;
-  width: 250px;
   height: 100%;
+  overflow-y: auto;
+  width: 250px;
   -webkit-transform: translateX(250px);
       -ms-transform: translateX(250px);
-          transform: translateX(250px);
-  overflow-y: auto; }
+          transform: translateX(250px); }
   .off-canvas-content .off-canvas.position-right {
     -webkit-transform: translateX(250px);
         -ms-transform: translateX(250px);
@@ -3267,11 +3294,11 @@ select {
   top: 0;
   left: 0;
   width: 100%;
+  overflow-x: auto;
   height: 250px;
   -webkit-transform: translateY(-250px);
       -ms-transform: translateY(-250px);
-          transform: translateY(-250px);
-  overflow-x: auto; }
+          transform: translateY(-250px); }
   .off-canvas-content .off-canvas.position-top {
     -webkit-transform: translateY(-250px);
         -ms-transform: translateY(-250px);
@@ -3292,11 +3319,11 @@ select {
   bottom: 0;
   left: 0;
   width: 100%;
+  overflow-x: auto;
   height: 250px;
   -webkit-transform: translateY(250px);
       -ms-transform: translateY(250px);
-          transform: translateY(250px);
-  overflow-x: auto; }
+          transform: translateY(250px); }
   .off-canvas-content .off-canvas.position-bottom {
     -webkit-transform: translateY(250px);
         -ms-transform: translateY(250px);

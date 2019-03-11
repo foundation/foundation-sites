@@ -11,22 +11,25 @@ tags:
 <table class="docs-compat-table">
   <tr>
     <td>Chrome</td>
-    <td class="works" rowspan="6">Last Two Versions</td>
+    <td class="works" rowspan="7">Last Two Versions</td>
   </tr>
   <tr><td>Firefox</td></tr>
   <tr><td>Safari</td></tr>
   <tr><td>Opera</td></tr>
-  <tr><td>Mobile Safari</td></tr>
+  <tr><td>Mobile Safari<sup>1</sup></td></tr>
   <tr><td>IE Mobile</td></tr>
+  <tr><td>Edge</td></tr>
   <tr>
     <td>Internet Explorer</td>
     <td class="works">Versions 9+</td>
   </tr>
   <tr>
     <td>Android Browser</td>
-    <td class="works">Versions 2.3+</td>
+    <td class="works">Versions 4.4+</td>
   </tr>
 </table>
+
+<sup>1</sup>iOS 7+ is actively supported but with some known bugs.
 
 ---
 

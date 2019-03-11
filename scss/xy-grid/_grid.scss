@@ -9,6 +9,7 @@
 /// Creates a max width container, designed to house your grid content.
 ///
 /// @param {Number} $width [$grid-container] - a width to limit the container to.
+/// @param {Number} $padding [$grid-container-padding] - paddings of the container.
 @mixin xy-grid-container(
   $width: $grid-container,
   $padding: $grid-container-padding
@@ -16,7 +17,8 @@
   @include xy-gutters($gutters: $padding, $gutter-type: padding);
 
   max-width: $width;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /// Creates a container for your flex cells.

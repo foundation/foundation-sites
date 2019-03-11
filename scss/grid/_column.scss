@@ -16,37 +16,7 @@
 ///
 /// @returns {Number} A calculated percentage value.
 @function grid-column($columns) {
-  $width: 0%;
-
-  // Parsing percents, decimals, and column counts
-  @if type-of($columns) == 'number' {
-    @if unit($columns) == '%' {
-      $width: $columns;
-    }
-    @else if $columns < 1 {
-      $width: percentage($columns);
-    }
-    @else {
-      $width: percentage($columns / $grid-column-count);
-    }
-  }
-
-  // Parsing "n of n" expressions
-  @else if type-of($columns) == 'list' {
-    @if length($columns) != 3 {
-      @error 'Wrong syntax for grid-column(). Use the format "n of n".';
-    }
-    @else {
-      $width: percentage(nth($columns, 1) / nth($columns, 3));
-    }
-  }
-
-  // Anything else is incorrect
-  @else {
-    @error 'Wrong syntax for grid-column(). Use a number, decimal, percentage, or "n of n".';
-  }
-
-  @return $width;
+  @return fraction-to-percentage($columns, $denominator: $grid-column-count);
 }
 
 /// Creates a grid column.
@@ -63,12 +33,8 @@
   // Gutters
   @include grid-column-gutter($gutters: $gutters);
 
-  // Last column alignment
-  @if $grid-column-align-edge {
-    &:last-child:not(:first-child) {
-      float: $global-right;
-    }
-  }
+  // Position
+  @include grid-col-pos(auto);
 }
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.

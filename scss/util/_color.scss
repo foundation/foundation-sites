@@ -109,21 +109,31 @@ $contrast-warnings: true !default;
   }
 }
 
-/// Transfers the colors in the `$foundation-palette`map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
+/// Transfers the colors in the `$foundation-palette` map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
 @mixin add-foundation-colors() {
   @if map-has-key($foundation-palette, primary) {
     $primary-color: map-get($foundation-palette, primary) !global;
+  } @else {
+    $primary-color: #1779ba !global;
   }
   @if map-has-key($foundation-palette, secondary) {
     $secondary-color: map-get($foundation-palette, secondary) !global;
+  } @else {
+    $secondary-color: #767676 !global;
   }
   @if map-has-key($foundation-palette, success) {
     $success-color: map-get($foundation-palette, success) !global;
+  } @else {
+    $success-color: #3adb76 !global;
   }
   @if map-has-key($foundation-palette, warning) {
     $warning-color: map-get($foundation-palette, warning) !global;
+  } @else {
+    $warning-color: #ffae00 !global;
   }
   @if map-has-key($foundation-palette, alert) {
     $alert-color: map-get($foundation-palette, alert) !global;
+  } @else {
+    $alert-color: #cc4b37 !global;
   }
 }

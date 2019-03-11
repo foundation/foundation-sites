@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import { transitionend } from './foundation.util.core';
+import { transitionend } from './foundation.core.utils';
 
 /**
  * Motion module.
@@ -100,5 +100,5 @@ function animate(isIn, element, animation, cb) {
   }
 }
 
-export {Move, Motion};
+export { Move, Motion };
 

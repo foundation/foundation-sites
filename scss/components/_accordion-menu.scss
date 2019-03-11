@@ -62,10 +62,12 @@ $accordionmenu-arrow-size: 6px !default;
       #{$global-right}: 1rem;
     }
   }
+
   &.align-left .is-accordion-submenu-parent > a::after {
-    left: auto;
     right: 1rem;
+    left: auto;
   }
+
   &.align-right .is-accordion-submenu-parent > a::after {
     right: auto;
     left: 1rem;
@@ -93,7 +95,7 @@ $accordionmenu-arrow-size: 6px !default;
       }
       padding: $accordionmenu-padding;
     }
-    
+
     .is-accordion-submenu a {
       padding: $accordionmenu-submenu-padding;
     }
@@ -138,10 +140,11 @@ $accordionmenu-arrow-size: 6px !default;
     position: absolute;
     top: 0;
     #{$global-right}: 0;
-    cursor: pointer;
 
     width: $accordionmenu-submenu-toggle-width;
     height: $accordionmenu-submenu-toggle-height;
+
+    cursor: pointer;
 
     border-#{$global-left}: $accordion-submenu-toggle-border;
 

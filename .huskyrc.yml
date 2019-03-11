@@ -1,0 +1,6 @@
+hooks:
+  commit-msg: >
+    node ./script/husky-commit-lint.js --color -e $GIT_PARAMS &&
+    node ./script/husky-commit-test.js  --color
+  pre-push:
+    node ./script/husky-push-test.js  --color

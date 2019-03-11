@@ -7,7 +7,7 @@
 ////
 
 /// Creates an inner box-shadow for only one side
-/// 
+///
 /// @param {Keyword} $side - Side the shadow is supposed to appear. Can be `top`, `left`, `right` or `bottom`.
 /// @param {Number} $size - Width for the target side.
 /// @param {Color} $color - Color of the shadow.
@@ -207,27 +207,36 @@
 /// Makes an element visually hidden, but still accessible to keyboards and assistive devices.
 /// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility Hiding Content for Accessibility
 /// @link http://hugogiraudel.com/2016/10/13/css-hide-and-seek/
-@mixin element-invisible {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  clip-path: inset(50%);
-  border: 0;
+///
+/// @param {Boolean} $enforce - If `true`, use `!important` on applied properties
+@mixin element-invisible(
+  $enforce: true
+) {
+  $important: if($enforce, '!important', null);
+
+  position: absolute #{$important};
+  width: 1px #{$important};
+  height: 1px #{$important};
+  padding: 0 #{$important};
+  overflow: hidden #{$important};
+  clip: rect(0,0,0,0) #{$important};
+  white-space: nowrap #{$important};
+  border: 0 #{$important};
 }
 
 /// Reverses the CSS output created by the `element-invisible()` mixin.
-@mixin element-invisible-off {
-  position: static !important;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  clip-path: none;
+/// @param {Boolean} $enforce - If `true`, use `!important` on applied properties
+@mixin element-invisible-off(
+  $enforce: true
+) {
+  $important: if($enforce, '!important', null);
+
+  position: static #{$important};
+  width: auto #{$important};
+  height: auto #{$important};
+  overflow: visible #{$important};
+  clip: auto #{$important};
+  white-space: normal #{$important};
 }
 
 /// Vertically centers the element inside of its first non-static parent,
@@ -259,24 +268,72 @@
 ///
 /// @param {Boolean} $small [true] - If `false`, the mixin will skip the `small` breakpoint. Use this with components that don't prefix classes with `small-`, only `medium-` and up.
 /// @param {Boolean} $auto-insert-breakpoints [true] - If `false`, the mixin will iterate over breakpoints without doing the media query itself. Useful for more complex media query generation as in the margin grid.
-@mixin -zf-each-breakpoint($small: true, $auto-insert-breakpoints: true) {
-  $list: $breakpoint-classes;
+@mixin -zf-each-breakpoint(
+  $small: true,
+  $auto-insert-breakpoints: true
+) {
+  @include -zf-each-breakpoint-in(auto, -zf-bool($small), -zf-bool($auto-insert-breakpoints)) {
+    @content
+  };
+}
 
-  @if not $small {
-    $list: sl-remove($list, $-zf-zero-breakpoint);
+/// Iterates with `@content` through the given list of breakpoints `$breakpoints`.
+///
+/// @access private
+///
+/// @param {Keyword|List} $breakpoints [auto] - Breakpoints to iterates on. It can be a breakpoint name, list of breakpoints or `auto` for all breakpoints.
+/// @param {Boolean|Null} $zero-breakpoint [null] - Whether the zero-breakpoint (often `small`) must be included. If `true`, it will always be added to the list if not already there. If `false`, it will always be removed. Does nothing by default.
+/// @param {Boolean|Keyword} $media-queries [true] - Whether media-queries must be generated. If `for-lists`, only generate media-queries when `$breakpoints` is a list.
+@mixin -zf-each-breakpoint-in(
+  $breakpoints: auto,
+  $zero-breakpoint: null,
+  $media-queries: true
+) {
+  $-list: ();
+  $-breakpoints-is-a-list: true;
+
+  // Retrieve the list of breakpoint(s) to iterate on.
+  @if $breakpoints == auto {
+    $-list: $breakpoint-classes;
+  }
+  @else if type-of($breakpoints) == 'list' {
+    $-list: $breakpoints;
+  }
+  @else if type-of($breakpoints) == 'string' {
+    $-list: ($breakpoints);
+    $-breakpoints-is-a-list: false;
+  }
+  @else {
+    @error 'Wrong syntax for "$breakpoints" in "-zf-each-breakpoint-in()". Got "#{$breakpoints}" (#{type-of($breakpoints)}). Expected a breakpoint name, a list of breakpoints or "auto"';
   }
 
-  @each $name in $list {
-    $-zf-size: $name !global;
+  // Add or remove the zero breakpoint according to `$zero-breakpoint`
+  @if $zero-breakpoint == true {
+    $-list: join(($-zf-zero-breakpoint), sl-remove($-list, $-zf-zero-breakpoint));
+  }
+  @else if $zero-breakpoint == false {
+    $-list: sl-remove($-list, $-zf-zero-breakpoint);
+  }
 
-    @if $auto-insert-breakpoints {
-      @include breakpoint($name) {
+  // Iterate on breakpoint(s)
+  @each $bp in $-list {
+    $old-zf-size: null;
+    @if global-variable-exists(-zf-size) {
+      $old-zf-size: $-zf-size;
+    }
+    $-zf-size: $bp !global;
+
+    @if ($media-queries == true
+      or ($media-queries == 'for-lists' and $-breakpoints-is-a-list)) {
+      @include breakpoint($bp) {
         @content;
       }
     }
     @else {
       @content;
     }
+
+    $-zf-size: $old-zf-size !global;
   }
 }
 
@@ -303,7 +360,10 @@
   @else {
     // breakpoint name
     @if type-of($name) == 'string' {
-      $name: -zf-get-bp-val($map, $name);
+      $bp-value: -zf-get-bp-val($map, $name);
+      @if $bp-value != null {
+        $name: $bp-value;
+      }
     }
 
     // breakpoint value
