@@ -405,6 +405,81 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 
 ---
 
+## Off-canvas Scrollbox
+
+Placing scrollable elements within an off-canvas if `contentScroll: false` is tricky because on touch devices it may become difficult to scroll those elements due to stopped event propagation. There's no continous touch move possible.
+
+However you can still achieve this when you add `data-off-canvas-scrollbox` to the scrollable elements. 
+Once you've reached the start/end of a scrollbox (while touch moving) the off-canvas will continue scrolling the off-cannvas element. You can optionally use a wrapper with `data-off-canvas-scrollbox-outer` which gets scrolled instead of the off-canvas element. This is useful when you nest your scrollable elements into other scrollable elements or work with fix heights.
+
+```html_example
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-content" data-off-canvas-content style="min-height: 300px;">
+    <div class="grid-x">
+      <div class="cell">
+        <div class="primary callout">
+          You have to view this example on a touch device or use e.g. the chrome dev tools with touch emulation.
+        </div>
+        <button type="button" class="button" data-toggle="offCanvasScrollbox">
+          Open Scrollbox Off-canvas
+        </button>
+      </div>
+    </div>
+    <div class="off-canvas-absolute position-left" id="offCanvasScrollbox" data-off-canvas data-content-scroll="false">
+      <div style="padding: 0 1rem;">
+        <article data-off-canvas-scrollbox style="max-height: 290px; overflow: auto; padding: 0.5rem 0; margin-bottom: 1rem; box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,0.65);">
+          <p>The 1st list supports continuous touchmove</p>
+          <ul>
+            <li>bullet 01</li>
+            <li>bullet 02</li>
+            <li>bullet 03</li>
+            <li>bullet 04</li>
+            <li>bullet 05</li>
+            <li>bullet 06</li>
+            <li>bullet 07</li>
+            <li>bullet 08</li>
+            <li>bullet 09</li>
+            <li>bullet 10</li>
+          </ul>
+        </article>
+        <article style="max-height: 290px; overflow: auto; padding: 0.5rem 0; margin-bottom: 1rem; box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,0.65);">
+          <p>The 2nd list doesn't support continuous touchmove</p>
+          <ul>
+            <li>bullet 01</li>
+            <li>bullet 02</li>
+            <li>bullet 03</li>
+            <li>bullet 04</li>
+            <li>bullet 05</li>
+            <li>bullet 06</li>
+            <li>bullet 07</li>
+            <li>bullet 08</li>
+            <li>bullet 09</li>
+            <li>bullet 10</li>
+          </ul>
+        </article>
+        <article style="padding: 0.5rem 0;">
+          <p>The 3rd list is regular content</p>
+          <ul>
+            <li>bullet 01</li>
+            <li>bullet 02</li>
+            <li>bullet 03</li>
+            <li>bullet 04</li>
+            <li>bullet 05</li>
+            <li>bullet 06</li>
+            <li>bullet 07</li>
+            <li>bullet 08</li>
+            <li>bullet 09</li>
+            <li>bullet 10</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
 ## Off-canvas Sizes
 
 In v6.4.2 the type of the off-canvas size variables has changed from number to map. This lets you define breakpoint specific sizes instead of one value for all.
