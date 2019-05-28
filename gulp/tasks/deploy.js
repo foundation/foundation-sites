@@ -83,7 +83,7 @@ gulp.task('deploy:dist:files', function() {
       .pipe(gulp.dest('./dist/js'))
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(rename({ suffix: '.min' }))
-      .pipe(uglify())
+      .pipe(uglify({ keep_fnames: true }))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/js'))
       .pipe(jsFilter.restore)
