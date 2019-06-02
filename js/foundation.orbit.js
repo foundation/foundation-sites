@@ -370,6 +370,12 @@ class Orbit extends Plugin {
           this.timer.restart();
         }
       }
+     /**
+      * Triggers when the slide has finished animating in.
+      * does'nt realy make any sense, keep event for compatibility reasons.
+      * @event Orbit#slidechange
+      */
+      this.$element.trigger('slidechange.zf.orbit', [$newSlide]);      
     }
   }
 
