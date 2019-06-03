@@ -349,6 +349,7 @@ class Orbit extends Plugin {
           this.options[`animInFrom${dirIn}`],
           function(){
             $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
+            _this.$element.trigger('endcurrentslidechange.zf.orbit', [$curSlide]);
         });
 
         Motion.animateOut(
@@ -356,8 +357,9 @@ class Orbit extends Plugin {
           this.options[`animOutTo${dirOut}`],
           function(){
             $curSlide.removeAttr('aria-live');
+            _this.$element.trigger('endnextslidechange.zf.orbit', [$newSlide]);
             if(_this.options.autoPlay && !_this.timer.isPaused){
-              _this.timer.restart();
+            	_this.timer.restart();
             }
             //do stuff?
           });
@@ -368,10 +370,11 @@ class Orbit extends Plugin {
           this.timer.restart();
         }
       }
-    /**
-    * Triggers when the slide has finished animating in.
-    * @event Orbit#slidechange
-    */
+      /**
+       * Triggers when the slide has finished animating in.
+       * does'nt realy make any sense, keep event for compatibility reasons.
+       * @event Orbit#slidechange
+       */
       this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
     }
   }
