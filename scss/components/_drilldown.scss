@@ -91,6 +91,10 @@ $drilldown-arrow-size: 6px !default;
       background: $drilldown-background;
     }
 
+    .no-js & ul {
+      display: none;
+    }
+
     // Applied to submenu <ul>s
     .is-drilldown-submenu {
       position: absolute;
