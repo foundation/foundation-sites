@@ -1,3 +1,4 @@
 [context.V5] # 'V5' is a branch name
   command = ""
+  publish = "_build"
   base = "V5"
