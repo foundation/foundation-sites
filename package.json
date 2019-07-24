@@ -103,7 +103,8 @@
     "vinyl-named": "^1.1.0",
     "webpack": "^4.28.4",
     "webpack-stream": "^5.2.1",
-    "what-input": ">=4.1.0"
+    "what-input": ">=4.1.0",
+    "yargs": "^13.3.0"
   },
   "resolutions": {
     "puppeteer": "^1.11.0"
