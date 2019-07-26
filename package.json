@@ -107,7 +107,7 @@
     "puppeteer": "^1.11.0"
   },
   "engines": {
-    "node": ">=6.4.0",
+    "node": ">=8.4.0",
     "npm": ">=2.14.2"
   },
   "repository": {
