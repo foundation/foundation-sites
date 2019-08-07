@@ -117,12 +117,8 @@ class Positionable extends Plugin {
     return this.options.hOffset;
   }
 
-
   _setPosition($anchor, $element, $parent) {
     if($anchor.attr('aria-expanded') === 'false'){ return false; }
-    var $eleDims = Box.GetDimensions($element),
-        $anchorDims = Box.GetDimensions($anchor);
-
 
     if (!this.options.allowOverlap) {
       // restore original position & alignment before checking overlap
@@ -133,7 +129,6 @@ class Positionable extends Plugin {
     $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
 
     if(!this.options.allowOverlap) {
-      var overlaps = {};
       var minOverlap = 100000000;
       // default coordinates to how we start, in case we can't figure out better
       var minCoordinates = {position: this.position, alignment: this.alignment};

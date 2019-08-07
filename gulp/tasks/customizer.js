@@ -11,10 +11,8 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
-var yargs = require('yargs');
 var zip = require('gulp-zip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
@@ -22,10 +20,10 @@ var webpackStream = require('webpack-stream');
 var webpack = require('webpack');
 
 var utils = require('../utils.js');
+var processedArgv = utils.getProccessedArgv();
 
-var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
-var OUTPUT_DIR = ARGS.output || 'custom-build';
+var OUTPUT_DIR = processedArgv.values['--output'] || 'custom-build';
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
@@ -55,7 +53,7 @@ var WEBPACK_CONFIG = {
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
   fs.readFile('customizer/config.yml', function(err, data) {
-    var moduleListPath = ARGS.modules || '../../customizer/complete';
+    var moduleListPath = processedArgv.values['--modules'] || '../../customizer/complete';
     var moduleList = require(moduleListPath);
 
     CUSTOMIZER_CONFIG = yaml(data.toString());
@@ -136,8 +134,8 @@ gulp.task('customizer:zip', function (done) {
   var outputFolder = path.dirname(OUTPUT_DIR);
   var outputFileName = path.basename(OUTPUT_DIR);
 
-  touch(path.join(OUTPUT_DIR, 'css/app.css'));
-  touch(path.join(OUTPUT_DIR, 'js/app.js'));
+  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'css/app.css', 'w')));
+  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'js/app.js', 'w')));
   fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
   return gulp.src(path.join(OUTPUT_DIR, '/**/*'))

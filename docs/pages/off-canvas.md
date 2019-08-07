@@ -480,6 +480,25 @@ Once you've reached the start/end of a scrollbox (while touch moving) the off-ca
 
 ---
 
+## Sticky
+
+By default an element with `position: fixed` disappears when opening an off-canvas with push transition. The reason for this is the transform property of the off-canvas content container what causes a `position: absolute` behavior for the fixed element.
+
+The good news: we've added the possibility to preserve the fixed appearance!
+You only have to add the attribute `data-off-canvas-sticky` to every sticky / fixed element that is supposed to remain fixed after opening the off-canvas.
+
+<div class="callout warning">
+  Please note that using this attribute will force the option `contentScroll: false`
+</div>
+
+```html
+<div class="top-bar sticky" data-sticky data-off-canvas-sticky>
+  Sticky top bar that will remain sticky after having opened an off-canvas
+</div>
+```
+
+---
+
 ## Off-canvas Sizes
 
 In v6.4.2 the type of the off-canvas size variables has changed from number to map. This lets you define breakpoint specific sizes instead of one value for all.
