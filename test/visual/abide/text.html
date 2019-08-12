@@ -109,11 +109,18 @@
 
           <hr>
 
-          <p>This submit button uses the `formnovalidate` attribute to disable validation before submitting the form.</p>
+          <p>
+            This from contains a submit with the attribute <code>formnovalidate</code> and one without (for comparison).<br>
+            <a href="https://www.w3schools.com/tags/att_input_formnovalidate.asp">https://www.w3schools.com/tags/att_input_formnovalidate.asp</a>
+          </p>
 
           <form data-abide novalidate>
-            <input required type="text" placeholder="Required">
-            <button type="submit" class="button" formnovalidate>Submit</button>
+            <input required type="text" name="firstname" placeholder="First name (required)">
+            <input required type="text" name="lastname" placeholder="Last name (required)">
+            <button type="submit" class="button">Submit (validate)</button>
+            <input required type="email" name="email" placeholder="Email (required)">
+            <input type="text" name="age" placeholder="Age">
+            <button type="submit" class="button" formnovalidate>Submit (novalidate)</button>
             <button type="reset" class="button">Reset</button>
           </form>
         </div>
