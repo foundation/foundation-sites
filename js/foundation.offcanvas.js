@@ -363,6 +363,7 @@ class OffCanvas extends Plugin {
    */
   _stopScrollPropagation(event) {
     let elem = this; // called from event handler context with this as elem
+    let parent; // off-canvas elem if called from inner scrollbox
     let up = event.pageY < elem.lastY;
     let down = !up;
     elem.lastY = event.pageY;
@@ -371,6 +372,18 @@ class OffCanvas extends Plugin {
       // It is not recommended to stop event propagation (the user cannot watch it),
       // but in this case this is the only solution we have.
       event.stopPropagation();
+
+      // If elem is inner scrollbox we are scrolling the outer off-canvas down/up once the box end has been reached
+      // This lets the user continue to touch move the off-canvas without the need to place the finger outside the scrollbox
+      if (elem.hasAttribute('data-off-canvas-scrollbox')) {
+        parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
+        if (elem.scrollTop <= 1 && parent.scrollTop > 0) {
+          parent.scrollTop--;
+        } else if (elem.scrollTop >= elem.scrollHeight - elem.clientHeight - 1 && parent.scrollTop < parent.scrollHeight - parent.clientHeight) {
+          parent.scrollTop++;
+        }
+      }
+
     } else {
       event.preventDefault();
     }
@@ -416,6 +429,8 @@ class OffCanvas extends Plugin {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
       this.$element.on('touchstart', this._recordScrollable);
       this.$element.on('touchmove', this._stopScrollPropagation);
+      this.$element.on('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
+      this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
     }
 
     if (this.options.contentOverlay === true) {
@@ -516,6 +531,8 @@ class OffCanvas extends Plugin {
         $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
         this.$element.off('touchstart', this._recordScrollable);
         this.$element.off('touchmove', this._stopScrollPropagation);
+        this.$element.off('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
+        this.$element.off('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
       }
 
       if (this.options.trapFocus === true) {
