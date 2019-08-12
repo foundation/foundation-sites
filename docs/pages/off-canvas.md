@@ -220,7 +220,7 @@ The Off-canvas container requires a positioning class to determine which side of
       <!-- Your menu or Off-canvas content goes here -->
     </div>
     <div class="off-canvas-content" data-off-canvas-content>
-      <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+      <img src="https://placehold.it/300x300" class="" height="" width="" alt="">
     </div>
   </div>
 </div>
