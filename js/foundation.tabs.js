@@ -119,16 +119,16 @@ class Tabs extends Plugin {
       // Whether the anchor element that has been found is part of this element
       var isOwnAnchor = !!($anchor.length && $link.length);
 
-      // If there is an anchor for the hash, select it
-      if ($anchor && $anchor.length && $link && $link.length) {
-        this.selectTab($anchor, true);
-      }
-      // Otherwise, collapse everything
-      else {
-        this._collapse();
-      }
-
       if (isOwnAnchor) {
+        // If there is an anchor for the hash, select it
+        if ($anchor && $anchor.length && $link && $link.length) {
+          this.selectTab($anchor, true);
+        }
+        // Otherwise, collapse everything
+        else {
+          this._collapse();
+        }
+
         // Roll up a little to show the titles
         if (this.options.deepLinkSmudge) {
           var offset = this.$element.offset();

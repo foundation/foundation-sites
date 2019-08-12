@@ -84,18 +84,18 @@ class Accordion extends Plugin {
       // Whether the anchor element that has been found is part of this element
       var isOwnAnchor = !!($anchor.length && $link.length);
 
-      // If there is an anchor for the hash, open it (if not already active)
-      if ($anchor && $link && $link.length) {
-        if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
-          this._openSingleTab($anchor);
-        };
-      }
-      // Otherwise, close everything
-      else {
-        this._closeAllTabs();
-      }
-
       if (isOwnAnchor) {
+        // If there is an anchor for the hash, open it (if not already active)
+        if ($anchor && $link && $link.length) {
+          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+            this._openSingleTab($anchor);
+          };
+        }
+        // Otherwise, close everything
+        else {
+          this._closeAllTabs();
+        }
+
         // Roll up a little to show the titles
         if (this.options.deepLinkSmudge) {
           onLoad($(window), () => {
