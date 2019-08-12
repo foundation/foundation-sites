@@ -52,14 +52,14 @@ describe('Abide', function() {
     });
 
     it('returns true for checked checkboxes', function() {
-      $html = $("<form data-abide><input type='checkbox' required checked='checked'></form>").appendTo("body");
+      $html = $("<form data-abide novalidate><input type='checkbox' name='groupName' required checked='checked'></form>").appendTo("body");
       plugin = new Foundation.Abide($html, {});
 
       plugin.validateInput($html.find("input")).should.equal(true);
     });
 
     it('returns false for unchecked checkboxes', function() {
-      $html = $("<form data-abide><input type='checkbox' required></form>").appendTo("body");
+      $html = $("<form data-abide novalidate><input type='checkbox' name='groupName' required></form>").appendTo("body");
       plugin = new Foundation.Abide($html, {});
 
       plugin.validateInput($html.find("input")).should.equal(false);
@@ -158,6 +158,19 @@ describe('Abide', function() {
       plugin.addErrorClasses($html.find('input'));
 
       plugin.removeRadioErrorClasses('groupName');
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
+
+  describe('removeCheckboxErrorClasses()', function() {
+    it('removes aria-invalid attribute from checkbox group', function() {
+      $html = $('<form data-abide><input type="checkbox" name="groupName"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.removeCheckboxErrorClasses('groupName');
 
       $html.find('input').should.not.have.attr('aria-invalid')
     });
