@@ -504,7 +504,7 @@ class Abide extends Plugin {
    */
   validateText($el, pattern) {
     // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
-    pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
+    pattern = (pattern || $el.attr('data-pattern') || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
     var valid = false;
 

@@ -220,7 +220,7 @@ The Off-canvas container requires a positioning class to determine which side of
       <!-- Your menu or Off-canvas content goes here -->
     </div>
     <div class="off-canvas-content" data-off-canvas-content>
-      <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+      <img src="https://placehold.it/300x300" class="" height="" width="" alt="">
     </div>
   </div>
 </div>
@@ -401,6 +401,25 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 </div>
 
 <p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
+```
+
+---
+
+## Sticky
+
+By default an element with `position: fixed` disappears when opening an off-canvas with push transition. The reason for this is the transform property of the off-canvas content container what causes a `position: absolute` behavior for the fixed element.
+
+The good news: we've added the possibility to preserve the fixed appearance!
+You only have to add the attribute `data-off-canvas-sticky` to every sticky / fixed element that is supposed to remain fixed after opening the off-canvas.
+
+<div class="callout warning">
+  Please note that using this attribute will force the option `contentScroll: false`
+</div>
+
+```html
+<div class="top-bar sticky" data-sticky data-off-canvas-sticky>
+  Sticky top bar that will remain sticky after having opened an off-canvas
+</div>
 ```
 
 ---
