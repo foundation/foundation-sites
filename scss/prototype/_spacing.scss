@@ -119,10 +119,10 @@ $prototype-spacers-count: 3 !default;
       // All Sides
       .#{$prop}-#{$spacer} {
         @if ($prop == margin) { 
-          margin: $spacer * $global-margin; 
+          margin: $spacer * $global-margin !important;
         }
         @else if ($prop == padding) { 
-          padding: $spacer * $global-padding; 
+          padding: $spacer * $global-padding !important;
         }
       }
 
@@ -138,8 +138,10 @@ $prototype-spacers-count: 3 !default;
         }
       }
     }
+  }
 
-    @if ($prototype-spacing-breakpoints) {
+  @if ($prototype-spacing-breakpoints) {
+    @for $spacer from 0 through $prototype-spacers-count {
     // Loop through Responsive Breakpoints
       @each $size in $breakpoint-classes {
         @include breakpoint($size) {
@@ -149,10 +151,10 @@ $prototype-spacers-count: 3 !default;
                 // All Sides
                 &-#{$prop}-#{$spacer} {
                   @if ($prop == margin) { 
-                    margin: $spacer * $global-margin; 
+                    margin: $spacer * $global-margin !important;
                   }
                   @else if ($prop == padding) { 
-                    padding: $spacer * $global-padding; 
+                    padding: $spacer * $global-padding !important;
                   }
                 }
 

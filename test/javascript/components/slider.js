@@ -153,6 +153,40 @@ describe('Slider', function() {
     });
   });
 
+  describe('_value()', function() {
+    it('handles positive values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 0,
+        end: 10,
+        start: 0,
+        vertical: true
+      });
+
+      plugin._value(0.5237916657475017).should.equal(4.762083342524983);
+      plugin._value(0.009882861617877391).should.equal(9.901171383821225);
+      plugin._value(0.9840506496657916).should.equal(0.1594935033420839);
+      plugin._value(0.7327435970969094).should.equal(2.672564029030906);
+      plugin._value(0.2569544020648122).should.equal(7.430455979351878);
+    });
+
+    it('handles negative values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 0,
+        end: 5,
+        start: -5,
+        vertical: true
+      });
+
+      plugin._value(0.8372195627716132).should.equal(-3.372195627716133);
+      plugin._value(0.012706536365842359).should.equal(4.872934636341577);
+      plugin._value(0.9925216739096865).should.equal(-4.925216739096864);
+      plugin._value(0.8202775142838235).should.equal(-3.2027751428382345);
+      plugin._value(0.2103637687233902).should.equal(2.8963623127660982);
+    });
+  });
+
   describe('adjustValue()', function() {
     it('handles positive values', function() {
       $html = $(template).appendTo('body');

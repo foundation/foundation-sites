@@ -18,7 +18,6 @@ const Nest = {
 
       if ($sub.length) {
         $item.addClass(hasSubClass);
-        $sub.addClass(`submenu ${subMenuClass}`).attr({'data-submenu': ''});
         if(applyAria) {
           $item.attr({
             'aria-haspopup': true,

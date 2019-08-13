@@ -20,7 +20,7 @@ Every participant is expected to follow the project's [Code of Conduct](code-of-
 3. **Prepare a test case with your bug** ([link](https://codepen.io/ncoden/pen/dQmVgg)).
    Trying to reproduce a bug is often time-consuming. Please isolate your bug in a dedicated test case. The simpler is the test case, the best it is.
 4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
-   Please provide a complete description of your bug: What do you expect? What happends instead? Which version of Foundation do you use, which ones are affected by the bug? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
+   Please provide a complete description of your bug: What do you expect? What happens instead? Which version of Foundation do you use, which ones are affected by the bug? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
 
 ### Request for a new feature
 1. **Search for similar opened or closed issues** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).

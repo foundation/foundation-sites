@@ -307,7 +307,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://cell medium.com/@tommaso.marcelli/setting-up-vue-2-and-foundation-6-3f858b4ad20">
+      <a target="_blank" href="https://medium.com/@tommaso.marcelli/setting-up-vue-2-and-foundation-6-3f858b4ad20">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-3 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/docs-vue.jpeg" class="" height="147" width="147" alt="" style="border: 0;">

@@ -153,7 +153,15 @@ class Slider extends Plugin {
       pctOfBar = this._logTransform(pctOfBar);
       break;
     }
-    var value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
+
+    var value
+    if (this.options.vertical) {
+      // linear interpolation which is working with negative values for start
+      // https://math.stackexchange.com/a/1019084
+      value = parseFloat(this.options.end) + pctOfBar * (this.options.start - this.options.end)
+    } else {
+      value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
+    }
 
     return value
   }
@@ -199,12 +207,6 @@ class Slider extends Plugin {
     else if (location > this.options.end) { location = this.options.end; }
 
     var isDbl = this.options.doubleSided;
-
-    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
-    //for click and drag events, it's weird due to the scale(-1, 1) css property
-    if (this.options.vertical && !noInvert) {
-      location = this.options.end - location;
-    }
 
     if (isDbl) { //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if (this.handles.index($hndl) === 0) {

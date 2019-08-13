@@ -7,10 +7,10 @@ os:
   - osx
 
 node_js:
-  - 6
   - 8
   - 10
-  - 11
+  - 12
+  - node
 
 env:
   global:
@@ -24,7 +24,7 @@ matrix:
       node_js: stable
       env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
-install: yarn
+install: yarn --network-timeout 1000000
 script: yarn run $ZF_TRAVIS_COMMAND
 
 notifications:

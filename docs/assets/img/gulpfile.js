@@ -1,12 +1,11 @@
 var $      = require('gulp-load-plugins')();
-var argv   = require('yargs').argv;
 var gulp   = require('gulp');
 var rimraf = require('rimraf');
 var panini = require('panini');
 var sequence = require('run-sequence');
 
 // Check for --production flag
-var isProduction = !!(argv.production);
+var isProduction = process.argv.includes('--production');
 
 // File paths to various assets are defined here.
 var paths = {
