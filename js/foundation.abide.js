@@ -112,11 +112,11 @@ class Abide extends Plugin {
    */
   _validationIsDisabled() {
     if (this.isEnabled === false) { // whole validation disabled
-      return this.isEnabled;
+      return true;
     } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
       return this.formnovalidate;
     } else { // triggerd by Enter in non-submit input
-      return this.$submits.first().attr('formnovalidate');
+      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
     }
   }
 
