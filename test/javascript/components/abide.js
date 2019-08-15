@@ -36,6 +36,32 @@ describe('Abide', function() {
     });
   });
 
+  describe('validateForm()', function() {
+    it('returns true after validation is disabled', function() {
+      $html = $("<form data-abide novalidate><input required type='text'><input type='submit'></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.disableValidation();
+      plugin.validateForm().should.equal(true);
+    });
+
+    it('returns false after validation is (re)enabled', function() {
+      $html = $("<form data-abide novalidate><input required type='text'><input type='submit'></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.disableValidation();
+      plugin.enableValidation();
+      plugin.validateForm().should.equal(false);
+    });
+
+    it('returns true if first submit has formnovalidate is disabled', function() {
+      $html = $("<form data-abide novalidate><input required type='text'><input type='submit' formnovalidate></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.validateForm().should.equal(true);
+    });
+  });
+
   describe('validateInput()', function() {
     it('returns true for hidden inputs', function() {
       $html = $("<form data-abide novalidate><input type='hidden' required></form>").appendTo("body");

@@ -21,6 +21,8 @@ class Abide extends Plugin {
   _setup(element, options = {}) {
     this.$element = element;
     this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
+    this.isEnabled = true;
+    this.formnovalidate = null;
 
     this.className = 'Abide'; // ie9 back compat
     this._init();
@@ -32,9 +34,10 @@ class Abide extends Plugin {
    */
   _init() {
     this.$inputs = $.merge(                               // Consider as input to validate:
-      this.$element.find('input').not('[type=submit]'),   // * all input fields expect submit
+      this.$element.find('input').not('[type="submit"]'), // * all input fields expect submit
       this.$element.find('textarea, select')              // * all textareas and select fields
     );
+    this.$submits = this.$element.find('[type="submit"]');
     const $globalErrors = this.$element.find('[data-abide-error]');
 
     // Add a11y attributes to all fields
@@ -57,6 +60,16 @@ class Abide extends Plugin {
       })
       .on('submit.zf.abide', () => {
         return this.validateForm();
+      });
+
+    this.$submits
+      .off('click.zf.abide keydown.zf.abide')
+      .on('click.zf.abide keydown.zf.abide', (e) => {
+        if (!e.key || (e.key === ' ' || e.key === 'Enter')) {
+          e.preventDefault();
+          this.formnovalidate = e.target.getAttribute('formnovalidate') !== null;
+          this.$element.submit();
+        }
       });
 
     if (this.options.validateOn === 'fieldChange') {
@@ -90,6 +103,35 @@ class Abide extends Plugin {
    */
   _reflow() {
     this._init();
+  }
+
+  /**
+   * Checks whether the submitted form should be validated or not, consodering formnovalidate and isEnabled
+   * @returns {Boolean}
+   * @private
+   */
+  _validationIsDisabled() {
+    if (this.isEnabled === false) { // whole validation disabled
+      return true;
+    } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
+      return this.formnovalidate;
+    } else { // triggered by Enter in non-submit input
+      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
+    }
+  }
+
+  /**
+   * Enables the whole validation
+   */
+  enableValidation(){
+    this.isEnabled = true;
+  }
+
+  /**
+   * Disables the whole validation
+   */
+  disableValidation() {
+    this.isEnabled = false;
   }
 
   /**
@@ -385,6 +427,11 @@ class Abide extends Plugin {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
+    // skip validation if disabled
+    if (this._validationIsDisabled()) {
+      return true;
+    }
+
     // don't validate ignored inputs or hidden inputs or disabled inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
@@ -462,6 +509,12 @@ class Abide extends Plugin {
     // Remember first form submission to prevent specific checkbox validation (more than one required) until form got initially submitted
     if (!this.initialized) {
       this.initialized = true;
+    }
+
+    // skip validation if disabled
+    if (this._validationIsDisabled()) {
+      this.formnovalidate = null;
+      return true;
     }
 
     this.$inputs.each(function() {
@@ -677,6 +730,9 @@ class Abide extends Plugin {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
+
+    this.$submits
+      .off('.abide');
   }
 }
 
