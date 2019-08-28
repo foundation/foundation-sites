@@ -66,42 +66,73 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
  * @returns {Object} - nested object of integer pixel values
  * TODO - if element is window, return only those values.
  */
-function GetDimensions(elem, test){
+function GetDimensions(elem) {
   elem = elem.length ? elem[0] : elem;
 
   if (elem === window || elem === document) {
-    throw new Error("I'm sorry, Dave. I'm afraid I can't do that.");
+	throw new Error("I'm sorry, Dave. I'm afraid I can't do that.");
   }
-
-  var rect = elem.getBoundingClientRect(),
-      parRect = elem.parentNode.getBoundingClientRect(),
-      winRect = document.body.getBoundingClientRect(),
-      winY = window.pageYOffset,
-      winX = window.pageXOffset;
-
-  return {
-    width: rect.width,
-    height: rect.height,
-    offset: {
-      top: rect.top + winY,
-      left: rect.left + winX
-    },
-    parentDims: {
-      width: parRect.width,
-      height: parRect.height,
-      offset: {
-        top: parRect.top + winY,
-        left: parRect.left + winX
-      }
-    },
-    windowDims: {
-      width: winRect.width,
-      height: winRect.height,
-      offset: {
-        top: winY,
-        left: winX
-      }
-    }
+  /*
+   * Added check to see if the parameter elem contains a non-empty jQuery object
+   * I had an error where a caller to GetDimensions(elem) gave it as a parameter
+   * the result of a jQuery selector that didn't find any matching element.
+   * Calling getBoundingClientRect() threw an error.
+   */
+  if(elem.length>0){
+	var rect = elem.getBoundingClientRect(),
+		parRect = elem.parentNode.getBoundingClientRect(),
+		winRect = document.body.getBoundingClientRect(),
+		winY = window.pageYOffset,
+		winX = window.pageXOffset;
+	return {
+	  width: rect.width,
+	  height: rect.height,
+	  offset: {
+		top: rect.top + winY,
+		left: rect.left + winX
+	  },
+	  parentDims: {
+		width: parRect.width,
+		height: parRect.height,
+		offset: {
+		  top: parRect.top + winY,
+		  left: parRect.left + winX
+		}
+	  },
+	  windowDims: {
+		width: winRect.width,
+		height: winRect.height,
+		offset: {
+		  top: winY,
+		  left: winX
+		}
+	  }
+	};
+  }else{
+	return {
+	  width: 0,
+	  height: 0,
+	  offset: {
+		top: 0,
+		left: 0
+	  },
+	  parentDims: {
+		width: 0,
+		height: 0,
+		offset: {
+		  top: 0,
+		  left: 0
+		}
+	  },
+	  windowDims: {
+		width: 0,
+		height: 0,
+		offset: {
+		  top: 0,
+		  left: 0
+		}
+	  }
+	};
   }
 }
 
