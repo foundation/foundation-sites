@@ -41,6 +41,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 // Placeholder selector for medium-and-up modals
 // Prevents duplicate CSS when defining multiple Reveal sizes
+// This should be in the same breakpoint then `@mixin reveal-modal-width`
 @include breakpoint(medium) {
   %reveal-centered {
     right: auto;
@@ -62,7 +63,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
   display: none;
   background-color: $background;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 /// Adds base styles for a modal.
@@ -101,8 +102,9 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   $width: $reveal-width,
   $max-width: $reveal-max-width
 ) {
+  // Extends must be made outside of breakpoints for compatibility with newer Sass versions (libsass v3.5)
+  @extend %reveal-centered;
   @include breakpoint(medium) {
-    @extend %reveal-centered;
     width: $width;
     max-width: $max-width;
   }
@@ -111,13 +113,14 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 /// Creates a full-screen modal, which stretches the full width and height of the window.
 @mixin reveal-modal-fullscreen {
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
 
   width: 100%;
   max-width: none;
   height: 100%;
-  height: 100vh; // sass-lint:disable-line no-duplicate-properties
-  min-height: 100vh;
+  min-height: 100%;
   margin-left: 0;
 
   border: 0;
@@ -125,18 +128,20 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 }
 
 @mixin foundation-reveal {
-  // [TODO] Is this necessary?
-  body.is-reveal-open { // sass-lint:disable-line no-qualifying-elements
-    overflow: hidden;
-  }
 
-  // html gets this class only in iOS
-  html.is-reveal-open,
-  html.is-reveal-open body {
-    min-height: 100%;
-    overflow: hidden;
+  /// Disables the scroll when Reveal is shown to prevent the background from shifting
+  html.is-reveal-open {
     position: fixed;
-    user-select: none;
+    width: 100%;
+    overflow-y: hidden;
+
+    &.zf-has-scroll {
+      overflow-y: scroll;
+    }
+
+    body { // sass-lint:disable-line no-qualifying-elements
+      overflow-y: hidden;
+    }
   }
 
   // Overlay

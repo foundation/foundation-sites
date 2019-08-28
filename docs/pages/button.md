@@ -7,6 +7,11 @@ tags:
   - dropdown button
 ---
 
+<div class="callout training-callout">
+  <p>To help you get the most out of Foundation and create responsive websites and apps like us we’ve put together some unique online webinar training. Learn Foundation’s Grid, how to use and modify Foundation's UI components, Foundation’s JavaScript options and functions, and tons of tips and tricks we learned from major client projects.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Learn more about Foundation training →</a>
+</div>
+
 ## Basics
 
 A basic button can be created with minimal markup. Because buttons can be used for many purposes, it's important to use the right tag.
@@ -56,6 +61,24 @@ Additional classes can be added to your button to change its size and shape.
 <a class="button small expanded" href="#">Wow, Small Expand</a>
 ```
 
+### Responsive Expanded buttons
+
+If you are using the Sass version, you can activate these additional responsive button expand classes by changing the `$button-responsive-expanded` variable to true. (It is false by default to reduce CSS file size.)
+
+For CSS download users, you can [get the CSS here](https://gist.github.com/rafibomb/2497ca75ceedfa3f5ccf3ba146eae295) and add it to your stylesheet.
+
+```html_example
+<a class="button small small-only-expanded" href="#">Wow, Expand only on small viewport</a>
+<a class="button small medium-only-expanded" href="#">Expand only on medium viewport</a>
+<a class="button small large-only-expanded" href="#">Expand only on large viewport</a>
+
+<a class="button small medium-expanded" href="#">Wow, Expand on medium and larger</a>
+<a class="button small large-expanded" href="#">Expand on large and larger</a>
+
+<a class="button small medium-down-expanded" href="#">Expand on medium and smaller</a>
+<a class="button small large-down-expanded" href="#">Expand on large and smaller</a>
+```
+
 ---
 
 ## Coloring
@@ -91,7 +114,7 @@ If you don't need certain colors from the default palette, simply remove them fr
 $button-palette: map-remove($foundation-palette, (
     primary,
     secondary
-)) !default;
+));
 ```
 
 Or you can add more colors to the default palette.
@@ -99,7 +122,7 @@ Or you can add more colors to the default palette.
 ```scss
 $button-palette: map-merge($foundation-palette, (
     purple: #bb00ff
-)) !default;
+));
 ```
 
 Or you can define your own custom button palette.
@@ -109,7 +132,7 @@ $button-palette: (
     black: #000000,
     red: #ff0000,
     purple: #bb00ff
-) !default;
+);
 ```
 
 ---

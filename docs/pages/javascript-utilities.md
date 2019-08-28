@@ -147,7 +147,7 @@ Allows you to add `swipe*` and pseudo-drag events to elements.
 ```js
 $('selector').addTouch().on('mousemove', handleDrag);
 // Binds elements to touch events. Used in the Slider plugin for mobile devices.
-$('selector').spotSwipe().on('swipeleft', handleLeftSwipe);
+$('selector').on('swipeleft', handleLeftSwipe);
 // Binds elements to swipe events. Used in the Orbit plugin for mobile devices.
 ```
 
@@ -156,12 +156,12 @@ $('selector').spotSwipe().on('swipeleft', handleLeftSwipe);
 
 Provides a number of event listeners and triggers your script can hook into. Most are self-explanatory, and used in many Foundation plugins.
 ```html
-<button data-open='someId'>I open something!</button>
-<button data-close='someId'>I close something!</button>
-<button data-toggle='someId'>I toggle something!</button>
+<button data-open="someId">I open something!</button>
+<button data-close="someId">I close something!</button>
+<button data-toggle="someId">I toggle something!</button>
 ```
 ```js
-// Add the data-open/close/toggle='idOfElement' tag to your markup.
+// Add the data-open/close/toggle="idOfElement" tag to your markup.
 // When a click event is triggered on that element, these are the non-bubbling events directed at your element.
 // If you don't use an `id` selector, an event will be triggered that bubbles up to window.
 $('selector').on('open.zf.trigger', handleOpen);
@@ -171,8 +171,8 @@ $('selector').on('toggle.zf.trigger', handleToggle);
 Besides these useful click triggers, there are also other listeners for you to tap into. Need to know when the window has been resized, but only when it's done resizing? How about a debounced scroll event? Add this markup and JavaScript and you're good to go!
 
 ```html
-<div data-scroll='someId'>...</div>
-<div data-resize='someId'>...</div>
+<div data-scroll="someId">...</div>
+<div data-resize="someId">...</div>
 ```
 ```js
 $('#someId').on('scrollme.zf.trigger', handleScroll);

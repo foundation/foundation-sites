@@ -1,19 +1,21 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl, ignoreMousedisappear } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { Touch } from './foundation.util.touch'
 
 
 /**
  * DropdownMenu module.
- * @module foundation.dropdown-menu
+ * @module foundation.dropdownMenu
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
  * @requires foundation.util.nest
+ * @requires foundation.util.touch
  */
 
 class DropdownMenu extends Plugin {
@@ -30,7 +32,8 @@ class DropdownMenu extends Plugin {
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
     this.className = 'DropdownMenu'; // ie9 back compat
 
-    Nest.Feather(this.$element, 'dropdown');
+    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
+
     this._init();
 
     Keyboard.register('DropdownMenu', {
@@ -50,6 +53,8 @@ class DropdownMenu extends Plugin {
    * @function
    */
   _init() {
+    Nest.Feather(this.$element, 'dropdown');
+
     var subs = this.$element.find('li.is-dropdown-submenu-parent');
     this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
 
@@ -103,15 +108,16 @@ class DropdownMenu extends Plugin {
 
       if (hasSub) {
         if (hasClicked) {
-          if (!_this.options.closeOnClick || (!_this.options.clickOpen && !hasTouch) || (_this.options.forceFollow && hasTouch)) { return; }
-          else {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            _this._hide($elem);
+          if (!_this.options.closeOnClick
+            || (!_this.options.clickOpen && !hasTouch)
+            || (_this.options.forceFollow && hasTouch)) {
+            return;
           }
-        } else {
           e.preventDefault();
-          e.stopImmediatePropagation();
+          _this._hide($elem);
+        }
+        else {
+          e.preventDefault();
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
@@ -119,12 +125,12 @@ class DropdownMenu extends Plugin {
     };
 
     if (this.options.clickOpen || hasTouch) {
-      this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+      this.$menuItems.on('click.zf.dropdownMenu touchstart.zf.dropdownMenu', handleClickFn);
     }
 
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('click.zf.dropdownMenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){
@@ -134,30 +140,30 @@ class DropdownMenu extends Plugin {
     }
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
         var $elem = $(this),
-            hasSub = $elem.hasClass(parClass);
+          hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
+      }).on('mouseleave.zf.dropdownmenu', ignoreMousedisappear(function (e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._hide($elem);
           }, _this.options.closingTime));
         }
-      });
+      }));
     }
-    this.$menuItems.on('keydown.zf.dropdownmenu', function(e) {
+    this.$menuItems.on('keydown.zf.dropdownMenu', function(e) {
       var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
           isTab = _this.$tabs.index($element) > -1,
           $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
@@ -173,10 +179,8 @@ class DropdownMenu extends Plugin {
       });
 
       var nextSibling = function() {
-        if (!$element.is(':last-child')) {
-          $nextElement.children('a:first').focus();
-          e.preventDefault();
-        }
+        $nextElement.children('a:first').focus();
+        e.preventDefault();
       }, prevSibling = function() {
         $prevElement.children('a:first').focus();
         e.preventDefault();
@@ -201,9 +205,6 @@ class DropdownMenu extends Plugin {
           _this._hide(_this.$element);
           _this.$menuItems.eq(0).children('a').focus(); // focus to first element
           e.preventDefault();
-        },
-        handled: function() {
-          e.stopImmediatePropagation();
         }
       };
 
@@ -269,16 +270,24 @@ class DropdownMenu extends Plugin {
    * @private
    */
   _addBodyHandler() {
-    var $body = $(document.body),
-        _this = this;
-    $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
-         .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
-           var $link = _this.$element.find(e.target);
-           if ($link.length) { return; }
+    const $body = $(document.body);
+    this._removeBodyHandler();
+    $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', (e) => {
+      var isItself = !!$(e.target).closest(this.$element).length;
+      if (isItself) return;
 
-           _this._hide();
-           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
-         });
+      this._hide();
+      this._removeBodyHandler();
+    });
+  }
+
+  /**
+   * Remove the body event handler. See `_addBodyHandler`.
+   * @function
+   * @private
+   */
+  _removeBodyHandler() {
+    $(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
   }
 
   /**
@@ -313,7 +322,7 @@ class DropdownMenu extends Plugin {
      * Fires when the new dropdown pane is visible.
      * @event DropdownMenu#show
      */
-    this.$element.trigger('show.zf.dropdownmenu', [$sub]);
+    this.$element.trigger('show.zf.dropdownMenu', [$sub]);
   }
 
   /**
@@ -321,13 +330,14 @@ class DropdownMenu extends Plugin {
    * @function
    * @param {jQuery} $elem - element with a submenu to hide
    * @param {Number} idx - index of the $tabs collection to hide
+   * @fires DropdownMenu#hide
    * @private
    */
   _hide($elem, idx) {
     var $toClose;
     if ($elem && $elem.length) {
       $toClose = $elem;
-    } else if (idx !== undefined) {
+    } else if (typeof idx !== 'undefined') {
       $toClose = this.$tabs.not(function(i, el) {
         return i === idx;
       });
@@ -338,7 +348,8 @@ class DropdownMenu extends Plugin {
     var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
 
     if (somethingToClose) {
-      $toClose.find('li.is-active').add($toClose).attr({
+      var $activeItem = $toClose.find('li.is-active');
+      $activeItem.add($toClose).attr({
         'data-is-click': false
       }).removeClass('is-active');
 
@@ -351,11 +362,15 @@ class DropdownMenu extends Plugin {
                 .addClass(`opens-${oldClass}`);
         this.changed = false;
       }
+
+      clearTimeout($activeItem.data('_delay'));
+      this._removeBodyHandler();
+
       /**
        * Fires when the open menus are closed.
        * @event DropdownMenu#hide
        */
-      this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
+      this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
     }
   }
 
@@ -364,9 +379,9 @@ class DropdownMenu extends Plugin {
    * @function
    */
   _destroy() {
-    this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
+    this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-    $(document.body).off('.zf.dropdownmenu');
+    $(document.body).off('.zf.dropdownMenu');
     Nest.Burn(this.$element, 'dropdown');
   }
 }

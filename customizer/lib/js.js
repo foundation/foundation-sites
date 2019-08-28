@@ -20,7 +20,9 @@ module.exports = function(config, modules) {
               "import { Foundation } from '" + dir + "/foundation.core';\n" +
               "Foundation.addToJquery($);\n" +
               "import { MediaQuery } from '" + dir + "/foundation.util.mediaQuery';\n" +
-              "Foundation.MediaQuery = MediaQuery;\n";
+              "Foundation.MediaQuery = MediaQuery;\n" +
+              "import { Triggers } from '" + dir + "/foundation.util.triggers';\n" +
+              "Triggers.init($, Foundation);\n";
 
   // last 2 pieces work around https://github.com/zurb/foundation-sites/issues/10287
 

@@ -1,16 +1,7 @@
 import $ from 'jquery';
 
 import { Foundation } from '../foundation.core';
-Foundation.addToJquery($);
-
-// Add Foundation Utils to Foundation global namespace for backwards
-// compatibility.
-
-import { rtl, GetYoDigits, transitionend } from '../foundation.util.core';
-Foundation.rtl = rtl;
-Foundation.GetYoDigits = GetYoDigits;
-Foundation.transitionend = transitionend;
-
+import * as CoreUtils from '../foundation.core.utils';
 import { Box } from '../foundation.util.box'
 import { onImagesLoaded } from '../foundation.util.imageLoader';
 import { Keyboard } from '../foundation.util.keyboard';
@@ -18,6 +9,39 @@ import { MediaQuery } from '../foundation.util.mediaQuery';
 import { Motion, Move } from '../foundation.util.motion';
 import { Nest } from '../foundation.util.nest';
 import { Timer } from '../foundation.util.timer';
+import { Touch } from '../foundation.util.touch';
+import { Triggers } from '../foundation.util.triggers';
+import { Abide } from '../foundation.abide';
+import { Accordion } from '../foundation.accordion';
+import { AccordionMenu } from '../foundation.accordionMenu';
+import { Drilldown } from '../foundation.drilldown';
+import { Dropdown } from '../foundation.dropdown';
+import { DropdownMenu } from '../foundation.dropdownMenu';
+import { Equalizer } from '../foundation.equalizer';
+import { Interchange } from '../foundation.interchange';
+import { Magellan } from '../foundation.magellan';
+import { OffCanvas } from '../foundation.offcanvas';
+import { Orbit } from '../foundation.orbit';
+import { ResponsiveMenu } from '../foundation.responsiveMenu';
+import { ResponsiveToggle } from '../foundation.responsiveToggle';
+import { Reveal } from '../foundation.reveal';
+import { Slider } from '../foundation.slider';
+import { SmoothScroll } from '../foundation.smoothScroll';
+import { Sticky } from '../foundation.sticky';
+import { Tabs } from '../foundation.tabs';
+import { Toggler } from '../foundation.toggler';
+import { Tooltip } from '../foundation.tooltip';
+import { ResponsiveAccordionTabs } from '../foundation.responsiveAccordionTabs';
+
+Foundation.addToJquery($);
+
+// Add Foundation Utils to Foundation global namespace for backwards
+// compatibility.
+Foundation.rtl = CoreUtils.rtl;
+Foundation.GetYoDigits = CoreUtils.GetYoDigits;
+Foundation.transitionend = CoreUtils.transitionend;
+Foundation.RegExpEscape = CoreUtils.RegExpEscape;
+Foundation.onLoad = CoreUtils.onLoad;
 
 Foundation.Box = Box;
 Foundation.onImagesLoaded = onImagesLoaded;
@@ -29,73 +53,67 @@ Foundation.Nest = Nest;
 Foundation.Timer = Timer;
 
 // Touch and Triggers previously were almost purely sede effect driven,
-// so no // need to add it to Foundation, just init them.
-
-import { Touch } from '../foundation.util.touch';
+// so no need to add it to Foundation, just init them.
 Touch.init($);
-
-import { Triggers } from '../foundation.util.triggers';
 Triggers.init($, Foundation);
+MediaQuery._init();
 
-import { Abide } from '../foundation.abide';
 Foundation.plugin(Abide, 'Abide');
-
-import { Accordion } from '../foundation.accordion';
 Foundation.plugin(Accordion, 'Accordion');
-
-import { AccordionMenu } from '../foundation.accordionMenu';
 Foundation.plugin(AccordionMenu, 'AccordionMenu');
-
-import { Drilldown } from '../foundation.drilldown';
 Foundation.plugin(Drilldown, 'Drilldown');
-
-import { Dropdown } from '../foundation.dropdown';
 Foundation.plugin(Dropdown, 'Dropdown');
-
-import { DropdownMenu } from '../foundation.dropdownMenu';
 Foundation.plugin(DropdownMenu, 'DropdownMenu');
-
-import { Equalizer } from '../foundation.equalizer';
 Foundation.plugin(Equalizer, 'Equalizer');
-
-import { Interchange } from '../foundation.interchange';
 Foundation.plugin(Interchange, 'Interchange');
-
-import { Magellan } from '../foundation.magellan';
 Foundation.plugin(Magellan, 'Magellan');
-
-import { OffCanvas } from '../foundation.offcanvas';
 Foundation.plugin(OffCanvas, 'OffCanvas');
-
-import { Orbit } from '../foundation.orbit';
 Foundation.plugin(Orbit, 'Orbit');
-
-import { ResponsiveMenu } from '../foundation.responsiveMenu';
 Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
-
-import { ResponsiveToggle } from '../foundation.responsiveToggle';
 Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
-
-import { Reveal } from '../foundation.reveal';
 Foundation.plugin(Reveal, 'Reveal');
-
-import { Slider } from '../foundation.slider';
 Foundation.plugin(Slider, 'Slider');
-
-import { SmoothScroll } from '../foundation.smoothScroll';
 Foundation.plugin(SmoothScroll, 'SmoothScroll');
-
-import { Sticky } from '../foundation.sticky';
 Foundation.plugin(Sticky, 'Sticky');
-
-import { Tabs } from '../foundation.tabs';
 Foundation.plugin(Tabs, 'Tabs');
-
-import { Toggler } from '../foundation.toggler';
 Foundation.plugin(Toggler, 'Toggler');
-
-import { Tooltip } from '../foundation.tooltip';
 Foundation.plugin(Tooltip, 'Tooltip');
-
-import { ResponsiveAccordionTabs } from '../foundation.responsiveAccordionTabs';
 Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
+
+export {
+  Foundation,
+  CoreUtils,
+  Box,
+  onImagesLoaded,
+  Keyboard,
+  MediaQuery,
+  Motion,
+  Nest,
+  Timer,
+  Touch,
+  Triggers,
+  Abide,
+  Accordion,
+  AccordionMenu,
+  Drilldown,
+  Dropdown,
+  DropdownMenu,
+  Equalizer,
+  Interchange,
+  Magellan,
+  OffCanvas,
+  Orbit,
+  ResponsiveMenu,
+  ResponsiveToggle,
+  Reveal,
+  Slider,
+  SmoothScroll,
+  Sticky,
+  Tabs,
+  Toggler,
+  Tooltip,
+  ResponsiveAccordionTabs
+}
+
+export default Foundation;
+

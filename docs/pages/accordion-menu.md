@@ -70,13 +70,13 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 
 ## Submenu Toggle
 
-Accordion menus can have a seperate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
+Accordion menus can have a separate submenu toggle. This allows the parent item to have its own link, but still allows the submenu to be opened/closed.
 You need to add the class `accordion-menu` as well as the data attribute `data-submenu-toggle="true"` for this to work correctly.
 
 ```html
 <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
   <li>
-    <a href="http://foundation.zurb.com/">Zurb Foundation</a>
+    <a href="http://foundation.zurb.com/" target="_blank">Link here, dropdown there →</a>
     <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
@@ -101,9 +101,9 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 </ul>
 ```
 
-<ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" style="max-width: 250px">
+<ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" style="max-width: 300px">
   <li>
-    <a href="http://foundation.zurb.com/">Zurb Foundation</a>
+    <a href="http://foundation.zurb.com/" target="_blank">Link here, dropdown there →</a>
     <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
@@ -118,7 +118,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
     </ul>
   </li>
   <li>
-    <a href="#">Item 2</a>
+    <a href="http://foundation.zurb.com/" target="_blank">Link here, dropdown there →</a>
     <ul class="menu vertical nested">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>

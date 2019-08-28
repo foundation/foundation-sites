@@ -102,6 +102,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].MediaQuery = __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */];
+__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].MediaQuery._init();
 
 /***/ }),
 

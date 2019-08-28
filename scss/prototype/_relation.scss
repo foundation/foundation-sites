@@ -91,7 +91,7 @@
   }
 }
 
-/// Will only select the child if it’s unique. That means that if there are at least 2 children, the style will not be applied.
+/// Will only select the child if it's unique. That means that if there are at least 2 children, the style will not be applied.
 @mixin unique {
   &:only-child {
     @content;

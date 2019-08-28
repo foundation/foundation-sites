@@ -171,7 +171,7 @@
 }
 
 .homepage-section-title {
-  font-size: 5rem;
+  font-size: 4.4rem;
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.1em;
@@ -182,12 +182,17 @@
   margin-right: auto;
 
   @include breakpoint(medium only) {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   @include breakpoint(small only) {
     font-size: 2.5rem;
   }
+}
+
+a.text-link {
+  color: $white;
+  font-weight: bold;
 }
 
 .homepage-section-desc {

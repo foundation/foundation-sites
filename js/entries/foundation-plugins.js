@@ -1,3 +1,15 @@
+// TODO: remove in v6.6.0 in favor of "js/foundation"
+import { Foundation as Core } from '../foundation.core';
+import * as CoreUtils from '../foundation.core.utils';
+import { Box } from '../foundation.util.box'
+import { onImagesLoaded } from '../foundation.util.imageLoader';
+import { Keyboard } from '../foundation.util.keyboard';
+import { MediaQuery } from '../foundation.util.mediaQuery';
+import { Motion, Move } from '../foundation.util.motion';
+import { Nest } from '../foundation.util.nest';
+import { Timer } from '../foundation.util.timer';
+import { Touch } from '../foundation.util.touch';
+import { Triggers } from '../foundation.util.triggers';
 import { Abide } from '../foundation.abide';
 import { Accordion } from '../foundation.accordion';
 import { AccordionMenu } from '../foundation.accordionMenu';
@@ -21,5 +33,37 @@ import { Tooltip } from '../foundation.tooltip';
 import { ResponsiveAccordionTabs } from '../foundation.responsiveAccordionTabs';
 
 export {
-  Abide, Accordion, AccordionMenu, Drilldown, Dropdown, DropdownMenu, Equalizer, Interchange, Magellan, OffCanvas, Orbit, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Toggler, Tooltip, ResponsiveAccordionTabs
+  Core,
+  CoreUtils,
+  Box,
+  onImagesLoaded,
+  Keyboard,
+  MediaQuery,
+  Motion,
+  Move,
+  Nest,
+  Timer,
+  Touch,
+  Triggers,
+  Abide,
+  Accordion,
+  AccordionMenu,
+  Drilldown,
+  Dropdown,
+  DropdownMenu,
+  Equalizer,
+  Interchange,
+  Magellan,
+  OffCanvas,
+  Orbit,
+  ResponsiveMenu,
+  ResponsiveToggle,
+  Reveal,
+  Slider,
+  SmoothScroll,
+  Sticky,
+  Tabs,
+  Toggler,
+  Tooltip,
+  ResponsiveAccordionTabs
 }

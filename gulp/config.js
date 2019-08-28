@@ -1,11 +1,13 @@
 module.exports = {
 
   // Javascript
+  JS_BUNDLE_NAMESPACE: '__FOUNDATION_EXTERNAL__',
+
   JS_FILES: [
-  'js/foundation.core.js',
-  'js/foundation.util.core.js',
-  'js/foundation.util.*.js',
-  'js/*.js'
+    'js/foundation.core.js',
+    'js/foundation.core.utils.js',
+    'js/foundation.util.*.js',
+    'js/*.js'
   ],
 
   JS_DEPS: [
@@ -24,9 +26,9 @@ module.exports = {
 
   // Sass
   SASS_DEPS_FILES: [
-    'node_modules/@(normalize-scss)/sass/**/*.scss',
     'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
     'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_contain.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_purge.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_remove.scss',
     'node_modules/@(sassy-lists)/stylesheets/functions/_replace.scss',
@@ -41,13 +43,6 @@ module.exports = {
 
   SASS_LINT_FILES: [
     'scss/**/*.scss',
-  ],
-
-  CSS_COMPATIBILITY: [
-    'last 2 versions',
-    'ie >= 9',
-    'Android >= 2.3',
-    'ios >= 7'
   ],
 
   // Assets
@@ -71,15 +66,22 @@ module.exports = {
 
   DIST_FILES: [
     './_build/assets/css/foundation.css',
+    './_build/assets/css/foundation.css.map',
     './_build/assets/css/foundation-float.css',
+    './_build/assets/css/foundation-float.css.map',
     './_build/assets/css/foundation-prototype.css',
+    './_build/assets/css/foundation-prototype.css.map',
     './_build/assets/css/foundation-rtl.css',
-    '_build/assets/js/foundation.js'
+    './_build/assets/css/foundation-rtl.css.map',
+    '_build/assets/js/foundation.js',
+    '_build/assets/js/foundation.js.map',
+    'js/typescript/foundation.d.ts'
   ],
 
   // Tests
   TEST_JS_FILES: [
-    'test/javascript/components/**/*.js',
-    'test/javascript/util/**/*.js'
+    'test/javascript/core/**/*.js',
+    'test/javascript/util/**/*.js',
+    'test/javascript/components/**/*.js'
   ]
 };

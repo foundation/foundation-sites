@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin }from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin }from './foundation.core.plugin';
 
 import { Accordion } from './foundation.accordion';
 import { Tabs } from './foundation.tabs';
@@ -12,11 +12,17 @@ import { Tabs } from './foundation.tabs';
 var MenuPlugins = {
   tabs: {
     cssClass: 'tabs',
-    plugin: Tabs
+    plugin:   Tabs,
+    open:     (plugin, target) => plugin.selectTab(target),
+    close:    null /* not supported */,
+    toggle:   null /* not supported */,
   },
   accordion: {
     cssClass: 'accordion',
-    plugin: Accordion
+    plugin:   Accordion,
+    open:     (plugin, target) => plugin.down($(target)),
+    close:    (plugin, target) => plugin.up($(target)),
+    toggle:   (plugin, target) => plugin.toggle($(target)),
   }
 };
 
@@ -40,9 +46,11 @@ class ResponsiveAccordionTabs extends Plugin{
    */
   _setup(element, options) {
     this.$element = $(element);
-    this.options  = $.extend({}, this.$element.data(), options);
+    this.options = $.extend({}, ResponsiveAccordionTabs.defaults, this.$element.data(), options);
+
     this.rules = this.$element.data('responsive-accordion-tabs');
     this.currentMq = null;
+    this.currentRule = null;
     this.currentPlugin = null;
     this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
     if (!this.$element.attr('id')) {
@@ -119,11 +127,8 @@ class ResponsiveAccordionTabs extends Plugin{
    * @private
    */
   _events() {
-    var _this = this;
-
-    $(window).on('changed.zf.mediaquery', function() {
-      _this._checkMediaQueries();
-    });
+    this._changedZfMediaQueryHandler = this._checkMediaQueries.bind(this);
+    $(window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
   }
 
   /**
@@ -161,7 +166,8 @@ class ResponsiveAccordionTabs extends Plugin{
       this.currentPlugin.destroy();
     }
     this._handleMarkup(this.rules[matchedMq].cssClass);
-    this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
+    this.currentRule = this.rules[matchedMq];
+    this.currentPlugin = new this.currentRule.plugin(this.$element, this.options);
     this.storezfData = this.currentPlugin.$element.data('zfPlugin');
 
   }
@@ -229,12 +235,49 @@ class ResponsiveAccordionTabs extends Plugin{
   }
 
   /**
+   * Opens the plugin pane defined by `target`.
+   * @param {jQuery | String} target - jQuery object or string of the id of the pane to open.
+   * @see Accordion.down
+   * @see Tabs.selectTab
+   * @function
+   */
+  open(target) {
+    if (this.currentRule && typeof this.currentRule.open === 'function') {
+      return this.currentRule.open(this.currentPlugin, ...arguments);
+    }
+  }
+
+  /**
+   * Closes the plugin pane defined by `target`. Not availaible for Tabs.
+   * @param {jQuery | String} target - jQuery object or string of the id of the pane to close.
+   * @see Accordion.up
+   * @function
+   */
+  close(target) {
+    if (this.currentRule && typeof this.currentRule.close === 'function') {
+      return this.currentRule.close(this.currentPlugin, ...arguments);
+    }
+  }
+
+  /**
+   * Toggles the plugin pane defined by `target`. Not availaible for Tabs.
+   * @param {jQuery | String} target - jQuery object or string of the id of the pane to toggle.
+   * @see Accordion.toggle
+   * @function
+   */
+  toggle(target) {
+    if (this.currentRule && typeof this.currentRule.toggle === 'function') {
+      return this.currentRule.toggle(this.currentPlugin, ...arguments);
+    }
+  }
+
+  /**
    * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
    * @function
    */
   _destroy() {
     if (this.currentPlugin) this.currentPlugin.destroy();
-    $(window).off('.zf.ResponsiveAccordionTabs');
+    $(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
   }
 }
 

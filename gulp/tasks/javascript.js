@@ -1,86 +1,138 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var babel = require('gulp-babel');
-var onBabelError = require('./babel-error.js');
-var rename = require('gulp-rename');
 var webpackStream = require('webpack-stream');
-var webpack2 = require('webpack');
+var webpack = require('webpack');
 var named = require('vinyl-named');
+var sourcemaps = require('gulp-sourcemaps');
 
+var utils = require('../utils.js');
 var CONFIG = require('../config.js');
 
-// Compiles JavaScript into a single file
-gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs']);
-
-// NOTE: This sets up all imports from within Foundation as externals, for the purpose
+// ----- WEBPACK CONFIGURATION -----
+//
+// The following sets up all imports from within Foundation as externals, for the purpose
 // of replicating the "drop in dist file" approach of prior versions.
 // THIS IS NOT RECOMMENDED FOR MOST USERS. Chances are you either want everything
 // (just throw in foundation.js or foundation.min.js) or you should be using a build
 // system.
-var pluginsAsExternals = {
-  'jquery': 'jQuery',
-  './foundation.core': '{Foundation: window.Foundation}',
-  './foundation.util.core' : '{rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend}',
-  './foundation.util.imageLoader' : '{onImagesLoaded: window.Foundation.onImagesLoaded}',
-  './foundation.util.keyboard' : '{Keyboard: window.Foundation.Keyboard}',
-  './foundation.util.mediaQuery' : '{MediaQuery: window.Foundation.MediaQuery}',
-  './foundation.util.motion' : '{Motion: window.Foundation.Motion, Move: window.Foundation.Move}',
-  './foundation.util.nest' : '{Nest: window.Foundation.Nest}',
-  './foundation.util.timer' : '{Timer: window.Foundation.Timer}',
-  './foundation.util.touch' : '{Touch: window.Foundation.Touch}',
-  './foundation.util.box' : '{Box: window.Foundation.Box}',
-  './foundation.plugin' : '{Plugin: window.Foundation.Plugin}',
-  './foundation.dropdownMenu' : '{DropdownMenu: window.Foundation.DropdownMenu}',
-  './foundation.drilldown' : '{Drilldown: window.Foundation.Drilldown}',
-  './foundation.accordionMenu' : '{AccordionMenu: window.Foundation.AccordionMenu}',
-  './foundation.accordion' : '{Accordion: window.Foundation.Accordion}',
-  './foundation.tabs' : '{Tabs: window.Foundation.Tabs}',
-  './foundation.smoothScroll' : '{SmoothScroll: window.Foundation.SmoothScroll}',
+
+//
+// Generate the webpack "Externals" configuration for UMD modules.
+// This tells webpack that the modules imported with the listed paths should not
+// be included in the build but will be provided later from an external source.
+//
+// `umdExternals` is used to generate the webpack "externals" configuration:
+// an object indicating to different module tools under which name our modules
+// are declared. "root" is the global variable name to use in module-less
+// environments (or in the namespace if given).
+//
+// See https://webpack.js.org/configuration/externals/#externals
+//
+var webpackExternalPlugins = Object.assign(
+  // | Module import path             | External source names and paths
+  utils.umdExternals({
+    'jquery': { root: 'jQuery' },
+  }),
+  utils.umdExternals({
+    './foundation.core':              { root: 'foundation.core', default: './foundation.core' },
+    './foundation.core.utils':        { root: 'foundation.core', default: './foundation.core' },
+    './foundation.core.plugin':       { root: 'foundation.core', default: './foundation.core' },
+    './foundation.util.imageLoader':  { root: 'foundation.util.imageLoader' },
+    './foundation.util.keyboard':     { root: 'foundation.util.keyboard' },
+    './foundation.util.mediaQuery':   { root: 'foundation.util.mediaQuery' },
+    './foundation.util.motion':       { root: 'foundation.util.motion' },
+    './foundation.util.nest':         { root: 'foundation.util.nest' },
+    './foundation.util.timer':        { root: 'foundation.util.timer' },
+    './foundation.util.touch':        { root: 'foundation.util.touch' },
+    './foundation.util.box':          { root: 'foundation.util.box' },
+    './foundation.dropdownMenu':      { root: 'foundation.dropdownMenu' },
+    './foundation.drilldown':         { root: 'foundation.drilldown' },
+    './foundation.accordionMenu':     { root: 'foundation.accordionMenu' },
+    './foundation.accordion':         { root: 'foundation.accordion' },
+    './foundation.tabs':              { root: 'foundation.tabs' },
+    './foundation.smoothScroll':      { root: 'foundation.smoothScroll' },
+  }, {
+    // Search for the module in this global variable in module-less environments.
+    namespace: CONFIG.JS_BUNDLE_NAMESPACE
+  })
+);
+
+// The webpack "output" configuration for UMD modules.
+// Makes the modules being exported as UMD modules. In module-less environments,
+// modules will be stored in the global variable defined by JS_BUNDLE_NAMESPACE.
+var webpackOutputAsExternal = {
+  library: [CONFIG.JS_BUNDLE_NAMESPACE, '[name]'],
+  libraryTarget: 'umd',
 };
 
-var moduleConfig = {
-  rules: [
-    {
-      test: /.js$/,
-      use: [
-        {
-          loader: 'babel-loader'
-        }
-      ]
-    }
-  ]
+var webpackConfig = {
+  mode: 'development',
+  externals: utils.umdExternals({
+    // Use the global jQuery object "jQuery" in module-less environments.
+    'jquery': { root: 'jQuery' },
+  }),
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      }
+    ]
+  },
+  output: {
+    libraryTarget: 'umd',
+  },
+  // https://github.com/shama/webpack-stream#source-maps
+  devtool: 'source-map',
+  stats: {
+    chunks: false,
+    entrypoints: false,
+  }
 }
 
+// ----- TASKS -----
+//
+
+// Compiles JavaScript into a single file
+gulp.task('javascript', gulp.series('javascript:foundation', 'javascript:deps', 'javascript:docs'));
+
 // Core has to be dealt with slightly differently due to bootstrapping externals
-// and the dependency on foundation.util.core
+// and the dependency on foundation.core.utils
 //
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
-    .pipe(webpackStream({externals: {'jquery': 'jQuery'}, module: moduleConfig}, webpack2))
+    .pipe(sourcemaps.init())
+    .pipe(webpackStream(Object.assign({}, webpackConfig, {
+        output: webpackOutputAsExternal,
+      }), webpack))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
-gulp.task('javascript:plugins', ['javascript:plugin-core'], function() {
+gulp.task('javascript:plugins', gulp.series('javascript:plugin-core', function () {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
-    .pipe(webpackStream({externals: pluginsAsExternals, module: moduleConfig}, webpack2))
+    .pipe(sourcemaps.init())
+    .pipe(webpackStream(Object.assign({}, webpackConfig, {
+        externals: webpackExternalPlugins,
+        output: webpackOutputAsExternal,
+      }), webpack))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js/plugins'));
-});
+}));
 
-gulp.task('javascript:foundation', ['javascript:plugins'], function() {
+gulp.task('javascript:foundation', gulp.series('javascript:plugins', function() {
   return gulp.src('js/entries/foundation.js')
     .pipe(named())
-    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: moduleConfig}, webpack2))
+    .pipe(sourcemaps.init())
+    .pipe(webpackStream(webpackConfig, webpack))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/js'));
-});
-//gulp.task('javascript:foundation', function() {
-//  return gulp.src(CONFIG.JS_FILES)
-//    .pipe(babel()
-//      .on('error', onBabelError))
-//    .pipe(gulp.dest('_build/assets/js/plugins'))
-//    .pipe(concat('foundation.js'))
-//    .pipe(gulp.dest('_build/assets/js'));
-//});
+}));
 
 gulp.task('javascript:deps', function() {
   return gulp.src(CONFIG.JS_DEPS)

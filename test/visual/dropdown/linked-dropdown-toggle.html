@@ -1,0 +1,52 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en"> <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet">
+  </head>
+  <body>    
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Linked Dropdown Toggle</h1>
+
+          <p>This test is supposed to show a linked dropdown toggle <strong>with enabled hover option</strong>.<br>On desktop mouseover opens the dropdown pane and click opens the link's href.<br>On mobile the first touch opens the dropdown pane and the second touch (while still opened) opens the link's href.</p>
+
+          <div class="stacked-for-small button-group">
+            <a href="https://www.google.com" class="button" data-toggle="example-dropdown-1">Linked Hoverable Dropdown</a>
+            <button type="button" class=" secondary button" data-toggle="example-dropdown-2">Hoverable Dropdown</button>
+            <button type="button" class=" secondary button" data-toggle="example-dropdown-3">Clickable Dropdown</button>
+          </div>
+
+          <div class="dropdown-pane" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
+            This is a linked hover dropdown. Try to open me on a mobile screen size and click again on the toggle while opened.
+          </div>
+          <div class="dropdown-pane" id="example-dropdown-2" data-dropdown data-hover="true" data-hover-pane="true">
+            This is a usual hover dropdown.
+          </div>
+          <div class="dropdown-pane" id="example-dropdown-3" data-dropdown data-close-on-click="true">
+            This is a clickable dropdown.
+          </div>
+
+          <p>If having set the option <code>forceFollow:false</code> the default action gets always prevented and thus the linked dropdown toggle will never open the link's href.</p>
+
+          <a href="https://www.google.com" class="button" data-toggle="example-dropdown-4">Linked Dropdown with forceFollow false</a>
+
+          <div class="dropdown-pane" id="example-dropdown-4" data-dropdown data-hover="true" data-hover-pane="true" data-force-follow="false">
+            This is a linked hover dropdown with forceFollow set false. The link's href gets never opened no matter how often you click.
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

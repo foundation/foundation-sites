@@ -8,6 +8,11 @@ tags:
   - breakpoints
 ---
 
+<div class="callout training-callout">
+  <p>Build better websites and apps, code cleaner, and become a better front-end developer with Foundation training. We're running two online webinar training sessions this month where we break down how to get the most out of Foundation and leap ahead skillwise.</p>
+  <a href="http://zurb.com/university/courses" target="_blank"> Get registered →</a>
+</div>
+
 ## Default Media Queries
 
 Foundation for Sites has three core breakpoints:
@@ -19,9 +24,9 @@ Foundation for Sites has three core breakpoints:
 Many components can be modified at different screen sizes using special *breakpoint classes*. The grid is the most obvious example. In the code below, the left-hand column is six columns wide on small screens, hence `.small-6`. On medium-sized screens, the class `.medium-4` overrides the small style, changing the column to be four wide.
 
 ```html
-<div class="row">
-  <div class="small-6 medium-4 columns"></div>
-  <div class="small-6 medium-8 columns"></div>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6 medium-4"></div>
+  <div class="cell small-6 medium-8"></div>
 </div>
 ```
 
@@ -181,6 +186,10 @@ This can be used to combine multiple media queries together.
 ### Working with Media Queries
 
 The Foundation JavaScript includes a set of helper functions for working with media queries. They're all on the `Foundation.MediaQuery` object.
+
+<div class="callout warning">
+  The MediaQuery utility uses the Sass breakpoint settings and requires the Foundation CSS to be imported. For Sass users, you need to include either `foundation-everything()` or `foundation-global-styles()`.
+</div>
 
 Get the name of the current breakpoint with `MediaQuery.current`.
 

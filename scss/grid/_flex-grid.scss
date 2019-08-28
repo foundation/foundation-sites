@@ -13,6 +13,7 @@
 /// @param {Keyword|Number} $size [$grid-row-width] Maximum size of the row. Set to `expand` to make the row taking the full width.
 /// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
 /// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
+/// @param {Boolean} $wrap [true] - Set to `false` to have row wrapping behavior set to nowrap
 /// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use when inverting margins, in case the row is nested. Responsive gutter settings by default.
 @mixin flex-grid-row(
   $behavior: null,
@@ -87,10 +88,6 @@
   // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
   @if $columns == expand {
     min-width: 0;
-  }
-  // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != expand and $columns != shrink {
-    max-width: grid-column($columns);
   }
 }
 

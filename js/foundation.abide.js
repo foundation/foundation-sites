@@ -1,7 +1,8 @@
 'use strict';
 
 import $ from 'jquery';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
+import { GetYoDigits } from './foundation.core.utils';
 
 /**
  * Abide module.
@@ -19,7 +20,9 @@ class Abide extends Plugin {
    */
   _setup(element, options = {}) {
     this.$element = element;
-    this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
+    this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
+    this.isEnabled = true;
+    this.formnovalidate = null;
 
     this.className = 'Abide'; // ie9 back compat
     this._init();
@@ -30,7 +33,18 @@ class Abide extends Plugin {
    * @private
    */
   _init() {
-    this.$inputs = this.$element.find('input, textarea, select');
+    this.$inputs = $.merge(                               // Consider as input to validate:
+      this.$element.find('input').not('[type="submit"]'), // * all input fields expect submit
+      this.$element.find('textarea, select')              // * all textareas and select fields
+    );
+    this.$submits = this.$element.find('[type="submit"]');
+    const $globalErrors = this.$element.find('[data-abide-error]');
+
+    // Add a11y attributes to all fields
+    if (this.options.a11yAttributes) {
+      this.$inputs.each((i, input) => this.addA11yAttributes($(input)));
+      $globalErrors.each((i, error) => this.addGlobalErrorA11yAttributes($(error)));
+    }
 
     this._events();
   }
@@ -46,6 +60,16 @@ class Abide extends Plugin {
       })
       .on('submit.zf.abide', () => {
         return this.validateForm();
+      });
+
+    this.$submits
+      .off('click.zf.abide keydown.zf.abide')
+      .on('click.zf.abide keydown.zf.abide', (e) => {
+        if (!e.key || (e.key === ' ' || e.key === 'Enter')) {
+          e.preventDefault();
+          this.formnovalidate = e.target.getAttribute('formnovalidate') !== null;
+          this.$element.submit();
+        }
       });
 
     if (this.options.validateOn === 'fieldChange') {
@@ -79,6 +103,35 @@ class Abide extends Plugin {
    */
   _reflow() {
     this._init();
+  }
+
+  /**
+   * Checks whether the submitted form should be validated or not, consodering formnovalidate and isEnabled
+   * @returns {Boolean}
+   * @private
+   */
+  _validationIsDisabled() {
+    if (this.isEnabled === false) { // whole validation disabled
+      return true;
+    } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
+      return this.formnovalidate;
+    } else { // triggered by Enter in non-submit input
+      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
+    }
+  }
+
+  /**
+   * Enables the whole validation
+   */
+  enableValidation(){
+    this.isEnabled = true;
+  }
+
+  /**
+   * Disables the whole validation
+   */
+  disableValidation() {
+    this.isEnabled = false;
   }
 
   /**
@@ -123,14 +176,16 @@ class Abide extends Plugin {
    * @returns {Object} jQuery object with the selector.
    */
   findFormError($el) {
-    var id = $el[0].id;
+    var id = $el.length ? $el[0].id : '';
     var $error = $el.siblings(this.options.formErrorSelector);
 
     if (!$error.length) {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
 
-    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    if (id) {
+      $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    }
 
     return $error;
   }
@@ -177,6 +232,28 @@ class Abide extends Plugin {
   }
 
   /**
+   * Get the set of labels associated with a set of checkbox els in this order
+   * 2. The <label> with the attribute `[for="someInputId"]`
+   * 3. The `.closest()` <label>
+   *
+   * @param {Object} $el - jQuery object to check for required attribute
+   * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
+   */
+  findCheckboxLabels($els) {
+    var labels = $els.map((i, el) => {
+      var id = el.id;
+      var $label = this.$element.find(`label[for="${id}"]`);
+
+      if (!$label.length) {
+        $label = $(el).closest('label');
+      }
+      return $label[0];
+    });
+
+    return $(labels);
+  }
+
+  /**
    * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
    * @param {Object} $el - jQuery object to add the class to
    */
@@ -192,7 +269,66 @@ class Abide extends Plugin {
       $formError.addClass(this.options.formErrorClass);
     }
 
-    $el.addClass(this.options.inputErrorClass).attr('data-invalid', '');
+    $el.addClass(this.options.inputErrorClass).attr({
+      'data-invalid': '',
+      'aria-invalid': true
+    });
+  }
+
+  /**
+   * Adds [for] and [role=alert] attributes to all form error targetting $el,
+   * and [aria-describedby] attribute to $el toward the first form error.
+   * @param {Object} $el - jQuery object
+   */
+  addA11yAttributes($el) {
+    let $errors = this.findFormError($el);
+    let $labels = $errors.filter('label');
+    let $error = $errors.first();
+    if (!$errors.length) return;
+
+    // Set [aria-describedby] on the input toward the first form error if it is not set
+    if (typeof $el.attr('aria-describedby') === 'undefined') {
+      // Get the first error ID or create one
+      let errorId = $error.attr('id');
+      if (typeof errorId === 'undefined') {
+        errorId = GetYoDigits(6, 'abide-error');
+        $error.attr('id', errorId);
+      };
+
+      $el.attr('aria-describedby', errorId);
+    }
+
+    if ($labels.filter('[for]').length < $labels.length) {
+      // Get the input ID or create one
+      let elemId = $el.attr('id');
+      if (typeof elemId === 'undefined') {
+        elemId = GetYoDigits(6, 'abide-input');
+        $el.attr('id', elemId);
+      };
+
+      // For each label targeting $el, set [for] if it is not set.
+      $labels.each((i, label) => {
+        const $label = $(label);
+        if (typeof $label.attr('for') === 'undefined')
+          $label.attr('for', elemId);
+      });
+    }
+
+    // For each error targeting $el, set [role=alert] if it is not set.
+    $errors.each((i, label) => {
+      const $label = $(label);
+      if (typeof $label.attr('role') === 'undefined')
+        $label.attr('role', 'alert');
+    }).end();
+  }
+
+  /**
+   * Adds [aria-live] attribute to the given global form error $el.
+   * @param {Object} $el - jQuery object to add the attribute to
+   */
+  addGlobalErrorA11yAttributes($el) {
+    if (typeof $el.attr('aria-live') === 'undefined')
+      $el.attr('aria-live', this.options.a11yErrorLevel);
   }
 
   /**
@@ -200,7 +336,6 @@ class Abide extends Plugin {
    * @param {String} groupName - A string that specifies the name of a radio button group
    *
    */
-
   removeRadioErrorClasses(groupName) {
     var $els = this.$element.find(`:radio[name="${groupName}"]`);
     var $labels = this.findRadioLabels($els);
@@ -214,7 +349,35 @@ class Abide extends Plugin {
       $formErrors.removeClass(this.options.formErrorClass);
     }
 
-    $els.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $els.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+
+  }
+
+  /**
+   * Remove CSS error classes etc from an entire checkbox group
+   * @param {String} groupName - A string that specifies the name of a checkbox group
+   *
+   */
+  removeCheckboxErrorClasses(groupName) {
+    var $els = this.$element.find(`:checkbox[name="${groupName}"]`);
+    var $labels = this.findCheckboxLabels($els);
+    var $formErrors = this.findFormError($els);
+
+    if ($labels.length) {
+      $labels.removeClass(this.options.labelErrorClass);
+    }
+
+    if ($formErrors.length) {
+      $formErrors.removeClass(this.options.formErrorClass);
+    }
+
+    $els.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
 
   }
 
@@ -226,6 +389,10 @@ class Abide extends Plugin {
     // radios need to clear all of the els
     if($el[0].type == 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
+    }
+    // checkboxes need to clear all of the els
+    else if($el[0].type == 'checkbox') {
+      return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
     var $label = this.findLabel($el);
@@ -239,7 +406,10 @@ class Abide extends Plugin {
       $formError.removeClass(this.options.formErrorClass);
     }
 
-    $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $el.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
   }
 
   /**
@@ -257,6 +427,11 @@ class Abide extends Plugin {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
+    // skip validation if disabled
+    if (this._validationIsDisabled()) {
+      return true;
+    }
+
     // don't validate ignored inputs or hidden inputs or disabled inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
@@ -268,7 +443,8 @@ class Abide extends Plugin {
         break;
 
       case 'checkbox':
-        validated = clearRequire;
+        validated = this.validateCheckbox($el.attr('name'));
+        clearRequire = true;
         break;
 
       case 'select':
@@ -328,14 +504,39 @@ class Abide extends Plugin {
   validateForm() {
     var acc = [];
     var _this = this;
+    var checkboxGroupName;
+
+    // Remember first form submission to prevent specific checkbox validation (more than one required) until form got initially submitted
+    if (!this.initialized) {
+      this.initialized = true;
+    }
+
+    // skip validation if disabled
+    if (this._validationIsDisabled()) {
+      this.formnovalidate = null;
+      return true;
+    }
 
     this.$inputs.each(function() {
+
+      // Only use one checkbox per group since validateCheckbox() iterates over all associated checkboxes
+      if ($(this)[0].type === 'checkbox') {
+        if ($(this).attr('name') === checkboxGroupName) return true;
+        checkboxGroupName = $(this).attr('name');
+      }
+
       acc.push(_this.validateInput($(this)));
     });
 
     var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
+    this.$element.find('[data-abide-error]').each((i, elem) => {
+      const $elem = $(elem);
+      // Ensure a11y attributes are set
+      if (this.options.a11yAttributes) this.addGlobalErrorA11yAttributes($elem);
+      // Show or hide the error
+      $elem.css('display', (noError ? 'none' : 'block'));
+    });
 
     /**
      * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
@@ -356,7 +557,7 @@ class Abide extends Plugin {
    */
   validateText($el, pattern) {
     // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
-    pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
+    pattern = (pattern || $el.attr('data-pattern') || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
     var valid = false;
 
@@ -413,6 +614,60 @@ class Abide extends Plugin {
   }
 
   /**
+   * Determines whether or a not a checkbox input is valid based on whether or not it is required and checked. Although the function targets a single `<input>`, it validates by checking the `required` and `checked` properties of all checkboxes in its group.
+   * @param {String} groupName - A string that specifies the name of a checkbox group
+   * @returns {Boolean} Boolean value depends on whether or not at least one checkbox input has been checked (if it's required)
+   */
+  validateCheckbox(groupName) {
+    // If at least one checkbox in the group has the `required` attribute, the group is considered required
+    // Per W3C spec, all checkboxes in a group should have `required`, but we're being nice
+    var $group = this.$element.find(`:checkbox[name="${groupName}"]`);
+    var valid = false, required = false, minRequired = 1, checked = 0;
+
+    // For the group to be required, at least one checkbox needs to be required
+    $group.each((i, e) => {
+      if ($(e).attr('required')) {
+        required = true;
+      }
+    });
+    if(!required) valid=true;
+
+    if (!valid) {
+      // Count checked checkboxes within the group
+      // Use data-min-required if available (default: 1)
+      $group.each((i, e) => {
+        if ($(e).prop('checked')) {
+          checked++;
+        }
+        if (typeof $(e).attr('data-min-required') !== 'undefined') {
+          minRequired = parseInt($(e).attr('data-min-required'));
+        }
+      });
+
+      // For the group to be valid, the minRequired amount of checkboxes have to be checked
+      if (checked >= minRequired) {
+        valid = true;
+      }
+    };
+
+    // Skip validation if more than 1 checkbox have to be checked AND if the form hasn't got submitted yet (otherwise it will already show an error during the first fill in)
+    if (this.initialized !== true && minRequired > 1) {
+      return true;
+    }
+
+    // Refresh error class for all input
+    $group.each((i, e) => {
+      if (!valid) {
+        this.addErrorClasses($(e));
+      } else {
+        this.removeErrorClasses($(e));
+      }
+    });
+
+    return valid;
+  }
+
+  /**
    * Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator="foo bar baz"` in a space separated listed.
    * @param {Object} $el - jQuery input element.
    * @param {String} validators - a string of function names matching functions in the Abide.options.validators object.
@@ -440,9 +695,18 @@ class Abide extends Plugin {
     $(`.${opts.inputErrorClass}`, $form).not('small').removeClass(opts.inputErrorClass);
     $(`${opts.formErrorSelector}.${opts.formErrorClass}`).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
-    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
-    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
-    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
+    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
     /**
      * Fires when the form has been reset.
      * @event Abide#formreset
@@ -466,6 +730,9 @@ class Abide extends Plugin {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
+
+    this.$submits
+      .off('.abide');
   }
 }
 
@@ -515,6 +782,27 @@ Abide.defaults = {
   formErrorClass: 'is-visible',
 
   /**
+   * If true, automatically insert when possible:
+   * - `[aria-describedby]` on fields
+   * - `[role=alert]` on form errors and `[for]` on form error labels
+   * - `[aria-live]` on global errors `[data-abide-error]` (see option `a11yErrorLevel`).
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  a11yAttributes: true,
+
+  /**
+   * [aria-live] attribute value to be applied on global errors `[data-abide-error]`.
+   * Options are: 'assertive', 'polite' and 'off'/null
+   * @option
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+   * @type {string}
+   * @default 'assertive'
+   */
+  a11yErrorLevel: 'assertive',
+
+  /**
    * Set to true to validate text inputs on any value change.
    * @option
    * @type {boolean}
@@ -543,7 +831,11 @@ Abide.defaults = {
     // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
     email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/,
 
-    url : /^(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/,
+    // From CommonRegexJS (@talyssonoc)
+    // https://github.com/talyssonoc/CommonRegexJS/blob/e2901b9f57222bc14069dc8f0598d5f412555411/lib/commonregex.js#L76
+    // For more restrictive URL Regexs, see https://mathiasbynens.be/demo/url-regex.
+    url: /^((?:(https?|ftps?|file|ssh|sftp):\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))$/,
+
     // abc.de
     domain : /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,8}$/,
 

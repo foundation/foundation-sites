@@ -6,8 +6,9 @@ sass: ./scss/components/_top-bar.scss
 flex: true
 ---
 
-<div class="primary callout">
-  <p>The features of Foundation 5's top bar are still around, but they've been reworked into smaller, individual plugins. Check out our page on <a href="responsive-navigation.html">responsive navigation</a> to learn more.</p>
+<div class="callout training-callout">
+  <p>Navigation is one the most crucial part of your site. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
+  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
 </div>
 
 ## Basics
@@ -49,6 +50,12 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
   </div>
 </div>
 ```
+
+<br>
+
+<div class="primary callout">
+  <p>The features of Foundation 5's top bar are still around, but they've been reworked into smaller, individual plugins. Check out our page on <a href="responsive-navigation.html">responsive navigation</a> to learn more.</p>
+</div>
 
 ---
 

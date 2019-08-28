@@ -71,17 +71,19 @@ $flexbox-responsive-breakpoints: true !default;
 
 @mixin foundation-flex-classes {
   // Horizontal alignment using justify-content
-  @each $hdir, $prop in map-remove($-zf-flex-justify, 'left') {
+  @each $hdir, $prop in $-zf-flex-justify {
     .align-#{$hdir} {
       @include flex-align($x: $hdir);
     }
   }
   
   // Horizontal alignment Specifically for Vertical Menu
-  @each $hdir, $prop in map-remove($-zf-flex-justify, 'left', 'justify', 'spaced') {
+  @each $hdir, $prop in map-remove($-zf-flex-justify, 'justify', 'spaced') {
     .align-#{$hdir} {
-      &.vertical.menu > li > a { 
-        @include flex-align($x: $hdir);
+      &.vertical {
+        &.menu > li > a {
+          @include flex-align($x: $hdir);
+        }
       }
     }
   }

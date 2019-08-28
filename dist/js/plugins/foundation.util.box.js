@@ -122,19 +122,18 @@ var Box = {
   GetDimensions: GetDimensions,
   GetOffsets: GetOffsets,
   GetExplicitOffsets: GetExplicitOffsets
-};
 
-/**
- * Compares the dimensions of an element to a container and determines collision events with container.
- * @function
- * @param {jQuery} element - jQuery object to test for collisions.
- * @param {jQuery} parent - jQuery object to use as bounding container.
- * @param {Boolean} lrOnly - set to true to check left and right values only.
- * @param {Boolean} tbOnly - set to true to check top and bottom values only.
- * @default if no parent object passed, detects collisions with `window`.
- * @returns {Boolean} - true if collision free, false if a collision in any direction.
- */
-function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
+  /**
+   * Compares the dimensions of an element to a container and determines collision events with container.
+   * @function
+   * @param {jQuery} element - jQuery object to test for collisions.
+   * @param {jQuery} parent - jQuery object to use as bounding container.
+   * @param {Boolean} lrOnly - set to true to check left and right values only.
+   * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+   * @default if no parent object passed, detects collisions with `window`.
+   * @returns {Boolean} - true if collision free, false if a collision in any direction.
+   */
+};function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
   return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
 };
 
@@ -181,7 +180,7 @@ function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
  * @returns {Object} - nested object of integer pixel values
  * TODO - if element is window, return only those values.
  */
-function GetDimensions(elem, test) {
+function GetDimensions(elem) {
   elem = elem.length ? elem[0] : elem;
 
   if (elem === window || elem === document) {

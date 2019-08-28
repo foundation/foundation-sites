@@ -20,7 +20,7 @@ $global-font-size: 100% !default;
 /// Converts one or more pixel values into matching rem values.
 ///
 /// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
-/// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+/// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$global-font-size` variable as the base.
 ///
 /// @returns {List} A list of converted values.
 @function rem-calc($values, $base: null) {
@@ -125,7 +125,7 @@ $global-font-size: 100% !default;
     $base: strip-unit($base) * 16px;
   }
 
-  // Now lets convert our value to pixels too
+  // Now let's convert our value to pixels too
   @if unit($value) == '%' {
     $value: ($value / 100%) * $base;
   }
@@ -143,7 +143,7 @@ $global-font-size: 100% !default;
     @return strip-unit($value) / strip-unit($base);
   }
 
-  // assume that line-heights greatern then 10 are meant to be absolute in 'px'
+  // assume that line-heights greater than 10 are meant to be absolute in 'px'
   @if unitless($value) and ($value > 10) {
     @return $value / strip-unit($base);
   }

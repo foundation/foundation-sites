@@ -33,14 +33,13 @@ $grid-padding-gutters: $grid-margin-gutters !default;
 /// @type Map | Length
 $grid-container-padding: $grid-padding-gutters !default;
 
-
-/// The maximum width to apply padding to a grid container
+/// The maximum width to apply to a grid container
 /// @type Number
 $grid-container-max: $global-width !default;
 
-/// The maximum number of cells in a block grid.
+/// The maximum number of cells in an XY block grid.
 /// @type Number
-$block-grid-max: 8 !default;
+$xy-block-grid-max: 8 !default;
 
 @import 'gutters';
 @import 'grid';
