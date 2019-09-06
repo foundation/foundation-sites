@@ -7,7 +7,7 @@ import { Keyboard } from './foundation.util.keyboard';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Motion } from './foundation.util.motion';
 import { Triggers } from './foundation.util.triggers';
-import { Touch } from './foundation.util.touch'
+import { Touch } from './foundation.util.touch';
 
 /**
  * Reveal module.
@@ -163,7 +163,7 @@ class Reveal extends Plugin {
     });
 
     if (this.options.closeOnClick && this.options.overlay) {
-      this.$overlay.off('.zf.reveal').on('click.zf.dropdown tap.zf.dropdown', function(e) {
+      this.$overlay.off('.zf.reveal').on('mousedown.zf.reveal', function(e) {
         if (e.target === _this.$element[0] ||
           $.contains(_this.$element[0], e.target) ||
             !$.contains(document, e.target)) {

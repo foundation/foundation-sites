@@ -377,7 +377,7 @@ describe('Reveal', function() {
       	done();
       });
 
-      plugin.$overlay.trigger('click');
+      plugin.$overlay.trigger('mousedown');
     });
     it('not closes a modal on overlay click if closeOnClick option is true', function(done) {
       $html = $(template).appendTo('body');
