@@ -93,7 +93,6 @@ class AccordionMenu extends Plugin {
     });
     var initPanes = this.$element.find('.is-active');
     if(initPanes.length){
-      var _this = this;
       initPanes.each(function(){
         _this.down($(this));
       });
