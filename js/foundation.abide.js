@@ -293,7 +293,7 @@ class Abide extends Plugin {
       if (typeof errorId === 'undefined') {
         errorId = GetYoDigits(6, 'abide-error');
         $error.attr('id', errorId);
-      };
+      }
 
       $el.attr('aria-describedby', errorId);
     }
@@ -304,7 +304,7 @@ class Abide extends Plugin {
       if (typeof elemId === 'undefined') {
         elemId = GetYoDigits(6, 'abide-input');
         $el.attr('id', elemId);
-      };
+      }
 
       // For each label targeting $el, set [for] if it is not set.
       $labels.each((i, label) => {
@@ -608,7 +608,7 @@ class Abide extends Plugin {
           valid = true;
         }
       });
-    };
+    }
 
     return valid;
   }
@@ -648,7 +648,7 @@ class Abide extends Plugin {
       if (checked >= minRequired) {
         valid = true;
       }
-    };
+    }
 
     // Skip validation if more than 1 checkbox have to be checked AND if the form hasn't got submitted yet (otherwise it will already show an error during the first fill in)
     if (this.initialized !== true && minRequired > 1) {
