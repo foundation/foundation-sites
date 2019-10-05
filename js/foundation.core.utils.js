@@ -51,7 +51,7 @@ function transitionend($elem){
       end = transitions[t];
     }
   }
-  if(end){
+  if (end) {
     return end;
   }else{
     end = setTimeout(function(){
