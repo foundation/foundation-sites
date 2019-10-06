@@ -44,11 +44,7 @@ function hyphenate(str) {
 }
 
 function getPluginName(obj) {
-  if(typeof(obj.constructor.name) !== 'undefined') {
-    return hyphenate(obj.constructor.name);
-  } else {
-    return hyphenate(obj.className);
-  }
+  return hyphenate(obj.className);
 }
 
 export {Plugin};
