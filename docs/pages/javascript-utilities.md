@@ -179,6 +179,47 @@ $('#someId').on('scrollme.zf.trigger', handleScroll);
 $('#someId').on('resizeme.zf.trigger', handleResize);
 ```
 
+## Throttle
+`js/foundation.core.js`
+
+Many times when you create a callback, it's advantageous to add a delay in order to prevent it from being triggered multiple times. Foundation includes one type of callback delay: `throttle`.
+
+`Throttle` prevents a function from being executed more than once every n milliseconds. Throttling is often used in cases where it's disadvantageous to trigger a callback every time an event is triggered (during a continuous action), but you still want to trigger a reaction while the event is occurring. Examples of this would be reacting to the browser window being resized, or animating an element.
+
+### Without Delay
+```js
+// Button click handler
+$('.button').on('click', function(e){
+  // Handle Click
+});
+
+// Resize function
+$(window).on('resize', function(e){
+  // Do responsive stuff
+});
+```
+
+### With Delay
+```js
+// Throttled resize function
+$(window).on('resize', Foundation.utils.throttle(function(e){
+  // Do responsive stuff
+}, 300));
+```
+
+### Method Signature
+```js
+// Arguments:
+//    Func (Function): Function to be throttled.
+//
+//    Delay (Integer): Function execution threshold in milliseconds.
+//
+// Returns:
+//    Lazy_function (Function): Function with throttling applied.
+
+throttle(func, delay) { ... }
+```
+
 ## Miscellaneous
 
 Foundation includes a couple useful features in the core library that are used in many places, that you can tap into.
