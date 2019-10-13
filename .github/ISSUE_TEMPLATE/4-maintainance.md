@@ -31,7 +31,7 @@ about: Tests, dependencies, workflow...
 │   Fill with [x] the boxes once the rule is respected.
 └------------------------------------------------------------------->
 - [ ] I have read and follow the CONTRIBUTING.md document.
-- [ ] here are no other issues similar to this one.
+- [ ] There are no other issues similar to this one.
 - [ ] The issue title and template are correctly filled.
 
 
