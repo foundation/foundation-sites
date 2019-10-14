@@ -11,7 +11,7 @@
   "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
-    "test": "npm run test:sass && npm run test:javascript:units && npm run test:bundle",
+    "test": "snyk test && npm run test:sass && npm run test:javascript:units && npm run test:bundle",
     "test:ci": "npm run test:sass && npm run test:javascript:ci",
     "test:sass": "mocha test/sass/test_sass.js --colors",
     "test:javascript:transpile": "gulp sass:foundation --color && gulp test:transpile-js --color",
@@ -95,6 +95,7 @@
     "sass-true": "^4.0.0",
     "sassy-lists": "^3.0.1",
     "sinon": "^7.2.2",
+    "snyk": "^1.234.2",
     "strip-indent": "^2.0.0",
     "supercollider": "^1.4.4",
     "touch": "^3.1.0",
