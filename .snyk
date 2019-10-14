@@ -1,0 +1,33 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - puppeteer > https-proxy-agent:
+        patched: '2019-10-14T12:05:35.356Z'
+      https-proxy-agent:
+        patched: '2019-10-14T12:10:46.008Z'
+    - proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-14T12:05:35.356Z'
+      puppeteer > https-proxy-agent:
+        patched: '2019-10-14T12:10:46.008Z'
+    - https-proxy-agent:
+        patched: '2019-10-14T12:05:35.356Z'
+    - proxy-agent > https-proxy-agent:
+        patched: '2019-10-14T12:05:35.356Z'
+    - pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-14T12:05:35.356Z'
+  SNYK-JS-LODASH-450202:
+    - cheerio > lodash:
+        patched: '2019-10-14T12:05:35.356Z'
+      foundation-docs > cheerio > lodash:
+        patched: '2019-10-14T12:10:46.008Z'
+    - foundation-docs > inky > cheerio > lodash:
+        patched: '2019-10-14T12:10:46.008Z'
+    - foundation-docs > handlebars > async > lodash:
+        patched: '2019-10-14T12:10:46.008Z'
+    - foundation-docs > cheerio > lodash:
+        patched: '2019-10-14T12:05:35.356Z'
+      cheerio > lodash:
+        patched: '2019-10-14T12:10:46.008Z'
