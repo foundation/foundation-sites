@@ -103,24 +103,25 @@ pre {
 
 /* Links
        ========================================================================== */
-/**
-     * 1. Remove the gray background on active links in IE 10.
-     * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
-     */
 a {
-  background-color: transparent;
-  /* 1 */
+  color: #0d6efd;
+/* 1 */
   -webkit-text-decoration-skip: objects;
-  /* 2 */ }
+/* 2 */
+  background-color: transparent;
+/* 3 */
+}
 
-/**
-     * Remove the outline on focused links when they are also active or hovered
-     * in all browsers (opinionated).
-     */
 a:active,
 a:hover {
-  outline-width: 0; }
-
+  outline-width: 0;
+/* 1 */
+  color: #024dbc;
+/* 2 */
+  text-decoration: underline;
+/* 3 */
+}
+  
 /* Text-level semantics
        ========================================================================== */
 /**
