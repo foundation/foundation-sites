@@ -294,7 +294,7 @@ $button-responsive-expanded: false !default;
 @mixin button-dropdown(
   $size: 0.4em,
   $color: $white,
-  $offset: get-side($button-padding, right)
+  $offset: $offset
 ) {
   &::after {
     @include css-triangle($size, $color, down);
