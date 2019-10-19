@@ -4,18 +4,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Magellan:Active Item</title>
     <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation.css" rel="stylesheet" />
     <style type="text/css">
-        
+
         section{height:60em;}
         nav{height:4em!important;}
         .sticky{width: 100%;}
         .highlight{background:#A1D4E9;}
         .top-bar, .top-bar ul, .dark{background:#3a3a3a; color:#A1D4E9 }
         .top-bar a{color: #A1D4E9;}
-        .active{background:#A1D4E9;color:white!important;}
+        .is-active{background:#A1D4E9;color:white!important;}
         .well{padding:3rem;}
 
     </style>
@@ -37,22 +38,22 @@
                 </div>
             </div>
         </nav>
-       
+
         <section id="heading">
             <h1 class="text-center well">Pre-anchor Section</h1>
             <div class="well">
                 <p>Incorrect: Navigation item one is active before first anchor point at section One.</p>
-                Correct: 
+                Correct:
                 <ul>
                     <li>Navigation items should be inactive until first anchor point.</li>
                     <li>URL should contain no hash</li>
                 </ul>
             </div>
         </section>
-        
+
     </header>
     <main>
-        
+
         <section id="one" class="highlight" data-magellan-target="one">
             <h1 class="text-center well">Section One</h1>
             <div class="well">
@@ -85,7 +86,7 @@
             <h1 class="text-center well">Section Six</h1>
         </section>
 
-        
+
     </main>
 
     <script src="../assets/js/vendor.js"></script>

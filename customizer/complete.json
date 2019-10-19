@@ -1,6 +1,7 @@
 {
   "modules": [
-    "grid",
+    "xy_grid",
+    "flex_classes",
     "typography",
     "button",
     "forms",

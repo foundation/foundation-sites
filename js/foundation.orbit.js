@@ -1,31 +1,43 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { Motion } from './foundation.util.motion';
+import { Timer } from './foundation.util.timer';
+import { onImagesLoaded } from './foundation.util.imageLoader';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
+import { Touch } from './foundation.util.touch'
+
 
 /**
  * Orbit module.
  * @module foundation.orbit
  * @requires foundation.util.keyboard
  * @requires foundation.util.motion
- * @requires foundation.util.timerAndImageLoader
+ * @requires foundation.util.timer
+ * @requires foundation.util.imageLoader
  * @requires foundation.util.touch
  */
 
-class Orbit {
+class Orbit extends Plugin {
   /**
   * Creates a new instance of an orbit carousel.
   * @class
+  * @name Orbit
   * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
   * @param {Object} options - Overrides to the default plugin settings.
   */
-  constructor(element, options){
+  _setup(element, options){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
+    this.className = 'Orbit'; // ie9 back compat
+
+    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Orbit');
-    Foundation.Keyboard.register('Orbit', {
+    Keyboard.register('Orbit', {
       'ltr': {
         'ARROW_RIGHT': 'next',
         'ARROW_LEFT': 'previous'
@@ -51,7 +63,7 @@ class Orbit {
 
     var $images = this.$element.find('img'),
         initActive = this.$slides.filter('.is-active'),
-        id = this.$element[0].id || Foundation.GetYoDigits(6, 'orbit');
+        id = this.$element[0].id || GetYoDigits(6, 'orbit');
 
     this.$element.attr({
       'data-resize': id,
@@ -67,7 +79,7 @@ class Orbit {
     }
 
     if ($images.length) {
-      Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
+      onImagesLoaded($images, this._prepareForOrbit.bind(this));
     } else {
       this._prepareForOrbit();//hehe
     }
@@ -102,7 +114,7 @@ class Orbit {
   */
   geoSync() {
     var _this = this;
-    this.timer = new Foundation.Timer(
+    this.timer = new Timer(
       this.$element,
       {
         duration: this.options.timerDelay,
@@ -137,8 +149,9 @@ class Orbit {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (_this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
-        $(this).css({'position': 'relative', 'display': 'none'});
+      // hide all slides but the active one
+      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+        $(this).css({'display': 'none'});
       }
       max = temp > max ? temp : max;
       counter++;
@@ -232,7 +245,7 @@ class Orbit {
       if (this.options.accessible) {
         this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
           // handle keyboard event with keyboard util
-          Foundation.Keyboard.handleKey(e, 'Orbit', {
+          Keyboard.handleKey(e, 'Orbit', {
             next: function() {
               _this.changeSlide(true);
             },
@@ -291,7 +304,7 @@ class Orbit {
   /**
   * Changes the current slide to a new one.
   * @function
-  * @param {Boolean} isLTR - flag if the slide should move left to right.
+  * @param {Boolean} isLTR - if true the slide moves from right to left, if false the slide moves from left to right.
   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
   * @fires Orbit#slidechange
@@ -331,15 +344,14 @@ class Orbit {
       }
 
       if (this.options.useMUI && !this.$element.is(':hidden')) {
-        Foundation.Motion.animateIn(
-          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+        Motion.animateIn(
+          $newSlide.addClass('is-active'),
           this.options[`animInFrom${dirIn}`],
           function(){
-            $newSlide.css({'position': 'relative', 'display': 'block'})
-            .attr('aria-live', 'polite');
+            $newSlide.css({'display': 'block'}).attr('aria-live', 'polite');
         });
 
-        Foundation.Motion.animateOut(
+        Motion.animateOut(
           $curSlide.removeClass('is-active'),
           this.options[`animOutTo${dirOut}`],
           function(){
@@ -366,24 +378,49 @@ class Orbit {
 
   /**
   * Updates the active state of the bullets, if displayed.
+  * Move the descriptor of the current slide `[data-slide-active-label]` to the newly active bullet.
+  * If no `[data-slide-active-label]` is set, will move the exceeding `span` element.
+  *
   * @function
   * @private
   * @param {Number} idx - the index of the current slide.
   */
   _updateBullets(idx) {
-    var $oldBullet = this.$element.find(`.${this.options.boxOfBullets}`)
-    .find('.is-active').removeClass('is-active').blur(),
-    span = $oldBullet.find('span:last').detach(),
-    $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+    var $oldBullet = this.$bullets.filter('.is-active');
+    var $othersBullets = this.$bullets.not('.is-active');
+    var $newBullet = this.$bullets.eq(idx);
+
+    $oldBullet.removeClass('is-active').blur();
+    $newBullet.addClass('is-active');
+
+    // Find the descriptor for the current slide to move it to the new slide button
+    var activeStateDescriptor = $oldBullet.children('[data-slide-active-label]').last();
+
+    // If not explicitely given, search for the last "exceeding" span element (compared to others bullets).
+    if (!activeStateDescriptor.length) {
+      var spans = $oldBullet.children('span');
+      var spanCountInOthersBullets = $othersBullets.toArray().map(b => $(b).children('span').length);
+
+      // If there is an exceeding span element, use it as current slide descriptor
+      if (spanCountInOthersBullets.every(count => count < spans.length)) {
+        activeStateDescriptor = spans.last();
+        activeStateDescriptor.attr('data-slide-active-label', '');
+      }
+    }
+
+    // Move the current slide descriptor to the new slide button
+    if (activeStateDescriptor.length) {
+      activeStateDescriptor.detach();
+      $newBullet.append(activeStateDescriptor);
+    }
   }
 
   /**
   * Destroys the carousel and hides the element.
   * @function
   */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -509,7 +546,7 @@ Orbit.defaults = {
   */
   prevClass: 'orbit-previous',
   /**
-  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatibility.
   * @option
    * @type {boolean}
   * @default true
@@ -517,7 +554,4 @@ Orbit.defaults = {
   useMUI: true
 };
 
-// Window exports
-Foundation.plugin(Orbit, 'Orbit');
-
-}(jQuery);
+export {Orbit};

@@ -1,6 +1,7 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { transitionend } from './foundation.core.utils';
 
 /**
  * Motion module.
@@ -76,14 +77,13 @@ function animate(isIn, element, animation, cb) {
 
   // Start the animation
   requestAnimationFrame(() => {
-    element[0].offsetWidth;
     element
       .css('transition', '')
       .addClass(activeClass);
   });
 
   // Clean up the animation when it finishes
-  element.one(Foundation.transitionend(element), finish);
+  element.one(transitionend(element), finish);
 
   // Hides the element (for out animations), resets the element, and runs a callback
   function finish() {
@@ -99,7 +99,5 @@ function animate(isIn, element, animation, cb) {
   }
 }
 
-Foundation.Move = Move;
-Foundation.Motion = Motion;
+export { Move, Motion };
 
-}(jQuery);

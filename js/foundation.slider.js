@@ -1,7 +1,15 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { Move } from './foundation.util.motion';
+import { GetYoDigits, rtl as Rtl } from './foundation.core.utils';
 
+import { Plugin } from './foundation.core.plugin';
+
+import { Touch } from './foundation.util.touch';
+
+import { Triggers } from './foundation.util.triggers';
 /**
  * Slider module.
  * @module foundation.slider
@@ -11,21 +19,26 @@
  * @requires foundation.util.touch
  */
 
-class Slider {
+class Slider extends Plugin {
   /**
    * Creates a new instance of a slider control.
    * @class
+   * @name Slider
    * @param {jQuery} element - jQuery object to make into a slider control.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
+    this.className = 'Slider'; // ie9 back compat
+
+  // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
+    Touch.init($);
+    Triggers.init($);
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Slider');
-    Foundation.Keyboard.register('Slider', {
+    Keyboard.register('Slider', {
       'ltr': {
         'ARROW_RIGHT': 'increase',
         'ARROW_UP': 'increase',
@@ -34,7 +47,9 @@ class Slider {
         'SHIFT_ARROW_RIGHT': 'increase_fast',
         'SHIFT_ARROW_UP': 'increase_fast',
         'SHIFT_ARROW_DOWN': 'decrease_fast',
-        'SHIFT_ARROW_LEFT': 'decrease_fast'
+        'SHIFT_ARROW_LEFT': 'decrease_fast',
+        'HOME': 'min',
+        'END': 'max'
       },
       'rtl': {
         'ARROW_LEFT': 'increase',
@@ -138,7 +153,15 @@ class Slider {
       pctOfBar = this._logTransform(pctOfBar);
       break;
     }
-    var value = (this.options.end - this.options.start) * pctOfBar + this.options.start;
+
+    var value
+    if (this.options.vertical) {
+      // linear interpolation which is working with negative values for start
+      // https://math.stackexchange.com/a/1019084
+      value = parseFloat(this.options.end) + pctOfBar * (this.options.start - this.options.end)
+    } else {
+      value = (this.options.end - this.options.start) * pctOfBar + parseFloat(this.options.start);
+    }
 
     return value
   }
@@ -193,12 +216,6 @@ class Slider {
         var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
         location = location <= h1Val ? h1Val + this.options.step : location;
       }
-    }
-
-    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
-    //for click and drag events, it's weird due to the scale(-1, 1) css property
-    if (this.options.vertical && !noInvert) {
-      location = this.options.end - location;
     }
 
     var _this = this,
@@ -258,7 +275,7 @@ class Slider {
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
-    Foundation.Move(moveTime, $hndl, function() {
+    Move(moveTime, $hndl, function() {
       // adjusting the left/top property of the handle, based on the percentage calculated above
       // if movement isNaN, that is because the slider is hidden and we cannot determine handle width,
       // fall back to next best guess.
@@ -297,7 +314,7 @@ class Slider {
    */
   _setInitAttr(idx) {
     var initVal = (idx === 0 ? this.options.initialStart : this.options.initialEnd)
-    var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
+    var id = this.inputs.eq(idx).attr('id') || GetYoDigits(6, 'slider');
     this.inputs.eq(idx).attr({
       'id': id,
       'max': this.options.end,
@@ -373,7 +390,7 @@ class Slider {
       value = this._value(offsetPct);
 
       // turn everything around for RTL, yay math!
-      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+      if (Rtl() && !this.options.vertical) {value = this.options.end - value;}
 
       value = _this._adjustValue(null, value);
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
@@ -411,7 +428,11 @@ class Slider {
     else {
       val = value;
     }
-    left = val % step;
+    if (val >= 0) {
+      left = val % step;
+    } else {
+      left = step + (val % step);
+    }
     prev_val = val - left;
     next_val = prev_val + step;
     if (left === 0) {
@@ -445,10 +466,19 @@ class Slider {
         curHandle,
         timer;
 
-      this.inputs.off('change.zf.slider').on('change.zf.slider', function(e) {
-        var idx = _this.inputs.index($(this));
+      const handleChangeEvent = function(e) {
+        const idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
+      };
+
+      // IE only triggers the change event when the input loses focus which strictly follows the HTML specification
+      // listen for the enter key and trigger a change
+      // @see https://html.spec.whatwg.org/multipage/input.html#common-input-element-events
+      this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
+        if(e.keyCode == 13) handleChangeEvent.call(this, e);
       });
+
+      this.inputs.off('change.zf.slider').on('change.zf.slider', handleChangeEvent);
 
       if (this.options.clickSelect) {
         this.$element.off('click.zf.slider').on('click.zf.slider', function(e) {
@@ -504,7 +534,7 @@ class Slider {
           newValue;
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Slider', {
+      Keyboard.handleKey(e, 'Slider', {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },
@@ -516,6 +546,12 @@ class Slider {
         },
         increase_fast: function() {
           newValue = oldValue + _this.options.step * 10;
+        },
+        min: function() {
+          newValue = _this.options.start;
+        },
+        max: function() {
+          newValue = _this.options.end;
         },
         handled: function() { // only set handle pos when event was handled specially
           e.preventDefault();
@@ -532,14 +568,12 @@ class Slider {
   /**
    * Destroys the slider plugin.
    */
-  destroy() {
+  _destroy() {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
 
     clearTimeout(this.timeout);
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -690,8 +724,4 @@ function baseLog(base, value) {
   return Math.log(value)/Math.log(base)
 }
 
-// Window exports
-Foundation.plugin(Slider, 'Slider');
-
-}(jQuery);
-
+export {Slider};

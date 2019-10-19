@@ -34,6 +34,7 @@ describe('Off Canvas', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -70,7 +71,7 @@ describe('Off Canvas', function() {
 
       plugin.$overlay.should.be.an('object');
 
-      $html.one('opened.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
         plugin.$overlay.trigger('click');
         plugin.$element.should.not.have.class('is-open');
         done();
@@ -85,8 +86,7 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      //$html.one(Foundation.transitionend($html), function() {
-      $html.one('opened.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
         plugin.$triggers.should.have.attr('aria-expanded', 'true');
         plugin.$element.should.have.attr('aria-hidden', 'false');
         done();
@@ -99,12 +99,10 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offcanvas', function() {
-        setTimeout(function() {
-          plugin.$element.should.have.class('is-open');
-          $('body').should.have.class('is-off-canvas-open');
-          done();
-        }, 1);
+      $html.one('openedEnd.zf.offCanvas', function() {
+        plugin.$element.should.have.class('is-open');
+        $('body').should.have.class('is-off-canvas-open');
+        done();
       });
 
       plugin.open();
@@ -114,17 +112,12 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {autoFocus: true});
 
-
-      plugin.$element.one(Foundation.transitionend(plugin.$element),function() {
-        setTimeout(function() {
-          plugin.$element.find('a, button')[0].should.be.equal(document.activeElement);
-          done();
-        }, 1);
+      $html.one('openedEnd.zf.offCanvas', function() {
+        plugin.$element.find('a, button')[0].should.be.equal(document.activeElement);
+        done();
       });
 
       plugin.open();
-      // fake transitionend for console tests
-      plugin.$element.triggerHandler(Foundation.transitionend(plugin.$element));
     });
 
     it('traps focus if trapFocus option is true', function(done) {
@@ -133,7 +126,7 @@ describe('Off Canvas', function() {
 
       let spy = sinon.spy(Foundation.Keyboard, 'trapFocus');
 
-      $html.one(Foundation.transitionend($html), function() {
+      $html.one('openedEnd.zf.offCanvas', function() {
         sinon.assert.called(spy);
         Foundation.Keyboard.trapFocus.restore();
         done();
@@ -143,12 +136,25 @@ describe('Off Canvas', function() {
     });
 
 
-    it('fires opened.zf.offcanvas event', function(done) {
+    it('fires opened.zf.offCanvas event', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
         done();
+      });
+
+      plugin.open();
+    });
+
+    it('fires openedEnd.zf.offCanvas event', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+
+      $html.one('opened.zf.offCanvas', function () {
+        $html.one('openedEnd.zf.offCanvas', function () {
+          done();
+        });
       });
 
       plugin.open();
@@ -160,7 +166,7 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
         plugin.close();
 
         plugin.$triggers.should.have.attr('aria-expanded', 'false');
@@ -176,26 +182,22 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offcanvas', function() {
-        setTimeout(function() {
-          plugin.close();
-
-          plugin.$element.should.not.have.class('is-open');
-          $('body').should.not.have.class('is-off-canvas-open');
-          done();
-        }, 1);
+      $html.one('closed.zf.offCanvas', function() {
+        plugin.$element.should.not.have.class('is-open');
+        $('body').should.not.have.class('is-off-canvas-open');
+        done();
       });
 
-      // Open it first
+      // Open and close the off-canvas
       plugin.open();
+      $html.one('openedEnd.zf.offCanvas', () => plugin.close());
     });
 
-    it('fires closed.zf.offcanvas event', function(done) {
+    it('fires close.zf.offCanvas event', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
-
-      $html.one('opened.zf.offcanvas', function() {
-        $html.one('closed.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
+        $html.one('close.zf.offCanvas', function() {
           done();
         });
 
@@ -206,17 +208,58 @@ describe('Off Canvas', function() {
       plugin.open();
     });
 
-    it('releases focus if trapFocus option is true', function() {
+    it('fires closed.zf.offCanvas event', function(done) {
       $html = $(template).appendTo('body');
-      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {trapFocus: true});
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one(Foundation.transitionend($html), function() {
-        let spy = sinon.spy(Foundation.Keyboard, 'releaseFocus');
+      $html.one('opened.zf.offCanvas', function() {
+        $html.one('close.zf.offCanvas', function() {
+          plugin.$element.one(Foundation.transitionend(plugin.$element), function() {
+            $html.one('closed.zf.offCanvas', function () {
+              done();
+            });
+          });
+        });
 
         plugin.close();
+        // fake transitionend for console tests
+        plugin.$element.triggerHandler(Foundation.transitionend(plugin.$element));
+      });
 
-        sinon.assert.called(spy);
-        Foundation.Keyboard.releaseFocus.restore();
+      // Open it first
+      plugin.open();
+    });
+
+    it('fires closed.zf.offCanvas event', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+
+      $html.one('openedEnd.zf.offCanvas', function() {
+        $html.one('closed.zf.offCanvas', function() {
+          done();
+        });
+
+        plugin.close();
+      });
+
+      // Open it first
+      plugin.open();
+    });
+
+    it('releases focus if trapFocus option is true', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), { trapFocus: true });
+
+      let spy = sinon.spy(Foundation.Keyboard, 'releaseFocus');
+
+      $html.one('openedEnd.zf.offCanvas', function () {
+        $html.one('closed.zf.offCanvas', function () {
+          sinon.assert.called(spy);
+          Foundation.Keyboard.releaseFocus.restore();
+          done();
+        });
+
+        plugin.close();
       });
 
       // Open it first...
@@ -229,7 +272,7 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
         plugin.$element.should.have.class('is-open');
         done();
       });
@@ -241,7 +284,7 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offcanvas', function() {
+      $html.one('opened.zf.offCanvas', function() {
         plugin.toggle();
 
         plugin.$element.should.not.have.class('is-open');
@@ -250,6 +293,24 @@ describe('Off Canvas', function() {
 
       // Open it first
       plugin.toggle();
+    });
+  });
+
+  describe('keyboard events', function() {
+    it('closes Off Canvas on ESCAPE', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+
+      $html.one('opened.zf.offCanvas', function() {
+        plugin.$element.focus()
+          .trigger(window.mockKeyboardEvent('ESCAPE'));
+
+        plugin.$element.should.not.have.class('is-open');
+        done();
+      });
+
+      // Open it first
+      plugin.open();
     });
   });
 

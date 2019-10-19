@@ -1,0 +1,49 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+
+          <h1>Reveal: closeOnClick option</h1>
+
+          <p>This modal should not close when clicking/tapping outside of it.</p>
+          <p><button class="button" data-open="exampleModal1">Open modal</button></p>
+
+          <div class="reveal" id="exampleModal1" data-reveal data-close-on-click="false">
+            <p>Clicking/tapping outside of me SHOULD NOT close me.</p>
+            <p><button class="button" data-close="exampleModal1">Close</button></p>
+          </div>
+
+          <hr>
+
+          <p>This modal should close when clicking (desktop) or tapping without swiping (mobile) outside of it.</p>
+          <p><button class="button" data-open="exampleModal2">Open modal</button></p>
+
+          <div class="reveal" id="exampleModal2" data-reveal data-close-on-click="true">
+            <p>Clicking (desktop) or tapping without swiping (mobile) outside of me SHOULD close me.</p>
+            <p><button class="button" data-close="exampleModal2">Close</button></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+  </body>
+</html>

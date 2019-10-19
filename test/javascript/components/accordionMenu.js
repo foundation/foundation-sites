@@ -43,17 +43,26 @@ describe('Accordion Menu', function() {
       plugin.options.should.be.an('object');
     });
   });
-  
+
   describe('up()', function() {
-    it('closes the targeted submenu', function() {
+    it('closes the targeted submenu', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.AccordionMenu($html);
+      const $submenu = $html.find('.is-accordion-submenu').eq(0);
 
       // Open it first
-      plugin.down($html.find('.is-accordion-submenu').eq(0));
-      
-      plugin.up($html.find('.is-accordion-submenu').eq(0));
-      $html.find('.is-accordion-submenu').eq(0).should.be.hidden;
+      plugin.down($submenu);
+
+      plugin.up($submenu);
+
+      setTimeout(() => {
+        // Should be hidden
+        $submenu.should.be.hidden;
+        // Should have attributes updated and without active classe
+        $submenu.should.have.attr('aria-hidden', 'true');
+        $submenu.should.not.have.class('is-active');
+        done();
+      }, 1);
     });
 
     it('toggles attributes of title of the targeted container', function() {
@@ -86,9 +95,15 @@ describe('Accordion Menu', function() {
     it('opens the targeted submenu', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.AccordionMenu($html, {});
+      const $submenu = $html.find('.is-accordion-submenu').eq(0);
 
-      plugin.down($html.find('.is-accordion-submenu').eq(0));
-      $html.find('.is-accordion-submenu').eq(0).should.be.visible;
+      plugin.down($submenu);
+
+      // Should be visible
+      $submenu.should.be.visible;
+      // Should have attributes updated and with an active classe
+      $submenu.should.have.attr('aria-hidden', 'false');
+      $submenu.should.have.class('is-active');
     });
 
     it('toggles attributes of title of the targeted submenu', function() {
@@ -105,7 +120,7 @@ describe('Accordion Menu', function() {
 
       // Open another one first
       plugin.down($html.find('.is-accordion-submenu').eq(0));
-      
+
       plugin.down($html.find('.is-accordion-submenu').eq(2));
       $html.find('.is-accordion-submenu').eq(0).should.be.hidden;
     });
@@ -116,7 +131,7 @@ describe('Accordion Menu', function() {
 
       // Open another one first
       plugin.down($html.find('.is-accordion-submenu').eq(0));
-      
+
       plugin.down($html.find('.is-accordion-submenu').eq(2));
       $html.find('.is-accordion-submenu').eq(0).should.be.visible;
     });

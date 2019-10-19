@@ -1,6 +1,7 @@
 ---
 title: JavaScript Utilities
 description: Our JavaScript Utility Libraries are easy to use and super helpful.
+video: 'h83jR82cjWM'
 ---
 
 ## Installing
@@ -120,16 +121,18 @@ Foundation.Move(durationInMS, $element, function(){
 ```
 When the animation is complete, your jQuery element will fire `finished.zf.animate`.
 
-## Timer & Images Loaded
-`js/foundation.util.timerAndImageLoader.js`
+## Timer
+`js/foundation.util.timer.js`
 
-Both functions are used by [Orbit](orbit.html), and can be useful elsewhere as well.
 ```js
 
 var timer = new Foundation.Timer($element, {duration: ms, infinite: bool}, callback);
 // includes: timer.start(), timer.pause(), timer.restart()
 ```
 Similar to `setInterval`, except you can pause and resume where you left off.
+
+## ImageLoader
+`js/foundation.util.imageLoader.js`
 
 ```js
 Foundation.onImagesLoaded($images, callback);
@@ -139,12 +142,12 @@ This will execute your callback function after all the images in your jQuery col
 ## Touch
 `js/foundation.util.touch.js`
 
-Allows you to add `swipe*` and psuedo-drag events to elements.
+Allows you to add `swipe*` and pseudo-drag events to elements.
 
 ```js
 $('selector').addTouch().on('mousemove', handleDrag);
 // Binds elements to touch events. Used in the Slider plugin for mobile devices.
-$('selector').spotSwipe().on('swipeleft', handleLeftSwipe);
+$('selector').on('swipeleft', handleLeftSwipe);
 // Binds elements to swipe events. Used in the Orbit plugin for mobile devices.
 ```
 
@@ -153,12 +156,12 @@ $('selector').spotSwipe().on('swipeleft', handleLeftSwipe);
 
 Provides a number of event listeners and triggers your script can hook into. Most are self-explanatory, and used in many Foundation plugins.
 ```html
-<button data-open='someId'>I open something!</button>
-<button data-close='someId'>I close something!</button>
-<button data-toggle='someId'>I toggle something!</button>
+<button data-open="someId">I open something!</button>
+<button data-close="someId">I close something!</button>
+<button data-toggle="someId">I toggle something!</button>
 ```
 ```js
-// Add the data-open/close/toggle='idOfElement' tag to your markup.
+// Add the data-open/close/toggle="idOfElement" tag to your markup.
 // When a click event is triggered on that element, these are the non-bubbling events directed at your element.
 // If you don't use an `id` selector, an event will be triggered that bubbles up to window.
 $('selector').on('open.zf.trigger', handleOpen);
@@ -168,8 +171,8 @@ $('selector').on('toggle.zf.trigger', handleToggle);
 Besides these useful click triggers, there are also other listeners for you to tap into. Need to know when the window has been resized, but only when it's done resizing? How about a debounced scroll event? Add this markup and JavaScript and you're good to go!
 
 ```html
-<div data-scroll='someId'>...</div>
-<div data-resize='someId'>...</div>
+<div data-scroll="someId">...</div>
+<div data-resize="someId">...</div>
 ```
 ```js
 $('#someId').on('scrollme.zf.trigger', handleScroll);
@@ -180,7 +183,7 @@ $('#someId').on('resizeme.zf.trigger', handleResize);
 
 Foundation includes a couple useful features in the core library that are used in many places, that you can tap into.
 
-`Foundation.GetYoDigits([number, namespace])` returns a base-36, psuedo-random string with a hyphenated namespace (if you include one). Both arguments are optional; by default, it will return a string six characters long.
+`Foundation.GetYoDigits([number, namespace])` returns a base-36, pseudo-random string with a hyphenated namespace (if you include one). Both arguments are optional; by default, it will return a string six characters long.
 
 `Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us—it's useful.
 

@@ -39,7 +39,7 @@ $slider-opacity-disabled: 0.25 !default;
 $slider-radius: $global-radius !default;
 
 @mixin foundation-range-input {
-  input[type="range"] {  // sass-lint:disable-line no-qualifying-elements
+  input[type='range'] {  // sass-lint:disable-line no-qualifying-elements
     $margin: ($slider-handle-height - $slider-height) / 2;
 
     display: block;
@@ -73,12 +73,12 @@ $slider-radius: $global-radius !default;
       background: $slider-background;
     }
 
-    &::-webkit-slider-handle {
+    &::-webkit-slider-thumb {
       width: $slider-handle-width;
       height: $slider-handle-height;
       margin-top: -$margin;
 
-      -webkit-appearance: none;
+      -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
       background: $slider-handle-background;
 
       @if has-value($slider-radius) {
@@ -89,7 +89,7 @@ $slider-radius: $global-radius !default;
     // Firefox
     &::-moz-range-track {
       height: $slider-height;
-      -moz-appearance: none;
+      -moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
       background: $slider-background;
     }
 
@@ -98,7 +98,7 @@ $slider-radius: $global-radius !default;
       height: $slider-handle-height;
       margin-top: -$margin;
 
-      -moz-appearance: none;
+      -moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
       background: $slider-handle-background;
 
       @if has-value($slider-radius) {

@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Foundation for Sites Testing</title>
     <link href="../assets/css/foundation.css" rel="stylesheet" />
     <style>
@@ -16,51 +17,55 @@
     </style>
   </head>
   <body>
-    <div class="medium-6 row column">
-      <p>Submenus should not be cut off at the bottom.</p>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell medium-6">
+          <p>Submenus should not be cut off at the bottom.</p>
 
-      <div class="test-drilldown-wrapper">
-        <ul class="vertical menu" data-drilldown>
-          <li>
-            <a href="#">Item</a>
-            <ul class="vertical menu">
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item With the Longest Title You've Probably Ever Seen</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
+          <div class="test-drilldown-wrapper">
+            <ul class="vertical menu drilldown" data-drilldown>
+              <li>
+                <a href="#">Item</a>
+                <ul class="vertical menu nested">
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item With the Longest Title You've Probably Ever Seen</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Item</a>
+                <ul class="vertical menu nested">
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item With the Longest Title You've Probably Ever Seen</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Item</a>
+                <ul class="vertical menu nested">
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item With the Longest Title You've Probably Ever Seen</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                  <li><a href="#">Item</a></li>
+                </ul>
+              </li>
             </ul>
-          </li>
-          <li>
-            <a href="#">Item</a>
-            <ul class="vertical menu">
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item With the Longest Title You've Probably Ever Seen</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Item</a>
-            <ul class="vertical menu">
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item With the Longest Title You've Probably Ever Seen</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-            </ul>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
 

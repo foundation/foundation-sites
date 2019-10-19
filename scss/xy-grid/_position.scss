@@ -1,0 +1,55 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group xy-grid
+////
+
+/// Returns the appropriate CSS value to offset a cell.
+///
+/// @param {Number|List} $n - Size to offset by. You can pass in any value accepted by the `xy-cell()` mixin, such as `6`, `50%`, or `1 of 2`.
+/// @param {Number|Map} $gutters [$grid-margin-gutters] Map of gutters or single value to use for responsive gutters.
+/// @param {Keyword} $gutter-type [margin] The type of gutter to use. Can be `margin` or `padding`
+/// @param {String} $breakpoint [null] - The name of the breakpoint size in your gutters map to get the size from. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+///
+/// @returns {Number|String} The cell offset property value.
+@function xy-cell-offset(
+  $n,
+  $gutters: $grid-margin-gutters,
+  $gutter-type: margin,
+  $breakpoint: null
+) {
+  $breakpoint: -zf-current-breakpoint($breakpoint, $default: $-zf-zero-breakpoint);
+  $size: xy-cell-size($n);
+
+  $offset: $size;
+  @if ($gutter-type == 'margin') {
+    $gutter: rem-calc(xy-cell-gutters($gutters, $breakpoint) / 2);
+    $offset: if($gutter == 0, $size, calc(#{$size} + #{$gutter}));
+  }
+  @return $offset;
+}
+
+/// Offsets a column to the right/bottom by `$n` columns.
+///
+/// @param {Number|List} $n - Size to offset by. You can pass in any value accepted by the `xy-cell()` mixin, such as `6`, `50%`, or `1 of 2`.
+/// @param {Number|Map} $gutters [$grid-margin-gutters] Map of gutters or single value to use for responsive gutters.
+/// @param {Keyword} $gutter-type [margin] The type of gutter to use. Can be `margin` or `padding`
+/// @param {Number|Array|Keyword} $breakpoint [null] - Breakpoint to use for `$gutters`. It can be a breakpoint name, list of breakpoints or `auto` for all breakpoints. If a list is given, media-queries will be generated. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
+/// @param {Boolean} $vertical [false] Sets the direction of the offset. If set to true will apply margin-top instead.
+@mixin xy-cell-offset(
+ $n,
+ $gutters: $grid-margin-gutters,
+ $gutter-type: margin,
+ $breakpoint: null,
+ $vertical: false
+) {
+  $breakpoint: -zf-current-breakpoint($breakpoint, $default: $-zf-zero-breakpoint);
+  $direction: if($vertical, 'top', $global-left);
+
+  @include -zf-each-breakpoint-in($breakpoint, $media-queries: 'for-lists') {
+    $offset: xy-cell-offset($n, $gutters, $gutter-type);
+    margin-#{$direction}: #{$offset};
+  }
+}

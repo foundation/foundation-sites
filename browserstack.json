@@ -1,0 +1,27 @@
+{
+    "test_path": "test/javascript/index.html",
+    "test_framework": "mocha",
+    "exit_with_fail": true,
+    "browsers": [
+        "chrome_latest",
+        "chrome_previous",
+        "firefox_latest",
+        "firefox_previous",
+        "safari_latest",
+        "safari_previous",
+        "opera_latest",
+        "opera_previous",
+
+        "edge_latest",
+        "edge_previous",
+        "ie_11",
+        "ie_10",
+        "ie_9",
+
+        "mobile_safari_latest",
+        "mobile_safari_7_0",
+        "android_browser_latest",
+        "android_browser_4_4",
+        "ie_mobile_latest"
+    ]
+}

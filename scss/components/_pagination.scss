@@ -65,6 +65,14 @@ $pagination-mobile-current-item: false !default;
 /// @type Boolean
 $pagination-arrows: true !default;
 
+/// Content for the previous arrow when `$pagination-arrows` is `true`
+/// @type String
+$pagination-arrow-previous: '\00AB' !default;
+
+/// Content for the next arrow when `$pagination-arrows` is `true`
+/// @type String
+$pagination-arrow-next: '\00BB' !default;
+
 /// Adds styles for a pagination container. Apply this to a `<ul>`.
 @mixin pagination-container (
   $margin-bottom: $pagination-margin-bottom,
@@ -113,7 +121,7 @@ $pagination-arrows: true !default;
   button {
     display: block;
     padding: $padding;
-    border-radius: $global-radius;
+    border-radius: $radius;
     color: $color;
 
     &:hover {
@@ -180,14 +188,14 @@ $pagination-arrows: true !default;
     .pagination-previous.disabled::before {
       display: inline-block;
       margin-#{$global-right}: 0.5rem;
-      content: '\00ab';
+      content: $pagination-arrow-previous;
     }
 
     .pagination-next a::after,
     .pagination-next.disabled::after {
       display: inline-block;
       margin-#{$global-left}: 0.5rem;
-      content: '\00bb';
+      content: $pagination-arrow-next;
     }
   }
 }

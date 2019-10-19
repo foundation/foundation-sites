@@ -1,28 +1,39 @@
 'use strict';
 
-!function($) {
+
+import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { onLoad, GetYoDigits } from './foundation.core.utils';
+import { SmoothScroll } from './foundation.smoothScroll';
+
+import { Triggers } from './foundation.util.triggers';
 
 /**
  * Magellan module.
  * @module foundation.magellan
+ * @requires foundation.smoothScroll
+ * @requires foundation.util.triggers
  */
 
-class Magellan {
+class Magellan extends Plugin {
   /**
    * Creates a new instance of Magellan.
    * @class
+   * @name Magellan
    * @fires Magellan#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
+    this.className = 'Magellan'; // ie9 back compat
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     this._init();
     this.calcPoints();
-
-    Foundation.registerPlugin(this, 'Magellan');
   }
 
   /**
@@ -30,7 +41,7 @@ class Magellan {
    * @private
    */
   _init() {
-    var id = this.$element[0].id || Foundation.GetYoDigits(6, 'magellan');
+    var id = this.$element[0].id || GetYoDigits(6, 'magellan');
     var _this = this;
     this.$targets = $('[data-magellan-target]');
     this.$links = this.$element.find('a');
@@ -78,6 +89,7 @@ class Magellan {
           duration: _this.options.animationDuration,
           easing:   _this.options.animationEasing
         };
+
     $(window).one('load', function(){
       if(_this.options.deepLinking){
         if(location.hash){
@@ -88,19 +100,26 @@ class Magellan {
       _this._updateActive();
     });
 
-    this.$element.on({
-      'resizeme.zf.trigger': this.reflow.bind(this),
-      'scrollme.zf.trigger': this._updateActive.bind(this)
-    }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
-        e.preventDefault();
-        var arrival   = this.getAttribute('href');
-        _this.scrollToLoc(arrival);
-      });
-    $(window).on('popstate', function(e) {
+    _this.onLoadListener = onLoad($(window), function () {
+      _this.$element
+        .on({
+          'resizeme.zf.trigger': _this.reflow.bind(_this),
+          'scrollme.zf.trigger': _this._updateActive.bind(_this)
+        })
+        .on('click.zf.magellan', 'a[href^="#"]', function (e) {
+          e.preventDefault();
+          var arrival = this.getAttribute('href');
+          _this.scrollToLoc(arrival);
+        });
+    });
+
+    this._deepLinkScroll = function(e) {
       if(_this.options.deepLinking) {
         _this.scrollToLoc(window.location.hash);
       }
-    });
+    };
+
+    $(window).on('hashchange', this._deepLinkScroll);
   }
 
   /**
@@ -109,18 +128,19 @@ class Magellan {
    * @function
    */
   scrollToLoc(loc) {
-    // Do nothing if target does not exist to prevent errors
-    if (!$(loc).length) {return false;}
     this._inTransition = true;
-    var _this = this,
-        scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
+    var _this = this;
 
-    $('html, body').stop(true).animate(
-      { scrollTop: scrollPos },
-      this.options.animationDuration,
-      this.options.animationEasing,
-      function() {_this._inTransition = false; _this._updateActive()}
-    );
+    var options = {
+      animationEasing: this.options.animationEasing,
+      animationDuration: this.options.animationDuration,
+      threshold: this.options.threshold,
+      offset: this.options.offset
+    };
+
+    SmoothScroll.scrollToLoc(loc, options, function() {
+      _this._inTransition = false;
+    })
   }
 
   /**
@@ -139,51 +159,72 @@ class Magellan {
    * @fires Magellan#update
    */
   _updateActive(/*evt, elem, scrollPos*/) {
-    if(this._inTransition) {return;}
-    var winPos = /*scrollPos ||*/ parseInt(window.pageYOffset, 10),
-        curIdx;
+    if(this._inTransition) return;
 
-    if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
-    else if(winPos < this.points[0]){ curIdx = undefined; }
+    const newScrollPos = parseInt(window.pageYOffset, 10);
+    const isScrollingUp = this.scrollPos > newScrollPos;
+    this.scrollPos = newScrollPos;
+
+    let activeIdx;
+    // Before the first point: no link
+    if(newScrollPos < this.points[0]){ /* do nothing */ }
+    // At the bottom of the page: last link
+    else if(newScrollPos + this.winHeight === this.docHeight){ activeIdx = this.points.length - 1; }
+    // Otherwhise, use the last visible link
     else{
-      var isDown = this.scrollPos < winPos,
-          _this = this,
-          curVisible = this.points.filter(function(p, i){
-            return isDown ? p - _this.options.barOffset <= winPos : p - _this.options.barOffset - _this.options.threshold <= winPos;
-          });
-      curIdx = curVisible.length ? curVisible.length - 1 : 0;
+      const visibleLinks = this.points.filter((p, i) => {
+        return (p - this.options.offset - (isScrollingUp ? this.options.threshold : 0)) <= newScrollPos;
+      });
+      activeIdx = visibleLinks.length ? visibleLinks.length - 1 : 0;
     }
 
-    this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+    // Get the new active link
+    const $oldActive = this.$active;
+    let activeHash = '';
+    if(typeof activeIdx !== 'undefined'){
+      this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
+      if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
+    }else{
+      this.$active = $();
+    }
+    const isNewActive = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
+    const isNewHash = activeHash !== window.location.hash;
 
-    if(this.options.deepLinking){
-      var hash = "";
-      if(curIdx != undefined){
-        hash = this.$active[0].getAttribute('href');
-      }
-      if(hash !== window.location.hash) {
-        if(window.history.pushState){
-          window.history.pushState(null, null, hash);
+    // Update the active link element
+    if(isNewActive) {
+      $oldActive.removeClass(this.options.activeClass);
+      this.$active.addClass(this.options.activeClass);
+    }
+
+    // Update the hash (it may have changed with the same active link)
+    if(this.options.deepLinking && isNewHash){
+      if(window.history.pushState){
+        // Set or remove the hash (see: https://stackoverflow.com/a/5298684/4317384
+        const url = activeHash ? activeHash : window.location.pathname + window.location.search;
+        if(this.options.updateHistory){
+          window.history.pushState({}, '', url);
         }else{
-          window.location.hash = hash;
+          window.history.replaceState({}, '', url);
         }
+      }else{
+        window.location.hash = activeHash;
       }
     }
 
-    this.scrollPos = winPos;
-    /**
-     * Fires when magellan is finished updating to the new active element.
-     * @event Magellan#update
-     */
-    this.$element.trigger('update.zf.magellan', [this.$active]);
+    if (isNewActive) {
+      /**
+       * Fires when magellan is finished updating to the new active element.
+       * @event Magellan#update
+       */
+    	this.$element.trigger('update.zf.magellan', [this.$active]);
+	  }
   }
 
   /**
    * Destroys an instance of Magellan and resets the url of the window.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.trigger .zf.magellan')
         .find(`.${this.options.activeClass}`).removeClass(this.options.activeClass);
 
@@ -192,7 +233,8 @@ class Magellan {
       window.location.hash.replace(hash, '');
     }
 
-    Foundation.unregisterPlugin(this);
+    $(window).off('hashchange', this._deepLinkScroll)
+    if (this.onLoadListener) $(window).off(this.onLoadListener);
   }
 }
 
@@ -226,9 +268,9 @@ Magellan.defaults = {
    * Class applied to the active locations link on the magellan container.
    * @option
    * @type {string}
-   * @default 'active'
+   * @default 'is-active'
    */
-  activeClass: 'active',
+  activeClass: 'is-active',
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option
@@ -237,15 +279,19 @@ Magellan.defaults = {
    */
   deepLinking: false,
   /**
+   * Update the browser history with the active link, if deep linking is enabled.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false,
+  /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option
    * @type {number}
    * @default 0
    */
-  barOffset: 0
+  offset: 0
 }
 
-// Window exports
-Foundation.plugin(Magellan, 'Magellan');
-
-}(jQuery);
+export {Magellan};

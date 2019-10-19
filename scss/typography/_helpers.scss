@@ -26,7 +26,7 @@ $subheader-color: $dark-gray !default;
 /// @type String
 $subheader-font-weight: $global-weight-normal !default;
 
-/// Default top margin for subhheaders.
+/// Default top margin for subheaders.
 /// @type Number
 $subheader-margin-top: 0.2rem !default;
 
@@ -37,6 +37,92 @@ $subheader-margin-bottom: 0.5rem !default;
 /// Default font size for statistic numbers.
 /// @type Number
 $stat-font-size: 2.5rem !default;
+
+/// Text color for `.cite-block` component.
+/// @type Color
+$cite-color: $dark-gray !default;
+
+/// Font size for `.cite-block` component.
+/// @type Number
+$cite-font-size: rem-calc(13) !default;
+
+/// Pseudo content for `.cite-block` component.
+/// @type String
+$cite-pseudo-content: '\2014 \0020' !default;
+
+/// Text color of `.code-inline` and `.code-block` components.
+/// @type Color
+$code-color: $black !default;
+
+/// Font family of `.code-inline` and `.code-block` components.
+/// @type String | List
+$code-font-family: $font-family-monospace !default;
+
+/// Font weight of text in `.code-inline` and `.code-block` components.
+/// @type String
+$code-font-weight: $global-weight-normal !default;
+
+/// Background color of `.code-inline` and `.code-block` components.
+/// @type Color
+$code-background: $light-gray !default;
+
+/// Border around `.code-inline` and `.code-block` components.
+/// @type List
+$code-border: 1px solid $medium-gray !default;
+
+/// Padding around text of the `.code-inline` component.
+/// @type Number | List
+$code-padding: rem-calc(2 5 1) !default;
+
+/// Padding around text of the `.code-block` component.
+/// @type Number | List
+$code-block-padding: 1rem !default;
+
+/// Margin under the `.code-block` component.
+/// @type Number
+$code-block-margin-bottom: 1.5rem !default;
+
+@mixin cite-block {
+  display: block;
+  color: $cite-color;
+  font-size: $cite-font-size;
+
+  &:before {
+    content: $cite-pseudo-content;
+  }
+}
+
+/// Add basic styles for a code helper.
+/// See `code-inline` and `code-block` mixins.
+@mixin code-style {
+  border: $code-border;
+  background-color: $code-background;
+
+  font-family: $code-font-family;
+  font-weight: $code-font-weight;
+  color: $code-color;
+}
+
+/// Make code helper from the `code-style` mixin inline.
+/// Used to generate `.code-inline`
+@mixin code-inline {
+  display: inline;
+  max-width: 100%;
+  word-wrap: break-word;
+
+  padding: $code-padding;
+}
+
+/// Make code helper from the `code-style` mixin a block.
+/// Used to generate `.code-block`
+@mixin code-block {
+  display: block;
+  overflow: auto;
+  white-space: pre;
+
+  padding: $code-block-padding;
+  margin-bottom: $code-block-margin-bottom;
+}
 
 @mixin foundation-typography-helpers {
   // Use to create a subheading under a main header
@@ -70,9 +156,25 @@ $stat-font-size: 2.5rem !default;
     }
   }
 
-  // Use to remove the bullets from an unordered list
-  .no-bullet {
-    margin-#{$global-left}: 0;
-    list-style: none;
+  ul, ol {
+    // Use to remove numbers from ordered list & bullets from unordered list
+    &.no-bullet {
+      margin-#{$global-left}: 0;
+      list-style: none;
+    }
+  }
+
+  .cite-block {
+    @include cite-block;
+  }
+
+  .code-inline {
+    @include code-style;
+    @include code-inline;
+  }
+
+  .code-block {
+    @include code-style;
+    @include code-block;
   }
 }

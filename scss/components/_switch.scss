@@ -54,6 +54,14 @@ $switch-paddle-radius: $global-radius !default;
 /// @type Number
 $switch-paddle-transition: all 0.25s ease-out !default;
 
+/// Opacity of a disabled switch.
+/// @type Number
+$switch-opacity-disabled: .5 !default;
+
+/// Cursor for a disabled switch.
+/// @type Cursor
+$switch-cursor-disabled: not-allowed !default;
+
 // make them variables
 // ask about accessibility on label
 // change class name for text
@@ -130,6 +138,12 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     &::after {
       #{$global-left}: $paddle-active-offest;
     }
+  }
+
+  // indicate a disabled switch
+  input:disabled ~ & {
+    cursor: $switch-cursor-disabled;
+    opacity: $switch-opacity-disabled;
   }
 
   input:focus ~ & {

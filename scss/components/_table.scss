@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// sass-lint:disable force-element-nesting, no-qualifying-elements
+// sass-lint:disable no-qualifying-elements
 
 ////
 /// @group table
@@ -75,6 +75,10 @@ $table-foot-font-color: $body-font-color !default;
 /// Default value for showing the header when using stacked tables.
 /// @type Boolean
 $show-header-for-stacked: false !default;
+
+/// Breakpoint at which stacked table switches from mobile to desktop view.
+/// @type Breakpoint
+$table-stack-breakpoint: medium !default;
 
 @mixin -zf-table-stripe($stripe: $table-stripe) {
   tr {
@@ -184,10 +188,12 @@ $show-header-for-stacked: false !default;
 
 /// Adds the general styles for tables.
 /// @param {Keyword} $stripe [$table-stripe] - Uses keywords even, odd, or none to darken rows of the table. The default value is even.
+/// @param {Boolean} $nest [false] - Needed if you only want to apply this to a specific table.
 @mixin table(
   $stripe: $table-stripe,
   $nest: false
 ) {
+  border-collapse: collapse;
   width: 100%;
   margin-bottom: $global-margin;
   border-radius: $global-radius;
@@ -241,7 +247,7 @@ $show-header-for-stacked: false !default;
     }
 
     // Darkens the odd striped table rows.
-    @elseif($table-stripe == odd) {
+    @else if($table-stripe == odd) {
       &:not(.unstriped) tr:nth-of-type(odd):hover {
         background-color: $table-row-stripe-hover;
       }
@@ -257,7 +263,7 @@ $show-header-for-stacked: false !default;
     }
 
     // Darkens the odd striped table rows.
-    @elseif($table-stripe == odd) {
+    @else if($table-stripe == odd) {
       &.striped tr:nth-of-type(odd):hover {
         background-color: $table-row-stripe-hover;
       }
@@ -270,12 +276,8 @@ $show-header-for-stacked: false !default;
 @mixin table-stack($header: $show-header-for-stacked) {
   @if $header {
     thead {
-      th:first-child {
-        display: block;
-      }
-
       th {
-        display: none;
+        display: block;
       }
     }
   }
@@ -306,7 +308,7 @@ $show-header-for-stacked: false !default;
   }
 
   table.stack {
-    @include breakpoint(medium down) {
+    @include breakpoint($table-stack-breakpoint down) {
       @include table-stack;
     }
   }
@@ -322,8 +324,5 @@ $show-header-for-stacked: false !default;
   .table-scroll {
     overflow-x: auto;
 
-    table {
-      width: auto;
-    }
   }
 }

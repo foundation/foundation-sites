@@ -7,6 +7,14 @@ describe('Toggler', function() {
     $html.remove();
   });
 
+  function appendTriggers() {
+    return $(`<div>
+      <a data-open="toggler">Open</a>
+      <a data-close="toggler">Close</a>
+      <a data-toggle="toggler">Toggle</a>
+    </div>`).appendTo('body')
+  }
+
   describe('constructor()', function() {
     it('stores the element and plugin options', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
@@ -42,33 +50,48 @@ describe('Toggler', function() {
 
     it('adds Aria attributes to click triggers', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
-      var $triggers = $(`<div>
-          <a data-open="toggler">Open</a>
-          <a data-close="toggler">Close</a>
-          <a data-toggle="toggler">Toggle</a>
-        </div>`).appendTo('body');
+      var $triggers = appendTriggers();
       plugin = new Foundation.Toggler($html, {});
 
-      $triggers.find('[data-open]').should.have.attr('aria-controls', 'toggler');
-      $triggers.find('[data-close]').should.have.attr('aria-controls', 'toggler');
-      $triggers.find('[data-toggle]').should.have.attr('aria-controls', 'toggler');
-
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-controls', 'toggler');
       $triggers.remove();
     });
 
-    it('sets aria-expanded to true if the element is visible', function() {
+    it('sets aria-expanded to false if the element has toggler class and no animate and toggler class not in class set', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
+      var $triggers = appendTriggers();
       plugin = new Foundation.Toggler($html, {});
 
-      $('#toggler').should.have.attr('aria-expanded', 'true');
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'false');
+      $triggers.remove();
     });
 
-    it('sets aria-expanded to false if the element is invisible', function() {
-      var $css = $('<style>#toggler { display: none }</style>').appendTo('body');
-      $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
+    it('sets aria-expanded to true if the element has toggler class and no animate and toggler class is in class set', function() {
+      $html = $('<div id="toggler" class="class" data-toggler="class"></div>').appendTo('body');
+      var $triggers = appendTriggers();
       plugin = new Foundation.Toggler($html, {});
 
-      $('#toggler').should.have.attr('aria-expanded', 'false');
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'true');
+      $triggers.remove();
+    });
+
+    it('sets aria-expanded to true if the element is visible and animate set', function() {
+      $html = $('<div id="toggler" data-animate="hinge-in-from-top spin-out"></div>').appendTo('body');
+      var $triggers = appendTriggers();
+      plugin = new Foundation.Toggler($html, {});
+
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'true');
+      $triggers.remove();
+    });
+
+    it('sets aria-expanded to false if the element is invisible and animate set', function() {
+      var $css = $('<style>#toggler { display: none }</style>').appendTo('body');
+      $html = $('<div id="toggler" data-animate="hinge-in-from-top spin-out"></div>').appendTo('body');
+      var $triggers = appendTriggers();
+      plugin = new Foundation.Toggler($html, {});
+
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'false');
+      $triggers.remove();
       $css.remove();
     });
   });
@@ -92,13 +115,16 @@ describe('Toggler', function() {
 
     it('updates aria-expanded after the class is toggled', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
+      var $triggers = appendTriggers();
       plugin = new Foundation.Toggler($html, {});
 
       plugin._toggleClass();
-      $('#toggler').should.have.attr('aria-expanded', 'true');
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'true');
 
       plugin._toggleClass();
-      $('#toggler').should.have.attr('aria-expanded', 'false');
+      $triggers.find('[data-open], [data-close], [data-toggle]').should.have.attr('aria-expanded', 'false');
+
+      $triggers.remove();
     });
   });
 
@@ -107,11 +133,11 @@ describe('Toggler', function() {
     it('animates an invisible element in', function(done) {
       var $css = $('<style>#toggler { display: none; }</style>').appendTo('body');
       $html = $('<div id="toggler" data-toggler data-animate="fade-in fade-out"></div>').appendTo('body');
+
       plugin = new Foundation.Toggler($html, {});
 
       $html.on('on.zf.toggler', function() {
         $('#toggler').should.be.visible;
-        $('#toggler').should.have.attr('aria-expanded', 'true');
         $css.remove();
         done();
       });
@@ -119,13 +145,13 @@ describe('Toggler', function() {
       plugin._toggleAnimate();
     });
 
-    it('animates an visible element out', function(done) {
+    it('animates a visible element out', function(done) {
       $html = $('<div id="toggler" data-toggler data-animate="fade-in fade-out"></div>').appendTo('body');
+
       plugin = new Foundation.Toggler($html, {});
 
       $html.on('off.zf.toggler', function() {
         $('#toggler').should.be.hidden;
-        $('#toggler').should.have.attr('aria-expanded', 'false');
         done();
       });
 

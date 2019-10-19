@@ -1,32 +1,35 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { Plugin } from './foundation.core.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+
 
 /**
  * Interchange module.
  * @module foundation.interchange
  * @requires foundation.util.mediaQuery
- * @requires foundation.util.timerAndImageLoader
  */
 
-class Interchange {
+class Interchange extends Plugin {
   /**
    * Creates a new instance of Interchange.
    * @class
+   * @name Interchange
    * @fires Interchange#init
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Interchange.defaults, options);
+    this.options = $.extend({}, Interchange.defaults, this.$element.data(), options);
     this.rules = [];
     this.currentPath = '';
+    this.className = 'Interchange'; // ie9 back compat
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'Interchange');
   }
 
   /**
@@ -35,6 +38,15 @@ class Interchange {
    * @private
    */
   _init() {
+    MediaQuery._init();
+
+    var id = this.$element[0].id || GetYoDigits(6, 'interchange');
+    this.$element.attr({
+      'data-resize': id,
+      'id': id
+    });
+
+    this._parseOptions();
     this._addBreakpoints();
     this._generateRules();
     this._reflow();
@@ -46,9 +58,7 @@ class Interchange {
    * @private
    */
   _events() {
-    $(window).on('resize.zf.interchange', Foundation.util.throttle(() => {
-      this._reflow();
-    }, 50));
+    this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', () => this._reflow());
   }
 
   /**
@@ -75,14 +85,30 @@ class Interchange {
   }
 
   /**
+   * Check options valifity and set defaults for:
+   * - `data-interchange-type`: if set, enforce the type of replacement (auto, src, background or html)
+   * @function
+   * @private
+   */
+  _parseOptions() {
+    var types = ['auto', 'src', 'background', 'html'];
+    if (typeof this.options.type === 'undefined')
+      this.options.type = 'auto';
+    else if (types.indexOf(this.options.type) === -1) {
+      console.log(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
+      this.options.type = 'auto';
+    }
+  }
+
+  /**
    * Gets the Foundation breakpoints and adds them to the Interchange.SPECIAL_QUERIES object.
    * @function
    * @private
    */
   _addBreakpoints() {
-    for (var i in Foundation.MediaQuery.queries) {
-      if (Foundation.MediaQuery.queries.hasOwnProperty(i)) {
-        var query = Foundation.MediaQuery.queries[i];
+    for (var i in MediaQuery.queries) {
+      if (MediaQuery.queries.hasOwnProperty(i)) {
+        var query = MediaQuery.queries[i];
         Interchange.SPECIAL_QUERIES[query.name] = query.value;
       }
     }
@@ -105,8 +131,8 @@ class Interchange {
     else {
       rules = this.$element.data('interchange');
     }
-    
-    rules =  typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
+
+    rules =  typeof rules === 'string' ? rules.match(/\[.*?, .*?\]/g) : rules;
 
     for (var i in rules) {
       if(rules.hasOwnProperty(i)) {
@@ -137,28 +163,39 @@ class Interchange {
   replace(path) {
     if (this.currentPath === path) return;
 
-    var _this = this,
-        trigger = 'replaced.zf.interchange';
+    var trigger = 'replaced.zf.interchange';
+
+    var type = this.options.type;
+    if (type === 'auto') {
+      if (this.$element[0].nodeName === 'IMG')
+        type = 'src';
+      else if (path.match(/\.(gif|jpe?g|png|svg|tiff)([?#].*)?/i))
+        type = 'background';
+      else
+        type = 'html';
+    }
 
     // Replacing images
-    if (this.$element[0].nodeName === 'IMG') {
-      this.$element.attr('src', path).on('load', function() {
-        _this.currentPath = path;
-      })
-      .trigger(trigger);
+    if (type === 'src') {
+      this.$element.attr('src', path)
+        .on('load', () => { this.currentPath = path; })
+        .trigger(trigger);
     }
     // Replacing background images
-    else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
-      this.$element.css({ 'background-image': 'url('+path+')' })
-          .trigger(trigger);
+    else if (type === 'background') {
+      path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
+      this.$element
+        .css({ 'background-image': 'url(' + path + ')' })
+        .trigger(trigger);
     }
     // Replacing HTML
-    else {
-      $.get(path, function(response) {
-        _this.$element.html(response)
-             .trigger(trigger);
+    else if (type === 'html') {
+      $.get(path, (response) => {
+        this.$element
+          .html(response)
+          .trigger(trigger);
         $(response).foundation();
-        _this.currentPath = path;
+        this.currentPath = path;
       });
     }
 
@@ -173,8 +210,8 @@ class Interchange {
    * Destroys an instance of interchange.
    * @function
    */
-  destroy() {
-    //TODO this.
+  _destroy() {
+    this.$element.off('resizeme.zf.trigger')
   }
 }
 
@@ -188,7 +225,19 @@ Interchange.defaults = {
    * @type {?array}
    * @default null
    */
-  rules: null
+  rules: null,
+
+  /**
+   * Type of the responsive ressource to replace. It can take the following options:
+   * - `auto` (default): choose the type according to the element tag or the ressource extension,
+   * - `src`: replace the `[src]` attribute, recommended for images `<img>`.
+   * - `background`: replace the `background-image` CSS property.
+   * - `html`: replace the element content.
+   * @option
+   * @type {string}
+   * @default 'auto'
+   */
+  type: 'auto'
 };
 
 Interchange.SPECIAL_QUERIES = {
@@ -197,7 +246,4 @@ Interchange.SPECIAL_QUERIES = {
   'retina': 'only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)'
 };
 
-// Window exports
-Foundation.plugin(Interchange, 'Interchange');
-
-}(jQuery);
+export {Interchange};

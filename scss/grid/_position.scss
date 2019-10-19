@@ -8,14 +8,37 @@
 
 /// Reposition a column.
 ///
-/// @param {Number|Keyword} $position - Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left. Set to center to center the column.
+/// @param {Number|Keyword} $position - It can be:
+///   * A number: The column will move equal to the width of the column count
+///     specified. A positive number will push the column to the right, while
+///     a negative number will pull it to the left.
+///   * `center`: Column will be centered
+///   * `auto`: Column will be pushed to the left (or to the right for the last column).
 @mixin grid-column-position($position) {
-  @if type-of($position) == 'number' {
+  // Auto positioning
+  @if $position == auto {
+    &, &:last-child:not(:first-child) {
+      float: $global-left;
+      clear: none;
+    }
+
+    // Last column alignment
+    @if $grid-column-align-edge {
+      &:last-child:not(:first-child) {
+        float: $global-right;
+      }
+    }
+  }
+
+  // Push/pull
+  @else if type-of($position) == 'number' {
     $offset: percentage($position / $grid-column-count);
 
     position: relative;
     #{$global-left}: $offset;
   }
+
+  // Center positioning
   @else if $position == center {
     &, &:last-child:not(:first-child) {
       float: none;
@@ -24,15 +47,16 @@
     margin-right: auto;
     margin-left: auto;
   }
+
   @else {
-    @warn 'Wrong syntax for grid-column-position(). Enter a positive or negative number, or center.';
+    @warn 'Wrong syntax for grid-column-position(). Enter a positive or negative number, "center" or "auto".';
   }
 }
 
 /// Reset a position definition.
 @mixin grid-column-unposition {
+  @include grid-column-position(auto);
   position: static;
-  float: left;
   margin-right: 0;
   margin-left: 0;
 }

@@ -79,7 +79,7 @@ $header-styles: (
   @each $size, $headers in $header-sizes {
     $header-map: ();
     @each $header, $font-size in $headers {
-      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));  
+      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));
     }
     $header-styles: map-merge($header-styles, ($size: $header-map));
   }
@@ -115,29 +115,9 @@ $paragraph-margin-bottom: 1rem !default;
 /// @type String
 $paragraph-text-rendering: optimizeLegibility !default;
 
-/// Text color of code samples.
-/// @type Color
-$code-color: $black !default;
-
-/// Font family of code samples.
-/// @type String | List
-$code-font-family: $font-family-monospace !default;
-
-/// Font weight of text in code samples.
-/// @type String
-$code-font-weight: $global-weight-normal !default;
-
-/// Background color of code samples.
-/// @type Color
-$code-background: $light-gray !default;
-
-/// Border around code samples.
-/// @type List
-$code-border: 1px solid $medium-gray !default;
-
-/// Padding around text of code samples.
-/// @type Number | List
-$code-padding: rem-calc(2 5 1) !default;
+/// Use the `.code-inline` component as default for `<code>` elements.
+/// @type Boolean
+$enable-code-inline: true;
 
 /// Default color for links.
 /// @type Color
@@ -147,7 +127,7 @@ $anchor-color: $primary-color !default;
 /// @type Color
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%) !default;
 
-/// Default text deocration for links.
+/// Default text decoration for links.
 /// @type String
 $anchor-text-decoration: none !default;
 
@@ -215,17 +195,9 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 /// @type List
 $blockquote-border: 1px solid $medium-gray !default;
 
-/// Font size for `<cite>` elements.
-/// @type Number
-$cite-font-size: rem-calc(13) !default;
-
-/// Text color for `<cite>` elements.
-/// @type Color
-$cite-color: $dark-gray !default;
-
-/// Pseudo content for `<cite>` elements.
-/// @type String
-$cite-pseudo-content: '\2014 \0020' !default;
+/// Use the `.cite-block` component as default for `<cite>` elements.
+/// @type Boolean
+$enable-cite-block: true;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
@@ -306,12 +278,12 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Headings
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
     font-family: $header-font-family;
     font-style: $header-font-style;
     font-weight: $header-font-weight;
@@ -329,7 +301,7 @@ $abbr-underline: 1px dotted $black !default;
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
         $font-size-temp: 1rem;
-        #{$header} {
+        #{$header}, .#{$header} {
 
           @if map-has-key($header-defs, font-size) {
             $font-size-temp: rem-calc(map-get($header-defs, font-size));
@@ -457,39 +429,32 @@ $abbr-underline: 1px dotted $black !default;
     }
   }
 
-  // Citations
-  cite {
-    display: block;
-    font-size: $cite-font-size;
-    color: $cite-color;
-
-    &:before {
-      content: $cite-pseudo-content;
+  // Inline Citations
+  @if ($enable-cite-block == true) {
+    cite {
+      // Extending a class is not recommended.
+      // TODO: Break the typography-base/typography-helpers separation
+      @extend .cite-block;
     }
   }
 
   // Abbreviations
-  abbr {
+  abbr, abbr[title] {
     border-bottom: $abbr-underline;
-    color: $body-font-color;
     cursor: help;
+    text-decoration: none;
   }
 
   // Figures
   figure {
     margin: 0;
   }
-  
+
   // Code
-  code {
-    padding: $code-padding;
-
-    border: $code-border;
-    background-color: $code-background;
-
-    font-family: $code-font-family;
-    font-weight: $code-font-weight;
-    color: $code-color;
+  @if ($enable-code-inline == true) {
+    code {
+      @extend .code-inline;
+    }
   }
 
   // Keystrokes

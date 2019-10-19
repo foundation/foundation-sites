@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var opener = require('opener');
 var browser = require('browser-sync');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
@@ -9,9 +8,11 @@ var rimraf = require('rimraf').sync;
 var CONFIG = require('../config.js');
 
 // Runs unit tests
-gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() {
+gulp.task('test', gulp.series('sass:foundation', 'test:transpile-js', gulp.parallel('watch', 'test:watch')));
+
+gulp.task('test:watch', function () {
   browser.init({
-    server: { 
+    server: {
       baseDir: 'test/visual',
       directory: true,
       routes: {
@@ -20,7 +21,7 @@ gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() 
       }
     }
   });
-  gulp.watch(['test/visual/**/*'], ['test:reload']);
+  gulp.watch(['test/visual/**/*'], gulp.series('test:reload'));
 });
 
 gulp.task('test:reload', function(done) {
@@ -28,12 +29,12 @@ gulp.task('test:reload', function(done) {
   done();
 });
 
-gulp.task('test:transpile-js', ['javascript:foundation', 'javascript:deps'], function() {
+gulp.task('test:transpile-js', gulp.series('javascript:foundation', 'javascript:deps', function () {
   rimraf('test/javascript/js-tests.js');
-  
+
   return gulp.src(CONFIG.TEST_JS_FILES)
-  	.pipe(babel()
-  		.on('error', onBabelError))
-  	.pipe(concat('js-tests.js'))
-  	.pipe(gulp.dest('test/javascript'));
-});
+    .pipe(babel()
+      .on('error', onBabelError))
+    .pipe(concat('js-tests.js'))
+    .pipe(gulp.dest('test/javascript'))
+}));

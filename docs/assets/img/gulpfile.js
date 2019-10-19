@@ -1,12 +1,11 @@
 var $      = require('gulp-load-plugins')();
-var argv   = require('yargs').argv;
 var gulp   = require('gulp');
 var rimraf = require('rimraf');
 var panini = require('panini');
 var sequence = require('run-sequence');
 
 // Check for --production flag
-var isProduction = !!(argv.production);
+var isProduction = process.argv.includes('--production');
 
 // File paths to various assets are defined here.
 var paths = {
@@ -18,14 +17,14 @@ var paths = {
     'src/downloads/**/*.*'
   ],
   sass: [
-    'bower_components/foundation-sites/scss'
+    'node_modules/foundation-sites/scss'
   ],
   javascript: [
     'node_modules/jquery/dist/jquery.js',
-    'bower_components/foundation-sites/dist/foundation.js',
-    'bower_components/what-input/what-input.js',
+    'node_modules/foundation-sites/dist/foundation.js',
+    'node_modules/what-input/what-input.js',
     'src/assets/js/**/*.js',
-    'bower_components/lodash/lodash.js',
+    'node_modules/lodash/lodash.js',
     'src/assets/js/app.js'
   ]
 };
@@ -83,9 +82,7 @@ gulp.task('sass', function() {
       outputStyle: isProduction ? 'compressed' : 'nested'
     })
       .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
-    }))
+    .pipe($.autoprefixer()) // uses ".browserslistrc"
     // .pipe(uncss)
     .pipe(gulp.dest('./dist/assets/css'));
 });
@@ -161,7 +158,7 @@ gulp.task('default', ['build', 'server'], function() {
   gulp.watch(['./src/{layouts,partials}/**/*.html'], ['pages:reset']);
   gulp.watch(['./src/assets/scss/**/*.scss'], ['sass']);
   gulp.watch(['./src/assets/js/**/*.js'], ['javascript']);
-  gulp.watch(['bower_components/foundation-sites/dist/foundation.js'], ['javascript']);
+  gulp.watch(['node_modules/foundation-sites/dist/foundation.js'], ['javascript']);
   gulp.watch(['./src/assets/img/**/*'], ['images']);
   gulp.watch(['./src/templates/**/*'], ['jst']);
 });

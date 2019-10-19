@@ -17,48 +17,32 @@ $(function() {
   $('[data-docs-version]').text('v' + Foundation.version);
 });
 
+var ACCORDION_KEY = 'docs-accordion-expandall';
+var expandAccordion = function($a) {
+  $a.parent('.accordion').find('.accordion-item, .accordion-content').addClass('is-active');
+  $a.text('Collapse');
+  $a.data('expandAll', false);
+  if(localStorage) { localStorage.setItem(ACCORDION_KEY, 'true'); }
+};
 
-// COUNTDOWN TIMER for Events banner
-// function getTimeRemaining(endtime){
-//  var t = Date.parse(endtime) - Date.parse(new Date());
-//  var minutes = Math.floor( (t/1000/60) % 60 );
-//  var days = Math.floor( (t/(1000*60*60)/24) );
-//  var hours = Math.floor( (t/(1000*60*60)) % 24 );
-//  var seconds = Math.floor( (t/1000) % 60 );
-//
-//  return {
-//    'total': t,
-//    'hours': hours,
-//    'days': days,
-//    'minutes': minutes,
-//    'seconds': seconds
-//  };
-// }
-//
-// function initializeClock(id, endtime){
-//  var clock = document.getElementById(id);
-//  var daysSpan = clock.querySelector('.days');
-//  var hoursSpan = clock.querySelector('.hours');
-//  var minutesSpan = clock.querySelector('.minutes');
-//  var secondsSpan = clock.querySelector('.seconds');
-//
-//  function updateClock(){
-//    var t = getTimeRemaining(endtime);
-//
-//    daysSpan.innerHTML = ('0' + t.days).slice(-2);
-//    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-//    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-//    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-//
-//    if(t.total<=0){
-//      clearInterval(timeinterval);
-//    }
-//  }
-//
-//  updateClock();
-//  var timeinterval = setInterval(updateClock,1000);
-// }
-//
-// var deadline = 'Thurs, 25 Aug 2016 8:00:00 PDT';
-// initializeClock('clockdiv', deadline);
-// COUNTDOWN TIMER END
+var contractAccordion = function($a) {
+  $a.parent('.accordion').find('.accordion-item, .accordion-content').removeClass('is-active');
+  $a.text('Expand');
+  $a.data('expandAll', true);
+  if(localStorage) { localStorage.setItem(ACCORDION_KEY, 'false'); }
+};
+
+$('[data-expand-all]').on('click', function() {
+  var $a = $(this);
+  if ($a.data().expandAll === true) {
+    expandAccordion($a);
+  } else {
+    contractAccordion($a);
+  }
+});
+
+if(localStorage.getItem(ACCORDION_KEY) === 'true') {
+  expandAccordion($('[data-expand-all]'));
+} else {
+  $('[data-expand-all]').text('Expand');
+}

@@ -2,11 +2,20 @@
 title: Badge
 description: The badge is a basic component that displays a number. It's useful for calling out a number of unread items.
 sass: scss/components/_badge.scss
+video: '_S_OO9NiWQ8'
 ---
 
 ## Basics
 
 Add the `.badge` class to an element to create a badge. In the below example, we're using `<span>`, but any tag will work fine.
+
+<p>
+  <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmrPOM?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <span class="badge">1</span>
@@ -33,6 +42,14 @@ Finally, the content itself might need more context for users that use screen re
 
 Add color classes to give badges additional meaning.
 
+<p>
+  <a class="" data-open-video="2:05"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmXxWm?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <span class="badge primary">1</span>
 <span class="badge secondary">2</span>
@@ -54,7 +71,7 @@ $badge-palette: map-remove($foundation-palette, (
     primary,
     secondary
 )) !default;
-```  
+```
 
 Or you can add more colors to the default palette.
 
@@ -81,14 +98,22 @@ $badge-palette: (
 The text color for each badge class is determined by either `$badge-color` or `$badge-color-alt`, whichever settings variable has more contrast.
 
 <div class="primary callout">
-  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all badges the same color text, set `$badge-color` and `$badge-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](https://webaim.org/resources/contrastchecker/) when changing color variables. To give all badges the same color text, set `$badge-color` and `$badge-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
 </div>
 
 ---
 
 ## Icons
 
-An icon can be used in place of text. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
+An icon can be used in place of text. We're using the [Foundation icon font](https://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
+
+<p>
+  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKJXa?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <span class="badge secondary"><i class="fi-share"></i></span>

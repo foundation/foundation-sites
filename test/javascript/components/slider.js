@@ -153,4 +153,145 @@ describe('Slider', function() {
     });
   });
 
+  describe('_value()', function() {
+    it('handles positive values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 0,
+        end: 10,
+        start: 0,
+        vertical: true
+      });
+
+      plugin._value(0.5237916657475017).should.equal(4.762083342524983);
+      plugin._value(0.009882861617877391).should.equal(9.901171383821225);
+      plugin._value(0.9840506496657916).should.equal(0.1594935033420839);
+      plugin._value(0.7327435970969094).should.equal(2.672564029030906);
+      plugin._value(0.2569544020648122).should.equal(7.430455979351878);
+    });
+
+    it('handles negative values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 0,
+        end: 5,
+        start: -5,
+        vertical: true
+      });
+
+      plugin._value(0.8372195627716132).should.equal(-3.372195627716133);
+      plugin._value(0.012706536365842359).should.equal(4.872934636341577);
+      plugin._value(0.9925216739096865).should.equal(-4.925216739096864);
+      plugin._value(0.8202775142838235).should.equal(-3.2027751428382345);
+      plugin._value(0.2103637687233902).should.equal(2.8963623127660982);
+    });
+  });
+
+  describe('adjustValue()', function() {
+    it('handles positive values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin._adjustValue(null, 1).should.equal(1);
+      plugin._adjustValue(null, 2).should.equal(2);
+      plugin._adjustValue(null, 1.2).should.equal(1);
+      plugin._adjustValue(null, 1.9).should.equal(2);
+      plugin._adjustValue(null, 1.5).should.equal(2);
+    });
+
+    it('handles negative values', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin._adjustValue(null, -1).should.equal(-1);
+      plugin._adjustValue(null, -2).should.equal(-2);
+      plugin._adjustValue(null, -1.2).should.equal(-1);
+      plugin._adjustValue(null, -1.9).should.equal(-2);
+      plugin._adjustValue(null, -1.5).should.equal(-1);
+    });
+  });
+
+  describe('keyboard events', function() {
+    it('sets value to minimum using HOME', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('HOME'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', plugin.$handle.attr('aria-valuemin'));
+    });
+    it('increases value by step size on ARROW_RIGHT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 + 1).toString());
+    });
+    it('increases value by step size on ARROW_UP', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_UP'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 + 1).toString());
+    });
+    it('decreases value by step size on ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 - 1).toString());
+    });
+    it('decreases value by step size on ARROW_DOWN', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 - 1).toString());
+    });
+    it('decreases value by step size times 10 on SHIFT_ARROW_RIGHT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT', {shift: true}));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 + 1 * 10).toString());
+    });
+    it('decreases value by step size times 10 on SHIFT_ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {
+        initialStart: 10,
+        step: 1
+      });
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT', {shift: true}));
+
+      plugin.$handle.should.have.attr('aria-valuenow', (10 - 1 * 10).toString());
+    });
+  });
 });

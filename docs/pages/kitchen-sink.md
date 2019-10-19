@@ -5,13 +5,22 @@ description: Everything but.
 
 ## Abide
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmoKbK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <form data-abide novalidate>
-  <div data-abide-error class="alert callout" style="display: none;">
-    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+  <div class="grid-x grid-margin-x">
+    <div class="cell">
+      <div data-abide-error class="alert callout" style="display: none;">
+        <p><i class="fi-alert"></i> There are some errors in your form.</p>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="small-12 columns">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-12">
       <label>Number Required
         <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
         <span class="form-error">
@@ -20,13 +29,13 @@ description: Everything but.
       </label>
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
     </div>
-    <div class="small-12 columns">
+    <div class="cell small-12">
       <label>Nothing Required!
         <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
       </label>
       <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
-    <div class="small-12 columns">
+    <div class="cell small-12">
       <label>Password Required
         <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
         <span class="form-error">
@@ -35,7 +44,7 @@ description: Everything but.
       </label>
       <p class="help-text" id="exampleHelpText">Enter a password please.</p>
     </div>
-    <div class="small-12 columns">
+    <div class="cell small-12">
       <label>Re-enter Password
         <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
         <span class="form-error">
@@ -45,13 +54,13 @@ description: Everything but.
       <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
     </div>
   </div>
-  <div class="row">
-    <div class="medium-6 columns">
+  <div class="grid-x grid-margin-x">
+    <div class="cell medium-6">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+        <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
       </label>
     </div>
-    <div class="medium-6 columns">
+    <div class="cell medium-6">
       <label>European Cars, Choose One, it can't be the blank option.
         <select id="select" required>
           <option value=""></option>
@@ -63,31 +72,31 @@ description: Everything but.
       </label>
     </div>
   </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
+  <div class="grid-x grid-margin-x">
+    <fieldset class="cell medium-6">
       <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
       <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
       <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
       <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="cell medium-6">
       <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
       <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
       <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
       <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="cell medium-6">
       <legend>Check these out</legend>
       <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
       <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
       <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
     </fieldset>
   </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
+  <div class="grid-x grid-margin-x">
+    <fieldset class="cell medium-6">
       <button class="button" type="submit" value="Submit">Submit</button>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="cell medium-6">
       <button class="button" type="reset" value="Reset">Reset</button>
     </fieldset>
   </div>
@@ -98,38 +107,46 @@ description: Everything but.
 
 ## Accordion
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<ul class="accordion" data-accordion role="tablist">
-  <li class="accordion-item is-active">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 1. Lorem ipsum dolor
+<ul class="accordion" data-accordion>
+  <li class="accordion-item is-active" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content >
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
-  <li class="accordion-item">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 2. Lorem ipsum dolor
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 2</a>
+    <div class="accordion-content" data-tab-content>
+      <textarea></textarea>
+      <button class="button">I do nothing!</button>
     </div>
   </li>
-  <li class="accordion-item">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 3. Lorem ipsum dolor
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 3</a>
+    <div class="accordion-content" data-tab-content>
+      Type your name!
+      <input type="text"></input>
     </div>
   </li>
 </ul>
 ```
 
+
 ---
 
 ## Accordion Menu
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XREPVK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="vertical menu" data-accordion-menu>
@@ -163,7 +180,13 @@ description: Everything but.
 
 ## Badge
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNvKZj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
+<span class="primary badge">1</span>
 <span class="secondary badge">2</span>
 <span class="success badge">3</span>
 <span class="alert badge">A</span>
@@ -173,6 +196,11 @@ description: Everything but.
 ---
 
 ## Breadcrumbs
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGeMx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <nav aria-label="You are here:" role="navigation">
@@ -190,6 +218,11 @@ description: Everything but.
 ---
 
 ## Button
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybjagd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <!-- Anchors (links) -->
@@ -216,9 +249,20 @@ description: Everything but.
 
 ## Callout
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRqjxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="callout">
   <h5>This is a callout.</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  <a href="#0">It's dangerous to go alone, take this.</a>
+</div>
+
+<div class="callout primary">
+  <h5>This is a primary callout.</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
@@ -252,18 +296,28 @@ description: Everything but.
 
 ## Close Button
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWepJz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="callout">
-  <button class="close-button" aria-label="Close alert" type="button">
+<div class="callout" data-closable>
+  <button class="close-button" aria-label="Close alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
-  <p>This is a static close button example.</p>
+  <p>This is a close button example.</p>
 </div>
 ```
 
 ---
 
 ## Drilldown Menu
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLrZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="vertical menu" data-drilldown style="width: 200px" id="m1">
@@ -314,6 +368,11 @@ description: Everything but.
 
 ## Dropdown Menu
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxVPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="dropdown menu" data-dropdown-menu>
   <li>
@@ -322,19 +381,19 @@ description: Everything but.
       <li><a href="#0">Item 1A Loooong</a></li>
       <li>
         <a href='#0'> Item 1 sub</a>
-        <ul class='menu'>
+        <ul class="menu">
           <li><a href='#0'>Item 1 subA</a></li>
           <li><a href='#0'>Item 1 subB</a></li>
           <li>
             <a href='#0'> Item 1 sub</a>
-            <ul class='menu'>
+            <ul class="menu">
               <li><a href='#0'>Item 1 subA</a></li>
               <li><a href='#0'>Item 1 subB</a></li>
             </ul>
           </li>
           <li>
             <a href='#0'> Item 1 sub</a>
-            <ul class='menu'>
+            <ul class="menu">
               <li><a href='#0'>Item 1 subA</a></li>
             </ul>
           </li>
@@ -359,6 +418,11 @@ description: Everything but.
 
 ## Dropdown Pane
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/QvrGGj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <button class="button" type="button" data-toggle="example-dropdown">Toggle Dropdown</button>
 <div class="dropdown-pane" id="example-dropdown" data-dropdown>
@@ -370,19 +434,24 @@ description: Everything but.
 
 ## Equalizer
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLBEa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-  <div class="medium-4 columns">
+<div class="grid-x grid-margin-x" data-equalizer data-equalize-on="medium" id="test-eq">
+  <div class="cell medium-4">
     <div class="callout" data-equalizer-watch>
       <img src= "assets/img/generic/square-1.jpg">
     </div>
   </div>
-  <div class="medium-4 columns">
+  <div class="cell medium-4">
     <div class="callout" data-equalizer-watch>
       <p>Pellentesque habitant morbi tristique senectus et netus et, ante.</p>
     </div>
   </div>
-  <div class="medium-4 columns">
+  <div class="cell medium-4">
     <div class="callout" data-equalizer-watch>
       <img src= "assets/img/generic/rectangle-1.jpg">
     </div>
@@ -393,6 +462,11 @@ description: Everything but.
 ---
 
 ## Flex Grid
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row">
@@ -418,15 +492,25 @@ description: Everything but.
 
 ## Responsive Embed
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEbb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="responsive-embed">
-  <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
 
 ---
 
 ## Float Classes
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjEPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="callout clearfix">
@@ -438,6 +522,11 @@ description: Everything but.
 ---
 
 ## Forms
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxGGr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <form>
@@ -461,32 +550,34 @@ description: Everything but.
       <option value="apollo">Apollo</option>
     </select>
   </label>
-  <div class="row">
-    <fieldset class="large-6 columns">
+  <div class="grid-x grid-margin-x">
+    <fieldset class="cell large-6">
       <legend>Choose Your Favorite</legend>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed" required><label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
-      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
+      <input type="radio" name="pokemon" value="Red" id="formRed" required><label for="formRed">Red</label>
+      <input type="radio" name="pokemon" value="Blue" id="formBlue"><label for="formBlue">Blue</label>
+      <input type="radio" name="pokemon" value="Yellow" id="formYellow"><label for="formYellow">Yellow</label>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="cell large-6">
       <legend>Check these out</legend>
-      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+      <input id="formCheckbox1" type="checkbox"><label for="formCheckbox1">Checkbox 1</label>
+      <input id="formCheckbox2" type="checkbox"><label for="formCheckbox2">Checkbox 2</label>
+      <input id="formCheckbox3" type="checkbox"><label for="formCheckbox3">Checkbox 3</label>
     </fieldset>
   </div>
-  <div class="row">
-    <div class="small-3 columns">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-3">
       <label for="middle-label" class="text-right middle">Label</label>
     </div>
-    <div class="small-9 columns">
+    <div class="cell small-9">
       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
     </div>
   </div>
   <div class="input-group">
     <span class="input-group-label">$</span>
     <input class="input-group-field" type="url">
-    <a class="input-group-button button">Submit</a>
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
   </div>
 </form>
 ```
@@ -494,6 +585,11 @@ description: Everything but.
 ---
 
 ## Grid
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rmvEBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row">
@@ -549,6 +645,11 @@ description: Everything but.
 
 ## Interchange
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjXYj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
 ```
@@ -557,7 +658,13 @@ description: Everything but.
 
 ## Label
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbxMXq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
+<span class="primary label">Primary Label</span>
 <span class="secondary label">Secondary Label</span>
 <span class="success label">Success Label</span>
 <span class="alert label">Alert Label</span>
@@ -567,6 +674,11 @@ description: Everything but.
 ---
 
 ## Magellan
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <ul class="horizontal menu" data-magellan>
@@ -584,7 +696,7 @@ description: Everything but.
     <p>Sed vulputate, felis interdum molestie viverra, neque urna placerat dui, ac efficitur est magna eu tellus. Nunc sodales consequat eros at bibendum. Vestibulum hendrerit gravida elit non eleifend. Nunc at vehicula ipsum. Vestibulum eu suscipit felis. Proin ipsum felis, consequat congue quam ac, efficitur tincidunt ex. Morbi accumsan sem iaculis nunc malesuada tincidunt.</p>
   </section>
   <section id="third" data-magellan-target="third">
-    <h4>Second section</h4>
+    <h4>Third section</h4>
     <p>Aliquam orci orci, maximus a pulvinar id, tincidunt a neque. Suspendisse eros diam, finibus et faucibus ac, suscipit feugiat orci. Morbi scelerisque sem id blandit malesuada. Donec suscipit tincidunt dolor in blandit. Nam rhoncus risus vitae lacinia dictum. Cras lobortis, nulla non faucibus mattis, tellus nibh condimentum eros, posuere volutpat arcu risus vel ante. In ut ullamcorper eros, et vestibulum risus. Fusce auctor risus vitae diam viverra tincidunt.</p>
   </section>
 </div>
@@ -600,10 +712,15 @@ description: Everything but.
 
 ## Media Object
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NjMaEr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/200/200/people">
+    <img src= "https://placeimg.com/200/200/people">
   </div>
   <div class="media-object-section">
     <h4>Dreams feel real while we're in them.</h4>
@@ -616,15 +733,13 @@ description: Everything but.
 
 ## Menu
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWMMzZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="menu">
-  <li><a href="#0">One</a></li>
-  <li><a href="#0">Two</a></li>
-  <li><a href="#0">Three</a></li>
-  <li><a href="#0">Four</a></li>
-</ul>
-
-<ul class="menu icon-top">
   <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
   <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
   <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
@@ -636,7 +751,13 @@ description: Everything but.
 
 ## Off-canvas
 
-```
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWdrLR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<!-- Set up Off-canvas -->
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
@@ -652,9 +773,8 @@ description: Everything but.
     </div>
   </div>
 </body>
-```
 
-```html_example
+<!-- Fire Off-canvas -->
 <button type="button" class="button" data-toggle="offCanvasLeft">Open Menu</button>
 ```
 
@@ -662,52 +782,57 @@ description: Everything but.
 
 ## Orbit
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjjgN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+<div class="orbit" role="region" aria-label="Favorite Text Ever" data-orbit>
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
     <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
     <li class="is-active orbit-slide">
-      <div>
-        <h3 class="text-center">You can also throw some text in here!</h3>
-        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
-        <h3 class="text-center">This Orbit slide has chill</h3>
+      <div class="docs-example-orbit-slide">
+        <p><strong>This is dodgerblue.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </li>
     <li class="orbit-slide">
-      <div>
-        <h3 class="text-center">You can also throw some text in here!</h3>
-        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
-        <h3 class="text-center">This Orbit slide has chill</h3>
+      <div class="docs-example-orbit-slide">
+        <p><strong>This is rebeccapurple.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </li>
     <li class="orbit-slide">
-      <div>
-        <h3 class="text-center">You can also throw some text in here!</h3>
-        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
-        <h3 class="text-center">This Orbit slide has chill</h3>
+      <div class="docs-example-orbit-slide">
+        <p><strong>This is darkgoldenrod.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </li>
     <li class="orbit-slide">
-      <div>
-        <h3 class="text-center">You can also throw some text in here!</h3>
-        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
-        <h3 class="text-center">This Orbit slide has chill</h3>
+      <div class="docs-example-orbit-slide">
+        <p><strong>This is lightseagreen.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </li>
   </ul>
   <nav class="orbit-bullets">
-   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
- </nav>
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+    </button>
+    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+  </nav>
 </div>
 ```
 
 ---
 
 ## Pagination
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="pagination" role="navigation" aria-label="Pagination">
@@ -727,8 +852,13 @@ description: Everything but.
 
 ## Progress Bar
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLvvB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="success progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+<div class="primary progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <div class="progress-meter" style="width: 25%">
     <p class="progress-meter-text">25%</p>
   </div>
@@ -745,23 +875,40 @@ description: Everything but.
     <p class="progress-meter-text">75%</p>
   </div>
 </div>
+
+<div class="success progress" role="progressbar" tabindex="0" aria-valuenow="100" aria-valuemin="0" aria-valuetext="100 percent" aria-valuemax="100">
+  <div class="progress-meter" style="width: 100%">
+    <p class="progress-meter-text">100%</p>
+  </div>
+</div>
 ```
 
 ---
 
 ## Responsive Menu
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="vertical medium-horizontal menu">
-  <li><a href="#0">Item 1</a></li>
-  <li><a href="#0">Item 2</a></li>
-  <li><a href="#0">Item 3</a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
 ---
 
 ## Responsive Toggle
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
@@ -798,6 +945,11 @@ description: Everything but.
 
 ## Reveal
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/RVyBPw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p><a data-open="exampleModal1">Click me for a modal</a></p>
 
@@ -815,20 +967,25 @@ description: Everything but.
 
 ## Slider
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjJVm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="slider" data-slider data-initial-start='50' data-end='200'>
+<div class="slider" data-slider data-initial-start="50" data-end="200">
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 
-<div class="slider vertical" data-slider data-initial-start='25' data-end='200' data-vertical="true">
+<div class="slider vertical" data-slider data-initial-start="25" data-end="200" data-vertical="true">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 
-<div class="slider" data-slider data-initial-start='25' data-initial-end='75'>
+<div class="slider" data-slider data-initial-start="25" data-initial-end="75">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
@@ -841,27 +998,30 @@ description: Everything but.
 
 ## Sticky
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKodJR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
-  <div class="columns small-12">
-    <div class="columns small-6" id="example1" data-something>
-      <p id="doodle">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </div>
-    <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor="example1">
-        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
-      </div>
+  <div class="columns small-6" id="example1" data-something>
+    <p id="doodle">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+  <div class="columns small-6 right" data-sticky-container>
+    <div class="sticky" data-sticky data-margin-top="6" data-anchor="example1">
+      <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     </div>
   </div>
 </div>
@@ -870,6 +1030,11 @@ description: Everything but.
 ---
 
 ## Switch
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWejpx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="switch tiny">
@@ -897,6 +1062,11 @@ description: Everything but.
 ---
 
 ## Table
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrjQx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <table>
@@ -935,6 +1105,11 @@ description: Everything but.
 
 ## Tabs
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYygE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
@@ -947,27 +1122,27 @@ description: Everything but.
 
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
-    <p>one</p>
+    <p>One</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>two</p>
+    <p>Two</p>
     <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
   </div>
   <div class="tabs-panel" id="panel3">
-    <p>three</p>
+    <p>Three</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel4">
-    <p>four</p>
+    <p>Four</p>
     <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
   </div>
   <div class="tabs-panel" id="panel5">
-    <p>five</p>
+    <p>Five</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel6">
-    <p>six</p>
+    <p>Six</p>
     <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
   </div>
 </div>
@@ -977,15 +1152,20 @@ description: Everything but.
 
 ## Thumbnail
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EmLexY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="row">
-  <div class="small-4 columns">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-4">
     <img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" src="assets/img/thumbnail/02.jpg" alt="Photo of Neptune.">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
   </div>
 </div>
@@ -994,6 +1174,11 @@ description: Everything but.
 ---
 
 ## Title Bar
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYMZZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="title-bar">
@@ -1011,14 +1196,19 @@ description: Everything but.
 
 ## Toggler
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymJLb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p><a data-toggle="menuBar">Expand!</a></p>
 
 <ul class="menu" id="menuBar" data-toggler=".expanded">
-  <li><a href="#0">One</a></li>
-  <li><a href="#0">Two</a></li>
-  <li><a href="#0">Three</a></li>
-  <li><a href="#0">Four</a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
@@ -1026,13 +1216,23 @@ description: Everything but.
 
 ## Tooltip
 
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/pPVOdm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<p>The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>
+<p>The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>
 ```
 
 ---
 
 ## Top Bar
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrwKP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="top-bar">
@@ -1063,6 +1263,11 @@ description: Everything but.
 ---
 
 ## Visibility Classes
+
+
+<div class="docs-codepen-container" data-ks-codepen>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmjqVG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p>You are on a small screen or larger.</p>

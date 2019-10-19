@@ -59,6 +59,7 @@ describe('Tooltip', function() {
       plugin = new Foundation.Tooltip($html, {});
 
       plugin.$element.should.have.attr('aria-describedby', plugin.template.attr('id'));
+      plugin.template.should.have.attr('aria-hidden', 'true');
       plugin.template.should.have.attr('role', 'tooltip');
     });
 
@@ -81,6 +82,7 @@ describe('Tooltip', function() {
       plugin.show();
 
       plugin.template.should.be.visible;
+      plugin.template.should.have.attr('aria-hidden', 'false');
     });
 
     it('fires show.zf.tooltip event', function(done) {
@@ -107,6 +109,7 @@ describe('Tooltip', function() {
       plugin.hide();
 
       plugin.template.should.be.hidden;
+      plugin.template.should.have.attr('aria-hidden', 'true');
     });
 
     it('fires hide.zf.tooltip event', function(done) {
@@ -132,6 +135,7 @@ describe('Tooltip', function() {
 
       plugin.toggle();
       plugin.template.should.be.visible;
+      plugin.template.should.have.attr('aria-hidden', 'false');
     });
     it('hides a visible tooltip', function() {
       $html = $(template).appendTo('body');
@@ -142,6 +146,7 @@ describe('Tooltip', function() {
 
       plugin.toggle();
       plugin.template.should.be.hidden;
+      plugin.template.should.have.attr('aria-hidden', 'true');
     });
   });
 

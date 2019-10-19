@@ -1,6 +1,7 @@
 ---
 title: Close Button
 description: The humble close button can be used anywhere you need something to go away on click.
+video: '0cvJbo7ItpU'
 sass: scss/components/_close-button.scss
 ---
 
@@ -8,9 +9,17 @@ A close button is a `<button>` element with the class `.close-button`. We use th
 
 The button is also labeled with `aria-label` to clarify what the button's purpose is.
 
+<p>
+  <a class="" data-open-video="1:07"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ncoden/pen/vVrrjG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="callout">
-  <button class="close-button" aria-label="Close alert" type="button">
+<div class="callout" data-closable>
+  <button class="close-button" aria-label="Close alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
   <p>Look at this close button!</p>
@@ -30,6 +39,12 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
 </div>
 
 The below example pairs the callout with the close button component and `data-closable` attribute to create a dismissible alert box.
+
+<a class="" data-open-video="4:24"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNvEox?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="callout" data-closable>

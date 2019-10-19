@@ -70,7 +70,7 @@
       else {
           // fix for IE. See https://css-tricks.com/snippets/jquery/fixing-load-in-ie-for-cached-images/
           var src = $(this).attr('src');
-          $(this).attr('src', src + '?' + new Date().getTime());
+          $(this).attr('src', src + (src.indexOf('?') >= 0 ? '&' : '?') + new Date().getTime());
           $(this).one('load', function () {
             singleImageLoaded();
           });

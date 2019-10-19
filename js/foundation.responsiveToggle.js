@@ -1,29 +1,34 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { Motion } from './foundation.util.motion';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * ResponsiveToggle module.
  * @module foundation.responsiveToggle
  * @requires foundation.util.mediaQuery
+ * @requires foundation.util.motion
  */
 
-class ResponsiveToggle {
+class ResponsiveToggle extends Plugin {
   /**
    * Creates a new instance of Tab Bar.
    * @class
+   * @name ResponsiveToggle
    * @fires ResponsiveToggle#init
    * @param {jQuery} element - jQuery object to attach tab bar functionality to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = $(element);
     this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+    this.className = 'ResponsiveToggle'; // ie9 back compat
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'ResponsiveToggle');
   }
 
   /**
@@ -32,6 +37,7 @@ class ResponsiveToggle {
    * @private
    */
   _init() {
+    MediaQuery._init();
     var targetID = this.$element.data('responsive-toggle');
     if (!targetID) {
       console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
@@ -77,7 +83,7 @@ class ResponsiveToggle {
    */
   _update() {
     // Mobile
-    if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
+    if (!MediaQuery.atLeast(this.options.hideFor)) {
       this.$element.show();
       this.$targetMenu.hide();
     }
@@ -95,20 +101,20 @@ class ResponsiveToggle {
    * @fires ResponsiveToggle#toggled
    */
   toggleMenu() {
-    if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
+    if (!MediaQuery.atLeast(this.options.hideFor)) {
       /**
        * Fires when the element attached to the tab bar toggles.
        * @event ResponsiveToggle#toggled
        */
       if(this.options.animate) {
         if (this.$targetMenu.is(':hidden')) {
-          Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, () => {
+          Motion.animateIn(this.$targetMenu, this.animationIn, () => {
             this.$element.trigger('toggled.zf.responsiveToggle');
             this.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
           });
         }
         else {
-          Foundation.Motion.animateOut(this.$targetMenu, this.animationOut, () => {
+          Motion.animateOut(this.$targetMenu, this.animationOut, () => {
             this.$element.trigger('toggled.zf.responsiveToggle');
           });
         }
@@ -121,13 +127,11 @@ class ResponsiveToggle {
     }
   };
 
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.responsiveToggle');
     this.$toggler.off('.zf.responsiveToggle');
 
     $(window).off('changed.zf.mediaquery', this._updateMqHandler);
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -149,7 +153,4 @@ ResponsiveToggle.defaults = {
   animate: false
 };
 
-// Window exports
-Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
-
-}(jQuery);
+export { ResponsiveToggle };

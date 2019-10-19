@@ -27,6 +27,7 @@ describe('Accordion', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -37,6 +38,13 @@ describe('Accordion', function() {
 
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
+    });
+
+    it('applies role="presentation" to the list item to conform with WAI', function () {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Accordion($html, {allowAllClosed: true});
+
+      $html.find('.accordion-item').eq(0).should.have.attr('role', 'presentation');
     });
   });
 
@@ -137,6 +145,53 @@ describe('Accordion', function() {
       plugin.toggle($html.find('.accordion-content').eq(0));
       $html.find('.accordion-content').eq(0).should.be.visible;
       $html.find('.accordion-content').eq(0).should.have.attr('aria-hidden', 'false');
+    });
+  });
+
+  describe('keyboard events', function() {
+    it('opens next panel on ARROW_DOWN', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Accordion($html, {});
+
+      $html.find('.accordion-title').eq(0).focus()
+        .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+
+      $html.find('.accordion-content').eq(1).should.be.visible;
+      $html.find('.accordion-content').eq(1).should.have.attr('aria-hidden', 'false');
+      // Check if focus was moved
+      $html.find('.accordion-title').eq(1)[0].should.be.equal(document.activeElement);
+    });
+    it('opens previous panel on ARROW_UP', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Accordion($html, {});
+
+      $html.find('.accordion-title').eq(2).focus()
+        .trigger(window.mockKeyboardEvent('ARROW_UP'));
+
+      $html.find('.accordion-content').eq(1).should.be.visible;
+      $html.find('.accordion-content').eq(1).should.have.attr('aria-hidden', 'false');
+      // Check if focus was moved
+      $html.find('.accordion-title').eq(1)[0].should.be.equal(document.activeElement);
+    });
+    it('opens related panel on ENTER', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Accordion($html, {});
+
+      $html.find('.accordion-title').eq(1).focus()
+        .trigger(window.mockKeyboardEvent('ENTER'));
+
+      $html.find('.accordion-content').eq(1).should.be.visible;
+      $html.find('.accordion-content').eq(1).should.have.attr('aria-hidden', 'false');
+    });
+    it('opens related panel on SPACE', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Accordion($html, {});
+
+      $html.find('.accordion-title').eq(1).focus()
+        .trigger(window.mockKeyboardEvent('SPACE'));
+
+      $html.find('.accordion-content').eq(1).should.be.visible;
+      $html.find('.accordion-content').eq(1).should.have.attr('aria-hidden', 'false');
     });
   });
 });

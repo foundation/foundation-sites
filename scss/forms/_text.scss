@@ -26,6 +26,10 @@ $input-font-size: rem-calc(16) !default;
 /// @type Keyword
 $input-font-weight: $global-weight-normal !default;
 
+/// Line height of text inputs.
+/// @type Keyword
+$input-line-height: $global-lineheight !default;
+
 /// Background color of text inputs.
 /// @type Color
 $input-background: $white !default;
@@ -45,6 +49,10 @@ $input-border: 1px solid $medium-gray !default;
 /// Border around focused text inputs.
 /// @type Color
 $input-border-focus: 1px solid $dark-gray !default;
+
+/// Padding of text inputs.
+/// @type Color
+$input-padding: $form-spacing / 2 !default;
 
 /// Box shadow inside text inputs when not focused.
 /// @type Shadow
@@ -75,14 +83,14 @@ $input-radius: $global-radius !default;
 $form-button-radius: $global-radius !default;
 
 @mixin form-element {
-  $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  $height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
 
   display: block;
   box-sizing: border-box;
   width: 100%;
   height: $height;
   margin: 0 0 $form-spacing;
-  padding: $form-spacing / 2;
+  padding: $input-padding;
 
   border: $input-border;
   border-radius: $input-radius;
@@ -92,6 +100,7 @@ $form-button-radius: $global-radius !default;
   font-family: $input-font-family;
   font-size: $input-font-size;
   font-weight: $input-font-weight;
+  line-height: $input-line-height;
   color: $input-color;
 
   @if has-value($input-transition) {
@@ -130,11 +139,6 @@ $form-button-radius: $global-radius !default;
 
   input,
   textarea {
-    // Placeholder text
-    &::placeholder {
-      color: $input-placeholder-color;
-    }
-
     // Disabled/readonly state
     &:disabled,
     &[readonly] {
@@ -158,13 +162,18 @@ $form-button-radius: $global-radius !default;
   // Number input styles
   [type='number'] {
     @if not $input-number-spinners {
-      -moz-appearance: textfield; // sass-lint:disable-line no-vendor-prefix
+      -moz-appearance: textfield; // sass-lint:disable-line no-vendor-prefixes
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
-        -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefix
+        -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
         margin: 0;
       }
     }
+  }
+
+  // Placeholder text
+  ::placeholder {
+    color: $input-placeholder-color;
   }
 }

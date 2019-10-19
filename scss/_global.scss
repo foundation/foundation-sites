@@ -2,11 +2,13 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// sass-lint:disable force-attribute-nesting, force-pseudo-nesting, no-color-literals, no-qualifying-elements
+// sass-lint:disable no-color-literals, no-qualifying-elements
 
 ////
 /// @group global
 ////
+
+@import 'util/util';
 
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
@@ -74,6 +76,10 @@ $global-margin: 1rem !default;
 /// @type Number
 $global-padding: 1rem !default;
 
+/// Global value used for positioning on components.
+/// @type Number
+$global-position: 1rem !default;
+
 /// Global font weight used for normal type.
 /// @type Keyword | Number
 $global-weight-normal: normal !default;
@@ -86,13 +92,28 @@ $global-weight-bold: bold !default;
 /// @type Number
 $global-radius: 0 !default;
 
+/// Global value used for all menu styles. Can be overwritten at individual menu component level.
+/// @type Number
+$global-menu-padding: 0.7rem 1rem !default;
+
+/// Global value used for all menu styles. Nested margin for submenu.
+$global-menu-nested-margin: 1rem !default;
+
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
 /// @type Keyword
 $global-text-direction: ltr !default;
 
 /// Enables flexbox for components that support it.
 /// @type Boolean
-$global-flexbox: false !default;
+$global-flexbox: true !default;
+
+/// Enabled responsive breakpoints for prototypes if applicable
+/// @type Boolean
+$global-prototype-breakpoints: false !default;
+
+/// Button cursor's value, `auto` by default
+/// @type Keyword
+$global-button-cursor: auto !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
@@ -102,15 +123,18 @@ $global-flexbox: false !default;
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
+// Internal variable that contains the flex justifying options
+$-zf-flex-justify: -zf-flex-justify($global-text-direction);
+
+/// Global tolerance for color pick contrast.
+/// @type Number
+$global-color-pick-contrast-tolerance: 0 !default;
+
 // Internal variables used for colors
-$primary-color: get-color(primary);
-$secondary-color: get-color(secondary);
-$success-color: get-color(success);
-$warning-color: get-color(warning);
-$alert-color: get-color(alert);
+@include add-foundation-colors;
 
 @mixin foundation-global-styles {
-  @include -zf-normalize;
+  @include foundation-normalize;
 
   // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
   .foundation-mq {
@@ -142,8 +166,8 @@ $alert-color: get-color(alert);
     color: $body-font-color;
 
     @if ($body-antialiased) {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+      -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
     }
   }
 
@@ -186,20 +210,27 @@ $alert-color: get-color(alert);
   // Reset <button> styles created by most browsers
   button {
     @include disable-mouse-outline;
-
     padding: 0;
-
     appearance: none;
     border: 0;
     border-radius: $global-radius;
     background: transparent;
-
     line-height: 1;
+    cursor: $global-button-cursor;
   }
 
   // Prevent text overflow on pre
   pre {
     overflow: auto;
+  }
+
+  // Make reset inherit font-family instead of settings sans-serif
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
   }
 
   // Internal classes to show/hide elements in JavaScript
@@ -210,10 +241,4 @@ $alert-color: get-color(alert);
   .is-hidden {
     display: none !important;
   }
-}
-
-/// Loads normalize.css.
-/// @access private
-@mixin -zf-normalize {
-  @include normalize();
 }

@@ -6,31 +6,15 @@ library:
   docs: https://github.com/zurb/motion-ui/tree/master/docs
 ---
 
-Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html). The transitions are powered by special transition classes that the Motion UI Sass creates. For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`).
+Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html).
 
-```html
-<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
-  <p>This panel fades.</p>
-</div>
-
-<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
-  <p>This panel slides.</p>
-</div>
-```
-
-<button type="button" class="button" data-toggle="motion-example-1">Fade</button><button type="button" class="button" data-toggle="motion-example-2">Slide</button>
-<div class="row">
-  <div class="small-6 columns">
-    <div data-toggler data-animate="fade-in fade-out" class="callout secondary ease" id="motion-example-1">
-      <p>This panel <strong>fades</strong>.</p>
-    </div>
-  </div>
-  <div class="small-6 columns">
-    <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary ease" id="motion-example-2">
-      <p>This panel <strong>slides</strong>.</p>
-    </div>
+<div class="text-center">
+  <button type="button" class="button" data-toggle="motion-header-example">Animate!</button>
+  <div data-toggler data-animate="fade-in fade-out" id="motion-header-example" style="display: none;">
+    <img src="/assets/img/generic/rectangle-7.jpg" style="width: 100%;">
   </div>
 </div>
+
 
 ---
 
@@ -60,19 +44,57 @@ gulp.src('./src/scss/app.scss')
   }));
 ```
 
-Finally, import the library into your Sass file.
+Finally, import the library into your Sass file and include the mixins.
 
 ```scss
 @import 'motion-ui'
+@include motion-ui-transitions;
+@include motion-ui-animations;
 ```
 
 Or, another way to start using Motion UI is through a CDN.
 
 ```html
 <!-- Insert this within your head tag and after foundation.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
 
 ```
+
+---
+
+## Usage in Components
+
+Various Foundation components provide options for to use Motion UI animations when changing state. Here are the options for each plugin that support Motion UI:
+- [Orbit](orbit.html): `data-animate`
+- [Reveal](reveal.html): `data-animation-in`, `data-animation-out`
+- [Toggler](toggler.html): `data-animate`
+- [Responsive Toggler](responsive-navigation.html): `data-animate`
+
+For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`). See all available classes in [build-in transitions](#built-in-transitions) below.
+
+```html
+<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
+  <p>This panel fades.</p>
+</div>
+
+<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
+  <p>This panel slides.</p>
+</div>
+```
+
+<button type="button" class="button" data-toggle="motion-example-1">Fade</button><button type="button" class="button" data-toggle="motion-example-2">Slide</button>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
+    <div data-toggler data-animate="fade-in fade-out" class="callout secondary ease" id="motion-example-1">
+      <p>This panel <strong>fades</strong>.</p>
+    </div>
+  </div>
+  <div class="cell small-6">
+    <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary ease" id="motion-example-2">
+      <p>This panel <strong>slides</strong>.</p>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -153,14 +175,14 @@ Custom transition classes can be made using Motion UI's mixin library. Here's an
 You can use the same five transition effects to create CSS animations as well. The library also allows you to create series effects, with animations on multiple elements happening in a queue. **Refer to [Motion UI's animation documentation](https://github.com/zurb/motion-ui/blob/master/docs/animations.md) to learn more.**
 
 <button type="button" class="button" data-docs-example-series>Play Animation</button>
-<div class="row" id="series-example">
-  <div class="small-4 columns">
+<div class="grid-x grid-margin-x" id="series-example">
+  <div class="cell small-4">
     <img class="thumbnail" src= "assets/img/generic/square-1.jpg" id="series-example-1">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" src= "assets/img/generic/square-2.jpg" id="series-example-2">
   </div>
-  <div class="small-4 columns">
+  <div class="cell small-4">
     <img class="thumbnail" src= "assets/img/generic/square-3.jpg" id="series-example-3">
   </div>
 </div>

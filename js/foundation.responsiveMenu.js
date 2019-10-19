@@ -1,6 +1,32 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
+
+import { DropdownMenu } from './foundation.dropdownMenu';
+import { Drilldown } from './foundation.drilldown';
+import { AccordionMenu } from './foundation.accordionMenu';
+
+let MenuPlugins = {
+  dropdown: {
+    cssClass: 'dropdown',
+    plugin: DropdownMenu
+  },
+ drilldown: {
+    cssClass: 'drilldown',
+    plugin: Drilldown
+  },
+  accordion: {
+    cssClass: 'accordion-menu',
+    plugin: AccordionMenu
+  }
+};
+
+  // import "foundation.util.triggers.js";
+
 
 /**
  * ResponsiveMenu module.
@@ -9,24 +35,24 @@
  * @requires foundation.util.mediaQuery
  */
 
-class ResponsiveMenu {
+class ResponsiveMenu extends Plugin {
   /**
    * Creates a new instance of a responsive menu.
    * @class
+   * @name ResponsiveMenu
    * @fires ResponsiveMenu#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = $(element);
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;
     this.currentPlugin = null;
+    this.className = 'ResponsiveMenu'; // ie9 back compat
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'ResponsiveMenu');
   }
 
   /**
@@ -35,6 +61,8 @@ class ResponsiveMenu {
    * @private
    */
   _init() {
+
+    MediaQuery._init();
     // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
     if (typeof this.rules === 'string') {
       let rulesTree = {};
@@ -60,7 +88,7 @@ class ResponsiveMenu {
       this._checkMediaQueries();
     }
     // Add data-mutate since children may need it.
-    this.$element.attr('data-mutate', (this.$element.attr('data-mutate') || Foundation.GetYoDigits(6, 'responsive-menu')));
+    this.$element.attr('data-mutate', (this.$element.attr('data-mutate') || GetYoDigits(6, 'responsive-menu')));
   }
 
   /**
@@ -88,7 +116,7 @@ class ResponsiveMenu {
     var matchedMq, _this = this;
     // Iterate through each rule and find the last matching rule
     $.each(this.rules, function(key) {
-      if (Foundation.MediaQuery.atLeast(key)) {
+      if (MediaQuery.atLeast(key)) {
         matchedMq = key;
       }
     });
@@ -116,32 +144,12 @@ class ResponsiveMenu {
    * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveMenu');
-    Foundation.unregisterPlugin(this);
   }
 }
 
 ResponsiveMenu.defaults = {};
 
-// The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins = {
-  dropdown: {
-    cssClass: 'dropdown',
-    plugin: Foundation._plugins['dropdown-menu'] || null
-  },
- drilldown: {
-    cssClass: 'drilldown',
-    plugin: Foundation._plugins['drilldown'] || null
-  },
-  accordion: {
-    cssClass: 'accordion-menu',
-    plugin: Foundation._plugins['accordion-menu'] || null
-  }
-};
-
-// Window exports
-Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
-
-}(jQuery);
+export {ResponsiveMenu};

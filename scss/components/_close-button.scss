@@ -10,6 +10,17 @@
 /// @type List
 $closebutton-position: right top !default;
 
+/// Default z-index for a close button.
+/// @type Number
+$closebutton-z-index: 10 !default;
+
+/// Button size to use as default
+/// @type String
+/// @see $closebutton-size
+/// @see $closebutton-offset-horizontal
+/// @see $closebutton-offset-vertical
+$closebutton-default-size: medium !default;
+
 /// Right (or left) offset(s) for a close button.
 /// @type Number|Map
 $closebutton-offset-horizontal: (
@@ -24,7 +35,7 @@ $closebutton-offset-vertical: (
   medium: 0.5rem,
 ) !default;
 
-/// Default font size(s) of the close button.
+/// Size(s) of the close button. Used to generate sizing modifiers.
 /// @type Number|Map
 $closebutton-size: (
   small: 1.5em,
@@ -83,6 +94,7 @@ $closebutton-color-hover: $black !default;
 
   @include disable-mouse-outline;
   position: absolute;
+  z-index: $closebutton-z-index;
   color: $closebutton-color;
   cursor: pointer;
 
@@ -96,7 +108,20 @@ $closebutton-color-hover: $black !default;
   .close-button {
     @include close-button;
 
-    &.small { @include close-button-size(small) }
-    &, &.medium { @include close-button-size(medium) }
+    // Generate a placeholder and a class for each size
+    @each $name, $size in $closebutton-size {
+      @at-root {
+        %zf-close-button--#{$name} {
+          @include close-button-size($name);
+        }
+      }
+
+      &.#{$name} {
+        @extend %zf-close-button--#{$name};
+      }
+    }
+
+    // Use by default the placeholder of the default size
+    @extend %zf-close-button--#{$closebutton-default-size};
   }
 }

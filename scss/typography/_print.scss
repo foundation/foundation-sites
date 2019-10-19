@@ -6,6 +6,10 @@
 /// @type Boolean
 /// @group global
 $print-transparent-backgrounds: true !default;
+
+/// If `true`, displays next to all links their "href" when printed.
+/// @type Boolean
+/// @group global
 $print-hrefs: true !default;
 
 // sass-lint:disable-all
@@ -15,13 +19,19 @@ $print-hrefs: true !default;
 
   @media print {
     * {
+      // Ensure a "black-on-white" print by removing backgrounds,
+      // using black text everywhere and forcing the browser to economize ink.
       @if $print-transparent-backgrounds {
         background: transparent !important;
+        color: black !important; // Black prints faster: h5bp.com/s
+        color-adjust: economy;
+      }
+      // Otherwise, prevent any economy by the browser.
+      @else {
+        color-adjust: exact;
       }
 
       box-shadow: none !important;
-
-      color: black !important; // Black prints faster: h5bp.com/s
       text-shadow: none !important;
     }
 

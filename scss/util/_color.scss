@@ -4,6 +4,8 @@
 
 @import 'math';
 
+$contrast-warnings: true !default;
+
 ////
 /// @group functions
 ////
@@ -55,11 +57,12 @@
 
 /// Checks the luminance of `$base`, and returns the color from `$colors` (list of colors) that has the most contrast.
 ///
-/// @param {Color} $color1 - First color to compare.
-/// @param {Color} $color2 - Second color to compare.
+/// @param {Color} $base - Color to check luminance.
+/// @param {List} $colors [($white, $black)] - Colors to compare.
+/// @param {Number} $tolerance [$global-color-pick-contrast-tolerance] - Contrast tolerance.
 ///
-/// @returns {Number} The contrast ratio of the compared colors.
-@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: 0) {
+/// @returns {Color} the color from `$colors` (list of colors) that has the most contrast.
+@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: $global-color-pick-contrast-tolerance) {
   $contrast: color-contrast($base, nth($colors, 1));
   $best: nth($colors, 1);
 
@@ -71,7 +74,7 @@
     }
   }
 
-  @if ($contrast < 3) {
+  @if ($contrast-warnings and $contrast < 3) {
     @warn "Contrast ratio of #{$best} on #{$base} is pretty bad, just #{$contrast}";
   }
 
@@ -106,21 +109,31 @@
   }
 }
 
-/// Transfers the colors in the `$foundation-palette`map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
+/// Transfers the colors in the `$foundation-palette` map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
 @mixin add-foundation-colors() {
   @if map-has-key($foundation-palette, primary) {
     $primary-color: map-get($foundation-palette, primary) !global;
+  } @else {
+    $primary-color: #1779ba !global;
   }
   @if map-has-key($foundation-palette, secondary) {
     $secondary-color: map-get($foundation-palette, secondary) !global;
+  } @else {
+    $secondary-color: #767676 !global;
   }
   @if map-has-key($foundation-palette, success) {
     $success-color: map-get($foundation-palette, success) !global;
+  } @else {
+    $success-color: #3adb76 !global;
   }
   @if map-has-key($foundation-palette, warning) {
     $warning-color: map-get($foundation-palette, warning) !global;
+  } @else {
+    $warning-color: #ffae00 !global;
   }
   @if map-has-key($foundation-palette, alert) {
     $alert-color: map-get($foundation-palette, alert) !global;
+  } @else {
+    $alert-color: #cc4b37 !global;
   }
 }
