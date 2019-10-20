@@ -258,6 +258,33 @@ $menu-icons-back-compat: true !default;
   }
 }
 
+/// Align top/bottom icons within a menu.
+/// @param {Keyword} $alignment [center] - Alignment of the icon
+@mixin menu-icon-alignment($alignment: center) {
+  @if $global-flexbox {
+    &.icon-top,
+    &.icon-bottom {
+      li a {
+        img,
+        i,
+        svg {
+          @if $alignment == left {
+            text-align: left;
+          }
+
+          @else if $alignment == right {
+            text-align: right;
+          }
+
+          @else {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
 /// Adds position classes for icons within a menu.
 @mixin menu-icon-position($position: left, $spacing: $menu-icon-spacing) {
   @if $position == left {
@@ -369,11 +396,13 @@ $menu-icons-back-compat: true !default;
     // Vertical orientation modifier
     &.vertical {
       @include menu-direction(vertical);
+      @include menu-icon-alignment(left);
     }
 
     // Even-width modifier for horizontal orientation
     &.expanded {
       @include menu-expand;
+      @include menu-icon-alignment(left);
     }
 
     // Simple
@@ -465,6 +494,7 @@ $menu-icons-back-compat: true !default;
     // Align right
     &.align-#{$global-right} {
       @include menu-align(right);
+      @include menu-icon-alignment(right);
 
       .nested {
         @include menu-nested($nested-alignment: right);
