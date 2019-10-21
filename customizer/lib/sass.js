@@ -1,8 +1,8 @@
 var empty = require('is-empty-object');
 var format = require('util').format;
-var multiline = require('multiline').stripIndent;
+var stripIndent = require('strip-indent');
 
-var SASS_TEMPLATE = multiline(function() {/*
+var SASS_TEMPLATE = stripIndent(`
   @charset 'utf-8';
 
   // Variables go here
@@ -18,7 +18,7 @@ var SASS_TEMPLATE = multiline(function() {/*
   // Motion UI goes here
   @include motion-ui-transitions;
   @include motion-ui-animations;
-*/});
+`);
 
 /**
  * Generates an entry point Sass file with a custom list of CSS exports and Sass variables.

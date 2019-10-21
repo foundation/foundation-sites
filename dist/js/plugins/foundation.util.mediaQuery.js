@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("./foundation.core"), require("jquery"));
+	else if(typeof define === 'function' && define.amd)
+		define(["./foundation.core", "jquery"], factory);
+	else if(typeof exports === 'object')
+		exports["foundation.util.mediaQuery"] = factory(require("./foundation.core"), require("jquery"));
+	else
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.mediaQuery"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -33,18 +43,35 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -62,104 +89,109 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 103);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ "./foundation.core":
+/*!****************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
+  \****************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = jQuery;
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ 1:
-/***/ (function(module, exports) {
-
-module.exports = {Foundation: window.Foundation};
-
-/***/ }),
-
-/***/ 103:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(37);
-
-
-/***/ }),
-
-/***/ 37:
+/***/ "./js/entries/plugins/foundation.util.mediaQuery.js":
+/*!**********************************************************!*\
+  !*** ./js/entries/plugins/foundation.util.mediaQuery.js ***!
+  \**********************************************************/
+/*! exports provided: Foundation, MediaQuery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__ = __webpack_require__(67);
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.mediaQuery */ "./js/foundation.util.mediaQuery.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"]; });
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].MediaQuery = __WEBPACK_IMPORTED_MODULE_1__foundation_util_mediaQuery__["a" /* MediaQuery */];
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].MediaQuery._init();
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].MediaQuery = _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"];
+
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].MediaQuery._init();
+
+
 
 /***/ }),
 
-/***/ 67:
+/***/ "./js/foundation.util.mediaQuery.js":
+/*!******************************************!*\
+  !*** ./js/foundation.util.mediaQuery.js ***!
+  \******************************************/
+/*! exports provided: MediaQuery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaQuery; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaQuery", function() { return MediaQuery; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+ // Default set of media queries
 
-// Default set of media queries
 var defaultQueries = {
   'default': 'only screen',
   landscape: 'only screen and (orientation: landscape)',
   portrait: 'only screen and (orientation: portrait)',
   retina: 'only screen and (-webkit-min-device-pixel-ratio: 2),' + 'only screen and (min--moz-device-pixel-ratio: 2),' + 'only screen and (-o-min-device-pixel-ratio: 2/1),' + 'only screen and (min-device-pixel-ratio: 2),' + 'only screen and (min-resolution: 192dpi),' + 'only screen and (min-resolution: 2dppx)'
-};
+}; // matchMedia() polyfill - Test a CSS media type/query in JS.
+// Authors & copyright(c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 
-// matchMedia() polyfill - Test a CSS media type/query in JS.
-// Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license
-var matchMedia = window.matchMedia || function () {
-  'use strict';
+/* eslint-disable */
 
-  // For browsers that support matchMedium api such as IE 9 and webkit
+window.matchMedia || (window.matchMedia = function () {
+  "use strict"; // For browsers that support matchMedium api such as IE 9 and webkit
 
-  var styleMedia = window.styleMedia || window.media;
+  var styleMedia = window.styleMedia || window.media; // For those that don't support matchMedium
 
-  // For those that don't support matchMedium
   if (!styleMedia) {
     var style = document.createElement('style'),
         script = document.getElementsByTagName('script')[0],
         info = null;
-
     style.type = 'text/css';
     style.id = 'matchmediajs-test';
 
-    script && script.parentNode && script.parentNode.insertBefore(style, script);
+    if (!script) {
+      document.head.appendChild(style);
+    } else {
+      script.parentNode.insertBefore(style, script);
+    } // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
 
-    // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+
     info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
-
     styleMedia = {
-      matchMedium: function (media) {
-        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+      matchMedium: function matchMedium(media) {
+        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }'; // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
 
-        // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
         if (style.styleSheet) {
           style.styleSheet.cssText = text;
         } else {
           style.textContent = text;
-        }
+        } // Test if media query is true or false
 
-        // Test if media query is true or false
+
         return info.width === '1px';
       }
     };
@@ -171,11 +203,11 @@ var matchMedia = window.matchMedia || function () {
       media: media || 'all'
     };
   };
-}();
+}());
+/* eslint-enable */
 
 var MediaQuery = {
   queries: [],
-
   current: '',
 
   /**
@@ -183,23 +215,23 @@ var MediaQuery = {
    * @function
    * @private
    */
-  _init: function () {
+  _init: function _init() {
     var self = this;
-    var $meta = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('meta.foundation-mq');
+    var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
+
     if (!$meta.length) {
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<meta class="foundation-mq">').appendTo(document.head);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq">').appendTo(document.head);
     }
 
-    var extractedStyles = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.foundation-mq').css('font-family');
+    var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
     var namedQueries;
-
     namedQueries = parseStyleToObject(extractedStyles);
 
     for (var key in namedQueries) {
       if (namedQueries.hasOwnProperty(key)) {
         self.queries.push({
           name: key,
-          value: 'only screen and (min-width: ' + namedQueries[key] + ')'
+          value: "only screen and (min-width: ".concat(namedQueries[key], ")")
         });
       }
     }
@@ -209,23 +241,21 @@ var MediaQuery = {
     this._watcher();
   },
 
-
   /**
    * Checks if the screen is at least as wide as a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to check.
    * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
    */
-  atLeast: function (size) {
+  atLeast: function atLeast(size) {
     var query = this.get(size);
 
     if (query) {
-      return matchMedia(query).matches;
+      return window.matchMedia(query).matches;
     }
 
     return false;
   },
-
 
   /**
    * Checks if the screen matches to a breakpoint.
@@ -233,16 +263,17 @@ var MediaQuery = {
    * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
    * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
    */
-  is: function (size) {
+  is: function is(size) {
     size = size.trim().split(' ');
+
     if (size.length > 1 && size[1] === 'only') {
       if (size[0] === this._getCurrentSize()) return true;
     } else {
       return this.atLeast(size[0]);
     }
+
     return false;
   },
-
 
   /**
    * Gets the media query of a breakpoint.
@@ -250,7 +281,7 @@ var MediaQuery = {
    * @param {String} size - Name of the breakpoint to get.
    * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
    */
-  get: function (size) {
+  get: function get(size) {
     for (var i in this.queries) {
       if (this.queries.hasOwnProperty(i)) {
         var query = this.queries[i];
@@ -261,56 +292,52 @@ var MediaQuery = {
     return null;
   },
 
-
   /**
    * Gets the current breakpoint name by testing every breakpoint and returning the last one to match (the biggest one).
    * @function
    * @private
    * @returns {String} Name of the current breakpoint.
    */
-  _getCurrentSize: function () {
+  _getCurrentSize: function _getCurrentSize() {
     var matched;
 
     for (var i = 0; i < this.queries.length; i++) {
       var query = this.queries[i];
 
-      if (matchMedia(query.value).matches) {
+      if (window.matchMedia(query.value).matches) {
         matched = query;
       }
     }
 
-    if (typeof matched === 'object') {
+    if (_typeof(matched) === 'object') {
       return matched.name;
     } else {
       return matched;
     }
   },
 
-
   /**
    * Activates the breakpoint watcher, which fires an event on the window whenever the breakpoint changes.
    * @function
    * @private
    */
-  _watcher: function () {
+  _watcher: function _watcher() {
     var _this = this;
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
       var newSize = _this._getCurrentSize(),
           currentSize = _this.current;
 
       if (newSize !== currentSize) {
         // Change the current media query
-        _this.current = newSize;
+        _this.current = newSize; // Broadcast the media query change on the window
 
-        // Broadcast the media query change on the window
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
-};
+}; // Thank you: https://github.com/sindresorhus/query-string
 
-// Thank you: https://github.com/sindresorhus/query-string
 function parseStyleToObject(str) {
   var styleObject = {};
 
@@ -328,11 +355,10 @@ function parseStyleToObject(str) {
     var parts = param.replace(/\+/g, ' ').split('=');
     var key = parts[0];
     var val = parts[1];
-    key = decodeURIComponent(key);
-
-    // missing `=` should be `null`:
+    key = decodeURIComponent(key); // missing `=` should be `null`:
     // http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
-    val = val === undefined ? null : decodeURIComponent(val);
+
+    val = typeof val === 'undefined' ? null : decodeURIComponent(val);
 
     if (!ret.hasOwnProperty(key)) {
       ret[key] = val;
@@ -341,14 +367,39 @@ function parseStyleToObject(str) {
     } else {
       ret[key] = [ret[key], val];
     }
+
     return ret;
   }, {});
-
   return styleObject;
 }
 
 
 
+/***/ }),
+
+/***/ 24:
+/*!****************************************************************!*\
+  !*** multi ./js/entries/plugins/foundation.util.mediaQuery.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/ncoden/Documents/Documents/Projects/Programmation/Web/2016/Foundation/foundation-sites/js/entries/plugins/foundation.util.mediaQuery.js */"./js/entries/plugins/foundation.util.mediaQuery.js");
+
+
+/***/ }),
+
+/***/ "jquery":
+/*!********************************************************************************************!*\
+  !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
+
 /***/ })
 
 /******/ });
+});
+//# sourceMappingURL=foundation.util.mediaQuery.js.map

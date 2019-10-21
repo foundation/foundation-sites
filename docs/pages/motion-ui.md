@@ -6,31 +6,15 @@ library:
   docs: https://github.com/zurb/motion-ui/tree/master/docs
 ---
 
-Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html). The transitions are powered by special transition classes that the Motion UI Sass creates. For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`).
+Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html).
 
-```html
-<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
-  <p>This panel fades.</p>
-</div>
-
-<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
-  <p>This panel slides.</p>
-</div>
-```
-
-<button type="button" class="button" data-toggle="motion-example-1">Fade</button><button type="button" class="button" data-toggle="motion-example-2">Slide</button>
-<div class="grid-x grid-margin-x">
-  <div class="cell small-6">
-    <div data-toggler data-animate="fade-in fade-out" class="callout secondary ease" id="motion-example-1">
-      <p>This panel <strong>fades</strong>.</p>
-    </div>
-  </div>
-  <div class="cell small-6">
-    <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary ease" id="motion-example-2">
-      <p>This panel <strong>slides</strong>.</p>
-    </div>
+<div class="text-center">
+  <button type="button" class="button" data-toggle="motion-header-example">Animate!</button>
+  <div data-toggler data-animate="fade-in fade-out" id="motion-header-example" style="display: none;">
+    <img src="/assets/img/generic/rectangle-7.jpg" style="width: 100%;">
   </div>
 </div>
+
 
 ---
 
@@ -75,6 +59,42 @@ Or, another way to start using Motion UI is through a CDN.
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
 
 ```
+
+---
+
+## Usage in Components
+
+Various Foundation components provide options for to use Motion UI animations when changing state. Here are the options for each plugin that support Motion UI:
+- [Orbit](orbit.html): `data-animate`
+- [Reveal](reveal.html): `data-animation-in`, `data-animation-out`
+- [Toggler](toggler.html): `data-animate`
+- [Responsive Toggler](responsive-navigation.html): `data-animate`
+
+For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`). See all available classes in [build-in transitions](#built-in-transitions) below.
+
+```html
+<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
+  <p>This panel fades.</p>
+</div>
+
+<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
+  <p>This panel slides.</p>
+</div>
+```
+
+<button type="button" class="button" data-toggle="motion-example-1">Fade</button><button type="button" class="button" data-toggle="motion-example-2">Slide</button>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-6">
+    <div data-toggler data-animate="fade-in fade-out" class="callout secondary ease" id="motion-example-1">
+      <p>This panel <strong>fades</strong>.</p>
+    </div>
+  </div>
+  <div class="cell small-6">
+    <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary ease" id="motion-example-2">
+      <p>This panel <strong>slides</strong>.</p>
+    </div>
+  </div>
+</div>
 
 ---
 

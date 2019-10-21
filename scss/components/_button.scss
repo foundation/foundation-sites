@@ -80,13 +80,16 @@ $button-hollow-hover-lightness: -50% !default;
 /// @type List
 $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !default;
 
+/// Additional responsive classes for .expanded
+/// @type Boolean
+$button-responsive-expanded: false !default;
+
 // TODO: Document button-base() mixin
 @mixin button-base {
   @include disable-mouse-outline;
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
-  font-family: $button-font-family;
 
   @if (type-of($button-padding) == 'map') {
     @each $size, $padding in $button-padding {
@@ -99,12 +102,12 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     padding: $button-padding;
   }
 
-  -webkit-appearance: none;
   border: 1px solid transparent;
   border-radius: $button-radius;
   transition: $button-transition;
-
+  font-family: $button-font-family;
   font-size: map-get($button-sizes, default);
+  -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
   line-height: 1;
   text-align: center;
   cursor: pointer;
@@ -156,7 +159,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 /// Removes background fill on hover and focus for hollow buttons.
 @mixin button-hollow {
   &,
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
   }
 
@@ -191,8 +195,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 }
 
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-/// @param [Color] $background [$button-background] - Background color of the disabled button.
-/// @param [Color] $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a color based on the background color.
+/// @param {Color} $background [$button-background] - Background color of the disabled button.
+/// @param {Color} $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a color based on the background color.
 @mixin button-disabled(
   $background: $button-background,
   $color: $button-color
@@ -270,6 +274,29 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     }
 
     &.expanded { @include button-expand; }
+
+    @if $button-responsive-expanded {
+      @each $size in $breakpoint-classes {
+        @include breakpoint(#{$size} only) {
+          &.#{$size}-only-expanded {
+            @include button-expand;
+          }
+        }
+        @if $size != $-zf-zero-breakpoint {
+          @include breakpoint(#{$size} down) {
+            &.#{$size}-down-expanded {
+              @include button-expand;
+            }
+          }
+
+          @include breakpoint(#{$size}) {
+            &.#{$size}-expanded {
+              @include button-expand;
+            }
+          }
+        }
+      }
+    }
 
     // Colors
     @each $name, $color in $button-palette {
@@ -354,7 +381,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
         }
       }
 
-      &.hollow {
+      &.hollow, &.clear {
         &::after {
           border-top-color: $button-background;
         }
@@ -376,7 +403,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       margin-#{$global-left}: 0;
     }
   }
-  a.button {
+
+  a.button { // sass-lint:disable-line no-qualifying-elements
     &:hover,
     &:focus {
       text-decoration: none;

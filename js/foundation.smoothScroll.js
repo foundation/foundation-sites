@@ -1,8 +1,6 @@
-'use strict';
-
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * SmoothScroll module.
@@ -30,11 +28,8 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _init() {
-        var id = this.$element[0].id || GetYoDigits(6, 'smooth-scroll');
-        var _this = this;
-        this.$element.attr({
-            'id': id
-        });
+        const id = this.$element[0].id || GetYoDigits(6, 'smooth-scroll');
+        this.$element.attr({ id });
 
         this._events();
     }
@@ -44,29 +39,31 @@ class SmoothScroll extends Plugin {
      * @private
      */
     _events() {
-        var _this = this;
-
-        // click handler function.
-        var handleLinkClick = function(e) {
-            // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
-            if(!$(this).is('a[href^="#"]'))  {
-                return false;
-            }
-
-            var arrival = this.getAttribute('href');
-
-            _this._inTransition = true;
-
-            SmoothScroll.scrollToLoc(arrival, _this.options, function() {
-                _this._inTransition = false;
-            });
-
-            e.preventDefault();
-        };
-
-        this.$element.on('click.zf.smoothScroll', handleLinkClick)
-        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', handleLinkClick);
+        this._linkClickListener = this._handleLinkClick.bind(this);
+        this.$element.on('click.zf.smoothScroll', this._linkClickListener);
+        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
+
+    /**
+     * Handle the given event to smoothly scroll to the anchor pointed by the event target.
+     * @param {*} e - event
+     * @function
+     * @private
+     */
+    _handleLinkClick(e) {
+        // Follow the link if it does not point to an anchor.
+        if (!$(e.currentTarget).is('a[href^="#"]')) return;
+
+        const arrival = e.currentTarget.getAttribute('href');
+
+        this._inTransition = true;
+
+        SmoothScroll.scrollToLoc(arrival, this.options, () => {
+            this._inTransition = false;
+        });
+
+        e.preventDefault();
+    };
 
     /**
      * Function to scroll to a given location on the page.
@@ -77,23 +74,32 @@ class SmoothScroll extends Plugin {
      * @function
      */
     static scrollToLoc(loc, options = SmoothScroll.defaults, callback) {
-        // Do nothing if target does not exist to prevent errors
-        if (!$(loc).length) {
-            return false;
-        }
+        const $loc = $(loc);
 
-        var scrollPos = Math.round($(loc).offset().top - options.threshold / 2 - options.offset);
+        // Do nothing if target does not exist to prevent errors
+        if (!$loc.length) return false;
+
+        var scrollPos = Math.round($loc.offset().top - options.threshold / 2 - options.offset);
 
         $('html, body').stop(true).animate(
             { scrollTop: scrollPos },
             options.animationDuration,
             options.animationEasing,
-            function() {
-                if(callback && typeof callback == "function"){
+            () => {
+                if (typeof callback === 'function'){
                     callback();
                 }
             }
         );
+    }
+
+    /**
+     * Destroys the SmoothScroll instance.
+     * @function
+     */
+    _destroy() {
+        this.$element.off('click.zf.smoothScroll', this._linkClickListener)
+        this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
 }
 

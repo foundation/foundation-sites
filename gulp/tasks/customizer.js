@@ -1,6 +1,4 @@
 var addSrc = require('gulp-add-src');
-var babel = require('gulp-babel');
-var concat = require('gulp-concat');
 var cleancss = require('gulp-clean-css');
 var customizer = require('../../customizer/lib');
 var Vinyl = require('vinyl');
@@ -13,7 +11,6 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
@@ -22,34 +19,38 @@ var zip = require('gulp-zip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var webpackStream = require('webpack-stream');
-var webpack2 = require('webpack');
-var named = require('vinyl-named');
+var webpack = require('webpack');
 
+var utils = require('../utils.js');
 
 var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
-var COMPATIBILITY = [
-  'last 2 versions',
-  'ie >= 9',
-  'and_chr >= 2.3'
-];
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
 
-var WEBPACK_MODULE_CONFIG = {
-  rules: [
-    {
-      test: /.js$/,
-      use: [
-        {
-          loader: 'babel-loader'
-        }
-      ]
-    }
-  ]
-}
+var WEBPACK_CONFIG = {
+  mode: 'development',
+  externals: utils.umdExternals({
+    'jquery': 'jQuery'
+  }),
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      }
+    ]
+  },
+  output: {
+    libraryTarget: 'umd',
+  }
+};
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
@@ -67,7 +68,6 @@ gulp.task('customizer:loadConfig', function(done) {
 // Prepare dependencies
 gulp.task('customizer:prepareSassDeps', function() {
   return gulp.src([
-      'node_modules/@(normalize-scss)/sass/**/*.scss',
       'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
       'node_modules/@(sassy-lists)/stylesheets/helpers/true',
       'node_modules/@(sassy-lists)/stylesheets/functions/contain',
@@ -80,9 +80,8 @@ gulp.task('customizer:prepareSassDeps', function() {
 });
 
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
+gulp.task('customizer:sass', gulp.series('customizer:loadConfig', 'customizer:prepareSassDeps', function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
-
   var stream = createStream('foundation.scss', sassFile);
 
   return stream
@@ -92,28 +91,26 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
         'node_modules/motion-ui/src'
       ]
     }))
-    .pipe(postcss([autoprefixer({
-      browsers: COMPATIBILITY
-    })]))
+    .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cleancss({ compatibility: 'ie9' }))
     .pipe(rename('foundation.min.css'))
-    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
-});
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
+}));
 
 // Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
-gulp.task('customizer:javascript-entry', ['customizer:loadConfig'], function() {
+gulp.task('customizer:javascript-entry', gulp.series('customizer:loadConfig', function() {
   var entryFile = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
   // Create a stream with our entry file
   var stream = createStream('foundation.js', entryFile);
 
   return stream
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
-});
+}));
 
-gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
+gulp.task('customizer:javascript', gulp.series('customizer:javascript-entry', function() {
   return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
-    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: WEBPACK_MODULE_CONFIG}, webpack2))
+    .pipe(webpackStream(WEBPACK_CONFIG, webpack))
     .pipe(rename('foundation.js'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
@@ -123,15 +120,34 @@ gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
       'node_modules/what-input/dist/what-input.js'
     ]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
-});
+}));
 
 // Copies the boilerplate index.html to the custom download folder
-gulp.task('customizer:html', ['customizer:loadConfig'], function() {
+gulp.task('customizer:html', gulp.series('customizer:loadConfig', function() {
   var rtlEnabled = VARIABLE_LIST['global-text-direction'] && VARIABLE_LIST['global-text-direction'] === 'rtl';
 
   return gulp.src('customizer/index.html')
     .pipe(If(rtlEnabled, replace('ltr', 'rtl')))
     .pipe(gulp.dest(OUTPUT_DIR));
+}));
+
+// Add main CSS and JS files to the build directory and create a ZIP file from it.
+gulp.task('customizer:zip', function (done) {
+  var outputFolder = path.dirname(OUTPUT_DIR);
+  var outputFileName = path.basename(OUTPUT_DIR);
+
+  touch(path.join(OUTPUT_DIR, 'css/app.css'));
+  touch(path.join(OUTPUT_DIR, 'js/app.js'));
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
+
+  return gulp.src(path.join(OUTPUT_DIR, '/**/*'))
+    .pipe(zip(path.basename(outputFileName) + '.zip'))
+    .pipe(gulp.dest(outputFolder));
+});
+
+// Clean the build directory
+gulp.task('customizer:clean', function(done) {
+  rimraf(OUTPUT_DIR, done);
 });
 
 // Creates a custom build by:
@@ -140,21 +156,7 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 //   - Copying the index.html file
 //   - Creating a blank app.css file
 //   - Creating an app.js file with Foundation initialization code
-gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
-  var outputFolder = path.dirname(OUTPUT_DIR);
-  var outputFileName = path.basename(OUTPUT_DIR);
-
-  touch(path.join(OUTPUT_DIR, 'css/app.css'));
-  touch(path.join(OUTPUT_DIR, 'js/app.js'));
-  fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
-
-  gulp.src(path.join(OUTPUT_DIR, '/**/*'))
-    .pipe(zip(path.basename(outputFileName) + '.zip'))
-    .pipe(gulp.dest(outputFolder))
-    .on('finish', function() {
-      rimraf(OUTPUT_DIR, done);
-    });
-  });
+gulp.task('customizer', gulp.series('customizer:sass', 'customizer:javascript', 'customizer:html', 'customizer:zip', 'customizer:clean'));
 
 function createStream(name, content) {
   // Create a stream with our entry file

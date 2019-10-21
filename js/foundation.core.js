@@ -1,10 +1,10 @@
 "use strict";
 
 import $ from 'jquery';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
-var FOUNDATION_VERSION = '6.4.3';
+var FOUNDATION_VERSION = '6.5.3';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -201,7 +201,7 @@ var Foundation = {
         var args = Array.prototype.slice.call(arguments, 1);//collect all the arguments, if necessary
         var plugClass = this.data('zfPlugin');//determine the class of plugin
 
-        if(plugClass !== undefined && plugClass[method] !== undefined){//make sure both the class and method exist
+        if(typeof plugClass !== 'undefined' && typeof plugClass[method] !== 'undefined'){//make sure both the class and method exist
           if(this.length === 1){//if there's only one, call it directly.
               plugClass[method].apply(plugClass, args);
           }else{
@@ -310,12 +310,12 @@ if (!Function.prototype.bind) {
 }
 // Polyfill to get the name of a function in IE9
 function functionName(fn) {
-  if (Function.prototype.name === undefined) {
+  if (typeof Function.prototype.name === 'undefined') {
     var funcNameRegex = /function\s([^(]{1,})\(/;
     var results = (funcNameRegex).exec((fn).toString());
     return (results && results.length > 1) ? results[1].trim() : "";
   }
-  else if (fn.prototype === undefined) {
+  else if (typeof fn.prototype === 'undefined') {
     return fn.constructor.name;
   }
   else {

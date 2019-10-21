@@ -1,6 +1,6 @@
 ---
 title: Prototyping Utilities
-description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great realizing your sketches and mockups into hi-fi coded prototype's ultra fast.
+description: Quickly prototype layouts and UI with Foundation's Prototyping Utilities. These optional classes and mixins are great for quickly turning sketches and mockups into coded prototypes.
 video: Xhc_KUJMEuk
 sass:
   - scss/prototype/*.scss
@@ -20,7 +20,7 @@ Not all projects require Prototyping Utilities and adding utility classes like t
 
 <div class="primary callout">
 	<p>
-		Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
+		Many Prototype classes use `!important` to ensure that these they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which in no case should be overridden.
 	</p>
 </div>
 
@@ -124,6 +124,19 @@ These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used indepen
 <button type="button" class="button radius bordered shadow success">Success</button>
 <button type="button" class="button rounded bordered shadow alert">Alert</button>
 <button type="button" class="button radius bordered shadow warning">Warning</button>
+```
+
+#### Switches
+
+Please note that you need to add `rounded` class with `switch-paddle` and not `switch`.
+
+```html_example
+<div class="switch">
+  <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+  <label class="switch-paddle rounded" for="exampleSwitch">
+    <span class="show-for-sr">Download Kittens</span>
+  </label>
+</div>
 ```
 
 #### Cards

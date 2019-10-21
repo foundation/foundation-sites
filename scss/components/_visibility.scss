@@ -6,7 +6,10 @@
 /// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
 @mixin show-for($size) {
   $size: map-get($breakpoints, $size);
-  $size: -zf-bp-to-em($size) - (1 / 16);
+  // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
+  // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
+  // See https://github.com/zurb/foundation-sites/issues/11313
+  $size: -zf-bp-to-em($size) - .00125;
 
   @include breakpoint($size down) {
     display: none !important;
@@ -20,7 +23,7 @@
   $upper-bound-size: -zf-map-next($breakpoints, $size);
 
   // more often than not this will be correct, just one time round the loop it won't so set in scope here
-  $lower-bound: -zf-bp-to-em($lower-bound-size) - (1 / 16);
+  $lower-bound: -zf-bp-to-em($lower-bound-size) - .00125;
   // test actual lower-bound-size, if 0 set it to 0em
   @if strip-unit($lower-bound-size) == 0 {
     $lower-bound: -zf-bp-to-em($lower-bound-size);

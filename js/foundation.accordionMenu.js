@@ -4,8 +4,8 @@
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin } from './foundation.core.plugin';
 
 /**
  * AccordionMenu module.
@@ -66,6 +66,10 @@ class AccordionMenu extends Plugin {
           subId = $sub[0].id || GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
 
+      if(_this.options.parentLink) {
+        let $anchor = $elem.children('a');
+        $anchor.clone().prependTo($sub).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-accordion-submenu-item"></li>');
+      }
 
       if(_this.options.submenuToggle) {
         $elem.addClass('has-submenu-toggle');
@@ -230,13 +234,23 @@ class AccordionMenu extends Plugin {
    * @fires AccordionMenu#down
    */
   down($target) {
-    var _this = this;
+    // If having multiple submenus active is disabled, close all the submenus
+    // that are not parents or children of the targeted submenu.
+    if (!this.options.multiOpen) {
+      // The "branch" of the targetted submenu, from the component root to
+      // the active submenus nested in it.
+      const $targetBranch = $target.parentsUntil(this.$element)
+        .add($target)
+        .add($target.find('.is-active'));
+      // All the active submenus that are not in the branch.
+      const $othersActiveSubmenus = this.$element.find('.is-active').not($targetBranch);
 
-    if(!this.options.multiOpen) {
-      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
+      this.up($othersActiveSubmenus);
     }
 
-    $target.addClass('is-active').attr({'aria-hidden': false});
+    $target
+      .addClass('is-active')
+      .attr({ 'aria-hidden': false });
 
     if(this.options.submenuToggle) {
       $target.prev('.submenu-toggle').attr({'aria-expanded': true});
@@ -245,12 +259,12 @@ class AccordionMenu extends Plugin {
       $target.parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
     }
 
-    $target.slideDown(_this.options.slideSpeed, function () {
+    $target.slideDown(this.options.slideSpeed, () => {
       /**
        * Fires when the menu is done opening.
        * @event AccordionMenu#down
        */
-      _this.$element.trigger('down.zf.accordionMenu', [$target]);
+      this.$element.trigger('down.zf.accordionMenu', [$target]);
     });
   }
 
@@ -260,23 +274,28 @@ class AccordionMenu extends Plugin {
    * @fires AccordionMenu#up
    */
   up($target) {
-    var _this = this;
-    $target.slideUp(_this.options.slideSpeed, function () {
+    const $submenus = $target.find('[data-submenu]');
+    const $allmenus = $target.add($submenus);
+
+    $submenus.slideUp(0);
+    $allmenus
+      .removeClass('is-active')
+      .attr('aria-hidden', true);
+
+    if(this.options.submenuToggle) {
+      $allmenus.prev('.submenu-toggle').attr('aria-expanded', false);
+    }
+    else {
+      $allmenus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
+    }
+
+    $target.slideUp(this.options.slideSpeed, () => {
       /**
        * Fires when the menu is done collapsing up.
        * @event AccordionMenu#up
        */
-      _this.$element.trigger('up.zf.accordionMenu', [$target]);
+      this.$element.trigger('up.zf.accordionMenu', [$target]);
     });
-
-    var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
-
-    if(this.options.submenuToggle) {
-      $menus.prev('.submenu-toggle').attr('aria-expanded', false);
-    }
-    else {
-      $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
-    }
   }
 
   /**
@@ -286,6 +305,7 @@ class AccordionMenu extends Plugin {
   _destroy() {
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
+    this.$element.find('[data-is-parent-link]').detach();
 
     if(this.options.submenuToggle) {
       this.$element.find('.has-submenu-toggle').removeClass('has-submenu-toggle');
@@ -297,6 +317,13 @@ class AccordionMenu extends Plugin {
 }
 
 AccordionMenu.defaults = {
+  /**
+   * Adds the parent link to the submenu.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  parentLink: false,
   /**
    * Amount of time to animate the opening of a submenu in ms.
    * @option

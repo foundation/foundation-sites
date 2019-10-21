@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { GetYoDigits } from './foundation.util.core';
-import { Plugin }from './foundation.plugin';
+import { GetYoDigits } from './foundation.core.utils';
+import { Plugin }from './foundation.core.plugin';
 
 import { Accordion } from './foundation.accordion';
 import { Tabs } from './foundation.tabs';
@@ -119,11 +119,8 @@ class ResponsiveAccordionTabs extends Plugin{
    * @private
    */
   _events() {
-    var _this = this;
-
-    $(window).on('changed.zf.mediaquery', function() {
-      _this._checkMediaQueries();
-    });
+    this._changedZfMediaQueryHandler = this._checkMediaQueries.bind(this);
+    $(window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
   }
 
   /**
@@ -234,7 +231,7 @@ class ResponsiveAccordionTabs extends Plugin{
    */
   _destroy() {
     if (this.currentPlugin) this.currentPlugin.destroy();
-    $(window).off('.zf.ResponsiveAccordionTabs');
+    $(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
   }
 }
 

@@ -61,13 +61,14 @@
   @if $vertical == true {
     overflow-y: auto;
     max-height: 100%;
+    min-height: 100%;
   } @else {
     overflow-x: auto;
     max-width: 100%;
   }
 
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-stype: -ms-autohiding-scrollbar;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 /// Container for inside a grid frame containing multiple blocks. Typically used

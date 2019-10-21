@@ -1,12 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl, ignoreMousedisappear } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
 import { Box } from './foundation.util.box';
-import { rtl as Rtl } from './foundation.util.core';
-import { Plugin } from './foundation.plugin';
-
 
 /**
  * DropdownMenu module.
@@ -135,28 +134,28 @@ class DropdownMenu extends Plugin {
     }
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
         var $elem = $(this),
-            hasSub = $elem.hasClass(parClass);
+          hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', function(e) {
+      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
           clearTimeout($elem.data('_delay'));
-          $elem.data('_delay', setTimeout(function() {
+          $elem.data('_delay', setTimeout(function () {
             _this._hide($elem);
           }, _this.options.closingTime));
         }
-      });
+      }));
     }
     this.$menuItems.on('keydown.zf.dropdownmenu', function(e) {
       var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
@@ -285,7 +284,7 @@ class DropdownMenu extends Plugin {
    * @param {jQuery} $sub - ul element that is a submenu to show
    * @function
    * @private
-   * @fires DropdownMenu#show
+   * @fires Dropdownmenu#show
    */
   _show($sub) {
     var idx = this.$tabs.index(this.$tabs.filter(function(i, el) {
@@ -326,7 +325,7 @@ class DropdownMenu extends Plugin {
     var $toClose;
     if ($elem && $elem.length) {
       $toClose = $elem;
-    } else if (idx !== undefined) {
+    } else if (typeof idx !== 'undefined') {
       $toClose = this.$tabs.not(function(i, el) {
         return i === idx;
       });
