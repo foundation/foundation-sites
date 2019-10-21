@@ -370,6 +370,29 @@ When using any of the menu icon layout classes, ensure that the icon and the tex
   <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
+
+<br>
+
+### Icon Position with Nested Styles
+Nested lists can have icons positioned differently based on the menu layer. Add the class `.nested` to the nested list and your desired icon position: `.icon-top`, `.icon-right`, `.icon-bottom`, `.icon-left`.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qjYmdG?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="vertical menu icons icon-top">
+  <li>
+    <a href="#"><i class="fi-list"></i> One</a>
+    <ul class="nested vertical menu icons icon-left">
+      <li><a href="#"><i class="fi-list"></i> One</a></li>
+      <li><a href="#"><i class="fi-list"></i> Two</a></li>
+    </ul>
+  </li>
+  <li><a href="#"><i class="fi-list"></i> Two</a></li>
+  <li><a href="#"><i class="fi-list"></i> Three</a></li>
+</ul>
+```
 ---
 
 ## Sticky Navigation
