@@ -838,7 +838,7 @@ Orbit.defaults = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ncoden/Documents/Documents/Projects/Programmation/Web/2016/Foundation/foundation-sites/js/entries/plugins/foundation.orbit.js */"./js/entries/plugins/foundation.orbit.js");
+module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.orbit.js */"./js/entries/plugins/foundation.orbit.js");
 
 
 /***/ }),
