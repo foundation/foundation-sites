@@ -1,8 +1,8 @@
 'use strict';
 
 import { Box } from './foundation.util.box';
-import { Plugin } from './foundation.plugin';
-import { rtl as Rtl } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { rtl as Rtl } from './foundation.core.utils';
 
 const POSITIONS = ['left', 'right', 'top', 'bottom'];
 const VERTICAL_ALIGNMENTS = ['top', 'bottom', 'center'];
@@ -40,6 +40,8 @@ class Positionable extends Plugin {
     this.triedPositions = {};
     this.position  = this.options.position === 'auto' ? this._getDefaultPosition() : this.options.position;
     this.alignment = this.options.alignment === 'auto' ? this._getDefaultAlignment() : this.options.alignment;
+    this.originalPosition = this.position;
+    this.originalAlignment = this.alignment;
   }
 
   _getDefaultPosition () {
@@ -121,6 +123,12 @@ class Positionable extends Plugin {
     var $eleDims = Box.GetDimensions($element),
         $anchorDims = Box.GetDimensions($anchor);
 
+
+    if (!this.options.allowOverlap) {
+      // restore original position & alignment before checking overlap
+      this.position = this.originalPosition;
+      this.alignment = this.originalAlignment;
+    }
 
     $element.offset(Box.GetExplicitOffsets($element, $anchor, this.position, this.alignment, this._getVOffset(), this._getHOffset()));
 

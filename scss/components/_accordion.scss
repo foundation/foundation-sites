@@ -53,6 +53,7 @@ $accordion-content-padding: 1rem !default;
   margin-#{$global-left}: 0;
   background: $background;
   list-style-type: none;
+
   &[disabled] {
     .accordion-title {
       cursor: not-allowed;

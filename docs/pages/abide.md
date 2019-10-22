@@ -30,30 +30,30 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     <div class="grid-x grid-margin-x">
       <div class="cell small-12">
         <label>Number Required
-          <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
-          <span class="form-error">
+          <input type="text" placeholder="1234" aria-describedby="example1Hint1" aria-errormessage="example1Error1" required pattern="number">
+          <span class="form-error" id="example1Error1">
             Yo, you had better fill this out, it's required.
           </span>
         </label>
-        <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+        <p class="help-text" id="example1Hint1">Here's how you use this input field!</p>
       </div>
       <div class="cell small-12">
         <label>Password Required
-          <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
-          <span class="form-error">
+          <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="example1Hint2" aria-errormessage="example1Error2" required >
+          <span class="form-error" id="example1Error2">
             I'm required!
           </span>
         </label>
-        <p class="help-text" id="exampleHelpText">Enter a password please.</p>
+        <p class="help-text" id="example1Hint2">Enter a password please.</p>
       </div>
       <div class="cell small-12">
         <label>Re-enter Password
-          <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
-          <span class="form-error">
+          <input type="password" placeholder="yeti4preZ" aria-describedby="example1Hint3" aria-errormessage="example1Error3" required pattern="alpha_numeric" data-equalto="password">
+          <span class="form-error" id="example1Error3">
             Hey, passwords are supposed to match!
           </span>
         </label>
-        <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+        <p class="help-text" id="example1Hint3">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
       </div>
     </div>
   </div>
@@ -130,15 +130,15 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 <label class="is-invalid-label">
   Required Thing
-  <input type="text" class="is-invalid-input">
-  <span class="form-error is-visible">
+  <input type="text" class="is-invalid-input" aria-describedby="exemple2Error" data-invalid aria-invalid="true">
+  <span class="form-error is-visible" id="exemple2Error">
     Yo, you had better fill this out.
   </span>
 </label>
 
 <label class="is-invalid-label">
   Required Thing
-  <textarea type="text" class="is-invalid-input"></textarea>
+  <textarea type="text" class="is-invalid-input" data-invalid aria-invalid="true"></textarea>
 </label>
 
 ---
@@ -151,14 +151,19 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 
 ```html_example
 <form data-abide novalidate>
-  <label>
+  <div data-abide-error class="sr-only">
+    There are some errors in your form.
+  </div>
+
+  <div>
     Amount
     <div class="input-group">
       <span class="input-group-label">$</span>
-      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+      <input class="input-group-field" id="example3Input" type="number" required pattern="number"/>
     </div>
-    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
-  </label>
+    <label class="form-error" data-form-error-for="example3Input">Amount is required.</label>
+  </div>
+
   <button class="button" type="submit" value="Submit">Submit</button>
 </form>
 ```
@@ -169,13 +174,13 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 ```html
 <form data-abide>
   <!-- Add "display: none" right away -->
-  <div data-abide-error class="alert callout" style="display: none;">
+  <div data-abide-error class="alert callout" aria-live="assertive" style="display: none;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <label>
     Name
-    <input type="text" required>
-    <span class="form-error">This field is required.</span>
+    <input id="example4Input" aria-describedby="example4Error" type="text" required>
+    <span id="example4Error" class="form-error">This field is required.</span>
   </label>
 </form>
 ```
@@ -186,19 +191,23 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 <form data-abide>
   <!-- Add role="alert" -->
   <!-- Add "display: block" -->
-  <div data-abide-error role="alert" class="alert callout" style="display: block;">
+  <div data-abide-error class="alert callout" aria-live="assertive" role="alert" style="display: block;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
   <!-- Add "is-invalid-label" -->
   <label class="is-invalid-label">
     Name
     <!-- Add "is-invalid-input" -->
-    <input type="text" class="is-invalid-input" required aria-invalid aria-describedby="uuid">
+    <!-- Add aria-invalid="true" -->
+    <input id="example4Input" aria-describedby="example4Error" type="text" required
+      class="is-invalid-input" aria-invalid="true">
     <!-- Add "is-visible" -->
-    <span class="form-error is-visible" id="uuid">This field is required.</span>
+    <span id="example4Error" class="form-error is-visible">This field is required.</span>
   </label>
 </form>
 ```
+
+---
 
 ## Ignored Inputs
 
@@ -207,21 +216,21 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
   <div class="grid-x grid-margin-x">
     <div class="cell small-12">
       <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+        <input type="text" placeholder="Use me, or don't" aria-describedby="example5Hint1" data-abide-ignore>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+      <p class="help-text" id="example5Hint1">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="cell small-12">
       <label>Disabled!
-        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+        <input type="text" placeholder="Disabled input" aria-describedby="example5Hint2" disabled>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+      <p class="help-text" id="example5Hint2">This input is ignored by Abide using `disabled`</p>
     </div>
     <div class="cell small-12">
       <label>Hidden!
-        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+        <input type="hidden" placeholder="Hidden input" aria-describedby="example5Hint3" >
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+      <p class="help-text" id="example5Hint3">This input is ignored by Abide using `type="hidden"`</p>
     </div>
   </div>
   <div class="grid-container">
@@ -327,7 +336,11 @@ cvv : /^([0-9]){3,4}$/,
 // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
 email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/,
 
-url : /^(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/,
+// From CommonRegexJS (@talyssonoc)
+// https://github.com/talyssonoc/CommonRegexJS/blob/e2901b9f57222bc14069dc8f0598d5f412555411/lib/commonregex.js#L76
+// For more restrictive URL Regexs, see https://mathiasbynens.be/demo/url-regex.
+url: /^((?:(https?|ftps?|file|ssh|sftp):\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))$/,
+
 // abc.de
 domain : /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,8}$/,
 
@@ -382,3 +395,9 @@ $(document).foundation();
 <input id="min" type="number" required >
 <input id="max" type="number" data-validator="greater_than" data-greater-than="min" required>
 ```
+
+## Accessibility
+
+By default, Abide will add some accessibility attributes to your form elements. It is highly recommended to keep this option active as it improve the usability of your forms for disabled people. [Lean more about Accessibility in Foundation](accessibility.html).
+
+However, if you think the attributes added by Abide are not correct, you can disable it by setting `a11yAttributes` (or `[data-a11y-attributes]`) to `false`.

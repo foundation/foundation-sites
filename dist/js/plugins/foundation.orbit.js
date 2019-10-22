@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("./foundation.core"), require("./foundation.util.imageLoader"), require("./foundation.util.keyboard"), require("./foundation.util.motion"), require("./foundation.util.timer"), require("./foundation.util.touch"), require("jquery"));
+	else if(typeof define === 'function' && define.amd)
+		define(["./foundation.core", "./foundation.util.imageLoader", "./foundation.util.keyboard", "./foundation.util.motion", "./foundation.util.timer", "./foundation.util.touch", "jquery"], factory);
+	else if(typeof exports === 'object')
+		exports["foundation.orbit"] = factory(require("./foundation.core"), require("./foundation.util.imageLoader"), require("./foundation.util.keyboard"), require("./foundation.util.motion"), require("./foundation.util.timer"), require("./foundation.util.touch"), require("jquery"));
+	else
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.orbit"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.imageLoader"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.motion"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.timer"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.touch"], root["jQuery"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_util_imageLoader__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__, __WEBPACK_EXTERNAL_MODULE__foundation_util_timer__, __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -33,18 +43,35 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -62,114 +89,145 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 89);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ "./foundation.core":
+/*!****************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
+  \****************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = jQuery;
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ 1:
+/***/ "./foundation.util.imageLoader":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.imageLoader"],"amd":"./foundation.util.imageLoader","commonjs":"./foundation.util.imageLoader","commonjs2":"./foundation.util.imageLoader"} ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = {Foundation: window.Foundation};
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_imageLoader__;
 
 /***/ }),
 
-/***/ 10:
+/***/ "./foundation.util.keyboard":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.keyboard"],"amd":"./foundation.util.keyboard","commonjs":"./foundation.util.keyboard","commonjs2":"./foundation.util.keyboard"} ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = {onImagesLoaded: window.Foundation.onImagesLoaded};
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
 
 /***/ }),
 
-/***/ 12:
+/***/ "./foundation.util.motion":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.motion"],"amd":"./foundation.util.motion","commonjs":"./foundation.util.motion","commonjs2":"./foundation.util.motion"} ***!
+  \********************************************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = {Touch: window.Foundation.Touch};
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_motion__;
 
 /***/ }),
 
-/***/ 2:
+/***/ "./foundation.util.timer":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.timer"],"amd":"./foundation.util.timer","commonjs":"./foundation.util.timer","commonjs2":"./foundation.util.timer"} ***!
+  \****************************************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = {Plugin: window.Foundation.Plugin};
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_timer__;
 
 /***/ }),
 
-/***/ 23:
+/***/ "./foundation.util.touch":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.touch"],"amd":"./foundation.util.touch","commonjs":"./foundation.util.touch","commonjs2":"./foundation.util.touch"} ***!
+  \****************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__;
+
+/***/ }),
+
+/***/ "./js/entries/plugins/foundation.orbit.js":
+/*!************************************************!*\
+  !*** ./js/entries/plugins/foundation.orbit.js ***!
+  \************************************************/
+/*! exports provided: Foundation, Orbit */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_orbit__ = __webpack_require__(53);
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_orbit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.orbit */ "./js/foundation.orbit.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Orbit", function() { return _foundation_orbit__WEBPACK_IMPORTED_MODULE_1__["Orbit"]; });
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_orbit__["a" /* Orbit */], 'Orbit');
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_orbit__WEBPACK_IMPORTED_MODULE_1__["Orbit"], 'Orbit');
+
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports) {
-
-module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports) {
-
-module.exports = {Motion: window.Foundation.Motion, Move: window.Foundation.Move};
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports) {
-
-module.exports = {Keyboard: window.Foundation.Keyboard};
-
-/***/ }),
-
-/***/ 53:
+/***/ "./js/foundation.orbit.js":
+/*!********************************!*\
+  !*** ./js/foundation.orbit.js ***!
+  \********************************/
+/*! exports provided: Orbit */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Orbit; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_timer__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_util_timer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__foundation_util_timer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_util_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__foundation_util_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__foundation_util_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_plugin__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__foundation_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__foundation_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__foundation_util_touch__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__foundation_util_touch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__foundation_util_touch__);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Orbit", function() { return Orbit; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
+/* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.timer */ "./foundation.util.timer");
+/* harmony import */ var _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
+/* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./foundation.util.touch */ "./foundation.util.touch");
+/* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__);
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
@@ -189,17 +247,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @requires foundation.util.touch
  */
 
-var Orbit = function (_Plugin) {
+var Orbit =
+/*#__PURE__*/
+function (_Plugin) {
   _inherits(Orbit, _Plugin);
 
   function Orbit() {
     _classCallCheck(this, Orbit);
 
-    return _possibleConstructorReturn(this, (Orbit.__proto__ || Object.getPrototypeOf(Orbit)).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Orbit).apply(this, arguments));
   }
 
   _createClass(Orbit, [{
-    key: '_setup',
+    key: "_setup",
 
     /**
     * Creates a new instance of an orbit carousel.
@@ -210,14 +270,14 @@ var Orbit = function (_Plugin) {
     */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Orbit.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Orbit.defaults, this.$element.data(), options);
       this.className = 'Orbit'; // ie9 back compat
 
-      __WEBPACK_IMPORTED_MODULE_7__foundation_util_touch__["Touch"].init(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
 
       this._init();
 
-      __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].register('Orbit', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].register('Orbit', {
         'ltr': {
           'ARROW_RIGHT': 'next',
           'ARROW_LEFT': 'previous'
@@ -228,7 +288,6 @@ var Orbit = function (_Plugin) {
         }
       });
     }
-
     /**
     * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
     * @function
@@ -236,18 +295,16 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_init',
+    key: "_init",
     value: function _init() {
       // @TODO: consider discussion on PR #9278 about DOM pollution by changeSlide
       this._reset();
 
-      this.$wrapper = this.$element.find('.' + this.options.containerClass);
-      this.$slides = this.$element.find('.' + this.options.slideClass);
-
+      this.$wrapper = this.$element.find(".".concat(this.options.containerClass));
+      this.$slides = this.$element.find(".".concat(this.options.slideClass));
       var $images = this.$element.find('img'),
           initActive = this.$slides.filter('.is-active'),
-          id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__foundation_util_core__["GetYoDigits"])(6, 'orbit');
-
+          id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__["GetYoDigits"])(6, 'orbit');
       this.$element.attr({
         'data-resize': id,
         'id': id
@@ -262,9 +319,10 @@ var Orbit = function (_Plugin) {
       }
 
       if ($images.length) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__foundation_util_imageLoader__["onImagesLoaded"])($images, this._prepareForOrbit.bind(this));
+        Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_4__["onImagesLoaded"])($images, this._prepareForOrbit.bind(this));
       } else {
         this._prepareForOrbit(); //hehe
+
       }
 
       if (this.options.bullets) {
@@ -282,7 +340,6 @@ var Orbit = function (_Plugin) {
         this.$wrapper.attr('tabindex', 0);
       }
     }
-
     /**
     * Creates a jQuery collection of bullets, if they are being used.
     * @function
@@ -290,21 +347,21 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_loadBullets',
+    key: "_loadBullets",
     value: function _loadBullets() {
-      this.$bullets = this.$element.find('.' + this.options.boxOfBullets).find('button');
+      this.$bullets = this.$element.find(".".concat(this.options.boxOfBullets)).find('button');
     }
-
     /**
     * Sets a `timer` object on the orbit, and starts the counter for the next slide.
     * @function
     */
 
   }, {
-    key: 'geoSync',
+    key: "geoSync",
     value: function geoSync() {
       var _this = this;
-      this.timer = new __WEBPACK_IMPORTED_MODULE_3__foundation_util_timer__["Timer"](this.$element, {
+
+      this.timer = new _foundation_util_timer__WEBPACK_IMPORTED_MODULE_3__["Timer"](this.$element, {
         duration: this.options.timerDelay,
         infinite: false
       }, function () {
@@ -312,7 +369,6 @@ var Orbit = function (_Plugin) {
       });
       this.timer.start();
     }
-
     /**
     * Sets wrapper and slide heights for the orbit.
     * @function
@@ -320,12 +376,12 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_prepareForOrbit',
+    key: "_prepareForOrbit",
     value: function _prepareForOrbit() {
       var _this = this;
+
       this._setWrapperHeight();
     }
-
     /**
     * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
     * @function
@@ -334,7 +390,7 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_setWrapperHeight',
+    key: "_setWrapperHeight",
     value: function _setWrapperHeight(cb) {
       //rewrite this to `for` loop
       var max = 0,
@@ -344,24 +400,29 @@ var Orbit = function (_Plugin) {
 
       this.$slides.each(function () {
         temp = this.getBoundingClientRect().height;
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).attr('data-slide', counter);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-slide', counter); // hide all slides but the active one
 
-        if (!/mui/g.test(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
-          //if not the active slide, set css position and display property
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).css({ 'position': 'relative', 'display': 'none' });
+        if (!/mui/g.test(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).css({
+            'display': 'none'
+          });
         }
+
         max = temp > max ? temp : max;
         counter++;
       });
 
       if (counter === this.$slides.length) {
-        this.$wrapper.css({ 'height': max }); //only change the wrapper height property once.
+        this.$wrapper.css({
+          'height': max
+        }); //only change the wrapper height property once.
+
         if (cb) {
           cb(max);
         } //fire callback with max height dimension.
+
       }
     }
-
     /**
     * Sets the max-height of each slide.
     * @function
@@ -369,13 +430,12 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_setSlideHeight',
+    key: "_setSlideHeight",
     value: function _setSlideHeight(height) {
       this.$slides.each(function () {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).css('max-height', height);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).css('max-height', height);
       });
     }
-
     /**
     * Adds event listeners to basically everything within the element.
     * @function
@@ -383,34 +443,37 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_events',
+    key: "_events",
     value: function _events() {
-      var _this = this;
-
-      //***************************************
+      var _this = this; //***************************************
       //**Now using custom event - thanks to:**
       //**      Yohai Ararat of Toronto      **
       //***************************************
       //
+
+
       this.$element.off('.resizeme.zf.trigger').on({
         'resizeme.zf.trigger': this._prepareForOrbit.bind(this)
       });
-      if (this.$slides.length > 1) {
 
+      if (this.$slides.length > 1) {
         if (this.options.swipe) {
           this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit').on('swipeleft.zf.orbit', function (e) {
             e.preventDefault();
+
             _this.changeSlide(true);
           }).on('swiperight.zf.orbit', function (e) {
             e.preventDefault();
+
             _this.changeSlide(false);
           });
-        }
-        //***************************************
+        } //***************************************
+
 
         if (this.options.autoPlay) {
           this.$slides.on('click.zf.orbit', function () {
             _this.$element.data('clickedOn', _this.$element.data('clickedOn') ? false : true);
+
             _this.timer[_this.$element.data('clickedOn') ? 'pause' : 'start']();
           });
 
@@ -426,12 +489,12 @@ var Orbit = function (_Plugin) {
         }
 
         if (this.options.navButtons) {
-          var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
-          $controls.attr('tabindex', 0)
-          //also need to handle enter/return and spacebar key presses
+          var $controls = this.$element.find(".".concat(this.options.nextClass, ", .").concat(this.options.prevClass));
+          $controls.attr('tabindex', 0) //also need to handle enter/return and spacebar key presses
           .on('click.zf.orbit touchend.zf.orbit', function (e) {
             e.preventDefault();
-            _this.changeSlide(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass(_this.options.nextClass));
+
+            _this.changeSlide(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass(_this.options.nextClass));
           });
         }
 
@@ -440,7 +503,9 @@ var Orbit = function (_Plugin) {
             if (/is-active/g.test(this.className)) {
               return false;
             } //if this is active, kick out of function.
-            var idx = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('slide'),
+
+
+            var idx = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('slide'),
                 ltr = idx > _this.$slides.filter('.is-active').data('slide'),
                 $slide = _this.$slides.eq(idx);
 
@@ -451,16 +516,16 @@ var Orbit = function (_Plugin) {
         if (this.options.accessible) {
           this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
             // handle keyboard event with keyboard util
-            __WEBPACK_IMPORTED_MODULE_1__foundation_util_keyboard__["Keyboard"].handleKey(e, 'Orbit', {
-              next: function () {
+            _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Orbit', {
+              next: function next() {
                 _this.changeSlide(true);
               },
-              previous: function () {
+              previous: function previous() {
                 _this.changeSlide(false);
               },
-              handled: function () {
+              handled: function handled() {
                 // if bullet is focused, make sure focus moves
-                if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).is(_this.$bullets)) {
+                if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).is(_this.$bullets)) {
                   _this.$bullets.filter('.is-active').focus();
                 }
               }
@@ -469,13 +534,12 @@ var Orbit = function (_Plugin) {
         }
       }
     }
-
     /**
      * Resets Orbit so it can be reinitialized
      */
 
   }, {
-    key: '_reset',
+    key: "_reset",
     value: function _reset() {
       // Don't do anything if there are no slides (first run)
       if (typeof this.$slides == 'undefined') {
@@ -484,51 +548,49 @@ var Orbit = function (_Plugin) {
 
       if (this.$slides.length > 1) {
         // Remove old events
-        this.$element.off('.zf.orbit').find('*').off('.zf.orbit');
+        this.$element.off('.zf.orbit').find('*').off('.zf.orbit'); // Restart timer if autoPlay is enabled
 
-        // Restart timer if autoPlay is enabled
         if (this.options.autoPlay) {
           this.timer.restart();
-        }
+        } // Reset all sliddes
 
-        // Reset all sliddes
+
         this.$slides.each(function (el) {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
-        });
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
+        }); // Show the first slide
 
-        // Show the first slide
-        this.$slides.first().addClass('is-active').show();
+        this.$slides.first().addClass('is-active').show(); // Triggers when the slide has finished animating
 
-        // Triggers when the slide has finished animating
-        this.$element.trigger('slidechange.zf.orbit', [this.$slides.first()]);
+        this.$element.trigger('slidechange.zf.orbit', [this.$slides.first()]); // Select first bullet if bullets are present
 
-        // Select first bullet if bullets are present
         if (this.options.bullets) {
           this._updateBullets(0);
         }
       }
     }
-
     /**
     * Changes the current slide to a new one.
     * @function
-    * @param {Boolean} isLTR - flag if the slide should move left to right.
+    * @param {Boolean} isLTR - if true the slide moves from right to left, if false the slide moves from left to right.
     * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
     * @param {Number} idx - the index of the new slide in its collection, if one chosen.
     * @fires Orbit#slidechange
     */
 
   }, {
-    key: 'changeSlide',
+    key: "changeSlide",
     value: function changeSlide(isLTR, chosenSlide, idx) {
       if (!this.$slides) {
         return;
       } // Don't freak out if we're in the middle of cleanup
+
+
       var $curSlide = this.$slides.filter('.is-active').eq(0);
 
       if (/mui/g.test($curSlide[0].className)) {
         return false;
       } //if the slide is currently animating, kick out of the function
+
 
       var $firstSlide = this.$slides.first(),
           $lastSlide = this.$slides.last(),
@@ -540,8 +602,8 @@ var Orbit = function (_Plugin) {
       if (!chosenSlide) {
         //most of the time, this will be auto played or clicked from the navButtons.
         $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
-        this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass) : //pick next slide if moving left to right
-        this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass); //pick prev slide if moving right to left
+        this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) : //pick next slide if moving left to right
+        this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
       } else {
         $newSlide = chosenSlide;
       }
@@ -555,24 +617,28 @@ var Orbit = function (_Plugin) {
 
         if (this.options.bullets) {
           idx = idx || this.$slides.index($newSlide); //grab index to update bullets
+
           this._updateBullets(idx);
         }
 
         if (this.options.useMUI && !this.$element.is(':hidden')) {
-          __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__["Motion"].animateIn($newSlide.addClass('is-active').css({ 'position': 'absolute', 'top': 0 }), this.options['animInFrom' + dirIn], function () {
-            $newSlide.css({ 'position': 'relative', 'display': 'block' }).attr('aria-live', 'polite');
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateIn($newSlide.addClass('is-active'), this.options["animInFrom".concat(dirIn)], function () {
+            $newSlide.css({
+              'display': 'block'
+            }).attr('aria-live', 'polite');
           });
-
-          __WEBPACK_IMPORTED_MODULE_2__foundation_util_motion__["Motion"].animateOut($curSlide.removeClass('is-active'), this.options['animOutTo' + dirOut], function () {
+          _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut($curSlide.removeClass('is-active'), this.options["animOutTo".concat(dirOut)], function () {
             $curSlide.removeAttr('aria-live');
+
             if (_this.options.autoPlay && !_this.timer.isPaused) {
               _this.timer.restart();
-            }
-            //do stuff?
+            } //do stuff?
+
           });
         } else {
           $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
           $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+
           if (this.options.autoPlay && !this.timer.isPaused) {
             this.timer.restart();
           }
@@ -581,10 +647,11 @@ var Orbit = function (_Plugin) {
         * Triggers when the slide has finished animating in.
         * @event Orbit#slidechange
         */
+
+
         this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
       }
     }
-
     /**
     * Updates the active state of the bullets, if displayed.
     * @function
@@ -593,27 +660,26 @@ var Orbit = function (_Plugin) {
     */
 
   }, {
-    key: '_updateBullets',
+    key: "_updateBullets",
     value: function _updateBullets(idx) {
-      var $oldBullet = this.$element.find('.' + this.options.boxOfBullets).find('.is-active').removeClass('is-active').blur(),
+      var $oldBullet = this.$element.find(".".concat(this.options.boxOfBullets)).find('.is-active').removeClass('is-active').blur(),
           span = $oldBullet.find('span:last').detach(),
           $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
     }
-
     /**
     * Destroys the carousel and hides the element.
     * @function
     */
 
   }, {
-    key: '_destroy',
+    key: "_destroy",
     value: function _destroy() {
       this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
     }
   }]);
 
   return Orbit;
-}(__WEBPACK_IMPORTED_MODULE_6__foundation_plugin__["Plugin"]);
+}(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_5__["Plugin"]);
 
 Orbit.defaults = {
   /**
@@ -623,6 +689,7 @@ Orbit.defaults = {
   * @default true
   */
   bullets: true,
+
   /**
   * Tells the JS to apply event listeners to nav buttons
   * @option
@@ -630,6 +697,7 @@ Orbit.defaults = {
   * @default true
   */
   navButtons: true,
+
   /**
   * motion-ui animation class to apply
   * @option
@@ -637,6 +705,7 @@ Orbit.defaults = {
   * @default 'slide-in-right'
   */
   animInFromRight: 'slide-in-right',
+
   /**
   * motion-ui animation class to apply
   * @option
@@ -644,6 +713,7 @@ Orbit.defaults = {
   * @default 'slide-out-right'
   */
   animOutToRight: 'slide-out-right',
+
   /**
   * motion-ui animation class to apply
   * @option
@@ -652,6 +722,7 @@ Orbit.defaults = {
   *
   */
   animInFromLeft: 'slide-in-left',
+
   /**
   * motion-ui animation class to apply
   * @option
@@ -659,6 +730,7 @@ Orbit.defaults = {
   * @default 'slide-out-left'
   */
   animOutToLeft: 'slide-out-left',
+
   /**
   * Allows Orbit to automatically animate on page load.
   * @option
@@ -666,6 +738,7 @@ Orbit.defaults = {
   * @default true
   */
   autoPlay: true,
+
   /**
   * Amount of time, in ms, between slide transitions
   * @option
@@ -673,6 +746,7 @@ Orbit.defaults = {
   * @default 5000
   */
   timerDelay: 5000,
+
   /**
   * Allows Orbit to infinitely loop through the slides
   * @option
@@ -680,6 +754,7 @@ Orbit.defaults = {
   * @default true
   */
   infiniteWrap: true,
+
   /**
   * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
   * @option
@@ -687,6 +762,7 @@ Orbit.defaults = {
   * @default true
   */
   swipe: true,
+
   /**
   * Allows the timing function to pause animation on hover.
   * @option
@@ -694,6 +770,7 @@ Orbit.defaults = {
   * @default true
   */
   pauseOnHover: true,
+
   /**
   * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
   * @option
@@ -701,6 +778,7 @@ Orbit.defaults = {
   * @default true
   */
   accessible: true,
+
   /**
   * Class applied to the container of Orbit
   * @option
@@ -708,6 +786,7 @@ Orbit.defaults = {
   * @default 'orbit-container'
   */
   containerClass: 'orbit-container',
+
   /**
   * Class applied to individual slides.
   * @option
@@ -715,6 +794,7 @@ Orbit.defaults = {
   * @default 'orbit-slide'
   */
   slideClass: 'orbit-slide',
+
   /**
   * Class applied to the bullet container. You're welcome.
   * @option
@@ -722,6 +802,7 @@ Orbit.defaults = {
   * @default 'orbit-bullets'
   */
   boxOfBullets: 'orbit-bullets',
+
   /**
   * Class applied to the `next` navigation button.
   * @option
@@ -729,6 +810,7 @@ Orbit.defaults = {
   * @default 'orbit-next'
   */
   nextClass: 'orbit-next',
+
   /**
   * Class applied to the `previous` navigation button.
   * @option
@@ -736,8 +818,9 @@ Orbit.defaults = {
   * @default 'orbit-previous'
   */
   prevClass: 'orbit-previous',
+
   /**
-  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+  * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatibility.
   * @option
    * @type {boolean}
   * @default true
@@ -746,22 +829,31 @@ Orbit.defaults = {
 };
 
 
-
 /***/ }),
 
-/***/ 78:
-/***/ (function(module, exports) {
-
-module.exports = {Timer: window.Foundation.Timer};
-
-/***/ }),
-
-/***/ 89:
+/***/ 10:
+/*!******************************************************!*\
+  !*** multi ./js/entries/plugins/foundation.orbit.js ***!
+  \******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(23);
+module.exports = __webpack_require__(/*! /Users/ncoden/Documents/Documents/Projects/Programmation/Web/2016/Foundation/foundation-sites/js/entries/plugins/foundation.orbit.js */"./js/entries/plugins/foundation.orbit.js");
 
+
+/***/ }),
+
+/***/ "jquery":
+/*!********************************************************************************************!*\
+  !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
 
 /***/ })
 
 /******/ });
+});
+//# sourceMappingURL=foundation.orbit.js.map

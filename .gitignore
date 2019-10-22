@@ -13,13 +13,14 @@
 .grunt
 .idea
 .sass-cache/*
+.eyeglass_cache/*
 .yardoc
 _build
 .customizer
 
 bower_components
-bundle
-build/*
+./bundle
+./build/*
 /docs2/public/*
 _yardoc
 coverage
@@ -54,4 +55,4 @@ pizza/
 data.json
 npm-debug.log
 foundation-docs
-vendor
+./vendor

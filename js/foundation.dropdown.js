@@ -2,11 +2,11 @@
 
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { Positionable } from './foundation.positionable';
 
 import { Triggers } from './foundation.util.triggers';
-
+import { Touch } from './foundation.util.touch'
 
 /**
  * Dropdown module.
@@ -35,8 +35,8 @@ class Dropdown extends Positionable {
     this._init();
 
     Keyboard.register('Dropdown', {
-      'ENTER': 'open',
-      'SPACE': 'open',
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
       'ESCAPE': 'close'
     });
   }
@@ -66,12 +66,22 @@ class Dropdown extends Positionable {
       this.$parent = null;
     }
 
+    // Set [aria-labelledby] on the Dropdown if it is not set
+    if (typeof this.$element.attr('aria-labelledby') === 'undefined') {
+      // Get the anchor ID or create one
+      if (typeof this.$currentAnchor.attr('id') === 'undefined') {
+        this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
+      };
+
+      this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
+    }
+
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id,
-      'aria-labelledby': this.$currentAnchor.id || GetYoDigits(6, 'dd-anchor')
     });
+
     super._init();
     this._events();
   }
@@ -88,7 +98,7 @@ class Dropdown extends Positionable {
 
   _getDefaultAlignment() {
     // handle legacy float approach
-    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.className);
+    var horizontalPosition = /float-(\S+)/.exec(this.$currentAnchor.attr('class'));
     if(horizontalPosition) {
       return horizontalPosition[1];
     }
@@ -105,7 +115,9 @@ class Dropdown extends Positionable {
    * @private
    */
   _setPosition() {
+    this.$element.removeClass(`has-position-${this.position} has-alignment-${this.alignment}`);
     super._setPosition(this.$currentAnchor, this.$element, this.$parent);
+    this.$element.addClass(`has-position-${this.position} has-alignment-${this.alignment}`);
   }
 
   /**
@@ -149,24 +161,24 @@ class Dropdown extends Positionable {
             _this.$anchors.data('hover', true);
           }, _this.options.hoverDelay);
         }
-      }).on('mouseleave.zf.dropdown', function(){
+      }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
         clearTimeout(_this.timeout);
         _this.timeout = setTimeout(function(){
           _this.close();
           _this.$anchors.data('hover', false);
         }, _this.options.hoverDelay);
-      });
+      }));
       if(this.options.hoverPane){
         this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
             .on('mouseenter.zf.dropdown', function(){
               clearTimeout(_this.timeout);
-            }).on('mouseleave.zf.dropdown', function(){
+            }).on('mouseleave.zf.dropdown', ignoreMousedisappear(function(){
               clearTimeout(_this.timeout);
               _this.timeout = setTimeout(function(){
                 _this.close();
                 _this.$anchors.data('hover', false);
               }, _this.options.hoverDelay);
-            });
+            }));
       }
     }
     this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
@@ -176,7 +188,7 @@ class Dropdown extends Positionable {
 
       Keyboard.handleKey(e, 'Dropdown', {
         open: function() {
-          if ($target.is(_this.$anchors)) {
+          if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
             _this.open();
             _this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
@@ -203,7 +215,7 @@ class Dropdown extends Positionable {
             if(_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
               return;
             }
-            if(_this.$element.find(e.target).length) {
+            if(_this.$element.is(e.target) || _this.$element.find(e.target).length) {
               return;
             }
             _this.close();
@@ -398,6 +410,6 @@ Dropdown.defaults = {
    * @default false
    */
   closeOnClick: false
-}
+};
 
 export {Dropdown};

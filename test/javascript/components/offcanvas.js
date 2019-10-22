@@ -34,6 +34,7 @@ describe('Off Canvas', function() {
 
   afterEach(function() {
     plugin.destroy();
+    document.activeElement.blur();
     $html.remove();
   });
 
@@ -252,7 +253,7 @@ describe('Off Canvas', function() {
       plugin.toggle();
     });
   });
-  
+
   describe('keyboard events', function() {
     it('closes Off Canvas on ESCAPE', function(done) {
       $html = $(template).appendTo('body');

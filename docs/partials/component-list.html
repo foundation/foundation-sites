@@ -39,14 +39,22 @@
       </div>
     </li>
 
-    <li class="accordion-item {{#ifpage 'xy-grid' 'grid' 'flex-grid' 'forms' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-accordion-item>
+    <li class="accordion-item {{#ifpage 'xy-grid' 'grid' 'flex-grid' 'forms'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">General</a>
-      <div class="accordion-content {{#ifpage 'xy-grid' 'grid' 'flex-grid' 'forms' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-tab-content>
+      <div class="accordion-content {{#ifpage 'xy-grid' 'grid' 'flex-grid' 'forms'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'xy-grid'}} class="current"{{/ifpage}}><a href="xy-grid.html">XY Grid <span class="label">New</span></a></li>
           <li{{#ifpage 'grid'}} class="current"{{/ifpage}}><a href="grid.html">Float Grid<span class="label">Legacy</span></a></li>
           <li{{#ifpage 'flex-grid'}} class="current"{{/ifpage}}><a href="flex-grid.html">Flex Grid<span class="label">Legacy</span></a></li>
           <li{{#ifpage 'forms'}} class="current"{{/ifpage}}><a href="forms.html">Forms</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'prototyping-utilities' 'flexbox-utilities' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Utilities</a>
+      <div class="accordion-content {{#ifpage 'prototyping-utilities' 'flexbox-utilities' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
           <li{{#ifpage 'prototyping-utilities'}} class="current"{{/ifpage}}><a href="prototyping-utilities.html">Prototyping Utilities</a></li>
           <li{{#ifpage 'flexbox-utilities'}} class="current"{{/ifpage}}><a href="flexbox-utilities.html">Flexbox Utilities</a></li>
           <li{{#ifpage 'visibility'}} class="current"{{/ifpage}}><a href="visibility.html">Visibility Classes</a></li>

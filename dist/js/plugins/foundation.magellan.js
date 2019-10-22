@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("./foundation.core"), require("./foundation.smoothScroll"), require("jquery"));
+	else if(typeof define === 'function' && define.amd)
+		define(["./foundation.core", "./foundation.smoothScroll", "jquery"], factory);
+	else if(typeof exports === 'object')
+		exports["foundation.magellan"] = factory(require("./foundation.core"), require("./foundation.smoothScroll"), require("jquery"));
+	else
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.magellan"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.smoothScroll"], root["jQuery"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_smoothScroll__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -33,18 +43,35 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -62,78 +89,93 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 87);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ "./foundation.core":
+/*!****************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
+  \****************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = jQuery;
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
-/***/ 1:
+/***/ "./foundation.smoothScroll":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.smoothScroll"],"amd":"./foundation.smoothScroll","commonjs":"./foundation.smoothScroll","commonjs2":"./foundation.smoothScroll"} ***!
+  \************************************************************************************************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = {Foundation: window.Foundation};
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_smoothScroll__;
 
 /***/ }),
 
-/***/ 2:
-/***/ (function(module, exports) {
-
-module.exports = {Plugin: window.Foundation.Plugin};
-
-/***/ }),
-
-/***/ 21:
+/***/ "./js/entries/plugins/foundation.magellan.js":
+/*!***************************************************!*\
+  !*** ./js/entries/plugins/foundation.magellan.js ***!
+  \***************************************************/
+/*! exports provided: Foundation, Magellan */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__foundation_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_magellan__ = __webpack_require__(51);
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
+
+/* harmony import */ var _foundation_magellan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.magellan */ "./js/foundation.magellan.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Magellan", function() { return _foundation_magellan__WEBPACK_IMPORTED_MODULE_1__["Magellan"]; });
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__foundation_core__["Foundation"].plugin(__WEBPACK_IMPORTED_MODULE_1__foundation_magellan__["a" /* Magellan */], 'Magellan');
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_magellan__WEBPACK_IMPORTED_MODULE_1__["Magellan"], 'Magellan');
+
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports) {
-
-module.exports = {rtl: window.Foundation.rtl, GetYoDigits: window.Foundation.GetYoDigits, transitionend: window.Foundation.transitionend};
-
-/***/ }),
-
-/***/ 51:
+/***/ "./js/foundation.magellan.js":
+/*!***********************************!*\
+  !*** ./js/foundation.magellan.js ***!
+  \***********************************/
+/*! exports provided: Magellan */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Magellan; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation_util_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_plugin__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__foundation_plugin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_smoothScroll__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation_smoothScroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__foundation_smoothScroll__);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Magellan", function() { return Magellan; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
+/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.smoothScroll */ "./foundation.smoothScroll");
+/* harmony import */ var _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_2__);
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
@@ -145,17 +187,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @requires foundation.smoothScroll
  */
 
-var Magellan = function (_Plugin) {
+var Magellan =
+/*#__PURE__*/
+function (_Plugin) {
   _inherits(Magellan, _Plugin);
 
   function Magellan() {
     _classCallCheck(this, Magellan);
 
-    return _possibleConstructorReturn(this, (Magellan.__proto__ || Object.getPrototypeOf(Magellan)).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Magellan).apply(this, arguments));
   }
 
   _createClass(Magellan, [{
-    key: '_setup',
+    key: "_setup",
 
     /**
      * Creates a new instance of Magellan.
@@ -167,36 +211,37 @@ var Magellan = function (_Plugin) {
      */
     value: function _setup(element, options) {
       this.$element = element;
-      this.options = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Magellan.defaults, this.$element.data(), options);
       this.className = 'Magellan'; // ie9 back compat
 
       this._init();
+
       this.calcPoints();
     }
-
     /**
      * Initializes the Magellan plugin and calls functions to get equalizer functioning on load.
      * @private
      */
 
   }, {
-    key: '_init',
+    key: "_init",
     value: function _init() {
-      var id = this.$element[0].id || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__foundation_util_core__["GetYoDigits"])(6, 'magellan');
+      var id = this.$element[0].id || Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["GetYoDigits"])(6, 'magellan');
+
       var _this = this;
-      this.$targets = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[data-magellan-target]');
+
+      this.$targets = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-magellan-target]');
       this.$links = this.$element.find('a');
       this.$element.attr({
         'data-resize': id,
         'data-scroll': id,
         'id': id
       });
-      this.$active = __WEBPACK_IMPORTED_MODULE_0_jquery___default()();
+      this.$active = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       this.scrollPos = parseInt(window.pageYOffset, 10);
 
       this._events();
     }
-
     /**
      * Calculates an array of pixel values that are the demarcation lines between locations on the page.
      * Can be invoked if new elements are added or the size of a location changes.
@@ -204,7 +249,7 @@ var Magellan = function (_Plugin) {
      */
 
   }, {
-    key: 'calcPoints',
+    key: "calcPoints",
     value: function calcPoints() {
       var _this = this,
           body = document.body,
@@ -213,46 +258,50 @@ var Magellan = function (_Plugin) {
       this.points = [];
       this.winHeight = Math.round(Math.max(window.innerHeight, html.clientHeight));
       this.docHeight = Math.round(Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight));
-
       this.$targets.each(function () {
-        var $tar = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
+        var $tar = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             pt = Math.round($tar.offset().top - _this.options.threshold);
         $tar.targetPoint = pt;
+
         _this.points.push(pt);
       });
     }
-
     /**
      * Initializes events for Magellan.
      * @private
      */
 
   }, {
-    key: '_events',
+    key: "_events",
     value: function _events() {
       var _this = this,
-          $body = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('html, body'),
+          $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body'),
           opts = {
         duration: _this.options.animationDuration,
         easing: _this.options.animationEasing
       };
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).one('load', function () {
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).one('load', function () {
         if (_this.options.deepLinking) {
           if (location.hash) {
             _this.scrollToLoc(location.hash);
           }
         }
+
         _this.calcPoints();
+
         _this._updateActive();
       });
+      _this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+        _this.$element.on({
+          'resizeme.zf.trigger': _this.reflow.bind(_this),
+          'scrollme.zf.trigger': _this._updateActive.bind(_this)
+        }).on('click.zf.magellan', 'a[href^="#"]', function (e) {
+          e.preventDefault();
+          var arrival = this.getAttribute('href');
 
-      this.$element.on({
-        'resizeme.zf.trigger': this.reflow.bind(this),
-        'scrollme.zf.trigger': this._updateActive.bind(this)
-      }).on('click.zf.magellan', 'a[href^="#"]', function (e) {
-        e.preventDefault();
-        var arrival = this.getAttribute('href');
-        _this.scrollToLoc(arrival);
+          _this.scrollToLoc(arrival);
+        });
       });
 
       this._deepLinkScroll = function (e) {
@@ -261,9 +310,8 @@ var Magellan = function (_Plugin) {
         }
       };
 
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('popstate', this._deepLinkScroll);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._deepLinkScroll);
     }
-
     /**
      * Function to scroll to a given location on the page.
      * @param {String} loc - a properly formatted jQuery id selector. Example: '#foo'
@@ -271,9 +319,10 @@ var Magellan = function (_Plugin) {
      */
 
   }, {
-    key: 'scrollToLoc',
+    key: "scrollToLoc",
     value: function scrollToLoc(loc) {
       this._inTransition = true;
+
       var _this = this;
 
       var options = {
@@ -282,25 +331,22 @@ var Magellan = function (_Plugin) {
         threshold: this.options.threshold,
         offset: this.options.offset
       };
-
-      __WEBPACK_IMPORTED_MODULE_3__foundation_smoothScroll__["SmoothScroll"].scrollToLoc(loc, options, function () {
+      _foundation_smoothScroll__WEBPACK_IMPORTED_MODULE_2__["SmoothScroll"].scrollToLoc(loc, options, function () {
         _this._inTransition = false;
-        _this._updateActive();
       });
     }
-
     /**
      * Calls necessary functions to update Magellan upon DOM change
      * @function
      */
 
   }, {
-    key: 'reflow',
+    key: "reflow",
     value: function reflow() {
       this.calcPoints();
+
       this._updateActive();
     }
-
     /**
      * Updates the visibility of an active location link, and updates the url hash for the page, if deepLinking enabled.
      * @private
@@ -309,73 +355,91 @@ var Magellan = function (_Plugin) {
      */
 
   }, {
-    key: '_updateActive',
-    value: function _updateActive() /*evt, elem, scrollPos*/{
-      if (this._inTransition) {
-        return;
-      }
-      var winPos = /*scrollPos ||*/parseInt(window.pageYOffset, 10),
-          curIdx;
+    key: "_updateActive",
+    value: function _updateActive()
+    /*evt, elem, scrollPos*/
+    {
+      var _this2 = this;
 
-      if (winPos + this.winHeight === this.docHeight) {
-        curIdx = this.points.length - 1;
-      } else if (winPos < this.points[0]) {
-        curIdx = undefined;
+      if (this._inTransition) return;
+      var newScrollPos = parseInt(window.pageYOffset, 10);
+      var isScrollingUp = this.scrollPos > newScrollPos;
+      this.scrollPos = newScrollPos;
+      var activeIdx; // Before the first point: no link
+
+      if (newScrollPos < this.points[0]) {}
+      /* do nothing */
+      // At the bottom of the page: last link
+      else if (newScrollPos + this.winHeight === this.docHeight) {
+          activeIdx = this.points.length - 1;
+        } // Otherwhise, use the last visible link
+        else {
+            var visibleLinks = this.points.filter(function (p, i) {
+              return p - _this2.options.offset - (isScrollingUp ? _this2.options.threshold : 0) <= newScrollPos;
+            });
+            activeIdx = visibleLinks.length ? visibleLinks.length - 1 : 0;
+          } // Get the new active link
+
+
+      var $oldActive = this.$active;
+      var activeHash = '';
+
+      if (typeof activeIdx !== 'undefined') {
+        this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
+        if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
       } else {
-        var isDown = this.scrollPos < winPos,
-            _this = this,
-            curVisible = this.points.filter(function (p, i) {
-          return isDown ? p - _this.options.offset <= winPos : p - _this.options.offset - _this.options.threshold <= winPos;
-        });
-        curIdx = curVisible.length ? curVisible.length - 1 : 0;
+        this.$active = jquery__WEBPACK_IMPORTED_MODULE_0___default()();
       }
 
-      this.$active.removeClass(this.options.activeClass);
-      this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
+      var isNewActive = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
+      var isNewHash = activeHash !== window.location.hash; // Update the active link element
 
-      if (this.options.deepLinking) {
-        var hash = "";
-        if (curIdx != undefined) {
-          hash = this.$active[0].getAttribute('href');
-        }
-        if (hash !== window.location.hash) {
-          if (window.history.pushState) {
-            window.history.pushState(null, null, hash);
-          } else {
-            window.location.hash = hash;
-          }
+      if (isNewActive) {
+        $oldActive.removeClass(this.options.activeClass);
+        this.$active.addClass(this.options.activeClass);
+      } // Update the hash (it may have changed with the same active link)
+
+
+      if (this.options.deepLinking && isNewHash) {
+        if (window.history.pushState) {
+          // Set or remove the hash (see: https://stackoverflow.com/a/5298684/4317384
+          var url = activeHash ? activeHash : window.location.pathname + window.location.search;
+          window.history.pushState(null, null, url);
+        } else {
+          window.location.hash = activeHash;
         }
       }
 
-      this.scrollPos = winPos;
-      /**
-       * Fires when magellan is finished updating to the new active element.
-       * @event Magellan#update
-       */
-      this.$element.trigger('update.zf.magellan', [this.$active]);
+      if (isNewActive) {
+        /**
+         * Fires when magellan is finished updating to the new active element.
+         * @event Magellan#update
+         */
+        this.$element.trigger('update.zf.magellan', [this.$active]);
+      }
     }
-
     /**
      * Destroys an instance of Magellan and resets the url of the window.
      * @function
      */
 
   }, {
-    key: '_destroy',
+    key: "_destroy",
     value: function _destroy() {
-      this.$element.off('.zf.trigger .zf.magellan').find('.' + this.options.activeClass).removeClass(this.options.activeClass);
+      this.$element.off('.zf.trigger .zf.magellan').find(".".concat(this.options.activeClass)).removeClass(this.options.activeClass);
 
       if (this.options.deepLinking) {
         var hash = this.$active[0].getAttribute('href');
         window.location.hash.replace(hash, '');
       }
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('popstate', this._deepLinkScroll);
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._deepLinkScroll);
+      if (this.onLoadListener) jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
     }
   }]);
 
   return Magellan;
-}(__WEBPACK_IMPORTED_MODULE_2__foundation_plugin__["Plugin"]);
-
+}(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 /**
  * Default settings for plugin
  */
@@ -389,6 +453,7 @@ Magellan.defaults = {
    * @default 500
    */
   animationDuration: 500,
+
   /**
    * Animation style to use when scrolling between locations. Can be `'swing'` or `'linear'`.
    * @option
@@ -397,6 +462,7 @@ Magellan.defaults = {
    * @see {@link https://api.jquery.com/animate|Jquery animate}
    */
   animationEasing: 'linear',
+
   /**
    * Number of pixels to use as a marker for location changes.
    * @option
@@ -404,6 +470,7 @@ Magellan.defaults = {
    * @default 50
    */
   threshold: 50,
+
   /**
    * Class applied to the active locations link on the magellan container.
    * @option
@@ -411,6 +478,7 @@ Magellan.defaults = {
    * @default 'is-active'
    */
   activeClass: 'is-active',
+
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option
@@ -418,6 +486,7 @@ Magellan.defaults = {
    * @default false
    */
   deepLinking: false,
+
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option
@@ -428,22 +497,31 @@ Magellan.defaults = {
 };
 
 
-
 /***/ }),
 
-/***/ 76:
-/***/ (function(module, exports) {
-
-module.exports = {SmoothScroll: window.Foundation.SmoothScroll};
-
-/***/ }),
-
-/***/ 87:
+/***/ 8:
+/*!*********************************************************!*\
+  !*** multi ./js/entries/plugins/foundation.magellan.js ***!
+  \*********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(21);
+module.exports = __webpack_require__(/*! /Users/ncoden/Documents/Documents/Projects/Programmation/Web/2016/Foundation/foundation-sites/js/entries/plugins/foundation.magellan.js */"./js/entries/plugins/foundation.magellan.js");
 
+
+/***/ }),
+
+/***/ "jquery":
+/*!********************************************************************************************!*\
+  !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
 
 /***/ })
 
 /******/ });
+});
+//# sourceMappingURL=foundation.magellan.js.map

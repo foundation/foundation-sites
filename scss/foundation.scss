@@ -1,12 +1,12 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.4.3
+ * Version 6.5.3
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
 
 // Dependencies
-@import '../_vendor/normalize-scss/sass/normalize';
+@import 'vendor/normalize';
 @import '../_vendor/sassy-lists/stylesheets/helpers/missing-dependencies';
 @import '../_vendor/sassy-lists/stylesheets/helpers/true';
 @import '../_vendor/sassy-lists/stylesheets/functions/contain';
@@ -15,57 +15,67 @@
 @import '../_vendor/sassy-lists/stylesheets/functions/replace';
 @import '../_vendor/sassy-lists/stylesheets/functions/to-list';
 
-// Settings
+// --- Settings ---
 // import your own `settings` here or
 // import and modify the default settings through
 // @import 'settings/settings';
 
-// Sass utilities
+// --- Components ---
+// Utilities
 @import 'util/util';
-
-// Global variables and styles
+// Global styles
 @import 'global';
+@import 'forms/forms';
+@import 'typography/typography';
 
-// Components
+// Grids
 @import 'grid/grid';
 @import 'xy-grid/xy-grid';
-@import 'typography/typography';
-@import 'forms/forms';
-@import 'components/visibility';
-@import 'components/float';
+// Generic components
 @import 'components/button';
 @import 'components/button-group';
-@import 'components/accordion-menu';
-@import 'components/accordion';
+@import 'components/close-button';
+@import 'components/label';
+@import 'components/progress-bar';
+@import 'components/slider';
+@import 'components/switch';
+@import 'components/table';
+// Basic components
 @import 'components/badge';
 @import 'components/breadcrumbs';
 @import 'components/callout';
 @import 'components/card';
-@import 'components/close-button';
-@import 'components/drilldown';
-@import 'components/dropdown-menu';
 @import 'components/dropdown';
-@import 'components/flex';
-@import 'components/responsive-embed';
-@import 'components/label';
+@import 'components/pagination';
+@import 'components/tooltip';
+
+// Containers
+@import 'components/accordion';
 @import 'components/media-object';
+@import 'components/orbit';
+@import 'components/responsive-embed';
+@import 'components/tabs';
+@import 'components/thumbnail';
+// Menu-based containers
 @import 'components/menu';
 @import 'components/menu-icon';
+@import 'components/accordion-menu';
+@import 'components/drilldown';
+@import 'components/dropdown-menu';
+
+// Layout components
 @import 'components/off-canvas';
-@import 'components/orbit';
-@import 'components/pagination';
-@import 'components/progress-bar';
 @import 'components/reveal';
-@import 'components/slider';
 @import 'components/sticky';
-@import 'components/switch';
-@import 'components/table';
-@import 'components/tabs';
 @import 'components/title-bar';
 @import 'components/top-bar';
-@import 'components/thumbnail';
-@import 'components/tooltip';
+
+// Helpers
+@import 'components/float';
+@import 'components/flex';
+@import 'components/visibility';
 @import 'prototype/prototype';
+
 
 @mixin foundation-everything(
   $flex: true,
@@ -75,7 +85,12 @@
     $global-flexbox: true !global;
   }
 
+  // Global styles
   @include foundation-global-styles;
+  @include foundation-forms;
+  @include foundation-typography;
+
+  // Grids
   @if not $flex {
     @include foundation-grid;
   }
@@ -87,47 +102,49 @@
       @include foundation-flex-grid;
     }
   }
-  @include foundation-typography;
-  @include foundation-forms;
+
+  // Generic components
   @include foundation-button;
-  @include foundation-accordion;
-  @include foundation-accordion-menu;
-  @include foundation-badge;
-  @include foundation-breadcrumbs;
   @include foundation-button-group;
-  @include foundation-callout;
-  @include foundation-card;
   @include foundation-close-button;
-  @include foundation-menu;
-  @include foundation-menu-icon;
-  @include foundation-drilldown-menu;
-  @include foundation-dropdown;
-  @include foundation-dropdown-menu;
-  @include foundation-responsive-embed;
   @include foundation-label;
-  @include foundation-media-object;
-  @include foundation-off-canvas;
-  @include foundation-orbit;
-  @include foundation-pagination;
   @include foundation-progress-bar;
   @include foundation-slider;
-  @include foundation-sticky;
-  @include foundation-reveal;
   @include foundation-switch;
   @include foundation-table;
+  // Basic components
+  @include foundation-badge;
+  @include foundation-breadcrumbs;
+  @include foundation-callout;
+  @include foundation-card;
+  @include foundation-dropdown;
+  @include foundation-pagination;
+  @include foundation-tooltip;
+
+  // Containers
+  @include foundation-accordion;
+  @include foundation-media-object;
+  @include foundation-orbit;
+  @include foundation-responsive-embed;
   @include foundation-tabs;
   @include foundation-thumbnail;
+  // Menu-based containers
+  @include foundation-menu;
+  @include foundation-menu-icon;
+  @include foundation-accordion-menu;
+  @include foundation-drilldown-menu;
+  @include foundation-dropdown-menu;
+
+  // Layout components
+  @include foundation-off-canvas;
+  @include foundation-reveal;
+  @include foundation-sticky;
   @include foundation-title-bar;
-  @include foundation-tooltip;
   @include foundation-top-bar;
-  @include foundation-visibility-classes;
+
+  // Helpers
   @include foundation-float-classes;
-
-  @if $flex {
-    @include foundation-flex-classes;
-  }
-
-  @if $prototype {
-    @include foundation-prototype-classes;
-  }
+  @if $flex { @include foundation-flex-classes; }
+  @include foundation-visibility-classes;
+  @if $prototype { @include foundation-prototype-classes; }
 }

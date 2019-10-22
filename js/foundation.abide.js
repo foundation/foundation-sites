@@ -1,7 +1,8 @@
 'use strict';
 
 import $ from 'jquery';
-import { Plugin } from './foundation.plugin';
+import { Plugin } from './foundation.core.plugin';
+import { GetYoDigits } from './foundation.core.utils';
 
 /**
  * Abide module.
@@ -30,7 +31,17 @@ class Abide extends Plugin {
    * @private
    */
   _init() {
-    this.$inputs = this.$element.find('input, textarea, select');
+    this.$inputs = $.merge(                               // Consider as input to validate:
+      this.$element.find('input').not('[type=submit]'),   // * all input fields expect submit
+      this.$element.find('textarea, select')              // * all textareas and select fields
+    );
+    const $globalErrors = this.$element.find('[data-abide-error]');
+
+    // Add a11y attributes to all fields
+    if (this.options.a11yAttributes) {
+      this.$inputs.each((i, input) => this.addA11yAttributes($(input)));
+      $globalErrors.each((i, error) => this.addGlobalErrorA11yAttributes($(error)));
+    }
 
     this._events();
   }
@@ -130,7 +141,9 @@ class Abide extends Plugin {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
 
-    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    if (id) {
+      $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    }
 
     return $error;
   }
@@ -205,8 +218,8 @@ class Abide extends Plugin {
    */
   addA11yAttributes($el) {
     let $errors = this.findFormError($el);
-    let $labels = $errors.filter('label').end();
-    let $error = $errors.first().end();
+    let $labels = $errors.filter('label');
+    let $error = $errors.first();
     if (!$errors.length) return;
 
     // Set [aria-describedby] on the input toward the first form error if it is not set
@@ -234,7 +247,7 @@ class Abide extends Plugin {
         const $label = $(label);
         if (typeof $label.attr('for') === 'undefined')
           $label.attr('for', elemId);
-      }).end();
+      });
     }
 
     // For each error targeting $el, set [role=alert] if it is not set.
@@ -259,7 +272,6 @@ class Abide extends Plugin {
    * @param {String} groupName - A string that specifies the name of a radio button group
    *
    */
-
   removeRadioErrorClasses(groupName) {
     var $els = this.$element.find(`:radio[name="${groupName}"]`);
     var $labels = this.findRadioLabels($els);
@@ -273,7 +285,10 @@ class Abide extends Plugin {
       $formErrors.removeClass(this.options.formErrorClass);
     }
 
-    $els.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $els.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
 
   }
 
@@ -298,7 +313,10 @@ class Abide extends Plugin {
       $formError.removeClass(this.options.formErrorClass);
     }
 
-    $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $el.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
   }
 
   /**
@@ -394,7 +412,13 @@ class Abide extends Plugin {
 
     var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
+    this.$element.find('[data-abide-error]').each((i, elem) => {
+      const $elem = $(elem);
+      // Ensure a11y attributes are set
+      if (this.options.a11yAttributes) this.addGlobalErrorA11yAttributes($elem);
+      // Show or hide the error
+      $elem.css('display', (noError ? 'none' : 'block'));
+    });
 
     /**
      * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
@@ -499,9 +523,18 @@ class Abide extends Plugin {
     $(`.${opts.inputErrorClass}`, $form).not('small').removeClass(opts.inputErrorClass);
     $(`${opts.formErrorSelector}.${opts.formErrorClass}`).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
-    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
-    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
-    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
+    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
     /**
      * Fires when the form has been reset.
      * @event Abide#formreset
@@ -574,6 +607,27 @@ Abide.defaults = {
   formErrorClass: 'is-visible',
 
   /**
+   * If true, automatically insert when possible:
+   * - `[aria-describedby]` on fields
+   * - `[role=alert]` on form errors and `[for]` on form error labels
+   * - `[aria-live]` on global errors `[data-abide-error]` (see option `a11yErrorLevel`).
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  a11yAttributes: true,
+
+  /**
+   * [aria-live] attribute value to be applied on global errors `[data-abide-error]`.
+   * Options are: 'assertive', 'polite' and 'off'/null
+   * @option
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+   * @type {string}
+   * @default 'assertive'
+   */
+  a11yErrorLevel: 'assertive',
+
+  /**
    * Set to true to validate text inputs on any value change.
    * @option
    * @type {boolean}
@@ -602,7 +656,11 @@ Abide.defaults = {
     // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
     email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/,
 
-    url : /^(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/,
+    // From CommonRegexJS (@talyssonoc)
+    // https://github.com/talyssonoc/CommonRegexJS/blob/e2901b9f57222bc14069dc8f0598d5f412555411/lib/commonregex.js#L76
+    // For more restrictive URL Regexs, see https://mathiasbynens.be/demo/url-regex.
+    url: /^((?:(https?|ftps?|file|ssh|sftp):\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))$/,
+
     // abc.de
     domain : /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,8}$/,
 

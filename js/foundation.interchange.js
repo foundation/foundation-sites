@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
-import { Plugin } from './foundation.plugin';
-import { GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.core.plugin';
+import { GetYoDigits } from './foundation.core.utils';
 
 
 /**
@@ -115,7 +115,7 @@ class Interchange extends Plugin {
       rules = this.$element.data('interchange');
     }
 
-    rules =  typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
+    rules =  typeof rules === 'string' ? rules.match(/\[.*?, .*?\]/g) : rules;
 
     for (var i in rules) {
       if(rules.hasOwnProperty(i)) {

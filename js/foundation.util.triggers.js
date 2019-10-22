@@ -1,6 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
+import { onLoad } from './foundation.core.utils';
 import { Motion } from './foundation.util.motion';
 
 const MutationObserver = (function () {
@@ -139,7 +140,7 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
     if(typeof pluginName === 'string'){
       plugNames.push(pluginName);
     }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string'){
-      plugNames.concat(pluginName);
+      plugNames = plugNames.concat(pluginName);
     }else{
       console.error('Plugin names must be strings');
     }
@@ -240,23 +241,14 @@ Triggers.Initializers.addGlobalListeners = function() {
 }
 
 
-Triggers.init = function($, Foundation) {
-  if (typeof($.triggersInitialized) === 'undefined') {
-    let $document = $(document);
-
-    if(document.readyState === "complete") {
+Triggers.init = function ($, Foundation) {
+  onLoad($(window), function () {
+    if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-    } else {
-      $(window).on('load', () => {
-        Triggers.Initializers.addSimpleListeners();
-        Triggers.Initializers.addGlobalListeners();
-      });
+      $.triggersInitialized = true;
     }
-
-
-    $.triggersInitialized = true;
-  }
+  });
 
   if(Foundation) {
     Foundation.Triggers = Triggers;

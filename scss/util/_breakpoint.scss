@@ -25,7 +25,7 @@ $-zf-zero-breakpoint: small !default;
 $-zf-breakpoints-keys: map-to-list($breakpoints, 'keys');
 
 @if nth(map-values($breakpoints), 1) != 0 {
-  @error 'Your smallest breakpoint (defined in $breakpoints) must be set to "0".';
+  @error 'The first key in the $breakpoints map must have a value of "0".';
 }
 @else {
   $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
@@ -76,8 +76,11 @@ $breakpoint-classes: (small medium large) !default;
 
   // Convert any pixel, rem, or unitless value to em
   $bp: -zf-bp-to-em($bp);
+  // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
+  // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
+  // See https://github.com/zurb/foundation-sites/issues/11313
   @if $bp-max {
-    $bp-max: -zf-bp-to-em($bp-max) - (1/16);
+    $bp-max: -zf-bp-to-em($bp-max) - .00125;
   }
 
   // Conditions to skip media query creation
@@ -172,15 +175,10 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 
-  @if $old-zf-size != null {
-    // Restore the old breakpoint size
-    $-zf-size: $old-zf-size !global;
-  } @else {
-    $-zf-size: null !global;
-  }
+  $-zf-size: $old-zf-size !global;
 }
 
-/// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
+/// Converts the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
 /// @access private
 ///
 /// @param {Map} $map - Map to convert.
@@ -252,7 +250,7 @@ $breakpoint-classes: (small medium large) !default;
 /// responsive gutters for the grid.
 /// @access private
 ///
-/// @param {String} $breakpoing - a named or non-named breakpoing.
+/// @param {String} $breakpoint - a named or non-named breakpoint.
 ///
 /// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
 @function -zf-closest-named-breakpoint($breakpoint) {
@@ -323,25 +321,39 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
+$small-up: '';
+$small-only: '';
+
 @if map-has-key($breakpoints, small) {
   $small-up: screen;
   $small-only: unquote('screen and #{breakpoint(small only)}');
 }
+
+$medium-up: '';
+$medium-only: '';
 
 @if map-has-key($breakpoints, medium) {
   $medium-up: unquote('screen and #{breakpoint(medium)}');
   $medium-only: unquote('screen and #{breakpoint(medium only)}');
 }
 
+$large-up: '';
+$large-only: '';
+
 @if map-has-key($breakpoints, large) {
   $large-up: unquote('screen and #{breakpoint(large)}');
   $large-only: unquote('screen and #{breakpoint(large only)}');
 }
 
+$xlarge-up: '';
+$xlarge-only: '';
+
 @if map-has-key($breakpoints, xlarge) {
   $xlarge-up: unquote('screen and #{breakpoint(xlarge)}');
   $xlarge-only: unquote('screen and #{breakpoint(xlarge only)}');
 }
+
+$xxlarge-up: '';
 
 @if map-has-key($breakpoints, xxlarge) {
   $xxlarge-up: unquote('screen and #{breakpoint(xxlarge)}');

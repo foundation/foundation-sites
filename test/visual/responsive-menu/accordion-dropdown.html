@@ -42,6 +42,37 @@
           </div>
 
       </div>
+      <div class="large-12 cell">
+        <h2>Responsive Menu - Accordion and Drilldown both with parent links:</h2>
+        <div id="main-nav">
+          <ul class="menu vertical drilldown" data-responsive-menu="drilldown medium-accordion" data-parent-link="true">
+            <li>
+              <a href="http://www.github.com">Item 1 (external)</a>
+              <ul class="menu vertical">
+                <li><a href="google.com">Item 1A (external)</a></li>
+                <li>
+                  <a href="#">Item 1B</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Item 2</a>
+              <ul class="menu vertical">
+                <li><a href="#">Item 2A</a></li>
+                <li>
+                  <a href="#">Item 2B</a>
+                  <ul class="menu vertical">
+                  <li><a href="google.com">Item 2BA (external)</a></li>
+                  <li>
+                    <a href="#">Item 2BB</a>
+                  </li>
+                </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <script src="../assets/js/vendor.js"></script>

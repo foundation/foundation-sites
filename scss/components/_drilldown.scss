@@ -45,25 +45,26 @@ $drilldown-arrow-size: 6px !default;
 @mixin zf-drilldown-left-right-arrows {
   .is-drilldown-submenu-parent > a {
     position: relative;
+
     &::after {
+      @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
       position: absolute;
       top: 50%;
       margin-top: -1 * $drilldown-arrow-size;
       #{$global-right}: 1rem;
-      @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
     }
   }
 
   &.align-left .is-drilldown-submenu-parent > a::after {
-    left: auto;
-    right: 1rem;
     @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, right);
+    right: 1rem;
+    left: auto;
   }
 
   &.align-right .is-drilldown-submenu-parent > a::after {
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
     right: auto;
     left: 1rem;
-    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
   }
 
 }
@@ -130,12 +131,9 @@ $drilldown-arrow-size: 6px !default;
 
       .js-drilldown-back > a::before {
         @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-left);
-        border-#{$global-left}-width: 0;
         display: inline-block;
         vertical-align: middle;
         margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
-
-        border-#{$global-left}-width: 0;
       }
     }
   }

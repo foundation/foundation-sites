@@ -147,7 +147,7 @@ Allows you to add `swipe*` and pseudo-drag events to elements.
 ```js
 $('selector').addTouch().on('mousemove', handleDrag);
 // Binds elements to touch events. Used in the Slider plugin for mobile devices.
-$('selector').spotSwipe().on('swipeleft', handleLeftSwipe);
+$('selector').on('swipeleft', handleLeftSwipe);
 // Binds elements to swipe events. Used in the Orbit plugin for mobile devices.
 ```
 

@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 
-import { GetYoDigits } from './foundation.util.core';
+import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';
 import { Positionable } from './foundation.positionable';
@@ -102,7 +102,7 @@ class Tooltip extends Positionable {
    * @private
    */
   _buildTemplate(id) {
-    var templateClasses = (`${this.options.tooltipClass} ${this.options.positionClass} ${this.options.templateClasses}`).trim();
+    var templateClasses = (`${this.options.tooltipClass} ${this.options.templateClasses}`).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
@@ -205,12 +205,12 @@ class Tooltip extends Positionable {
           }, _this.options.hoverDelay);
         }
       })
-      .on('mouseleave.zf.tooltip', function(e) {
+      .on('mouseleave.zf.tooltip', ignoreMousedisappear(function(e) {
         clearTimeout(_this.timeout);
         if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
         }
-      });
+      }));
     }
 
     if (this.options.clickOpen) {
@@ -291,8 +291,9 @@ class Tooltip extends Positionable {
   _destroy() {
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tooltip')
-                 .removeClass('has-tip top right left')
-                 .removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
+                 .removeClass(this.options.triggerClass)
+                 .removeClass('top right left bottom')
+                 .removeAttr('aria-describedby data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
     this.template.remove();
   }
@@ -378,13 +379,6 @@ Tooltip.defaults = {
    * @default true
    */
   clickOpen: true,
-  /**
-   * DEPRECATED Additional positioning classes, set by the JS
-   * @option
-   * @type {string}
-   * @default ''
-   */
-  positionClass: '',
   /**
    * Position of tooltip. Can be left, right, bottom, top, or auto.
    * @option

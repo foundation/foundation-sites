@@ -22,7 +22,7 @@ $input-prefix-border: 1px solid $medium-gray !default;
 $input-prefix-padding: 1rem !default;
 
 @mixin foundation-form-prepostfix {
-  $height: ($input-font-size + $form-spacing * 1.5);
+  $height: ($input-font-size * $input-line-height) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
 
   .input-group {
     display: if($global-flexbox, flex, table);
@@ -34,11 +34,13 @@ $input-prefix-padding: 1rem !default;
     }
 
     > :first-child {
-      border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
+      &, &.input-group-button > * {
+        border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
+      }
     }
 
     > :last-child {
-      > * {
+      &, &.input-group-button > * {
         border-radius: if($global-text-direction == rtl, $input-radius 0 0 $input-radius, 0 $input-radius $input-radius 0);
       }
     }
@@ -91,11 +93,7 @@ $input-prefix-padding: 1rem !default;
 
     @if $global-flexbox {
       flex: 1 1 0px; // sass-lint:disable-line zero-unit
-      height: auto;
       min-width: 0;
-    }
-    @else {
-      height: $height;
     }
   }
 
@@ -121,8 +119,8 @@ $input-prefix-padding: 1rem !default;
       @extend %input-group-child;
 
       @if $global-flexbox {
-        height: auto;
         align-self: stretch;
+        height: auto;
       }
       @else {
         height: $height;
@@ -135,8 +133,10 @@ $input-prefix-padding: 1rem !default;
 
   // Specificity bump needed to prevent override by buttons
   @if not $global-flexbox {
-      .input-group .input-group-button {
-          display: table-cell;
+    .input-group {
+      .input-group-button {
+        display: table-cell;
       }
+    }
   }
 }
