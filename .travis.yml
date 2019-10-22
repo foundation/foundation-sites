@@ -9,7 +9,8 @@ os:
 node_js:
   - 8
   - 10
-# - node
+  - 12
+  - node
 
 env:
   global:
@@ -20,7 +21,7 @@ env:
 matrix:
   include:
     - os: linux
-      node_js: 10
+      node_js: stable
       env: ZF_TRAVIS_COMMAND=test:javascript:browserstack
 
 install: yarn --network-timeout 1000000
