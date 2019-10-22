@@ -1,7 +1,7 @@
 Package.describe({
   name: 'zurb:foundation-sites',
   summary: 'Foundation 6 - The most advanced responsive front-end framework in the world.',
-  version: '6.4.3',
+  version: '6.5.3',
   git: 'https://github.com/zurb/foundation-sites.git',
   documentation: 'meteor-README.md'
 });
@@ -16,6 +16,7 @@ Package.onUse(function(api) {
     'scss/foundation.scss',
     'scss/_global.scss',
     'scss/settings/_settings.scss',
+    'scss/vendor/normalize.scss',
 
     'scss/components/_accordion-menu.scss',
     'scss/components/_accordion.scss',
@@ -24,10 +25,12 @@ Package.onUse(function(api) {
     'scss/components/_button-group.scss',
     'scss/components/_button.scss',
     'scss/components/_callout.scss',
+    'scss/components/_card.scss',
     'scss/components/_close-button.scss',
     'scss/components/_drilldown.scss',
     'scss/components/_dropdown-menu.scss',
     'scss/components/_dropdown.scss',
+    'scss/components/_flex-video.scss',
     'scss/components/_flex.scss',
     'scss/components/_float.scss',
     'scss/components/_label.scss',
@@ -74,6 +77,28 @@ Package.onUse(function(api) {
     'scss/grid/_row.scss',
     'scss/grid/_size.scss',
 
+    'scss/prototype/_arrow.scss',
+    'scss/prototype/_border-box.scss',
+    'scss/prototype/_border-none.scss',
+    'scss/prototype/_bordered.scss',
+    'scss/prototype/_box.scss',
+    'scss/prototype/_display.scss',
+    'scss/prototype/_font-styling.scss',
+    'scss/prototype/_list-style-type.scss',
+    'scss/prototype/_overflow.scss',
+    'scss/prototype/_position.scss',
+    'scss/prototype/_prototype.scss',
+    'scss/prototype/_relation.scss',
+    'scss/prototype/_rotate.scss',
+    'scss/prototype/_rounded.scss',
+    'scss/prototype/_separator.scss',
+    'scss/prototype/_shadow.scss',
+    'scss/prototype/_sizing.scss',
+    'scss/prototype/_spacing.scss',
+    'scss/prototype/_text-decoration.scss',
+    'scss/prototype/_text-transformation.scss',
+    'scss/prototype/_text-utilities.scss',
+
     'scss/typography/_alignment.scss',
     'scss/typography/_base.scss',
     'scss/typography/_helpers.scss',
@@ -82,12 +107,25 @@ Package.onUse(function(api) {
 
     'scss/util/_breakpoint.scss',
     'scss/util/_color.scss',
+    'scss/util/_direction.scss',
     'scss/util/_flex.scss',
+    'scss/util/_math.scss',
     'scss/util/_mixins.scss',
     'scss/util/_selector.scss',
+    'scss/util/_typography.scss',
     'scss/util/_unit.scss',
     'scss/util/_util.scss',
-    'scss/util/_value.scss'
+    'scss/util/_value.scss',
+
+    'scss/xy-grid/_cell.scss',
+    'scss/xy-grid/_classes.scss',
+    'scss/xy-grid/_collapse.scss',
+    'scss/xy-grid/_frame.scss',
+    'scss/xy-grid/_grid.scss',
+    'scss/xy-grid/_gutters.scss',
+    'scss/xy-grid/_layout.scss',
+    'scss/xy-grid/_position.scss',
+    'scss/xy-grid/_xy-grid.scss',
 
   ], 'client', {isImport: true});
 });
