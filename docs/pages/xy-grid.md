@@ -18,7 +18,7 @@ The XY grid works very similarly to the standard float grid, but includes a numb
 
 ## Browser support
 
-The XY grid is supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View Flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the XY grid on projects that can live with purely cutting-edge browser support.
+The XY grid is supported in Chrome, Firefox, Safari 6+, IE11, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View Flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the XY grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
