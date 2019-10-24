@@ -36,6 +36,11 @@ var MenuPlugins = {
  */
 
 class ResponsiveAccordionTabs extends Plugin{
+  constructor(element, options) {
+    super(element, options);
+    return this.storezfData || this;
+  }
+
   /**
    * Creates a new instance of a responsive accordion tabs.
    * @class
