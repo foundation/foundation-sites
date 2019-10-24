@@ -21,6 +21,8 @@ class Abide extends Plugin {
   _setup(element, options = {}) {
     this.$element = element;
     this.options  = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
+    this.isEnabled = true;
+    this.formnovalidate = null;
 
     this.className = 'Abide'; // ie9 back compat
     this._init();
@@ -32,9 +34,10 @@ class Abide extends Plugin {
    */
   _init() {
     this.$inputs = $.merge(                               // Consider as input to validate:
-      this.$element.find('input').not('[type=submit]'),   // * all input fields expect submit
+      this.$element.find('input').not('[type="submit"]'), // * all input fields expect submit
       this.$element.find('textarea, select')              // * all textareas and select fields
     );
+    this.$submits = this.$element.find('[type="submit"]');
     const $globalErrors = this.$element.find('[data-abide-error]');
 
     // Add a11y attributes to all fields
@@ -57,6 +60,16 @@ class Abide extends Plugin {
       })
       .on('submit.zf.abide', () => {
         return this.validateForm();
+      });
+
+    this.$submits
+      .off('click.zf.abide keydown.zf.abide')
+      .on('click.zf.abide keydown.zf.abide', (e) => {
+        if (!e.key || (e.key === ' ' || e.key === 'Enter')) {
+          e.preventDefault();
+          this.formnovalidate = e.target.getAttribute('formnovalidate') !== null;
+          this.$element.submit();
+        }
       });
 
     if (this.options.validateOn === 'fieldChange') {
@@ -90,6 +103,35 @@ class Abide extends Plugin {
    */
   _reflow() {
     this._init();
+  }
+
+  /**
+   * Checks whether the submitted form should be validated or not, consodering formnovalidate and isEnabled
+   * @returns {Boolean}
+   * @private
+   */
+  _validationIsDisabled() {
+    if (this.isEnabled === false) { // whole validation disabled
+      return true;
+    } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
+      return this.formnovalidate;
+    } else { // triggered by Enter in non-submit input
+      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
+    }
+  }
+
+  /**
+   * Enables the whole validation
+   */
+  enableValidation(){
+    this.isEnabled = true;
+  }
+
+  /**
+   * Disables the whole validation
+   */
+  disableValidation() {
+    this.isEnabled = false;
   }
 
   /**
@@ -134,7 +176,7 @@ class Abide extends Plugin {
    * @returns {Object} jQuery object with the selector.
    */
   findFormError($el) {
-    var id = $el[0].id;
+    var id = $el.length ? $el[0].id : '';
     var $error = $el.siblings(this.options.formErrorSelector);
 
     if (!$error.length) {
@@ -176,6 +218,28 @@ class Abide extends Plugin {
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   findRadioLabels($els) {
+    var labels = $els.map((i, el) => {
+      var id = el.id;
+      var $label = this.$element.find(`label[for="${id}"]`);
+
+      if (!$label.length) {
+        $label = $(el).closest('label');
+      }
+      return $label[0];
+    });
+
+    return $(labels);
+  }
+
+  /**
+   * Get the set of labels associated with a set of checkbox els in this order
+   * 2. The <label> with the attribute `[for="someInputId"]`
+   * 3. The `.closest()` <label>
+   *
+   * @param {Object} $el - jQuery object to check for required attribute
+   * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
+   */
+  findCheckboxLabels($els) {
     var labels = $els.map((i, el) => {
       var id = el.id;
       var $label = this.$element.find(`label[for="${id}"]`);
@@ -293,6 +357,31 @@ class Abide extends Plugin {
   }
 
   /**
+   * Remove CSS error classes etc from an entire checkbox group
+   * @param {String} groupName - A string that specifies the name of a checkbox group
+   *
+   */
+  removeCheckboxErrorClasses(groupName) {
+    var $els = this.$element.find(`:checkbox[name="${groupName}"]`);
+    var $labels = this.findCheckboxLabels($els);
+    var $formErrors = this.findFormError($els);
+
+    if ($labels.length) {
+      $labels.removeClass(this.options.labelErrorClass);
+    }
+
+    if ($formErrors.length) {
+      $formErrors.removeClass(this.options.formErrorClass);
+    }
+
+    $els.removeClass(this.options.inputErrorClass).attr({
+      'data-invalid': null,
+      'aria-invalid': null
+    });
+
+  }
+
+  /**
    * Removes CSS error class as specified by the Abide settings from the label, input, and the form
    * @param {Object} $el - jQuery object to remove the class from
    */
@@ -300,6 +389,10 @@ class Abide extends Plugin {
     // radios need to clear all of the els
     if($el[0].type == 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
+    }
+    // checkboxes need to clear all of the els
+    else if($el[0].type == 'checkbox') {
+      return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
     var $label = this.findLabel($el);
@@ -334,6 +427,11 @@ class Abide extends Plugin {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
+    // skip validation if disabled
+    if (this._validationIsDisabled()) {
+      return true;
+    }
+
     // don't validate ignored inputs or hidden inputs or disabled inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
@@ -345,7 +443,8 @@ class Abide extends Plugin {
         break;
 
       case 'checkbox':
-        validated = clearRequire;
+        validated = this.validateCheckbox($el.attr('name'));
+        clearRequire = true;
         break;
 
       case 'select':
@@ -405,8 +504,27 @@ class Abide extends Plugin {
   validateForm() {
     var acc = [];
     var _this = this;
+    var checkboxGroupName;
+
+    // Remember first form submission to prevent specific checkbox validation (more than one required) until form got initially submitted
+    if (!this.initialized) {
+      this.initialized = true;
+    }
+
+    // skip validation if disabled
+    if (this._validationIsDisabled()) {
+      this.formnovalidate = null;
+      return true;
+    }
 
     this.$inputs.each(function() {
+
+      // Only use one checkbox per group since validateCheckbox() iterates over all associated checkboxes
+      if ($(this)[0].type === 'checkbox') {
+        if ($(this).attr('name') === checkboxGroupName) return true;
+        checkboxGroupName = $(this).attr('name');
+      }
+
       acc.push(_this.validateInput($(this)));
     });
 
@@ -439,7 +557,7 @@ class Abide extends Plugin {
    */
   validateText($el, pattern) {
     // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
-    pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
+    pattern = (pattern || $el.attr('data-pattern') || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
     var valid = false;
 
@@ -491,6 +609,60 @@ class Abide extends Plugin {
         }
       });
     };
+
+    return valid;
+  }
+
+  /**
+   * Determines whether or a not a checkbox input is valid based on whether or not it is required and checked. Although the function targets a single `<input>`, it validates by checking the `required` and `checked` properties of all checkboxes in its group.
+   * @param {String} groupName - A string that specifies the name of a checkbox group
+   * @returns {Boolean} Boolean value depends on whether or not at least one checkbox input has been checked (if it's required)
+   */
+  validateCheckbox(groupName) {
+    // If at least one checkbox in the group has the `required` attribute, the group is considered required
+    // Per W3C spec, all checkboxes in a group should have `required`, but we're being nice
+    var $group = this.$element.find(`:checkbox[name="${groupName}"]`);
+    var valid = false, required = false, minRequired = 1, checked = 0;
+
+    // For the group to be required, at least one checkbox needs to be required
+    $group.each((i, e) => {
+      if ($(e).attr('required')) {
+        required = true;
+      }
+    });
+    if(!required) valid=true;
+
+    if (!valid) {
+      // Count checked checkboxes within the group
+      // Use data-min-required if available (default: 1)
+      $group.each((i, e) => {
+        if ($(e).prop('checked')) {
+          checked++;
+        }
+        if (typeof $(e).attr('data-min-required') !== 'undefined') {
+          minRequired = parseInt($(e).attr('data-min-required'));
+        }
+      });
+
+      // For the group to be valid, the minRequired amount of checkboxes have to be checked
+      if (checked >= minRequired) {
+        valid = true;
+      }
+    };
+
+    // Skip validation if more than 1 checkbox have to be checked AND if the form hasn't got submitted yet (otherwise it will already show an error during the first fill in)
+    if (this.initialized !== true && minRequired > 1) {
+      return true;
+    }
+
+    // Refresh error class for all input
+    $group.each((i, e) => {
+      if (!valid) {
+        this.addErrorClasses($(e));
+      } else {
+        this.removeErrorClasses($(e));
+      }
+    });
 
     return valid;
   }
@@ -558,6 +730,9 @@ class Abide extends Plugin {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
+
+    this.$submits
+      .off('.abide');
   }
 }
 

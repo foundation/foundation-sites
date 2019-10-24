@@ -68,5 +68,5 @@ about: Something is missing or could be improved
 
 <!------------------------------------------------------------------------------
             For more information, see the CONTRIBUTING.md document
-              Thank you for your pull request and happy coding ;)
+              Thank you for your issue report and happy coding ;)
 ------------------------------------------------------------------------------->

@@ -457,7 +457,18 @@
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/foundation.js"></script>
     <script>
+      window.Foundation.ResponsiveAccordionTabs.defaults.allowAllClosed = true;
       $(document).foundation();
+      $(document).ready(function() {
+        $('[data-responsive-accordion-tabs]').each(function(i, elem) {
+          $(elem).foundation('close', $(elem).find('.accordion-content').add($($(elem).find('[href]')[0].hash)));
+        });
+        window.setTimeout(function() {
+        $('[data-responsive-accordion-tabs]').each(function(i, elem) {
+          $(elem).foundation('open', $(elem).find('.accordion-content').add($($(elem).find('[href]')[0].hash)));
+        });
+        }, 2000);
+      });
     </script>
   </body>
 </html>

@@ -28,8 +28,7 @@
   }
 
   .cell {
-    @include xy-cell-base();
-    @include xy-cell-static($grid-columns, false, $gutter-type: padding);
+    @include xy-cell(full, $gutter-type: none);
 
     &.auto {
       @include xy-cell-base(auto);
@@ -42,11 +41,11 @@
   }
   .grid-x {
     > .auto {
-      @include xy-cell-static(auto, false);
+      @include xy-cell-size(auto, $gutter-type: none);
     }
 
     > .shrink {
-      @include xy-cell-static(shrink, false);
+      @include xy-cell-size(shrink, $gutter-type: none);
     }
   }
 
@@ -69,10 +68,9 @@
 
   @include -zf-each-breakpoint() {
     // Responsive "auto" modifier
-    @if not($-zf-size == small) {
+    @if not($-zf-size == $-zf-zero-breakpoint) {
       .grid-x > .#{$-zf-size}-auto {
-        @include xy-cell-base(auto);
-        @include xy-cell-static(auto, false);
+        @include xy-cell(auto, $gutter-type: none);
       }
     }
 
@@ -81,10 +79,10 @@
     }
 
     // Responsive "shrink" modifier
-    @if not($-zf-size == small) {
+    @if not($-zf-size == $-zf-zero-breakpoint) {
       .grid-x > .#{$-zf-size}-shrink {
         @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
-        @include xy-cell-static(shrink, false);
+        @include xy-cell-size(shrink, $gutter-type: none);
       }
     }
 
@@ -93,7 +91,7 @@
       // Sizing (percentage)
       .grid-x > .#{$-zf-size}-#{$i} {
         @extend %-xy-cell-base-shrink-horizontal-#{$-zf-size};
-        @include xy-cell-static($i, false, $gutter-type: padding);
+        @include xy-cell-size($i, $gutter-type: none);
       }
     }
   }
@@ -112,11 +110,11 @@
 @mixin -xy-breakpoint-cell-classes($class-breakpoint, $gutter-breakpoint, $vertical) {
   $prefix: if($class-breakpoint == $-zf-zero-breakpoint, '', '#{$class-breakpoint}-');
   > .#{$prefix}auto {
-    @include xy-cell-static(auto, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+    @include xy-cell-size(auto, $vertical: $vertical);
   }
 
   > .#{$prefix}shrink {
-    @include xy-cell-static(shrink, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+    @include xy-cell-size(shrink, $vertical: $vertical);
   }
 
   @for $i from 1 through $grid-columns {
@@ -124,7 +122,7 @@
     $classname: if($vertical, '.#{$class-breakpoint}-#{$i}', '.#{$class-breakpoint}-#{$i}');
 
     > #{$classname} {
-      @include xy-cell-static($i, false, $breakpoint: $gutter-breakpoint, $vertical: $vertical);
+      @include xy-cell-size($i, $vertical: $vertical);
     }
   }
 }
@@ -140,14 +138,14 @@
 
     // Base cell styles
     > .cell {
-      @include xy-cell-static($vertical: $vertical);
+      @include xy-cell($vertical: $vertical, $output: (size gutters));
     }
 
     // base styles need to all be before the auto and shrink styles
     @include -zf-each-breakpoint() {
       @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size) and $-zf-size != $-zf-zero-breakpoint) {
         > .cell {
-          @include xy-cell-static($breakpoint: $-zf-size, $vertical: $vertical);
+          @include xy-cell($vertical: $vertical, $output: (size gutters));
         }
       }
     }
@@ -197,7 +195,7 @@
     @include -zf-each-breakpoint {
       @for $i from 1 through $xy-block-grid-max {
         .#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-output: false, $gutter-type: padding, $breakpoint: $-zf-size);
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: padding, $output: (size));
         }
       }
     }
@@ -212,7 +210,7 @@
           @each $bp in -zf-breakpoints-less-than($-zf-size) {
             @if(map-has-key($grid-margin-gutters, $bp)) {
               .grid-margin-x.#{$bp}-up-#{$i} {
-                @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-output: false, $gutter-type: margin, $breakpoint: $-zf-size);
+                @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (size));
               }
             }
           }
@@ -220,7 +218,7 @@
       }
       @for $i from 1 through $xy-block-grid-max {
         .grid-margin-x.#{$-zf-size}-up-#{$i} {
-          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-output: false, $gutter-type: margin, $breakpoint: $-zf-size);
+          @include xy-grid-layout($n: $i, $selector: '.cell', $gutter-type: margin, $output: (size));
         }
       }
     }
@@ -252,11 +250,11 @@
       $o: $i - 1;
 
       .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding, $breakpoint: $-zf-size);
+        @include xy-cell-offset($o, $gutters: $grid-padding-gutters, $gutter-type: padding);
       }
 
       .grid-margin-x > .#{$-zf-size}-offset-#{$o} {
-        @include xy-cell-offset($o, $breakpoint: $-zf-size);
+        @include xy-cell-offset($o);
       }
     }
   }
@@ -269,7 +267,7 @@
 ) {
 
   @include -zf-each-breakpoint() {
-    @if not($-zf-size == small) {
+    @if not($-zf-size == $-zf-zero-breakpoint) {
     }
   }
 
@@ -282,11 +280,11 @@
     }
 
     > .auto {
-      @include xy-cell-static(auto, false, $vertical: true);
+      @include xy-cell-size(auto, $gutter-type: none, $vertical: true);
     }
 
     > .shrink {
-      @include xy-cell-static(shrink, false, $vertical: true);
+      @include xy-cell-size(shrink, $gutter-type: none, $vertical: true);
     }
 
 
@@ -306,10 +304,9 @@
 
     @include -zf-each-breakpoint() {
       // Responsive "auto" modifier
-      @if not($-zf-size == small) {
+      @if not($-zf-size == $-zf-zero-breakpoint) {
         > .#{$-zf-size}-auto {
-          @include xy-cell-base(auto);
-          @include xy-cell-static(auto, false, $breakpoint: $-zf-size, $vertical: true);
+          @include xy-cell(auto, $gutter-type: none, $vertical: true);
         }
       }
 
@@ -318,10 +315,10 @@
       }
 
       // Responsive "shrink" modifier
-      @if not($-zf-size == small) {
+      @if not($-zf-size == $-zf-zero-breakpoint) {
         > .#{$-zf-size}-shrink {
           @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
-          @include xy-cell-static(shrink, false, $breakpoint: $-zf-size, $vertical: true);
+          @include xy-cell-size(shrink, $gutter-type: none, $vertical: true);
         }
       }
 
@@ -330,7 +327,7 @@
         // Sizing (percentage)
         > .#{$-zf-size}-#{$i} {
           @extend %-xy-cell-base-shrink-vertical-#{$-zf-size};
-          @include xy-cell-static($i, false, $vertical: true, $gutter-type: padding);
+          @include xy-cell-size($i, $gutter-type: none, $vertical: true);
         }
       }
 

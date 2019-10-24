@@ -1,8 +1,8 @@
-var chalk = require('chalk');
+var { red } = require('kleur');
 
 module.exports = function(err) {
   console.log(
-    chalk.red(
+    red(
       err.fileName +
       (
           err.loc ?

@@ -31,16 +31,16 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <div class="cell small-12">
         <label>Number Required
           <input type="text" placeholder="1234" aria-describedby="example1Hint1" aria-errormessage="example1Error1" required pattern="number">
-          <span class="form-error" id="example1Error1">
+          <span class="form-error">
             Yo, you had better fill this out, it's required.
           </span>
         </label>
-        <p class="help-text" id="example1Hint1">Here's how you use this input field!</p>
+      <p class="help-text" id="example1Hint1">Here's how you use this input field!</p>
       </div>
       <div class="cell small-12">
         <label>Password Required
           <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="example1Hint2" aria-errormessage="example1Error2" required >
-          <span class="form-error" id="example1Error2">
+          <span class="form-error">
             I'm required!
           </span>
         </label>
@@ -49,7 +49,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <div class="cell small-12">
         <label>Re-enter Password
           <input type="password" placeholder="yeti4preZ" aria-describedby="example1Hint3" aria-errormessage="example1Error3" required pattern="alpha_numeric" data-equalto="password">
-          <span class="form-error" id="example1Error3">
+          <span class="form-error">
             Hey, passwords are supposed to match!
           </span>
         </label>
@@ -245,6 +245,46 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
   </div>
 </form>
 ```
+
+## Required Radio & Checkbox
+
+If you add `required` to a radio or checkbox input the whole group gets considered as required. This means at least one of the inputs must be checked.
+Checkbox inputs support the additional attribute `data-min-required` what lets you specify how many checkboxes in the group must be checked (default is one).
+
+
+```html_example
+<form data-abide novalidate>
+  <div class="grid-x grid-margin-x align-bottom">
+    <div class="cell medium-6 large-4">
+      <fieldset>
+        <legend>Radio Group</legend>
+        <input type="radio" name="exampleRadio" id="exampleRadioA" value="A">
+        <label for="exampleRadioA">A</label>
+        <input required type="radio" name="exampleRadio" id="exampleRadioB" value="B">
+        <label for="exampleRadioB">B</label>
+        <input type="radio" name="exampleRadio" id="exampleRadioC" value="C">
+        <label for="exampleRadioC">C</label>
+      </fieldset>
+    </div>
+    <div class="cell medium-6 large-4">
+      <fieldset>
+        <legend>Checkbox Group</legend>
+        <input data-min-required="2" type="checkbox" name="exampleCheckbox" id="exampleCheckboxA" value="A">
+        <label for="exampleCheckboxA">A</label>
+        <input required type="checkbox" name="exampleCheckbox" id="exampleCheckboxB" value="B">
+        <label for="exampleCheckboxB">B</label>
+        <input type="checkbox" name="exampleCheckbox" id="exampleCheckboxC" value="C">
+        <label for="exampleCheckboxC">C</label>
+      </fieldset>
+    </div>
+    <div class="cell large-4">
+      <button class="button" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+```
+
+---
 
 ## Event Listener
 Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.

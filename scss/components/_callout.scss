@@ -22,9 +22,13 @@ $callout-border: 1px solid rgba($black, 0.25) !default;
 /// @type Number
 $callout-margin: 0 0 1rem 0 !default;
 
-/// Default inner padding for callouts.
-/// @type Number
-$callout-padding: 1rem !default;
+/// Sizes for Callout paddings.
+/// @type Map
+$callout-sizes: (
+  small: 0.5rem,
+  default: 1rem,
+  large: 3rem,
+) !default;
 
 /// Default font color for callouts.
 /// @type Color
@@ -46,7 +50,7 @@ $callout-link-tint: 30% !default;
 @mixin callout-base() {
   position: relative;
   margin: $callout-margin;
-  padding: $callout-padding;
+  padding: map-get($callout-sizes, default);
 
   border: $callout-border;
   border-radius: $callout-radius;
@@ -95,12 +99,10 @@ $callout-link-tint: 30% !default;
       }
     }
 
-    &.small {
-      @include callout-size(0.5rem);
-    }
-
-    &.large {
-      @include callout-size(3rem);
+    @each $size, $padding in map-remove($callout-sizes, default) {
+      &.#{$size} {
+        @include callout-size($padding);
+      }
     }
   }
 }

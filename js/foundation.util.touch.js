@@ -51,8 +51,8 @@ function onTouchMove(e) {
       e.preventDefault();
       onTouchEnd.apply(this, arguments);
       $(this)
-        .trigger($.Event('swipe', e), dir)
-        .trigger($.Event(`swipe${dir}`, e));
+        .trigger($.Event('swipe', Object.assign({}, e)), dir)
+        .trigger($.Event(`swipe${dir}`, Object.assign({}, e)));
     }
   }
 

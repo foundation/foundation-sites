@@ -41,6 +41,10 @@ class Toggler extends Plugin {
    * @private
    */
   _init() {
+    // Collect triggers to set ARIA attributes to
+    var id = this.$element[0].id,
+      $triggers = $(`[data-open~="${id}"], [data-close~="${id}"], [data-toggle~="${id}"]`);
+
     var input;
     // Parse animation classes if they were set
     if (this.options.animate) {
@@ -48,20 +52,23 @@ class Toggler extends Plugin {
 
       this.animationIn = input[0];
       this.animationOut = input[1] || null;
+
+      // - aria-expanded: according to the element visibility.
+      $triggers.attr('aria-expanded', !this.$element.is(':hidden'));
     }
     // Otherwise, parse toggle class
     else {
-      input = this.$element.data('toggler');
+      input = this.options.toggler;
+      if (typeof input !== 'string' || !input.length) {
+        throw new Error(`The 'toogler' option containing the target class is required, got "${input}"`);
+      }
       // Allow for a . at the beginning of the string
       this.className = input[0] === '.' ? input.slice(1) : input;
+
+      // - aria-expanded: according to the elements class set.
+      $triggers.attr('aria-expanded', this.$element.hasClass(this.className));
     }
 
-    // Add ARIA attributes to triggers:
-    var id = this.$element[0].id,
-      $triggers = $(`[data-open~="${id}"], [data-close~="${id}"], [data-toggle~="${id}"]`);
-
-    // - aria-expanded: according to the element visibility.
-    $triggers.attr('aria-expanded', !this.$element.is(':hidden'));
     // - aria-controls: adding the element id to it if not already in it.
     $triggers.each((index, trigger) => {
       const $trigger = $(trigger);
@@ -151,6 +158,12 @@ class Toggler extends Plugin {
 }
 
 Toggler.defaults = {
+  /**
+   * Class of the element to toggle. It can be provided with or without "."
+   * @option
+   * @type {string}
+   */
+  toggler: undefined,
   /**
    * Tells the plugin if the element should animated when toggled.
    * @option

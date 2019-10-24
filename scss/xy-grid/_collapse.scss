@@ -42,7 +42,7 @@
           @for $i from 1 through $grid-columns {
             // Sizing (percentage)
             > .#{$bp}-#{$i} {
-              @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+              @include xy-cell-size($i, $gutter-type: none);
             }
           }
         }
@@ -51,7 +51,7 @@
           @for $i from 1 through $grid-columns {
             // Sizing (percentage)
             > .#{$bp}-#{$i} {
-              @include xy-cell-static($i, $gutter-output: false, $gutter-type: padding);
+              @include xy-cell-size($i, $gutter-type: none);
             }
           }
         }

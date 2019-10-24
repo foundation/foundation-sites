@@ -39,6 +39,13 @@ describe('Accordion', function() {
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
     });
+
+    it('applies role="presentation" to the list item to conform with WAI', function () {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Accordion($html, {allowAllClosed: true});
+
+      $html.find('.accordion-item').eq(0).should.have.attr('role', 'presentation');
+    });
   });
 
   describe('up()', function(done) {

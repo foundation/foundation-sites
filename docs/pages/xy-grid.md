@@ -18,7 +18,7 @@ The XY grid works very similarly to the standard float grid, but includes a numb
 
 ## Browser support
 
-The XY grid is supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View Flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the XY grid on projects that can live with purely cutting-edge browser support.
+The XY grid is supported in Chrome, Firefox, Safari 6+, IE11, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View Flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the XY grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
@@ -82,10 +82,6 @@ The structure of XY grid uses `.grid-x`, `.grid-y`, and `.cell` as its base. Wit
 
 The defining feature of the XY grid is the ability to use margin AND padding grids in harmony.
 To define a grid type, simply set `.grid-margin-x`/`.grid-margin-y` or `.grid-padding-x`/`.grid-padding-y` on the grid.
-
-<p>
-  <a class="" data-open-video="5:43"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-</p>
 
 <p>
   <a class="" data-open-video="5:43"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -282,7 +278,7 @@ You can also apply margin or padding with `.grid-margin-y` and `.grid-padding-y`
 </p>
 
 <div class="callout">
-  <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100 vertical height grid (or 100% height if nested).</p>
+  <p>Please note for vertical grids to work, the grid needs a height. You can also use [grid frame](#grid-frame) to create a 100% viewport height vertical grid (or height:100%; if nested).</p>
 </div>
 
 
@@ -406,7 +402,7 @@ This is especially powerful as you can specify where you want the gutters, like 
 ### Cells
 
 Use the `xy-cell()` mixin to create a cell. There are a number of ways to define the size of a cell.
-`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs).
+`xy-cell` accepts a few different keywords as well as specific sizes: `full` (full width), `auto` (automatic width) and `shrink` (take up only the space it needs) or any fraction (`6`, `50%`, `1 of 2` or `1/2`...).
 
 ```scss
 .main-content {
@@ -432,22 +428,71 @@ The cell size calculator can also be accessed as a function. This gives you the 
 }
 ```
 
+A cell is composed of 3 parts: the base, the size and the gutters. In order to avoid duplicating properties, you can choose the parts to generate with the `$output` option, or call the XY cell mixins dedicated to each part individually.
+
+```scss
+.my-cell {
+  @include xy-cell(12, $gutters: none);
+}
+.my-cell.half-size {
+  @include xy-cell(6, $gutters: none, $output: (size));
+  // Or @include xy-cell-size(6);
+}
+```
+
+<div class="callout warn">
+  XY cell with margin gutters (by default) has gutters defined within their width/height. For this reason, you need to generate the gutter part of cells with margin gutters even when you only want to change the size.
+</div>
+
+Refer to the Sass documentation of the [xy-cell](#xy-cell) mixin for the full list of arguments. See also [xy-cell-base](#xy-cell-base), [xy-cell-size](#xy-cell-size) and [xy-cellgutters](#xy-cellgutters).
+
 ---
 
 ### Responsive Grids
 
-Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive.
+Pair `xy-cell` with the `breakpoint()` mixin to make your grid responsive. The `xy-grid` mixin will automatically detect the breakpoint in which it is, but you can force it with the `$breakpoint` option.
 Refer to the Sass documentation below to learn how each mixin works and the available arguments.
 
 ```scss
-.main-content {
+.my-cell-medium-only-8 {
   @include xy-cell();
 
+  // Generate a cell with a 8/12 width on medium breakpoint only
   @include breakpoint(medium) {
     @include xy-cell(8);
   }
 }
 ```
+
+You can also use for more advanced responsive cells:
+
+```scss
+  // ... with a 8/12 width on medium breakpoint and above (with the medium gutters)
+  @include breakpoint(medium up) {
+    @include xy-cell(8);
+  }
+```
+
+```scss
+  // ... with a 8/12 width on medium, large and xlarge (with the corresponding gutters)
+  @include breakpoint(medium, large, xlarge up) {
+    @include xy-cell(8);
+  }
+```
+
+We also have a shorthand option for the above which outputs the same CSS:
+
+```scss
+.main-content {
+  @include xy-cell-breakpoints((small: full, medium: 8));
+}
+```
+
+<div class="callout warning">
+  If you pass multiple breakpoints to the <code>breakpoint</code> mixin, it will duplicate its content for each of them. Be careful to only use <code>breakpoint</code> with properties that should change across breakpoints.
+</div>
+
+---
 
 ### Custom Block Grid
 

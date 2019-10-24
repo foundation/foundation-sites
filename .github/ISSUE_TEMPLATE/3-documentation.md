@@ -40,5 +40,5 @@ about: Typo mistakes, gaps or inconsistencies in docs or website
 
 <!------------------------------------------------------------------------------
             For more information, see the CONTRIBUTING.md document
-              Thank you for your pull request and happy coding ;)
+              Thank you for your issue report and happy coding ;)
 ------------------------------------------------------------------------------->

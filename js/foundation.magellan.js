@@ -2,14 +2,17 @@
 
 
 import $ from 'jquery';
-import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { Plugin } from './foundation.core.plugin';
+import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { SmoothScroll } from './foundation.smoothScroll';
+
+import { Triggers } from './foundation.util.triggers';
 
 /**
  * Magellan module.
  * @module foundation.magellan
  * @requires foundation.smoothScroll
+ * @requires foundation.util.triggers
  */
 
 class Magellan extends Plugin {
@@ -25,6 +28,9 @@ class Magellan extends Plugin {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
     this.className = 'Magellan'; // ie9 back compat
+
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
 
     this._init();
     this.calcPoints();
@@ -102,7 +108,7 @@ class Magellan extends Plugin {
         })
         .on('click.zf.magellan', 'a[href^="#"]', function (e) {
           e.preventDefault();
-          var arrival   = this.getAttribute('href');
+          var arrival = this.getAttribute('href');
           _this.scrollToLoc(arrival);
         });
     });
@@ -195,7 +201,11 @@ class Magellan extends Plugin {
       if(window.history.pushState){
         // Set or remove the hash (see: https://stackoverflow.com/a/5298684/4317384
         const url = activeHash ? activeHash : window.location.pathname + window.location.search;
-        window.history.pushState(null, null, url);
+        if(this.options.updateHistory){
+          window.history.pushState({}, '', url);
+        }else{
+          window.history.replaceState({}, '', url);
+        }
       }else{
         window.location.hash = activeHash;
       }
@@ -268,6 +278,13 @@ Magellan.defaults = {
    * @default false
    */
   deepLinking: false,
+  /**
+   * Update the browser history with the active link, if deep linking is enabled.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false,
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option

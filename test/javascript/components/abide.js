@@ -36,6 +36,32 @@ describe('Abide', function() {
     });
   });
 
+  describe('validateForm()', function() {
+    it('returns true after validation is disabled', function() {
+      $html = $("<form data-abide novalidate><input required type='text'><input type='submit'></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.disableValidation();
+      plugin.validateForm().should.equal(true);
+    });
+
+    it('returns false after validation is (re)enabled', function() {
+      $html = $("<form data-abide novalidate><input required type='text'><input type='submit'></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.disableValidation();
+      plugin.enableValidation();
+      plugin.validateForm().should.equal(false);
+    });
+
+    it('returns true if first submit has formnovalidate is disabled', function() {
+      $html = $("<form data-abide novalidate><input required type='text'><input type='submit' formnovalidate></form>").appendTo("body");
+      plugin = new Foundation.Abide($html, {});
+
+      plugin.validateForm().should.equal(true);
+    });
+  });
+
   describe('validateInput()', function() {
     it('returns true for hidden inputs', function() {
       $html = $("<form data-abide novalidate><input type='hidden' required></form>").appendTo("body");
@@ -52,14 +78,14 @@ describe('Abide', function() {
     });
 
     it('returns true for checked checkboxes', function() {
-      $html = $("<form data-abide><input type='checkbox' required checked='checked'></form>").appendTo("body");
+      $html = $("<form data-abide novalidate><input type='checkbox' name='groupName' required checked='checked'></form>").appendTo("body");
       plugin = new Foundation.Abide($html, {});
 
       plugin.validateInput($html.find("input")).should.equal(true);
     });
 
     it('returns false for unchecked checkboxes', function() {
-      $html = $("<form data-abide><input type='checkbox' required></form>").appendTo("body");
+      $html = $("<form data-abide novalidate><input type='checkbox' name='groupName' required></form>").appendTo("body");
       plugin = new Foundation.Abide($html, {});
 
       plugin.validateInput($html.find("input")).should.equal(false);
@@ -158,6 +184,19 @@ describe('Abide', function() {
       plugin.addErrorClasses($html.find('input'));
 
       plugin.removeRadioErrorClasses('groupName');
+
+      $html.find('input').should.not.have.attr('aria-invalid')
+    });
+  });
+
+  describe('removeCheckboxErrorClasses()', function() {
+    it('removes aria-invalid attribute from checkbox group', function() {
+      $html = $('<form data-abide><input type="checkbox" name="groupName"></form>').appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      // Add error classes first
+      plugin.addErrorClasses($html.find('input'));
+
+      plugin.removeCheckboxErrorClasses('groupName');
 
       $html.find('input').should.not.have.attr('aria-invalid')
     });
