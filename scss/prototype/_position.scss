@@ -81,6 +81,7 @@ $prototype-position-z-index: 975 !default;
   .position-fixed-top {
     @include position-fixed-top;
   }
+
   .position-fixed-bottom {
     @include position-fixed-bottom;
   }

@@ -101,7 +101,6 @@ $table-stack-breakpoint: medium !default;
 
 @mixin -zf-table-unstripe() {
   tr {
-    border-bottom: 0;
     border-bottom: $table-border;
     background-color: $table-background;
   }
@@ -193,10 +192,10 @@ $table-stack-breakpoint: medium !default;
   $stripe: $table-stripe,
   $nest: false
 ) {
-  border-collapse: collapse;
   width: 100%;
   margin-bottom: $global-margin;
   border-radius: $global-radius;
+  border-collapse: collapse;
 
   @if $nest {
     @include -zf-table-children-styles($stripe);

@@ -113,27 +113,32 @@ $contrast-warnings: true !default;
 @mixin add-foundation-colors() {
   @if map-has-key($foundation-palette, primary) {
     $primary-color: map-get($foundation-palette, primary) !global;
-  } @else {
+  }
+  @else {
     $primary-color: #1779ba !global;
   }
   @if map-has-key($foundation-palette, secondary) {
     $secondary-color: map-get($foundation-palette, secondary) !global;
-  } @else {
+  }
+  @else {
     $secondary-color: #767676 !global;
   }
   @if map-has-key($foundation-palette, success) {
     $success-color: map-get($foundation-palette, success) !global;
-  } @else {
+  }
+  @else {
     $success-color: #3adb76 !global;
   }
   @if map-has-key($foundation-palette, warning) {
     $warning-color: map-get($foundation-palette, warning) !global;
-  } @else {
+  }
+  @else {
     $warning-color: #ffae00 !global;
   }
   @if map-has-key($foundation-palette, alert) {
     $alert-color: map-get($foundation-palette, alert) !global;
-  } @else {
+  }
+  @else {
     $alert-color: #cc4b37 !global;
   }
 }

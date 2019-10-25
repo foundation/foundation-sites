@@ -38,12 +38,12 @@ $menu-item-background-active: get-color(primary) !default;
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
 
-/// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
+/// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`.
 /// But please note that `active` will be removed in upcoming versions.
 /// @type Boolean
 $menu-state-back-compat: true !default;
 
-/// Backward compatibility for menu centered. If true, this duplicate `.menu-centered > .menu` with `.menu.align-center`. 
+/// Backward compatibility for menu centered. If true, this duplicate `.menu-centered > .menu` with `.menu.align-center`.
 /// But please note that `menu-centered` will be removed in upcoming versions.
 /// @type Boolean
 $menu-centered-back-compat: true !default;
@@ -55,10 +55,10 @@ $menu-icons-back-compat: true !default;
 
 /// Creates the base styles for a Menu.
 @mixin menu-base {
-  padding: 0;
-  margin: 0;
-  list-style: none;
   position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
   @if $global-flexbox {
     display: flex;
@@ -71,10 +71,10 @@ $menu-icons-back-compat: true !default;
 
   a,
   .button {
-    line-height: 1;
-    text-decoration: none;
     display: block;
     padding: $menu-items-padding;
+    line-height: 1;
+    text-decoration: none;
   }
 
   // Reset styles of inner elements
@@ -178,8 +178,8 @@ $menu-icons-back-compat: true !default;
 @mixin menu-direction($dir: horizontal) {
   @if $dir == horizontal {
     @if $global-flexbox {
-      flex-wrap: wrap;
       flex-direction: row;
+      flex-wrap: wrap;
     }
     @else {
       li {
@@ -189,8 +189,8 @@ $menu-icons-back-compat: true !default;
   }
   @else if $dir == vertical {
     @if $global-flexbox {
-      flex-wrap: nowrap;
       flex-direction: column;
+      flex-wrap: nowrap;
     }
     @else {
       li {
@@ -444,7 +444,7 @@ $menu-icons-back-compat: true !default;
     .is-active > a {
       @include menu-state-active;
     }
-    
+
     // Backward Compatibility for active state
     @if $menu-state-back-compat {
       .active > a {
@@ -482,7 +482,7 @@ $menu-icons-back-compat: true !default;
         @if $global-flexbox {
           justify-content: center;
         }
-        
+
         @include menu-align(center);
       }
     }

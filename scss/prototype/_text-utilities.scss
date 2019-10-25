@@ -16,11 +16,11 @@ $prototype-text-overflow: ellipsis !default;
 
 /// Image Replacement utility. `text-hide`
 @mixin text-hide {
+  border: 0 !important;
+  background-color: transparent !important;
   font: 0/0 a !important;
   color: transparent !important;
   text-shadow: none !important;
-  background-color: transparent !important;
-  border: 0 !important;
 }
 
 /// Truncating the text, elipsis by default.
@@ -30,7 +30,7 @@ $prototype-text-overflow: ellipsis !default;
 ) {
   max-width: 100% !important;
   overflow: hidden !important;
-  text-overflow: $overflow; 
+  text-overflow: $overflow;
   white-space: nowrap !important;
 }
 

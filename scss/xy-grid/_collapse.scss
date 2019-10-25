@@ -46,7 +46,8 @@
             }
           }
         }
-      } @else {
+      }
+      @else {
         @include breakpoint($bp) {
           @for $i from 1 through $grid-columns {
             // Sizing (percentage)

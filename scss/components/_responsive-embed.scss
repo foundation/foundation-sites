@@ -46,7 +46,7 @@ $responsive-embed-ratios: (
   .flex-video {
     @include responsive-embed($ratio: default);
 
-    $ratios: map-remove($responsive-embed-ratios,default);
+    $ratios: map-remove($responsive-embed-ratios, default);
 
     @each $name, $ratio in $ratios {
       &.#{$name} {

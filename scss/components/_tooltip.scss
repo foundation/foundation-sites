@@ -108,8 +108,8 @@ $tooltip-radius: $global-radius !default;
     }
 
     &.align-center::before {
-      bottom: auto;
       top: 50%;
+      bottom: auto;
       transform: translateY(-50%);
     }
   }
@@ -122,30 +122,30 @@ $tooltip-radius: $global-radius !default;
     }
 
     &.align-center::before {
-      bottom: auto;
       top: 50%;
+      bottom: auto;
       transform: translateY(-50%);
     }
   }
 
   &.align-top::before {
-    bottom: auto;
     top: 10%;
+    bottom: auto;
   }
 
   &.align-bottom::before {
-    bottom: 10%;
     top: auto;
+    bottom: 10%;
   }
 
   &.align-left::before {
-    left: 10%;
     right: auto;
+    left: 10%;
   }
 
   &.align-right::before {
-    left: auto;
     right: 10%;
+    left: auto;
   }
 }
 

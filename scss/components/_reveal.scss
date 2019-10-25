@@ -71,13 +71,11 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   @include disable-mouse-outline;
   z-index: $reveal-zindex + 1;
   // Workaround android browser z-index bug
-  backface-visibility: hidden;
-
   display: none;
   padding: $reveal-padding;
-
   border: $reveal-border;
   border-radius: $reveal-radius;
+  backface-visibility: hidden;
   background-color: $reveal-background;
 
   @include breakpoint(medium) {
@@ -128,7 +126,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 }
 
 @mixin foundation-reveal {
-
   /// Disables the scroll when Reveal is shown to prevent the background from shifting
   html.is-reveal-open {
     position: fixed;

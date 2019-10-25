@@ -6,7 +6,6 @@
 .welcome-accordion-item {
 
   &.is-active {
-    // box-shadow: 0px 1px 8px 0px rgba(0,0,0,0.15);
 
     .accordion-title {
       margin-bottom: 0;
@@ -17,7 +16,6 @@
     }
 
     .accordion-content {
-      // margin-bottom: 1rem;
       border: none;
       border-bottom: 1px dashed #e6e6e6;
     }

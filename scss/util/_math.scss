@@ -30,7 +30,7 @@
 /// @returns {Number} The product of the exponentiation.
 @function pow($base, $exponent, $prec: 16) {
   @if (floor($exponent) != $exponent) {
-    $prec2 : pow(10, $prec);
+    $prec2: pow(10, $prec);
     $exponent: round($exponent * $prec2);
     $denominator: gcd($exponent, $prec2);
     @return nth-root(pow($base, $exponent / $denominator), $prec2 / $denominator, $prec);
@@ -98,8 +98,8 @@
   @else if type-of($fraction) == 'list' {
     // "50 of 100", "50/100"...
     @if length($fraction) == 3
-      and type-of(nth($fraction, 1) == 'number')
-      and type-of(nth($fraction, 3) == 'number') {
+    and type-of(nth($fraction, 1) == 'number')
+    and type-of(nth($fraction, 3) == 'number') {
       @return (nth($fraction, 1), nth($fraction, 3));
     }
   }

@@ -84,8 +84,8 @@ $code-block-margin-bottom: 1.5rem !default;
 
 @mixin cite-block {
   display: block;
-  color: $cite-color;
   font-size: $cite-font-size;
+  color: $cite-color;
 
   &:before {
     content: $cite-pseudo-content;
@@ -108,20 +108,19 @@ $code-block-margin-bottom: 1.5rem !default;
 @mixin code-inline {
   display: inline;
   max-width: 100%;
-  word-wrap: break-word;
-
   padding: $code-padding;
+
+  word-wrap: break-word;
 }
 
 /// Make code helper from the `code-style` mixin a block.
 /// Used to generate `.code-block`
 @mixin code-block {
   display: block;
+  margin-bottom: $code-block-margin-bottom;
+  padding: $code-block-padding;
   overflow: auto;
   white-space: pre;
-
-  padding: $code-block-padding;
-  margin-bottom: $code-block-margin-bottom;
 }
 
 @mixin foundation-typography-helpers {

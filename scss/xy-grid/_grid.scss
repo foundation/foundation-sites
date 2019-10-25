@@ -17,8 +17,8 @@
   @include xy-gutters($gutters: $padding, $gutter-type: padding);
 
   max-width: $width;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 /// Creates a container for your flex cells.

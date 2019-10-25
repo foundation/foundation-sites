@@ -39,6 +39,7 @@
     }
 
   }
+
   .grid-x {
     > .auto {
       @include xy-cell-size(auto, $gutter-type: none);
@@ -60,6 +61,7 @@
       @for $i from 1 through $grid-columns {
         $str: $str + ", > .#{$-zf-size}-#{$i}"
       }
+
       #{$str} {
         flex-basis: auto;
       }
@@ -109,6 +111,7 @@
 
 @mixin -xy-breakpoint-cell-classes($class-breakpoint, $gutter-breakpoint, $vertical) {
   $prefix: if($class-breakpoint == $-zf-zero-breakpoint, '', '#{$class-breakpoint}-');
+
   > .#{$prefix}auto {
     @include xy-cell-size(auto, $vertical: $vertical);
   }
@@ -265,12 +268,6 @@
   $margin-grid: true,
   $padding-grid: true
 ) {
-
-  @include -zf-each-breakpoint() {
-    @if not($-zf-size == $-zf-zero-breakpoint) {
-    }
-  }
-
   .grid-y {
     @include xy-grid(vertical, false);
 

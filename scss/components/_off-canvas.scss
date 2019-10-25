@@ -103,12 +103,15 @@ $maincontent-class: 'off-canvas-content' !default;
     width: 100%;
     height: 100%;
 
-    transition: opacity $offcanvas-transition-length $offcanvas-transition-timing, visibility $offcanvas-transition-length $offcanvas-transition-timing;
+    opacity: 0;
 
+    visibility: hidden;
     background: $offcanvas-exit-background;
 
-    opacity: 0;
-    visibility: hidden;
+
+    transition: opacity $offcanvas-transition-length $offcanvas-transition-timing, visibility $offcanvas-transition-length $offcanvas-transition-timing;
+
+
 
     overflow: hidden;
 
@@ -160,10 +163,9 @@ $maincontent-class: 'off-canvas-content' !default;
     z-index: $offcanvas-push-zindex;
   }
 
+  background: $background;
   transition: transform $transition;
   backface-visibility: hidden;
-
-  background: $background;
 
   // Hide inactive off-canvas within the content that have the same position
   &.is-closed {
@@ -212,6 +214,7 @@ $maincontent-class: 'off-canvas-content' !default;
           transform: translateX(-$size);
         }
       }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -249,6 +252,7 @@ $maincontent-class: 'off-canvas-content' !default;
           transform: translateX($size);
         }
       }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -285,6 +289,7 @@ $maincontent-class: 'off-canvas-content' !default;
           transform: translateY(-$size);
         }
       }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -321,6 +326,7 @@ $maincontent-class: 'off-canvas-content' !default;
           transform: translateY($size);
         }
       }
+
       &.is-transition-overlap.is-open {
         transform: translate(0, 0);
       }
@@ -383,13 +389,13 @@ $maincontent-class: 'off-canvas-content' !default;
 
 /// Adds styles that reveal an off-canvas panel.
 @mixin off-canvas-reveal(
-$position: left,
-$zindex: $offcanvas-reveal-zindex,
-$content: $maincontent-class,
-$breakpoint: small
+  $position: left,
+  $zindex: $offcanvas-reveal-zindex,
+  $content: $maincontent-class,
+  $breakpoint: small
 ) {
-  transform: none;
   z-index: $zindex;
+  transform: none;
   transition: none;
   visibility: visible;
 
@@ -418,21 +424,21 @@ $breakpoint: small
 
 /// Overrides the off-canvas styles
 @mixin in-canvas() {
+  position: static;
+  width: auto;
   visibility: visible;
   height: auto;
-  position: static;
   background: none;
-  width: auto;
-  overflow: visible;
   transition: none;
+  overflow: visible;
 
   // Increase CSS specificity
   &.position-left,
   &.position-right,
   &.position-top,
   &.position-bottom {
-    box-shadow: none;
     transform: none;
+    box-shadow: none;
   }
 
   .close-button {
@@ -451,12 +457,6 @@ $breakpoint: small
   // Off-canvas container
   .off-canvas {
     @include off-canvas-base;
-
-    // Force position absolute for nested off-canvas because fixed doesn't work for push transition within the transform scope.
-    @at-root .#{$maincontent-class} & {
-      // NOTE: since overlap transition is currently forced if nested, there's no need to force position absolute until nested push transition is supported.
-      // position: absolute;
-    }
   }
 
   // Off-canvas container with absolute position

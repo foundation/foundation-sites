@@ -41,9 +41,11 @@ $prototype-overflow: (
     .overflow-#{$overflow} {
       @include overflow($overflow);
     }
+
     .overflow-x-#{$overflow} {
       @include overflow-x($overflow);
     }
+
     .overflow-y-#{$overflow} {
       @include overflow-y($overflow);
     }
@@ -58,9 +60,11 @@ $prototype-overflow: (
             .#{$size}-overflow-#{$overflow} {
               @include overflow($overflow);
             }
+
             .#{$size}-overflow-x-#{$overflow} {
               @include overflow-x($overflow);
             }
+
             .#{$size}-overflow-y-#{$overflow} {
               @include overflow-y($overflow);
             }

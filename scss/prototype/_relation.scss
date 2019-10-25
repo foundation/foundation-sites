@@ -1,11 +1,12 @@
 /// Select all children from the first to `$num`.
-/// @param {Number} $num[] First `n` numbers of total children 
+/// @param {Number} $num[] First `n` numbers of total children
 @mixin first($num) {
   @if $num == 1 {
     &:first-child {
       @content;
     }
-  } @else {
+  }
+  @else {
     &:nth-child(-n + #{$num}) {
       @content;
     }
@@ -20,7 +21,7 @@
 }
 
 /// Select all children from the last to `$num`.
-/// @param {Number} $num[] Last `n` numbers of total children 
+/// @param {Number} $num[] Last `n` numbers of total children
 @mixin last($num) {
   &:nth-last-child(-n + #{$num}) {
     @content;
@@ -51,7 +52,7 @@
 }
 
 /// Select all children after the first to `$num`.
-/// @param {Number} $num[] After First `n` numbers of total children 
+/// @param {Number} $num[] After First `n` numbers of total children
 @mixin after-first($num) {
   &:nth-child(n + #{$num + 1}) {
     @content;
@@ -59,7 +60,7 @@
 }
 
 /// Select all children before `$num` from the last.
-/// @param {Number} $num[] From Last `n` numbers of total children 
+/// @param {Number} $num[] From Last `n` numbers of total children
 @mixin from-last($num) {
   &:nth-last-child(#{$num}) {
     @content;
@@ -67,7 +68,7 @@
 }
 
 /// Select the `$num` child from the first and the `$num` child from the last.
-/// @param {Number} $num[] `n` number called from first and last 
+/// @param {Number} $num[] `n` number called from first and last
 @mixin from-first-last($num) {
   &:nth-child(#{$num}),
   &:nth-last-child(#{$num}) {
@@ -76,7 +77,7 @@
 }
 
 /// Select all children but `$num`.
-/// @param {Number} $num[] `n` number that should be excluded from all other children 
+/// @param {Number} $num[] `n` number that should be excluded from all other children
 @mixin all-but($num) {
   &:not(:nth-child(#{$num})) {
     @content;

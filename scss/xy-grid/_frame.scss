@@ -14,17 +14,18 @@
 ) {
 
   @if $include-base {
-    overflow: hidden;
     position: relative;
     flex-wrap: nowrap;
     align-items: stretch;
+    overflow: hidden;
   }
 
   @if $breakpoint == null and type-of($gutters) == 'map' {
     @include -zf-each-breakpoint() {
       @include xy-grid-frame($vertical, $nested, $gutters, $-zf-size, false);
     }
-  } @else {
+  }
+  @else {
     // Get our gutters if applicable
     $gutter: -zf-get-bp-val($gutters, $breakpoint);
 
@@ -34,7 +35,8 @@
         $unit: if($nested == true, 100%, 100vh);
         $gutter: rem-calc($gutter);
         height: calc(#{$unit} + #{$gutter});
-      } @else {
+      }
+      @else {
         $unit: if($nested == true, 100%, 100vw);
         $gutter: rem-calc($gutter);
         width: calc(#{$unit} + #{$gutter});
@@ -43,7 +45,8 @@
     @else {
       @if $vertical == true {
         height: if($nested == true, 100%, 100vh);
-      } @else {
+      }
+      @else {
         width: if($nested == true, 100%, 100vw);
       }
     }
@@ -59,12 +62,13 @@
   $property: if($vertical == true, 'overflow-y', 'overflow-x');
 
   @if $vertical == true {
-    overflow-y: auto;
-    max-height: 100%;
     min-height: 100%;
-  } @else {
-    overflow-x: auto;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+  @else {
     max-width: 100%;
+    overflow-x: auto;
   }
 
   -webkit-overflow-scrolling: touch;
@@ -80,7 +84,7 @@
   max-height: 100%;
 
   > .grid-x {
-    max-height: 100%;
     flex-wrap: nowrap;
+    max-height: 100%;
   }
 }

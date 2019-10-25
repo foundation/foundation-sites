@@ -52,7 +52,7 @@ $prototype-font-bold: $global-weight-bold !default;
 }
 
 @mixin foundation-prototype-font-styling {
-  .font-wide{
+  .font-wide {
     @include font-wide;
   }
 
@@ -73,7 +73,7 @@ $prototype-font-bold: $global-weight-bold !default;
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @if $size != $-zf-zero-breakpoint {
-          .#{$size}-font-wide{
+          .#{$size}-font-wide {
             @include font-wide;
           }
 

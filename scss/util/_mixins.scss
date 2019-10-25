@@ -21,11 +21,14 @@
 
   @if ($side == top) {
     box-shadow: inset 0 $helper $size (-1)*$helper $color;
-  } @else if ($side == left) {
+  }
+  @else if ($side == left) {
     box-shadow: inset $helper 0 $size (-1)*$helper $color;
-  } @else if ($side == right) {
+  }
+  @else if ($side == right) {
     box-shadow: inset (-1)*$helper 0 $size (-1)*$helper $color;
-  } @else if ($side == bottom) {
+  }
+  @else if ($side == bottom) {
     box-shadow: inset 0 (-1)*$helper $size (-1)*$helper $color;
   }
 }
@@ -219,7 +222,7 @@
   height: 1px #{$important};
   padding: 0 #{$important};
   overflow: hidden #{$important};
-  clip: rect(0,0,0,0) #{$important};
+  clip: rect(0, 0, 0, 0) #{$important};
   white-space: nowrap #{$important};
   border: 0 #{$important};
 }
@@ -324,7 +327,7 @@
     $-zf-size: $bp !global;
 
     @if ($media-queries == true
-      or ($media-queries == 'for-lists' and $-breakpoints-is-a-list)) {
+    or ($media-queries == 'for-lists' and $-breakpoints-is-a-list)) {
       @include breakpoint($bp) {
         @content;
       }

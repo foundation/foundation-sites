@@ -116,8 +116,8 @@ $tab-content-padding: 1rem !default;
   border: 1px solid $border-color;
   border-top: 0;
   background: $background;
-  color: $color;
   transition: all 0.5s ease;
+  color: $color;
 }
 
 /// Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with `tabs-content()`.
