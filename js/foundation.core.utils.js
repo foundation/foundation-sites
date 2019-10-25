@@ -19,9 +19,14 @@ function rtl() {
  * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
  * @returns {String} - unique id
  */
-function GetYoDigits(length, namespace){
-  length = length || 6;
-  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
+function GetYoDigits(length = 6, namespace){
+  let str = '';
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+  const charsLength = chars.length;
+  for (let i = 0; i < length; i++) {
+    str += chars[Math.floor(Math.random() * charsLength)];
+  }
+  return namespace ? `${str}-${namespace}` : str;
 }
 
 /**
