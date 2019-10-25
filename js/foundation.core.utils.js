@@ -22,8 +22,9 @@ function rtl() {
 function GetYoDigits(length = 6, namespace){
   let str = '';
   const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+  const charsLength = chars.length;
   for (let i = 0; i < length; i++) {
-    str += chars[Math.floor(Math.random() * chars.length)];
+    str += chars[Math.floor(Math.random() * charsLength)];
   }
   return namespace ? `${str}-${namespace}` : str;
 }
