@@ -67,7 +67,7 @@ npm install
 npm start
 ```
 
-Once compiled, you project is viewable at: <a class="button primary" href="https://localhost:8000" target="_blank">//localhost:8000</a>
+Once compiled, you project is viewable at: <a class="button primary" href="http://localhost:8000" target="_blank">//localhost:8000</a>
 
 The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `npm run build`.
 

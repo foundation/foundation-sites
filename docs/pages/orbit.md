@@ -161,16 +161,6 @@ The bullets serve two purposes: they mark the current slide, and can be clicked 
 </nav>
 ```
 
-<!-- <div class="callout"><p>
-  The new Orbit slider was designed to be a tool for rapid prototyping. While you are welcome to use it in production, if you want something more robust, we welcome you to try [Owl Carousel](https://owlgraphic.com/owlcarousel/).
-</p>
-<div class="callout alert">
-  <p>
-    If animations are desired with the Orbit slider, such as the example below, [Motion-UI](https://github.com/zurb/motion-ui) is required. If you want a simple slide replacement, set the option `useMUI` to false for animation free slides.
-  </p>
-</div>
-</div> -->
-
 ---
 
 ## Slide Contents

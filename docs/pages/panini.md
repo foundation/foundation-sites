@@ -178,7 +178,7 @@ Converts Markdown into HTML.
 ```handlebars
 {{#markdown}}
 # Heading 1
-Lorem ipsum [dolor sit amet](https://html5zombo.com), consectetur adipisicing elit. Nam dolor, perferendis. Mollitia aut dolorum, est amet libero eos ad facere pariatur, ullam dolorem similique fugit, debitis impedit, eligendi officiis dolores.
+Lorem ipsum [dolor sit amet](http://example.com), consectetur adipisicing elit. Nam dolor, perferendis. Mollitia aut dolorum, est amet libero eos ad facere pariatur, ullam dolorem similique fugit, debitis impedit, eligendi officiis dolores.
 {{/markdown}}
 ```
 
