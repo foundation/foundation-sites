@@ -34,12 +34,12 @@ You can import in your HTML the complete Foundation library `foundation.min.js` 
 Know that they all require `foundation.core.js` to be loaded *first*. Some plugins also require specific utility libraries that ship with Foundation&mdash;refer to a plugin's documentation to find out which plugins require what, and see the [JavaScript Utilities](javascript-utilities.html) page for more information.
 
 <div class="callout warning">
-  <p>Loading many individual files like this creates a lot of network overhead, especially for users on mobile networks. To keep your pages loading quick, we recommend using a tool like <a href="//gruntjs.com">Grunt</a> or <a href="//gulpjs.com">Gulp</a> to combine all of your JavaScript files into one.</p>
+  <p>Loading many individual files like this creates a lot of network overhead, especially for users on mobile networks. To keep your pages loading quick, we recommend using a tool like <a href="https://gruntjs.com">Grunt</a> or <a href="https://gulpjs.com">Gulp</a> to combine all of your JavaScript files into one.</p>
 </div>
 
 ### Import in JavaScript
 
-By default, Foundation is exported as [UMD modules](//bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported and used in any JavaScript environment.
+By default, Foundation is exported as [UMD modules](https://bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported and used in any JavaScript environment.
 
 For example with [ES6](https://github.com/lukehoban/es6features#readme) (the ESM format):
 ```js
@@ -50,7 +50,7 @@ import { Dropdown } from 'foundation-sites';
 const $dropdown = new Dropdown($('#mydropdown'));
 ```
 
-With [RequireJs](//requirejs.org/) (the AMD format):
+With [RequireJs](https://requirejs.org/) (the AMD format):
 ```js
 define(['foundation'], function(Foundation) {
   var $dropdown = new Foundation.Dropdown($('#mydropdown'));

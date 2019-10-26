@@ -76,7 +76,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 ```html
 <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
   <li>
-    <a href="//www.get.foundation/">Zurb Foundation</a>
+    <a href="https://www.get.foundation/">Zurb Foundation</a>
     <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
@@ -103,7 +103,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 
 <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" style="max-width: 250px">
   <li>
-    <a href="//www.get.foundation/">Zurb Foundation</a>
+    <a href="https://www.get.foundation/">Zurb Foundation</a>
     <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>

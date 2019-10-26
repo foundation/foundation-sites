@@ -465,7 +465,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="//codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html

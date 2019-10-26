@@ -15,7 +15,7 @@ tags:
 Orbit doesn't automatically generate any HTML for you, giving you the flexibility to move around the various pieces of the plugin. Here's a complete example&mdash;we'll break down the individual pieces farther down.
 
 <div class="callout alert">
-  <p>Please note that apart from Javascript, <a href="//www.get.foundation/sites/docs/motion-ui.html">Motion UI</a> is a dependency for Orbit to work properly. If in case, you don't want any animations within your Carousel, you can always <a href="#disabling-animation">disable</a> the animation.</p>
+  <p>Please note that apart from Javascript, <a href="https://www.get.foundation/sites/docs/motion-ui.html">Motion UI</a> is a dependency for Orbit to work properly. If in case, you don't want any animations within your Carousel, you can always <a href="#disabling-animation">disable</a> the animation.</p>
 </div>
 
 <p>
@@ -162,7 +162,7 @@ The bullets serve two purposes: they mark the current slide, and can be clicked 
 ```
 
 <!-- <div class="callout"><p>
-  The new Orbit slider was designed to be a tool for rapid prototyping. While you are welcome to use it in production, if you want something more robust, we welcome you to try [Owl Carousel](//owlgraphic.com/owlcarousel/).
+  The new Orbit slider was designed to be a tool for rapid prototyping. While you are welcome to use it in production, if you want something more robust, we welcome you to try [Owl Carousel](https://owlgraphic.com/owlcarousel/).
 </p>
 <div class="callout alert">
   <p>
