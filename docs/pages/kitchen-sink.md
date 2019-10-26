@@ -57,7 +57,7 @@ description: Everything but.
   <div class="grid-x grid-margin-x">
     <div class="cell medium-6">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="https://www.get.foundation" pattern="url">
+        <input type="text" placeholder="https://get.foundation" pattern="url">
       </label>
     </div>
     <div class="cell medium-6">

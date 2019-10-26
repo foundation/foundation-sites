@@ -65,7 +65,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="https://www.get.foundation/learn/get-your-team-on-a-solid-foundation.html">
+      <a target="_blank" href="https://get.foundation/learn/get-your-team-on-a-solid-foundation.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i.ytimg.com/vi/kLgRITKjcWw/mqdefault.jpg" class="" height="" width="" alt="">
@@ -79,7 +79,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://www.get.foundation/learn/build-your-career-on-a-solid-foundation.html">
+      <a target="_blank" href="https://get.foundation/learn/build-your-career-on-a-solid-foundation.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i.ytimg.com/vi/dZZk9Kz5j_0/mqdefault.jpg" class="" height="" width="" alt="">
@@ -115,10 +115,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Templates and Code Snippets</a>
     <div class="accordion-content " data-tab-content>
 
-      <a target="_blank" href="https://www.get.foundation/templates.html">
+      <a target="_blank" href="https://get.foundation/templates.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://www.get.foundation/assets/img/sites-templates/foundation6-templates-07.svg">
+            <img src="https://get.foundation/assets/img/sites-templates/foundation6-templates-07.svg">
           </div>
           <div class="cell medium-8">
             <h5>Foundation Templates</h5>
@@ -141,10 +141,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://www.get.foundation/building-blocks/kits.html">
+      <a target="_blank" href="https://get.foundation/building-blocks/kits.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://www.get.foundation/building-blocks/assets/img/kits/dashboard/dashboard-kit.jpg" style="height: 142px; width: 100%;">
+            <img src="https://get.foundation/building-blocks/assets/img/kits/dashboard/dashboard-kit.jpg" style="height: 142px; width: 100%;">
           </div>
           <div class="cell medium-8">
             <h5>Foundation Kits</h5>
@@ -161,7 +161,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Additional Resources</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="https://www.get.foundation/learn/zero-to-website-in-no-time-flat.html">
+      <a target="_blank" href="https://get.foundation/learn/zero-to-website-in-no-time-flat.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i.ytimg.com/vi/KHMXOTbLAGE/mqdefault.jpg" class="" height="" width="" alt="">
@@ -248,7 +248,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://www.get.foundation/building-blocks/how-to.html">
+      <a target="_blank" href="https://get.foundation/building-blocks/how-to.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i3.ytimg.com/vi/adLpmsU9v2g/maxresdefault.jpg" class="" height="" width="" alt="">
@@ -326,7 +326,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Foundation Showcase</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="https://www.get.foundation/foundationturns5">
+      <a target="_blank" href="https://get.foundation/foundationturns5">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/foundation-turns-5.png" class="" height="" width="" alt="">
@@ -339,7 +339,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://www.get.foundation/showcase/brands.html">
+      <a target="_blank" href="https://get.foundation/showcase/brands.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/foundation-brands.png" class="" height="" width="" alt="">
@@ -352,10 +352,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://www.get.foundation/showcase/case-studies.html">
+      <a target="_blank" href="https://get.foundation/showcase/case-studies.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://www.get.foundation/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
+            <img src="https://get.foundation/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
           </div>
           <div class="cell medium-8">
             <h5>Foundation Case Studies</h5>
