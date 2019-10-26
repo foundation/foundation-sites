@@ -34,7 +34,7 @@ Not all projects require Prototyping Utilities and adding utility classes like t
 	</p>
 </div>
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with prototype mode enabled. If you're using the Sass version of Foundation, you can enable prototype mode in two ways:
+If you're using the CSS version of Foundation, you can generate a <a href="https://get.foundation/sites/download">custom download of Foundation</a> with prototype mode enabled. If you're using the Sass version of Foundation, you can enable prototype mode in two ways:
 
 If you use the `foundation-everything()` mixin in your main Sass file, just pass in `$prototype: true` to enable the prototype mode.
 
@@ -109,7 +109,7 @@ $prototype-transformation-breakpoints: true;
 These `.radius`, `.rounded`, `.bordered` & `.shadow` classes can be used independently or together to style the component by rounding its corners, giving light borders, and creating shadow to it respectively. Mostly used in buttons, cards, tables, images and many more.
 
 <div class="primary callout">
-	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](http://codepen.io/IamManchanda/pen/XMRMwo)
+	**Sass Tip**: You can use [Shadow](#shadow) mixin to create something like `shadow-hover-focus`. [Codepen example](https://codepen.io/IamManchanda/pen/XMRMwo)
 </div>
 
 <p>

@@ -25,13 +25,13 @@ You'll need to change your lang attribute value to match your language. Here's a
 - **Urdu:** `ur`
 - **Yiddish:** `yi`, `ji`
 
-View of a [full list of language codes](http://www.loc.gov/standards/iso639-2/php/code_list.php) on the website of the Library of Congress.
+View of a [full list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) on the website of the Library of Congress.
 
 ---
 
 ## CSS Download
 
-If you use a CSS version of Foundation (the ones you can find on the [download page](http://foundation.zurb.com/sites/download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
+If you use a CSS version of Foundation (the ones you can find on the [download page](https://get.foundation/sites/download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
 
 ---
 

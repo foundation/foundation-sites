@@ -11,7 +11,7 @@ library:
 
 If you've ever created a static site, maybe you had five pages that all shared the same header and footer. You create your first page, and then copy and paste the common elements to the next page. But now if you need to make a change to the header, the change has to be made across multiple files.
 
-Panini is a flat file compiler that uses the concepts of templates, pages, and partials&mdash;powered by the [Handlebars](http://handlebarsjs.com/) templating language&mdash;to streamline the process of creating static prototypes.
+Panini is a flat file compiler that uses the concepts of templates, pages, and partials&mdash;powered by the [Handlebars](https://handlebarsjs.com/) templating language&mdash;to streamline the process of creating static prototypes.
 
 Our [prototyping template](starter-projects.html) uses Panini, along with a host of other tools for processing Sass, JavaScript, and images, to make creating static prototypes easy. It's already been configured to utilize all of the features below, but if you want to learn the specifics of how to configure the library, head over to the [Panini GitHub page](https://github.com/zurb/panini).
 
@@ -49,7 +49,7 @@ A basic page might look like this:
 
 Note that there's no `<html>` or `<body>` tags, and no header or footer. This code will be injected into the `{{> body}}` declaration when Panini assembles your pages.
 
-In the prototyping template, these finished files are compiled into a standalone folder called `dist` (short for "distribution"), which also includes your processed CSS, JavaScript, and images. This folder can easily be uploaded to any web server, or Notable's [Hosted Prototypes](http://zurb.com/notable/features/hosted) service.
+In the prototyping template, these finished files are compiled into a standalone folder called `dist` (short for "distribution"), which also includes your processed CSS, JavaScript, and images. This folder can easily be uploaded to any web server, or Notable's [Hosted Prototypes](https://zurb.com/notable/features/hosted) service.
 
 ---
 
@@ -119,7 +119,7 @@ The `../` is added only on pages in a sub-folder, so the CSS can still be proper
 
 ## Helpers
 
-Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](http://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers and you can add your own.
+Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](https://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers and you can add your own.
 
 ### ifequal
 Displays the HTML inside the helper if the two values are equal. 
@@ -178,7 +178,7 @@ Converts Markdown into HTML.
 ```handlebars
 {{#markdown}}
 # Heading 1
-Lorem ipsum [dolor sit amet](http://html5zombo.com), consectetur adipisicing elit. Nam dolor, perferendis. Mollitia aut dolorum, est amet libero eos ad facere pariatur, ullam dolorem similique fugit, debitis impedit, eligendi officiis dolores.
+Lorem ipsum [dolor sit amet](https://example.com), consectetur adipisicing elit. Nam dolor, perferendis. Mollitia aut dolorum, est amet libero eos ad facere pariatur, ullam dolorem similique fugit, debitis impedit, eligendi officiis dolores.
 {{/markdown}}
 ```
 
@@ -222,7 +222,7 @@ Then in your projects call your custom `{{#bold}}` helper
 
 Custom data can be added to your pages. This data can then be inserted into your HTML through Handlebars. There are two ways to add data to a project.
 
-To add variables to a specific page only, add it at the top of the page's HTML as a [Front Matter](http://jekyllrb.com/docs/frontmatter/) block. Let's say the below content is inside `src/pages/index.html`.
+To add variables to a specific page only, add it at the top of the page's HTML as a [Front Matter](https://jekyllrb.com/docs/frontmatter/) block. Let's say the below content is inside `src/pages/index.html`.
 
 ```html
 ---

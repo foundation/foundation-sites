@@ -100,14 +100,14 @@ $label-palette: (
 The text color for each label class is determined by either `$label-color` or `$label-color-alt`, whichever settings variable has more contrast.
 
 <div class="primary callout">
-  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all labels the same color text, set `$label-color` and `$label-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](https://webaim.org/resources/contrastchecker/) when changing color variables. To give all labels the same color text, set `$label-color` and `$label-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
 </div>
 
 ---
 
 ## Icons
 
-An icon can be dropped into a label just fine. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
+An icon can be dropped into a label just fine. We're using the [Foundation icon font](https://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWKrgb?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
