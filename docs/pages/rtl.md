@@ -31,7 +31,7 @@ View of a [full list of language codes](//www.loc.gov/standards/iso639-2/php/cod
 
 ## CSS Download
 
-If you use a CSS version of Foundation (the ones you can find on the [download page](//foundation.zurb.com/sites/download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
+If you use a CSS version of Foundation (the ones you can find on the [download page](//www.get.foundation/sites/download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
 
 ---
 

@@ -113,7 +113,7 @@ Pair the callout with the [close button](close-button.html) component and `data-
 <a class="" data-open-video="4:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="callout primary">
   <p>Any element can be used as a close trigger, not just close button. Adding the attribute <code>data-close</code> to any element within the callout will turn it into a close trigger.</p>
-  <p>When using the <code>data-closable</code> attribute, you can optionally add <a href="//foundation.zurb.com/sites/docs/motion-ui.html">Motion UI</a> classes to the attribute to change the closing animation. If no class is added, the plugin defaults to jQuery's <code>.fadeOut()</code> function.</p>
+  <p>When using the <code>data-closable</code> attribute, you can optionally add <a href="//www.get.foundation/sites/docs/motion-ui.html">Motion UI</a> classes to the attribute to change the closing animation. If no class is added, the plugin defaults to jQuery's <code>.fadeOut()</code> function.</p>
 </div>
 
 <div class="docs-codepen-container">
