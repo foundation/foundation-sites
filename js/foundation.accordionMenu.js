@@ -123,7 +123,7 @@ class AccordionMenu extends Plugin {
             });
         }
       }
-    }).on('keydown.zf.accordionmenu', function(e){
+    }).on('keydown.zf.accordionMenu', function(e){
       var $element = $(this),
           $elements = $element.parent('ul').children('li'),
           $prevElement,
@@ -190,7 +190,6 @@ class AccordionMenu extends Plugin {
           if (preventDefault) {
             e.preventDefault();
           }
-          e.stopImmediatePropagation();
         }
       });
     });//.attr('tabindex', 0);

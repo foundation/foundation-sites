@@ -4,7 +4,7 @@ import { Plugin } from './foundation.core.plugin';
 
 /**
  * SmoothScroll module.
- * @module foundation.smooth-scroll
+ * @module foundation.smoothScroll
  */
 class SmoothScroll extends Plugin {
   /**

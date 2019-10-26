@@ -167,7 +167,7 @@ You can either set the width of cards with custom css or add them into the Found
 
 ```html_example
 <div class="grid-container">
-  <div class="grid-x grid-padding-x small-up-2 medium-up-3">
+  <div class="grid-x grid-margin-x small-up-2 medium-up-3">
     <div class="cell">
       <div class="card">
         <img src="assets/img/generic/rectangle-1.jpg">
@@ -197,7 +197,7 @@ You can either set the width of cards with custom css or add them into the Found
     </div>
   </div>
 </div>
-<div class="grid-x grid-padding-x small-up-2 medium-up-3">
+<div class="grid-x grid-margin-x small-up-2 medium-up-3">
   <div class="cell">
     <div class="card">
       <img src="assets/img/generic/rectangle-1.jpg">

@@ -1,9 +1,9 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
 import { onLoad, GetYoDigits } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
-import { Plugin } from './foundation.core.plugin';
 
 /**
  * Accordion module.
@@ -44,6 +44,8 @@ class Accordion extends Plugin {
 
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
+    
+    this.$tabs.attr({'role': 'presentation'});
 
     this.$tabs.each(function(idx, el) {
       var $el = $(el),
@@ -84,18 +86,18 @@ class Accordion extends Plugin {
       // Whether the anchor element that has been found is part of this element
       var isOwnAnchor = !!($anchor.length && $link.length);
 
-      // If there is an anchor for the hash, open it (if not already active)
-      if ($anchor && $link && $link.length) {
-        if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
-          this._openSingleTab($anchor);
-        };
-      }
-      // Otherwise, close everything
-      else {
-        this._closeAllTabs();
-      }
-
       if (isOwnAnchor) {
+        // If there is an anchor for the hash, open it (if not already active)
+        if ($anchor && $link && $link.length) {
+          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+            this._openSingleTab($anchor);
+          };
+        }
+        // Otherwise, close everything
+        else {
+          this._closeAllTabs();
+        }
+
         // Roll up a little to show the titles
         if (this.options.deepLinkSmudge) {
           onLoad($(window), () => {
@@ -156,7 +158,6 @@ class Accordion extends Plugin {
             },
             handled: function() {
               e.preventDefault();
-              e.stopPropagation();
             }
           });
         });

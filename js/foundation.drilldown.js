@@ -153,7 +153,6 @@ class Drilldown extends Plugin {
     $elem.off('click.zf.drilldown')
     .on('click.zf.drilldown', function(e){
       if($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')){
-        e.stopImmediatePropagation();
         e.preventDefault();
       }
 
@@ -182,7 +181,7 @@ class Drilldown extends Plugin {
   _registerEvents() {
     if(this.options.scrollTop){
       this._bindHandler = this._scrollTop.bind(this);
-      this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
+      this.$element.on('open.zf.drilldown hide.zf.drilldown close.zf.drilldown closed.zf.drilldown',this._bindHandler);
     }
     this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
@@ -285,7 +284,6 @@ class Drilldown extends Plugin {
           if (preventDefault) {
             e.preventDefault();
           }
-          e.stopImmediatePropagation();
         }
       });
     }); // end keyboardAccess
@@ -294,19 +292,33 @@ class Drilldown extends Plugin {
   /**
    * Closes all open elements, and returns to root menu.
    * @function
+   * @fires Drilldown#close
    * @fires Drilldown#closed
    */
   _hideAll() {
-    var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
-    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-    $elem.one(transitionend($elem), function(e){
+    var $elem = this.$element.find('.is-drilldown-submenu.is-active')
+    $elem.addClass('is-closing');
+
+    if (this.options.autoHeight) {
+      const calcHeight = $elem.parent().closest('ul').data('calcHeight');
+      this.$wrapper.css({ height: calcHeight });
+    }
+
+    /**
+     * Fires when the menu is closing.
+     * @event Drilldown#close
+     */
+    this.$element.trigger('close.zf.drilldown');
+
+    $elem.one(transitionend($elem), () => {
       $elem.removeClass('is-active is-closing');
+
+      /**
+       * Fires when the menu is fully closed.
+       * @event Drilldown#closed
+       */
+      this.$element.trigger('closed.zf.drilldown');
     });
-        /**
-         * Fires when the menu is fully closed.
-         * @event Drilldown#closed
-         */
-    this.$element.trigger('closed.zf.drilldown');
   }
 
   /**
@@ -320,7 +332,6 @@ class Drilldown extends Plugin {
     $elem.off('click.zf.drilldown');
     $elem.children('.js-drilldown-back')
       .on('click.zf.drilldown', function(e){
-        e.stopImmediatePropagation();
         // console.log('mouseup on back');
         _this._hide($elem);
 
@@ -342,7 +353,6 @@ class Drilldown extends Plugin {
     this.$menuItems.not('.is-drilldown-submenu-parent')
         .off('click.zf.drilldown')
         .on('click.zf.drilldown', function(e){
-          // e.stopImmediatePropagation();
           setTimeout(function(){
             _this._hideAll();
           }, 0);
@@ -547,7 +557,7 @@ Drilldown.defaults = {
    * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
    * on the `drilldown` class. This option auto-applies this class to the drilldown upon initialization.
    * @option
-   * @type {boolian}
+   * @type {boolean}
    * @default true
    */
   autoApplyClass: true,

@@ -350,13 +350,17 @@ For an example of off-canvas, checkout this top bar with off-canvas navigation a
 
 ## In-Canvas to Off-Canvas
 
-With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the new class <code>.in-canvas-for-[BREAKPOINT]</code> for this. This differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens.
+With this feature you can have a standard page element move off-canvas at a particular breakpoint. Use the <code>inCanvasOn</code> option for this. In-Canvas differs from the <a href="#reveal-on-larger-screens">Reveal on Larger Screens</a> feature as it doesn't actually open the off-canvas for specific screen sizes but overrides the off-canvas styles so it behaves as a regular page element. This way you can place an element anywhere on the page and move it into off-canvas for e.g. small screens only.
+
+<div class="primary callout">
+  <p>The <code>inCanvasOn</code> option will automatically add the <code>.in-canvas-for-[BREAKPOINT]</code> class since most of the work is done via CSS only. However you may also add this class yourself which will override the option.</p>
+</div>
 
 ```html_example
 <button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
   Open in-canvas that is off-canvas now
 </button>
-<div class="off-canvas in-canvas-for-large position-right" id="inCanvasExample" data-off-canvas>
+<div class="off-canvas position-right" id="inCanvasExample" data-off-canvas data-options="inCanvasFor:large;">
   <div class="callout">I'm in-canvas for medium screen size and move off-canvas for medium down.</div>
 </div>
 ```
@@ -397,6 +401,100 @@ Advanced off-canvas users may use the new `contentId` option to bind an element 
 </div>
 
 <p>Enim, repudiandae officia dolores temporibus soluta, ipsa saepe tempora ipsum laudantium in mollitia quidem, nisi magni provident hic architecto rem culpa beatae.</p>
+```
+
+---
+
+## Off-canvas Scrollbox
+
+Placing scrollable elements within an off-canvas if `contentScroll: false` is tricky because on touch devices it may become difficult to scroll those elements due to stopped event propagation. There's no continous touch move possible.
+
+However you can still achieve this when you add `data-off-canvas-scrollbox` to the scrollable elements. 
+Once you've reached the start/end of a scrollbox (while touch moving) the off-canvas will continue scrolling the off-cannvas element. You can optionally use a wrapper with `data-off-canvas-scrollbox-outer` which gets scrolled instead of the off-canvas element. This is useful when you nest your scrollable elements into other scrollable elements or work with fix heights.
+
+```html_example
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-content" data-off-canvas-content style="min-height: 300px;">
+    <div class="grid-x">
+      <div class="cell">
+        <div class="primary callout">
+          You have to view this example on a touch device or use e.g. the chrome dev tools with touch emulation.
+        </div>
+        <button type="button" class="button" data-toggle="offCanvasScrollbox">
+          Open Scrollbox Off-canvas
+        </button>
+      </div>
+    </div>
+    <div class="off-canvas-absolute position-left" id="offCanvasScrollbox" data-off-canvas data-content-scroll="false">
+      <div style="padding: 0 1rem;">
+        <article data-off-canvas-scrollbox style="max-height: 290px; overflow: auto; padding: 0.5rem 0; margin-bottom: 1rem; box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,0.65);">
+          <p>The 1st list supports continuous touchmove</p>
+          <ul>
+            <li>bullet 01</li>
+            <li>bullet 02</li>
+            <li>bullet 03</li>
+            <li>bullet 04</li>
+            <li>bullet 05</li>
+            <li>bullet 06</li>
+            <li>bullet 07</li>
+            <li>bullet 08</li>
+            <li>bullet 09</li>
+            <li>bullet 10</li>
+          </ul>
+        </article>
+        <article style="max-height: 290px; overflow: auto; padding: 0.5rem 0; margin-bottom: 1rem; box-shadow: inset 0 -10px 10px -10px rgba(0,0,0,0.65);">
+          <p>The 2nd list doesn't support continuous touchmove</p>
+          <ul>
+            <li>bullet 01</li>
+            <li>bullet 02</li>
+            <li>bullet 03</li>
+            <li>bullet 04</li>
+            <li>bullet 05</li>
+            <li>bullet 06</li>
+            <li>bullet 07</li>
+            <li>bullet 08</li>
+            <li>bullet 09</li>
+            <li>bullet 10</li>
+          </ul>
+        </article>
+        <article style="padding: 0.5rem 0;">
+          <p>The 3rd list is regular content</p>
+          <ul>
+            <li>bullet 01</li>
+            <li>bullet 02</li>
+            <li>bullet 03</li>
+            <li>bullet 04</li>
+            <li>bullet 05</li>
+            <li>bullet 06</li>
+            <li>bullet 07</li>
+            <li>bullet 08</li>
+            <li>bullet 09</li>
+            <li>bullet 10</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## Sticky
+
+By default an element with `position: fixed` disappears when opening an off-canvas with push transition. The reason for this is the transform property of the off-canvas content container what causes a `position: absolute` behavior for the fixed element.
+
+The good news: we've added the possibility to preserve the fixed appearance!
+You only have to add the attribute `data-off-canvas-sticky` to every sticky / fixed element that is supposed to remain fixed after opening the off-canvas.
+
+<div class="callout warning">
+  Please note that using this attribute will force the option `contentScroll: false`
+</div>
+
+```html
+<div class="top-bar sticky" data-sticky data-off-canvas-sticky>
+  Sticky top bar that will remain sticky after having opened an off-canvas
+</div>
 ```
 
 ---

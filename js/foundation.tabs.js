@@ -1,10 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
+import { Plugin } from './foundation.core.plugin';
 import { onLoad } from './foundation.core.utils';
 import { Keyboard } from './foundation.util.keyboard';
 import { onImagesLoaded } from './foundation.util.imageLoader';
-import { Plugin } from './foundation.core.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -113,21 +113,22 @@ class Tabs extends Plugin {
         if (this._initialAnchor) anchor = this._initialAnchor;
       }
 
-      var $anchor = anchor && $(anchor);
-      var $link = anchor && this.$element.find('[href$="'+anchor+'"]');
+      var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
+      var $anchor = anchorNoHash && $(`#${anchorNoHash}`);
+      var $link = anchor && this.$element.find(`[href$="${anchor}"],[data-tabs-target="${anchorNoHash}"]`).first();
       // Whether the anchor element that has been found is part of this element
       var isOwnAnchor = !!($anchor.length && $link.length);
 
-      // If there is an anchor for the hash, select it
-      if ($anchor && $anchor.length && $link && $link.length) {
-        this.selectTab($anchor, true);
-      }
-      // Otherwise, collapse everything
-      else {
-        this._collapse();
-      }
-
       if (isOwnAnchor) {
+        // If there is an anchor for the hash, select it
+        if ($anchor && $anchor.length && $link && $link.length) {
+          this.selectTab($anchor, true);
+        }
+        // Otherwise, collapse everything
+        else {
+          this._collapse();
+        }
+
         // Roll up a little to show the titles
         if (this.options.deepLinkSmudge) {
           var offset = this.$element.offset();
@@ -183,7 +184,6 @@ class Tabs extends Plugin {
       .off('click.zf.tabs')
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
-        e.stopPropagation();
         _this._handleTabChange($(this));
       });
   }
@@ -232,7 +232,6 @@ class Tabs extends Plugin {
           _this._handleTabChange($nextElement);
         },
         handled: function() {
-          e.stopPropagation();
           e.preventDefault();
         }
       });
@@ -354,7 +353,7 @@ class Tabs extends Plugin {
    * @function
    */
   selectTab(elem, historyHandled) {
-    var idStr;
+    var idStr, hashIdStr;
 
     if (typeof elem === 'object') {
       idStr = elem[0].id;
@@ -363,10 +362,13 @@ class Tabs extends Plugin {
     }
 
     if (idStr.indexOf('#') < 0) {
-      idStr = `#${idStr}`;
+      hashIdStr = `#${idStr}`;
+    } else {
+      hashIdStr = idStr;
+      idStr = idStr.slice(1);
     }
 
-    var $target = this.$tabTitles.has(`[href$="${idStr}"]`);
+    var $target = this.$tabTitles.has(`[href$="${hashIdStr}"],[data-tabs-target="${idStr}"]`).first();
 
     this._handleTabChange($target, historyHandled);
   };

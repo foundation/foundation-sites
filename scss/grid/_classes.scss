@@ -106,20 +106,26 @@
 
       // Source ordering
       @if $i < $grid-column-count {
-        .#{$-zf-size}-#{$push}-#{$i} {
-          @include grid-col-pos($i);
+        @if $push {
+          .#{$-zf-size}-#{$push}-#{$i} {
+            @include grid-col-pos($i);
+          }
         }
 
-        .#{$-zf-size}-#{$pull}-#{$i} {
-          @include grid-col-pos(-$i);
+        @if $pull {
+          .#{$-zf-size}-#{$pull}-#{$i} {
+            @include grid-col-pos(-$i);
+          }
         }
       }
 
       // Offsets
       $o: $i - 1;
 
-      .#{$-zf-size}-#{$offset}-#{$o} {
-        @include grid-col-off($o);
+      @if $offset {
+        .#{$-zf-size}-#{$offset}-#{$o} {
+          @include grid-col-off($o);
+        }
       }
     }
 
@@ -150,15 +156,22 @@
     }
 
     // Positioning
-    .#{$-zf-size}-#{$center} {
-      @include grid-col-pos(center);
+    @if $center {
+      .#{$-zf-size}-#{$center} {
+        @include grid-col-pos(center);
+      }
     }
 
     // Gutter adjustment
-    .#{$-zf-size}-#{$uncenter},
-    .#{$-zf-size}-#{$push}-0,
-    .#{$-zf-size}-#{$pull}-0 {
-      @include grid-col-unpos;
+    $-gutter-unpos-selector: (
+      if($uncenter, '.#{$-zf-size}-#{$uncenter}', null),
+      if($push, '.#{$-zf-size}-#{$push}-0', null),
+      if($pull, '.#{$-zf-size}-#{$pull}-0', null),
+    );
+    @if ($uncenter or $push or $pull) {
+      #{$-gutter-unpos-selector} {
+        @include grid-col-unpos;
+      }
     }
   }
 

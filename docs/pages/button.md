@@ -114,7 +114,7 @@ If you don't need certain colors from the default palette, simply remove them fr
 $button-palette: map-remove($foundation-palette, (
     primary,
     secondary
-)) !default;
+));
 ```
 
 Or you can add more colors to the default palette.
@@ -122,7 +122,7 @@ Or you can add more colors to the default palette.
 ```scss
 $button-palette: map-merge($foundation-palette, (
     purple: #bb00ff
-)) !default;
+));
 ```
 
 Or you can define your own custom button palette.
@@ -132,7 +132,7 @@ $button-palette: (
     black: #000000,
     red: #ff0000,
     purple: #bb00ff
-) !default;
+);
 ```
 
 ---
