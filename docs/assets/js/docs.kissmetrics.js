@@ -12,7 +12,7 @@ function _kms(u){
     f.parentNode.insertBefore(s, f);
   }, 1);
 }
-_kms('https://i.kissmetrics.com/i.js');
-_kms('https://doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+_kms('//i.kissmetrics.com/i.js');
+_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
 
 }();
