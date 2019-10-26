@@ -39,7 +39,7 @@ Know that they all require `foundation.core.js` to be loaded *first*. Some plugi
 
 ### Import in JavaScript
 
-By default, Foundation is exported as [UMD modules](https://bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported and used in any JavaScript environment.
+By default, Foundation is exported as [UMD modules](http://bob.yexley.net/umd-javascript-that-runs-anywhere/). This means that Foundation and its plugins can be imported and used in any JavaScript environment.
 
 For example with [ES6](https://github.com/lukehoban/es6features#readme) (the ESM format):
 ```js
