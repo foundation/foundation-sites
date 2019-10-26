@@ -67,7 +67,7 @@ npm install
 npm start
 ```
 
-Once compiled, you project is viewable at: <a class="button primary" href="http://localhost:8000" target="_blank">//localhost:8000</a>
+Once compiled, you project is viewable at: <a class="button primary" href="http://localhost:8000" target="_blank">http://localhost:8000</a>
 
 The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `npm run build`.
 
@@ -84,7 +84,7 @@ Here's an overview of what the ZURB Template can do:
 * **Asset Copying**
 
   Gulp will copy anything out of the `src/assets` folder as-is to the `assets` folder of your final project. Note that Sass files, JavaScript files, and images are *not* **part of this copying process, as they have their own steps.**
-  
+
 
 * **Page Compilation**
 
@@ -116,7 +116,7 @@ Here's an overview of what the ZURB Template can do:
 
 * **BrowserSync**
 
-  The template creates a [BrowserSync](https://www.browsersync.io/) server, which is at `//localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
+  The template creates a [BrowserSync](https://www.browsersync.io/) server, which is at `http://localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
 
 * **Style Guide Creation**
 
