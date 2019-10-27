@@ -9,7 +9,7 @@ tags:
 
 <div class="callout training-callout">
   <p>To help you get the most out of Foundation and create responsive websites and apps like us we’ve put together some unique online webinar training. Learn Foundation’s Grid, how to use and modify Foundation's UI components, Foundation’s JavaScript options and functions, and tons of tips and tricks we learned from major client projects.</p>
-  <a href="http://zurb.com/university/foundation-intro" target="_blank">Learn more about Foundation training →</a>
+  <a href="https://zurb.com/university/foundation-intro" target="_blank">Learn more about Foundation training →</a>
 </div>
 
 ## Basics
@@ -25,7 +25,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 </div>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/wdmZME?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/wdmZME?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -49,7 +49,7 @@ Additional classes can be added to your button to change its size and shape.
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNLVRb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNLVRb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -142,7 +142,7 @@ $button-palette: (
 The text color for each button class is determined by either `$button-color` or `$button-color-alt`, whichever settings variable has more contrast.
 
 <div class="primary callout">
-  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all buttons the same color text, set `$button-color` and `$button-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](https://webaim.org/resources/contrastchecker/) when changing color variables. To give all buttons the same color text, set `$button-color` and `$button-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
 </div>
 
 ---
@@ -171,7 +171,7 @@ The `.disabled` class will give buttons a faded appearance. The class is a purel
 </p>
 
 <div class="docs-video-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -206,7 +206,7 @@ Add the `.clear` class to a button to give it a clear style. Change the `$button
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/LymNyB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/LymNyB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -235,7 +235,7 @@ Add a dropdown arrow to your button with the `.dropdown` class.
 </div>
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmeNOY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/PmeNOY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

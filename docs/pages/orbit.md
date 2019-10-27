@@ -15,7 +15,7 @@ tags:
 Orbit doesn't automatically generate any HTML for you, giving you the flexibility to move around the various pieces of the plugin. Here's a complete example&mdash;we'll break down the individual pieces farther down.
 
 <div class="callout alert">
-  <p>Please note that apart from Javascript, <a href="http://foundation.zurb.com/sites/docs/motion-ui.html">Motion UI</a> is a dependency for Orbit to work properly. If in case, you don't want any animations within your Carousel, you can always <a href="#disabling-animation">disable</a> the animation.</p>
+  <p>Please note that apart from Javascript, <a href="https://get.foundation/sites/docs/motion-ui.html">Motion UI</a> is a dependency for Orbit to work properly. If in case, you don't want any animations within your Carousel, you can always <a href="#disabling-animation">disable</a> the animation.</p>
 </div>
 
 <p>
@@ -169,18 +169,6 @@ The bullets serve two purposes: they mark the current slide, and can be clicked 
   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
 </nav>
 ```
-
-Within the active bullet (a button with `is-active`), you can provide a label for the active slide with `[data-slide-active-label]`. It will be moved to others bullets when the Orbit slides. If not provided, the Orbit will move the last exceeding `span` element.
-
-<!-- <div class="callout"><p>
-  The new Orbit slider was designed to be a tool for rapid prototyping. While you are welcome to use it in production, if you want something more robust, we welcome you to try [Owl Carousel](http://owlgraphic.com/owlcarousel/).
-</p>
-<div class="callout alert">
-  <p>
-    If animations are desired with the Orbit slider, such as the example below, [Motion-UI](https://github.com/zurb/motion-ui) is required. If you want a simple slide replacement, set the option `useMUI` to false for animation free slides.
-  </p>
-</div>
-</div> -->
 
 ---
 

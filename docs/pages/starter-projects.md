@@ -5,7 +5,7 @@ video: 'lFrpnk0Oo_8'
 ---
 
 
-Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](http://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.
+Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](https://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.
 
 ## Basic Template
 
@@ -84,17 +84,17 @@ Here's an overview of what the ZURB Template can do:
 * **Asset Copying**
 
   Gulp will copy anything out of the `src/assets` folder as-is to the `assets` folder of your final project. Note that Sass files, JavaScript files, and images are *not* **part of this copying process, as they have their own steps.**
-  
+
 
 * **Page Compilation**
 
-  The `src/` directory includes three folders used to create HTML pages: `pages/`, `layouts/`, and `partials/`. A flat file compiler called [Panini](panini.html) is used to process your project's various pages, inserting them into a common template, and injecting any HTML partials. This is done with a templating language called [Handlebars](http://handlebarsjs.com/).
+  The `src/` directory includes three folders used to create HTML pages: `pages/`, `layouts/`, and `partials/`. A flat file compiler called [Panini](panini.html) is used to process your project's various pages, inserting them into a common template, and injecting any HTML partials. This is done with a templating language called [Handlebars](https://handlebarsjs.com/).
 
   Panini has a dedicated page here in the docs that explains its various features. **[Learn more about Panini.](panini.html)**
 
 * **Sass Compilation**
 
-  Sass is compiled to CSS using [Libsass](http://sass-lang.com/libsass) (via [node-sass](https://github.com/sass/node-sass)). The main Sass file is under `src/assets/scss/app.scss`, and imports Foundation and Motion UI. Any new Sass partials you create should be in this folder as well.
+  Sass is compiled to CSS using [Libsass](https://sass-lang.com/libsass) (via [node-sass](https://github.com/sass/node-sass)). The main Sass file is under `src/assets/scss/app.scss`, and imports Foundation and Motion UI. Any new Sass partials you create should be in this folder as well.
 
   The CSS is output in the `nested` style, which is readable like normal CSS. A source map is also created, which can be read by developer tools such as the Chrome Web Inspector. When building for production, the CSS is also compressed with [clean-css](https://github.com/jakubpawlowicz/clean-css/issues), and pruned with [UnCSS](https://github.com/giakki/uncss). UnCSS scans the HTML of your pages and removes any CSS classes you didn't use.
 
@@ -106,7 +106,7 @@ Here's an overview of what the ZURB Template can do:
   A source map is created that maps back to the original files. By default, the bundled `app.js` is uncompressed. When building for production, the file is run through [UglifyJS](https://github.com/mishoo/UglifyJS) for compression.
 
   The whole bundling process is handled by [webpack](https://webpack.js.org): it manages all assets and dependencies for you and compiles them into one single file. If you're unfamiliar with imports or module bundling, check out:
-  * [What are ES6 imports](http://2ality.com/2014/09/es6-modules-final.html)
+  * [What are ES6 imports](https://2ality.com/2014/09/es6-modules-final.html)
   * [Beginner’s guide to webpack](https://medium.com/javascript-training/beginner-s-guide-to-webpack-b1f1a3638460)
   * [Beginner’s guide to JavaScript Modules](https://medium.freecodecamp.org/javascript-modules-a-beginner-s-guide-783f7d7a5fcc).
 
@@ -116,7 +116,7 @@ Here's an overview of what the ZURB Template can do:
 
 * **BrowserSync**
 
-  The template creates a [BrowserSync](http://www.browsersync.io/) server, which is at `http://localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
+  The template creates a [BrowserSync](https://www.browsersync.io/) server, which is at `http://localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
 
 * **Style Guide Creation**
 
@@ -126,6 +126,6 @@ Style Sherpa has a dedicated page here in the docs that explains its various fea
 
 ### Tutorials
 
-- [What the ZURB Stack Does](https://foundation.zurb.com/learn/foundation-6-zurb-stack-part-1.html) via ZURB
-- [Overview of Foundation's ZURB Stack and File Structure](https://foundation.zurb.com/learn/foundation-6-stack-file-structure.html) via ZURB
+- [What the ZURB Stack Does](https://get.foundation/learn/foundation-6-zurb-stack-part-1.html) via ZURB
+- [Overview of Foundation's ZURB Stack and File Structure](https://get.foundation/learn/foundation-6-stack-file-structure.html) via ZURB
 - [All about the ZURB Template](https://zendev.com/2017/09/05/front-end-development-kickstarter-zurb-template.html#scss) via Kevin Ball

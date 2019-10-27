@@ -46,7 +46,7 @@ var clear = Foundation.Box.ImNotTouchingYou(element [, parent, leftAndRightOnly,
 ## Keyboard
 `js/foundation.util.keyboard.js`
 
-Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de) of Germany who conceived and coded this library.
+Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to Marius Olbertz of Germany who conceived and coded this library.
 
 Ever wanted a handy list of common keycodes and the keys they represent? Use `Foundation.Keyboard.keys`. This is an object containing key/value pairs of the most frequently used keys in our framework.
 

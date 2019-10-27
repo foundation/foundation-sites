@@ -57,7 +57,7 @@ description: Everything but.
   <div class="grid-x grid-margin-x">
     <div class="cell medium-6">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
+        <input type="text" placeholder="https://get.foundation" pattern="url">
       </label>
     </div>
     <div class="cell medium-6">
@@ -465,7 +465,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
