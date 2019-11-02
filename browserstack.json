@@ -17,7 +17,7 @@
         "ie_10",
         {
             "os": "ios",
-            "os_version": "latest",
+            "os_version": "12.4",
             "device": "iPhone XS",
             "real_mobile": "true"
         },
@@ -29,7 +29,7 @@
         },
         {
             "os": "android",
-            "os_version": "latest",
+            "os_version": "9.0",
             "device": "Google Pixel 3",
             "real_mobile": "true"
         },
