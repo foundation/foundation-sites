@@ -302,14 +302,14 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      $html.one('opened.zf.offCanvas', function() {
-        plugin.$element.focus()
-          .trigger(window.mockKeyboardEvent('ESCAPE'));
-
-        plugin.$element.should.not.have.class('is-open');
+      $html.one('openedEnd.zf.offCanvas', function() {
         $html.one('closed.zf.offCanvas', function () {
+          plugin.$element.should.not.have.class('is-open');
           done();
         });
+
+        plugin.$element.focus()
+          .trigger(window.mockKeyboardEvent('ESCAPE'));
       });
 
       // Open it first
