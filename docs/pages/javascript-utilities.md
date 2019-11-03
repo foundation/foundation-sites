@@ -111,7 +111,7 @@ $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize){});
 
 Two handy utilities, one little file.
 
-`Foundation.Motion` is the same JavaScript used by the [Motion-UI](https://github.com/zurb/motion-ui/) library, and is included in Foundation 6. See the GitHub page for more details.
+`Foundation.Motion` is the same JavaScript used by the [Motion-UI](https://github.com/foundation/motion-ui/) library, and is included in Foundation 6. See the GitHub page for more details.
 
 `Foundation.Move` is a simple helper function for utilizing browsers' `requestAnimationFrame` method for hardware acceleration. Invoke like so:
 ```js

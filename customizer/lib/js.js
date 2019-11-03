@@ -24,7 +24,7 @@ module.exports = function(config, modules) {
               "import { Triggers } from '" + dir + "/foundation.util.triggers';\n" +
               "Triggers.init($, Foundation);\n";
 
-  // last 2 pieces work around https://github.com/zurb/foundation-sites/issues/10287
+  // last 2 pieces work around https://github.com/foundation/foundation-sites/issues/10287
 
   var libraries = [];
 

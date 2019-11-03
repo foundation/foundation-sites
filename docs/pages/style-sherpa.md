@@ -2,14 +2,14 @@
 title: Style Sherpa
 description: Bundled with the ZURB Template, Style Sherpa makes it easy to create a style guide for your codebase, with just two files.
 library:
-  github: https://github.com/zurb/style-sherpa
-  docs: https://github.com/zurb/style-sherpa
+  github: https://github.com/foundation/style-sherpa
+  docs: https://github.com/foundation/style-sherpa
 video: 'paIqrjCm9_k'
 ---
 
 Style guides are a critical component of a CSS codebase, especially one used by many people. It's important that everyone on a team knows how to build a component. Style guides are that documentation. The docs you're reading right now are a style guide of sorts, for the core Foundation styles.
 
-[Style Sherpa](https://github.com/zurb/style-sherpa) is a small tool bundled with the [ZURB Template](starter-projects.html#zurb-template) that can generate a basic style guide for you quickly. The style guide is created from a single Markdown file, which contains all of the page content, and an HTML template, which defines the structure around the content.
+[Style Sherpa](https://github.com/foundation/style-sherpa) is a small tool bundled with the [ZURB Template](starter-projects.html#zurb-template) that can generate a basic style guide for you quickly. The style guide is created from a single Markdown file, which contains all of the page content, and an HTML template, which defines the structure around the content.
 
 ---
 
