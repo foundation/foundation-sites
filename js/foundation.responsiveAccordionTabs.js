@@ -51,7 +51,7 @@ class ResponsiveAccordionTabs extends Plugin{
    */
   _setup(element, options) {
     this.$element = $(element);
-    this.$element.data('zfPluginBase');
+    this.$element.data('zfPluginBase', this);
     this.options = $.extend({}, ResponsiveAccordionTabs.defaults, this.$element.data(), options);
 
     this.rules = this.$element.data('responsive-accordion-tabs');
