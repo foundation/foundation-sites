@@ -4,7 +4,6 @@ import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.core.plugin';
 import { GetYoDigits } from './foundation.core.utils';
-
 import { Triggers } from './foundation.util.triggers';
 
 /**
