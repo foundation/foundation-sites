@@ -15,7 +15,7 @@
     "test:ci": "npm run test:sass && npm run test:javascript:ci",
     "test:sass": "mocha test/sass/test_sass.js --colors",
     "test:javascript:transpile": "gulp sass:foundation --color && gulp test:transpile-js --color",
-    "test:javascript:server": "http-server -p 3042 . > /dev/null 2>&1 &",    
+    "test:javascript:server": "http-server -p 3042 . > /dev/null 2>&1 &",
     "test:javascript:units": "npm run test:javascript:transpile && npm run test:javascript:server && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html",
     "test:javascript:browserstack": "npm run test:javascript:transpile && npm run test:javascript:server && browserstack-runner",
     "test:javascript:ci": "npm run test:javascript:transpile && npm run test:javascript:server && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html && browserstack-runner",
