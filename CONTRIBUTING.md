@@ -1,107 +1,107 @@
-# Foundation Contributing Guidelines
+# Foundation 컨트리뷰션 가이드
 
-Although Foundation was built and maintained by ZURB for years, it is today a community project. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
+재단은 수년간 ZURB에 의해 생성되고 유지되었지만 오늘날에는 커뮤니티 프로젝트입니다. 버그 수정, 기능 개발 또는 생태계에 대한 컨트리뷰션을 했는지에 대한 여부에 관계없이 전 세계의 모든 설계자와 개발자는 누구나 컨트리뷰션을 함으로써 Foundation을 세계에서 가장 진보 된 프레임 워크로 만들 수 있습니다.
 
-## Issues
+## 이슈
 
-For **bugs**, **feature requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](https://foundation.zurb.com/forum) would be more appropriate. If you aren't sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
+** 버그 **, ** 기능 요청 **, ** 잘못된 문서 ** 또는 Foundation 관련 문제가있는 경우 새 문제를 열 수 있습니다. Foundation 사용에 도움이 필요하면 [Foundation Forum] (https://foundation.zurb.com/forum)에 알아보는 것이 더 좋습니다. 제기하고자 하는 문제가 버그인지 아닌지 확실하지 않은 경우 걱정하지 마십시오. GitHub에 문제를 게시하면 팀이 도와 드릴 것입니다.
 
-Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
+모든 참가자는 프로젝트의 [Code of Conduct] (code-of-conduct.md)를 정중하게 따라야합니다.
 
-### Report a bug
+### 버그 제보
 
-1. **Search for similar opened or closed issues** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
-   It is likely that someone else got the same problem as you before and already reported it.
-2. **Make sure of the following:**
-   * [ ] There are no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to this bug
-   * [ ] This is a bug and not a missing feature
-   * [ ] This bug comes from Foundation and not the browser or an other library
-   * [ ] This bug is still present in the latest Foundation release
-3. **Prepare a test case with your bug** ([link](https://codepen.io/ncoden/pen/dQmVgg)).
-   Trying to reproduce a bug is often time-consuming. Please isolate your bug in a dedicated test case. The simpler is the test case, the best it is.
-4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
-   Please provide a complete description of your bug: What do you expect? What happens instead? Which version of Foundation do you use, which ones are affected by the bug? Keep in mind that someone will spend a lot of time to understand your issue, make the task easy for him/her.
+1. ** 제보하려는 이슈와 비슷하거나 폐쇄 된 이슈 검색 ** ([link] (https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
+   다른 사람이 이전과 같은 문제가 발생하여 이미보고했을 가능성이 있습니다.
+2. ** 다음 사항을 확인하십시오. **
+   * []이 버그와 유사한 [개방 또는 폐쇄 문제] (https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)가 없습니다.
+   * [] 이것은 버그이며 누락 된 기능이 아닙니다.
+   * []이 버그는 Foundation에서 왔으며 브라우저 나 다른 라이브러리가 아닙니다.
+   * []이 버그가 여전히 최신 Foundation 릴리스에 있습니다.
+3. ** 버그가있는 테스트 사례를 준비합니다 ** ([link] (https://codepen.io/ncoden/pen/dQmVgg)).
+   버그를 재현하려고하면 시간이 많이 걸립니다. 전용 테스트 케이스에서 버그를 격리하십시오. 테스트 케이스가 단순할수록 가장 좋습니다.
+4. ** 문제를 만듭니다 ** ([link] (https://github.com/zurb/foundation-sites/issues/new)).
+   버그에 대한 완전한 설명을 입력하십시오 : 무엇을 기대하십니까? 대신 어떻게됩니까? 어떤 버전의 Foundation을 사용하고 어느 버전이 버그의 영향을 받습니까? 누군가가 문제를 이해하는 데 많은 시간을 할애하고 작업을 쉽게 할 수 있음을 가능하게 하기 위함임을 명심하십시오.
 
-### Request for a new feature
-1. **Search for similar opened or closed issues** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
-   It is likely that someone else needed a similar feature as yours and already requested it.
-2. **Make sure of the following:**
-   * [ ] There are no [opened or closed issues](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue) similar to your request
-   * [ ] This is a missing feature and not a bug
-3. **Prepare a clear use case for the requested feature**.
-   This will help you to make sure that this is the feature you want, and us to better understand your needs and how it would benefit to everyone the best way.
-4. **Create your issue** ([link](https://github.com/zurb/foundation-sites/issues/new)).
-   Please provide a complete description of the feature you want, the use case you prepared will help you for that. After you created your issue, if you feel ready, you can start working on a pull request (please tell us so). See [Contributions](#contributions) below.
+### 새로운 기능 요청
+1. ** 유사 또는 폐쇄 된 유사한 이슈 검색 ** ([link] (https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)).
+   다른 사람이 귀하와 유사한 기능이 필요하고 이미 요청했을 수 있습니다.
+2. ** 다음 사항을 확인하십시오. **
+   * [] 귀하의 요청과 유사한 [개방 또는 폐쇄 문제] (https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Aissue)가 없습니다.
+   * [] 버그가 아닌 누락 된 기능입니다.
+3. ** 요청한 기능에 대한 명확한 사용 사례를 준비하십시오 **.
+   이를 통해 이것이 원하는 기능인지 확인하는 데 도움이 되며, 귀하의 요구와 모든 사람들이 가장 좋은 방법을 알게 하는데 도움이 됩니다.
+4. ** 문제를 만듭니다 ** ([link] (https://github.com/zurb/foundation-sites/issues/new)).
+   원하는 기능에 대한 완전한 설명을 제공하십시오. 준비한 사용 사례가 도움이 될 것입니다. 이슈를 생성 한 후 준비가 되었다고 생각되면 Pull request를 시작할 수 있습니다 (알려주세요). 아래의 [기여 물] (# 기여 물)을 참조하십시오.
 
-## Contributions
+## 기여
 
-All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. The rule is the same for everyone, for new contributors as for Core Team members.
+모든 새로운 기능과 버그 수정은 풀 요청으로 제출해야 커뮤니티에서 이를 검토하고 토론 할 수 있습니다. 규칙은 모든 팀 구성원과 새로운 컨트리뷰터에게 동일합니다.
 
-Before working on a bug fix or a new feature, please make sure of the following:
-* [ ] **There is no similar pull request that was rejected or is not merged yet** ([link](https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q=is%3Apr)).
-  Add a comment on this pull request otherwise. Explain us why this pull request is urgent or important to you.
-* [ ] **There is an open issue related to this bug or feature**.
-  Please create one otherwise. It is often useful to talk about the bug fix or feature and the best way to implement it before working on it. You can skip this step for obvious changes (like typo in the documentation).
+버그 수정 또는 새로운 기능을 수행하기 전에 다음을 확인하십시오.
+* [] ** 거부되거나 아직 병합되지 않은 유사한 풀 요청이 없습니다 ** ([link] (https://github.com/zurb/foundation-sites/issues?utf8=%E2%9C%93&q = is % 3Apr)).
+  그렇지 않으면이 풀 요청에 주석을 추가하십시오. 이 풀 요청이 왜 긴급하거나 중요한지 설명하십시오.
+* [] **이 버그 또는 기능과 관련된 공개 문제가 있습니다 **.
+  그렇지 않으면 하나를 만드십시오. 버그 수정 또는 기능에 대해 이야기하고 작업하기 전에 이를 구현하는 가장 좋은 방법에 대해 이야기하는 것이 중요합니다. 문서의 오타와 같이 명백한 변경을 할때에는 이 단계를 건너 뛸 수 있습니다.
 
-After you made these checks, please follow these advices to create your pull requests:
-1. **Work on a dedicated Git branch**.
-   So you default `develop` branch stay clean and you can open multiple Pull Requests at the same time for various issues. See (2) below for the branch name format.
-2. **Use our standard format for branch, commit and pull request names**.
-   It must reference the related issue, be written in the "imperative" form (like if it was completing `now the software should...`) and be prefixed by a type (`feat` for new feature, `fix` if you repair something, `docs` for documentation, `refactor` for non-breaking code cleaning, `style` for code formatting, `tests` for unit or visual tests or `chore` for boring day-to-day tasks not affecting the actual code. See the [AngularJs Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)). For example: `docs: improve Dropdown usage example #123` for commit/pull request names and `docs/dropdown-improve-usage-example-123` for the branch name.
-3. **Describe everything you did and why in your commit and pull request body**.
-   Even if you already mentioned it in the related issue, please explain what you did and for which reasons. Give references to related issues, comments, test cases or any useful resources.
-4. **Provide a clear and readable code**.
-   Make sure that the code you changed is consistent across components and that anyone can easily understand its behavior. Split it in abstract functions, avoid code duplication and add comments when needed. You can open a "work-in-progress" pull request (prefix it with "[WIP]") if you need any help with that.
-5. **Make sure that everything works and tests pass**.
-   You must absolutely check that everything still works after your changes. Please also add tests for features you added or uncovered bugs you fixed. See the [Testing](https://github.com/zurb/foundation-sites#testing) section.
-6. **Create your pull request** ([link](https://github.com/zurb/foundation-sites/compare)).
-   Make sure it targets the right branch: most often `develop`, unless you provide a fix for an older version and it should be `develop-v...`. Take a look at our [Git Workflow](#git-workflow) below.
+이 점검을 한 후에 다음 조언을 따라 풀 요청을 작성하십시오.
+1. ** 전용 Git 브랜치에서 작업하십시오 **.
+   따라서 기본 '개발'브랜치는 깨끗하게 유지되며 다양한 문제에 대해 여러 개의 풀 요청을 동시에 열 수 있습니다. 지점 이름 형식은 아래 (2)를 참조하십시오.
+2. ** 분기, 커밋 및 풀 요청 이름에 표준 형식을 사용합니다 **.
+   관련 이슈를 참조하고, "이제"형태로 작성되고 ( '지금 소프트웨어를 완성해야한다 ...'와 같이) 접두사가 붙습니다 (새로운 기능의 경우`feat`, 'fix' 문서를위한`docs ', 비 차단 코드 정리를위한`refactor`, 코드 형식을위한`style', 단위 또는 시각적 테스트를위한`tests 또는 실제에 영향을 미치지 않는 지루한 일상 작업을위한`chore ' [AngularJs Git Commit Message Convention] (https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참조하십시오. 예 :`docs : 커밋 / 풀 요청 이름에 대해서는 드롭 다운 사용 예 # 123을 개선하고 분기 이름에 대해서는`docs / dropdown-improve-usage-example-123`
+3. ** 당신이 한 모든 일과 그 이유와 커밋 및 풀 요청 본문 **을 설명하십시오.
+   관련 문제에서 이미 언급 했더라도 수행 한 작업과 그 이유를 설명해주세요. 관련 문제, 의견, 테스트 사례 또는 유용한 리소스에 대한 참조를 제공하십시오.
+** ** 명확하고 읽기 쉬운 코드를 제공합니다 **.
+   변경 한 코드가 구성 요소에서 일관되고 누구나 해당 동작을 쉽게 이해할 수 있는지 확인하십시오. 추상 기능으로 분할하고 코드 중복을 피하고 필요할 때 주석을 추가하십시오. 도움이 필요하면 "진행중인 작업"풀 요청 ( "[WIP]"접두어)을 열 수 있습니다.
+5. ** 모든 것이 작동하고 테스트를 통과해야합니다 **.
+   변경 후에도 모든 것이 여전히 작동하는지 반드시 확인해야합니다. 추가 한 기능이나 수정하지 않은 버그에 대한 테스트도 추가하십시오. [Testing] (https://github.com/zurb/foundation-sites#testing) 섹션을 참조하십시오.
+6. ** 풀 요청을 작성합니다 ** ([link] (https://github.com/zurb/foundation-sites/compare)).
+   이전 버전에 대한 수정 사항을 제공하지 않고`develop-v ...`가 아닌 한 가장 적합한`develop`을 대상으로해야합니다. 아래의 [Git Workflow] (# git-workflow)를 살펴보십시오.
 
-When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
+풀 요청을 제출하면 @ 검토를 통해 일부 사용자가 검토를 도와줍니다. 해당 사용자가 사인온하면 풀 요청을 병합 할 수 있습니다! 핵심 팀 구성원이 병합 자체를 처리합니다.
 
-## Git Workflow
+## Git 워크 플로우
 
-Foundation uses a Git workflow close to the the successful [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) branching model, to which we added `develop-v...` and `master-v...` branches to prepare and release patches for older Foundation versions. Most of the time you will not have to care about this workflow and can simply open your pull request on `develop`.
+Foundation은 성공적인 [GitFlow] (http://nvie.com/posts/a-successful-git-branching-model/) 분기 모델에 가까운 Git 워크 플로를 사용합니다. 그리고 이전 Foundation 버전에 대한 패치를 준비하고 릴리스하기위한 'master-v ...'분기. 대부분의 경우이 워크 플로우에 신경 쓸 필요가 없으며`develop`에서 풀 요청을 열 수 있습니다.
 
-The workflow relies on three branches:
+워크 플로는 다음 세 가지에 의존합니다.
 
-- **`develop`**
+-**`개발`**
 
-  Used to prepare the next minor/major version. It always contains all the new features and bug fixes, and is the most up-to-date version of Foundation. Almost every pull request should be opened on this branch (fixes, features, documentation...). When a new version is released, it is merged on `master`, a dedicated `develop-v...` branch is created, and `develop` now targets the next version.
+  다음 마이너 / 메이저 버전을 준비하는 데 사용됩니다. 여기에는 항상 모든 새로운 기능과 버그 수정이 포함되어 있으며 Foundation의 최신 버전입니다. 이 분기에서 거의 모든 풀 요청을 열어야합니다 (수정, 기능, 설명서 ...). 새로운 버전이 출시되면,`master`에 합쳐지고 전용`develop-v ...`브랜치가 생성되고`develop`는 이제 다음 버전을 목표로합니다.
 
-- **`develop-<version>`**
+-**`develop- <버전>`**
 
-  Used to prepare patches for previous versions. For example: `develop-v6.5` to prepare the `v6.5.1` release. When a pull request for a bug fix is merged on `develop` and is compatible with supported versions, its commits must be added on the compatible `develop-v...` branches too. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported `develop-v...` branch. When a new patch is released, it is merged on `master-v...` and `develop-v...` now targets the next patch for this minor version.
+  이전 버전의 패치를 준비하는 데 사용됩니다. 예를 들어`develop-v6.5`는`v6.5.1` 릴리스를 준비합니다. 버그 수정에 대한 풀 요청이`develop`에서 병합되고 지원되는 버전과 호환되는 경우, 커밋은 호환 가능한`develop-v ...`브랜치에도 추가되어야합니다. 수정 프로그램이 'develop'와 호환되지 않는 경우 최신 호환 가능하고 지원되는 'develop-v ...'분기에서 풀 요청을 열 수 있습니다. 새 패치가 출시되면`master-v ...`에서 병합되고`develop-v ...`는 이제이 마이너 버전의 다음 패치를 대상으로합니다.
 
-- **`master`**
+-**`마스터`**
 
-  The stable branch. It only contains the latest stable version released. **Do NOT open pull requests on it**.
+  안정적인 지점. 최신 안정 버전 만 출시되었습니다. ** 풀 요청을 열지 마십시오 **.
 
-- **`master-<version>`**
+-**`마스터-<버전>`**
 
-  The stable branch for previous versions. For example: `master-v6.5` for stable `v6.5.*` releases. **Do NOT open pull requests on it**.
+  이전 버전의 안정적인 분기입니다. 예 : 안정적인`v6.5. *`릴리스의`master-v6.5`. ** 풀 요청을 열지 마십시오 **.
 
-This git workflow was fully adopted as of `v6.5`, so `v6.4` and previous versions are not supported.
+이 git 워크 플로는`v6.5`부터 완전히 채택되었으므로`v6.4` 및 이전 버전은 지원되지 않습니다.
 
-## Coding Standards
+## 코딩 표준
 
-If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/zurb/foundation-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
+기능을 어떻게 구현해야할지 잘 모르겠으면 Sass에서 프레임 워크 기능 작성의 모든 측면을 요약 한 [표준 문서] (https://github.com/zurb/foundation-standards)를 확인하는 것이 좋습니다. 자바 스크립트.
 
-## Core Team
+## 핵심 팀
 
-Want to help us making Foundation the best framework ever? The Core Team is inviting active community members to join it. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
+Foundation을 최고의 프레임 워크로 만드는 데 도움이 필요하십니까? 핵심 팀은 활발한 커뮤니티 회원을 초대합니다. 컨트리뷰터가 되려면 Foundation 포럼에서 커뮤니티에 참여하고 GitHub 관련 문제를 해결하고 다른 컨트리뷰터로부터 풀 요청을 검토하십시오.
 
-If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
+Foundation 프레임 워크에 많은 기여를 하고도 아직 소식을 듣지 못한 경우 Foundation@zurb.com에서 연락 할 수 있습니다.
 
-Contributors are expected to:
+컨트리뷰터들은 :
 
-- Engage the community on GitHub by responding to and tagging issues.
-- Write pull requests to address bugs and feature requests.
-- Help in reviewing pull requests from users, contributors, and the Core Team.
-- Follow the guidelines outlined in this document.
+-이슈에 응답하고 태그를 지정하여 GitHub에서 커뮤니티를 참여시킵니다.
+-버그 및 기능 요청을 해결하기 위해 풀 요청을 작성하십시오.
+-사용자, 컨트리뷰터 및 핵심 팀의 풀 요청을 검토하는 데 도움이됩니다.
+-이 문서에 요약 된 지침을 따르십시오.
 
-Here are some example contributions from some of our awesome team members:
+다음은 멋진 팀원이 제공 한 공헌 사례입니다.
 
-- Colin Marshall converted our Sass unit tests to a newer test runner called True.
-- Andy Cochran reworked the CSS for button groups to fix issues with stacking and border radii.
-- designerno1 developed the Equalize by Row feature for the Equalizer plugin.
+-Colin Marshall은 Sass 단위 테스트를 True라는 최신 테스트 러너로 변환했습니다.
+-Andy Cochran은 버튼 그룹에 대한 CSS를 재 작업하여 스태킹 및 경계 반지름 문제를 해결했습니다.
+-designerno1은 이퀄라이저 플러그인을 위해 Equalize by Row 기능을 개발했습니다.
