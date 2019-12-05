@@ -384,7 +384,6 @@ function (_Plugin) {
 
       $elem.off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
         if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
-          e.stopImmediatePropagation();
           e.preventDefault();
         } // if(e.target !== e.currentTarget.firstElementChild){
         //   return false;
@@ -420,7 +419,7 @@ function (_Plugin) {
     value: function _registerEvents() {
       if (this.options.scrollTop) {
         this._bindHandler = this._scrollTop.bind(this);
-        this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown', this._bindHandler);
+        this.$element.on('open.zf.drilldown hide.zf.drilldown close.zf.drilldown closed.zf.drilldown', this._bindHandler);
       }
 
       this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
@@ -537,8 +536,6 @@ function (_Plugin) {
             if (preventDefault) {
               e.preventDefault();
             }
-
-            e.stopImmediatePropagation();
           }
         });
       }); // end keyboardAccess
@@ -546,25 +543,40 @@ function (_Plugin) {
     /**
      * Closes all open elements, and returns to root menu.
      * @function
+     * @fires Drilldown#close
      * @fires Drilldown#closed
      */
 
   }, {
     key: "_hideAll",
     value: function _hideAll() {
-      var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
-      if (this.options.autoHeight) this.$wrapper.css({
-        height: $elem.parent().closest('ul').data('calcHeight')
-      });
-      $elem.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function (e) {
-        $elem.removeClass('is-active is-closing');
-      });
+      var _this2 = this;
+
+      var $elem = this.$element.find('.is-drilldown-submenu.is-active');
+      $elem.addClass('is-closing');
+
+      if (this.options.autoHeight) {
+        var calcHeight = $elem.parent().closest('ul').data('calcHeight');
+        this.$wrapper.css({
+          height: calcHeight
+        });
+      }
       /**
-       * Fires when the menu is fully closed.
-       * @event Drilldown#closed
+       * Fires when the menu is closing.
+       * @event Drilldown#close
        */
 
-      this.$element.trigger('closed.zf.drilldown');
+
+      this.$element.trigger('close.zf.drilldown');
+      $elem.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function () {
+        $elem.removeClass('is-active is-closing');
+        /**
+         * Fires when the menu is fully closed.
+         * @event Drilldown#closed
+         */
+
+        _this2.$element.trigger('closed.zf.drilldown');
+      });
     }
     /**
      * Adds event listener for each `back` button, and closes open menus.
@@ -580,8 +592,7 @@ function (_Plugin) {
 
       $elem.off('click.zf.drilldown');
       $elem.children('.js-drilldown-back').on('click.zf.drilldown', function (e) {
-        e.stopImmediatePropagation(); // console.log('mouseup on back');
-
+        // console.log('mouseup on back');
         _this._hide($elem); // If there is a parent submenu, call show
 
 
@@ -604,7 +615,6 @@ function (_Plugin) {
       var _this = this;
 
       this.$menuItems.not('.is-drilldown-submenu-parent').off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
-        // e.stopImmediatePropagation();
         setTimeout(function () {
           _this._hideAll();
         }, 0);
@@ -823,7 +833,7 @@ Drilldown.defaults = {
    * Drilldowns depend on styles in order to function properly; in the default build of Foundation these are
    * on the `drilldown` class. This option auto-applies this class to the drilldown upon initialization.
    * @option
-   * @type {boolian}
+   * @type {boolean}
    * @default true
    */
   autoApplyClass: true,

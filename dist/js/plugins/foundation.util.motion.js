@@ -220,7 +220,6 @@ function animate(isIn, element, animation, cb) {
   }); // Start the animation
 
   requestAnimationFrame(function () {
-    element[0].offsetWidth;
     element.css('transition', '').addClass(activeClass);
   }); // Clean up the animation when it finishes
 

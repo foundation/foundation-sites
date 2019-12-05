@@ -331,7 +331,7 @@ function (_Plugin) {
             });
           }
         }
-      }).on('keydown.zf.accordionmenu', function (e) {
+      }).on('keydown.zf.accordionMenu', function (e) {
         var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             $elements = $element.parent('ul').children('li'),
             $prevElement,
@@ -408,8 +408,6 @@ function (_Plugin) {
             if (preventDefault) {
               e.preventDefault();
             }
-
-            e.stopImmediatePropagation();
           }
         });
       }); //.attr('tabindex', 0);
