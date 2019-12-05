@@ -35,10 +35,10 @@ describe('MediaQuery utils', function () {
 
     // Inject jQuery and Foundation
     injectScriptIn(_document.body, {
-      src: `http://127.0.0.1:3042/node_modules/jquery/dist/jquery.js?v=${randomHash}`,
+      src: `../../node_modules/jquery/dist/jquery.js?v=${randomHash}`,
     });
     injectScriptIn(_document.body, {
-      src: `http://127.0.0.1:3042/_build/assets/js/foundation.js?v=${randomHash}`,
+      src: `../../_build/assets/js/foundation.js?v=${randomHash}`,
       onload: () => {
         plugin = _window.Foundation.MediaQuery;
         plugin._init();
