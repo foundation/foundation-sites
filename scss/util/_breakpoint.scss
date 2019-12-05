@@ -168,7 +168,9 @@ $breakpoint-classes: (small medium large) !default;
     // Otherwise, wrap the content in a media query
     @else {
       // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
-      @if ($bp != null and $bp == $pbp and ($dir == '' or $dir == 'up' or $dir == 'only')) or ($bp != null and $bp < $pbp and ($dir == '' or $dir == 'up'))  or ($bp != null and $bp >= $pbp and ($dir == 'down')) {
+      // generate print if the breakpoint affects the print-breakpoint (or smaller).
+      // This means the current condition only needs to be extended so 'down' always generates print.
+      @if $bp != null and ($bp <= $pbp or $dir == down) {
         @media print, screen and #{$str} {
           @content;
         }
