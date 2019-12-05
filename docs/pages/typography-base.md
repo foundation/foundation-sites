@@ -61,7 +61,7 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 ### Header Styles
 
-The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a wider range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
+The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a larger range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
 
 <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
