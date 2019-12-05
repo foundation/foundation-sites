@@ -304,7 +304,7 @@ This creates a tiny separator below the heading of an element and is usually use
 
 ## Font Styling
 
-You can use font styling to style your text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also wider the text of an element with `font-wide`.
+You can use font styling to style your text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also larger the text of an element with `font-wide`.
 
 ```html_example
 <p class="font-wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>

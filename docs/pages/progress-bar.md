@@ -89,7 +89,7 @@ You can add text inside the meter of a progress bar. Make sure the text you use 
 ```html_example
 <div class="progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <span class="progress-meter" style="width: 25%">
-    <p class="progress-meter-text">25%</p>
+    <span class="progress-meter-text">25%</span>
   </span>
 </div>
 ```

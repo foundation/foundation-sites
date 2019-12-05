@@ -36,6 +36,11 @@ var MenuPlugins = {
  */
 
 class ResponsiveAccordionTabs extends Plugin{
+  constructor(element, options) {
+    super(element, options);
+    return this.options.reflow && this.storezfData || this;
+  }
+
   /**
    * Creates a new instance of a responsive accordion tabs.
    * @class
@@ -46,6 +51,7 @@ class ResponsiveAccordionTabs extends Plugin{
    */
   _setup(element, options) {
     this.$element = $(element);
+    this.$element.data('zfPluginBase', this);
     this.options = $.extend({}, ResponsiveAccordionTabs.defaults, this.$element.data(), options);
 
     this.rules = this.$element.data('responsive-accordion-tabs');

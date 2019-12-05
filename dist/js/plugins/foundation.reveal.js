@@ -186,8 +186,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Reveal", function() { return Reveal; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
-/* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
 /* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
@@ -229,6 +229,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * Reveal module.
  * @module foundation.reveal
  * @requires foundation.util.keyboard
+ * @requires foundation.util.touch
  * @requires foundation.util.triggers
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
@@ -260,9 +261,10 @@ function (_Plugin) {
       this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Reveal.defaults, this.$element.data(), options);
       this.className = 'Reveal'; // ie9 back compat
 
-      this._init(); // Triggers init is idempotent, just need to make sure it is initialized
+      this._init(); // Touch and Triggers init are idempotent, just need to make sure they are initialized
 
 
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_6__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
       _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
       _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Reveal', {
         'ESCAPE': 'close'
@@ -318,7 +320,7 @@ function (_Plugin) {
       this._events();
 
       if (this.options.deepLink && window.location.hash === "#".concat(this.id)) {
-        this.onLoadListener = Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+        this.onLoadListener = Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
           return _this2.open();
         });
       }
@@ -415,7 +417,7 @@ function (_Plugin) {
       });
 
       if (this.options.closeOnClick && this.options.overlay) {
-        this.$overlay.off('.zf.reveal').on('click.zf.reveal', function (e) {
+        this.$overlay.off('.zf.reveal').on('click.zf.dropdown tap.zf.dropdown', function (e) {
           if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target) || !jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(document, e.target)) {
             return;
           }
@@ -539,7 +541,9 @@ function (_Plugin) {
         this.$element.trigger('closeme.zf.reveal', this.id);
       }
 
-      this._disableScroll();
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.reveal:visible').length === 0) {
+        this._disableScroll();
+      }
 
       var _this = this; // Motion UI method of reveal
 
@@ -649,7 +653,7 @@ function (_Plugin) {
       this.focusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].findFocusable(this.$element);
 
       if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').on('click.zf.reveal', function (e) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').on('click.zf.dropdown tap.zf.dropdown', function (e) {
           if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target) || !jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(document, e.target)) {
             return;
           }
@@ -709,7 +713,7 @@ function (_Plugin) {
       }
 
       if (!this.options.overlay && this.options.closeOnClick) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').off('click.zf.reveal');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').off('click.zf.dropdown tap.zf.dropdown');
       }
 
       this.$element.off('keydown.zf.reveal');
@@ -729,7 +733,9 @@ function (_Plugin) {
 
         _this.$element.attr('aria-hidden', true);
 
-        _this._enableScroll(scrollTop);
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.reveal:visible').length === 0) {
+          _this._enableScroll(scrollTop);
+        }
         /**
         * Fires when the modal is done closing.
         * @event Reveal#closed
@@ -808,7 +814,7 @@ function (_Plugin) {
   }]);
 
   return Reveal;
-}(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
 
 Reveal.defaults = {
   /**
@@ -1015,8 +1021,9 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function closeableListener(e) {
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable'); // Only close the first closable element. See https://git.io/zf-7833
+
     e.stopPropagation();
-    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
       _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {

@@ -234,24 +234,31 @@ function (_Plugin) {
   }, {
     key: "_init",
     value: function _init() {
+      // Collect triggers to set ARIA attributes to
+      var id = this.$element[0].id,
+          $triggers = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]"));
       var input; // Parse animation classes if they were set
 
       if (this.options.animate) {
         input = this.options.animate.split(' ');
         this.animationIn = input[0];
-        this.animationOut = input[1] || null;
+        this.animationOut = input[1] || null; // - aria-expanded: according to the element visibility.
+
+        $triggers.attr('aria-expanded', !this.$element.is(':hidden'));
       } // Otherwise, parse toggle class
       else {
-          input = this.$element.data('toggler'); // Allow for a . at the beginning of the string
+          input = this.options.toggler;
 
-          this.className = input[0] === '.' ? input.slice(1) : input;
-        } // Add ARIA attributes to triggers:
+          if (typeof input !== 'string' || !input.length) {
+            throw new Error("The 'toogler' option containing the target class is required, got \"".concat(input, "\""));
+          } // Allow for a . at the beginning of the string
 
 
-      var id = this.$element[0].id,
-          $triggers = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]")); // - aria-expanded: according to the element visibility.
+          this.className = input[0] === '.' ? input.slice(1) : input; // - aria-expanded: according to the elements class set.
 
-      $triggers.attr('aria-expanded', !this.$element.is(':hidden')); // - aria-controls: adding the element id to it if not already in it.
+          $triggers.attr('aria-expanded', this.$element.hasClass(this.className));
+        } // - aria-controls: adding the element id to it if not already in it.
+
 
       $triggers.each(function (index, trigger) {
         var $trigger = jquery__WEBPACK_IMPORTED_MODULE_0___default()(trigger);
@@ -353,6 +360,13 @@ function (_Plugin) {
 
 Toggler.defaults = {
   /**
+   * Class of the element to toggle. It can be provided with or without "."
+   * @option
+   * @type {string}
+   */
+  toggler: undefined,
+
+  /**
    * Tells the plugin if the element should animated when toggled.
    * @option
    * @type {boolean}
@@ -436,8 +450,9 @@ Triggers.Listeners.Basic = {
     }
   },
   closeableListener: function closeableListener(e) {
+    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable'); // Only close the first closable element. See https://git.io/zf-7833
+
     e.stopPropagation();
-    var animation = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('closable');
 
     if (animation !== '') {
       _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this), animation, function () {

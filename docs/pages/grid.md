@@ -360,7 +360,7 @@ In order to work around browsers' different rounding behaviors, Foundation will 
 
 #### Responsive Gutters
 
-The grid *gutter*&mdash;the space between two columns in a row, and the space between the edge of a grid and the edge of the page&mdash;is responsive, and becomes wider on larger screens.
+The grid *gutter*&mdash;the space between two columns in a row, and the space between the edge of a grid and the edge of the page&mdash;is responsive, and becomes larger on larger screens.
 
 Breakpoint | Gutter Size
 -----------|------------
