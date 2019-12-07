@@ -1,538 +1,652 @@
 <!doctype html>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Foundation for Sites is a fully-accessible framework. Here are some general guidelines to keep in mind as you make your pages accessible.">
-  <link rel="icon" href="assets/img/icons/foundation-favicon.ico" type="image/x-icon">
-  <title>Foundation for Sites 6 Docs | Accessibility</title>
-  <link href="assets/css/docs.css?hash=20985794eb2d717b4b906f93dcbe75a7" rel="stylesheet" />
-  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css?hash=3af2703edb2eeaddce3298baae82a413" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <title>Accessibility | Foundation Docs</title>
+    <link rel="icon" href="assets/img/icons/oundation-favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="assets/img/icons/apple-touch-icon-precomposed.png">
 
-    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
-      <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <ul class="mobile-ofc vertical menu">
-        
-        <li>
-          <a href="https://get.foundation/learn/about.html">About</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="https://get.foundation/learn/about.html">About Foundation</a></li>
-            <li><a href="https://get.foundation/learn/blog.html">Blog</a></li>
-            
-            <li><a href="https://get.foundation/learn/case-studies.html">Case Studies</a></li>
-            <li><a href="https://get.foundation/learn/brands.html">Brands</a></li>
-            <li><a href="https://get.foundation/learn/buzz.html">Buzz</a></li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="https://get.foundation/develop/getting-started.html">Develop</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li class="title">Frameworks</li>
-            <li><a href="https://get.foundation/sites.html">Foundation for Sites</a></li>
-            <li><a href="https://get.foundation/emails.html">Foundation for Email</a></li>
-            <li><a href="https://get.foundation/apps.html">Foundation for Apps</a></li>
-            <li class="divider"></li>
-            <li class="title">Develop</li>
-            <li><a href="https://get.foundation/templates.html">HTML Templates</a></li>
-            <li><a href="https://get.foundation/sites/resources.html">Resources</a></li>
-            <li><a href="https://get.foundation/develop/building-blocks.html">Building Blocks</a></li>
-            <li><a href="https://get.foundation/develop/yeti-launch.html">Yeti Launch</a></li>
-            <li><a href="https://get.foundation/develop/contribute.html">Contribute</a></li>
-          </ul>
-        </li>
-    
-        <li>
-          <a href="https://get.foundation/learn/tutorials.html">Tutorials</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="https://get.foundation/learn/tutorials.html">Tutorials</a></li>
-            <li><a href="https://get.foundation/learn/classes.html">Classes</a></li>
-            <li><a href="https://get.foundation/learn/custom-training.html">Custom Training</a></li>
-            <li><a href="https://get.foundation/learn/certification.html">Certification</a></li>
-            <li><a href="https://get.foundation/learn/responsive-reading.html">Responsive Reading</a></li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="https://get.foundation/get-involved/support.html">Get Involved</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="https://get.foundation/get-involved/support.html">Connect</a></li>
-            <li><a href="https://get.foundation/get-involved/premium-support.html">PLZ Halp</a></li>
-            <li><a href="https://get.foundation/forum/sort/unanswered">Foundation Forum</a></li>
-            <li><a href="https://get.foundation/learn/events.html">Events</a></li>
-            <li><a href="https://get.foundation/get-involved/faq.html">FAQs</a></li>
-            <li><a href="https://get.foundation/get-involved/contribute.html">Contribute</a></li>
-            <li><a href="https://get.foundation/get-involved/yetinauts.html">Yetinauts</a></li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="https://get.foundation/frameworks-docs.html">Docs</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="https://get.foundation/docs/" target="_blank">Sites Docs</a></li>
-            <li><a href="https://get.foundation/apps/docs/#!/" target="_blank">Apps Docs</a></li>
-            <li><a href="http://zurb.com/ink/docs.php" target="_blank">Email Docs</a></li>
-          </ul>
-        </li>
-        
-        <li><a href="https://get.foundation/develop/getting-started.html" class="button">Getting Started</a></li>
-    
-      </ul>
-    </div>
-    
-    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
-      <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <ul class="vertical menu">
-        <li><a href="#">Foundation</a></li>
-        <li><a href="#">Dot</a></li>
-        <li><a href="#">ZURB</a></li>
-        <li><a href="#">Com</a></li>
-        <li><a href="#">Slash</a></li>
-        <li><a href="#">Sites</a></li>
-      </ul>
-    </div>
-    
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
 
-    <div class="off-canvas-content" data-off-canvas-content>
-      <!-- Info Banner For Announcements or Links -->
-      <!-- <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
-        <div class="info">
-          <h5>Foundation 6 is here!</h5>
-        </div>
-      </a> -->
+    <link href="assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
 
-      <nav class="marketing-topbar show-for-medium">
-      
-        <ul class="menu">
-          <li class="topbar-title"><a href="https://get.foundation/index.html"><img src="assets/img/logos/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
-        </ul>
-      
-        <ul class="dropdown menu" data-dropdown-menu data-click-open="false">
-      
-          <li>
-            <a href="https://get.foundation/learn/about.html">About</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="https://get.foundation/learn/about.html">About Foundation</a></li>
-              <li><a href="https://get.foundation/learn/blog.html">Blog</a></li>
-              <li><a href="https://get.foundation/learn/case-studies.html">Case Studies</a></li>
-              <li><a href="https://get.foundation/learn/brands.html">Brands</a></li>
-              <li><a href="https://get.foundation/learn/buzz.html">Buzz</a></li>
-            </ul>
-          </li>
-      
-          <li>
-            <a href="https://get.foundation/develop/getting-started.html">Develop</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li class="title">Frameworks</li>
-              <li><a href="https://get.foundation/sites.html">Foundation for Sites</a></li>
-              <li><a href="https://get.foundation/emails.html">Foundation for Email</a></li>
-              <li><a href="https://get.foundation/apps.html">Foundation for Apps</a></li>
-              <li class="divider"></li>
-              <li class="title">Develop</li>
-              <li><a href="https://get.foundation/templates.html">HTML Templates</a></li>
-              <li><a href="https://get.foundation/sites/resources.html">Resources</a></li>
-              <li><a href="https://get.foundation/develop/building-blocks.html">Building Blocks</a></li>
-              <li><a href="https://get.foundation/develop/yeti-launch.html">Yeti Launch</a></li>
-              <li><a href="https://get.foundation/develop/contribute.html">Contribute</a></li>
-              <li><a href="https://get.foundation/upload.html">Annotate Code</a></li>
-            </ul>
-          </li>
-      
-          <li>
-            <a href="https://get.foundation/learn/tutorials.html">Tutorials</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="https://get.foundation/learn/tutorials.html">Tutorials</a></li>
-              <li><a href="https://get.foundation/learn/classes.html">Classes</a></li>
-              <li><a href="https://get.foundation/learn/custom-training.html">Custom Training</a></li>
-              <li><a href="https://get.foundation/learn/certification.html">Certification</a></li>
-              <li><a href="https://get.foundation/learn/responsive-reading.html">Responsive Reading</a></li>
-            </ul>
-          </li>
-      
-          <li>
-            <a href="https://get.foundation/get-involved/contribute.html">Get Involved</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="https://get.foundation/get-involved/support.html">Connect</a></li>
-              <li><a href="https://get.foundation/get-involved/premium-support.html">PLZ Halp</a></li>
-              <li><a href="https://get.foundation/forum/">Foundation Forum</a></li>
-              <li><a href="https://get.foundation/learn/events.html">Events</a></li>
-              <li><a href="https://get.foundation/get-involved/faq.html">FAQs</a></li>
-              <li><a href="https://get.foundation/get-involved/contribute.html">Contribute</a></li>
-              <li><a href="https://get.foundation/get-involved/yetinauts.html">Yetinauts</a></li>
-            </ul>
-          </li>
-      
-          <li>
-            <a href="https://get.foundation/frameworks-docs.html">Docs</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="https://get.foundation/docs/" target="_blank">Sites Docs</a></li>
-              <li><a href="https://get.foundation/sites/docs/v/5.5.3/" target="_blank">F5 Docs</a></li>
-              <li><a href="https://get.foundation/apps/docs/#!/" target="_blank">Apps Docs</a></li>
-              <li><a href="https://get.foundation/emails/docs/" target="_blank">Email Docs</a></li>
-            </ul>
-          </li>
-      
-          <li><a href="https://get.foundation/develop/getting-started.html" class="button">Getting Started</a></li>
-      
-        </ul>
-      
-      </nav>
-      
-      <div class="title-bar hide-for-medium">
-        <div class="title-bar-left">
-          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
-          <span class="title-bar-title">Foundation</span>
-        </div>
+    <!-- Info Banner For Announcements or Links -->
+    <!-- <a href="https://get.foundation" id="notice">
+      <div class="info">
+        <h5>Foundation 6 is here!</h5>
       </div>
-      
-
-      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
-
-      <div class="expanded row">
-        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
-
-<article class="docs-component" id="docs-accessibility">
-
-<a href="#docs-menu" class="small secondary expanded button hide-for-medium">Jump to Nav</a>
-
-<header>
-  <h1 class="docs-page-title">Accessibility</h1>
+    </a> -->
 
 
-  <p class="lead docs-page-lead">Foundation for Sites is a fully-accessible framework. Here are some general guidelines to keep in mind as you make your pages accessible.</p>
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-  <ul class="menu simple docs-contribute-menu">
-    <li><a href="https://github.com/zurb/foundation-sites/edit/master/docs/pages/accessibility.md" target="_blank"><i class="fi-pencil"></i>Edit this Page</a></li>
-    <li><a href="https://github.com/zurb/foundation-sites/issues/new?title=%5BAccessibility%5D%20ISSUE%20NAME%20HERE" target="_blank"><i class="fi-social-github"></i>Report a Bug</a></li>
-    <li><a href="https://get.foundation/forum" target="_blank"><i class="fi-comment"></i>Get Help</a></li>
+        
+
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="https://get.foundation/">
+          <span>Foundation</span>
+        </a>
+      </h1>
+    </li>
   </ul>
-</header>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a target="_blank" href="https://zurb.com/responsive">Showcase <i class="fa fa-external-link"></i></a>
+        <ul class="dropdown">
+          <li><a target="_blank" href="https://zurb.com/responsive">Showcase <i class="fa fa-external-link"></i></a></li>
+          <li><a href="https://get.foundation/showcase/brands.html">Brands</a></li>
+          <li><a href="https://get.foundation/showcase/case-studies.html">Case Studies</a></li>
+          <li><a href="https://get.foundation/showcase/blog.html">Blog</a></li>
+          <li><a href="https://get.foundation/showcase/buzz.html">Buzz</a></li>
+          <li><a href="https://get.foundation/showcase/about.html">About Foundation</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="https://get.foundation/develop/getting-started.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li class="title">Frameworks</li>
+          <li><a class="" href="https://get.foundation/sites.html">Foundation for Sites</a></li>
+          <li><a  class="" href="https://get.foundation/apps.html">Foundation for Apps</a></li>
+          <li><a  class="spaced-list-item" href="https://get.foundation/emails.html">Foundation for Emails</a></li>
+          <li class="spaced-divider"><hr></li>
+          <li><a href="https://get.foundation/templates.html">HTML Templates</a></li>
+          <li><a href="https://get.foundation/sites/resources.html">Resources</a></li>
+          <li><a href="https://get.foundation/develop/building-blocks.html">Building Blocks</a></li>
+          <li><a href="https://get.foundation/upload.html">Annotate Code</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="https://get.foundation/learn/tutorials.html">Tutorials</a>
+        <ul class="dropdown">
+          <li><a href="https://get.foundation/learn/tutorials.html">Tutorials</a></li>
+          <li><a href="https://get.foundation/learn/classes.html">Classes</a></li>
+          <li><a href="https://get.foundation/learn/custom-training.html">Custom Training</a></li>
+          <li><a href="https://get.foundation/learn/certification.html">Certification</a></li>
+          <li><a href="https://get.foundation/learn/responsive-reading.html">Responsive Reading</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="https://get.foundation/get-involved/contribute.html">Get Involved</a>
+        <ul class="dropdown">
+          <li><a href="https://get.foundation/get-involved/support.html">Connect</a></li>
+          <li><a href="https://get.foundation/get-involved/premium-support.html">PLZ Halp</a></li>
+          <li><a href="https://get.foundation/forum/">Foundation Forum</a></li>
+          <li><a href="https://get.foundation/learn/events.html">Events</a></li>
+          <li><a href="https://get.foundation/get-involved/faq.html">FAQs</a></li>
+          <li><a href="https://get.foundation/get-involved/contribute.html">Contribute</a></li>
+          <li><a href="https://get.foundation/get-involved/yetinauts.html">Yetinauts</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="https://get.foundation/sites/docs/v/5.5.3/">Docs</a>
+        <ul class="dropdown">
+          <li><a href="https://get.foundation/sites/docs/v/5.5.3/">F5 Sites Docs</a></li>
+          <li><a href="https://get.foundation/sites/docs">F6 Sites Docs</a></li>
+          <li><a href="https://get.foundation/emails/docs">Emails Docs</a></li>
+          <li><a href="https://get.foundation/apps/docs">Apps Docs</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="https://get.foundation/sites/getting-started.html">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="https://get.foundation">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="index.html" data-search="">Getting Started</a></li>
+      <li><a href="css.html" data-search="Styles">CSS</a></li>
+      <li><a href="sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="javascript.html" data-search="">Javascript</a></li>
+      <li><a href="components/global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="components/kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="components/visibility.html" data-search="">Visibility</a></li>
+      <li><a href="components/grid.html" data-search="">Grid</a></li>
+      <li><a href="components/block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="components/interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="components/rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="components/offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="components/topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="components/icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="components/sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="components/magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="components/subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="components/breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="components/pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="components/orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="components/thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="components/clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="components/flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="components/forms.html" data-search="">Forms</a></li>
+      <li><a href="components/switch.html" data-search="">Switches</a></li>
+      <li><a href="components/range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="components/abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="components/buttons.html" data-search="">Buttons</a></li>
+      <li><a href="components/button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="components/split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="components/dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="components/typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="components/inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="components/labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="components/keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="components/reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="components/alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="components/panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="components/tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="components/joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="components/dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="components/pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="components/progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="components/tables.html" data-search="">Tables</a></li>
+      <li><a href="components/accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="components/tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="components/equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="changelog.html" data-search="">Changelog</a></li>
+      <li><a href="compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://get.foundation/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/notable" class="footer-link-block apps">
+          <span class="title">Notable</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <!-- <form>
+     <label>Search Documentation</label>
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="https://get.foundation/sites/download.html" class="download button expand">Download Foundation</a> -->
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="index.html" data-search="">Getting Started</a></li>
+      <li><a href="css.html" data-search="Styles">CSS</a></li>
+      <li><a href="sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="components/global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="components/kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="components/visibility.html" data-search="">Visibility</a></li>
+      <li><a href="components/grid.html" data-search="">Grid</a></li>
+      <li><a href="components/block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="components/interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="components/rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="components/offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="components/topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="components/icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="components/sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="components/magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="components/subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="components/breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="components/pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="components/orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="components/thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="components/clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="components/flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="components/forms.html" data-search="">Forms</a></li>
+      <li><a href="components/switch.html" data-search="">Switches</a></li>
+      <li><a href="components/range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="components/abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="components/buttons.html" data-search="">Buttons</a></li>
+      <li><a href="components/button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="components/split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="components/dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="components/typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="components/inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="components/labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="components/keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="components/reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="components/alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="components/panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="components/tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="components/joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="components/dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="components/pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="components/progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="components/tables.html" data-search="">Tables</a></li>
+      <li><a href="components/accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="components/tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="components/equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="changelog.html" data-search="">Changelog</a></li>
+      <li><a href="compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="https://get.foundation/sites/docs/v/4.3.2/index.html" data-search="">Foundation 4</a></li>
+      <li><a href="https://get.foundation/sites/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="https://get.foundation/sites/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="accessibility">Accessibility</h1>
+              <h3 class="subheader">Guidelines on this page will help you make your sites more accessible for keyboard navigation and screen readers.</h3>
+
+<p>Aside from accessibility features that has been built into Foundation&#39;s components, this guide will give you additional best practices towards making your site more accessible. This is a living document and will continue to be updated.</p>
+<p class="panel">Care about accessibility or want to contribute? Submit a Pull Request or get into the conversation on <a href="https://github.com/zurb/foundation">GitHub</a>.</p>
 
 <hr>
+<h2 id="basic-concepts-overview">Basic Concepts - Overview</h2>
+<ul>
+    <li>Images should have text alternative for images. Captions or transcripts should be provided for video and audio. Sufficient color contrast between text and background is important for people with vision impairment or color blindness.</li>
+    <li>Sites should be navigatable using only a keyboard, providing meaningful hyperlinks, and allowing enough time for users to complete a task.</li>
+    <li>Make content readable and provide predictable functionality.</li>
+    <li>Maximizing compatibility with current and future tools (web browsers, assistive technologies, etc.).</li>
+</ul>
+
+<hr>
+<h2 id="keyboard-access">Keyboard Access</h2>
+<p>The most common impairments for web users are those with problems seeing, hearing or a physical inability to use a mouse. For that reason, the site must be navigatable by keyboard. Most commonly the tab key is used to tab through the content. For a vision impaired person will have a <a href="http://en.wikipedia.org/wiki/Screen_reader">screenreader</a> installed that reads the content out loud. We used <a href="http://www.chromevox.com/">Chromevox</a> to test with. You can find a list of popular screen readers below in the resource list.</p>
+
+<h3 id="how-to-test-a-website-s-keyboard-accessibility">How to Test a Website’s Keyboard Accessibility</h3>
+<p>On a desktop or laptop in Firefox, IE, Chrome, or Safari,
+click into the browser address bar.</p>
+
+<p>Take your hand off your mouse and use only your keyboard.
+Using the Tab button, navigate until you’ve reached the link below. (You can use Shift+Tab to navigate back one step.)</p>
+
+<ul>
+    <li>Right arrow: Next navigation bar item</li>
+    <li>Left arrow: Previous navigation bar item</li>
+    <li>Enter: Activate currently focused item (i.e. navigate to corresponding URL)</li>
+</ul>
+
+<hr>
+<h3 id="skip-navigation">Skip Navigation</h3>
+<p>Give the person the ability to skip the navigation at the top of the page. If you have menu with 40 links, you can imagine how long it would take someone to tab through all that. Here&#39;s one way to do it:</p>
 
 <div class="row">
+    <div class="medium-7 columns">
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">&quot;skip&quot;</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;#content&quot;</span>&gt;</span>Skip to Main Content<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
 
-<div class="large-9 columns" id="docs">
-
-<p>In addition to the accessibility features built into Foundation&#39;s components, be sure to follow best practices for making your site more accessible.</p>
-<div class="primary callout">
-  <p>Care about accessibility or want to contribute? Submit a Pull Request or get into the <a href="https://github.com/zurb/foundation-sites/labels/accessibility">conversation on GitHub</a>.</p>
-</div>
-
-<h2 id="basic-principles" class="docs-heading" data-magellan-target="basic-principles">Basic Principles<a class="docs-heading-icon" href="#basic-principles"></a></h2><ul>
-<li><strong>Structure your document properly.</strong> Use the right HTML tags for the job when marking up navigation, lists, links, controls, and so on.</li>
-<li><strong>Label everything.</strong> If a control or form element has no text label, add one. You can use the <a href="visibility.html#accessibility">visibility classes</a> to hide labels visually while maintaining accessibility. Use the <code>alt</code> attribute on all images to describe what they are.</li>
-<li><strong>Don&#39;t rely on purely visual cues.</strong> The content of a page should make sense even if page is being read to the user, or if the user is colorblind and can&#39;t make use of color-based labeling.</li>
-<li><strong>Make everything usable on a keyboard and mouse.</strong> Lucky for you, all of our components work with keyboards, mice, and touch screens out of the box.</li>
-</ul>
-<hr>
-<h2 id="types-of-disabilities" class="docs-heading" data-magellan-target="types-of-disabilities">Types of Disabilities<a class="docs-heading-icon" href="#types-of-disabilities"></a></h2><h3 id="visual" class="docs-heading">Visual<a class="docs-heading-icon" href="#visual"></a></h3><p>Visually-impaired users may have low vision or be completely blind. For low vision users, proper typographic contrast is important, both size and color. Foreground colors should stand out from background colors. You can use tools to calculate the contrast ratio of your foreground and background colors. The contrast ratio should at least be 1:4.5 for normal text and 3:1 for large text.
-Blind users consume the web by reading it using a <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a>. Screen readers read the content of a web page out loud, or write it out as Braille, using certain queues from the HTML to infer meaning.</p>
-<h3 id="motor" class="docs-heading">Motor<a class="docs-heading-icon" href="#motor"></a></h3><p>Users with motor disabilities may have trouble using a mouse, or don&#39;t use a mouse at all. For this reason, it&#39;s very important that your site is fully keyboard-accessible. Visually-impaired users also typically navigate websites using only their keyboard.</p>
-<p>When using only the keyboard, the <kbd>tab</kbd> key is the primary way to navigate through a page. However, most screen readers include many shortcut keys to skip around a page. For example, a screen reader can read every heading on a page, or every link, making it easier to find the right content on the page.</p>
-<p>More complex components like menus, tabs, or sliders can also typically be used with arrow keys, not just the <kbd>tab</kbd> keys. All of our JavaScript plugins provide advanced keyboard support by default.</p>
-<h3 id="auditory" class="docs-heading">Auditory<a class="docs-heading-icon" href="#auditory"></a></h3><p>If your site has video, provide captions so that users who are deaf or hard-of-hearing can properly view the content.</p>
-<hr>
-<h2 id="foundation-and-accessibility" class="docs-heading" data-magellan-target="foundation-and-accessibility">Foundation and Accessibility<a class="docs-heading-icon" href="#foundation-and-accessibility"></a></h2><p>All of Foundation&#39;s components are keyboard-accessible and screen reader-friendly. All of our code examples include the required accessibility hooks, but there may be instances where you, as the developer, need to fine-tune the specifics of how those hooks are used. Our JavaScript plugins will automatically add many required attributes to the HTML for you. Refer to each component&#39;s documentation to learn how to ensure your markup is screen reader-friendly.</p>
-<p>Foundation&#39;s CSS makes use of the library <a href="https://github.com/ten1seven/what-input">what-input</a>, which can detect the user&#39;s current input device and adjust CSS accordingly. We use it to disable outlines for mouse users, but not keyboard users, who need the outline to know what element on the page has focus.</p>
-<p>If you&#39;re using the Sass version of Foundation, you can use this mixin to enable the feature on your own components:</p>
-<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-selector-class">.element</span> {
-  @<span class="hljs-keyword">include</span> disable-mouse-outline;
-  <span class="hljs-comment">// ...</span>
-}</code></pre></div><hr>
-<h2 id="learn-more" class="docs-heading" data-magellan-target="learn-more">Learn More<a class="docs-heading-icon" href="#learn-more"></a></h2><h3 id="resources" class="docs-heading">Resources<a class="docs-heading-icon" href="#resources"></a></h3><ul>
-<li><a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">WCAG 2.0 Guide</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN accessibility documentation</a></li>
-<li><a href="http://www.w3.org/WAI/intro/accessibility.php">w3.org Introduction to Accessibility</a></li>
-<li><a href="http://www.section508.gov/">Section 508 government requirements</a></li>
-<li><a href="http://webaim.org/">WebAIM certification and training</a></li>
-<li><a href="http://a11yproject.com/checklist.html">Web Accessibility Checklist</a></li>
-</ul>
-<h3 id="tools" class="docs-heading">Tools<a class="docs-heading-icon" href="#tools"></a></h3><ul>
-<li><a href="https://tenon.io/index.php">Tenon accessibility checker</a></li>
-<li><a href="http://wave.webaim.org">WAVE Chrome plugin - free accessibility checker</a></li>
-<li><a href="http://webaim.org/resources/contrastchecker">Color Contrast Checker</a></li>
-<li><a href="http://www.chromevox.com">ChromeVox screen reader plugin for Chrome</a></li>
-<li><a href="http://www.freedomscientific.com/Products/Blindness/Jaws">JAWS screen reader for Windows</a></li>
-<li><a href="http://www.nvaccess.org/download/">NVDA screen reader for Windows - Free</a></li>
-</ul>
-
-
-
-
-
-</div>
-
-<div class="large-3 columns" data-sticky-container>
-  <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-sticky-on="large">
-    <div class="docs-toc hide" id="docsTOC">
-      <ul class="vertical menu" data-docs-toc>
-        <li class="docs-nav-title">On this page:</li>
-      </ul>
     </div>
-    <div class="foundation-toc-ad-unit" id="TOCAdUnit">
+    <div class="medium-5 columns">
+<pre><code class="language-css"><div class="code-container">    <span class="id">#skip</span> <span class="tag">a</span> <span class="rules">{
+        <span class="rule"><span class="attribute">position</span>:<span class="value">absolute;</span></span>
+        <span class="rule"><span class="attribute">left</span>:<span class="value">-<span class="number">10000</span>px;</span></span>
+        <span class="rule"><span class="attribute">top</span>:<span class="value">auto;</span></span>
+        <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">1</span>px;</span></span>
+        <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">1</span>px;</span></span>
+        <span class="rule"><span class="attribute">overflow</span>:<span class="value">hidden;</span></span>
+    <span class="rule">}</span></span>
+
+    <span class="id">#skip</span> <span class="tag">a</span><span class="pseudo">:focus</span> <span class="rules">{
+        <span class="rule"><span class="attribute">position</span>:<span class="value">static;</span></span>
+        <span class="rule"><span class="attribute">width</span>:<span class="value">auto;</span></span>
+        <span class="rule"><span class="attribute">height</span>:<span class="value">auto;</span></span>
+    <span class="rule">}</span></span></div></code></pre>
+
+ </div>
+</div>
+
+<p>Note: A person who can see may be slightly confused that their focus is off screen. This is a minor compromise for this method.</p>
+
+<hr>
+<h3 id="nested-headings">Nested Headings</h3>
+<p>When nesting headings <code>&lt;h1&gt; - &lt;h6&gt;</code>, your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt; - &lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
+
+<hr>
+<h2 id="learn-more">Learn More</h2>
+<div class="row">
+    <div class="medium-6 columns">
+    <h4 id="label-additional-resources">Additional resources</h4>
+        <ul class="side-nav" aria-labelledby="label-additional-resources">
+            <li><a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">WCAG 2.0 Guide</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN accessibility documentation</a></li>
+            <li><a href="http://achecker.ca/checker/index.php">AChecker Web Accessibility Checker</a></li>
+            <li><a href="http://www.w3.org/WAI/intro/accessibility.php">w3.org Introduction to Accessibility</a></li>
+            <li><a href="http://www.section508.gov/">Section 508 Government Requirements</a></li>
+            <li><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+            <li><a href="http://a11yproject.com/">A community-driven effort to make web accessibility easier</a></li>
+        </ul>
     </div>
-  </nav>
+    <div class="medium-6 columns">
+    <h4 id="label-tools">Tools</h4>
+        <ul class="side-nav" aria-labelledby="label-tools">
+            <li><a href="http://www.chromevox.com/">Chromevox screenreader plugin for Chrome</a></li>
+            <li><a href="http://www.freedomscientific.com/Products/Blindness/Jaws">Jaws screnreader plugin for Windows</a></li>
+            <li><a href="https://github.com/squizlabs/HTML_CodeSniffer">&quot;HTML Codesniffer&quot; bookmarklet for identifying accessibility issues</a></li>
+            <li><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+            <li><a href="http://wave.webaim.org/extension/">WAVE Chrome Extension</a></li>
+            <li><a href="http://www.tenon.io/">Tenon.io - Free Online Accessiblity Testing</a></li>
+        </ul>
+    </div>
 </div>
 
-</div>
 
-</article>
-
-        </div>
-        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
-          <ul class="vertical menu docs-nav" id="docs-menu">
-            <p class="docs-nav-version">
-              <span data-docs-version></span>
-              <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
-            </p>
-          
-            <li class="docs-nav-title">Getting Started</li>
-            <li><a href="installation.html">Installation</a></li>
-            <li><a href="starter-projects.html">Starter Projects</a></li>
-            <li><a href="compatibility.html">Compatibility</a></li>
-            <li class="current"><a href="accessibility.html">Accessibility</a></li>
-            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
-          
-            <li class="docs-nav-title">Setup</li>
-            <li><a href="global.html">Global Styles</a></li>
-            <li><a href="rtl.html">Right-to-Left Support</a></li>
-            <li><a href="flexbox.html">Flexbox</a></li>
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="javascript.html">JavaScript</a></li>
-            <li><a href="javascript-utilities.html">JavaScript Utilities</a></li>
-            <li><a href="media-queries.html">Media Queries</a></li>
-          
-            <li class="docs-nav-title">General</li>
-            <li><a href="grid.html">Grid</a></li>
-            <li><a href="flex-grid.html">Flex Grid</a></li>
-            <li><a href="forms.html">Forms</a></li>
-            <li><a href="visibility.html">Visibility Classes</a></li>
-            <li><a href="float-classes.html">Float Classes</a></li>
-          
-            <li class="docs-nav-title">Typography</li>
-            <li><a href="typography-base.html">Base Styles</a></li>
-            <li><a href="typography-helpers.html">Helper Classes</a></li>
-          
-            <li class="docs-nav-title">Controls</li>
-            <li><a href="button.html">Button</a></li>
-            <li><a href="button-group.html">Button Group</a></li>
-            <li><a href="close-button.html">Close Button</a></li>
-            <li><a href="slider.html">Slider <span class="label">JS</span></a></li>
-            <li><a href="switch.html">Switch</a></li>
-          
-            <li class="docs-nav-title">Navigation</li>
-            <li><a href="navigation.html">Overview</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="dropdown-menu.html">Dropdown Menu <span class="label">JS</span></a></li>
-            <li><a href="drilldown-menu.html">Drilldown Menu <span class="label">JS</span></a></li>
-            <li><a href="accordion-menu.html">Accordion Menu <span class="label">JS</span></a></li>
-            <li><a href="top-bar.html">Top Bar</a></li>
-            <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
-            <li><a href="magellan.html">Magellan <span class="label">JS</span></a></li>
-            <li><a href="pagination.html">Pagination</a></li>
-            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
-          
-            <li class="docs-nav-title">Containers</li>
-            <li><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
-            <li><a href="callout.html">Callout</a></li>
-            <li><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
-            <li><a href="media-object.html">Media Object</a></li>
-            <li><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
-            <li><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
-            <li><a href="table.html">Table</a></li>
-            <li><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
-          
-            <li class="docs-nav-title">Media</li>
-            <li><a href="badge.html">Badge</a></li>
-            <li><a href="flex-video.html">Flex Video</a></li>
-            <li><a href="label.html">Label</a></li>
-            <li><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
-            <li><a href="progress-bar.html">Progress Bar</a></li>
-            <li><a href="thumbnail.html">Thumbnail</a></li>
-            <li><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
-          
-            <li class="docs-nav-title">Plugins</li>
-            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
-            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
-            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
-            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
-            <li><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
-          
-            <li class="docs-nav-title">Sass</li>
-            <li><a href="sass-functions.html">Functions</a></li>
-            <li><a href="sass-mixins.html">Mixins</a></li>
-          
-            <li class="docs-nav-title">Libraries</li>
-            <li><a href="motion-ui.html">Motion UI</a></li>
-            <li><a href="panini.html">Panini</a></li>
-            <li><a href="style-sherpa.html">Style Sherpa</a></li>
-          
-            <li class="docs-nav-title">Older Versions</li>
-            <li><a href="https://get.foundation/sites/docs/v/5.5.3/index.html">Foundation 5</a></li>
-            <li><a href="https://get.foundation/sites/docs/v/4.3.2/index.html">Foundation 4</a></li>
-            <li><a href="https://get.foundation/sites/docs/v/3.2.5/">Foundation 3</a></li>
-            <li><a href="https://get.foundation/sites/docs/v/2.2.1/">Foundation 2</a></li>
-          </ul>
-          
-        </div>
-      </div>
-
-      <!-- Small Business(Docs) -->
-      <section id="studiosCallout">
-        <div class="row">
-          <div class="medium-4 large-4 columns">
-            <img src="https://get.foundation/assets/img/smallbiz-footer.svg" alt="">
-          </div>
-          <div class="medium-8 large-8 columns banner-info">
-            <div class="row column property-label">ZURB Foundation</div>
-            <h3 class="light">Yeah, we can help with that.</h3>
-            <p class="lead"> We’ll collaborate with your team throughout the entire project life cycle. We’ll take your concept and move it through ideation, hi-fi wireframes, visual design and code, all while informing you on the whys and hows along the way.</p>
-            <div class="course-buttons">
-              <a href="https://get.foundation/get-involved/premium-support.html" class="studios button" data-zcom-event="studios_foundation_click" id="foundationSmallV1">Show Me How &rarr;</a>
             </div>
           </div>
-        </div>
-      </section>
-      
-      <div class="docs-newsletter">
-        <div class="row">
-          <div class="medium-7 large-8 columns">
-            <a target="_blank" href="https://get.foundation/learn/responsive-reading.html">
-              <h5 class="">Download ZURB’s 21 Responsive Trends That Will Shape 2017</h5>
-              <p style="margin-bottom: 0;">Stay informed with amazing responsive trends each month from ZURB.</p>
-            </a>
-          </div>
-          <div class="medium-5 large-4 footer-signup-form columns">
-            <a style="margin-bottom: 0;" target="_blank" href="https://get.foundation/learn/responsive-reading.html" class="button expanded">Download the PDF</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="zurb-footer-top bg-fblue">
-        <div class="row property">
-          <div class="medium-4 columns">
-            <div class="property-info">
-              <h3>Foundation for Sites</h3>
-              <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
-              </p>
-            </div>
-          </div>
-      
-          <div class="medium-8 columns">
-            <div class="row collapse">
-              <div class="medium-4 columns">
-                <div class="learn-links">
-                  <h4 class="hide-for-small">Want more?</h4>
-                  <ul>
-                    <li><a href="https://get.foundation/apps">Foundation for Apps</a></li>
-                    <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
-                    <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
-                    <li><a href="http://zurb.com/university/courses">Training</a></li>
-                    <li><a href="http://zurb.com/library">Design Resources</a></li>
-                  </ul>
-                </div>
-              </div>
-                <div class="medium-4 columns">
-                  <div class="support-links">
-                    <h4 class="hide-for-small">Talk to us</h4>
-                    <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
-                    <p><a href="https://get.foundation/get-involved/contribute.html">Get involved in<br>our amazing community.</a></p>
-                  </div>
-                </div>
-              <div class="medium-4 columns">
-                <div class="connect-links">
-                  <h4 class="hide-for-small">Stay Updated</h4>
-                  <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
-                  <a href="http://zurb.com/news" class="small button">Stay Connected</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row global">
-          <div class="medium-3 small-6 columns">
-            <a href="http://zurb.com/studios" class="footer-link-block services">
-              <span class="title">Studios</span>
-              <span>Helping more than 200 startups succeed since 1998.</span>
-            </a>
-          </div>
-          <div class="medium-3 small-6 columns">
-            <a href="https://get.foundation/" class="footer-link-block foundation">
-              <span class="title">Foundation</span>
-              <span>The most advanced front-end framework in the world.</span>
-            </a>
-          </div>
-          <div class="medium-3 small-6 columns">
-            <a href="http://zurb.com/notable" class="footer-link-block apps">
-              <span class="title">Notable Design Apps</span>
-              <span>Prototype, iterate and collect feedback on your products.</span>
-            </a>
-          </div>
-          <div class="medium-3 small-6 columns">
-            <a href="http://zurb.com/university" class="footer-link-block expo">
-              <span class="title">University</span>
-              <span>Ideas, thoughts and design resources shared with you.</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="zurb-footer-bottom">
-        <div class="row">
-          <div class="medium-4 medium-push-8 columns">
-            <ul class="home-social">
-                <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
-                <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
-                <li><a href="http://zurb.com/contact" class="mail"></a></li>
-              </ul>
-           </div>
-           <div class="medium-8 medium-pull-4 columns">
-              <a href="http://www.zurb.com" class="zurb-logo regular"></a>
-              <ul class="zurb-links">
-                <li><a href="http://zurb.com/about">About</a></li>
-                <li><a href="http://zurb.com/blog">Blog</a></li>
-                <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
-                <li><a href="http://zurb.com/contact">Contact</a></li>
-                <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
-             </ul>
-             <p class="copyright">&copy; 1998&dash;2016 ZURB, Inc. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-      
+          <!-- <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="https://get.foundation/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
     </div>
   </div>
+</section> -->
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-  <script>
-  var _gaq = _gaq || [];
-  _gaq.push(
-    ['_setAccount', 'UA-2195009-2'],
-    ['_trackPageview'],
-    ['b._setAccount', 'UA-2195009-27'],
-    ['b._trackPageview']
-  );
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
 
-  <script src="assets/js/vendor.js?hash=a33a5a9f2263fba017dc346a7e5305b7"></script>
-  <script src="assets/js/foundation.js?hash=0ef31811e7b7249332cd7ea6aa7c7801"></script>
-  <script src="assets/js/docs.js?hash=6caecb542ca7066d74fa7bdb776abeeb"></script>
-  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
-</body>
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation for Sites</h3>
+        <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="https://get.foundation/apps">Foundation for Apps</a></li>
+              <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+              <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+              <li><a href="http://zurb.com/university/courses">Training</a></li>
+              <li><a href="http://zurb.com/library">Design Resources</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+            <p><a href="https://get.foundation/business/business-support.html">Business Support</a></p>
+            <p>Or check our <a href="https://get.foundation/support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay Updated</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="https://get.foundation/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/notable" class="footer-link-block apps">
+        <span class="title">Notable Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="assets/js/templates.js"></script>
+    <script src="assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+
+
 </html>
