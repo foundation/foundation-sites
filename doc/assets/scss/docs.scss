@@ -1232,7 +1232,8 @@ border: 5px solid red;
   -moz-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-  font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  // font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: bold;
   font-size: 22px !important;
   line-height: 45px;
@@ -1304,8 +1305,8 @@ border: 5px solid red;
   background-color: $topbar-hover-color;
 }
 
-.top-bar-section li:not(.has-form) a:not(.button):hover, 
-.top-bar-section li:not(.has-form) a:not(.button):active, 
+.top-bar-section li:not(.has-form) a:not(.button):hover,
+.top-bar-section li:not(.has-form) a:not(.button):active,
 .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
   background: $topbar-background;
   background-color: $topbar-background;

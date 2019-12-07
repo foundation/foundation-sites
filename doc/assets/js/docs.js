@@ -78,43 +78,43 @@ sidenav_links.each(function () {
 });
 
 // Fetch forum posts
-if ($('[data-forum-posts]').length > 0) {
-  var cb = function(data) {
-    var html = '';
-    $.each(data, function(idx, el) {
-      html += JST['doc/templates/forum_post.html'](el);
-    });
-    $('[data-forum-posts]').each(function() {
-      $(this).html(html);
-    });
-  };
-  $.ajax({
-    url:'http://foundation.zurb.com/forum/api/v1/posts.json',
-    dataType:'jsonp',
-    success: cb
-  });
-}
+// if ($('[data-forum-posts]').length > 0) {
+//   var cb = function(data) {
+//     var html = '';
+//     $.each(data, function(idx, el) {
+//       html += JST['doc/templates/forum_post.html'](el);
+//     });
+//     $('[data-forum-posts]').each(function() {
+//       $(this).html(html);
+//     });
+//   };
+//   $.ajax({
+//     url:'https://get.foundation/forum/api/v1/posts.json',
+//     dataType:'jsonp',
+//     success: cb
+//   });
+// }
 
 // Fetch BuildingBlocks
-if ($('[data-building-blocks]').length > 0) {
-  var cb = function(data) {
-    var html = '';
-    $.each(data, function(idx, el) {
-      html += JST['doc/templates/building_block.html'](el);
-    });
-    $('[data-building-blocks]').each(function() {
-      $(this).html(html);
-    });
-    if ($('.building-block-item').length === 0) {
-      $('.building-blocks-section').hide();
-    };
-  };
-  $.ajax({
-    url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name"),
-    dataType:'jsonp',
-    success: cb
-  });
-}
+// if ($('[data-building-blocks]').length > 0) {
+//   var cb = function(data) {
+//     var html = '';
+//     $.each(data, function(idx, el) {
+//       html += JST['doc/templates/building_block.html'](el);
+//     });
+//     $('[data-building-blocks]').each(function() {
+//       $(this).html(html);
+//     });
+//     if ($('.building-block-item').length === 0) {
+//       $('.building-blocks-section').hide();
+//     };
+//   };
+//   $.ajax({
+//     url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name"),
+//     dataType:'jsonp',
+//     success: cb
+//   });
+// }
 
 
 // COUNTDOWN TIMER
@@ -151,7 +151,7 @@ function initializeClock(id, endtime){
         clearInterval(timeinterval);
       }
     }
-    
+
     updateClock();
     var timeinterval = setInterval(updateClock,1000);
   }
