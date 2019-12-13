@@ -1,5 +1,5 @@
 {
-  "name": "zurb/foundation-sites",
+  "name": "foundation/foundation-sites",
   "description": "The most advanced responsive front-end framework in the world.",
   "keywords": [
     "css",
@@ -10,7 +10,7 @@
     "mobile-first",
     "framework"
   ],
-  "homepage": "http://foundation.zurb.com",
+  "homepage": "https://get.foundation",
   "authors": [
     {
       "name": "ZURB, Inc.",
@@ -20,8 +20,8 @@
   ],
   "support": {
     "email": "foundation@zurb.com",
-    "issues": "https://github.com/zurb/foundation-sites/issues",
-    "forum": "http://foundation.zurb.com/forum"
+    "issues": "https://github.com/foundation/foundation-sites/issues",
+    "forum": "https://foundation.discourse.group"
   },
   "license": "MIT"
 }
