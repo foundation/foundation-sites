@@ -486,15 +486,15 @@ var MediaQuery = {
 
     if (bpModifier === 'only') {
       return this.only(bpSize);
+    } // At least the breakpoint (included)
+
+
+    if (!bpModifier || bpModifier === 'up') {
+      return this.atLeast(bpSize);
     } // Up to the breakpoint (included)
 
 
     if (bpModifier === 'down') {
-      return this.atLeast(bpSize);
-    } // At leat the breakpoint (included)
-
-
-    if (!bpModifier || bpModifier === 'up') {
       return this.upTo(bpSize);
     }
 
@@ -629,7 +629,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.0'; // Global Foundation object
+var FOUNDATION_VERSION = '6.6.1'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {

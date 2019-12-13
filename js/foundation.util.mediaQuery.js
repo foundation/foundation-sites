@@ -187,12 +187,12 @@ var MediaQuery = {
     if (bpModifier === 'only') {
       return this.only(bpSize);
     }
-    // Up to the breakpoint (included)
-    if (bpModifier === 'down') {
+    // At least the breakpoint (included)
+    if (!bpModifier || bpModifier === 'up') {
       return this.atLeast(bpSize);
     }
-    // At leat the breakpoint (included)
-    if (!bpModifier || bpModifier === 'up') {
+    // Up to the breakpoint (included)
+    if (bpModifier === 'down') {
       return this.upTo(bpSize);
     }
 
