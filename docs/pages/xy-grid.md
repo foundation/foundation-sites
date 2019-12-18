@@ -432,10 +432,10 @@ A cell is composed of 3 parts: the base, the size and the gutters. In order to a
 
 ```scss
 .my-cell {
-  @include xy-cell(12, $gutters: none);
+  @include xy-cell(12, $gutters: 0);
 }
 .my-cell.half-size {
-  @include xy-cell(6, $gutters: none, $output: (size));
+  @include xy-cell(6, $gutters: 0, $output: (size));
   // Or @include xy-cell-size(6);
 }
 ```
