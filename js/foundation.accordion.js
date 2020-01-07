@@ -102,7 +102,7 @@ class Accordion extends Plugin {
         if (this.options.deepLinkSmudge) {
           onLoad($(window), () => {
             var offset = this.$element.offset();
-            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+            $('html, body').animate({ scrollTop: offset.top - this.options.deepLinkSmudgeOffset }, this.options.deepLinkSmudgeDelay);
           });
         }
 
@@ -383,6 +383,13 @@ Accordion.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
+  /**
+   * If `deepLinkSmudge` is enabled, the offset for scrollToTtop to prevent overlap by a sticky element at the top of the page
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
   /**
    * If `deepLink` is enabled, update the browser history with the open accordion
    * @option
