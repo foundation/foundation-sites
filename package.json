@@ -47,7 +47,7 @@
     "clipboard": "^2.0.4",
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
-    "doiuse": "~4.1.0",
+    "doiuse": "^4.2.0",
     "foundation-docs": "github:zurb/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
