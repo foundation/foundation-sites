@@ -91,7 +91,7 @@ class Accordion extends Plugin {
         if ($anchor && $link && $link.length) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
             this._openSingleTab($anchor);
-          };
+          }
         }
         // Otherwise, close everything
         else {
