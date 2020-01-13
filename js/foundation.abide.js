@@ -115,9 +115,9 @@ class Abide extends Plugin {
       return true;
     } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
       return this.formnovalidate;
-    } else { // triggered by Enter in non-submit input
-      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
     }
+    // triggered by Enter in non-submit input
+    return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
   }
 
   /**
