@@ -10,21 +10,21 @@
 <p align="center">
   <a href="https://foundation.zurb.com/sites/docs/installation.html"><b>Install</b></a>
   | <a href="https://foundation.zurb.com/sites/docs">Documentation</a>
-  | <a href="https://github.com/zurb/foundation-sites/releases">Releases</a>
+  | <a href="https://github.com/foundation/foundation-sites/releases">Releases</a>
   | <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
 ---
 
 
-[![Build Status](https://travis-ci.org/zurb/foundation-sites.svg?branch=develop)](https://travis-ci.org/zurb/foundation-sites)
-[![dependencies Status](https://david-dm.org/zurb/foundation-sites/status.svg)](https://david-dm.org/zurb/foundation-sites)
-[![devDependencies Status](https://david-dm.org/zurb/foundation-sites/dev-status.svg)](https://david-dm.org/zurb/foundation-sites?type=dev)
+[![Build Status](https://travis-ci.org/foundation/foundation-sites.svg?branch=develop)](https://travis-ci.org/foundation/foundation-sites)
+[![dependencies Status](https://david-dm.org/foundation/foundation-sites/status.svg)](https://david-dm.org/foundation/foundation-sites)
+[![devDependencies Status](https://david-dm.org/foundation/foundation-sites/dev-status.svg)](https://david-dm.org/foundation/foundation-sites?type=dev)
 [![npm version](https://badge.fury.io/js/foundation-sites.svg)](https://badge.fury.io/js/foundation-sites)
 [![Bower version](https://badge.fury.io/bo/foundation-sites.svg)](https://badge.fury.io/bo/foundation-sites)
 [![Gem Version](https://badge.fury.io/rb/foundation-rails.svg)](https://badge.fury.io/rb/foundation-rails)
 [![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/foundation-sites/badge?style=rounded)](https://www.jsdelivr.com/package/npm/foundation-sites)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation-sites?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/foundation/foundation-sites?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes a fully customizable, responsive grid, a large library of Sass mixins, commonly used JavaScript plugins, and full accessibility support.
 
@@ -38,7 +38,7 @@ To run the documentation locally on your machine, you need [Node.js](https://nod
 
 ```bash
 # Install
-git clone https://github.com/zurb/foundation-sites
+git clone https://github.com/foundation/foundation-sites
 cd foundation-sites
 npm install
 
@@ -48,7 +48,7 @@ npm start
 
 ### Testing
 
-Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Refer to our [testing guide](https://github.com/zurb/foundation-sites/wiki/Testing-Guide) for more details.
+Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Refer to our [testing guide](https://github.com/foundation/foundation-sites/wiki/Testing-Guide) for more details.
 
 Run tests with:
 ```bash
@@ -65,7 +65,7 @@ Testing Supported By<br/>
 
 ## Contributing
 
-Check out [CONTRIBUTING.md](CONTRIBUTING.md) to see how to report an issue or submit a bug fix or a new feature, and our  [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute more globally to Foundation. You can also browse the [Help Wanted](https://github.com/zurb/foundation-sites/labels/help%20wanted) tag in our issue tracker to find things to do.
+Check out [CONTRIBUTING.md](CONTRIBUTING.md) to see how to report an issue or submit a bug fix or a new feature, and our  [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute more globally to Foundation. You can also browse the [Help Wanted](https://github.com/foundation/foundation-sites/labels/help%20wanted) tag in our issue tracker to find things to do.
 
 ## Training
 

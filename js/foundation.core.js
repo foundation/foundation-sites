@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
-var FOUNDATION_VERSION = '6.4.3';
+var FOUNDATION_VERSION = '6.6.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -156,8 +156,8 @@ var Foundation = {
       // For each plugin found, initialize it
       $elem.each(function() {
         var $el = $(this),
-            opts = {};
-            
+            opts = { reflow: true };
+
         if($el.attr('data-options')){
           var thing = $el.attr('data-options').split(';').forEach(function(e, i){
             var opt = e.split(':').map(function(el){ return el.trim(); });

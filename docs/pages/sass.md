@@ -6,11 +6,11 @@ video: mYiyunVQdMY
 
 <div class="callout training-callout">
   <p>Get trained up on Foundation's Sass with our online webinar training. Sass allows you to write dramatically more efficient code. We'll go over things like how to install and start compiling Sass, nesting mixins and functions, and writing fully semantic CSS using Foundation mixins for insanely maintainable code.</p>
-  <a href="http://zurb.com/university/advanced-foundation-training" target="_blank">Reserve your spot →</a>
+  <a href="https://zurb.com/university/advanced-foundation-training" target="_blank">Reserve your spot →</a>
 </div>
 
 <div class="primary callout">
-  <p>Not familiar with Sass? The [official tutorial](http://sass-lang.com/guide) on sass-lang.com is a great place to start.</p>
+  <p>Not familiar with Sass? The [official tutorial](https://sass-lang.com/guide) on sass-lang.com is a great place to start.</p>
 </div>
 
 ## Compatibility

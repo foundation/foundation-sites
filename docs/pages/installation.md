@@ -226,7 +226,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
       If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
     </p>
     <p class="text-center">
-      <a href="http://foundation.zurb.com/sites/download" class="button">Download Foundation</a>
+      <a href="https://get.foundation/sites/download" class="button">Download Foundation</a>
     </p>
   </div>
 </div>
@@ -296,4 +296,4 @@ Start with this HTML template and adapt it to your needs. Be sure to include the
 
 ## Other Integrations
 
-The Foundation community has helped us integrate the framework into Rails, WordPress, Django, and more. Head to our [resources page](http://foundation.zurb.com/sites/resources) to find even more ways to use Foundation.
+The Foundation community has helped us integrate the framework into Rails, WordPress, Django, and more. Head to our [resources page](https://get.foundation/sites/resources) to find even more ways to use Foundation.

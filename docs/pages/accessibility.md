@@ -60,18 +60,18 @@ If you're using the Sass version of Foundation, you can use this mixin to enable
 
 ### Resources
 
-- [WCAG 2.0 Guide](http://www.w3.org/TR/UNDERSTANDING-WCAG20/)
+- [WCAG 2.0 Guide](https://www.w3.org/TR/UNDERSTANDING-WCAG20/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
-- [w3.org Introduction to Accessibility](http://www.w3.org/WAI/intro/accessibility.php)
-- [Section 508 government requirements](http://www.section508.gov/)
-- [WebAIM certification and training](http://webaim.org/)
-- [Web Accessibility Checklist](http://a11yproject.com/checklist.html)
+- [w3.org Introduction to Accessibility](https://www.w3.org/WAI/intro/accessibility.php)
+- [Section 508 government requirements](https://www.section508.gov/)
+- [WebAIM certification and training](https://webaim.org/)
+- [Web Accessibility Checklist](https://a11yproject.com/checklist.html)
 
 ### Tools
 
 - [Tenon accessibility checker](https://tenon.io/index.php)
-- [WAVE Chrome plugin - free accessibility checker](http://wave.webaim.org)
-- [Color Contrast Checker](http://webaim.org/resources/contrastchecker)
-- [ChromeVox screen reader plugin for Chrome](http://www.chromevox.com)
-- [JAWS screen reader for Windows](http://www.freedomscientific.com/Products/Blindness/Jaws)
-- [NVDA screen reader for Windows - Free](http://www.nvaccess.org/download/)
+- [WAVE Chrome plugin - free accessibility checker](https://wave.webaim.org)
+- [Color Contrast Checker](https://webaim.org/resources/contrastchecker)
+- [ChromeVox screen reader plugin for Chrome](https://www.chromevox.com)
+- [JAWS screen reader for Windows](https://www.freedomscientific.com/Products/Blindness/Jaws)
+- [NVDA screen reader for Windows - Free](https://www.nvaccess.org/download/)

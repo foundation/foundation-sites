@@ -46,7 +46,7 @@ var clear = Foundation.Box.ImNotTouchingYou(element [, parent, leftAndRightOnly,
 ## Keyboard
 `js/foundation.util.keyboard.js`
 
-Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de) of Germany who conceived and coded this library.
+Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to Marius Olbertz of Germany who conceived and coded this library.
 
 Ever wanted a handy list of common keycodes and the keys they represent? Use `Foundation.Keyboard.keys`. This is an object containing key/value pairs of the most frequently used keys in our framework.
 
@@ -177,6 +177,47 @@ Besides these useful click triggers, there are also other listeners for you to t
 ```js
 $('#someId').on('scrollme.zf.trigger', handleScroll);
 $('#someId').on('resizeme.zf.trigger', handleResize);
+```
+
+## Throttle
+`js/foundation.core.js`
+
+Many times when you create a callback, it's advantageous to add a delay in order to prevent it from being triggered multiple times. Foundation includes one type of callback delay: `throttle`.
+
+`Throttle` prevents a function from being executed more than once every n milliseconds. Throttling is often used in cases where it's disadvantageous to trigger a callback every time an event is triggered (during a continuous action), but you still want to trigger a reaction while the event is occurring. Examples of this would be reacting to the browser window being resized, or animating an element.
+
+### Without Delay
+```js
+// Button click handler
+$('.button').on('click', function(e){
+  // Handle Click
+});
+
+// Resize function
+$(window).on('resize', function(e){
+  // Do responsive stuff
+});
+```
+
+### With Delay
+```js
+// Throttled resize function
+$(window).on('resize', Foundation.utils.throttle(function(e){
+  // Do responsive stuff
+}, 300));
+```
+
+### Method Signature
+```js
+// Arguments:
+//    Func (Function): Function to be throttled.
+//
+//    Delay (Integer): Function execution threshold in milliseconds.
+//
+// Returns:
+//    Lazy_function (Function): Function with throttling applied.
+
+throttle(func, delay) { ... }
 ```
 
 ## Miscellaneous

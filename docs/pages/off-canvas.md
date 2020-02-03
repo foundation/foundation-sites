@@ -17,7 +17,7 @@ flex: true
 
 <div class="callout training-callout">
   <p>Off-canvas layouts are common and useful for mobile and desktop layouts. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
-  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+  <a href="https://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
 </div>
 
 <div class="primary callout">
@@ -64,7 +64,7 @@ Along with the Off-canvas container, the main content of your page will be house
 So putting it all together:
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -101,7 +101,7 @@ Simply add a container with the class `.off-canvas-wrapper`.
 To create a click trigger that opens the panel, add the attribute `data-open` or `data-toggle` to any element. That element will then open or toggle the panel when clicked on. The value of the data attribute should be the ID of the off-canvas.
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -113,7 +113,7 @@ To create a click trigger that opens the panel, add the attribute `data-open` or
 Foundation's Close component can be used inside the off-canvas to close it.
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/QvBQjo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/QvBQjo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -344,7 +344,7 @@ If you need a simple bar to contain your hamburger icon/s and toggle the off-can
 
 #### Off-Canvas (Putting it all together)
 
-For an example of off-canvas, checkout this top bar with off-canvas navigation and dropdowns for submenus building block: http://foundation.zurb.com/building-blocks/blocks/multilevel-offcanvas-menu.html
+For an example of off-canvas, checkout this top bar with off-canvas navigation and dropdowns for submenus building block: <https://get.foundation/building-blocks/blocks/multilevel-offcanvas-menu.html>
 
 ---
 

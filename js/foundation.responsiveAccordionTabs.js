@@ -36,6 +36,11 @@ var MenuPlugins = {
  */
 
 class ResponsiveAccordionTabs extends Plugin{
+  constructor(element, options) {
+    super(element, options);
+    return this.options.reflow && this.storezfData || this;
+  }
+
   /**
    * Creates a new instance of a responsive accordion tabs.
    * @class
@@ -46,6 +51,7 @@ class ResponsiveAccordionTabs extends Plugin{
    */
   _setup(element, options) {
     this.$element = $(element);
+    this.$element.data('zfPluginBase', this);
     this.options = $.extend({}, ResponsiveAccordionTabs.defaults, this.$element.data(), options);
 
     this.rules = this.$element.data('responsive-accordion-tabs');
@@ -55,7 +61,7 @@ class ResponsiveAccordionTabs extends Plugin{
     this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
     if (!this.$element.attr('id')) {
       this.$element.attr('id',GetYoDigits(6, 'responsiveaccordiontabs'));
-    };
+    }
 
     this._init();
     this._events();
@@ -178,7 +184,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if ($panels.length) fromString = 'tabs';
     if (fromString === toSet) {
       return;
-    };
+    }
 
     var tabsTitle = _this.allOptions.linkClass?_this.allOptions.linkClass:'tabs-title';
     var tabsPanel = _this.allOptions.panelClass?_this.allOptions.panelClass:'tabs-panel';
@@ -192,7 +198,7 @@ class ResponsiveAccordionTabs extends Plugin{
       $panels.children('a').removeAttr('role').removeAttr('aria-controls').removeAttr('aria-selected');
     }else{
       $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
-    };
+    }
 
     $panels.css({display:'',visibility:''});
     $liHeads.css({display:'',visibility:''});
@@ -211,7 +217,7 @@ class ResponsiveAccordionTabs extends Plugin{
         $placeholder.remove();
       }else{
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content',_this.$element.attr('id'));
-      };
+      }
       $panels.each(function(key,value){
         var tempValue = $(value).appendTo($tabsContent).addClass(tabsPanel);
         var hash = $liHeadsA.get(key).hash.slice(1);
@@ -223,12 +229,12 @@ class ResponsiveAccordionTabs extends Plugin{
             hash = id;
             $(value).attr('id',hash);
             $($liHeadsA.get(key)).attr('href',$($liHeadsA.get(key)).attr('href').replace('#','')+'#'+hash);
-          };
-        };
+          }
+        }
         var isActive = $($liHeads.get(key)).hasClass('is-active');
         if (isActive) {
           tempValue.addClass('is-active');
-        };
+        }
       });
       $liHeads.addClass(tabsTitle);
     };

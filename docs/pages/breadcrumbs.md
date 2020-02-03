@@ -22,7 +22,7 @@ To mark a disabled item, add the class `.disabled` to the `<li>`, and just use p
 
 <div class="warning callout">
   <p>If your site is visited by search engines, then you should consider adding Schema.org structure data. This will allow your site to appear more attractive in search results. </p>
-  <p>For more information, see <a href="https://developers.google.com/search/docs/data-types/breadcrumbs">Breadcrumbs - Google Developers</a>, <a href="http://schema.org/BreadcrumbList">BreadcrumbList - schema.org</a>.</p>
+  <p>For more information, see <a href="https://developers.google.com/search/docs/data-types/breadcrumbs">Breadcrumbs - Google Developers</a>, <a href="https://schema.org/BreadcrumbList">BreadcrumbList - schema.org</a>.</p>
 </div>
 
 ```html_example
