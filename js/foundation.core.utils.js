@@ -58,8 +58,8 @@ function transitionend($elem){
   }
   if (end) {
     return end;
-  }else{
-    end = setTimeout(function(){
+  } else {
+    setTimeout(function(){
       $elem.triggerHandler('transitionend', [$elem]);
     }, 1);
     return 'transitionend';

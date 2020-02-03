@@ -83,12 +83,7 @@ class Magellan extends Plugin {
    * @private
    */
   _events() {
-    var _this = this,
-        $body = $('html, body'),
-        opts = {
-          duration: _this.options.animationDuration,
-          easing:   _this.options.animationEasing
-        };
+    var _this = this;
 
     $(window).one('load', function(){
       if(_this.options.deepLinking){
