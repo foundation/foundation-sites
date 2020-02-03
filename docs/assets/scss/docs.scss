@@ -70,7 +70,7 @@ a#notice {
     font-size: 35px;
     font-weight: 500;
     margin-left: -50%;
-    font-family: "Proxima-Nova", "Proxima", "proxima-nova", sans-serif;
+    font-family: sans-serif;
     background-color: rgba(0,120,171,0.7);
     -webkit-box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
     -moz-box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
@@ -281,7 +281,7 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 
     strong {
       display: inline;
-      font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 17px;
       line-height: 46px;
     }
