@@ -61,7 +61,7 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 ### Header Styles
 
-The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a wider range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
+The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a larger range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
 
 <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
@@ -148,7 +148,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 </div>
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.5.3</small></h3>
+<h3>Foundation for Sites <small>Version 6.6.1</small></h3>
 ```
 
 ---
@@ -324,7 +324,7 @@ Use the `.code-block` component to create a block of code.
 ```
 
 <div class="callout info">
-  <p>It is recommanded to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
+  <p>It is recommended to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
 </div>
 
 ---

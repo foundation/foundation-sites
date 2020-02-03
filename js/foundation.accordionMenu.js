@@ -59,19 +59,19 @@ class AccordionMenu extends Plugin {
     });
 
     this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
-    this.$menuLinks.each(function(){
+    this.$menuLinks.each(function() {
       var linkId = this.id || GetYoDigits(6, 'acc-menu-link'),
           $elem = $(this),
           $sub = $elem.children('[data-submenu]'),
           subId = $sub[0].id || GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
 
-      if(_this.options.parentLink) {
+      if (_this.options.parentLink) {
         let $anchor = $elem.children('a');
         $anchor.clone().prependTo($sub).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-accordion-submenu-item"></li>');
       }
 
-      if(_this.options.submenuToggle) {
+      if (_this.options.submenuToggle) {
         $elem.addClass('has-submenu-toggle');
         $elem.children('a').after('<button id="' + linkId + '" class="submenu-toggle" aria-controls="' + subId + '" aria-expanded="' + isActive + '" title="' + _this.options.submenuToggleText + '"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
       } else {
@@ -92,9 +92,8 @@ class AccordionMenu extends Plugin {
       'role': 'treeitem'
     });
     var initPanes = this.$element.find('.is-active');
-    if(initPanes.length){
-      var _this = this;
-      initPanes.each(function(){
+    if (initPanes.length) {
+      initPanes.each(function() {
         _this.down($(this));
       });
     }
@@ -112,7 +111,7 @@ class AccordionMenu extends Plugin {
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        if(_this.options.submenuToggle) {
+        if (_this.options.submenuToggle) {
           $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
             _this.toggle($submenu);
           });
@@ -123,7 +122,7 @@ class AccordionMenu extends Plugin {
             });
         }
       }
-    }).on('keydown.zf.accordionMenu', function(e){
+    }).on('keydown.zf.accordionMenu', function(e) {
       var $element = $(this),
           $elements = $element.parent('ul').children('li'),
           $prevElement,
@@ -216,8 +215,8 @@ class AccordionMenu extends Plugin {
    * @function
    * @param {jQuery} $target - the submenu to toggle
    */
-  toggle($target){
-    if(!$target.is(':animated')) {
+  toggle($target) {
+    if (!$target.is(':animated')) {
       if (!$target.is(':hidden')) {
         this.up($target);
       }
@@ -251,7 +250,7 @@ class AccordionMenu extends Plugin {
       .addClass('is-active')
       .attr({ 'aria-hidden': false });
 
-    if(this.options.submenuToggle) {
+    if (this.options.submenuToggle) {
       $target.prev('.submenu-toggle').attr({'aria-expanded': true});
     }
     else {
@@ -281,7 +280,7 @@ class AccordionMenu extends Plugin {
       .removeClass('is-active')
       .attr('aria-hidden', true);
 
-    if(this.options.submenuToggle) {
+    if (this.options.submenuToggle) {
       $allmenus.prev('.submenu-toggle').attr('aria-expanded', false);
     }
     else {
@@ -306,7 +305,7 @@ class AccordionMenu extends Plugin {
     this.$element.find('a').off('click.zf.accordionMenu');
     this.$element.find('[data-is-parent-link]').detach();
 
-    if(this.options.submenuToggle) {
+    if (this.options.submenuToggle) {
       this.$element.find('.has-submenu-toggle').removeClass('has-submenu-toggle');
       this.$element.find('.submenu-toggle').remove();
     }
@@ -351,4 +350,4 @@ AccordionMenu.defaults = {
   multiOpen: true
 };
 
-export {AccordionMenu};
+export { AccordionMenu };

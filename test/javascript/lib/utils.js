@@ -40,4 +40,29 @@
     }, _opts.interval);
   };
 
+
+  /**
+  * Inject a script with the attributes of the `opts` object into the
+  * given `context` HTML element. The created script is guaranteed to be
+  * executed in the provided context, like inside an iframe.
+  *
+  * @param  {HTMLElement} context - Element to add and execute the script within.
+  * @param  {object} opts - Attributes to add to the created script.
+  * @returns {HTMLElement} The created element.
+  */
+  global.injectScriptIn = function (context, opts) {
+    const doc = context.ownerDocument;
+    const script = doc.createElement("script");
+    script.type = "text/javascript";
+    script.async = false;
+
+    Object.assign(script, {
+      type: "text/javascript",
+      async: false,
+    }, opts);
+
+    context.appendChild(script);
+    return script;
+  };
+
 })(window, jQuery);

@@ -3,10 +3,10 @@
 
     <metadata>
         <id>foundation-sites</id>
-        <version>6.5.3</version>
+        <version>6.6.1</version>
 
-        <title>ZURB Foundation</title>
-        <authors>ZURB</authors>
+        <title>Foundation for Sites</title>
+        <authors>Yetinauts</authors>
         <description>The most advanced responsive front-end framework in the world.</description>
         <tags>css scss sass js responsive mobile-first framework</tags>
 

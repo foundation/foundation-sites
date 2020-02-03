@@ -10,7 +10,7 @@
     "mobile-first",
     "framework"
   ],
-  "homepage": "http://foundation.zurb.com",
+  "homepage": "https://get.foundation",
   "authors": [
     {
       "name": "ZURB, Inc.",
@@ -21,7 +21,7 @@
   "support": {
     "email": "foundation@zurb.com",
     "issues": "https://github.com/foundation/foundation-sites/issues",
-    "forum": "http://foundation.zurb.com/forum"
+    "forum": "https://foundation.discourse.group"
   },
   "license": "MIT"
 }

@@ -115,15 +115,15 @@ class Abide extends Plugin {
       return true;
     } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
       return this.formnovalidate;
-    } else { // triggered by Enter in non-submit input
-      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
     }
+    // triggered by Enter in non-submit input
+    return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
   }
 
   /**
    * Enables the whole validation
    */
-  enableValidation(){
+  enableValidation() {
     this.isEnabled = true;
   }
 
@@ -157,7 +157,7 @@ class Abide extends Plugin {
         break;
 
       default:
-        if(!$el.val() || !$el.val().length) isGood = false;
+        if (!$el.val() || !$el.val().length) isGood = false;
     }
 
     return isGood;
@@ -387,11 +387,11 @@ class Abide extends Plugin {
    */
   removeErrorClasses($el) {
     // radios need to clear all of the els
-    if($el[0].type == 'radio') {
+    if ($el[0].type == 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
     }
     // checkboxes need to clear all of the els
-    else if($el[0].type == 'checkbox') {
+    else if ($el[0].type == 'checkbox') {
       return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
@@ -599,7 +599,7 @@ class Abide extends Plugin {
         required = true;
       }
     });
-    if(!required) valid=true;
+    if (!required) valid=true;
 
     if (!valid) {
       // For the group to be valid, at least one radio needs to be checked
@@ -630,7 +630,7 @@ class Abide extends Plugin {
         required = true;
       }
     });
-    if(!required) valid=true;
+    if (!required) valid=true;
 
     if (!valid) {
       // Count checked checkboxes within the group
@@ -876,4 +876,4 @@ Abide.defaults = {
   }
 }
 
-export {Abide};
+export { Abide };
