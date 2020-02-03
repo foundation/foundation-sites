@@ -196,7 +196,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if (fromString === 'tabs') {
       $panels = $panels.children('.'+tabsPanel).removeClass(tabsPanel).removeAttr('role').removeAttr('aria-hidden').removeAttr('aria-labelledby');
       $panels.children('a').removeAttr('role').removeAttr('aria-controls').removeAttr('aria-selected');
-    }else{
+    } else {
       $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
     }
 
@@ -209,13 +209,13 @@ class ResponsiveAccordionTabs extends Plugin{
         $liHeads.addClass('accordion-item').attr('data-accordion-item','');
         $liHeadsA.addClass('accordion-title');
       });
-    }else if (toSet === 'tabs'){
+    } else if (toSet === 'tabs') {
       var $tabsContent = $('[data-tabs-content='+_this.$element.attr('id')+']');
       var $placeholder = $('#tabs-placeholder-'+_this.$element.attr('id'));
       if ($placeholder.length) {
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content',_this.$element.attr('id'));
         $placeholder.remove();
-      }else{
+      } else {
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content',_this.$element.attr('id'));
       }
       $panels.each(function(key,value){
@@ -225,7 +225,7 @@ class ResponsiveAccordionTabs extends Plugin{
         if (hash !== id) {
           if (hash !== '') {
             $(value).attr('id',hash);
-          }else{
+          } else {
             hash = id;
             $(value).attr('id',hash);
             $($liHeadsA.get(key)).attr('href',$($liHeadsA.get(key)).attr('href').replace('#','')+'#'+hash);
@@ -247,7 +247,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Tabs.selectTab
    * @function
    */
-  open(target) {
+  open(_target) {
     if (this.currentRule && typeof this.currentRule.open === 'function') {
       return this.currentRule.open(this.currentPlugin, ...arguments);
     }
@@ -259,7 +259,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.up
    * @function
    */
-  close(target) {
+  close(_target) {
     if (this.currentRule && typeof this.currentRule.close === 'function') {
       return this.currentRule.close(this.currentPlugin, ...arguments);
     }
@@ -271,7 +271,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.toggle
    * @function
    */
-  toggle(target) {
+  toggle(_target) {
     if (this.currentRule && typeof this.currentRule.toggle === 'function') {
       return this.currentRule.toggle(this.currentPlugin, ...arguments);
     }

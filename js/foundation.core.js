@@ -159,8 +159,8 @@ var Foundation = {
             opts = { reflow: true };
 
         if($el.attr('data-options')){
-          var thing = $el.attr('data-options').split(';').forEach(function(e, i){
-            var opt = e.split(':').map(function(el){ return el.trim(); });
+          $el.attr('data-options').split(';').forEach(function(option, _index){
+            var opt = option.split(':').map(function(el){ return el.trim(); });
             if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
         }
