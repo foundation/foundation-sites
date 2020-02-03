@@ -1,0 +1,120 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <h1>Abide: Error Messages</h1>
+
+          <p>This form has two different error messages.</p>
+
+          <form data-abide novalidate>
+            <label>
+              <input required type="email" placeholder="Email Required">
+              <span class="form-error" data-form-error-on="required">Required</span>
+              <span class="form-error" data-form-error-on="pattern">Invalid</span>
+            </label>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button">Reset</button>
+          </form>
+
+          <hr>
+
+          <p>This form has two different error messages and uses the [data-form-error-for] attribute to specify the target input.</p>
+
+          <form data-abide novalidate>
+            <label for="url">Url
+              <input required id="url" type="url" placeholder="Url Required">
+            </label>
+            <span class="form-error" data-form-error-for="url" data-form-error-on="required">Required</span>
+            <span class="form-error" data-form-error-for="url" data-form-error-on="pattern">Invalid</span>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button">Reset</button>
+          </form>
+
+          <hr>
+
+          <p>This form has one generic and one validator-specific error message.</p>
+
+          <form data-abide novalidate>
+            <label>
+              <input required type="email" placeholder="Email Required">
+              <span class="form-error">Error</span>
+              <span class="form-error" data-form-error-on="pattern">Invalid</span>
+            </label>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button">Reset</button>
+          </form>
+
+          <hr>
+
+          <p>This form uses the equalTo validator.</p>
+
+          <form data-abide novalidate>
+            <label>
+              <input required id="email" type="email" placeholder="Email Required">
+              <span class="form-error">Error</span>
+            </label>
+            </label>
+              <input type="email" placeholder="Email Confirmation" data-equalto="email">
+              <span class="form-error" data-form-error-on="pattern">Invalid</span>
+              <span class="form-error" data-form-error-on="equalTo">Mismatch</span>
+            </label>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button">Reset</button>
+          </form>
+
+          <hr>
+
+          <p>This form has two input fields.</p>
+
+          <form data-abide novalidate>
+            <label>Email
+              <input required type="email" placeholder="Email Required">
+              <span class="form-error" data-form-error-on="required">Required</span>
+              <span class="form-error" data-form-error-on="pattern">Invalid</span>
+            </label>
+            <label>Url
+              <input required type="url" placeholder="Url Required">
+              <span class="form-error" data-form-error-on="required">Required</span>
+              <span class="form-error" data-form-error-on="pattern">Invalid</span>
+            </label>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button">Reset</button>
+          </form>
+
+          <hr>
+
+          <p>This form uses a custom validator.</p>
+
+          <form data-abide novalidate>
+            <label>
+              <input required type="number" placeholder="Positive Number Required" data-validator="positive">
+              <span class="form-error" data-form-error-on="required">Required</span>
+              <span class="form-error" data-form-error-on="positive">Must be positive</span>
+            </label>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button">Reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      Foundation.Abide.defaults.validators['positive'] = function($el) {
+        return parseInt($el.val()) > 0;
+      }
+      $(document).foundation();
+    </script>
+  </body>
+</html>
