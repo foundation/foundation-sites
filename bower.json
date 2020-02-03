@@ -42,7 +42,6 @@
     ".editorconfig",
     ".eslintrc",
     ".huskyrc.yml",
-    ".jshintrc",
     ".sass-lint.yml",
     ".travis.yml",
     ".versions",
