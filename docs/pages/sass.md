@@ -77,7 +77,7 @@ Finally, add an `@import` statement to the top of your primary Sass file. Refer 
 @import 'foundation';
 ```
 
-You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself. 
+You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/foundation/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself. 
 
 <div class="callout">
 The settings file needs to import `util/util` from Foundation. Please ensure that the Foundation folder is included in Sass or change `@import util/util` for it to points to the full path of the file. For example, NPM users may need to change the import to `node_modules/foundation-sites/scss/util/util`.
@@ -180,7 +180,7 @@ All Foundation projects include a settings file, named `_settings.scss`. If you'
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 
 <div class="callout warning">
-  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/zurb/foundation/releases">Foundation releases</a> so you know when things change.</p>
+  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/foundation/foundation/releases">Foundation releases</a> so you know when things change.</p>
 </div>
 
 Here's an example set of settings variables. These change the default styling of [buttons](button.html):

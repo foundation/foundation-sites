@@ -12,10 +12,10 @@
 
         <projectUrl>http://foundation.zurb.com/sites</projectUrl>
         <iconUrl>https://foundation.zurb.com/assets/img/icons/foundation-favicon.ico</iconUrl>
-        <releaseNotes>https://github.com/zurb/foundation-sites/releases/tag/v6.6.1</releaseNotes>
-        <licenseUrl>https://github.com/zurb/foundation-sites/blob/develop/LICENSE</licenseUrl>
+        <releaseNotes>https://github.com/foundation/foundation-sites/releases/tag/v6.5.3</releaseNotes>
+        <licenseUrl>https://github.com/foundation/foundation-sites/blob/develop/LICENSE</licenseUrl>
         <copyright>Copyright 2017-2018</copyright>
-        <repository type="git" url="https://github.com/zurb/foundation-sites"/>
+        <repository type="git" url="https://github.com/foundation/foundation-sites"/>
 
         <dependencies>
             <dependency id="jQuery" version="2.2.0"/>

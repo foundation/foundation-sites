@@ -15,7 +15,7 @@ devDependencies:
   corejs-typeahead: 1.2.1
   cz-conventional-changelog: 2.1.0
   doiuse: 4.1.0
-  foundation-docs: github.com/zurb/foundation-docs/e000277002f9546b0aeedc8f555596dece3bb56e
+  foundation-docs: github.com/foundation/foundation-docs/e000277002f9546b0aeedc8f555596dece3bb56e
   gulp: 4.0.0
   gulp-add-src: 1.0.0
   gulp-babel: 8.0.0
@@ -11798,7 +11798,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-AI4G2AlDIMNy28L47XagymyKxBk=
-  github.com/zurb/foundation-docs/e000277002f9546b0aeedc8f555596dece3bb56e:
+  github.com/foundation/foundation-docs/e000277002f9546b0aeedc8f555596dece3bb56e:
     dependencies:
       cheerio: 1.0.0-rc.2
       handlebars: 4.0.12
@@ -11819,7 +11819,7 @@ packages:
       npm: '>=2.14.2'
     name: foundation-docs
     resolution:
-      tarball: 'https://codeload.github.com/zurb/foundation-docs/tar.gz/e000277002f9546b0aeedc8f555596dece3bb56e'
+      tarball: 'https://codeload.github.com/foundation/foundation-docs/tar.gz/e000277002f9546b0aeedc8f555596dece3bb56e'
     version: 0.2.1
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 8
@@ -11841,7 +11841,7 @@ specifiers:
   corejs-typeahead: ^1.1.1
   cz-conventional-changelog: ^2.1.0
   doiuse: ~4.1.0
-  foundation-docs: 'github:zurb/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e'
+  foundation-docs: 'github:foundation/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e'
   gulp: ^4.0.0
   gulp-add-src: ^1.0.0
   gulp-babel: ^8.0.0
