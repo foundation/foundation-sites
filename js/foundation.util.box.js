@@ -121,8 +121,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 
       var topVal, leftVal;
 
+  if ($anchorDims !== null) {
   // set position related attribute
-
   switch (position) {
     case 'top':
       topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
@@ -137,7 +137,6 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
       break;
   }
-
 
   // set alignment related attribute
   switch (position) {
@@ -170,6 +169,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       }
       break;
   }
+  }
+
   return {top: topVal, left: leftVal};
 }
 
