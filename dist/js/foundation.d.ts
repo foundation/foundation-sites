@@ -1,5 +1,5 @@
 // Type definitions for Foundation Sites v6.3.1
-// Project: https://get.foundation/
+// Project: http://foundation.zurb.com/
 // Github: https://github.com/foundation/foundation-sites
 //
 // Definitions by: Sam Vloeberghs <https://github.com/samvloeberghs/>
@@ -7,7 +7,7 @@
 
 declare module FoundationSites {
 
-  // https://get.foundation/sites/docs/abide.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/abide.html#javascript-reference
   interface Abide {
     requiredChecked(element: JQuery): boolean;
     findFormError(element: JQuery): JQuery;
@@ -65,7 +65,7 @@ declare module FoundationSites {
     validators?: any;
   }
 
-  // https://get.foundation/sites/docs/accordion.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/accordion.html#javascript-reference
   interface Accordion {
     toggle($target: JQuery): void;
     down($target: JQuery, firstTime: boolean): void;
@@ -79,7 +79,7 @@ declare module FoundationSites {
     allowAllClosed?: boolean;
   }
 
-  // https://get.foundation/sites/docs/accordion-menu.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/accordion-menu.html#javascript-reference
   interface AccordionMenu {
     hideAll(): void;
     toggle($target: JQuery): void;
@@ -93,7 +93,7 @@ declare module FoundationSites {
     multiOpen?: boolean;
   }
 
-  // https://get.foundation/sites/docs/drilldown-menu.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/drilldown-menu.html#javascript-reference
   interface Drilldown {
     destroy(): void;
   }
@@ -105,7 +105,7 @@ declare module FoundationSites {
     closeOnClick?: boolean;
   }
 
-  // https://get.foundation/sites/docs/dropdown.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/dropdown.html#javascript-reference
   interface Dropdown {
     getPositionClass(): string;
     open(): void;
@@ -126,7 +126,7 @@ declare module FoundationSites {
     closeOnClick?: boolean;
   }
 
-  // https://get.foundation/sites/docs/dropdown-menu.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/dropdown-menu.html#javascript-reference
   interface DropdownMenu {
     destroy(): void;
   }
@@ -144,7 +144,7 @@ declare module FoundationSites {
     forceFollow?: boolean;
   }
 
-  // https://get.foundation/sites/docs/equalizer.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/equalizer.html#javascript-reference
   interface Equalizer {
     getHeights(cb: Function): Array<any>;
     getHeightsByRow(cb: Function): Array<any>;
@@ -159,7 +159,7 @@ declare module FoundationSites {
     equalizeOn?: string;
   }
 
-  // https://get.foundation/sites/docs/interchange.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/interchange.html#javascript-reference
   interface Interchange {
     replace(path: string): void;
     destroy(): void;
@@ -169,7 +169,7 @@ declare module FoundationSites {
     rules?: Array<any>
   }
 
-  // https://get.foundation/sites/docs/magellan.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/magellan.html#javascript-reference
   interface Magellan {
     calcPoints(): void;
     scrollToLoc(location: string): void;
@@ -186,7 +186,7 @@ declare module FoundationSites {
     barOffset?: number;
   }
 
-  // https://get.foundation/sites/docs/offcanvas.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/offcanvas.html#javascript-reference
   interface OffCanvas {
     reveal(isRevealed: boolean): void;
     open(event: Event, trigger: JQuery): void;
@@ -207,7 +207,7 @@ declare module FoundationSites {
     trapFocus?: boolean;
   }
 
-  // https://get.foundation/sites/docs/orbit.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/orbit.html#javascript-reference
   interface Orbit {
     geoSync(): void;
     changeSlide(isLTR: boolean, chosenSlide?: JQuery, idx?: number): void;
@@ -235,7 +235,7 @@ declare module FoundationSites {
     useMUI?: boolean;
   }
 
-  // https://get.foundation/sites/docs/reveal.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/reveal.html#javascript-reference
   interface Reveal {
     open(): void;
     toggle(): void;
@@ -260,7 +260,7 @@ declare module FoundationSites {
     deepLink?: boolean;
   }
 
-  // https://get.foundation/sites/docs/slider.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/slider.html#javascript-reference
   interface Slider {
     destroy(): void;
   }
@@ -282,7 +282,7 @@ declare module FoundationSites {
     disabledClass?: string;
   }
 
-  // https://get.foundation/sites/docs/sticky.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/sticky.html#javascript-reference
   interface Sticky {
     destroy(): void;
   }
@@ -301,7 +301,7 @@ declare module FoundationSites {
     checkEvery?: number;
   }
 
-  // https://get.foundation/sites/docs/tabs.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/tabs.html#javascript-reference
   interface Tabs {
     selectTab(element: JQuery | string): void;
     destroy(): void;
@@ -315,7 +315,7 @@ declare module FoundationSites {
     panelClass?: string;
   }
 
-  // https://get.foundation/sites/docs/toggler.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/toggler.html#javascript-reference
   interface Toggler {
     toggle(): void;
     destroy(): void;
@@ -325,7 +325,7 @@ declare module FoundationSites {
     animate?: boolean;
   }
 
-  // https://get.foundation/sites/docs/tooltip.html#javascript-reference
+  // http://foundation.zurb.com/sites/docs/tooltip.html#javascript-reference
   interface Tooltip {
     show(): void;
     hide(): void;
