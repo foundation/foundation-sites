@@ -7,8 +7,8 @@
   "esnext": "dist/js/foundation.es6.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
-  "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
-  "homepage": "http://foundation.zurb.com/sites",
+  "author": "Foundation Yetinauts <contact@get.foundation> (https://get.foundation)",
+  "homepage": "https://get.foundation/sites",
   "scripts": {
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript:units && npm run test:bundle",
@@ -119,7 +119,7 @@
   },
   "bugs": {
     "url": "https://github.com/foundation/foundation-sites/issues",
-    "email": "foundation@zurb.com"
+    "email": "contact@get.foundation"
   },
   "keywords": [
     "css",

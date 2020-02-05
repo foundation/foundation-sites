@@ -66,7 +66,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       </div>
       <div class="cell large-6">
         <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
-          <input type="text" placeholder="https://zurb.com or zurb.com" pattern="website">
+          <input type="text" placeholder="https://get.foundation or get.foundation" pattern="website">
         </label>
       </div>
     </div>

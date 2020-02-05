@@ -9,7 +9,7 @@ about: Typo mistakes, gaps or inconsistencies in docs or website
 │           For more information, see the CONTRIBUTING.md document
 │            
 │       ⚠ Only submit documentation issues here. For help or questions to
-│       the community, see the forum: https://foundation.zurb.com/forum
+│       the community, see the forum: https://foundation.discourse.group
 └------------------------------------------------------------------------------>
 
 ## Description
