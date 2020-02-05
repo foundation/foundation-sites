@@ -26,7 +26,7 @@
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",
     "deploy:beta": "gulp deploy:beta --color",
-    "docs:link": "git clone https://github.com/zurb/foundation-docs && npm link ./foundation-docs"
+    "docs:link": "git clone https://github.com/foundation/foundation-docs && npm link ./foundation-docs"
   },
   "peerDependencies": {
     "jquery": ">=2.2.0",
