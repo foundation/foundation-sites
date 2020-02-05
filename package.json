@@ -14,7 +14,7 @@
     "test": "npm run test:sass && npm run test:javascript:units && npm run test:bundle",
     "test:ci": "npm run test:sass && npm run test:javascript:ci",
     "test:sass": "mocha test/sass/test_sass.js --colors",
-    "test:javascript:transpile": "gulp sass:foundation --color && gulp test:transpile-js --color",
+    "test:javascript:transpile": "gulp sass:foundationCSS --color && gulp test:transpile-js --color",
     "test:javascript:units": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html",
     "test:javascript:browserstack": "npm run test:javascript:transpile && browserstack-runner",
     "test:javascript:ci": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html && browserstack-runner",
@@ -48,6 +48,7 @@
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "doiuse": "~4.1.0",
+    "eyeglass": "^2.4.2",
     "foundation-docs": "github:foundation/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
@@ -69,6 +70,7 @@
     "gulp-rsync": "0.0.8",
     "gulp-sass": "^4.0.1",
     "gulp-sass-lint": "^1.3.2",
+    "gulp-shopify-sass": "^0.4.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
@@ -159,5 +161,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }

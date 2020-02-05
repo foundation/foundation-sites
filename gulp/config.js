@@ -24,21 +24,11 @@ module.exports = {
     'docs/assets/js/docs.js'
   ],
 
-  // Sass
-  SASS_DEPS_FILES: [
-    'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
-    'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_contain.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_purge.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_remove.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_replace.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_to-list.scss'
-  ],
-
   SASS_DOC_PATHS: [
     'scss',
     'node_modules/motion-ui/src',
-    'node_modules/foundation-docs/scss'
+    'node_modules/foundation-docs/scss',
+    'node_modules/sassy-lists/stylesheets'
   ],
 
   SASS_LINT_FILES: [
@@ -66,6 +56,7 @@ module.exports = {
   ],
 
   DIST_FILES: [
+    './_build/assets/scss/foundation.scss',
     './_build/assets/css/foundation.css',
     './_build/assets/css/foundation.css.map',
     './_build/assets/css/foundation-float.css',

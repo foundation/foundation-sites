@@ -8,7 +8,7 @@ var rimraf = require('rimraf').sync;
 var CONFIG = require('../config.js');
 
 // Runs unit tests
-gulp.task('test', gulp.series('sass:foundation', 'test:transpile-js', gulp.parallel('watch', 'test:watch')));
+gulp.task('test', gulp.series('sass:foundationCSS', 'test:transpile-js', gulp.parallel('watch', 'test:watch')));
 
 gulp.task('test:watch', function () {
   browser.init({

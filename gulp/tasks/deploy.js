@@ -22,7 +22,7 @@ var NEXT_VERSION;
 gulp.task('deploy', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates'));
 
 gulp.task('deploy:prep', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings'));
-gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:files', 'deploy:dist:bundles'));
+gulp.task('deploy:dist', gulp.series('sass:foundationCSS', 'javascript:foundation', 'deploy:dist:files', 'deploy:dist:bundles'));
 gulp.task('deploy:plugins', gulp.series('deploy:plugins:sources', 'deploy:plugins:sourcemaps'));
 
 gulp.task('deploy:prompt', function(cb) {
@@ -52,11 +52,12 @@ gulp.task('deploy:version', function() {
 
 // Generates compiled CSS and JS files and sourcemaps and puts them in the dist/ folder
 gulp.task('deploy:dist:files', function() {
-  var cssFilter = filter(['**/*.css'], { restore: true });
-  var jsFilter  = filter(['**/*.js'], { restore: true });
+  var scssFilter         = filter(['**/*.scss'], { restore: true });
+  var cssFilter          = filter(['**/*.css'], { restore: true });
+  var jsFilter           = filter(['**/*.js'], { restore: true });
   var cssSourcemapFilter = filter(['**/*.css.map'], { restore: true });
-  var jsSourcemapFilter = filter(['**/*.js.map'], { restore: true });
-  var tsFilter  = filter(['**/*.ts'], { restore: true });
+  var jsSourcemapFilter  = filter(['**/*.js.map'], { restore: true });
+  var tsFilter           = filter(['**/*.ts'], { restore: true });
 
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
@@ -77,6 +78,10 @@ gulp.task('deploy:dist:files', function() {
     // * Create minified-sourcemaps based on standard sourcemaps.
     //   Sourcemaps are initialized before the ".min" renaming to be able retrieve
     //   original sourcemaps from source names.
+    .pipe(scssFilter)
+      .pipe(gulp.dest('./dist/scss'))
+      .pipe(scssFilter.restore)
+
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
       .pipe(sourcemaps.init({ loadMaps: true }))
@@ -212,7 +217,7 @@ gulp.task('deploy:templates', function(done) {
 });
 
 // The Customizer runs this function to generate files it needs
-gulp.task('deploy:custom', gulp.series('sass:foundation', 'javascript:foundation', gulp.parallel(
+gulp.task('deploy:custom', gulp.series('sass:foundationCSS', 'javascript:foundation', gulp.parallel(
   function () {
     return gulp.src('./_build/assets/css/foundation.css')
       .pipe(cleancss({ compatibility: 'ie9' }))

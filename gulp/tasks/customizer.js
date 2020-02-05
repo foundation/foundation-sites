@@ -11,6 +11,7 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
+var eyeglass = require('eyeglass');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
 var zip = require('gulp-zip');
@@ -63,32 +64,18 @@ gulp.task('customizer:loadConfig', function(done) {
   });
 });
 
-// Prepare dependencies
-gulp.task('customizer:prepareSassDeps', function() {
-  return gulp.src([
-      'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
-      'node_modules/@(sassy-lists)/stylesheets/helpers/true',
-      'node_modules/@(sassy-lists)/stylesheets/functions/contain',
-      'node_modules/@(sassy-lists)/stylesheets/functions/purge',
-      'node_modules/@(sassy-lists)/stylesheets/functions/remove',
-      'node_modules/@(sassy-lists)/stylesheets/functions/replace',
-      'node_modules/@(sassy-lists)/stylesheets/functions/to-list'
-    ])
-    .pipe(gulp.dest('_vendor'));
-});
-
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', gulp.series('customizer:loadConfig', 'customizer:prepareSassDeps', function() {
+gulp.task('customizer:sass', gulp.series('customizer:loadConfig', function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
   var stream = createStream('foundation.scss', sassFile);
 
   return stream
-    .pipe(sass({
+    .pipe(sass(eyeglass({
       includePaths: [
         'scss',
         'node_modules/motion-ui/src'
       ]
-    }))
+    })))
     .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cleancss({ compatibility: 'ie9' }))
