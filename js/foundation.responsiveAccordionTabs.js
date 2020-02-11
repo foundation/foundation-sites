@@ -61,7 +61,7 @@ class ResponsiveAccordionTabs extends Plugin{
     this.className = 'ResponsiveAccordionTabs'; // ie9 back compat
     if (!this.$element.attr('id')) {
       this.$element.attr('id',GetYoDigits(6, 'responsiveaccordiontabs'));
-    };
+    }
 
     this._init();
     this._events();
@@ -184,7 +184,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if ($panels.length) fromString = 'tabs';
     if (fromString === toSet) {
       return;
-    };
+    }
 
     var tabsTitle = _this.allOptions.linkClass?_this.allOptions.linkClass:'tabs-title';
     var tabsPanel = _this.allOptions.panelClass?_this.allOptions.panelClass:'tabs-panel';
@@ -196,9 +196,9 @@ class ResponsiveAccordionTabs extends Plugin{
     if (fromString === 'tabs') {
       $panels = $panels.children('.'+tabsPanel).removeClass(tabsPanel).removeAttr('role').removeAttr('aria-hidden').removeAttr('aria-labelledby');
       $panels.children('a').removeAttr('role').removeAttr('aria-controls').removeAttr('aria-selected');
-    }else{
+    } else {
       $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
-    };
+    }
 
     $panels.css({display:'',visibility:''});
     $liHeads.css({display:'',visibility:''});
@@ -209,15 +209,15 @@ class ResponsiveAccordionTabs extends Plugin{
         $liHeads.addClass('accordion-item').attr('data-accordion-item','');
         $liHeadsA.addClass('accordion-title');
       });
-    }else if (toSet === 'tabs'){
+    } else if (toSet === 'tabs') {
       var $tabsContent = $('[data-tabs-content='+_this.$element.attr('id')+']');
       var $placeholder = $('#tabs-placeholder-'+_this.$element.attr('id'));
       if ($placeholder.length) {
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content',_this.$element.attr('id'));
         $placeholder.remove();
-      }else{
+      } else {
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content',_this.$element.attr('id'));
-      };
+      }
       $panels.each(function(key,value){
         var tempValue = $(value).appendTo($tabsContent).addClass(tabsPanel);
         var hash = $liHeadsA.get(key).hash.slice(1);
@@ -225,16 +225,16 @@ class ResponsiveAccordionTabs extends Plugin{
         if (hash !== id) {
           if (hash !== '') {
             $(value).attr('id',hash);
-          }else{
+          } else {
             hash = id;
             $(value).attr('id',hash);
             $($liHeadsA.get(key)).attr('href',$($liHeadsA.get(key)).attr('href').replace('#','')+'#'+hash);
-          };
-        };
+          }
+        }
         var isActive = $($liHeads.get(key)).hasClass('is-active');
         if (isActive) {
           tempValue.addClass('is-active');
-        };
+        }
       });
       $liHeads.addClass(tabsTitle);
     };
@@ -247,7 +247,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Tabs.selectTab
    * @function
    */
-  open(target) {
+  open(_target) {
     if (this.currentRule && typeof this.currentRule.open === 'function') {
       return this.currentRule.open(this.currentPlugin, ...arguments);
     }
@@ -259,7 +259,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.up
    * @function
    */
-  close(target) {
+  close(_target) {
     if (this.currentRule && typeof this.currentRule.close === 'function') {
       return this.currentRule.close(this.currentPlugin, ...arguments);
     }
@@ -271,7 +271,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.toggle
    * @function
    */
-  toggle(target) {
+  toggle(_target) {
     if (this.currentRule && typeof this.currentRule.toggle === 'function') {
       return this.currentRule.toggle(this.currentPlugin, ...arguments);
     }

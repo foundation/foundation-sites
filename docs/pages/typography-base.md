@@ -148,7 +148,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 </div>
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.6.0</small></h3>
+<h3>Foundation for Sites <small>Version 6.6.1</small></h3>
 ```
 
 ---
@@ -324,7 +324,7 @@ Use the `.code-block` component to create a block of code.
 ```
 
 <div class="callout info">
-  <p>It is recommanded to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
+  <p>It is recommended to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
 </div>
 
 ---

@@ -2194,7 +2194,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
 
-var FOUNDATION_VERSION = '6.6.0'; // Global Foundation object
+var FOUNDATION_VERSION = '6.6.1'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -8995,7 +8995,7 @@ function (_Plugin) {
       function finishUp() {
         // Get the current top before the modal is closed and restore the scroll after.
         // TODO: use component properties instead of HTML properties
-        // See https://github.com/zurb/foundation-sites/pull/10786
+        // See https://github.com/foundation/foundation-sites/pull/10786
         var scrollTop = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top"));
 
         if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.reveal:visible').length === 0) {
@@ -12964,15 +12964,15 @@ var MediaQuery = {
 
     if (bpModifier === 'only') {
       return this.only(bpSize);
+    } // At least the breakpoint (included)
+
+
+    if (!bpModifier || bpModifier === 'up') {
+      return this.atLeast(bpSize);
     } // Up to the breakpoint (included)
 
 
     if (bpModifier === 'down') {
-      return this.atLeast(bpSize);
-    } // At leat the breakpoint (included)
-
-
-    if (!bpModifier || bpModifier === 'up') {
       return this.upTo(bpSize);
     }
 

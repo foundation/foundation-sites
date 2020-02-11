@@ -75,7 +75,7 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="cell small-2 text-right">
-    <a href="https://atmospherejs.com/zurb/foundation-sites">
+    <a href="https://atmospherejs.com/foundation/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
     </a>
   </div>
@@ -88,14 +88,14 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="cell small-2 text-right">
-    <a href="https://packagist.org/packages/zurb/foundation">
+    <a href="https://packagist.org/packages/foundation/foundation">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-composer.svg" alt="Composer">
     </a>
   </div>
   <div class="cell small-10">
     <div class="docs-code">
       <code class="bash">
-        php composer.phar require zurb/foundation
+        php composer.phar require foundation/foundation
       </code>
     </div>
   </div>

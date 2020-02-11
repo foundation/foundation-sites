@@ -134,8 +134,8 @@ gulp.task('customizer:zip', function (done) {
   var outputFolder = path.dirname(OUTPUT_DIR);
   var outputFileName = path.basename(OUTPUT_DIR);
 
-  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'css/app.css', 'w')));
-  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'js/app.js', 'w')));
+  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'css/app.css'), 'w'));
+  fs.closeSync(fs.openSync(path.join(OUTPUT_DIR, 'js/app.js'), 'w'));
   fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
   return gulp.src(path.join(OUTPUT_DIR, '/**/*'))

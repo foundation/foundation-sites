@@ -25,7 +25,7 @@ foundation new --framework sites --template basic
 You can manually install the template with:
  ```bash
 # Download the template with Git
-git clone https://github.com/zurb/foundation-sites-template projectname
+git clone https://github.com/foundation/foundation-sites-template projectname
 
 # Move to the project folder, and install dependencies
 cd projectname
@@ -57,7 +57,7 @@ foundation new --framework sites --template zurb
 You can manually install the template with:
 ```bash
 # Download the ZURB template with Git
-git clone https://github.com/zurb/foundation-zurb-template projectname
+git clone https://github.com/foundation/foundation-zurb-template projectname
 
 # Move to the project folder, and install dependencies
 cd projectname
@@ -75,7 +75,7 @@ To override or add to the default styles of the ZURB Template, in your project's
  - Change Sass variables in `_settings.scss`
  - Add custom SCSS and css to new files in the `components` folder then import those files at the bottom of `app.scss`
 
-The `_settings.scss` and `app.scss` files are not changed when upgrading an existing project. As a result, you must manually edit your `_settings.scss` file to incorporate any Sass changes found [in the release notes](https://github.com/zurb/foundation-sites/releases).
+The `_settings.scss` and `app.scss` files are not changed when upgrading an existing project. As a result, you must manually edit your `_settings.scss` file to incorporate any Sass changes found [in the release notes](https://github.com/foundation/foundation-sites/releases).
 
 ### Features
 

@@ -215,7 +215,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://github.com/zurb/foundation-sites/releases/tag/6.3.1">
+      <a target="_blank" href="https://github.com/foundation/foundation-sites/releases/tag/6.3.1">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/docs-631.png" class="" height="" width="" alt="">

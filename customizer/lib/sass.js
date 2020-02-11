@@ -1,8 +1,8 @@
-var empty = require('is-empty-object');
-var format = require('util').format;
-var stripIndent = require('strip-indent');
+const empty = require('is-empty-object');
+const format = require('util').format;
+const stripIndent = require('strip-indent');
 
-var SASS_TEMPLATE = stripIndent(`
+const SASS_TEMPLATE = stripIndent(`
   @charset 'utf-8';
 
   // Variables go here
@@ -28,19 +28,19 @@ var SASS_TEMPLATE = stripIndent(`
  * @returns {String} Formatted Sass file.
  */
 module.exports = function(config, modules, variables) {
-  var variableList = [];
+  const variableList = [];
   var colorList = {};
-  var exportList = ['@include foundation-global-styles;'];
+  const exportList = ['@include foundation-global-styles;'];
 
   if (empty(modules)) {
     modules = Object.keys(config);
   }
 
   // Create variable overrides code
-  for (var i in variables) {
-    var name = i.replace('_', '-');
+  for (let i in variables) {
+    let name = i.replace('_', '-');
     if (name.match(/-color$/)) {
-      var key = name.replace('-color', '');
+      let key = name.replace('-color', '');
       colorList[key] = variables[i];
     }
     else {
@@ -53,8 +53,8 @@ module.exports = function(config, modules, variables) {
   }
 
   // Create module exports with @include
-  for (var i in modules) {
-    var name = modules[i];
+  for (let i in modules) {
+    let name = modules[i];
 
     if (config[name] && config[name].sass) {
       exportList.push(format('@include foundation-%s;', config[name].sass));
@@ -68,7 +68,7 @@ function createPaletteMap(colors) {
   var output = '$foundation-palette: (%s\n);';
   var keys = '';
 
-  for (var i in colors) {
+  for (let i in colors) {
     keys += format('\n  %s: %s,', i, colors[i]);
   }
 

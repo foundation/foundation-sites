@@ -61,7 +61,8 @@ module.exports = {
     'meteor-README.md',
     'package.js',
     'package.json',
-    'scss/foundation.scss'
+    'scss/foundation.scss',
+    'scss/settings/_settings.scss'
   ],
 
   DIST_FILES: [

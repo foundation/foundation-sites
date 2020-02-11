@@ -1,4 +1,4 @@
-# [Foundation for Sites](http://foundation.zurb.com) (v6.6.0)
+# [Foundation for Sites](http://foundation.zurb.com) (v6.6.1)
 
 Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes layout constructs, like a fully customizable, responsive grid, commonly used JavaScript plugins, and full A11Y support.
 
@@ -167,4 +167,4 @@ You will find more info about particular plugins on its docs page here: [http://
 #### Known problems
 
 1. **Conflicts with Meteor events**.
-Solution: Try to always wrap Foundation's DOM nodes into another ones in your Meteor templates. This applies only to nodes on which are initialized Foundation's JS plugins and which are the first nodes in the Meteor templates with attached custom Meteor events. For more details read the last comments here: [#7248](https://github.com/zurb/foundation-sites/issues/7248)
+Solution: Try to always wrap Foundation's DOM nodes into another ones in your Meteor templates. This applies only to nodes on which are initialized Foundation's JS plugins and which are the first nodes in the Meteor templates with attached custom Meteor events. For more details read the last comments here: [#7248](https://github.com/foundation/foundation-sites/issues/7248)

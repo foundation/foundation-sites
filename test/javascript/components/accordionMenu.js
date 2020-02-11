@@ -53,16 +53,15 @@ describe('Accordion Menu', function() {
       // Open it first
       plugin.down($submenu);
 
-      plugin.up($submenu);
-
-      setTimeout(() => {
+      $html.on('up.zf.accordionMenu', function () {
         // Should be hidden
-        $submenu.should.be.hidden;
-        // Should have attributes updated and without active classe
+        $submenu.should.be.hidden; // Should have attributes updated and without active classe
+
         $submenu.should.have.attr('aria-hidden', 'true');
         $submenu.should.not.have.class('is-active');
         done();
-      }, 1);
+      });
+      plugin.up($submenu);
     });
 
     it('toggles attributes of title of the targeted container', function() {

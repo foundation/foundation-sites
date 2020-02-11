@@ -51,15 +51,15 @@ function transitionend($elem){
   var elem = document.createElement('div'),
       end;
 
-  for (var t in transitions){
-    if (typeof elem.style[t] !== 'undefined'){
-      end = transitions[t];
+  for (let transition in transitions){
+    if (typeof elem.style[transition] !== 'undefined'){
+      end = transitions[transition];
     }
   }
-  if(end){
+  if (end) {
     return end;
-  }else{
-    end = setTimeout(function(){
+  } else {
+    setTimeout(function(){
       $elem.triggerHandler('transitionend', [$elem]);
     }, 1);
     return 'transitionend';

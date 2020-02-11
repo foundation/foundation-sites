@@ -322,12 +322,12 @@ var MediaQuery = {
     if (bpModifier === 'only') {
       return this.only(bpSize);
     }
-    // Up to the breakpoint (included)
-    if (bpModifier === 'down') {
+    // At least the breakpoint (included)
+    if (!bpModifier || bpModifier === 'up') {
       return this.atLeast(bpSize);
     }
-    // At leat the breakpoint (included)
-    if (!bpModifier || bpModifier === 'up') {
+    // Up to the breakpoint (included)
+    if (bpModifier === 'down') {
       return this.upTo(bpSize);
     }
 
@@ -470,7 +470,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.0';
+var FOUNDATION_VERSION = '6.6.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -8089,7 +8089,7 @@ class Reveal extends Plugin {
 
       // Get the current top before the modal is closed and restore the scroll after.
       // TODO: use component properties instead of HTML properties
-      // See https://github.com/zurb/foundation-sites/pull/10786
+      // See https://github.com/foundation/foundation-sites/pull/10786
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {
