@@ -3,18 +3,78 @@
     "test_framework": "mocha",
     "exit_with_fail": true,
     "browsers": [
-        "chrome_latest",
-        "chrome_previous",
-        "firefox_latest",
-        "firefox_previous",
-        "safari_latest",
-        "safari_previous",
-        "opera_latest",
-        "opera_previous",
-        "edge_latest",
-        "edge_previous",
-        "ie_11",
-        "ie_10",
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "chrome",
+            "browser_version": "latest"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "chrome",
+            "browser_version": "previous"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "firefox",
+            "browser_version": "latest"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "firefox",
+            "browser_version": "previous"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "safari",
+            "browser_version": "latest"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "safari",
+            "browser_version": "previous"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "opera",
+            "browser_version": "latest"
+        },
+        {
+            "os": "OS X",
+            "os_version": "Mountain Lion",
+            "browser": "opera",
+            "browser_version": "previous"
+        },
+        {
+            "os": "Windows",
+            "os_version": "7",
+            "browser": "edge",
+            "browser_version": "latest"
+        },
+        {
+            "os": "Windows",
+            "os_version": "7",
+            "browser": "edge",
+            "browser_version": "previous"
+        },
+        {
+            "os": "Windows",
+            "os_version": "7",
+            "browser": "ie",
+            "browser_version": "11"
+        },
+        {
+            "os": "Windows",
+            "os_version": "7",
+            "browser": "ie",
+            "browser_version": "10"
+        },
         {
             "os": "ios",
             "os_version": "12.4",
