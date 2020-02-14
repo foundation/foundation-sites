@@ -113,10 +113,12 @@ class DropdownMenu extends Plugin {
             || (_this.options.forceFollow && hasTouch)) {
             return;
           }
+          e.stopImmediatePropagation();
           e.preventDefault();
           _this._hide($elem);
         }
         else {
+          e.stopImmediatePropagation();
           e.preventDefault();
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
