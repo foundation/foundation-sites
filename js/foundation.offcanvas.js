@@ -323,33 +323,8 @@ class OffCanvas extends Plugin {
     return false;
   }
 
-  /**
-   * Tag the element given as context whether it can be scrolled up and down.
-   * Used to allow or prevent it to scroll. See `_stopScrollPropagation`.
-   *
-   * Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
-   * Only really works for y, not sure how to extend to x or if we need to.
-   *
-   * @function
-   * @private
-   */
   _recordScrollable(event) {
-    let elem = this; // called from event handler context with this as elem
-
-     // If the element is scrollable (content overflows), then...
-    if (elem.scrollHeight !== elem.clientHeight) {
-      // If we're at the top, scroll down one pixel to allow scrolling up
-      if (elem.scrollTop === 0) {
-        elem.scrollTop = 1;
-      }
-      // If we're at the bottom, scroll up one pixel to allow scrolling down
-      if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
-        elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
-      }
-    }
-    elem.allowUp = elem.scrollTop > 0;
-    elem.allowDown = elem.scrollTop < (elem.scrollHeight - elem.clientHeight);
-    elem.lastY = event.originalEvent.pageY;
+    this.lastY = event.touches[0].pageY;
   }
 
   /**
@@ -361,27 +336,26 @@ class OffCanvas extends Plugin {
    */
   _stopScrollPropagation(event) {
     let elem = this; // called from event handler context with this as elem
-    let parent; // off-canvas elem if called from inner scrollbox
-    let up = event.pageY < elem.lastY;
-    let down = !up;
-    elem.lastY = event.pageY;
+    const delta = elem.lastY - event.touches[0].pageY;
+    const up = delta < 0;
+    const down = delta > 0;
+    const allowUp = elem.scrollTop > 0;
+    const allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
+    elem.lastY = event.touches[0].pageY;
 
-    if((up && elem.allowUp) || (down && elem.allowDown)) {
+    if (up && allowUp || down && allowDown) {
       // It is not recommended to stop event propagation (the user cannot watch it),
       // but in this case this is the only solution we have.
       event.stopPropagation();
-
+    } else if (elem.hasAttribute('data-off-canvas-scrollbox')) {
       // If elem is inner scrollbox we are scrolling the outer off-canvas down/up once the box end has been reached
       // This lets the user continue to touch move the off-canvas without the need to place the finger outside the scrollbox
-      if (elem.hasAttribute('data-off-canvas-scrollbox')) {
-        parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
-        if (elem.scrollTop <= 1 && parent.scrollTop > 0) {
-          parent.scrollTop--;
-        } else if (elem.scrollTop >= elem.scrollHeight - elem.clientHeight - 1 && parent.scrollTop < parent.scrollHeight - parent.clientHeight) {
-          parent.scrollTop++;
-        }
+      const parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
+      const allowParentScrollUp = parent.scrollTop > 0;
+      const allowParentScrollDown = parent.scrollTop < parent.scrollHeight - parent.clientHeight;
+      if (up && allowParentScrollUp || down && allowParentScrollDown) {
+        parent.scrollTop += delta;
       }
-
     } else {
       event.preventDefault();
     }
