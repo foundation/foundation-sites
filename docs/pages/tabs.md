@@ -82,7 +82,7 @@ Put it all together, and we get this:
 
 ## Vertical Tabs
 
-Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also place the tabstrip and the tab contents in a grid to make them sit side-by-side.
+Add the `.vertical` class to a tabstrip and tab contents to stack tabs vertically. You can also remove the `.grid-margin-x` class from the wrapping div to make them sit side-by-side.
 
 <p>
   <a class="" data-open-video="3:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -94,7 +94,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
 
 ```html_example
 <div class="grid-container">
-  <div class="grid-x grid-margin-x">
+  <div class="grid-x">
     <div class="cell medium-3">
       <ul class="vertical tabs" data-tabs id="example-tabs">
         <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
@@ -106,7 +106,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
       </ul>
     </div>
     <div class="cell medium-9">
-      <div class="tabs-content" data-tabs-content="example-tabs">
+      <div class="tabs-content vertical" data-tabs-content="example-tabs">
         <div class="tabs-panel is-active" id="panel1v">
           <p>One</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
