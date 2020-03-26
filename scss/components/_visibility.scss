@@ -70,6 +70,10 @@
     visibility: hidden;
   }
 
+  .visible {
+    visibility: visible !important;
+  }
+
   // Responsive visibility classes
   @each $size in $breakpoint-classes {
     @if $size != $-zf-zero-breakpoint {
