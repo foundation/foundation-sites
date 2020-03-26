@@ -38,8 +38,6 @@ class Drilldown extends Plugin {
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'previous',
       'ESCAPE': 'close',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
     });
   }
 
@@ -243,16 +241,6 @@ class Drilldown extends Plugin {
             }, 1);
           });
           return true;
-        },
-        up: function() {
-          $prevElement.focus();
-          // Don't tap focus on first element in root ul
-          return !$element.is(_this.$element.find('> li:first-child > a'));
-        },
-        down: function() {
-          $nextElement.focus();
-          // Don't tap focus on last element in root ul
-          return !$element.is(_this.$element.find('> li:last-child > a'));
         },
         close: function() {
           // Don't close on element in root ul
