@@ -3,8 +3,8 @@ title: Panini
 description: A flat file compiler that powers our prototyping template. Create pages with consistent layouts and reusable partials with ease.
 video: 't_ekdBMj4cc'
 library:
-  github: https://github.com/zurb/panini
-  docs: https://github.com/zurb/panini
+  github: https://github.com/foundation/panini
+  docs: https://github.com/foundation/panini
 ---
 
 {{{{raw}}}}
@@ -13,7 +13,7 @@ If you've ever created a static site, maybe you had five pages that all shared t
 
 Panini is a flat file compiler that uses the concepts of templates, pages, and partials&mdash;powered by the [Handlebars](https://handlebarsjs.com/) templating language&mdash;to streamline the process of creating static prototypes.
 
-Our [prototyping template](starter-projects.html) uses Panini, along with a host of other tools for processing Sass, JavaScript, and images, to make creating static prototypes easy. It's already been configured to utilize all of the features below, but if you want to learn the specifics of how to configure the library, head over to the [Panini GitHub page](https://github.com/zurb/panini).
+Our [prototyping template](starter-projects.html) uses Panini, along with a host of other tools for processing Sass, JavaScript, and images, to make creating static prototypes easy. It's already been configured to utilize all of the features below, but if you want to learn the specifics of how to configure the library, head over to the [Panini GitHub page](https://github.com/foundation/panini).
 
 ---
 

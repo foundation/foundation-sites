@@ -1,8 +1,5 @@
 'use strict';
 
-
-import { rtl as Rtl } from "./foundation.core.utils";
-
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   OverlapArea: OverlapArea,
@@ -22,7 +19,7 @@ var Box = {
  */
 function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
   return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
-};
+}
 
 function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
   var eleDims = GetDimensions(element),
@@ -124,8 +121,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 
       var topVal, leftVal;
 
+  if ($anchorDims !== null) {
   // set position related attribute
-
   switch (position) {
     case 'top':
       topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
@@ -140,7 +137,6 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
       break;
   }
-
 
   // set alignment related attribute
   switch (position) {
@@ -173,6 +169,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       }
       break;
   }
+  }
+
   return {top: topVal, left: leftVal};
 }
 

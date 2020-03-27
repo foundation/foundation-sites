@@ -211,16 +211,16 @@ function transitionend($elem) {
   var elem = document.createElement('div'),
       end;
 
-  for (var t in transitions) {
-    if (typeof elem.style[t] !== 'undefined') {
-      end = transitions[t];
+  for (var transition in transitions) {
+    if (typeof elem.style[transition] !== 'undefined') {
+      end = transitions[transition];
     }
   }
 
   if (end) {
     return end;
   } else {
-    end = setTimeout(function () {
+    setTimeout(function () {
       $elem.triggerHandler('transitionend', [$elem]);
     }, 1);
     return 'transitionend';
@@ -635,7 +635,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.1'; // Global Foundation object
+var FOUNDATION_VERSION = '6.6.2'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -800,8 +800,8 @@ var Foundation = {
         };
 
         if ($el.attr('data-options')) {
-          var thing = $el.attr('data-options').split(';').forEach(function (e, i) {
-            var opt = e.split(':').map(function (el) {
+          $el.attr('data-options').split(';').forEach(function (option, _index) {
+            var opt = option.split(':').map(function (el) {
               return el.trim();
             });
             if (opt[0]) opts[opt[0]] = parseValue(opt[1]);
@@ -1110,63 +1110,66 @@ function GetDimensions(elem) {
 function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffset, isOverflow) {
   var $eleDims = GetDimensions(element),
       $anchorDims = anchor ? GetDimensions(anchor) : null;
-  var topVal, leftVal; // set position related attribute
+  var topVal, leftVal;
 
-  switch (position) {
-    case 'top':
-      topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
-      break;
+  if ($anchorDims !== null) {
+    // set position related attribute
+    switch (position) {
+      case 'top':
+        topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
+        break;
 
-    case 'bottom':
-      topVal = $anchorDims.offset.top + $anchorDims.height + vOffset;
-      break;
+      case 'bottom':
+        topVal = $anchorDims.offset.top + $anchorDims.height + vOffset;
+        break;
 
-    case 'left':
-      leftVal = $anchorDims.offset.left - ($eleDims.width + hOffset);
-      break;
+      case 'left':
+        leftVal = $anchorDims.offset.left - ($eleDims.width + hOffset);
+        break;
 
-    case 'right':
-      leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
-      break;
-  } // set alignment related attribute
+      case 'right':
+        leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
+        break;
+    } // set alignment related attribute
 
 
-  switch (position) {
-    case 'top':
-    case 'bottom':
-      switch (alignment) {
-        case 'left':
-          leftVal = $anchorDims.offset.left + hOffset;
-          break;
+    switch (position) {
+      case 'top':
+      case 'bottom':
+        switch (alignment) {
+          case 'left':
+            leftVal = $anchorDims.offset.left + hOffset;
+            break;
 
-        case 'right':
-          leftVal = $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset;
-          break;
+          case 'right':
+            leftVal = $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset;
+            break;
 
-        case 'center':
-          leftVal = isOverflow ? hOffset : $anchorDims.offset.left + $anchorDims.width / 2 - $eleDims.width / 2 + hOffset;
-          break;
-      }
+          case 'center':
+            leftVal = isOverflow ? hOffset : $anchorDims.offset.left + $anchorDims.width / 2 - $eleDims.width / 2 + hOffset;
+            break;
+        }
 
-      break;
+        break;
 
-    case 'right':
-    case 'left':
-      switch (alignment) {
-        case 'bottom':
-          topVal = $anchorDims.offset.top - vOffset + $anchorDims.height - $eleDims.height;
-          break;
+      case 'right':
+      case 'left':
+        switch (alignment) {
+          case 'bottom':
+            topVal = $anchorDims.offset.top - vOffset + $anchorDims.height - $eleDims.height;
+            break;
 
-        case 'top':
-          topVal = $anchorDims.offset.top + vOffset;
-          break;
+          case 'top':
+            topVal = $anchorDims.offset.top + vOffset;
+            break;
 
-        case 'center':
-          topVal = $anchorDims.offset.top + vOffset + $anchorDims.height / 2 - $eleDims.height / 2;
-          break;
-      }
+          case 'center':
+            topVal = $anchorDims.offset.top + vOffset + $anchorDims.height / 2 - $eleDims.height / 2;
+            break;
+        }
 
-      break;
+        break;
+    }
   }
 
   return {
@@ -1444,6 +1447,10 @@ function animate(isIn, element, animation, cb) {
   }); // Start the animation
 
   requestAnimationFrame(function () {
+    // will trigger the browser to synchronously calculate the style and layout
+    // also called reflow or layout thrashing
+    // see https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+    element[0].offsetWidth;
     element.css('transition', '').addClass(activeClass);
   }); // Clean up the animation when it finishes
 
@@ -1466,8 +1473,11 @@ var Nest = {
   Feather: function Feather(menu) {
     var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'zf';
     menu.attr('role', 'menubar');
-    var items = menu.find('li').attr({
+    menu.find('a').attr({
       'role': 'menuitem'
+    });
+    var items = menu.find('li').attr({
+      'role': 'none'
     }),
         subMenuClass = "is-".concat(type, "-submenu"),
         subItemClass = "".concat(subMenuClass, "-item"),
@@ -2071,11 +2081,7 @@ function hyphenate$1(str) {
 }
 
 function getPluginName(obj) {
-  if (typeof obj.constructor.name !== 'undefined') {
-    return hyphenate$1(obj.constructor.name);
-  } else {
-    return hyphenate$1(obj.className);
-  }
+  return hyphenate$1(obj.className);
 }
 
 /**
@@ -2210,10 +2216,10 @@ function (_Plugin) {
       } else if (typeof this.formnovalidate === 'boolean') {
         // triggered by $submit
         return this.formnovalidate;
-      } else {
-        // triggered by Enter in non-submit input
-        return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
-      }
+      } // triggered by Enter in non-submit input
+
+
+      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
     }
     /**
      * Enables the whole validation
@@ -2273,12 +2279,15 @@ function (_Plugin) {
      * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
      *
      * @param {Object} $el - jQuery object to use as reference to find the form error selector.
+     * @param {String[]} [failedValidators] - List of failed validators.
      * @returns {Object} jQuery object with the selector.
      */
 
   }, {
     key: "findFormError",
-    value: function findFormError($el) {
+    value: function findFormError($el, failedValidators) {
+      var _this4 = this;
+
       var id = $el.length ? $el[0].id : '';
       var $error = $el.siblings(this.options.formErrorSelector);
 
@@ -2288,6 +2297,14 @@ function (_Plugin) {
 
       if (id) {
         $error = $error.add(this.$element.find("[data-form-error-for=\"".concat(id, "\"]")));
+      }
+
+      if (!!failedValidators) {
+        $error = $error.not('[data-form-error-on]');
+        failedValidators.forEach(function (v) {
+          $error = $error.add($el.siblings("[data-form-error-on=\"".concat(v, "\"]")));
+          $error = $error.add(_this4.$element.find("[data-form-error-for=\"".concat(id, "\"][data-form-error-on=\"").concat(v, "\"]")));
+        });
       }
 
       return $error;
@@ -2325,12 +2342,12 @@ function (_Plugin) {
   }, {
     key: "findRadioLabels",
     value: function findRadioLabels($els) {
-      var _this4 = this;
+      var _this5 = this;
 
       var labels = $els.map(function (i, el) {
         var id = el.id;
 
-        var $label = _this4.$element.find("label[for=\"".concat(id, "\"]"));
+        var $label = _this5.$element.find("label[for=\"".concat(id, "\"]"));
 
         if (!$label.length) {
           $label = $(el).closest('label');
@@ -2352,12 +2369,12 @@ function (_Plugin) {
   }, {
     key: "findCheckboxLabels",
     value: function findCheckboxLabels($els) {
-      var _this5 = this;
+      var _this6 = this;
 
       var labels = $els.map(function (i, el) {
         var id = el.id;
 
-        var $label = _this5.$element.find("label[for=\"".concat(id, "\"]"));
+        var $label = _this6.$element.find("label[for=\"".concat(id, "\"]"));
 
         if (!$label.length) {
           $label = $(el).closest('label');
@@ -2370,13 +2387,14 @@ function (_Plugin) {
     /**
      * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
      * @param {Object} $el - jQuery object to add the class to
+     * @param {String[]} [failedValidators] - List of failed validators.
      */
 
   }, {
     key: "addErrorClasses",
-    value: function addErrorClasses($el) {
+    value: function addErrorClasses($el, failedValidators) {
       var $label = this.findLabel($el);
-      var $formError = this.findFormError($el);
+      var $formError = this.findFormError($el, failedValidators);
 
       if ($label.length) {
         $label.addClass(this.options.labelErrorClass);
@@ -2413,6 +2431,7 @@ function (_Plugin) {
           errorId = GetYoDigits(6, 'abide-error');
           $error.attr('id', errorId);
         }
+
         $el.attr('aria-describedby', errorId);
       }
 
@@ -2423,7 +2442,8 @@ function (_Plugin) {
         if (typeof elemId === 'undefined') {
           elemId = GetYoDigits(6, 'abide-input');
           $el.attr('id', elemId);
-        }
+        } // For each label targeting $el, set [for] if it is not set.
+
 
         $labels.each(function (i, label) {
           var $label = $(label);
@@ -2543,11 +2563,12 @@ function (_Plugin) {
   }, {
     key: "validateInput",
     value: function validateInput($el) {
+      var _this7 = this;
+
       var clearRequire = this.requiredCheck($el),
-          validated = false,
-          customValidator = true,
           validator = $el.attr('data-validator'),
-          equalTo = true; // skip validation if disabled
+          failedValidators = [],
+          manageErrorClasses = true; // skip validation if disabled
 
       if (this._validationIsDisabled()) {
         return true;
@@ -2560,33 +2581,38 @@ function (_Plugin) {
 
       switch ($el[0].type) {
         case 'radio':
-          validated = this.validateRadio($el.attr('name'));
+          this.validateRadio($el.attr('name')) || failedValidators.push('required');
           break;
 
         case 'checkbox':
-          validated = this.validateCheckbox($el.attr('name'));
-          clearRequire = true;
+          this.validateCheckbox($el.attr('name')) || failedValidators.push('required'); // validateCheckbox() adds/removes error classes
+
+          manageErrorClasses = false;
           break;
 
         case 'select':
         case 'select-one':
         case 'select-multiple':
-          validated = clearRequire;
+          clearRequire || failedValidators.push('required');
           break;
 
         default:
-          validated = this.validateText($el);
+          clearRequire || failedValidators.push('required');
+          this.validateText($el) || failedValidators.push('pattern');
       }
 
       if (validator) {
-        customValidator = this.matchValidation($el, validator, $el.attr('required'));
+        var required = $el.attr('required') ? true : false;
+        validator.split(' ').forEach(function (v) {
+          _this7.options.validators[v]($el, required, $el.parent()) || failedValidators.push(v);
+        });
       }
 
       if ($el.attr('data-equalto')) {
-        equalTo = this.options.validators.equalTo($el);
+        this.options.validators.equalTo($el) || failedValidators.push('equalTo');
       }
 
-      var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
+      var goodToGo = failedValidators.length === 0;
       var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
       if (goodToGo) {
@@ -2604,13 +2630,20 @@ function (_Plugin) {
         }
       }
 
-      this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
+      if (manageErrorClasses) {
+        this.removeErrorClasses($el);
+
+        if (!goodToGo) {
+          this.addErrorClasses($el, failedValidators);
+        }
+      }
       /**
        * Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`
        * Trigger includes the DOM element of the input.
        * @event Abide#valid
        * @event Abide#invalid
        */
+
 
       $el.trigger(message, [$el]);
       return goodToGo;
@@ -2625,7 +2658,7 @@ function (_Plugin) {
   }, {
     key: "validateForm",
     value: function validateForm() {
-      var _this6 = this;
+      var _this8 = this;
 
       var acc = [];
 
@@ -2656,7 +2689,7 @@ function (_Plugin) {
       this.$element.find('[data-abide-error]').each(function (i, elem) {
         var $elem = $(elem); // Ensure a11y attributes are set
 
-        if (_this6.options.a11yAttributes) _this6.addGlobalErrorA11yAttributes($elem); // Show or hide the error
+        if (_this8.options.a11yAttributes) _this8.addGlobalErrorA11yAttributes($elem); // Show or hide the error
 
         $elem.css('display', noError ? 'none' : 'block');
       });
@@ -2683,7 +2716,7 @@ function (_Plugin) {
       // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
       pattern = pattern || $el.attr('data-pattern') || $el.attr('pattern') || $el.attr('type');
       var inputText = $el.val();
-      var valid = false;
+      var valid = true;
 
       if (inputText.length) {
         // If the pattern attribute on the element is in Abide's list of patterns, then test that regexp
@@ -2692,13 +2725,8 @@ function (_Plugin) {
         } // If the pattern name isn't also the type attribute of the field, then test it as a regexp
         else if (pattern !== $el.attr('type')) {
             valid = new RegExp(pattern).test(inputText);
-          } else {
-            valid = true;
           }
-      } // An empty field is valid if it's not required
-      else if (!$el.prop('required')) {
-          valid = true;
-        }
+      }
 
       return valid;
     }
@@ -2732,6 +2760,7 @@ function (_Plugin) {
           }
         });
       }
+
       return valid;
     }
     /**
@@ -2743,7 +2772,7 @@ function (_Plugin) {
   }, {
     key: "validateCheckbox",
     value: function validateCheckbox(groupName) {
-      var _this7 = this;
+      var _this9 = this;
 
       // If at least one checkbox in the group has the `required` attribute, the group is considered required
       // Per W3C spec, all checkboxes in a group should have `required`, but we're being nice
@@ -2776,7 +2805,8 @@ function (_Plugin) {
         if (checked >= minRequired) {
           valid = true;
         }
-      }
+      } // Skip validation if more than 1 checkbox have to be checked AND if the form hasn't got submitted yet (otherwise it will already show an error during the first fill in)
+
 
       if (this.initialized !== true && minRequired > 1) {
         return true;
@@ -2785,9 +2815,9 @@ function (_Plugin) {
 
       $group.each(function (i, e) {
         if (!valid) {
-          _this7.addErrorClasses($(e));
+          _this9.addErrorClasses($(e), ['required']);
         } else {
-          _this7.removeErrorClasses($(e));
+          _this9.removeErrorClasses($(e));
         }
       });
       return valid;
@@ -2803,11 +2833,11 @@ function (_Plugin) {
   }, {
     key: "matchValidation",
     value: function matchValidation($el, validators, required) {
-      var _this8 = this;
+      var _this10 = this;
 
       required = required ? true : false;
       var clear = validators.split(' ').map(function (v) {
-        return _this8.options.validators[v]($el, required, $el.parent());
+        return _this10.options.validators[v]($el, required, $el.parent());
       });
       return clear.indexOf(false) === -1;
     }
@@ -3118,7 +3148,7 @@ function (_Plugin) {
               var offset = _this2.$element.offset();
 
               $('html, body').animate({
-                scrollTop: offset.top
+                scrollTop: offset.top - _this2.options.deepLinkSmudgeOffset
               }, _this2.options.deepLinkSmudgeDelay);
             });
           }
@@ -3306,7 +3336,7 @@ function (_Plugin) {
         'aria-expanded': true,
         'aria-selected': true
       });
-      $target.slideDown(this.options.slideSpeed, function () {
+      $target.stop().slideDown(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done opening.
          * @event Accordion#down
@@ -3335,7 +3365,7 @@ function (_Plugin) {
         'aria-expanded': false,
         'aria-selected': false
       });
-      $target.slideUp(this.options.slideSpeed, function () {
+      $target.stop().slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done collapsing up.
          * @event Accordion#up
@@ -3429,6 +3459,14 @@ Accordion.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
+
+  /**
+   * If `deepLinkSmudge` is enabled, the offset for scrollToTtop to prevent overlap by a sticky element at the top of the page
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
 
   /**
    * If `deepLink` is enabled, update the browser history with the open accordion
@@ -3540,8 +3578,6 @@ function (_Plugin) {
       var initPanes = this.$element.find('.is-active');
 
       if (initPanes.length) {
-        var _this = this;
-
         initPanes.each(function () {
           _this.down($(this));
         });
@@ -3932,7 +3968,7 @@ function (_Plugin) {
         var $sub = $link.parent();
 
         if (_this.options.parentLink) {
-          $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menuitem"></li>');
+          $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="none"></li>');
         }
 
         $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
@@ -4884,6 +4920,7 @@ function (_Positionable) {
         if (typeof this.$currentAnchor.attr('id') === 'undefined') {
           this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
         }
+
         this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
       }
 
@@ -4971,12 +5008,10 @@ function (_Positionable) {
       this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function (e) {
         _this._setCurrentAnchor(this);
 
-        if (_this.options.forceFollow === false) {
-          // if forceFollow false, always prevent default action
-          e.preventDefault();
-        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
-          // if forceFollow true and hover option true, only prevent default action on 1st click
-          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+        if ( // if forceFollow false, always prevent default action
+        _this.options.forceFollow === false || // if forceFollow true and hover option true, only prevent default action on 1st click
+        // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+        hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
           e.preventDefault();
         }
       });
@@ -5355,8 +5390,8 @@ function (_Plugin) {
       Nest.Feather(this.$element, 'dropdown');
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
-      this.$menuItems = this.$element.find('[role="menuitem"]');
-      this.$tabs = this.$element.children('[role="menuitem"]');
+      this.$menuItems = this.$element.find('li[role="none"]');
+      this.$tabs = this.$element.children('li[role="none"]');
       this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
       if (this.options.alignment === 'auto') {
@@ -5415,10 +5450,12 @@ function (_Plugin) {
               return;
             }
 
+            e.stopImmediatePropagation();
             e.preventDefault();
 
             _this._hide($elem);
           } else {
+            e.stopImmediatePropagation();
             e.preventDefault();
 
             _this._show($sub);
@@ -5455,7 +5492,7 @@ function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownmenu', ignoreMousedisappear(function (e) {
+        }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
           var $elem = $(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -5473,7 +5510,7 @@ function (_Plugin) {
       }
 
       this.$menuItems.on('keydown.zf.dropdownMenu', function (e) {
-        var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
+        var $element = $(e.target).parentsUntil('ul', '[role="none"]'),
             isTab = _this.$tabs.index($element) > -1,
             $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
             $prevElement,
@@ -6257,6 +6294,9 @@ function (_Plugin) {
       this.rules = [];
       this.currentPath = '';
       this.className = 'Interchange'; // ie9 back compat
+      // Triggers init is idempotent, just need to make sure it is initialized
+
+      Triggers.init($);
 
       this._init();
 
@@ -6751,12 +6791,7 @@ function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this,
-          $body = $('html, body'),
-          opts = {
-        duration: _this.options.animationDuration,
-        easing: _this.options.animationEasing
-      };
+      var _this = this;
 
       $(window).one('load', function () {
         if (_this.options.deepLinking) {
@@ -9205,7 +9240,7 @@ function (_Plugin) {
       function finishUp() {
         // Get the current top before the modal is closed and restore the scroll after.
         // TODO: use component properties instead of HTML properties
-        // See https://github.com/zurb/foundation-sites/pull/10786
+        // See https://github.com/foundation/foundation-sites/pull/10786
         var scrollTop = parseInt($("html").css("top"));
 
         if ($('.reveal:visible').length === 0) {
@@ -9526,7 +9561,8 @@ function (_Plugin) {
 
         if (!this.inputs[1]) {
           this.inputs = this.inputs.add(this.$input2);
-        }
+        } // this.$handle.triggerHandler('click.zf.slider');
+
 
         this._setInitAttr(1);
       } // Set handle positions
@@ -9830,7 +9866,6 @@ function (_Plugin) {
             param = vertical ? 'height' : 'width',
             direction = vertical ? 'top' : 'left',
             eventOffset = vertical ? e.pageY : e.pageX,
-            halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
             barDim = this.$element[0].getBoundingClientRect()[param],
             windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
 
@@ -11645,16 +11680,14 @@ function (_Positionable) {
     key: "_getDefaultPosition",
     value: function _getDefaultPosition() {
       // handle legacy classnames
-      var position = this.$element[0].className.match(/\b(top|left|right|bottom)\b/g);
       var elementClassName = this.$element[0].className;
 
       if (this.$element[0] instanceof SVGElement) {
         elementClassName = elementClassName.baseVal;
       }
 
+      var position = elementClassName.match(/\b(top|left|right|bottom)\b/g);
       return position ? position[0] : 'top';
-      var position = elementClassName.match(/\b(top|left|right)\b/g);
-      position = position ? position[0] : 'tp';
     }
   }, {
     key: "_getDefaultAlignment",
@@ -12279,6 +12312,7 @@ function (_Plugin) {
       if (fromString === toSet) {
         return;
       }
+
       var tabsTitle = _this.allOptions.linkClass ? _this.allOptions.linkClass : 'tabs-title';
       var tabsPanel = _this.allOptions.panelClass ? _this.allOptions.panelClass : 'tabs-panel';
       this.$element.removeAttr('role');
@@ -12291,6 +12325,7 @@ function (_Plugin) {
       } else {
         $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
       }
+
       $panels.css({
         display: '',
         visibility: ''
@@ -12319,6 +12354,7 @@ function (_Plugin) {
         } else {
           $tabsContent = $('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
         }
+
         $panels.each(function (key, value) {
           var tempValue = $(value).appendTo($tabsContent).addClass(tabsPanel);
           var hash = $liHeadsA.get(key).hash.slice(1);
@@ -12333,6 +12369,7 @@ function (_Plugin) {
               $($liHeadsA.get(key)).attr('href', $($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
             }
           }
+
           var isActive = $($liHeads.get(key)).hasClass('is-active');
 
           if (isActive) {
@@ -12352,7 +12389,7 @@ function (_Plugin) {
 
   }, {
     key: "open",
-    value: function open(target) {
+    value: function open(_target) {
       if (this.currentRule && typeof this.currentRule.open === 'function') {
         var _this$currentRule;
 
@@ -12368,7 +12405,7 @@ function (_Plugin) {
 
   }, {
     key: "close",
-    value: function close(target) {
+    value: function close(_target) {
       if (this.currentRule && typeof this.currentRule.close === 'function') {
         var _this$currentRule2;
 
@@ -12384,7 +12421,7 @@ function (_Plugin) {
 
   }, {
     key: "toggle",
-    value: function toggle(target) {
+    value: function toggle(_target) {
       if (this.currentRule && typeof this.currentRule.toggle === 'function') {
         var _this$currentRule3;
 

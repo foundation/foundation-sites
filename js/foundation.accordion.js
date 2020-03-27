@@ -44,7 +44,7 @@ class Accordion extends Plugin {
 
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
-    
+
     this.$tabs.attr({'role': 'presentation'});
 
     this.$tabs.each(function(idx, el) {
@@ -91,7 +91,7 @@ class Accordion extends Plugin {
         if ($anchor && $link && $link.length) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
             this._openSingleTab($anchor);
-          };
+          }
         }
         // Otherwise, close everything
         else {
@@ -102,7 +102,7 @@ class Accordion extends Plugin {
         if (this.options.deepLinkSmudge) {
           onLoad($(window), () => {
             var offset = this.$element.offset();
-            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+            $('html, body').animate({ scrollTop: offset.top - this.options.deepLinkSmudgeOffset }, this.options.deepLinkSmudgeDelay);
           });
         }
 
@@ -139,7 +139,7 @@ class Accordion extends Plugin {
                .on('click.zf.accordion', function(e) {
           e.preventDefault();
           _this.toggle($tabContent);
-        }).on('keydown.zf.accordion', function(e){
+        }).on('keydown.zf.accordion', function(e) {
           Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
               _this.toggle($tabContent);
@@ -163,7 +163,7 @@ class Accordion extends Plugin {
         });
       }
     });
-    if(this.options.deepLink) {
+    if (this.options.deepLink) {
       $(window).on('hashchange', this._checkDeepLink);
     }
   }
@@ -178,7 +178,7 @@ class Accordion extends Plugin {
       console.info('Cannot toggle an accordion that is disabled.');
       return;
     }
-    if($target.parent().hasClass('is-active')) {
+    if ($target.parent().hasClass('is-active')) {
       this.up($target);
     } else {
       this.down($target);
@@ -274,7 +274,7 @@ class Accordion extends Plugin {
       'aria-selected': true
     });
 
-    $target.slideDown(this.options.slideSpeed, () => {
+    $target.stop().slideDown(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done opening.
        * @event Accordion#down
@@ -302,7 +302,7 @@ class Accordion extends Plugin {
      'aria-selected': false
     });
 
-    $target.slideUp(this.options.slideSpeed, () => {
+    $target.stop().slideUp(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done collapsing up.
        * @event Accordion#up
@@ -332,7 +332,7 @@ class Accordion extends Plugin {
   _destroy() {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
-    if(this.options.deepLink) {
+    if (this.options.deepLink) {
       $(window).off('hashchange', this._checkDeepLink);
     }
 
@@ -384,6 +384,13 @@ Accordion.defaults = {
    */
   deepLinkSmudgeDelay: 300,
   /**
+   * If `deepLinkSmudge` is enabled, the offset for scrollToTtop to prevent overlap by a sticky element at the top of the page
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
+  /**
    * If `deepLink` is enabled, update the browser history with the open accordion
    * @option
    * @type {boolean}
@@ -392,4 +399,4 @@ Accordion.defaults = {
   updateHistory: false
 };
 
-export {Accordion};
+export { Accordion };

@@ -1,8 +1,8 @@
 {
   "name": "foundation-sites",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "description": "The most advanced responsive front-end framework in the world.",
-  "homepage": "http://foundation.zurb.com/sites",
+  "homepage": "https://get.foundation/sites",
   "license": "MIT",
   "keywords": [
     "css",
@@ -15,7 +15,7 @@
     "eyeglass-module"
   ],
   "authors": [
-    "ZURB <foundation@zurb.com> (http://foundation.zurb.com)"
+    "Foundation Yetinauts <contact@get.foundation> (https://get.foundation)"
   ],
   "main": [
     "scss/foundation.scss",
@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zurb/foundation-sites"
+    "url": "https://github.com/foundation/foundation-sites"
   },
  "dependencies": {
    "jquery": ">=2.2.0",
@@ -42,7 +42,6 @@
     ".editorconfig",
     ".eslintrc",
     ".huskyrc.yml",
-    ".jshintrc",
     ".sass-lint.yml",
     ".travis.yml",
     ".versions",
@@ -51,7 +50,6 @@
     "code-of-conduct.md",
     "composer.json",
     "CONTRIBUTING.md",
-    "docslink.sh",
     "gulpfile.js",
     "meteor-README.md",
     "package.js",

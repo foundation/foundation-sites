@@ -15,6 +15,7 @@ node_js:
 env:
   global:
     - YARN_GPG=no
+    - SNYK_TOKEN=18718bf9-b4b2-463f-b727-e9eb06e336bf
   matrix:
     - ZF_TRAVIS_COMMAND=test
 

@@ -73,8 +73,7 @@ class Slider extends Plugin {
     this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
-    var isDbl = false,
-        _this = this;
+    var _this = this;
     if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
       this.options.disabled = true;
       this.$element.addClass(this.options.disabledClass);
@@ -94,7 +93,6 @@ class Slider extends Plugin {
       if (!this.inputs[1]) {
         this.inputs = this.inputs.add(this.$input2);
       }
-      isDbl = true;
 
       // this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
@@ -366,10 +364,8 @@ class Slider extends Plugin {
           param = vertical ? 'height' : 'width',
           direction = vertical ? 'top' : 'left',
           eventOffset = vertical ? e.pageY : e.pageX,
-          halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
           windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
-
 
       var elemOffset = this.$element.offset()[direction];
 
@@ -463,8 +459,7 @@ class Slider extends Plugin {
    */
   _eventsForHandle($handle) {
     var _this = this,
-        curHandle,
-        timer;
+        curHandle;
 
       const handleChangeEvent = function(e) {
         const idx = _this.inputs.index($(this));

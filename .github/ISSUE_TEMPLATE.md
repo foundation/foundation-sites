@@ -3,7 +3,7 @@
 │           For more information, see the CONTRIBUTING.md document
 │            
 │       ⚠ Only submit bug or feature requests here. For help or questions
-│       to the community, see the forum: https://foundation.zurb.com/forum
+│       to the community, see the forum: https://foundation.discourse.group
 └------------------------------------------------------------------------------>
 
 ## Expected Behavior

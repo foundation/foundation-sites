@@ -66,7 +66,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       </div>
       <div class="cell large-6">
         <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
-          <input type="text" placeholder="https://zurb.com or zurb.com" pattern="website">
+          <input type="text" placeholder="https://get.foundation or get.foundation" pattern="website">
         </label>
       </div>
     </div>
@@ -168,6 +168,28 @@ When the Form Errors cannot be placed next to its field, like in an Input Group,
 </form>
 ```
 
+You can specify validator-specific error messages using `[data-form-error-on]`
+attribute, for example:
+
+- `data-form-error-on="required"`
+- `data-form-error-on="pattern"`
+- `data-form-error-on="equalTo"`
+- `data-form-error-on="your_custom_validator"`
+
+```html_example
+<form data-abide novalidate>
+  <label>Email Required
+    <input type="text" required pattern="email">
+    <span class="form-error" data-form-error-on="required">
+      Yo, you had better fill this out, it's required.
+    </span>
+    <span class="form-error" data-form-error-on="pattern">
+      Invalid Email
+    </span>
+  </label>
+  <button class="button" type="submit" value="Submit">Submit</button>
+</form>
+```
 
 ## Initial State
 

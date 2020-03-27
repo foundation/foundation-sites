@@ -2,8 +2,8 @@
 title: Motion UI
 description: A Sass library for creating flexible UI transitions and animations.
 library:
-  github: https://github.com/zurb/motion-ui
-  docs: https://github.com/zurb/motion-ui/tree/master/docs
+  github: https://github.com/foundation/motion-ui
+  docs: https://github.com/foundation/motion-ui/tree/master/docs
 ---
 
 Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html).
@@ -156,7 +156,7 @@ Motion UI includes more than two dozen built-in transition classes. They can be 
 
 ## Custom Transitions
 
-Custom transition classes can be made using Motion UI's mixin library. Here's an example of a custom hinge. **Refer to [Motion UI's transition documentation](https://github.com/zurb/motion-ui/blob/master/docs/transitions.md) to learn more.**
+Custom transition classes can be made using Motion UI's mixin library. Here's an example of a custom hinge. **Refer to [Motion UI's transition documentation](https://github.com/foundation/motion-ui/blob/master/docs/transitions.md) to learn more.**
 
 ```scss
 @include mui-hinge(
@@ -172,7 +172,7 @@ Custom transition classes can be made using Motion UI's mixin library. Here's an
 
 ## Animation
 
-You can use the same five transition effects to create CSS animations as well. The library also allows you to create series effects, with animations on multiple elements happening in a queue. **Refer to [Motion UI's animation documentation](https://github.com/zurb/motion-ui/blob/master/docs/animations.md) to learn more.**
+You can use the same five transition effects to create CSS animations as well. The library also allows you to create series effects, with animations on multiple elements happening in a queue. **Refer to [Motion UI's animation documentation](https://github.com/foundation/motion-ui/blob/master/docs/animations.md) to learn more.**
 
 <button type="button" class="button" data-docs-example-series>Play Animation</button>
 <div class="grid-x grid-margin-x" id="series-example">

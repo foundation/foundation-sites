@@ -1,5 +1,5 @@
-// Foundation for Sites by ZURB
-// foundation.zurb.com
+// Foundation for Sites
+// https://get.foundation
 // Licensed under MIT Open Source
 
 /// Hide an element by default, only displaying it above a certain screen size.
@@ -8,7 +8,7 @@
   $size: map-get($breakpoints, $size);
   // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
   // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
-  // See https://github.com/zurb/foundation-sites/issues/11313
+  // See https://github.com/foundation/foundation-sites/issues/11313
   $size: -zf-bp-to-em($size) - .00125;
 
   @include breakpoint($size down) {

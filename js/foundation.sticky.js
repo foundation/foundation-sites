@@ -274,7 +274,6 @@ class Sticky extends Plugin {
         css = {},
         anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight,
         mrgn = stickToTop ? 'marginTop' : 'marginBottom',
-        notStuckTo = stickToTop ? 'bottom' : 'top',
         topOrBottom = isTop ? 'top' : 'bottom';
 
     css[mrgn] = 0;

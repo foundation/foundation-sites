@@ -1,14 +1,14 @@
 {
   "name": "foundation-sites",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "main": "dist/js/foundation.js",
   "module": "dist/js/foundation.esm.js",
   "jsnext:main": "dist/js/foundation.esm.js",
   "esnext": "dist/js/foundation.es6.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
-  "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
-  "homepage": "http://foundation.zurb.com/sites",
+  "author": "Foundation Yetinauts <contact@get.foundation> (https://get.foundation)",
+  "homepage": "https://get.foundation/sites",
   "scripts": {
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript:units && npm run test:bundle",
@@ -25,7 +25,8 @@
     "deploy": "gulp deploy --color",
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",
-    "deploy:beta": "gulp deploy:beta --color"
+    "deploy:beta": "gulp deploy:beta --color",
+    "docs:link": "git clone https://github.com/foundation/foundation-docs && npm link ./foundation-docs"
   },
   "peerDependencies": {
     "jquery": ">=2.2.0",
@@ -48,7 +49,7 @@
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "doiuse": "~4.1.0",
-    "foundation-docs": "github:zurb/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e",
+    "foundation-docs": "github:foundation/foundation-docs",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
     "gulp-babel": "^8.0.0",
@@ -115,11 +116,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zurb/foundation-sites"
+    "url": "https://github.com/foundation/foundation-sites"
   },
   "bugs": {
-    "url": "https://github.com/zurb/foundation-sites/issues",
-    "email": "foundation@zurb.com"
+    "url": "https://github.com/foundation/foundation-sites/issues",
+    "email": "contact@get.foundation"
   },
   "keywords": [
     "css",

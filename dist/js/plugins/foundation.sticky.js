@@ -512,7 +512,6 @@ function (_Plugin) {
           css = {},
           anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight,
           mrgn = stickToTop ? 'marginTop' : 'marginBottom',
-          notStuckTo = stickToTop ? 'bottom' : 'top',
           topOrBottom = isTop ? 'top' : 'bottom';
       css[mrgn] = 0;
       css['bottom'] = 'auto';
@@ -1085,7 +1084,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.sticky.js */"./js/entries/plugins/foundation.sticky.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.sticky.js */"./js/entries/plugins/foundation.sticky.js");
 
 
 /***/ }),

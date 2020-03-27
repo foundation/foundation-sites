@@ -1,5 +1,5 @@
-// Foundation for Sites by ZURB
-// foundation.zurb.com
+// Foundation for Sites
+// https://get.foundation
 // Licensed under MIT Open Source
 
 ////
@@ -112,7 +112,7 @@ $breakpoint-classes: (small medium large) !default;
     @else if $bp-next {
       // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
       // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
-      // See https://github.com/zurb/foundation-sites/issues/11313
+      // See https://github.com/foundation/foundation-sites/issues/11313
       $bp-max: if($hidpi, $bp-next - (1/$std-web-dpi), -zf-bp-to-em($bp-next) - 0.00125);
     }
   }

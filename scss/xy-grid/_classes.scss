@@ -1,5 +1,5 @@
-// Foundation for Sites by ZURB
-// foundation.zurb.com
+// Foundation for Sites
+// https://get.foundation
 // Licensed under MIT Open Source
 
 ////
@@ -52,9 +52,9 @@
   // Auto width
   @include -zf-each-breakpoint() {
     // This is a bit of a hack/workaround, see these issues & PRs for the backstory:
-    // https://github.com/zurb/foundation-sites/issues/10244
-    // https://github.com/zurb/foundation-sites/pull/10222 and
-    // https://github.com/zurb/foundation-sites/pull/10164
+    // https://github.com/foundation/foundation-sites/issues/10244
+    // https://github.com/foundation/foundation-sites/pull/10222 and
+    // https://github.com/foundation/foundation-sites/pull/10164
     .grid-x {
       $str: "> .#{$-zf-size}-shrink, > .#{$-zf-size}-full";
       @for $i from 1 through $grid-columns {
@@ -290,9 +290,9 @@
 
     @include -zf-each-breakpoint() {
       // This is a bit of a hack/workaround, see these issues and PRs for the backstory:
-      // https://github.com/zurb/foundation-sites/issues/10244
-      // https://github.com/zurb/foundation-sites/pull/10222 and
-      // https://github.com/zurb/foundation-sites/pull/10164
+      // https://github.com/foundation/foundation-sites/issues/10244
+      // https://github.com/foundation/foundation-sites/pull/10222 and
+      // https://github.com/foundation/foundation-sites/pull/10164
       $str: "> .#{$-zf-size}-shrink, > .#{$-zf-size}-full";
       @for $i from 1 through $grid-columns {
         $str: $str + ", > .#{$-zf-size}-#{$i}"

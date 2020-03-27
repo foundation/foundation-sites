@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
-var FOUNDATION_VERSION = '6.6.1';
+var FOUNDATION_VERSION = '6.6.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -159,8 +159,8 @@ var Foundation = {
             opts = { reflow: true };
 
         if($el.attr('data-options')){
-          var thing = $el.attr('data-options').split(';').forEach(function(e, i){
-            var opt = e.split(':').map(function(el){ return el.trim(); });
+          $el.attr('data-options').split(';').forEach(function(option, _index){
+            var opt = option.split(':').map(function(el){ return el.trim(); });
             if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
         }

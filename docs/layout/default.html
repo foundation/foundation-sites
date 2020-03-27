@@ -14,32 +14,18 @@
 </head>
 <body>
 
-  <!-- <a href="https://zurb.com/wired" id="notice">
-    <div class="info">
-      <div id="clockdiv" class="countdown">
-          <span class="timer-day days"></span>
-          <span class="timer-colon">:</span>
-        <span class="timer-hour hours"></span>
-        <span class="timer-colon">:</span>
-        <span class="timer-hour minutes"></span>
-        <span class="timer-colon">:</span>
-        <span class="timer-seconds seconds"></span>
-      </div>
-    </div>
-  </a> -->
-
   <div class="off-canvas-wrapper">
     {{> off-canvi}}
 
     <div class="docs-off-canvas-content off-canvas-content" data-off-canvas-content>
       <div class="docs-sticky-top-bar" data-off-canvas-sticky>
         <!-- Info Banner For Announcements or Links -->
- <!--        <a href="https://zurb.com/university/foundation-intro" class="docs-banner course-banner">
+        <!-- <a href="https://get.foundation" class="docs-banner course-banner">
           <div class="info">
             <h5 class=""><strong>To master everything new in 6.4, along with the rest of Foundation register for our August 8th Webinar Class &rsaquo;</strong></h5>
           </div>
-        </a>
- -->
+        </a> -->
+
         {{> navigation}}
         {{> mobile-navigation}}
         {{> search-bar}}
@@ -76,10 +62,10 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
   </script>
+  <script src="assets/js/vendor.js"></script>
   <!--
   <script src="assets/js/foundation.js"></script>
   -->
-  <script src="assets/js/vendor.js"></script>
   <script src="assets/js/plugins/foundation.core.js"></script>
   <script src="assets/js/plugins/foundation.util.box.js"></script>
   <script src="assets/js/plugins/foundation.util.imageLoader.js"></script>

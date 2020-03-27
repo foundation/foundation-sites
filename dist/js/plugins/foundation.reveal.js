@@ -721,7 +721,7 @@ function (_Plugin) {
       function finishUp() {
         // Get the current top before the modal is closed and restore the scroll after.
         // TODO: use component properties instead of HTML properties
-        // See https://github.com/zurb/foundation-sites/pull/10786
+        // See https://github.com/foundation/foundation-sites/pull/10786
         var scrollTop = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("html").css("top"));
 
         if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.reveal:visible').length === 0) {
@@ -1254,7 +1254,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.reveal.js */"./js/entries/plugins/foundation.reveal.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.reveal.js */"./js/entries/plugins/foundation.reveal.js");
 
 
 /***/ }),
