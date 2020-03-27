@@ -149,8 +149,11 @@ var Nest = {
   Feather: function Feather(menu) {
     var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'zf';
     menu.attr('role', 'menubar');
-    var items = menu.find('li').attr({
+    menu.find('a').attr({
       'role': 'menuitem'
+    });
+    var items = menu.find('li').attr({
+      'role': 'none'
     }),
         subMenuClass = "is-".concat(type, "-submenu"),
         subItemClass = "".concat(subMenuClass, "-item"),
@@ -216,7 +219,7 @@ var Nest = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.util.nest.js */"./js/entries/plugins/foundation.util.nest.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.util.nest.js */"./js/entries/plugins/foundation.util.nest.js");
 
 
 /***/ }),

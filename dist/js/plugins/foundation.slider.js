@@ -288,8 +288,7 @@ function (_Plugin) {
       this.$input = this.inputs.length ? this.inputs.eq(0) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(this.$handle.attr('aria-controls')));
       this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
-      var isDbl = false,
-          _this = this;
+      var _this = this;
 
       if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
         this.options.disabled = true;
@@ -310,9 +309,8 @@ function (_Plugin) {
 
         if (!this.inputs[1]) {
           this.inputs = this.inputs.add(this.$input2);
-        }
+        } // this.$handle.triggerHandler('click.zf.slider');
 
-        isDbl = true; // this.$handle.triggerHandler('click.zf.slider');
 
         this._setInitAttr(1);
       } // Set handle positions
@@ -616,7 +614,6 @@ function (_Plugin) {
             param = vertical ? 'height' : 'width',
             direction = vertical ? 'top' : 'left',
             eventOffset = vertical ? e.pageY : e.pageX,
-            halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
             barDim = this.$element[0].getBoundingClientRect()[param],
             windowScroll = vertical ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop() : jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollLeft();
 
@@ -729,8 +726,7 @@ function (_Plugin) {
     key: "_eventsForHandle",
     value: function _eventsForHandle($handle) {
       var _this = this,
-          curHandle,
-          timer;
+          curHandle;
 
       var handleChangeEvent = function handleChangeEvent(e) {
         var idx = _this.inputs.index(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
@@ -1329,7 +1325,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.slider.js */"./js/entries/plugins/foundation.slider.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.slider.js */"./js/entries/plugins/foundation.slider.js");
 
 
 /***/ }),

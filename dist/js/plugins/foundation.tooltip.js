@@ -574,16 +574,14 @@ function (_Positionable) {
     key: "_getDefaultPosition",
     value: function _getDefaultPosition() {
       // handle legacy classnames
-      var position = this.$element[0].className.match(/\b(top|left|right|bottom)\b/g);
       var elementClassName = this.$element[0].className;
 
       if (this.$element[0] instanceof SVGElement) {
         elementClassName = elementClassName.baseVal;
       }
 
+      var position = elementClassName.match(/\b(top|left|right|bottom)\b/g);
       return position ? position[0] : 'top';
-      var position = elementClassName.match(/\b(top|left|right)\b/g);
-      position = position ? position[0] : 'tp';
     }
   }, {
     key: "_getDefaultAlignment",
@@ -1314,7 +1312,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.tooltip.js */"./js/entries/plugins/foundation.tooltip.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.tooltip.js */"./js/entries/plugins/foundation.tooltip.js");
 
 
 /***/ }),

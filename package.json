@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "main": "dist/js/foundation.js",
   "module": "dist/js/foundation.esm.js",
   "jsnext:main": "dist/js/foundation.esm.js",
@@ -49,7 +49,7 @@
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "doiuse": "~4.1.0",
-    "foundation-docs": "github:foundation/foundation-docs#e000277002f9546b0aeedc8f555596dece3bb56e",
+    "foundation-docs": "github:foundation/foundation-docs",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
     "gulp-babel": "^8.0.0",

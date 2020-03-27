@@ -220,6 +220,10 @@ function animate(isIn, element, animation, cb) {
   }); // Start the animation
 
   requestAnimationFrame(function () {
+    // will trigger the browser to synchronously calculate the style and layout
+    // also called reflow or layout thrashing
+    // see https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+    element[0].offsetWidth;
     element.css('transition', '').addClass(activeClass);
   }); // Clean up the animation when it finishes
 
@@ -249,7 +253,7 @@ function animate(isIn, element, animation, cb) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.util.motion.js */"./js/entries/plugins/foundation.util.motion.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.util.motion.js */"./js/entries/plugins/foundation.util.motion.js");
 
 
 /***/ }),

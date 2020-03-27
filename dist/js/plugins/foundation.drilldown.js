@@ -310,7 +310,7 @@ function (_Plugin) {
         var $sub = $link.parent();
 
         if (_this.options.parentLink) {
-          $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menuitem"></li>');
+          $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="none"></li>');
         }
 
         $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
@@ -947,7 +947,7 @@ Drilldown.defaults = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.drilldown.js */"./js/entries/plugins/foundation.drilldown.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.drilldown.js */"./js/entries/plugins/foundation.drilldown.js");
 
 
 /***/ }),
