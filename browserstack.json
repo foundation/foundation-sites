@@ -1,4 +1,6 @@
 {
+    "username": "joeworkman",
+    "key": "vutaD3ypYamTHAHQxP5Z",
     "test_path": "test/javascript/index.html",
     "test_framework": "mocha",
     "exit_with_fail": true,
