@@ -392,7 +392,7 @@ ResponsiveMenu.defaults = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.responsiveMenu.js */"./js/entries/plugins/foundation.responsiveMenu.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.responsiveMenu.js */"./js/entries/plugins/foundation.responsiveMenu.js");
 
 
 /***/ }),

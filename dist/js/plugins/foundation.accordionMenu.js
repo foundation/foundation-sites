@@ -296,8 +296,6 @@ function (_Plugin) {
       var initPanes = this.$element.find('.is-active');
 
       if (initPanes.length) {
-        var _this = this;
-
         initPanes.each(function () {
           _this.down(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
         });
@@ -597,7 +595,7 @@ AccordionMenu.defaults = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.accordionMenu.js */"./js/entries/plugins/foundation.accordionMenu.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.accordionMenu.js */"./js/entries/plugins/foundation.accordionMenu.js");
 
 
 /***/ }),

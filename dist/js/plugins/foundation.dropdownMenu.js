@@ -285,8 +285,8 @@ function (_Plugin) {
       _foundation_util_nest__WEBPACK_IMPORTED_MODULE_3__["Nest"].Feather(this.$element, 'dropdown');
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
-      this.$menuItems = this.$element.find('[role="menuitem"]');
-      this.$tabs = this.$element.children('[role="menuitem"]');
+      this.$menuItems = this.$element.find('li[role="none"]');
+      this.$tabs = this.$element.children('li[role="none"]');
       this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
       if (this.options.alignment === 'auto') {
@@ -345,10 +345,12 @@ function (_Plugin) {
               return;
             }
 
+            e.stopImmediatePropagation();
             e.preventDefault();
 
             _this._hide($elem);
           } else {
+            e.stopImmediatePropagation();
             e.preventDefault();
 
             _this._show($sub);
@@ -385,7 +387,7 @@ function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownmenu', Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function (e) {
+        }).on('mouseleave.zf.dropdownMenu', Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function (e) {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -403,7 +405,7 @@ function (_Plugin) {
       }
 
       this.$menuItems.on('keydown.zf.dropdownMenu', function (e) {
-        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', '[role="menuitem"]'),
+        var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', '[role="none"]'),
             isTab = _this.$tabs.index($element) > -1,
             $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
             $prevElement,
@@ -776,7 +778,7 @@ DropdownMenu.defaults = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.dropdownMenu.js */"./js/entries/plugins/foundation.dropdownMenu.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.dropdownMenu.js */"./js/entries/plugins/foundation.dropdownMenu.js");
 
 
 /***/ }),
