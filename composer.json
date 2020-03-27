@@ -13,13 +13,13 @@
   "homepage": "https://get.foundation",
   "authors": [
     {
-      "name": "ZURB, Inc.",
-      "homepage": "http://zurb.com",
-      "email": "foundation@zurb.com"
+      "name": "Foundation Yetinauts",
+      "homepage": "https://get.foundation",
+      "email": "contact@get.foundation"
     }
   ],
   "support": {
-    "email": "foundation@zurb.com",
+    "email": "contact@get.foundation",
     "issues": "https://github.com/foundation/foundation-sites/issues",
     "forum": "https://foundation.discourse.group"
   },

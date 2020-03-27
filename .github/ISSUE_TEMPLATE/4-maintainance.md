@@ -9,7 +9,7 @@ about: Tests, dependencies, workflow...
 │           For more information, see the CONTRIBUTING.md document
 │
 │       ⚠ Only submit maintainance issues here. For help or questions to
-│       the community, see the forum: https://foundation.zurb.com/forum
+│       the community, see the forum: https://foundation.discourse.group
 └------------------------------------------------------------------------------>
 
 ## Description

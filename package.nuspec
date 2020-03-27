@@ -10,8 +10,8 @@
         <description>The most advanced responsive front-end framework in the world.</description>
         <tags>css scss sass js responsive mobile-first framework</tags>
 
-        <projectUrl>http://foundation.zurb.com/sites</projectUrl>
-        <iconUrl>https://foundation.zurb.com/assets/img/icons/foundation-favicon.ico</iconUrl>
+        <projectUrl>https://get.foundation/sites</projectUrl>
+        <iconUrl>https://get.foundation/assets/img/icons/foundation-favicon.ico</iconUrl>
         <releaseNotes>https://github.com/foundation/foundation-sites/releases/tag/v6.6.1</releaseNotes>
         <licenseUrl>https://github.com/foundation/foundation-sites/blob/develop/LICENSE</licenseUrl>
         <copyright>Copyright 2017-2018</copyright>

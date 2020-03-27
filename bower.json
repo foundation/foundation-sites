@@ -2,7 +2,7 @@
   "name": "foundation-sites",
   "version": "6.6.1",
   "description": "The most advanced responsive front-end framework in the world.",
-  "homepage": "http://foundation.zurb.com/sites",
+  "homepage": "https://get.foundation/sites",
   "license": "MIT",
   "keywords": [
     "css",
@@ -15,7 +15,7 @@
     "eyeglass-module"
   ],
   "authors": [
-    "ZURB <foundation@zurb.com> (http://foundation.zurb.com)"
+    "Foundation Yetinauts <contact@get.foundation> (https://get.foundation)"
   ],
   "main": [
     "scss/foundation.scss",

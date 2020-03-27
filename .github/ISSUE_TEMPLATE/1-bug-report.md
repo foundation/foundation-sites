@@ -9,7 +9,7 @@ about: Something is broken or doesn't work as expected
 │           For more information, see the CONTRIBUTING.md document
 │            
 │       ⚠ Only submit bug reports here. For help or questions to the
-│       community, see the forum: https://foundation.zurb.com/forum
+│       community, see the forum: https://foundation.discourse.group
 └------------------------------------------------------------------------------>
 
 ## What should happen?
