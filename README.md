@@ -13,7 +13,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/foundation/foundation-sites.svg?branch=develop)](https://travis-ci.org/foundation/foundation-sites)
+[![Build Status](https://github.com/foundation/foundation-sites/workflows/CI/badge.svg)](https://github.com/foundation/foundation-sites/actions?workflow=CI)
 [![dependencies Status](https://david-dm.org/foundation/foundation-sites/status.svg)](https://david-dm.org/foundation/foundation-sites)
 [![devDependencies Status](https://david-dm.org/foundation/foundation-sites/dev-status.svg)](https://david-dm.org/foundation/foundation-sites?type=dev)
 [![npm version](https://badge.fury.io/js/foundation-sites.svg)](https://badge.fury.io/js/foundation-sites)
