@@ -43,7 +43,6 @@
     ".eslintrc",
     ".huskyrc.yml",
     ".sass-lint.yml",
-    ".travis.yml",
     ".versions",
     "bower.json",
     "browserstack.json",
