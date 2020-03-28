@@ -88,6 +88,7 @@
     "npm-force-resolutions": "0.0.2",
     "octophant": "^1.0.0",
     "panini": "^1.6.2",
+    "patch-package": "^6.2.1",
     "prettyjson": "^1.1.3",
     "require-dir": "^1.2.0",
     "requirejs": "^2.3.6",
