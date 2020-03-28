@@ -76,7 +76,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 ```html
 <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
   <li>
-    <a href="http://foundation.zurb.com/" target="_blank">Link here, dropdown there →</a>
+    <a href="https://get.foundation/" target="_blank">Link here, dropdown there →</a>
     <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
@@ -103,7 +103,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
 
 <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" style="max-width: 300px">
   <li>
-    <a href="http://foundation.zurb.com/" target="_blank">Link here, dropdown there →</a>
+    <a href="https://get.foundation/" target="_blank">Link here, dropdown there →</a>
     <ul class="menu vertical nested">
       <li>
         <a href="#">Item 1A</a>
@@ -118,7 +118,7 @@ You need to add the class `accordion-menu` as well as the data attribute `data-s
     </ul>
   </li>
   <li>
-    <a href="http://foundation.zurb.com/" target="_blank">Link here, dropdown there →</a>
+    <a href="https://get.foundation/" target="_blank">Link here, dropdown there →</a>
     <ul class="menu vertical nested">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>

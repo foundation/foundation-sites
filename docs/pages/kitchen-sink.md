@@ -7,7 +7,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmoKbK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmoKbK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -22,27 +22,27 @@ description: Everything but.
   <div class="grid-x grid-margin-x">
     <div class="cell small-12">
       <label>Number Required
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpTextNumber" required pattern="number">
         <span class="form-error">
           Yo, you had better fill this out, it's required.
         </span>
       </label>
-      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+      <p class="help-text" id="exampleHelpTextNumber">Here's how you use this input field!</p>
     </div>
     <div class="cell small-12">
       <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTextNothing" data-abide-ignore>
       </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+      <p class="help-text" id="exampleHelpTextNothing">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="cell small-12">
       <label>Password Required
-        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpTextPassword" required >
         <span class="form-error">
           I'm required!
         </span>
+      <p class="help-text" id="exampleHelpTextPassword">Enter a password please.</p>
       </label>
-      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
     </div>
     <div class="cell small-12">
       <label>Re-enter Password
@@ -57,7 +57,7 @@ description: Everything but.
   <div class="grid-x grid-margin-x">
     <div class="cell medium-6">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="https://foundation.zurb.com" pattern="url">
+        <input type="text" placeholder="https://get.foundation" pattern="url">
       </label>
     </div>
     <div class="cell medium-6">
@@ -109,7 +109,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -132,7 +132,7 @@ description: Everything but.
     <a href="#" class="accordion-title">Accordion 3</a>
     <div class="accordion-content" data-tab-content>
       Type your name!
-      <input type="text"></input>
+      <input type="text">
     </div>
   </li>
 </ul>
@@ -145,7 +145,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XREPVK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XREPVK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -182,7 +182,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNvKZj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNvKZj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -199,7 +199,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGeMx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGeMx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -221,7 +221,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybjagd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybjagd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -251,7 +251,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRqjxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRqjxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -298,7 +298,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWepJz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWepJz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -316,7 +316,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLrZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLrZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -370,7 +370,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxVPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxVPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -420,7 +420,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/QvrGGj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/QvrGGj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -436,14 +436,14 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLBEa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLBEa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
 <div class="grid-x grid-margin-x" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="cell medium-4">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/generic/square-1.jpg">
+      <img src= "assets/img/generic/square-1.jpg" alt="">
     </div>
   </div>
   <div class="cell medium-4">
@@ -453,7 +453,7 @@ description: Everything but.
   </div>
   <div class="cell medium-4">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/generic/rectangle-1.jpg">
+      <img src= "assets/img/generic/rectangle-1.jpg" alt="">
     </div>
   </div>
 </div>
@@ -465,7 +465,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -494,7 +494,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEbb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEbb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -509,7 +509,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjEPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjEPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -525,7 +525,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxGGr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxGGr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -588,7 +588,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rmvEBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rmvEBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -647,11 +647,11 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjXYj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjXYj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
-<img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
+<img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]" src="#" alt="">
 ```
 
 ---
@@ -660,7 +660,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbxMXq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbxMXq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -677,7 +677,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -714,13 +714,13 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NjMaEr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NjMaEr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "https://placeimg.com/200/200/people">
+    <img src= "https://placeimg.com/200/200/people" alt="">
   </div>
   <div class="media-object-section">
     <h4>Dreams feel real while we're in them.</h4>
@@ -735,7 +735,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWMMzZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWMMzZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -753,7 +753,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWdrLR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWdrLR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -784,7 +784,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjjgN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjjgN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -831,7 +831,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -854,7 +854,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLvvB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLvvB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -889,7 +889,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -907,7 +907,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -947,7 +947,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/RVyBPw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/RVyBPw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -969,7 +969,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjJVm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjJVm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1000,7 +1000,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKodJR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKodJR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1021,7 +1021,7 @@ description: Everything but.
   </div>
   <div class="columns small-6 right" data-sticky-container>
     <div class="sticky" data-sticky data-margin-top="6" data-anchor="example1">
-      <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+      <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg" alt="">
     </div>
   </div>
 </div>
@@ -1033,7 +1033,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWejpx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWejpx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1065,17 +1065,17 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrjQx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrjQx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
 <table>
   <thead>
     <tr>
-      <th width="200">Table Header</th>
       <th>Table Header</th>
-      <th width="150">Table Header</th>
-      <th width="150">Table Header</th>
+      <th>Table Header</th>
+      <th>Table Header</th>
+      <th>Table Header</th>
     </tr>
   </thead>
   <tbody>
@@ -1107,7 +1107,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYygE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYygE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1127,7 +1127,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel2">
     <p>Two</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg" alt="">
   </div>
   <div class="tabs-panel" id="panel3">
     <p>Three</p>
@@ -1135,7 +1135,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel4">
     <p>Four</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg" alt="">
   </div>
   <div class="tabs-panel" id="panel5">
     <p>Five</p>
@@ -1143,7 +1143,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel6">
     <p>Six</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg" alt="">
   </div>
 </div>
 ```
@@ -1154,7 +1154,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EmLexY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EmLexY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1177,7 +1177,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYMZZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYMZZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1198,7 +1198,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymJLb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymJLb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1218,7 +1218,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/pPVOdm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/pPVOdm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1231,7 +1231,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrwKP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrwKP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1266,7 +1266,7 @@ description: Everything but.
 
 
 <div class="docs-codepen-container" data-ks-codepen>
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmjqVG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmjqVG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg"  alt="edit on codepen button"></a>
 </div>
 
 ```html_example

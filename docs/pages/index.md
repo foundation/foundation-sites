@@ -21,7 +21,7 @@ There are a number of ways to install Foundation for Sites. Our installation pag
 
 <div class="callout training-callout">
   <p>The number one way to learn your way around Foundation and start mastering responsive web development is via the training courses offered by the ZURB team.</p>
-  <a class="button" href="http://zurb.com/university/foundation-intro" target="_blank">Check out the next Foundation training →</a>
+  <a class="button" href="https://zurb.com/university/foundation-intro" target="_blank">Check out the next Foundation training →</a>
 </div>
 
 With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
@@ -65,7 +65,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://foundation.zurb.com/learn/get-your-team-on-a-solid-foundation.html">
+      <a target="_blank" href="https://get.foundation/learn/get-your-team-on-a-solid-foundation.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i.ytimg.com/vi/kLgRITKjcWw/mqdefault.jpg" class="" height="" width="" alt="">
@@ -79,7 +79,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://foundation.zurb.com/learn/build-your-career-on-a-solid-foundation.html">
+      <a target="_blank" href="https://get.foundation/learn/build-your-career-on-a-solid-foundation.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i.ytimg.com/vi/dZZk9Kz5j_0/mqdefault.jpg" class="" height="" width="" alt="">
@@ -115,10 +115,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Templates and Code Snippets</a>
     <div class="accordion-content " data-tab-content>
 
-      <a target="_blank" href="http://foundation.zurb.com/templates.html">
+      <a target="_blank" href="https://get.foundation/templates.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://foundation.zurb.com/assets/img/sites-templates/foundation6-templates-07.svg">
+            <img src="https://get.foundation/assets/img/sites-templates/foundation6-templates-07.svg">
           </div>
           <div class="cell medium-8">
             <h5>Foundation Templates</h5>
@@ -128,7 +128,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
+      <a target="_blank" href="https://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="" style="height: 142px;">
@@ -141,10 +141,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://foundation.zurb.com/building-blocks/kits.html">
+      <a target="_blank" href="https://get.foundation/building-blocks/kits.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://foundation.zurb.com/building-blocks/assets/img/kits/dashboard/dashboard-kit.jpg" style="height: 142px; width: 100%;">
+            <img src="https://get.foundation/building-blocks/assets/img/kits/dashboard/dashboard-kit.jpg" style="height: 142px; width: 100%;">
           </div>
           <div class="cell medium-8">
             <h5>Foundation Kits</h5>
@@ -161,7 +161,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Additional Resources</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://foundation.zurb.com/learn/zero-to-website-in-no-time-flat.html">
+      <a target="_blank" href="https://get.foundation/learn/zero-to-website-in-no-time-flat.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i.ytimg.com/vi/KHMXOTbLAGE/mqdefault.jpg" class="" height="" width="" alt="">
@@ -174,7 +174,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://zurb.com/university/foundation-intro">
+      <a target="_blank" href="https://zurb.com/university/foundation-intro">
         <div class="grid-x grid-margin-x accordion-content-item accordion-course-callout">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/foundation-intro-class.jpg" style="height: 142px;">
@@ -182,7 +182,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           <div class="cell medium-8">
             <h5>Live Webinar: Introduction to Foundation 6</h5>
             <p>Master Foundation ultra fast. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
-            <span href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</span>
+            <span href="https://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
       </a>
@@ -202,7 +202,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Latest Foundation Updates</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://zurb.com/blog/foundation-6-4-a-new-grid-javascript-upgrades-and-slick-new-prototyping-mode">
+      <a target="_blank" href="https://zurb.com/blog/foundation-6-4-a-new-grid-javascript-upgrades-and-slick-new-prototyping-mode">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i3.ytimg.com/vi/vrvt9xMFjIE/maxresdefault.jpg" class="" height="" width="" alt="">
@@ -215,7 +215,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://github.com/zurb/foundation-sites/releases/tag/6.3.1">
+      <a target="_blank" href="https://github.com/foundation/foundation-sites/releases/tag/6.3.1">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/docs-631.png" class="" height="" width="" alt="">
@@ -235,7 +235,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Building Blocks</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
+      <a target="_blank" href="https://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="">
@@ -248,7 +248,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://foundation.zurb.com/building-blocks/how-to.html">
+      <a target="_blank" href="https://get.foundation/building-blocks/how-to.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i3.ytimg.com/vi/adLpmsU9v2g/maxresdefault.jpg" class="" height="" width="" alt="">
@@ -294,7 +294,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://jointswp.com/">
+      <a target="_blank" href="https://jointswp.com/">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-3 accordion-content-item-thumbnail">
             <img src="https://s.w.org/about/images/logos/wordpress-logo-simplified-rgb.png" class="" height="147" width="147" alt="" style="border: 0;">
@@ -326,7 +326,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Foundation Showcase</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="http://foundation.zurb.com/foundationturns5">
+      <a target="_blank" href="https://get.foundation/foundationturns5">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/foundation-turns-5.png" class="" height="" width="" alt="">
@@ -339,7 +339,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://foundation.zurb.com/showcase/brands.html">
+      <a target="_blank" href="https://get.foundation/showcase/brands.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/foundation-brands.png" class="" height="" width="" alt="">
@@ -352,10 +352,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="http://foundation.zurb.com/showcase/case-studies.html">
+      <a target="_blank" href="https://get.foundation/showcase/case-studies.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://foundation.zurb.com/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
+            <img src="https://get.foundation/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
           </div>
           <div class="cell medium-8">
             <h5>Foundation Case Studies</h5>

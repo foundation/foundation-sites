@@ -223,7 +223,7 @@ Add the attribute `data-deep-link="true"` to a accordion to:
   </li>
 </ul>
 ```
-For example, <a target="_blank" href="#deeplink3">http://example.com/#deeplink3</a> will open the third accordion panel at page load. This example will open a new browser tab and scroll you to the open accordion panel.
+For example, <a target="_blank" href="#deeplink3">https://example.com/#deeplink3</a> will open the third accordion panel at page load. This example will open a new browser tab and scroll you to the open accordion panel.
 
 When linking directly to a accordion panel, it might not be obvious that the content appears within a accordion panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal accordion) so that the accordion is at the top of the viewport.
 

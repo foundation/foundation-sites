@@ -1,8 +1,8 @@
 // The CSS for the Foundation docs is stored in an external codebase:
-// https://github.com/zurb/foundation-docs
+// https://github.com/foundation/foundation-docs
 //
 // You can test Sass changes locally by running these commands:
-//   git clone https://github.com/zurb/foundation-docs
+//   git clone https://github.com/foundation/foundation-docs
 //   npm link ./foundation-docs
 //
 // Feel free to submit pull requests to foundation-docs like you would Foundation itself!
@@ -24,6 +24,7 @@ $foundation-dark: #074E68 ;
 $true-white: #fff;
 @import 'foundation-docs';
 @import 'content/install';
+@import 'examples/buttons';
 @import 'examples/grid';
 @import 'examples/motion-ui';
 @import 'examples/off-canvas';
@@ -42,11 +43,7 @@ $true-white: #fff;
   font-family: 'zurb-logo';
   font-style: normal;
   font-weight: normal;
-  src: url('/assets/fonts/zurb-webfont.eot'),
-  url('/assets/fonts/zurb-webfont.eot?#iefix') format('embedded-opentype'),
-  url('/assets/fonts/zurb-webfont.svg') format('svg'),
-  url('/assets/fonts/zurb-webfont.ttf') format('truetype'),
-  url('/assets/fonts/zurb-webfont.woff') format('woff');
+  src: url('/assets/fonts/zurb-webfont.woff') format('woff');
 }
 
 /* Banner for announcements */
@@ -56,7 +53,7 @@ a#notice {
   position: relative;
   padding: 1rem 0;
   width:100%;
-  background-image: url('http://zurb.com/university/assets/zurbwired2016-web-banner-a95e5d17264e3617a2ae4f34e84f973b.gif');
+  background-image: url('https://zurb.com/university/assets/zurbwired2016-web-banner-a95e5d17264e3617a2ae4f34e84f973b.gif');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -69,7 +66,7 @@ a#notice {
     font-size: 35px;
     font-weight: 500;
     margin-left: -50%;
-    font-family: "Proxima-Nova", "Proxima", "proxima-nova", sans-serif;
+    font-family: sans-serif;
     background-color: rgba(0,120,171,0.7);
     -webkit-box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
     -moz-box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
@@ -280,7 +277,7 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 
     strong {
       display: inline;
-      font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 17px;
       line-height: 46px;
     }

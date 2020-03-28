@@ -1,5 +1,5 @@
-// Foundation for Sites by ZURB
-// foundation.zurb.com
+// Foundation for Sites
+// https://get.foundation
 // Licensed under MIT Open Source
 
 ////
@@ -112,7 +112,7 @@ $breakpoint-classes: (small medium large) !default;
     @else if $bp-next {
       // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
       // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
-      // See https://github.com/zurb/foundation-sites/issues/11313
+      // See https://github.com/foundation/foundation-sites/issues/11313
       $bp-max: if($hidpi, $bp-next - (1/$std-web-dpi), -zf-bp-to-em($bp-next) - 0.00125);
     }
   }
@@ -150,8 +150,10 @@ $breakpoint-classes: (small medium large) !default;
   @for $i from 1 through length($values) {
     $value: nth($values, $i);
     $str: breakpoint($value);
-    $bp: index($-zf-breakpoints-keys, $value);
+    $bp: index($-zf-breakpoints-keys, nth($value, 1));
     $pbp: index($-zf-breakpoints-keys, $print-breakpoint);
+    // Direction of media query (up, down, or only)
+    $dir: if(length($value) > 1, nth($value, 2), up);
 
     $old-zf-size: null;
 
@@ -169,7 +171,9 @@ $breakpoint-classes: (small medium large) !default;
     // Otherwise, wrap the content in a media query
     @else {
       // For named breakpoints less than or equal to $print-breakpoint, add print to the media types
-      @if $bp != null and $bp <= $pbp {
+      // generate print if the breakpoint affects the print-breakpoint (or smaller).
+      // This means the current condition only needs to be extended so 'down' always generates print.
+      @if $bp != null and ($bp <= $pbp or $dir == down) {
         @media print, screen and #{$str} {
           @content;
         }

@@ -14,7 +14,7 @@ flex: true
 
 <div class="callout training-callout">
   <p>Navigation is one the most crucial part of your site. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
-  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+  <a href="https://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
 </div>
 
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
