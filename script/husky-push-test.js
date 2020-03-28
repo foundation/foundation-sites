@@ -3,7 +3,7 @@ const spawn = require('child_process').spawn
 
 console.log(yellow('🐶  Checking tests before pushing...'))
 
-const child = spawn('npm run test', [], { shell: true })
+const child = spawn('yarn test', [], { shell: true })
 
 child.stdout.on('data', function (data) {
   process.stdout.write(data)

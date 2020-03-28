@@ -11,22 +11,19 @@
   "homepage": "https://get.foundation/sites",
   "scripts": {
     "start": "gulp",
-    "test": "npm run test:sass && npm run test:javascript:units && npm run test:bundle",
-    "test:ci": "npm run test:sass && npm run test:javascript:ci",
+    "test": "yarn test:sass && yarn test:javascript:units && yarn test:bundle",
+    "test:ci": "yarn test:sass && yarn test:javascript:ci",
     "test:sass": "mocha test/sass/test_sass.js --colors",
     "test:javascript:transpile": "gulp sass:foundation --color && gulp test:transpile-js --color",
-    "test:javascript:units": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html",
-    "test:javascript:browserstack": "npm run test:javascript:transpile && browserstack-runner",
-    "test:javascript:ci": "npm run test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html && browserstack-runner",
+    "test:javascript:units": "yarn test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html",
+    "test:javascript:browserstack": "yarn test:javascript:transpile && browserstack-runner",
+    "test:javascript:ci": "yarn test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/javascript/index.html && browserstack-runner",
     "test:bundle": "mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -f test/bundle/index.html",
     "test:visual": "gulp test --color",
-    "lockdeps": "npm i && npm-force-resolutions && rimraf yarn.lock && yarn import && rimraf shrinkwrap.yaml && pnpm import",
-    "relockdeps": "rimraf package-lock.json && npm run lockdeps",
     "deploy": "gulp deploy --color",
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",
-    "deploy:beta": "gulp deploy:beta --color",
-    "docs:link": "git clone https://github.com/foundation/foundation-docs && npm link ./foundation-docs"
+    "deploy:beta": "gulp deploy:beta --color"
   },
   "peerDependencies": {
     "jquery": ">=2.2.0",
@@ -82,13 +79,11 @@
     "mocha": "^5.0.5",
     "mocha-headless-chrome": "^2.0.1",
     "motion-ui": "^2.0.2",
-    "npm-force-resolutions": "0.0.2",
     "octophant": "^1.0.0",
     "panini": "^1.6.2",
     "prettyjson": "^1.1.3",
     "require-dir": "^1.2.0",
     "requirejs": "^2.3.6",
-    "rimraf": "^2.6.3",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.3.0",
     "run-sequence": "^2.2.1",
@@ -111,8 +106,7 @@
     "puppeteer": "^1.11.0"
   },
   "engines": {
-    "node": ">=8.4.0",
-    "npm": ">=2.14.2"
+    "node": ">=8.4.0"
   },
   "repository": {
     "type": "git",
