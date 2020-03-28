@@ -28,8 +28,7 @@
     "deploy": "gulp deploy --color",
     "deploy:prep": "gulp deploy:prep --color",
     "deploy:docs": "gulp deploy:docs --color",
-    "deploy:beta": "gulp deploy:beta --color",
-    "docs:link": "git clone https://github.com/foundation/foundation-docs && npm link ./foundation-docs"
+    "deploy:beta": "gulp deploy:beta --color"
   },
   "peerDependencies": {
     "jquery": ">=2.2.0",
@@ -85,14 +84,12 @@
     "mocha": "^5.0.5",
     "mocha-headless-chrome": "^2.0.1",
     "motion-ui": "^2.0.2",
-    "npm-force-resolutions": "0.0.2",
     "octophant": "^1.0.0",
     "panini": "^1.6.2",
     "patch-package": "^6.2.1",
     "prettyjson": "^1.1.3",
     "require-dir": "^1.2.0",
     "requirejs": "^2.3.6",
-    "rimraf": "^2.6.3",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.3.0",
     "run-sequence": "^2.2.1",
@@ -115,8 +112,7 @@
     "puppeteer": "^1.11.0"
   },
   "engines": {
-    "node": ">=8.4.0",
-    "npm": ">=2.14.2"
+    "node": ">=8.4.0"
   },
   "repository": {
     "type": "git",
