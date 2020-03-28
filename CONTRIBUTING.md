@@ -4,7 +4,7 @@ Although Foundation was built and maintained by ZURB for years, it is today a co
 
 ## Issues
 
-For **bugs**, **feature requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](https://foundation.zurb.com/forum) would be more appropriate. If you aren't sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
+For **bugs**, **feature requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](https://foundation.discourse.group) would be more appropriate. If you aren't sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
 
 Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
 
@@ -91,7 +91,7 @@ If you aren't sure how a feature should be implemented, we recommend checking ou
 
 Want to help us making Foundation the best framework ever? The Core Team is inviting active community members to join it. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
 
-If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
+If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at contact@get.foundation.
 
 Contributors are expected to:
 

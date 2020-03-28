@@ -306,7 +306,6 @@ function (_Positionable) {
           this.$currentAnchor.attr('id', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'dd-anchor'));
         }
 
-        ;
         this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
       }
 
@@ -394,12 +393,10 @@ function (_Positionable) {
       this.$anchors.off('click.zf.trigger').on('click.zf.trigger', function (e) {
         _this._setCurrentAnchor(this);
 
-        if (_this.options.forceFollow === false) {
-          // if forceFollow false, always prevent default action
-          e.preventDefault();
-        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
-          // if forceFollow true and hover option true, only prevent default action on 1st click
-          // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+        if ( // if forceFollow false, always prevent default action
+        _this.options.forceFollow === false || // if forceFollow true and hover option true, only prevent default action on 1st click
+        // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+        hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
           e.preventDefault();
         }
       });
@@ -1310,7 +1307,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.dropdown.js */"./js/entries/plugins/foundation.dropdown.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.dropdown.js */"./js/entries/plugins/foundation.dropdown.js");
 
 
 /***/ }),

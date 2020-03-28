@@ -285,8 +285,6 @@ function (_Plugin) {
         this.$element.attr('id', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_2__["GetYoDigits"])(6, 'responsiveaccordiontabs'));
       }
 
-      ;
-
       this._init();
 
       this._events();
@@ -421,7 +419,6 @@ function (_Plugin) {
         return;
       }
 
-      ;
       var tabsTitle = _this.allOptions.linkClass ? _this.allOptions.linkClass : 'tabs-title';
       var tabsPanel = _this.allOptions.panelClass ? _this.allOptions.panelClass : 'tabs-panel';
       this.$element.removeAttr('role');
@@ -435,7 +432,6 @@ function (_Plugin) {
         $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
       }
 
-      ;
       $panels.css({
         display: '',
         visibility: ''
@@ -465,7 +461,6 @@ function (_Plugin) {
           $tabsContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
         }
 
-        ;
         $panels.each(function (key, value) {
           var tempValue = jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).appendTo($tabsContent).addClass(tabsPanel);
           var hash = $liHeadsA.get(key).hash.slice(1);
@@ -479,18 +474,13 @@ function (_Plugin) {
               jquery__WEBPACK_IMPORTED_MODULE_0___default()(value).attr('id', hash);
               jquery__WEBPACK_IMPORTED_MODULE_0___default()($liHeadsA.get(key)).attr('href', jquery__WEBPACK_IMPORTED_MODULE_0___default()($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
             }
-
-            ;
           }
 
-          ;
           var isActive = jquery__WEBPACK_IMPORTED_MODULE_0___default()($liHeads.get(key)).hasClass('is-active');
 
           if (isActive) {
             tempValue.addClass('is-active');
           }
-
-          ;
         });
         $liHeads.addClass(tabsTitle);
       }
@@ -507,7 +497,7 @@ function (_Plugin) {
 
   }, {
     key: "open",
-    value: function open(target) {
+    value: function open(_target) {
       if (this.currentRule && typeof this.currentRule.open === 'function') {
         var _this$currentRule;
 
@@ -523,7 +513,7 @@ function (_Plugin) {
 
   }, {
     key: "close",
-    value: function close(target) {
+    value: function close(_target) {
       if (this.currentRule && typeof this.currentRule.close === 'function') {
         var _this$currentRule2;
 
@@ -539,7 +529,7 @@ function (_Plugin) {
 
   }, {
     key: "toggle",
-    value: function toggle(target) {
+    value: function toggle(_target) {
       if (this.currentRule && typeof this.currentRule.toggle === 'function') {
         var _this$currentRule3;
 
@@ -574,7 +564,7 @@ ResponsiveAccordionTabs.defaults = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.responsiveAccordionTabs.js */"./js/entries/plugins/foundation.responsiveAccordionTabs.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.responsiveAccordionTabs.js */"./js/entries/plugins/foundation.responsiveAccordionTabs.js");
 
 
 /***/ }),

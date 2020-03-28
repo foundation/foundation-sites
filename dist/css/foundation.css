@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
- * Foundation for Sites by ZURB
- * Version 6.6.1
- * foundation.zurb.com
+ * Foundation for Sites
+ * Version 6.6.2
+ * https://get.foundation
  * Licensed under MIT Open Source
  */
 @media print, screen and (min-width: 40em) {
@@ -2586,13 +2586,17 @@ a.button:hover, a.button:focus {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   -webkit-box-align: stretch;
   -webkit-align-items: stretch;
       -ms-flex-align: stretch;
-          align-items: stretch; }
+          align-items: stretch;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
   .button-group::before, .button-group::after {
     display: table;
     content: ' ';
@@ -2605,6 +2609,8 @@ a.button:hover, a.button:focus {
             order: 1; }
   .button-group::after {
     clear: both; }
+  .button-group::before, .button-group::after {
+    display: none; }
   .button-group .button {
     margin: 0;
     margin-right: 1px;
@@ -2626,7 +2632,8 @@ a.button:hover, a.button:focus {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
         -ms-flex: 1 1 0px;
-            flex: 1 1 0px; }
+            flex: 1 1 0px;
+    margin-right: 0; }
   .button-group.primary .button, .button-group.primary .button.disabled, .button-group.primary .button[disabled], .button-group.primary .button.disabled:hover, .button-group.primary .button[disabled]:hover, .button-group.primary .button.disabled:focus, .button-group.primary .button[disabled]:focus {
     background-color: #1779ba;
     color: #fefefe; }
@@ -2741,7 +2748,8 @@ a.button:hover, a.button:focus {
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 0px;
           -ms-flex: 1 1 0px;
-              flex: 1 1 0px; }
+              flex: 1 1 0px;
+      margin-right: 0; }
   @media print, screen and (min-width: 40em) {
     .button-group.stacked-for-small .button {
       -webkit-box-flex: 0;

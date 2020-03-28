@@ -290,8 +290,6 @@ function (_Plugin) {
             if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
               _this2._openSingleTab($anchor);
             }
-
-            ;
           } // Otherwise, close everything
           else {
               _this2._closeAllTabs();
@@ -303,7 +301,7 @@ function (_Plugin) {
               var offset = _this2.$element.offset();
 
               jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
-                scrollTop: offset.top
+                scrollTop: offset.top - _this2.options.deepLinkSmudgeOffset
               }, _this2.options.deepLinkSmudgeDelay);
             });
           }
@@ -491,7 +489,7 @@ function (_Plugin) {
         'aria-expanded': true,
         'aria-selected': true
       });
-      $target.slideDown(this.options.slideSpeed, function () {
+      $target.stop().slideDown(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done opening.
          * @event Accordion#down
@@ -520,7 +518,7 @@ function (_Plugin) {
         'aria-expanded': false,
         'aria-selected': false
       });
-      $target.slideUp(this.options.slideSpeed, function () {
+      $target.stop().slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done collapsing up.
          * @event Accordion#up
@@ -616,6 +614,14 @@ Accordion.defaults = {
   deepLinkSmudgeDelay: 300,
 
   /**
+   * If `deepLinkSmudge` is enabled, the offset for scrollToTtop to prevent overlap by a sticky element at the top of the page
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
+
+  /**
    * If `deepLink` is enabled, update the browser history with the open accordion
    * @option
    * @type {boolean}
@@ -634,7 +640,7 @@ Accordion.defaults = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.accordion.js */"./js/entries/plugins/foundation.accordion.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.accordion.js */"./js/entries/plugins/foundation.accordion.js");
 
 
 /***/ }),

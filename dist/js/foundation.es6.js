@@ -49,15 +49,15 @@ function transitionend($elem){
   var elem = document.createElement('div'),
       end;
 
-  for (var t in transitions){
-    if (typeof elem.style[t] !== 'undefined'){
-      end = transitions[t];
+  for (let transition in transitions){
+    if (typeof elem.style[transition] !== 'undefined'){
+      end = transitions[transition];
     }
   }
-  if(end){
+  if (end) {
     return end;
-  }else{
-    end = setTimeout(function(){
+  } else {
+    setTimeout(function(){
       $elem.triggerHandler('transitionend', [$elem]);
     }, 1);
     return 'transitionend';
@@ -470,7 +470,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.1';
+var FOUNDATION_VERSION = '6.6.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -625,8 +625,8 @@ var Foundation = {
             opts = { reflow: true };
 
         if($el.attr('data-options')){
-          var thing = $el.attr('data-options').split(';').forEach(function(e, i){
-            var opt = e.split(':').map(function(el){ return el.trim(); });
+          $el.attr('data-options').split(';').forEach(function(option, _index){
+            var opt = option.split(':').map(function(el){ return el.trim(); });
             if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
         }
@@ -817,6 +817,7 @@ var Box = {
 function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
   return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
 }
+
 function OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) {
   var eleDims = GetDimensions(element),
   topOver, bottomOver, leftOver, rightOver;
@@ -917,8 +918,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
 
       var topVal, leftVal;
 
+  if ($anchorDims !== null) {
   // set position related attribute
-
   switch (position) {
     case 'top':
       topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
@@ -933,7 +934,6 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
       break;
   }
-
 
   // set alignment related attribute
   switch (position) {
@@ -966,6 +966,8 @@ function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffs
       }
       break;
   }
+  }
+
   return {top: topVal, left: leftVal};
 }
 
@@ -1249,6 +1251,10 @@ function animate(isIn, element, animation, cb) {
 
   // Start the animation
   requestAnimationFrame(() => {
+    // will trigger the browser to synchronously calculate the style and layout
+    // also called reflow or layout thrashing
+    // see https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+    element[0].offsetWidth;
     element
       .css('transition', '')
       .addClass(activeClass);
@@ -1274,8 +1280,9 @@ function animate(isIn, element, animation, cb) {
 const Nest = {
   Feather(menu, type = 'zf') {
     menu.attr('role', 'menubar');
+    menu.find('a').attr({'role': 'menuitem'});
 
-    var items = menu.find('li').attr({'role': 'menuitem'}),
+    var items = menu.find('li').attr({'role': 'none'}),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
         hasSubClass = `is-${type}-submenu-parent`,
@@ -1829,11 +1836,7 @@ function hyphenate$1(str) {
 }
 
 function getPluginName(obj) {
-  if(typeof(obj.constructor.name) !== 'undefined') {
-    return hyphenate$1(obj.constructor.name);
-  } else {
-    return hyphenate$1(obj.className);
-  }
+  return hyphenate$1(obj.className);
 }
 
 /**
@@ -1947,15 +1950,15 @@ class Abide extends Plugin {
       return true;
     } else if (typeof this.formnovalidate === 'boolean') { // triggered by $submit
       return this.formnovalidate;
-    } else { // triggered by Enter in non-submit input
-      return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
     }
+    // triggered by Enter in non-submit input
+    return this.$submits.length ? this.$submits[0].getAttribute('formnovalidate') !== null : false;
   }
 
   /**
    * Enables the whole validation
    */
-  enableValidation(){
+  enableValidation() {
     this.isEnabled = true;
   }
 
@@ -1989,7 +1992,7 @@ class Abide extends Plugin {
         break;
 
       default:
-        if(!$el.val() || !$el.val().length) isGood = false;
+        if (!$el.val() || !$el.val().length) isGood = false;
     }
 
     return isGood;
@@ -2005,9 +2008,10 @@ class Abide extends Plugin {
    * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
    *
    * @param {Object} $el - jQuery object to use as reference to find the form error selector.
+   * @param {String[]} [failedValidators] - List of failed validators.
    * @returns {Object} jQuery object with the selector.
    */
-  findFormError($el) {
+  findFormError($el, failedValidators) {
     var id = $el.length ? $el[0].id : '';
     var $error = $el.siblings(this.options.formErrorSelector);
 
@@ -2017,6 +2021,15 @@ class Abide extends Plugin {
 
     if (id) {
       $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
+    }
+
+    if (!!failedValidators) {
+      $error = $error.not('[data-form-error-on]');
+
+      failedValidators.forEach((v) => {
+        $error = $error.add($el.siblings(`[data-form-error-on="${v}"]`));
+        $error = $error.add(this.$element.find(`[data-form-error-for="${id}"][data-form-error-on="${v}"]`));
+      });
     }
 
     return $error;
@@ -2088,10 +2101,11 @@ class Abide extends Plugin {
   /**
    * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
    * @param {Object} $el - jQuery object to add the class to
+   * @param {String[]} [failedValidators] - List of failed validators.
    */
-  addErrorClasses($el) {
+  addErrorClasses($el, failedValidators) {
     var $label = this.findLabel($el);
-    var $formError = this.findFormError($el);
+    var $formError = this.findFormError($el, failedValidators);
 
     if ($label.length) {
       $label.addClass(this.options.labelErrorClass);
@@ -2126,6 +2140,7 @@ class Abide extends Plugin {
         errorId = GetYoDigits(6, 'abide-error');
         $error.attr('id', errorId);
       }
+
       $el.attr('aria-describedby', errorId);
     }
 
@@ -2136,6 +2151,7 @@ class Abide extends Plugin {
         elemId = GetYoDigits(6, 'abide-input');
         $el.attr('id', elemId);
       }
+
       // For each label targeting $el, set [for] if it is not set.
       $labels.each((i, label) => {
         const $label = $(label);
@@ -2217,11 +2233,11 @@ class Abide extends Plugin {
    */
   removeErrorClasses($el) {
     // radios need to clear all of the els
-    if($el[0].type == 'radio') {
+    if ($el[0].type == 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
     }
     // checkboxes need to clear all of the els
-    else if($el[0].type == 'checkbox') {
+    else if ($el[0].type == 'checkbox') {
       return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
@@ -2252,10 +2268,9 @@ class Abide extends Plugin {
    */
   validateInput($el) {
     var clearRequire = this.requiredCheck($el),
-        validated = false,
-        customValidator = true,
         validator = $el.attr('data-validator'),
-        equalTo = true;
+        failedValidators = [],
+        manageErrorClasses = true;
 
     // skip validation if disabled
     if (this._validationIsDisabled()) {
@@ -2269,34 +2284,39 @@ class Abide extends Plugin {
 
     switch ($el[0].type) {
       case 'radio':
-        validated = this.validateRadio($el.attr('name'));
+        this.validateRadio($el.attr('name')) || failedValidators.push('required');
         break;
 
       case 'checkbox':
-        validated = this.validateCheckbox($el.attr('name'));
-        clearRequire = true;
+        this.validateCheckbox($el.attr('name')) || failedValidators.push('required');
+        // validateCheckbox() adds/removes error classes
+        manageErrorClasses = false;
         break;
 
       case 'select':
       case 'select-one':
       case 'select-multiple':
-        validated = clearRequire;
+        clearRequire || failedValidators.push('required');
         break;
 
       default:
-        validated = this.validateText($el);
+        clearRequire || failedValidators.push('required');
+        this.validateText($el) || failedValidators.push('pattern');
     }
 
     if (validator) {
-      customValidator = this.matchValidation($el, validator, $el.attr('required'));
+      const required = $el.attr('required') ? true : false;
+
+      validator.split(' ').forEach((v) => {
+        this.options.validators[v]($el, required, $el.parent()) || failedValidators.push(v);
+      });
     }
 
     if ($el.attr('data-equalto')) {
-      equalTo = this.options.validators.equalTo($el);
+      this.options.validators.equalTo($el) || failedValidators.push('equalTo');
     }
 
-
-    var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
+    var goodToGo = failedValidators.length === 0;
     var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
     if (goodToGo) {
@@ -2312,7 +2332,13 @@ class Abide extends Plugin {
       }
     }
 
-    this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
+    if (manageErrorClasses) {
+      this.removeErrorClasses($el);
+
+      if (!goodToGo) {
+        this.addErrorClasses($el, failedValidators);
+      }
+    }
 
     /**
      * Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`
@@ -2389,7 +2415,7 @@ class Abide extends Plugin {
     // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
     pattern = (pattern || $el.attr('data-pattern') || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
-    var valid = false;
+    var valid = true;
 
     if (inputText.length) {
       // If the pattern attribute on the element is in Abide's list of patterns, then test that regexp
@@ -2400,13 +2426,6 @@ class Abide extends Plugin {
       else if (pattern !== $el.attr('type')) {
         valid = new RegExp(pattern).test(inputText);
       }
-      else {
-        valid = true;
-      }
-    }
-    // An empty field is valid if it's not required
-    else if (!$el.prop('required')) {
-      valid = true;
     }
 
     return valid;
@@ -2429,7 +2448,7 @@ class Abide extends Plugin {
         required = true;
       }
     });
-    if(!required) valid=true;
+    if (!required) valid=true;
 
     if (!valid) {
       // For the group to be valid, at least one radio needs to be checked
@@ -2439,6 +2458,7 @@ class Abide extends Plugin {
         }
       });
     }
+
     return valid;
   }
 
@@ -2459,7 +2479,7 @@ class Abide extends Plugin {
         required = true;
       }
     });
-    if(!required) valid=true;
+    if (!required) valid=true;
 
     if (!valid) {
       // Count checked checkboxes within the group
@@ -2478,6 +2498,7 @@ class Abide extends Plugin {
         valid = true;
       }
     }
+
     // Skip validation if more than 1 checkbox have to be checked AND if the form hasn't got submitted yet (otherwise it will already show an error during the first fill in)
     if (this.initialized !== true && minRequired > 1) {
       return true;
@@ -2486,7 +2507,7 @@ class Abide extends Plugin {
     // Refresh error class for all input
     $group.each((i, e) => {
       if (!valid) {
-        this.addErrorClasses($(e));
+        this.addErrorClasses($(e), ['required']);
       } else {
         this.removeErrorClasses($(e));
       }
@@ -2743,7 +2764,7 @@ class Accordion extends Plugin {
 
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
-    
+
     this.$tabs.attr({'role': 'presentation'});
 
     this.$tabs.each(function(idx, el) {
@@ -2790,7 +2811,8 @@ class Accordion extends Plugin {
         if ($anchor && $link && $link.length) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
             this._openSingleTab($anchor);
-          }        }
+          }
+        }
         // Otherwise, close everything
         else {
           this._closeAllTabs();
@@ -2800,7 +2822,7 @@ class Accordion extends Plugin {
         if (this.options.deepLinkSmudge) {
           onLoad($(window), () => {
             var offset = this.$element.offset();
-            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+            $('html, body').animate({ scrollTop: offset.top - this.options.deepLinkSmudgeOffset }, this.options.deepLinkSmudgeDelay);
           });
         }
 
@@ -2837,7 +2859,7 @@ class Accordion extends Plugin {
                .on('click.zf.accordion', function(e) {
           e.preventDefault();
           _this.toggle($tabContent);
-        }).on('keydown.zf.accordion', function(e){
+        }).on('keydown.zf.accordion', function(e) {
           Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
               _this.toggle($tabContent);
@@ -2861,7 +2883,7 @@ class Accordion extends Plugin {
         });
       }
     });
-    if(this.options.deepLink) {
+    if (this.options.deepLink) {
       $(window).on('hashchange', this._checkDeepLink);
     }
   }
@@ -2876,7 +2898,7 @@ class Accordion extends Plugin {
       console.info('Cannot toggle an accordion that is disabled.');
       return;
     }
-    if($target.parent().hasClass('is-active')) {
+    if ($target.parent().hasClass('is-active')) {
       this.up($target);
     } else {
       this.down($target);
@@ -2972,7 +2994,7 @@ class Accordion extends Plugin {
       'aria-selected': true
     });
 
-    $target.slideDown(this.options.slideSpeed, () => {
+    $target.stop().slideDown(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done opening.
        * @event Accordion#down
@@ -3000,7 +3022,7 @@ class Accordion extends Plugin {
      'aria-selected': false
     });
 
-    $target.slideUp(this.options.slideSpeed, () => {
+    $target.stop().slideUp(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done collapsing up.
        * @event Accordion#up
@@ -3030,7 +3052,7 @@ class Accordion extends Plugin {
   _destroy() {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
-    if(this.options.deepLink) {
+    if (this.options.deepLink) {
       $(window).off('hashchange', this._checkDeepLink);
     }
 
@@ -3081,6 +3103,13 @@ Accordion.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
+  /**
+   * If `deepLinkSmudge` is enabled, the offset for scrollToTtop to prevent overlap by a sticky element at the top of the page
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
   /**
    * If `deepLink` is enabled, update the browser history with the open accordion
    * @option
@@ -3142,19 +3171,19 @@ class AccordionMenu extends Plugin {
     });
 
     this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
-    this.$menuLinks.each(function(){
+    this.$menuLinks.each(function() {
       var linkId = this.id || GetYoDigits(6, 'acc-menu-link'),
           $elem = $(this),
           $sub = $elem.children('[data-submenu]'),
           subId = $sub[0].id || GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
 
-      if(_this.options.parentLink) {
+      if (_this.options.parentLink) {
         let $anchor = $elem.children('a');
         $anchor.clone().prependTo($sub).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-accordion-submenu-item"></li>');
       }
 
-      if(_this.options.submenuToggle) {
+      if (_this.options.submenuToggle) {
         $elem.addClass('has-submenu-toggle');
         $elem.children('a').after('<button id="' + linkId + '" class="submenu-toggle" aria-controls="' + subId + '" aria-expanded="' + isActive + '" title="' + _this.options.submenuToggleText + '"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
       } else {
@@ -3175,9 +3204,8 @@ class AccordionMenu extends Plugin {
       'role': 'treeitem'
     });
     var initPanes = this.$element.find('.is-active');
-    if(initPanes.length){
-      var _this = this;
-      initPanes.each(function(){
+    if (initPanes.length) {
+      initPanes.each(function() {
         _this.down($(this));
       });
     }
@@ -3195,7 +3223,7 @@ class AccordionMenu extends Plugin {
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        if(_this.options.submenuToggle) {
+        if (_this.options.submenuToggle) {
           $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
             _this.toggle($submenu);
           });
@@ -3206,7 +3234,7 @@ class AccordionMenu extends Plugin {
             });
         }
       }
-    }).on('keydown.zf.accordionMenu', function(e){
+    }).on('keydown.zf.accordionMenu', function(e) {
       var $element = $(this),
           $elements = $element.parent('ul').children('li'),
           $prevElement,
@@ -3299,8 +3327,8 @@ class AccordionMenu extends Plugin {
    * @function
    * @param {jQuery} $target - the submenu to toggle
    */
-  toggle($target){
-    if(!$target.is(':animated')) {
+  toggle($target) {
+    if (!$target.is(':animated')) {
       if (!$target.is(':hidden')) {
         this.up($target);
       }
@@ -3334,7 +3362,7 @@ class AccordionMenu extends Plugin {
       .addClass('is-active')
       .attr({ 'aria-hidden': false });
 
-    if(this.options.submenuToggle) {
+    if (this.options.submenuToggle) {
       $target.prev('.submenu-toggle').attr({'aria-expanded': true});
     }
     else {
@@ -3364,7 +3392,7 @@ class AccordionMenu extends Plugin {
       .removeClass('is-active')
       .attr('aria-hidden', true);
 
-    if(this.options.submenuToggle) {
+    if (this.options.submenuToggle) {
       $allmenus.prev('.submenu-toggle').attr('aria-expanded', false);
     }
     else {
@@ -3389,7 +3417,7 @@ class AccordionMenu extends Plugin {
     this.$element.find('a').off('click.zf.accordionMenu');
     this.$element.find('[data-is-parent-link]').detach();
 
-    if(this.options.submenuToggle) {
+    if (this.options.submenuToggle) {
       this.$element.find('.has-submenu-toggle').removeClass('has-submenu-toggle');
       this.$element.find('.submenu-toggle').remove();
     }
@@ -3517,7 +3545,7 @@ class Drilldown extends Plugin {
       var $link = $(this);
       var $sub = $link.parent();
       if(_this.options.parentLink){
-        $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menuitem"></li>');
+        $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="none"></li>');
       }
       $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
       $link.children('[data-submenu]')
@@ -4343,6 +4371,7 @@ class Dropdown extends Positionable {
       if (typeof this.$currentAnchor.attr('id') === 'undefined') {
         this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
       }
+
       this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
     }
 
@@ -4421,12 +4450,13 @@ class Dropdown extends Positionable {
       .on('click.zf.trigger', function(e) {
         _this._setCurrentAnchor(this);
 
-        if (_this.options.forceFollow === false) {
+        if (
           // if forceFollow false, always prevent default action
-          e.preventDefault();
-        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          (_this.options.forceFollow === false) ||
           // if forceFollow true and hover option true, only prevent default action on 1st click
           // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false)
+        ) {
           e.preventDefault();
         }
     });
@@ -4751,8 +4781,8 @@ class DropdownMenu extends Plugin {
     var subs = this.$element.find('li.is-dropdown-submenu-parent');
     this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
 
-    this.$menuItems = this.$element.find('[role="menuitem"]');
-    this.$tabs = this.$element.children('[role="menuitem"]');
+    this.$menuItems = this.$element.find('li[role="none"]');
+    this.$tabs = this.$element.children('li[role="none"]');
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
     if (this.options.alignment === 'auto') {
@@ -4806,10 +4836,12 @@ class DropdownMenu extends Plugin {
             || (_this.options.forceFollow && hasTouch)) {
             return;
           }
+          e.stopImmediatePropagation();
           e.preventDefault();
           _this._hide($elem);
         }
         else {
+          e.stopImmediatePropagation();
           e.preventDefault();
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
@@ -4843,7 +4875,7 @@ class DropdownMenu extends Plugin {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownmenu', ignoreMousedisappear(function (e) {
+      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -4857,7 +4889,7 @@ class DropdownMenu extends Plugin {
       }));
     }
     this.$menuItems.on('keydown.zf.dropdownMenu', function(e) {
-      var $element = $(e.target).parentsUntil('ul', '[role="menuitem"]'),
+      var $element = $(e.target).parentsUntil('ul', '[role="none"]'),
           isTab = _this.$tabs.index($element) > -1,
           $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
           $prevElement,
@@ -5493,6 +5525,9 @@ class Interchange extends Plugin {
     this.currentPath = '';
     this.className = 'Interchange'; // ie9 back compat
 
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+    
     this._init();
     this._events();
   }
@@ -5921,12 +5956,7 @@ class Magellan extends Plugin {
    * @private
    */
   _events() {
-    var _this = this,
-        $body = $('html, body'),
-        opts = {
-          duration: _this.options.animationDuration,
-          easing:   _this.options.animationEasing
-        };
+    var _this = this;
 
     $(window).one('load', function(){
       if(_this.options.deepLinking){
@@ -8637,10 +8667,8 @@ class Slider extends Plugin {
           param = vertical ? 'height' : 'width',
           direction = vertical ? 'top' : 'left',
           eventOffset = vertical ? e.pageY : e.pageX,
-          halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
           windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
-
 
       var elemOffset = this.$element.offset()[direction];
 
@@ -10260,14 +10288,12 @@ class Tooltip extends Positionable {
 
   _getDefaultPosition() {
     // handle legacy classnames
-    var position = this.$element[0].className.match(/\b(top|left|right|bottom)\b/g);
     var elementClassName = this.$element[0].className;
     if (this.$element[0] instanceof SVGElement) {
         elementClassName = elementClassName.baseVal;
     }
+    var position = elementClassName.match(/\b(top|left|right|bottom)\b/g);
     return position ? position[0] : 'top';
-    var position = elementClassName.match(/\b(top|left|right)\b/g);
-        position = position ? position[0] : 'tp';
   }
 
   _getDefaultAlignment() {
@@ -10702,6 +10728,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if (!this.$element.attr('id')) {
       this.$element.attr('id',GetYoDigits(6, 'responsiveaccordiontabs'));
     }
+
     this._init();
     this._events();
   }
@@ -10824,6 +10851,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if (fromString === toSet) {
       return;
     }
+
     var tabsTitle = _this.allOptions.linkClass?_this.allOptions.linkClass:'tabs-title';
     var tabsPanel = _this.allOptions.panelClass?_this.allOptions.panelClass:'tabs-panel';
 
@@ -10834,9 +10862,10 @@ class ResponsiveAccordionTabs extends Plugin{
     if (fromString === 'tabs') {
       $panels = $panels.children('.'+tabsPanel).removeClass(tabsPanel).removeAttr('role').removeAttr('aria-hidden').removeAttr('aria-labelledby');
       $panels.children('a').removeAttr('role').removeAttr('aria-controls').removeAttr('aria-selected');
-    }else{
+    } else {
       $panels = $liHeads.children('[data-tab-content]').removeClass('accordion-content');
     }
+
     $panels.css({display:'',visibility:''});
     $liHeads.css({display:'',visibility:''});
     if (toSet === 'accordion') {
@@ -10846,29 +10875,33 @@ class ResponsiveAccordionTabs extends Plugin{
         $liHeads.addClass('accordion-item').attr('data-accordion-item','');
         $liHeadsA.addClass('accordion-title');
       });
-    }else if (toSet === 'tabs'){
+    } else if (toSet === 'tabs') {
       var $tabsContent = $('[data-tabs-content='+_this.$element.attr('id')+']');
       var $placeholder = $('#tabs-placeholder-'+_this.$element.attr('id'));
       if ($placeholder.length) {
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content',_this.$element.attr('id'));
         $placeholder.remove();
-      }else{
+      } else {
         $tabsContent = $('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content',_this.$element.attr('id'));
-      }      $panels.each(function(key,value){
+      }
+      $panels.each(function(key,value){
         var tempValue = $(value).appendTo($tabsContent).addClass(tabsPanel);
         var hash = $liHeadsA.get(key).hash.slice(1);
         var id = $(value).attr('id') || GetYoDigits(6, 'accordion');
         if (hash !== id) {
           if (hash !== '') {
             $(value).attr('id',hash);
-          }else{
+          } else {
             hash = id;
             $(value).attr('id',hash);
             $($liHeadsA.get(key)).attr('href',$($liHeadsA.get(key)).attr('href').replace('#','')+'#'+hash);
-          }        }        var isActive = $($liHeads.get(key)).hasClass('is-active');
+          }
+        }
+        var isActive = $($liHeads.get(key)).hasClass('is-active');
         if (isActive) {
           tempValue.addClass('is-active');
-        }      });
+        }
+      });
       $liHeads.addClass(tabsTitle);
     }  }
 
@@ -10879,7 +10912,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Tabs.selectTab
    * @function
    */
-  open(target) {
+  open(_target) {
     if (this.currentRule && typeof this.currentRule.open === 'function') {
       return this.currentRule.open(this.currentPlugin, ...arguments);
     }
@@ -10891,7 +10924,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.up
    * @function
    */
-  close(target) {
+  close(_target) {
     if (this.currentRule && typeof this.currentRule.close === 'function') {
       return this.currentRule.close(this.currentPlugin, ...arguments);
     }
@@ -10903,7 +10936,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.toggle
    * @function
    */
-  toggle(target) {
+  toggle(_target) {
     if (this.currentRule && typeof this.currentRule.toggle === 'function') {
       return this.currentRule.toggle(this.currentPlugin, ...arguments);
     }

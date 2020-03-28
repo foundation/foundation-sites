@@ -176,7 +176,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
 
-var FOUNDATION_VERSION = '6.6.1'; // Global Foundation object
+var FOUNDATION_VERSION = '6.6.2'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -341,8 +341,8 @@ var Foundation = {
         };
 
         if ($el.attr('data-options')) {
-          var thing = $el.attr('data-options').split(';').forEach(function (e, i) {
-            var opt = e.split(':').map(function (el) {
+          $el.attr('data-options').split(';').forEach(function (option, _index) {
+            var opt = option.split(':').map(function (el) {
               return el.trim();
             });
             if (opt[0]) opts[opt[0]] = parseValue(opt[1]);
@@ -614,11 +614,7 @@ function hyphenate(str) {
 }
 
 function getPluginName(obj) {
-  if (typeof obj.constructor.name !== 'undefined') {
-    return hyphenate(obj.constructor.name);
-  } else {
-    return hyphenate(obj.className);
-  }
+  return hyphenate(obj.className);
 }
 
 
@@ -700,16 +696,16 @@ function transitionend($elem) {
   var elem = document.createElement('div'),
       end;
 
-  for (var t in transitions) {
-    if (typeof elem.style[t] !== 'undefined') {
-      end = transitions[t];
+  for (var transition in transitions) {
+    if (typeof elem.style[transition] !== 'undefined') {
+      end = transitions[transition];
     }
   }
 
   if (end) {
     return end;
   } else {
-    end = setTimeout(function () {
+    setTimeout(function () {
       $elem.triggerHandler('transitionend', [$elem]);
     }, 1);
     return 'transitionend';
@@ -1163,7 +1159,7 @@ function parseStyleToObject(str) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.core.js */"./js/entries/plugins/foundation.core.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.core.js */"./js/entries/plugins/foundation.core.js");
 
 
 /***/ }),

@@ -291,12 +291,7 @@ function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this,
-          $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body'),
-          opts = {
-        duration: _this.options.animationDuration,
-        easing: _this.options.animationEasing
-      };
+      var _this = this;
 
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).one('load', function () {
         if (_this.options.deepLinking) {
@@ -834,7 +829,7 @@ Triggers.init = function ($, Foundation) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Volumes/Data/Development/Foundation/foundation-sites/js/entries/plugins/foundation.magellan.js */"./js/entries/plugins/foundation.magellan.js");
+module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.magellan.js */"./js/entries/plugins/foundation.magellan.js");
 
 
 /***/ }),

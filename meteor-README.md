@@ -1,4 +1,4 @@
-# [Foundation for Sites](http://foundation.zurb.com) (v6.6.1)
+# [Foundation for Sites](https://get.foundation) (v6.6.2)
 
 Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes layout constructs, like a fully customizable, responsive grid, commonly used JavaScript plugins, and full A11Y support.
 
@@ -162,7 +162,7 @@ Template.myReveal.onDestroyed(function () {
 
 As you can see it is better to create small templates for plugins and initiate the plugins separately in the `onRendered` lifecycle hook. You should also remember to destroy the plugin using `onDestroyed`lifecycle hook on its template.
 
-You will find more info about particular plugins on its docs page here: [http://foundation.zurb.com/sites/docs/](http://foundation.zurb.com/sites/docs/)
+You will find more info about particular plugins on its docs page here: [https://get.foundation/sites/docs/](https://get.foundation/sites/docs/)
 
 #### Known problems
 
