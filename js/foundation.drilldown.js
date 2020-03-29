@@ -210,7 +210,18 @@ class Drilldown extends Plugin {
     var _this = this;
 
     this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function(e){
-      var $element = $(this);
+      var $element = $(this),
+        $elements = $element.parent('li').parent('ul').children('li').children('a'),
+        $prevElement,
+        $nextElement;
+
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          $prevElement = $elements.eq(Math.max(0, i-1));
+          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
+          return;
+        }
+      });
 
       Keyboard.handleKey(e, 'Drilldown', {
         next: function() {
@@ -230,6 +241,16 @@ class Drilldown extends Plugin {
             }, 1);
           });
           return true;
+        },
+        up: function() {
+          $prevElement.focus();
+          // Don't tap focus on first element in root ul
+          return !$element.is(_this.$element.find('> li:first-child > a'));
+        },
+        down: function() {
+          $nextElement.focus();
+          // Don't tap focus on last element in root ul
+          return !$element.is(_this.$element.find('> li:last-child > a'));
         },
         close: function() {
           // Don't close on element in root ul
