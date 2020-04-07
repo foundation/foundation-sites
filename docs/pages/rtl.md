@@ -29,7 +29,7 @@ View of a [full list of language codes](https://www.loc.gov/standards/iso639-2/p
 
 ## CSS Download
 
-If you use a CSS version of Foundation (the ones you can find on the [download page](http://localhost:3000/installation.html#download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
+If you use a CSS version of Foundation (the ones you can find on the [download page](https://get.foundation/sites/download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
 
 ---
 
