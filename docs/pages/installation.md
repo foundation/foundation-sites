@@ -205,7 +205,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
     <li>Install the <a href="https://github.com/felixrieseberg/windows-build-tools">windows-build-tools</a> (recommended) and make python afterwards accessible via <code>npm config set python "%USERPROFILE%\.windows-build-tools\python27\python.exe"</code></li>
     <li>Install <a href="https://www.python.org/downloads/">python</a> (not recommended) and add it to your system environment variables</li>
   </ol>
-
+ 
   <p>The first way is recommended if you've not installed python v2.7 yet as it doesn't affect your machine outside the node environment. In case you've already installed python v2.7 you may of course skip both ways and start using foundationc-cli immediately.</p>
 </div>
 
@@ -226,7 +226,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
       If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
     </p>
     <p class="text-center">
-      <a href="https://dhbhdrzi4tiry.cloudfront.net/downloads/releases/Foundation-6.6.2-CSS-project.zip" class="button">Download Foundation</a>
+      <a href="https://download.get.foundation/sites/download" class="button">Download Foundation</a>
     </p>
   </div>
 </div>
