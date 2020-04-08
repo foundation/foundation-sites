@@ -274,7 +274,7 @@ class Accordion extends Plugin {
       'aria-selected': true
     });
 
-    $target.stop().slideDown(this.options.slideSpeed, () => {
+    $target.finish().slideDown(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done opening.
        * @event Accordion#down
@@ -302,7 +302,7 @@ class Accordion extends Plugin {
      'aria-selected': false
     });
 
-    $target.stop().slideUp(this.options.slideSpeed, () => {
+    $target.finish().slideUp(this.options.slideSpeed, () => {
       /**
        * Fires when the tab is done collapsing up.
        * @event Accordion#up

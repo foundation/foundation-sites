@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.6.2",
+  "version": "6.6.3",
   "description": "The most advanced responsive front-end framework in the world.",
   "homepage": "https://get.foundation/sites",
   "license": "MIT",
@@ -43,7 +43,6 @@
     ".eslintrc",
     ".huskyrc.yml",
     ".sass-lint.yml",
-    ".travis.yml",
     ".versions",
     "bower.json",
     "browserstack.json",

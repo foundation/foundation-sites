@@ -29,10 +29,10 @@ git clone https://github.com/foundation/foundation-sites-template projectname
 
 # Move to the project folder, and install dependencies
 cd projectname
-npm install
+yarn
 
 # Build the Sass files
-npm start
+yarn start
 ```
 
 Your project will be recompiled every time you save a Sass file in `dist/.
@@ -61,15 +61,15 @@ git clone https://github.com/foundation/foundation-zurb-template projectname
 
 # Move to the project folder, and install dependencies
 cd projectname
-npm install
+yarn
 
 # Build the project
-npm start
+yarn start
 ```
 
 Once compiled, you project is viewable at: <a class="button primary" href="http://localhost:8000" target="_blank">http://localhost:8000</a>
 
-The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `npm run build`.
+The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `yarn build`.
 
 To override or add to the default styles of the ZURB Template, in your project's `src/assets/scss/` folder
  - Change Sass variables in `_settings.scss`

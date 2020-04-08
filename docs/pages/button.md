@@ -21,7 +21,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 
 <a class="" data-open-video="0:34"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="primary callout">
-  <p>Add the attribute <code>type="button"</code> to <code>&lt;button&gt;</code> elements, unless the button submits a form, in which case you use <code>type="submit"</code></p>
+  <p>Add the attribute <code>type="button"</code> to <code>&lt;button&gt;</code> elements, unless the button submits a form, in which case you should add the class `.submit` and remove <code>type="button"</code></p>
 </div>
 
 <div class="docs-codepen-container">

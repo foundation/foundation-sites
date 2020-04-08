@@ -13,7 +13,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/foundation/foundation-sites.svg?branch=develop)](https://travis-ci.org/foundation/foundation-sites)
+[![Build Status](https://github.com/foundation/foundation-sites/workflows/CI/badge.svg)](https://github.com/foundation/foundation-sites/actions?workflow=CI)
 [![dependencies Status](https://david-dm.org/foundation/foundation-sites/status.svg)](https://david-dm.org/foundation/foundation-sites)
 [![devDependencies Status](https://david-dm.org/foundation/foundation-sites/dev-status.svg)](https://david-dm.org/foundation/foundation-sites?type=dev)
 [![npm version](https://badge.fury.io/js/foundation-sites.svg)](https://badge.fury.io/js/foundation-sites)
@@ -41,10 +41,10 @@ To run the documentation locally on your machine, you need [Node.js](https://nod
 # Install
 git clone https://github.com/foundation/foundation-sites
 cd foundation-sites
-npm install
+yarn
 
 # Start the documentation
-npm start
+yarn start
 ```
 
 ### Testing
@@ -54,11 +54,11 @@ Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Re
 Run tests with:
 ```bash
 # Sass unit tests
-npm run test:sass
+yarn test:sass
 # JavaScript unit tests
-npm run test:javascript:units
+yarn test:javascript:units
 # Visual tests
-npm run test:visual
+yarn test:visual
 ```
 
 ## Contributing
