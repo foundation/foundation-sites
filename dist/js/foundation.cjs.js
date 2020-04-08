@@ -635,7 +635,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.2'; // Global Foundation object
+var FOUNDATION_VERSION = '6.6.3'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -3336,7 +3336,7 @@ function (_Plugin) {
         'aria-expanded': true,
         'aria-selected': true
       });
-      $target.stop().slideDown(this.options.slideSpeed, function () {
+      $target.finish().slideDown(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done opening.
          * @event Accordion#down
@@ -3365,7 +3365,7 @@ function (_Plugin) {
         'aria-expanded': false,
         'aria-selected': false
       });
-      $target.stop().slideUp(this.options.slideSpeed, function () {
+      $target.finish().slideUp(this.options.slideSpeed, function () {
         /**
          * Fires when the tab is done collapsing up.
          * @event Accordion#up
