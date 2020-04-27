@@ -229,6 +229,23 @@ attribute, for example:
 </form>
 ```
 
+## Immediate Feedback
+
+When you need to show an input as being in an error state immediately, add the `[data-abide-has-error]` attribute to the input.
+Add `is-visible` class to the Form Error to show the error text.
+
+```html
+<form data-abide novalidate>
+  <label>
+    Email
+    <!-- Add "data-abide-has-error" -->
+    <input id="immediateFeedback" aria-describedby="immediateFeedback" type="email" required data-abide-has-error>
+    <!-- Add "is-visible" -->
+    <span id="immediateFeedbackError" class="form-error is-visible">Email is taken.</span>
+  </label>
+</form>
+```
+
 ---
 
 ## Ignored Inputs
