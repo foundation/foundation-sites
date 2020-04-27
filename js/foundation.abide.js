@@ -46,6 +46,13 @@ class Abide extends Plugin {
       $globalErrors.each((i, error) => this.addGlobalErrorA11yAttributes($(error)));
     }
 
+    // Provide immediate validation feedback marked inputs marked with `[data-abide-has-error]`
+    this.$inputs.each((i, input) => {
+      let $input = $(input);
+      if (this.shouldSkipValidation($input)) return;
+      if ($input.is('[data-abide-has-error]')) this.addErrorClasses($input);
+    });
+
     this._events();
   }
 
@@ -132,6 +139,17 @@ class Abide extends Plugin {
    */
   disableValidation() {
     this.isEnabled = false;
+  }
+
+  /**
+   * Checks if validiation should be skipped for the given $el.
+   * Don't validate ignored inputs or hidden inputs or disabled inputs.
+   * @param {Object} element - jQuery object to check for required attribute
+   * @returns {Boolean} - true if validation shoudl be skipped for this element
+   */
+  shouldSkipValidation($el) {
+    // don't validate ignored inputs or hidden inputs or disabled inputs
+    return $el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')
   }
 
   /**
@@ -443,7 +461,7 @@ class Abide extends Plugin {
     }
 
     // don't validate ignored inputs or hidden inputs or disabled inputs
-    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
+    if (this.shouldSkipValidation($el)) {
       return true;
     }
 
