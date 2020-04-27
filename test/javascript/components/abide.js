@@ -36,9 +36,24 @@ describe('Abide', function() {
     });
   });
 
+  describe('setup', function () {
+    it('adds error classes to elements with `[data-abide-has-error]` attribute', function() {
+      $html = $(`
+        <form data-abide novalidate>
+          <label for="x"></label>
+          <input id="x" data-abide-has-error>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+
+      $html.find('label').should.have.class(plugin.options.labelErrorClass);
+      $html.find('input').should.have.class(plugin.options.inputErrorClass);
+    });
+  });
+
   describe('validateForm()', function() {
     it('returns true after validation is disabled', function() {
-      $html = $("<form data-abide novalidate><input required type='text'><input type='submit'></form>").appendTo("body");
+      $html = $(`<form data-abide novalidate><input required type='text'><input type='submit'></form>`).appendTo("body");
       plugin = new Foundation.Abide($html, {});
 
       plugin.disableValidation();
