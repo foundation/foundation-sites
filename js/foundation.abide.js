@@ -66,7 +66,6 @@ class Abide extends Plugin {
       .off('click.zf.abide keydown.zf.abide')
       .on('click.zf.abide keydown.zf.abide', (e) => {
         if (!e.key || (e.key === ' ' || e.key === 'Enter')) {
-          e.preventDefault();
           this.formnovalidate = e.target.getAttribute('formnovalidate') !== null;
           this.$element.submit();
         }
