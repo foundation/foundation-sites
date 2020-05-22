@@ -498,10 +498,10 @@ class Abide extends Plugin {
     }
 
     if (manageErrorClasses) {
-      this.removeErrorClasses($el);
-
       if (!goodToGo) {
         this.addErrorClasses($el, failedValidators);
+      } else {
+        this.removeErrorClasses($el);
       }
     }
 
