@@ -27,7 +27,7 @@ If the value of the progress bar is not numeric, also add the attribute `aria-va
 </div>
 
 ```html_example
-<div class="progress" role="progressbar" tabindex="0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-meter"></div>
 </div>
 ```
@@ -35,7 +35,7 @@ If the value of the progress bar is not numeric, also add the attribute `aria-va
 Add a `width` CSS property to the inner meter to fill the progress bar.
 
 ```html_example
-<div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+<div class="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
   <div class="progress-meter" style="width: 50%"></div>
 </div>
 ```
@@ -55,7 +55,7 @@ A progress bar can be styled with the `.secondary`, `.success`, `.warning`, and 
 </div>
 
 ```html_example
-<div class="secondary progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+<div class="secondary progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <div class="progress-meter" style="width: 25%"></div>
 </div>
 
@@ -87,7 +87,7 @@ You can add text inside the meter of a progress bar. Make sure the text you use 
 </div>
 
 ```html_example
-<div class="progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <span class="progress-meter" style="width: 25%">
     <span class="progress-meter-text">25%</span>
   </span>
