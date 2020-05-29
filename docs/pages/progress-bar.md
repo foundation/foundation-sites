@@ -138,3 +138,15 @@ The meter automatically colors itself based on the current values, and the defin
 <meter value="50" min="0" low="33" high="66" optimum="100" max="100"></meter>
 <meter value="100" min="0" low="33" high="66" optimum="100" max="100"></meter>
 ```
+
+---
+
+## Screen Readers
+
+Test the progress bar with different `aria-valuenow` values in a couple of screen readers. The screen reader behavior may not be always obvious.
+
+If the value of the progress bar is numeric, make sure the range is defined correctly (extracting `aria-valuemin` from `aria-valuemax` defines the full range). For percentage progress bars (0-100%) the value range is typically 100 (`aria-valuemin="0"` and `aria-valuemax="100"`). Most screen readers will calculate the announced percentage based on these numbers with the following formula:
+
+```
+aria-valuenow / (aria-valuemax - aria-valuemin) = announced percentage
+```
