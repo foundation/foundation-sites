@@ -117,7 +117,7 @@ $paragraph-text-rendering: optimizeLegibility !default;
 
 /// Use the `.code-inline` component as default for `<code>` elements.
 /// @type Boolean
-$enable-code-inline: true;
+$enable-code-inline: true !default;
 
 /// Default color for links.
 /// @type Color
@@ -197,7 +197,7 @@ $blockquote-border: 1px solid $medium-gray !default;
 
 /// Use the `.cite-block` component as default for `<cite>` elements.
 /// @type Boolean
-$enable-cite-block: true;
+$enable-cite-block: true !default;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
