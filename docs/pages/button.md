@@ -34,7 +34,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 <a href="#features" class="button">View All Features</a>
 
 <!-- Buttons (actions) -->
-<button type="button" class="success button">Save</button>
+<button class="submit success button">Save</button>
 <button type="button" class="alert button">Delete</button>
 ```
 
