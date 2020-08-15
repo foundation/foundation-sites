@@ -480,14 +480,6 @@ You can also use for more advanced responsive cells:
   }
 ```
 
-We also have a shorthand option for the above which outputs the same CSS:
-
-```scss
-.main-content {
-  @include xy-cell-breakpoints((small: full, medium: 8));
-}
-```
-
 <div class="callout warning">
   If you pass multiple breakpoints to the <code>breakpoint</code> mixin, it will duplicate its content for each of them. Be careful to only use <code>breakpoint</code> with properties that should change across breakpoints.
 </div>
