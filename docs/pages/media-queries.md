@@ -212,7 +212,7 @@ Foundation.MediaQuery.atLeast('medium');
 Foundation.MediaQuery.is('medium only');
 Foundation.MediaQuery.only('medium');
 
-// ↓ True for "medium" or larger
+// ↓ True for "medium" or smaller
 Foundation.MediaQuery.is('medium down');
 Foundation.MediaQuery.upTo('medium');
 ```
