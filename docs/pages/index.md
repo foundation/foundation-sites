@@ -128,7 +128,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
+      <a target="_blank" href="https://get.foundation/building-blocks/how-to.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
             <img src="https://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="" style="height: 142px;">
