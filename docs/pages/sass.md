@@ -180,7 +180,7 @@ All Foundation projects include a settings file, named `_settings.scss`. If you'
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 
 <div class="callout warning">
-  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/foundation/foundation/releases">Foundation releases</a> so you know when things change.</p>
+  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/foundation/foundation-sites/releases">Foundation releases</a> so you know when things change.</p>
 </div>
 
 Here's an example set of settings variables. These change the default styling of [buttons](button.html):
