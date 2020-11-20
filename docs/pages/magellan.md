@@ -90,7 +90,7 @@ This below example is a simplified version of the table of contents on the right
 
 ---
 
-## Browser history
+## Browser History
 
 When the `data-deep-link` option is set to `true`, the active section of Magellan is recorded by adding a hash with the active Magellan section ID to the browser URL. By default, Magellan *replaces* the browser history (using `history.replaceState()`).
 
