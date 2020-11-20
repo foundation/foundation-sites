@@ -39,7 +39,7 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 
 ## Sticky Navigation
 
-You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar.
+You can use Magellan with our [Sticky plugin](sticky.html) to create a persistent navigation header or sidebar.
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
