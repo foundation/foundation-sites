@@ -81,8 +81,6 @@
     "jquery": "^3.3.1",
     "js-yaml": "^3.12.1",
     "kleur": "^3.0.2",
-    "mocha": "^8.2.1",
-    "mocha-headless-chrome": "^2.0.1",
     "motion-ui": "^2.0.2",
     "octophant": "^1.0.0",
     "panini": "^1.6.2",
