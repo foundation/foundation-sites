@@ -160,8 +160,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "glob": "^7.1.6"
   }
 }
