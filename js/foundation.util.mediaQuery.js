@@ -91,7 +91,7 @@ var MediaQuery = {
     var self = this;
     var $meta = $('meta.foundation-mq');
     if(!$meta.length){
-      $('<meta class="foundation-mq">').appendTo(document.head);
+      $('<meta name="generator" content="Zurb Foundation for Sites 6" class="foundation-mq">').appendTo(document.head);
     }
 
     var extractedStyles = $('.foundation-mq').css('font-family');
