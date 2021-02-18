@@ -92,7 +92,7 @@ var MediaQuery = {
     var $metaViewportFit = $('meta[content*="viewport-fit=cover"]');
     // add meta viewport tag if not present
     if (!$metaViewport.length) {
-      $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">');
+      $('<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">').appendTo(document.head);
     } else {
       // add viewport-fit=cover if not present which is mandatory for the use of css environment variables
       if (!$metaViewportFit.length) {
@@ -103,7 +103,7 @@ var MediaQuery = {
     var self = this;
     var $meta = $('meta.foundation-mq');
     if(!$meta.length){
-      $('<meta name="generator" content="Zurb Foundation for Sites" class="foundation-mq">').appendTo(document.head);
+      $('<meta name="generator" content="ZURB Foundation for Sites" class="foundation-mq">').appendTo(document.head);
     }
 
     var extractedStyles = $('.foundation-mq').css('font-family');
