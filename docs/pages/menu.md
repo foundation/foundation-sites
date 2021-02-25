@@ -14,7 +14,7 @@ flex: true
 
 <div class="callout training-callout">
   <p>Navigation is one the most crucial part of your site. Be a navigation guru with our Foundation online webinar training. You’ll learn techniques for creating responsive navigations that work with any type of site. In addition to that you can learn tips and tricks and best practices for all of Foundation’s components.</p>
-  <a href="http://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
+  <a href="https://zurb.com/university/foundation-intro" target="_blank">Find out more about Foundation training classes →</a>
 </div>
 
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
@@ -368,6 +368,29 @@ When using any of the menu icon layout classes, ensure that the icon and the tex
   <li><a href="#"><i class="fi-list"></i> <span>Two</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
+</ul>
+```
+
+<br>
+
+### Icon Position with Nested Styles
+Nested lists can have icons positioned differently based on the menu layer. Add the class `.nested` to the nested list and your desired icon position: `.icon-top`, `.icon-right`, `.icon-bottom`, `.icon-left`.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qjYmdG?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="vertical menu icons icon-top">
+  <li>
+    <a href="#"><i class="fi-list"></i> One</a>
+    <ul class="nested vertical menu icons icon-left">
+      <li><a href="#"><i class="fi-list"></i> One</a></li>
+      <li><a href="#"><i class="fi-list"></i> Two</a></li>
+    </ul>
+  </li>
+  <li><a href="#"><i class="fi-list"></i> Two</a></li>
+  <li><a href="#"><i class="fi-list"></i> Three</a></li>
 </ul>
 ```
 ---

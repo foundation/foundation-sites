@@ -1,5 +1,5 @@
-// Foundation for Sites by ZURB
-// foundation.zurb.com
+// Foundation for Sites
+// https://get.foundation
 // Licensed under MIT Open Source
 
 ////
@@ -38,8 +38,14 @@ $buttongroup-radius-on-each: true !default;
 
   @if $global-flexbox {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: stretch;
+    flex-grow: 1;
+
+    &::before,
+    &::after {
+      display: none; // Disable clearfix
+    }
   }
   @else {
     font-size: 0;
@@ -103,7 +109,7 @@ $buttongroup-radius-on-each: true !default;
 
     &::before,
     &::after {
-      display: none;
+      display: none; // Disable clearfix
     }
   }
 
@@ -158,7 +164,6 @@ $buttongroup-radius-on-each: true !default;
       margin-bottom: 0;
     }
 
-
     @if not $buttongroup-radius-on-each {
       border-radius: 0;
 
@@ -168,12 +173,10 @@ $buttongroup-radius-on-each: true !default;
       }
 
       &:last-child {
-        margin-bottom: 0;
         border-bottom-#{$global-left}-radius: $global-radius;
         border-bottom-#{$global-right}-radius: $global-radius;
       }
     }
-
   }
 }
 

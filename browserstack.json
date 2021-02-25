@@ -11,17 +11,33 @@
         "safari_previous",
         "opera_latest",
         "opera_previous",
-
         "edge_latest",
         "edge_previous",
         "ie_11",
         "ie_10",
-        "ie_9",
-
-        "mobile_safari_latest",
-        "mobile_safari_7_0",
-        "android_browser_latest",
-        "android_browser_4_4",
-        "ie_mobile_latest"
+        {
+            "os": "ios",
+            "os_version": "12.4",
+            "device": "iPhone XS",
+            "real_mobile": "true"
+        },
+        {
+            "os": "ios",
+            "os_version": "11.0",
+            "device": "iPhone 8 Plus",
+            "real_mobile": "true"
+        },
+        {
+            "os": "android",
+            "os_version": "9.0",
+            "device": "Google Pixel 3",
+            "real_mobile": "true"
+        },
+        {
+            "os": "android",
+            "os_version": "4.4",
+            "device": "Google Nexus 5",
+            "real_mobile": "true"
+        }
     ]
 }

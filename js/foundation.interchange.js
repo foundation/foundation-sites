@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.core.plugin';
 import { GetYoDigits } from './foundation.core.utils';
-
+import { Triggers } from './foundation.util.triggers';
 
 /**
  * Interchange module.
@@ -28,6 +28,9 @@ class Interchange extends Plugin {
     this.currentPath = '';
     this.className = 'Interchange'; // ie9 back compat
 
+    // Triggers init is idempotent, just need to make sure it is initialized
+    Triggers.init($);
+    
     this._init();
     this._events();
   }

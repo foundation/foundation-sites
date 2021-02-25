@@ -437,7 +437,7 @@ class Reveal extends Plugin {
 
       // Get the current top before the modal is closed and restore the scroll after.
       // TODO: use component properties instead of HTML properties
-      // See https://github.com/zurb/foundation-sites/pull/10786
+      // See https://github.com/foundation/foundation-sites/pull/10786
       var scrollTop = parseInt($("html").css("top"));
 
       if ($('.reveal:visible').length  === 0) {

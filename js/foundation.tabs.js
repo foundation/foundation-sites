@@ -385,6 +385,10 @@ class Tabs extends Plugin {
     var max = 0,
         _this = this; // Lock down the `this` value for the root tabs object
 
+    if (!this.$tabContent) {
+      return;
+    }
+
     this.$tabContent
       .find(`.${this.options.panelClass}`)
       .css('height', '')

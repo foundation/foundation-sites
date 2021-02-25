@@ -83,12 +83,7 @@ class Magellan extends Plugin {
    * @private
    */
   _events() {
-    var _this = this,
-        $body = $('html, body'),
-        opts = {
-          duration: _this.options.animationDuration,
-          easing:   _this.options.animationEasing
-        };
+    var _this = this;
 
     $(window).one('load', function(){
       if(_this.options.deepLinking){
@@ -167,7 +162,7 @@ class Magellan extends Plugin {
 
     let activeIdx;
     // Before the first point: no link
-    if(newScrollPos < this.points[0]){ /* do nothing */ }
+    if(newScrollPos < this.points[0] - this.options.offset - (isScrollingUp ? this.options.threshold : 0)){ /* do nothing */ }
     // At the bottom of the page: last link
     else if(newScrollPos + this.winHeight === this.docHeight){ activeIdx = this.points.length - 1; }
     // Otherwhise, use the last visible link

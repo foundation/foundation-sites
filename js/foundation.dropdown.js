@@ -73,7 +73,7 @@ class Dropdown extends Positionable {
       // Get the anchor ID or create one
       if (typeof this.$currentAnchor.attr('id') === 'undefined') {
         this.$currentAnchor.attr('id', GetYoDigits(6, 'dd-anchor'));
-      };
+      }
 
       this.$element.attr('aria-labelledby', this.$currentAnchor.attr('id'));
     }
@@ -153,12 +153,13 @@ class Dropdown extends Positionable {
       .on('click.zf.trigger', function(e) {
         _this._setCurrentAnchor(this);
 
-        if (_this.options.forceFollow === false) {
+        if (
           // if forceFollow false, always prevent default action
-          e.preventDefault();
-        } else if (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+          (_this.options.forceFollow === false) ||
           // if forceFollow true and hover option true, only prevent default action on 1st click
           // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+          (hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false)
+        ) {
           e.preventDefault();
         }
     });

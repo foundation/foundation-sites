@@ -23,7 +23,7 @@ If the value of the progress bar is not numeric, also add the attribute `aria-va
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmBqPB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/PmBqPB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -51,7 +51,7 @@ A progress bar can be styled with the `.secondary`, `.success`, `.warning`, and 
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/mmjJPL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmjJPL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -83,13 +83,13 @@ You can add text inside the meter of a progress bar. Make sure the text you use 
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjBqRm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/NjBqRm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
 <div class="progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <span class="progress-meter" style="width: 25%">
-    <p class="progress-meter-text">25%</p>
+    <span class="progress-meter-text">25%</span>
   </span>
 </div>
 ```
@@ -98,7 +98,7 @@ You can add text inside the meter of a progress bar. Make sure the text you use 
 
 ## Native Progress
 
-As an alternative to our custom progress bar style, you can also opt to use the native `<progress>` element. It provides a more succinct way to create progress bars, but it's not supported in IE9, and some other older browsers. [View `<progress>` element support.](http://caniuse.com/#feat=progress)
+As an alternative to our custom progress bar style, you can also opt to use the native `<progress>` element. It provides a more succinct way to create progress bars, but it's not supported in IE9, and some other older browsers. [View `<progress>` element support.](https://caniuse.com/#feat=progress)
 
 ```html_example
 <progress max="100" value="75"></progress>
@@ -123,7 +123,7 @@ The `<progress>` element can be styled with the same coloring classes: `.seconda
 
 ## Native Meter
 
-For the *extra* adventurous developers out there, we also provide styles for the `<meter>` element. What's the difference? `<progress>` represents a value that changes over time, like storage capacity. `<meter>` represents a value that fluctuates around some optimum value. It also has *no* support in Internet Explorer, Mobile Safari, or Android 2. [View `<meter>` element support.](http://caniuse.com/#search=meter)
+For the *extra* adventurous developers out there, we also provide styles for the `<meter>` element. What's the difference? `<progress>` represents a value that changes over time, like storage capacity. `<meter>` represents a value that fluctuates around some optimum value. It also has *no* support in Internet Explorer, Mobile Safari, or Android 2. [View `<meter>` element support.](https://caniuse.com/#search=meter)
 
 If you're using the Sass version of Foundation, add this line to your main Sass file to export the `<meter>` CSS:
 

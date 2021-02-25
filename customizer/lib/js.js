@@ -1,6 +1,5 @@
-var empty = require('is-empty-object');
-var unique = require('array-uniq');
-var path = require('path');
+const empty = require('is-empty-object');
+const path = require('path');
 
 // custom module names where needed
 const MODULES = {
@@ -15,7 +14,7 @@ const MODULES = {
  */
 
 module.exports = function(config, modules) {
-  var dir = path.resolve(__dirname, '../../js/');
+  const dir = path.resolve(__dirname, '../../js/');
   var entry = "import $ from 'jquery';\n" +
               "import { Foundation } from '" + dir + "/foundation.core';\n" +
               "Foundation.addToJquery($);\n" +
@@ -24,16 +23,16 @@ module.exports = function(config, modules) {
               "import { Triggers } from '" + dir + "/foundation.util.triggers';\n" +
               "Triggers.init($, Foundation);\n";
 
-  // last 2 pieces work around https://github.com/zurb/foundation-sites/issues/10287
+  // last 2 pieces work around https://github.com/foundation/foundation-sites/issues/10287
 
-  var libraries = [];
+  const libraries = [];
 
   if (empty(modules)) {
     modules = Object.keys(config);
   }
 
-  for (var i in modules) {
-    var name = modules[i];
+  for (let i in modules) {
+    let name = modules[i];
 
     // Check if the module has JS files
     if (config[name] && config[name].js) {
@@ -42,9 +41,9 @@ module.exports = function(config, modules) {
   }
 
   // add plugins into entry
-  for (var i in libraries) {
-    var file = libraries[i];
-    var moduleName = MODULES[file] || file.charAt(0).toUpperCase() + file.slice(1);
+  for (let i in libraries) {
+    let file = libraries[i];
+    let moduleName = MODULES[file] || file.charAt(0).toUpperCase() + file.slice(1);
     entry = entry + "import { " + moduleName + " } from '" + dir + "/foundation." + file + "';\n";
     entry = entry + "Foundation.plugin(" + moduleName + ", '" + moduleName + "');\n";
   }
