@@ -237,7 +237,7 @@ To create a button with only an arrow, add the class `.arrow-only`. Note that th
 
 ## Flexbox Button Group
 
-The buttons in a button group can be positioned using the [Flexbox Utility](http://localhost:3000/flexbox.html#helper-classes) classes in Foundation. You can use `.align-center`, `.align-right`, `.align-spaced`, or `.align-justify`.
+The buttons in a button group can be positioned using the [Flexbox Utility](/sites/docs/flexbox-utilities.html#vanilla-flexbox-helper-classes) classes in Foundation. You can use `.align-center`, `.align-right`, `.align-spaced`, or `.align-justify`.
 
 ```html_example
 <div class="button-group align-center">
