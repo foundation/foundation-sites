@@ -102,7 +102,7 @@
   flex-wrap: wrap;
 
   > #{$selector} {
-    $pct: percentage(1/$n);
+    $pct: percentage(divide(1, $n));
 
     flex: 0 0 $pct;
     max-width: $pct;
