@@ -26,7 +26,7 @@
   // Output our margin gutters.
   @if (type-of($gutters) == 'map') {
     @include -zf-breakpoint-value(auto, $gutters) {
-      $gutter: rem-calc($-zf-bp-value) / 2;
+      $gutter: rem-calc($-zf-bp-value) * 0.5;
 
       // Loop through each gutter position
       @each $value in $gutter-position {
@@ -35,7 +35,7 @@
     }
   }
   @else if (type-of($gutters) == 'number') {
-    $gutter: rem-calc($gutters) / 2;
+    $gutter: rem-calc($gutters) * 0.5;
 
     // Loop through each gutter position
     @each $value in $gutter-position {

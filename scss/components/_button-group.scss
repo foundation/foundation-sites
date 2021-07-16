@@ -130,7 +130,7 @@ $buttongroup-radius-on-each: true !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1 / $i)} - #{$spacing});
+            width: calc(#{percentage(divide(1, $i))} - #{$spacing});
             margin-#{$global-right}: $spacing;
 
             &:last-child {

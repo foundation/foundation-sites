@@ -52,7 +52,7 @@ $input-border-focus: 1px solid $dark-gray !default;
 
 /// Padding of text inputs.
 /// @type Color
-$input-padding: $form-spacing / 2 !default;
+$input-padding: $form-spacing * 0.5 !default;
 
 /// Box shadow inside text inputs when not focused.
 /// @type Shadow

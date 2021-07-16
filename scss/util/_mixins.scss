@@ -91,7 +91,7 @@
   $hover-shadow: ();
 
   // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
-  $spacing: ($height - ($weight * $bars)) / ($bars - 1);
+  $spacing: divide($height - ($weight * $bars), $bars - 1);
 
   @if unit($spacing) == 'px' {
     $spacing: floor($spacing);
@@ -192,7 +192,7 @@
   @for $i from 2 through $max {
     &:nth-last-child(#{$i}):first-child,
     &:nth-last-child(#{$i}):first-child ~ #{$elem} {
-      width: percentage(1 / $i);
+      width: percentage(divide(1, $i));
     }
   }
 }

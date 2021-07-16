@@ -50,7 +50,7 @@ $table-stripe: even !default;
 
 /// Default color for header background.
 /// @type Color
-$table-head-background: smart-scale($table-background, $table-color-scale / 2) !default;
+$table-head-background: smart-scale($table-background, $table-color-scale * 0.5) !default;
 
 /// Default color of header rows on hover.
 /// @type List

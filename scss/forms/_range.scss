@@ -40,7 +40,7 @@ $slider-radius: $global-radius !default;
 
 @mixin foundation-range-input {
   input[type='range'] {  // sass-lint:disable-line no-qualifying-elements
-    $margin: ($slider-handle-height - $slider-height) / 2;
+    $margin: ($slider-handle-height - $slider-height) * 0.5;
 
     display: block;
     width: 100%;
