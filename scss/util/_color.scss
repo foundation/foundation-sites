@@ -33,9 +33,9 @@ $success-color:null;
 
   @for $i from 1 through 3 {
     $rgb: nth($rgba, $i);
-    $rgb: $rgb / 255;
+    $rgb: divide($rgb, 255);
 
-    $rgb: if($rgb < 0.03928, $rgb / 12.92, pow(($rgb + 0.055) / 1.055, 2.4));
+    $rgb: if($rgb < 0.03928, divide($rgb, 12.92), pow(divide($rgb + 0.055, 1.055), 2.4));
 
     $rgba2: append($rgba2, $rgb);
   }
@@ -54,13 +54,13 @@ $success-color:null;
   // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef
   $luminance1: color-luminance($color1) + 0.05;
   $luminance2: color-luminance($color2) + 0.05;
-  $ratio: $luminance1 / $luminance2;
+  $ratio: divide($luminance1, $luminance2);
 
   @if $luminance2 > $luminance1 {
-    $ratio: 1 / $ratio;
+    $ratio: divide(1, $ratio);
   }
 
-  $ratio: round($ratio * 10) / 10;
+  $ratio: round($ratio * 10) * 0.1;
 
   @return $ratio;
 }

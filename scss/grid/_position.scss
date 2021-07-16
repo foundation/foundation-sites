@@ -32,7 +32,7 @@
 
   // Push/pull
   @else if type-of($position) == 'number' {
-    $offset: percentage($position / $grid-column-count);
+    $offset: percentage(divide($position, $grid-column-count));
 
     position: relative;
     #{$global-left}: $offset;
