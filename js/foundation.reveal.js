@@ -55,7 +55,7 @@ class Reveal extends Plugin {
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
       'aria-controls': this.id,
-      'aria-haspopup': true,
+      'aria-haspopup': 'dialog',
       'tabindex': 0
     });
 
