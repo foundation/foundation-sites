@@ -116,7 +116,8 @@
     "node-sass": "^6.0.1",
     "lodash": "^4.17.21",
     "minimist": "^1.2.3",
-    "dot-prop": "^5.2.0"
+    "dot-prop": "^5.2.0",
+    "trim-newlines": "^3.0.1"
   },
   "engines": {
     "node": ">=8.4.0"
