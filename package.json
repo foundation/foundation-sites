@@ -50,7 +50,7 @@
     "clipboard": "^2.0.4",
     "corejs-typeahead": "^1.1.1",
     "cz-conventional-changelog": "^2.1.0",
-    "doiuse": "^4.4.1",
+    "doiuse": "~4.1.0",
     "foundation-docs": "github:foundation/foundation-docs",
     "gulp": "^4.0.0",
     "gulp-add-src": "^1.0.0",
@@ -71,7 +71,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-rsync": "0.0.8",
     "gulp-sass": "^4.1.1",
-    "gulp-sass-lint": "^1.4.0",
+    "gulp-sass-lint": "^1.3.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.1.0",
@@ -86,7 +86,7 @@
     "motion-ui": "^2.0.2",
     "node-sass": "^6.0.1",
     "octophant": "^1.0.0",
-    "panini": "^1.7.2",
+    "panini": "^1.6.2",
     "patch-package": "^6.2.1",
     "prettyjson": "^1.1.3",
     "require-dir": "^1.2.0",
@@ -98,7 +98,7 @@
     "sassy-lists": "^3.0.1",
     "sinon": "^7.2.2",
     "strip-indent": "^2.0.0",
-    "supercollider": "^1.5.3",
+    "supercollider": "^1.4.5",
     "touch": "^3.1.0",
     "undertaker-forward-reference": "^1.0.2",
     "util-deprecate": "^1.0.2",
@@ -110,15 +110,7 @@
     "yargs": "^13.3.0"
   },
   "resolutions": {
-    "puppeteer": "^1.11.0",
-    "glob-parent": "^5.1.2",
-    "yargs-parser": "^20.2.4",
-    "marked": "^2",
-    "node-sass": "^6.0.1",
-    "lodash": "^4.17.21",
-    "minimist": "^1.2.3",
-    "dot-prop": "^5.2.0",
-    "trim-newlines": "^3.0.1"
+    "puppeteer": "^1.11.0"
   },
   "engines": {
     "node": ">=8.4.0"
