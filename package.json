@@ -111,6 +111,7 @@
   },
   "resolutions": {
     "puppeteer": "^1.11.0",
+    "glob-parent": "^5.1.2",
     "marked": "^2",
     "node-sass": "^6.0.1",
     "lodash": "^4.17.21",
