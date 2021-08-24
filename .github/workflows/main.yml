@@ -4,11 +4,9 @@ on: [push, pull_request]
 
 jobs:
   build_latest_browserstack:
-    name: Node 14 with browserstack
+    name: Node latest with browserstack
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x] # latest (16) not functional
+    container: node:latest
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
@@ -24,11 +22,9 @@ jobs:
         run: yarn test:javascript:browserstack
 
   build_latest:
-    name: Node 14
+    name: Node latest
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x] # latest (16) not functional
+    container: node:current
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
@@ -44,7 +40,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest, windows-latest]
-        node: [ '12', '10']
+        node: [ '12', '10', '8' ]
     name: Node ${{ matrix.node }} (${{ matrix.platform }})
     runs-on: ${{ matrix.platform }}
     steps:
