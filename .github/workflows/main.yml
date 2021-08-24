@@ -6,7 +6,9 @@ jobs:
   build_latest_browserstack:
     name: Node latest with browserstack
     runs-on: ubuntu-latest
-    container: node:latest
+    strategy:
+      matrix:
+        node-version: [14.x] # latest (16) not functional
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
@@ -24,7 +26,9 @@ jobs:
   build_latest:
     name: Node latest
     runs-on: ubuntu-latest
-    container: node:current
+    strategy:
+      matrix:
+        node-version: [14.x] # latest (16) not functional
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
