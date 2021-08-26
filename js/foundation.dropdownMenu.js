@@ -141,6 +141,8 @@ class DropdownMenu extends Plugin {
       });
     }
 
+    if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
+
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
         var $elem = $(this),
@@ -399,6 +401,13 @@ DropdownMenu.defaults = {
    * @default false
    */
   disableHover: false,
+  /**
+   * Disallows hover on touch devices
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  disableHoverOnTouch: true,
   /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option
