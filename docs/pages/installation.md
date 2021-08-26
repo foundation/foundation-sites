@@ -226,7 +226,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
       If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
     </p>
     <p class="text-center">
-      <a href="https://download.get.foundation/sites/download" class="button">Download Foundation</a>
+      <a href="https://static.download.foundation/sites-css-latest" class="button">Download Foundation</a>
     </p>
   </div>
 </div>
