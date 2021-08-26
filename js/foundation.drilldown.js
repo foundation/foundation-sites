@@ -55,12 +55,11 @@ class Drilldown extends Plugin {
     }
 
     this.$element.attr({
-      'role': 'tree',
       'aria-multiselectable': false
     });
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
+    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').find('a');
 
     // Set the main menu as current by default (unless a submenu is selected)
     // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
@@ -415,7 +414,7 @@ class Drilldown extends Plugin {
 
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
-      if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
+      if (autoFocus === true) $elem.find('li > a').first().focus();
       if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
       return;
     }
@@ -438,7 +437,7 @@ class Drilldown extends Plugin {
       if (isLastChild === true) {
         $(this).one(transitionend($(this)), () => {
           if (autoFocus === true) {
-            $elem.find('li[role="treeitem"] > a').first().focus();
+            $elem.find('li > a').first().focus();
           }
         });
       }
