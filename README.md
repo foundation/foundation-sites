@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://get.foundation/sites/docs/installation.html"><b>Install</b></a>
-  | <a href="https://get.foundation/sites/docs">Documentation</a>
+  | <a href="https://get.foundation/sites/docs/">Documentation</a>
   | <a href="https://github.com/foundation/foundation-sites/releases">Releases</a>
   | <a href="CONTRIBUTING.md">Contributing</a>
 </p>
