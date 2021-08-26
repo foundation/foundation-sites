@@ -77,9 +77,9 @@ describe('Drilldown Menu', function() {
       });
 
       plugin.$element.find('.is-drilldown-submenu-parent').each(function() {
-        $(this).should.have.attr('aria-haspopup', 'true');
         $(this).should.have.attr('aria-expanded', 'false');
-        $(this).should.have.attr('aria-label', $(this).children('a').first().text());
+        $(this).children('a').first().should.have.attr('aria-haspopup', 'true');
+        $(this).children('a').first().should.have.attr('aria-label', $(this).children('a').first().text());
       });
 
     });
