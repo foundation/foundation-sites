@@ -114,7 +114,7 @@
     "trim-newlines": "^3.0.1"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=12.0"
   },
   "repository": {
     "type": "git",
