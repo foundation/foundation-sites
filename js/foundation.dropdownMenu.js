@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
 import { rtl as Rtl, ignoreMousedisappear } from './foundation.core.utils';

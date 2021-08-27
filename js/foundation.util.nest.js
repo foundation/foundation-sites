@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 
 const Nest = {

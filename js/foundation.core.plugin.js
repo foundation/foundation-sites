@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.core.utils';
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import { Box } from './foundation.util.box';
 import { Plugin } from './foundation.core.plugin';
 import { rtl as Rtl } from './foundation.core.utils';

@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
 import { onLoad, transitionend, RegExpEscape } from './foundation.core.utils';

@@ -6,8 +6,6 @@
  *                                         *
  ******************************************/
 
-'use strict';
-
 import $ from 'jquery';
 import { rtl as Rtl } from './foundation.core.utils';
 
