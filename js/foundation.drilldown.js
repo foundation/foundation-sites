@@ -36,8 +36,6 @@ class Drilldown extends Plugin {
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'previous',
       'ESCAPE': 'close',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
     });
   }
 
@@ -456,7 +454,14 @@ class Drilldown extends Plugin {
     $elem.attr('aria-expanded', true);
 
     this.$currentMenu = $submenu;
-    $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+
+    //hide drilldown parent menu when submenu is open
+    // this removes it from the dom so that the tab key will take the user to the next visible element
+    $elem.parent().closest('ul').addClass('invisible');
+
+    // add visible class to submenu to override invisible class above
+    $submenu.addClass('is-active visible').removeClass('invisible').attr('aria-hidden', false);
+
     if (this.options.autoHeight) {
       this.$wrapper.css({ height: $submenu.data('calcHeight') });
     }
@@ -477,11 +482,12 @@ class Drilldown extends Plugin {
   _hide($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     var _this = this;
+    $elem.parent().closest('ul').removeClass('invisible');
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true);
     $elem.addClass('is-closing')
          .one(transitionend($elem), function(){
-           $elem.removeClass('is-active is-closing');
+           $elem.removeClass('is-active is-closing visible');
            $elem.blur().addClass('invisible');
          });
     /**
