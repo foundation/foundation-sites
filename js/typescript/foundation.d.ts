@@ -277,7 +277,7 @@ declare module FoundationSites {
     // No public methods
   }
 
-  interface PositionableOptions {
+  interface IPositionableOptions {
     position?: string;
     alignment?: string;
     allowOverlap?: boolean;
@@ -293,7 +293,7 @@ declare module FoundationSites {
     toggle(_target: any, ...args: any[]): any;
   }
 
-  interface ResponsiveAccordionTabsOptions {
+  interface IResponsiveAccordionTabsOptions {
     // No Options
   }
 
@@ -301,7 +301,7 @@ declare module FoundationSites {
     // No public methods
   }
 
-  interface ResponsiveMenuOptions {
+  interface IResponsiveMenuOptions {
     // No Options
   }
 
@@ -309,7 +309,7 @@ declare module FoundationSites {
     toggleMenu(): void;
   }
 
-  interface ResponsiveToggleOptions {
+  interface IResponsiveToggleOptions {
     hideFor?: string;
     animate?: boolean;
   }
@@ -371,7 +371,7 @@ declare module FoundationSites {
     constructor(element: any, options: any);
   }
 
-  interface SmoothScrollOptions {
+  interface ISmoothScrollOptions {
     animationDuration?: number;
     animationEasing?: string;
     threshold?: number;
@@ -575,16 +575,16 @@ declare module FoundationSites {
       new(element: JQuery, options?: IOrbitOptions): Orbit;
     }
     Positionable: {
-      new(element: JQuery, options?: PositionableOptions): Positionable;
+      new(element: JQuery, options?: IPositionableOptions): Positionable;
     }
     ResponsiveAccordionTabs: {
-      new(element: JQuery, options?: ResponsiveAccordionTabsOptions): ResponsiveAccordionTabs;
+      new(element: JQuery, options?: IResponsiveAccordionTabsOptions): ResponsiveAccordionTabs;
     };
     ResponsiveMenu: {
-      new(element: JQuery, options?: ResponsiveMenuOptions): ResponsiveMenu;
+      new(element: JQuery, options?: IResponsiveMenuOptions): ResponsiveMenu;
     };
     ResponsiveToggle: {
-      new(element: JQuery, options?: ResponsiveToggleOptions): ResponsiveToggle;
+      new(element: JQuery, options?: IResponsiveToggleOptions): ResponsiveToggle;
     };
     Reveal: {
       new(element: JQuery, options?: IRevealOptions): Reveal;
@@ -593,7 +593,7 @@ declare module FoundationSites {
       new(element: JQuery, options?: ISliderOptions): Slider;
     }
     SmoothScroll: {
-      new(element: JQuery, options?: SmoothScrollOptions): SmoothScroll;
+      new(element: JQuery, options?: ISmoothScrollOptions): SmoothScroll;
     }
     Sticky: {
       new(element: JQuery, options?: IStickyOptions): Sticky;
