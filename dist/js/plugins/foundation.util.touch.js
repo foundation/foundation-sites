@@ -230,9 +230,7 @@ function teardown() {
   this.removeEventListener('touchstart', onTouchStart);
 }
 
-var SpotSwipe =
-/*#__PURE__*/
-function () {
+var SpotSwipe = /*#__PURE__*/function () {
   function SpotSwipe($) {
     _classCallCheck(this, SpotSwipe);
 

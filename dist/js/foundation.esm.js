@@ -1,6 +1,8 @@
 import $ from 'jquery';
 
 function _typeof(obj) {
+  "@babel/helpers - typeof";
+
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function (obj) {
       return typeof obj;
@@ -67,6 +69,19 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -78,9 +93,30 @@ function _assertThisInitialized(self) {
 function _possibleConstructorReturn(self, call) {
   if (call && (typeof call === "object" || typeof call === "function")) {
     return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
   }
 
   return _assertThisInitialized(self);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
 }
 
 function _superPropBase(object, property) {
@@ -114,7 +150,7 @@ function _get(target, property, receiver) {
 }
 
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
 function _arrayWithHoles(arr) {
@@ -122,13 +158,17 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
   var _arr = [];
   var _n = true;
   var _d = false;
-  var _e = undefined;
+
+  var _s, _e;
 
   try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
       _arr.push(_s.value);
 
       if (i && _arr.length === i) break;
@@ -147,8 +187,25 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
 function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 /**
@@ -310,6 +367,7 @@ function ignoreMousedisappear(handler) {
 }
 
 var foundation_core_utils = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   rtl: rtl,
   GetYoDigits: GetYoDigits,
   RegExpEscape: RegExpEscape,
@@ -629,7 +687,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.3'; // Global Foundation object
+var FOUNDATION_VERSION = '6.7.0'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -773,8 +831,8 @@ var Foundation = {
       plugins = Object.keys(this._plugins);
     } // If plugins is a string, convert it to an array with one item
     else if (typeof plugins === 'string') {
-        plugins = [plugins];
-      }
+      plugins = [plugins];
+    }
 
     var _this = this; // Iterate through each plugin
 
@@ -986,18 +1044,17 @@ var Box = {
   OverlapArea: OverlapArea,
   GetDimensions: GetDimensions,
   GetExplicitOffsets: GetExplicitOffsets
-  /**
-   * Compares the dimensions of an element to a container and determines collision events with container.
-   * @function
-   * @param {jQuery} element - jQuery object to test for collisions.
-   * @param {jQuery} parent - jQuery object to use as bounding container.
-   * @param {Boolean} lrOnly - set to true to check left and right values only.
-   * @param {Boolean} tbOnly - set to true to check top and bottom values only.
-   * @default if no parent object passed, detects collisions with `window`.
-   * @returns {Boolean} - true if collision free, false if a collision in any direction.
-   */
-
 };
+/**
+ * Compares the dimensions of an element to a container and determines collision events with container.
+ * @function
+ * @param {jQuery} element - jQuery object to test for collisions.
+ * @param {jQuery} parent - jQuery object to use as bounding container.
+ * @param {Boolean} lrOnly - set to true to check left and right values only.
+ * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+ * @default if no parent object passed, detects collisions with `window`.
+ * @returns {Boolean} - true if collision free, false if a collision in any direction.
+ */
 
 function ImNotTouchingYou(element, parent, lrOnly, tbOnly, ignoreBottom) {
   return OverlapArea(element, parent, lrOnly, tbOnly, ignoreBottom) === 0;
@@ -1245,6 +1302,37 @@ function findFocusable($element) {
 
 
     return true;
+  }).sort(function (a, b) {
+    if ($(a).attr('tabindex') == $(b).attr('tabindex')) {
+      return 0;
+    }
+
+    var aTabIndex = parseInt($(a).attr('tabindex')),
+        bTabIndex = parseInt($(b).attr('tabindex')); // Undefined is treated the same as 0
+
+    if (typeof $(a).attr('tabindex') == 'undefined' && bTabIndex > 0) {
+      return 1;
+    }
+
+    if (typeof $(b).attr('tabindex') == 'undefined' && aTabIndex > 0) {
+      return -1;
+    }
+
+    if (aTabIndex == 0 && bTabIndex > 0) {
+      return 1;
+    }
+
+    if (bTabIndex == 0 && aTabIndex > 0) {
+      return -1;
+    }
+
+    if (aTabIndex < bTabIndex) {
+      return -1;
+    }
+
+    if (aTabIndex > bTabIndex) {
+      return 1;
+    }
   });
 }
 
@@ -1486,7 +1574,7 @@ var Nest = {
         $item.addClass(hasSubClass);
 
         if (applyAria) {
-          $item.attr({
+          $item.children('a:first').attr({
             'aria-haspopup': true,
             'aria-label': $item.children('a:first').text()
           }); // Note:  Drilldowns behave differently in how they hide, and so need
@@ -1643,9 +1731,7 @@ function init() {
   this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
 }
 
-var SpotSwipe =
-/*#__PURE__*/
-function () {
+var SpotSwipe = /*#__PURE__*/function () {
   function SpotSwipe($) {
     _classCallCheck(this, SpotSwipe);
 
@@ -1874,9 +1960,8 @@ Triggers.Listeners.Global = {
 
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
-  } // Global, parses whole document.
-
-};
+  }
+}; // Global, parses whole document.
 
 Triggers.Initializers.addClosemeListener = function (pluginName) {
   var yetiBoxes = $('[data-yeti-box]'),
@@ -2019,9 +2104,7 @@ Triggers.init = function ($, Foundation) {
 // {function} _setup (replaces previous constructor),
 // {function} _destroy (replaces previous destroy)
 
-var Plugin =
-/*#__PURE__*/
-function () {
+var Plugin = /*#__PURE__*/function () {
   function Plugin(element, options) {
     _classCallCheck(this, Plugin);
 
@@ -2083,20 +2166,20 @@ function getPluginName(obj) {
  * @module foundation.abide
  */
 
-var Abide =
-/*#__PURE__*/
-function (_Plugin) {
+var Abide = /*#__PURE__*/function (_Plugin) {
   _inherits(Abide, _Plugin);
+
+  var _super = _createSuper(Abide);
 
   function Abide() {
     _classCallCheck(this, Abide);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Abide).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Abide, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Abide.
      * @class
@@ -2105,7 +2188,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element) {
+    function _setup(element) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       this.$element = element;
       this.options = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
@@ -2526,8 +2609,8 @@ function (_Plugin) {
         return this.removeRadioErrorClasses($el.attr('name'));
       } // checkboxes need to clear all of the els
       else if ($el[0].type == 'checkbox') {
-          return this.removeCheckboxErrorClasses($el.attr('name'));
-        }
+        return this.removeCheckboxErrorClasses($el.attr('name'));
+      }
 
       var $label = this.findLabel($el);
       var $formError = this.findFormError($el);
@@ -2625,10 +2708,10 @@ function (_Plugin) {
       }
 
       if (manageErrorClasses) {
-        this.removeErrorClasses($el);
-
         if (!goodToGo) {
           this.addErrorClasses($el, failedValidators);
+        } else {
+          this.removeErrorClasses($el);
         }
       }
       /**
@@ -2718,8 +2801,8 @@ function (_Plugin) {
           valid = this.options.patterns[pattern].test(inputText);
         } // If the pattern name isn't also the type attribute of the field, then test it as a regexp
         else if (pattern !== $el.attr('type')) {
-            valid = new RegExp(pattern).test(inputText);
-          }
+          valid = new RegExp(pattern).test(inputText);
+        }
       }
 
       return valid;
@@ -3028,20 +3111,20 @@ Abide.defaults = {
  * @requires foundation.util.keyboard
  */
 
-var Accordion =
-/*#__PURE__*/
-function (_Plugin) {
+var Accordion = /*#__PURE__*/function (_Plugin) {
   _inherits(Accordion, _Plugin);
+
+  var _super = _createSuper(Accordion);
 
   function Accordion() {
     _classCallCheck(this, Accordion);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Accordion).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Accordion, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of an accordion.
      * @class
@@ -3050,7 +3133,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into an accordion.
      * @param {Object} options - a plain object with settings to override the default options.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
       this.className = 'Accordion'; // ie9 back compat
@@ -3061,7 +3144,9 @@ function (_Plugin) {
         'ENTER': 'toggle',
         'SPACE': 'toggle',
         'ARROW_DOWN': 'next',
-        'ARROW_UP': 'previous'
+        'ARROW_UP': 'previous',
+        'HOME': 'first',
+        'END': 'last'
       });
     }
     /**
@@ -3075,11 +3160,7 @@ function (_Plugin) {
       var _this2 = this;
 
       this._isInitializing = true;
-      this.$element.attr('role', 'tablist');
       this.$tabs = this.$element.children('[data-accordion-item]');
-      this.$tabs.attr({
-        'role': 'presentation'
-      });
       this.$tabs.each(function (idx, el) {
         var $el = $(el),
             $content = $el.children('[data-tab-content]'),
@@ -3087,13 +3168,11 @@ function (_Plugin) {
             linkId = el.id ? "".concat(el.id, "-label") : "".concat(id, "-label");
         $el.find('a:first').attr({
           'aria-controls': id,
-          'role': 'tab',
           'id': linkId,
-          'aria-expanded': false,
-          'aria-selected': false
+          'aria-expanded': false
         });
         $content.attr({
-          'role': 'tabpanel',
+          'role': 'region',
           'aria-labelledby': linkId,
           'aria-hidden': true,
           'id': id
@@ -3133,8 +3212,8 @@ function (_Plugin) {
             }
           } // Otherwise, close everything
           else {
-              _this2._closeAllTabs();
-            } // Roll up a little to show the titles
+            _this2._closeAllTabs();
+          } // Roll up a little to show the titles
 
 
           if (_this2.options.deepLinkSmudge) {
@@ -3198,6 +3277,20 @@ function (_Plugin) {
               },
               previous: function previous() {
                 var $a = $elem.prev().find('a').focus();
+
+                if (!_this.options.multiExpand) {
+                  $a.trigger('click.zf.accordion');
+                }
+              },
+              first: function first() {
+                var $a = _this.$tabs.first().find('.accordion-title').focus();
+
+                if (!_this.options.multiExpand) {
+                  $a.trigger('click.zf.accordion');
+                }
+              },
+              last: function last() {
+                var $a = _this.$tabs.last().find('.accordion-title').focus();
 
                 if (!_this.options.multiExpand) {
                   $a.trigger('click.zf.accordion');
@@ -3327,8 +3420,7 @@ function (_Plugin) {
       $target.attr('aria-hidden', false);
       $targetItem.addClass('is-active');
       $("#".concat(targetContentId)).attr({
-        'aria-expanded': true,
-        'aria-selected': true
+        'aria-expanded': true
       });
       $target.finish().slideDown(this.options.slideSpeed, function () {
         /**
@@ -3356,8 +3448,7 @@ function (_Plugin) {
       $target.attr('aria-hidden', true);
       $targetItem.removeClass('is-active');
       $("#".concat(targetContentId)).attr({
-        'aria-expanded': false,
-        'aria-selected': false
+        'aria-expanded': false
       });
       $target.finish().slideUp(this.options.slideSpeed, function () {
         /**
@@ -3478,20 +3569,20 @@ Accordion.defaults = {
  * @requires foundation.util.nest
  */
 
-var AccordionMenu =
-/*#__PURE__*/
-function (_Plugin) {
+var AccordionMenu = /*#__PURE__*/function (_Plugin) {
   _inherits(AccordionMenu, _Plugin);
+
+  var _super = _createSuper(AccordionMenu);
 
   function AccordionMenu() {
     _classCallCheck(this, AccordionMenu);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AccordionMenu).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(AccordionMenu, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of an accordion menu.
      * @class
@@ -3500,7 +3591,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
       this.className = 'AccordionMenu'; // ie9 back compat
@@ -3532,7 +3623,6 @@ function (_Plugin) {
       this.$element.find('[data-submenu]').not('.is-active').slideUp(0); //.find('a').css('padding-left', '1rem');
 
       this.$element.attr({
-        'role': 'tree',
         'aria-multiselectable': this.options.multiOpen
       });
       this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
@@ -3565,9 +3655,6 @@ function (_Plugin) {
           'role': 'group',
           'id': subId
         });
-      });
-      this.$element.find('li').attr({
-        'role': 'treeitem'
       });
       var initPanes = this.$element.find('.is-active');
 
@@ -3869,20 +3956,20 @@ AccordionMenu.defaults = {
  * @requires foundation.util.box
  */
 
-var Drilldown =
-/*#__PURE__*/
-function (_Plugin) {
+var Drilldown = /*#__PURE__*/function (_Plugin) {
   _inherits(Drilldown, _Plugin);
+
+  var _super = _createSuper(Drilldown);
 
   function Drilldown() {
     _classCallCheck(this, Drilldown);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Drilldown).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Drilldown, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a drilldown menu.
      * @class
@@ -3890,7 +3977,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
       this.className = 'Drilldown'; // ie9 back compat
@@ -3904,9 +3991,7 @@ function (_Plugin) {
         'ARROW_UP': 'up',
         'ARROW_DOWN': 'down',
         'ARROW_LEFT': 'previous',
-        'ESCAPE': 'close',
-        'TAB': 'down',
-        'SHIFT_TAB': 'up'
+        'ESCAPE': 'close'
       });
     }
     /**
@@ -3924,12 +4009,11 @@ function (_Plugin) {
       }
 
       this.$element.attr({
-        'role': 'tree',
         'aria-multiselectable': false
       });
       this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
       this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a'); // Set the main menu as current by default (unless a submenu is selected)
+      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').find('a'); // Set the main menu as current by default (unless a submenu is selected)
       // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
 
       this.$currentMenu = this.$element;
@@ -4252,6 +4336,8 @@ function (_Plugin) {
 
         if (parentSubMenu.length) {
           _this._show(parentSubMenu);
+        } else {
+          _this.$currentMenu = _this.$element;
         }
       });
     }
@@ -4331,7 +4417,7 @@ function (_Plugin) {
       this.$currentMenu = $elem; // If target menu is root, focus first link & exit
 
       if ($elem.is('[data-drilldown]')) {
-        if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
+        if (autoFocus === true) $elem.find('li > a').first().focus();
         if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
         return;
       } // Find all submenus on way to root incl. the element itself
@@ -4351,7 +4437,7 @@ function (_Plugin) {
         if (isLastChild === true) {
           $(this).one(transitionend($(this)), function () {
             if (autoFocus === true) {
-              $elem.find('li[role="treeitem"] > a').first().focus();
+              $elem.find('li > a').first().focus();
             }
           });
         }
@@ -4371,8 +4457,12 @@ function (_Plugin) {
     value: function _show($elem) {
       var $submenu = $elem.children('[data-submenu]');
       $elem.attr('aria-expanded', true);
-      this.$currentMenu = $submenu;
-      $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+      this.$currentMenu = $submenu; //hide drilldown parent menu when submenu is open
+      // this removes it from the dom so that the tab key will take the user to the next visible element
+
+      $elem.parent().closest('ul').addClass('invisible'); // add visible class to submenu to override invisible class above
+
+      $submenu.addClass('is-active visible').removeClass('invisible').attr('aria-hidden', false);
 
       if (this.options.autoHeight) {
         this.$wrapper.css({
@@ -4401,10 +4491,11 @@ function (_Plugin) {
         height: $elem.parent().closest('ul').data('calcHeight')
       });
 
+      $elem.parent().closest('ul').removeClass('invisible');
       $elem.parent('li').attr('aria-expanded', false);
       $elem.attr('aria-hidden', true);
       $elem.addClass('is-closing').one(transitionend($elem), function () {
-        $elem.removeClass('is-active is-closing');
+        $elem.removeClass('is-active is-closing visible');
         $elem.blur().addClass('invisible');
       });
       /**
@@ -4450,13 +4541,14 @@ function (_Plugin) {
   }, {
     key: "_destroy",
     value: function _destroy() {
+      $('body').off('.zf.drilldown');
       if (this.options.scrollTop) this.$element.off('.zf.drilldown', this._bindHandler);
 
       this._hideAll();
 
       this.$element.off('mutateme.zf.trigger');
       Nest.Burn(this.$element, 'drilldown');
-      this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
+      this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').off('transitionend otransitionend webkitTransitionEnd').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
       this.$submenuAnchors.each(function () {
         $(this).off('.zf.drilldown');
       });
@@ -4607,20 +4699,20 @@ function nextItem(item, array) {
   }
 }
 
-var Positionable =
-/*#__PURE__*/
-function (_Plugin) {
+var Positionable = /*#__PURE__*/function (_Plugin) {
   _inherits(Positionable, _Plugin);
+
+  var _super = _createSuper(Positionable);
 
   function Positionable() {
     _classCallCheck(this, Positionable);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Positionable).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Positionable, [{
     key: "_init",
-
+    value:
     /**
      * Abstract class encapsulating the tether-like explicit positioning logic
      * including repositioning based on overlap.
@@ -4630,7 +4722,7 @@ function (_Plugin) {
      * generated) by explicitly declaring them.
      *
      **/
-    value: function _init() {
+    function _init() {
       this.triedPositions = {};
       this.position = this.options.position === 'auto' ? this._getDefaultPosition() : this.options.position;
       this.alignment = this.options.alignment === 'auto' ? this._getDefaultAlignment() : this.options.alignment;
@@ -4842,20 +4934,20 @@ Positionable.defaults = {
  * @requires foundation.util.triggers
  */
 
-var Dropdown =
-/*#__PURE__*/
-function (_Positionable) {
+var Dropdown = /*#__PURE__*/function (_Positionable) {
   _inherits(Dropdown, _Positionable);
+
+  var _super = _createSuper(Dropdown);
 
   function Dropdown() {
     _classCallCheck(this, Dropdown);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Dropdown, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a dropdown.
      * @class
@@ -4864,7 +4956,7 @@ function (_Positionable) {
      *        Object should be of the dropdown panel, rather than its anchor.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
       this.className = 'Dropdown'; // ie9 back compat
@@ -5003,9 +5095,7 @@ function (_Positionable) {
         _this._setCurrentAnchor(this);
 
         if ( // if forceFollow false, always prevent default action
-        _this.options.forceFollow === false || // if forceFollow true and hover option true, only prevent default action on 1st click
-        // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
-        hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+        _this.options.forceFollow === false || hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
           e.preventDefault();
         }
       });
@@ -5331,20 +5421,20 @@ Dropdown.defaults = {
  * @requires foundation.util.touch
  */
 
-var DropdownMenu =
-/*#__PURE__*/
-function (_Plugin) {
+var DropdownMenu = /*#__PURE__*/function (_Plugin) {
   _inherits(DropdownMenu, _Plugin);
+
+  var _super = _createSuper(DropdownMenu);
 
   function DropdownMenu() {
     _classCallCheck(this, DropdownMenu);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(DropdownMenu).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(DropdownMenu, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of DropdownMenu.
      * @class
@@ -5353,7 +5443,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
@@ -5474,6 +5564,8 @@ function (_Plugin) {
           }
         });
       }
+
+      if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
       if (!this.options.disableHover) {
         this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
@@ -5787,6 +5879,14 @@ DropdownMenu.defaults = {
   disableHover: false,
 
   /**
+   * Disallows hover on touch devices
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  disableHoverOnTouch: true,
+
+  /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option
    * @type {boolean}
@@ -5874,20 +5974,20 @@ DropdownMenu.defaults = {
  * @requires foundation.util.imageLoader if equalizer contains images
  */
 
-var Equalizer =
-/*#__PURE__*/
-function (_Plugin) {
+var Equalizer = /*#__PURE__*/function (_Plugin) {
   _inherits(Equalizer, _Plugin);
+
+  var _super = _createSuper(Equalizer);
 
   function Equalizer() {
     _classCallCheck(this, Equalizer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Equalizer).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Equalizer, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Equalizer.
      * @class
@@ -5896,7 +5996,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Equalizer.defaults, this.$element.data(), options);
       this.className = 'Equalizer'; // ie9 back compat
@@ -6260,20 +6360,20 @@ Equalizer.defaults = {
  * @requires foundation.util.mediaQuery
  */
 
-var Interchange =
-/*#__PURE__*/
-function (_Plugin) {
+var Interchange = /*#__PURE__*/function (_Plugin) {
   _inherits(Interchange, _Plugin);
+
+  var _super = _createSuper(Interchange);
 
   function Interchange() {
     _classCallCheck(this, Interchange);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Interchange).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Interchange, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Interchange.
      * @class
@@ -6282,7 +6382,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Interchange.defaults, this.$element.data(), options);
       this.rules = [];
@@ -6461,19 +6561,19 @@ function (_Plugin) {
         }).trigger(trigger);
       } // Replacing background images
       else if (type === 'background') {
-          path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
-          this.$element.css({
-            'background-image': 'url(' + path + ')'
-          }).trigger(trigger);
-        } // Replacing HTML
-        else if (type === 'html') {
-            $.get(path, function (response) {
-              _this2.$element.html(response).trigger(trigger);
+        path = path.replace(/\(/g, '%28').replace(/\)/g, '%29');
+        this.$element.css({
+          'background-image': 'url(' + path + ')'
+        }).trigger(trigger);
+      } // Replacing HTML
+      else if (type === 'html') {
+        $.get(path, function (response) {
+          _this2.$element.html(response).trigger(trigger);
 
-              $(response).foundation();
-              _this2.currentPath = path;
-            });
-          }
+          $(response).foundation();
+          _this2.currentPath = path;
+        });
+      }
       /**
        * Fires when content in an Interchange element is done being loaded.
        * @event Interchange#replaced
@@ -6532,20 +6632,20 @@ Interchange.SPECIAL_QUERIES = {
  * @module foundation.smoothScroll
  */
 
-var SmoothScroll =
-/*#__PURE__*/
-function (_Plugin) {
+var SmoothScroll = /*#__PURE__*/function (_Plugin) {
   _inherits(SmoothScroll, _Plugin);
+
+  var _super = _createSuper(SmoothScroll);
 
   function SmoothScroll() {
     _classCallCheck(this, SmoothScroll);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SmoothScroll).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(SmoothScroll, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of SmoothScroll.
      * @class
@@ -6554,7 +6654,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, SmoothScroll.defaults, this.$element.data(), options);
       this.className = 'SmoothScroll'; // ie9 back compat
@@ -6611,18 +6711,18 @@ function (_Plugin) {
     }
   }, {
     key: "_destroy",
-
+    value:
     /**
      * Destroys the SmoothScroll instance.
      * @function
      */
-    value: function _destroy() {
+    function _destroy() {
       this.$element.off('click.zf.smoothScroll', this._linkClickListener);
       this.$element.off('click.zf.smoothScroll', 'a[href^="#"]', this._linkClickListener);
     }
   }], [{
     key: "scrollToLoc",
-
+    value:
     /**
      * Function to scroll to a given location on the page.
      * @param {String} loc - A properly formatted jQuery id selector. Example: '#foo'
@@ -6631,7 +6731,7 @@ function (_Plugin) {
      * @static
      * @function
      */
-    value: function scrollToLoc(loc) {
+    function scrollToLoc(loc) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SmoothScroll.defaults;
       var callback = arguments.length > 2 ? arguments[2] : undefined;
       var $loc = $(loc); // Do nothing if target does not exist to prevent errors
@@ -6697,20 +6797,20 @@ SmoothScroll.defaults = {
  * @requires foundation.util.triggers
  */
 
-var Magellan =
-/*#__PURE__*/
-function (_Plugin) {
+var Magellan = /*#__PURE__*/function (_Plugin) {
   _inherits(Magellan, _Plugin);
+
+  var _super = _createSuper(Magellan);
 
   function Magellan() {
     _classCallCheck(this, Magellan);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Magellan).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Magellan, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Magellan.
      * @class
@@ -6719,7 +6819,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Magellan.defaults, this.$element.data(), options);
       this.className = 'Magellan'; // ie9 back compat
@@ -6862,9 +6962,7 @@ function (_Plugin) {
 
   }, {
     key: "_updateActive",
-    value: function _updateActive()
-    /*evt, elem, scrollPos*/
-    {
+    value: function _updateActive() {
       var _this2 = this;
 
       if (this._inTransition) return;
@@ -6873,18 +6971,16 @@ function (_Plugin) {
       this.scrollPos = newScrollPos;
       var activeIdx; // Before the first point: no link
 
-      if (newScrollPos < this.points[0]) ;
-      /* do nothing */
-      // At the bottom of the page: last link
+      if (newScrollPos < this.points[0] - this.options.offset - (isScrollingUp ? this.options.threshold : 0)) ; // At the bottom of the page: last link
       else if (newScrollPos + this.winHeight === this.docHeight) {
-          activeIdx = this.points.length - 1;
-        } // Otherwhise, use the last visible link
-        else {
-            var visibleLinks = this.points.filter(function (p, i) {
-              return p - _this2.options.offset - (isScrollingUp ? _this2.options.threshold : 0) <= newScrollPos;
-            });
-            activeIdx = visibleLinks.length ? visibleLinks.length - 1 : 0;
-          } // Get the new active link
+        activeIdx = this.points.length - 1;
+      } // Otherwhise, use the last visible link
+      else {
+        var visibleLinks = this.points.filter(function (p, i) {
+          return p - _this2.options.offset - (isScrollingUp ? _this2.options.threshold : 0) <= newScrollPos;
+        });
+        activeIdx = visibleLinks.length ? visibleLinks.length - 1 : 0;
+      } // Get the new active link
 
 
       var $oldActive = this.$active;
@@ -7023,20 +7119,20 @@ Magellan.defaults = {
  * @requires foundation.util.triggers
  */
 
-var OffCanvas =
-/*#__PURE__*/
-function (_Plugin) {
+var OffCanvas = /*#__PURE__*/function (_Plugin) {
   _inherits(OffCanvas, _Plugin);
+
+  var _super = _createSuper(OffCanvas);
 
   function OffCanvas() {
     _classCallCheck(this, OffCanvas);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(OffCanvas).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(OffCanvas, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of an off-canvas wrapper.
      * @class
@@ -7045,7 +7141,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       var _this2 = this;
 
       this.className = 'OffCanvas'; // ie9 back compat
@@ -7378,75 +7474,76 @@ function (_Plugin) {
       return false;
     }
     /**
-     * Tag the element given as context whether it can be scrolled up and down.
-     * Used to allow or prevent it to scroll. See `_stopScrollPropagation`.
-     *
-     * Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
-     * Only really works for y, not sure how to extend to x or if we need to.
-     *
-     * @function
+     * Save current finger y-position
+     * @param event
      * @private
      */
 
   }, {
     key: "_recordScrollable",
     value: function _recordScrollable(event) {
-      var elem = this; // called from event handler context with this as elem
-      // If the element is scrollable (content overflows), then...
-
-      if (elem.scrollHeight !== elem.clientHeight) {
-        // If we're at the top, scroll down one pixel to allow scrolling up
-        if (elem.scrollTop === 0) {
-          elem.scrollTop = 1;
-        } // If we're at the bottom, scroll up one pixel to allow scrolling down
-
-
-        if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
-          elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
-        }
-      }
-
-      elem.allowUp = elem.scrollTop > 0;
-      elem.allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
-      elem.lastY = event.originalEvent.pageY;
+      var elem = this;
+      elem.lastY = event.touches[0].pageY;
     }
     /**
-     * Prevent the given event propagation if the element given as context can scroll.
-     * Used to preserve the element scrolling on mobile (`touchmove`) when the document
-     * scrolling is prevented. See https://git.io/zf-9707.
-     * @function
+     * Prevent further scrolling when it hits the edges
+     * @param event
      * @private
      */
 
   }, {
-    key: "_stopScrollPropagation",
-    value: function _stopScrollPropagation(event) {
-      var elem = this; // called from event handler context with this as elem
+    key: "_preventDefaultAtEdges",
+    value: function _preventDefaultAtEdges(event) {
+      var elem = this;
+      var _this = event.data;
+      var delta = elem.lastY - event.touches[0].pageY;
+      elem.lastY = event.touches[0].pageY;
 
-      var parent; // off-canvas elem if called from inner scrollbox
-
-      var up = event.pageY < elem.lastY;
-      var down = !up;
-      elem.lastY = event.pageY;
-
-      if (up && elem.allowUp || down && elem.allowDown) {
-        // It is not recommended to stop event propagation (the user cannot watch it),
-        // but in this case this is the only solution we have.
-        event.stopPropagation(); // If elem is inner scrollbox we are scrolling the outer off-canvas down/up once the box end has been reached
-        // This lets the user continue to touch move the off-canvas without the need to place the finger outside the scrollbox
-
-        if (elem.hasAttribute('data-off-canvas-scrollbox')) {
-          parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
-
-          if (elem.scrollTop <= 1 && parent.scrollTop > 0) {
-            parent.scrollTop--;
-          } else if (elem.scrollTop >= elem.scrollHeight - elem.clientHeight - 1 && parent.scrollTop < parent.scrollHeight - parent.clientHeight) {
-            parent.scrollTop++;
-          }
-        }
-      } else {
+      if (!_this._canScroll(delta, elem)) {
         event.preventDefault();
       }
+    }
+    /**
+     * Handle continuous scrolling of scrollbox
+     * Don't bubble up to _preventDefaultAtEdges
+     * @param event
+     * @private
+     */
+
+  }, {
+    key: "_scrollboxTouchMoved",
+    value: function _scrollboxTouchMoved(event) {
+      var elem = this;
+      var _this = event.data;
+      var parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
+      var delta = elem.lastY - event.touches[0].pageY;
+      parent.lastY = elem.lastY = event.touches[0].pageY;
+      event.stopPropagation();
+
+      if (!_this._canScroll(delta, elem)) {
+        if (!_this._canScroll(delta, parent)) {
+          event.preventDefault();
+        } else {
+          parent.scrollTop += delta;
+        }
+      }
+    }
+    /**
+     * Detect possibility of scrolling
+     * @param delta
+     * @param elem
+     * @returns boolean
+     * @private
+     */
+
+  }, {
+    key: "_canScroll",
+    value: function _canScroll(delta, elem) {
+      var up = delta < 0;
+      var down = delta > 0;
+      var allowUp = elem.scrollTop > 0;
+      var allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
+      return up && allowUp || down && allowDown;
     }
     /**
      * Opens the off-canvas menu.
@@ -7492,9 +7589,9 @@ function (_Plugin) {
       if (this.options.contentScroll === false) {
         $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
         this.$element.on('touchstart', this._recordScrollable);
-        this.$element.on('touchmove', this._stopScrollPropagation);
+        this.$element.on('touchmove', this, this._preventDefaultAtEdges);
         this.$element.on('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
-        this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
+        this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this, this._scrollboxTouchMoved);
       }
 
       if (this.options.contentOverlay === true) {
@@ -7600,11 +7697,11 @@ function (_Plugin) {
 
           _this5.$element.off('touchstart', _this5._recordScrollable);
 
-          _this5.$element.off('touchmove', _this5._stopScrollPropagation);
+          _this5.$element.off('touchmove', _this5._preventDefaultAtEdges);
 
           _this5.$element.off('touchstart', '[data-off-canvas-scrollbox]', _this5._recordScrollable);
 
-          _this5.$element.off('touchmove', '[data-off-canvas-scrollbox]', _this5._stopScrollPropagation);
+          _this5.$element.off('touchmove', '[data-off-canvas-scrollbox]', _this5._scrollboxTouchMoved);
         }
 
         if (_this5.options.trapFocus === true) {
@@ -7804,20 +7901,20 @@ OffCanvas.defaults = {
  * @requires foundation.util.touch
  */
 
-var Orbit =
-/*#__PURE__*/
-function (_Plugin) {
+var Orbit = /*#__PURE__*/function (_Plugin) {
   _inherits(Orbit, _Plugin);
+
+  var _super = _createSuper(Orbit);
 
   function Orbit() {
     _classCallCheck(this, Orbit);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Orbit).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Orbit, [{
     key: "_setup",
-
+    value:
     /**
     * Creates a new instance of an orbit carousel.
     * @class
@@ -7825,7 +7922,7 @@ function (_Plugin) {
     * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
     * @param {Object} options - Overrides to the default plugin settings.
     */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
       this.className = 'Orbit'; // ie9 back compat
@@ -8157,9 +8254,7 @@ function (_Plugin) {
 
       if (!chosenSlide) {
         //most of the time, this will be auto played or clicked from the navButtons.
-        $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
-        this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) : //pick next slide if moving left to right
-        this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
+        $newSlide = isLTR ? this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) : this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
       } else {
         $newSlide = chosenSlide;
       }
@@ -8433,20 +8528,20 @@ var MenuPlugins = {
  * @requires foundation.util.mediaQuery
  */
 
-var ResponsiveMenu =
-/*#__PURE__*/
-function (_Plugin) {
+var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
   _inherits(ResponsiveMenu, _Plugin);
+
+  var _super = _createSuper(ResponsiveMenu);
 
   function ResponsiveMenu() {
     _classCallCheck(this, ResponsiveMenu);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ResponsiveMenu).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(ResponsiveMenu, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a responsive menu.
      * @class
@@ -8455,7 +8550,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = $(element);
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
@@ -8577,20 +8672,20 @@ ResponsiveMenu.defaults = {};
  * @requires foundation.util.motion
  */
 
-var ResponsiveToggle =
-/*#__PURE__*/
-function (_Plugin) {
+var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
   _inherits(ResponsiveToggle, _Plugin);
+
+  var _super = _createSuper(ResponsiveToggle);
 
   function ResponsiveToggle() {
     _classCallCheck(this, ResponsiveToggle);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ResponsiveToggle).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(ResponsiveToggle, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Tab Bar.
      * @class
@@ -8599,7 +8694,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to attach tab bar functionality to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = $(element);
       this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
       this.className = 'ResponsiveToggle'; // ie9 back compat
@@ -8669,9 +8764,9 @@ function (_Plugin) {
         this.$targetMenu.hide();
       } // Desktop
       else {
-          this.$element.hide();
-          this.$targetMenu.show();
-        }
+        this.$element.hide();
+        this.$targetMenu.show();
+      }
     }
     /**
      * Toggles the element attached to the tab bar. The toggle only happens if the screen is small enough to allow it.
@@ -8748,20 +8843,20 @@ ResponsiveToggle.defaults = {
  * @requires foundation.util.motion if using animations
  */
 
-var Reveal =
-/*#__PURE__*/
-function (_Plugin) {
+var Reveal = /*#__PURE__*/function (_Plugin) {
   _inherits(Reveal, _Plugin);
+
+  var _super = _createSuper(Reveal);
 
   function Reveal() {
     _classCallCheck(this, Reveal);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Reveal).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Reveal, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Reveal.
      * @class
@@ -8769,7 +8864,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
       this.className = 'Reveal'; // ie9 back compat
@@ -8803,7 +8898,7 @@ function (_Plugin) {
       this.$anchor = $("[data-open=\"".concat(this.id, "\"]")).length ? $("[data-open=\"".concat(this.id, "\"]")) : $("[data-toggle=\"".concat(this.id, "\"]"));
       this.$anchor.attr({
         'aria-controls': this.id,
-        'aria-haspopup': true,
+        'aria-haspopup': 'dialog',
         'tabindex': 0
       });
 
@@ -9086,12 +9181,12 @@ function (_Plugin) {
         });
       } // jQuery method of reveal
       else {
-          if (this.options.overlay) {
-            this.$overlay.show(0);
-          }
+        if (this.options.overlay) {
+          this.$overlay.show(0);
+        }
 
-          this.$element.show(this.options.showDelay);
-        } // handle accessibility
+        this.$element.show(this.options.showDelay);
+      } // handle accessibility
 
 
       this.$element.attr({
@@ -9211,14 +9306,14 @@ function (_Plugin) {
         Motion.animateOut(this.$element, this.options.animationOut, finishUp);
       } // jQuery method of hiding
       else {
-          this.$element.hide(this.options.hideDelay);
+        this.$element.hide(this.options.hideDelay);
 
-          if (this.options.overlay) {
-            this.$overlay.hide(0, finishUp);
-          } else {
-            finishUp();
-          }
-        } // Conditionals to remove extra event listeners added on open
+        if (this.options.overlay) {
+          this.$overlay.hide(0, finishUp);
+        } else {
+          finishUp();
+        }
+      } // Conditionals to remove extra event listeners added on open
 
 
       if (this.options.closeOnEsc) {
@@ -9302,12 +9397,12 @@ function (_Plugin) {
     }
   }, {
     key: "_destroy",
-
+    value:
     /**
      * Destroys an instance of a modal.
      * @function
      */
-    value: function _destroy() {
+    function _destroy() {
       if (this.options.overlay) {
         this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
 
@@ -9468,20 +9563,20 @@ Reveal.defaults = {
  * @requires foundation.util.touch
  */
 
-var Slider =
-/*#__PURE__*/
-function (_Plugin) {
+var Slider = /*#__PURE__*/function (_Plugin) {
   _inherits(Slider, _Plugin);
+
+  var _super = _createSuper(Slider);
 
   function Slider() {
     _classCallCheck(this, Slider);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Slider).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Slider, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a slider control.
      * @class
@@ -9489,7 +9584,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into a slider control.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
       this.className = 'Slider'; // ie9 back compat
@@ -10266,20 +10361,20 @@ function baseLog(base, value) {
  * @requires foundation.util.mediaQuery
  */
 
-var Sticky =
-/*#__PURE__*/
-function (_Plugin) {
+var Sticky = /*#__PURE__*/function (_Plugin) {
   _inherits(Sticky, _Plugin);
+
+  var _super = _createSuper(Sticky);
 
   function Sticky() {
     _classCallCheck(this, Sticky);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Sticky).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Sticky, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a sticky thing.
      * @class
@@ -10287,7 +10382,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make sticky.
      * @param {Object} options - options object passed when creating the element programmatically.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
       this.className = 'Sticky'; // ie9 back compat
@@ -10845,20 +10940,20 @@ function emCalc(em) {
  * @requires foundation.util.imageLoader if tabs contain images
  */
 
-var Tabs =
-/*#__PURE__*/
-function (_Plugin) {
+var Tabs = /*#__PURE__*/function (_Plugin) {
   _inherits(Tabs, _Plugin);
+
+  var _super = _createSuper(Tabs);
 
   function Tabs() {
     _classCallCheck(this, Tabs);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Tabs).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Tabs, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of tabs.
      * @class
@@ -10867,7 +10962,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
       this.className = 'Tabs'; // ie9 back compat
@@ -10979,15 +11074,15 @@ function (_Plugin) {
             _this2.selectTab($anchor, true);
           } // Otherwise, collapse everything
           else {
-              _this2._collapse();
-            } // Roll up a little to show the titles
+            _this2._collapse();
+          } // Roll up a little to show the titles
 
 
           if (_this2.options.deepLinkSmudge) {
             var offset = _this2.$element.offset();
 
             $('html, body').animate({
-              scrollTop: offset.top
+              scrollTop: offset.top - _this2.options.deepLinkSmudgeOffset
             }, _this2.options.deepLinkSmudgeDelay);
           }
           /**
@@ -11238,7 +11333,7 @@ function (_Plugin) {
     }
   }, {
     key: "_setHeight",
-
+    value:
     /**
      * Sets the height of each panel to the height of the tallest panel.
      * If enabled in options, gets called on media query change.
@@ -11247,10 +11342,14 @@ function (_Plugin) {
      * @function
      * @private
      */
-    value: function _setHeight() {
+    function _setHeight() {
       var max = 0,
           _this = this; // Lock down the `this` value for the root tabs object
 
+
+      if (!this.$tabContent) {
+        return;
+      }
 
       this.$tabContent.find(".".concat(this.options.panelClass)).css('height', '').each(function () {
         var panel = $(this),
@@ -11329,6 +11428,14 @@ Tabs.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
+
+  /**
+   * If `deepLinkSmudge` is enabled, animation offset from the top for the deep link adjustment
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
 
   /**
    * If `deepLink` is enabled, update the browser history with the open tab
@@ -11411,20 +11518,20 @@ Tabs.defaults = {
  * @requires foundation.util.triggers
  */
 
-var Toggler =
-/*#__PURE__*/
-function (_Plugin) {
+var Toggler = /*#__PURE__*/function (_Plugin) {
   _inherits(Toggler, _Plugin);
+
+  var _super = _createSuper(Toggler);
 
   function Toggler() {
     _classCallCheck(this, Toggler);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Toggler).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Toggler, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of Toggler.
      * @class
@@ -11433,7 +11540,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
@@ -11468,17 +11575,17 @@ function (_Plugin) {
         $triggers.attr('aria-expanded', !this.$element.is(':hidden'));
       } // Otherwise, parse toggle class
       else {
-          input = this.options.toggler;
+        input = this.options.toggler;
 
-          if (typeof input !== 'string' || !input.length) {
-            throw new Error("The 'toogler' option containing the target class is required, got \"".concat(input, "\""));
-          } // Allow for a . at the beginning of the string
+        if (typeof input !== 'string' || !input.length) {
+          throw new Error("The 'toggler' option containing the target class is required, got \"".concat(input, "\""));
+        } // Allow for a . at the beginning of the string
 
 
-          this.className = input[0] === '.' ? input.slice(1) : input; // - aria-expanded: according to the elements class set.
+        this.className = input[0] === '.' ? input.slice(1) : input; // - aria-expanded: according to the elements class set.
 
-          $triggers.attr('aria-expanded', this.$element.hasClass(this.className));
-        } // - aria-controls: adding the element id to it if not already in it.
+        $triggers.attr('aria-expanded', this.$element.hasClass(this.className));
+      } // - aria-controls: adding the element id to it if not already in it.
 
 
       $triggers.each(function (index, trigger) {
@@ -11604,20 +11711,20 @@ Toggler.defaults = {
  * @requires foundation.util.triggers
  */
 
-var Tooltip =
-/*#__PURE__*/
-function (_Positionable) {
+var Tooltip = /*#__PURE__*/function (_Positionable) {
   _inherits(Tooltip, _Positionable);
+
+  var _super = _createSuper(Tooltip);
 
   function Tooltip() {
     _classCallCheck(this, Tooltip);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Tooltip).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Tooltip, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a Tooltip.
      * @class
@@ -11626,7 +11733,7 @@ function (_Positionable) {
      * @param {jQuery} element - jQuery object to attach a tooltip to.
      * @param {Object} options - object to extend the default configuration.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
       this.className = 'Tooltip'; // ie9 back compat
@@ -12134,17 +12241,17 @@ var MenuPlugins$1 = {
  * @requires foundation.tabs
  */
 
-var ResponsiveAccordionTabs =
-/*#__PURE__*/
-function (_Plugin) {
+var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
   _inherits(ResponsiveAccordionTabs, _Plugin);
+
+  var _super = _createSuper(ResponsiveAccordionTabs);
 
   function ResponsiveAccordionTabs(element, options) {
     var _this2;
 
     _classCallCheck(this, ResponsiveAccordionTabs);
 
-    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(ResponsiveAccordionTabs).call(this, element, options));
+    _this2 = _super.call(this, element, options);
     return _possibleConstructorReturn(_this2, _this2.options.reflow && _this2.storezfData || _assertThisInitialized(_this2));
   }
   /**

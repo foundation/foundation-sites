@@ -144,6 +144,7 @@ function ignoreMousedisappear(handler, { ignoreLeaveWindow = false, ignoreReappe
 }
 
 var foundation_core_utils = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   rtl: rtl,
   GetYoDigits: GetYoDigits,
   RegExpEscape: RegExpEscape,
@@ -470,7 +471,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.6.3';
+var FOUNDATION_VERSION = '6.7.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -564,7 +565,7 @@ var Foundation = {
          plugins.each(function(){
            $(this).data('zfPlugin')._init();
          });
-       }else{
+       }else {
          var type = typeof plugins,
          _this = this,
          fns = {
@@ -667,15 +668,15 @@ var Foundation = {
         if(typeof plugClass !== 'undefined' && typeof plugClass[method] !== 'undefined'){//make sure both the class and method exist
           if(this.length === 1){//if there's only one, call it directly.
               plugClass[method].apply(plugClass, args);
-          }else{
+          }else {
             this.each(function(i, el){//otherwise loop through the jQuery collection and invoke the method on each
               plugClass[method].apply($(el).data('zfPlugin'), args);
             });
           }
-        }else{//error for no class or no method
+        }else {//error for no class or no method
           throw new ReferenceError("We're sorry, '" + method + "' is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
         }
-      }else{//error for invalid argument type
+      }else {//error for invalid argument type
         throw new TypeError(`We're sorry, ${type} is not a valid parameter. You must use a string representing the method you wish to invoke.`);
       }
       return this;
@@ -1039,6 +1040,32 @@ function findFocusable($element) {
   return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
     if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) { return false; } //only have visible elements and those that have a tabindex greater or equal 0
     return true;
+  })
+  .sort( function( a, b ) {
+    if ($(a).attr('tabindex') == $(b).attr('tabindex')) {
+      return 0;
+    }
+    let aTabIndex = parseInt($(a).attr('tabindex')),
+      bTabIndex = parseInt($(b).attr('tabindex'));
+    // Undefined is treated the same as 0
+    if (typeof $(a).attr('tabindex') == 'undefined' && bTabIndex > 0) {
+      return 1;
+    }
+    if (typeof $(b).attr('tabindex') == 'undefined' && aTabIndex > 0) {
+      return -1;
+    }
+    if (aTabIndex == 0 && bTabIndex > 0) {
+      return 1;
+    }
+    if (bTabIndex == 0 && aTabIndex > 0) {
+      return -1;
+    }
+    if (aTabIndex < bTabIndex) {
+      return -1;
+    }
+    if (aTabIndex > bTabIndex) {
+      return 1;
+    }
   });
 }
 
@@ -1212,7 +1239,7 @@ function Move(duration, elem, fn){
     fn.apply(elem);
 
     if(prog < duration){ anim = window.requestAnimationFrame(move, elem); }
-    else{
+    else {
       window.cancelAnimationFrame(anim);
       elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
     }
@@ -1295,7 +1322,7 @@ const Nest = {
       if ($sub.length) {
         $item.addClass(hasSubClass);
         if(applyAria) {
-          $item.attr({
+          $item.children('a:first').attr({
             'aria-haspopup': true,
             'aria-label': $item.children('a:first').text()
           });
@@ -1595,7 +1622,7 @@ Triggers.Listeners.Basic  = {
       Motion.animateOut($(this), animation, function() {
         $(this).trigger('closed.zf');
       });
-    }else{
+    }else {
       $(this).fadeOut().trigger('closed.zf');
     }
   },
@@ -1679,7 +1706,7 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
       plugNames.push(pluginName);
     }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string'){
       plugNames = plugNames.concat(pluginName);
-    }else{
+    }else {
       console.error('Plugin names must be strings');
     }
   }
@@ -2333,10 +2360,10 @@ class Abide extends Plugin {
     }
 
     if (manageErrorClasses) {
-      this.removeErrorClasses($el);
-
       if (!goodToGo) {
         this.addErrorClasses($el, failedValidators);
+      } else {
+        this.removeErrorClasses($el);
       }
     }
 
@@ -2751,7 +2778,9 @@ class Accordion extends Plugin {
       'ENTER': 'toggle',
       'SPACE': 'toggle',
       'ARROW_DOWN': 'next',
-      'ARROW_UP': 'previous'
+      'ARROW_UP': 'previous',
+      'HOME': 'first',
+      'END': 'last',
     });
   }
 
@@ -2762,10 +2791,8 @@ class Accordion extends Plugin {
   _init() {
     this._isInitializing = true;
 
-    this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('[data-accordion-item]');
 
-    this.$tabs.attr({'role': 'presentation'});
 
     this.$tabs.each(function(idx, el) {
       var $el = $(el),
@@ -2775,13 +2802,11 @@ class Accordion extends Plugin {
 
       $el.find('a:first').attr({
         'aria-controls': id,
-        'role': 'tab',
         'id': linkId,
-        'aria-expanded': false,
-        'aria-selected': false
+        'aria-expanded': false
       });
 
-      $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
+      $content.attr({'role': 'region', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
 
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
@@ -2874,6 +2899,18 @@ class Accordion extends Plugin {
               var $a = $elem.prev().find('a').focus();
               if (!_this.options.multiExpand) {
                 $a.trigger('click.zf.accordion');
+              }
+            },
+            first: function() {
+              var $a = _this.$tabs.first().find('.accordion-title').focus();
+              if (!_this.options.multiExpand) {
+                 $a.trigger('click.zf.accordion');
+              }
+            },
+            last: function() {
+              var $a = _this.$tabs.last().find('.accordion-title').focus();
+              if (!_this.options.multiExpand) {
+                 $a.trigger('click.zf.accordion');
               }
             },
             handled: function() {
@@ -2990,8 +3027,7 @@ class Accordion extends Plugin {
     $targetItem.addClass('is-active');
 
     $(`#${targetContentId}`).attr({
-      'aria-expanded': true,
-      'aria-selected': true
+      'aria-expanded': true
     });
 
     $target.finish().slideDown(this.options.slideSpeed, () => {
@@ -3018,8 +3054,7 @@ class Accordion extends Plugin {
     $targetItem.removeClass('is-active');
 
     $(`#${targetContentId}`).attr({
-     'aria-expanded': false,
-     'aria-selected': false
+     'aria-expanded': false
     });
 
     $target.finish().slideUp(this.options.slideSpeed, () => {
@@ -3166,7 +3201,6 @@ class AccordionMenu extends Plugin {
 
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
-      'role': 'tree',
       'aria-multiselectable': this.options.multiOpen
     });
 
@@ -3199,9 +3233,6 @@ class AccordionMenu extends Plugin {
         'role': 'group',
         'id': subId
       });
-    });
-    this.$element.find('li').attr({
-      'role': 'treeitem'
     });
     var initPanes = this.$element.find('.is-active');
     if (initPanes.length) {
@@ -3493,8 +3524,6 @@ class Drilldown extends Plugin {
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'previous',
       'ESCAPE': 'close',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
     });
   }
 
@@ -3510,12 +3539,11 @@ class Drilldown extends Plugin {
     }
 
     this.$element.attr({
-      'role': 'tree',
       'aria-multiselectable': false
     });
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
+    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').find('a');
 
     // Set the main menu as current by default (unless a submenu is selected)
     // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
@@ -3795,6 +3823,9 @@ class Drilldown extends Plugin {
         if (parentSubMenu.length) {
           _this._show(parentSubMenu);
         }
+        else {
+          _this.$currentMenu = _this.$element;
+        }
       });
   }
 
@@ -3867,7 +3898,7 @@ class Drilldown extends Plugin {
 
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
-      if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
+      if (autoFocus === true) $elem.find('li > a').first().focus();
       if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
       return;
     }
@@ -3890,7 +3921,7 @@ class Drilldown extends Plugin {
       if (isLastChild === true) {
         $(this).one(transitionend($(this)), () => {
           if (autoFocus === true) {
-            $elem.find('li[role="treeitem"] > a').first().focus();
+            $elem.find('li > a').first().focus();
           }
         });
       }
@@ -3911,7 +3942,14 @@ class Drilldown extends Plugin {
     $elem.attr('aria-expanded', true);
 
     this.$currentMenu = $submenu;
-    $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+
+    //hide drilldown parent menu when submenu is open
+    // this removes it from the dom so that the tab key will take the user to the next visible element
+    $elem.parent().closest('ul').addClass('invisible');
+
+    // add visible class to submenu to override invisible class above
+    $submenu.addClass('is-active visible').removeClass('invisible').attr('aria-hidden', false);
+
     if (this.options.autoHeight) {
       this.$wrapper.css({ height: $submenu.data('calcHeight') });
     }
@@ -3931,11 +3969,12 @@ class Drilldown extends Plugin {
    */
   _hide($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
+    $elem.parent().closest('ul').removeClass('invisible');
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true);
     $elem.addClass('is-closing')
          .one(transitionend($elem), function(){
-           $elem.removeClass('is-active is-closing');
+           $elem.removeClass('is-active is-closing visible');
            $elem.blur().addClass('invisible');
          });
     /**
@@ -3981,13 +4020,14 @@ class Drilldown extends Plugin {
    * @function
    */
   _destroy() {
+    $('body').off('.zf.drilldown');
     if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
 	  this.$element.off('mutateme.zf.trigger');
     Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
-                 .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
+                 .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').off('transitionend otransitionend webkitTransitionEnd')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
     this.$submenuAnchors.each(function() {
       $(this).off('.zf.drilldown');
@@ -4001,7 +4041,7 @@ class Drilldown extends Plugin {
       $link.removeAttr('tabindex');
       if($link.data('savedHref')){
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
-      }else{ return; }
+      }else { return; }
     });
   };
 }
@@ -4361,7 +4401,7 @@ class Dropdown extends Positionable {
 
     if(this.options.parentClass){
       this.$parent = this.$element.parents('.' + this.options.parentClass);
-    }else{
+    }else {
       this.$parent = null;
     }
 
@@ -4612,7 +4652,7 @@ class Dropdown extends Positionable {
     if(this.$element.hasClass('is-open')){
       if(this.$anchors.data('hover')) return;
       this.close();
-    }else{
+    }else {
       this.open();
     }
   }
@@ -4863,6 +4903,8 @@ class DropdownMenu extends Plugin {
         }
       });
     }
+
+    if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
@@ -5123,6 +5165,13 @@ DropdownMenu.defaults = {
    */
   disableHover: false,
   /**
+   * Disallows hover on touch devices
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  disableHoverOnTouch: true,
+  /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option
    * @type {boolean}
@@ -5246,13 +5295,13 @@ class Equalizer extends Plugin {
     if(this.options.equalizeOn){
       tooSmall = this._checkMQ();
       $(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
-    }else{
+    }else {
       this._events();
     }
     if((typeof tooSmall !== 'undefined' && tooSmall === false) || typeof tooSmall === 'undefined'){
       if(imgs.length){
         onImagesLoaded(imgs, this._reflow.bind(this));
-      }else{
+      }else {
         this._reflow();
       }
     }
@@ -5295,7 +5344,7 @@ class Equalizer extends Plugin {
     this._pauseEvents();
     if(this.hasNested){
       this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
-    }else{
+    }else {
       this.$element.on('resizeme.zf.trigger', this._bindHandler.onResizeMeBound);
 	  this.$element.on('mutateme.zf.trigger', this._bindHandler.onResizeMeBound);
     }
@@ -5313,7 +5362,7 @@ class Equalizer extends Plugin {
         this._pauseEvents();
         this.$watched.css('height', 'auto');
       }
-    }else{
+    }else {
       if(!this.isOn){
         this._events();
       }
@@ -5342,7 +5391,7 @@ class Equalizer extends Plugin {
     }
     if (this.options.equalizeByRow) {
       this.getHeightsByRow(this.applyHeightByRow.bind(this));
-    }else{
+    }else {
       this.getHeights(this.applyHeight.bind(this));
     }
   }
@@ -5527,7 +5576,7 @@ class Interchange extends Plugin {
 
     // Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);
-    
+
     this._init();
     this._events();
   }
@@ -6035,11 +6084,11 @@ class Magellan extends Plugin {
 
     let activeIdx;
     // Before the first point: no link
-    if(newScrollPos < this.points[0]);
+    if(newScrollPos < this.points[0] - this.options.offset - (isScrollingUp ? this.options.threshold : 0));
     // At the bottom of the page: last link
     else if(newScrollPos + this.winHeight === this.docHeight){ activeIdx = this.points.length - 1; }
     // Otherwhise, use the last visible link
-    else{
+    else {
       const visibleLinks = this.points.filter((p, i) => {
         return (p - this.options.offset - (isScrollingUp ? this.options.threshold : 0)) <= newScrollPos;
       });
@@ -6052,7 +6101,7 @@ class Magellan extends Plugin {
     if(typeof activeIdx !== 'undefined'){
       this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
       if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
-    }else{
+    }else {
       this.$active = $();
     }
     const isNewActive = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
@@ -6071,10 +6120,10 @@ class Magellan extends Plugin {
         const url = activeHash ? activeHash : window.location.pathname + window.location.search;
         if(this.options.updateHistory){
           window.history.pushState({}, '', url);
-        }else{
+        }else {
           window.history.replaceState({}, '', url);
         }
-      }else{
+      }else {
         window.location.hash = activeHash;
       }
     }
@@ -6480,67 +6529,68 @@ class OffCanvas extends Plugin {
   }
 
   /**
-   * Tag the element given as context whether it can be scrolled up and down.
-   * Used to allow or prevent it to scroll. See `_stopScrollPropagation`.
-   *
-   * Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
-   * Only really works for y, not sure how to extend to x or if we need to.
-   *
-   * @function
+   * Save current finger y-position
+   * @param event
    * @private
    */
   _recordScrollable(event) {
-    let elem = this; // called from event handler context with this as elem
-
-     // If the element is scrollable (content overflows), then...
-    if (elem.scrollHeight !== elem.clientHeight) {
-      // If we're at the top, scroll down one pixel to allow scrolling up
-      if (elem.scrollTop === 0) {
-        elem.scrollTop = 1;
-      }
-      // If we're at the bottom, scroll up one pixel to allow scrolling down
-      if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
-        elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
-      }
-    }
-    elem.allowUp = elem.scrollTop > 0;
-    elem.allowDown = elem.scrollTop < (elem.scrollHeight - elem.clientHeight);
-    elem.lastY = event.originalEvent.pageY;
+    const elem = this;
+    elem.lastY = event.touches[0].pageY;
   }
 
   /**
-   * Prevent the given event propagation if the element given as context can scroll.
-   * Used to preserve the element scrolling on mobile (`touchmove`) when the document
-   * scrolling is prevented. See https://git.io/zf-9707.
-   * @function
+   * Prevent further scrolling when it hits the edges
+   * @param event
    * @private
    */
-  _stopScrollPropagation(event) {
-    let elem = this; // called from event handler context with this as elem
-    let parent; // off-canvas elem if called from inner scrollbox
-    let up = event.pageY < elem.lastY;
-    let down = !up;
-    elem.lastY = event.pageY;
+  _preventDefaultAtEdges(event) {
+    const elem = this;
+    const _this = event.data;
+    const delta = elem.lastY - event.touches[0].pageY;
+    elem.lastY = event.touches[0].pageY;
 
-    if((up && elem.allowUp) || (down && elem.allowDown)) {
-      // It is not recommended to stop event propagation (the user cannot watch it),
-      // but in this case this is the only solution we have.
-      event.stopPropagation();
-
-      // If elem is inner scrollbox we are scrolling the outer off-canvas down/up once the box end has been reached
-      // This lets the user continue to touch move the off-canvas without the need to place the finger outside the scrollbox
-      if (elem.hasAttribute('data-off-canvas-scrollbox')) {
-        parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
-        if (elem.scrollTop <= 1 && parent.scrollTop > 0) {
-          parent.scrollTop--;
-        } else if (elem.scrollTop >= elem.scrollHeight - elem.clientHeight - 1 && parent.scrollTop < parent.scrollHeight - parent.clientHeight) {
-          parent.scrollTop++;
-        }
-      }
-
-    } else {
+    if (!_this._canScroll(delta, elem)) {
       event.preventDefault();
     }
+  }
+
+  /**
+   * Handle continuous scrolling of scrollbox
+   * Don't bubble up to _preventDefaultAtEdges
+   * @param event
+   * @private
+   */
+  _scrollboxTouchMoved(event) {
+    const elem = this;
+    const _this = event.data;
+    const parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
+    const delta = elem.lastY - event.touches[0].pageY;
+    parent.lastY = elem.lastY = event.touches[0].pageY;
+
+    event.stopPropagation();
+
+    if (!_this._canScroll(delta, elem)) {
+      if (!_this._canScroll(delta, parent)) {
+        event.preventDefault();
+      } else {
+        parent.scrollTop += delta;
+      }
+    }
+  }
+
+  /**
+   * Detect possibility of scrolling
+   * @param delta
+   * @param elem
+   * @returns boolean
+   * @private
+   */
+  _canScroll(delta, elem) {
+    const up = delta < 0;
+    const down = delta > 0;
+    const allowUp = elem.scrollTop > 0;
+    const allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
+    return up && allowUp || down && allowDown;
   }
 
   /**
@@ -6582,9 +6632,9 @@ class OffCanvas extends Plugin {
     if (this.options.contentScroll === false) {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
       this.$element.on('touchstart', this._recordScrollable);
-      this.$element.on('touchmove', this._stopScrollPropagation);
+      this.$element.on('touchmove', this, this._preventDefaultAtEdges);
       this.$element.on('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
-      this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
+      this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this, this._scrollboxTouchMoved);
     }
 
     if (this.options.contentOverlay === true) {
@@ -6682,9 +6732,9 @@ class OffCanvas extends Plugin {
       if (this.options.contentScroll === false) {
         $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
         this.$element.off('touchstart', this._recordScrollable);
-        this.$element.off('touchmove', this._stopScrollPropagation);
+        this.$element.off('touchmove', this._preventDefaultAtEdges);
         this.$element.off('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
-        this.$element.off('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
+        this.$element.off('touchmove', '[data-off-canvas-scrollbox]', this._scrollboxTouchMoved);
       }
 
       if (this.options.trapFocus === true) {
@@ -7737,7 +7787,7 @@ class Reveal extends Plugin {
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
       'aria-controls': this.id,
-      'aria-haspopup': true,
+      'aria-haspopup': 'dialog',
       'tabindex': 0
     });
 
@@ -7865,7 +7915,7 @@ class Reveal extends Plugin {
    */
   _handleState(e) {
     if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
-    else{ this.close(); }
+    else { this.close(); }
   }
 
   /**
@@ -9649,7 +9699,7 @@ class Tabs extends Plugin {
         // Roll up a little to show the titles
         if (this.options.deepLinkSmudge) {
           var offset = this.$element.offset();
-          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+          $('html, body').animate({ scrollTop: offset.top - this.options.deepLinkSmudgeOffset}, this.options.deepLinkSmudgeDelay);
         }
 
         /**
@@ -9902,6 +9952,10 @@ class Tabs extends Plugin {
     var max = 0,
         _this = this; // Lock down the `this` value for the root tabs object
 
+    if (!this.$tabContent) {
+      return;
+    }
+
     this.$tabContent
       .find(`.${this.options.panelClass}`)
       .css('height', '')
@@ -9980,6 +10034,14 @@ Tabs.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
+
+  /**
+   * If `deepLinkSmudge` is enabled, animation offset from the top for the deep link adjustment
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
 
   /**
    * If `deepLink` is enabled, update the browser history with the open tab
@@ -10109,7 +10171,7 @@ class Toggler extends Plugin {
     else {
       input = this.options.toggler;
       if (typeof input !== 'string' || !input.length) {
-        throw new Error(`The 'toogler' option containing the target class is required, got "${input}"`);
+        throw new Error(`The 'toggler' option containing the target class is required, got "${input}"`);
       }
       // Allow for a . at the beginning of the string
       this.className = input[0] === '.' ? input.slice(1) : input;

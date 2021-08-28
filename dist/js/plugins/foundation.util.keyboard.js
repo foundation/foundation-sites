@@ -153,8 +153,6 @@ __webpack_require__.r(__webpack_exports__);
  ******************************************/
 
 
-
-
 var keyCodes = {
   9: 'TAB',
   13: 'ENTER',
@@ -181,6 +179,37 @@ function findFocusable($element) {
 
 
     return true;
+  }).sort(function (a, b) {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(a).attr('tabindex') == jquery__WEBPACK_IMPORTED_MODULE_0___default()(b).attr('tabindex')) {
+      return 0;
+    }
+
+    var aTabIndex = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()(a).attr('tabindex')),
+        bTabIndex = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()(b).attr('tabindex')); // Undefined is treated the same as 0
+
+    if (typeof jquery__WEBPACK_IMPORTED_MODULE_0___default()(a).attr('tabindex') == 'undefined' && bTabIndex > 0) {
+      return 1;
+    }
+
+    if (typeof jquery__WEBPACK_IMPORTED_MODULE_0___default()(b).attr('tabindex') == 'undefined' && aTabIndex > 0) {
+      return -1;
+    }
+
+    if (aTabIndex == 0 && bTabIndex > 0) {
+      return 1;
+    }
+
+    if (bTabIndex == 0 && aTabIndex > 0) {
+      return -1;
+    }
+
+    if (aTabIndex < bTabIndex) {
+      return -1;
+    }
+
+    if (aTabIndex > bTabIndex) {
+      return 1;
+    }
   });
 }
 

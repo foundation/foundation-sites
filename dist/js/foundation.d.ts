@@ -9,27 +9,37 @@ declare module FoundationSites {
 
   // https://get.foundation/sites/docs/abide.html#javascript-reference
   interface Abide {
-    requiredChecked(element: JQuery): boolean;
-    findFormError(element: JQuery): JQuery;
+    enableValidation(): void;
+    disableValidation(): void;
+    requiredCheck(element: JQuery): boolean;
+    findFormError(element: JQuery, failedValidators?: string[]): JQuery;
     findLabel(element: JQuery): boolean;
-    addErrorClasses(element: JQuery): void;
+    findRadioLabels(elements: JQuery): boolean;
+    findCheckboxLabels(elements: JQuery): boolean;
+    addErrorClasses(element: JQuery, failedValidators?: string[]): void;
+    addA11yAttributes(element: JQuery): void;
+    addGlobalErrorA11yAttributes(element: JQuery): void;
     removeRadioErrorClasses(groupName: string): void;
+    removeCheckboxErrorClasses(groupName: string): void;
     removeErrorClasses(element: JQuery): void;
     validateInput(element: JQuery): boolean;
     validateForm(): boolean;
+    initialized: boolean;
     validateText(element: JQuery, pattern: string): boolean;
     validateRadio(groupName: string): boolean;
+    validateCheckbox(groupName: string): boolean;
     matchValidation(element: JQuery, validators: string, required: boolean): boolean;
     resetForm(): void;
-    destroy(): void;
   }
 
   interface AbideDefaults {
-    validateOn: string;
+    validateOn: string | null;
     labelErrorClass: string;
     inputErrorClass: string;
     formErrorSelector: string;
     formErrorClass: string;
+    a11yAttributes: boolean;
+    a11yErrorLevel: string;
     liveValidate: boolean;
     validateOnBlur: boolean;
     patterns: IAbidePatterns;
@@ -53,92 +63,118 @@ declare module FoundationSites {
     month_day_year?: RegExp;
     day_month_year?: RegExp;
     color?: RegExp;
+    website?: any;
   }
 
   interface IAbideOptions {
-    validateOn?: string;
+    validateOn?: string | null;
     labelErrorClass?: string;
     inputErrorClass?: string;
     formErrorSelector?: string;
     formErrorClass?: string;
+    a11yAttributes?: boolean;
+    a11yErrorLevel?: string;
     liveValidate?: boolean;
+    validateOnBlur?: boolean;
+    patterns?: IAbidePatterns;
     validators?: any;
   }
 
   // https://get.foundation/sites/docs/accordion.html#javascript-reference
   interface Accordion {
-    toggle($target: JQuery): void;
-    down($target: JQuery, firstTime: boolean): void;
-    up($target: JQuery): void;
-    destroy(): void;
+    toggle(target: JQuery): void;
+    down(target: JQuery, firstTime: boolean): void;
+    up(target: JQuery): void;
   }
 
   interface IAccordionOptions {
-    slideSpeed?: number
+    slideSpeed?: number;
     multiExpand?: boolean;
     allowAllClosed?: boolean;
+    deepLink?: boolean;
+    deepLinkSmudge?: boolean;
+    deepLinkSmudgeDelay?: number;
+    deepLinkSmudgeOffset?: number;
+    updateHistory?: boolean;
   }
 
   // https://get.foundation/sites/docs/accordion-menu.html#javascript-reference
   interface AccordionMenu {
     hideAll(): void;
-    toggle($target: JQuery): void;
-    down($target: JQuery, firstTime: boolean): void;
-    up($target: JQuery): void;
-    destroy(): void;
+    showAll(): void;
+    toggle(target: JQuery): void;
+    down(target: JQuery, firstTime: boolean): void;
+    up(target: JQuery): void;
   }
 
   interface IAccordionMenuOptions {
+    parentLink?: boolean;
     slideSpeed?: number;
+    submenuToggle?: boolean;
+    submenuToggleText?: string;
     multiOpen?: boolean;
   }
 
   // https://get.foundation/sites/docs/drilldown-menu.html#javascript-reference
   interface Drilldown {
-    destroy(): void;
+    // no public methods
   }
 
   interface IDrilldownOptions {
+    autoApplyClass?: boolean;
     backButton?: string;
+    backButtonPosition?: string;
     wrapper?: string;
     parentLink?: boolean;
     closeOnClick?: boolean;
+    autoHeight?: boolean;
+    animateHeight?: boolean;
+    scrollTop?: boolean;
+    scrollTopElement?: string;
+    scrollTopOffset?: number;
+    animationDuration?: number;
+    animationEasing?: string;
   }
 
   // https://get.foundation/sites/docs/dropdown.html#javascript-reference
   interface Dropdown {
-    getPositionClass(): string;
     open(): void;
     close(): void;
     toggle(): void;
-    destroy(): void;
   }
 
   interface IDropdownOptions {
+    parentClass?: string | null;
     hoverDelay?: number;
     hover?: boolean;
     hoverPane?: boolean;
     vOffset?: number;
     hOffset?: number;
-    positionClass?: string;
+    position?: string;
+    alignment?: string;
+    allowOverlap?: boolean;
+    allowBottomOverlap?: boolean;
     trapFocus?: boolean;
     autoFocus?: boolean;
     closeOnClick?: boolean;
+    forceFollow?: boolean;
   }
 
   // https://get.foundation/sites/docs/dropdown-menu.html#javascript-reference
   interface DropdownMenu {
-    destroy(): void;
+    // No public methods
   }
 
   interface IDropdownMenuOptions {
     disableHover?: boolean;
+    disableHoverOnTouch?: boolean;
     autoclose?: boolean;
     hoverDelay?: number;
     clickOpen?: boolean;
     closingTime?: number;
     alignment?: string;
     closeOnClick?: boolean;
+    closeOnClickInside?: boolean;
     verticalClass?: string;
     rightClass?: string;
     forceFollow?: boolean;
@@ -146,11 +182,10 @@ declare module FoundationSites {
 
   // https://get.foundation/sites/docs/equalizer.html#javascript-reference
   interface Equalizer {
-    getHeights(cb: Function): Array<any>;
-    getHeightsByRow(cb: Function): Array<any>;
-    applyHeight(heights: Array<any>): void;
-    applyHeightByRow(groups: Array<any>): void;
-    destroy(): void;
+    getHeights(cb: Function): any[];
+    getHeightsByRow(cb: Function): any[];
+    applyHeight(heights: any[]): void;
+    applyHeightByRow(groups: any[]): void;
   }
 
   interface IEqualizerOptions {
@@ -162,11 +197,11 @@ declare module FoundationSites {
   // https://get.foundation/sites/docs/interchange.html#javascript-reference
   interface Interchange {
     replace(path: string): void;
-    destroy(): void;
   }
 
   interface IInterchangeOptions {
-    rules?: Array<any>
+    rules?: any[];
+    type?: string;
   }
 
   // https://get.foundation/sites/docs/magellan.html#javascript-reference
@@ -174,7 +209,6 @@ declare module FoundationSites {
     calcPoints(): void;
     scrollToLoc(location: string): void;
     reflow(): void;
-    destroy(): void;
   }
 
   interface IMagellanOptions {
@@ -183,7 +217,8 @@ declare module FoundationSites {
     threshold?: number;
     activeClass?: string;
     deepLinking?: boolean;
-    barOffset?: number;
+    updateHistory?: boolean;
+    offset?: number;
   }
 
   // https://get.foundation/sites/docs/offcanvas.html#javascript-reference
@@ -192,16 +227,20 @@ declare module FoundationSites {
     open(event: Event, trigger: JQuery): void;
     close(cb?: Function): void;
     toggle(event: Event, trigger: JQuery): void;
-    destroy(): void;
   }
 
   interface IOffCanvasOptions {
     closeOnClick?: boolean;
-    transitionTime?: number;
-    position?: string;
-    forceTop?: boolean;
+    contentOverlay?: boolean;
+    contentId?: string | null;
+    nested?: boolean;
+    contentScroll?: boolean;
+    transitionTime?: string;
+    transition?: string;
+    forceTo?: string | null;
     isRevealed?: boolean;
-    revealOn?: string;
+    revealOn?: string | null;
+    inCanvasOn?: string | null;
     autoFocus?: boolean;
     revealClass?: string;
     trapFocus?: boolean;
@@ -211,7 +250,6 @@ declare module FoundationSites {
   interface Orbit {
     geoSync(): void;
     changeSlide(isLTR: boolean, chosenSlide?: JQuery, idx?: number): void;
-    destroy(): void;
   }
 
   interface IOrbitOptions {
@@ -235,12 +273,52 @@ declare module FoundationSites {
     useMUI?: boolean;
   }
 
+  interface Positionable {
+    // No public methods
+  }
+
+  interface IPositionableOptions {
+    position?: string;
+    alignment?: string;
+    allowOverlap?: boolean;
+    allowBottomOverlap?: boolean;
+    vOffset?: number;
+    hOffset?: number;
+  }
+
+  interface ResponsiveAccordionTabs {
+    storezfData: any;
+    open(_target: any, ...args: any[]): any;
+    close(_target: any, ...args: any[]): any;
+    toggle(_target: any, ...args: any[]): any;
+  }
+
+  interface IResponsiveAccordionTabsOptions {
+    // No Options
+  }
+
+  interface ResponsiveMenu {
+    // No public methods
+  }
+
+  interface IResponsiveMenuOptions {
+    // No Options
+  }
+
+  interface ResponsiveToggle {
+    toggleMenu(): void;
+  }
+
+  interface IResponsiveToggleOptions {
+    hideFor?: string;
+    animate?: boolean;
+  }
+
   // https://get.foundation/sites/docs/reveal.html#javascript-reference
   interface Reveal {
     open(): void;
     toggle(): void;
     close(): void;
-    destroy(): void;
   }
 
   interface IRevealOptions {
@@ -251,25 +329,27 @@ declare module FoundationSites {
     closeOnClick?: boolean;
     closeOnEsc?: boolean;
     multipleOpened?: boolean;
-    vOffset?: number;
-    hOffset?: number;
+    vOffset?: number | string;
+    hOffset?: number | string;
     fullScreen?: boolean;
-    btmOffsetPct?: number;
     overlay?: boolean;
     resetOnClose?: boolean;
     deepLink?: boolean;
+    updateHistory?: boolean;
+    appendTo?: string;
+    additionalOverlayClasses?: string;
   }
 
   // https://get.foundation/sites/docs/slider.html#javascript-reference
   interface Slider {
-    destroy(): void;
+    // No public methods
   }
 
   interface ISliderOptions {
     start?: number;
     end?: number;
     step?: number;
-    initialStart ?: number;
+    initialStart?: number;
     initialEnd?: number;
     binding?: boolean;
     clickSelect?: boolean;
@@ -280,11 +360,27 @@ declare module FoundationSites {
     decimal?: number;
     moveTime?: number;
     disabledClass?: string;
+    invertVertical?: boolean;
+    changedDelay?: number;
+    nonLinearBase?: number;
+    positionValueFunction?: string;
+  }
+
+  interface SmoothScroll {
+    scrollToLoc(loc: string, options: any, callback: Function): boolean;
+    constructor(element: any, options: any);
+  }
+
+  interface ISmoothScrollOptions {
+    animationDuration?: number;
+    animationEasing?: string;
+    threshold?: number;
+    offset?: number;
   }
 
   // https://get.foundation/sites/docs/sticky.html#javascript-reference
   interface Sticky {
-    destroy(): void;
+    // No public methods
   }
 
   interface IStickyOptions {
@@ -298,30 +394,38 @@ declare module FoundationSites {
     stickyOn?: string;
     stickyClass?: string;
     containerClass?: string;
+    dynamicHeight?: boolean;
     checkEvery?: number;
   }
 
   // https://get.foundation/sites/docs/tabs.html#javascript-reference
   interface Tabs {
     selectTab(element: JQuery | string): void;
-    destroy(): void;
   }
 
   interface ITabsOptions {
+    deepLink?: boolean;
+    deepLinkSmudge?: boolean;
+    deepLinkSmudgeDelay?: number;
+    deepLinkSmudgeOffset?: number;
+    updateHistory?: boolean;
     autoFocus?: boolean;
     wrapOnKeys?: boolean;
     matchHeight?: boolean;
+    activeCollapse?: boolean;
     linkClass?: string;
+    linkActiveClass?: string;
     panelClass?: string;
+    panelActiveClass?: string;
   }
 
   // https://get.foundation/sites/docs/toggler.html#javascript-reference
   interface Toggler {
     toggle(): void;
-    destroy(): void;
   }
 
   interface ITogglerOptions {
+    toggler?: string;
     animate?: boolean;
   }
 
@@ -330,7 +434,6 @@ declare module FoundationSites {
     show(): void;
     hide(): void;
     toggle(): void;
-    destroy(): void;
   }
 
   interface ITooltipOptions {
@@ -338,16 +441,24 @@ declare module FoundationSites {
     fadeInDuration?: number;
     fadeOutDuration?: number;
     disableHover?: boolean;
+    disableForTouch?: any;
     templateClasses?: string;
     tooltipClass?: string;
     triggerClass?: string;
     showOn?: string;
     template?: string;
     tipText?: string;
+    touchCloseText?: string;
     clickOpen?: boolean;
-    positionClass?: string;
+    position?: string;
+    alignment?: string;
+    allowOverlap?: boolean;
+    allowBottomOverlap?: boolean;
     vOffset?: number;
     hOffset?: number;
+    tooltipHeight?: number;
+    tooltipWidth?: number;
+    allowHtml?: boolean;
   }
 
   // Utilities
@@ -355,21 +466,29 @@ declare module FoundationSites {
 
   interface Box {
     ImNotTouchingYou(element: Object, parent?: Object, lrOnly?: boolean, tbOnly?: boolean): boolean;
+    OverlapArea(element: Object, parent?: Object, lrOnly?: boolean, tbOnly?: boolean, ignoreBottom?: boolean): number;
     GetDimensions(element: Object): Object;
-    GetOffsets(element: Object, anchor: Object, position: string, vOffset: number, hOffset: number, isOverflow: boolean): Object;
+    GetExplicitOffsets(element: any, anchor: any, position: string, alignment: any, vOffset: number, hOffset: number, isOverflow: boolean): Object
   }
 
   interface Keyboard {
     parseKey(event: any): string;
     handleKey(event: any, component: any, functions: any): void;
-    findFocusable($element: Object): Object;
+    findFocusable(element: JQuery): Object;
+    register(componentName: any, cmds: any): void;
+    trapFocus(element: JQuery): void;
+    releaseFocus(element: JQuery): void;
   }
 
   interface MediaQuery {
-    get(size: string): string;
-    atLeast(size: string): boolean;
-    queries: Array<string>;
+    queries: any[];
     current: string;
+    atLeast(size: string): boolean;
+    only(size: string): boolean;
+    upTo(size: string): boolean;
+    is(size: string): boolean;
+    get(size: string): string | null;
+    next(size: string): string | null;
   }
 
   interface Motion {
@@ -393,7 +512,9 @@ declare module FoundationSites {
   }
 
   interface Touch {
-    // TODO :extension on jQuery
+    setupSpotSwipe(event: Object): void;
+    setupTouchHandler(event: Object): void;
+    init(event: Object): void;
   }
 
   interface Triggers {
@@ -411,7 +532,9 @@ declare module FoundationSites {
     GetYoDigits(length: number, namespace?: string): string;
     reflow(elem: Object, plugins?: Array<string>|string): void;
     getFnName(fn: string): string;
-    transitionend(): string;
+    RegExpEscape(str: string): string;
+    transitionend(element: JQuery): any;
+    onLoad(elem: any, handler: any): string;
 
     util: {
       throttle(func: (...args: any[]) => any, delay: number): (...args: any[]) => any;
@@ -451,11 +574,26 @@ declare module FoundationSites {
     Orbit: {
       new(element: JQuery, options?: IOrbitOptions): Orbit;
     }
+    Positionable: {
+      new(element: JQuery, options?: IPositionableOptions): Positionable;
+    }
+    ResponsiveAccordionTabs: {
+      new(element: JQuery, options?: IResponsiveAccordionTabsOptions): ResponsiveAccordionTabs;
+    };
+    ResponsiveMenu: {
+      new(element: JQuery, options?: IResponsiveMenuOptions): ResponsiveMenu;
+    };
+    ResponsiveToggle: {
+      new(element: JQuery, options?: IResponsiveToggleOptions): ResponsiveToggle;
+    };
     Reveal: {
       new(element: JQuery, options?: IRevealOptions): Reveal;
     };
     Slider: {
       new(element: JQuery, options?: ISliderOptions): Slider;
+    }
+    SmoothScroll: {
+      new(element: JQuery, options?: ISmoothScrollOptions): SmoothScroll;
     }
     Sticky: {
       new(element: JQuery, options?: IStickyOptions): Sticky;
@@ -492,5 +630,9 @@ interface JQuery {
 declare var Foundation: FoundationSites.FoundationSitesStatic;
 
 declare module "Foundation" {
+  export = Foundation;
+}
+
+declare module "foundation-sites" {
   export = Foundation;
 }

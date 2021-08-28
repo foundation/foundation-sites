@@ -182,9 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.mediaQuery */ "./foundation.util.mediaQuery");
 /* harmony import */ var _foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.triggers */ "./js/foundation.util.triggers.js");
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -192,15 +190,19 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -216,20 +218,20 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.triggers
  */
 
-var OffCanvas =
-/*#__PURE__*/
-function (_Plugin) {
+var OffCanvas = /*#__PURE__*/function (_Plugin) {
   _inherits(OffCanvas, _Plugin);
+
+  var _super = _createSuper(OffCanvas);
 
   function OffCanvas() {
     _classCallCheck(this, OffCanvas);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(OffCanvas).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(OffCanvas, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of an off-canvas wrapper.
      * @class
@@ -238,7 +240,7 @@ function (_Plugin) {
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       var _this2 = this;
 
       this.className = 'OffCanvas'; // ie9 back compat
@@ -571,75 +573,76 @@ function (_Plugin) {
       return false;
     }
     /**
-     * Tag the element given as context whether it can be scrolled up and down.
-     * Used to allow or prevent it to scroll. See `_stopScrollPropagation`.
-     *
-     * Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
-     * Only really works for y, not sure how to extend to x or if we need to.
-     *
-     * @function
+     * Save current finger y-position
+     * @param event
      * @private
      */
 
   }, {
     key: "_recordScrollable",
     value: function _recordScrollable(event) {
-      var elem = this; // called from event handler context with this as elem
-      // If the element is scrollable (content overflows), then...
-
-      if (elem.scrollHeight !== elem.clientHeight) {
-        // If we're at the top, scroll down one pixel to allow scrolling up
-        if (elem.scrollTop === 0) {
-          elem.scrollTop = 1;
-        } // If we're at the bottom, scroll up one pixel to allow scrolling down
-
-
-        if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
-          elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
-        }
-      }
-
-      elem.allowUp = elem.scrollTop > 0;
-      elem.allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
-      elem.lastY = event.originalEvent.pageY;
+      var elem = this;
+      elem.lastY = event.touches[0].pageY;
     }
     /**
-     * Prevent the given event propagation if the element given as context can scroll.
-     * Used to preserve the element scrolling on mobile (`touchmove`) when the document
-     * scrolling is prevented. See https://git.io/zf-9707.
-     * @function
+     * Prevent further scrolling when it hits the edges
+     * @param event
      * @private
      */
 
   }, {
-    key: "_stopScrollPropagation",
-    value: function _stopScrollPropagation(event) {
-      var elem = this; // called from event handler context with this as elem
+    key: "_preventDefaultAtEdges",
+    value: function _preventDefaultAtEdges(event) {
+      var elem = this;
+      var _this = event.data;
+      var delta = elem.lastY - event.touches[0].pageY;
+      elem.lastY = event.touches[0].pageY;
 
-      var parent; // off-canvas elem if called from inner scrollbox
-
-      var up = event.pageY < elem.lastY;
-      var down = !up;
-      elem.lastY = event.pageY;
-
-      if (up && elem.allowUp || down && elem.allowDown) {
-        // It is not recommended to stop event propagation (the user cannot watch it),
-        // but in this case this is the only solution we have.
-        event.stopPropagation(); // If elem is inner scrollbox we are scrolling the outer off-canvas down/up once the box end has been reached
-        // This lets the user continue to touch move the off-canvas without the need to place the finger outside the scrollbox
-
-        if (elem.hasAttribute('data-off-canvas-scrollbox')) {
-          parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
-
-          if (elem.scrollTop <= 1 && parent.scrollTop > 0) {
-            parent.scrollTop--;
-          } else if (elem.scrollTop >= elem.scrollHeight - elem.clientHeight - 1 && parent.scrollTop < parent.scrollHeight - parent.clientHeight) {
-            parent.scrollTop++;
-          }
-        }
-      } else {
+      if (!_this._canScroll(delta, elem)) {
         event.preventDefault();
       }
+    }
+    /**
+     * Handle continuous scrolling of scrollbox
+     * Don't bubble up to _preventDefaultAtEdges
+     * @param event
+     * @private
+     */
+
+  }, {
+    key: "_scrollboxTouchMoved",
+    value: function _scrollboxTouchMoved(event) {
+      var elem = this;
+      var _this = event.data;
+      var parent = elem.closest('[data-off-canvas], [data-off-canvas-scrollbox-outer]');
+      var delta = elem.lastY - event.touches[0].pageY;
+      parent.lastY = elem.lastY = event.touches[0].pageY;
+      event.stopPropagation();
+
+      if (!_this._canScroll(delta, elem)) {
+        if (!_this._canScroll(delta, parent)) {
+          event.preventDefault();
+        } else {
+          parent.scrollTop += delta;
+        }
+      }
+    }
+    /**
+     * Detect possibility of scrolling
+     * @param delta
+     * @param elem
+     * @returns boolean
+     * @private
+     */
+
+  }, {
+    key: "_canScroll",
+    value: function _canScroll(delta, elem) {
+      var up = delta < 0;
+      var down = delta > 0;
+      var allowUp = elem.scrollTop > 0;
+      var allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
+      return up && allowUp || down && allowDown;
     }
     /**
      * Opens the off-canvas menu.
@@ -685,9 +688,9 @@ function (_Plugin) {
       if (this.options.contentScroll === false) {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
         this.$element.on('touchstart', this._recordScrollable);
-        this.$element.on('touchmove', this._stopScrollPropagation);
+        this.$element.on('touchmove', this, this._preventDefaultAtEdges);
         this.$element.on('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
-        this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this._stopScrollPropagation);
+        this.$element.on('touchmove', '[data-off-canvas-scrollbox]', this, this._scrollboxTouchMoved);
       }
 
       if (this.options.contentOverlay === true) {
@@ -795,11 +798,11 @@ function (_Plugin) {
 
           _this5.$element.off('touchstart', _this5._recordScrollable);
 
-          _this5.$element.off('touchmove', _this5._stopScrollPropagation);
+          _this5.$element.off('touchmove', _this5._preventDefaultAtEdges);
 
           _this5.$element.off('touchstart', '[data-off-canvas-scrollbox]', _this5._recordScrollable);
 
-          _this5.$element.off('touchmove', '[data-off-canvas-scrollbox]', _this5._stopScrollPropagation);
+          _this5.$element.off('touchmove', '[data-off-canvas-scrollbox]', _this5._scrollboxTouchMoved);
         }
 
         if (_this5.options.trapFocus === true) {
@@ -1008,9 +1011,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
@@ -1144,9 +1145,8 @@ Triggers.Listeners.Global = {
 
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
-  } // Global, parses whole document.
-
-};
+  }
+}; // Global, parses whole document.
 
 Triggers.Initializers.addClosemeListener = function (pluginName) {
   var yetiBoxes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-yeti-box]'),

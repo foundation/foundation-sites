@@ -79,7 +79,7 @@ gulp.task('deploy:dist:files', function() {
       .pipe(gulp.dest('./dist/css'))
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(rename({ suffix: '.min' }))
-      .pipe(cleancss({ compatibility: 'ie9' }))
+      .pipe(cleancss({ compatibility: 'ie11' }))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/css'))
       .pipe(cssFilter.restore)
