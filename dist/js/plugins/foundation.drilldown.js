@@ -183,9 +183,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./foundation.util.box */ "./foundation.util.box");
 /* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_box__WEBPACK_IMPORTED_MODULE_4__);
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -193,15 +191,19 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -217,20 +219,20 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @requires foundation.util.box
  */
 
-var Drilldown =
-/*#__PURE__*/
-function (_Plugin) {
+var Drilldown = /*#__PURE__*/function (_Plugin) {
   _inherits(Drilldown, _Plugin);
+
+  var _super = _createSuper(Drilldown);
 
   function Drilldown() {
     _classCallCheck(this, Drilldown);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Drilldown).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(Drilldown, [{
     key: "_setup",
-
+    value:
     /**
      * Creates a new instance of a drilldown menu.
      * @class
@@ -238,7 +240,7 @@ function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    value: function _setup(element, options) {
+    function _setup(element, options) {
       this.$element = element;
       this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Drilldown.defaults, this.$element.data(), options);
       this.className = 'Drilldown'; // ie9 back compat
@@ -252,9 +254,7 @@ function (_Plugin) {
         'ARROW_UP': 'up',
         'ARROW_DOWN': 'down',
         'ARROW_LEFT': 'previous',
-        'ESCAPE': 'close',
-        'TAB': 'down',
-        'SHIFT_TAB': 'up'
+        'ESCAPE': 'close'
       });
     }
     /**
@@ -272,12 +272,11 @@ function (_Plugin) {
       }
 
       this.$element.attr({
-        'role': 'tree',
         'aria-multiselectable': false
       });
       this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
       this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a'); // Set the main menu as current by default (unless a submenu is selected)
+      this.$menuItems = this.$element.find('li').not('.js-drilldown-back').find('a'); // Set the main menu as current by default (unless a submenu is selected)
       // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
 
       this.$currentMenu = this.$element;
@@ -600,6 +599,8 @@ function (_Plugin) {
 
         if (parentSubMenu.length) {
           _this._show(parentSubMenu);
+        } else {
+          _this.$currentMenu = _this.$element;
         }
       });
     }
@@ -679,7 +680,7 @@ function (_Plugin) {
       this.$currentMenu = $elem; // If target menu is root, focus first link & exit
 
       if ($elem.is('[data-drilldown]')) {
-        if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
+        if (autoFocus === true) $elem.find('li > a').first().focus();
         if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
         return;
       } // Find all submenus on way to root incl. the element itself
@@ -699,7 +700,7 @@ function (_Plugin) {
         if (isLastChild === true) {
           jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)), function () {
             if (autoFocus === true) {
-              $elem.find('li[role="treeitem"] > a').first().focus();
+              $elem.find('li > a').first().focus();
             }
           });
         }
@@ -719,8 +720,12 @@ function (_Plugin) {
     value: function _show($elem) {
       var $submenu = $elem.children('[data-submenu]');
       $elem.attr('aria-expanded', true);
-      this.$currentMenu = $submenu;
-      $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+      this.$currentMenu = $submenu; //hide drilldown parent menu when submenu is open
+      // this removes it from the dom so that the tab key will take the user to the next visible element
+
+      $elem.parent().closest('ul').addClass('invisible'); // add visible class to submenu to override invisible class above
+
+      $submenu.addClass('is-active visible').removeClass('invisible').attr('aria-hidden', false);
 
       if (this.options.autoHeight) {
         this.$wrapper.css({
@@ -751,10 +756,11 @@ function (_Plugin) {
 
       var _this = this;
 
+      $elem.parent().closest('ul').removeClass('invisible');
       $elem.parent('li').attr('aria-expanded', false);
       $elem.attr('aria-hidden', true);
       $elem.addClass('is-closing').one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_3__["transitionend"])($elem), function () {
-        $elem.removeClass('is-active is-closing');
+        $elem.removeClass('is-active is-closing visible');
         $elem.blur().addClass('invisible');
       });
       /**
@@ -800,13 +806,14 @@ function (_Plugin) {
   }, {
     key: "_destroy",
     value: function _destroy() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').off('.zf.drilldown');
       if (this.options.scrollTop) this.$element.off('.zf.drilldown', this._bindHandler);
 
       this._hideAll();
 
       this.$element.off('mutateme.zf.trigger');
       _foundation_util_nest__WEBPACK_IMPORTED_MODULE_2__["Nest"].Burn(this.$element, 'drilldown');
-      this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
+      this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').off('transitionend otransitionend webkitTransitionEnd').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
       this.$submenuAnchors.each(function () {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).off('.zf.drilldown');
       });

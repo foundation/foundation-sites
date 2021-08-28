@@ -25,7 +25,7 @@ Flexbox mode is only supported in these browsers:
 
 ## Enabling Flexbox Mode
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://download.get.foundation/sites/download">custom download of Foundation</a> with flexbox mode enabled. If you're using the Sass version of Foundation, you can enable flexbox mode two ways:
+Using the Sass version of Foundation, you can enable flexbox mode two ways:
 
 If you use the `foundation-everything()` mixin in your main Sass file, pass in the parameter `true` to enable flexbox mode.
 
@@ -54,7 +54,7 @@ Besides the flex grid, these components have flexbox modes:
 - [Menu](menu.html)
 - [Top bar](top-bar.html)
 - [Media object](media-object.html)
-- [Title bar](off-canvas.html#title-bar)
+- [Title bar](off-canvas.html#combining-with-title-bar)
 - [Card](card.html)
 
 In general, all of the components work exactly the same. However, a few of them require slight changes to CSS classes used to work properly. Refer to the documentation for each to find out what's different.

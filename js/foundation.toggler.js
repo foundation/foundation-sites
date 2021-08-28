@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Motion } from './foundation.util.motion';
 import { Plugin } from './foundation.core.plugin';
@@ -60,7 +58,7 @@ class Toggler extends Plugin {
     else {
       input = this.options.toggler;
       if (typeof input !== 'string' || !input.length) {
-        throw new Error(`The 'toogler' option containing the target class is required, got "${input}"`);
+        throw new Error(`The 'toggler' option containing the target class is required, got "${input}"`);
       }
       // Allow for a . at the beginning of the string
       this.className = input[0] === '.' ? input.slice(1) : input;

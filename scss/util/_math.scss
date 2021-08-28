@@ -33,7 +33,7 @@
     $prec2 : pow(10, $prec);
     $exponent: round($exponent * $prec2);
     $denominator: gcd($exponent, $prec2);
-    @return nth-root(pow($base, $exponent / $denominator), $prec2 / $denominator, $prec);
+    @return nth-root(pow($base, divide($exponent, $denominator)), divide($prec2, $denominator), $prec);
   }
 
   $value: $base;
@@ -44,7 +44,7 @@
   }
   @else if $exponent < 1 {
     @for $i from 0 through -$exponent {
-      $value: $value / $base;
+      $value: divide($value, $base);
     }
   }
 
@@ -56,7 +56,7 @@
   $x: 1;
 
   @for $i from 0 through $prec {
-    $x: 1 / $n * (($n - 1) * $x + ($num / pow($x, $n - 1)));
+    $x: divide(1, $n) * (($n - 1) * $x + divide($num, pow($x, $n - 1)));
   }
 
   @return $x;
@@ -68,7 +68,7 @@
 @function ratio-to-percentage($ratio) {
   $w: nth($ratio, 1);
   $h: nth($ratio, 3);
-  @return $h / $w * 100%;
+  @return divide($h, $w) * 100%;
 }
 
 /// Parse the given `$fraction` to numerators and denumerators.
@@ -143,5 +143,55 @@
     }
   }
 
-  @return percentage($parsed-nominator / $parsed-denominator);
+  @return percentage(divide($parsed-nominator, $parsed-denominator));
+}
+
+/// Divide the given `$divident` by the given `$divisor`.
+///
+/// @param {Number} $divident - The divident.
+/// @param {Number} $divisor - The divisor.
+/// @param {Number} $precision - The precision decimals for the division.
+///
+/// @return {Number} The product of the division.
+@function divide($dividend, $divisor, $precision: 12) {
+  $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
+  $dividend: abs($dividend);
+  $divisor: abs($divisor);
+  @if $dividend == 0 {
+    @return 0;
+  }
+  @if $divisor == 0 {
+    @error "Cannot divide by 0";
+  }
+  $remainder: $dividend;
+  $result: 0;
+  $factor: 10;
+  @while ($remainder > 0 and $precision >= 0) {
+    $quotient: 0;
+    @while ($remainder >= $divisor) {
+      $remainder: $remainder - $divisor;
+      $quotient: $quotient + 1;
+    }
+    $result: $result * 10 + $quotient;
+    $factor: $factor * .1;
+    $remainder: $remainder * 10;
+    $precision: $precision - 1;
+    @if ($precision < 0 and $remainder >= $divisor * 5) {
+      $result: $result + 1;
+    }
+  }
+  $result: $result * $factor * $sign;
+  $dividend-unit: unit($dividend);
+  $divisor-unit: unit($divisor);
+  $unit-map: (
+    "px": 1px,
+    "rem": 1rem,
+    "em": 1em,
+    "%": 1%
+  );
+  @if ($dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)) {
+    $result: $result * map-get($unit-map, $dividend-unit);
+  }
+
+  @return $result;
 }

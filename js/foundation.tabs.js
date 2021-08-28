@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
 import { onLoad } from './foundation.core.utils';
@@ -132,7 +130,7 @@ class Tabs extends Plugin {
         // Roll up a little to show the titles
         if (this.options.deepLinkSmudge) {
           var offset = this.$element.offset();
-          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+          $('html, body').animate({ scrollTop: offset.top - this.options.deepLinkSmudgeOffset}, this.options.deepLinkSmudgeDelay);
         }
 
         /**
@@ -385,6 +383,10 @@ class Tabs extends Plugin {
     var max = 0,
         _this = this; // Lock down the `this` value for the root tabs object
 
+    if (!this.$tabContent) {
+      return;
+    }
+
     this.$tabContent
       .find(`.${this.options.panelClass}`)
       .css('height', '')
@@ -463,6 +465,14 @@ Tabs.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
+
+  /**
+   * If `deepLinkSmudge` is enabled, animation offset from the top for the deep link adjustment
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  deepLinkSmudgeOffset: 0,
 
   /**
    * If `deepLink` is enabled, update the browser history with the open tab

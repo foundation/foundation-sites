@@ -1,10 +1,8 @@
-"use strict";
-
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
-var FOUNDATION_VERSION = '6.6.3';
+var FOUNDATION_VERSION = '6.7.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

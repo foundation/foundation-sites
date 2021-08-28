@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { onLoad } from './foundation.core.utils';
 import { Motion } from './foundation.util.motion';

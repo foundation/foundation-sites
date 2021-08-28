@@ -71,22 +71,17 @@ describe('Drilldown Menu', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Drilldown($html, {});
 
-      plugin.$element.should.have.attr('role', 'tree');
-
       plugin.$element.find('[data-submenu]').each(function() {
         $(this).should.have.attr('role', 'group');
         $(this).should.have.attr('aria-hidden', 'true');
       });
 
       plugin.$element.find('.is-drilldown-submenu-parent').each(function() {
-        $(this).should.have.attr('aria-haspopup', 'true');
         $(this).should.have.attr('aria-expanded', 'false');
-        $(this).should.have.attr('aria-label', $(this).children('a').first().text());
+        $(this).children('a').first().should.have.attr('aria-haspopup', 'true');
+        $(this).children('a').first().should.have.attr('aria-label', $(this).children('a').first().text());
       });
 
-      plugin.$element.find('li:not(.js-drilldown-back)').each(function() {
-        $(this).should.have.attr('role', 'treeitem');
-      });
     });
   });
 
@@ -338,24 +333,6 @@ describe('Drilldown Menu', function() {
         .trigger(window.mockKeyboardEvent('ESCAPE'));
 
       $html.find('> li:nth-child(1) > ul').should.have.class('is-closing');
-    });
-    it('moves focus to next element on TAB', function() {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.Drilldown($html, {});
-
-      $html.find('> li:nth-child(1) > a').focus()
-        .trigger(window.mockKeyboardEvent('TAB'));
-
-      document.activeElement.should.be.equal($html.find('> li:nth-child(2) > a')[0]);
-    });
-    it('moves focus to previous element on TAB', function() {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.Drilldown($html, {});
-
-      $html.find('> li:nth-child(2) > a').focus()
-        .trigger(window.mockKeyboardEvent('TAB', {shift: true}));
-
-      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
     });
     it('moves focus to next element on ARROW_DOWN', function() {
       $html = $(template).appendTo('body');

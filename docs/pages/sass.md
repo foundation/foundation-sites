@@ -4,10 +4,10 @@ description: Foundation is written in Sass, which allows us to make the codebase
 video: mYiyunVQdMY
 ---
 
-<div class="callout training-callout">
+<!-- <div class="callout training-callout">
   <p>Get trained up on Foundation's Sass with our online webinar training. Sass allows you to write dramatically more efficient code. We'll go over things like how to install and start compiling Sass, nesting mixins and functions, and writing fully semantic CSS using Foundation mixins for insanely maintainable code.</p>
   <a href="https://zurb.com/university/advanced-foundation-training" target="_blank">Reserve your spot →</a>
-</div>
+</div> -->
 
 <div class="primary callout">
   <p>Not familiar with Sass? The [official tutorial](https://sass-lang.com/guide) on sass-lang.com is a great place to start.</p>
@@ -180,7 +180,7 @@ All Foundation projects include a settings file, named `_settings.scss`. If you'
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 
 <div class="callout warning">
-  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/foundation/foundation/releases">Foundation releases</a> so you know when things change.</p>
+  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/foundation/foundation-sites/releases">Foundation releases</a> so you know when things change.</p>
 </div>
 
 Here's an example set of settings variables. These change the default styling of [buttons](button.html):

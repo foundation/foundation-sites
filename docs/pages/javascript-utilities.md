@@ -202,7 +202,7 @@ $(window).on('resize', function(e){
 ### With Delay
 ```js
 // Throttled resize function
-$(window).on('resize', Foundation.utils.throttle(function(e){
+$(window).on('resize', Foundation.util.throttle(function(e){
   // Do responsive stuff
 }, 300));
 ```

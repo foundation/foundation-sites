@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
 import { rtl as Rtl, ignoreMousedisappear } from './foundation.core.utils';
@@ -140,6 +138,8 @@ class DropdownMenu extends Plugin {
         }
       });
     }
+
+    if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
@@ -399,6 +399,13 @@ DropdownMenu.defaults = {
    * @default false
    */
   disableHover: false,
+  /**
+   * Disallows hover on touch devices
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  disableHoverOnTouch: true,
   /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option

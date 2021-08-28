@@ -6,6 +6,11 @@
 /// @group functions
 ////
 
+////
+/// Patch to fix issue #12080
+$-zf-pb-value: null;
+
+////
 /// Creates an inner box-shadow for only one side
 ///
 /// @param {Keyword} $side - Side the shadow is supposed to appear. Can be `top`, `left`, `right` or `bottom`.
@@ -44,28 +49,25 @@
   width: 0;
   height: 0;
 
-  border: inset $triangle-size;
+  border-style: solid;
+  border-width: $triangle-size;
 
   content: '';
 
   @if ($triangle-direction == down) {
     border-bottom-width: 0;
-    border-top-style: solid;
     border-color: $triangle-color transparent transparent;
   }
   @if ($triangle-direction == up) {
     border-top-width: 0;
-    border-bottom-style: solid;
     border-color: transparent transparent $triangle-color;
   }
   @if ($triangle-direction == right) {
     border-right-width: 0;
-    border-left-style: solid;
     border-color: transparent transparent transparent $triangle-color;
   }
   @if ($triangle-direction == left) {
     border-left-width: 0;
-    border-right-style: solid;
     border-color: transparent $triangle-color transparent transparent;
   }
 }
@@ -91,7 +93,7 @@
   $hover-shadow: ();
 
   // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
-  $spacing: ($height - ($weight * $bars)) / ($bars - 1);
+  $spacing: divide($height - ($weight * $bars), $bars - 1);
 
   @if unit($spacing) == 'px' {
     $spacing: floor($spacing);
@@ -192,7 +194,7 @@
   @for $i from 2 through $max {
     &:nth-last-child(#{$i}):first-child,
     &:nth-last-child(#{$i}):first-child ~ #{$elem} {
-      width: percentage(1 / $i);
+      width: percentage(divide(1, $i));
     }
   }
 }

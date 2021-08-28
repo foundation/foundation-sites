@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 
 const Nest = {
@@ -20,7 +18,7 @@ const Nest = {
       if ($sub.length) {
         $item.addClass(hasSubClass);
         if(applyAria) {
-          $item.attr({
+          $item.children('a:first').attr({
             'aria-haspopup': true,
             'aria-label': $item.children('a:first').text()
           });

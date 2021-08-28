@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Nest } from './foundation.util.nest';
@@ -38,8 +36,6 @@ class Drilldown extends Plugin {
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'previous',
       'ESCAPE': 'close',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
     });
   }
 
@@ -55,12 +51,11 @@ class Drilldown extends Plugin {
     }
 
     this.$element.attr({
-      'role': 'tree',
       'aria-multiselectable': false
     });
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]').attr('role', 'group');
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'treeitem').find('a');
+    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').find('a');
 
     // Set the main menu as current by default (unless a submenu is selected)
     // Used to set the wrapper height when the drilldown is closed/reopened from any (sub)menu
@@ -340,6 +335,9 @@ class Drilldown extends Plugin {
         if (parentSubMenu.length) {
           _this._show(parentSubMenu);
         }
+        else {
+          _this.$currentMenu = _this.$element;
+        }
       });
   }
 
@@ -412,7 +410,7 @@ class Drilldown extends Plugin {
 
     // If target menu is root, focus first link & exit
     if ($elem.is('[data-drilldown]')) {
-      if (autoFocus === true) $elem.find('li[role="treeitem"] > a').first().focus();
+      if (autoFocus === true) $elem.find('li > a').first().focus();
       if (this.options.autoHeight) this.$wrapper.css('height', $elem.data('calcHeight'));
       return;
     }
@@ -435,7 +433,7 @@ class Drilldown extends Plugin {
       if (isLastChild === true) {
         $(this).one(transitionend($(this)), () => {
           if (autoFocus === true) {
-            $elem.find('li[role="treeitem"] > a').first().focus();
+            $elem.find('li > a').first().focus();
           }
         });
       }
@@ -456,7 +454,14 @@ class Drilldown extends Plugin {
     $elem.attr('aria-expanded', true);
 
     this.$currentMenu = $submenu;
-    $submenu.addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
+
+    //hide drilldown parent menu when submenu is open
+    // this removes it from the dom so that the tab key will take the user to the next visible element
+    $elem.parent().closest('ul').addClass('invisible');
+
+    // add visible class to submenu to override invisible class above
+    $submenu.addClass('is-active visible').removeClass('invisible').attr('aria-hidden', false);
+
     if (this.options.autoHeight) {
       this.$wrapper.css({ height: $submenu.data('calcHeight') });
     }
@@ -477,11 +482,12 @@ class Drilldown extends Plugin {
   _hide($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     var _this = this;
+    $elem.parent().closest('ul').removeClass('invisible');
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true);
     $elem.addClass('is-closing')
          .one(transitionend($elem), function(){
-           $elem.removeClass('is-active is-closing');
+           $elem.removeClass('is-active is-closing visible');
            $elem.blur().addClass('invisible');
          });
     /**
@@ -527,13 +533,14 @@ class Drilldown extends Plugin {
    * @function
    */
   _destroy() {
+    $('body').off('.zf.drilldown');
     if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
 	  this.$element.off('mutateme.zf.trigger');
     Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
-                 .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
+                 .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').off('transitionend otransitionend webkitTransitionEnd')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
     this.$submenuAnchors.each(function() {
       $(this).off('.zf.drilldown');

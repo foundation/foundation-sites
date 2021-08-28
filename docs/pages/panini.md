@@ -49,7 +49,7 @@ A basic page might look like this:
 
 Note that there's no `<html>` or `<body>` tags, and no header or footer. This code will be injected into the `{{> body}}` declaration when Panini assembles your pages.
 
-In the prototyping template, these finished files are compiled into a standalone folder called `dist` (short for "distribution"), which also includes your processed CSS, JavaScript, and images. This folder can easily be uploaded to any web server, or Notable's [Hosted Prototypes](https://zurb.com/notable/features/hosted) service.
+In the prototyping template, these finished files are compiled into a standalone folder called `dist` (short for "distribution"), which also includes your processed CSS, JavaScript, and images. This folder can easily be uploaded to any web server, or Notable's Hosted Prototypes service.
 
 ---
 
@@ -127,7 +127,7 @@ Displays the HTML inside the helper if the two values are equal.
 {{#ifequal foo bar}}
   <p>foo and bar are equal</p>
 {{else}}
-  <p>foo and bar are not equal}}  
+  <p>foo and bar are not equal</p>  
 {{/ifequal}}
 ```
 

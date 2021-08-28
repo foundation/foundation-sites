@@ -1,0 +1,25 @@
+diff --git a/node_modules/browserstack-runner/lib/local.js b/node_modules/browserstack-runner/lib/local.js
+index 15b147c..4f15a49 100644
+--- a/node_modules/browserstack-runner/lib/local.js
++++ b/node_modules/browserstack-runner/lib/local.js
+@@ -180,16 +180,16 @@ var Tunnel = function Tunnel(key, port, uniqueIdentifier, config, callback) {
+     }
+     logger.debug('Downloading BrowserStack Local to "%s"', localBinary);
+ 
+-    var file = fs.createWriteStream(localBinary);
++    var file = fs.createWriteStream(localBinary, {emitClose: true});
+     https.get('https://s3.amazonaws.com/browserStack/browserstack-local/BrowserStackLocal' + (windows ? '.exe' : '-' + process.platform + '-' + process.arch),
+     function(response) {
+       response.pipe(file);
+ 
+       response.on('end', function() {
+-        fs.chmodSync(localBinary, 0700);
+-        setTimeout(function() {
++        file.on('close', function () {
++          fs.chmodSync(localBinary, 0700);
+           tunnelLauncher();
+-        }, 100);
++        })
+       }).on('error', function(e) {
+         logger.info('Got error while downloading binary: ' + e.message);
+         throw new Error('Got error while downloading binary: ' + e.message);

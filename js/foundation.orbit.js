@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { Motion } from './foundation.util.motion';

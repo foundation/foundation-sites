@@ -116,7 +116,6 @@ $buttongroup-radius-on-each: true !default;
   #{$selector} {
     @if $global-flexbox {
       flex: 1 1 0px; // sass-lint:disable-line zero-unit
-      margin-right: 0;
     }
     @else {
       // One child
@@ -131,7 +130,7 @@ $buttongroup-radius-on-each: true !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1 / $i)} - #{$spacing});
+            width: calc(#{percentage(divide(1, $i))} - #{$spacing});
             margin-#{$global-right}: $spacing;
 
             &:last-child {
@@ -174,7 +173,6 @@ $buttongroup-radius-on-each: true !default;
       }
 
       &:last-child {
-        margin-bottom: 0;
         border-bottom-#{$global-left}-radius: $global-radius;
         border-bottom-#{$global-right}-radius: $global-radius;
       }

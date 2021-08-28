@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
 import { GetYoDigits } from './foundation.core.utils';
@@ -498,10 +496,10 @@ class Abide extends Plugin {
     }
 
     if (manageErrorClasses) {
-      this.removeErrorClasses($el);
-
       if (!goodToGo) {
         this.addErrorClasses($el, failedValidators);
+      } else {
+        this.removeErrorClasses($el);
       }
     }
 

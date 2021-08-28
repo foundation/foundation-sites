@@ -38,12 +38,12 @@ $menu-item-background-active: get-color(primary) !default;
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
 
-/// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`. 
+/// Backward compatibility for menu state. If true, this duplicate `active` with `is-active`.
 /// But please note that `active` will be removed in upcoming versions.
 /// @type Boolean
 $menu-state-back-compat: true !default;
 
-/// Backward compatibility for menu centered. If true, this duplicate `.menu-centered > .menu` with `.menu.align-center`. 
+/// Backward compatibility for menu centered. If true, this duplicate `.menu-centered > .menu` with `.menu.align-center`.
 /// But please note that `menu-centered` will be removed in upcoming versions.
 /// @type Boolean
 $menu-centered-back-compat: true !default;
@@ -258,6 +258,33 @@ $menu-icons-back-compat: true !default;
   }
 }
 
+/// Align top/bottom icons within a menu.
+/// @param {Keyword} $alignment [center] - Alignment of the icon
+@mixin menu-icon-alignment($alignment: center) {
+  @if $global-flexbox {
+    &.icon-top,
+    &.icon-bottom {
+      li a {
+        img,
+        i,
+        svg {
+          @if $alignment == left {
+            text-align: left;
+          }
+
+          @else if $alignment == right {
+            text-align: right;
+          }
+
+          @else {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
 /// Adds position classes for icons within a menu.
 @mixin menu-icon-position($position: left, $spacing: $menu-icon-spacing) {
   @if $position == left {
@@ -369,11 +396,13 @@ $menu-icons-back-compat: true !default;
     // Vertical orientation modifier
     &.vertical {
       @include menu-direction(vertical);
+      @include menu-icon-alignment(left);
     }
 
     // Even-width modifier for horizontal orientation
     &.expanded {
       @include menu-expand;
+      @include menu-icon-alignment(left);
     }
 
     // Simple
@@ -420,31 +449,36 @@ $menu-icons-back-compat: true !default;
       }
     }
 
-    // Icon Left
-    &.icon-left {
-      @include menu-icon-position(left);
-    }
+    // Menu icon position
+    // Includes specificity to nested icons with a different position
+    &,
+    &.nested {
+      // Icon Left
+      &.icon-left {
+        @include menu-icon-position(left);
+      }
 
-    // Icon Right
-    &.icon-right {
-      @include menu-icon-position(right);
-    }
+      // Icon Right
+      &.icon-right {
+        @include menu-icon-position(right);
+      }
 
-    // Icon Top
-    &.icon-top {
-      @include menu-icon-position(top);
-    }
+      // Icon Top
+      &.icon-top {
+        @include menu-icon-position(top);
+      }
 
-    // Icon Bottom
-    &.icon-bottom {
-      @include menu-icon-position(bottom);
+      // Icon Bottom
+      &.icon-bottom {
+        @include menu-icon-position(bottom);
+      }
     }
 
     // Active state
     .is-active > a {
       @include menu-state-active;
     }
-    
+
     // Backward Compatibility for active state
     @if $menu-state-back-compat {
       .active > a {
@@ -460,6 +494,7 @@ $menu-icons-back-compat: true !default;
     // Align right
     &.align-#{$global-right} {
       @include menu-align(right);
+      @include menu-icon-alignment(right);
 
       .nested {
         @include menu-nested($nested-alignment: right);
@@ -482,7 +517,7 @@ $menu-icons-back-compat: true !default;
         @if $global-flexbox {
           justify-content: center;
         }
-        
+
         @include menu-align(center);
       }
     }

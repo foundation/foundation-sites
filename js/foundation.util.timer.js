@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 
 function Timer(elem, options, cb) {

@@ -48,7 +48,7 @@ describe('Reveal', function() {
       var $anchor = $('<button data-open="exampleModal1">Open</button>').appendTo('body');
       plugin = new Foundation.Reveal($html, {});
 
-      $anchor.should.have.attr('aria-haspopup', 'true');
+      $anchor.should.have.attr('aria-haspopup', 'dialog');
       $anchor.should.have.attr('aria-controls', $html.attr('id'));
 
       $anchor.remove();

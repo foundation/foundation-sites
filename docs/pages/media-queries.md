@@ -8,10 +8,10 @@ tags:
   - breakpoints
 ---
 
-<div class="callout training-callout">
+<!-- <div class="callout training-callout">
   <p>Build better websites and apps, code cleaner, and become a better front-end developer with Foundation training. We're running two online webinar training sessions this month where we break down how to get the most out of Foundation and leap ahead skillwise.</p>
   <a href="https://zurb.com/university/courses" target="_blank"> Get registered →</a>
-</div>
+</div> -->
 
 ## Default Media Queries
 
@@ -90,6 +90,9 @@ $breakpoints: (
 </div>
 
 Changing the widths of any of the breakpoints is as easy as changing the pixel values in this map. Note that here there are two extra breakpoints: `xlarge` and `xxlarge`. We don't use these for any components, and also don't output any CSS classes that use them by default.
+
+Please note that the order of breakpoints must be in ascending order so that keywords like `down` in the `breakpoint` function below will work as expected e.g.
+
 
 You can change that by modifying the `$breakpoint-classes` variable in your settings file. This is a list of breakpoint names. Adding or removing names from the list will change the CSS class output. It looks like this by default:
 
@@ -212,7 +215,7 @@ Foundation.MediaQuery.atLeast('medium');
 Foundation.MediaQuery.is('medium only');
 Foundation.MediaQuery.only('medium');
 
-// ↓ True for "medium" or larger
+// ↓ True for "medium" or smaller
 Foundation.MediaQuery.is('medium down');
 Foundation.MediaQuery.upTo('medium');
 ```

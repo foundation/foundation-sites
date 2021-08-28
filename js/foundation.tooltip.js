@@ -1,7 +1,4 @@
-'use strict';
-
 import $ from 'jquery';
-
 import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Triggers } from './foundation.util.triggers';

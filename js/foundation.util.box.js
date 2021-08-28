@@ -1,5 +1,3 @@
-'use strict';
-
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   OverlapArea: OverlapArea,

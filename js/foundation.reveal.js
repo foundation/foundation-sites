@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Plugin } from './foundation.core.plugin';
 import { onLoad } from './foundation.core.utils';
@@ -55,7 +53,7 @@ class Reveal extends Plugin {
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
       'aria-controls': this.id,
-      'aria-haspopup': true,
+      'aria-haspopup': 'dialog',
       'tabindex': 0
     });
 

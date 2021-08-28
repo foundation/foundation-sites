@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { transitionend } from './foundation.core.utils';
 

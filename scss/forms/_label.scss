@@ -36,7 +36,8 @@ $form-label-line-height: 1.8 !default;
   $input-border-width: get-border-value($input-border, width);
 
   margin: 0 0 $form-spacing;
-  padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
+  line-height: $global-lineheight;
+  padding: ($form-spacing * 0.5 + rem-calc($input-border-width)) 0;
 }
 
 @mixin foundation-form-label {

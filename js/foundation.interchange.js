@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { Plugin } from './foundation.core.plugin';
@@ -30,7 +28,7 @@ class Interchange extends Plugin {
 
     // Triggers init is idempotent, just need to make sure it is initialized
     Triggers.init($);
-    
+
     this._init();
     this._events();
   }

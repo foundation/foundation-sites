@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { MediaQuery } from './foundation.util.mediaQuery';
 import { GetYoDigits } from './foundation.core.utils';

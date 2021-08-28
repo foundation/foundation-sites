@@ -105,7 +105,7 @@ The text color for each badge class is determined by either `$badge-color` or `$
 
 ## Icons
 
-An icon can be used in place of text. We're using the [Foundation icon font](https://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
+An icon can be used in place of text. We're using the Foundation icon font here, but any icon fonts or image-based icons will work fine.
 
 <p>
   <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>

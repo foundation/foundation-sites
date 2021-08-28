@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 
 // Default set of media queries

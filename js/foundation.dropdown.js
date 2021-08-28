@@ -1,5 +1,3 @@
-'use strict';
-
 import $ from 'jquery';
 import { Keyboard } from './foundation.util.keyboard';
 import { GetYoDigits, ignoreMousedisappear } from './foundation.core.utils';
