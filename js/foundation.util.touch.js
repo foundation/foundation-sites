@@ -13,7 +13,19 @@ var startPosX,
     elapsedTime,
     startEvent,
     isMoving = false,
-    didMoved = false;
+    didMoved = false,
+    supportsPassive = false;
+
+// Test via a getter in the options object to see if the passive property is accessed
+try {
+  var opts = Object.defineProperty({}, 'passive', {
+    get: function () {
+      supportsPassive = true;
+    }
+  })
+  window.addEventListener('testPassive', null, opts);
+  window.removeEventListener('testPassive', null, opts);
+} catch (e) {}
 
 function onTouchEnd(e) {
   this.removeEventListener('touchmove', onTouchMove);
@@ -67,13 +79,13 @@ function onTouchStart(e) {
     isMoving = true;
     didMoved = false;
     startTime = new Date().getTime();
-    this.addEventListener('touchmove', onTouchMove, false);
+    this.addEventListener('touchmove', onTouchMove, supportsPassive ? {passive: true} : false);
     this.addEventListener('touchend', onTouchEnd, false);
   }
 }
 
 function init() {
-  this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
+  this.addEventListener && this.addEventListener('touchstart', onTouchStart, supportsPassive ? {passive: true} : false);
 }
 
 function teardown() {
