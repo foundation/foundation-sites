@@ -181,15 +181,15 @@ function onTouchEnd(e) {
 }
 
 function onTouchMove(e) {
-  if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault) {
+  if (true === jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault) {
     e.preventDefault();
   }
 
   if (isMoving) {
-    var x = e.touches[0].pageX;
-    var y = e.touches[0].pageY;
-    var dx = startPosX - x;
-    var dy = startPosY - y;
+    var x = e.touches[0].pageX; // var y = e.touches[0].pageY;
+
+    var dx = startPosX - x; // var dy = startPosY - y;
+
     var dir;
     didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
@@ -210,20 +210,24 @@ function onTouchMove(e) {
 }
 
 function onTouchStart(e) {
-  if (e.touches.length == 1) {
+  if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
     startTime = new Date().getTime();
-    this.addEventListener('touchmove', onTouchMove, false);
+    this.addEventListener('touchmove', onTouchMove, {
+      passive: true === jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault
+    });
     this.addEventListener('touchend', onTouchEnd, false);
   }
 }
 
 function init() {
-  this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
+  this.addEventListener && this.addEventListener('touchstart', onTouchStart, {
+    passive: true
+  });
 }
 
 function teardown() {

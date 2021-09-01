@@ -2222,7 +2222,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
-var FOUNDATION_VERSION = '6.7.0'; // Global Foundation object
+var FOUNDATION_VERSION = '6.7.1'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -12952,7 +12952,7 @@ var MediaQuery = {
     var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
     if (!$meta.length) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq">').appendTo(document.head);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq" name="foundation-mq" content>').appendTo(document.head);
     }
 
     var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');
@@ -13501,15 +13501,15 @@ function onTouchEnd(e) {
 }
 
 function onTouchMove(e) {
-  if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault) {
+  if (true === jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault) {
     e.preventDefault();
   }
 
   if (isMoving) {
-    var x = e.touches[0].pageX;
-    var y = e.touches[0].pageY;
-    var dx = startPosX - x;
-    var dy = startPosY - y;
+    var x = e.touches[0].pageX; // var y = e.touches[0].pageY;
+
+    var dx = startPosX - x; // var dy = startPosY - y;
+
     var dir;
     didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
@@ -13530,20 +13530,24 @@ function onTouchMove(e) {
 }
 
 function onTouchStart(e) {
-  if (e.touches.length == 1) {
+  if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
     startTime = new Date().getTime();
-    this.addEventListener('touchmove', onTouchMove, false);
+    this.addEventListener('touchmove', onTouchMove, {
+      passive: true === jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe.preventDefault
+    });
     this.addEventListener('touchend', onTouchEnd, false);
   }
 }
 
 function init() {
-  this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
+  this.addEventListener && this.addEventListener('touchstart', onTouchStart, {
+    passive: true
+  });
 }
 
 function teardown() {
