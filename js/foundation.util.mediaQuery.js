@@ -89,7 +89,7 @@ var MediaQuery = {
     var self = this;
     var $meta = $('meta.foundation-mq');
     if(!$meta.length){
-      $('<meta class="foundation-mq">').appendTo(document.head);
+      $('<meta class="foundation-mq" name="foundation-mq" content>').appendTo(document.head);
     }
 
     var extractedStyles = $('.foundation-mq').css('font-family');
