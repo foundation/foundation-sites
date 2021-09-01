@@ -237,7 +237,7 @@ var MediaQuery = {
     var $meta = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta.foundation-mq');
 
     if (!$meta.length) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq">').appendTo(document.head);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('<meta class="foundation-mq" name="foundation-mq" content>').appendTo(document.head);
     }
 
     var extractedStyles = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.foundation-mq').css('font-family');

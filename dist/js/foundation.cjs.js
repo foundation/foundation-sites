@@ -451,7 +451,7 @@ var MediaQuery = {
     var $meta = $('meta.foundation-mq');
 
     if (!$meta.length) {
-      $('<meta class="foundation-mq">').appendTo(document.head);
+      $('<meta class="foundation-mq" name="foundation-mq" content>').appendTo(document.head);
     }
 
     var extractedStyles = $('.foundation-mq').css('font-family');
@@ -693,7 +693,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.7.0'; // Global Foundation object
+var FOUNDATION_VERSION = '6.7.1'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -1693,14 +1693,15 @@ function onTouchEnd(e) {
 }
 
 function onTouchMove(e) {
-  if ($.spotSwipe.preventDefault) {
+  if (true === $.spotSwipe.preventDefault) {
     e.preventDefault();
   }
 
   if (isMoving) {
-    var x = e.touches[0].pageX;
-    var y = e.touches[0].pageY;
-    var dx = startPosX - x;
+    var x = e.touches[0].pageX; // var y = e.touches[0].pageY;
+
+    var dx = startPosX - x; // var dy = startPosY - y;
+
     var dir;
     didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
@@ -1721,20 +1722,24 @@ function onTouchMove(e) {
 }
 
 function onTouchStart(e) {
-  if (e.touches.length == 1) {
+  if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
     startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
     startTime = new Date().getTime();
-    this.addEventListener('touchmove', onTouchMove, false);
+    this.addEventListener('touchmove', onTouchMove, {
+      passive: true === $.spotSwipe.preventDefault
+    });
     this.addEventListener('touchend', onTouchEnd, false);
   }
 }
 
 function init() {
-  this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
+  this.addEventListener && this.addEventListener('touchstart', onTouchStart, {
+    passive: true
+  });
 }
 
 var SpotSwipe = /*#__PURE__*/function () {
