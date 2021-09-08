@@ -64,6 +64,10 @@ $body-font-color: $black !default;
 /// @type List
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif !default;
 
+/// Set to `true` to enable safe padding on the body for non-rectangular devices (i.e. phones with notches)
+/// @type Boolean
+$body-safe-padding: false !default;
+
 /// Set to `true` to enable antialiased type, using the `-webkit-font-smoothing` and `-moz-osx-font-smoothing` CSS properties.
 /// @type Boolean
 $body-antialiased: true !default;
@@ -158,11 +162,13 @@ $global-color-pick-contrast-tolerance: 0 !default;
     margin: 0;
     padding: 0;
 
-    // using environment variables to account for non-rectangular displays e.g. phones with notches
-    padding-top: env(safe-area-inset-top);
-    padding-right: env(safe-area-inset-right);
-    padding-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
+    @if ($body-safe-padding) {
+      // using environment variables to account for non-rectangular displays e.g. phones with notches
+      padding-top: env(safe-area-inset-top);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+    }
 
     background: $body-background;
 
