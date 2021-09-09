@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.7.1",
+  "version": "6.7.2",
   "main": "dist/js/foundation.js",
   "module": "dist/js/foundation.esm.js",
   "jsnext:main": "dist/js/foundation.esm.js",
@@ -54,7 +54,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-cache-bust": "^1.3.0",
     "gulp-check-deps": "^1.4.1",
-    "gulp-clean-css": "^4.0.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.4.3",
     "gulp-eslint": "^5.0.0",
     "gulp-filter": "^5.1.0",

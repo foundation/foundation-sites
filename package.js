@@ -1,7 +1,7 @@
 Package.describe({
   name: 'foundation:foundation-sites',
   summary: 'Foundation 6 - The most advanced responsive front-end framework in the world.',
-  version: '6.7.1',
+  version: '6.7.2',
   git: 'https://github.com/foundation/foundation-sites.git',
   documentation: 'meteor-README.md'
 });
