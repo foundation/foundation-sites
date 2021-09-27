@@ -4,6 +4,8 @@
 
 @import 'math';
 
+$unit-warnings: true !default;
+
 ////
 /// @group functions
 ////
@@ -77,7 +79,9 @@ $global-font-size: 100% !default;
 @function -zf-to-rem($value, $base: null) {
   // Check if the value is a number
   @if type-of($value) != 'number' {
-    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @if $unit-warnings {
+      @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    }
     @return $value;
   }
 

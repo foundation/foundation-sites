@@ -174,7 +174,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
 
-var FOUNDATION_VERSION = '6.7.2'; // Global Foundation object
+var FOUNDATION_VERSION = '6.7.3'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
