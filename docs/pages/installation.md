@@ -23,19 +23,6 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
   </div>
 
   <div class="cell small-2 text-right">
-    <a href="https://www.npmjs.com/package/foundation-sites">
-      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-pnpm.svg" alt="PNPM">
-    </a>
-  </div>
-  <div class="cell small-10">
-    <div class="docs-code">
-      <code class="bash">
-        pnpm install foundation-sites
-      </code>
-    </div>
-  </div>
-
-  <div class="cell small-2 text-right">
     <a href="https://yarnpkg.com/en/package/foundation-sites">
       <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-yarn.svg" alt="Yarn">
     </a>
@@ -48,70 +35,6 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
     </div>
   </div>
 
-  <div class="cell small-2 text-right">
-    <a href="https://bower.io/search/?q=foundation-sites">
-      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-bower.svg" alt="Bower">
-    </a>
-  </div>
-  <div class="cell small-10">
-    <div class="docs-code">
-      <code class="bash">
-        bower install foundation-sites
-      </code>
-    </div>
-  </div>
-
-  <div class="cell small-2 text-right">
-    <a href="https://rubygems.org/gems/foundation-rails">
-      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-rubygems.svg" alt="Ruby Gems">
-    </a>
-  </div>
-  <div class="column small-10">
-    <div class="docs-code">
-      <code class="bash">
-        gem install foundation-rails
-      </code>
-    </div>
-  </div>
-
-  <div class="cell small-2 text-right">
-    <a href="https://atmospherejs.com/foundation/foundation-sites">
-      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-meteor.svg" alt="Meteor">
-    </a>
-  </div>
-  <div class="cell small-10">
-    <div class="docs-code">
-      <code class="bash">
-        meteor add zurb:foundation-sites
-      </code>
-    </div>
-  </div>
-
-  <div class="cell small-2 text-right">
-    <a href="https://packagist.org/packages/foundation/foundation">
-      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-composer.svg" alt="Composer">
-    </a>
-  </div>
-  <div class="cell small-10">
-    <div class="docs-code">
-      <code class="bash">
-        php composer.phar require foundation/foundation
-      </code>
-    </div>
-  </div>
-
-  <div class="cell small-2 text-right">
-    <a href="https://www.nuget.org/packages/foundation-sites/">
-      <img class="docs-install-vendor-icon" src="{{root}}assets/img/icons/logo-nuget.svg" alt="NuGet">
-    </a>
-  </div>
-  <div class="cell small-10">
-    <div class="docs-code">
-      <code class="bash">
-        Install-Package foundation-sites
-      </code>
-    </div>
-  </div>
 </div>
 
 Here's what comes in the package.
@@ -205,7 +128,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
     <li>Install the <a href="https://github.com/felixrieseberg/windows-build-tools">windows-build-tools</a> (recommended) and make python afterwards accessible via <code>npm config set python "%USERPROFILE%\.windows-build-tools\python27\python.exe"</code></li>
     <li>Install <a href="https://www.python.org/downloads/">python</a> (not recommended) and add it to your system environment variables</li>
   </ol>
- 
+
   <p>The first way is recommended if you've not installed python v2.7 yet as it doesn't affect your machine outside the node environment. In case you've already installed python v2.7 you may of course skip both ways and start using foundationc-cli immediately.</p>
 </div>
 
@@ -226,7 +149,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
       If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
     </p>
     <p class="text-center">
-      <a href="https://static.download.foundation/sites-css-latest" class="button">Download Foundation</a>
+      <a href="https://static.foundationcss.com/sites-css-latest" class="button">Download Foundation</a>
     </p>
   </div>
 </div>
