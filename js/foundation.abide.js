@@ -396,11 +396,11 @@ class Abide extends Plugin {
    */
   removeErrorClasses($el) {
     // radios need to clear all of the els
-    if ($el[0].type == 'radio') {
+    if ($el[0].type === 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
     }
     // checkboxes need to clear all of the els
-    else if ($el[0].type == 'checkbox') {
+    else if ($el[0].type === 'checkbox') {
       return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
@@ -652,7 +652,7 @@ class Abide extends Plugin {
           checked++;
         }
         if (typeof $(e).attr('data-min-required') !== 'undefined') {
-          minRequired = parseInt($(e).attr('data-min-required'));
+          minRequired = parseInt($(e).attr('data-min-required'), 10);
         }
       });
 
@@ -868,7 +868,7 @@ Abide.defaults = {
     // Domain || URL
     website: {
       test: (text) => {
-        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+        return Abide.defaults.patterns.domain.test(text) || Abide.defaults.patterns.url.test(text);
       }
     }
   },
@@ -877,12 +877,10 @@ Abide.defaults = {
    * Optional validation functions to be used. `equalTo` being the only default included function.
    * Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:
    * el : The jQuery element to validate.
-   * required : Boolean value of the required attribute be present or not.
-   * parent : The direct parent of the input.
    * @option
    */
   validators: {
-    equalTo: function (el, required, parent) {
+    equalTo: function (el) {
       return $(`#${el.attr('data-equalto')}`).val() === el.val();
     }
   }

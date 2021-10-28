@@ -32,22 +32,22 @@ function findFocusable($element) {
     return true;
   })
   .sort( function( a, b ) {
-    if ($(a).attr('tabindex') == $(b).attr('tabindex')) {
+    if ($(a).attr('tabindex') === $(b).attr('tabindex')) {
       return 0;
     }
-    let aTabIndex = parseInt($(a).attr('tabindex')),
-      bTabIndex = parseInt($(b).attr('tabindex'));
+    let aTabIndex = parseInt($(a).attr('tabindex'), 10),
+      bTabIndex = parseInt($(b).attr('tabindex'), 10);
     // Undefined is treated the same as 0
-    if (typeof $(a).attr('tabindex') == 'undefined' && bTabIndex > 0) {
+    if (typeof $(a).attr('tabindex') === 'undefined' && bTabIndex > 0) {
       return 1;
     }
-    if (typeof $(b).attr('tabindex') == 'undefined' && aTabIndex > 0) {
+    if (typeof $(b).attr('tabindex') === 'undefined' && aTabIndex > 0) {
       return -1;
     }
-    if (aTabIndex == 0 && bTabIndex > 0) {
+    if (aTabIndex === 0 && bTabIndex > 0) {
       return 1;
     }
-    if (bTabIndex == 0 && aTabIndex > 0) {
+    if (bTabIndex === 0 && aTabIndex > 0) {
       return -1;
     }
     if (aTabIndex < bTabIndex) {
@@ -190,7 +190,9 @@ var Keyboard = {
  */
 function getKeyCodes(kcs) {
   var k = {};
-  for (var kc in kcs) k[kcs[kc]] = kcs[kc];
+  for (var kc in kcs) {
+    if (kcs.hasOwnProperty(kc)) k[kcs[kc]] = kcs[kc];
+  }
   return k;
 }
 

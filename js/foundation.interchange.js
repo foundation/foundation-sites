@@ -119,10 +119,9 @@ class Interchange extends Plugin {
    * Checks the Interchange element for the provided media query + content pairings
    * @function
    * @private
-   * @param {Object} element - jQuery object that is an Interchange instance
    * @returns {Array} scenarios - Array of objects that have 'mq' and 'path' keys with corresponding keys
    */
-  _generateRules(element) {
+  _generateRules() {
     var rulesList = [];
     var rules;
 
