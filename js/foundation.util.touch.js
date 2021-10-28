@@ -89,7 +89,6 @@ class SpotSwipe {
   }
 
   _init() {
-    // var $ = this.$;
     $.event.special.swipe = { setup: init };
     $.event.special.tap = { setup: init };
 
