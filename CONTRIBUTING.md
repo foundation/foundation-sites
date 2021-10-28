@@ -4,7 +4,7 @@ Although Foundation was built and maintained by ZURB for years, it is today a co
 
 ## Issues
 
-For **bugs**, **feature requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](https://foundation.discourse.group) would be more appropriate. If you aren't sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
+For **bugs**, **feature requests**, **incorrect documentation** or any problem you have with Foundation, you can open a new issue. If you need help to use Foundation, the [Foundation Forum](https://github.com/foundation/foundation-sites/discussions) would be more appropriate. If you aren't sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along.
 
 Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
 

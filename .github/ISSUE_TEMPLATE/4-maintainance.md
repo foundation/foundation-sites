@@ -9,7 +9,7 @@ about: Tests, dependencies, workflow...
 │           For more information, see the CONTRIBUTING.md document
 │
 │       ⚠ Only submit maintainance issues here. For help or questions to
-│       the community, see the forum: https://foundation.discourse.group
+│       the community, see the forum: https://github.com/foundation/foundation-sites/discussions
 └------------------------------------------------------------------------------>
 
 ## Description
