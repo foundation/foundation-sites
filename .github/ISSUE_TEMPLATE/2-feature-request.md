@@ -9,7 +9,7 @@ about: Something is missing or could be improved
 │           For more information, see the CONTRIBUTING.md document
 │            
 │       ⚠ Only submit feature requests here. For help or questions to
-│       the community, see the forum: https://foundation.discourse.group
+│       the community, see the forum: https://github.com/foundation/foundation-sites/discussions
 └------------------------------------------------------------------------------>
 
 ## What is missing?
