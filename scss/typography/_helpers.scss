@@ -164,13 +164,21 @@ $code-block-margin-bottom: 1.5rem !default;
     }
   }
 
-  .cite-block {
+  %cite-block {
     @include cite-block;
   }
 
-  .code-inline {
+  .cite-block {
+    @extend %cite-block;
+  }
+
+  %code-inline {
     @include code-style;
     @include code-inline;
+  }
+
+  .code-inline {
+    @extend %code-inline;
   }
 
   .code-block {

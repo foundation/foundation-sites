@@ -383,10 +383,10 @@ $maincontent-class: 'off-canvas-content' !default;
 
 /// Adds styles that reveal an off-canvas panel.
 @mixin off-canvas-reveal(
-$position: left,
-$zindex: $offcanvas-reveal-zindex,
-$content: $maincontent-class,
-$breakpoint: small
+  $position: left,
+  $zindex: $offcanvas-reveal-zindex,
+  $content: $maincontent-class,
+  $breakpoint: small
 ) {
   transform: none;
   z-index: $zindex;
@@ -453,10 +453,10 @@ $breakpoint: small
     @include off-canvas-base;
 
     // Force position absolute for nested off-canvas because fixed doesn't work for push transition within the transform scope.
-    @at-root .#{$maincontent-class} & {
-      // NOTE: since overlap transition is currently forced if nested, there's no need to force position absolute until nested push transition is supported.
-      // position: absolute;
-    }
+    // @at-root .#{$maincontent-class} & {
+    //   // NOTE: since overlap transition is currently forced if nested, there's no need to force position absolute until nested push transition is supported.
+    //   position: absolute;
+    // }
   }
 
   // Off-canvas container with absolute position

@@ -250,15 +250,15 @@ $breakpoint-classes: (small medium large) !default;
 /// @returns {Mixed} The number following `$number`, if `$number` was found. If `$number` was not found, or `$number` was the biggest number in the map, returns `null`.
 @function -zf-map-next-number($map, $number) {
 
-  $next_number: null;
+  $next-number: null;
 
   @each $k, $v in $map {
-    @if type-of($v) == 'number' and $v > $number and ($next_number == null or $v < $next_number) {
-      $next_number: $v;
+    @if type-of($v) == 'number' and $v > $number and ($next-number == null or $v < $next-number) {
+      $next-number: $v;
     }
   }
 
-  @return $next_number;
+  @return $next-number;
 }
 
 /// Return a list of our named breakpoints less than $key. Useful for dealing with
@@ -270,13 +270,13 @@ $breakpoint-classes: (small medium large) !default;
 /// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
 @function -zf-breakpoints-less-than($key) {
   $list: ();
-  $found_key: false;
+  $found-key: false;
 
   @each $name in $-zf-breakpoints-keys {
     @if ($name == $key) {
-      $found_key: true;
+      $found-key: true;
     }
-    @if not $found_key {
+    @if not $found-key {
       $list: append($list, $name);
     }
   }

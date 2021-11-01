@@ -37,28 +37,13 @@
     @return $val;
   }
   @if $length == 2 {
-    @return map-get((
-      top: nth($val, 1),
-      bottom: nth($val, 1),
-      left: nth($val, 2),
-      right: nth($val, 2),
-    ), $side);
+    @return map-get((top: nth($val, 1), bottom: nth($val, 1), left: nth($val, 2), right: nth($val, 2), ), $side);
   }
   @if $length == 3 {
-    @return map-get((
-      top: nth($val, 1),
-      left: nth($val, 2),
-      right: nth($val, 2),
-      bottom: nth($val, 3),
-    ), $side);
+    @return map-get((top: nth($val, 1), left: nth($val, 2), right: nth($val, 2), bottom: nth($val, 3), ), $side);
   }
   @if $length == 4 {
-    @return map-get((
-      top: nth($val, 1),
-      right: nth($val, 2),
-      bottom: nth($val, 3),
-      left: nth($val, 4),
-    ), $side);
+    @return map-get((top: nth($val, 1), right: nth($val, 2), bottom: nth($val, 3), left: nth($val, 4), ), $side);
   }
 }
 

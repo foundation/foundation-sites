@@ -56,7 +56,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
 /// Opacity of a disabled switch.
 /// @type Number
-$switch-opacity-disabled: .5 !default;
+$switch-opacity-disabled: 0.5 !default;
 
 /// Cursor for a disabled switch.
 /// @type Cursor
@@ -215,8 +215,8 @@ $switch-cursor-disabled: not-allowed !default;
 @mixin foundation-switch {
   // Container class
   .switch {
-    height: $switch-height;
     @include switch-container;
+    height: $switch-height;
   }
 
   // <input> element

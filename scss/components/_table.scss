@@ -101,7 +101,6 @@ $table-stack-breakpoint: medium !default;
 
 @mixin -zf-table-unstripe() {
   tr {
-    border-bottom: 0;
     border-bottom: $table-border;
     background-color: $table-background;
   }

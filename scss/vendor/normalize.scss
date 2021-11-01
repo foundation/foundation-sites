@@ -1,3 +1,5 @@
+// sass-lint:disable no-vendor-prefixes
+
 @mixin foundation-normalize() {
   /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
@@ -62,8 +64,7 @@
   // 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
 
   abbr[title] {
-    border-bottom: none; // 1
-    text-decoration: underline; // 2
+    border-bottom: 0; // 1
     text-decoration: underline dotted; // 2
   }
 

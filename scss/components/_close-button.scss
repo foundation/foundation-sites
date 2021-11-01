@@ -106,6 +106,9 @@ $closebutton-color-hover: $black !default;
 
 @mixin foundation-close-button {
   .close-button {
+    // Use by default the placeholder of the default size
+    @extend %zf-close-button--#{$closebutton-default-size};
+
     @include close-button;
 
     // Generate a placeholder and a class for each size
@@ -120,8 +123,5 @@ $closebutton-color-hover: $black !default;
         @extend %zf-close-button--#{$name};
       }
     }
-
-    // Use by default the placeholder of the default size
-    @extend %zf-close-button--#{$closebutton-default-size};
   }
 }

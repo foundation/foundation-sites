@@ -150,9 +150,9 @@ $-zf-pb-value: null;
 @mixin background-triangle($color: $black) {
   $rgb: 'rgb%28#{round(red($color))}, #{round(green($color))}, #{round(blue($color))}%29';
 
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #{$rgb}'></polygon></svg>");
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
 
-  @media screen and (min-width:0\0) {
+  @media screen and (min-width: 0\0) {
     @if lightness($color) < 60% {
       // White triangle
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg==');
@@ -221,7 +221,7 @@ $-zf-pb-value: null;
   height: 1px #{$important};
   padding: 0 #{$important};
   overflow: hidden #{$important};
-  clip: rect(0,0,0,0) #{$important};
+  clip: rect(0, 0, 0, 0) #{$important};
   white-space: nowrap #{$important};
   border: 0 #{$important};
 }
@@ -325,8 +325,7 @@ $-zf-pb-value: null;
     }
     $-zf-size: $bp !global;
 
-    @if ($media-queries == true
-      or ($media-queries == 'for-lists' and $-breakpoints-is-a-list)) {
+    @if ($media-queries == true or ($media-queries == 'for-lists' and $-breakpoints-is-a-list)) {
       @include breakpoint($bp) {
         @content;
       }
