@@ -154,7 +154,7 @@ $accordionmenu-arrow-size: 6px !default;
 
     // Add the arrow to the toggle
     &::after {
-      @include css-triangle(6px, $accordionmenu-arrow-color, down);
+      @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, down);
 
       top: 0;
       bottom: 0;
