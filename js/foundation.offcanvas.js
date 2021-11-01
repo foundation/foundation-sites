@@ -319,7 +319,7 @@ class OffCanvas extends Plugin {
    * @function
    * @private
    */
-  _stopScrolling(event) {
+  _stopScrolling() {
     return false;
   }
 
@@ -487,7 +487,7 @@ class OffCanvas extends Plugin {
    * @fires OffCanvas#close
    * @fires OffCanvas#closed
    */
-  close(cb) {
+  close() {
     if (!this.$element.hasClass('is-open') || this.isRevealed) { return; }
 
     /**
@@ -495,8 +495,6 @@ class OffCanvas extends Plugin {
      * @event OffCanvas#close
      */
     this.$element.trigger('close.zf.offCanvas');
-
-    var _this = this;
 
     this.$element.removeClass('is-open');
 
@@ -516,7 +514,7 @@ class OffCanvas extends Plugin {
 
 
     // Listen to transitionEnd: add class, re-enable scrolling and release focus when done.
-    this.$element.one(transitionend(this.$element), (e) => {
+    this.$element.one(transitionend(this.$element), () => {
 
       this.$element.addClass('is-closed');
       this._removeContentClasses();

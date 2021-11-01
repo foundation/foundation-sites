@@ -42,7 +42,7 @@ class ResponsiveMenu extends Plugin {
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element) {
     this.$element = $(element);
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;

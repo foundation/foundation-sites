@@ -1,17 +1,17 @@
 import $ from 'jquery';
 
 // Default set of media queries
-const defaultQueries = {
-  'default' : 'only screen',
-  landscape : 'only screen and (orientation: landscape)',
-  portrait : 'only screen and (orientation: portrait)',
-  retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
-    'only screen and (min--moz-device-pixel-ratio: 2),' +
-    'only screen and (-o-min-device-pixel-ratio: 2/1),' +
-    'only screen and (min-device-pixel-ratio: 2),' +
-    'only screen and (min-resolution: 192dpi),' +
-    'only screen and (min-resolution: 2dppx)'
-  };
+// const defaultQueries = {
+//   'default' : 'only screen',
+//   landscape : 'only screen and (orientation: landscape)',
+//   portrait : 'only screen and (orientation: portrait)',
+//   retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+//     'only screen and (min--moz-device-pixel-ratio: 2),' +
+//     'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+//     'only screen and (min-device-pixel-ratio: 2),' +
+//     'only screen and (min-resolution: 192dpi),' +
+//     'only screen and (min-resolution: 2dppx)'
+//   };
 
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.

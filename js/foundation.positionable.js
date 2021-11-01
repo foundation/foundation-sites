@@ -97,7 +97,7 @@ class Positionable extends Plugin {
   }
 
   _alignmentsExhausted(position) {
-    return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
+    return this.triedPositions[position] && this.triedPositions[position].length === ALIGNMENTS[position].length;
   }
 
 

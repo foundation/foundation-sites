@@ -10,7 +10,7 @@ const MutationObserver = (function () {
     }
   }
   return false;
-}());
+})();
 
 const triggers = (el, type) => {
   el.data(type).split(' ').forEach(id => {
@@ -156,7 +156,7 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
 
 function debounceGlobalListener(debounce, trigger, listener) {
   let timer, args = Array.prototype.slice.call(arguments, 3);
-  $(window).off(trigger).on(trigger, function(e) {
+  $(window).off(trigger).on(trigger, function() {
     if (timer) { clearTimeout(timer); }
     timer = setTimeout(function(){
       listener.apply(null, args);
@@ -241,7 +241,7 @@ Triggers.Initializers.addGlobalListeners = function() {
 }
 
 
-Triggers.init = function ($, Foundation) {
+Triggers.init = function (__, Foundation) {
   onLoad($(window), function () {
     if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();

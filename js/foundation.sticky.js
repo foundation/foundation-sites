@@ -60,7 +60,7 @@ class Sticky extends Plugin {
     this.isStuck = false;
     this.onLoadListener = onLoad($(window), function () {
       //We calculate the container height to have correct values for anchor points offset calculation.
-      _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+      _this.containerHeight = _this.$element.css("display") === "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
       _this.$container.css('height', _this.containerHeight);
       _this.elemHeight = _this.containerHeight;
       if (_this.options.anchor !== '') {
@@ -87,8 +87,8 @@ class Sticky extends Plugin {
    * @private
    */
   _parsePoints() {
-    var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
-        btm = this.options.btmAnchor== "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
+    var top = this.options.topAnchor === "" ? 1 : this.options.topAnchor,
+        btm = this.options.btmAnchor === "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
         pts = [top, btm],
         breaks = {};
     for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
@@ -124,7 +124,7 @@ class Sticky extends Plugin {
     if (this.canStick) {
       this.isOn = true;
       $(window).off(scrollListener)
-               .on(scrollListener, function(e) {
+               .on(scrollListener, function() {
                  if (_this.scrollCount === 0) {
                    _this.scrollCount = _this.options.checkEvery;
                    _this._setSizes(function() {
@@ -138,16 +138,16 @@ class Sticky extends Plugin {
     }
 
     this.$element.off('resizeme.zf.trigger')
-                 .on('resizeme.zf.trigger', function(e, el) {
+                 .on('resizeme.zf.trigger', function() {
                     _this._eventsHandler(id);
     });
 
-    this.$element.on('mutateme.zf.trigger', function (e, el) {
+    this.$element.on('mutateme.zf.trigger', function () {
         _this._eventsHandler(id);
     });
 
     if(this.$anchor) {
-      this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+      this.$anchor.on('mutateme.zf.trigger', function () {
           _this._eventsHandler(id);
       });
     }
@@ -276,11 +276,11 @@ class Sticky extends Plugin {
 
     css[mrgn] = 0;
 
-    css['bottom'] = 'auto';
+    css.bottom = 'auto';
     if(isTop) {
-      css['top'] = 0;
+      css.top = 0;
     } else {
-      css['top'] = anchorPt;
+      css.top = anchorPt;
     }
 
     this.isStuck = false;
@@ -307,11 +307,10 @@ class Sticky extends Plugin {
       if (cb && typeof cb === 'function') { cb(); }
     }
 
-    var _this = this,
-        newElemWidth = this.$container[0].getBoundingClientRect().width,
-        comp = window.getComputedStyle(this.$container[0]),
-        pdngl = parseInt(comp['padding-left'], 10),
-        pdngr = parseInt(comp['padding-right'], 10);
+    var newElemWidth = this.$container[0].getBoundingClientRect().width,
+      comp = window.getComputedStyle(this.$container[0]),
+      pdngl = parseInt(comp['padding-left'], 10),
+      pdngr = parseInt(comp['padding-right'], 10);
 
     if (this.$anchor && this.$anchor.length) {
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
@@ -327,7 +326,7 @@ class Sticky extends Plugin {
     if (this.options.dynamicHeight || !this.containerHeight) {
       // Get the sticked element height and apply it to the container to "hold the place"
       var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-      newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+      newContainerHeight = this.$element.css("display") === "none" ? 0 : newContainerHeight;
       this.$container.css('height', newContainerHeight);
       this.containerHeight = newContainerHeight;
     }

@@ -197,8 +197,7 @@ class Dropdown extends Positionable {
     }
     this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
-      var $target = $(this),
-        visibleFocusableElements = Keyboard.findFocusable(_this.$element);
+      var $target = $(this);
 
       Keyboard.handleKey(e, 'Dropdown', {
         open: function() {

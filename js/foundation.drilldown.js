@@ -146,7 +146,7 @@ class Drilldown extends Plugin {
     var _this = this;
 
     $elem.off('click.zf.drilldown')
-    .on('click.zf.drilldown', function(e){
+    .on('click.zf.drilldown', function(e) {
       if($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')){
         e.preventDefault();
       }
@@ -158,7 +158,7 @@ class Drilldown extends Plugin {
 
       if(_this.options.closeOnClick){
         var $body = $('body');
-        $body.off('.zf.drilldown').on('click.zf.drilldown', function(e){
+        $body.off('.zf.drilldown').on('click.zf.drilldown', function() {
           if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
           e.preventDefault();
           _this._hideAll();
@@ -188,7 +188,7 @@ class Drilldown extends Plugin {
    */
   _scrollTop() {
     var _this = this;
-    var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
+    var $scrollTopElement = _this.options.scrollTopElement !== ''?$(_this.options.scrollTopElement):_this.$element,
         scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset, 10);
     $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
       /**
@@ -326,7 +326,7 @@ class Drilldown extends Plugin {
     var _this = this;
     $elem.off('click.zf.drilldown');
     $elem.children('.js-drilldown-back')
-      .on('click.zf.drilldown', function(e){
+      .on('click.zf.drilldown', function() {
         // console.log('mouseup on back');
         _this._hide($elem);
 
@@ -350,8 +350,8 @@ class Drilldown extends Plugin {
     var _this = this;
     this.$menuItems.not('.is-drilldown-submenu-parent')
         .off('click.zf.drilldown')
-        .on('click.zf.drilldown', function(e){
-          setTimeout(function(){
+        .on('click.zf.drilldown', function() {
+          setTimeout(function() {
             _this._hideAll();
           }, 0);
       });
@@ -401,7 +401,7 @@ class Drilldown extends Plugin {
 
     // Reset drilldown
     var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
-    $expandedSubmenus.each(function(index) {
+    $expandedSubmenus.each(function() {
       _this._setHideSubMenuClasses($(this));
     });
 
@@ -426,7 +426,7 @@ class Drilldown extends Plugin {
         _this.$wrapper.css('height', $(this).data('calcHeight'));
       }
 
-      var isLastChild = index == $submenus.length - 1;
+      var isLastChild = index === $submenus.length - 1;
 
       // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
       // Last child makes sure the event gets always triggered even if going through several menus
@@ -481,7 +481,6 @@ class Drilldown extends Plugin {
    */
   _hide($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-    var _this = this;
     $elem.parent().closest('ul').removeClass('invisible');
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true);
@@ -508,7 +507,6 @@ class Drilldown extends Plugin {
 
     // Recalculate menu heights and total max height
     this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
       var height = Box.GetDimensions(this).height;
 
       maxHeight = height > maxHeight ? height : maxHeight;
@@ -519,7 +517,7 @@ class Drilldown extends Plugin {
     });
 
     if (this.options.autoHeight)
-      result['height'] = this.$currentMenu.data('calcHeight');
+      result.height = this.$currentMenu.data('calcHeight');
     else
       result['min-height'] = `${maxHeight}px`;
 

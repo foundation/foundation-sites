@@ -8,7 +8,6 @@ import $ from 'jquery';
 var Touch = {};
 
 var startPosX,
-    startPosY,
     startTime,
     elapsedTime,
     startEvent,
@@ -62,7 +61,6 @@ function onTouchStart(e) {
 
   if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
-    startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
@@ -76,23 +74,21 @@ function init() {
   this.addEventListener && this.addEventListener('touchstart', onTouchStart, { passive : true });
 }
 
-function teardown() {
-  this.removeEventListener('touchstart', onTouchStart);
-}
+// function teardown() {
+//   this.removeEventListener('touchstart', onTouchStart);
+// }
 
 class SpotSwipe {
-  constructor($) {
+  constructor() {
     this.version = '1.0.0';
     this.enabled = 'ontouchstart' in document.documentElement;
     this.preventDefault = false;
     this.moveThreshold = 75;
     this.timeThreshold = 200;
-    this.$ = $;
     this._init();
   }
 
   _init() {
-    var $ = this.$;
     $.event.special.swipe = { setup: init };
     $.event.special.tap = { setup: init };
 
@@ -111,16 +107,16 @@ class SpotSwipe {
  * values, and do not add event handlers directly.  *
  ****************************************************/
 
-Touch.setupSpotSwipe = function($) {
+Touch.setupSpotSwipe = function() {
   $.spotSwipe = new SpotSwipe($);
 };
 
 /****************************************************
  * Method for adding pseudo drag events to elements *
  ***************************************************/
-Touch.setupTouchHandler = function($) {
+Touch.setupTouchHandler = function() {
   $.fn.addTouch = function(){
-    this.each(function(i,el){
+    this.each(function(i, el){
       $(el).bind('touchstart touchmove touchend touchcancel', function(event)  {
         //we pass the original event object because the jQuery event
         //object is normalized to w3c specs and does not provide the TouchList
@@ -128,7 +124,7 @@ Touch.setupTouchHandler = function($) {
       });
     });
 
-    var handleTouch = function(event){
+    var handleTouch = function(event) {
       var touches = event.changedTouches,
           first = touches[0],
           eventTypes = {
@@ -158,8 +154,7 @@ Touch.setupTouchHandler = function($) {
   };
 };
 
-Touch.init = function ($) {
-
+Touch.init = function () {
   if(typeof($.spotSwipe) === 'undefined') {
     Touch.setupSpotSwipe($);
     Touch.setupTouchHandler($);

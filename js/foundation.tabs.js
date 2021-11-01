@@ -312,7 +312,7 @@ class Tabs extends Plugin {
    * @function
    */
   _collapseTab($target) {
-    var $target_anchor = $target
+    var $targetAnchor = $target
       .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
       .attr({
@@ -320,7 +320,7 @@ class Tabs extends Plugin {
         'tabindex': -1
       });
 
-    $(`#${$target_anchor.attr('aria-controls')}`)
+    $(`#${$targetAnchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
       .attr({ 'aria-hidden': 'true' })
   }
