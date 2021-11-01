@@ -6,15 +6,12 @@
 
 $contrast-warnings: true !default;
 
-////
 /// Patch to fix issue #12080
-
 $primary-color: null !default;
 $secondary-color: null !default;
 $warning-color: null !default;
 $alert-color: null !default;
 $success-color: null !default;
-////
 
 ////
 /// @group functions
