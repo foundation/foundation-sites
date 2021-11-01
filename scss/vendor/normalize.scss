@@ -289,4 +289,10 @@
       outline:none;
     }
   }
+
+  // Disable iOS callouts when draggable is false
+  [draggable=false] {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+  }
 }
