@@ -120,7 +120,7 @@ class ResponsiveAccordionTabs extends Plugin{
           tmpPlugin.destroy();
         }
         catch(e) {
-          console.log(e);
+          console.warn(`Warning: Problems getting Accordion/Tab options: ${e}`);
         }
       }
     }

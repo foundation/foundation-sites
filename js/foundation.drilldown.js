@@ -327,7 +327,6 @@ class Drilldown extends Plugin {
     $elem.off('click.zf.drilldown');
     $elem.children('.js-drilldown-back')
       .on('click.zf.drilldown', function() {
-        // console.log('mouseup on back');
         _this._hide($elem);
 
         // If there is a parent submenu, call show

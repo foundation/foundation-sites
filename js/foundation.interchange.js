@@ -96,7 +96,7 @@ class Interchange extends Plugin {
     if (typeof this.options.type === 'undefined')
       this.options.type = 'auto';
     else if (types.indexOf(this.options.type) === -1) {
-      console.log(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
+      console.warn(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
       this.options.type = 'auto';
     }
   }

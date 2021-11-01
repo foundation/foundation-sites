@@ -153,7 +153,6 @@ class Tooltip extends Positionable {
       'aria-hidden': false
     });
     _this.isActive = true;
-    // console.log(this.template);
     this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function() {
       //maybe do stuff?
     });
@@ -170,7 +169,6 @@ class Tooltip extends Positionable {
    * @function
    */
   hide() {
-    // console.log('hiding', this.$element.data('yeti-box'));
     var _this = this;
     this.template.stop().attr({
       'aria-hidden': true,
