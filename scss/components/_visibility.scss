@@ -135,4 +135,44 @@
       display: block !important;
     }
   }
+
+  // Dark Mode Visibility
+  .show-for-dark-mode {
+    display: none;
+  }
+  .hide-for-dark-mode {
+    display: block;
+  }
+  @media screen and (prefers-color-scheme: dark) {
+    .show-for-dark-mode {
+      display: block !important;
+    }
+    .hide-for-dark-mode {
+      display: none !important;
+    }
+  }
+
+  // IE10+ Visibility
+  .show-for-ie {
+    display: none;
+  }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .show-for-ie {
+      display: block !important;
+    }
+    .hide-for-ie {
+      display: none !important;
+    }
+  }
+
+  // Sticky Visibility
+  .show-for-sticky {
+    display: none;
+  }
+  .is-stuck .show-for-sticky {
+    display: block;
+  }
+  .is-stuck .hide-for-sticky {
+    display: none;
+  }
 }

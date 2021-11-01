@@ -72,6 +72,7 @@ And if you really just need something hidden no matter what, there are classes f
 ```html
 <p class="hide">Can't touch this.</p>
 <p class="invisible">Can sort of touch this.</p>
+<p class="visible">You can see this.</p>
 ```
 
 ---
@@ -127,3 +128,35 @@ Use the class `.show-on-focus` to hide an element, except when it has focus. Add
 <main id="mainContent" role="main" tabindex="0">
 </main>
 ```
+
+### IE10+ Detection
+
+The demise of Internet Explorer cannot come soon enough. These classes will help you target all IE10+ browsers with the `show-for-ie` and `hide-for-ie` classes.
+
+```html_example
+<p class="show-for-ie">Please get a new browser.</p>
+<p class="hide-for-ie">Thanks for not using Interner Explorer.</p>
+```
+
+### Dark Mode Detection
+
+Dark mode has become popular over the past couple of years. The `show-for-dark-mode` and `hide-for-dark-mode` classes will allow you to easily show and hide content when desinging for dark mode.
+
+```html_example
+<p class="show-for-dark-mode">It's scary in the dark.</p>
+<p class="hide-for-dark-mode">You can see the light.</p>
+```
+
+### Sticky Mode Detection
+
+If you are using the [Sticky plugin](sticky.html) these classes could help you with showing and hiding elements when the Sticky component is stuck. The `show-for-sticky` and `hide-for-sticky` classes will allow you easily target these items inside of a sticky container.
+
+```html_example
+<div data-sticky-container>
+  <div class="sticky" data-sticky>
+    <p class="hide-for-sticky">We be scrolling...</p>
+    <p class="show-for-sticky">I'm going to rest here for a sec. You keep scrolling.</p>
+  </div>
+</div>
+```
+
