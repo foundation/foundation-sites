@@ -112,7 +112,8 @@
     "lodash": "^4.17.21",
     "minimist": "^1.2.3",
     "dot-prop": "^5.2.0",
-    "trim-newlines": "^3.0.1"
+    "trim-newlines": "^3.0.1",
+    "axios": ">=0.21.2"
   },
   "engines": {
     "node": ">=12.0"
