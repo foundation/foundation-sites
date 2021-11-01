@@ -832,6 +832,7 @@ Abide.defaults = {
 
   patterns: {
     alpha : /^[a-zA-Z]+$/,
+    // eslint-disable-next-line camelcase
     alpha_numeric : /^[a-zA-Z0-9]+$/,
     integer : /^[-+]?\d+$/,
     number : /^[-+]?\d*(?:[\.\,]\d+)?$/,
@@ -858,8 +859,10 @@ Abide.defaults = {
     time : /^(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}$/,
     dateISO : /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/,
     // MM/DD/YYYY
+    // eslint-disable-next-line camelcase
     month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
     // DD/MM/YYYY
+    // eslint-disable-next-line camelcase
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
