@@ -169,7 +169,7 @@ var Motion = {
 function Move(duration, elem, fn) {
   var anim,
       prog,
-      start = null; // console.log('called');
+      start = null;
 
   if (duration === 0) {
     fn.apply(elem);
@@ -178,8 +178,7 @@ function Move(duration, elem, fn) {
   }
 
   function move(ts) {
-    if (!start) start = ts; // console.log(start, ts);
-
+    if (!start) start = ts;
     prog = ts - start;
     fn.apply(elem);
 

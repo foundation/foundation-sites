@@ -159,7 +159,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var Touch = {};
 var startPosX,
-    startPosY,
     startTime,
     elapsedTime,
     startEvent,
@@ -212,7 +211,6 @@ function onTouchMove(e) {
 function onTouchStart(e) {
   if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
-    startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
@@ -228,14 +226,13 @@ function init() {
   this.addEventListener && this.addEventListener('touchstart', onTouchStart, {
     passive: true
   });
-}
+} // function teardown() {
+//   this.removeEventListener('touchstart', onTouchStart);
+// }
 
-function teardown() {
-  this.removeEventListener('touchstart', onTouchStart);
-}
 
 var SpotSwipe = /*#__PURE__*/function () {
-  function SpotSwipe($) {
+  function SpotSwipe() {
     _classCallCheck(this, SpotSwipe);
 
     this.version = '1.0.0';
@@ -243,7 +240,6 @@ var SpotSwipe = /*#__PURE__*/function () {
     this.preventDefault = false;
     this.moveThreshold = 75;
     this.timeThreshold = 200;
-    this.$ = $;
 
     this._init();
   }
@@ -251,17 +247,16 @@ var SpotSwipe = /*#__PURE__*/function () {
   _createClass(SpotSwipe, [{
     key: "_init",
     value: function _init() {
-      var $ = this.$;
-      $.event.special.swipe = {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.event.special.swipe = {
         setup: init
       };
-      $.event.special.tap = {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.event.special.tap = {
         setup: init
       };
-      $.each(['left', 'up', 'down', 'right'], function () {
-        $.event.special["swipe".concat(this)] = {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.each(['left', 'up', 'down', 'right'], function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.event.special["swipe".concat(this)] = {
           setup: function setup() {
-            $(this).on('swipe', $.noop);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).on('swipe', jquery__WEBPACK_IMPORTED_MODULE_0___default.a.noop);
           }
         };
       });
@@ -278,18 +273,18 @@ var SpotSwipe = /*#__PURE__*/function () {
  ****************************************************/
 
 
-Touch.setupSpotSwipe = function ($) {
-  $.spotSwipe = new SpotSwipe($);
+Touch.setupSpotSwipe = function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe = new SpotSwipe(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
 };
 /****************************************************
  * Method for adding pseudo drag events to elements *
  ***************************************************/
 
 
-Touch.setupTouchHandler = function ($) {
-  $.fn.addTouch = function () {
+Touch.setupTouchHandler = function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.fn.addTouch = function () {
     this.each(function (i, el) {
-      $(el).bind('touchstart touchmove touchend touchcancel', function (event) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).bind('touchstart touchmove touchend touchcancel', function (event) {
         //we pass the original event object because the jQuery event
         //object is normalized to w3c specs and does not provide the TouchList
         handleTouch(event);
@@ -328,10 +323,10 @@ Touch.setupTouchHandler = function ($) {
   };
 };
 
-Touch.init = function ($) {
-  if (typeof $.spotSwipe === 'undefined') {
-    Touch.setupSpotSwipe($);
-    Touch.setupTouchHandler($);
+Touch.init = function () {
+  if (typeof jquery__WEBPACK_IMPORTED_MODULE_0___default.a.spotSwipe === 'undefined') {
+    Touch.setupSpotSwipe(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+    Touch.setupTouchHandler(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
   }
 };
 

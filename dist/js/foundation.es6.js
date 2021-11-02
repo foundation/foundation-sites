@@ -153,6 +153,20 @@ var foundation_core_utils = /*#__PURE__*/Object.freeze({
   ignoreMousedisappear: ignoreMousedisappear
 });
 
+// Default set of media queries
+// const defaultQueries = {
+//   'default' : 'only screen',
+//   landscape : 'only screen and (orientation: landscape)',
+//   portrait : 'only screen and (orientation: portrait)',
+//   retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+//     'only screen and (min--moz-device-pixel-ratio: 2),' +
+//     'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+//     'only screen and (min-device-pixel-ratio: 2),' +
+//     'only screen and (min-resolution: 192dpi),' +
+//     'only screen and (min-resolution: 2dppx)'
+//   };
+
+
 // matchMedia() polyfill - Test a CSS media type/query in JS.
 // Authors & copyright © 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 /* eslint-disable */
@@ -219,7 +233,7 @@ var MediaQuery = {
 
     // make sure the initialization is only done once when calling _init() several times
     if (this.isInitialized === true) {
-      return;
+      return this;
     } else {
       this.isInitialized = true;
     }
@@ -418,7 +432,7 @@ var MediaQuery = {
    * @private
    */
   _watcher() {
-    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
+    $(window).on('resize.zf.trigger', () => {
       var newSize = this._getCurrentSize(), currentSize = this.current;
 
       if (newSize !== currentSize) {
@@ -471,7 +485,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.7.3';
+var FOUNDATION_VERSION = '6.7.4';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -547,7 +561,9 @@ var Foundation = {
            */
           .trigger(`destroyed.zf.${pluginName}`);
     for(var prop in plugin){
-      plugin[prop] = null;//clean up script to prep for garbage collection.
+      if(typeof plugin[prop] === 'function'){
+        plugin[prop] = null; //clean up script to prep for garbage collection.
+      }
     }
     return;
   },
@@ -580,7 +596,7 @@ var Foundation = {
              $('[data-'+ plugins +']').foundation('_init');
            },
            'undefined': function(){
-             this['object'](Object.keys(_this._plugins));
+             this.object(Object.keys(_this._plugins));
            }
          };
          fns[type](plugins);
@@ -626,7 +642,7 @@ var Foundation = {
             opts = { reflow: true };
 
         if($el.attr('data-options')){
-          $el.attr('data-options').split(';').forEach(function(option, _index){
+          $el.attr('data-options').split(';').forEach(function(option){
             var opt = option.split(':').map(function(el){ return el.trim(); });
             if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
@@ -643,7 +659,7 @@ var Foundation = {
   },
   getFnName: functionName,
 
-  addToJquery: function($) {
+  addToJquery: function() {
     // TODO: consider not making this a jQuery function
     // TODO: need way to reflow vs. re-initialize
     /**
@@ -746,6 +762,7 @@ window.Foundation = Foundation;
   }
 })();
 if (!Function.prototype.bind) {
+  /* eslint-disable no-extend-native */
   Function.prototype.bind = function(oThis) {
     if (typeof this !== 'function') {
       // closest thing possible to the ECMAScript 5
@@ -994,7 +1011,7 @@ function onImagesLoaded(images, callback){
       var image = new Image();
       // Still count image as loaded if it finalizes with an error.
       var events = "load.zf.images error.zf.images";
-      $(image).one(events, function me(event){
+      $(image).one(events, function me(){
         // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
         $(this).off(events, me);
         singleImageLoaded();
@@ -1042,22 +1059,22 @@ function findFocusable($element) {
     return true;
   })
   .sort( function( a, b ) {
-    if ($(a).attr('tabindex') == $(b).attr('tabindex')) {
+    if ($(a).attr('tabindex') === $(b).attr('tabindex')) {
       return 0;
     }
-    let aTabIndex = parseInt($(a).attr('tabindex')),
-      bTabIndex = parseInt($(b).attr('tabindex'));
+    let aTabIndex = parseInt($(a).attr('tabindex'), 10),
+      bTabIndex = parseInt($(b).attr('tabindex'), 10);
     // Undefined is treated the same as 0
-    if (typeof $(a).attr('tabindex') == 'undefined' && bTabIndex > 0) {
+    if (typeof $(a).attr('tabindex') === 'undefined' && bTabIndex > 0) {
       return 1;
     }
-    if (typeof $(b).attr('tabindex') == 'undefined' && aTabIndex > 0) {
+    if (typeof $(b).attr('tabindex') === 'undefined' && aTabIndex > 0) {
       return -1;
     }
-    if (aTabIndex == 0 && bTabIndex > 0) {
+    if (aTabIndex === 0 && bTabIndex > 0) {
       return 1;
     }
-    if (bTabIndex == 0 && aTabIndex > 0) {
+    if (bTabIndex === 0 && aTabIndex > 0) {
       return -1;
     }
     if (aTabIndex < bTabIndex) {
@@ -1200,7 +1217,9 @@ var Keyboard = {
  */
 function getKeyCodes(kcs) {
   var k = {};
-  for (var kc in kcs) k[kcs[kc]] = kcs[kc];
+  for (var kc in kcs) {
+    if (kcs.hasOwnProperty(kc)) k[kcs[kc]] = kcs[kc];
+  }
   return k;
 }
 
@@ -1224,7 +1243,6 @@ const Motion = {
 
 function Move(duration, elem, fn){
   var anim, prog, start = null;
-  // console.log('called');
 
   if (duration === 0) {
     fn.apply(elem);
@@ -1234,7 +1252,6 @@ function Move(duration, elem, fn){
 
   function move(ts){
     if(!start) start = ts;
-    // console.log(start, ts);
     prog = ts - start;
     fn.apply(elem);
 
@@ -1414,7 +1431,6 @@ function Timer(elem, options, cb) {
 var Touch = {};
 
 var startPosX,
-    startPosY,
     startTime,
     elapsedTime,
     startEvent,
@@ -1468,7 +1484,6 @@ function onTouchStart(e) {
 
   if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
-    startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
@@ -1482,19 +1497,21 @@ function init() {
   this.addEventListener && this.addEventListener('touchstart', onTouchStart, { passive : true });
 }
 
+// function teardown() {
+//   this.removeEventListener('touchstart', onTouchStart);
+// }
+
 class SpotSwipe {
-  constructor($) {
+  constructor() {
     this.version = '1.0.0';
     this.enabled = 'ontouchstart' in document.documentElement;
     this.preventDefault = false;
     this.moveThreshold = 75;
     this.timeThreshold = 200;
-    this.$ = $;
     this._init();
   }
 
   _init() {
-    var $ = this.$;
     $.event.special.swipe = { setup: init };
     $.event.special.tap = { setup: init };
 
@@ -1513,16 +1530,16 @@ class SpotSwipe {
  * values, and do not add event handlers directly.  *
  ****************************************************/
 
-Touch.setupSpotSwipe = function($) {
+Touch.setupSpotSwipe = function() {
   $.spotSwipe = new SpotSwipe($);
 };
 
 /****************************************************
  * Method for adding pseudo drag events to elements *
  ***************************************************/
-Touch.setupTouchHandler = function($) {
+Touch.setupTouchHandler = function() {
   $.fn.addTouch = function(){
-    this.each(function(i,el){
+    this.each(function(i, el){
       $(el).bind('touchstart touchmove touchend touchcancel', function(event)  {
         //we pass the original event object because the jQuery event
         //object is normalized to w3c specs and does not provide the TouchList
@@ -1530,7 +1547,7 @@ Touch.setupTouchHandler = function($) {
       });
     });
 
-    var handleTouch = function(event){
+    var handleTouch = function(event) {
       var touches = event.changedTouches,
           first = touches[0],
           eventTypes = {
@@ -1560,8 +1577,7 @@ Touch.setupTouchHandler = function($) {
   };
 };
 
-Touch.init = function ($) {
-
+Touch.init = function () {
   if(typeof($.spotSwipe) === 'undefined') {
     Touch.setupSpotSwipe($);
     Touch.setupTouchHandler($);
@@ -1576,7 +1592,7 @@ const MutationObserver = (function () {
     }
   }
   return false;
-}());
+})();
 
 const triggers = (el, type) => {
   el.data(type).split(' ').forEach(id => {
@@ -1722,11 +1738,11 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
 
 function debounceGlobalListener(debounce, trigger, listener) {
   let timer, args = Array.prototype.slice.call(arguments, 3);
-  $(window).off(trigger).on(trigger, function(e) {
+  $(window).on(trigger, function() {
     if (timer) { clearTimeout(timer); }
     timer = setTimeout(function(){
       listener.apply(null, args);
-    }, debounce || 10);//default time to emit scroll event
+    }, debounce || 10); //default time to emit scroll event
   });
 }
 
@@ -1801,13 +1817,13 @@ Triggers.Initializers.addSimpleListeners = function() {
 Triggers.Initializers.addGlobalListeners = function() {
   let $document = $(document);
   Triggers.Initializers.addMutationEventsListener($document);
-  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 
 
-Triggers.init = function ($, Foundation) {
+Triggers.init = function (__, Foundation) {
   onLoad($(window), function () {
     if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
@@ -1852,7 +1868,9 @@ class Plugin {
          */
         .trigger(`destroyed.zf.${pluginName}`);
     for(var prop in this){
-      this[prop] = null;//clean up script to prep for garbage collection.
+      if (this.hasOwnProperty(prop)) {
+        this[prop] = null; //clean up script to prep for garbage collection.
+      }
     }
   }
 }
@@ -2261,11 +2279,11 @@ class Abide extends Plugin {
    */
   removeErrorClasses($el) {
     // radios need to clear all of the els
-    if ($el[0].type == 'radio') {
+    if ($el[0].type === 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
     }
     // checkboxes need to clear all of the els
-    else if ($el[0].type == 'checkbox') {
+    else if ($el[0].type === 'checkbox') {
       return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
@@ -2517,7 +2535,7 @@ class Abide extends Plugin {
           checked++;
         }
         if (typeof $(e).attr('data-min-required') !== 'undefined') {
-          minRequired = parseInt($(e).attr('data-min-required'));
+          minRequired = parseInt($(e).attr('data-min-required'), 10);
         }
       });
 
@@ -2697,6 +2715,7 @@ Abide.defaults = {
 
   patterns: {
     alpha : /^[a-zA-Z]+$/,
+    // eslint-disable-next-line camelcase
     alpha_numeric : /^[a-zA-Z0-9]+$/,
     integer : /^[-+]?\d+$/,
     number : /^[-+]?\d*(?:[\.\,]\d+)?$/,
@@ -2723,8 +2742,10 @@ Abide.defaults = {
     time : /^(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}$/,
     dateISO : /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/,
     // MM/DD/YYYY
+    // eslint-disable-next-line camelcase
     month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
     // DD/MM/YYYY
+    // eslint-disable-next-line camelcase
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
@@ -2733,7 +2754,7 @@ Abide.defaults = {
     // Domain || URL
     website: {
       test: (text) => {
-        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+        return Abide.defaults.patterns.domain.test(text) || Abide.defaults.patterns.url.test(text);
       }
     }
   },
@@ -2742,12 +2763,10 @@ Abide.defaults = {
    * Optional validation functions to be used. `equalTo` being the only default included function.
    * Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:
    * el : The jQuery element to validate.
-   * required : Boolean value of the required attribute be present or not.
-   * parent : The direct parent of the input.
    * @option
    */
   validators: {
-    equalTo: function (el, required, parent) {
+    equalTo: function (el) {
       return $(`#${el.attr('data-equalto')}`).val() === el.val();
     }
   }
@@ -3256,7 +3275,7 @@ class AccordionMenu extends Plugin {
 
       if ($submenu.length) {
         if (_this.options.submenuToggle) {
-          $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
+          $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function() {
             _this.toggle($submenu);
           });
         } else {
@@ -3635,7 +3654,7 @@ class Drilldown extends Plugin {
     var _this = this;
 
     $elem.off('click.zf.drilldown')
-    .on('click.zf.drilldown', function(e){
+    .on('click.zf.drilldown', function(e) {
       if($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')){
         e.preventDefault();
       }
@@ -3647,9 +3666,9 @@ class Drilldown extends Plugin {
 
       if(_this.options.closeOnClick){
         var $body = $('body');
-        $body.off('.zf.drilldown').on('click.zf.drilldown', function(e){
-          if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
-          e.preventDefault();
+        $body.off('.zf.drilldown').on('click.zf.drilldown', function(ev) {
+          if (ev.target === _this.$element[0] || $.contains(_this.$element[0], ev.target)) { return; }
+          ev.preventDefault();
           _this._hideAll();
           $body.off('.zf.drilldown');
         });
@@ -3677,7 +3696,7 @@ class Drilldown extends Plugin {
    */
   _scrollTop() {
     var _this = this;
-    var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
+    var $scrollTopElement = _this.options.scrollTopElement !== ''?$(_this.options.scrollTopElement):_this.$element,
         scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset, 10);
     $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
       /**
@@ -3815,8 +3834,7 @@ class Drilldown extends Plugin {
     var _this = this;
     $elem.off('click.zf.drilldown');
     $elem.children('.js-drilldown-back')
-      .on('click.zf.drilldown', function(e){
-        // console.log('mouseup on back');
+      .on('click.zf.drilldown', function() {
         _this._hide($elem);
 
         // If there is a parent submenu, call show
@@ -3839,8 +3857,8 @@ class Drilldown extends Plugin {
     var _this = this;
     this.$menuItems.not('.is-drilldown-submenu-parent')
         .off('click.zf.drilldown')
-        .on('click.zf.drilldown', function(e){
-          setTimeout(function(){
+        .on('click.zf.drilldown', function() {
+          setTimeout(function() {
             _this._hideAll();
           }, 0);
       });
@@ -3890,7 +3908,7 @@ class Drilldown extends Plugin {
 
     // Reset drilldown
     var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
-    $expandedSubmenus.each(function(index) {
+    $expandedSubmenus.each(function() {
       _this._setHideSubMenuClasses($(this));
     });
 
@@ -3915,7 +3933,7 @@ class Drilldown extends Plugin {
         _this.$wrapper.css('height', $(this).data('calcHeight'));
       }
 
-      var isLastChild = index == $submenus.length - 1;
+      var isLastChild = index === $submenus.length - 1;
 
       // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
       // Last child makes sure the event gets always triggered even if going through several menus
@@ -3996,7 +4014,6 @@ class Drilldown extends Plugin {
 
     // Recalculate menu heights and total max height
     this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
       var height = Box.GetDimensions(this).height;
 
       maxHeight = height > maxHeight ? height : maxHeight;
@@ -4007,7 +4024,7 @@ class Drilldown extends Plugin {
     });
 
     if (this.options.autoHeight)
-      result['height'] = this.$currentMenu.data('calcHeight');
+      result.height = this.$currentMenu.data('calcHeight');
     else
       result['min-height'] = `${maxHeight}px`;
 
@@ -4239,7 +4256,7 @@ class Positionable extends Plugin {
   }
 
   _alignmentsExhausted(position) {
-    return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
+    return this.triedPositions[position] && this.triedPositions[position].length === ALIGNMENTS[position].length;
   }
 
 
@@ -4537,8 +4554,7 @@ class Dropdown extends Positionable {
     }
     this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
-      var $target = $(this),
-        visibleFocusableElements = Keyboard.findFocusable(_this.$element);
+      var $target = $(this);
 
       Keyboard.handleKey(e, 'Dropdown', {
         open: function() {
@@ -4896,7 +4912,7 @@ class DropdownMenu extends Plugin {
 
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownMenu', function(e) {
+      this.$menuItems.on('click.zf.dropdownMenu', function() {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){
@@ -4908,7 +4924,7 @@ class DropdownMenu extends Plugin {
     if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
+      this.$menuItems.on('mouseenter.zf.dropdownMenu', function () {
         var $elem = $(this),
           hasSub = $elem.hasClass(parClass);
 
@@ -4918,7 +4934,7 @@ class DropdownMenu extends Plugin {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
+      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function () {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -5106,7 +5122,7 @@ class DropdownMenu extends Plugin {
     if ($elem && $elem.length) {
       $toClose = $elem;
     } else if (typeof idx !== 'undefined') {
-      $toClose = this.$tabs.not(function(i, el) {
+      $toClose = this.$tabs.not(function(i) {
         return i === idx;
       });
     }
@@ -5325,7 +5341,7 @@ class Equalizer extends Plugin {
    * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
    * @private
    */
-  _onResizeMe(e) {
+  _onResizeMe() {
     this._reflow();
   }
 
@@ -5437,7 +5453,7 @@ class Equalizer extends Plugin {
       this.$watched[i].style.height = 'auto';
       //maybe could use this.$watched[i].offsetTop
       var elOffsetTop = $(this.$watched[i]).offset().top;
-      if (elOffsetTop!=lastElTopOffset) {
+      if (elOffsetTop !== lastElTopOffset) {
         group++;
         groups[group] = [];
         lastElTopOffset=elOffsetTop;
@@ -5645,7 +5661,7 @@ class Interchange extends Plugin {
     if (typeof this.options.type === 'undefined')
       this.options.type = 'auto';
     else if (types.indexOf(this.options.type) === -1) {
-      console.log(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
+      console.warn(`Warning: invalid value "${this.options.type}" for Interchange option "type"`);
       this.options.type = 'auto';
     }
   }
@@ -5668,10 +5684,9 @@ class Interchange extends Plugin {
    * Checks the Interchange element for the provided media query + content pairings
    * @function
    * @private
-   * @param {Object} element - jQuery object that is an Interchange instance
    * @returns {Array} scenarios - Array of objects that have 'mq' and 'path' keys with corresponding keys
    */
-  _generateRules(element) {
+  _generateRules() {
     var rulesList = [];
     var rules;
 
@@ -6031,7 +6046,7 @@ class Magellan extends Plugin {
         });
     });
 
-    this._deepLinkScroll = function(e) {
+    this._deepLinkScroll = function() {
       if(_this.options.deepLinking) {
         _this.scrollToLoc(window.location.hash);
       }
@@ -6090,7 +6105,7 @@ class Magellan extends Plugin {
     else if(newScrollPos + this.winHeight === this.docHeight){ activeIdx = this.points.length - 1; }
     // Otherwhise, use the last visible link
     else {
-      const visibleLinks = this.points.filter((p, i) => {
+      const visibleLinks = this.points.filter((p) => {
         return (p - this.options.offset - (isScrollingUp ? this.options.threshold : 0)) <= newScrollPos;
       });
       activeIdx = visibleLinks.length ? visibleLinks.length - 1 : 0;
@@ -6525,7 +6540,7 @@ class OffCanvas extends Plugin {
    * @function
    * @private
    */
-  _stopScrolling(event) {
+  _stopScrolling() {
     return false;
   }
 
@@ -6693,7 +6708,7 @@ class OffCanvas extends Plugin {
    * @fires OffCanvas#close
    * @fires OffCanvas#closed
    */
-  close(cb) {
+  close() {
     if (!this.$element.hasClass('is-open') || this.isRevealed) { return; }
 
     /**
@@ -6720,7 +6735,7 @@ class OffCanvas extends Plugin {
 
 
     // Listen to transitionEnd: add class, re-enable scrolling and release focus when done.
-    this.$element.one(transitionend(this.$element), (e) => {
+    this.$element.one(transitionend(this.$element), () => {
 
       this.$element.addClass('is-closed');
       this._removeContentClasses();
@@ -7168,7 +7183,7 @@ class Orbit extends Plugin {
    */
   _reset() {
     // Don't do anything if there are no slides (first run)
-    if (typeof this.$slides == 'undefined') {
+    if (typeof this.$slides === 'undefined') {
       return;
     }
 
@@ -7488,7 +7503,7 @@ class ResponsiveMenu extends Plugin {
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _setup(element, options) {
+  _setup(element) {
     this.$element = $(element);
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;
@@ -7657,7 +7672,6 @@ class ResponsiveToggle extends Plugin {
    * @private
    */
   _events() {
-
     this._updateMqHandler = this._update.bind(this);
 
     $(window).on('changed.zf.mediaquery', this._updateMqHandler);
@@ -7914,7 +7928,7 @@ class Reveal extends Plugin {
    * Handles modal methods on back/forward button clicks or any other event that triggers hashchange.
    * @private
    */
-  _handleState(e) {
+  _handleState() {
     if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
     else { this.close(); }
   }
@@ -7936,7 +7950,7 @@ class Reveal extends Plugin {
   * @param {number} scrollTop - Scroll to restore, html "top" property by default (as set by `_disableScroll`)
   */
   _enableScroll(scrollTop) {
-    scrollTop = scrollTop || parseInt($("html").css("top"));
+    scrollTop = scrollTop || parseInt($("html").css("top"), 10);
     if ($(document).height() > $(window).height()) {
       $("html")
         .css("top", "");
@@ -8171,7 +8185,7 @@ class Reveal extends Plugin {
       // Get the current top before the modal is closed and restore the scroll after.
       // TODO: use component properties instead of HTML properties
       // See https://github.com/foundation/foundation-sites/pull/10786
-      var scrollTop = parseInt($("html").css("top"));
+      var scrollTop = parseInt($("html").css("top"), 10);
 
       if ($('.reveal:visible').length  === 0) {
         _this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
@@ -8387,6 +8401,7 @@ class Slider extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
     this.className = 'Slider'; // ie9 back compat
+    this.initialized = false;
 
   // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
     Touch.init($);
@@ -8400,18 +8415,18 @@ class Slider extends Plugin {
         'ARROW_UP': 'increase',
         'ARROW_DOWN': 'decrease',
         'ARROW_LEFT': 'decrease',
-        'SHIFT_ARROW_RIGHT': 'increase_fast',
-        'SHIFT_ARROW_UP': 'increase_fast',
-        'SHIFT_ARROW_DOWN': 'decrease_fast',
-        'SHIFT_ARROW_LEFT': 'decrease_fast',
+        'SHIFT_ARROW_RIGHT': 'increaseFast',
+        'SHIFT_ARROW_UP': 'increaseFast',
+        'SHIFT_ARROW_DOWN': 'decreaseFast',
+        'SHIFT_ARROW_LEFT': 'decreaseFast',
         'HOME': 'min',
         'END': 'max'
       },
       'rtl': {
         'ARROW_LEFT': 'increase',
         'ARROW_RIGHT': 'decrease',
-        'SHIFT_ARROW_LEFT': 'increase_fast',
-        'SHIFT_ARROW_RIGHT': 'decrease_fast'
+        'SHIFT_ARROW_LEFT': 'increaseFast',
+        'SHIFT_ARROW_RIGHT': 'decreaseFast'
       }
     });
   }
@@ -8428,6 +8443,7 @@ class Slider extends Plugin {
     this.$handle = this.handles.eq(0);
     this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
+
     if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
       this.options.disabled = true;
       this.$element.addClass(this.options.disabledClass);
@@ -8456,6 +8472,7 @@ class Slider extends Plugin {
     this.setHandles();
 
     this._events();
+    this.initialized = true;
   }
 
   setHandles() {
@@ -8595,7 +8612,7 @@ class Slider extends Plugin {
           //empty variable, will be used for min-height/width for fill bar
           dim,
           //percentage w/h of the handle compared to the slider bar
-          handlePct =  ~~(percent(handleDim, elemDim) * 100);
+          handlePct =  Math.floor(percent(handleDim, elemDim) * 100);
       //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
       if (isLeftHndl) {
         //left or top percentage value to apply to the fill bar.
@@ -8615,14 +8632,6 @@ class Slider extends Plugin {
       // assign the min-height/width to our css object
       css[`min-${hOrW}`] = `${dim}%`;
     }
-
-    this.$element.one('finished.zf.animate', function() {
-                    /**
-                     * Fires when the handle is done moving.
-                     * @event Slider#moved
-                     */
-                    _this.$element.trigger('moved.zf.slider', [$hndl]);
-                });
 
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
@@ -8647,15 +8656,23 @@ class Slider extends Plugin {
       }
     });
 
-
-    /**
-     * Fires when the value has not been change for a given time.
-     * @event Slider#changed
-     */
-    clearTimeout(_this.timeout);
-    _this.timeout = setTimeout(function(){
-      _this.$element.trigger('changed.zf.slider', [$hndl]);
-    }, _this.options.changedDelay);
+    if (this.initialized) {
+      this.$element.one('finished.zf.animate', function() {
+        /**
+         * Fires when the handle is done moving.
+         * @event Slider#moved
+         */
+        _this.$element.trigger('moved.zf.slider', [$hndl]);
+      });
+      /**
+       * Fires when the value has not been change for a given time.
+       * @event Slider#changed
+       */
+      clearTimeout(_this.timeout);
+      _this.timeout = setTimeout(function(){
+        _this.$element.trigger('changed.zf.slider', [$hndl]);
+      }, _this.options.changedDelay);
+    }
   }
 
   /**
@@ -8768,7 +8785,7 @@ class Slider extends Plugin {
     var val,
       step = this.options.step,
       div = parseFloat(step/2),
-      left, prev_val, next_val;
+      left, previousVal, nextVal;
     if (!!$handle) {
       val = parseFloat($handle.attr('aria-valuenow'));
     }
@@ -8780,12 +8797,12 @@ class Slider extends Plugin {
     } else {
       left = step + (val % step);
     }
-    prev_val = val - left;
-    next_val = prev_val + step;
+    previousVal = val - left;
+    nextVal = previousVal + step;
     if (left === 0) {
       return val;
     }
-    val = val >= prev_val + div ? next_val : prev_val;
+    val = val >= previousVal + div ? nextVal : previousVal;
     return val;
   }
 
@@ -8821,7 +8838,7 @@ class Slider extends Plugin {
       // listen for the enter key and trigger a change
       // @see https://html.spec.whatwg.org/multipage/input.html#common-input-element-events
       this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
-        if(e.keyCode == 13) handleChangeEvent.call(this, e);
+        if(e.keyCode === 13) handleChangeEvent.call(this, e);
       });
 
       this.inputs.off('change.zf.slider').on('change.zf.slider', handleChangeEvent);
@@ -8853,12 +8870,12 @@ class Slider extends Plugin {
 
           curHandle = $(e.currentTarget);
 
-          $body.on('mousemove.zf.slider', function(e) {
-            e.preventDefault();
-            _this._handleEvent(e, curHandle);
+          $body.on('mousemove.zf.slider', function(ev) {
+            ev.preventDefault();
+            _this._handleEvent(ev, curHandle);
 
-          }).on('mouseup.zf.slider', function(e) {
-            _this._handleEvent(e, curHandle);
+          }).on('mouseup.zf.slider', function(ev) {
+            _this._handleEvent(ev, curHandle);
 
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
@@ -8887,10 +8904,10 @@ class Slider extends Plugin {
         increase: function() {
           newValue = oldValue + _this.options.step;
         },
-        decrease_fast: function() {
+        decreaseFast: function() {
           newValue = oldValue - _this.options.step * 10;
         },
-        increase_fast: function() {
+        increaseFast: function() {
           newValue = oldValue + _this.options.step * 10;
         },
         min: function() {
@@ -9126,7 +9143,7 @@ class Sticky extends Plugin {
     this.isStuck = false;
     this.onLoadListener = onLoad($(window), function () {
       //We calculate the container height to have correct values for anchor points offset calculation.
-      _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+      _this.containerHeight = _this.$element.css("display") === "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
       _this.$container.css('height', _this.containerHeight);
       _this.elemHeight = _this.containerHeight;
       if (_this.options.anchor !== '') {
@@ -9153,8 +9170,8 @@ class Sticky extends Plugin {
    * @private
    */
   _parsePoints() {
-    var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
-        btm = this.options.btmAnchor== "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
+    var top = this.options.topAnchor === "" ? 1 : this.options.topAnchor,
+        btm = this.options.btmAnchor === "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
         pts = [top, btm],
         breaks = {};
     for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
@@ -9190,7 +9207,7 @@ class Sticky extends Plugin {
     if (this.canStick) {
       this.isOn = true;
       $(window).off(scrollListener)
-               .on(scrollListener, function(e) {
+               .on(scrollListener, function() {
                  if (_this.scrollCount === 0) {
                    _this.scrollCount = _this.options.checkEvery;
                    _this._setSizes(function() {
@@ -9204,16 +9221,16 @@ class Sticky extends Plugin {
     }
 
     this.$element.off('resizeme.zf.trigger')
-                 .on('resizeme.zf.trigger', function(e, el) {
+                 .on('resizeme.zf.trigger', function() {
                     _this._eventsHandler(id);
     });
 
-    this.$element.on('mutateme.zf.trigger', function (e, el) {
+    this.$element.on('mutateme.zf.trigger', function () {
         _this._eventsHandler(id);
     });
 
     if(this.$anchor) {
-      this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+      this.$anchor.on('mutateme.zf.trigger', function () {
           _this._eventsHandler(id);
       });
     }
@@ -9342,11 +9359,11 @@ class Sticky extends Plugin {
 
     css[mrgn] = 0;
 
-    css['bottom'] = 'auto';
+    css.bottom = 'auto';
     if(isTop) {
-      css['top'] = 0;
+      css.top = 0;
     } else {
-      css['top'] = anchorPt;
+      css.top = anchorPt;
     }
 
     this.isStuck = false;
@@ -9374,9 +9391,9 @@ class Sticky extends Plugin {
     }
 
     var newElemWidth = this.$container[0].getBoundingClientRect().width,
-        comp = window.getComputedStyle(this.$container[0]),
-        pdngl = parseInt(comp['padding-left'], 10),
-        pdngr = parseInt(comp['padding-right'], 10);
+      comp = window.getComputedStyle(this.$container[0]),
+      pdngl = parseInt(comp['padding-left'], 10),
+      pdngr = parseInt(comp['padding-right'], 10);
 
     if (this.$anchor && this.$anchor.length) {
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
@@ -9392,7 +9409,7 @@ class Sticky extends Plugin {
     if (this.options.dynamicHeight || !this.containerHeight) {
       // Get the sticked element height and apply it to the container to "hold the place"
       var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-      newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+      newContainerHeight = this.$element.css("display") === "none" ? 0 : newContainerHeight;
       this.$container.css('height', newContainerHeight);
       this.containerHeight = newContainerHeight;
     }
@@ -9882,7 +9899,7 @@ class Tabs extends Plugin {
    * @function
    */
   _collapseTab($target) {
-    var $target_anchor = $target
+    var $targetAnchor = $target
       .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
       .attr({
@@ -9890,7 +9907,7 @@ class Tabs extends Plugin {
         'tabindex': -1
       });
 
-    $(`#${$target_anchor.attr('aria-controls')}`)
+    $(`#${$targetAnchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
       .attr({ 'aria-hidden': 'true' });
   }
@@ -9959,7 +9976,7 @@ class Tabs extends Plugin {
 
     this.$tabContent
       .find(`.${this.options.panelClass}`)
-      .css('height', '')
+      .css('min-height', '')
       .each(function() {
 
         var panel = $(this),
@@ -9980,7 +9997,7 @@ class Tabs extends Plugin {
 
         max = temp > max ? temp : max;
       })
-      .css('height', `${max}px`);
+      .css('min-height', `${max}px`);
   }
 
   /**
@@ -10434,7 +10451,6 @@ class Tooltip extends Positionable {
       'aria-hidden': false
     });
     _this.isActive = true;
-    // console.log(this.template);
     this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function() {
       //maybe do stuff?
     });
@@ -10451,7 +10467,6 @@ class Tooltip extends Positionable {
    * @function
    */
   hide() {
-    // console.log('hiding', this.$element.data('yeti-box'));
     var _this = this;
     this.template.stop().attr({
       'aria-hidden': true,
@@ -10475,7 +10490,6 @@ class Tooltip extends Positionable {
   _events() {
     const _this = this;
     const hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined');
-    const $template = this.template;
     var isFocus = false;
 
     // `disableForTouch: Fully disable the tooltip on touch devices
@@ -10483,14 +10497,14 @@ class Tooltip extends Positionable {
 
     if (!this.options.disableHover) {
       this.$element
-      .on('mouseenter.zf.tooltip', function(e) {
+      .on('mouseenter.zf.tooltip', function() {
         if (!_this.isActive) {
           _this.timeout = setTimeout(function() {
             _this.show();
           }, _this.options.hoverDelay);
         }
       })
-      .on('mouseleave.zf.tooltip', ignoreMousedisappear(function(e) {
+      .on('mouseleave.zf.tooltip', ignoreMousedisappear(function() {
         clearTimeout(_this.timeout);
         if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
@@ -10500,13 +10514,13 @@ class Tooltip extends Positionable {
 
     if (hasTouch) {
       this.$element
-      .on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
+      .on('tap.zf.tooltip touchend.zf.tooltip', function () {
         _this.isActive ? _this.hide() : _this.show();
       });
     }
 
     if (this.options.clickOpen) {
-      this.$element.on('mousedown.zf.tooltip', function(e) {
+      this.$element.on('mousedown.zf.tooltip', function() {
         if (_this.isClick) ; else {
           _this.isClick = true;
           if ((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive) {
@@ -10515,7 +10529,7 @@ class Tooltip extends Positionable {
         }
       });
     } else {
-      this.$element.on('mousedown.zf.tooltip', function(e) {
+      this.$element.on('mousedown.zf.tooltip', function() {
         _this.isClick = true;
       });
     }
@@ -10527,7 +10541,7 @@ class Tooltip extends Positionable {
     });
 
     this.$element
-      .on('focus.zf.tooltip', function(e) {
+      .on('focus.zf.tooltip', function() {
         isFocus = true;
         if (_this.isClick) {
           // If we're not showing open on clicks, we need to pretend a click-launched focus isn't
@@ -10539,7 +10553,7 @@ class Tooltip extends Positionable {
         }
       })
 
-      .on('focusout.zf.tooltip', function(e) {
+      .on('focusout.zf.tooltip', function() {
         isFocus = false;
         _this.isClick = false;
         _this.hide();
@@ -10851,6 +10865,7 @@ class ResponsiveAccordionTabs extends Plugin{
           tmpPlugin.destroy();
         }
         catch(e) {
+          console.warn(`Warning: Problems getting Accordion/Tab options: ${e}`);
         }
       }
     }
@@ -10975,7 +10990,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Tabs.selectTab
    * @function
    */
-  open(_target) {
+  open() {
     if (this.currentRule && typeof this.currentRule.open === 'function') {
       return this.currentRule.open(this.currentPlugin, ...arguments);
     }
@@ -10987,7 +11002,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.up
    * @function
    */
-  close(_target) {
+  close() {
     if (this.currentRule && typeof this.currentRule.close === 'function') {
       return this.currentRule.close(this.currentPlugin, ...arguments);
     }
@@ -10999,7 +11014,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.toggle
    * @function
    */
-  toggle(_target) {
+  toggle() {
     if (this.currentRule && typeof this.currentRule.toggle === 'function') {
       return this.currentRule.toggle(this.currentPlugin, ...arguments);
     }
