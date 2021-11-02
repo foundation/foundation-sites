@@ -29,6 +29,7 @@ class Slider extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
     this.className = 'Slider'; // ie9 back compat
+    this.initialized = false;
 
   // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
     Touch.init($);
@@ -99,6 +100,7 @@ class Slider extends Plugin {
     this.setHandles();
 
     this._events();
+    this.initialized = true;
   }
 
   setHandles() {
@@ -259,14 +261,6 @@ class Slider extends Plugin {
       css[`min-${hOrW}`] = `${dim}%`;
     }
 
-    this.$element.one('finished.zf.animate', function() {
-                    /**
-                     * Fires when the handle is done moving.
-                     * @event Slider#moved
-                     */
-                    _this.$element.trigger('moved.zf.slider', [$hndl]);
-                });
-
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
@@ -290,15 +284,23 @@ class Slider extends Plugin {
       }
     });
 
-
-    /**
-     * Fires when the value has not been change for a given time.
-     * @event Slider#changed
-     */
-    clearTimeout(_this.timeout);
-    _this.timeout = setTimeout(function(){
-      _this.$element.trigger('changed.zf.slider', [$hndl]);
-    }, _this.options.changedDelay);
+    if (this.initialized) {
+      this.$element.one('finished.zf.animate', function() {
+        /**
+         * Fires when the handle is done moving.
+         * @event Slider#moved
+         */
+        _this.$element.trigger('moved.zf.slider', [$hndl]);
+      });
+      /**
+       * Fires when the value has not been change for a given time.
+       * @event Slider#changed
+       */
+      clearTimeout(_this.timeout);
+      _this.timeout = setTimeout(function(){
+        _this.$element.trigger('changed.zf.slider', [$hndl]);
+      }, _this.options.changedDelay);
+    }
   }
 
   /**
