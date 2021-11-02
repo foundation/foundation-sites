@@ -498,12 +498,12 @@ class Slider extends Plugin {
 
           curHandle = $(e.currentTarget);
 
-          $body.on('mousemove.zf.slider', function(e) {
-            e.preventDefault();
-            _this._handleEvent(e, curHandle);
+          $body.on('mousemove.zf.slider', function(ev) {
+            ev.preventDefault();
+            _this._handleEvent(ev, curHandle);
 
-          }).on('mouseup.zf.slider', function(e) {
-            _this._handleEvent(e, curHandle);
+          }).on('mouseup.zf.slider', function(ev) {
+            _this._handleEvent(ev, curHandle);
 
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
