@@ -269,7 +269,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    function _setup(element, options) {
+    function _setup(element) {
       this.$element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element);
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;

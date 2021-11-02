@@ -396,7 +396,9 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
         _this._setCurrentAnchor(this);
 
         if ( // if forceFollow false, always prevent default action
-        _this.options.forceFollow === false || hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+        _this.options.forceFollow === false || // if forceFollow true and hover option true, only prevent default action on 1st click
+        // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+        hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
           e.preventDefault();
         }
       });
@@ -439,8 +441,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
       }
 
       this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
-        var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-            visibleFocusableElements = _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].findFocusable(_this.$element);
+        var $target = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
         _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_1__["Keyboard"].handleKey(e, 'Dropdown', {
           open: function open() {
             if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
@@ -874,7 +875,7 @@ var Positionable = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_alignmentsExhausted",
     value: function _alignmentsExhausted(position) {
-      return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
+      return this.triedPositions[position] && this.triedPositions[position].length === ALIGNMENTS[position].length;
     } // When we're trying to center, we don't want to apply offset that's going to
     // take us just off center, so wrap around to return 0 for the appropriate
     // offset in those alignments.  TODO: Figure out if we want to make this
@@ -1182,7 +1183,7 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on(trigger, function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -1274,17 +1275,17 @@ Triggers.Initializers.addSimpleListeners = function () {
 Triggers.Initializers.addGlobalListeners = function () {
   var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
-  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 
-Triggers.init = function ($, Foundation) {
-  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
-    if ($.triggersInitialized !== true) {
+Triggers.init = function (__, Foundation) {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-      $.triggersInitialized = true;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized = true;
     }
   });
 

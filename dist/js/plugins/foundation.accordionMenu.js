@@ -316,7 +316,7 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
 
         if ($submenu.length) {
           if (_this.options.submenuToggle) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function () {
               _this.toggle($submenu);
             });
           } else {

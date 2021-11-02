@@ -296,7 +296,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "_onResizeMe",
-    value: function _onResizeMe(e) {
+    value: function _onResizeMe() {
       this._reflow();
     }
     /**
@@ -319,8 +319,6 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this;
-
       this._pauseEvents();
 
       if (this.hasNested) {
@@ -439,7 +437,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
 
         var elOffsetTop = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.$watched[i]).offset().top;
 
-        if (elOffsetTop != lastElTopOffset) {
+        if (elOffsetTop !== lastElTopOffset) {
           group++;
           groups[group] = [];
           lastElTopOffset = elOffsetTop;

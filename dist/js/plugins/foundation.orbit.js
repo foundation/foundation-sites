@@ -380,8 +380,6 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_prepareForOrbit",
     value: function _prepareForOrbit() {
-      var _this = this;
-
       this._setWrapperHeight();
     }
     /**
@@ -544,7 +542,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
     key: "_reset",
     value: function _reset() {
       // Don't do anything if there are no slides (first run)
-      if (typeof this.$slides == 'undefined') {
+      if (typeof this.$slides === 'undefined') {
         return;
       }
 
@@ -603,7 +601,9 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
 
       if (!chosenSlide) {
         //most of the time, this will be auto played or clicked from the navButtons.
-        $newSlide = isLTR ? this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) : this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
+        $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
+        this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) //pick next slide if moving left to right
+        : this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
       } else {
         $newSlide = chosenSlide;
       }
