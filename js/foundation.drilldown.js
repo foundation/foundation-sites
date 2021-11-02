@@ -158,9 +158,9 @@ class Drilldown extends Plugin {
 
       if(_this.options.closeOnClick){
         var $body = $('body');
-        $body.off('.zf.drilldown').on('click.zf.drilldown', function() {
-          if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
-          e.preventDefault();
+        $body.off('.zf.drilldown').on('click.zf.drilldown', function(ev) {
+          if (ev.target === _this.$element[0] || $.contains(_this.$element[0], ev.target)) { return; }
+          ev.preventDefault();
           _this._hideAll();
           $body.off('.zf.drilldown');
         });
