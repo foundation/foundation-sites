@@ -39,11 +39,11 @@
 /// @param {Number|Array|Keyword} $breakpoint [null] - Breakpoint to use for `$gutters`. It can be a breakpoint name, list of breakpoints or `auto` for all breakpoints. If a list is given, media-queries will be generated. If using with the `breakpoint()` mixin this will be set automatically unless manually entered.
 /// @param {Boolean} $vertical [false] Sets the direction of the offset. If set to true will apply margin-top instead.
 @mixin xy-cell-offset(
- $n,
- $gutters: $grid-margin-gutters,
- $gutter-type: margin,
- $breakpoint: null,
- $vertical: false
+  $n,
+  $gutters: $grid-margin-gutters,
+  $gutter-type: margin,
+  $breakpoint: null,
+  $vertical: false
 ) {
   $breakpoint: -zf-current-breakpoint($breakpoint, $default: $-zf-zero-breakpoint);
   $direction: if($vertical, 'top', $global-left);

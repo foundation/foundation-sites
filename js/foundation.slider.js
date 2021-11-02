@@ -29,6 +29,7 @@ class Slider extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
     this.className = 'Slider'; // ie9 back compat
+    this.initialized = false;
 
   // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
     Touch.init($);
@@ -42,18 +43,18 @@ class Slider extends Plugin {
         'ARROW_UP': 'increase',
         'ARROW_DOWN': 'decrease',
         'ARROW_LEFT': 'decrease',
-        'SHIFT_ARROW_RIGHT': 'increase_fast',
-        'SHIFT_ARROW_UP': 'increase_fast',
-        'SHIFT_ARROW_DOWN': 'decrease_fast',
-        'SHIFT_ARROW_LEFT': 'decrease_fast',
+        'SHIFT_ARROW_RIGHT': 'increaseFast',
+        'SHIFT_ARROW_UP': 'increaseFast',
+        'SHIFT_ARROW_DOWN': 'decreaseFast',
+        'SHIFT_ARROW_LEFT': 'decreaseFast',
         'HOME': 'min',
         'END': 'max'
       },
       'rtl': {
         'ARROW_LEFT': 'increase',
         'ARROW_RIGHT': 'decrease',
-        'SHIFT_ARROW_LEFT': 'increase_fast',
-        'SHIFT_ARROW_RIGHT': 'decrease_fast'
+        'SHIFT_ARROW_LEFT': 'increaseFast',
+        'SHIFT_ARROW_RIGHT': 'decreaseFast'
       }
     });
   }
@@ -71,7 +72,6 @@ class Slider extends Plugin {
     this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
-    var _this = this;
     if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
       this.options.disabled = true;
       this.$element.addClass(this.options.disabledClass);
@@ -100,6 +100,7 @@ class Slider extends Plugin {
     this.setHandles();
 
     this._events();
+    this.initialized = true;
   }
 
   setHandles() {
@@ -239,7 +240,7 @@ class Slider extends Plugin {
           //empty variable, will be used for min-height/width for fill bar
           dim,
           //percentage w/h of the handle compared to the slider bar
-          handlePct =  ~~(percent(handleDim, elemDim) * 100);
+          handlePct =  Math.floor(percent(handleDim, elemDim) * 100);
       //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
       if (isLeftHndl) {
         //left or top percentage value to apply to the fill bar.
@@ -259,14 +260,6 @@ class Slider extends Plugin {
       // assign the min-height/width to our css object
       css[`min-${hOrW}`] = `${dim}%`;
     }
-
-    this.$element.one('finished.zf.animate', function() {
-                    /**
-                     * Fires when the handle is done moving.
-                     * @event Slider#moved
-                     */
-                    _this.$element.trigger('moved.zf.slider', [$hndl]);
-                });
 
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
@@ -291,15 +284,23 @@ class Slider extends Plugin {
       }
     });
 
-
-    /**
-     * Fires when the value has not been change for a given time.
-     * @event Slider#changed
-     */
-    clearTimeout(_this.timeout);
-    _this.timeout = setTimeout(function(){
-      _this.$element.trigger('changed.zf.slider', [$hndl]);
-    }, _this.options.changedDelay);
+    if (this.initialized) {
+      this.$element.one('finished.zf.animate', function() {
+        /**
+         * Fires when the handle is done moving.
+         * @event Slider#moved
+         */
+        _this.$element.trigger('moved.zf.slider', [$hndl]);
+      });
+      /**
+       * Fires when the value has not been change for a given time.
+       * @event Slider#changed
+       */
+      clearTimeout(_this.timeout);
+      _this.timeout = setTimeout(function(){
+        _this.$element.trigger('changed.zf.slider', [$hndl]);
+      }, _this.options.changedDelay);
+    }
   }
 
   /**
@@ -354,7 +355,7 @@ class Slider extends Plugin {
    * TODO clean this up, there's a lot of repeated code between this and the _setHandlePos fn.
    */
   _handleEvent(e, $handle, val) {
-    var value, hasVal;
+    var value;
     if (!val) {//click or drag events
       e.preventDefault();
       var _this = this,
@@ -387,8 +388,6 @@ class Slider extends Plugin {
       if (Rtl() && !this.options.vertical) {value = this.options.end - value;}
 
       value = _this._adjustValue(null, value);
-      //boolean flag for the setHandlePos fn, specifically for vertical sliders
-      hasVal = false;
 
       if (!$handle) {//figure out which handle it is, pass it to the next function.
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
@@ -398,7 +397,6 @@ class Slider extends Plugin {
 
     } else {//change event on input
       value = this._adjustValue(null, val);
-      hasVal = true;
     }
 
     this._setHandlePos($handle, value);
@@ -415,7 +413,7 @@ class Slider extends Plugin {
     var val,
       step = this.options.step,
       div = parseFloat(step/2),
-      left, prev_val, next_val;
+      left, previousVal, nextVal;
     if (!!$handle) {
       val = parseFloat($handle.attr('aria-valuenow'));
     }
@@ -427,12 +425,12 @@ class Slider extends Plugin {
     } else {
       left = step + (val % step);
     }
-    prev_val = val - left;
-    next_val = prev_val + step;
+    previousVal = val - left;
+    nextVal = previousVal + step;
     if (left === 0) {
       return val;
     }
-    val = val >= prev_val + div ? next_val : prev_val;
+    val = val >= previousVal + div ? nextVal : previousVal;
     return val;
   }
 
@@ -468,7 +466,7 @@ class Slider extends Plugin {
       // listen for the enter key and trigger a change
       // @see https://html.spec.whatwg.org/multipage/input.html#common-input-element-events
       this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
-        if(e.keyCode == 13) handleChangeEvent.call(this, e);
+        if(e.keyCode === 13) handleChangeEvent.call(this, e);
       });
 
       this.inputs.off('change.zf.slider').on('change.zf.slider', handleChangeEvent);
@@ -500,12 +498,12 @@ class Slider extends Plugin {
 
           curHandle = $(e.currentTarget);
 
-          $body.on('mousemove.zf.slider', function(e) {
-            e.preventDefault();
-            _this._handleEvent(e, curHandle);
+          $body.on('mousemove.zf.slider', function(ev) {
+            ev.preventDefault();
+            _this._handleEvent(ev, curHandle);
 
-          }).on('mouseup.zf.slider', function(e) {
-            _this._handleEvent(e, curHandle);
+          }).on('mouseup.zf.slider', function(ev) {
+            _this._handleEvent(ev, curHandle);
 
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
@@ -534,10 +532,10 @@ class Slider extends Plugin {
         increase: function() {
           newValue = oldValue + _this.options.step;
         },
-        decrease_fast: function() {
+        decreaseFast: function() {
           newValue = oldValue - _this.options.step * 10;
         },
-        increase_fast: function() {
+        increaseFast: function() {
           newValue = oldValue + _this.options.step * 10;
         },
         min: function() {

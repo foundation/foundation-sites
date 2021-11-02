@@ -376,6 +376,18 @@ var foundation_core_utils = /*#__PURE__*/Object.freeze({
   ignoreMousedisappear: ignoreMousedisappear
 });
 
+// const defaultQueries = {
+//   'default' : 'only screen',
+//   landscape : 'only screen and (orientation: landscape)',
+//   portrait : 'only screen and (orientation: portrait)',
+//   retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+//     'only screen and (min--moz-device-pixel-ratio: 2),' +
+//     'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+//     'only screen and (min-device-pixel-ratio: 2),' +
+//     'only screen and (min-resolution: 192dpi),' +
+//     'only screen and (min-resolution: 2dppx)'
+//   };
+// matchMedia() polyfill - Test a CSS media type/query in JS.
 // Authors & copyright © 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license
 
 /* eslint-disable */
@@ -436,7 +448,7 @@ var MediaQuery = {
   _init: function _init() {
     // make sure the initialization is only done once when calling _init() several times
     if (this.isInitialized === true) {
-      return;
+      return this;
     } else {
       this.isInitialized = true;
     }
@@ -638,7 +650,7 @@ var MediaQuery = {
   _watcher: function _watcher() {
     var _this2 = this;
 
-    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', function () {
+    $(window).on('resize.zf.trigger', function () {
       var newSize = _this2._getCurrentSize(),
           currentSize = _this2.current;
 
@@ -687,7 +699,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.7.3'; // Global Foundation object
+var FOUNDATION_VERSION = '6.7.4'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -772,7 +784,9 @@ var Foundation = {
     .trigger("destroyed.zf.".concat(pluginName));
 
     for (var prop in plugin) {
-      plugin[prop] = null; //clean up script to prep for garbage collection.
+      if (typeof plugin[prop] === 'function') {
+        plugin[prop] = null; //clean up script to prep for garbage collection.
+      }
     }
 
     return;
@@ -807,7 +821,7 @@ var Foundation = {
             $('[data-' + plugins + ']').foundation('_init');
           },
           'undefined': function undefined$1() {
-            this['object'](Object.keys(_this._plugins));
+            this.object(Object.keys(_this._plugins));
           }
         };
 
@@ -852,7 +866,7 @@ var Foundation = {
         };
 
         if ($el.attr('data-options')) {
-          $el.attr('data-options').split(';').forEach(function (option, _index) {
+          $el.attr('data-options').split(';').forEach(function (option) {
             var opt = option.split(':').map(function (el) {
               return el.trim();
             });
@@ -871,7 +885,7 @@ var Foundation = {
     });
   },
   getFnName: functionName,
-  addToJquery: function addToJquery($) {
+  addToJquery: function addToJquery() {
     // TODO: consider not making this a jQuery function
     // TODO: need way to reflow vs. re-initialize
 
@@ -991,6 +1005,7 @@ window.Foundation = Foundation; // Polyfill for requestAnimationFrame
 })();
 
 if (!Function.prototype.bind) {
+  /* eslint-disable no-extend-native */
   Function.prototype.bind = function (oThis) {
     if (typeof this !== 'function') {
       // closest thing possible to the ECMAScript 5
@@ -1251,7 +1266,7 @@ function onImagesLoaded(images, callback) {
       var image = new Image(); // Still count image as loaded if it finalizes with an error.
 
       var events = "load.zf.images error.zf.images";
-      $(image).one(events, function me(event) {
+      $(image).one(events, function me() {
         // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
         $(this).off(events, me);
         singleImageLoaded();
@@ -1303,26 +1318,26 @@ function findFocusable($element) {
 
     return true;
   }).sort(function (a, b) {
-    if ($(a).attr('tabindex') == $(b).attr('tabindex')) {
+    if ($(a).attr('tabindex') === $(b).attr('tabindex')) {
       return 0;
     }
 
-    var aTabIndex = parseInt($(a).attr('tabindex')),
-        bTabIndex = parseInt($(b).attr('tabindex')); // Undefined is treated the same as 0
+    var aTabIndex = parseInt($(a).attr('tabindex'), 10),
+        bTabIndex = parseInt($(b).attr('tabindex'), 10); // Undefined is treated the same as 0
 
-    if (typeof $(a).attr('tabindex') == 'undefined' && bTabIndex > 0) {
+    if (typeof $(a).attr('tabindex') === 'undefined' && bTabIndex > 0) {
       return 1;
     }
 
-    if (typeof $(b).attr('tabindex') == 'undefined' && aTabIndex > 0) {
+    if (typeof $(b).attr('tabindex') === 'undefined' && aTabIndex > 0) {
       return -1;
     }
 
-    if (aTabIndex == 0 && bTabIndex > 0) {
+    if (aTabIndex === 0 && bTabIndex > 0) {
       return 1;
     }
 
-    if (bTabIndex == 0 && aTabIndex > 0) {
+    if (bTabIndex === 0 && aTabIndex > 0) {
       return -1;
     }
 
@@ -1455,7 +1470,7 @@ function getKeyCodes(kcs) {
   var k = {};
 
   for (var kc in kcs) {
-    k[kcs[kc]] = kcs[kc];
+    if (kcs.hasOwnProperty(kc)) k[kcs[kc]] = kcs[kc];
   }
 
   return k;
@@ -1480,7 +1495,7 @@ var Motion = {
 function Move(duration, elem, fn) {
   var anim,
       prog,
-      start = null; // console.log('called');
+      start = null;
 
   if (duration === 0) {
     fn.apply(elem);
@@ -1489,8 +1504,7 @@ function Move(duration, elem, fn) {
   }
 
   function move(ts) {
-    if (!start) start = ts; // console.log(start, ts);
-
+    if (!start) start = ts;
     prog = ts - start;
     fn.apply(elem);
 
@@ -1665,7 +1679,6 @@ function Timer(elem, options, cb) {
 
 var Touch = {};
 var startPosX,
-    startPosY,
     startTime,
     elapsedTime,
     startEvent,
@@ -1718,7 +1731,6 @@ function onTouchMove(e) {
 function onTouchStart(e) {
   if (e.touches.length === 1) {
     startPosX = e.touches[0].pageX;
-    startPosY = e.touches[0].pageY;
     startEvent = e;
     isMoving = true;
     didMoved = false;
@@ -1734,10 +1746,13 @@ function init() {
   this.addEventListener && this.addEventListener('touchstart', onTouchStart, {
     passive: true
   });
-}
+} // function teardown() {
+//   this.removeEventListener('touchstart', onTouchStart);
+// }
+
 
 var SpotSwipe = /*#__PURE__*/function () {
-  function SpotSwipe($) {
+  function SpotSwipe() {
     _classCallCheck(this, SpotSwipe);
 
     this.version = '1.0.0';
@@ -1745,7 +1760,6 @@ var SpotSwipe = /*#__PURE__*/function () {
     this.preventDefault = false;
     this.moveThreshold = 75;
     this.timeThreshold = 200;
-    this.$ = $;
 
     this._init();
   }
@@ -1753,7 +1767,6 @@ var SpotSwipe = /*#__PURE__*/function () {
   _createClass(SpotSwipe, [{
     key: "_init",
     value: function _init() {
-      var $ = this.$;
       $.event.special.swipe = {
         setup: init
       };
@@ -1780,7 +1793,7 @@ var SpotSwipe = /*#__PURE__*/function () {
  ****************************************************/
 
 
-Touch.setupSpotSwipe = function ($) {
+Touch.setupSpotSwipe = function () {
   $.spotSwipe = new SpotSwipe($);
 };
 /****************************************************
@@ -1788,7 +1801,7 @@ Touch.setupSpotSwipe = function ($) {
  ***************************************************/
 
 
-Touch.setupTouchHandler = function ($) {
+Touch.setupTouchHandler = function () {
   $.fn.addTouch = function () {
     this.each(function (i, el) {
       $(el).bind('touchstart touchmove touchend touchcancel', function (event) {
@@ -1830,7 +1843,7 @@ Touch.setupTouchHandler = function ($) {
   };
 };
 
-Touch.init = function ($) {
+Touch.init = function () {
   if (typeof $.spotSwipe === 'undefined') {
     Touch.setupSpotSwipe($);
     Touch.setupTouchHandler($);
@@ -1993,7 +2006,7 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  $(window).off(trigger).on(trigger, function (e) {
+  $(window).on(trigger, function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -2085,12 +2098,12 @@ Triggers.Initializers.addSimpleListeners = function () {
 Triggers.Initializers.addGlobalListeners = function () {
   var $document = $(document);
   Triggers.Initializers.addMutationEventsListener($document);
-  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 
-Triggers.init = function ($, Foundation) {
+Triggers.init = function (__, Foundation) {
   onLoad($(window), function () {
     if ($.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
@@ -2148,7 +2161,9 @@ var Plugin = /*#__PURE__*/function () {
       .trigger("destroyed.zf.".concat(pluginName));
 
       for (var prop in this) {
-        this[prop] = null; //clean up script to prep for garbage collection.
+        if (this.hasOwnProperty(prop)) {
+          this[prop] = null; //clean up script to prep for garbage collection.
+        }
       }
     }
   }]);
@@ -2610,10 +2625,10 @@ var Abide = /*#__PURE__*/function (_Plugin) {
     key: "removeErrorClasses",
     value: function removeErrorClasses($el) {
       // radios need to clear all of the els
-      if ($el[0].type == 'radio') {
+      if ($el[0].type === 'radio') {
         return this.removeRadioErrorClasses($el.attr('name'));
       } // checkboxes need to clear all of the els
-      else if ($el[0].type == 'checkbox') {
+      else if ($el[0].type === 'checkbox') {
         return this.removeCheckboxErrorClasses($el.attr('name'));
       }
 
@@ -2880,7 +2895,7 @@ var Abide = /*#__PURE__*/function (_Plugin) {
           }
 
           if (typeof $(e).attr('data-min-required') !== 'undefined') {
-            minRequired = parseInt($(e).attr('data-min-required'));
+            minRequired = parseInt($(e).attr('data-min-required'), 10);
           }
         }); // For the group to be valid, the minRequired amount of checkboxes have to be checked
 
@@ -3061,6 +3076,7 @@ Abide.defaults = {
   validateOnBlur: false,
   patterns: {
     alpha: /^[a-zA-Z]+$/,
+    // eslint-disable-next-line camelcase
     alpha_numeric: /^[a-zA-Z0-9]+$/,
     integer: /^[-+]?\d+$/,
     number: /^[-+]?\d*(?:[\.\,]\d+)?$/,
@@ -3082,15 +3098,17 @@ Abide.defaults = {
     time: /^(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}$/,
     dateISO: /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/,
     // MM/DD/YYYY
+    // eslint-disable-next-line camelcase
     month_day_year: /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
     // DD/MM/YYYY
+    // eslint-disable-next-line camelcase
     day_month_year: /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
     // #FFF or #FFFFFF
     color: /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
     // Domain || URL
     website: {
       test: function test(text) {
-        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+        return Abide.defaults.patterns.domain.test(text) || Abide.defaults.patterns.url.test(text);
       }
     }
   },
@@ -3099,12 +3117,10 @@ Abide.defaults = {
    * Optional validation functions to be used. `equalTo` being the only default included function.
    * Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:
    * el : The jQuery element to validate.
-   * required : Boolean value of the required attribute be present or not.
-   * parent : The direct parent of the input.
    * @option
    */
   validators: {
-    equalTo: function equalTo(el, required, parent) {
+    equalTo: function equalTo(el) {
       return $("#".concat(el.attr('data-equalto'))).val() === el.val();
     }
   }
@@ -3686,7 +3702,7 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
 
         if ($submenu.length) {
           if (_this.options.submenuToggle) {
-            $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function () {
               _this.toggle($submenu);
             });
           } else {
@@ -4135,12 +4151,12 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
         if (_this.options.closeOnClick) {
           var $body = $('body');
-          $body.off('.zf.drilldown').on('click.zf.drilldown', function (e) {
-            if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) {
+          $body.off('.zf.drilldown').on('click.zf.drilldown', function (ev) {
+            if (ev.target === _this.$element[0] || $.contains(_this.$element[0], ev.target)) {
               return;
             }
 
-            e.preventDefault();
+            ev.preventDefault();
 
             _this._hideAll();
 
@@ -4176,7 +4192,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     value: function _scrollTop() {
       var _this = this;
 
-      var $scrollTopElement = _this.options.scrollTopElement != '' ? $(_this.options.scrollTopElement) : _this.$element,
+      var $scrollTopElement = _this.options.scrollTopElement !== '' ? $(_this.options.scrollTopElement) : _this.$element,
           scrollPos = parseInt($scrollTopElement.offset().top + _this.options.scrollTopOffset, 10);
       $('html, body').stop(true).animate({
         scrollTop: scrollPos
@@ -4332,8 +4348,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       var _this = this;
 
       $elem.off('click.zf.drilldown');
-      $elem.children('.js-drilldown-back').on('click.zf.drilldown', function (e) {
-        // console.log('mouseup on back');
+      $elem.children('.js-drilldown-back').on('click.zf.drilldown', function () {
         _this._hide($elem); // If there is a parent submenu, call show
 
 
@@ -4357,7 +4372,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     value: function _menuLinkEvents() {
       var _this = this;
 
-      this.$menuItems.not('.is-drilldown-submenu-parent').off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
+      this.$menuItems.not('.is-drilldown-submenu-parent').off('click.zf.drilldown').on('click.zf.drilldown', function () {
         setTimeout(function () {
           _this._hideAll();
         }, 0);
@@ -4415,7 +4430,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
 
       var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
-      $expandedSubmenus.each(function (index) {
+      $expandedSubmenus.each(function () {
         _this._setHideSubMenuClasses($(this));
       }); // Save the menu as the currently displayed one.
 
@@ -4436,7 +4451,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
           _this.$wrapper.css('height', $(this).data('calcHeight'));
         }
 
-        var isLastChild = index == $submenus.length - 1; // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
+        var isLastChild = index === $submenus.length - 1; // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
         // Last child makes sure the event gets always triggered even if going through several menus
 
         if (isLastChild === true) {
@@ -4495,7 +4510,6 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       if (this.options.autoHeight) this.$wrapper.css({
         height: $elem.parent().closest('ul').data('calcHeight')
       });
-
       $elem.parent().closest('ul').removeClass('invisible');
       $elem.parent('li').attr('aria-expanded', false);
       $elem.attr('aria-hidden', true);
@@ -4526,7 +4540,6 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
 
       this.$submenus.add(this.$element).each(function () {
-        var numOfElems = $(this).children('li').length;
         var height = Box.GetDimensions(this).height;
         maxHeight = height > maxHeight ? height : maxHeight;
 
@@ -4534,7 +4547,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
           $(this).data('calcHeight', height);
         }
       });
-      if (this.options.autoHeight) result['height'] = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
+      if (this.options.autoHeight) result.height = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
       result['max-width'] = "".concat(this.$element[0].getBoundingClientRect().width, "px");
       return result;
     }
@@ -4803,7 +4816,7 @@ var Positionable = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_alignmentsExhausted",
     value: function _alignmentsExhausted(position) {
-      return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
+      return this.triedPositions[position] && this.triedPositions[position].length === ALIGNMENTS[position].length;
     } // When we're trying to center, we don't want to apply offset that's going to
     // take us just off center, so wrap around to return 0 for the appropriate
     // offset in those alignments.  TODO: Figure out if we want to make this
@@ -5100,7 +5113,9 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
         _this._setCurrentAnchor(this);
 
         if ( // if forceFollow false, always prevent default action
-        _this.options.forceFollow === false || hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
+        _this.options.forceFollow === false || // if forceFollow true and hover option true, only prevent default action on 1st click
+        // on 2nd click (dropown opened) the default action (e.g. follow a href) gets executed
+        hasTouch && _this.options.hover && _this.$element.hasClass('is-open') === false) {
           e.preventDefault();
         }
       });
@@ -5143,8 +5158,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
       }
 
       this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
-        var $target = $(this),
-            visibleFocusableElements = Keyboard.findFocusable(_this.$element);
+        var $target = $(this);
         Keyboard.handleKey(e, 'Dropdown', {
           open: function open() {
             if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
@@ -5560,7 +5574,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
 
 
       if (_this.options.closeOnClickInside) {
-        this.$menuItems.on('click.zf.dropdownMenu', function (e) {
+        this.$menuItems.on('click.zf.dropdownMenu', function () {
           var $elem = $(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -5573,7 +5587,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
       if (!this.options.disableHover) {
-        this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
+        this.$menuItems.on('mouseenter.zf.dropdownMenu', function () {
           var $elem = $(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -5583,7 +5597,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
+        }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function () {
           var $elem = $(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -5819,7 +5833,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       if ($elem && $elem.length) {
         $toClose = $elem;
       } else if (typeof idx !== 'undefined') {
-        $toClose = this.$tabs.not(function (i, el) {
+        $toClose = this.$tabs.not(function (i) {
           return i === idx;
         });
       } else {
@@ -6071,7 +6085,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "_onResizeMe",
-    value: function _onResizeMe(e) {
+    value: function _onResizeMe() {
       this._reflow();
     }
     /**
@@ -6094,7 +6108,6 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-
       this._pauseEvents();
 
       if (this.hasNested) {
@@ -6213,7 +6226,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
 
         var elOffsetTop = $(this.$watched[i]).offset().top;
 
-        if (elOffsetTop != lastElTopOffset) {
+        if (elOffsetTop !== lastElTopOffset) {
           group++;
           groups[group] = [];
           lastElTopOffset = elOffsetTop;
@@ -6478,7 +6491,7 @@ var Interchange = /*#__PURE__*/function (_Plugin) {
     value: function _parseOptions() {
       var types = ['auto', 'src', 'background', 'html'];
       if (typeof this.options.type === 'undefined') this.options.type = 'auto';else if (types.indexOf(this.options.type) === -1) {
-        console.log("Warning: invalid value \"".concat(this.options.type, "\" for Interchange option \"type\""));
+        console.warn("Warning: invalid value \"".concat(this.options.type, "\" for Interchange option \"type\""));
         this.options.type = 'auto';
       }
     }
@@ -6502,13 +6515,12 @@ var Interchange = /*#__PURE__*/function (_Plugin) {
      * Checks the Interchange element for the provided media query + content pairings
      * @function
      * @private
-     * @param {Object} element - jQuery object that is an Interchange instance
      * @returns {Array} scenarios - Array of objects that have 'mq' and 'path' keys with corresponding keys
      */
 
   }, {
     key: "_generateRules",
-    value: function _generateRules(element) {
+    value: function _generateRules() {
       var rulesList = [];
       var rules;
 
@@ -6845,7 +6857,6 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
     key: "_init",
     value: function _init() {
       var id = this.$element[0].id || GetYoDigits(6, 'magellan');
-
       this.$targets = $('[data-magellan-target]');
       this.$links = this.$element.find('a');
       this.$element.attr({
@@ -6915,7 +6926,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
         });
       });
 
-      this._deepLinkScroll = function (e) {
+      this._deepLinkScroll = function () {
         if (_this.options.deepLinking) {
           _this.scrollToLoc(window.location.hash);
         }
@@ -6967,7 +6978,9 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "_updateActive",
-    value: function _updateActive() {
+    value: function
+      /*evt, elem, scrollPos*/
+    _updateActive() {
       var _this2 = this;
 
       if (this._inTransition) return;
@@ -6981,7 +6994,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
         activeIdx = this.points.length - 1;
       } // Otherwhise, use the last visible link
       else {
-        var visibleLinks = this.points.filter(function (p, i) {
+        var visibleLinks = this.points.filter(function (p) {
           return p - _this2.options.offset - (isScrollingUp ? _this2.options.threshold : 0) <= newScrollPos;
         });
         activeIdx = visibleLinks.length ? visibleLinks.length - 1 : 0;
@@ -7475,7 +7488,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "_stopScrolling",
-    value: function _stopScrolling(event) {
+    value: function _stopScrolling() {
       return false;
     }
     /**
@@ -7659,7 +7672,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "close",
-    value: function close(cb) {
+    value: function close() {
       var _this5 = this;
 
       if (!this.$element.hasClass('is-open') || this.isRevealed) {
@@ -7672,7 +7685,6 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
 
       this.$element.trigger('close.zf.offCanvas');
-
       this.$element.removeClass('is-open');
       this.$element.attr('aria-hidden', 'true');
       this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
@@ -7687,7 +7699,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
       this.$triggers.attr('aria-expanded', 'false'); // Listen to transitionEnd: add class, re-enable scrolling and release focus when done.
 
-      this.$element.one(transitionend(this.$element), function (e) {
+      this.$element.one(transitionend(this.$element), function () {
         _this5.$element.addClass('is-closed');
 
         _this5._removeContentClasses();
@@ -8037,7 +8049,6 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_prepareForOrbit",
     value: function _prepareForOrbit() {
-
       this._setWrapperHeight();
     }
     /**
@@ -8200,7 +8211,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
     key: "_reset",
     value: function _reset() {
       // Don't do anything if there are no slides (first run)
-      if (typeof this.$slides == 'undefined') {
+      if (typeof this.$slides === 'undefined') {
         return;
       }
 
@@ -8259,7 +8270,9 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
 
       if (!chosenSlide) {
         //most of the time, this will be auto played or clicked from the navButtons.
-        $newSlide = isLTR ? this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) : this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
+        $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
+        this.options.infiniteWrap ? $curSlide.next(".".concat(this.options.slideClass)).length ? $curSlide.next(".".concat(this.options.slideClass)) : $firstSlide : $curSlide.next(".".concat(this.options.slideClass)) //pick next slide if moving left to right
+        : this.options.infiniteWrap ? $curSlide.prev(".".concat(this.options.slideClass)).length ? $curSlide.prev(".".concat(this.options.slideClass)) : $lastSlide : $curSlide.prev(".".concat(this.options.slideClass)); //pick prev slide if moving right to left
       } else {
         $newSlide = chosenSlide;
       }
@@ -8555,7 +8568,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-    function _setup(element, options) {
+    function _setup(element) {
       this.$element = $(element);
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
@@ -8749,7 +8762,6 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-
       this._updateMqHandler = this._update.bind(this);
       $(window).on('changed.zf.mediaquery', this._updateMqHandler);
       this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
@@ -8782,7 +8794,7 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "toggleMenu",
     value: function toggleMenu() {
-      var _this2 = this;
+      var _this = this;
 
       if (!MediaQuery.atLeast(this.options.hideFor)) {
         /**
@@ -8792,13 +8804,13 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
             Motion.animateIn(this.$targetMenu, this.animationIn, function () {
-              _this2.$element.trigger('toggled.zf.responsiveToggle');
+              _this.$element.trigger('toggled.zf.responsiveToggle');
 
-              _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
+              _this.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });
           } else {
             Motion.animateOut(this.$targetMenu, this.animationOut, function () {
-              _this2.$element.trigger('toggled.zf.responsiveToggle');
+              _this.$element.trigger('toggled.zf.responsiveToggle');
             });
           }
         } else {
@@ -9050,7 +9062,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "_handleState",
-    value: function _handleState(e) {
+    value: function _handleState() {
       if (window.location.hash === '#' + this.id && !this.isActive) {
         this.open();
       } else {
@@ -9079,7 +9091,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_enableScroll",
     value: function _enableScroll(scrollTop) {
-      scrollTop = scrollTop || parseInt($("html").css("top"));
+      scrollTop = scrollTop || parseInt($("html").css("top"), 10);
 
       if ($(document).height() > $(window).height()) {
         $("html").css("top", "");
@@ -9335,7 +9347,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
         // Get the current top before the modal is closed and restore the scroll after.
         // TODO: use component properties instead of HTML properties
         // See https://github.com/foundation/foundation-sites/pull/10786
-        var scrollTop = parseInt($("html").css("top"));
+        var scrollTop = parseInt($("html").css("top"), 10);
 
         if ($('.reveal:visible').length === 0) {
           _this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
@@ -9593,7 +9605,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       this.$element = element;
       this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
       this.className = 'Slider'; // ie9 back compat
-      // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
+
+      this.initialized = false; // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
 
       Touch.init($);
       Triggers.init($);
@@ -9606,18 +9619,18 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           'ARROW_UP': 'increase',
           'ARROW_DOWN': 'decrease',
           'ARROW_LEFT': 'decrease',
-          'SHIFT_ARROW_RIGHT': 'increase_fast',
-          'SHIFT_ARROW_UP': 'increase_fast',
-          'SHIFT_ARROW_DOWN': 'decrease_fast',
-          'SHIFT_ARROW_LEFT': 'decrease_fast',
+          'SHIFT_ARROW_RIGHT': 'increaseFast',
+          'SHIFT_ARROW_UP': 'increaseFast',
+          'SHIFT_ARROW_DOWN': 'decreaseFast',
+          'SHIFT_ARROW_LEFT': 'decreaseFast',
           'HOME': 'min',
           'END': 'max'
         },
         'rtl': {
           'ARROW_LEFT': 'increase',
           'ARROW_RIGHT': 'decrease',
-          'SHIFT_ARROW_LEFT': 'increase_fast',
-          'SHIFT_ARROW_RIGHT': 'decrease_fast'
+          'SHIFT_ARROW_LEFT': 'increaseFast',
+          'SHIFT_ARROW_RIGHT': 'decreaseFast'
         }
       });
     }
@@ -9665,6 +9678,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       this.setHandles();
 
       this._events();
+
+      this.initialized = true;
     }
   }, {
     key: "setHandles",
@@ -9828,7 +9843,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
             //empty variable, will be used for min-height/width for fill bar
         dim,
             //percentage w/h of the handle compared to the slider bar
-        handlePct = ~~(percent(handleDim, elemDim) * 100); //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
+        handlePct = Math.floor(percent(handleDim, elemDim) * 100); //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
 
         if (isLeftHndl) {
           //left or top percentage value to apply to the fill bar.
@@ -9851,15 +9866,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
 
 
         css["min-".concat(hOrW)] = "".concat(dim, "%");
-      }
+      } //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
 
-      this.$element.one('finished.zf.animate', function () {
-        /**
-         * Fires when the handle is done moving.
-         * @event Slider#moved
-         */
-        _this.$element.trigger('moved.zf.slider', [$hndl]);
-      }); //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
 
       var moveTime = this.$element.data('dragging') ? 1000 / 60 : this.options.moveTime;
       Move(moveTime, $hndl, function () {
@@ -9880,15 +9888,25 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           _this.$fill.css(css);
         }
       });
-      /**
-       * Fires when the value has not been change for a given time.
-       * @event Slider#changed
-       */
 
-      clearTimeout(_this.timeout);
-      _this.timeout = setTimeout(function () {
-        _this.$element.trigger('changed.zf.slider', [$hndl]);
-      }, _this.options.changedDelay);
+      if (this.initialized) {
+        this.$element.one('finished.zf.animate', function () {
+          /**
+           * Fires when the handle is done moving.
+           * @event Slider#moved
+           */
+          _this.$element.trigger('moved.zf.slider', [$hndl]);
+        });
+        /**
+         * Fires when the value has not been change for a given time.
+         * @event Slider#changed
+         */
+
+        clearTimeout(_this.timeout);
+        _this.timeout = setTimeout(function () {
+          _this.$element.trigger('changed.zf.slider', [$hndl]);
+        }, _this.options.changedDelay);
+      }
     }
     /**
      * Sets the initial attribute for the slider element.
@@ -9988,7 +10006,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           value = this.options.end - value;
         }
 
-        value = _this._adjustValue(null, value); //boolean flag for the setHandlePos fn, specifically for vertical sliders
+        value = _this._adjustValue(null, value);
 
         if (!$handle) {
           //figure out which handle it is, pass it to the next function.
@@ -10018,8 +10036,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           step = this.options.step,
           div = parseFloat(step / 2),
           left,
-          prev_val,
-          next_val;
+          previousVal,
+          nextVal;
 
       if (!!$handle) {
         val = parseFloat($handle.attr('aria-valuenow'));
@@ -10033,14 +10051,14 @@ var Slider = /*#__PURE__*/function (_Plugin) {
         left = step + val % step;
       }
 
-      prev_val = val - left;
-      next_val = prev_val + step;
+      previousVal = val - left;
+      nextVal = previousVal + step;
 
       if (left === 0) {
         return val;
       }
 
-      val = val >= prev_val + div ? next_val : prev_val;
+      val = val >= previousVal + div ? nextVal : previousVal;
       return val;
     }
     /**
@@ -10081,7 +10099,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
 
 
       this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
-        if (e.keyCode == 13) handleChangeEvent.call(this, e);
+        if (e.keyCode === 13) handleChangeEvent.call(this, e);
       });
       this.inputs.off('change.zf.slider').on('change.zf.slider', handleChangeEvent);
 
@@ -10113,12 +10131,12 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           _this.$element.data('dragging', true);
 
           curHandle = $(e.currentTarget);
-          $body.on('mousemove.zf.slider', function (e) {
-            e.preventDefault();
+          $body.on('mousemove.zf.slider', function (ev) {
+            ev.preventDefault();
 
-            _this._handleEvent(e, curHandle);
-          }).on('mouseup.zf.slider', function (e) {
-            _this._handleEvent(e, curHandle);
+            _this._handleEvent(ev, curHandle);
+          }).on('mouseup.zf.slider', function (ev) {
+            _this._handleEvent(ev, curHandle);
 
             $handle.removeClass('is-dragging');
 
@@ -10148,10 +10166,10 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           increase: function increase() {
             newValue = oldValue + _this.options.step;
           },
-          decrease_fast: function decrease_fast() {
+          decreaseFast: function decreaseFast() {
             newValue = oldValue - _this.options.step * 10;
           },
-          increase_fast: function increase_fast() {
+          increaseFast: function increaseFast() {
             newValue = oldValue + _this.options.step * 10;
           },
           min: function min() {
@@ -10436,7 +10454,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       this.isStuck = false;
       this.onLoadListener = onLoad($(window), function () {
         //We calculate the container height to have correct values for anchor points offset calculation.
-        _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+        _this.containerHeight = _this.$element.css("display") === "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
 
         _this.$container.css('height', _this.containerHeight);
 
@@ -10471,8 +10489,8 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_parsePoints",
     value: function _parsePoints() {
-      var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
-          btm = this.options.btmAnchor == "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
+      var top = this.options.topAnchor === "" ? 1 : this.options.topAnchor,
+          btm = this.options.btmAnchor === "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
           pts = [top, btm],
           breaks = {};
 
@@ -10515,7 +10533,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
 
       if (this.canStick) {
         this.isOn = true;
-        $(window).off(scrollListener).on(scrollListener, function (e) {
+        $(window).off(scrollListener).on(scrollListener, function () {
           if (_this.scrollCount === 0) {
             _this.scrollCount = _this.options.checkEvery;
 
@@ -10530,15 +10548,15 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
         });
       }
 
-      this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', function (e, el) {
+      this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', function () {
         _this._eventsHandler(id);
       });
-      this.$element.on('mutateme.zf.trigger', function (e, el) {
+      this.$element.on('mutateme.zf.trigger', function () {
         _this._eventsHandler(id);
       });
 
       if (this.$anchor) {
-        this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+        this.$anchor.on('mutateme.zf.trigger', function () {
           _this._eventsHandler(id);
         });
       }
@@ -10679,12 +10697,12 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
           mrgn = stickToTop ? 'marginTop' : 'marginBottom',
           topOrBottom = isTop ? 'top' : 'bottom';
       css[mrgn] = 0;
-      css['bottom'] = 'auto';
+      css.bottom = 'auto';
 
       if (isTop) {
-        css['top'] = 0;
+        css.top = 0;
       } else {
-        css['top'] = anchorPt;
+        css.top = anchorPt;
       }
 
       this.isStuck = false;
@@ -10732,7 +10750,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       if (this.options.dynamicHeight || !this.containerHeight) {
         // Get the sticked element height and apply it to the container to "hold the place"
         var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-        newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+        newContainerHeight = this.$element.css("display") === "none" ? 0 : newContainerHeight;
         this.$container.css('height', newContainerHeight);
         this.containerHeight = newContainerHeight;
       }
@@ -11277,11 +11295,11 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_collapseTab",
     value: function _collapseTab($target) {
-      var $target_anchor = $target.removeClass("".concat(this.options.linkActiveClass)).find('[role="tab"]').attr({
+      var $targetAnchor = $target.removeClass("".concat(this.options.linkActiveClass)).find('[role="tab"]').attr({
         'aria-selected': 'false',
         'tabindex': -1
       });
-      $("#".concat($target_anchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
+      $("#".concat($targetAnchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
         'aria-hidden': 'true'
       });
     }
@@ -11356,7 +11374,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         return;
       }
 
-      this.$tabContent.find(".".concat(this.options.panelClass)).css('height', '').each(function () {
+      this.$tabContent.find(".".concat(this.options.panelClass)).css('min-height', '').each(function () {
         var panel = $(this),
             isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
 
@@ -11377,7 +11395,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         }
 
         max = temp > max ? temp : max;
-      }).css('height', "".concat(max, "px"));
+      }).css('min-height', "".concat(max, "px"));
     }
     /**
      * Destroys an instance of tabs.
@@ -11880,8 +11898,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         'data-is-active': true,
         'aria-hidden': false
       });
-      _this.isActive = true; // console.log(this.template);
-
+      _this.isActive = true;
       this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function () {//maybe do stuff?
       });
       /**
@@ -11900,7 +11917,6 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
   }, {
     key: "hide",
     value: function hide() {
-      // console.log('hiding', this.$element.data('yeti-box'));
       var _this = this;
 
       this.template.stop().attr({
@@ -11929,19 +11945,18 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       var _this = this;
 
       var hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined';
-      var $template = this.template;
       var isFocus = false; // `disableForTouch: Fully disable the tooltip on touch devices
 
       if (hasTouch && this.options.disableForTouch) return;
 
       if (!this.options.disableHover) {
-        this.$element.on('mouseenter.zf.tooltip', function (e) {
+        this.$element.on('mouseenter.zf.tooltip', function () {
           if (!_this.isActive) {
             _this.timeout = setTimeout(function () {
               _this.show();
             }, _this.options.hoverDelay);
           }
-        }).on('mouseleave.zf.tooltip', ignoreMousedisappear(function (e) {
+        }).on('mouseleave.zf.tooltip', ignoreMousedisappear(function () {
           clearTimeout(_this.timeout);
 
           if (!isFocus || _this.isClick && !_this.options.clickOpen) {
@@ -11951,13 +11966,13 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       }
 
       if (hasTouch) {
-        this.$element.on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
+        this.$element.on('tap.zf.tooltip touchend.zf.tooltip', function () {
           _this.isActive ? _this.hide() : _this.show();
         });
       }
 
       if (this.options.clickOpen) {
-        this.$element.on('mousedown.zf.tooltip', function (e) {
+        this.$element.on('mousedown.zf.tooltip', function () {
           if (_this.isClick) ; else {
             _this.isClick = true;
 
@@ -11967,7 +11982,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
           }
         });
       } else {
-        this.$element.on('mousedown.zf.tooltip', function (e) {
+        this.$element.on('mousedown.zf.tooltip', function () {
           _this.isClick = true;
         });
       }
@@ -11977,7 +11992,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         // 'close.zf.trigger': this.hide.bind(this)
         'close.zf.trigger': this.hide.bind(this)
       });
-      this.$element.on('focus.zf.tooltip', function (e) {
+      this.$element.on('focus.zf.tooltip', function () {
         isFocus = true;
 
         if (_this.isClick) {
@@ -11991,7 +12006,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         } else {
           _this.show();
         }
-      }).on('focusout.zf.tooltip', function (e) {
+      }).on('focusout.zf.tooltip', function () {
         isFocus = false;
         _this.isClick = false;
 
@@ -12349,7 +12364,9 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
             }
 
             tmpPlugin.destroy();
-          } catch (e) {}
+          } catch (e) {
+            console.warn("Warning: Problems getting Accordion/Tab options: ".concat(e));
+          }
         }
       }
     }
@@ -12495,7 +12512,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "open",
-    value: function open(_target) {
+    value: function open() {
       if (this.currentRule && typeof this.currentRule.open === 'function') {
         var _this$currentRule;
 
@@ -12511,7 +12528,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "close",
-    value: function close(_target) {
+    value: function close() {
       if (this.currentRule && typeof this.currentRule.close === 'function') {
         var _this$currentRule2;
 
@@ -12527,7 +12544,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "toggle",
-    value: function toggle(_target) {
+    value: function toggle() {
       if (this.currentRule && typeof this.currentRule.toggle === 'function') {
         var _this$currentRule3;
 

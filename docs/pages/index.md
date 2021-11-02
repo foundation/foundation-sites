@@ -19,11 +19,6 @@ There are a number of ways to install Foundation for Sites. Our installation pag
 
 ## New to Foundation for Sites?
 
-<!-- <div class="callout training-callout">
-  <p>The number one way to learn your way around Foundation and start mastering responsive web development is via the training courses offered by the ZURB team.</p>
-  <a class="button" href="https://zurb.com/university/foundation-intro" target="_blank">Check out the next Foundation training →</a>
-</div> -->
-
 With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
 
 <ul class="accordion welcome-accordion" data-accordion data-allow-all-closed="true">
@@ -50,8 +45,8 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
             <img src="https://i3.ytimg.com/vi/3Uj74uJ3GSQ/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="cell medium-8">
-            <h5>Foundation Starter Projects - ZURB Stack</h5>
-            <p>This video will take you through downloading and getting started with the Foundation ZURB stack.</p>
+            <h5>Foundation Starter Projects</h5>
+            <p>This video will take you through downloading and getting started with the Foundation stack.</p>
             <span class="accordion-content-item-cta"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="" height="" width="" alt=""> Watch Video</span>
           </div>
         </div>
@@ -62,7 +57,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Why Foundation</a>
-
     <div class="accordion-content" data-tab-content>
 
       <a target="_blank" href="https://get.foundation/learn/get-your-team-on-a-solid-foundation.html">
@@ -92,21 +86,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
-      <!-- <div class="grid-x grid-margin-x accordion-content-item">
-        <div class="cell medium-4 accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <img src="https://placehold.it/300x300" class="" height="" width="" alt="">
-          </div>
-        </div>
-        <div class="cell medium-8">
-          <h5>Leverage the Power of Design for Your Business</h5>
-          <p>With a robust ecosystem of community integrations, and the new Foundation Building Blocks, Foundation can help bridge the gap between your development team and your designers. Check out our free e-book on how you can use Foundation to leverage the power of design in your business.
-          </p>
-          <a target="_blank" href="#" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div> -->
-
 
     </div>
   </li>
@@ -174,18 +153,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://zurb.com/university/foundation-intro">
-        <div class="grid-x grid-margin-x accordion-content-item accordion-course-callout">
-          <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="{{root}}assets/img/foundation-intro-class.jpg" style="height: 142px;">
-          </div>
-          <div class="cell medium-8">
-            <h5>Live Webinar: Introduction to Foundation 6</h5>
-            <p>Master Foundation ultra fast. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
-            <span href="https://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</span>
-          </div>
-        </div>
-      </a>
     </div>
   </li>
 
@@ -202,19 +169,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Latest Foundation Updates</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="https://zurb.com/blog/foundation-6-4-a-new-grid-javascript-upgrades-and-slick-new-prototyping-mode">
-        <div class="grid-x grid-margin-x accordion-content-item">
-          <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://i3.ytimg.com/vi/vrvt9xMFjIE/maxresdefault.jpg" class="" height="" width="" alt="">
-          </div>
-          <div class="cell medium-8">
-            <h5>Foundation 6.4.0 Update: A New Grid, JavaScript Upgrades, and Slick New Prototyping Mode</h5>
-            <p>Foundation 6.4 has dropped and it is AWESOME. This new release is jampacked with some incredible new features that enable you to build layouts and designs with Foundation that weren’t possible before.</p>
-            <span class="accordion-content-item-cta">Learn More</span>
-          </div>
-        </div>
-      </a>
-
       <a target="_blank" href="https://github.com/foundation/foundation-sites/releases/tag/6.3.1">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -229,24 +183,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       </a>
 
     </div>
-
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Building Blocks</a>
     <div class="accordion-content" data-tab-content>
-
-      <a target="_blank" href="https://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
-        <div class="grid-x grid-margin-x accordion-content-item">
-          <div class="cell medium-4 accordion-content-item-thumbnail">
-            <img src="https://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="">
-          </div>
-          <div class="cell medium-8">
-            <h5>Foundation Building Blocks Accelerate Your Development</h5>
-            <p>Building Blocks are coded UI components you can drop into any standard Foundation project. Building Blocks will help you rapidly accelerate your development time.</p>
-            <span class="accordion-content-item-cta">Learn More</span>
-          </div>
-        </div>
-      </a>
 
       <a target="_blank" href="https://get.foundation/building-blocks/how-to.html">
         <div class="grid-x grid-margin-x accordion-content-item">
@@ -254,7 +194,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
             <img src="https://i3.ytimg.com/vi/adLpmsU9v2g/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="cell medium-8">
-            <h5>How to Use ZURB Foundation's Building Blocks</h5>
+            <h5>How to Use Foundation's Building Blocks</h5>
             <p>The Foundation team has cut your development time in half again with Foundation Building Blocks. In this tutorial we'll show you how to find the right building block and the way to install it that works best for you.</p>
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
@@ -262,7 +202,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       </a>
 
     </div>
-
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Integrations</a>
@@ -318,9 +257,9 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
 
+    </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Showcase</a>
@@ -363,6 +302,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
+
     </div>
   </li>
 </ul>

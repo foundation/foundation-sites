@@ -65,8 +65,6 @@ class ResponsiveToggle extends Plugin {
    * @private
    */
   _events() {
-    var _this = this;
-
     this._updateMqHandler = this._update.bind(this);
 
     $(window).on('changed.zf.mediaquery', this._updateMqHandler);

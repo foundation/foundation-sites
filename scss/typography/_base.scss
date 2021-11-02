@@ -73,7 +73,7 @@ $header-styles: (
 
 // $header-styles map is built from $header-sizes in order to ensure downward compatibility
 // when $header-sizes is depreciated, $header-styles needs to get !default values like settings.scss
-@function build_from_header-sizes($header-sizes) {
+@function build-from-header-sizes($header-sizes) {
   @warn 'Note, that $header-sizes has been replaced with $header-styles. $header-sizes still works, but it is going to be depreciated.';
   $header-styles: ();
   @each $size, $headers in $header-sizes {
@@ -88,7 +88,7 @@ $header-styles: (
 
 // If it exists $headers-sizes is used to build $header-styles. See the documentation.
 @if variable-exists(header-sizes) {
-  $header-styles: build_from_header-sizes($header-sizes);
+  $header-styles: build-from-header-sizes($header-sizes);
 }
 
 /// Text rendering method of headers.
@@ -434,7 +434,7 @@ $abbr-underline: 1px dotted $black !default;
     cite {
       // Extending a class is not recommended.
       // TODO: Break the typography-base/typography-helpers separation
-      @extend .cite-block;
+      @extend %cite-block;
     }
   }
 
@@ -453,7 +453,7 @@ $abbr-underline: 1px dotted $black !default;
   // Code
   @if ($enable-code-inline == true) {
     code {
-      @extend .code-inline;
+      @extend %code-inline;
     }
   }
 

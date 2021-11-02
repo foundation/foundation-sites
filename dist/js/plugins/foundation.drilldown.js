@@ -393,12 +393,12 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
         if (_this.options.closeOnClick) {
           var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
-          $body.off('.zf.drilldown').on('click.zf.drilldown', function (e) {
-            if (e.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], e.target)) {
+          $body.off('.zf.drilldown').on('click.zf.drilldown', function (ev) {
+            if (ev.target === _this.$element[0] || jquery__WEBPACK_IMPORTED_MODULE_0___default.a.contains(_this.$element[0], ev.target)) {
               return;
             }
 
-            e.preventDefault();
+            ev.preventDefault();
 
             _this._hideAll();
 
@@ -434,7 +434,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     value: function _scrollTop() {
       var _this = this;
 
-      var $scrollTopElement = _this.options.scrollTopElement != '' ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this.options.scrollTopElement) : _this.$element,
+      var $scrollTopElement = _this.options.scrollTopElement !== '' ? jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this.options.scrollTopElement) : _this.$element,
           scrollPos = parseInt($scrollTopElement.offset().top + _this.options.scrollTopOffset, 10);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').stop(true).animate({
         scrollTop: scrollPos
@@ -590,8 +590,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       var _this = this;
 
       $elem.off('click.zf.drilldown');
-      $elem.children('.js-drilldown-back').on('click.zf.drilldown', function (e) {
-        // console.log('mouseup on back');
+      $elem.children('.js-drilldown-back').on('click.zf.drilldown', function () {
         _this._hide($elem); // If there is a parent submenu, call show
 
 
@@ -615,7 +614,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     value: function _menuLinkEvents() {
       var _this = this;
 
-      this.$menuItems.not('.is-drilldown-submenu-parent').off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
+      this.$menuItems.not('.is-drilldown-submenu-parent').off('click.zf.drilldown').on('click.zf.drilldown', function () {
         setTimeout(function () {
           _this._hideAll();
         }, 0);
@@ -673,7 +672,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
 
       var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
-      $expandedSubmenus.each(function (index) {
+      $expandedSubmenus.each(function () {
         _this._setHideSubMenuClasses(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
       }); // Save the menu as the currently displayed one.
 
@@ -694,7 +693,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
           _this.$wrapper.css('height', jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('calcHeight'));
         }
 
-        var isLastChild = index == $submenus.length - 1; // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
+        var isLastChild = index === $submenus.length - 1; // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
         // Last child makes sure the event gets always triggered even if going through several menus
 
         if (isLastChild === true) {
@@ -753,9 +752,6 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       if (this.options.autoHeight) this.$wrapper.css({
         height: $elem.parent().closest('ul').data('calcHeight')
       });
-
-      var _this = this;
-
       $elem.parent().closest('ul').removeClass('invisible');
       $elem.parent('li').attr('aria-expanded', false);
       $elem.attr('aria-hidden', true);
@@ -786,7 +782,6 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
 
       this.$submenus.add(this.$element).each(function () {
-        var numOfElems = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).children('li').length;
         var height = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__["Box"].GetDimensions(this).height;
         maxHeight = height > maxHeight ? height : maxHeight;
 
@@ -794,7 +789,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
           jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('calcHeight', height);
         }
       });
-      if (this.options.autoHeight) result['height'] = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
+      if (this.options.autoHeight) result.height = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
       result['max-width'] = "".concat(this.$element[0].getBoundingClientRect().width, "px");
       return result;
     }

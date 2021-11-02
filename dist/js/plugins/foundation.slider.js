@@ -247,7 +247,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       this.$element = element;
       this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Slider.defaults, this.$element.data(), options);
       this.className = 'Slider'; // ie9 back compat
-      // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
+
+      this.initialized = false; // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
 
       _foundation_util_touch__WEBPACK_IMPORTED_MODULE_4__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
       _foundation_util_triggers__WEBPACK_IMPORTED_MODULE_5__["Triggers"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
@@ -260,18 +261,18 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           'ARROW_UP': 'increase',
           'ARROW_DOWN': 'decrease',
           'ARROW_LEFT': 'decrease',
-          'SHIFT_ARROW_RIGHT': 'increase_fast',
-          'SHIFT_ARROW_UP': 'increase_fast',
-          'SHIFT_ARROW_DOWN': 'decrease_fast',
-          'SHIFT_ARROW_LEFT': 'decrease_fast',
+          'SHIFT_ARROW_RIGHT': 'increaseFast',
+          'SHIFT_ARROW_UP': 'increaseFast',
+          'SHIFT_ARROW_DOWN': 'decreaseFast',
+          'SHIFT_ARROW_LEFT': 'decreaseFast',
           'HOME': 'min',
           'END': 'max'
         },
         'rtl': {
           'ARROW_LEFT': 'increase',
           'ARROW_RIGHT': 'decrease',
-          'SHIFT_ARROW_LEFT': 'increase_fast',
-          'SHIFT_ARROW_RIGHT': 'decrease_fast'
+          'SHIFT_ARROW_LEFT': 'increaseFast',
+          'SHIFT_ARROW_RIGHT': 'decreaseFast'
         }
       });
     }
@@ -289,8 +290,6 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       this.$handle = this.handles.eq(0);
       this.$input = this.inputs.length ? this.inputs.eq(0) : jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(this.$handle.attr('aria-controls')));
       this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
-
-      var _this = this;
 
       if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
         this.options.disabled = true;
@@ -321,6 +320,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       this.setHandles();
 
       this._events();
+
+      this.initialized = true;
     }
   }, {
     key: "setHandles",
@@ -484,7 +485,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
             //empty variable, will be used for min-height/width for fill bar
         dim,
             //percentage w/h of the handle compared to the slider bar
-        handlePct = ~~(percent(handleDim, elemDim) * 100); //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
+        handlePct = Math.floor(percent(handleDim, elemDim) * 100); //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
 
         if (isLeftHndl) {
           //left or top percentage value to apply to the fill bar.
@@ -507,15 +508,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
 
 
         css["min-".concat(hOrW)] = "".concat(dim, "%");
-      }
+      } //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
 
-      this.$element.one('finished.zf.animate', function () {
-        /**
-         * Fires when the handle is done moving.
-         * @event Slider#moved
-         */
-        _this.$element.trigger('moved.zf.slider', [$hndl]);
-      }); //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
 
       var moveTime = this.$element.data('dragging') ? 1000 / 60 : this.options.moveTime;
       Object(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Move"])(moveTime, $hndl, function () {
@@ -536,15 +530,25 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           _this.$fill.css(css);
         }
       });
-      /**
-       * Fires when the value has not been change for a given time.
-       * @event Slider#changed
-       */
 
-      clearTimeout(_this.timeout);
-      _this.timeout = setTimeout(function () {
-        _this.$element.trigger('changed.zf.slider', [$hndl]);
-      }, _this.options.changedDelay);
+      if (this.initialized) {
+        this.$element.one('finished.zf.animate', function () {
+          /**
+           * Fires when the handle is done moving.
+           * @event Slider#moved
+           */
+          _this.$element.trigger('moved.zf.slider', [$hndl]);
+        });
+        /**
+         * Fires when the value has not been change for a given time.
+         * @event Slider#changed
+         */
+
+        clearTimeout(_this.timeout);
+        _this.timeout = setTimeout(function () {
+          _this.$element.trigger('changed.zf.slider', [$hndl]);
+        }, _this.options.changedDelay);
+      }
     }
     /**
      * Sets the initial attribute for the slider element.
@@ -605,7 +609,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_handleEvent",
     value: function _handleEvent(e, $handle, val) {
-      var value, hasVal;
+      var value;
 
       if (!val) {
         //click or drag events
@@ -644,9 +648,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           value = this.options.end - value;
         }
 
-        value = _this._adjustValue(null, value); //boolean flag for the setHandlePos fn, specifically for vertical sliders
-
-        hasVal = false;
+        value = _this._adjustValue(null, value);
 
         if (!$handle) {
           //figure out which handle it is, pass it to the next function.
@@ -657,7 +659,6 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       } else {
         //change event on input
         value = this._adjustValue(null, val);
-        hasVal = true;
       }
 
       this._setHandlePos($handle, value);
@@ -677,8 +678,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           step = this.options.step,
           div = parseFloat(step / 2),
           left,
-          prev_val,
-          next_val;
+          previousVal,
+          nextVal;
 
       if (!!$handle) {
         val = parseFloat($handle.attr('aria-valuenow'));
@@ -692,14 +693,14 @@ var Slider = /*#__PURE__*/function (_Plugin) {
         left = step + val % step;
       }
 
-      prev_val = val - left;
-      next_val = prev_val + step;
+      previousVal = val - left;
+      nextVal = previousVal + step;
 
       if (left === 0) {
         return val;
       }
 
-      val = val >= prev_val + div ? next_val : prev_val;
+      val = val >= previousVal + div ? nextVal : previousVal;
       return val;
     }
     /**
@@ -740,7 +741,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
 
 
       this.inputs.off('keyup.zf.slider').on('keyup.zf.slider', function (e) {
-        if (e.keyCode == 13) handleChangeEvent.call(this, e);
+        if (e.keyCode === 13) handleChangeEvent.call(this, e);
       });
       this.inputs.off('change.zf.slider').on('change.zf.slider', handleChangeEvent);
 
@@ -772,12 +773,12 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           _this.$element.data('dragging', true);
 
           curHandle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.currentTarget);
-          $body.on('mousemove.zf.slider', function (e) {
-            e.preventDefault();
+          $body.on('mousemove.zf.slider', function (ev) {
+            ev.preventDefault();
 
-            _this._handleEvent(e, curHandle);
-          }).on('mouseup.zf.slider', function (e) {
-            _this._handleEvent(e, curHandle);
+            _this._handleEvent(ev, curHandle);
+          }).on('mouseup.zf.slider', function (ev) {
+            _this._handleEvent(ev, curHandle);
 
             $handle.removeClass('is-dragging');
 
@@ -807,10 +808,10 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           increase: function increase() {
             newValue = oldValue + _this.options.step;
           },
-          decrease_fast: function decrease_fast() {
+          decreaseFast: function decreaseFast() {
             newValue = oldValue - _this.options.step * 10;
           },
-          increase_fast: function increase_fast() {
+          increaseFast: function increaseFast() {
             newValue = oldValue + _this.options.step * 10;
           },
           min: function min() {
@@ -1200,7 +1201,7 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on(trigger, function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -1292,17 +1293,17 @@ Triggers.Initializers.addSimpleListeners = function () {
 Triggers.Initializers.addGlobalListeners = function () {
   var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
-  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 
-Triggers.init = function ($, Foundation) {
-  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
-    if ($.triggersInitialized !== true) {
+Triggers.init = function (__, Foundation) {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-      $.triggersInitialized = true;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized = true;
     }
   });
 

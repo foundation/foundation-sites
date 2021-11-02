@@ -273,7 +273,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       this.isStuck = false;
       this.onLoadListener = Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
         //We calculate the container height to have correct values for anchor points offset calculation.
-        _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+        _this.containerHeight = _this.$element.css("display") === "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
 
         _this.$container.css('height', _this.containerHeight);
 
@@ -308,8 +308,8 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_parsePoints",
     value: function _parsePoints() {
-      var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
-          btm = this.options.btmAnchor == "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
+      var top = this.options.topAnchor === "" ? 1 : this.options.topAnchor,
+          btm = this.options.btmAnchor === "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
           pts = [top, btm],
           breaks = {};
 
@@ -352,7 +352,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
 
       if (this.canStick) {
         this.isOn = true;
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(scrollListener).on(scrollListener, function (e) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(scrollListener).on(scrollListener, function () {
           if (_this.scrollCount === 0) {
             _this.scrollCount = _this.options.checkEvery;
 
@@ -367,15 +367,15 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
         });
       }
 
-      this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', function (e, el) {
+      this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', function () {
         _this._eventsHandler(id);
       });
-      this.$element.on('mutateme.zf.trigger', function (e, el) {
+      this.$element.on('mutateme.zf.trigger', function () {
         _this._eventsHandler(id);
       });
 
       if (this.$anchor) {
-        this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+        this.$anchor.on('mutateme.zf.trigger', function () {
           _this._eventsHandler(id);
         });
       }
@@ -516,12 +516,12 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
           mrgn = stickToTop ? 'marginTop' : 'marginBottom',
           topOrBottom = isTop ? 'top' : 'bottom';
       css[mrgn] = 0;
-      css['bottom'] = 'auto';
+      css.bottom = 'auto';
 
       if (isTop) {
-        css['top'] = 0;
+        css.top = 0;
       } else {
-        css['top'] = anchorPt;
+        css.top = anchorPt;
       }
 
       this.isStuck = false;
@@ -551,8 +551,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
         }
       }
 
-      var _this = this,
-          newElemWidth = this.$container[0].getBoundingClientRect().width,
+      var newElemWidth = this.$container[0].getBoundingClientRect().width,
           comp = window.getComputedStyle(this.$container[0]),
           pdngl = parseInt(comp['padding-left'], 10),
           pdngr = parseInt(comp['padding-right'], 10);
@@ -570,7 +569,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       if (this.options.dynamicHeight || !this.containerHeight) {
         // Get the sticked element height and apply it to the container to "hold the place"
         var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
-        newContainerHeight = this.$element.css("display") == "none" ? 0 : newContainerHeight;
+        newContainerHeight = this.$element.css("display") === "none" ? 0 : newContainerHeight;
         this.$container.css('height', newContainerHeight);
         this.containerHeight = newContainerHeight;
       }
@@ -959,7 +958,7 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on(trigger, function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -1051,17 +1050,17 @@ Triggers.Initializers.addSimpleListeners = function () {
 Triggers.Initializers.addGlobalListeners = function () {
   var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
-  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 
-Triggers.init = function ($, Foundation) {
-  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
-    if ($.triggersInitialized !== true) {
+Triggers.init = function (__, Foundation) {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-      $.triggersInitialized = true;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized = true;
     }
   });
 

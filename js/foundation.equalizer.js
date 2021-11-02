@@ -84,7 +84,7 @@ class Equalizer extends Plugin {
    * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
    * @private
    */
-  _onResizeMe(e) {
+  _onResizeMe() {
     this._reflow();
   }
 
@@ -101,7 +101,6 @@ class Equalizer extends Plugin {
    * @private
    */
   _events() {
-    var _this = this;
     this._pauseEvents();
     if(this.hasNested){
       this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
@@ -197,7 +196,7 @@ class Equalizer extends Plugin {
       this.$watched[i].style.height = 'auto';
       //maybe could use this.$watched[i].offsetTop
       var elOffsetTop = $(this.$watched[i]).offset().top;
-      if (elOffsetTop!=lastElTopOffset) {
+      if (elOffsetTop !== lastElTopOffset) {
         group++;
         groups[group] = [];
         lastElTopOffset=elOffsetTop;

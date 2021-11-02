@@ -1,4 +1,4 @@
-@function -zf-flex-justify($text-direction){
+@function -zf-flex-justify($text-direction) {
   $-zf-flex-justify: (
     'left': if($text-direction == rtl, flex-end, flex-start),
     'right': if($text-direction == rtl, flex-start, flex-end),

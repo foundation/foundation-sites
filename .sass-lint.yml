@@ -19,8 +19,9 @@ rules:
     - 1
     - convention: '0'
 
+  # Turning this off since it break if/else statements
   brace-style:
-    - 1
+    - 0
     - style: stroustrup
     - allow-single-line: true
 
@@ -34,7 +35,7 @@ rules:
       leading-underscore: false
 
   empty-line-between-blocks:
-    - 1
+    - 0
     - ignore-single-line-rulesets: true
 
   extends-before-declarations: 1
@@ -113,8 +114,8 @@ rules:
 
   no-qualifying-elements:
     - 1
-    - allow-element-with-attribute: false
-      allow-element-with-class: false
+    - allow-element-with-attribute: true
+      allow-element-with-class: true
       allow-element-with-id: false
 
   no-trailing-zero: 1
@@ -131,8 +132,9 @@ rules:
     - 1
     - convention: '([a-z0-9]+-?)+'
 
+  # Disabling this for now. Remembering some arbitrary custom sort order is not sustainable
   property-sort-order:
-    - 1
+    - 0
     -
       ignore-custom-properties: true
       order:
@@ -362,7 +364,7 @@ rules:
         - 'speak'
 
   quotes:
-    - 1
+    - 0
     - style: single
 
   shorthand-values: 1

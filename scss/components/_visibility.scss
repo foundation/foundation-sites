@@ -9,7 +9,7 @@
   // Max value is 0.2px under the next breakpoint (0.02 / 16 = 0.00125).
   // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
   // See https://github.com/foundation/foundation-sites/issues/11313
-  $size: -zf-bp-to-em($size) - .00125;
+  $size: -zf-bp-to-em($size) - 0.00125;
 
   @include breakpoint($size down) {
     display: none !important;
@@ -23,7 +23,7 @@
   $upper-bound-size: -zf-map-next($breakpoints, $size);
 
   // more often than not this will be correct, just one time round the loop it won't so set in scope here
-  $lower-bound: -zf-bp-to-em($lower-bound-size) - .00125;
+  $lower-bound: -zf-bp-to-em($lower-bound-size) - 0.00125;
   // test actual lower-bound-size, if 0 set it to 0em
   @if strip-unit($lower-bound-size) == 0 {
     $lower-bound: -zf-bp-to-em($lower-bound-size);
@@ -134,5 +134,45 @@
     @include breakpoint(portrait) {
       display: block !important;
     }
+  }
+
+  // Dark Mode Visibility
+  .show-for-dark-mode {
+    display: none;
+  }
+  .hide-for-dark-mode {
+    display: block;
+  }
+  @media screen and (prefers-color-scheme: dark) {
+    .show-for-dark-mode {
+      display: block !important;
+    }
+    .hide-for-dark-mode {
+      display: none !important;
+    }
+  }
+
+  // IE10+ Visibility
+  .show-for-ie {
+    display: none;
+  }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .show-for-ie {
+      display: block !important;
+    }
+    .hide-for-ie {
+      display: none !important;
+    }
+  }
+
+  // Sticky Visibility
+  .show-for-sticky {
+    display: none;
+  }
+  .is-stuck .show-for-sticky {
+    display: block;
+  }
+  .is-stuck .hide-for-sticky {
+    display: none;
   }
 }

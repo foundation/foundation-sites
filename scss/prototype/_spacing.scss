@@ -68,23 +68,23 @@ $prototype-spacers-count: 3 !default;
 /// @param {String} $dir [] Direction
 /// @param {Number} $spacer [] Spacer
 @mixin margin-direction($dir, $spacer) {
-  @if ($dir == top) { 
-    @include margin($top: $spacer); 
+  @if ($dir == top) {
+    @include margin($top: $spacer);
   }
-  @else if ($dir == right) { 
-    @include margin($right: $spacer); 
+  @else if ($dir == right) {
+    @include margin($right: $spacer);
   }
-  @else if ($dir == bottom) { 
-    @include margin($bottom: $spacer); 
+  @else if ($dir == bottom) {
+    @include margin($bottom: $spacer);
   }
-  @else if ($dir == left) { 
-    @include margin($left: $spacer); 
+  @else if ($dir == left) {
+    @include margin($left: $spacer);
   }
-  @else if ($dir == horizontal) { 
-    @include margin($right: $spacer, $left: $spacer); 
+  @else if ($dir == horizontal) {
+    @include margin($right: $spacer, $left: $spacer);
   }
-  @else if ($dir == vertical) { 
-    @include margin($top: $spacer, $bottom: $spacer); 
+  @else if ($dir == vertical) {
+    @include margin($top: $spacer, $bottom: $spacer);
   }
 }
 
@@ -92,36 +92,36 @@ $prototype-spacers-count: 3 !default;
 /// @param {String} $dir [] Direction
 /// @param {Number} $spacer [] Spacer
 @mixin padding-direction($dir, $spacer) {
-  @if ($dir == top) { 
-    @include padding($top: $spacer); 
+  @if ($dir == top) {
+    @include padding($top: $spacer);
   }
-  @else if ($dir == right) { 
-    @include padding($right: $spacer); 
+  @else if ($dir == right) {
+    @include padding($right: $spacer);
   }
-  @else if ($dir == bottom) { 
-    @include padding($bottom: $spacer); 
+  @else if ($dir == bottom) {
+    @include padding($bottom: $spacer);
   }
-  @else if ($dir == left) { 
-    @include padding($left: $spacer); 
+  @else if ($dir == left) {
+    @include padding($left: $spacer);
   }
-  @else if ($dir == horizontal) { 
-    @include padding($right: $spacer, $left: $spacer); 
+  @else if ($dir == horizontal) {
+    @include padding($right: $spacer, $left: $spacer);
   }
-  @else if ($dir == vertical) { 
-    @include padding($top: $spacer, $bottom: $spacer); 
+  @else if ($dir == vertical) {
+    @include padding($top: $spacer, $bottom: $spacer);
   }
 }
 
 @mixin foundation-prototype-spacing {
   @for $spacer from 0 through $prototype-spacers-count {
-    
+
     @each $prop in (margin, padding) {
       // All Sides
       .#{$prop}-#{$spacer} {
-        @if ($prop == margin) { 
+        @if ($prop == margin) {
           margin: $spacer * $global-margin !important;
         }
-        @else if ($prop == padding) { 
+        @else if ($prop == padding) {
           padding: $spacer * $global-padding !important;
         }
       }
@@ -129,7 +129,7 @@ $prototype-spacers-count: 3 !default;
       @each $dir in (top, right, bottom, left, horizontal, vertical) {
         // Top Side
         .#{$prop}-#{$dir}-#{$spacer} {
-          @if ($prop == margin) { 
+          @if ($prop == margin) {
             @include margin-direction($dir, $spacer);
           }
           @else if ($prop == padding) {
@@ -142,7 +142,7 @@ $prototype-spacers-count: 3 !default;
 
   @if ($prototype-spacing-breakpoints) {
     @for $spacer from 0 through $prototype-spacers-count {
-    // Loop through Responsive Breakpoints
+      // Loop through Responsive Breakpoints
       @each $size in $breakpoint-classes {
         @include breakpoint($size) {
           @if $size != $-zf-zero-breakpoint {
@@ -150,10 +150,10 @@ $prototype-spacers-count: 3 !default;
               @each $prop in (margin, padding) {
                 // All Sides
                 &-#{$prop}-#{$spacer} {
-                  @if ($prop == margin) { 
+                  @if ($prop == margin) {
                     margin: $spacer * $global-margin !important;
                   }
-                  @else if ($prop == padding) { 
+                  @else if ($prop == padding) {
                     padding: $spacer * $global-padding !important;
                   }
                 }
@@ -161,10 +161,10 @@ $prototype-spacers-count: 3 !default;
                 @each $dir in (top, right, bottom, left, horizontal, vertical) {
                   // Top Side
                   &-#{$prop}-#{$dir}-#{$spacer} {
-                    @if ($prop == margin) { 
+                    @if ($prop == margin) {
                       @include margin-direction($dir, $spacer);
                     }
-                    @else if ($prop == padding) { 
+                    @else if ($prop == padding) {
                       @include padding-direction($dir, $spacer);
                     }
                   }

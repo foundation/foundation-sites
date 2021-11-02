@@ -105,7 +105,7 @@ class AccordionMenu extends Plugin {
 
       if ($submenu.length) {
         if (_this.options.submenuToggle) {
-          $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
+          $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function() {
             _this.toggle($submenu);
           });
         } else {

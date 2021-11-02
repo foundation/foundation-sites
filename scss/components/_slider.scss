@@ -54,6 +54,7 @@ $slider-transition: all 0.2s ease-in-out !default;
   @include vertical-center;
   left: 0;
   z-index: 1;
+  cursor: grab;
 
   display: inline-block;
   width: $slider-handle-width;
@@ -70,6 +71,7 @@ $slider-transition: all 0.2s ease-in-out !default;
 
   &.is-dragging {
     transition: all 0s linear;
+    cursor: grabbing;
   }
 }
 

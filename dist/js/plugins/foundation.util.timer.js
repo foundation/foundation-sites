@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.core"), require("jquery"));
+		module.exports = factory(require("./foundation.core"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.core", "jquery"], factory);
+		define(["./foundation.core"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.util.timer"] = factory(require("./foundation.core"), require("jquery"));
+		exports["foundation.util.timer"] = factory(require("./foundation.core"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.timer"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.timer"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -140,10 +140,6 @@ _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].Timer = _foundation_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Timer", function() { return Timer; });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-
-
 function Timer(elem, options, cb) {
   var _this = this,
       duration = options.duration,
@@ -205,17 +201,6 @@ function Timer(elem, options, cb) {
 
 module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.util.timer.js */"./js/entries/plugins/foundation.util.timer.js");
 
-
-/***/ }),
-
-/***/ "jquery":
-/*!********************************************************************************************!*\
-  !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
 
 /***/ })
 

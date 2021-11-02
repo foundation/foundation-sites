@@ -7,12 +7,12 @@
 ////
 
 $-zf-font-stack: (
-  'georgia': (Georgia, "URW Bookman L", serif),
-  'helvetica': (Helvetica, Arial, "Nimbus Sans L", sans-serif),
-  'lucida-grande': ("Lucida Grande", "Lucida Sans Unicode", "Bitstream Vera Sans", sans-serif),
-  'monospace': ("Courier New", Courier, "Nimbus Sans L", monospace),
-  'system': (-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif),
-  'verdana': (Verdana, Geneva, "DejaVu Sans", sans-serif),
+  'georgia': (Georgia, 'URW Bookman L', serif),
+  'helvetica': (Helvetica, Arial, 'Nimbus Sans L', sans-serif),
+  'lucida-grande': ('Lucida Grande', 'Lucida Sans Unicode', 'Bitstream Vera Sans', sans-serif),
+  'monospace': ('Courier New', Courier, 'Nimbus Sans L', monospace),
+  'system': (-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif),
+  'verdana': (Verdana, Geneva, 'DejaVu Sans', sans-serif),
 );
 
 /// Return a font stack list from a map. Equivalent to `map-safe-get($name, $-zf-font-stack)`.

@@ -275,8 +275,6 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_events",
     value: function _events() {
-      var _this = this;
-
       this._updateMqHandler = this._update.bind(this);
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._updateMqHandler);
       this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
@@ -309,7 +307,7 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "toggleMenu",
     value: function toggleMenu() {
-      var _this2 = this;
+      var _this = this;
 
       if (!_foundation_util_mediaQuery__WEBPACK_IMPORTED_MODULE_1__["MediaQuery"].atLeast(this.options.hideFor)) {
         /**
@@ -319,13 +317,13 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
         if (this.options.animate) {
           if (this.$targetMenu.is(':hidden')) {
             _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateIn(this.$targetMenu, this.animationIn, function () {
-              _this2.$element.trigger('toggled.zf.responsiveToggle');
+              _this.$element.trigger('toggled.zf.responsiveToggle');
 
-              _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
+              _this.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
             });
           } else {
             _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__["Motion"].animateOut(this.$targetMenu, this.animationOut, function () {
-              _this2.$element.trigger('toggled.zf.responsiveToggle');
+              _this.$element.trigger('toggled.zf.responsiveToggle');
             });
           }
         } else {

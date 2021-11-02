@@ -15,6 +15,13 @@ Make sure you wrap your content in a `.card-section` element in order to achieve
 
 A card container has no padding, allowing you to place full-bleed images inside. Use the `.card-divider` and `.card-section` classes to sub-divide a card.
 
+<div class="callout primary">
+
+The `.card` and `.card-divider` elements are flexbox containers. This allows you to use [Flexbox Utilities](flexbox-utilities.html) to create more flexible layouts.
+
+</div>
+
+
 <p>
   <a class="" data-open-video="0:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>

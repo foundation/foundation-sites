@@ -91,7 +91,7 @@ describe('Slider', function() {
 
       let timesCallbackCalled = 0;
       $html.on('moved.zf.slider', function(e, $handle) {
-        if (++timesCallbackCalled === 5) {
+        if (++timesCallbackCalled === 4) {
           $handle[0].should.be.equal(plugin.$handle[0]);
           done();
         }

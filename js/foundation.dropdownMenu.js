@@ -130,7 +130,7 @@ class DropdownMenu extends Plugin {
 
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownMenu', function(e) {
+      this.$menuItems.on('click.zf.dropdownMenu', function() {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){
@@ -142,7 +142,7 @@ class DropdownMenu extends Plugin {
     if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
     if (!this.options.disableHover) {
-      this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
+      this.$menuItems.on('mouseenter.zf.dropdownMenu', function () {
         var $elem = $(this),
           hasSub = $elem.hasClass(parClass);
 
@@ -152,7 +152,7 @@ class DropdownMenu extends Plugin {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay));
         }
-      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function (e) {
+      }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function () {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
@@ -340,7 +340,7 @@ class DropdownMenu extends Plugin {
     if ($elem && $elem.length) {
       $toClose = $elem;
     } else if (typeof idx !== 'undefined') {
-      $toClose = this.$tabs.not(function(i, el) {
+      $toClose = this.$tabs.not(function(i) {
         return i === idx;
       });
     }

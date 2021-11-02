@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { GetYoDigits } from './foundation.core.utils';
 import { MediaQuery } from './foundation.util.mediaQuery';
 
-var FOUNDATION_VERSION = '6.7.3';
+var FOUNDATION_VERSION = '6.7.4';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -78,7 +78,9 @@ var Foundation = {
            */
           .trigger(`destroyed.zf.${pluginName}`);
     for(var prop in plugin){
-      plugin[prop] = null;//clean up script to prep for garbage collection.
+      if(typeof plugin[prop] === 'function'){
+        plugin[prop] = null; //clean up script to prep for garbage collection.
+      }
     }
     return;
   },
@@ -111,7 +113,7 @@ var Foundation = {
              $('[data-'+ plugins +']').foundation('_init');
            },
            'undefined': function(){
-             this['object'](Object.keys(_this._plugins));
+             this.object(Object.keys(_this._plugins));
            }
          };
          fns[type](plugins);
@@ -157,7 +159,7 @@ var Foundation = {
             opts = { reflow: true };
 
         if($el.attr('data-options')){
-          $el.attr('data-options').split(';').forEach(function(option, _index){
+          $el.attr('data-options').split(';').forEach(function(option){
             var opt = option.split(':').map(function(el){ return el.trim(); });
             if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
@@ -174,7 +176,7 @@ var Foundation = {
   },
   getFnName: functionName,
 
-  addToJquery: function($) {
+  addToJquery: function() {
     // TODO: consider not making this a jQuery function
     // TODO: need way to reflow vs. re-initialize
     /**
@@ -277,6 +279,7 @@ window.Foundation = Foundation;
   }
 })();
 if (!Function.prototype.bind) {
+  /* eslint-disable no-extend-native */
   Function.prototype.bind = function(oThis) {
     if (typeof this !== 'function') {
       // closest thing possible to the ECMAScript 5

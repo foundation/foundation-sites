@@ -368,7 +368,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
 
 
       if (_this.options.closeOnClickInside) {
-        this.$menuItems.on('click.zf.dropdownMenu', function (e) {
+        this.$menuItems.on('click.zf.dropdownMenu', function () {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -381,7 +381,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
 
       if (!this.options.disableHover) {
-        this.$menuItems.on('mouseenter.zf.dropdownMenu', function (e) {
+        this.$menuItems.on('mouseenter.zf.dropdownMenu', function () {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -391,7 +391,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownMenu', Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function (e) {
+        }).on('mouseleave.zf.dropdownMenu', Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function () {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
               hasSub = $elem.hasClass(parClass);
 
@@ -627,7 +627,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       if ($elem && $elem.length) {
         $toClose = $elem;
       } else if (typeof idx !== 'undefined') {
-        $toClose = this.$tabs.not(function (i, el) {
+        $toClose = this.$tabs.not(function (i) {
           return i === idx;
         });
       } else {

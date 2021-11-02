@@ -13,7 +13,7 @@
 /// @returns {List} The cell flex property value.
 @function xy-cell-base($size: full) {
   @if ($size == 'auto') {
-    @return 1 1 0px;
+    @return 1 1 0;
   }
   @else if ($size == 'grow') {
     @return 1 0 auto;
@@ -123,8 +123,8 @@
 
   // Set base styles for "full" only
   @if($size == 'full') {
-    min-height: 0px;
-    min-width: 0px;
+    min-height: 0;
+    min-width: 0;
   }
 }
 

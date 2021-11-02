@@ -1,17 +1,17 @@
 import $ from 'jquery';
 
 // Default set of media queries
-const defaultQueries = {
-  'default' : 'only screen',
-  landscape : 'only screen and (orientation: landscape)',
-  portrait : 'only screen and (orientation: portrait)',
-  retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
-    'only screen and (min--moz-device-pixel-ratio: 2),' +
-    'only screen and (-o-min-device-pixel-ratio: 2/1),' +
-    'only screen and (min-device-pixel-ratio: 2),' +
-    'only screen and (min-resolution: 192dpi),' +
-    'only screen and (min-resolution: 2dppx)'
-  };
+// const defaultQueries = {
+//   'default' : 'only screen',
+//   landscape : 'only screen and (orientation: landscape)',
+//   portrait : 'only screen and (orientation: portrait)',
+//   retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+//     'only screen and (min--moz-device-pixel-ratio: 2),' +
+//     'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+//     'only screen and (min-device-pixel-ratio: 2),' +
+//     'only screen and (min-resolution: 192dpi),' +
+//     'only screen and (min-resolution: 2dppx)'
+//   };
 
 
 // matchMedia() polyfill - Test a CSS media type/query in JS.
@@ -81,7 +81,7 @@ var MediaQuery = {
 
     // make sure the initialization is only done once when calling _init() several times
     if (this.isInitialized === true) {
-      return;
+      return this;
     } else {
       this.isInitialized = true;
     }
@@ -280,7 +280,7 @@ var MediaQuery = {
    * @private
    */
   _watcher() {
-    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
+    $(window).on('resize.zf.trigger', () => {
       var newSize = this._getCurrentSize(), currentSize = this.current;
 
       if (newSize !== currentSize) {

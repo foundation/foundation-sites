@@ -120,6 +120,7 @@ class ResponsiveAccordionTabs extends Plugin{
           tmpPlugin.destroy();
         }
         catch(e) {
+          console.warn(`Warning: Problems getting Accordion/Tab options: ${e}`);
         }
       }
     }
@@ -245,7 +246,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Tabs.selectTab
    * @function
    */
-  open(_target) {
+  open() {
     if (this.currentRule && typeof this.currentRule.open === 'function') {
       return this.currentRule.open(this.currentPlugin, ...arguments);
     }
@@ -257,7 +258,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.up
    * @function
    */
-  close(_target) {
+  close() {
     if (this.currentRule && typeof this.currentRule.close === 'function') {
       return this.currentRule.close(this.currentPlugin, ...arguments);
     }
@@ -269,7 +270,7 @@ class ResponsiveAccordionTabs extends Plugin{
    * @see Accordion.toggle
    * @function
    */
-  toggle(_target) {
+  toggle() {
     if (this.currentRule && typeof this.currentRule.toggle === 'function') {
       return this.currentRule.toggle(this.currentPlugin, ...arguments);
     }

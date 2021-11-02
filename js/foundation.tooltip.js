@@ -153,7 +153,6 @@ class Tooltip extends Positionable {
       'aria-hidden': false
     });
     _this.isActive = true;
-    // console.log(this.template);
     this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function() {
       //maybe do stuff?
     });
@@ -170,7 +169,6 @@ class Tooltip extends Positionable {
    * @function
    */
   hide() {
-    // console.log('hiding', this.$element.data('yeti-box'));
     var _this = this;
     this.template.stop().attr({
       'aria-hidden': true,
@@ -194,7 +192,6 @@ class Tooltip extends Positionable {
   _events() {
     const _this = this;
     const hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined');
-    const $template = this.template;
     var isFocus = false;
 
     // `disableForTouch: Fully disable the tooltip on touch devices
@@ -202,14 +199,14 @@ class Tooltip extends Positionable {
 
     if (!this.options.disableHover) {
       this.$element
-      .on('mouseenter.zf.tooltip', function(e) {
+      .on('mouseenter.zf.tooltip', function() {
         if (!_this.isActive) {
           _this.timeout = setTimeout(function() {
             _this.show();
           }, _this.options.hoverDelay);
         }
       })
-      .on('mouseleave.zf.tooltip', ignoreMousedisappear(function(e) {
+      .on('mouseleave.zf.tooltip', ignoreMousedisappear(function() {
         clearTimeout(_this.timeout);
         if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
@@ -219,13 +216,13 @@ class Tooltip extends Positionable {
 
     if (hasTouch) {
       this.$element
-      .on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
+      .on('tap.zf.tooltip touchend.zf.tooltip', function () {
         _this.isActive ? _this.hide() : _this.show();
       });
     }
 
     if (this.options.clickOpen) {
-      this.$element.on('mousedown.zf.tooltip', function(e) {
+      this.$element.on('mousedown.zf.tooltip', function() {
         if (_this.isClick) {
           //_this.hide();
           // _this.isClick = false;
@@ -237,7 +234,7 @@ class Tooltip extends Positionable {
         }
       });
     } else {
-      this.$element.on('mousedown.zf.tooltip', function(e) {
+      this.$element.on('mousedown.zf.tooltip', function() {
         _this.isClick = true;
       });
     }
@@ -249,7 +246,7 @@ class Tooltip extends Positionable {
     });
 
     this.$element
-      .on('focus.zf.tooltip', function(e) {
+      .on('focus.zf.tooltip', function() {
         isFocus = true;
         if (_this.isClick) {
           // If we're not showing open on clicks, we need to pretend a click-launched focus isn't
@@ -261,7 +258,7 @@ class Tooltip extends Positionable {
         }
       })
 
-      .on('focusout.zf.tooltip', function(e) {
+      .on('focusout.zf.tooltip', function() {
         isFocus = false;
         _this.isClick = false;
         _this.hide();

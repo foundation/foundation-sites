@@ -351,7 +351,9 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
             }
 
             tmpPlugin.destroy();
-          } catch (e) {}
+          } catch (e) {
+            console.warn("Warning: Problems getting Accordion/Tab options: ".concat(e));
+          }
         }
       }
     }
@@ -499,7 +501,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "open",
-    value: function open(_target) {
+    value: function open() {
       if (this.currentRule && typeof this.currentRule.open === 'function') {
         var _this$currentRule;
 
@@ -515,7 +517,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "close",
-    value: function close(_target) {
+    value: function close() {
       if (this.currentRule && typeof this.currentRule.close === 'function') {
         var _this$currentRule2;
 
@@ -531,7 +533,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
 
   }, {
     key: "toggle",
-    value: function toggle(_target) {
+    value: function toggle() {
       if (this.currentRule && typeof this.currentRule.toggle === 'function') {
         var _this$currentRule3;
 

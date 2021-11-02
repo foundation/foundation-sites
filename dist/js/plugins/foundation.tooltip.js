@@ -321,7 +321,7 @@ var Positionable = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_alignmentsExhausted",
     value: function _alignmentsExhausted(position) {
-      return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
+      return this.triedPositions[position] && this.triedPositions[position].length === ALIGNMENTS[position].length;
     } // When we're trying to center, we don't want to apply offset that's going to
     // take us just off center, so wrap around to return 0 for the appropriate
     // offset in those alignments.  TODO: Figure out if we want to make this
@@ -672,8 +672,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         'data-is-active': true,
         'aria-hidden': false
       });
-      _this.isActive = true; // console.log(this.template);
-
+      _this.isActive = true;
       this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function () {//maybe do stuff?
       });
       /**
@@ -692,7 +691,6 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
   }, {
     key: "hide",
     value: function hide() {
-      // console.log('hiding', this.$element.data('yeti-box'));
       var _this = this;
 
       this.template.stop().attr({
@@ -721,19 +719,18 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       var _this = this;
 
       var hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined';
-      var $template = this.template;
       var isFocus = false; // `disableForTouch: Fully disable the tooltip on touch devices
 
       if (hasTouch && this.options.disableForTouch) return;
 
       if (!this.options.disableHover) {
-        this.$element.on('mouseenter.zf.tooltip', function (e) {
+        this.$element.on('mouseenter.zf.tooltip', function () {
           if (!_this.isActive) {
             _this.timeout = setTimeout(function () {
               _this.show();
             }, _this.options.hoverDelay);
           }
-        }).on('mouseleave.zf.tooltip', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function (e) {
+        }).on('mouseleave.zf.tooltip', Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function () {
           clearTimeout(_this.timeout);
 
           if (!isFocus || _this.isClick && !_this.options.clickOpen) {
@@ -743,13 +740,13 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       }
 
       if (hasTouch) {
-        this.$element.on('tap.zf.tooltip touchend.zf.tooltip', function (e) {
+        this.$element.on('tap.zf.tooltip touchend.zf.tooltip', function () {
           _this.isActive ? _this.hide() : _this.show();
         });
       }
 
       if (this.options.clickOpen) {
-        this.$element.on('mousedown.zf.tooltip', function (e) {
+        this.$element.on('mousedown.zf.tooltip', function () {
           if (_this.isClick) {//_this.hide();
             // _this.isClick = false;
           } else {
@@ -761,7 +758,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
           }
         });
       } else {
-        this.$element.on('mousedown.zf.tooltip', function (e) {
+        this.$element.on('mousedown.zf.tooltip', function () {
           _this.isClick = true;
         });
       }
@@ -771,7 +768,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         // 'close.zf.trigger': this.hide.bind(this)
         'close.zf.trigger': this.hide.bind(this)
       });
-      this.$element.on('focus.zf.tooltip', function (e) {
+      this.$element.on('focus.zf.tooltip', function () {
         isFocus = true;
 
         if (_this.isClick) {
@@ -785,7 +782,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         } else {
           _this.show();
         }
-      }).on('focusout.zf.tooltip', function (e) {
+      }).on('focusout.zf.tooltip', function () {
         isFocus = false;
         _this.isClick = false;
 
@@ -1189,7 +1186,7 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
       args = Array.prototype.slice.call(arguments, 3);
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(trigger).on(trigger, function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on(trigger, function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -1281,17 +1278,17 @@ Triggers.Initializers.addSimpleListeners = function () {
 Triggers.Initializers.addGlobalListeners = function () {
   var $document = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document);
   Triggers.Initializers.addMutationEventsListener($document);
-  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 
-Triggers.init = function ($, Foundation) {
-  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])($(window), function () {
-    if ($.triggersInitialized !== true) {
+Triggers.init = function (__, Foundation) {
+  Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-      $.triggersInitialized = true;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.triggersInitialized = true;
     }
   });
 

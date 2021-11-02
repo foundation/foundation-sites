@@ -58,7 +58,7 @@
     .grid-x {
       $str: "> .#{$-zf-size}-shrink, > .#{$-zf-size}-full";
       @for $i from 1 through $grid-columns {
-        $str: $str + ", > .#{$-zf-size}-#{$i}"
+        $str: $str + ", > .#{$-zf-size}-#{$i}";
       }
       #{$str} {
         flex-basis: auto;
@@ -266,10 +266,10 @@
   $padding-grid: true
 ) {
 
-  @include -zf-each-breakpoint() {
-    @if not($-zf-size == $-zf-zero-breakpoint) {
-    }
-  }
+  // @include -zf-each-breakpoint() {
+  //   @if not($-zf-size == $-zf-zero-breakpoint) {
+  //   }
+  // }
 
   .grid-y {
     @include xy-grid(vertical, false);
@@ -295,7 +295,7 @@
       // https://github.com/foundation/foundation-sites/pull/10164
       $str: "> .#{$-zf-size}-shrink, > .#{$-zf-size}-full";
       @for $i from 1 through $grid-columns {
-        $str: $str + ", > .#{$-zf-size}-#{$i}"
+        $str: $str + ", > .#{$-zf-size}-#{$i}";
       }
       #{$str} {
         flex-basis: auto;
@@ -404,14 +404,14 @@
   @if $vertical-grid {
     .grid-y {
       &.grid-frame {
-        width: auto;
         @include xy-grid-frame(true);
+        width: auto;
       }
 
       @include -zf-each-breakpoint(false) {
         &.#{$-zf-size}-grid-frame {
-          width: auto;
           @include xy-grid-frame(true);
+          width: auto;
         }
 
       }

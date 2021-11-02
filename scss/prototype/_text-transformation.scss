@@ -33,13 +33,13 @@ $prototype-text-transformation: (
 
   @if ($prototype-transformation-breakpoints) {
     // Loop through Responsive Breakpoints
-  	@each $size in $breakpoint-classes {
+    @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @each $transformation in $prototype-text-transformation {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-text-#{$transformation} {
-  			      @include text-transform($transformation);
-  			    }
+              @include text-transform($transformation);
+            }
           }
         }
       }

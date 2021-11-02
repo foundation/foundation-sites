@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 function Timer(elem, options, cb) {
   var _this = this,
       duration = options.duration,//options is an object for easily adding features later.

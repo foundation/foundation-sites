@@ -536,11 +536,11 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_collapseTab",
     value: function _collapseTab($target) {
-      var $target_anchor = $target.removeClass("".concat(this.options.linkActiveClass)).find('[role="tab"]').attr({
+      var $targetAnchor = $target.removeClass("".concat(this.options.linkActiveClass)).find('[role="tab"]').attr({
         'aria-selected': 'false',
         'tabindex': -1
       });
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat($target_anchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat($targetAnchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
         'aria-hidden': 'true'
       });
     }
@@ -615,7 +615,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         return;
       }
 
-      this.$tabContent.find(".".concat(this.options.panelClass)).css('height', '').each(function () {
+      this.$tabContent.find(".".concat(this.options.panelClass)).css('min-height', '').each(function () {
         var panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
 
@@ -636,7 +636,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         }
 
         max = temp > max ? temp : max;
-      }).css('height', "".concat(max, "px"));
+      }).css('min-height', "".concat(max, "px"));
     }
     /**
      * Destroys an instance of tabs.
