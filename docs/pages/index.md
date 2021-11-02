@@ -57,7 +57,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Why Foundation</a>
-
     <div class="accordion-content" data-tab-content>
 
       <a target="_blank" href="https://get.foundation/learn/get-your-team-on-a-solid-foundation.html">
@@ -153,6 +152,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
+
     </div>
   </li>
 
@@ -183,7 +183,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       </a>
 
     </div>
-
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Building Blocks</a>
@@ -203,7 +202,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       </a>
 
     </div>
-
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Integrations</a>
@@ -259,9 +257,9 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
 
+    </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Showcase</a>
@@ -304,6 +302,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
+
     </div>
   </li>
 </ul>
