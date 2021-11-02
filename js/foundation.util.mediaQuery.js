@@ -81,7 +81,7 @@ var MediaQuery = {
 
     // make sure the initialization is only done once when calling _init() several times
     if (this.isInitialized === true) {
-      return;
+      return this;
     } else {
       this.isInitialized = true;
     }
@@ -280,7 +280,7 @@ var MediaQuery = {
    * @private
    */
   _watcher() {
-    $(window).off('resize.zf.mediaquery').on('resize.zf.mediaquery', () => {
+    $(window).on('resize.zf.trigger', () => {
       var newSize = this._getCurrentSize(), currentSize = this.current;
 
       if (newSize !== currentSize) {
