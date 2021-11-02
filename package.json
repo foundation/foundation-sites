@@ -29,8 +29,8 @@
     "deploy:prep": "gulp deploy:prep --color"
   },
   "peerDependencies": {
-    "jquery": ">=2.2.0",
-    "what-input": ">=4.1.0"
+    "jquery": ">=3.6.0",
+    "what-input": ">=5.2.10"
   },
   "license": "MIT",
   "devDependencies": {
