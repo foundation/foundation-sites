@@ -196,6 +196,7 @@ $maincontent-class: 'off-canvas-content' !default;
     left: 0;
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     @each $name, $size in $sizes {
       @include breakpoint($name) {
@@ -233,6 +234,7 @@ $maincontent-class: 'off-canvas-content' !default;
     right: 0;
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     @each $name, $size in $sizes {
       @include breakpoint($name) {
@@ -270,6 +272,7 @@ $maincontent-class: 'off-canvas-content' !default;
     left: 0;
     width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
     @each $name, $size in $sizes {
       @include breakpoint($name) {
@@ -306,6 +309,7 @@ $maincontent-class: 'off-canvas-content' !default;
     left: 0;
     width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
     @each $name, $size in $sizes {
       @include breakpoint($name) {

@@ -64,6 +64,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   display: none;
   background-color: $background;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /// Adds base styles for a modal.
@@ -137,6 +138,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
     &.zf-has-scroll {
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
 
     body { // sass-lint:disable-line no-qualifying-elements
@@ -158,6 +160,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     margin-right: auto;
     margin-left: auto;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     // Remove padding
     &.collapse {
