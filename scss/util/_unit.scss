@@ -95,11 +95,6 @@ $global-font-size: 100% !default;
     $value: divide(strip-unit($value), strip-unit($base)) * 1rem;
   }
 
-  // Turn 0rem into 0
-  @if $value == 0rem {
-    $value: 0;
-  }
-
   @return $value;
 }
 
