@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x] # latest (16) not functional
+        node: ['14'] # latest (16+) not functional
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x] # latest (16) not functional
+        node: ['14'] # latest (16+) not functional
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
