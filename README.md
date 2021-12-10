@@ -22,7 +22,7 @@
 <!-- [![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=ZlJCVGIxaEgvaFc4TWhBZ0hFWGtIMjBRZEw0UnFrUys3ZGdrbmZ6TW5lZz0tLU9wZUdFV2lmNVd1dU9XbWxuQ05BOGc9PQ==--915d78e23eeed2ae37ce7a670bc370011a9e4fd9)](https://automate.browserstack.com/public-build/ZlJCVGIxaEgvaFc4TWhBZ0hFWGtIMjBRZEw0UnFrUys3ZGdrbmZ6TW5lZz0tLU9wZUdFV2lmNVd1dU9XbWxuQ05BOGc9PQ==--915d78e23eeed2ae37ce7a670bc370011a9e4fd9) -->
 
 
-Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes a fully customizable, responsive grid, a large library of Sass mixins, commonly used JavaScript plugins, and full accessibility support.
+Foundation is one of the most advanced responsive front-end frameworks in the world. It can quickly go from the prototype to the production, building sites or apps that work on any kind of devices with Foundation. It also includes a fully customizable, responsive grid, a large library of Sass mixins, commonly used JavaScript plugins, and full accessibility support.
 
 ---
 
@@ -30,7 +30,7 @@ Foundation is the most advanced responsive front-end framework in the world. Qui
 
 ### Documentation
 
-To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer. (Your Node.js version must be **12** or **14**). Run these commands to set up the documentation:
+To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer. (Your Node.js version must be **12** or **14**). Run the following commands to set up the documentation:
 
 ```bash
 # Install
