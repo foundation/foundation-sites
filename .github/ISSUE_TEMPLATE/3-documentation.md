@@ -33,9 +33,9 @@ about: Typo mistakes, gaps or inconsistencies in docs or website
 │   Please ensure that all the following points are respected.
 │   Fill with [x] the boxes once the rule is respected.
 └------------------------------------------------------------------->
-- [ ] I have read and follow the CONTRIBUTING.md document.
+- [ ] I have read and followed the `CONTRIBUTING.md` document.
 - [ ] There are no other issues similar to this one.
-- [ ] The issue title and template are correctly filled.
+- [ ] The issue title and the template are correctly filled.
 
 
 <!------------------------------------------------------------------------------
