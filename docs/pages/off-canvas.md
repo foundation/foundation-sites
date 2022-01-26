@@ -360,7 +360,7 @@ With this feature you can have a standard page element move off-canvas at a part
 <button type="button" class="button hide-for-large" data-toggle="inCanvasExample">
   Open in-canvas that is off-canvas now
 </button>
-<div class="off-canvas position-right" id="inCanvasExample" data-off-canvas data-options="inCanvasFor:large;">
+<div class="off-canvas position-right" id="inCanvasExample" data-off-canvas data-options="inCanvasOn:large;">
   <div class="callout">I'm in-canvas for medium screen size and move off-canvas for medium down.</div>
 </div>
 ```
