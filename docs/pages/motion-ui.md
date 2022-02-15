@@ -204,6 +204,6 @@ The callback is optional in this case, and will fire when the animation is compl
 <div class="callout primary">
   <p>Please note that the duration/animation speed for Motion UI animations are controlled via Sass mixin variables. The JavaScript handles the addition and removal of classes and event listener/callback firing only.
   <br>
-  If you are individually including your `<script>` tags, make sure you are including the `js/foundation.util.motion.js` path.
+  If you are individually including your <code>&lt;script&gt;</code> tags, make sure you are including the <code>js/foundation.util.motion.js</code> path.
   </p>
 </div>
