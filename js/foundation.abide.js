@@ -282,6 +282,10 @@ class Abide extends Plugin {
       'data-invalid': '',
       'aria-invalid': true
     });
+
+    if ($formError.filter(':visible').length) {
+      this.addA11yErrorDescribe($el, $formError);
+    }
   }
 
   /**
@@ -292,19 +296,11 @@ class Abide extends Plugin {
   addA11yAttributes($el) {
     let $errors = this.findFormError($el);
     let $labels = $errors.filter('label');
-    let $error = $errors.first();
     if (!$errors.length) return;
 
-    // Set [aria-describedby] on the input toward the first form error if it is not set
-    if (typeof $el.attr('aria-describedby') === 'undefined') {
-      // Get the first error ID or create one
-      let errorId = $error.attr('id');
-      if (typeof errorId === 'undefined') {
-        errorId = GetYoDigits(6, 'abide-error');
-        $error.attr('id', errorId);
-      }
-
-      $el.attr('aria-describedby', errorId);
+    let $error = $errors.filter(':visible').first();
+    if ($error.length) {
+      this.addA11yErrorDescribe($el, $error);
     }
 
     if ($labels.filter('[for]').length < $labels.length) {
@@ -329,6 +325,20 @@ class Abide extends Plugin {
       if (typeof $label.attr('role') === 'undefined')
         $label.attr('role', 'alert');
     }).end();
+  }
+
+  addA11yErrorDescribe($el, $error) {
+    if (typeof $el.attr('aria-describedby') !== 'undefined') return;
+
+    // Set [aria-describedby] on the input toward the first form error if it is not set
+    // Get the first error ID or create one
+    let errorId = $error.attr('id');
+    if (typeof errorId === 'undefined') {
+      errorId = GetYoDigits(6, 'abide-error');
+      $error.attr('id', errorId);
+    }
+
+    $el.attr('aria-describedby', errorId).data('abide-describedby', true);
   }
 
   /**
@@ -419,6 +429,10 @@ class Abide extends Plugin {
       'data-invalid': null,
       'aria-invalid': null
     });
+
+    if ($el.data('abide-describedby')) {
+      $el.removeAttr('aria-describedby').removeData('abide-describedby');
+    }
   }
 
   /**

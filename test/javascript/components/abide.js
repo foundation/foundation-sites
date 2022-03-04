@@ -133,7 +133,7 @@ describe('Abide', function() {
       $html = $(`
         <form data-abide>
           <input type="text" id="test-input">
-          <label class="form-error" id="test-error">Form error</label>
+          <label class="form-error is-visible" id="test-error">Form error</label>
         </form>
       `).appendTo('body');
       plugin = new Foundation.Abide($html, {});
@@ -143,11 +143,47 @@ describe('Abide', function() {
       $html.find('label.form-error').should.have.attr('for', 'test-input');
     });
 
+    it('does not add [aria-describedby] to the field if the form error is hidden', function() {
+      $html = $(`
+        <form data-abide>
+          <label for="test-input">Text field</div>
+          <input type="text" id="test-input">
+          <span class="form-error" id="test-error">Form error</span>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+
+      $html.find('input').should.not.have.attr('aria-describedby', 'test-error');
+    });
+
+    it('adds [aria-describedby] to the field if the form error is shown after a validation error', function() {
+      $html = $(`
+        <form data-abide>
+          <label for="test-input">Text field</div>
+          <input type="text" id="test-input" required>
+          <span class="form-error" id="test-error">Form error</span>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+      plugin.validateForm();
+
+      $html.find('input').should.have.attr('aria-describedby', 'test-error');
+
+      // Test also that the aria-described attribute is correctly removed after
+      // the error no longer applies and is hidden from the view.
+      $html.find('input').val('text');
+      plugin.validateForm();
+
+      $html.find('input').should.not.have.attr('aria-describedby', 'test-error');
+    });
+
     it('adds attributes and ids when no id is set', function() {
       $html = $(`
         <form data-abide>
           <input type="text">
-          <label class="form-error">Form error</label>
+          <label class="form-error is-visible">Form error</label>
         </form>
       `).appendTo('body');
       plugin = new Foundation.Abide($html, {});
