@@ -24,11 +24,11 @@ $print-hrefs: true !default;
       @if $print-transparent-backgrounds {
         background: transparent !important;
         color: black !important; // Black prints faster: h5bp.com/s
-        color-adjust: economy;
+        print-color-adjust: economy;
       }
       // Otherwise, prevent any economy by the browser.
       @else {
-        color-adjust: exact;
+        print-color-adjust: exact;
       }
 
       box-shadow: none !important;
