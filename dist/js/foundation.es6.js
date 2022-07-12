@@ -485,7 +485,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.7.4';
+var FOUNDATION_VERSION = '6.7.5';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -1339,9 +1339,10 @@ const Nest = {
       if ($sub.length) {
         $item.addClass(hasSubClass);
         if(applyAria) {
-          $item.children('a:first').attr({
+          const firstItem = $item.children('a:first');
+          firstItem.attr({
             'aria-haspopup': true,
-            'aria-label': $item.children('a:first').text()
+            'aria-label': firstItem.attr('aria-label') || firstItem.text()
           });
           // Note:  Drilldowns behave differently in how they hide, and so need
           // additional attributes.  We should look if this possibly over-generalized
@@ -2165,6 +2166,10 @@ class Abide extends Plugin {
       'data-invalid': '',
       'aria-invalid': true
     });
+
+    if ($formError.filter(':visible').length) {
+      this.addA11yErrorDescribe($el, $formError);
+    }
   }
 
   /**
@@ -2175,19 +2180,11 @@ class Abide extends Plugin {
   addA11yAttributes($el) {
     let $errors = this.findFormError($el);
     let $labels = $errors.filter('label');
-    let $error = $errors.first();
     if (!$errors.length) return;
 
-    // Set [aria-describedby] on the input toward the first form error if it is not set
-    if (typeof $el.attr('aria-describedby') === 'undefined') {
-      // Get the first error ID or create one
-      let errorId = $error.attr('id');
-      if (typeof errorId === 'undefined') {
-        errorId = GetYoDigits(6, 'abide-error');
-        $error.attr('id', errorId);
-      }
-
-      $el.attr('aria-describedby', errorId);
+    let $error = $errors.filter(':visible').first();
+    if ($error.length) {
+      this.addA11yErrorDescribe($el, $error);
     }
 
     if ($labels.filter('[for]').length < $labels.length) {
@@ -2212,6 +2209,20 @@ class Abide extends Plugin {
       if (typeof $label.attr('role') === 'undefined')
         $label.attr('role', 'alert');
     }).end();
+  }
+
+  addA11yErrorDescribe($el, $error) {
+    if (typeof $el.attr('aria-describedby') !== 'undefined') return;
+
+    // Set [aria-describedby] on the input toward the first form error if it is not set
+    // Get the first error ID or create one
+    let errorId = $error.attr('id');
+    if (typeof errorId === 'undefined') {
+      errorId = GetYoDigits(6, 'abide-error');
+      $error.attr('id', errorId);
+    }
+
+    $el.attr('aria-describedby', errorId).data('abide-describedby', true);
   }
 
   /**
@@ -2302,6 +2313,10 @@ class Abide extends Plugin {
       'data-invalid': null,
       'aria-invalid': null
     });
+
+    if ($el.data('abide-describedby')) {
+      $el.removeAttr('aria-describedby').removeData('abide-describedby');
+    }
   }
 
   /**
@@ -3607,7 +3622,7 @@ class Drilldown extends Plugin {
     this.$submenus.each(function(){
       var $menu = $(this),
           $back = $menu.find('.js-drilldown-back');
-      if(!$back.length){
+      if(!$back.length) {
         switch (_this.options.backButtonPosition) {
           case "bottom":
             $menu.append(_this.options.backButton);
@@ -3801,6 +3816,7 @@ class Drilldown extends Plugin {
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active');
     $elem.addClass('is-closing');
+    $elem.parent().closest('ul').removeClass('invisible');
 
     if (this.options.autoHeight) {
       const calcHeight = $elem.parent().closest('ul').data('calcHeight');
@@ -8893,7 +8909,7 @@ class Slider extends Plugin {
     $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e) {
       var _$handle = $(this),
           idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-          oldValue = parseFloat(_this.inputs.eq(idx).val()),
+          oldValue = parseFloat($handle.attr('aria-valuenow')),
           newValue;
 
       // handle keyboard event with keyboard util

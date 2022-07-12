@@ -166,9 +166,10 @@ var Nest = {
         $item.addClass(hasSubClass);
 
         if (applyAria) {
-          $item.children('a:first').attr({
+          var firstItem = $item.children('a:first');
+          firstItem.attr({
             'aria-haspopup': true,
-            'aria-label': $item.children('a:first').text()
+            'aria-label': firstItem.attr('aria-label') || firstItem.text()
           }); // Note:  Drilldowns behave differently in how they hide, and so need
           // additional attributes.  We should look if this possibly over-generalized
           // utility (Nest) is appropriate when we rework menus in 6.4

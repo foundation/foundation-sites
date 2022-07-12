@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var rimraf = require('rimraf');
 var filter = require('gulp-filter');
 var cleancss = require('gulp-clean-css');
 var rename = require('gulp-rename');
@@ -20,7 +21,7 @@ var NEXT_VERSION;
 gulp.task('deploy', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates'));
 
 gulp.task('deploy:prep', gulp.series('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings'));
-gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:files', 'deploy:dist:bundles'));
+gulp.task('deploy:dist', gulp.series('sass:foundation', 'javascript:foundation', 'deploy:dist:clean', 'deploy:dist:files', 'deploy:dist:bundles'));
 gulp.task('deploy:plugins', gulp.series('deploy:plugins:sources', 'deploy:plugins:sourcemaps'));
 
 gulp.task('deploy:prompt', function(cb) {
@@ -46,6 +47,11 @@ gulp.task('deploy:version', function() {
   return gulp.src(CONFIG.VERSIONED_FILES, { base: process.cwd() })
   .pipe(replace(CURRENT_VERSION, NEXT_VERSION))
   .pipe(gulp.dest('.'));
+});
+
+// Erases the dist folder
+gulp.task('deploy:dist:clean', function(done) {
+  rimraf('dist/**', done);
 });
 
 // Generates compiled CSS and JS files and sourcemaps and puts them in the dist/ folder

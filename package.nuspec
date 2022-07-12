@@ -3,7 +3,7 @@
 
     <metadata>
         <id>foundation-sites</id>
-        <version>6.7.4</version>
+        <version>6.7.5</version>
 
         <title>Foundation for Sites</title>
         <authors>Yetinauts</authors>
@@ -12,15 +12,15 @@
 
         <projectUrl>https://get.foundation/sites</projectUrl>
         <iconUrl>https://get.foundation/assets/img/icons/foundation-favicon.ico</iconUrl>
-        <releaseNotes>https://github.com/foundation/foundation-sites/releases/tag/v6.7.4</releaseNotes>
+        <releaseNotes>https://github.com/foundation/foundation-sites/releases/tag/v6.7.5</releaseNotes>
         <licenseUrl>https://github.com/foundation/foundation-sites/blob/develop/LICENSE</licenseUrl>
-        <copyright>Copyright 2017-2021</copyright>
+        <copyright>Copyright 2017-2022</copyright>
         <repository type="git" url="https://github.com/foundation/foundation-sites"/>
 
         <dependencies>
             <dependency id="jQuery" version="3.6.0"/>
             <dependency id="what-input" version="*"/>
-            <dependency id="motion-ui" version="2.0.3"/>
+            <dependency id="motion-ui" version="2.0.4"/>
         </dependencies>
 
     </metadata>
