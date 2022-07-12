@@ -705,7 +705,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.7.4'; // Global Foundation object
+var FOUNDATION_VERSION = '6.7.5'; // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 
 var Foundation = {
@@ -1594,9 +1594,10 @@ var Nest = {
         $item.addClass(hasSubClass);
 
         if (applyAria) {
-          $item.children('a:first').attr({
+          var firstItem = $item.children('a:first');
+          firstItem.attr({
             'aria-haspopup': true,
-            'aria-label': $item.children('a:first').text()
+            'aria-label': firstItem.attr('aria-label') || firstItem.text()
           }); // Note:  Drilldowns behave differently in how they hide, and so need
           // additional attributes.  We should look if this possibly over-generalized
           // utility (Nest) is appropriate when we rework menus in 6.4
@@ -2511,6 +2512,10 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         'data-invalid': '',
         'aria-invalid': true
       });
+
+      if ($formError.filter(':visible').length) {
+        this.addA11yErrorDescribe($el, $formError);
+      }
     }
     /**
      * Adds [for] and [role=alert] attributes to all form error targetting $el,
@@ -2523,19 +2528,11 @@ var Abide = /*#__PURE__*/function (_Plugin) {
     value: function addA11yAttributes($el) {
       var $errors = this.findFormError($el);
       var $labels = $errors.filter('label');
-      var $error = $errors.first();
-      if (!$errors.length) return; // Set [aria-describedby] on the input toward the first form error if it is not set
+      if (!$errors.length) return;
+      var $error = $errors.filter(':visible').first();
 
-      if (typeof $el.attr('aria-describedby') === 'undefined') {
-        // Get the first error ID or create one
-        var errorId = $error.attr('id');
-
-        if (typeof errorId === 'undefined') {
-          errorId = GetYoDigits(6, 'abide-error');
-          $error.attr('id', errorId);
-        }
-
-        $el.attr('aria-describedby', errorId);
+      if ($error.length) {
+        this.addA11yErrorDescribe($el, $error);
       }
 
       if ($labels.filter('[for]').length < $labels.length) {
@@ -2559,6 +2556,21 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         var $label = $(label);
         if (typeof $label.attr('role') === 'undefined') $label.attr('role', 'alert');
       }).end();
+    }
+  }, {
+    key: "addA11yErrorDescribe",
+    value: function addA11yErrorDescribe($el, $error) {
+      if (typeof $el.attr('aria-describedby') !== 'undefined') return; // Set [aria-describedby] on the input toward the first form error if it is not set
+      // Get the first error ID or create one
+
+      var errorId = $error.attr('id');
+
+      if (typeof errorId === 'undefined') {
+        errorId = GetYoDigits(6, 'abide-error');
+        $error.attr('id', errorId);
+      }
+
+      $el.attr('aria-describedby', errorId).data('abide-describedby', true);
     }
     /**
      * Adds [aria-live] attribute to the given global form error $el.
@@ -2653,6 +2665,10 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         'data-invalid': null,
         'aria-invalid': null
       });
+
+      if ($el.data('abide-describedby')) {
+        $el.removeAttr('aria-describedby').removeData('abide-describedby');
+      }
     }
     /**
      * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
@@ -4317,6 +4333,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
       var $elem = this.$element.find('.is-drilldown-submenu.is-active');
       $elem.addClass('is-closing');
+      $elem.parent().closest('ul').removeClass('invisible');
 
       if (this.options.autoHeight) {
         var calcHeight = $elem.parent().closest('ul').data('calcHeight');
@@ -10161,7 +10178,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       $handle.off('keydown.zf.slider').on('keydown.zf.slider', function (e) {
         var _$handle = $(this),
             idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-            oldValue = parseFloat(_this.inputs.eq(idx).val()),
+            oldValue = parseFloat($handle.attr('aria-valuenow')),
             newValue; // handle keyboard event with keyboard util
 
 

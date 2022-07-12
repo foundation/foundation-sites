@@ -797,7 +797,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       $handle.off('keydown.zf.slider').on('keydown.zf.slider', function (e) {
         var _$handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
             idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-            oldValue = parseFloat(_this.inputs.eq(idx).val()),
+            oldValue = parseFloat($handle.attr('aria-valuenow')),
             newValue; // handle keyboard event with keyboard util
 
 
