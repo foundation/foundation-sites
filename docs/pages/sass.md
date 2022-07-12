@@ -40,11 +40,10 @@ autoprefixer({
 
 If you're using the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
 
-To get started, first install the framework files using Bower or npm.
+To get started, first install the framework files using favorite package manager like npm or yarn.
 
 ```bash
 npm install foundation-sites --save
-bower install foundation-sites --save
 ```
 
 ### Compiling Manually
@@ -77,7 +76,7 @@ Finally, add an `@import` statement to the top of your primary Sass file. Refer 
 @import 'foundation';
 ```
 
-You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/foundation/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself. 
+You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/foundation/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself.
 
 <div class="callout">
 The settings file needs to import `util/util` from Foundation. Please ensure that the Foundation folder is included in Sass or change `@import util/util` for it to points to the full path of the file. For example, NPM users may need to change the import to `node_modules/foundation-sites/scss/util/util`.
@@ -90,7 +89,7 @@ The settings file needs to import `util/util` from Foundation. Please ensure tha
 
 ### Using Compiled CSS
 
-The Foundation for Sites npm and Bower packages include pre-compiled CSS files, in minified (compressed) and unminified flavors. If you're interested in editing the framework CSS directly, use the unminified file. For production, use the minified version.
+The Foundation for Sites npm package includes pre-compiled CSS files, in minified (compressed) and unminified flavors. If you're interested in editing the framework CSS directly, use the unminified file. For production, use the minified version.
 
 ```html
 <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.css">
@@ -175,7 +174,7 @@ Our [starter projects](starter-projects.html) include the full list of imports, 
 
 ## The Settings File
 
-All Foundation projects include a settings file, named `_settings.scss`. If you're using the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
+All Foundation projects include a settings file, named `_settings.scss`. If you're using the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you're installing the framework standalone using npm, there's a settings file included in this package, which you can move into your own Sass files to work with.
 
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 

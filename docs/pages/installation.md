@@ -6,7 +6,7 @@ video: '6KwsGcEHVTE'
 
 ## Install with Package Managers
 
-Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
+Foundation is available on npm. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
 
 <div class="grid-x grid-margin-x">
   <div class="cell small-2 text-right">

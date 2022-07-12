@@ -22,11 +22,11 @@ Motion UI is a standalone library that powers the transition effects used in a n
 
 **Motion UI is already included in both [starter projects](starter-projects.html).** If you want to add it to an existing project, follow these steps.
 
-First, install the library with npm or Bower.
+First, install the library with npm or yarn.
 
 ```bash
 npm install motion-ui --save-dev
-  bower install motion-ui --save-dev
+yarn add motion-ui
 ```
 
 Next, add the path `[modules_folder]/motion-ui/src` to your Sass compiler's import path list. Here's what you would add in Compass, via `config.rb`:
