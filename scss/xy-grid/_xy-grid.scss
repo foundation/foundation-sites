@@ -21,8 +21,8 @@ $grid-columns: 12 !default;
 /// The amount of margin between cells at different screen sizes when using the margin grid. To use just one size, set the variable to a number instead of a map.
 /// @type Map | Length
 $grid-margin-gutters: (
-  small: 20px,
-  medium: 30px
+  "small": 20px,
+  "medium": 30px
 ) !default;
 
 /// The amount of padding in cells at different screen sizes when using the padding grid. To use just one size, set the variable to a number instead of a map.

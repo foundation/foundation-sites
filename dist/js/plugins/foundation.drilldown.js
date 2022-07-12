@@ -553,6 +553,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
       var $elem = this.$element.find('.is-drilldown-submenu.is-active');
       $elem.addClass('is-closing');
+      $elem.parent().closest('ul').removeClass('invisible');
 
       if (this.options.autoHeight) {
         var calcHeight = $elem.parent().closest('ul').data('calcHeight');

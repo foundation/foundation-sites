@@ -45,7 +45,7 @@ Before working on a bug fix or a new feature, please make sure of the following:
 
 After you made these checks, please follow these advices to create your pull requests:
 1. **Work on a dedicated Git branch**.
-   So you default `develop` branch stay clean and you can open multiple Pull Requests at the same time for various issues. See (2) below for the branch name format.
+   So your default `develop` branch stay clean and you can open multiple Pull Requests at the same time for various issues. See (2) below for the branch name format.
 2. **Use our standard format for branch, commit and pull request names**.
    It must reference the related issue, be written in the "imperative" form (like if it was completing `now the software should...`) and be prefixed by a type (`feat` for new feature, `fix` if you repair something, `docs` for documentation, `refactor` for non-breaking code cleaning, `style` for code formatting, `tests` for unit or visual tests or `chore` for boring day-to-day tasks not affecting the actual code. See the [AngularJs Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)). For example: `docs: improve Dropdown usage example #123` for commit/pull request names and `docs/dropdown-improve-usage-example-123` for the branch name.
 3. **Describe everything you did and why in your commit and pull request body**.
@@ -61,7 +61,7 @@ When you submit a pull request, @mention a few people you’d like to help you r
 
 ## Git Workflow
 
-Foundation uses a Git workflow close to the the successful [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) branching model, to which we added `develop-v...` and `master-v...` branches to prepare and release patches for older Foundation versions. Most of the time you will not have to care about this workflow and can simply open your pull request on `develop`.
+Foundation uses a Git workflow close to the successful [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) branching model, to which we added `develop-v...` and `master-v...` branches to prepare and release patches for older Foundation versions. Most of the time you will not have to care about this workflow and can simply open your pull request on `develop`.
 
 The workflow relies on three branches:
 
@@ -85,7 +85,7 @@ This git workflow was fully adopted as of `v6.5`, so `v6.4` and previous version
 
 ## Coding Standards
 
-If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/foundation/foundation-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
+If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/foundation/foundation-code-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
 
 ## Core Team
 

@@ -88,11 +88,11 @@ The semantic colors (primary, secondary, success, warning, and alert) can be cha
 
 ```scss
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  "primary": #1779ba,
+  "secondary": #767676,
+  "success": #3adb76,
+  "warning": #ffae00,
+  "alert": #cc4b37,
 );
 ```
 

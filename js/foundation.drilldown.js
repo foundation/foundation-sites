@@ -99,7 +99,7 @@ class Drilldown extends Plugin {
     this.$submenus.each(function(){
       var $menu = $(this),
           $back = $menu.find('.js-drilldown-back');
-      if(!$back.length){
+      if(!$back.length) {
         switch (_this.options.backButtonPosition) {
           case "bottom":
             $menu.append(_this.options.backButton);
@@ -293,6 +293,7 @@ class Drilldown extends Plugin {
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active')
     $elem.addClass('is-closing');
+    $elem.parent().closest('ul').removeClass('invisible');
 
     if (this.options.autoHeight) {
       const calcHeight = $elem.parent().closest('ul').data('calcHeight');

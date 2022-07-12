@@ -100,7 +100,11 @@
     $responsive-css-sizes: ();
 
     @each $bp, $mg in $margin-gutter {
-      $size-css: if($mg == 0, $size-raw, calc(#{$size-raw} - #{rem-calc($mg)}));
+      $mgc: rem-calc($mg);
+      @if $mgc == 0 {
+        $mgc: 0rem;
+      }
+      $size-css: if($mg == 0, $size-raw, calc(#{$size-raw} - #{$mg}));
       $responsive-css-sizes: map-merge($responsive-css-sizes, ($bp: $size-css));
     }
 
@@ -108,7 +112,12 @@
   }
   // Otherwise, return a single CSS size.
   @else {
-    $css-size: if($margin-gutter == 0, $size-raw, calc(#{$size-raw} - #{rem-calc($margin-gutter)}));
+    // Make sure that 0 is translated in 0rem for calc()
+    $mgc: rem-calc($margin-gutter);
+    @if $mgc == 0 {
+      $mgc: 0rem;
+    }
+    $css-size: if($margin-gutter == 0, $size-raw, calc(#{$size-raw} - #{$mgc}));
     @return $css-size;
   }
 }

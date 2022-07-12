@@ -6,7 +6,7 @@ video: '6KwsGcEHVTE'
 
 ## Install with Package Managers
 
-Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
+Foundation is available on npm. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
 
 <div class="grid-x grid-margin-x">
   <div class="cell small-2 text-right">
@@ -50,11 +50,12 @@ Here's what comes in the package.
 
 ---
 
-## Install with Foundation CLI
+## Install with Foundation via CLI
 
-Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you.
+Not a fan of GUIs? Foundation can easily be installed via the CLI. It can install the same template projects for you.
 
-Install Foundation CLI:
+
+<!-- Install Foundation CLI:
 
 ```bash
 npm install --global foundation-cli
@@ -71,7 +72,25 @@ Then use to create a new Foundation project:
 foundation new
 ```
 
-After you selected "Foundation for Sites", Foundation CLI will ask you which template you want to use. You can choose between:
+After you selected "Foundation for Sites", Foundation CLI will ask you which template you want to use. You can choose between: -->
+
+### Basics Template Installation
+
+```bash
+git clone https://github.com/foundation/foundation-sites-template basic-project
+cd basic-project
+yarn install
+yarn start
+```
+
+### Experienced Template Installation
+
+```bash
+git clone https://github.com/foundation/foundation-zurb-template f6-project
+cd f6-project
+yarn install
+yarn start
+```
 
 <div class="grid-x grid-margin-x">
   <div class="cell small-6">
@@ -96,7 +115,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
   </div>
 
   <div class="cell small-6">
-    <h3>ZURB template</h3>
+    <h3>Experienced template</h3>
     <p>
       <b>Recommended for experienced (or curious) users</b><br>
       A more advanced project including Foundation and a build process with:
@@ -162,23 +181,23 @@ The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
 ```
 
 From Foundation 6.4, flex is enabled by default and **only the new XY Grid is available**. However, others CSS versions are available for backward compatibility and the most common usage cases. For others uses and advanced customization, we recommand to build Foundation with custom settings (see others installation methods).
 
 ```html
 <!-- foundation-float.min.css: Compressed CSS with legacy Float Grid -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation-float.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation-float.min.css" crossorigin="anonymous">
 
 <!-- foundation-prototype.min.css: Compressed CSS with prototyping classes -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation-prototype.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation-prototype.min.css" crossorigin="anonymous">
 
 <!-- foundation-rtl.min.css: Compressed CSS with right-to-left reading direction -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation-rtl.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation-rtl.min.css" crossorigin="anonymous">
 ```
 
 <div class="text-center">

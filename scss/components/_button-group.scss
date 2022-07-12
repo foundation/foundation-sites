@@ -241,10 +241,16 @@ $buttongroup-radius-on-each: true !default;
         }
 
         @each $name, $color in $button-palette {
-          $individual-selector: if($button-fill == $filling, null, ' #{$buttongroup-child-selector}.#{$name}');
-
-          &.#{$name} #{$buttongroup-child-selector}, #{$individual-selector} {
-            @include button-fill-style($filling, $color, auto, auto);
+          @if($button-fill != $filling) {
+            $individual-selector: ' #{$buttongroup-child-selector}.#{$name}';
+            &.#{$name} #{$buttongroup-child-selector}, &#{$individual-selector} {
+              @include button-fill-style($filling, $color, auto, auto);
+            }
+          }
+          @else {
+            &.#{$name} #{$buttongroup-child-selector} {
+              @include button-fill-style($filling, $color, auto, auto);
+            }
           }
         }
       }
