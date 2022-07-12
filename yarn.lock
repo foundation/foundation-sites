@@ -1561,10 +1561,10 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-args@^5.0.1:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/args/-/args-5.0.3.tgz#943256db85021a85684be2f0882f25d796278702"
-  integrity sha512-h6k/zfFgusnv3i5TU08KQkVKuCPBtL/PWQbWkHUxvJrZ2nAyeaUupneemcrgn1xmqxPQsPIzwkUhOpoqPDRZuA==
+args@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/args/-/args-5.0.1.tgz#4bf298df90a4799a09521362c579278cc2fdd761"
+  integrity sha512-1kqmFCFsPffavQFGt8OxJdIcETti99kySRUPMpOhaGjL6mRJn8HFU1OxKY5bMqfZKUwTQc1mZkAjmGYaVOHFtQ==
   dependencies:
     camelcase "5.0.0"
     chalk "2.4.2"
@@ -7618,14 +7618,14 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mocha-headless-chrome@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mocha-headless-chrome/-/mocha-headless-chrome-4.0.0.tgz#c37b401bb6f3783f71f0058bd2e962c4b9a3a6ae"
-  integrity sha512-Kw4/Sn3NgV3J2/DBuJrMGdxoul4YLl1RpTR+gftb3TNFXCcJZ1eAjAiMLzl5zd2Oa/w9Iu2V6hwTNOpcdf9VSg==
+mocha-headless-chrome@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/mocha-headless-chrome/-/mocha-headless-chrome-2.0.3.tgz#6c63649df3de9162c0f6dd35e49523a952f14d9e"
+  integrity sha512-U6aG6hGx6QV9Yi/fFhlW4muET7OdFjNXWv/MMiUHmEymndm7SubTnKgrvioFhpGG9NMK+kynqFVSvnTu7UPMcQ==
   dependencies:
-    args "^5.0.1"
-    mkdirp "^1.0.4"
-    puppeteer "^13.1.3"
+    args "^5.0.0"
+    mkdirp "^0.5.1"
+    puppeteer "^1.17.0"
 
 mocha@^5.0.5:
   version "5.2.0"
@@ -8853,7 +8853,7 @@ pupa@^2.0.1:
   dependencies:
     escape-goat "^2.0.0"
 
-puppeteer@^1.11.0, puppeteer@^13.1.3:
+puppeteer@^1.11.0, puppeteer@^1.17.0:
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.20.0.tgz#e3d267786f74e1d87cf2d15acc59177f471bbe38"
   integrity sha512-bt48RDBy2eIwZPrkgbcwHtb51mj2nKvHOPMaSH2IsWiv7lOG9k9zhaRzpDZafrk05ajMc3cu+lSQYYOfH2DkVQ==
