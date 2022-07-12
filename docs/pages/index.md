@@ -25,7 +25,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Getting Started</a>
     <div class="accordion-content" data-tab-content>
-
       <a href="{{root}}starter-projects.html?video=lFrpnk0Oo_8" target="_blank">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -38,7 +37,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a href="{{root}}starter-projects.html?video=3Uj74uJ3GSQ" target="_blank">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -51,14 +49,12 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
 
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Why Foundation</a>
     <div class="accordion-content" data-tab-content>
-
       <a target="_blank" href="https://get.foundation/learn/get-your-team-on-a-solid-foundation.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -72,7 +68,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://get.foundation/learn/build-your-career-on-a-solid-foundation.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -86,14 +81,12 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
 
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Templates and Code Snippets</a>
     <div class="accordion-content " data-tab-content>
-
       <a target="_blank" href="https://get.foundation/templates.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -106,7 +99,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://get.foundation/building-blocks/how-to.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -119,7 +111,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://get.foundation/building-blocks/kits.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -132,14 +123,12 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
 
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Additional Resources</a>
     <div class="accordion-content" data-tab-content>
-
       <a target="_blank" href="https://get.foundation/learn/zero-to-website-in-no-time-flat.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -152,7 +141,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
 
@@ -168,7 +156,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Latest Foundation Updates</a>
     <div class="accordion-content" data-tab-content>
-
       <a target="_blank" href="https://github.com/foundation/foundation-sites/releases/tag/6.3.1">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -181,13 +168,11 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Building Blocks</a>
     <div class="accordion-content" data-tab-content>
-
       <a target="_blank" href="https://get.foundation/building-blocks/how-to.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -200,13 +185,11 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Integrations</a>
     <div class="accordion-content" data-tab-content>
-
       <a target="_blank" href="https://circlingthesun.github.io/angular-foundation-6/">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-3 accordion-content-item-thumbnail">
@@ -219,7 +202,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://react.foundation/">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-3 accordion-content-item-thumbnail">
@@ -232,7 +214,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://jointswp.com/">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-3 accordion-content-item-thumbnail">
@@ -245,7 +226,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://medium.com/@tommaso.marcelli/setting-up-vue-2-and-foundation-6-3f858b4ad20">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-3 accordion-content-item-thumbnail">
@@ -258,13 +238,11 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Showcase</a>
     <div class="accordion-content" data-tab-content>
-
       <a target="_blank" href="https://get.foundation/foundationturns5">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -277,7 +255,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://get.foundation/showcase/brands.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -290,7 +267,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
       <a target="_blank" href="https://get.foundation/showcase/case-studies.html">
         <div class="grid-x grid-margin-x accordion-content-item">
           <div class="cell medium-4 accordion-content-item-thumbnail">
@@ -302,7 +278,6 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
         </div>
       </a>
-
     </div>
   </li>
 </ul>
