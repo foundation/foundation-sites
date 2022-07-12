@@ -50,11 +50,12 @@ Here's what comes in the package.
 
 ---
 
-## Install with Foundation CLI
+## Install with Foundation via CLI
 
-Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you.
+Not a fan of GUIs? Foundation can easily be installed via the CLI. It can install the same template projects for you.
 
-Install Foundation CLI:
+
+<!-- Install Foundation CLI:
 
 ```bash
 npm install --global foundation-cli
@@ -71,7 +72,25 @@ Then use to create a new Foundation project:
 foundation new
 ```
 
-After you selected "Foundation for Sites", Foundation CLI will ask you which template you want to use. You can choose between:
+After you selected "Foundation for Sites", Foundation CLI will ask you which template you want to use. You can choose between: -->
+
+### Basics Template Installation
+
+```bash
+git clone https://github.com/foundation/foundation-sites-template basic-project
+cd basic-project
+yarn install
+yarn start
+```
+
+### Experienced Template Installation
+
+```bash
+git clone https://github.com/foundation/foundation-zurb-template f6-project
+cd f6-project
+yarn install
+yarn start
+```
 
 <div class="grid-x grid-margin-x">
   <div class="cell small-6">
@@ -96,7 +115,7 @@ After you selected "Foundation for Sites", Foundation CLI will ask you which tem
   </div>
 
   <div class="cell small-6">
-    <h3>ZURB template</h3>
+    <h3>Experienced template</h3>
     <p>
       <b>Recommended for experienced (or curious) users</b><br>
       A more advanced project including Foundation and a build process with:
