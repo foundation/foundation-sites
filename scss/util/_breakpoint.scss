@@ -12,22 +12,22 @@ $-zf-size: null;
 /// A list of named breakpoints. You can use these with the `breakpoint()` mixin to quickly create media queries.
 /// @type Map
 $breakpoints: (
-  small: 0,
-  medium: 640px,
-  large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  "small": 0,
+  "medium": 640px,
+  "large": 1024px,
+  "xlarge": 1200px,
+  "xxlarge": 1440px,
 ) !default;
 
 /// A list of named HiDPI breakpoints. You can use these with the `breakpoint()` mixin to quickly create media queries for resolutions.
 /// Values must represent the device pixels / web pixels ration and be unitless or in DPPX.
 /// @type Map
 $breakpoints-hidpi: (
-  hidpi-1: 1,
-  hidpi-1-5: 1.5,
-  hidpi-2: 2,
-  retina: 2,
-  hidpi-3: 3
+  "hidpi-1": 1,
+  "hidpi-1-5": 1.5,
+  "hidpi-2": 2,
+  "retina": 2,
+  "hidpi-3": 3
 ) !default;
 
 /// The largest named breakpoint in which to include print as a media type
