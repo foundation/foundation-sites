@@ -10,9 +10,9 @@ var valueFile = path.join(__dirname, '_value.scss');
 var componentsFile = path.join(__dirname, '_components.scss');
 
 // Run Tests
-sassTrue.runSass({file: breakpointFile}, describe, it);
-sassTrue.runSass({file: colorFile}, describe, it);
-sassTrue.runSass({file: selectorFile}, describe, it);
-sassTrue.runSass({file: unitFile}, describe, it);
-sassTrue.runSass({file: valueFile}, describe, it);
-sassTrue.runSass({file: componentsFile}, describe, it);
+sassTrue.runSass({describe, it}, breakpointFile);
+sassTrue.runSass({describe, it}, colorFile);
+sassTrue.runSass({describe, it}, selectorFile);
+sassTrue.runSass({describe, it}, unitFile);
+sassTrue.runSass({describe, it}, valueFile);
+sassTrue.runSass({describe, it}, componentsFile);
