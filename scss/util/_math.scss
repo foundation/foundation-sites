@@ -2,6 +2,8 @@
 // https://get.foundation
 // Licensed under MIT Open Source
 
+@use "sass:math";
+
 ////
 /// @group functions
 ////
@@ -18,7 +20,7 @@
     @return gcd($b, $a % $b);
   }
   @else {
-    @return abs($a);
+    @return math.abs($a);
   }
 }
 
@@ -155,8 +157,8 @@
 /// @return {Number} The product of the division.
 @function divide($dividend, $divisor, $precision: 12) {
   $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
-  $dividend: abs($dividend);
-  $divisor: abs($divisor);
+  $dividend: math.abs($dividend);
+  $divisor: math.abs($divisor);
   @if $dividend == 0 {
     @return 0;
   }
