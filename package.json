@@ -108,7 +108,8 @@
   "resolutions": {
     "puppeteer": "^1.11.0",
     "glob-parent": "^5.1.2",
-    "lodash": "^4.17.21",
+    "lodash": ">=4.17.21",
+    "marked": "^2",
     "minimist": "^1.2.3",
     "dot-prop": "^5.2.0",
     "trim-newlines": "^3.0.1",
