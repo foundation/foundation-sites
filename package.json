@@ -117,7 +117,7 @@
     "lodash.template": ">=4.5.0"
   },
   "engines": {
-    "node": ">=12.0"
+    "node": ">=16.0"
   },
   "repository": {
     "type": "git",
