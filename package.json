@@ -26,7 +26,8 @@
     "test:bundle:single-process": "mocha-headless-chrome -a ignore-resource-errors -a single-process -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/bundle/index.html",
     "test:visual": "gulp test --color",
     "deploy": "gulp deploy --color",
-    "deploy:prep": "gulp deploy:prep --color"
+    "deploy:prep": "gulp deploy:prep --color",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "jquery": ">=3.6.0",
@@ -72,7 +73,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^5.1.0",
     "gulp4-run-sequence": "^1.0.2",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "is-empty-object": "^1.1.1",
     "jquery": ">=3.6.0",
     "js-yaml": "^3.12.1",
@@ -103,8 +104,7 @@
     "webpack-stream": "^7.0.0",
     "what-input": ">=5.2.10"
   },
-  "resolutions": {
-  },
+  "resolutions": {},
   "engines": {
     "node": ">=16.0"
   },
