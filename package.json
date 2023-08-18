@@ -81,7 +81,7 @@
     "mocha": "^10.2.0",
     "mocha-headless-chrome": "^4.0.0",
     "motion-ui": "^2.0.5",
-    "octophant": "^1.0.0",
+    "octophant": "latest",
     "panini": "latest",
     "patch-package": "^8.0.0",
     "postcss": "^8.4.28",

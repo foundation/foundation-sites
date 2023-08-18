@@ -7774,7 +7774,7 @@ object.reduce@^1.0.0:
     for-own "^1.0.0"
     make-iterator "^1.0.0"
 
-octophant@^1.0.0:
+octophant@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/octophant/-/octophant-1.0.1.tgz#e4ba49b3a473bac70f6871d1fb14e7487965a4b0"
   integrity sha512-NMjOjpIU4SccuosKbIPjL+752aAXmTyL1oB3j7J1W+8q5JM+SBCNqrCZPmMI2ahaHZoGOJQdmu+H+ywE8nD8Yg==
