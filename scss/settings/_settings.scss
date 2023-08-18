@@ -58,7 +58,6 @@
 //  53. Title Bar
 //  54. Tooltip
 //  55. Top Bar
-//  56. Undefined
 //  57. Xy Grid
 
 @import 'util/util';
@@ -101,6 +100,8 @@ $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 $print-hrefs: true;
+
+@include add-foundation-colors;
 
 // 2. Breakpoints
 // --------------
@@ -877,11 +878,6 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
-
-// 56. Undefined
-// -------------
-
-$primary-color: null;
 
 // 57. Xy Grid
 // -----------
