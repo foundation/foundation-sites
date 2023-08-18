@@ -11,7 +11,8 @@
   "homepage": "https://get.foundation/sites",
   "scripts": {
     "start": "gulp",
-    "test": "yarn test:sass && yarn test:javascript:units && yarn test:bundle",
+    "build": "gulp build",
+    "test": "yarn build && yarn test:sass && yarn test:javascript:units && yarn test:bundle",
     "test:single-process": "yarn test:sass && yarn test:javascript:units:single-process && yarn test:bundle:single-process",
     "test:ci": "yarn test:sass && yarn test:javascript:ci",
     "test:ci:single-process": "yarn test:sass && yarn test:javascript:ci:single-process",
