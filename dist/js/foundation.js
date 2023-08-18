@@ -1775,7 +1775,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
 
 
-var FOUNDATION_VERSION = '6.8.0';
+var FOUNDATION_VERSION = '6.8.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

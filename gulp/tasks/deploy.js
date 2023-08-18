@@ -1,3 +1,5 @@
+/* eslint-disable no-script-url */
+
 var gulp = require('gulp');
 var rimraf = require('rimraf');
 var filter = require('gulp-filter');
