@@ -103,7 +103,15 @@
     "webpack-stream": "^7.0.0",
     "what-input": ">=5.2.10"
   },
-  "resolutions": {},
+  "resolutions": {
+    "glob-parent": ">=5.1.2",
+    "minimist": ">=1.2.3",
+    "marked": ">=4.0.10",
+    "merge": ">=2.1.1",
+    "shelljs": ">=0.8.5",
+    "nth-check": ">=2.0.1",
+    "lodash.template": ">=4.5.0"
+  },
   "engines": {
     "node": ">=16.0"
   },
