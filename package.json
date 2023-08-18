@@ -106,7 +106,6 @@
   "resolutions": {
     "glob-parent": ">=5.1.2",
     "minimist": ">=1.2.3",
-    "marked": ">=4.0.10",
     "merge": ">=2.1.1",
     "shelljs": ">=0.8.5",
     "nth-check": ">=2.0.1",
