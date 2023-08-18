@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var webpackStream = require('webpack-stream');

@@ -58,7 +58,7 @@
 //  53. Title Bar
 //  54. Tooltip
 //  55. Top Bar
-//  56. Xy Grid
+//  57. Xy Grid
 
 @import 'util/util';
 
@@ -106,6 +106,7 @@ $print-hrefs: true;
 // 2. Breakpoints
 // --------------
 
+$-zf-size: null;
 $breakpoints: (
   "small": 0,
   "medium": 640px,
@@ -129,8 +130,8 @@ $breakpoint-classes: (small medium large);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
-  "small": 20px,
-  "medium": 30px,
+  small: 20px,
+  medium: 30px,
 );
 $grid-column-align-edge: true;
 $grid-column-alias: 'columns';
@@ -147,7 +148,7 @@ $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
-  "small": (
+  small: (
     'h1': ('font-size': 24),
     'h2': ('font-size': 20),
     'h3': ('font-size': 19),
@@ -155,7 +156,7 @@ $header-styles: (
     'h5': ('font-size': 17),
     'h6': ('font-size': 16),
   ),
-  "medium": (
+  medium: (
     'h1': ('font-size': 48),
     'h2': ('font-size': 40),
     'h3': ('font-size': 31),
@@ -306,10 +307,10 @@ $button-radius: $global-radius;
 $button-border: 1px solid transparent;
 $button-hollow-border-width: 1px;
 $button-sizes: (
-  "tiny": 0.6rem,
-  "small": 0.75rem,
-  "default": 0.9rem,
-  "large": 1.25rem,
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
 );
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
@@ -335,9 +336,9 @@ $callout-background-fade: 85%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
 $callout-sizes: (
-  "small": 0.5rem,
-  "default": 1rem,
-  "large": 3rem,
+  small: 0.5rem,
+  default: 1rem,
+  large: 3rem,
 );
 $callout-font-color: $body-font-color;
 $callout-font-color-alt: $body-background;
@@ -363,16 +364,16 @@ $closebutton-position: right top;
 $closebutton-z-index: 10;
 $closebutton-default-size: medium;
 $closebutton-offset-horizontal: (
-  "small": 0.66rem,
-  "medium": 1rem,
+  small: 0.66rem,
+  medium: 1rem,
 );
 $closebutton-offset-vertical: (
-  "small": 0.33em,
-  "medium": 0.5rem,
+  small: 0.33em,
+  medium: 0.5rem,
 );
 $closebutton-size: (
-  "small": 1.5em,
-  "medium": 2em,
+  small: 1.5em,
+  medium: 2em,
 );
 $closebutton-lineheight: 1;
 $closebutton-color: $dark-gray;
@@ -401,9 +402,9 @@ $dropdown-font-size: 1rem;
 $dropdown-width: 300px;
 $dropdown-radius: $global-radius;
 $dropdown-sizes: (
-  "tiny": 100px,
-  "small": 200px,
-  "large": 400px,
+  tiny: 100px,
+  small: 200px,
+  large: 400px,
 );
 
 // 18. Dropdown Menu
@@ -518,10 +519,10 @@ $meter-fill-bad: $alert-color;
 // --------------
 
 $offcanvas-sizes: (
-  "small": 250px,
+  small: 250px,
 );
 $offcanvas-vertical-sizes: (
-  "small": 250px,
+  small: 250px,
 );
 $offcanvas-background: $light-gray;
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7);
@@ -878,7 +879,7 @@ $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
-// 56. Xy Grid
+// 57. Xy Grid
 // -----------
 
 $xy-grid: true;

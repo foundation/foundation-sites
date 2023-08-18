@@ -1,14 +1,10 @@
-describe('Foundation bundle', function() {
-
-  it('can be imported via AMD', function (done) {
-
-    require(['../../_build/assets/js/foundation'], function(foundation) {
-      foundation.Foundation.should.be.an('object');
-      done();
-    }, function (err) {
-      if (err) throw err;
+describe('Foundation bundle', () => {
+    it('can be imported via AMD', done => {
+        require(['../../_build/assets/js/foundation'], foundation => {
+            foundation.Foundation.should.be.an('object');
+            done();
+        }, err => {
+            if (err) throw err;
+        });
     });
-
-  });
-
 });
