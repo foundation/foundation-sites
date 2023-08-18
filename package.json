@@ -73,7 +73,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^5.1.0",
     "gulp4-run-sequence": "^1.0.2",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "is-empty-object": "^1.1.1",
     "jquery": ">=3.6.0",
     "js-yaml": "^3.12.1",
