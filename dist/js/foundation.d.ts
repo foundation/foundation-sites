@@ -368,7 +368,7 @@ declare module FoundationSites {
 
   interface SmoothScroll {
     scrollToLoc(loc: string, options: any, callback: Function): boolean;
-    constructor(element: any, options: any);
+    constructor(element: any, options: any): any;
   }
 
   interface ISmoothScrollOptions {
