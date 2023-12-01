@@ -269,9 +269,9 @@ class Tabs extends Plugin {
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
       if (this.options.updateHistory) {
-        history.pushState({}, '', anchor);
+        history.pushState({}, '', location.pathname + location.search + anchor);
       } else {
-        history.replaceState({}, '', anchor);
+        history.replaceState({}, '', location.pathname + location.search + anchor);
       }
     }
 
