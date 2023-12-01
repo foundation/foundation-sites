@@ -1,197 +1,48 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.core"), require("./foundation.util.imageLoader"), require("./foundation.util.keyboard"), require("jquery"));
+		module.exports = factory(require("./foundation.core"), require("jquery"), require("./foundation.util.keyboard"), require("./foundation.util.imageLoader"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.core", "./foundation.util.imageLoader", "./foundation.util.keyboard", "jquery"], factory);
+		define(["./foundation.core", "jquery", "./foundation.util.keyboard", "./foundation.util.imageLoader"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.tabs"] = factory(require("./foundation.core"), require("./foundation.util.imageLoader"), require("./foundation.util.keyboard"), require("jquery"));
+		exports["__FOUNDATION_EXTERNAL__"] = factory(require("./foundation.core"), require("jquery"), require("./foundation.util.keyboard"), require("./foundation.util.imageLoader"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.tabs"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.imageLoader"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_util_imageLoader__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./foundation.core":
-/*!****************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
-  \****************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
-
-/***/ }),
-
-/***/ "./foundation.util.imageLoader":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.imageLoader"],"amd":"./foundation.util.imageLoader","commonjs":"./foundation.util.imageLoader","commonjs2":"./foundation.util.imageLoader"} ***!
-  \****************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_imageLoader__;
-
-/***/ }),
-
-/***/ "./foundation.util.keyboard":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.keyboard"],"amd":"./foundation.util.keyboard","commonjs":"./foundation.util.keyboard","commonjs2":"./foundation.util.keyboard"} ***!
-  \****************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
-
-/***/ }),
-
-/***/ "./js/entries/plugins/foundation.tabs.js":
-/*!***********************************************!*\
-  !*** ./js/entries/plugins/foundation.tabs.js ***!
-  \***********************************************/
-/*! exports provided: Foundation, Tabs */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
-/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
-
-/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.tabs */ "./js/foundation.tabs.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return _foundation_tabs__WEBPACK_IMPORTED_MODULE_1__["Tabs"]; });
-
-
-
-_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_tabs__WEBPACK_IMPORTED_MODULE_1__["Tabs"], 'Tabs');
-
-
-/***/ }),
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.tabs"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.imageLoader"]);
+})(self, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE__foundation_util_imageLoader__) {
+return /******/ (function() { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
 
 /***/ "./js/foundation.tabs.js":
 /*!*******************************!*\
   !*** ./js/foundation.tabs.js ***!
   \*******************************/
-/*! exports provided: Tabs */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return Tabs; });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Tabs: function() { return /* binding */ Tabs; }
+/* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
 /* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./foundation.util.imageLoader */ "./foundation.util.imageLoader");
 /* harmony import */ var _foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -203,18 +54,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
  * @requires foundation.util.keyboard
  * @requires foundation.util.imageLoader if tabs contain images
  */
-
 var Tabs = /*#__PURE__*/function (_Plugin) {
   _inherits(Tabs, _Plugin);
-
   var _super = _createSuper(Tabs);
-
   function Tabs() {
     _classCallCheck(this, Tabs);
-
     return _super.apply(this, arguments);
   }
-
   _createClass(Tabs, [{
     key: "_setup",
     value:
@@ -228,34 +74,31 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, Tabs.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default().extend({}, Tabs.defaults, this.$element.data(), options);
       this.className = 'Tabs'; // ie9 back compat
 
       this._init();
-
-      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('Tabs', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__.Keyboard.register('Tabs', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
         'ARROW_UP': 'previous',
         'ARROW_DOWN': 'next',
-        'ARROW_LEFT': 'previous' // 'TAB': 'next',
+        'ARROW_LEFT': 'previous'
+        // 'TAB': 'next',
         // 'SHIFT_TAB': 'previous'
-
       });
     }
+
     /**
      * Initializes the tabs by showing and focusing (if autoFocus=true) the preset active tab.
      * @private
      */
-
   }, {
     key: "_init",
     value: function _init() {
       var _this2 = this;
-
       var _this = this;
-
       this._isInitializing = true;
       this.$element.attr({
         'role': 'tablist'
@@ -264,11 +107,11 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       this.$tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
       this.$tabTitles.each(function () {
         var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-            $link = $elem.find('a'),
-            isActive = $elem.hasClass("".concat(_this.options.linkActiveClass)),
-            hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
-            linkId = $link[0].id ? $link[0].id : "".concat(hash, "-label"),
-            $tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(hash));
+          $link = $elem.find('a'),
+          isActive = $elem.hasClass("".concat(_this.options.linkActiveClass)),
+          hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
+          linkId = $link[0].id ? $link[0].id : "".concat(hash, "-label"),
+          $tabContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(hash));
         $elem.attr({
           'role': 'presentation'
         });
@@ -282,18 +125,17 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         $tabContent.attr({
           'role': 'tabpanel',
           'aria-labelledby': linkId
-        }); // Save up the initial hash to return to it later when going back in history
+        });
 
+        // Save up the initial hash to return to it later when going back in history
         if (isActive) {
           _this._initialAnchor = "#".concat(hash);
         }
-
         if (!isActive) {
           $tabContent.attr('aria-hidden', 'true');
         }
-
         if (isActive && _this.options.autoFocus) {
-          _this.onLoadListener = Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["onLoad"])(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
+          _this.onLoadListener = (0,_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__.onLoad)(jquery__WEBPACK_IMPORTED_MODULE_0___default()(window), function () {
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
               scrollTop: $elem.offset().top
             }, _this.options.deepLinkSmudgeDelay, function () {
@@ -302,127 +144,110 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
           });
         }
       });
-
       if (this.options.matchHeight) {
         var $images = this.$tabContent.find('img');
-
         if ($images.length) {
-          Object(_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__["onImagesLoaded"])($images, this._setHeight.bind(this));
+          (0,_foundation_util_imageLoader__WEBPACK_IMPORTED_MODULE_3__.onImagesLoaded)($images, this._setHeight.bind(this));
         } else {
           this._setHeight();
         }
-      } // Current context-bound function to open tabs on page load or history hashchange
+      }
 
-
+      // Current context-bound function to open tabs on page load or history hashchange
       this._checkDeepLink = function () {
         var anchor = window.location.hash;
-
         if (!anchor.length) {
           // If we are still initializing and there is no anchor, then there is nothing to do
-          if (_this2._isInitializing) return; // Otherwise, move to the initial anchor
-
+          if (_this2._isInitializing) return;
+          // Otherwise, move to the initial anchor
           if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
-
         var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
         var $anchor = anchorNoHash && jquery__WEBPACK_IMPORTED_MODULE_0___default()("#".concat(anchorNoHash));
-
-        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"],[data-tabs-target=\"").concat(anchorNoHash, "\"]")).first(); // Whether the anchor element that has been found is part of this element
-
-
+        var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"],[data-tabs-target=\"").concat(anchorNoHash, "\"]")).first();
+        // Whether the anchor element that has been found is part of this element
         var isOwnAnchor = !!($anchor.length && $link.length);
-
         if (isOwnAnchor) {
           // If there is an anchor for the hash, select it
           if ($anchor && $anchor.length && $link && $link.length) {
             _this2.selectTab($anchor, true);
-          } // Otherwise, collapse everything
+          }
+          // Otherwise, collapse everything
           else {
             _this2._collapse();
-          } // Roll up a little to show the titles
+          }
 
-
+          // Roll up a little to show the titles
           if (_this2.options.deepLinkSmudge) {
             var offset = _this2.$element.offset();
-
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
               scrollTop: offset.top - _this2.options.deepLinkSmudgeOffset
             }, _this2.options.deepLinkSmudgeDelay);
           }
+
           /**
            * Fires when the plugin has deeplinked at pageload
            * @event Tabs#deeplink
            */
-
-
           _this2.$element.trigger('deeplink.zf.tabs', [$link, $anchor]);
         }
-      }; //use browser to open a tab, if it exists in this tabset
+      };
 
-
+      //use browser to open a tab, if it exists in this tabset
       if (this.options.deepLink) {
         this._checkDeepLink();
       }
-
       this._events();
-
       this._isInitializing = false;
     }
+
     /**
      * Adds event handlers for items within the tabs.
      * @private
      */
-
   }, {
     key: "_events",
     value: function _events() {
       this._addKeyHandler();
-
       this._addClickHandler();
-
       this._setHeightMqHandler = null;
-
       if (this.options.matchHeight) {
         this._setHeightMqHandler = this._setHeight.bind(this);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
       }
-
       if (this.options.deepLink) {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('hashchange', this._checkDeepLink);
       }
     }
+
     /**
      * Adds click handlers for items within the tabs.
      * @private
      */
-
   }, {
     key: "_addClickHandler",
     value: function _addClickHandler() {
       var _this = this;
-
       this.$element.off('click.zf.tabs').on('click.zf.tabs', ".".concat(this.options.linkClass), function (e) {
         e.preventDefault();
-
         _this._handleTabChange(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this));
       });
     }
+
     /**
      * Adds keyboard event handlers for items within the tabs.
      * @private
      */
-
   }, {
     key: "_addKeyHandler",
     value: function _addKeyHandler() {
       var _this = this;
-
       this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
         if (e.which === 9) return;
         var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-            $elements = $element.parent('ul').children('li'),
-            $prevElement,
-            $nextElement;
+          $elements = $element.parent('ul').children('li'),
+          $prevElement,
+          $nextElement;
         $elements.each(function (i) {
           if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             if (_this.options.wrapOnKeys) {
@@ -432,25 +257,22 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
               $prevElement = $elements.eq(Math.max(0, i - 1));
               $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1));
             }
-
             return;
           }
-        }); // handle keyboard event with keyboard util
+        });
 
-        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'Tabs', {
+        // handle keyboard event with keyboard util
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__.Keyboard.handleKey(e, 'Tabs', {
           open: function open() {
             $element.find('[role="tab"]').focus();
-
             _this._handleTabChange($element);
           },
           previous: function previous() {
             $prevElement.find('[role="tab"]').focus();
-
             _this._handleTabChange($prevElement);
           },
           next: function next() {
             $nextElement.find('[role="tab"]').focus();
-
             _this._handleTabChange($nextElement);
           },
           handled: function handled() {
@@ -459,6 +281,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         });
       });
     }
+
     /**
      * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
      * @param {jQuery} $target - Tab to open.
@@ -466,7 +289,6 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
      * @fires Tabs#change
      * @function
      */
-
   }, {
     key: "_handleTabChange",
     value: function _handleTabChange($target, historyHandled) {
@@ -475,22 +297,21 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         if (this.options.activeCollapse) {
           this._collapse();
         }
-
         return;
       }
-
       var $oldTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass)),
-          $tabLink = $target.find('[role="tab"]'),
-          target = $tabLink.attr('data-tabs-target'),
-          anchor = target && target.length ? "#".concat(target) : $tabLink[0].hash,
-          $targetContent = this.$tabContent.find(anchor); //close old tab
+        $tabLink = $target.find('[role="tab"]'),
+        target = $tabLink.attr('data-tabs-target'),
+        anchor = target && target.length ? "#".concat(target) : $tabLink[0].hash,
+        $targetContent = this.$tabContent.find(anchor);
 
-      this._collapseTab($oldTab); //open new tab
+      //close old tab
+      this._collapseTab($oldTab);
 
+      //open new tab
+      this._openTab($target);
 
-      this._openTab($target); //either replace or update browser history
-
-
+      //either replace or update browser history
       if (this.options.deepLink && !historyHandled) {
         if (this.options.updateHistory) {
           history.pushState({}, '', anchor);
@@ -498,28 +319,28 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
           history.replaceState({}, '', anchor);
         }
       }
+
       /**
        * Fires when the plugin has successfully changed tabs.
        * @event Tabs#change
        */
+      this.$element.trigger('change.zf.tabs', [$target, $targetContent]);
 
-
-      this.$element.trigger('change.zf.tabs', [$target, $targetContent]); //fire to children a mutation event
-
+      //fire to children a mutation event
       $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
     }
+
     /**
      * Opens the tab `$targetContent` defined by `$target`.
      * @param {jQuery} $target - Tab to open.
      * @function
      */
-
   }, {
     key: "_openTab",
     value: function _openTab($target) {
       var $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
-          $targetContent = this.$tabContent.find("#".concat(hash));
+        hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+        $targetContent = this.$tabContent.find("#".concat(hash));
       $target.addClass("".concat(this.options.linkActiveClass));
       $tabLink.attr({
         'aria-selected': 'true',
@@ -527,12 +348,12 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       });
       $targetContent.addClass("".concat(this.options.panelActiveClass)).removeAttr('aria-hidden');
     }
+
     /**
      * Collapses `$targetContent` defined by `$target`.
      * @param {jQuery} $target - Tab to collapse.
      * @function
      */
-
   }, {
     key: "_collapseTab",
     value: function _collapseTab($target) {
@@ -544,55 +365,49 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         'aria-hidden': 'true'
       });
     }
+
     /**
      * Collapses the active Tab.
      * @fires Tabs#collapse
      * @function
      */
-
   }, {
     key: "_collapse",
     value: function _collapse() {
       var $activeTab = this.$element.find(".".concat(this.options.linkClass, ".").concat(this.options.linkActiveClass));
-
       if ($activeTab.length) {
         this._collapseTab($activeTab);
+
         /**
         * Fires when the plugin has successfully collapsed tabs.
         * @event Tabs#collapse
         */
-
-
         this.$element.trigger('collapse.zf.tabs', [$activeTab]);
       }
     }
+
     /**
      * Public method for selecting a content pane to display.
      * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
      * @param {boolean} historyHandled - browser has already handled a history update
      * @function
      */
-
   }, {
     key: "selectTab",
     value: function selectTab(elem, historyHandled) {
       var idStr, hashIdStr;
-
       if (_typeof(elem) === 'object') {
         idStr = elem[0].id;
       } else {
         idStr = elem;
       }
-
       if (idStr.indexOf('#') < 0) {
         hashIdStr = "#".concat(idStr);
       } else {
         hashIdStr = idStr;
         idStr = idStr.slice(1);
       }
-
       var $target = this.$tabTitles.has("[href$=\"".concat(hashIdStr, "\"],[data-tabs-target=\"").concat(idStr, "\"]")).first();
-
       this._handleTabChange($target, historyHandled);
     }
   }, {
@@ -608,16 +423,14 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
      */
     function _setHeight() {
       var max = 0,
-          _this = this; // Lock down the `this` value for the root tabs object
-
+        _this = this; // Lock down the `this` value for the root tabs object
 
       if (!this.$tabContent) {
         return;
       }
-
       this.$tabContent.find(".".concat(this.options.panelClass)).css('min-height', '').each(function () {
         var panel = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-            isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
+          isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
 
         if (!isActive) {
           panel.css({
@@ -625,48 +438,40 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
             'display': 'block'
           });
         }
-
         var temp = this.getBoundingClientRect().height;
-
         if (!isActive) {
           panel.css({
             'visibility': '',
             'display': ''
           });
         }
-
         max = temp > max ? temp : max;
       }).css('min-height', "".concat(max, "px"));
     }
+
     /**
      * Destroys an instance of tabs.
      * @fires Tabs#destroyed
      */
-
   }, {
     key: "_destroy",
     value: function _destroy() {
       this.$element.find(".".concat(this.options.linkClass)).off('.zf.tabs').hide().end().find(".".concat(this.options.panelClass)).hide();
-
       if (this.options.matchHeight) {
         if (this._setHeightMqHandler != null) {
           jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
         }
       }
-
       if (this.options.deepLink) {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off('hashchange', this._checkDeepLink);
       }
-
       if (this.onLoadListener) {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).off(this.onLoadListener);
       }
     }
   }]);
-
   return Tabs;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
-
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__.Plugin);
 Tabs.defaults = {
   /**
    * Link the location hash to the active pane.
@@ -676,7 +481,6 @@ Tabs.defaults = {
    * @default false
    */
   deepLink: false,
-
   /**
    * If `deepLink` is enabled, adjust the deep link scroll to make sure the top of the tab panel is visible
    * @option
@@ -684,7 +488,6 @@ Tabs.defaults = {
    * @default false
    */
   deepLinkSmudge: false,
-
   /**
    * If `deepLinkSmudge` is enabled, animation time (ms) for the deep link adjustment
    * @option
@@ -692,7 +495,6 @@ Tabs.defaults = {
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
-
   /**
    * If `deepLinkSmudge` is enabled, animation offset from the top for the deep link adjustment
    * @option
@@ -700,7 +502,6 @@ Tabs.defaults = {
    * @default 0
    */
   deepLinkSmudgeOffset: 0,
-
   /**
    * If `deepLink` is enabled, update the browser history with the open tab
    * @option
@@ -708,7 +509,6 @@ Tabs.defaults = {
    * @default false
    */
   updateHistory: false,
-
   /**
    * Allows the window to scroll to content of active pane on load.
    * Not recommended if more than one tab panel per page.
@@ -717,7 +517,6 @@ Tabs.defaults = {
    * @default false
    */
   autoFocus: false,
-
   /**
    * Allows keyboard input to 'wrap' around the tab links.
    * @option
@@ -725,7 +524,6 @@ Tabs.defaults = {
    * @default true
    */
   wrapOnKeys: true,
-
   /**
    * Allows the tab content panes to match heights if set to true.
    * @option
@@ -733,7 +531,6 @@ Tabs.defaults = {
    * @default false
    */
   matchHeight: false,
-
   /**
    * Allows active tabs to collapse when clicked.
    * @option
@@ -741,7 +538,6 @@ Tabs.defaults = {
    * @default false
    */
   activeCollapse: false,
-
   /**
    * Class applied to `li`'s in tab link list.
    * @option
@@ -749,7 +545,6 @@ Tabs.defaults = {
    * @default 'tabs-title'
    */
   linkClass: 'tabs-title',
-
   /**
    * Class applied to the active `li` in tab link list.
    * @option
@@ -757,7 +552,6 @@ Tabs.defaults = {
    * @default 'is-active'
    */
   linkActiveClass: 'is-active',
-
   /**
    * Class applied to the content containers.
    * @option
@@ -765,7 +559,6 @@ Tabs.defaults = {
    * @default 'tabs-panel'
    */
   panelClass: 'tabs-panel',
-
   /**
    * Class applied to the active content container.
    * @option
@@ -778,15 +571,33 @@ Tabs.defaults = {
 
 /***/ }),
 
-/***/ 18:
-/*!*****************************************************!*\
-  !*** multi ./js/entries/plugins/foundation.tabs.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./foundation.core":
+/*!****************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
+  \****************************************************************************************************************************************************************/
+/***/ (function(module) {
 
-module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.tabs.js */"./js/entries/plugins/foundation.tabs.js");
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
+/***/ }),
+
+/***/ "./foundation.util.imageLoader":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.imageLoader"],"amd":"./foundation.util.imageLoader","commonjs":"./foundation.util.imageLoader","commonjs2":"./foundation.util.imageLoader"} ***!
+  \****************************************************************************************************************************************************************************************************************/
+/***/ (function(module) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_imageLoader__;
+
+/***/ }),
+
+/***/ "./foundation.util.keyboard":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.keyboard"],"amd":"./foundation.util.keyboard","commonjs":"./foundation.util.keyboard","commonjs2":"./foundation.util.keyboard"} ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ (function(module) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
 
 /***/ }),
 
@@ -794,13 +605,101 @@ module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundatio
 /*!********************************************************************************************!*\
   !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
   \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
 
 /***/ })
 
-/******/ });
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+!function() {
+/*!***********************************************!*\
+  !*** ./js/entries/plugins/foundation.tabs.js ***!
+  \***********************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Foundation: function() { return /* reexport safe */ _foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation; },
+/* harmony export */   Tabs: function() { return /* reexport safe */ _foundation_tabs__WEBPACK_IMPORTED_MODULE_1__.Tabs; }
+/* harmony export */ });
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.tabs */ "./js/foundation.tabs.js");
+
+
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation.plugin(_foundation_tabs__WEBPACK_IMPORTED_MODULE_1__.Tabs, 'Tabs');
+
+}();
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
 });
 //# sourceMappingURL=foundation.tabs.js.map

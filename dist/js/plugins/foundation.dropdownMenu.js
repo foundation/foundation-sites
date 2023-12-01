@@ -1,192 +1,30 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("./foundation.core"), require("./foundation.util.box"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("./foundation.util.touch"), require("jquery"));
+		module.exports = factory(require("./foundation.core"), require("jquery"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("./foundation.util.box"), require("./foundation.util.touch"));
 	else if(typeof define === 'function' && define.amd)
-		define(["./foundation.core", "./foundation.util.box", "./foundation.util.keyboard", "./foundation.util.nest", "./foundation.util.touch", "jquery"], factory);
+		define(["./foundation.core", "jquery", "./foundation.util.keyboard", "./foundation.util.nest", "./foundation.util.box", "./foundation.util.touch"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.dropdownMenu"] = factory(require("./foundation.core"), require("./foundation.util.box"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("./foundation.util.touch"), require("jquery"));
+		exports["__FOUNDATION_EXTERNAL__"] = factory(require("./foundation.core"), require("jquery"), require("./foundation.util.keyboard"), require("./foundation.util.nest"), require("./foundation.util.box"), require("./foundation.util.touch"));
 	else
-		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.dropdownMenu"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.box"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.nest"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.touch"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE__foundation_util_box__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__, __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./foundation.core":
-/*!****************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
-  \****************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
-
-/***/ }),
-
-/***/ "./foundation.util.box":
-/*!********************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.box"],"amd":"./foundation.util.box","commonjs":"./foundation.util.box","commonjs2":"./foundation.util.box"} ***!
-  \********************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_box__;
-
-/***/ }),
-
-/***/ "./foundation.util.keyboard":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.keyboard"],"amd":"./foundation.util.keyboard","commonjs":"./foundation.util.keyboard","commonjs2":"./foundation.util.keyboard"} ***!
-  \****************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
-
-/***/ }),
-
-/***/ "./foundation.util.nest":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.nest"],"amd":"./foundation.util.nest","commonjs":"./foundation.util.nest","commonjs2":"./foundation.util.nest"} ***!
-  \************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__;
-
-/***/ }),
-
-/***/ "./foundation.util.touch":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.touch"],"amd":"./foundation.util.touch","commonjs":"./foundation.util.touch","commonjs2":"./foundation.util.touch"} ***!
-  \****************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__;
-
-/***/ }),
-
-/***/ "./js/entries/plugins/foundation.dropdownMenu.js":
-/*!*******************************************************!*\
-  !*** ./js/entries/plugins/foundation.dropdownMenu.js ***!
-  \*******************************************************/
-/*! exports provided: Foundation, DropdownMenu */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
-/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
-
-/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.dropdownMenu */ "./js/foundation.dropdownMenu.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DropdownMenu", function() { return _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_1__["DropdownMenu"]; });
-
-
-
-_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].plugin(_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_1__["DropdownMenu"], 'DropdownMenu');
-
-
-/***/ }),
+		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.dropdownMenu"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.keyboard"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.nest"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.box"], root["__FOUNDATION_EXTERNAL__"]["foundation.util.touch"]);
+})(self, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__, __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__, __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__, __WEBPACK_EXTERNAL_MODULE__foundation_util_box__, __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__) {
+return /******/ (function() { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
 
 /***/ "./js/foundation.dropdownMenu.js":
 /*!***************************************!*\
   !*** ./js/foundation.dropdownMenu.js ***!
   \***************************************/
-/*! exports provided: DropdownMenu */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownMenu", function() { return DropdownMenu; });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DropdownMenu: function() { return /* binding */ DropdownMenu; }
+/* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.plugin */ "./foundation.core");
+/* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.keyboard */ "./foundation.util.keyboard");
 /* harmony import */ var _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__);
@@ -196,27 +34,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_util_box__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_box__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./foundation.util.touch */ "./foundation.util.touch");
 /* harmony import */ var _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -233,18 +63,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
  * @requires foundation.util.nest
  * @requires foundation.util.touch
  */
-
 var DropdownMenu = /*#__PURE__*/function (_Plugin) {
   _inherits(DropdownMenu, _Plugin);
-
   var _super = _createSuper(DropdownMenu);
-
   function DropdownMenu() {
     _classCallCheck(this, DropdownMenu);
-
     return _super.apply(this, arguments);
   }
-
   _createClass(DropdownMenu, [{
     key: "_setup",
     value:
@@ -258,14 +83,13 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+      this.options = jquery__WEBPACK_IMPORTED_MODULE_0___default().extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
 
-      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__["Touch"].init(jquery__WEBPACK_IMPORTED_MODULE_0___default.a); // Touch init is idempotent, we just need to make sure it's initialied.
+      _foundation_util_touch__WEBPACK_IMPORTED_MODULE_5__.Touch.init((jquery__WEBPACK_IMPORTED_MODULE_0___default())); // Touch init is idempotent, we just need to make sure it's initialied.
 
       this._init();
-
-      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].register('DropdownMenu', {
+      _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__.Keyboard.register('DropdownMenu', {
         'ENTER': 'open',
         'SPACE': 'open',
         'ARROW_RIGHT': 'next',
@@ -275,24 +99,23 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
         'ESCAPE': 'close'
       });
     }
+
     /**
      * Initializes the plugin, and calls _prepareMenu
      * @private
      * @function
      */
-
   }, {
     key: "_init",
     value: function _init() {
-      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_3__["Nest"].Feather(this.$element, 'dropdown');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_3__.Nest.Feather(this.$element, 'dropdown');
       var subs = this.$element.find('li.is-dropdown-submenu-parent');
       this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
       this.$menuItems = this.$element.find('li[role="none"]');
       this.$tabs = this.$element.children('li[role="none"]');
       this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
-
       if (this.options.alignment === 'auto') {
-        if (this.$element.hasClass(this.options.rightClass) || Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["rtl"])() || this.$element.parents('.top-bar-right').is('*')) {
+        if (this.$element.hasClass(this.options.rightClass) || (0,_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__.rtl)() || this.$element.parents('.top-bar-right').is('*')) {
           this.options.alignment = 'right';
           subs.addClass('opens-left');
         } else {
@@ -306,9 +129,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
           subs.addClass('opens-right');
         }
       }
-
       this.changed = false;
-
       this._events();
     }
   }, {
@@ -319,87 +140,75 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_isRtl",
     value: function _isRtl() {
-      return this.$element.hasClass('align-right') || Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["rtl"])() && !this.$element.hasClass('align-left');
+      return this.$element.hasClass('align-right') || (0,_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__.rtl)() && !this.$element.hasClass('align-left');
     }
+
     /**
      * Adds event listeners to elements within the menu
      * @private
      * @function
      */
-
   }, {
     key: "_events",
     value: function _events() {
       var _this = this,
-          hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
-          parClass = 'is-dropdown-submenu-parent'; // used for onClick and in the keyboard handlers
+        hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
+        parClass = 'is-dropdown-submenu-parent';
 
-
+      // used for onClick and in the keyboard handlers
       var handleClickFn = function handleClickFn(e) {
         var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', ".".concat(parClass)),
-            hasSub = $elem.hasClass(parClass),
-            hasClicked = $elem.attr('data-is-click') === 'true',
-            $sub = $elem.children('.is-dropdown-submenu');
-
+          hasSub = $elem.hasClass(parClass),
+          hasClicked = $elem.attr('data-is-click') === 'true',
+          $sub = $elem.children('.is-dropdown-submenu');
         if (hasSub) {
           if (hasClicked) {
             if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
               return;
             }
-
             e.stopImmediatePropagation();
             e.preventDefault();
-
             _this._hide($elem);
           } else {
             e.stopImmediatePropagation();
             e.preventDefault();
-
             _this._show($sub);
-
             $elem.add($elem.parentsUntil(_this.$element, ".".concat(parClass))).attr('data-is-click', true);
           }
         }
       };
-
       if (this.options.clickOpen || hasTouch) {
         this.$menuItems.on('click.zf.dropdownMenu touchstart.zf.dropdownMenu', handleClickFn);
-      } // Handle Leaf element Clicks
+      }
 
-
+      // Handle Leaf element Clicks
       if (_this.options.closeOnClickInside) {
         this.$menuItems.on('click.zf.dropdownMenu', function () {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-              hasSub = $elem.hasClass(parClass);
-
+            hasSub = $elem.hasClass(parClass);
           if (!hasSub) {
             _this._hide();
           }
         });
       }
-
       if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
-
       if (!this.options.disableHover) {
         this.$menuItems.on('mouseenter.zf.dropdownMenu', function () {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-              hasSub = $elem.hasClass(parClass);
-
+            hasSub = $elem.hasClass(parClass);
           if (hasSub) {
             clearTimeout($elem.data('_delay'));
             $elem.data('_delay', setTimeout(function () {
               _this._show($elem.children('.is-dropdown-submenu'));
             }, _this.options.hoverDelay));
           }
-        }).on('mouseleave.zf.dropdownMenu', Object(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["ignoreMousedisappear"])(function () {
+        }).on('mouseleave.zf.dropdownMenu', (0,_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__.ignoreMousedisappear)(function () {
           var $elem = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
-              hasSub = $elem.hasClass(parClass);
-
+            hasSub = $elem.hasClass(parClass);
           if (hasSub && _this.options.autoclose) {
             if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) {
               return false;
             }
-
             clearTimeout($elem.data('_delay'));
             $elem.data('_delay', setTimeout(function () {
               _this._hide($elem);
@@ -407,13 +216,12 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
           }
         }));
       }
-
       this.$menuItems.on('keydown.zf.dropdownMenu', function (e) {
         var $element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parentsUntil('ul', '[role="none"]'),
-            isTab = _this.$tabs.index($element) > -1,
-            $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
-            $prevElement,
-            $nextElement;
+          isTab = _this.$tabs.index($element) > -1,
+          $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
+          $prevElement,
+          $nextElement;
         $elements.each(function (i) {
           if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).is($element)) {
             $prevElement = $elements.eq(i - 1);
@@ -421,55 +229,47 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             return;
           }
         });
-
         var nextSibling = function nextSibling() {
-          $nextElement.children('a:first').focus();
-          e.preventDefault();
-        },
-            prevSibling = function prevSibling() {
-          $prevElement.children('a:first').focus();
-          e.preventDefault();
-        },
-            openSub = function openSub() {
-          var $sub = $element.children('ul.is-dropdown-submenu');
-
-          if ($sub.length) {
-            _this._show($sub);
-
-            $element.find('li > a:first').focus();
+            $nextElement.children('a:first').focus();
             e.preventDefault();
-          } else {
-            return;
-          }
-        },
-            closeSub = function closeSub() {
-          //if ($element.is(':first-child')) {
-          var close = $element.parent('ul').parent('li');
-          close.children('a:first').focus();
-
-          _this._hide(close);
-
-          e.preventDefault(); //}
-        };
+          },
+          prevSibling = function prevSibling() {
+            $prevElement.children('a:first').focus();
+            e.preventDefault();
+          },
+          openSub = function openSub() {
+            var $sub = $element.children('ul.is-dropdown-submenu');
+            if ($sub.length) {
+              _this._show($sub);
+              $element.find('li > a:first').focus();
+              e.preventDefault();
+            } else {
+              return;
+            }
+          },
+          closeSub = function closeSub() {
+            //if ($element.is(':first-child')) {
+            var close = $element.parent('ul').parent('li');
+            close.children('a:first').focus();
+            _this._hide(close);
+            e.preventDefault();
+            //}
+          };
 
         var functions = {
           open: openSub,
           close: function close() {
             _this._hide(_this.$element);
-
             _this.$menuItems.eq(0).children('a').focus(); // focus to first element
-
-
             e.preventDefault();
           }
         };
-
         if (isTab) {
           if (_this._isVertical()) {
             // vertical menu
             if (_this._isRtl()) {
               // right aligned
-              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(functions, {
                 down: nextSibling,
                 up: prevSibling,
                 next: closeSub,
@@ -477,7 +277,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
               });
             } else {
               // left aligned
-              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(functions, {
                 down: nextSibling,
                 up: prevSibling,
                 next: openSub,
@@ -488,7 +288,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             // horizontal menu
             if (_this._isRtl()) {
               // right aligned
-              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(functions, {
                 next: prevSibling,
                 previous: nextSibling,
                 down: openSub,
@@ -496,7 +296,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
               });
             } else {
               // left aligned
-              jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(functions, {
                 next: nextSibling,
                 previous: prevSibling,
                 down: openSub,
@@ -508,7 +308,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
           // not tabs -> one sub
           if (_this._isRtl()) {
             // right aligned
-            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(functions, {
               next: closeSub,
               previous: openSub,
               down: nextSibling,
@@ -516,7 +316,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             });
           } else {
             // left aligned
-            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.extend(functions, {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(functions, {
               next: openSub,
               previous: closeSub,
               down: nextSibling,
@@ -524,45 +324,40 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             });
           }
         }
-
-        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__["Keyboard"].handleKey(e, 'DropdownMenu', functions);
+        _foundation_util_keyboard__WEBPACK_IMPORTED_MODULE_2__.Keyboard.handleKey(e, 'DropdownMenu', functions);
       });
     }
+
     /**
      * Adds an event handler to the body to close any dropdowns on a click.
      * @function
      * @private
      */
-
   }, {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
       var _this2 = this;
-
       var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body);
-
       this._removeBodyHandler();
-
       $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', function (e) {
         var isItself = !!jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest(_this2.$element).length;
         if (isItself) return;
-
         _this2._hide();
-
         _this2._removeBodyHandler();
       });
     }
+
     /**
      * Remove the body event handler. See `_addBodyHandler`.
      * @function
      * @private
      */
-
   }, {
     key: "_removeBodyHandler",
     value: function _removeBodyHandler() {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
     }
+
     /**
      * Opens a dropdown pane, and checks for collisions first.
      * @param {jQuery} $sub - ul element that is a submenu to show
@@ -570,7 +365,6 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
      * @private
      * @fires DropdownMenu#show
      */
-
   }, {
     key: "_show",
     value: function _show($sub) {
@@ -578,27 +372,20 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
         return jquery__WEBPACK_IMPORTED_MODULE_0___default()(el).find($sub).length > 0;
       }));
       var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
-
       this._hide($sibs, idx);
-
       $sub.css('visibility', 'hidden').addClass('js-dropdown-active').parent('li.is-dropdown-submenu-parent').addClass('is-active');
-      var clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__["Box"].ImNotTouchingYou($sub, null, true);
-
+      var clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__.Box.ImNotTouchingYou($sub, null, true);
       if (!clear) {
         var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
-            $parentLi = $sub.parent('.is-dropdown-submenu-parent');
+          $parentLi = $sub.parent('.is-dropdown-submenu-parent');
         $parentLi.removeClass("opens".concat(oldClass)).addClass("opens-".concat(this.options.alignment));
-        clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__["Box"].ImNotTouchingYou($sub, null, true);
-
+        clear = _foundation_util_box__WEBPACK_IMPORTED_MODULE_4__.Box.ImNotTouchingYou($sub, null, true);
         if (!clear) {
           $parentLi.removeClass("opens-".concat(this.options.alignment)).addClass('opens-inner');
         }
-
         this.changed = true;
       }
-
       $sub.css('visibility', '');
-
       if (this.options.closeOnClick) {
         this._addBodyHandler();
       }
@@ -606,10 +393,9 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
        * Fires when the new dropdown pane is visible.
        * @event DropdownMenu#show
        */
-
-
       this.$element.trigger('show.zf.dropdownMenu', [$sub]);
     }
+
     /**
      * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
      * @function
@@ -618,12 +404,10 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
      * @fires DropdownMenu#hide
      * @private
      */
-
   }, {
     key: "_hide",
     value: function _hide($elem, idx) {
       var $toClose;
-
       if ($elem && $elem.length) {
         $toClose = $elem;
       } else if (typeof idx !== 'undefined') {
@@ -633,55 +417,46 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       } else {
         $toClose = this.$element;
       }
-
       var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
-
       if (somethingToClose) {
         var $activeItem = $toClose.find('li.is-active');
         $activeItem.add($toClose).attr({
           'data-is-click': false
         }).removeClass('is-active');
         $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
-
         if (this.changed || $toClose.find('opens-inner').length) {
           var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
           $toClose.find('li.is-dropdown-submenu-parent').add($toClose).removeClass("opens-inner opens-".concat(this.options.alignment)).addClass("opens-".concat(oldClass));
           this.changed = false;
         }
-
         clearTimeout($activeItem.data('_delay'));
-
         this._removeBodyHandler();
+
         /**
          * Fires when the open menus are closed.
          * @event DropdownMenu#hide
          */
-
-
         this.$element.trigger('hide.zf.dropdownMenu', [$toClose]);
       }
     }
+
     /**
      * Destroys the plugin.
      * @function
      */
-
   }, {
     key: "_destroy",
     value: function _destroy() {
       this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click').removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(document.body).off('.zf.dropdownMenu');
-      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_3__["Nest"].Burn(this.$element, 'dropdown');
+      _foundation_util_nest__WEBPACK_IMPORTED_MODULE_3__.Nest.Burn(this.$element, 'dropdown');
     }
   }]);
-
   return DropdownMenu;
-}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__["Plugin"]);
+}(_foundation_core_plugin__WEBPACK_IMPORTED_MODULE_1__.Plugin);
 /**
  * Default settings for plugin
  */
-
-
 DropdownMenu.defaults = {
   /**
    * Disallows hover events from opening submenus
@@ -690,7 +465,6 @@ DropdownMenu.defaults = {
    * @default false
    */
   disableHover: false,
-
   /**
    * Disallows hover on touch devices
    * @option
@@ -698,7 +472,6 @@ DropdownMenu.defaults = {
    * @default true
    */
   disableHoverOnTouch: true,
-
   /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option
@@ -706,7 +479,6 @@ DropdownMenu.defaults = {
    * @default true
    */
   autoclose: true,
-
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option
@@ -714,7 +486,6 @@ DropdownMenu.defaults = {
    * @default 50
    */
   hoverDelay: 50,
-
   /**
    * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
    * @option
@@ -722,15 +493,14 @@ DropdownMenu.defaults = {
    * @default false
    */
   clickOpen: false,
-
   /**
    * Amount of time to delay closing a submenu on a mouseleave event.
    * @option
    * @type {number}
    * @default 500
    */
-  closingTime: 500,
 
+  closingTime: 500,
   /**
    * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'auto'`, `'left'` or `'right'`.
    * @option
@@ -738,7 +508,6 @@ DropdownMenu.defaults = {
    * @default 'auto'
    */
   alignment: 'auto',
-
   /**
    * Allow clicks on the body to close any open submenus.
    * @option
@@ -746,7 +515,6 @@ DropdownMenu.defaults = {
    * @default true
    */
   closeOnClick: true,
-
   /**
    * Allow clicks on leaf anchor links to close any open submenus.
    * @option
@@ -754,7 +522,6 @@ DropdownMenu.defaults = {
    * @default true
    */
   closeOnClickInside: true,
-
   /**
    * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
    * @option
@@ -762,7 +529,6 @@ DropdownMenu.defaults = {
    * @default 'vertical'
    */
   verticalClass: 'vertical',
-
   /**
    * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
    * @option
@@ -770,7 +536,6 @@ DropdownMenu.defaults = {
    * @default 'align-right'
    */
   rightClass: 'align-right',
-
   /**
    * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
    * @option
@@ -783,15 +548,53 @@ DropdownMenu.defaults = {
 
 /***/ }),
 
-/***/ 5:
-/*!*************************************************************!*\
-  !*** multi ./js/entries/plugins/foundation.dropdownMenu.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./foundation.core":
+/*!****************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
+  \****************************************************************************************************************************************************************/
+/***/ (function(module) {
 
-module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.dropdownMenu.js */"./js/entries/plugins/foundation.dropdownMenu.js");
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
+/***/ }),
+
+/***/ "./foundation.util.box":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.box"],"amd":"./foundation.util.box","commonjs":"./foundation.util.box","commonjs2":"./foundation.util.box"} ***!
+  \********************************************************************************************************************************************************************************/
+/***/ (function(module) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_box__;
+
+/***/ }),
+
+/***/ "./foundation.util.keyboard":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.keyboard"],"amd":"./foundation.util.keyboard","commonjs":"./foundation.util.keyboard","commonjs2":"./foundation.util.keyboard"} ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ (function(module) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_keyboard__;
+
+/***/ }),
+
+/***/ "./foundation.util.nest":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.nest"],"amd":"./foundation.util.nest","commonjs":"./foundation.util.nest","commonjs2":"./foundation.util.nest"} ***!
+  \************************************************************************************************************************************************************************************/
+/***/ (function(module) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_nest__;
+
+/***/ }),
+
+/***/ "./foundation.util.touch":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.util.touch"],"amd":"./foundation.util.touch","commonjs":"./foundation.util.touch","commonjs2":"./foundation.util.touch"} ***!
+  \****************************************************************************************************************************************************************************************/
+/***/ (function(module) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_util_touch__;
 
 /***/ }),
 
@@ -799,13 +602,101 @@ module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundatio
 /*!********************************************************************************************!*\
   !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
   \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
 
 /***/ })
 
-/******/ });
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+!function() {
+/*!*******************************************************!*\
+  !*** ./js/entries/plugins/foundation.dropdownMenu.js ***!
+  \*******************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DropdownMenu: function() { return /* reexport safe */ _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_1__.DropdownMenu; },
+/* harmony export */   Foundation: function() { return /* reexport safe */ _foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation; }
+/* harmony export */ });
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.dropdownMenu */ "./js/foundation.dropdownMenu.js");
+
+
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation.plugin(_foundation_dropdownMenu__WEBPACK_IMPORTED_MODULE_1__.DropdownMenu, 'DropdownMenu');
+
+}();
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
 });
 //# sourceMappingURL=foundation.dropdownMenu.js.map

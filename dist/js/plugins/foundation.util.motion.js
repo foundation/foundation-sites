@@ -4,150 +4,30 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["./foundation.core", "jquery"], factory);
 	else if(typeof exports === 'object')
-		exports["foundation.util.motion"] = factory(require("./foundation.core"), require("jquery"));
+		exports["__FOUNDATION_EXTERNAL__"] = factory(require("./foundation.core"), require("jquery"));
 	else
 		root["__FOUNDATION_EXTERNAL__"] = root["__FOUNDATION_EXTERNAL__"] || {}, root["__FOUNDATION_EXTERNAL__"]["foundation.util.motion"] = factory(root["__FOUNDATION_EXTERNAL__"]["foundation.core"], root["jQuery"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./foundation.core":
-/*!****************************************************************************************************************************************************************!*\
-  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
-  \****************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
-
-/***/ }),
-
-/***/ "./js/entries/plugins/foundation.util.motion.js":
-/*!******************************************************!*\
-  !*** ./js/entries/plugins/foundation.util.motion.js ***!
-  \******************************************************/
-/*! exports provided: Foundation, Motion, Move */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
-/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Foundation", function() { return _foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"]; });
-
-/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.motion */ "./js/foundation.util.motion.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Motion", function() { return _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Motion"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Move", function() { return _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Move"]; });
-
-
-
-_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].Motion = _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Motion"];
-_foundation_core__WEBPACK_IMPORTED_MODULE_0__["Foundation"].Move = _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__["Move"];
-
-
-/***/ }),
+})(self, function(__WEBPACK_EXTERNAL_MODULE__foundation_core__, __WEBPACK_EXTERNAL_MODULE_jquery__) {
+return /******/ (function() { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
 
 /***/ "./js/foundation.util.motion.js":
 /*!**************************************!*\
   !*** ./js/foundation.util.motion.js ***!
   \**************************************/
-/*! exports provided: Move, Motion */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Move", function() { return Move; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Motion", function() { return Motion; });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Motion: function() { return /* binding */ Motion; },
+/* harmony export */   Move: function() { return /* binding */ Move; }
+/* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./foundation.core.utils */ "./foundation.core");
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 /**
@@ -165,23 +45,19 @@ var Motion = {
     animate(false, element, animation, cb);
   }
 };
-
 function Move(duration, elem, fn) {
   var anim,
-      prog,
-      start = null;
-
+    prog,
+    start = null;
   if (duration === 0) {
     fn.apply(elem);
     elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
     return;
   }
-
   function move(ts) {
     if (!start) start = ts;
     prog = ts - start;
     fn.apply(elem);
-
     if (prog < duration) {
       anim = window.requestAnimationFrame(move, elem);
     } else {
@@ -189,9 +65,9 @@ function Move(duration, elem, fn) {
       elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
     }
   }
-
   anim = window.requestAnimationFrame(move);
 }
+
 /**
  * Animates an element in or out using a CSS transition class.
  * @function
@@ -201,38 +77,40 @@ function Move(duration, elem, fn) {
  * @param {String} animation - CSS class to use.
  * @param {Function} cb - Callback to run when animation is finished.
  */
-
-
 function animate(isIn, element, animation, cb) {
   element = jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).eq(0);
   if (!element.length) return;
   var initClass = isIn ? initClasses[0] : initClasses[1];
-  var activeClass = isIn ? activeClasses[0] : activeClasses[1]; // Set up the animation
+  var activeClass = isIn ? activeClasses[0] : activeClasses[1];
 
+  // Set up the animation
   reset();
   element.addClass(animation).css('transition', 'none');
   requestAnimationFrame(function () {
     element.addClass(initClass);
     if (isIn) element.show();
-  }); // Start the animation
+  });
 
+  // Start the animation
   requestAnimationFrame(function () {
     // will trigger the browser to synchronously calculate the style and layout
     // also called reflow or layout thrashing
     // see https://gist.github.com/paulirish/5d52fb081b3570c81e3a
     element[0].offsetWidth;
     element.css('transition', '').addClass(activeClass);
-  }); // Clean up the animation when it finishes
+  });
 
-  element.one(Object(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__["transitionend"])(element), finish); // Hides the element (for out animations), resets the element, and runs a callback
+  // Clean up the animation when it finishes
+  element.one((0,_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__.transitionend)(element), finish);
 
+  // Hides the element (for out animations), resets the element, and runs a callback
   function finish() {
     if (!isIn) element.hide();
     reset();
     if (cb) cb.apply(element);
-  } // Resets transitions and removes motion-specific classes
+  }
 
-
+  // Resets transitions and removes motion-specific classes
   function reset() {
     element[0].style.transitionDuration = 0;
     element.removeClass("".concat(initClass, " ").concat(activeClass, " ").concat(animation));
@@ -240,18 +118,15 @@ function animate(isIn, element, animation, cb) {
 }
 
 
-
 /***/ }),
 
-/***/ 25:
-/*!************************************************************!*\
-  !*** multi ./js/entries/plugins/foundation.util.motion.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./foundation.core":
+/*!****************************************************************************************************************************************************************!*\
+  !*** external {"root":["__FOUNDATION_EXTERNAL__","foundation.core"],"amd":"./foundation.core","commonjs":"./foundation.core","commonjs2":"./foundation.core"} ***!
+  \****************************************************************************************************************************************************************/
+/***/ (function(module) {
 
-module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundation-sites/js/entries/plugins/foundation.util.motion.js */"./js/entries/plugins/foundation.util.motion.js");
-
+module.exports = __WEBPACK_EXTERNAL_MODULE__foundation_core__;
 
 /***/ }),
 
@@ -259,13 +134,103 @@ module.exports = __webpack_require__(/*! /Users/joeworkman/Development/foundatio
 /*!********************************************************************************************!*\
   !*** external {"root":["jQuery"],"amd":"jquery","commonjs":"jquery","commonjs2":"jquery"} ***!
   \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_jquery__;
 
 /***/ })
 
-/******/ });
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+!function() {
+/*!******************************************************!*\
+  !*** ./js/entries/plugins/foundation.util.motion.js ***!
+  \******************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Foundation: function() { return /* reexport safe */ _foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation; },
+/* harmony export */   Motion: function() { return /* reexport safe */ _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__.Motion; },
+/* harmony export */   Move: function() { return /* reexport safe */ _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__.Move; }
+/* harmony export */ });
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foundation.core */ "./foundation.core");
+/* harmony import */ var _foundation_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_foundation_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../foundation.util.motion */ "./js/foundation.util.motion.js");
+
+
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation.Motion = _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__.Motion;
+_foundation_core__WEBPACK_IMPORTED_MODULE_0__.Foundation.Move = _foundation_util_motion__WEBPACK_IMPORTED_MODULE_1__.Move;
+
+}();
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
 });
 //# sourceMappingURL=foundation.util.motion.js.map
