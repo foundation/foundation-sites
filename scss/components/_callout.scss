@@ -94,7 +94,7 @@ $callout-link-tint: 30% !default;
     @include callout;
 
     @each $name, $color in $foundation-palette {
-      &.#{$name} {
+      &.#{"" + $name} {
         @include callout-style($color);
       }
     }
