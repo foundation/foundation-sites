@@ -242,13 +242,13 @@ $buttongroup-radius-on-each: true !default;
 
         @each $name, $color in $button-palette {
           @if($button-fill != $filling) {
-            $individual-selector: ' #{$buttongroup-child-selector}.#{$name}';
-            &.#{$name} #{$buttongroup-child-selector}, &#{$individual-selector} {
+            $individual-selector: ' #{$buttongroup-child-selector}.#{"" + $name}';
+            &.#{"" + $name} #{$buttongroup-child-selector}, &#{$individual-selector} {
               @include button-fill-style($filling, $color, auto, auto);
             }
           }
           @else {
-            &.#{$name} #{$buttongroup-child-selector} {
+            &.#{"" + $name} #{$buttongroup-child-selector} {
               @include button-fill-style($filling, $color, auto, auto);
             }
           }
