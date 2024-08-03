@@ -82,8 +82,6 @@ rules:
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
 
-  mixins-before-declarations: 1
-
   nesting-depth:
     - 1
     - max-depth: 3

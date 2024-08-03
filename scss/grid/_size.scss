@@ -12,7 +12,9 @@
 @mixin grid-column-size(
   $columns: $grid-column-count
 ) {
-  width: grid-column($columns);
+  & {
+    width: grid-column($columns);
+  }
 }
 
 /// Shorthand for `grid-column-size()`.

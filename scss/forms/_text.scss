@@ -124,8 +124,8 @@ $form-button-radius: $global-radius !default;
   // Text inputs
   #{text-inputs()},
   textarea {
-    @include form-element;
     appearance: none;
+    @include form-element;
   }
 
   // Text areas

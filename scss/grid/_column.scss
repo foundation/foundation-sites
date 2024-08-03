@@ -33,7 +33,9 @@
   @include grid-col-pos(auto);
 
   @include grid-column-size($columns);
-  float: $global-left;
+  & {
+    float: $global-left;
+  }
 }
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.

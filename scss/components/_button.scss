@@ -95,7 +95,6 @@ $button-responsive-expanded: false !default;
 
 // TODO: Document button-base() mixin
 @mixin button-base {
-  @include disable-mouse-outline;
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
@@ -121,6 +120,8 @@ $button-responsive-expanded: false !default;
   line-height: 1;
   text-align: center;
   cursor: pointer;
+
+  @include disable-mouse-outline;
 }
 
 /// Expands a button to make it full-width.

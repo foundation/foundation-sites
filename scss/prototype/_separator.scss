@@ -43,8 +43,8 @@ $prototype-separator-margin-top: $global-margin !default;
   $background: $prototype-separator-background,
   $top: $prototype-separator-margin-top
 ) {
-  @include clearfix;
   text-align: $align !important;
+  @include clearfix;
 
   &::after {
     @include position(relative);
