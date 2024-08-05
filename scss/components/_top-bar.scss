@@ -118,13 +118,15 @@ $topbar-unstack-breakpoint: medium !default;
 }
 
 @mixin foundation-top-bar {
-  // Top bar container
   .top-bar {
     @include top-bar-container;
-
+  }
+  .top-bar {
     // Stack on small screens by default
     @include top-bar-stacked;
-
+  }
+  // Top bar container
+  .top-bar {
     @include breakpoint($topbar-unstack-breakpoint) {
       @include top-bar-unstack;
     }

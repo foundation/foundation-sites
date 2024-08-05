@@ -101,7 +101,7 @@
     @for $i from 1 through $grid-column-count {
       // Column width
       .#{$-zf-size}-#{$i} {
-        @include grid-col-size($i);
+        @include grid-column-size($i);
       }
 
       // Source ordering
