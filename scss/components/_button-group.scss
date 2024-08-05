@@ -33,7 +33,6 @@ $buttongroup-radius-on-each: true !default;
   $child-selector: $buttongroup-child-selector,
   $spacing: $buttongroup-spacing
 ) {
-  @include clearfix;
   margin-bottom: $buttongroup-margin;
 
   @if $global-flexbox {
@@ -50,6 +49,8 @@ $buttongroup-radius-on-each: true !default;
   @else {
     font-size: 0;
   }
+
+  @include clearfix;
 
   #{$child-selector} {
     margin: 0;

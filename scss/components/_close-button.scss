@@ -92,11 +92,12 @@ $closebutton-color-hover: $black !default;
   $x: nth($closebutton-position, 1);
   $y: nth($closebutton-position, 2);
 
-  @include disable-mouse-outline;
   position: absolute;
   z-index: $closebutton-z-index;
   color: $closebutton-color;
   cursor: pointer;
+
+  @include disable-mouse-outline;
 
   &:hover,
   &:focus {

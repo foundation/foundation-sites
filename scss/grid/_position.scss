@@ -40,12 +40,12 @@
 
   // Center positioning
   @else if $position == center {
+    margin-left: auto;
+    margin-right: auto;
     &, &:last-child:not(:first-child) {
       float: none;
       clear: both;
     }
-    margin-right: auto;
-    margin-left: auto;
   }
 
   @else {
@@ -55,10 +55,10 @@
 
 /// Reset a position definition.
 @mixin grid-column-unposition {
-  @include grid-column-position(auto);
   position: static;
   margin-right: 0;
   margin-left: 0;
+  @include grid-column-position(auto);
 }
 
 /// Offsets a column to the right by `$n` columns.

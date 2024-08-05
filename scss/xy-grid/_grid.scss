@@ -14,11 +14,11 @@
   $width: $grid-container,
   $padding: $grid-container-padding
 ) {
-  @include xy-gutters($gutters: $padding, $gutter-type: padding);
-
   max-width: $width;
   margin-left: auto;
   margin-right: auto;
+
+  @include xy-gutters($gutters: $padding, $gutter-type: padding);
 }
 
 /// Creates a container for your flex cells.

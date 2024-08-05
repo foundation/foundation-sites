@@ -102,11 +102,11 @@ $orbit-control-zindex: 10 !default;
 
 /// Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the `.orbit-next` and `.orbit-previous` classes in the default CSS.
 @mixin orbit-control {
-  @include disable-mouse-outline;
-  @include vertical-center;
   z-index: $orbit-control-zindex;
   padding: $orbit-control-padding;
   color: $white;
+  @include vertical-center;
+  @include disable-mouse-outline;
 
   &:hover,
   &:active,
@@ -128,11 +128,11 @@ $orbit-control-zindex: 10 !default;
 
 /// Adds styles for a container of Orbit bullets. /// Adds styles for the Orbit previous button. These styles are used on the `.orbit-bullets` class.
 @mixin orbit-bullets {
-  @include disable-mouse-outline;
   position: relative;
   margin-top: $orbit-bullet-margin-top;
   margin-bottom: $orbit-bullet-margin-bottom;
   text-align: center;
+  @include disable-mouse-outline;
 
   button {
     width: $orbit-bullet-diameter;

@@ -59,11 +59,11 @@ $tab-content-padding: 1rem !default;
   $background: $tab-background,
   $border-color: $tab-content-border
 ) {
-  @include clearfix;
   margin: $margin;
   border: 1px solid $border-color;
   background: $background;
   list-style-type: none;
+  @include clearfix;
 }
 
 /// Augments a tab container to have vertical tabs. Use this in conjunction with `tabs-container()`.
@@ -87,12 +87,12 @@ $tab-content-padding: 1rem !default;
   float: #{$global-left};
 
   > a {
-    @include disable-mouse-outline;
     display: block;
     padding: $padding;
     font-size: $font-size;
     line-height: 1;
     color: $color;
+    @include disable-mouse-outline;
 
     &:hover {
       background: $background-hover;

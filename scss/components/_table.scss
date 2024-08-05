@@ -165,8 +165,8 @@ $table-stack-breakpoint: medium !default;
 
     &.unstriped {
       tbody {
-        @include -zf-table-unstripe();
         background-color: $table-background;
+        @include -zf-table-unstripe();
       }
     }
   }

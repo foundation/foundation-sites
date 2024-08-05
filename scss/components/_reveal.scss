@@ -69,7 +69,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 /// Adds base styles for a modal.
 @mixin reveal-modal-base {
-  @include disable-mouse-outline;
   z-index: $reveal-zindex + 1;
   // Workaround android browser z-index bug
   backface-visibility: hidden;
@@ -80,6 +79,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   border: $reveal-border;
   border-radius: $reveal-radius;
   background-color: $reveal-background;
+
+  @include disable-mouse-outline;
 
   @include breakpoint(medium) {
     min-height: 0;
@@ -153,14 +154,15 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
   // Modal container
   .reveal {
-    @include reveal-modal-base;
-    @include reveal-modal-width($reveal-width);
     position: relative;
     top: 100px;
     margin-right: auto;
     margin-left: auto;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
+    @include reveal-modal-base;
+    @include reveal-modal-width($reveal-width);
 
     // Remove padding
     &.collapse {
