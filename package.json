@@ -92,7 +92,7 @@
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.3.0",
     "sass-embedded": "^1.79.3",
-    "sass-true": "^7.0.0",
+    "sass-true": "^8.0.0",
     "sassy-lists": "^3.0.1",
     "sinon": "^7.2.2",
     "strip-indent": "^2.0.0",
@@ -161,5 +161,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "dependencies": {}
 }

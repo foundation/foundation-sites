@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@adobe/css-tools@^4.3.2":
+"@adobe/css-tools@^4.3.3":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.0.tgz#728c484f4e10df03d5a3acd0d8adcbbebff8ad63"
   integrity sha512-Ff9+ksdQQB3rMncgqDK78uLznstjyfIf2Arnh22pW8kBpLs6rpKDwgnZT46hin5Hl1WzazzK64DOrhSwYpS7bQ==
@@ -1396,9 +1396,9 @@
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
 "@types/node@*", "@types/node@>=10.0.0":
-  version "22.7.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.2.tgz#80ed66c0a5025ffa037587fd69a816f29b54e4c7"
-  integrity sha512-866lXSrpGpgyHBZUa2m9YNWqHDjjM0aBTJlNtYaGEw4rqY/dcD7deRVTbBBAJelfA7oaGDbNftXF/TL/A6RgoA==
+  version "22.7.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.3.tgz#7ddf1ddf13078692b4cfadb835852b2a718ee1ef"
+  integrity sha512-qXKfhXXqGTyBskvWEzJZPUxSslAiLaB6JGP1ic/XTH9ctGgzdgYguuLP1C601aRTSDNlLb0jbKqXjZ48GNraSA==
   dependencies:
     undici-types "~6.19.2"
 
@@ -4909,19 +4909,19 @@ form-data@~2.3.2:
     mime-types "^2.1.12"
 
 "foundation-docs@github:foundation/foundation-docs":
-  version "0.3.3"
-  resolved "https://codeload.github.com/foundation/foundation-docs/tar.gz/8ab4367470d51bcaa237d686d82348bfc8c079d7"
+  version "0.3.4"
+  resolved "https://codeload.github.com/foundation/foundation-docs/tar.gz/8b1fca721bbc16436389f7c6f237340a5b7f466d"
   dependencies:
     cheerio "^1.0.0-rc.2"
     handlebars "^4.5.3"
     highlight.js "^9.16.2"
     inky "^1.4.1"
-    js-beautify "^1.11.0"
+    js-beautify "^1.14.4"
     kebab-case "^1.0.0"
     lodash "^4.17.15"
     lodash.template "^4.5.0"
     marked "^2"
-    mkdirp "^0.5.1"
+    mkdirp "^0.5.6"
     multiline "^1.0.2"
     querystring "^0.2.0"
     require-dir "^1.0.0"
@@ -6523,7 +6523,7 @@ jquery@>=1.11, jquery@>=3.6.0:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
   integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
 
-js-beautify@^1.11.0:
+js-beautify@^1.14.4:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/js-beautify/-/js-beautify-1.15.1.tgz#4695afb508c324e1084ee0b952a102023fc65b64"
   integrity sha512-ESjNzSlt/sWE8sciZH8kBF8BPlwXPwhR6pWKAw8bw4Bwj+iZcnKW6ONWUutJ7eObuBZQpiIb8S7OYspWrKt7rA==
@@ -7648,7 +7648,7 @@ mkdirp2@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp2/-/mkdirp2-1.0.5.tgz#68bbe61defefafce4b48948608ec0bac942512c2"
   integrity sha512-xOE9xbICroUDmG1ye2h4bZ8WBie9EGmACaco8K8cx6RlkJJrxGIqjGqztAI+NMhexXBcdGbSEzI6N3EJPevxZw==
 
-mkdirp@^0.5.0, mkdirp@^0.5.1:
+mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.6.tgz#7def03d2432dcae4ba1d611445c48396062255f6"
   integrity sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==
@@ -7696,9 +7696,11 @@ mocha@^10.2.0:
     yargs-unparser "^2.0.0"
 
 motion-ui@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/motion-ui/-/motion-ui-2.0.5.tgz#babb74c27f1dfdde7b731f81a8e28d68444d7da7"
-  integrity sha512-MJs4dS7/bSnJ92X5IB4bTIif6SwqwEDbX1F/eiUGSzIVhVTl4UqD8xr8ygg01dXZrpPrDjjUNoVkB8vT+PaY/g==
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/motion-ui/-/motion-ui-2.0.7.tgz#bb4e94cea3bde26fd669e736f7a5b9b2d853de2f"
+  integrity sha512-bH3iUtQnnyP+yBCJj240iY0sfrpm9w2hvmWdCnAccfMXWDyRUlovY7hPN825InF542cq16QCSj1uHy+NQndMhg==
+  dependencies:
+    sass-embedded "^1.79.3"
 
 mri@1.1.4:
   version "1.1.4"
@@ -8215,9 +8217,9 @@ p-try@^2.0.0:
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
 package-json-from-dist@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/package-json-from-dist/-/package-json-from-dist-1.0.0.tgz#e501cd3094b278495eb4258d4c9f6d5ac3019f00"
-  integrity sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz#4f1471a010827a86f94cfd9b0727e36d267de505"
+  integrity sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==
 
 package-json@^6.3.0:
   version "6.5.0"
@@ -9512,12 +9514,12 @@ sass-lint@^1.12.0:
     path-is-absolute "^1.0.0"
     util "^0.10.3"
 
-sass-true@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-7.0.1.tgz#fa2d094736652b3266deabce47558f67a3926412"
-  integrity sha512-7qt24tkX45b3Cs/U5e6+OiHHoorCISzrDACQLtPV8cHDZc//++KMUFSJisXhoVfwuWEVJugzImQITI1GfzoTFQ==
+sass-true@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-8.0.0.tgz#ef7795ba4f3a28d94c7e5d60f0e640633597d0ff"
+  integrity sha512-bk6m12BFxjRWnu0DHfqmsF36Eoxg3grLlLM4PhcgN6Znd9DvK2xVGJtWQ05u5RqEos3JaIX50MMN+gsAYUnEDA==
   dependencies:
-    "@adobe/css-tools" "^4.3.2"
+    "@adobe/css-tools" "^4.3.3"
     jest-diff "^29.7.0"
     lodash "^4.17.21"
 

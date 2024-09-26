@@ -1,5 +1,6 @@
 var path = require('path');
 var sassTrue = require('sass-true');
+var sass = require('sass-embedded');
 
 // Test Files
 var breakpointFile = path.join(__dirname, '_breakpoint.scss');
@@ -10,9 +11,9 @@ var valueFile = path.join(__dirname, '_value.scss');
 var componentsFile = path.join(__dirname, '_components.scss');
 
 // Run Tests
-sassTrue.runSass({describe, it}, breakpointFile);
-sassTrue.runSass({describe, it}, colorFile);
-sassTrue.runSass({describe, it}, selectorFile);
-sassTrue.runSass({describe, it}, unitFile);
-sassTrue.runSass({describe, it}, valueFile);
-sassTrue.runSass({describe, it}, componentsFile);
+sassTrue.runSass({describe, it, sass }, breakpointFile);
+sassTrue.runSass({describe, it, sass }, colorFile);
+sassTrue.runSass({describe, it, sass }, selectorFile);
+sassTrue.runSass({describe, it, sass }, unitFile);
+sassTrue.runSass({describe, it, sass }, valueFile);
+sassTrue.runSass({describe, it, sass }, componentsFile);
