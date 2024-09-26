@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .welcome-accordion {
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -29,7 +31,7 @@
   }
 
   .accordion-title {
-    color: darken($dark-gray,10%);
+    color: color.adjust($dark-gray, $lightness: -10%);
     font-size: 1.25rem;
     line-height: 1.5;
     padding-left: 0;
@@ -61,7 +63,7 @@
 
   .accordion-title:hover::before {
     color: $black;
-    background-color: lighten($light-gray,8%);
+    background-color: color.adjust($light-gray, $lightness: 8%);
     border: 1px solid $medium-gray;
     transition: all 0.3s ease;
   }
