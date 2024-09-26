@@ -15,8 +15,8 @@
 
 .footer-nav-left,
 .footer-nav-right {
-  @include flex-grid-column(shrink);
   color: $white;
+  @include flex-grid-column(shrink);
 
   a {
     color: $white;
