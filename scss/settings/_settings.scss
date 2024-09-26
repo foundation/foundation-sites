@@ -60,6 +60,7 @@
 //  55. Top Bar
 //  57. Xy Grid
 
+@use "sass:color";
 @import 'util/util';
 
 // 1. Global
@@ -803,15 +804,15 @@ $table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
-$table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
+$table-row-hover: color.adjust($table-background, $lightness: -$table-hover-scale);
+$table-row-stripe-hover: color.adjust($table-background, $lightness: -($table-color-scale + $table-hover-scale));
 $table-is-striped: true;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale * 0.5);
-$table-head-row-hover: darken($table-head-background, $table-hover-scale);
+$table-head-row-hover: color.adjust($table-head-background, $lightness: -$table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
-$table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
+$table-foot-row-hover: color.adjust($table-head-background, $lightness: -$table-hover-scale);
 $table-head-font-color: $body-font-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
