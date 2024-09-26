@@ -7696,9 +7696,9 @@ mocha@^10.2.0:
     yargs-unparser "^2.0.0"
 
 motion-ui@^2.0.5:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/motion-ui/-/motion-ui-2.0.7.tgz#bb4e94cea3bde26fd669e736f7a5b9b2d853de2f"
-  integrity sha512-bH3iUtQnnyP+yBCJj240iY0sfrpm9w2hvmWdCnAccfMXWDyRUlovY7hPN825InF542cq16QCSj1uHy+NQndMhg==
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/motion-ui/-/motion-ui-2.0.8.tgz#5d643fd6478c4e3f2e4a5e0fd699826cf5ffb36b"
+  integrity sha512-kFPFUYslkA9NcnrbErCdGlSGGKBxSTfp7FToapj8/wawPIoks88H1bpNmqRh0EzU+u7PydUp2YSmmO3Sv+ZiBQ==
   dependencies:
     sass-embedded "^1.79.3"
 
