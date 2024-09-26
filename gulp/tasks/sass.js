@@ -1,12 +1,7 @@
-'use strict';
-
-var fs = require('fs');
 var gulp = require('gulp');
-var prettyJSON = require('prettyjson');
-var sass = require('gulp-sass')(require('sass-embedded'));
+var sass = require('gulp-sass')(require('sass-embedded')); // Using sass-embedded
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
-var sassLint = require('gulp-sass-lint');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 
@@ -26,7 +21,7 @@ gulp.task('sass:foundation', gulp.series('sass:deps', function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))  // sass-embedded handles this part
     .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
@@ -38,7 +33,7 @@ gulp.task('sass:docs', gulp.series('sass:deps', function() {
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: CONFIG.SASS_DOC_PATHS
-    }).on('error', sass.logError))
+    }).on('error', sass.logError)) // sass-embedded handles this part
     .pipe(postcss([autoprefixer()])) // uses ".browserslistrc"
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
