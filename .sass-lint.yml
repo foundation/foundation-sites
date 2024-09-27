@@ -82,7 +82,7 @@ rules:
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
 
-  mixins-before-declarations: 1
+  mixins-before-declarations: 0
 
   nesting-depth:
     - 1
@@ -389,7 +389,7 @@ rules:
     - 1
     - include: true
 
-  space-before-colon: 1
+  space-before-colon: 0
 
   space-between-parens:
     - 1
