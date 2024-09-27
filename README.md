@@ -30,7 +30,7 @@ Foundation is the most advanced responsive front-end framework in the world. Qui
 
 ### Documentation
 
-To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer. (Your Node.js version must be **12** or **14**). Run these commands to set up the documentation:
+To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer. (Your Node.js version must be a **minimum of 18**). Run these commands to set up the documentation:
 
 ```bash
 # Install
