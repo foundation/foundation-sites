@@ -2,194 +2,157 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+var $ = require('jquery');
 
-var $ = _interopDefault(require('jquery'));
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
-    try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
-    } catch (err) {
-      _d = !0, _e = err;
-    } finally {
-      try {
-        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
-  }
-}
-function _typeof(obj) {
-  "@babel/helpers - typeof";
+var $__default = /*#__PURE__*/_interopDefaultLegacy($);
 
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
 }
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
+}
+function _assertThisInitialized(e) {
+  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  return e;
+}
+function _callSuper(t, o, e) {
+  return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
+}
+function _classCallCheck(a, n) {
+  if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
+}
+function _defineProperties(e, r) {
+  for (var t = 0; t < r.length; t++) {
+    var o = r[t];
+    o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o);
   }
 }
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self);
-}
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-  return object;
+function _createClass(e, r, t) {
+  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    writable: !1
+  }), e;
 }
 function _get() {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get.bind();
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-      if (desc.get) {
-        return desc.get.call(arguments.length < 3 ? target : receiver);
+  return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) {
+    var p = _superPropBase(e, t);
+    if (p) {
+      var n = Object.getOwnPropertyDescriptor(p, t);
+      return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value;
+    }
+  }, _get.apply(null, arguments);
+}
+function _getPrototypeOf(t) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) {
+    return t.__proto__ || Object.getPrototypeOf(t);
+  }, _getPrototypeOf(t);
+}
+function _inherits(t, e) {
+  if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+  t.prototype = Object.create(e && e.prototype, {
+    constructor: {
+      value: t,
+      writable: !0,
+      configurable: !0
+    }
+  }), Object.defineProperty(t, "prototype", {
+    writable: !1
+  }), e && _setPrototypeOf(t, e);
+}
+function _isNativeReflectConstruct() {
+  try {
+    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+  } catch (t) {}
+  return (_isNativeReflectConstruct = function () {
+    return !!t;
+  })();
+}
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
       }
-      return desc.value;
-    };
+    }
+    return a;
   }
-  return _get.apply(this, arguments);
-}
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-  return arr2;
 }
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
+function _possibleConstructorReturn(t, e) {
+  if (e && ("object" == typeof e || "function" == typeof e)) return e;
+  if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined");
+  return _assertThisInitialized(t);
+}
+function _setPrototypeOf(t, e) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) {
+    return t.__proto__ = e, t;
+  }, _setPrototypeOf(t, e);
+}
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
+function _superPropBase(t, o) {
+  for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t)););
+  return t;
+}
+function _superPropGet(t, e, o, r) {
+  var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), e, o);
+  return 2 & r && "function" == typeof p ? function (t) {
+    return p.apply(o, t);
+  } : p;
+}
+function _toPrimitive(t, r) {
+  if ("object" != typeof t || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != typeof i) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  return (hint === "string" ? String : Number)(input);
+  return ("string" === r ? String : Number)(t);
 }
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return typeof key === "symbol" ? key : String(key);
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == typeof i ? i : i + "";
+}
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof(o);
+}
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
 }
 
 // Core Foundation Utilities, utilized in a number of places.
@@ -198,7 +161,7 @@ function _toPropertyKey(arg) {
  * Returns a boolean for RTL support
  */
 function rtl() {
-  return $('html').attr('dir') === 'rtl';
+  return $__default["default"]('html').attr('dir') === 'rtl';
 }
 
 /**
@@ -276,7 +239,7 @@ function onLoad($elem, handler) {
   };
   if ($elem) {
     if (handler) $elem.one(eventType, handler);
-    if (didLoad) setTimeout(cb);else $(window).one('load', cb);
+    if (didLoad) setTimeout(cb);else $__default["default"](window).one('load', cb);
   }
   return eventType;
 }
@@ -326,8 +289,8 @@ function ignoreMousedisappear(handler) {
 
       // Otherwise, wait for the mouse to reeapear outside of the element,
       if (!ignoreReappear) {
-        $(document).one('mouseenter', function reenterEventHandler(eReenter) {
-          if (!$(eLeave.currentTarget).has(eReenter.target).length) {
+        $__default["default"](document).one('mouseenter', function reenterEventHandler(eReenter) {
+          if (!$__default["default"](eLeave.currentTarget).has(eReenter.target).length) {
             // Fill where the mouse finally entered.
             eLeave.relatedTarget = eReenter.target;
             callback();
@@ -425,11 +388,11 @@ var MediaQuery = {
       this.isInitialized = true;
     }
     var self = this;
-    var $meta = $('meta.foundation-mq');
+    var $meta = $__default["default"]('meta.foundation-mq');
     if (!$meta.length) {
-      $('<meta class="foundation-mq" name="foundation-mq" content>').appendTo(document.head);
+      $__default["default"]('<meta class="foundation-mq" name="foundation-mq" content>').appendTo(document.head);
     }
-    var extractedStyles = $('.foundation-mq').css('font-family');
+    var extractedStyles = $__default["default"]('.foundation-mq').css('font-family');
     var namedQueries;
     namedQueries = parseStyleToObject(extractedStyles);
     self.queries = []; // reset
@@ -593,7 +556,7 @@ var MediaQuery = {
    */
   _watcher: function _watcher() {
     var _this2 = this;
-    $(window).on('resize.zf.trigger', function () {
+    $__default["default"](window).on('resize.zf.trigger', function () {
       var newSize = _this2._getCurrentSize(),
         currentSize = _this2.current;
       if (newSize !== currentSize) {
@@ -601,7 +564,7 @@ var MediaQuery = {
         _this2.current = newSize;
 
         // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
+        $__default["default"](window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
@@ -639,7 +602,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.8.1';
+var FOUNDATION_VERSION = '6.9.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -663,7 +626,7 @@ var Foundation = {
     var className = name || functionName(_plugin);
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
-    var attrName = hyphenate(className);
+    var attrName = hyphenate$1(className);
 
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = _plugin;
@@ -678,7 +641,7 @@ var Foundation = {
    * @fires Plugin#init
    */
   registerPlugin: function registerPlugin(plugin, name) {
-    var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
+    var pluginName = name ? hyphenate$1(name) : functionName(plugin.constructor).toLowerCase();
     plugin.uuid = GetYoDigits(6, pluginName);
     if (!plugin.$element.attr("data-".concat(pluginName))) {
       plugin.$element.attr("data-".concat(pluginName), plugin.uuid);
@@ -703,7 +666,7 @@ var Foundation = {
    * @fires Plugin#destroyed
    */
   unregisterPlugin: function unregisterPlugin(plugin) {
-    var pluginName = hyphenate(functionName(plugin.$element.data('zfPlugin').constructor));
+    var pluginName = hyphenate$1(functionName(plugin.$element.data('zfPlugin').constructor));
     this._uuids.splice(this._uuids.indexOf(plugin.uuid), 1);
     plugin.$element.removeAttr("data-".concat(pluginName)).removeData('zfPlugin')
     /**
@@ -715,7 +678,6 @@ var Foundation = {
         plugin[prop] = null; //clean up script to prep for garbage collection.
       }
     }
-
     return;
   },
   /**
@@ -725,11 +687,11 @@ var Foundation = {
    * @default If no argument is passed, reflow all currently active plugins.
    */
   reInit: function reInit(plugins) {
-    var isJQ = plugins instanceof $;
+    var isJQ = plugins instanceof $__default["default"];
     try {
       if (isJQ) {
         plugins.each(function () {
-          $(this).data('zfPlugin')._init();
+          $__default["default"](this).data('zfPlugin')._init();
         });
       } else {
         var type = _typeof(plugins),
@@ -737,13 +699,13 @@ var Foundation = {
           fns = {
             'object': function object(plgs) {
               plgs.forEach(function (p) {
-                p = hyphenate(p);
-                $('[data-' + p + ']').foundation('_init');
+                p = hyphenate$1(p);
+                $__default["default"]('[data-' + p + ']').foundation('_init');
               });
             },
             'string': function string() {
-              plugins = hyphenate(plugins);
-              $('[data-' + plugins + ']').foundation('_init');
+              plugins = hyphenate$1(plugins);
+              $__default["default"]('[data-' + plugins + ']').foundation('_init');
             },
             'undefined': function undefined$1() {
               this.object(Object.keys(_this._plugins));
@@ -774,18 +736,18 @@ var Foundation = {
     var _this = this;
 
     // Iterate through each plugin
-    $.each(plugins, function (i, name) {
+    $__default["default"].each(plugins, function (i, name) {
       // Get the current plugin
       var plugin = _this._plugins[name];
 
       // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
-      var $elem = $(elem).find('[data-' + name + ']').addBack('[data-' + name + ']').filter(function () {
-        return typeof $(this).data("zfPlugin") === 'undefined';
+      var $elem = $__default["default"](elem).find('[data-' + name + ']').addBack('[data-' + name + ']').filter(function () {
+        return typeof $__default["default"](this).data("zfPlugin") === 'undefined';
       });
 
       // For each plugin found, initialize it
       $elem.each(function () {
-        var $el = $(this),
+        var $el = $__default["default"](this),
           opts = {
             reflow: true
           };
@@ -798,7 +760,7 @@ var Foundation = {
           });
         }
         try {
-          $el.data('zfPlugin', new plugin($(this), opts));
+          $el.data('zfPlugin', new plugin($__default["default"](this), opts));
         } catch (er) {
           console.error(er);
         } finally {
@@ -817,7 +779,7 @@ var Foundation = {
      */
     var foundation = function foundation(method) {
       var type = _typeof(method),
-        $noJS = $('.no-js');
+        $noJS = $__default["default"]('.no-js');
       if ($noJS.length) {
         $noJS.removeClass('no-js');
       }
@@ -838,7 +800,7 @@ var Foundation = {
           } else {
             this.each(function (i, el) {
               //otherwise loop through the jQuery collection and invoke the method on each
-              plugClass[method].apply($(el).data('zfPlugin'), args);
+              plugClass[method].apply($__default["default"](el).data('zfPlugin'), args);
             });
           }
         } else {
@@ -851,8 +813,8 @@ var Foundation = {
       }
       return this;
     };
-    $.fn.foundation = foundation;
-    return $;
+    $__default["default"].fn.foundation = foundation;
+    return $__default["default"];
   }
 };
 Foundation.util = {
@@ -953,7 +915,7 @@ function parseValue(str) {
 }
 // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
-function hyphenate(str) {
+function hyphenate$1(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
@@ -1145,12 +1107,12 @@ function onImagesLoaded(images, callback) {
       var image = new Image();
       // Still count image as loaded if it finalizes with an error.
       var events = "load.zf.images error.zf.images";
-      $(image).one(events, function me() {
+      $__default["default"](image).one(events, function me() {
         // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
-        $(this).off(events, me);
+        $__default["default"](this).off(events, me);
         singleImageLoaded();
       });
-      image.src = $(this).attr('src');
+      image.src = $__default["default"](this).attr('src');
     }
   });
   function singleImageLoaded() {
@@ -1188,21 +1150,21 @@ function findFocusable($element) {
     return false;
   }
   return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
-    if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) {
+    if (!$__default["default"](this).is(':visible') || $__default["default"](this).attr('tabindex') < 0) {
       return false;
     } //only have visible elements and those that have a tabindex greater or equal 0
     return true;
   }).sort(function (a, b) {
-    if ($(a).attr('tabindex') === $(b).attr('tabindex')) {
+    if ($__default["default"](a).attr('tabindex') === $__default["default"](b).attr('tabindex')) {
       return 0;
     }
-    var aTabIndex = parseInt($(a).attr('tabindex'), 10),
-      bTabIndex = parseInt($(b).attr('tabindex'), 10);
+    var aTabIndex = parseInt($__default["default"](a).attr('tabindex'), 10),
+      bTabIndex = parseInt($__default["default"](b).attr('tabindex'), 10);
     // Undefined is treated the same as 0
-    if (typeof $(a).attr('tabindex') === 'undefined' && bTabIndex > 0) {
+    if (typeof $__default["default"](a).attr('tabindex') === 'undefined' && bTabIndex > 0) {
       return 1;
     }
-    if (typeof $(b).attr('tabindex') === 'undefined' && aTabIndex > 0) {
+    if (typeof $__default["default"](b).attr('tabindex') === 'undefined' && aTabIndex > 0) {
       return -1;
     }
     if (aTabIndex === 0 && bTabIndex > 0) {
@@ -1263,7 +1225,7 @@ var Keyboard = {
       cmds = commandList; // use plain list
     } else {
       // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-      if (rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);else cmds = $.extend({}, commandList.rtl, commandList.ltr);
+      if (rtl()) cmds = $__default["default"].extend({}, commandList.ltr, commandList.rtl);else cmds = $__default["default"].extend({}, commandList.rtl, commandList.ltr);
     }
     command = cmds[keyCode];
     fn = functions[command];
@@ -1389,7 +1351,7 @@ function Move(duration, elem, fn) {
  * @param {Function} cb - Callback to run when animation is finished.
  */
 function animate(isIn, element, animation, cb) {
-  element = $(element).eq(0);
+  element = $__default["default"](element).eq(0);
   if (!element.length) return;
   var initClass = isIn ? initClasses[0] : initClasses[1];
   var activeClass = isIn ? activeClasses[0] : activeClasses[1];
@@ -1444,7 +1406,7 @@ var Nest = {
       applyAria = type !== 'accordion'; // Accordions handle their own ARIA attriutes.
 
     items.each(function () {
-      var $item = $(this),
+      var $item = $__default["default"](this),
         $sub = $item.children('ul');
       if ($sub.length) {
         $item.addClass(hasSubClass);
@@ -1514,7 +1476,6 @@ function Timer(elem, options, cb) {
       if (options.infinite) {
         _this.restart(); //rerun the timer.
       }
-
       if (cb && typeof cb === 'function') {
         cb();
       }
@@ -1545,15 +1506,15 @@ function onTouchEnd(e) {
 
   // If the touch did not move, consider it as a "tap"
   if (!didMoved) {
-    var tapEvent = $.Event('tap', startEvent || e);
-    $(this).trigger(tapEvent);
+    var tapEvent = $__default["default"].Event('tap', startEvent || e);
+    $__default["default"](this).trigger(tapEvent);
   }
   startEvent = null;
   isMoving = false;
   didMoved = false;
 }
 function onTouchMove(e) {
-  if (true === $.spotSwipe.preventDefault) {
+  if (true === $__default["default"].spotSwipe.preventDefault) {
     e.preventDefault();
   }
   if (isMoving) {
@@ -1564,7 +1525,7 @@ function onTouchMove(e) {
     var dir;
     didMoved = true;
     elapsedTime = new Date().getTime() - startTime;
-    if (Math.abs(dx) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
+    if (Math.abs(dx) >= $__default["default"].spotSwipe.moveThreshold && elapsedTime <= $__default["default"].spotSwipe.timeThreshold) {
       dir = dx > 0 ? 'left' : 'right';
     }
     // else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
@@ -1573,7 +1534,7 @@ function onTouchMove(e) {
     if (dir) {
       e.preventDefault();
       onTouchEnd.apply(this, arguments);
-      $(this).trigger($.Event('swipe', Object.assign({}, e)), dir).trigger($.Event("swipe".concat(dir), Object.assign({}, e)));
+      $__default["default"](this).trigger($__default["default"].Event('swipe', Object.assign({}, e)), dir).trigger($__default["default"].Event("swipe".concat(dir), Object.assign({}, e)));
     }
   }
 }
@@ -1585,7 +1546,7 @@ function onTouchStart(e) {
     didMoved = false;
     startTime = new Date().getTime();
     this.addEventListener('touchmove', onTouchMove, {
-      passive: true === $.spotSwipe.preventDefault
+      passive: true === $__default["default"].spotSwipe.preventDefault
     });
     this.addEventListener('touchend', onTouchEnd, false);
   }
@@ -1609,25 +1570,24 @@ var SpotSwipe = /*#__PURE__*/function () {
     this.timeThreshold = 200;
     this._init();
   }
-  _createClass(SpotSwipe, [{
+  return _createClass(SpotSwipe, [{
     key: "_init",
     value: function _init() {
-      $.event.special.swipe = {
+      $__default["default"].event.special.swipe = {
         setup: init
       };
-      $.event.special.tap = {
+      $__default["default"].event.special.tap = {
         setup: init
       };
-      $.each(['left', 'up', 'down', 'right'], function () {
-        $.event.special["swipe".concat(this)] = {
+      $__default["default"].each(['left', 'up', 'down', 'right'], function () {
+        $__default["default"].event.special["swipe".concat(this)] = {
           setup: function setup() {
-            $(this).on('swipe', $.noop);
+            $__default["default"](this).on('swipe', $__default["default"].noop);
           }
         };
       });
     }
   }]);
-  return SpotSwipe;
 }();
 /****************************************************
  * As far as I can tell, both setupSpotSwipe and    *
@@ -1636,16 +1596,16 @@ var SpotSwipe = /*#__PURE__*/function () {
  * values, and do not add event handlers directly.  *
  ****************************************************/
 Touch.setupSpotSwipe = function () {
-  $.spotSwipe = new SpotSwipe($);
+  $__default["default"].spotSwipe = new SpotSwipe($__default["default"]);
 };
 
 /****************************************************
  * Method for adding pseudo drag events to elements *
  ***************************************************/
 Touch.setupTouchHandler = function () {
-  $.fn.addTouch = function () {
+  $__default["default"].fn.addTouch = function () {
     this.each(function (i, el) {
-      $(el).bind('touchstart touchmove touchend touchcancel', function (event) {
+      $__default["default"](el).bind('touchstart touchmove touchend touchcancel', function (event) {
         //we pass the original event object because the jQuery event
         //object is normalized to w3c specs and does not provide the TouchList
         handleTouch(event);
@@ -1679,9 +1639,9 @@ Touch.setupTouchHandler = function () {
   };
 };
 Touch.init = function () {
-  if (typeof $.spotSwipe === 'undefined') {
-    Touch.setupSpotSwipe($);
-    Touch.setupTouchHandler($);
+  if (typeof $__default["default"].spotSwipe === 'undefined') {
+    Touch.setupSpotSwipe($__default["default"]);
+    Touch.setupTouchHandler($__default["default"]);
   }
 };
 
@@ -1696,7 +1656,7 @@ var MutationObserver = function () {
 }();
 var triggers = function triggers(el, type) {
   el.data(type).split(' ').forEach(function (id) {
-    $("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
+    $__default["default"]("#".concat(id))[type === 'close' ? 'trigger' : 'triggerHandler']("".concat(type, ".zf.trigger"), [el]);
   });
 };
 var Triggers = {
@@ -1708,40 +1668,40 @@ var Triggers = {
 };
 Triggers.Listeners.Basic = {
   openListener: function openListener() {
-    triggers($(this), 'open');
+    triggers($__default["default"](this), 'open');
   },
   closeListener: function closeListener() {
-    var id = $(this).data('close');
+    var id = $__default["default"](this).data('close');
     if (id) {
-      triggers($(this), 'close');
+      triggers($__default["default"](this), 'close');
     } else {
-      $(this).trigger('close.zf.trigger');
+      $__default["default"](this).trigger('close.zf.trigger');
     }
   },
   toggleListener: function toggleListener() {
-    var id = $(this).data('toggle');
+    var id = $__default["default"](this).data('toggle');
     if (id) {
-      triggers($(this), 'toggle');
+      triggers($__default["default"](this), 'toggle');
     } else {
-      $(this).trigger('toggle.zf.trigger');
+      $__default["default"](this).trigger('toggle.zf.trigger');
     }
   },
   closeableListener: function closeableListener(e) {
-    var animation = $(this).data('closable');
+    var animation = $__default["default"](this).data('closable');
 
     // Only close the first closable element. See https://git.io/zf-7833
     e.stopPropagation();
     if (animation !== '') {
-      Motion.animateOut($(this), animation, function () {
-        $(this).trigger('closed.zf');
+      Motion.animateOut($__default["default"](this), animation, function () {
+        $__default["default"](this).trigger('closed.zf');
       });
     } else {
-      $(this).fadeOut().trigger('closed.zf');
+      $__default["default"](this).fadeOut().trigger('closed.zf');
     }
   },
   toggleFocusListener: function toggleFocusListener() {
-    var id = $(this).data('toggle-focus');
-    $("#".concat(id)).triggerHandler('toggle.zf.trigger', [$(this)]);
+    var id = $__default["default"](this).data('toggle-focus');
+    $__default["default"]("#".concat(id)).triggerHandler('toggle.zf.trigger', [$__default["default"](this)]);
   }
 };
 
@@ -1782,7 +1742,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        $(this).triggerHandler('resizeme.zf.trigger');
+        $__default["default"](this).triggerHandler('resizeme.zf.trigger');
       });
     }
     //trigger all listening elements and signal a resize event
@@ -1792,7 +1752,7 @@ Triggers.Listeners.Global = {
     if (!MutationObserver) {
       //fallback for IE 9
       $nodes.each(function () {
-        $(this).triggerHandler('scrollme.zf.trigger');
+        $__default["default"](this).triggerHandler('scrollme.zf.trigger');
       });
     }
     //trigger all listening elements and signal a scroll event
@@ -1800,9 +1760,9 @@ Triggers.Listeners.Global = {
   },
   closeMeListener: function closeMeListener(e, pluginId) {
     var plugin = e.namespace.split('.')[0];
-    var plugins = $("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
+    var plugins = $__default["default"]("[data-".concat(plugin, "]")).not("[data-yeti-box=\"".concat(pluginId, "\"]"));
     plugins.each(function () {
-      var _this = $(this);
+      var _this = $__default["default"](this);
       _this.triggerHandler('close.zf.trigger', [_this]);
     });
   }
@@ -1810,7 +1770,7 @@ Triggers.Listeners.Global = {
 
 // Global, parses whole document.
 Triggers.Initializers.addClosemeListener = function (pluginName) {
-  var yetiBoxes = $('[data-yeti-box]'),
+  var yetiBoxes = $__default["default"]('[data-yeti-box]'),
     plugNames = ['dropdown', 'tooltip', 'reveal'];
   if (pluginName) {
     if (typeof pluginName === 'string') {
@@ -1825,13 +1785,13 @@ Triggers.Initializers.addClosemeListener = function (pluginName) {
     var listeners = plugNames.map(function (name) {
       return "closeme.zf.".concat(name);
     }).join(' ');
-    $(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
+    $__default["default"](window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
   }
 };
 function debounceGlobalListener(debounce, trigger, listener) {
   var timer,
     args = Array.prototype.slice.call(arguments, 3);
-  $(window).on(trigger, function () {
+  $__default["default"](window).on(trigger, function () {
     if (timer) {
       clearTimeout(timer);
     }
@@ -1840,15 +1800,14 @@ function debounceGlobalListener(debounce, trigger, listener) {
     }, debounce || 10); //default time to emit scroll event
   });
 }
-
 Triggers.Initializers.addResizeListener = function (debounce) {
-  var $nodes = $('[data-resize]');
+  var $nodes = $__default["default"]('[data-resize]');
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'resize.zf.trigger', Triggers.Listeners.Global.resizeListener, $nodes);
   }
 };
 Triggers.Initializers.addScrollListener = function (debounce) {
-  var $nodes = $('[data-scroll]');
+  var $nodes = $__default["default"]('[data-scroll]');
   if ($nodes.length) {
     debounceGlobalListener(debounce, 'scroll.zf.trigger', Triggers.Listeners.Global.scrollListener, $nodes);
   }
@@ -1861,7 +1820,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
 
   //element callback
   var listeningElementsMutation = function listeningElementsMutation(mutationRecordsList) {
-    var $target = $(mutationRecordsList[0].target);
+    var $target = $__default["default"](mutationRecordsList[0].target);
 
     //trigger the event handler for the element depending on type
     switch (mutationRecordsList[0].type) {
@@ -1886,7 +1845,6 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
       //nothing
     }
   };
-
   if ($nodes.length) {
     //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
     for (var i = 0; i <= $nodes.length - 1; i++) {
@@ -1902,7 +1860,7 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
   }
 };
 Triggers.Initializers.addSimpleListeners = function () {
-  var $document = $(document);
+  var $document = $__default["default"](document);
   Triggers.Initializers.addOpenListener($document);
   Triggers.Initializers.addCloseListener($document);
   Triggers.Initializers.addToggleListener($document);
@@ -1910,18 +1868,18 @@ Triggers.Initializers.addSimpleListeners = function () {
   Triggers.Initializers.addToggleFocusListener($document);
 };
 Triggers.Initializers.addGlobalListeners = function () {
-  var $document = $(document);
+  var $document = $__default["default"](document);
   Triggers.Initializers.addMutationEventsListener($document);
   Triggers.Initializers.addResizeListener(250);
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
 };
 Triggers.init = function (__, Foundation) {
-  onLoad($(window), function () {
-    if ($.triggersInitialized !== true) {
+  onLoad($__default["default"](window), function () {
+    if ($__default["default"].triggersInitialized !== true) {
       Triggers.Initializers.addSimpleListeners();
       Triggers.Initializers.addGlobalListeners();
-      $.triggersInitialized = true;
+      $__default["default"].triggersInitialized = true;
     }
   });
   if (Foundation) {
@@ -1952,7 +1910,7 @@ var Plugin = /*#__PURE__*/function () {
      */
     this.$element.trigger("init.zf.".concat(pluginName));
   }
-  _createClass(Plugin, [{
+  return _createClass(Plugin, [{
     key: "destroy",
     value: function destroy() {
       this._destroy();
@@ -1969,14 +1927,13 @@ var Plugin = /*#__PURE__*/function () {
       }
     }
   }]);
-  return Plugin;
 }(); // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
-function hyphenate$1(str) {
+function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 function getPluginName(obj) {
-  return hyphenate$1(obj.className);
+  return hyphenate(obj.className);
 }
 
 /**
@@ -1984,13 +1941,12 @@ function getPluginName(obj) {
  * @module foundation.abide
  */
 var Abide = /*#__PURE__*/function (_Plugin) {
-  _inherits(Abide, _Plugin);
-  var _super = _createSuper(Abide);
   function Abide() {
     _classCallCheck(this, Abide);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Abide, arguments);
   }
-  _createClass(Abide, [{
+  _inherits(Abide, _Plugin);
+  return _createClass(Abide, [{
     key: "_setup",
     value:
     /**
@@ -2004,7 +1960,7 @@ var Abide = /*#__PURE__*/function (_Plugin) {
     function _setup(element) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       this.$element = element;
-      this.options = $.extend(true, {}, Abide.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend(true, {}, Abide.defaults, this.$element.data(), options);
       this.isEnabled = true;
       this.formnovalidate = null;
       this.className = 'Abide'; // ie9 back compat
@@ -2019,23 +1975,22 @@ var Abide = /*#__PURE__*/function (_Plugin) {
     key: "_init",
     value: function _init() {
       var _this2 = this;
-      this.$inputs = $.merge(
+      this.$inputs = $__default["default"].merge(
       // Consider as input to validate:
       this.$element.find('input').not('[type="submit"]'),
       // * all input fields expect submit
       this.$element.find('textarea, select') // * all textareas and select fields
       );
-
       this.$submits = this.$element.find('[type="submit"]');
       var $globalErrors = this.$element.find('[data-abide-error]');
 
       // Add a11y attributes to all fields
       if (this.options.a11yAttributes) {
         this.$inputs.each(function (i, input) {
-          return _this2.addA11yAttributes($(input));
+          return _this2.addA11yAttributes($__default["default"](input));
         });
         $globalErrors.each(function (i, error) {
-          return _this2.addGlobalErrorA11yAttributes($(error));
+          return _this2.addGlobalErrorA11yAttributes($__default["default"](error));
         });
       }
       this._events();
@@ -2063,17 +2018,17 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       });
       if (this.options.validateOn === 'fieldChange') {
         this.$inputs.off('change.zf.abide').on('change.zf.abide', function (e) {
-          _this3.validateInput($(e.target));
+          _this3.validateInput($__default["default"](e.target));
         });
       }
       if (this.options.liveValidate) {
         this.$inputs.off('input.zf.abide').on('input.zf.abide', function (e) {
-          _this3.validateInput($(e.target));
+          _this3.validateInput($__default["default"](e.target));
         });
       }
       if (this.options.validateOnBlur) {
         this.$inputs.off('blur.zf.abide').on('blur.zf.abide', function (e) {
-          _this3.validateInput($(e.target));
+          _this3.validateInput($__default["default"](e.target));
         });
       }
     }
@@ -2221,11 +2176,11 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         var id = el.id;
         var $label = _this5.$element.find("label[for=\"".concat(id, "\"]"));
         if (!$label.length) {
-          $label = $(el).closest('label');
+          $label = $__default["default"](el).closest('label');
         }
         return $label[0];
       });
-      return $(labels);
+      return $__default["default"](labels);
     }
 
     /**
@@ -2244,11 +2199,11 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         var id = el.id;
         var $label = _this6.$element.find("label[for=\"".concat(id, "\"]"));
         if (!$label.length) {
-          $label = $(el).closest('label');
+          $label = $__default["default"](el).closest('label');
         }
         return $label[0];
       });
-      return $(labels);
+      return $__default["default"](labels);
     }
 
     /**
@@ -2301,20 +2256,21 @@ var Abide = /*#__PURE__*/function (_Plugin) {
 
         // For each label targeting $el, set [for] if it is not set.
         $labels.each(function (i, label) {
-          var $label = $(label);
+          var $label = $__default["default"](label);
           if (typeof $label.attr('for') === 'undefined') $label.attr('for', elemId);
         });
       }
 
       // For each error targeting $el, set [role=alert] if it is not set.
       $errors.each(function (i, label) {
-        var $label = $(label);
+        var $label = $__default["default"](label);
         if (typeof $label.attr('role') === 'undefined') $label.attr('role', 'alert');
       }).end();
     }
   }, {
     key: "addA11yErrorDescribe",
     value: function addA11yErrorDescribe($el, $error) {
+      if ($el.attr('type') === 'hidden') return;
       if (typeof $el.attr('aria-describedby') !== 'undefined') return;
 
       // Set [aria-describedby] on the input toward the first form error if it is not set
@@ -2476,17 +2432,16 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         if (dependentElements.length) {
           var _this = this;
           dependentElements.each(function () {
-            if ($(this).val()) {
-              _this.validateInput($(this));
+            if ($__default["default"](this).val()) {
+              _this.validateInput($__default["default"](this));
             }
           });
         }
       }
       if (manageErrorClasses) {
+        this.removeErrorClasses($el);
         if (!goodToGo) {
           this.addErrorClasses($el, failedValidators);
-        } else {
-          this.removeErrorClasses($el);
         }
       }
 
@@ -2526,15 +2481,15 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       }
       this.$inputs.each(function () {
         // Only use one checkbox per group since validateCheckbox() iterates over all associated checkboxes
-        if ($(this)[0].type === 'checkbox') {
-          if ($(this).attr('name') === checkboxGroupName) return true;
-          checkboxGroupName = $(this).attr('name');
+        if ($__default["default"](this)[0].type === 'checkbox') {
+          if ($__default["default"](this).attr('name') === checkboxGroupName) return true;
+          checkboxGroupName = $__default["default"](this).attr('name');
         }
-        acc.push(_this.validateInput($(this)));
+        acc.push(_this.validateInput($__default["default"](this)));
       });
       var noError = acc.indexOf(false) === -1;
       this.$element.find('[data-abide-error]').each(function (i, elem) {
-        var $elem = $(elem);
+        var $elem = $__default["default"](elem);
         // Ensure a11y attributes are set
         if (_this8.options.a11yAttributes) _this8.addGlobalErrorA11yAttributes($elem);
         // Show or hide the error
@@ -2593,7 +2548,7 @@ var Abide = /*#__PURE__*/function (_Plugin) {
 
       // For the group to be required, at least one radio needs to be required
       $group.each(function (i, e) {
-        if ($(e).attr('required')) {
+        if ($__default["default"](e).attr('required')) {
           required = true;
         }
       });
@@ -2601,7 +2556,7 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       if (!valid) {
         // For the group to be valid, at least one radio needs to be checked
         $group.each(function (i, e) {
-          if ($(e).prop('checked')) {
+          if ($__default["default"](e).prop('checked')) {
             valid = true;
           }
         });
@@ -2628,7 +2583,7 @@ var Abide = /*#__PURE__*/function (_Plugin) {
 
       // For the group to be required, at least one checkbox needs to be required
       $group.each(function (i, e) {
-        if ($(e).attr('required')) {
+        if ($__default["default"](e).attr('required')) {
           required = true;
         }
       });
@@ -2637,11 +2592,11 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         // Count checked checkboxes within the group
         // Use data-min-required if available (default: 1)
         $group.each(function (i, e) {
-          if ($(e).prop('checked')) {
+          if ($__default["default"](e).prop('checked')) {
             checked++;
           }
-          if (typeof $(e).attr('data-min-required') !== 'undefined') {
-            minRequired = parseInt($(e).attr('data-min-required'), 10);
+          if (typeof $__default["default"](e).attr('data-min-required') !== 'undefined') {
+            minRequired = parseInt($__default["default"](e).attr('data-min-required'), 10);
           }
         });
 
@@ -2659,9 +2614,9 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       // Refresh error class for all input
       $group.each(function (i, e) {
         if (!valid) {
-          _this9.addErrorClasses($(e), ['required']);
+          _this9.addErrorClasses($__default["default"](e), ['required']);
         } else {
-          _this9.removeErrorClasses($(e));
+          _this9.removeErrorClasses($__default["default"](e));
         }
       });
       return valid;
@@ -2694,19 +2649,19 @@ var Abide = /*#__PURE__*/function (_Plugin) {
     value: function resetForm() {
       var $form = this.$element,
         opts = this.options;
-      $(".".concat(opts.labelErrorClass), $form).not('small').removeClass(opts.labelErrorClass);
-      $(".".concat(opts.inputErrorClass), $form).not('small').removeClass(opts.inputErrorClass);
-      $("".concat(opts.formErrorSelector, ".").concat(opts.formErrorClass)).removeClass(opts.formErrorClass);
+      $__default["default"](".".concat(opts.labelErrorClass), $form).not('small').removeClass(opts.labelErrorClass);
+      $__default["default"](".".concat(opts.inputErrorClass), $form).not('small').removeClass(opts.inputErrorClass);
+      $__default["default"]("".concat(opts.formErrorSelector, ".").concat(opts.formErrorClass)).removeClass(opts.formErrorClass);
       $form.find('[data-abide-error]').css('display', 'none');
-      $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
+      $__default["default"](':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').attr({
         'data-invalid': null,
         'aria-invalid': null
       });
-      $(':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).attr({
+      $__default["default"](':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).attr({
         'data-invalid': null,
         'aria-invalid': null
       });
-      $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).attr({
+      $__default["default"](':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).attr({
         'data-invalid': null,
         'aria-invalid': null
       });
@@ -2727,12 +2682,11 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       var _this = this;
       this.$element.off('.abide').find('[data-abide-error]').css('display', 'none');
       this.$inputs.off('.abide').each(function () {
-        _this.removeErrorClasses($(this));
+        _this.removeErrorClasses($__default["default"](this));
       });
       this.$submits.off('.abide');
     }
   }]);
-  return Abide;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -2853,7 +2807,7 @@ Abide.defaults = {
    */
   validators: {
     equalTo: function equalTo(el) {
-      return $("#".concat(el.attr('data-equalto'))).val() === el.val();
+      return $__default["default"]("#".concat(el.attr('data-equalto'))).val() === el.val();
     }
   }
 };
@@ -2864,13 +2818,12 @@ Abide.defaults = {
  * @requires foundation.util.keyboard
  */
 var Accordion = /*#__PURE__*/function (_Plugin) {
-  _inherits(Accordion, _Plugin);
-  var _super = _createSuper(Accordion);
   function Accordion() {
     _classCallCheck(this, Accordion);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Accordion, arguments);
   }
-  _createClass(Accordion, [{
+  _inherits(Accordion, _Plugin);
+  return _createClass(Accordion, [{
     key: "_setup",
     value:
     /**
@@ -2883,7 +2836,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Accordion.defaults, this.$element.data(), options);
       this.className = 'Accordion'; // ie9 back compat
       this._init();
       Keyboard.register('Accordion', {
@@ -2907,7 +2860,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
       this._isInitializing = true;
       this.$tabs = this.$element.children('[data-accordion-item]');
       this.$tabs.each(function (idx, el) {
-        var $el = $(el),
+        var $el = $__default["default"](el),
           $content = $el.children('[data-tab-content]'),
           id = $content[0].id || GetYoDigits(6, 'accordion'),
           linkId = el.id ? "".concat(el.id, "-label") : "".concat(id, "-label");
@@ -2937,7 +2890,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
           // Otherwise, move to the initial anchor
           if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
-        var $anchor = anchor && $(anchor);
+        var $anchor = anchor && $__default["default"](anchor);
         var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"]"));
         // Whether the anchor element that has been found is part of this element
         var isOwnAnchor = !!($anchor.length && $link.length);
@@ -2955,9 +2908,9 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
 
           // Roll up a little to show the titles
           if (_this2.options.deepLinkSmudge) {
-            onLoad($(window), function () {
+            onLoad($__default["default"](window), function () {
               var offset = _this2.$element.offset();
-              $('html, body').animate({
+              $__default["default"]('html, body').animate({
                 scrollTop: offset.top - _this2.options.deepLinkSmudgeOffset
               }, _this2.options.deepLinkSmudgeDelay);
             });
@@ -2988,7 +2941,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
     value: function _events() {
       var _this = this;
       this.$tabs.each(function () {
-        var $elem = $(this);
+        var $elem = $__default["default"](this);
         var $tabContent = $elem.children('[data-tab-content]');
         if ($tabContent.length) {
           $elem.children('a').off('click.zf.accordion keydown.zf.accordion').on('click.zf.accordion', function (e) {
@@ -3031,7 +2984,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
         }
       });
       if (this.options.deepLink) {
-        $(window).on('hashchange', this._checkDeepLink);
+        $__default["default"](window).on('hashchange', this._checkDeepLink);
       }
     }
 
@@ -3139,7 +3092,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
       var targetContentId = $target.attr('aria-labelledby');
       $target.attr('aria-hidden', false);
       $targetItem.addClass('is-active');
-      $("#".concat(targetContentId)).attr({
+      $__default["default"]("#".concat(targetContentId)).attr({
         'aria-expanded': true
       });
       $target.finish().slideDown(this.options.slideSpeed, function () {
@@ -3166,7 +3119,7 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
       var targetContentId = $target.attr('aria-labelledby');
       $target.attr('aria-hidden', true);
       $targetItem.removeClass('is-active');
-      $("#".concat(targetContentId)).attr({
+      $__default["default"]("#".concat(targetContentId)).attr({
         'aria-expanded': false
       });
       $target.finish().slideUp(this.options.slideSpeed, function () {
@@ -3204,11 +3157,10 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
       this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
       this.$element.find('a').off('.zf.accordion');
       if (this.options.deepLink) {
-        $(window).off('hashchange', this._checkDeepLink);
+        $__default["default"](window).off('hashchange', this._checkDeepLink);
       }
     }
   }]);
-  return Accordion;
 }(Plugin);
 Accordion.defaults = {
   /**
@@ -3277,13 +3229,12 @@ Accordion.defaults = {
  * @requires foundation.util.nest
  */
 var AccordionMenu = /*#__PURE__*/function (_Plugin) {
-  _inherits(AccordionMenu, _Plugin);
-  var _super = _createSuper(AccordionMenu);
   function AccordionMenu() {
     _classCallCheck(this, AccordionMenu);
-    return _super.apply(this, arguments);
+    return _callSuper(this, AccordionMenu, arguments);
   }
-  _createClass(AccordionMenu, [{
+  _inherits(AccordionMenu, _Plugin);
+  return _createClass(AccordionMenu, [{
     key: "_setup",
     value:
     /**
@@ -3296,7 +3247,7 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, AccordionMenu.defaults, this.$element.data(), options);
       this.className = 'AccordionMenu'; // ie9 back compat
 
       this._init();
@@ -3327,7 +3278,7 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
       this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
       this.$menuLinks.each(function () {
         var linkId = this.id || GetYoDigits(6, 'acc-menu-link'),
-          $elem = $(this),
+          $elem = $__default["default"](this),
           $sub = $elem.children('[data-submenu]'),
           subId = $sub[0].id || GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
@@ -3355,7 +3306,7 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
       var initPanes = this.$element.find('.is-active');
       if (initPanes.length) {
         initPanes.each(function () {
-          _this.down($(this));
+          _this.down($__default["default"](this));
         });
       }
       this._events();
@@ -3370,41 +3321,41 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
     value: function _events() {
       var _this = this;
       this.$element.find('li').each(function () {
-        var $submenu = $(this).children('[data-submenu]');
+        var $submenu = $__default["default"](this).children('[data-submenu]');
         if ($submenu.length) {
           if (_this.options.submenuToggle) {
-            $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function () {
+            $__default["default"](this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function () {
               _this.toggle($submenu);
             });
           } else {
-            $(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
+            $__default["default"](this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function (e) {
               e.preventDefault();
               _this.toggle($submenu);
             });
           }
         }
       }).on('keydown.zf.accordionMenu', function (e) {
-        var $element = $(this),
+        var $element = $__default["default"](this),
           $elements = $element.parent('ul').children('li'),
           $prevElement,
           $nextElement,
           $target = $element.children('[data-submenu]');
         $elements.each(function (i) {
-          if ($(this).is($element)) {
+          if ($__default["default"](this).is($element)) {
             $prevElement = $elements.eq(Math.max(0, i - 1)).find('a').first();
             $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1)).find('a').first();
-            if ($(this).children('[data-submenu]:visible').length) {
+            if ($__default["default"](this).children('[data-submenu]:visible').length) {
               // has open sub menu
               $nextElement = $element.find('li:first-child').find('a').first();
             }
-            if ($(this).is(':first-child')) {
+            if ($__default["default"](this).is(':first-child')) {
               // is first element of sub menu
               $prevElement = $element.parents('li').first().find('a').first();
             } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) {
               // if previous element has open sub menu
               $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
             }
-            if ($(this).is(':last-child')) {
+            if ($__default["default"](this).is(':last-child')) {
               // is last element of sub menu
               $nextElement = $element.parents('li').first().next('li').find('a').first();
             }
@@ -3578,7 +3529,6 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
       Nest.Burn(this.$element, 'accordion');
     }
   }]);
-  return AccordionMenu;
 }(Plugin);
 AccordionMenu.defaults = {
   /**
@@ -3624,13 +3574,12 @@ AccordionMenu.defaults = {
  * @requires foundation.util.box
  */
 var Drilldown = /*#__PURE__*/function (_Plugin) {
-  _inherits(Drilldown, _Plugin);
-  var _super = _createSuper(Drilldown);
   function Drilldown() {
     _classCallCheck(this, Drilldown);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Drilldown, arguments);
   }
-  _createClass(Drilldown, [{
+  _inherits(Drilldown, _Plugin);
+  return _createClass(Drilldown, [{
     key: "_setup",
     value:
     /**
@@ -3642,7 +3591,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Drilldown.defaults, this.$element.data(), options);
       this.className = 'Drilldown'; // ie9 back compat
 
       this._init();
@@ -3699,7 +3648,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       //   this._menuLinkEvents();
       // }
       this.$submenuAnchors.each(function () {
-        var $link = $(this);
+        var $link = $__default["default"](this);
         var $sub = $link.parent();
         if (_this.options.parentLink) {
           $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li data-is-parent-link class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="none"></li>');
@@ -3713,7 +3662,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
         _this._events($link);
       });
       this.$submenus.each(function () {
-        var $menu = $(this),
+        var $menu = $__default["default"](this),
           $back = $menu.find('.js-drilldown-back');
         if (!$back.length) {
           switch (_this.options.backButtonPosition) {
@@ -3736,7 +3685,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
 
       // create a wrapper on element if it doesn't exist.
       if (!this.$element.parent().hasClass('is-drilldown')) {
-        this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
+        this.$wrapper = $__default["default"](this.options.wrapper).addClass('is-drilldown');
         if (this.options.animateHeight) this.$wrapper.addClass('animate-height');
         this.$element.wrap(this.$wrapper);
       }
@@ -3766,7 +3715,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     value: function _events($elem) {
       var _this = this;
       $elem.off('click.zf.drilldown').on('click.zf.drilldown', function (e) {
-        if ($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
+        if ($__default["default"](e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')) {
           e.preventDefault();
         }
 
@@ -3775,9 +3724,9 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
         // }
         _this._show($elem.parent('li'));
         if (_this.options.closeOnClick) {
-          var $body = $('body');
+          var $body = $__default["default"]('body');
           $body.off('.zf.drilldown').on('click.zf.drilldown', function (ev) {
-            if (ev.target === _this.$element[0] || $.contains(_this.$element[0], ev.target)) {
+            if (ev.target === _this.$element[0] || $__default["default"].contains(_this.$element[0], ev.target)) {
               return;
             }
             ev.preventDefault();
@@ -3812,16 +3761,16 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     key: "_scrollTop",
     value: function _scrollTop() {
       var _this = this;
-      var $scrollTopElement = _this.options.scrollTopElement !== '' ? $(_this.options.scrollTopElement) : _this.$element,
+      var $scrollTopElement = _this.options.scrollTopElement !== '' ? $__default["default"](_this.options.scrollTopElement) : _this.$element,
         scrollPos = parseInt($scrollTopElement.offset().top + _this.options.scrollTopOffset, 10);
-      $('html, body').stop(true).animate({
+      $__default["default"]('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, _this.options.animationDuration, _this.options.animationEasing, function () {
         /**
           * Fires after the menu has scrolled
           * @event Drilldown#scrollme
           */
-        if (this === $('html')[0]) _this.$element.trigger('scrollme.zf.drilldown');
+        if (this === $__default["default"]('html')[0]) _this.$element.trigger('scrollme.zf.drilldown');
       });
     }
 
@@ -3834,12 +3783,12 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
     value: function _keyboardEvents() {
       var _this = this;
       this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function (e) {
-        var $element = $(this),
+        var $element = $__default["default"](this),
           $elements = $element.parent('li').parent('ul').children('li').children('a'),
           $prevElement,
           $nextElement;
         $elements.each(function (i) {
-          if ($(this).is($element)) {
+          if ($__default["default"](this).is($element)) {
             $prevElement = $elements.eq(Math.max(0, i - 1));
             $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1));
             return;
@@ -4038,7 +3987,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       // Reset drilldown
       var $expandedSubmenus = this.$element.find('li[aria-expanded="true"] > ul[data-submenu]');
       $expandedSubmenus.each(function () {
-        _this._setHideSubMenuClasses($(this));
+        _this._setHideSubMenuClasses($__default["default"](this));
       });
 
       // Save the menu as the currently displayed one.
@@ -4058,20 +4007,20 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       $submenus.each(function (index) {
         // Update height of first child (target menu) if autoHeight option true
         if (index === 0 && _this.options.autoHeight) {
-          _this.$wrapper.css('height', $(this).data('calcHeight'));
+          _this.$wrapper.css('height', $__default["default"](this).data('calcHeight'));
         }
         var isLastChild = index === $submenus.length - 1;
 
         // Add transitionsend listener to last child (root due to reverse order) to open target menu's first link
         // Last child makes sure the event gets always triggered even if going through several menus
         if (isLastChild === true) {
-          $(this).one(transitionend($(this)), function () {
+          $__default["default"](this).one(transitionend($__default["default"](this)), function () {
             if (autoFocus === true) {
               $elem.find('li > a').first().focus();
             }
           });
         }
-        _this._setShowSubMenuClasses($(this), isLastChild);
+        _this._setShowSubMenuClasses($__default["default"](this), isLastChild);
       });
     }
 
@@ -4151,7 +4100,7 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
         var height = Box.GetDimensions(this).height;
         maxHeight = height > maxHeight ? height : maxHeight;
         if (_this.options.autoHeight) {
-          $(this).data('calcHeight', height);
+          $__default["default"](this).data('calcHeight', height);
         }
       });
       if (this.options.autoHeight) result.height = this.$currentMenu.data('calcHeight');else result['min-height'] = "".concat(maxHeight, "px");
@@ -4166,19 +4115,19 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_destroy",
     value: function _destroy() {
-      $('body').off('.zf.drilldown');
+      $__default["default"]('body').off('.zf.drilldown');
       if (this.options.scrollTop) this.$element.off('.zf.drilldown', this._bindHandler);
       this._hideAll();
       this.$element.off('mutateme.zf.trigger');
       Nest.Burn(this.$element, 'drilldown');
       this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').off('transitionend otransitionend webkitTransitionEnd').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
       this.$submenuAnchors.each(function () {
-        $(this).off('.zf.drilldown');
+        $__default["default"](this).off('.zf.drilldown');
       });
       this.$element.find('[data-is-parent-link]').detach();
       this.$submenus.removeClass('drilldown-submenu-cover-previous invisible');
       this.$element.find('a').each(function () {
-        var $link = $(this);
+        var $link = $__default["default"](this);
         $link.removeAttr('tabindex');
         if ($link.data('savedHref')) {
           $link.attr('href', $link.data('savedHref')).removeData('savedHref');
@@ -4188,7 +4137,6 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       });
     }
   }]);
-  return Drilldown;
 }(Plugin);
 Drilldown.defaults = {
   /**
@@ -4305,13 +4253,12 @@ function nextItem(item, array) {
   }
 }
 var Positionable = /*#__PURE__*/function (_Plugin) {
-  _inherits(Positionable, _Plugin);
-  var _super = _createSuper(Positionable);
   function Positionable() {
     _classCallCheck(this, Positionable);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Positionable, arguments);
   }
-  _createClass(Positionable, [{
+  _inherits(Positionable, _Plugin);
+  return _createClass(Positionable, [{
     key: "_init",
     value:
     /**
@@ -4457,7 +4404,6 @@ var Positionable = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Positionable;
 }(Plugin);
 Positionable.defaults = {
   /**
@@ -4517,13 +4463,12 @@ Positionable.defaults = {
  * @requires foundation.util.triggers
  */
 var Dropdown = /*#__PURE__*/function (_Positionable) {
-  _inherits(Dropdown, _Positionable);
-  var _super = _createSuper(Dropdown);
   function Dropdown() {
     _classCallCheck(this, Dropdown);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Dropdown, arguments);
   }
-  _createClass(Dropdown, [{
+  _inherits(Dropdown, _Positionable);
+  return _createClass(Dropdown, [{
     key: "_setup",
     value:
     /**
@@ -4536,12 +4481,12 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Dropdown.defaults, this.$element.data(), options);
       this.className = 'Dropdown'; // ie9 back compat
 
       // Touch and Triggers init are idempotent, just need to make sure they are initialized
-      Touch.init($);
-      Triggers.init($);
+      Touch.init($__default["default"]);
+      Triggers.init($__default["default"]);
       this._init();
       Keyboard.register('Dropdown', {
         'ENTER': 'toggle',
@@ -4559,7 +4504,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
     key: "_init",
     value: function _init() {
       var $id = this.$element.attr('id');
-      this.$anchors = $("[data-toggle=\"".concat($id, "\"]")).length ? $("[data-toggle=\"".concat($id, "\"]")) : $("[data-open=\"".concat($id, "\"]"));
+      this.$anchors = $__default["default"]("[data-toggle=\"".concat($id, "\"]")).length ? $__default["default"]("[data-toggle=\"".concat($id, "\"]")) : $__default["default"]("[data-open=\"".concat($id, "\"]"));
       this.$anchors.attr({
         'aria-controls': $id,
         'data-is-focus': false,
@@ -4587,7 +4532,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
         'data-yeti-box': $id,
         'data-resize': $id
       });
-      _get(_getPrototypeOf(Dropdown.prototype), "_init", this).call(this);
+      _superPropGet(Dropdown, "_init", this, 3)([]);
       this._events();
     }
   }, {
@@ -4609,7 +4554,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
       if (horizontalPosition) {
         return horizontalPosition[1];
       }
-      return _get(_getPrototypeOf(Dropdown.prototype), "_getDefaultAlignment", this).call(this);
+      return _superPropGet(Dropdown, "_getDefaultAlignment", this, 3)([]);
     }
 
     /**
@@ -4622,7 +4567,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
     key: "_setPosition",
     value: function _setPosition() {
       this.$element.removeClass("has-position-".concat(this.position, " has-alignment-").concat(this.alignment));
-      _get(_getPrototypeOf(Dropdown.prototype), "_setPosition", this).call(this, this.$currentAnchor, this.$element, this.$parent);
+      _superPropGet(Dropdown, "_setPosition", this, 3)([this.$currentAnchor, this.$element, this.$parent]);
       this.$element.addClass("has-position-".concat(this.position, " has-alignment-").concat(this.alignment));
     }
 
@@ -4636,7 +4581,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
   }, {
     key: "_setCurrentAnchor",
     value: function _setCurrentAnchor(el) {
-      this.$currentAnchor = $(el);
+      this.$currentAnchor = $__default["default"](el);
     }
 
     /**
@@ -4669,7 +4614,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
       if (this.options.hover) {
         this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
           _this._setCurrentAnchor(this);
-          var bodyData = $('body').data();
+          var bodyData = $__default["default"]('body').data();
           if (typeof bodyData.whatinput === 'undefined' || bodyData.whatinput === 'mouse') {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {
@@ -4697,7 +4642,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
         }
       }
       this.$anchors.add(this.$element).on('keydown.zf.dropdown', function (e) {
-        var $target = $(this);
+        var $target = $__default["default"](this);
         Keyboard.handleKey(e, 'Dropdown', {
           open: function open() {
             if ($target.is(_this.$anchors) && !$target.is('input, textarea')) {
@@ -4722,7 +4667,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
   }, {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
-      var $body = $(document.body).not(this.$element),
+      var $body = $__default["default"](document.body).not(this.$element),
         _this = this;
       $body.off('click.zf.dropdown tap.zf.dropdown').on('click.zf.dropdown tap.zf.dropdown', function (e) {
         if (_this.$anchors.is(e.target) || _this.$anchors.find(e.target).length) {
@@ -4831,10 +4776,9 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
     value: function _destroy() {
       this.$element.off('.zf.trigger').hide();
       this.$anchors.off('.zf.dropdown');
-      $(document.body).off('click.zf.dropdown tap.zf.dropdown');
+      $__default["default"](document.body).off('click.zf.dropdown tap.zf.dropdown');
     }
   }]);
-  return Dropdown;
 }(Positionable);
 Dropdown.defaults = {
   /**
@@ -4948,13 +4892,12 @@ Dropdown.defaults = {
  * @requires foundation.util.touch
  */
 var DropdownMenu = /*#__PURE__*/function (_Plugin) {
-  _inherits(DropdownMenu, _Plugin);
-  var _super = _createSuper(DropdownMenu);
   function DropdownMenu() {
     _classCallCheck(this, DropdownMenu);
-    return _super.apply(this, arguments);
+    return _callSuper(this, DropdownMenu, arguments);
   }
-  _createClass(DropdownMenu, [{
+  _inherits(DropdownMenu, _Plugin);
+  return _createClass(DropdownMenu, [{
     key: "_setup",
     value:
     /**
@@ -4967,10 +4910,10 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, DropdownMenu.defaults, this.$element.data(), options);
       this.className = 'DropdownMenu'; // ie9 back compat
 
-      Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
+      Touch.init($__default["default"]); // Touch init is idempotent, we just need to make sure it's initialied.
 
       this._init();
       Keyboard.register('DropdownMenu', {
@@ -5041,7 +4984,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
 
       // used for onClick and in the keyboard handlers
       var handleClickFn = function handleClickFn(e) {
-        var $elem = $(e.target).parentsUntil('ul', ".".concat(parClass)),
+        var $elem = $__default["default"](e.target).parentsUntil('ul', ".".concat(parClass)),
           hasSub = $elem.hasClass(parClass),
           hasClicked = $elem.attr('data-is-click') === 'true',
           $sub = $elem.children('.is-dropdown-submenu');
@@ -5068,7 +5011,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       // Handle Leaf element Clicks
       if (_this.options.closeOnClickInside) {
         this.$menuItems.on('click.zf.dropdownMenu', function () {
-          var $elem = $(this),
+          var $elem = $__default["default"](this),
             hasSub = $elem.hasClass(parClass);
           if (!hasSub) {
             _this._hide();
@@ -5078,7 +5021,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       if (hasTouch && this.options.disableHoverOnTouch) this.options.disableHover = true;
       if (!this.options.disableHover) {
         this.$menuItems.on('mouseenter.zf.dropdownMenu', function () {
-          var $elem = $(this),
+          var $elem = $__default["default"](this),
             hasSub = $elem.hasClass(parClass);
           if (hasSub) {
             clearTimeout($elem.data('_delay'));
@@ -5087,7 +5030,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             }, _this.options.hoverDelay));
           }
         }).on('mouseleave.zf.dropdownMenu', ignoreMousedisappear(function () {
-          var $elem = $(this),
+          var $elem = $__default["default"](this),
             hasSub = $elem.hasClass(parClass);
           if (hasSub && _this.options.autoclose) {
             if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) {
@@ -5101,13 +5044,13 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
         }));
       }
       this.$menuItems.on('keydown.zf.dropdownMenu', function (e) {
-        var $element = $(e.target).parentsUntil('ul', '[role="none"]'),
+        var $element = $__default["default"](e.target).parentsUntil('ul', '[role="none"]'),
           isTab = _this.$tabs.index($element) > -1,
           $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
           $prevElement,
           $nextElement;
         $elements.each(function (i) {
-          if ($(this).is($element)) {
+          if ($__default["default"](this).is($element)) {
             $prevElement = $elements.eq(i - 1);
             $nextElement = $elements.eq(i + 1);
             return;
@@ -5139,7 +5082,6 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             e.preventDefault();
             //}
           };
-
         var functions = {
           open: openSub,
           close: function close() {
@@ -5153,7 +5095,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             // vertical menu
             if (_this._isRtl()) {
               // right aligned
-              $.extend(functions, {
+              $__default["default"].extend(functions, {
                 down: nextSibling,
                 up: prevSibling,
                 next: closeSub,
@@ -5161,7 +5103,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
               });
             } else {
               // left aligned
-              $.extend(functions, {
+              $__default["default"].extend(functions, {
                 down: nextSibling,
                 up: prevSibling,
                 next: openSub,
@@ -5172,7 +5114,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             // horizontal menu
             if (_this._isRtl()) {
               // right aligned
-              $.extend(functions, {
+              $__default["default"].extend(functions, {
                 next: prevSibling,
                 previous: nextSibling,
                 down: openSub,
@@ -5180,7 +5122,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
               });
             } else {
               // left aligned
-              $.extend(functions, {
+              $__default["default"].extend(functions, {
                 next: nextSibling,
                 previous: prevSibling,
                 down: openSub,
@@ -5192,7 +5134,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
           // not tabs -> one sub
           if (_this._isRtl()) {
             // right aligned
-            $.extend(functions, {
+            $__default["default"].extend(functions, {
               next: closeSub,
               previous: openSub,
               down: nextSibling,
@@ -5200,7 +5142,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             });
           } else {
             // left aligned
-            $.extend(functions, {
+            $__default["default"].extend(functions, {
               next: openSub,
               previous: closeSub,
               down: nextSibling,
@@ -5221,10 +5163,10 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
     key: "_addBodyHandler",
     value: function _addBodyHandler() {
       var _this2 = this;
-      var $body = $(document.body);
+      var $body = $__default["default"](document.body);
       this._removeBodyHandler();
       $body.on('click.zf.dropdownMenu tap.zf.dropdownMenu', function (e) {
-        var isItself = !!$(e.target).closest(_this2.$element).length;
+        var isItself = !!$__default["default"](e.target).closest(_this2.$element).length;
         if (isItself) return;
         _this2._hide();
         _this2._removeBodyHandler();
@@ -5239,7 +5181,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_removeBodyHandler",
     value: function _removeBodyHandler() {
-      $(document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
+      $__default["default"](document.body).off('click.zf.dropdownMenu tap.zf.dropdownMenu');
     }
 
     /**
@@ -5253,7 +5195,7 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
     key: "_show",
     value: function _show($sub) {
       var idx = this.$tabs.index(this.$tabs.filter(function (i, el) {
-        return $(el).find($sub).length > 0;
+        return $__default["default"](el).find($sub).length > 0;
       }));
       var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
       this._hide($sibs, idx);
@@ -5332,11 +5274,10 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       this.$menuItems.off('.zf.dropdownMenu').removeAttr('data-is-click').removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-      $(document.body).off('.zf.dropdownMenu');
+      $__default["default"](document.body).off('.zf.dropdownMenu');
       Nest.Burn(this.$element, 'dropdown');
     }
   }]);
-  return DropdownMenu;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -5436,13 +5377,12 @@ DropdownMenu.defaults = {
  * @requires foundation.util.imageLoader if equalizer contains images
  */
 var Equalizer = /*#__PURE__*/function (_Plugin) {
-  _inherits(Equalizer, _Plugin);
-  var _super = _createSuper(Equalizer);
   function Equalizer() {
     _classCallCheck(this, Equalizer);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Equalizer, arguments);
   }
-  _createClass(Equalizer, [{
+  _inherits(Equalizer, _Plugin);
+  return _createClass(Equalizer, [{
     key: "_setup",
     value:
     /**
@@ -5455,7 +5395,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Equalizer.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Equalizer.defaults, this.$element.data(), options);
       this.className = 'Equalizer'; // ie9 back compat
 
       this._init();
@@ -5485,7 +5425,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
       var tooSmall;
       if (this.options.equalizeOn) {
         tooSmall = this._checkMQ();
-        $(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
+        $__default["default"](window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
       } else {
         this._events();
       }
@@ -5648,7 +5588,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
       for (var i = 0, len = this.$watched.length; i < len; i++) {
         this.$watched[i].style.height = 'auto';
         //maybe could use this.$watched[i].offsetTop
-        var elOffsetTop = $(this.$watched[i]).offset().top;
+        var elOffsetTop = $__default["default"](this.$watched[i]).offset().top;
         if (elOffsetTop !== lastElTopOffset) {
           group++;
           groups[group] = [];
@@ -5657,7 +5597,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
         groups[group].push([this.$watched[i], this.$watched[i].offsetHeight]);
       }
       for (var j = 0, ln = groups.length; j < ln; j++) {
-        var heights = $(groups[j]).map(function () {
+        var heights = $__default["default"](groups[j]).map(function () {
           return this[1];
         }).get();
         var max = Math.max.apply(null, heights);
@@ -5709,7 +5649,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
         var groupsILength = groups[i].length,
           max = groups[i][groupsILength - 1];
         if (groupsILength <= 2) {
-          $(groups[i][0][0]).css({
+          $__default["default"](groups[i][0][0]).css({
             'height': 'auto'
           });
           continue;
@@ -5720,7 +5660,7 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
           */
         this.$element.trigger('preequalizedrow.zf.equalizer');
         for (var j = 0, lenJ = groupsILength - 1; j < lenJ; j++) {
-          $(groups[i][j][0]).css({
+          $__default["default"](groups[i][j][0]).css({
             'height': max
           });
         }
@@ -5747,7 +5687,6 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
       this.$watched.css('height', 'auto');
     }
   }]);
-  return Equalizer;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -5782,13 +5721,12 @@ Equalizer.defaults = {
  * @requires foundation.util.mediaQuery
  */
 var Interchange = /*#__PURE__*/function (_Plugin) {
-  _inherits(Interchange, _Plugin);
-  var _super = _createSuper(Interchange);
   function Interchange() {
     _classCallCheck(this, Interchange);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Interchange, arguments);
   }
-  _createClass(Interchange, [{
+  _inherits(Interchange, _Plugin);
+  return _createClass(Interchange, [{
     key: "_setup",
     value:
     /**
@@ -5801,13 +5739,13 @@ var Interchange = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Interchange.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Interchange.defaults, this.$element.data(), options);
       this.rules = [];
       this.currentPath = '';
       this.className = 'Interchange'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
-      Triggers.init($);
+      Triggers.init($__default["default"]);
       this._init();
       this._events();
     }
@@ -5968,9 +5906,9 @@ var Interchange = /*#__PURE__*/function (_Plugin) {
       }
       // Replacing HTML
       else if (type === 'html') {
-        $.get(path, function (response) {
+        $__default["default"].get(path, function (response) {
           _this2.$element.html(response).trigger(trigger);
-          $(response).foundation();
+          $__default["default"](response).foundation();
           _this2.currentPath = path;
         });
       }
@@ -5992,7 +5930,6 @@ var Interchange = /*#__PURE__*/function (_Plugin) {
       this.$element.off('resizeme.zf.trigger');
     }
   }]);
-  return Interchange;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -6028,13 +5965,12 @@ Interchange.SPECIAL_QUERIES = {
  * @module foundation.smoothScroll
  */
 var SmoothScroll = /*#__PURE__*/function (_Plugin) {
-  _inherits(SmoothScroll, _Plugin);
-  var _super = _createSuper(SmoothScroll);
   function SmoothScroll() {
     _classCallCheck(this, SmoothScroll);
-    return _super.apply(this, arguments);
+    return _callSuper(this, SmoothScroll, arguments);
   }
-  _createClass(SmoothScroll, [{
+  _inherits(SmoothScroll, _Plugin);
+  return _createClass(SmoothScroll, [{
     key: "_setup",
     value:
     /**
@@ -6047,7 +5983,7 @@ var SmoothScroll = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, SmoothScroll.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, SmoothScroll.defaults, this.$element.data(), options);
       this.className = 'SmoothScroll'; // ie9 back compat
 
       this._init();
@@ -6090,7 +6026,7 @@ var SmoothScroll = /*#__PURE__*/function (_Plugin) {
     value: function _handleLinkClick(e) {
       var _this = this;
       // Follow the link if it does not point to an anchor.
-      if (!$(e.currentTarget).is('a[href^="#"]')) return;
+      if (!$__default["default"](e.currentTarget).is('a[href^="#"]')) return;
       var arrival = e.currentTarget.getAttribute('href');
       this._inTransition = true;
       SmoothScroll.scrollToLoc(arrival, this.options, function () {
@@ -6123,12 +6059,12 @@ var SmoothScroll = /*#__PURE__*/function (_Plugin) {
     function scrollToLoc(loc) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SmoothScroll.defaults;
       var callback = arguments.length > 2 ? arguments[2] : undefined;
-      var $loc = $(loc);
+      var $loc = $__default["default"](loc);
 
       // Do nothing if target does not exist to prevent errors
       if (!$loc.length) return false;
       var scrollPos = Math.round($loc.offset().top - options.threshold / 2 - options.offset);
-      $('html, body').stop(true).animate({
+      $__default["default"]('html, body').stop(true).animate({
         scrollTop: scrollPos
       }, options.animationDuration, options.animationEasing, function () {
         if (typeof callback === 'function') {
@@ -6137,7 +6073,6 @@ var SmoothScroll = /*#__PURE__*/function (_Plugin) {
       });
     }
   }]);
-  return SmoothScroll;
 }(Plugin);
 /**
  * Default settings for plugin.
@@ -6181,13 +6116,12 @@ SmoothScroll.defaults = {
  * @requires foundation.util.triggers
  */
 var Magellan = /*#__PURE__*/function (_Plugin) {
-  _inherits(Magellan, _Plugin);
-  var _super = _createSuper(Magellan);
   function Magellan() {
     _classCallCheck(this, Magellan);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Magellan, arguments);
   }
-  _createClass(Magellan, [{
+  _inherits(Magellan, _Plugin);
+  return _createClass(Magellan, [{
     key: "_setup",
     value:
     /**
@@ -6200,11 +6134,11 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Magellan.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Magellan.defaults, this.$element.data(), options);
       this.className = 'Magellan'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
-      Triggers.init($);
+      Triggers.init($__default["default"]);
       this._init();
       this.calcPoints();
     }
@@ -6217,14 +6151,14 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
     key: "_init",
     value: function _init() {
       var id = this.$element[0].id || GetYoDigits(6, 'magellan');
-      this.$targets = $('[data-magellan-target]');
+      this.$targets = $__default["default"]('[data-magellan-target]');
       this.$links = this.$element.find('a');
       this.$element.attr({
         'data-resize': id,
         'data-scroll': id,
         'id': id
       });
-      this.$active = $();
+      this.$active = $__default["default"]();
       this.scrollPos = parseInt(window.pageYOffset, 10);
       this._events();
     }
@@ -6244,7 +6178,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
       this.winHeight = Math.round(Math.max(window.innerHeight, html.clientHeight));
       this.docHeight = Math.round(Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight));
       this.$targets.each(function () {
-        var $tar = $(this),
+        var $tar = $__default["default"](this),
           pt = Math.round($tar.offset().top - _this.options.threshold);
         $tar.targetPoint = pt;
         _this.points.push(pt);
@@ -6259,7 +6193,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
     key: "_events",
     value: function _events() {
       var _this = this;
-      $(window).one('load', function () {
+      $__default["default"](window).one('load', function () {
         if (_this.options.deepLinking) {
           if (location.hash) {
             _this.scrollToLoc(location.hash);
@@ -6268,7 +6202,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
         _this.calcPoints();
         _this._updateActive();
       });
-      _this.onLoadListener = onLoad($(window), function () {
+      _this.onLoadListener = onLoad($__default["default"](window), function () {
         _this.$element.on({
           'resizeme.zf.trigger': _this.reflow.bind(_this),
           'scrollme.zf.trigger': _this._updateActive.bind(_this)
@@ -6283,7 +6217,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
           _this.scrollToLoc(window.location.hash);
         }
       };
-      $(window).on('hashchange', this._deepLinkScroll);
+      $__default["default"](window).on('hashchange', this._deepLinkScroll);
     }
 
     /**
@@ -6326,7 +6260,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
      */
   }, {
     key: "_updateActive",
-    value: function _updateActive( /*evt, elem, scrollPos*/
+    value: function _updateActive(/*evt, elem, scrollPos*/
     ) {
       var _this2 = this;
       if (this._inTransition) return;
@@ -6355,7 +6289,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
         this.$active = this.$links.filter('[href="#' + this.$targets.eq(activeIdx).data('magellan-target') + '"]');
         if (this.$active.length) activeHash = this.$active[0].getAttribute('href');
       } else {
-        this.$active = $();
+        this.$active = $__default["default"]();
       }
       var isNewActive = !(!this.$active.length && !$oldActive.length) && !this.$active.is($oldActive);
       var isNewHash = activeHash !== window.location.hash;
@@ -6401,11 +6335,10 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
         var hash = this.$active[0].getAttribute('href');
         window.location.hash.replace(hash, '');
       }
-      $(window).off('hashchange', this._deepLinkScroll);
-      if (this.onLoadListener) $(window).off(this.onLoadListener);
+      $__default["default"](window).off('hashchange', this._deepLinkScroll);
+      if (this.onLoadListener) $__default["default"](window).off(this.onLoadListener);
     }
   }]);
-  return Magellan;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -6471,13 +6404,12 @@ Magellan.defaults = {
  * @requires foundation.util.triggers
  */
 var OffCanvas = /*#__PURE__*/function (_Plugin) {
-  _inherits(OffCanvas, _Plugin);
-  var _super = _createSuper(OffCanvas);
   function OffCanvas() {
     _classCallCheck(this, OffCanvas);
-    return _super.apply(this, arguments);
+    return _callSuper(this, OffCanvas, arguments);
   }
-  _createClass(OffCanvas, [{
+  _inherits(OffCanvas, _Plugin);
+  return _createClass(OffCanvas, [{
     key: "_setup",
     value:
     /**
@@ -6492,30 +6424,30 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
       var _this2 = this;
       this.className = 'OffCanvas'; // ie9 back compat
       this.$element = element;
-      this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, OffCanvas.defaults, this.$element.data(), options);
       this.contentClasses = {
         base: [],
         reveal: []
       };
-      this.$lastTrigger = $();
-      this.$triggers = $();
+      this.$lastTrigger = $__default["default"]();
+      this.$triggers = $__default["default"]();
       this.position = 'left';
-      this.$content = $();
+      this.$content = $__default["default"]();
       this.nested = !!this.options.nested;
-      this.$sticky = $();
+      this.$sticky = $__default["default"]();
       this.isInCanvas = false;
 
       // Defines the CSS transition/position classes of the off-canvas content container.
-      $(['push', 'overlap']).each(function (index, val) {
+      $__default["default"](['push', 'overlap']).each(function (index, val) {
         _this2.contentClasses.base.push('has-transition-' + val);
       });
-      $(['left', 'right', 'top', 'bottom']).each(function (index, val) {
+      $__default["default"](['left', 'right', 'top', 'bottom']).each(function (index, val) {
         _this2.contentClasses.base.push('has-position-' + val);
         _this2.contentClasses.reveal.push('has-reveal-' + val);
       });
 
       // Triggers init is idempotent, just need to make sure it is initialized
-      Triggers.init($);
+      Triggers.init($__default["default"]);
       MediaQuery._init();
       this._init();
       this._events();
@@ -6537,7 +6469,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
       // Find off-canvas content, either by ID (if specified), by siblings or by closest selector (fallback)
       if (this.options.contentId) {
-        this.$content = $('#' + this.options.contentId);
+        this.$content = $__default["default"]('#' + this.options.contentId);
       } else if (this.$element.siblings('[data-off-canvas-content]').length) {
         this.$content = this.$element.siblings('[data-off-canvas-content]').first();
       } else {
@@ -6560,7 +6492,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
       this.$element.addClass("is-transition-".concat(this.options.transition, " is-closed"));
 
       // Find triggers that affect this element and add aria-expanded to them
-      this.$triggers = $(document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id);
+      this.$triggers = $__default["default"](document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id);
 
       // Get position by checking for related CSS class
       this.position = this.$element.is('.position-left, .position-top, .position-right, .position-bottom') ? this.$element.attr('class').match(/position\-(left|top|right|bottom)/)[1] : this.position;
@@ -6568,11 +6500,11 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
       // Add an overlay over the content if necessary
       if (this.options.contentOverlay === true) {
         var overlay = document.createElement('div');
-        var overlayPosition = $(this.$element).css("position") === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
+        var overlayPosition = $__default["default"](this.$element).css("position") === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
         overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
-        this.$overlay = $(overlay);
+        this.$overlay = $__default["default"](overlay);
         if (overlayPosition === 'is-overlay-fixed') {
-          $(this.$overlay).insertAfter(this.$element);
+          $__default["default"](this.$overlay).insertAfter(this.$element);
         } else {
           this.$content.append(this.$overlay);
         }
@@ -6640,7 +6572,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
         });
       }
       if (this.options.inCanvasOn) {
-        $(window).on('changed.zf.mediaquery', function () {
+        $__default["default"](window).on('changed.zf.mediaquery', function () {
           _this3._checkInCanvas();
         });
       }
@@ -6654,12 +6586,12 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
     key: "_setMQChecker",
     value: function _setMQChecker() {
       var _this = this;
-      this.onLoadListener = onLoad($(window), function () {
+      this.onLoadListener = onLoad($__default["default"](window), function () {
         if (MediaQuery.atLeast(_this.options.revealOn)) {
           _this.reveal(true);
         }
       });
-      $(window).on('changed.zf.mediaquery', function () {
+      $__default["default"](window).on('changed.zf.mediaquery', function () {
         if (MediaQuery.atLeast(_this.options.revealOn)) {
           _this.reveal(true);
         } else {
@@ -6723,7 +6655,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
     key: "_fixStickyElements",
     value: function _fixStickyElements() {
       this.$sticky.each(function (_, el) {
-        var $el = $(el);
+        var $el = $__default["default"](el);
 
         // If sticky element is currently fixed, adjust its top value to match absolute position due to transform scope
         // Limit to push transition because postion:fixed works without problems for overlap (no transform scope)
@@ -6733,7 +6665,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
           $el.data('offCanvasSticky', {
             top: topVal
           });
-          var absoluteTopVal = $(document).scrollTop() + topVal;
+          var absoluteTopVal = $__default["default"](document).scrollTop() + topVal;
           $el.css({
             top: "".concat(absoluteTopVal, "px"),
             width: '100%',
@@ -6752,7 +6684,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
     key: "_unfixStickyElements",
     value: function _unfixStickyElements() {
       this.$sticky.each(function (_, el) {
-        var $el = $(el);
+        var $el = $__default["default"](el);
         var stickyData = $el.data('offCanvasSticky');
 
         // If sticky element has got data object with prior values (meaning it was originally fixed) restore these values once off-canvas is closed
@@ -6910,7 +6842,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
       // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
       if (this.options.contentScroll === false) {
-        $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
+        $__default["default"]('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
         this.$element.on('touchstart', this._recordScrollable);
         this.$element.on('touchmove', this, this._preventDefaultAtEdges);
         this.$element.on('touchstart', '[data-off-canvas-scrollbox]', this._recordScrollable);
@@ -6927,7 +6859,6 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
           if (!_this.$element.hasClass('is-open')) {
             return; // exit if prematurely closed
           }
-
           var canvasFocus = _this.$element.find('[data-autofocus]');
           if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
@@ -7001,7 +6932,7 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
 
         // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
         if (_this5.options.contentScroll === false) {
-          $('body').removeClass('is-off-canvas-open').off('touchmove', _this5._stopScrolling);
+          $__default["default"]('body').removeClass('is-off-canvas-open').off('touchmove', _this5._stopScrolling);
           _this5.$element.off('touchstart', _this5._recordScrollable);
           _this5.$element.off('touchmove', _this5._preventDefaultAtEdges);
           _this5.$element.off('touchstart', '[data-off-canvas-scrollbox]', _this5._recordScrollable);
@@ -7067,10 +6998,9 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
       this.close();
       this.$element.off('.zf.trigger .zf.offCanvas');
       this.$overlay.off('.zf.offCanvas');
-      if (this.onLoadListener) $(window).off(this.onLoadListener);
+      if (this.onLoadListener) $__default["default"](window).off(this.onLoadListener);
     }
   }]);
-  return OffCanvas;
 }(Plugin);
 OffCanvas.defaults = {
   /**
@@ -7184,13 +7114,12 @@ OffCanvas.defaults = {
  * @requires foundation.util.touch
  */
 var Orbit = /*#__PURE__*/function (_Plugin) {
-  _inherits(Orbit, _Plugin);
-  var _super = _createSuper(Orbit);
   function Orbit() {
     _classCallCheck(this, Orbit);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Orbit, arguments);
   }
-  _createClass(Orbit, [{
+  _inherits(Orbit, _Plugin);
+  return _createClass(Orbit, [{
     key: "_setup",
     value:
     /**
@@ -7202,10 +7131,10 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
     */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Orbit.defaults, this.$element.data(), options);
       this.className = 'Orbit'; // ie9 back compat
 
-      Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
+      Touch.init($__default["default"]); // Touch init is idempotent, we just need to make sure it's initialied.
 
       this._init();
       Keyboard.register('Orbit', {
@@ -7250,7 +7179,6 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
       } else {
         this._prepareForOrbit(); //hehe
       }
-
       if (this.options.bullets) {
         this._loadBullets();
       }
@@ -7319,11 +7247,11 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
         _this = this;
       this.$slides.each(function () {
         temp = this.getBoundingClientRect().height;
-        $(this).attr('data-slide', counter);
+        $__default["default"](this).attr('data-slide', counter);
 
         // hide all slides but the active one
-        if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
-          $(this).css({
+        if (!/mui/g.test($__default["default"](this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {
+          $__default["default"](this).css({
             'display': 'none'
           });
         }
@@ -7349,7 +7277,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
     key: "_setSlideHeight",
     value: function _setSlideHeight(height) {
       this.$slides.each(function () {
-        $(this).css('max-height', height);
+        $__default["default"](this).css('max-height', height);
       });
     }
 
@@ -7404,7 +7332,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
           //also need to handle enter/return and spacebar key presses
           .on('click.zf.orbit touchend.zf.orbit', function (e) {
             e.preventDefault();
-            _this.changeSlide($(this).hasClass(_this.options.nextClass));
+            _this.changeSlide($__default["default"](this).hasClass(_this.options.nextClass));
           });
         }
         if (this.options.bullets) {
@@ -7412,7 +7340,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
             if (/is-active/g.test(this.className)) {
               return false;
             } //if this is active, kick out of function.
-            var idx = $(this).data('slide'),
+            var idx = $__default["default"](this).data('slide'),
               ltr = idx > _this.$slides.filter('.is-active').data('slide'),
               $slide = _this.$slides.eq(idx);
             _this.changeSlide(ltr, $slide, idx);
@@ -7430,7 +7358,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
               },
               handled: function handled() {
                 // if bullet is focused, make sure focus moves
-                if ($(e.target).is(_this.$bullets)) {
+                if ($__default["default"](e.target).is(_this.$bullets)) {
                   _this.$bullets.filter('.is-active').focus();
                 }
               }
@@ -7461,7 +7389,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
 
         // Reset all sliddes
         this.$slides.each(function (el) {
-          $(el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
+          $__default["default"](el).removeClass('is-active is-active is-in').removeAttr('aria-live').hide();
         });
 
         // Show the first slide
@@ -7574,7 +7502,7 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
       if (!activeStateDescriptor.length) {
         var spans = $oldBullet.children('span');
         var spanCountInOthersBullets = $othersBullets.toArray().map(function (b) {
-          return $(b).children('span').length;
+          return $__default["default"](b).children('span').length;
         });
 
         // If there is an exceeding span element, use it as current slide descriptor
@@ -7603,7 +7531,6 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
       this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
     }
   }]);
-  return Orbit;
 }(Plugin);
 Orbit.defaults = {
   /**
@@ -7735,7 +7662,7 @@ Orbit.defaults = {
   useMUI: true
 };
 
-var MenuPlugins = {
+var MenuPlugins$1 = {
   dropdown: {
     cssClass: 'dropdown',
     plugin: DropdownMenu
@@ -7759,13 +7686,12 @@ var MenuPlugins = {
  * @requires foundation.util.mediaQuery
  */
 var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
-  _inherits(ResponsiveMenu, _Plugin);
-  var _super = _createSuper(ResponsiveMenu);
   function ResponsiveMenu() {
     _classCallCheck(this, ResponsiveMenu);
-    return _super.apply(this, arguments);
+    return _callSuper(this, ResponsiveMenu, arguments);
   }
-  _createClass(ResponsiveMenu, [{
+  _inherits(ResponsiveMenu, _Plugin);
+  return _createClass(ResponsiveMenu, [{
     key: "_setup",
     value:
     /**
@@ -7777,7 +7703,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     function _setup(element) {
-      this.$element = $(element);
+      this.$element = $__default["default"](element);
       this.rules = this.$element.data('responsive-menu');
       this.currentMq = null;
       this.currentPlugin = null;
@@ -7808,13 +7734,13 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
           var rule = rules[i].split('-');
           var ruleSize = rule.length > 1 ? rule[0] : 'small';
           var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
-          if (MenuPlugins[rulePlugin] !== null) {
-            rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+          if (MenuPlugins$1[rulePlugin] !== null) {
+            rulesTree[ruleSize] = MenuPlugins$1[rulePlugin];
           }
         }
         this.rules = rulesTree;
       }
-      if (!$.isEmptyObject(this.rules)) {
+      if (!$__default["default"].isEmptyObject(this.rules)) {
         this._checkMediaQueries();
       }
       // Add data-mutate since children may need it.
@@ -7830,7 +7756,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
     key: "_events",
     value: function _events() {
       var _this = this;
-      $(window).on('changed.zf.mediaquery', function () {
+      $__default["default"](window).on('changed.zf.mediaquery', function () {
         _this._checkMediaQueries();
       });
       // $(window).on('resize.zf.ResponsiveMenu', function() {
@@ -7849,7 +7775,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
       var matchedMq,
         _this = this;
       // Iterate through each rule and find the last matching rule
-      $.each(this.rules, function (key) {
+      $__default["default"].each(this.rules, function (key) {
         if (MediaQuery.atLeast(key)) {
           matchedMq = key;
         }
@@ -7862,7 +7788,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
 
       // Remove existing plugin-specific CSS classes
-      $.each(MenuPlugins, function (key, value) {
+      $__default["default"].each(MenuPlugins$1, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       });
 
@@ -7882,10 +7808,9 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       this.currentPlugin.destroy();
-      $(window).off('.zf.ResponsiveMenu');
+      $__default["default"](window).off('.zf.ResponsiveMenu');
     }
   }]);
-  return ResponsiveMenu;
 }(Plugin);
 ResponsiveMenu.defaults = {};
 
@@ -7896,13 +7821,12 @@ ResponsiveMenu.defaults = {};
  * @requires foundation.util.motion
  */
 var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
-  _inherits(ResponsiveToggle, _Plugin);
-  var _super = _createSuper(ResponsiveToggle);
   function ResponsiveToggle() {
     _classCallCheck(this, ResponsiveToggle);
-    return _super.apply(this, arguments);
+    return _callSuper(this, ResponsiveToggle, arguments);
   }
-  _createClass(ResponsiveToggle, [{
+  _inherits(ResponsiveToggle, _Plugin);
+  return _createClass(ResponsiveToggle, [{
     key: "_setup",
     value:
     /**
@@ -7914,8 +7838,8 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
      * @param {Object} options - Overrides to the default plugin settings.
      */
     function _setup(element, options) {
-      this.$element = $(element);
-      this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
+      this.$element = $__default["default"](element);
+      this.options = $__default["default"].extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
       this.className = 'ResponsiveToggle'; // ie9 back compat
 
       this._init();
@@ -7935,12 +7859,12 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
       if (!targetID) {
         console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
       }
-      this.$targetMenu = $("#".concat(targetID));
+      this.$targetMenu = $__default["default"]("#".concat(targetID));
       this.$toggler = this.$element.find('[data-toggle]').filter(function () {
-        var target = $(this).data('toggle');
+        var target = $__default["default"](this).data('toggle');
         return target === targetID || target === "";
       });
-      this.options = $.extend({}, this.options, this.$targetMenu.data());
+      this.options = $__default["default"].extend({}, this.options, this.$targetMenu.data());
 
       // If they were set, parse the animation classes
       if (this.options.animate) {
@@ -7960,7 +7884,7 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
     key: "_events",
     value: function _events() {
       this._updateMqHandler = this._update.bind(this);
-      $(window).on('changed.zf.mediaquery', this._updateMqHandler);
+      $__default["default"](window).on('changed.zf.mediaquery', this._updateMqHandler);
       this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
     }
 
@@ -8022,10 +7946,9 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
     value: function _destroy() {
       this.$element.off('.zf.responsiveToggle');
       this.$toggler.off('.zf.responsiveToggle');
-      $(window).off('changed.zf.mediaquery', this._updateMqHandler);
+      $__default["default"](window).off('changed.zf.mediaquery', this._updateMqHandler);
     }
   }]);
-  return ResponsiveToggle;
 }(Plugin);
 ResponsiveToggle.defaults = {
   /**
@@ -8054,13 +7977,12 @@ ResponsiveToggle.defaults = {
  * @requires foundation.util.motion if using animations
  */
 var Reveal = /*#__PURE__*/function (_Plugin) {
-  _inherits(Reveal, _Plugin);
-  var _super = _createSuper(Reveal);
   function Reveal() {
     _classCallCheck(this, Reveal);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Reveal, arguments);
   }
-  _createClass(Reveal, [{
+  _inherits(Reveal, _Plugin);
+  return _createClass(Reveal, [{
     key: "_setup",
     value:
     /**
@@ -8072,13 +7994,13 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Reveal.defaults, this.$element.data(), options);
       this.className = 'Reveal'; // ie9 back compat
       this._init();
 
       // Touch and Triggers init are idempotent, just need to make sure they are initialized
-      Touch.init($);
-      Triggers.init($);
+      Touch.init($__default["default"]);
+      Triggers.init($__default["default"]);
       Keyboard.register('Reveal', {
         'ESCAPE': 'close'
       });
@@ -8098,7 +8020,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       this.cached = {
         mq: MediaQuery.current
       };
-      this.$anchor = $("[data-open=\"".concat(this.id, "\"]")).length ? $("[data-open=\"".concat(this.id, "\"]")) : $("[data-toggle=\"".concat(this.id, "\"]"));
+      this.$anchor = $__default["default"]("[data-open=\"".concat(this.id, "\"]")).length ? $__default["default"]("[data-open=\"".concat(this.id, "\"]")) : $__default["default"]("[data-toggle=\"".concat(this.id, "\"]"));
       this.$anchor.attr({
         'aria-controls': this.id,
         'aria-haspopup': 'dialog',
@@ -8120,12 +8042,12 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       if (this.$overlay) {
         this.$element.detach().appendTo(this.$overlay);
       } else {
-        this.$element.detach().appendTo($(this.options.appendTo));
+        this.$element.detach().appendTo($__default["default"](this.options.appendTo));
         this.$element.addClass('without-overlay');
       }
       this._events();
       if (this.options.deepLink && window.location.hash === "#".concat(this.id)) {
-        this.onLoadListener = onLoad($(window), function () {
+        this.onLoadListener = onLoad($__default["default"](window), function () {
           return _this2.open();
         });
       }
@@ -8142,7 +8064,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       if (this.options.additionalOverlayClasses) {
         additionalOverlayClasses = ' ' + this.options.additionalOverlayClasses;
       }
-      return $('<div></div>').addClass('reveal-overlay' + additionalOverlayClasses).appendTo(this.options.appendTo);
+      return $__default["default"]('<div></div>').addClass('reveal-overlay' + additionalOverlayClasses).appendTo(this.options.appendTo);
     }
 
     /**
@@ -8154,9 +8076,9 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
     key: "_updatePosition",
     value: function _updatePosition() {
       var width = this.$element.outerWidth();
-      var outerWidth = $(window).width();
+      var outerWidth = $__default["default"](window).width();
       var height = this.$element.outerHeight();
-      var outerHeight = $(window).height();
+      var outerHeight = $__default["default"](window).height();
       var left,
         top = null;
       if (this.options.hOffset === 'auto') {
@@ -8203,7 +8125,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       this.$element.on({
         'open.zf.trigger': this.open.bind(this),
         'close.zf.trigger': function closeZfTrigger(event, $element) {
-          if (event.target === _this.$element[0] || $(event.target).parents('[data-closable]')[0] === $element) {
+          if (event.target === _this.$element[0] || $__default["default"](event.target).parents('[data-closable]')[0] === $element) {
             // only close reveal when it's explicitly called
             return _this3.close.apply(_this3);
           }
@@ -8215,14 +8137,14 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       });
       if (this.options.closeOnClick && this.options.overlay) {
         this.$overlay.off('.zf.reveal').on('click.zf.dropdown tap.zf.dropdown', function (e) {
-          if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target) || !$.contains(document, e.target)) {
+          if (e.target === _this.$element[0] || $__default["default"].contains(_this.$element[0], e.target) || !$__default["default"].contains(document, e.target)) {
             return;
           }
           _this.close();
         });
       }
       if (this.options.deepLink) {
-        $(window).on("hashchange.zf.reveal:".concat(this.id), this._handleState.bind(this));
+        $__default["default"](window).on("hashchange.zf.reveal:".concat(this.id), this._handleState.bind(this));
       }
     }
 
@@ -8247,9 +8169,9 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_disableScroll",
     value: function _disableScroll(scrollTop) {
-      scrollTop = scrollTop || $(window).scrollTop();
-      if ($(document).height() > $(window).height()) {
-        $("html").css("top", -scrollTop);
+      scrollTop = scrollTop || $__default["default"](window).scrollTop();
+      if ($__default["default"](document).height() > $__default["default"](window).height()) {
+        $__default["default"]("html").css("top", -scrollTop);
       }
     }
 
@@ -8260,10 +8182,10 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "_enableScroll",
     value: function _enableScroll(scrollTop) {
-      scrollTop = scrollTop || parseInt($("html").css("top"), 10);
-      if ($(document).height() > $(window).height()) {
-        $("html").css("top", "");
-        $(window).scrollTop(-scrollTop);
+      scrollTop = scrollTop || parseInt($__default["default"]("html").css("top"), 10);
+      if ($__default["default"](document).height() > $__default["default"](window).height()) {
+        $__default["default"]("html").css("top", "");
+        $__default["default"](window).scrollTop(-scrollTop);
       }
     }
 
@@ -8292,7 +8214,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       }
 
       // Remember anchor that opened it to set focus back later, have general anchors as fallback
-      this.$activeAnchor = $(document.activeElement).is(this.$anchor) ? $(document.activeElement) : this.$anchor;
+      this.$activeAnchor = $__default["default"](document.activeElement).is(this.$anchor) ? $__default["default"](document.activeElement) : this.$anchor;
       this.isActive = true;
 
       // Make elements invisible, but remove display: none so we can get size and positioning
@@ -8326,7 +8248,7 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
          */
         this.$element.trigger('closeme.zf.reveal', this.id);
       }
-      if ($('.reveal:visible').length === 0) {
+      if ($__default["default"]('.reveal:visible').length === 0) {
         this._disableScroll();
       }
       var _this = this;
@@ -8391,13 +8313,13 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
     key: "_addGlobalClasses",
     value: function _addGlobalClasses() {
       var updateScrollbarClass = function updateScrollbarClass() {
-        $('html').toggleClass('zf-has-scroll', !!($(document).height() > $(window).height()));
+        $__default["default"]('html').toggleClass('zf-has-scroll', !!($__default["default"](document).height() > $__default["default"](window).height()));
       };
       this.$element.on('resizeme.zf.trigger.revealScrollbarListener', function () {
         return updateScrollbarClass();
       });
       updateScrollbarClass();
-      $('html').addClass('is-reveal-open');
+      $__default["default"]('html').addClass('is-reveal-open');
     }
 
     /**
@@ -8408,8 +8330,8 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
     key: "_removeGlobalClasses",
     value: function _removeGlobalClasses() {
       this.$element.off('resizeme.zf.trigger.revealScrollbarListener');
-      $('html').removeClass('is-reveal-open');
-      $('html').removeClass('zf-has-scroll');
+      $__default["default"]('html').removeClass('is-reveal-open');
+      $__default["default"]('html').removeClass('zf-has-scroll');
     }
 
     /**
@@ -8425,15 +8347,15 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       } // If we're in the middle of cleanup, don't freak out
       this.focusableElements = Keyboard.findFocusable(this.$element);
       if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
-        $('body').on('click.zf.dropdown tap.zf.dropdown', function (e) {
-          if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target) || !$.contains(document, e.target)) {
+        $__default["default"]('body').on('click.zf.dropdown tap.zf.dropdown', function (e) {
+          if (e.target === _this.$element[0] || $__default["default"].contains(_this.$element[0], e.target) || !$__default["default"].contains(document, e.target)) {
             return;
           }
           _this.close();
         });
       }
       if (this.options.closeOnEsc) {
-        $(window).on('keydown.zf.reveal', function (e) {
+        $__default["default"](window).on('keydown.zf.reveal', function (e) {
           Keyboard.handleKey(e, 'Reveal', {
             close: function close() {
               if (_this.options.closeOnEsc) {
@@ -8477,24 +8399,23 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
 
       // Conditionals to remove extra event listeners added on open
       if (this.options.closeOnEsc) {
-        $(window).off('keydown.zf.reveal');
+        $__default["default"](window).off('keydown.zf.reveal');
       }
       if (!this.options.overlay && this.options.closeOnClick) {
-        $('body').off('click.zf.dropdown tap.zf.dropdown');
+        $__default["default"]('body').off('click.zf.dropdown tap.zf.dropdown');
       }
       this.$element.off('keydown.zf.reveal');
       function finishUp() {
         // Get the current top before the modal is closed and restore the scroll after.
         // TODO: use component properties instead of HTML properties
         // See https://github.com/foundation/foundation-sites/pull/10786
-        var scrollTop = parseInt($("html").css("top"), 10);
-        if ($('.reveal:visible').length === 0) {
+        var scrollTop = parseInt($__default["default"]("html").css("top"), 10);
+        if ($__default["default"]('.reveal:visible').length === 0) {
           _this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
         }
-
         Keyboard.releaseFocus(_this.$element);
         _this.$element.attr('aria-hidden', true);
-        if ($('.reveal:visible').length === 0) {
+        if ($__default["default"]('.reveal:visible').length === 0) {
           _this._enableScroll(scrollTop);
         }
 
@@ -8552,19 +8473,18 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
      */
     function _destroy() {
       if (this.options.overlay) {
-        this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
+        this.$element.appendTo($__default["default"](this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
         this.$overlay.hide().off().remove();
       }
       this.$element.hide().off();
       this.$anchor.off('.zf');
-      $(window).off(".zf.reveal:".concat(this.id));
-      if (this.onLoadListener) $(window).off(this.onLoadListener);
-      if ($('.reveal:visible').length === 0) {
+      $__default["default"](window).off(".zf.reveal:".concat(this.id));
+      if (this.onLoadListener) $__default["default"](window).off(this.onLoadListener);
+      if ($__default["default"]('.reveal:visible').length === 0) {
         this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
       }
     }
   }]);
-  return Reveal;
 }(Plugin);
 Reveal.defaults = {
   /**
@@ -8690,13 +8610,12 @@ Reveal.defaults = {
  * @requires foundation.util.touch
  */
 var Slider = /*#__PURE__*/function (_Plugin) {
-  _inherits(Slider, _Plugin);
-  var _super = _createSuper(Slider);
   function Slider() {
     _classCallCheck(this, Slider);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Slider, arguments);
   }
-  _createClass(Slider, [{
+  _inherits(Slider, _Plugin);
+  return _createClass(Slider, [{
     key: "_setup",
     value:
     /**
@@ -8708,13 +8627,13 @@ var Slider = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Slider.defaults, this.$element.data(), options);
       this.className = 'Slider'; // ie9 back compat
       this.initialized = false;
 
       // Touch and Triggers inits are idempotent, we just need to make sure it's initialied.
-      Touch.init($);
-      Triggers.init($);
+      Touch.init($__default["default"]);
+      Triggers.init($__default["default"]);
       this._init();
       Keyboard.register('Slider', {
         'ltr': {
@@ -8749,21 +8668,21 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       this.inputs = this.$element.find('input');
       this.handles = this.$element.find('[data-slider-handle]');
       this.$handle = this.handles.eq(0);
-      this.$input = this.inputs.length ? this.inputs.eq(0) : $("#".concat(this.$handle.attr('aria-controls')));
+      this.$input = this.inputs.length ? this.inputs.eq(0) : $__default["default"]("#".concat(this.$handle.attr('aria-controls')));
       this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
       if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
         this.options.disabled = true;
         this.$element.addClass(this.options.disabledClass);
       }
       if (!this.inputs.length) {
-        this.inputs = $().add(this.$input);
+        this.inputs = $__default["default"]().add(this.$input);
         this.options.binding = true;
       }
       this._setInitAttr(0);
       if (this.handles[1]) {
         this.options.doubleSided = true;
         this.$handle2 = this.handles.eq(1);
-        this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : $("#".concat(this.$handle2.attr('aria-controls')));
+        this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : $__default["default"]("#".concat(this.$handle2.attr('aria-controls')));
         if (!this.inputs[1]) {
           this.inputs = this.inputs.add(this.$input2);
         }
@@ -9053,7 +8972,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           direction = vertical ? 'top' : 'left',
           eventOffset = vertical ? e.pageY : e.pageX,
           barDim = this.$element[0].getBoundingClientRect()[param],
-          windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
+          windowScroll = vertical ? $__default["default"](window).scrollTop() : $__default["default"](window).scrollLeft();
         var elemOffset = this.$element.offset()[direction];
 
         // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
@@ -9152,8 +9071,8 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       var _this = this,
         curHandle;
       var handleChangeEvent = function handleChangeEvent(e) {
-        var idx = _this.inputs.index($(this));
-        _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
+        var idx = _this.inputs.index($__default["default"](this));
+        _this._handleEvent(e, _this.handles.eq(idx), $__default["default"](this).val());
       };
 
       // IE only triggers the change event when the input loses focus which strictly follows the HTML specification
@@ -9168,7 +9087,7 @@ var Slider = /*#__PURE__*/function (_Plugin) {
           if (_this.$element.data('dragging')) {
             return false;
           }
-          if (!$(e.target).is('[data-slider-handle]')) {
+          if (!$__default["default"](e.target).is('[data-slider-handle]')) {
             if (_this.options.doubleSided) {
               _this._handleEvent(e);
             } else {
@@ -9179,12 +9098,12 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       }
       if (this.options.draggable) {
         this.handles.addTouch();
-        var $body = $('body');
+        var $body = $__default["default"]('body');
         $handle.off('mousedown.zf.slider').on('mousedown.zf.slider', function (e) {
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging'); //
           _this.$element.data('dragging', true);
-          curHandle = $(e.currentTarget);
+          curHandle = $__default["default"](e.currentTarget);
           $body.on('mousemove.zf.slider', function (ev) {
             ev.preventDefault();
             _this._handleEvent(ev, curHandle);
@@ -9202,9 +9121,9 @@ var Slider = /*#__PURE__*/function (_Plugin) {
         });
       }
       $handle.off('keydown.zf.slider').on('keydown.zf.slider', function (e) {
-        var _$handle = $(this),
-          idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-          oldValue = parseFloat($handle.attr('aria-valuenow')),
+        var _$handle = $__default["default"](this);
+          _this.options.doubleSided ? _this.handles.index(_$handle) : 0;
+          var oldValue = parseFloat($handle.attr('aria-valuenow')),
           newValue;
 
         // handle keyboard event with keyboard util
@@ -9252,7 +9171,6 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       clearTimeout(this.timeout);
     }
   }]);
-  return Slider;
 }(Plugin);
 Slider.defaults = {
   /**
@@ -9408,13 +9326,12 @@ function baseLog(base, value) {
  * @requires foundation.util.mediaQuery
  */
 var Sticky = /*#__PURE__*/function (_Plugin) {
-  _inherits(Sticky, _Plugin);
-  var _super = _createSuper(Sticky);
   function Sticky() {
     _classCallCheck(this, Sticky);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Sticky, arguments);
   }
-  _createClass(Sticky, [{
+  _inherits(Sticky, _Plugin);
+  return _createClass(Sticky, [{
     key: "_setup",
     value:
     /**
@@ -9426,11 +9343,11 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Sticky.defaults, this.$element.data(), options);
       this.className = 'Sticky'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
-      Triggers.init($);
+      Triggers.init($__default["default"]);
       this._init();
     }
 
@@ -9459,19 +9376,19 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
         'data-mutate': id
       });
       if (this.options.anchor !== '') {
-        $('#' + _this.options.anchor).attr({
+        $__default["default"]('#' + _this.options.anchor).attr({
           'data-mutate': id
         });
       }
       this.scrollCount = this.options.checkEvery;
       this.isStuck = false;
-      this.onLoadListener = onLoad($(window), function () {
+      this.onLoadListener = onLoad($__default["default"](window), function () {
         //We calculate the container height to have correct values for anchor points offset calculation.
         _this.containerHeight = _this.$element.css("display") === "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
         _this.$container.css('height', _this.containerHeight);
         _this.elemHeight = _this.containerHeight;
         if (_this.options.anchor !== '') {
-          _this.$anchor = $('#' + _this.options.anchor);
+          _this.$anchor = $__default["default"]('#' + _this.options.anchor);
         } else {
           _this._parsePoints();
         }
@@ -9505,7 +9422,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
           pt = pts[i];
         } else {
           var place = pts[i].split(':'),
-            anchor = $("#".concat(place[0]));
+            anchor = $__default["default"]("#".concat(place[0]));
           pt = anchor.offset().top;
           if (place[1] && place[1].toLowerCase() === 'bottom') {
             pt += anchor[0].getBoundingClientRect().height;
@@ -9532,7 +9449,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       }
       if (this.canStick) {
         this.isOn = true;
-        $(window).off(scrollListener).on(scrollListener, function () {
+        $__default["default"](window).off(scrollListener).on(scrollListener, function () {
           if (_this.scrollCount === 0) {
             _this.scrollCount = _this.options.checkEvery;
             _this._setSizes(function () {
@@ -9588,7 +9505,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
     key: "_pauseListeners",
     value: function _pauseListeners(scrollListener) {
       this.isOn = false;
-      $(window).off(scrollListener);
+      $__default["default"](window).off(scrollListener);
 
       /**
        * Fires when the plugin is paused due to resize event shrinking the view.
@@ -9778,7 +9695,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       } else if (this.options.stickTo === 'bottom') {
         topPoint -= winHeight - (elemHeight + mBtm);
         bottomPoint -= winHeight - mBtm;
-      }
+      } else ;
       this.topPoint = topPoint;
       this.bottomPoint = bottomPoint;
       if (cb && typeof cb === 'function') {
@@ -9805,8 +9722,8 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       if (this.$anchor && this.$anchor.length) {
         this.$anchor.off('change.zf.sticky');
       }
-      if (this.scrollListener) $(window).off(this.scrollListener);
-      if (this.onLoadListener) $(window).off(this.onLoadListener);
+      if (this.scrollListener) $__default["default"](window).off(this.scrollListener);
+      if (this.onLoadListener) $__default["default"](window).off(this.onLoadListener);
       if (this.wasWrapped) {
         this.$element.unwrap();
       } else {
@@ -9816,7 +9733,6 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Sticky;
 }(Plugin);
 Sticky.defaults = {
   /**
@@ -9920,13 +9836,12 @@ function emCalc(em) {
  * @requires foundation.util.imageLoader if tabs contain images
  */
 var Tabs = /*#__PURE__*/function (_Plugin) {
-  _inherits(Tabs, _Plugin);
-  var _super = _createSuper(Tabs);
   function Tabs() {
     _classCallCheck(this, Tabs);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Tabs, arguments);
   }
-  _createClass(Tabs, [{
+  _inherits(Tabs, _Plugin);
+  return _createClass(Tabs, [{
     key: "_setup",
     value:
     /**
@@ -9939,7 +9854,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Tabs.defaults, this.$element.data(), options);
       this.className = 'Tabs'; // ie9 back compat
 
       this._init();
@@ -9969,14 +9884,14 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         'role': 'tablist'
       });
       this.$tabTitles = this.$element.find(".".concat(this.options.linkClass));
-      this.$tabContent = $("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
+      this.$tabContent = $__default["default"]("[data-tabs-content=\"".concat(this.$element[0].id, "\"]"));
       this.$tabTitles.each(function () {
-        var $elem = $(this),
+        var $elem = $__default["default"](this),
           $link = $elem.find('a'),
           isActive = $elem.hasClass("".concat(_this.options.linkActiveClass)),
           hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
           linkId = $link[0].id ? $link[0].id : "".concat(hash, "-label"),
-          $tabContent = $("#".concat(hash));
+          $tabContent = $__default["default"]("#".concat(hash));
         $elem.attr({
           'role': 'presentation'
         });
@@ -10000,8 +9915,8 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
           $tabContent.attr('aria-hidden', 'true');
         }
         if (isActive && _this.options.autoFocus) {
-          _this.onLoadListener = onLoad($(window), function () {
-            $('html, body').animate({
+          _this.onLoadListener = onLoad($__default["default"](window), function () {
+            $__default["default"]('html, body').animate({
               scrollTop: $elem.offset().top
             }, _this.options.deepLinkSmudgeDelay, function () {
               $link.focus();
@@ -10028,7 +9943,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
           if (_this2._initialAnchor) anchor = _this2._initialAnchor;
         }
         var anchorNoHash = anchor.indexOf('#') >= 0 ? anchor.slice(1) : anchor;
-        var $anchor = anchorNoHash && $("#".concat(anchorNoHash));
+        var $anchor = anchorNoHash && $__default["default"]("#".concat(anchorNoHash));
         var $link = anchor && _this2.$element.find("[href$=\"".concat(anchor, "\"],[data-tabs-target=\"").concat(anchorNoHash, "\"]")).first();
         // Whether the anchor element that has been found is part of this element
         var isOwnAnchor = !!($anchor.length && $link.length);
@@ -10045,7 +9960,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
           // Roll up a little to show the titles
           if (_this2.options.deepLinkSmudge) {
             var offset = _this2.$element.offset();
-            $('html, body').animate({
+            $__default["default"]('html, body').animate({
               scrollTop: offset.top - _this2.options.deepLinkSmudgeOffset
             }, _this2.options.deepLinkSmudgeDelay);
           }
@@ -10078,10 +9993,10 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       this._setHeightMqHandler = null;
       if (this.options.matchHeight) {
         this._setHeightMqHandler = this._setHeight.bind(this);
-        $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+        $__default["default"](window).on('changed.zf.mediaquery', this._setHeightMqHandler);
       }
       if (this.options.deepLink) {
-        $(window).on('hashchange', this._checkDeepLink);
+        $__default["default"](window).on('hashchange', this._checkDeepLink);
       }
     }
 
@@ -10095,7 +10010,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       var _this = this;
       this.$element.off('click.zf.tabs').on('click.zf.tabs', ".".concat(this.options.linkClass), function (e) {
         e.preventDefault();
-        _this._handleTabChange($(this));
+        _this._handleTabChange($__default["default"](this));
       });
     }
 
@@ -10109,12 +10024,12 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       var _this = this;
       this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
         if (e.which === 9) return;
-        var $element = $(this),
+        var $element = $__default["default"](this),
           $elements = $element.parent('ul').children('li'),
           $prevElement,
           $nextElement;
         $elements.each(function (i) {
-          if ($(this).is($element)) {
+          if ($__default["default"](this).is($element)) {
             if (_this.options.wrapOnKeys) {
               $prevElement = i === 0 ? $elements.last() : $elements.eq(i - 1);
               $nextElement = i === $elements.length - 1 ? $elements.first() : $elements.eq(i + 1);
@@ -10179,9 +10094,9 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       //either replace or update browser history
       if (this.options.deepLink && !historyHandled) {
         if (this.options.updateHistory) {
-          history.pushState({}, '', anchor);
+          history.pushState({}, '', location.pathname + location.search + anchor);
         } else {
-          history.replaceState({}, '', anchor);
+          history.replaceState({}, '', location.pathname + location.search + anchor);
         }
       }
 
@@ -10226,7 +10141,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         'aria-selected': 'false',
         'tabindex': -1
       });
-      $("#".concat($targetAnchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
+      $__default["default"]("#".concat($targetAnchor.attr('aria-controls'))).removeClass("".concat(this.options.panelActiveClass)).attr({
         'aria-hidden': 'true'
       });
     }
@@ -10294,7 +10209,7 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
         return;
       }
       this.$tabContent.find(".".concat(this.options.panelClass)).css('min-height', '').each(function () {
-        var panel = $(this),
+        var panel = $__default["default"](this),
           isActive = panel.hasClass("".concat(_this.options.panelActiveClass)); // get the options from the parent instead of trying to get them from the child
 
         if (!isActive) {
@@ -10324,18 +10239,17 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       this.$element.find(".".concat(this.options.linkClass)).off('.zf.tabs').hide().end().find(".".concat(this.options.panelClass)).hide();
       if (this.options.matchHeight) {
         if (this._setHeightMqHandler != null) {
-          $(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+          $__default["default"](window).off('changed.zf.mediaquery', this._setHeightMqHandler);
         }
       }
       if (this.options.deepLink) {
-        $(window).off('hashchange', this._checkDeepLink);
+        $__default["default"](window).off('hashchange', this._checkDeepLink);
       }
       if (this.onLoadListener) {
-        $(window).off(this.onLoadListener);
+        $__default["default"](window).off(this.onLoadListener);
       }
     }
   }]);
-  return Tabs;
 }(Plugin);
 Tabs.defaults = {
   /**
@@ -10440,13 +10354,12 @@ Tabs.defaults = {
  * @requires foundation.util.triggers
  */
 var Toggler = /*#__PURE__*/function (_Plugin) {
-  _inherits(Toggler, _Plugin);
-  var _super = _createSuper(Toggler);
   function Toggler() {
     _classCallCheck(this, Toggler);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Toggler, arguments);
   }
-  _createClass(Toggler, [{
+  _inherits(Toggler, _Plugin);
+  return _createClass(Toggler, [{
     key: "_setup",
     value:
     /**
@@ -10459,12 +10372,12 @@ var Toggler = /*#__PURE__*/function (_Plugin) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Toggler.defaults, element.data(), options);
+      this.options = $__default["default"].extend({}, Toggler.defaults, element.data(), options);
       this.className = '';
       this.className = 'Toggler'; // ie9 back compat
 
       // Triggers init is idempotent, just need to make sure it is initialized
-      Triggers.init($);
+      Triggers.init($__default["default"]);
       this._init();
       this._events();
     }
@@ -10479,7 +10392,7 @@ var Toggler = /*#__PURE__*/function (_Plugin) {
     value: function _init() {
       // Collect triggers to set ARIA attributes to
       var id = this.$element[0].id,
-        $triggers = $("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]"));
+        $triggers = $__default["default"]("[data-open~=\"".concat(id, "\"], [data-close~=\"").concat(id, "\"], [data-toggle~=\"").concat(id, "\"]"));
       var input;
       // Parse animation classes if they were set
       if (this.options.animate) {
@@ -10505,7 +10418,7 @@ var Toggler = /*#__PURE__*/function (_Plugin) {
 
       // - aria-controls: adding the element id to it if not already in it.
       $triggers.each(function (index, trigger) {
-        var $trigger = $(trigger);
+        var $trigger = $__default["default"](trigger);
         var controls = $trigger.attr('aria-controls') || '';
         var containsId = new RegExp("\\b".concat(RegExpEscape(id), "\\b")).test(controls);
         if (!containsId) $trigger.attr('aria-controls', controls ? "".concat(controls, " ").concat(id) : id);
@@ -10577,7 +10490,7 @@ var Toggler = /*#__PURE__*/function (_Plugin) {
     key: "_updateARIA",
     value: function _updateARIA(isOn) {
       var id = this.$element[0].id;
-      $("[data-open=\"".concat(id, "\"], [data-close=\"").concat(id, "\"], [data-toggle=\"").concat(id, "\"]")).attr({
+      $__default["default"]("[data-open=\"".concat(id, "\"], [data-close=\"").concat(id, "\"], [data-toggle=\"").concat(id, "\"]")).attr({
         'aria-expanded': isOn ? true : false
       });
     }
@@ -10592,7 +10505,6 @@ var Toggler = /*#__PURE__*/function (_Plugin) {
       this.$element.off('.zf.toggler');
     }
   }]);
-  return Toggler;
 }(Plugin);
 Toggler.defaults = {
   /**
@@ -10618,13 +10530,12 @@ Toggler.defaults = {
  * @requires foundation.util.triggers
  */
 var Tooltip = /*#__PURE__*/function (_Positionable) {
-  _inherits(Tooltip, _Positionable);
-  var _super = _createSuper(Tooltip);
   function Tooltip() {
     _classCallCheck(this, Tooltip);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Tooltip, arguments);
   }
-  _createClass(Tooltip, [{
+  _inherits(Tooltip, _Positionable);
+  return _createClass(Tooltip, [{
     key: "_setup",
     value:
     /**
@@ -10637,14 +10548,14 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
      */
     function _setup(element, options) {
       this.$element = element;
-      this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, Tooltip.defaults, this.$element.data(), options);
       this.className = 'Tooltip'; // ie9 back compat
 
       this.isActive = false;
       this.isClick = false;
 
       // Triggers init is idempotent, just need to make sure it is initialized
-      Triggers.init($);
+      Triggers.init($__default["default"]);
       this._init();
     }
 
@@ -10658,7 +10569,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       MediaQuery._init();
       var elemId = this.$element.attr('aria-describedby') || GetYoDigits(6, 'tooltip');
       this.options.tipText = this.options.tipText || this.$element.attr('title');
-      this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
+      this.template = this.options.template ? $__default["default"](this.options.template) : this._buildTemplate(elemId);
       if (this.options.allowHtml) {
         this.template.appendTo(document.body).html(this.options.tipText).hide();
       } else {
@@ -10671,7 +10582,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         'data-toggle': elemId,
         'data-resize': elemId
       }).addClass(this.options.triggerClass);
-      _get(_getPrototypeOf(Tooltip.prototype), "_init", this).call(this);
+      _superPropGet(Tooltip, "_init", this, 3)([]);
       this._events();
     }
   }, {
@@ -10717,7 +10628,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
     key: "_buildTemplate",
     value: function _buildTemplate(id) {
       var templateClasses = "".concat(this.options.tooltipClass, " ").concat(this.options.templateClasses).trim();
-      var $template = $('<div></div>').addClass(templateClasses).attr({
+      var $template = $__default["default"]('<div></div>').addClass(templateClasses).attr({
         'role': 'tooltip',
         'aria-hidden': true,
         'data-is-active': false,
@@ -10735,7 +10646,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
   }, {
     key: "_setPosition",
     value: function _setPosition() {
-      _get(_getPrototypeOf(Tooltip.prototype), "_setPosition", this).call(this, this.$element, this.template);
+      _superPropGet(Tooltip, "_setPosition", this, 3)([this.$element, this.template]);
     }
 
     /**
@@ -10900,7 +10811,6 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       this.template.remove();
     }
   }]);
-  return Tooltip;
 }(Positionable);
 Tooltip.defaults = {
   /**
@@ -11061,7 +10971,7 @@ Tooltip.defaults = {
 };
 
 // The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins$1 = {
+var MenuPlugins = {
   tabs: {
     cssClass: 'tabs',
     plugin: Tabs,
@@ -11071,18 +10981,17 @@ var MenuPlugins$1 = {
     close: null /* not supported */,
     toggle: null /* not supported */
   },
-
   accordion: {
     cssClass: 'accordion',
     plugin: Accordion,
     open: function open(plugin, target) {
-      return plugin.down($(target));
+      return plugin.down($__default["default"](target));
     },
     close: function close(plugin, target) {
-      return plugin.up($(target));
+      return plugin.up($__default["default"](target));
     },
     toggle: function toggle(plugin, target) {
-      return plugin.toggle($(target));
+      return plugin.toggle($__default["default"](target));
     }
   }
 };
@@ -11095,13 +11004,11 @@ var MenuPlugins$1 = {
  * @requires foundation.tabs
  */
 var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
-  _inherits(ResponsiveAccordionTabs, _Plugin);
-  var _super = _createSuper(ResponsiveAccordionTabs);
   function ResponsiveAccordionTabs(element, options) {
     var _this2;
     _classCallCheck(this, ResponsiveAccordionTabs);
-    _this2 = _super.call(this, element, options);
-    return _possibleConstructorReturn(_this2, _this2.options.reflow && _this2.storezfData || _assertThisInitialized(_this2));
+    _this2 = _callSuper(this, ResponsiveAccordionTabs, [element, options]);
+    return _possibleConstructorReturn(_this2, _this2.options.reflow && _this2.storezfData || _this2);
   }
 
   /**
@@ -11112,12 +11019,13 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
    * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _createClass(ResponsiveAccordionTabs, [{
+  _inherits(ResponsiveAccordionTabs, _Plugin);
+  return _createClass(ResponsiveAccordionTabs, [{
     key: "_setup",
     value: function _setup(element, options) {
-      this.$element = $(element);
+      this.$element = $__default["default"](element);
       this.$element.data('zfPluginBase', this);
-      this.options = $.extend({}, ResponsiveAccordionTabs.defaults, this.$element.data(), options);
+      this.options = $__default["default"].extend({}, ResponsiveAccordionTabs.defaults, this.$element.data(), options);
       this.rules = this.$element.data('responsive-accordion-tabs');
       this.currentMq = null;
       this.currentRule = null;
@@ -11152,14 +11060,14 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
           var rule = rules[i].split('-');
           var ruleSize = rule.length > 1 ? rule[0] : 'small';
           var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
-          if (MenuPlugins$1[rulePlugin] !== null) {
-            rulesTree[ruleSize] = MenuPlugins$1[rulePlugin];
+          if (MenuPlugins[rulePlugin] !== null) {
+            rulesTree[ruleSize] = MenuPlugins[rulePlugin];
           }
         }
         this.rules = rulesTree;
       }
       this._getAllOptions();
-      if (!$.isEmptyObject(this.rules)) {
+      if (!$__default["default"].isEmptyObject(this.rules)) {
         this._checkMediaQueries();
       }
     }
@@ -11169,11 +11077,11 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       //get all defaults and options
       var _this = this;
       _this.allOptions = {};
-      for (var key in MenuPlugins$1) {
-        if (MenuPlugins$1.hasOwnProperty(key)) {
-          var obj = MenuPlugins$1[key];
+      for (var key in MenuPlugins) {
+        if (MenuPlugins.hasOwnProperty(key)) {
+          var obj = MenuPlugins[key];
           try {
-            var dummyPlugin = $('<ul></ul>');
+            var dummyPlugin = $__default["default"]('<ul></ul>');
             var tmpPlugin = new obj.plugin(dummyPlugin, _this.options);
             for (var keyKey in tmpPlugin.options) {
               if (tmpPlugin.options.hasOwnProperty(keyKey) && keyKey !== 'zfPlugin') {
@@ -11198,7 +11106,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
     key: "_events",
     value: function _events() {
       this._changedZfMediaQueryHandler = this._checkMediaQueries.bind(this);
-      $(window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
+      $__default["default"](window).on('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
     }
 
     /**
@@ -11212,7 +11120,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       var matchedMq,
         _this = this;
       // Iterate through each rule and find the last matching rule
-      $.each(this.rules, function (key) {
+      $__default["default"].each(this.rules, function (key) {
         if (MediaQuery.atLeast(key)) {
           matchedMq = key;
         }
@@ -11225,7 +11133,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
 
       // Remove existing plugin-specific CSS classes
-      $.each(MenuPlugins$1, function (key, value) {
+      $__default["default"].each(MenuPlugins, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       });
 
@@ -11248,7 +11156,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
     value: function _handleMarkup(toSet) {
       var _this = this,
         fromString = 'accordion';
-      var $panels = $('[data-tabs-content=' + this.$element.attr('id') + ']');
+      var $panels = $__default["default"]('[data-tabs-content=' + this.$element.attr('id') + ']');
       if ($panels.length) fromString = 'tabs';
       if (fromString === toSet) {
         return;
@@ -11274,36 +11182,36 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       });
       if (toSet === 'accordion') {
         $panels.each(function (key, value) {
-          $(value).appendTo($liHeads.get(key)).addClass('accordion-content').attr('data-tab-content', '').removeClass('is-active').css({
+          $__default["default"](value).appendTo($liHeads.get(key)).addClass('accordion-content').attr('data-tab-content', '').removeClass('is-active').css({
             height: ''
           });
-          $('[data-tabs-content=' + _this.$element.attr('id') + ']').after('<div id="tabs-placeholder-' + _this.$element.attr('id') + '"></div>').detach();
+          $__default["default"]('[data-tabs-content=' + _this.$element.attr('id') + ']').after('<div id="tabs-placeholder-' + _this.$element.attr('id') + '"></div>').detach();
           $liHeads.addClass('accordion-item').attr('data-accordion-item', '');
           $liHeadsA.addClass('accordion-title');
         });
       } else if (toSet === 'tabs') {
-        var $tabsContent = $('[data-tabs-content=' + _this.$element.attr('id') + ']');
-        var $placeholder = $('#tabs-placeholder-' + _this.$element.attr('id'));
+        var $tabsContent = $__default["default"]('[data-tabs-content=' + _this.$element.attr('id') + ']');
+        var $placeholder = $__default["default"]('#tabs-placeholder-' + _this.$element.attr('id'));
         if ($placeholder.length) {
-          $tabsContent = $('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content', _this.$element.attr('id'));
+          $tabsContent = $__default["default"]('<div class="tabs-content"></div>').insertAfter($placeholder).attr('data-tabs-content', _this.$element.attr('id'));
           $placeholder.remove();
         } else {
-          $tabsContent = $('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
+          $tabsContent = $__default["default"]('<div class="tabs-content"></div>').insertAfter(_this.$element).attr('data-tabs-content', _this.$element.attr('id'));
         }
         $panels.each(function (key, value) {
-          var tempValue = $(value).appendTo($tabsContent).addClass(tabsPanel);
+          var tempValue = $__default["default"](value).appendTo($tabsContent).addClass(tabsPanel);
           var hash = $liHeadsA.get(key).hash.slice(1);
-          var id = $(value).attr('id') || GetYoDigits(6, 'accordion');
+          var id = $__default["default"](value).attr('id') || GetYoDigits(6, 'accordion');
           if (hash !== id) {
             if (hash !== '') {
-              $(value).attr('id', hash);
+              $__default["default"](value).attr('id', hash);
             } else {
               hash = id;
-              $(value).attr('id', hash);
-              $($liHeadsA.get(key)).attr('href', $($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
+              $__default["default"](value).attr('id', hash);
+              $__default["default"]($liHeadsA.get(key)).attr('href', $__default["default"]($liHeadsA.get(key)).attr('href').replace('#', '') + '#' + hash);
             }
           }
-          var isActive = $($liHeads.get(key)).hasClass('is-active');
+          var isActive = $__default["default"]($liHeads.get(key)).hasClass('is-active');
           if (isActive) {
             tempValue.addClass('is-active');
           }
@@ -11366,14 +11274,13 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
     key: "_destroy",
     value: function _destroy() {
       if (this.currentPlugin) this.currentPlugin.destroy();
-      $(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
+      $__default["default"](window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
     }
   }]);
-  return ResponsiveAccordionTabs;
 }(Plugin);
 ResponsiveAccordionTabs.defaults = {};
 
-Foundation.addToJquery($);
+Foundation.addToJquery($__default["default"]);
 
 // Add Foundation Utils to Foundation global namespace for backwards
 // compatibility.
@@ -11393,8 +11300,8 @@ Foundation.Timer = Timer;
 
 // Touch and Triggers previously were almost purely sede effect driven,
 // so no need to add it to Foundation, just init them.
-Touch.init($);
-Triggers.init($, Foundation);
+Touch.init($__default["default"]);
+Triggers.init($__default["default"], Foundation);
 MediaQuery._init();
 Foundation.plugin(Abide, 'Abide');
 Foundation.plugin(Accordion, 'Accordion');
@@ -11451,6 +11358,6 @@ exports.Toggler = Toggler;
 exports.Tooltip = Tooltip;
 exports.Touch = Touch;
 exports.Triggers = Triggers;
-exports.default = Foundation;
+exports["default"] = Foundation;
 exports.onImagesLoaded = onImagesLoaded;
 //# sourceMappingURL=foundation.cjs.js.map

@@ -47,7 +47,6 @@ function Timer(elem, options, cb) {
       if (options.infinite) {
         _this.restart(); //rerun the timer.
       }
-
       if (cb && typeof cb === 'function') {
         cb();
       }
