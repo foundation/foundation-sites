@@ -1,189 +1,150 @@
 import $ from 'jquery';
 
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
-    try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
-    } catch (err) {
-      _d = !0, _e = err;
-    } finally {
-      try {
-        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
+}
+function _assertThisInitialized(e) {
+  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  return e;
+}
+function _callSuper(t, o, e) {
+  return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
+}
+function _classCallCheck(a, n) {
+  if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
+}
+function _defineProperties(e, r) {
+  for (var t = 0; t < r.length; t++) {
+    var o = r[t];
+    o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o);
   }
 }
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self);
-}
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = _getPrototypeOf(object);
-    if (object === null) break;
-  }
-  return object;
+function _createClass(e, r, t) {
+  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    writable: !1
+  }), e;
 }
 function _get() {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get.bind();
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = _superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-      if (desc.get) {
-        return desc.get.call(arguments.length < 3 ? target : receiver);
+  return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) {
+    var p = _superPropBase(e, t);
+    if (p) {
+      var n = Object.getOwnPropertyDescriptor(p, t);
+      return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value;
+    }
+  }, _get.apply(null, arguments);
+}
+function _getPrototypeOf(t) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) {
+    return t.__proto__ || Object.getPrototypeOf(t);
+  }, _getPrototypeOf(t);
+}
+function _inherits(t, e) {
+  if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+  t.prototype = Object.create(e && e.prototype, {
+    constructor: {
+      value: t,
+      writable: !0,
+      configurable: !0
+    }
+  }), Object.defineProperty(t, "prototype", {
+    writable: !1
+  }), e && _setPrototypeOf(t, e);
+}
+function _isNativeReflectConstruct() {
+  try {
+    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+  } catch (t) {}
+  return (_isNativeReflectConstruct = function () {
+    return !!t;
+  })();
+}
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
       }
-      return desc.value;
-    };
+    }
+    return a;
   }
-  return _get.apply(this, arguments);
-}
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-  return arr2;
 }
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
+function _possibleConstructorReturn(t, e) {
+  if (e && ("object" == typeof e || "function" == typeof e)) return e;
+  if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined");
+  return _assertThisInitialized(t);
+}
+function _setPrototypeOf(t, e) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) {
+    return t.__proto__ = e, t;
+  }, _setPrototypeOf(t, e);
+}
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
+function _superPropBase(t, o) {
+  for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t)););
+  return t;
+}
+function _superPropGet(t, e, o, r) {
+  var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), e, o);
+  return 2 & r && "function" == typeof p ? function (t) {
+    return p.apply(o, t);
+  } : p;
+}
+function _toPrimitive(t, r) {
+  if ("object" != typeof t || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != typeof i) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  return (hint === "string" ? String : Number)(input);
+  return ("string" === r ? String : Number)(t);
 }
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return typeof key === "symbol" ? key : String(key);
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == typeof i ? i : i + "";
+}
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof(o);
+}
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
 }
 
 // Core Foundation Utilities, utilized in a number of places.
@@ -633,7 +594,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.8.1';
+var FOUNDATION_VERSION = '6.9.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -657,7 +618,7 @@ var Foundation = {
     var className = name || functionName(_plugin);
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
-    var attrName = hyphenate(className);
+    var attrName = hyphenate$1(className);
 
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = _plugin;
@@ -672,7 +633,7 @@ var Foundation = {
    * @fires Plugin#init
    */
   registerPlugin: function registerPlugin(plugin, name) {
-    var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
+    var pluginName = name ? hyphenate$1(name) : functionName(plugin.constructor).toLowerCase();
     plugin.uuid = GetYoDigits(6, pluginName);
     if (!plugin.$element.attr("data-".concat(pluginName))) {
       plugin.$element.attr("data-".concat(pluginName), plugin.uuid);
@@ -697,7 +658,7 @@ var Foundation = {
    * @fires Plugin#destroyed
    */
   unregisterPlugin: function unregisterPlugin(plugin) {
-    var pluginName = hyphenate(functionName(plugin.$element.data('zfPlugin').constructor));
+    var pluginName = hyphenate$1(functionName(plugin.$element.data('zfPlugin').constructor));
     this._uuids.splice(this._uuids.indexOf(plugin.uuid), 1);
     plugin.$element.removeAttr("data-".concat(pluginName)).removeData('zfPlugin')
     /**
@@ -709,7 +670,6 @@ var Foundation = {
         plugin[prop] = null; //clean up script to prep for garbage collection.
       }
     }
-
     return;
   },
   /**
@@ -731,12 +691,12 @@ var Foundation = {
           fns = {
             'object': function object(plgs) {
               plgs.forEach(function (p) {
-                p = hyphenate(p);
+                p = hyphenate$1(p);
                 $('[data-' + p + ']').foundation('_init');
               });
             },
             'string': function string() {
-              plugins = hyphenate(plugins);
+              plugins = hyphenate$1(plugins);
               $('[data-' + plugins + ']').foundation('_init');
             },
             'undefined': function undefined$1() {
@@ -947,7 +907,7 @@ function parseValue(str) {
 }
 // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
-function hyphenate(str) {
+function hyphenate$1(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
@@ -1508,7 +1468,6 @@ function Timer(elem, options, cb) {
       if (options.infinite) {
         _this.restart(); //rerun the timer.
       }
-
       if (cb && typeof cb === 'function') {
         cb();
       }
@@ -1603,7 +1562,7 @@ var SpotSwipe = /*#__PURE__*/function () {
     this.timeThreshold = 200;
     this._init();
   }
-  _createClass(SpotSwipe, [{
+  return _createClass(SpotSwipe, [{
     key: "_init",
     value: function _init() {
       $.event.special.swipe = {
@@ -1621,7 +1580,6 @@ var SpotSwipe = /*#__PURE__*/function () {
       });
     }
   }]);
-  return SpotSwipe;
 }();
 /****************************************************
  * As far as I can tell, both setupSpotSwipe and    *
@@ -1834,7 +1792,6 @@ function debounceGlobalListener(debounce, trigger, listener) {
     }, debounce || 10); //default time to emit scroll event
   });
 }
-
 Triggers.Initializers.addResizeListener = function (debounce) {
   var $nodes = $('[data-resize]');
   if ($nodes.length) {
@@ -1880,7 +1837,6 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
       //nothing
     }
   };
-
   if ($nodes.length) {
     //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
     for (var i = 0; i <= $nodes.length - 1; i++) {
@@ -1946,7 +1902,7 @@ var Plugin = /*#__PURE__*/function () {
      */
     this.$element.trigger("init.zf.".concat(pluginName));
   }
-  _createClass(Plugin, [{
+  return _createClass(Plugin, [{
     key: "destroy",
     value: function destroy() {
       this._destroy();
@@ -1963,14 +1919,13 @@ var Plugin = /*#__PURE__*/function () {
       }
     }
   }]);
-  return Plugin;
 }(); // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
-function hyphenate$1(str) {
+function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 function getPluginName(obj) {
-  return hyphenate$1(obj.className);
+  return hyphenate(obj.className);
 }
 
 /**
@@ -1978,13 +1933,12 @@ function getPluginName(obj) {
  * @module foundation.abide
  */
 var Abide = /*#__PURE__*/function (_Plugin) {
-  _inherits(Abide, _Plugin);
-  var _super = _createSuper(Abide);
   function Abide() {
     _classCallCheck(this, Abide);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Abide, arguments);
   }
-  _createClass(Abide, [{
+  _inherits(Abide, _Plugin);
+  return _createClass(Abide, [{
     key: "_setup",
     value:
     /**
@@ -2019,7 +1973,6 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       // * all input fields expect submit
       this.$element.find('textarea, select') // * all textareas and select fields
       );
-
       this.$submits = this.$element.find('[type="submit"]');
       var $globalErrors = this.$element.find('[data-abide-error]');
 
@@ -2309,6 +2262,7 @@ var Abide = /*#__PURE__*/function (_Plugin) {
   }, {
     key: "addA11yErrorDescribe",
     value: function addA11yErrorDescribe($el, $error) {
+      if ($el.attr('type') === 'hidden') return;
       if (typeof $el.attr('aria-describedby') !== 'undefined') return;
 
       // Set [aria-describedby] on the input toward the first form error if it is not set
@@ -2477,10 +2431,9 @@ var Abide = /*#__PURE__*/function (_Plugin) {
         }
       }
       if (manageErrorClasses) {
+        this.removeErrorClasses($el);
         if (!goodToGo) {
           this.addErrorClasses($el, failedValidators);
-        } else {
-          this.removeErrorClasses($el);
         }
       }
 
@@ -2726,7 +2679,6 @@ var Abide = /*#__PURE__*/function (_Plugin) {
       this.$submits.off('.abide');
     }
   }]);
-  return Abide;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -2858,13 +2810,12 @@ Abide.defaults = {
  * @requires foundation.util.keyboard
  */
 var Accordion = /*#__PURE__*/function (_Plugin) {
-  _inherits(Accordion, _Plugin);
-  var _super = _createSuper(Accordion);
   function Accordion() {
     _classCallCheck(this, Accordion);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Accordion, arguments);
   }
-  _createClass(Accordion, [{
+  _inherits(Accordion, _Plugin);
+  return _createClass(Accordion, [{
     key: "_setup",
     value:
     /**
@@ -3202,7 +3153,6 @@ var Accordion = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Accordion;
 }(Plugin);
 Accordion.defaults = {
   /**
@@ -3271,13 +3221,12 @@ Accordion.defaults = {
  * @requires foundation.util.nest
  */
 var AccordionMenu = /*#__PURE__*/function (_Plugin) {
-  _inherits(AccordionMenu, _Plugin);
-  var _super = _createSuper(AccordionMenu);
   function AccordionMenu() {
     _classCallCheck(this, AccordionMenu);
-    return _super.apply(this, arguments);
+    return _callSuper(this, AccordionMenu, arguments);
   }
-  _createClass(AccordionMenu, [{
+  _inherits(AccordionMenu, _Plugin);
+  return _createClass(AccordionMenu, [{
     key: "_setup",
     value:
     /**
@@ -3572,7 +3521,6 @@ var AccordionMenu = /*#__PURE__*/function (_Plugin) {
       Nest.Burn(this.$element, 'accordion');
     }
   }]);
-  return AccordionMenu;
 }(Plugin);
 AccordionMenu.defaults = {
   /**
@@ -3618,13 +3566,12 @@ AccordionMenu.defaults = {
  * @requires foundation.util.box
  */
 var Drilldown = /*#__PURE__*/function (_Plugin) {
-  _inherits(Drilldown, _Plugin);
-  var _super = _createSuper(Drilldown);
   function Drilldown() {
     _classCallCheck(this, Drilldown);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Drilldown, arguments);
   }
-  _createClass(Drilldown, [{
+  _inherits(Drilldown, _Plugin);
+  return _createClass(Drilldown, [{
     key: "_setup",
     value:
     /**
@@ -4182,7 +4129,6 @@ var Drilldown = /*#__PURE__*/function (_Plugin) {
       });
     }
   }]);
-  return Drilldown;
 }(Plugin);
 Drilldown.defaults = {
   /**
@@ -4299,13 +4245,12 @@ function nextItem(item, array) {
   }
 }
 var Positionable = /*#__PURE__*/function (_Plugin) {
-  _inherits(Positionable, _Plugin);
-  var _super = _createSuper(Positionable);
   function Positionable() {
     _classCallCheck(this, Positionable);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Positionable, arguments);
   }
-  _createClass(Positionable, [{
+  _inherits(Positionable, _Plugin);
+  return _createClass(Positionable, [{
     key: "_init",
     value:
     /**
@@ -4451,7 +4396,6 @@ var Positionable = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Positionable;
 }(Plugin);
 Positionable.defaults = {
   /**
@@ -4511,13 +4455,12 @@ Positionable.defaults = {
  * @requires foundation.util.triggers
  */
 var Dropdown = /*#__PURE__*/function (_Positionable) {
-  _inherits(Dropdown, _Positionable);
-  var _super = _createSuper(Dropdown);
   function Dropdown() {
     _classCallCheck(this, Dropdown);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Dropdown, arguments);
   }
-  _createClass(Dropdown, [{
+  _inherits(Dropdown, _Positionable);
+  return _createClass(Dropdown, [{
     key: "_setup",
     value:
     /**
@@ -4581,7 +4524,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
         'data-yeti-box': $id,
         'data-resize': $id
       });
-      _get(_getPrototypeOf(Dropdown.prototype), "_init", this).call(this);
+      _superPropGet(Dropdown, "_init", this, 3)([]);
       this._events();
     }
   }, {
@@ -4603,7 +4546,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
       if (horizontalPosition) {
         return horizontalPosition[1];
       }
-      return _get(_getPrototypeOf(Dropdown.prototype), "_getDefaultAlignment", this).call(this);
+      return _superPropGet(Dropdown, "_getDefaultAlignment", this, 3)([]);
     }
 
     /**
@@ -4616,7 +4559,7 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
     key: "_setPosition",
     value: function _setPosition() {
       this.$element.removeClass("has-position-".concat(this.position, " has-alignment-").concat(this.alignment));
-      _get(_getPrototypeOf(Dropdown.prototype), "_setPosition", this).call(this, this.$currentAnchor, this.$element, this.$parent);
+      _superPropGet(Dropdown, "_setPosition", this, 3)([this.$currentAnchor, this.$element, this.$parent]);
       this.$element.addClass("has-position-".concat(this.position, " has-alignment-").concat(this.alignment));
     }
 
@@ -4828,7 +4771,6 @@ var Dropdown = /*#__PURE__*/function (_Positionable) {
       $(document.body).off('click.zf.dropdown tap.zf.dropdown');
     }
   }]);
-  return Dropdown;
 }(Positionable);
 Dropdown.defaults = {
   /**
@@ -4942,13 +4884,12 @@ Dropdown.defaults = {
  * @requires foundation.util.touch
  */
 var DropdownMenu = /*#__PURE__*/function (_Plugin) {
-  _inherits(DropdownMenu, _Plugin);
-  var _super = _createSuper(DropdownMenu);
   function DropdownMenu() {
     _classCallCheck(this, DropdownMenu);
-    return _super.apply(this, arguments);
+    return _callSuper(this, DropdownMenu, arguments);
   }
-  _createClass(DropdownMenu, [{
+  _inherits(DropdownMenu, _Plugin);
+  return _createClass(DropdownMenu, [{
     key: "_setup",
     value:
     /**
@@ -5133,7 +5074,6 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
             e.preventDefault();
             //}
           };
-
         var functions = {
           open: openSub,
           close: function close() {
@@ -5330,7 +5270,6 @@ var DropdownMenu = /*#__PURE__*/function (_Plugin) {
       Nest.Burn(this.$element, 'dropdown');
     }
   }]);
-  return DropdownMenu;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -5430,13 +5369,12 @@ DropdownMenu.defaults = {
  * @requires foundation.util.imageLoader if equalizer contains images
  */
 var Equalizer = /*#__PURE__*/function (_Plugin) {
-  _inherits(Equalizer, _Plugin);
-  var _super = _createSuper(Equalizer);
   function Equalizer() {
     _classCallCheck(this, Equalizer);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Equalizer, arguments);
   }
-  _createClass(Equalizer, [{
+  _inherits(Equalizer, _Plugin);
+  return _createClass(Equalizer, [{
     key: "_setup",
     value:
     /**
@@ -5741,7 +5679,6 @@ var Equalizer = /*#__PURE__*/function (_Plugin) {
       this.$watched.css('height', 'auto');
     }
   }]);
-  return Equalizer;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -5776,13 +5713,12 @@ Equalizer.defaults = {
  * @requires foundation.util.mediaQuery
  */
 var Interchange = /*#__PURE__*/function (_Plugin) {
-  _inherits(Interchange, _Plugin);
-  var _super = _createSuper(Interchange);
   function Interchange() {
     _classCallCheck(this, Interchange);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Interchange, arguments);
   }
-  _createClass(Interchange, [{
+  _inherits(Interchange, _Plugin);
+  return _createClass(Interchange, [{
     key: "_setup",
     value:
     /**
@@ -5986,7 +5922,6 @@ var Interchange = /*#__PURE__*/function (_Plugin) {
       this.$element.off('resizeme.zf.trigger');
     }
   }]);
-  return Interchange;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -6022,13 +5957,12 @@ Interchange.SPECIAL_QUERIES = {
  * @module foundation.smoothScroll
  */
 var SmoothScroll = /*#__PURE__*/function (_Plugin) {
-  _inherits(SmoothScroll, _Plugin);
-  var _super = _createSuper(SmoothScroll);
   function SmoothScroll() {
     _classCallCheck(this, SmoothScroll);
-    return _super.apply(this, arguments);
+    return _callSuper(this, SmoothScroll, arguments);
   }
-  _createClass(SmoothScroll, [{
+  _inherits(SmoothScroll, _Plugin);
+  return _createClass(SmoothScroll, [{
     key: "_setup",
     value:
     /**
@@ -6131,7 +6065,6 @@ var SmoothScroll = /*#__PURE__*/function (_Plugin) {
       });
     }
   }]);
-  return SmoothScroll;
 }(Plugin);
 /**
  * Default settings for plugin.
@@ -6175,13 +6108,12 @@ SmoothScroll.defaults = {
  * @requires foundation.util.triggers
  */
 var Magellan = /*#__PURE__*/function (_Plugin) {
-  _inherits(Magellan, _Plugin);
-  var _super = _createSuper(Magellan);
   function Magellan() {
     _classCallCheck(this, Magellan);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Magellan, arguments);
   }
-  _createClass(Magellan, [{
+  _inherits(Magellan, _Plugin);
+  return _createClass(Magellan, [{
     key: "_setup",
     value:
     /**
@@ -6320,7 +6252,7 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
      */
   }, {
     key: "_updateActive",
-    value: function _updateActive( /*evt, elem, scrollPos*/
+    value: function _updateActive(/*evt, elem, scrollPos*/
     ) {
       var _this2 = this;
       if (this._inTransition) return;
@@ -6399,7 +6331,6 @@ var Magellan = /*#__PURE__*/function (_Plugin) {
       if (this.onLoadListener) $(window).off(this.onLoadListener);
     }
   }]);
-  return Magellan;
 }(Plugin);
 /**
  * Default settings for plugin
@@ -6465,13 +6396,12 @@ Magellan.defaults = {
  * @requires foundation.util.triggers
  */
 var OffCanvas = /*#__PURE__*/function (_Plugin) {
-  _inherits(OffCanvas, _Plugin);
-  var _super = _createSuper(OffCanvas);
   function OffCanvas() {
     _classCallCheck(this, OffCanvas);
-    return _super.apply(this, arguments);
+    return _callSuper(this, OffCanvas, arguments);
   }
-  _createClass(OffCanvas, [{
+  _inherits(OffCanvas, _Plugin);
+  return _createClass(OffCanvas, [{
     key: "_setup",
     value:
     /**
@@ -6921,7 +6851,6 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
           if (!_this.$element.hasClass('is-open')) {
             return; // exit if prematurely closed
           }
-
           var canvasFocus = _this.$element.find('[data-autofocus]');
           if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
@@ -7064,7 +6993,6 @@ var OffCanvas = /*#__PURE__*/function (_Plugin) {
       if (this.onLoadListener) $(window).off(this.onLoadListener);
     }
   }]);
-  return OffCanvas;
 }(Plugin);
 OffCanvas.defaults = {
   /**
@@ -7178,13 +7106,12 @@ OffCanvas.defaults = {
  * @requires foundation.util.touch
  */
 var Orbit = /*#__PURE__*/function (_Plugin) {
-  _inherits(Orbit, _Plugin);
-  var _super = _createSuper(Orbit);
   function Orbit() {
     _classCallCheck(this, Orbit);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Orbit, arguments);
   }
-  _createClass(Orbit, [{
+  _inherits(Orbit, _Plugin);
+  return _createClass(Orbit, [{
     key: "_setup",
     value:
     /**
@@ -7244,7 +7171,6 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
       } else {
         this._prepareForOrbit(); //hehe
       }
-
       if (this.options.bullets) {
         this._loadBullets();
       }
@@ -7597,7 +7523,6 @@ var Orbit = /*#__PURE__*/function (_Plugin) {
       this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
     }
   }]);
-  return Orbit;
 }(Plugin);
 Orbit.defaults = {
   /**
@@ -7729,7 +7654,7 @@ Orbit.defaults = {
   useMUI: true
 };
 
-var MenuPlugins = {
+var MenuPlugins$1 = {
   dropdown: {
     cssClass: 'dropdown',
     plugin: DropdownMenu
@@ -7753,13 +7678,12 @@ var MenuPlugins = {
  * @requires foundation.util.mediaQuery
  */
 var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
-  _inherits(ResponsiveMenu, _Plugin);
-  var _super = _createSuper(ResponsiveMenu);
   function ResponsiveMenu() {
     _classCallCheck(this, ResponsiveMenu);
-    return _super.apply(this, arguments);
+    return _callSuper(this, ResponsiveMenu, arguments);
   }
-  _createClass(ResponsiveMenu, [{
+  _inherits(ResponsiveMenu, _Plugin);
+  return _createClass(ResponsiveMenu, [{
     key: "_setup",
     value:
     /**
@@ -7802,8 +7726,8 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
           var rule = rules[i].split('-');
           var ruleSize = rule.length > 1 ? rule[0] : 'small';
           var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
-          if (MenuPlugins[rulePlugin] !== null) {
-            rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+          if (MenuPlugins$1[rulePlugin] !== null) {
+            rulesTree[ruleSize] = MenuPlugins$1[rulePlugin];
           }
         }
         this.rules = rulesTree;
@@ -7856,7 +7780,7 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
 
       // Remove existing plugin-specific CSS classes
-      $.each(MenuPlugins, function (key, value) {
+      $.each(MenuPlugins$1, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       });
 
@@ -7879,7 +7803,6 @@ var ResponsiveMenu = /*#__PURE__*/function (_Plugin) {
       $(window).off('.zf.ResponsiveMenu');
     }
   }]);
-  return ResponsiveMenu;
 }(Plugin);
 ResponsiveMenu.defaults = {};
 
@@ -7890,13 +7813,12 @@ ResponsiveMenu.defaults = {};
  * @requires foundation.util.motion
  */
 var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
-  _inherits(ResponsiveToggle, _Plugin);
-  var _super = _createSuper(ResponsiveToggle);
   function ResponsiveToggle() {
     _classCallCheck(this, ResponsiveToggle);
-    return _super.apply(this, arguments);
+    return _callSuper(this, ResponsiveToggle, arguments);
   }
-  _createClass(ResponsiveToggle, [{
+  _inherits(ResponsiveToggle, _Plugin);
+  return _createClass(ResponsiveToggle, [{
     key: "_setup",
     value:
     /**
@@ -8019,7 +7941,6 @@ var ResponsiveToggle = /*#__PURE__*/function (_Plugin) {
       $(window).off('changed.zf.mediaquery', this._updateMqHandler);
     }
   }]);
-  return ResponsiveToggle;
 }(Plugin);
 ResponsiveToggle.defaults = {
   /**
@@ -8048,13 +7969,12 @@ ResponsiveToggle.defaults = {
  * @requires foundation.util.motion if using animations
  */
 var Reveal = /*#__PURE__*/function (_Plugin) {
-  _inherits(Reveal, _Plugin);
-  var _super = _createSuper(Reveal);
   function Reveal() {
     _classCallCheck(this, Reveal);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Reveal, arguments);
   }
-  _createClass(Reveal, [{
+  _inherits(Reveal, _Plugin);
+  return _createClass(Reveal, [{
     key: "_setup",
     value:
     /**
@@ -8485,7 +8405,6 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
         if ($('.reveal:visible').length === 0) {
           _this._removeGlobalClasses(); // also remove .is-reveal-open from the html element when there is no opened reveal
         }
-
         Keyboard.releaseFocus(_this.$element);
         _this.$element.attr('aria-hidden', true);
         if ($('.reveal:visible').length === 0) {
@@ -8558,7 +8477,6 @@ var Reveal = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Reveal;
 }(Plugin);
 Reveal.defaults = {
   /**
@@ -8684,13 +8602,12 @@ Reveal.defaults = {
  * @requires foundation.util.touch
  */
 var Slider = /*#__PURE__*/function (_Plugin) {
-  _inherits(Slider, _Plugin);
-  var _super = _createSuper(Slider);
   function Slider() {
     _classCallCheck(this, Slider);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Slider, arguments);
   }
-  _createClass(Slider, [{
+  _inherits(Slider, _Plugin);
+  return _createClass(Slider, [{
     key: "_setup",
     value:
     /**
@@ -9196,9 +9113,9 @@ var Slider = /*#__PURE__*/function (_Plugin) {
         });
       }
       $handle.off('keydown.zf.slider').on('keydown.zf.slider', function (e) {
-        var _$handle = $(this),
-          idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-          oldValue = parseFloat($handle.attr('aria-valuenow')),
+        var _$handle = $(this);
+          _this.options.doubleSided ? _this.handles.index(_$handle) : 0;
+          var oldValue = parseFloat($handle.attr('aria-valuenow')),
           newValue;
 
         // handle keyboard event with keyboard util
@@ -9246,7 +9163,6 @@ var Slider = /*#__PURE__*/function (_Plugin) {
       clearTimeout(this.timeout);
     }
   }]);
-  return Slider;
 }(Plugin);
 Slider.defaults = {
   /**
@@ -9402,13 +9318,12 @@ function baseLog(base, value) {
  * @requires foundation.util.mediaQuery
  */
 var Sticky = /*#__PURE__*/function (_Plugin) {
-  _inherits(Sticky, _Plugin);
-  var _super = _createSuper(Sticky);
   function Sticky() {
     _classCallCheck(this, Sticky);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Sticky, arguments);
   }
-  _createClass(Sticky, [{
+  _inherits(Sticky, _Plugin);
+  return _createClass(Sticky, [{
     key: "_setup",
     value:
     /**
@@ -9772,7 +9687,7 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       } else if (this.options.stickTo === 'bottom') {
         topPoint -= winHeight - (elemHeight + mBtm);
         bottomPoint -= winHeight - mBtm;
-      }
+      } else ;
       this.topPoint = topPoint;
       this.bottomPoint = bottomPoint;
       if (cb && typeof cb === 'function') {
@@ -9810,7 +9725,6 @@ var Sticky = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Sticky;
 }(Plugin);
 Sticky.defaults = {
   /**
@@ -9914,13 +9828,12 @@ function emCalc(em) {
  * @requires foundation.util.imageLoader if tabs contain images
  */
 var Tabs = /*#__PURE__*/function (_Plugin) {
-  _inherits(Tabs, _Plugin);
-  var _super = _createSuper(Tabs);
   function Tabs() {
     _classCallCheck(this, Tabs);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Tabs, arguments);
   }
-  _createClass(Tabs, [{
+  _inherits(Tabs, _Plugin);
+  return _createClass(Tabs, [{
     key: "_setup",
     value:
     /**
@@ -10173,9 +10086,9 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       //either replace or update browser history
       if (this.options.deepLink && !historyHandled) {
         if (this.options.updateHistory) {
-          history.pushState({}, '', anchor);
+          history.pushState({}, '', location.pathname + location.search + anchor);
         } else {
-          history.replaceState({}, '', anchor);
+          history.replaceState({}, '', location.pathname + location.search + anchor);
         }
       }
 
@@ -10329,7 +10242,6 @@ var Tabs = /*#__PURE__*/function (_Plugin) {
       }
     }
   }]);
-  return Tabs;
 }(Plugin);
 Tabs.defaults = {
   /**
@@ -10434,13 +10346,12 @@ Tabs.defaults = {
  * @requires foundation.util.triggers
  */
 var Toggler = /*#__PURE__*/function (_Plugin) {
-  _inherits(Toggler, _Plugin);
-  var _super = _createSuper(Toggler);
   function Toggler() {
     _classCallCheck(this, Toggler);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Toggler, arguments);
   }
-  _createClass(Toggler, [{
+  _inherits(Toggler, _Plugin);
+  return _createClass(Toggler, [{
     key: "_setup",
     value:
     /**
@@ -10586,7 +10497,6 @@ var Toggler = /*#__PURE__*/function (_Plugin) {
       this.$element.off('.zf.toggler');
     }
   }]);
-  return Toggler;
 }(Plugin);
 Toggler.defaults = {
   /**
@@ -10612,13 +10522,12 @@ Toggler.defaults = {
  * @requires foundation.util.triggers
  */
 var Tooltip = /*#__PURE__*/function (_Positionable) {
-  _inherits(Tooltip, _Positionable);
-  var _super = _createSuper(Tooltip);
   function Tooltip() {
     _classCallCheck(this, Tooltip);
-    return _super.apply(this, arguments);
+    return _callSuper(this, Tooltip, arguments);
   }
-  _createClass(Tooltip, [{
+  _inherits(Tooltip, _Positionable);
+  return _createClass(Tooltip, [{
     key: "_setup",
     value:
     /**
@@ -10665,7 +10574,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
         'data-toggle': elemId,
         'data-resize': elemId
       }).addClass(this.options.triggerClass);
-      _get(_getPrototypeOf(Tooltip.prototype), "_init", this).call(this);
+      _superPropGet(Tooltip, "_init", this, 3)([]);
       this._events();
     }
   }, {
@@ -10729,7 +10638,7 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
   }, {
     key: "_setPosition",
     value: function _setPosition() {
-      _get(_getPrototypeOf(Tooltip.prototype), "_setPosition", this).call(this, this.$element, this.template);
+      _superPropGet(Tooltip, "_setPosition", this, 3)([this.$element, this.template]);
     }
 
     /**
@@ -10894,7 +10803,6 @@ var Tooltip = /*#__PURE__*/function (_Positionable) {
       this.template.remove();
     }
   }]);
-  return Tooltip;
 }(Positionable);
 Tooltip.defaults = {
   /**
@@ -11055,7 +10963,7 @@ Tooltip.defaults = {
 };
 
 // The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins$1 = {
+var MenuPlugins = {
   tabs: {
     cssClass: 'tabs',
     plugin: Tabs,
@@ -11065,7 +10973,6 @@ var MenuPlugins$1 = {
     close: null /* not supported */,
     toggle: null /* not supported */
   },
-
   accordion: {
     cssClass: 'accordion',
     plugin: Accordion,
@@ -11089,13 +10996,11 @@ var MenuPlugins$1 = {
  * @requires foundation.tabs
  */
 var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
-  _inherits(ResponsiveAccordionTabs, _Plugin);
-  var _super = _createSuper(ResponsiveAccordionTabs);
   function ResponsiveAccordionTabs(element, options) {
     var _this2;
     _classCallCheck(this, ResponsiveAccordionTabs);
-    _this2 = _super.call(this, element, options);
-    return _possibleConstructorReturn(_this2, _this2.options.reflow && _this2.storezfData || _assertThisInitialized(_this2));
+    _this2 = _callSuper(this, ResponsiveAccordionTabs, [element, options]);
+    return _possibleConstructorReturn(_this2, _this2.options.reflow && _this2.storezfData || _this2);
   }
 
   /**
@@ -11106,7 +11011,8 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
    * @param {jQuery} element - jQuery object to make into Responsive Accordion Tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  _createClass(ResponsiveAccordionTabs, [{
+  _inherits(ResponsiveAccordionTabs, _Plugin);
+  return _createClass(ResponsiveAccordionTabs, [{
     key: "_setup",
     value: function _setup(element, options) {
       this.$element = $(element);
@@ -11146,8 +11052,8 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
           var rule = rules[i].split('-');
           var ruleSize = rule.length > 1 ? rule[0] : 'small';
           var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
-          if (MenuPlugins$1[rulePlugin] !== null) {
-            rulesTree[ruleSize] = MenuPlugins$1[rulePlugin];
+          if (MenuPlugins[rulePlugin] !== null) {
+            rulesTree[ruleSize] = MenuPlugins[rulePlugin];
           }
         }
         this.rules = rulesTree;
@@ -11163,9 +11069,9 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       //get all defaults and options
       var _this = this;
       _this.allOptions = {};
-      for (var key in MenuPlugins$1) {
-        if (MenuPlugins$1.hasOwnProperty(key)) {
-          var obj = MenuPlugins$1[key];
+      for (var key in MenuPlugins) {
+        if (MenuPlugins.hasOwnProperty(key)) {
+          var obj = MenuPlugins[key];
           try {
             var dummyPlugin = $('<ul></ul>');
             var tmpPlugin = new obj.plugin(dummyPlugin, _this.options);
@@ -11219,7 +11125,7 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
 
       // Remove existing plugin-specific CSS classes
-      $.each(MenuPlugins$1, function (key, value) {
+      $.each(MenuPlugins, function (key, value) {
         _this.$element.removeClass(value.cssClass);
       });
 
@@ -11363,7 +11269,6 @@ var ResponsiveAccordionTabs = /*#__PURE__*/function (_Plugin) {
       $(window).off('changed.zf.mediaquery', this._changedZfMediaQueryHandler);
     }
   }]);
-  return ResponsiveAccordionTabs;
 }(Plugin);
 ResponsiveAccordionTabs.defaults = {};
 
@@ -11412,6 +11317,5 @@ Foundation.plugin(Toggler, 'Toggler');
 Foundation.plugin(Tooltip, 'Tooltip');
 Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
-export default Foundation;
-export { Abide, Accordion, AccordionMenu, Box, Foundation as Core, foundation_core_utils as CoreUtils, Drilldown, Dropdown, DropdownMenu, Equalizer, Foundation, Interchange, Keyboard, Magellan, MediaQuery, Motion, Move, Nest, OffCanvas, Orbit, ResponsiveAccordionTabs, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Timer, Toggler, Tooltip, Touch, Triggers, onImagesLoaded };
+export { Abide, Accordion, AccordionMenu, Box, Foundation as Core, foundation_core_utils as CoreUtils, Drilldown, Dropdown, DropdownMenu, Equalizer, Foundation, Interchange, Keyboard, Magellan, MediaQuery, Motion, Move, Nest, OffCanvas, Orbit, ResponsiveAccordionTabs, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Timer, Toggler, Tooltip, Touch, Triggers, Foundation as default, onImagesLoaded };
 //# sourceMappingURL=foundation.esm.js.map

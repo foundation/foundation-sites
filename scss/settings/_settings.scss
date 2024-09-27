@@ -782,7 +782,9 @@ $slider-radius: $global-radius;
 // ----------
 
 $switch-background: $medium-gray;
+$switch-background-focus: scale-color($switch-background, $lightness: -10%);
 $switch-background-active: $primary-color;
+$switch-background-active-focus: scale-color($switch-background-active, $lightness: -15%);
 $switch-height: 2rem;
 $switch-height-tiny: 1.5rem;
 $switch-height-small: 1.75rem;
@@ -812,7 +814,7 @@ $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale * 0.5);
 $table-head-row-hover: color.adjust($table-head-background, $lightness: -$table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
-$table-foot-row-hover: color.adjust($table-head-background, $lightness: -$table-hover-scale);
+$table-foot-row-hover: color.adjust($table-foot-background, $lightness: -$table-hover-scale);
 $table-head-font-color: $body-font-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
