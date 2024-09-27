@@ -68,7 +68,7 @@ $progress-radius: $global-radius !default;
     }
 
     @each $name, $color in $foundation-palette {
-      &.#{$name} {
+      &.#{"" + $name} {
         // Internet Explorer sets the fill with color
         color: $color;
 
