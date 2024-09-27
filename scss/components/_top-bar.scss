@@ -32,6 +32,8 @@ $topbar-unstack-breakpoint: medium !default;
 
 /// Adds styles for a top bar container.
 @mixin top-bar-container {
+  padding: $topbar-padding;
+
   @if $global-flexbox {
     display: flex;
     flex-wrap: nowrap;
@@ -41,8 +43,6 @@ $topbar-unstack-breakpoint: medium !default;
   @else {
     @include clearfix;
   }
-
-  padding: $topbar-padding;
 
   &,
   ul {
@@ -118,13 +118,15 @@ $topbar-unstack-breakpoint: medium !default;
 }
 
 @mixin foundation-top-bar {
-  // Top bar container
   .top-bar {
     @include top-bar-container;
-
+  }
+  .top-bar {
     // Stack on small screens by default
     @include top-bar-stacked;
-
+  }
+  // Top bar container
+  .top-bar {
     @include breakpoint($topbar-unstack-breakpoint) {
       @include top-bar-unstack;
     }

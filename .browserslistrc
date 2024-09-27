@@ -1,5 +1,3 @@
 # Browsers that we support
 last 2 versions
-ie >= 9
-ios >= 7
-android >= 4.4
+> 1%

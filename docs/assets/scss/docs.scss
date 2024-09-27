@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // The CSS for the Foundation docs is stored in an external codebase:
 // https://github.com/foundation/foundation-docs
 //
@@ -124,7 +126,7 @@ $transition-fast: all 0.15s ease-in-out;
 $topbar-bg: #2c3840;
 $global-nav-bg: $topbar-bg;
 $global-nav-border-color: #3B4951;
-$global-nav-hover-color: lighten($global-nav-bg, 10%);
+$global-nav-hover-color: color.adjust($global-nav-bg, $lightness: 10%);
 
 .global-nav {
   background: $global-nav-bg !important;
@@ -145,7 +147,7 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
         background: $primary-color;
 
         &:hover {
-          background: darken($primary-color, 10%);
+          background: color.adjust($primary-color, $lightness: -10%);
         }
       }
     }
@@ -229,7 +231,7 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 
   .is-active {
     a {
-      background: darken($global-nav-bg, 20%);
+      background: color.adjust($global-nav-bg, $lightness: -20%);
     }
   }
 

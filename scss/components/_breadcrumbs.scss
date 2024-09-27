@@ -62,9 +62,10 @@ $breadcrumbs-item-separator-color: $medium-gray !default;
 
 /// Adds styles for a breadcrumbs container, along with the styles for the `<li>` and `<a>` elements inside of it.
 @mixin breadcrumbs-container {
-  @include clearfix;
   margin: $breadcrumbs-margin;
   list-style: none;
+
+  @include clearfix;
 
   // Item wrapper
   li {

@@ -102,6 +102,7 @@
     @each $bp, $mg in $margin-gutter {
       $mgc: rem-calc($mg);
       @if $mgc == 0 {
+        // sass-lint:disable zero-unit
         $mgc: 0rem;
       }
       $size-css: if($mg == 0, $size-raw, calc(#{$size-raw} - #{$mg}));
@@ -115,6 +116,7 @@
     // Make sure that 0 is translated in 0rem for calc()
     $mgc: rem-calc($margin-gutter);
     @if $mgc == 0 {
+      // sass-lint:disable zero-unit
       $mgc: 0rem;
     }
     $css-size: if($margin-gutter == 0, $size-raw, calc(#{$size-raw} - #{$mgc}));

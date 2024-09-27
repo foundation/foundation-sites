@@ -157,6 +157,19 @@ describe('Abide', function() {
       $html.find('input').should.not.have.attr('aria-describedby', 'test-error');
     });
 
+    it('does not add [aria-describedby] to the field if the input is hidden', function() {
+      $html = $(`
+        <form data-abide>
+          <input type="hidden" id="test-input">
+          <span class="form-error is-visible" id="test-error">Form error</span>
+        </form>
+      `).appendTo('body');
+      plugin = new Foundation.Abide($html, {});
+      plugin.addA11yAttributes($html.find('input'));
+
+      $html.find('input').should.not.have.attr('aria-describedby', 'test-error');
+    });
+
     it('adds [aria-describedby] to the field if the form error is shown after a validation error', function() {
       $html = $(`
         <form data-abide>

@@ -85,8 +85,8 @@ $callout-link-tint: 30% !default;
 /// Adds styles for a callout.
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout($color: $callout-background) {
-  @include callout-base;
   @include callout-style($color);
+  @include callout-base;
 }
 
 @mixin foundation-callout {
@@ -94,7 +94,7 @@ $callout-link-tint: 30% !default;
     @include callout;
 
     @each $name, $color in $foundation-palette {
-      &.#{$name} {
+      &.#{"" + $name} {
         @include callout-style($color);
       }
     }

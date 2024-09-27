@@ -143,7 +143,11 @@ $maincontent-class: 'off-canvas-content' !default;
   $transition: $offcanvas-transition-length $offcanvas-transition-timing,
   $fixed: true
 ) {
-  @include disable-mouse-outline;
+  // Set the off-canvas z-index.
+  z-index: $offcanvas-push-zindex;
+  transition: transform $transition;
+  backface-visibility: hidden;
+  background: $background;
 
   @if $fixed == true {
     position: fixed;
@@ -152,18 +156,12 @@ $maincontent-class: 'off-canvas-content' !default;
     position: absolute;
   }
 
-  // Set the off-canvas z-index.
-  z-index: $offcanvas-push-zindex;
+  @include disable-mouse-outline;
 
   // Increase CSS specificity
   &.is-transition-push {
     z-index: $offcanvas-push-zindex;
   }
-
-  transition: transform $transition;
-  backface-visibility: hidden;
-
-  background: $background;
 
   // Hide inactive off-canvas within the content that have the same position
   &.is-closed {

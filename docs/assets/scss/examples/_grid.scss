@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Grid
 .row.display {
   background: #eee;
@@ -12,11 +14,11 @@
     &:nth-child(2),
     &.small-centered,
     &.large-centered {
-      background: darken(#eee, 5%);
+      background: color.adjust(#eee, $lightness: -5%);
     }
 
     &.color-end {
-      background: darken(#eee, 10%)
+      background: color.adjust(#eee, $lightness: -10%)
     }
   }
 }
@@ -31,11 +33,11 @@
   margin-right: 0 !important;
 
   .columns {
-    background: darken(#eee, 5%);
+    background: color.adjust(#eee, $lightness: -5%);
     border-left: 1px solid #c6c6c6;
 
     &.color-end {
-      background: darken(#eee, 10%)
+      background: color.adjust(#eee, $lightness: -10%)
     }
   }
 }
@@ -82,7 +84,7 @@
 
   .grid-x,
   .grid-y {
-    background: lighten($primary-color, 50%);
+    background: color.adjust($primary-color, $lightness: 50%);
     font-size: 12px;
     line-height: 2rem;
     margin-bottom: 1.5rem;
@@ -94,7 +96,7 @@
 
   .cell {
     &:nth-child(odd) {
-      background: lighten($primary-color, 30%);
+      background: color.adjust($primary-color, $lightness: 30%);
       color: $black;
     }
     &:nth-child(even) {

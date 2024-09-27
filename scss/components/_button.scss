@@ -95,10 +95,19 @@ $button-responsive-expanded: false !default;
 
 // TODO: Document button-base() mixin
 @mixin button-base {
-  @include disable-mouse-outline;
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
+  border: $button-border;
+  border-radius: $button-radius;
+  transition: $button-transition;
+  font-family: $button-font-family;
+  font-size: map-get($button-sizes, default);
+  font-weight: $button-font-weight;
+  -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
 
   @if (type-of($button-padding) == 'map') {
     @each $size, $padding in $button-padding {
@@ -111,16 +120,7 @@ $button-responsive-expanded: false !default;
     padding: $button-padding;
   }
 
-  border: $button-border;
-  border-radius: $button-radius;
-  transition: $button-transition;
-  font-family: $button-font-family;
-  font-size: map-get($button-sizes, default);
-  font-weight: $button-font-weight;
-  -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
+  @include disable-mouse-outline;
 }
 
 /// Expands a button to make it full-width.
@@ -374,7 +374,7 @@ $button-responsive-expanded: false !default;
         @include button-fill-style($filling);
 
         @each $name, $color in $button-palette {
-          &.#{$name} {
+          &.#{"" + $name} {
             @include button-fill-style($filling, $color, auto, auto);
           }
         }
@@ -402,7 +402,7 @@ $button-responsive-expanded: false !default;
         }
 
         @each $name, $color in $button-palette {
-          &.#{$name} {
+          &.#{"" + $name} {
             &::after {
               border-top-color: $color;
             }

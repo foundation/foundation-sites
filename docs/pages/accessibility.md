@@ -69,7 +69,6 @@ If you're using the Sass version of Foundation, you can use this mixin to enable
 
 ### Tools
 
-- [Tenon accessibility checker](https://tenon.io/index.php)
 - [WAVE Chrome plugin - free accessibility checker](https://wave.webaim.org)
 - [Color Contrast Checker](https://webaim.org/resources/contrastchecker)
 - [ChromeVox screen reader plugin for Chrome](https://www.chromevox.com)

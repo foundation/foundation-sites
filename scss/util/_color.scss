@@ -2,6 +2,7 @@
 // https://get.foundation
 // Licensed under MIT Open Source
 
+@use "sass:color";
 @import 'math';
 
 $contrast-warnings: true !default;
@@ -25,7 +26,11 @@ $success-color: null !default;
 @function color-luminance($color) {
   // Adapted from: https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js
   // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
-  $rgba: red($color), green($color), blue($color);
+  $red   : round(color.channel($color, "red", $space: rgb));
+  $green : round(color.channel($color, "green", $space: rgb));
+  $blue  : round(color.channel($color, "blue", $space: rgb));
+
+  $rgba: $red, $green, $blue;
   $rgba2: ();
 
   @for $i from 1 through 3 {
@@ -96,7 +101,7 @@ $success-color: null !default;
 ///
 /// @returns {Color} A scaled color.
 @function smart-scale($color, $scale: 5%, $threshold: 40%) {
-  @if lightness($color) > $threshold {
+  @if color.channel($color, "lightness", $space: hsl) > $threshold {
     $scale: -$scale;
   }
   @return scale-color($color, $lightness: $scale);

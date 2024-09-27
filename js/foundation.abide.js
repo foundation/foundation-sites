@@ -328,6 +328,7 @@ class Abide extends Plugin {
   }
 
   addA11yErrorDescribe($el, $error) {
+    if ($el.attr('type') === 'hidden') return;
     if (typeof $el.attr('aria-describedby') !== 'undefined') return;
 
     // Set [aria-describedby] on the input toward the first form error if it is not set
@@ -510,10 +511,9 @@ class Abide extends Plugin {
     }
 
     if (manageErrorClasses) {
+      this.removeErrorClasses($el);
       if (!goodToGo) {
-        this.addErrorClasses($el, failedValidators);
-      } else {
-        this.removeErrorClasses($el);
+          this.addErrorClasses($el, failedValidators);
       }
     }
 

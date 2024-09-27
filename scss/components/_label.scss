@@ -55,7 +55,7 @@ $label-radius: $global-radius !default;
     color: $label-color;
 
     @each $name, $color in $label-palette {
-      &.#{$name} {
+      &.#{"" + $name} {
         background: $color;
         color: color-pick-contrast($color, ($label-color, $label-color-alt));
       }

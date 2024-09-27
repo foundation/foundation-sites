@@ -9,7 +9,7 @@ describe('Foundation core', function() {
 
   describe('plugin()', function() {
     afterEach(function() {
-      delete Foundation._plugins['plugin'];
+      delete Foundation._plugins.plugin;
       delete Foundation.Plugin;
     });
 
@@ -17,7 +17,7 @@ describe('Foundation core', function() {
       function Plugin() {}
       Foundation.plugin(Plugin, 'Plugin');
 
-      (Foundation._plugins['plugin']).should.be.a('function');
+      (Foundation._plugins.plugin).should.be.a('function');
       (Foundation.Plugin).should.be.a('function');
     });
 
@@ -25,7 +25,7 @@ describe('Foundation core', function() {
       function Plugin() {}
       Foundation.plugin(Plugin);
 
-      (Foundation._plugins['plugin']).should.be.a('function');
+      (Foundation._plugins.plugin).should.be.a('function');
       (Foundation.Plugin).should.be.a('function');
     });
   });

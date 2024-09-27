@@ -36,18 +36,19 @@ $select-radius: $global-radius !default;
   line-height: $input-line-height;
   color: $input-color;
 
+  @if has-value($input-transition) {
+    transition: $input-transition;
+  }
+
   @if $select-triangle-color != transparent {
-    @include background-triangle($select-triangle-color);
     background-origin: content-box;
     background-position: $global-right (-$form-spacing) center;
     background-repeat: no-repeat;
     background-size: 9px 6px;
 
     padding-#{$global-right}: ($form-spacing * 1.5);
-  }
 
-  @if has-value($input-transition) {
-    transition: $input-transition;
+    @include background-triangle($select-triangle-color);
   }
 
   // Focus state

@@ -33,7 +33,6 @@ $buttongroup-radius-on-each: true !default;
   $child-selector: $buttongroup-child-selector,
   $spacing: $buttongroup-spacing
 ) {
-  @include clearfix;
   margin-bottom: $buttongroup-margin;
 
   @if $global-flexbox {
@@ -50,6 +49,8 @@ $buttongroup-radius-on-each: true !default;
   @else {
     font-size: 0;
   }
+
+  @include clearfix;
 
   #{$child-selector} {
     margin: 0;
@@ -242,13 +243,13 @@ $buttongroup-radius-on-each: true !default;
 
         @each $name, $color in $button-palette {
           @if($button-fill != $filling) {
-            $individual-selector: ' #{$buttongroup-child-selector}.#{$name}';
-            &.#{$name} #{$buttongroup-child-selector}, &#{$individual-selector} {
+            $individual-selector: ' #{$buttongroup-child-selector}.#{"" + $name}';
+            &.#{"" + $name} #{$buttongroup-child-selector}, &#{$individual-selector} {
               @include button-fill-style($filling, $color, auto, auto);
             }
           }
           @else {
-            &.#{$name} #{$buttongroup-child-selector} {
+            &.#{"" + $name} #{$buttongroup-child-selector} {
               @include button-fill-style($filling, $color, auto, auto);
             }
           }

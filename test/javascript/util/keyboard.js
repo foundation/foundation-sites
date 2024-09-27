@@ -29,7 +29,7 @@ describe('Keyboard util', function() {
 
   describe('parseKey()', function() {
     it('returns the character pressed for a normal key', function() {
-      let event = createEvent(keyCodes['A']),
+      let event = createEvent(keyCodes.A),
           parsedKey = Foundation.Keyboard.parseKey(event);
 
       parsedKey.should.be.equal('A');
@@ -44,25 +44,25 @@ describe('Keyboard util', function() {
       }
     });
     it('recognizes if CTRL was pressed', function() {
-      let event = createEvent(keyCodes['A'], {ctrl: true}),
+      let event = createEvent(keyCodes.A, {ctrl: true}),
           parsedKey = Foundation.Keyboard.parseKey(event);
 
       parsedKey.should.be.equal('CTRL_A');
     });
     it('recognizes if ALT was pressed', function() {
-      let event = createEvent(keyCodes['A'], {alt: true}),
+      let event = createEvent(keyCodes.A, {alt: true}),
           parsedKey = Foundation.Keyboard.parseKey(event);
 
       parsedKey.should.be.equal('ALT_A');
     });
     it('recognizes if SHIFT was pressed', function() {
-      let event = createEvent(keyCodes['A'], {shift: true}),
+      let event = createEvent(keyCodes.A, {shift: true}),
           parsedKey = Foundation.Keyboard.parseKey(event);
 
       parsedKey.should.be.equal('SHIFT_A');
     });
     it('recognizes if multiple modifiers were pressed', function() {
-      let event = createEvent(keyCodes['A'], {shift: true, alt: true, ctrl: true}),
+      let event = createEvent(keyCodes.A, {shift: true, alt: true, ctrl: true}),
           parsedKey = Foundation.Keyboard.parseKey(event);
 
       parsedKey.should.be.equal('ALT_CTRL_SHIFT_A');
@@ -77,7 +77,7 @@ describe('Keyboard util', function() {
         'ESCAPE': 'close'
       });
 
-      let event = createEvent(keyCodes['ESCAPE']);
+      let event = createEvent(keyCodes.ESCAPE);
 
       Foundation.Keyboard.handleKey(event, 'MyComponent', {
         close: () => {
@@ -95,7 +95,7 @@ describe('Keyboard util', function() {
         'ESCAPE': 'close'
       });
 
-      let event = createEvent(keyCodes['ESCAPE']);
+      let event = createEvent(keyCodes.ESCAPE);
 
       Foundation.Keyboard.handleKey(event, 'MyComponent', {
         close: () => {
@@ -115,7 +115,7 @@ describe('Keyboard util', function() {
       Foundation.Keyboard.register('MyComponent', {
       });
 
-      let event = createEvent(keyCodes['ESCAPE']);
+      let event = createEvent(keyCodes.ESCAPE);
 
       Foundation.Keyboard.handleKey(event, 'MyComponent', {
         unhandled: () => {
@@ -204,7 +204,7 @@ describe('Keyboard util', function() {
       Foundation.Keyboard.trapFocus($html);
       $html.find('a').last().focus();
 
-      let event = createEvent(keyCodes['TAB']);
+      let event = createEvent(keyCodes.TAB);
       $(document.activeElement).trigger(event);
 
       document.activeElement.should.be.equal($html.find('a').eq(0)[0]);
@@ -222,7 +222,7 @@ describe('Keyboard util', function() {
       Foundation.Keyboard.trapFocus($html);
       $html.find('a').first().focus();
 
-      let event = createEvent(keyCodes['TAB'], {shift: true});
+      let event = createEvent(keyCodes.TAB, {shift: true});
       $(document.activeElement).trigger(event);
 
       document.activeElement.should.be.equal($html.find('a').eq(2)[0]);
@@ -244,7 +244,7 @@ describe('Keyboard util', function() {
 
       Foundation.Keyboard.releaseFocus($html);
 
-      let event = createEvent(keyCodes['TAB']);
+      let event = createEvent(keyCodes.TAB);
       $(document.activeElement).trigger(event);
 
       document.activeElement.should.not.be.equal($html.find('a').eq(0)[0]);
@@ -265,7 +265,7 @@ describe('Keyboard util', function() {
       Foundation.Keyboard.releaseFocus($html);
 
 
-      let event = createEvent(createEvent(keyCodes['TAB'], {shift: true}));
+      let event = createEvent(createEvent(keyCodes.TAB, {shift: true}));
       $(document.activeElement).trigger(event);
 
       document.activeElement.should.not.be.equal($html.find('a').eq(2)[0]);

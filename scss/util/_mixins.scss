@@ -6,6 +6,8 @@
 /// @group functions
 ////
 
+@use "sass:color";
+
 // Patch to fix issue #12080
 $-zf-bp-value: null;
 
@@ -146,12 +148,15 @@ $-zf-bp-value: null;
 ///
 /// @param {Color} $color [$black] - Color to use for the triangle.
 @mixin background-triangle($color: $black) {
-  $rgb: 'rgb%28#{round(red($color))}, #{round(green($color))}, #{round(blue($color))}%29';
+  $red   : round(color.channel($color, "red", $space: rgb));
+  $green : round(color.channel($color, "green", $space: rgb));
+  $blue  : round(color.channel($color, "blue", $space: rgb));
+  $rgb   : 'rgb%28#{$red}, #{$green}, #{$blue}%29';
 
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
 
   @media screen and (min-width: 0\0) {
-    @if lightness($color) < 60% {
+    @if color.channel($color, "lightness", $space: hsl) < 60% {
       // White triangle
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg==');
     }

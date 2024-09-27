@@ -37,6 +37,7 @@
         $gutter: rem-calc($gutter);
         // Make sure that 0 is translated in 0rem for calc()
         @if $gutter == 0 {
+          // sass-lint:disable zero-unit
           $gutter: 0rem;
         }
         height: calc(#{$unit} + #{$gutter});
@@ -45,6 +46,7 @@
         $gutter: rem-calc($gutter);
         // Make sure that 0 is translated in 0rem for calc()
         @if $gutter == 0 {
+          // sass-lint:disable zero-unit
           $gutter: 0rem;
         }
         width: calc(#{$unit} + #{$gutter});

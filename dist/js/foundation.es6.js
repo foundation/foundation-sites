@@ -485,7 +485,7 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-var FOUNDATION_VERSION = '6.8.1';
+var FOUNDATION_VERSION = '6.9.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -512,7 +512,7 @@ var Foundation = {
     var className = (name || functionName(plugin));
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
-    var attrName  = hyphenate(className);
+    var attrName  = hyphenate$1(className);
 
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = plugin;
@@ -527,7 +527,7 @@ var Foundation = {
    * @fires Plugin#init
    */
   registerPlugin: function(plugin, name){
-    var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
+    var pluginName = name ? hyphenate$1(name) : functionName(plugin.constructor).toLowerCase();
     plugin.uuid = GetYoDigits(6, pluginName);
 
     if(!plugin.$element.attr(`data-${pluginName}`)){ plugin.$element.attr(`data-${pluginName}`, plugin.uuid); }
@@ -551,7 +551,7 @@ var Foundation = {
    * @fires Plugin#destroyed
    */
   unregisterPlugin: function(plugin){
-    var pluginName = hyphenate(functionName(plugin.$element.data('zfPlugin').constructor));
+    var pluginName = hyphenate$1(functionName(plugin.$element.data('zfPlugin').constructor));
 
     this._uuids.splice(this._uuids.indexOf(plugin.uuid), 1);
     plugin.$element.removeAttr(`data-${pluginName}`).removeData('zfPlugin')
@@ -587,12 +587,12 @@ var Foundation = {
          fns = {
            'object': function(plgs){
              plgs.forEach(function(p){
-               p = hyphenate(p);
+               p = hyphenate$1(p);
                $('[data-'+ p +']').foundation('_init');
              });
            },
            'string': function(){
-             plugins = hyphenate(plugins);
+             plugins = hyphenate$1(plugins);
              $('[data-'+ plugins +']').foundation('_init');
            },
            'undefined': function(){
@@ -811,7 +811,7 @@ function parseValue(str){
 }
 // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
-function hyphenate(str) {
+function hyphenate$1(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
@@ -1878,12 +1878,12 @@ class Plugin {
 
 // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
-function hyphenate$1(str) {
+function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
 function getPluginName(obj) {
-  return hyphenate$1(obj.className);
+  return hyphenate(obj.className);
 }
 
 /**
@@ -2212,6 +2212,7 @@ class Abide extends Plugin {
   }
 
   addA11yErrorDescribe($el, $error) {
+    if ($el.attr('type') === 'hidden') return;
     if (typeof $el.attr('aria-describedby') !== 'undefined') return;
 
     // Set [aria-describedby] on the input toward the first form error if it is not set
@@ -2394,10 +2395,9 @@ class Abide extends Plugin {
     }
 
     if (manageErrorClasses) {
+      this.removeErrorClasses($el);
       if (!goodToGo) {
-        this.addErrorClasses($el, failedValidators);
-      } else {
-        this.removeErrorClasses($el);
+          this.addErrorClasses($el, failedValidators);
       }
     }
 
@@ -7485,7 +7485,7 @@ Orbit.defaults = {
   useMUI: true
 };
 
-let MenuPlugins = {
+let MenuPlugins$1 = {
   dropdown: {
     cssClass: 'dropdown',
     plugin: DropdownMenu
@@ -7551,8 +7551,8 @@ class ResponsiveMenu extends Plugin {
         let ruleSize = rule.length > 1 ? rule[0] : 'small';
         let rulePlugin = rule.length > 1 ? rule[1] : rule[0];
 
-        if (MenuPlugins[rulePlugin] !== null) {
-          rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+        if (MenuPlugins$1[rulePlugin] !== null) {
+          rulesTree[ruleSize] = MenuPlugins$1[rulePlugin];
         }
       }
 
@@ -7603,7 +7603,7 @@ class ResponsiveMenu extends Plugin {
     if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
 
     // Remove existing plugin-specific CSS classes
-    $.each(MenuPlugins, function(key, value) {
+    $.each(MenuPlugins$1, function(key, value) {
       _this.$element.removeClass(value.cssClass);
     });
 
@@ -8907,9 +8907,9 @@ class Slider extends Plugin {
     }
 
     $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e) {
-      var _$handle = $(this),
-          idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
-          oldValue = parseFloat($handle.attr('aria-valuenow')),
+      var _$handle = $(this);
+          _this.options.doubleSided ? _this.handles.index(_$handle) : 0;
+          var oldValue = parseFloat($handle.attr('aria-valuenow')),
           newValue;
 
       // handle keyboard event with keyboard util
@@ -9468,7 +9468,7 @@ class Sticky extends Plugin {
     } else if (this.options.stickTo === 'bottom') {
       topPoint -= (winHeight - (elemHeight + mBtm));
       bottomPoint -= (winHeight - mBtm);
-    }
+    } else ;
 
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
@@ -9872,9 +9872,9 @@ class Tabs extends Plugin {
     //either replace or update browser history
     if (this.options.deepLink && !historyHandled) {
       if (this.options.updateHistory) {
-        history.pushState({}, '', anchor);
+        history.pushState({}, '', location.pathname + location.search + anchor);
       } else {
-        history.replaceState({}, '', anchor);
+        history.replaceState({}, '', location.pathname + location.search + anchor);
       }
     }
 
@@ -10768,7 +10768,7 @@ Tooltip.defaults = {
 };
 
 // The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins$1 = {
+var MenuPlugins = {
   tabs: {
     cssClass: 'tabs',
     plugin:   Tabs,
@@ -10847,8 +10847,8 @@ class ResponsiveAccordionTabs extends Plugin{
         let ruleSize = rule.length > 1 ? rule[0] : 'small';
         let rulePlugin = rule.length > 1 ? rule[1] : rule[0];
 
-        if (MenuPlugins$1[rulePlugin] !== null) {
-          rulesTree[ruleSize] = MenuPlugins$1[rulePlugin];
+        if (MenuPlugins[rulePlugin] !== null) {
+          rulesTree[ruleSize] = MenuPlugins[rulePlugin];
         }
       }
 
@@ -10866,9 +10866,9 @@ class ResponsiveAccordionTabs extends Plugin{
     //get all defaults and options
     var _this = this;
     _this.allOptions = {};
-    for (var key in MenuPlugins$1) {
-      if (MenuPlugins$1.hasOwnProperty(key)) {
-        var obj = MenuPlugins$1[key];
+    for (var key in MenuPlugins) {
+      if (MenuPlugins.hasOwnProperty(key)) {
+        var obj = MenuPlugins[key];
         try {
           var dummyPlugin = $('<ul></ul>');
           var tmpPlugin = new obj.plugin(dummyPlugin,_this.options);
@@ -10918,7 +10918,7 @@ class ResponsiveAccordionTabs extends Plugin{
     if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
 
     // Remove existing plugin-specific CSS classes
-    $.each(MenuPlugins$1, function(key, value) {
+    $.each(MenuPlugins, function(key, value) {
       _this.$element.removeClass(value.cssClass);
     });
 
@@ -11095,6 +11095,5 @@ Foundation.plugin(Toggler, 'Toggler');
 Foundation.plugin(Tooltip, 'Tooltip');
 Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 
-export default Foundation;
-export { Abide, Accordion, AccordionMenu, Box, Foundation as Core, foundation_core_utils as CoreUtils, Drilldown, Dropdown, DropdownMenu, Equalizer, Foundation, Interchange, Keyboard, Magellan, MediaQuery, Motion, Move, Nest, OffCanvas, Orbit, ResponsiveAccordionTabs, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Timer, Toggler, Tooltip, Touch, Triggers, onImagesLoaded };
+export { Abide, Accordion, AccordionMenu, Box, Foundation as Core, foundation_core_utils as CoreUtils, Drilldown, Dropdown, DropdownMenu, Equalizer, Foundation, Interchange, Keyboard, Magellan, MediaQuery, Motion, Move, Nest, OffCanvas, Orbit, ResponsiveAccordionTabs, ResponsiveMenu, ResponsiveToggle, Reveal, Slider, SmoothScroll, Sticky, Tabs, Timer, Toggler, Tooltip, Touch, Triggers, Foundation as default, onImagesLoaded };
 //# sourceMappingURL=foundation.es6.js.map

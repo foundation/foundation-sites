@@ -28,7 +28,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _foundation_core_utils__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_foundation_core_utils__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./foundation.util.motion */ "./foundation.util.motion");
 /* harmony import */ var _foundation_util_motion__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_foundation_util_motion__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 
 
 
@@ -187,7 +187,6 @@ function debounceGlobalListener(debounce, trigger, listener) {
     }, debounce || 10); //default time to emit scroll event
   });
 }
-
 Triggers.Initializers.addResizeListener = function (debounce) {
   var $nodes = jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-resize]');
   if ($nodes.length) {
@@ -233,7 +232,6 @@ Triggers.Initializers.addMutationEventsListener = function ($elem) {
       //nothing
     }
   };
-
   if ($nodes.length) {
     //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
     for (var i = 0; i <= $nodes.length - 1; i++) {
