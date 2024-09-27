@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['20'] # latest (16+) not functional
+        node: ['22']
     steps:
       - uses: actions/checkout@v1
       - name: install system dependencies
@@ -43,7 +43,7 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, windows-latest, macos-latest]
         node: [ '18', '20', '22' ]
     name: Node ${{ matrix.node }} (${{ matrix.platform }})
     runs-on: ${{ matrix.platform }}
@@ -53,12 +53,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: Install Google Chrome on macOS
-        if: runner.os == 'macOS'
-        run: brew install --cask google-chrome
-      - name: Install Google Chrome on Windows
-        if: runner.os == 'Windows'
-        run: choco install googlechrome
       - name: install dependencies
         run: yarn
       - name: patch packages
