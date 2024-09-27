@@ -47,11 +47,18 @@ jobs:
         node: [ '18', '20', '22' ]
     name: Node ${{ matrix.node }} (${{ matrix.platform }})
     runs-on: ${{ matrix.platform }}
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: Install Google Chrome on macOS
+        if: runner.os == 'macOS'
+        run: brew install --cask google-chrome
+      - name: Install Google Chrome on Windows
+        if: runner.os == 'Windows'
+        run: choco install googlechrome
       - name: install dependencies
         run: yarn
       - name: patch packages
