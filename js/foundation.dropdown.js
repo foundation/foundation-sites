@@ -81,6 +81,18 @@ class Dropdown extends Positionable {
       'data-yeti-box': $id,
       'data-resize': $id,
     });
+    
+  if (this.options.position !== 'auto') {
+  this.position = this.options.position;
+  } else {
+  this.position = this._getDefaultPosition();
+  }
+
+  if (this.options.alignment !== 'auto') {
+  this.alignment = this.options.alignment;
+  } else {
+  this.alignment = this._getDefaultAlignment();
+  }
 
     super._init();
     this._events();
@@ -116,7 +128,34 @@ class Dropdown extends Positionable {
    */
   _setPosition() {
     this.$element.removeClass(`has-position-${this.position} has-alignment-${this.alignment}`);
+    // Override default _setPosition logic to handle explicit position + fallback alignment
+const position = this.position;
+const alignment = this.alignment;
+
+// Use Positionable utility to get the best possible position
+const offsets = Foundation.Box.GetOffsets(this.$element, this.$currentAnchor, this.options, this.$parent);
+
+// Check for collision using the explicit position
+const collision = Foundation.Box.ImNotTouchingYou(this.$element, this.$parent);
+
+// If there is a collision and position is explicitly set
+if (!collision && this.options.position !== 'auto') {
+  // Try changing only alignment
+  const altAlignments = ['left', 'right', 'center'].filter(a => a !== alignment);
+  for (let newAlignment of altAlignments) {
+    this.alignment = newAlignment;
+
+    // Reposition with new alignment
     super._setPosition(this.$currentAnchor, this.$element, this.$parent);
+    if (Foundation.Box.ImNotTouchingYou(this.$element, this.$parent)) {
+      break;
+    }
+  }
+} else {
+  // Let Foundation decide when position is auto or there's no collision
+  super._setPosition(this.$currentAnchor, this.$element, this.$parent);
+}
+
     this.$element.addClass(`has-position-${this.position} has-alignment-${this.alignment}`);
   }
 
