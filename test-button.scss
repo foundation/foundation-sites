@@ -1,0 +1,11 @@
+@import "scss/settings/settings";
+@import "scss/global";
+@import "scss/components/button";
+
+.btn-default {
+  @include button-disabled;
+}
+
+.btn-custom {
+  @include button-disabled(0.6);
+}
