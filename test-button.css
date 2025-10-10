@@ -1,0 +1,11 @@
+.btn-default {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.btn-custom {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/*# sourceMappingURL=test-button.css.map */

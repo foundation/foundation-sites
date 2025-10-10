@@ -283,7 +283,7 @@ $button-responsive-expanded: false !default;
 @mixin button-disabled(
   $opacity: $button-opacity-disabled
 ) {
-  opacity: $button-opacity-disabled;
+  opacity: $opacity;
   cursor: not-allowed;
 }
 
