@@ -141,7 +141,7 @@ yarn start
 </div>
 
 <div class="callout info">
-  <p><strong>Windows users</strong>: make sure you've python v2.7 available in your node environment since it's required by the node-gyp tool. There are two way to achieve this</p>
+  <p><strong>Windows users</strong>: make sure you have python v2.7 available in your node environment since it's required by the node-gyp tool. There are two ways to achieve this</p>
 
   <ol>
     <li>Install the <a href="https://github.com/felixrieseberg/windows-build-tools">windows-build-tools</a> (recommended) and make python afterwards accessible via <code>npm config set python "%USERPROFILE%\.windows-build-tools\python27\python.exe"</code></li>
