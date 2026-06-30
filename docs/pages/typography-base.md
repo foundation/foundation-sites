@@ -129,8 +129,8 @@ The values for `'font-size'`/`'fs'`, `'margin-top'`/`'mt'` and `'margin-bottom'`
 The value for `'line-height'`/`'lh'` is transformed into a unitless number, that expresses the line-height relative to the fonts-size. You can also input any unit. If you don't, we assume that for numbers smaller than or equal to 10, you mean a typical relative line-height. However, if you put in anything larger than 10, we assume you mean 'px', since we have not yet seen relative line-heights that were larger than 10. If you do not set `'line-height'`/`'lh'` it defaults to `$header-lineheight` for size `'small'`. Thereafter the value for a larger size is inherited from the values of the smaller size.
 
 <div class="callout alert">
-  <p><strong>The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`.</strong></p>
-  <p>`$header-sizes` map is still working and is used to initialize the `$header-styles` map. In version 6.4 the `$header-sizes` is going to be deprecated.</p>
+  <p><strong>The <code>&lt;$header-styles&gt;</code> map has replaced <code>&lt;$header-sizes&gt;</code> map in version 6.3. <code>&lt;$header-styles&gt;</code> map is a more general map than <code>&lt;$header-sizes&gt;</code>.</strong></p>
+  <p><code>&lt;$header-sizes&gt;</code> map is still working and is used to initialize the <code>&lt;$header-styles&gt;</code> map. In version 6.4 <code>&lt;$header-sizes&gt;</code> is going to be deprecated.</p>
 </div>
 
 ---
@@ -262,7 +262,7 @@ A definition list (`<dl>`) is used to display name-value pairs, like metadata or
 Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
 
 <div class="callout">
-  By default, `<cite>` takes the look of the `.cite-block` component. In Sass, you can customize it with <a href="#sass-variables">`$cite-*` variables</a> or disable it by setting `$enable-cite-block` to false.
+  By default, <code>&lt;cite&gt;</code> takes the look of the <code>&lt;.cite-block&gt;</code> component. In Sass, you can customize it with <a href="#sass-variables"><code>&lt;$cite-*&gt;</code> variables</a> or disable it by setting <code>&lt;$enable-cite-block&gt;</code> to false.
 </div>
 
 <div class="docs-codepen-container">
@@ -324,7 +324,7 @@ Use the `.code-block` component to create a block of code.
 ```
 
 <div class="callout info">
-  <p>It is recommended to use the appropriate semantic markup for your content (`<code>` for code, `<pre>` for pre-formatted text). Styling classes `.code-inline` and `.code-block` should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
+  <p>It is recommended to use the appropriate semantic markup for your content (<code>&lt;code&gt;</code> for code, <code>&lt;pre&gt;</code> for pre-formatted text). Styling classes <code>.code-inline</code> and <code>.code-block</code> should be used without semantic markup only if the content is NOT code/pre-formatted text but should be displayed as if.</p>
 </div>
 
 ---
@@ -405,5 +405,5 @@ On top of that, Foundation includes a couple of simple classes you can use to co
 <a class="" data-open-video="4:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="callout primary">
-  <p>Print styles use `!important` to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+  <p>Print styles use <code>!important</code> to ensure they aren't overridden by more specific selectors. This framework conscientiously avoids using <code>!important</code> declarations. This is one of the few components that does.</p>
 </div>
