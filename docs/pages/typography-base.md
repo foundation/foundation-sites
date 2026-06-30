@@ -262,7 +262,7 @@ A definition list (`<dl>`) is used to display name-value pairs, like metadata or
 Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
 
 <div class="callout">
-  By default, `<cite>` takes the look of the `.cite-block` component. In Sass, you can customize it with <a href="#sass-variables">`$cite-*` variables</a> or disable it by setting `$enable-cite-block` to false.
+  By default, <code>&lt;cite&gt;</code> takes the look of the <code>&lt;.cite-block&gt;</code> component. In Sass, you can customize it with <a href="#sass-variables"><code>&lt;$cite-*&gt;</code> variables</a> or disable it by setting <code>&lt;$enable-cite-block&gt;</code> to false.
 </div>
 
 <div class="docs-codepen-container">
