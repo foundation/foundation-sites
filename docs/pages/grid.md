@@ -18,7 +18,7 @@ tags:
 ## Importing
 
 <div class="callout alert">
-  **From Foundation v6.4, the Float Grid is disabled by default**, replaced by the new [XY Grid](xy-grid.html). Unless you need to support IE 10, it is recommended to use the XY Grid.
+  <p><strong>From Foundation v6.4, the Float Grid is disabled by default</strong>, replaced by the new <a href="xy-grid.html">XY Grid</a>. Unless you need to support IE 10, it is recommended to use the XY Grid.</p>
 </div>
 
 To use the Float Grid in Foundation v6.4+, you need to:
