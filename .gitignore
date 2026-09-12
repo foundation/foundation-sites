@@ -4,3 +4,5 @@ test-results/
 playwright-report/
 *.zip
 .DS_Store
+docs/superpowers/
+.superpowers/
