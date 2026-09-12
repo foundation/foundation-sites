@@ -16,138 +16,138 @@ const titleCase = (name) => name.split('-').map((w) => w[0].toUpperCase() + w.sl
 const cell = (v) => String(v ?? '').replace(/\|/g, '\\|');
 const code = (v) => `\`${v}\``;
 const table = (headers, rows) => [
-  `| ${headers.join(' | ')} |`,
-  `| ${headers.map(() => '---').join(' | ')} |`,
-  ...rows.map((r) => `| ${r.map(cell).join(' | ')} |`),
+	`| ${headers.join(' | ')} |`,
+	`| ${headers.map(() => '---').join(' | ')} |`,
+	...rows.map((r) => `| ${r.map(cell).join(' | ')} |`),
 ].join('\n');
 
 function range(child) {
-  const min = child.min ?? 0;
-  const max = child.max ?? null;
-  if (max === null) return min === 0 ? 'any number' : `at least ${min}`;
-  if (min === max) return `exactly ${min}`;
-  return `${min} to ${max}`;
+	const min = child.min ?? 0;
+	const max = child.max ?? null;
+	if (max === null) return min === 0 ? 'any number' : `at least ${min}`;
+	if (min === max) return `exactly ${min}`;
+	return `${min} to ${max}`;
 }
 
 export function renderPage({ manifest: m, exampleHtml, navOrder }) {
-  const title = titleCase(m.name);
-  const dir = KIND_TO_DIR[m.kind];
-  const out = [];
+	const title = titleCase(m.name);
+	const dir = KIND_TO_DIR[m.kind];
+	const out = [];
 
-  // trimEnd so the join below adds exactly one newline before the generated mark
-  out.push(frontMatter({ raw: true, title, description: m.description, nav_group: GROUPS[m.kind], nav_order: navOrder }).trimEnd());
-  out.push(`${GENERATED_MARK} from src/${dir}/${m.name}/manifest.json. Do not edit. -->`, '', `# ${title}`, '', m.description, '');
+	// trimEnd so the join below adds exactly one newline before the generated mark
+	out.push(frontMatter({ raw: true, title, description: m.description, nav_group: GROUPS[m.kind], nav_order: navOrder }).trimEnd());
+	out.push(`${GENERATED_MARK} from src/${dir}/${m.name}/manifest.json. Do not edit. -->`, '', `# ${title}`, '', m.description, '');
 
-  out.push('## Example', '', '```html', exampleHtml.trim(), '```', '');
+	out.push('## Example', '', '```html', exampleHtml.trim(), '```', '');
 
-  out.push('## Attributes', '');
-  out.push(m.attributes.length
-    ? table(['Attribute', 'Type', 'Values', 'Default', 'Description'], m.attributes.map((a) => [
-      code(a.name), a.type, (a.values ?? []).map(code).join(', '), a.default === undefined ? '' : code(a.default), a.description,
-    ]))
-    : 'None. This is configured through its children and tokens only.');
-  out.push('');
+	out.push('## Attributes', '');
+	out.push(m.attributes.length
+		? table(['Attribute', 'Type', 'Values', 'Default', 'Description'], m.attributes.map((a) => [
+			code(a.name), a.type, (a.values ?? []).map(code).join(', '), a.default === undefined ? '' : code(a.default), a.description,
+		]))
+		: 'None. This is configured through its children and tokens only.');
+	out.push('');
 
-  if (m.classes.length) {
-    out.push('## Modifier classes', '', table(['Class', 'Description'], m.classes.map((c) => [code(`.${c.name}`), c.description])), '');
-  }
+	if (m.classes.length) {
+		out.push('## Modifier classes', '', table(['Class', 'Description'], m.classes.map((c) => [code(`.${c.name}`), c.description])), '');
+	}
 
-  out.push('## Children', '');
-  out.push(m.children.length
-    ? m.children.map((c) => `- ${code(c.selector)}: ${range(c)}${c.description ? `. ${c.description}` : ''}`).join('\n')
-    : 'No structural requirements.');
-  out.push('');
+	out.push('## Children', '');
+	out.push(m.children.length
+		? m.children.map((c) => `- ${code(c.selector)}: ${range(c)}${c.description ? `. ${c.description}` : ''}`).join('\n')
+		: 'No structural requirements.');
+	out.push('');
 
-  const publicTokens = m.tokens.filter((t) => t.public);
-  const internalTokens = m.tokens.filter((t) => !t.public);
-  out.push('## Tokens', '');
-  out.push(publicTokens.length ? table(['Token', 'Description'], publicTokens.map((t) => [code(t.name), t.description ?? ''])) : 'No public tokens.');
-  if (internalTokens.length) {
-    out.push('', '<details><summary>Internal tokens (may change between minor versions)</summary>', '', internalTokens.map((t) => `- ${code(t.name)}`).join('\n'), '', '</details>');
-  }
-  out.push('');
+	const publicTokens = m.tokens.filter((t) => t.public);
+	const internalTokens = m.tokens.filter((t) => !t.public);
+	out.push('## Tokens', '');
+	out.push(publicTokens.length ? table(['Token', 'Description'], publicTokens.map((t) => [code(t.name), t.description ?? ''])) : 'No public tokens.');
+	if (internalTokens.length) {
+		out.push('', '<details><summary>Internal tokens (may change between minor versions)</summary>', '', internalTokens.map((t) => `- ${code(t.name)}`).join('\n'), '', '</details>');
+	}
+	out.push('');
 
-  out.push('## Accessibility', '');
-  const a11y = [];
-  if (m.a11y.role) a11y.push(`- Role: ${code(m.a11y.role)}`);
-  if (m.a11y.requiredAttributes.length) a11y.push(`- Required attributes: ${m.a11y.requiredAttributes.map(code).join(', ')}`);
-  if (m.a11y.notes) a11y.push(`- ${m.a11y.notes}`);
-  out.push(a11y.length ? a11y.join('\n') : 'No special requirements beyond semantic HTML.');
-  if (m.a11y.keyboard.length) out.push('', table(['Key', 'Action'], m.a11y.keyboard.map((k) => [code(k.key), k.action])));
-  out.push('');
+	out.push('## Accessibility', '');
+	const a11y = [];
+	if (m.a11y.role) a11y.push(`- Role: ${code(m.a11y.role)}`);
+	if (m.a11y.requiredAttributes.length) a11y.push(`- Required attributes: ${m.a11y.requiredAttributes.map(code).join(', ')}`);
+	if (m.a11y.notes) a11y.push(`- ${m.a11y.notes}`);
+	out.push(a11y.length ? a11y.join('\n') : 'No special requirements beyond semantic HTML.');
+	if (m.a11y.keyboard.length) out.push('', table(['Key', 'Action'], m.a11y.keyboard.map((k) => [code(k.key), k.action])));
+	out.push('');
 
-  out.push('## Browser support', '');
-  out.push(`- Used without guards: ${m.support.unguarded.length ? m.support.unguarded.join(', ') : 'nothing beyond the Baseline 2025 floor'}`);
-  out.push(`- Behind ${code('@supports')}: ${m.support.guarded.length ? m.support.guarded.join(', ') : 'nothing'}`);
-  out.push('');
+	out.push('## Browser support', '');
+	out.push(`- Used without guards: ${m.support.unguarded.length ? m.support.unguarded.join(', ') : 'nothing beyond the Baseline 2025 floor'}`);
+	out.push(`- Behind ${code('@supports')}: ${m.support.guarded.length ? m.support.guarded.join(', ') : 'nothing'}`);
+	out.push('');
 
-  out.push('## JavaScript', '');
-  out.push(m.js
-    ? `Optional enhancement: ${code(`${dir}/${m.name}/${m.js.module}`)}. The component works without it.`
-    : 'None. This component is CSS only.');
-  out.push('', `Available since ${m.since}.`, '');
+	out.push('## JavaScript', '');
+	out.push(m.js
+		? `Optional enhancement: ${code(`${dir}/${m.name}/${m.js.module}`)}. The component works without it.`
+		: 'None. This component is CSS only.');
+	out.push('', `Available since ${m.since}.`, '');
 
-  return out.join('\n');
+	return out.join('\n');
 }
 
 export function generateDocs({ root }) {
-  const srcDir = path.join(root, 'src');
-  const docsDir = path.join(root, 'docs');
-  const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
-  const { entries, merged, errors } = loadAndMerge(srcDir, schema);
-  if (errors.length) return { written: [], deleted: [], errors };
+	const srcDir = path.join(root, 'src');
+	const docsDir = path.join(root, 'docs');
+	const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
+	const { entries, merged, errors } = loadAndMerge(srcDir, schema);
+	if (errors.length) return { written: [], deleted: [], errors };
 
-  const clobberErrors = [];
-  for (const entry of entries) {
-    const file = path.join(docsDir, `${entry.name}.md`);
-    if (fs.existsSync(file) && !isGenerated(fs.readFileSync(file, 'utf8'))) {
-      clobberErrors.push({ file, message: 'refusing to overwrite a hand-written page; rename it or remove the component' });
-    }
-  }
-  if (clobberErrors.length) return { written: [], deleted: [], errors: clobberErrors };
+	const clobberErrors = [];
+	for (const entry of entries) {
+		const file = path.join(docsDir, `${entry.name}.md`);
+		if (fs.existsSync(file) && !isGenerated(fs.readFileSync(file, 'utf8'))) {
+			clobberErrors.push({ file, message: 'refusing to overwrite a hand-written page; rename it or remove the component' });
+		}
+	}
+	if (clobberErrors.length) return { written: [], deleted: [], errors: clobberErrors };
 
-  fs.mkdirSync(docsDir, { recursive: true });
-  const written = [];
-  const byKind = {};
-  for (const entry of entries) (byKind[entry.kind] ??= []).push(entry);
-  for (const group of Object.values(byKind)) {
-    group.sort((a, b) => a.name.localeCompare(b.name));
-    group.forEach((entry, i) => {
-      const exampleHtml = fs.readFileSync(path.join(entry.dir, 'example.html'), 'utf8');
-      const file = path.join(docsDir, `${entry.name}.md`);
-      fs.writeFileSync(file, renderPage({ manifest: entry.manifest, exampleHtml, navOrder: i + 1 }));
-      written.push(file);
-    });
-  }
+	fs.mkdirSync(docsDir, { recursive: true });
+	const written = [];
+	const byKind = {};
+	for (const entry of entries) (byKind[entry.kind] ??= []).push(entry);
+	for (const group of Object.values(byKind)) {
+		group.sort((a, b) => a.name.localeCompare(b.name));
+		group.forEach((entry, i) => {
+			const exampleHtml = fs.readFileSync(path.join(entry.dir, 'example.html'), 'utf8');
+			const file = path.join(docsDir, `${entry.name}.md`);
+			fs.writeFileSync(file, renderPage({ manifest: entry.manifest, exampleHtml, navOrder: i + 1 }));
+			written.push(file);
+		});
+	}
 
-  const deleted = [];
-  for (const name of fs.readdirSync(docsDir)) {
-    if (!name.endsWith('.md')) continue;
-    const file = path.join(docsDir, name);
-    if (!fs.statSync(file).isFile()) continue;
-    if (isGenerated(fs.readFileSync(file, 'utf8')) && !(name.slice(0, -3) in merged)) {
-      fs.unlinkSync(file);
-      deleted.push(file);
-    }
-  }
-  return { written, deleted, errors: [] };
+	const deleted = [];
+	for (const name of fs.readdirSync(docsDir)) {
+		if (!name.endsWith('.md')) continue;
+		const file = path.join(docsDir, name);
+		if (!fs.statSync(file).isFile()) continue;
+		if (isGenerated(fs.readFileSync(file, 'utf8')) && !(name.slice(0, -3) in merged)) {
+			fs.unlinkSync(file);
+			deleted.push(file);
+		}
+	}
+	return { written, deleted, errors: [] };
 }
 
 /** True only when the generated mark is the first thing after the front matter block. */
 export function isGenerated(content) {
-  const m = content.match(/^---\n[\s\S]*?\n---\n/);
-  if (!m) return false;
-  return content.slice(m[0].length).trimStart().startsWith(GENERATED_MARK);
+	const m = content.match(/^---\n[\s\S]*?\n---\n/);
+	if (!m) return false;
+	return content.slice(m[0].length).trimStart().startsWith(GENERATED_MARK);
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
-  const root = process.cwd();
-  const { written, deleted, errors } = generateDocs({ root });
-  for (const e of errors) console.error(formatError(root, e));
-  if (errors.length) {
-    console.error('docs: aborted');
-    process.exit(1);
-  }
-  console.log(`docs: wrote ${written.length}, removed ${deleted.length}`);
+	const root = process.cwd();
+	const { written, deleted, errors } = generateDocs({ root });
+	for (const e of errors) console.error(formatError(root, e));
+	if (errors.length) {
+		console.error('docs: aborted');
+		process.exit(1);
+	}
+	console.log(`docs: wrote ${written.length}, removed ${deleted.length}`);
 }

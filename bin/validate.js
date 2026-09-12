@@ -15,79 +15,79 @@ import { walkFiles } from './lib/files.js';
 const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:/;
 
 export function formatError(root, e) {
-  return `${path.relative(root, e.file)}${e.line ? `:${e.line}` : ''}: ${e.message}`;
+	return `${path.relative(root, e.file)}${e.line ? `:${e.line}` : ''}: ${e.message}`;
 }
 
 /** Checks every element carrying a framework identity class against that component's contract. */
 export function validateElementTree(root, merged, file, lineOffset = 0) {
-  const errors = [];
-  const byClass = new Map(Object.values(merged).map((m) => [m.class, m]));
+	const errors = [];
+	const byClass = new Map(Object.values(merged).map((m) => [m.class, m]));
 
-  walkElements(root, (el) => {
-    for (const cls of classList(el)) {
-      const m = byClass.get(cls);
-      if (!m) continue;
-      const line = el.sourceCodeLocation ? el.sourceCodeLocation.startLine + lineOffset : undefined;
-      const push = (message) => errors.push({ file, line, message: `.${cls} <${el.tagName}>: ${message}` });
-      const attrs = attributes(el);
-      const declared = new Map(m.attributes.map((a) => [a.name, a]));
+	walkElements(root, (el) => {
+		for (const cls of classList(el)) {
+			const m = byClass.get(cls);
+			if (!m) continue;
+			const line = el.sourceCodeLocation ? el.sourceCodeLocation.startLine + lineOffset : undefined;
+			const push = (message) => errors.push({ file, line, message: `.${cls} <${el.tagName}>: ${message}` });
+			const attrs = attributes(el);
+			const declared = new Map(m.attributes.map((a) => [a.name, a]));
 
-      for (const [name, value] of attrs) {
-        if (!name.startsWith('data-')) continue;
-        const decl = declared.get(name);
-        if (!decl) { push(`unknown attribute ${name}`); continue; }
-        if (decl.type === 'enum' && !decl.values.includes(value)) push(`${name}="${value}" is not one of ${decl.values.join(', ')}`);
-        if (decl.type === 'boolean' && value !== '') push(`${name} is a boolean attribute and takes no value`);
-        if (decl.type === 'number' && (value.trim() === '' || !Number.isFinite(Number(value)))) push(`${name}="${value}" is not a number`);
-      }
-      for (const required of m.a11y.requiredAttributes) {
-        if (!attrs.has(required)) push(`missing required attribute ${required}`);
-      }
-      for (const child of m.children) {
-        const found = countMatches(el, child.selector);
-        const min = child.min ?? 0;
-        const max = child.max ?? null;
-        if (found < min) push(`expected at least ${min} of "${child.selector}", found ${found}`);
-        if (max !== null && found > max) push(`expected at most ${max} of "${child.selector}", found ${found}`);
-      }
-    }
-  });
-  return errors;
+			for (const [name, value] of attrs) {
+				if (!name.startsWith('data-')) continue;
+				const decl = declared.get(name);
+				if (!decl) { push(`unknown attribute ${name}`); continue; }
+				if (decl.type === 'enum' && !decl.values.includes(value)) push(`${name}="${value}" is not one of ${decl.values.join(', ')}`);
+				if (decl.type === 'boolean' && value !== '') push(`${name} is a boolean attribute and takes no value`);
+				if (decl.type === 'number' && (value.trim() === '' || !Number.isFinite(Number(value)))) push(`${name}="${value}" is not a number`);
+			}
+			for (const required of m.a11y.requiredAttributes) {
+				if (!attrs.has(required)) push(`missing required attribute ${required}`);
+			}
+			for (const child of m.children) {
+				const found = countMatches(el, child.selector);
+				const min = child.min ?? 0;
+				const max = child.max ?? null;
+				if (found < min) push(`expected at least ${min} of "${child.selector}", found ${found}`);
+				if (max !== null && found > max) push(`expected at most ${max} of "${child.selector}", found ${found}`);
+			}
+		}
+	});
+	return errors;
 }
 
 export function validateExamples(entries, merged) {
-  const errors = [];
-  for (const entry of entries) {
-    const file = path.join(entry.dir, 'example.html');
-    const tree = parseHtml(fs.readFileSync(file, 'utf8'));
-    errors.push(...validateElementTree(tree, merged, file));
-    let used = false;
-    walkElements(tree, (el) => { if (classList(el).includes(entry.manifest.class)) used = true; });
-    if (!used) errors.push({ file, message: `example does not use .${entry.manifest.class}` });
-  }
-  return errors;
+	const errors = [];
+	for (const entry of entries) {
+		const file = path.join(entry.dir, 'example.html');
+		const tree = parseHtml(fs.readFileSync(file, 'utf8'));
+		errors.push(...validateElementTree(tree, merged, file));
+		let used = false;
+		walkElements(tree, (el) => { if (classList(el).includes(entry.manifest.class)) used = true; });
+		if (!used) errors.push({ file, message: `example does not use .${entry.manifest.class}` });
+	}
+	return errors;
 }
 
 export function extractHtmlBlocks(markdown) {
-  const blocks = [];
-  const re = /```html[^\n]*\n([\s\S]*?)\n```/g;
-  let m;
-  while ((m = re.exec(markdown)) !== null) {
-    blocks.push({ html: m[1], line: markdown.slice(0, m.index).split('\n').length + 1 });
-  }
-  return blocks;
+	const blocks = [];
+	const re = /```html[^\n]*\n([\s\S]*?)\n```/g;
+	let m;
+	while ((m = re.exec(markdown)) !== null) {
+		blocks.push({ html: m[1], line: markdown.slice(0, m.index).split('\n').length + 1 });
+	}
+	return blocks;
 }
 
 export function validateGuides(docsDir, merged) {
-  const errors = [];
-  if (!fs.existsSync(docsDir)) return errors;
-  for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
-    const markdown = fs.readFileSync(file, 'utf8');
-    for (const block of extractHtmlBlocks(markdown)) {
-      errors.push(...validateElementTree(parseHtml(block.html), merged, file, block.line - 1));
-    }
-  }
-  return errors;
+	const errors = [];
+	if (!fs.existsSync(docsDir)) return errors;
+	for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
+		const markdown = fs.readFileSync(file, 'utf8');
+		for (const block of extractHtmlBlocks(markdown)) {
+			errors.push(...validateElementTree(parseHtml(block.html), merged, file, block.line - 1));
+		}
+	}
+	return errors;
 }
 
 /**
@@ -95,96 +95,96 @@ export function validateGuides(docsDir, merged) {
  * declarations (not nested blocks) set a margin. Handles native nesting and @layer wrappers.
  */
 export function findBareMargin(css, className) {
-  // Blank string literals too, preserving length, so "margin" inside a
-  // content: or url() string never counts as a declaration.
-  const text = stripComments(css).replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, (m) => ' '.repeat(m.length));
-  const hits = [];
-  const stack = [];
-  let selector = '';
-  let selectorLine = 1;
-  let line = 1;
+	// Blank string literals too, preserving length, so "margin" inside a
+	// content: or url() string never counts as a declaration.
+	const text = stripComments(css).replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, (m) => ' '.repeat(m.length));
+	const hits = [];
+	const stack = [];
+	let selector = '';
+	let selectorLine = 1;
+	let line = 1;
 
-  for (const ch of text) {
-    if (ch === '{') {
-      stack.push({ selector: selector.trim(), decls: '', line: selectorLine });
-      selector = '';
-    } else if (ch === '}') {
-      const block = stack.pop();
-      if (block) {
-        const members = block.selector.split(',').map((s) => s.trim());
-        if (members.includes(`.${className}`) && MARGIN_RE.test(block.decls)) hits.push(block.line);
-      }
-      selector = '';
-    } else if (ch === ';') {
-      if (stack.length) stack[stack.length - 1].decls += ch;
-      selector = '';
-    } else {
-      if (stack.length) stack[stack.length - 1].decls += ch;
-      if (selector.trim() === '' && !/\s/.test(ch)) selectorLine = line;
-      selector += ch;
-    }
-    if (ch === '\n') line += 1;
-  }
-  return hits;
+	for (const ch of text) {
+		if (ch === '{') {
+			stack.push({ selector: selector.trim(), decls: '', line: selectorLine });
+			selector = '';
+		} else if (ch === '}') {
+			const block = stack.pop();
+			if (block) {
+				const members = block.selector.split(',').map((s) => s.trim());
+				if (members.includes(`.${className}`) && MARGIN_RE.test(block.decls)) hits.push(block.line);
+			}
+			selector = '';
+		} else if (ch === ';') {
+			if (stack.length) stack[stack.length - 1].decls += ch;
+			selector = '';
+		} else {
+			if (stack.length) stack[stack.length - 1].decls += ch;
+			if (selector.trim() === '' && !/\s/.test(ch)) selectorLine = line;
+			selector += ch;
+		}
+		if (ch === '\n') line += 1;
+	}
+	return hits;
 }
 
 export function validateSpacing(entries) {
-  const errors = [];
-  for (const entry of entries) {
-    const file = path.join(entry.dir, `${entry.name}.css`);
-    for (const line of findBareMargin(fs.readFileSync(file, 'utf8'), entry.manifest.class)) {
-      errors.push({ file, line, message: `.${entry.manifest.class} sets its own margin; spacing belongs to the parent layout (architecture §6.6)` });
-    }
-  }
-  return errors;
+	const errors = [];
+	for (const entry of entries) {
+		const file = path.join(entry.dir, `${entry.name}.css`);
+		for (const line of findBareMargin(fs.readFileSync(file, 'utf8'), entry.manifest.class)) {
+			errors.push({ file, line, message: `.${entry.manifest.class} sets its own margin; spacing belongs to the parent layout (architecture §6.6)` });
+		}
+	}
+	return errors;
 }
 
 export function validateLayers(srcDir) {
-  const errors = [];
-  const layersFile = path.join(srcDir, 'layers.css');
-  const entryFile = path.join(srcDir, 'yeti.css');
+	const errors = [];
+	const layersFile = path.join(srcDir, 'layers.css');
+	const entryFile = path.join(srcDir, 'yeti.css');
 
-  if (!fs.existsSync(layersFile)) {
-    errors.push({ file: layersFile, message: 'missing' });
-  } else {
-    const text = stripComments(fs.readFileSync(layersFile, 'utf8')).replace(/\s+/g, ' ').trim();
-    if (text !== LAYER_STATEMENT) errors.push({ file: layersFile, line: 1, message: `must contain exactly: ${LAYER_STATEMENT}` });
-  }
-  if (!fs.existsSync(entryFile)) {
-    errors.push({ file: entryFile, message: 'missing' });
-  } else {
-    // A leading @charset is legal before @import; imports.js skips it too.
-    const text = stripComments(fs.readFileSync(entryFile, 'utf8')).replace(/^\s*@charset\s+"[^"]*"\s*;/, '').trim();
-    if (!/^@import\s+(?:url\(\s*)?["']layers\.css["']\s*\)?\s*;/.test(text)) {
-      errors.push({ file: entryFile, line: 1, message: 'must begin with @import "layers.css";' });
-    }
-  }
-  return errors;
+	if (!fs.existsSync(layersFile)) {
+		errors.push({ file: layersFile, message: 'missing' });
+	} else {
+		const text = stripComments(fs.readFileSync(layersFile, 'utf8')).replace(/\s+/g, ' ').trim();
+		if (text !== LAYER_STATEMENT) errors.push({ file: layersFile, line: 1, message: `must contain exactly: ${LAYER_STATEMENT}` });
+	}
+	if (!fs.existsSync(entryFile)) {
+		errors.push({ file: entryFile, message: 'missing' });
+	} else {
+		// A leading @charset is legal before @import; imports.js skips it too.
+		const text = stripComments(fs.readFileSync(entryFile, 'utf8')).replace(/^\s*@charset\s+"[^"]*"\s*;/, '').trim();
+		if (!/^@import\s+(?:url\(\s*)?["']layers\.css["']\s*\)?\s*;/.test(text)) {
+			errors.push({ file: entryFile, line: 1, message: 'must begin with @import "layers.css";' });
+		}
+	}
+	return errors;
 }
 
 export function validate({ root }) {
-  const srcDir = path.join(root, 'src');
-  const docsDir = path.join(root, 'docs', 'guides');
-  const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
-  const { entries, merged, errors } = loadAndMerge(srcDir, schema);
-  const all = [
-    ...errors,
-    ...validateExamples(entries, merged),
-    ...validateGuides(docsDir, merged),
-    ...validateSpacing(entries),
-    ...validateLayers(srcDir),
-  ];
-  return { errors: all, count: Object.keys(merged).length };
+	const srcDir = path.join(root, 'src');
+	const docsDir = path.join(root, 'docs', 'guides');
+	const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
+	const { entries, merged, errors } = loadAndMerge(srcDir, schema);
+	const all = [
+		...errors,
+		...validateExamples(entries, merged),
+		...validateGuides(docsDir, merged),
+		...validateSpacing(entries),
+		...validateLayers(srcDir),
+	];
+	return { errors: all, count: Object.keys(merged).length };
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
-  const root = process.cwd();
-  const { errors, count } = validate({ root });
-  for (const e of errors) console.error(formatError(root, e));
-  if (errors.length) {
-    console.error(`validate: ${errors.length} problem${errors.length === 1 ? '' : 's'}`);
-    process.exit(1);
-  }
-  if (!process.argv.includes('--quiet')) console.log(`validate: ok (${count} component${count === 1 ? '' : 's'})`);
+	const root = process.cwd();
+	const { errors, count } = validate({ root });
+	for (const e of errors) console.error(formatError(root, e));
+	if (errors.length) {
+		console.error(`validate: ${errors.length} problem${errors.length === 1 ? '' : 's'}`);
+		process.exit(1);
+	}
+	if (!process.argv.includes('--quiet')) console.log(`validate: ok (${count} component${count === 1 ? '' : 's'})`);
 }

@@ -6,44 +6,44 @@ const root = () => parseHtml('<div class="rail  wide" data-gap="l" data-wrap><p>
 const div = () => root().childNodes[0];
 
 test('walkElements visits every element in document order', () => {
-  const tags = [];
-  walkElements(root(), (el) => tags.push(el.tagName));
-  assert.deepEqual(tags, ['div', 'p', 'p', 'span', 'p']);
+	const tags = [];
+	walkElements(root(), (el) => tags.push(el.tagName));
+	assert.deepEqual(tags, ['div', 'p', 'p', 'span', 'p']);
 });
 
 test('classList splits on whitespace and drops empties', () => {
-  assert.deepEqual(classList(div()), ['rail', 'wide']);
-  assert.deepEqual(classList(elementChildren(div())[0]), []);
+	assert.deepEqual(classList(div()), ['rail', 'wide']);
+	assert.deepEqual(classList(elementChildren(div())[0]), []);
 });
 
 test('attributes maps bare attributes to the empty string', () => {
-  const a = attributes(div());
-  assert.equal(a.get('data-gap'), 'l');
-  assert.equal(a.get('data-wrap'), '');
-  assert.equal(a.has('data-nope'), false);
+	const a = attributes(div());
+	assert.equal(a.get('data-gap'), 'l');
+	assert.equal(a.get('data-wrap'), '');
+	assert.equal(a.has('data-nope'), false);
 });
 
 test('matchesSimple handles *, tag, .class, tag.class, and multiple classes', () => {
-  const [p1, p2, span] = elementChildren(div());
-  assert.equal(matchesSimple(p1, '*'), true);
-  assert.equal(matchesSimple(p1, 'p'), true);
-  assert.equal(matchesSimple(p1, 'span'), false);
-  assert.equal(matchesSimple(p2, '.last'), true);
-  assert.equal(matchesSimple(p2, 'p.last'), true);
-  assert.equal(matchesSimple(p1, 'p.last'), false);
-  assert.equal(matchesSimple(elementChildren(span)[0], '.last.deep'), true);
+	const [p1, p2, span] = elementChildren(div());
+	assert.equal(matchesSimple(p1, '*'), true);
+	assert.equal(matchesSimple(p1, 'p'), true);
+	assert.equal(matchesSimple(p1, 'span'), false);
+	assert.equal(matchesSimple(p2, '.last'), true);
+	assert.equal(matchesSimple(p2, 'p.last'), true);
+	assert.equal(matchesSimple(p1, 'p.last'), false);
+	assert.equal(matchesSimple(elementChildren(span)[0], '.last.deep'), true);
 });
 
 test('countMatches with > counts direct children only', () => {
-  assert.equal(countMatches(div(), '> *'), 3);
-  assert.equal(countMatches(div(), '> p'), 2);
-  assert.equal(countMatches(div(), '> .last'), 1);
-  assert.equal(countMatches(div(), '> span'), 1);
-  assert.equal(countMatches(div(), '> h1'), 0);
+	assert.equal(countMatches(div(), '> *'), 3);
+	assert.equal(countMatches(div(), '> p'), 2);
+	assert.equal(countMatches(div(), '> .last'), 1);
+	assert.equal(countMatches(div(), '> span'), 1);
+	assert.equal(countMatches(div(), '> h1'), 0);
 });
 
 test('countMatches without > counts all descendants', () => {
-  assert.equal(countMatches(div(), 'p'), 3);
-  assert.equal(countMatches(div(), '.last'), 2);
-  assert.equal(countMatches(div(), 'p.deep'), 1);
+	assert.equal(countMatches(div(), 'p'), 3);
+	assert.equal(countMatches(div(), '.last'), 2);
+	assert.equal(countMatches(div(), 'p.deep'), 1);
 });

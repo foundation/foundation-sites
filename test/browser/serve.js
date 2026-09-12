@@ -7,28 +7,28 @@ import path from 'node:path';
 const root = process.cwd();
 const port = Number(process.env.PORT ?? 4173);
 const types = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.json': 'application/json',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
+	'.html': 'text/html; charset=utf-8',
+	'.css': 'text/css; charset=utf-8',
+	'.js': 'text/javascript; charset=utf-8',
+	'.json': 'application/json',
+	'.svg': 'image/svg+xml',
+	'.png': 'image/png',
 };
 
 http.createServer((req, res) => {
-  try {
-    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-    const file = path.join(root, path.normalize(pathname));
-    if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-      res.writeHead(404);
-      res.end('not found');
-      return;
-    }
-    res.writeHead(200, { 'content-type': types[path.extname(file)] ?? 'application/octet-stream' });
-    fs.createReadStream(file).pipe(res);
-  } catch {
-    res.writeHead(400);
-    res.end('bad request');
-    return;
-  }
+	try {
+		const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+		const file = path.join(root, path.normalize(pathname));
+		if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+			res.writeHead(404);
+			res.end('not found');
+			return;
+		}
+		res.writeHead(200, { 'content-type': types[path.extname(file)] ?? 'application/octet-stream' });
+		fs.createReadStream(file).pipe(res);
+	} catch {
+		res.writeHead(400);
+		res.end('bad request');
+		return;
+	}
 }).listen(port, '127.0.0.1', () => console.log(`serving ${root} on http://localhost:${port}`));
