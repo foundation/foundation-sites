@@ -43,4 +43,4 @@ Conventional commits, short and specific: `feat(tools): add the validator`, `fix
 
 ## Code of conduct
 
-See [code-of-conduct.md](code-of-conduct.md).
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
