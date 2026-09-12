@@ -7,9 +7,15 @@ import { LAYER_STATEMENT } from '../../bin/lib/layers.js';
 export const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 export const SCHEMA_PATH = path.join(REPO_ROOT, 'schema/manifest.schema.json');
 
+const created = [];
+process.on('exit', () => {
+  for (const dir of created) fs.rmSync(dir, { recursive: true, force: true });
+});
+
 /** Writes a map of relative path -> content (string or JSON-able object) into a fresh temp dir. */
 export function makeTree(files) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'yeti-'));
+  created.push(dir);
   for (const [rel, content] of Object.entries(files)) {
     const file = path.join(dir, rel);
     fs.mkdirSync(path.dirname(file), { recursive: true });
