@@ -15,7 +15,7 @@ npm run docs             # regenerates docs/*.md from the manifests
 npm test                 # validate, tools, browser
 ```
 
-Node 22 or later. There is nothing to compile.
+Node 24 or later. There is nothing to compile.
 
 ## The rules that shape every change
 

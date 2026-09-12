@@ -7,7 +7,7 @@
   "homepage": "https://foundationcss.com/yeti/",
   "repository": "github:foundation/yeti",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "files": [
     "dist",
