@@ -162,5 +162,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "shelljs": ">=0.8.5"
+  }
 }
