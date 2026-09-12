@@ -18,11 +18,13 @@ export function splitImports(css, file) {
   const stripped = stripComments(css);
   const imports = [];
   const errors = [];
+  const removed = [];
   // A leading @charset is legal before @import. Skip it and drop it from rest:
   // a charset rule is only valid at the very start of a stylesheet, so it must
   // not survive into the middle of a bundle.
   const charset = stripped.match(/^\s*@charset\s+"[^"]*"\s*;/);
   let pos = charset ? charset[0].length : 0;
+  if (charset) removed.push([0, pos]);
 
   for (;;) {
     pos += stripped.slice(pos).match(/^\s*/)[0].length;
@@ -38,10 +40,15 @@ export function splitImports(css, file) {
     } else {
       imports.push({ href, line });
     }
+    removed.push([pos, pos + m[0].length]);
     pos += m[0].length;
   }
 
-  const rest = css.slice(pos);
+  // rest is the original text with only the removed statements cut out, so
+  // every comment survives into the bundle. Cut from the end to keep offsets valid.
+  let rest = css;
+  for (const [start, end] of removed.reverse()) rest = rest.slice(0, start) + rest.slice(end);
+
   const late = stripped.slice(pos).match(/@import\b/);
   if (late) errors.push({ file, line: lineAt(stripped, pos + late.index), message: '@import must come before all rules' });
 

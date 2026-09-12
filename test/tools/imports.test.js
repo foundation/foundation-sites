@@ -15,7 +15,15 @@ test('splitImports accepts string and url() forms and returns the rest', () => {
   const r = splitImports(css, 'entry.css');
   assert.deepEqual(r.errors, []);
   assert.deepEqual(r.imports, [{ href: 'a.css', line: 2 }, { href: 'b.css', line: 3 }, { href: 'c.css', line: 4 }]);
-  assert.equal(r.rest.trim(), '.x { color: red; }');
+  assert.equal(r.rest.replace(/\s+/g, ' ').trim(), '/* header */ .x { color: red; }');
+});
+
+test('splitImports keeps every comment and removes only the import statements', () => {
+  const css = '/* header */\n@import "a.css";\n/* between */\n@import "b.css";\n.x {}\n';
+  const r = splitImports(css, 'entry.css');
+  assert.deepEqual(r.errors, []);
+  assert.deepEqual(r.imports, [{ href: 'a.css', line: 2 }, { href: 'b.css', line: 4 }]);
+  assert.equal(r.rest, '/* header */\n\n/* between */\n\n.x {}\n');
 });
 
 test('splitImports rejects conditions, absolute paths, and late imports', () => {
