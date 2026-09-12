@@ -1,12 +1,14 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+## Supported versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 6.x     | :white_check_mark: |
-| < 5.0   | :x:                |
+| Version | Branch | Status |
+|---|---|---|
+| Yeti 7.x | `develop` | In development, pre-release |
+| Foundation for Sites 6.x | `v6` | Bug and security fixes |
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
-Please feel free to email us at contact@get.foundation with any details about a vulnerability that you may have found.
+Please do not open a public issue for a security problem. Use GitHub's private vulnerability reporting on this repository's Security tab ("Report a vulnerability"). You will get an acknowledgement within a few days, and a fix or a mitigation plan as soon as we have one.
+
+Yeti is CSS with optional, dependency-free JavaScript enhancements, so most reports will concern the tooling, the docs, or a browser behaviour. All are welcome.

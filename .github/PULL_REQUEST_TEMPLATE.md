@@ -1,50 +1,11 @@
-<!------------------------------------------------------------------------------
-                    Please fill the following template.
-            For more information, see the CONTRIBUTING.md document
-------------------------------------------------------------------------------->
+## What this changes
 
-## Description
-<!-------------------------------------------------------------------
-│   Describe your changes in detail. Include any relevant information:
-│   reasons, difficulties, links to web references, related issues...
-└------------------------------------------------------------------->
-
-...
-
-<!-------------------------------------------------------------------
-│   Bugs and new features/improvements must be presented and
-│   discussed in an issue first. Please create one if there is no issue
-│   related to this pull request. You can skip this step for minor changes.
-└------------------------------------------------------------------->
-- Closes <!--- ...link to the issue... -->
-
-
-## Types of changes
-<!-------------------------------------------------------------------
-│   What types of changes does your code introduce?
-│   Fill with [x] all the boxes that apply:
-└------------------------------------------------------------------->
-- [ ] Documentation
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (anything that would change an existing functionality)
-- [ ] Maintenance (refactor, code cleaning, development tools...)
-
+<!-- One or two sentences. Link the issue if there is one: Closes #... -->
 
 ## Checklist
-<!-------------------------------------------------------------------
-│   Please ensure that all the following points are respected.
-│   Fill with [x] the boxes once the rule is respected.
-└------------------------------------------------------------------->
-- [ ] I have read and follow the CONTRIBUTING.md document.
-- [ ] The pull request title and template are correctly filled.
-- [ ] The pull request targets the right branch (`develop` or `develop-v...`).
-- [ ] My commits are correctly titled and contain all relevant information.
-- [ ] I have updated the documentation accordingly to my changes (if relevant).
-- [ ] I have added tests to cover my changes (if relevant).
 
-
-<!------------------------------------------------------------------------------
-            For more information, see the CONTRIBUTING.md document         
-              Thank you for your pull request and happy coding ;)          
-------------------------------------------------------------------------------->
+- [ ] `npm test` passes locally (validate, tooling tests, browser smoke)
+- [ ] Any new layout or component lands with its `manifest.json`, `example.html`, and generated docs page in this PR
+- [ ] No new dependencies (see CONTRIBUTING.md; open an issue first if one is unavoidable)
+- [ ] Component CSS sets no outer margin on its identity selector; layouts own spacing
+- [ ] Targets `develop` (Yeti 7) or `v6` (Foundation for Sites 6 fixes), never `master`

@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [develop, master, v6]
+  pull_request:
+
+jobs:
+  tools:
+    name: Validate, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm run test:tools
+      - run: npm run build
+
+  browser:
+    name: Browser smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run test:browser

@@ -3,10 +3,15 @@ root = true
 [*]
 charset = utf-8
 end_of_line = lf
-indent_style = space
-indent_size = 2
+indent_style = tab
+indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+# npm rewrites these with two spaces, and YAML forbids tabs.
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://foundationcss.com/yeti/schema/manifest.json",
+  "title": "Yeti component manifest",
+  "description": "Describes one Yeti layout, component, or utility: its identity class, configuration attributes, expected children, tokens, accessibility contract, optional JS module, and browser support notes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "kind", "description", "class", "attributes", "classes", "children", "tokens", "a11y", "js", "support", "since", "example"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "Must equal the folder name. Unique across the framework." },
+    "kind": { "enum": ["layout", "component", "utility"] },
+    "description": { "type": "string", "pattern": "\\S", "description": "One sentence, used verbatim in docs and the MCP server." },
+    "class": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "The identity class. Must equal name." },
+    "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },
+    "classes": { "type": "array", "items": { "$ref": "#/$defs/modifierClass" } },
+    "children": { "type": "array", "items": { "$ref": "#/$defs/child" } },
+    "tokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredAttributes", "keyboard"],
+      "properties": {
+        "role": { "type": "string" },
+        "requiredAttributes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "keyboard": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["key", "action"],
+            "properties": { "key": { "type": "string" }, "action": { "type": "string" } }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "js": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["module", "optional"],
+      "properties": {
+        "module": { "type": "string", "description": "Path relative to the component folder." },
+        "optional": { "const": true }
+      }
+    },
+    "support": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unguarded", "guarded"],
+      "properties": {
+        "unguarded": { "type": "array", "items": { "type": "string" } },
+        "guarded": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "since": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "example": { "const": "example.html" }
+  },
+  "$defs": {
+    "attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "description"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^data-[a-z][a-z0-9-]*$" },
+        "type": { "enum": ["enum", "boolean", "number", "string"] },
+        "values": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+        "default": { "type": ["string", "number", "boolean"] },
+        "description": { "type": "string" }
+      }
+    },
+    "modifierClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "description"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "type": { "const": "boolean" },
+        "description": { "type": "string" }
+      }
+    },
+    "child": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selector"],
+      "properties": {
+        "selector": { "type": "string", "description": "Relative to the root: '> *', '> tag', '> .class', '> tag.class', or the same without '>' for descendants." },
+        "min": { "type": "integer", "minimum": 0 },
+        "max": { "type": ["integer", "null"], "minimum": 0 },
+        "description": { "type": "string" }
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "public"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^--[a-z][a-z0-9-]*$" },
+        "public": { "type": "boolean", "description": "Public tokens are the theming API and appear in docs. Internal ones may change between minors." },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

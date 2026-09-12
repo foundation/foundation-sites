@@ -1,5 +1,0 @@
-$global-flexbox: false;
-
-@import '../scss/foundation';
-
-@include foundation-everything($flex: false);
