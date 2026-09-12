@@ -16,13 +16,19 @@ const types = {
 };
 
 http.createServer((req, res) => {
-  const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-  const file = path.join(root, path.normalize(pathname));
-  if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-    res.writeHead(404);
-    res.end('not found');
+  try {
+    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const file = path.join(root, path.normalize(pathname));
+    if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+      res.writeHead(404);
+      res.end('not found');
+      return;
+    }
+    res.writeHead(200, { 'content-type': types[path.extname(file)] ?? 'application/octet-stream' });
+    fs.createReadStream(file).pipe(res);
+  } catch {
+    res.writeHead(400);
+    res.end('bad request');
     return;
   }
-  res.writeHead(200, { 'content-type': types[path.extname(file)] ?? 'application/octet-stream' });
-  fs.createReadStream(file).pipe(res);
-}).listen(port, () => console.log(`serving ${root} on http://localhost:${port}`));
+}).listen(port, '127.0.0.1', () => console.log(`serving ${root} on http://localhost:${port}`));
