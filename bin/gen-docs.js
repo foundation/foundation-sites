@@ -97,6 +97,15 @@ export function generateDocs({ root }) {
   const { entries, merged, errors } = loadAndMerge(srcDir, schema);
   if (errors.length) return { written: [], deleted: [], errors };
 
+  const clobberErrors = [];
+  for (const entry of entries) {
+    const file = path.join(docsDir, `${entry.name}.md`);
+    if (fs.existsSync(file) && !isGenerated(fs.readFileSync(file, 'utf8'))) {
+      clobberErrors.push({ file, message: 'refusing to overwrite a hand-written page; rename it or remove the component' });
+    }
+  }
+  if (clobberErrors.length) return { written: [], deleted: [], errors: clobberErrors };
+
   fs.mkdirSync(docsDir, { recursive: true });
   const written = [];
   const byKind = {};

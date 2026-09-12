@@ -80,6 +80,14 @@ test('generateDocs keeps a hand-written page that quotes the generated mark', ()
   assert.ok(fs.existsSync(path.join(root, 'docs/about-docs.md')));
 });
 
+test('generateDocs refuses to overwrite a hand-written page with a component name', () => {
+  const root = makeTree(validTree({ 'docs/rail.md': '# My own rail page\n' }));
+  const r = generateDocs({ root });
+  assert.equal(r.errors.length, 1);
+  assert.match(r.errors[0].message, /refusing to overwrite/);
+  assert.equal(fs.readFileSync(path.join(root, 'docs/rail.md'), 'utf8'), '# My own rail page\n');
+});
+
 test('generateDocs refuses to run on manifest errors', () => {
   const root = makeTree(validTree({ 'src/layouts/rail/manifest.json': validManifest({ since: 'x' }) }));
   const r = generateDocs({ root });
