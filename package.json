@@ -1,168 +1,38 @@
 {
-  "name": "foundation-sites",
-  "version": "6.9.0",
-  "main": "dist/js/foundation.js",
-  "module": "dist/js/foundation.esm.js",
-  "jsnext:main": "dist/js/foundation.esm.js",
-  "esnext": "dist/js/foundation.es6.js",
-  "typings": "dist/js/foundation.d.ts",
-  "description": "The most advanced responsive front-end framework in the world.",
-  "author": "Foundation Yetinauts <contact@get.foundation> (https://get.foundation)",
-  "homepage": "https://get.foundation/sites",
-  "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "test": "yarn build && yarn test:sass && yarn test:javascript:units && yarn test:bundle",
-    "test:single-process": "yarn test:sass && yarn test:javascript:units:single-process && yarn test:bundle:single-process",
-    "test:ci": "yarn test:sass && yarn test:javascript:ci",
-    "test:ci:single-process": "yarn test:sass && yarn test:javascript:ci:single-process",
-    "test:sass": "mocha test/sass/test_sass.js --colors",
-    "test:javascript:transpile": "gulp sass:foundation --color && gulp test:transpile-js --color",
-    "test:javascript:units": "yarn test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/javascript/index.html",
-    "test:javascript:units:single-process": "yarn test:javascript:transpile && mocha-headless-chrome -a single-process -a ignore-resource-errors -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/javascript/index.html",
-    "test:javascript:browserstack": "yarn test:javascript:transpile && browserstack-runner",
-    "test:javascript:ci": "yarn test:javascript:transpile && mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/javascript/index.html && browserstack-runner",
-    "test:javascript:ci:single-process": "yarn test:javascript:transpile && mocha-headless-chrome -a single-process -a ignore-resource-errors -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/javascript/index.html && browserstack-runner",
-    "test:bundle": "mocha-headless-chrome -a ignore-resource-errors -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/bundle/index.html",
-    "test:bundle:single-process": "mocha-headless-chrome -a ignore-resource-errors -a single-process -a no-sandbox -a disable-setuid-sandbox -a disable-dev-shm-usage -f test/bundle/index.html",
-    "test:visual": "gulp test --color",
-    "deploy": "gulp deploy --color",
-    "deploy:prep": "gulp deploy:prep --color",
-    "prepare": "husky install"
-  },
-  "peerDependencies": {
-    "jquery": ">=3.6.0",
-    "motion-ui": "latest",
-    "what-input": ">=5.2.10"
-  },
+  "name": "yeti-css",
+  "version": "7.0.0-alpha.0",
+  "description": "Yeti: a CSS-first, native, zero-build layout and styling framework by Foundation.",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.22.10",
-    "@babel/preset-env": "^7.22.10",
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
-    "autoprefixer": "^10.4.15",
-    "babel-loader": "^9.1.3",
-    "browser-sync": "^2.29.3",
-    "browserstack-runner": "^0.9.4",
-    "chai": "^4.3.7",
-    "chai-jquery": "^2.1.0",
-    "clipboard": "^2.0.11",
-    "corejs-typeahead": "^1.3.3",
-    "cz-conventional-changelog": "^3.3.0",
-    "doiuse": "^6.0.2",
-    "foundation-docs": "github:foundation/foundation-docs",
-    "gulp": "^4.0.0",
-    "gulp-add-src": "^1.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-cache-bust": "^1.3.0",
-    "gulp-check-deps": "^1.4.1",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.4.3",
-    "gulp-eslint": "^6.0.0",
-    "gulp-filter": "^7.0.0",
-    "gulp-if": "^3.0.0",
-    "gulp-load-plugins": "^2.0.8",
-    "gulp-newer": "^1.1.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^10.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-sass-lint": "^1.4.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.0",
-    "gulp-zip": "^5.1.0",
-    "gulp4-run-sequence": "^1.0.2",
-    "husky": "^8.0.3",
-    "is-empty-object": "^1.1.1",
-    "jquery": ">=3.6.0",
-    "js-yaml": "^3.12.1",
-    "kleur": "^3.0.2",
-    "mocha": "^10.7.3",
-    "mocha-headless-chrome": "^4.0.0",
-    "motion-ui": "^2.0.5",
-    "octophant": "latest",
-    "panini": "latest",
-    "patch-package": "^8.0.0",
-    "postcss": "^8.4.28",
-    "prettyjson": "^1.1.3",
-    "require-dir": "^1.2.0",
-    "requirejs": "^2.3.6",
-    "rollup": "^2.79.2",
-    "rollup-plugin-babel": "^4.3.0",
-    "sass-embedded": "^1.79.3",
-    "sass-true": "^8.0.0",
-    "sassy-lists": "^3.0.1",
-    "sinon": "^7.2.2",
-    "strip-indent": "^2.0.0",
-    "supercollider": "latest",
-    "undertaker-forward-reference": "^1.0.2",
-    "vinyl": "^3.0.0",
-    "vinyl-named": "^1.1.0",
-    "webpack": "^5.88.2",
-    "webpack-stream": "^7.0.0",
-    "what-input": ">=5.2.10"
-  },
-  "resolutions": {
-    "glob-parent": ">=5.1.2",
-    "minimist": ">=1.2.3",
-    "merge": ">=2.1.1",
-    "shelljs": ">=0.8.5",
-    "nth-check": ">=2.0.1",
-    "lodash.template": ">=4.5.0"
-  },
+  "type": "module",
+  "homepage": "https://foundationcss.com/yeti/",
+  "repository": "github:foundation/yeti",
   "engines": {
-    "node": ">=18.0"
+    "node": ">=22"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/foundation/foundation-sites"
-  },
-  "bugs": {
-    "url": "https://github.com/foundation/foundation-sites/issues",
-    "email": "contact@get.foundation"
-  },
-  "keywords": [
-    "css",
-    "scss",
-    "sass",
-    "js",
-    "responsive",
-    "mobile-first",
-    "framework",
-    "eyeglass-module",
-    "handlebars-helper-rel",
-    "handlebars-helper-slugify"
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
-  "eyeglass": {
-    "name": "foundation",
-    "sassDir": "scss",
-    "needs": ">=0.8.0",
-    "exports": false
+  "style": "dist/yeti.css",
+  "exports": {
+    ".": "./dist/yeti.css",
+    "./css/*": "./dist/css/*",
+    "./js/*": "./dist/js/*",
+    "./manifest": "./dist/yeti.manifest.json"
   },
-  "jspm": {
-    "main": "dist/js/foundation.esm.js",
-    "format": "esm"
+  "scripts": {
+    "build": "node bin/build.js",
+    "validate": "node bin/validate.js",
+    "docs": "node bin/gen-docs.js",
+    "test": "npm run validate && npm run test:tools && npm run test:browser",
+    "test:tools": "node --test test/tools/",
+    "test:browser": "playwright test",
+    "release": "node bin/release.js"
   },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "@babel/preset-env"
-          ]
-        }
-      ]
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
-    "shelljs": ">=0.8.5"
+  "devDependencies": {
+    "@axe-core/playwright": "^4",
+    "parse5": "^7",
+    "playwright": "^1"
   }
 }

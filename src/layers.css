@@ -1,0 +1,4 @@
+/* The cascade layer order for Yeti. Declared once, here, and imported first.
+   Every rule Yeti ships lives inside one of these sublayers. A user's plain,
+   unlayered CSS beats all of them by default. */
+@layer yeti.reset, yeti.base, yeti.layouts, yeti.components, yeti.utilities;
