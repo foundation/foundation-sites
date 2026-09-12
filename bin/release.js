@@ -36,7 +36,13 @@ if (isMain) {
     console.error('usage: node bin/release.js <version>');
     process.exit(2);
   }
-  const problems = checkGitState(root);
+  let problems;
+  try {
+    problems = checkGitState(root);
+  } catch (e) {
+    console.error(`release: ${e.message}`);
+    process.exit(1);
+  }
   for (const p of problems) console.error(`release: ${p}`);
   if (problems.length) process.exit(1);
 
@@ -53,7 +59,12 @@ if (isMain) {
 
   const zip = `yeti-${version}.zip`;
   fs.rmSync(path.join(root, zip), { force: true });
-  execFileSync('zip', ['-qr', zip, 'dist'], { cwd: root });
+  try {
+    execFileSync('zip', ['-qr', zip, 'dist'], { cwd: root });
+  } catch (e) {
+    console.error(`release: ${e.message}`);
+    process.exit(1);
+  }
 
   console.log(`release: ${version} stamped, dist/ built, ${docs.written.length} docs written, ${zip} created`);
   console.log('release: nothing committed. Review the diff, commit, then finish the git-flow release.');
