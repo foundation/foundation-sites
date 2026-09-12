@@ -30,6 +30,14 @@ test('splitImports rejects conditions, absolute paths, and late imports', () => 
   ]);
 });
 
+test('splitImports skips a leading @charset and drops it from the rest', () => {
+  const css = '@charset "UTF-8";\n@import "a.css";\n.x {}\n';
+  const r = splitImports(css, 'entry.css');
+  assert.deepEqual(r.errors, []);
+  assert.deepEqual(r.imports, [{ href: 'a.css', line: 2 }]);
+  assert.equal(r.rest.trim(), '.x {}');
+});
+
 test('resolveImports returns files in cascade order, each once', () => {
   const dir = makeTree({
     'yeti.css': '@import "layers.css";\n@import "a/a.css";\n@import "b.css";\n.entry {}\n',

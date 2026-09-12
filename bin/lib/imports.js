@@ -18,7 +18,11 @@ export function splitImports(css, file) {
   const stripped = stripComments(css);
   const imports = [];
   const errors = [];
-  let pos = 0;
+  // A leading @charset is legal before @import. Skip it and drop it from rest:
+  // a charset rule is only valid at the very start of a stylesheet, so it must
+  // not survive into the middle of a bundle.
+  const charset = stripped.match(/^\s*@charset\s+"[^"]*"\s*;/);
+  let pos = charset ? charset[0].length : 0;
 
   for (;;) {
     pos += stripped.slice(pos).match(/^\s*/)[0].length;
