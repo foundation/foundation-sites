@@ -116,13 +116,19 @@ export function generateDocs({ root }) {
     if (!name.endsWith('.md')) continue;
     const file = path.join(docsDir, name);
     if (!fs.statSync(file).isFile()) continue;
-    const head = fs.readFileSync(file, 'utf8').slice(0, 600);
-    if (head.includes(GENERATED_MARK) && !(name.slice(0, -3) in merged)) {
+    if (isGenerated(fs.readFileSync(file, 'utf8')) && !(name.slice(0, -3) in merged)) {
       fs.unlinkSync(file);
       deleted.push(file);
     }
   }
   return { written, deleted, errors: [] };
+}
+
+/** True only when the generated mark is the first thing after the front matter block. */
+export function isGenerated(content) {
+  const m = content.match(/^---\n[\s\S]*?\n---\n/);
+  if (!m) return false;
+  return content.slice(m[0].length).trimStart().startsWith(GENERATED_MARK);
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { renderPage, generateDocs, GENERATED_MARK } from '../../bin/gen-docs.js';
+import { renderPage, generateDocs, isGenerated, GENERATED_MARK } from '../../bin/gen-docs.js';
 import { makeTree, validManifest, validTree } from './helpers.js';
 
 const exampleHtml = '<div class="rail" data-gap="l"><p>One</p><p>Two</p></div>\n';
@@ -63,6 +63,21 @@ test('generateDocs writes a page per component, removes orphans, and leaves hand
   assert.ok(fs.readFileSync(path.join(root, 'docs/rail.md'), 'utf8').includes('nav_order: 1'));
   const again = generateDocs({ root });
   assert.deepEqual(again.deleted, []);
+});
+
+test('isGenerated requires the mark right after the front matter, not anywhere in the file', () => {
+  assert.equal(isGenerated(`---\ntitle: "X"\n---\n${GENERATED_MARK} from src/layouts/x/manifest.json. Do not edit. -->\n`), true);
+  assert.equal(isGenerated(`---\ntitle: "Guide"\n---\n\n# About the generator\n\n\`\`\`html\n${GENERATED_MARK} from src/layouts/x/manifest.json. Do not edit. -->\n\`\`\`\n`), false);
+  assert.equal(isGenerated(`# No front matter\n${GENERATED_MARK}`), false);
+});
+
+test('generateDocs keeps a hand-written page that quotes the generated mark', () => {
+  const root = makeTree(validTree({
+    'docs/about-docs.md': `---\ntitle: "About"\n---\n\nGenerated pages begin with:\n\n\`\`\`html\n${GENERATED_MARK} from src/layouts/x/manifest.json. Do not edit. -->\n\`\`\`\n`,
+  }));
+  const r = generateDocs({ root });
+  assert.deepEqual(r.deleted, []);
+  assert.ok(fs.existsSync(path.join(root, 'docs/about-docs.md')));
 });
 
 test('generateDocs refuses to run on manifest errors', () => {
