@@ -7,19 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { resolveImports } from './lib/imports.js';
 import { loadSchema, loadAndMerge } from './lib/manifest.js';
 import { validate, formatError } from './validate.js';
+import { walkFiles } from './lib/files.js';
 
 export function readPackage(root) {
   return JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
-}
-
-function walkFiles(dir) {
-  const out = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) out.push(...walkFiles(full));
-    else out.push(full);
-  }
-  return out.sort();
 }
 
 export function bundle({ root, pkg }) {

@@ -10,21 +10,12 @@ import { LAYER_STATEMENT } from './lib/layers.js';
 import { loadSchema, loadAndMerge } from './lib/manifest.js';
 import { parseHtml, walkElements, classList, attributes, countMatches } from './lib/html.js';
 import { stripComments } from './lib/imports.js';
+import { walkFiles } from './lib/files.js';
 
 const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:/;
 
 export function formatError(root, e) {
   return `${path.relative(root, e.file)}${e.line ? `:${e.line}` : ''}: ${e.message}`;
-}
-
-function walkFiles(dir) {
-  const out = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) out.push(...walkFiles(full));
-    else out.push(full);
-  }
-  return out.sort();
 }
 
 /** Checks every element carrying a framework identity class against that component's contract. */
