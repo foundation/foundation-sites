@@ -93,6 +93,9 @@ test('findBareMargin flags margin on the bare identity selector only', () => {
   assert.deepEqual(findBareMargin('.rail {\n  display: flex;\n  & > * + * { margin-block-start: 1rem; }\n}', 'rail'), []);
   assert.deepEqual(findBareMargin('.rail { /* margin: 0; */ padding: 0; }', 'rail'), []);
   assert.deepEqual(findBareMargin('.rail-item { margin: 0; }\n.rail { padding: 0; }', 'rail'), []);
+  assert.deepEqual(findBareMargin('.rail, .pill { margin: 0; }', 'rail'), [1]);
+  assert.deepEqual(findBareMargin('.pill,\n.rail {\n  margin: 0;\n}', 'rail'), [1]);
+  assert.deepEqual(findBareMargin('.rail\n{ margin: 0; }', 'rail'), [1]);
 });
 
 test('findBareMargin ignores the word margin inside string values', () => {

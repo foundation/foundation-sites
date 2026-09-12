@@ -110,21 +110,26 @@ export function findBareMargin(css, className) {
   const hits = [];
   const stack = [];
   let selector = '';
+  let selectorLine = 1;
   let line = 1;
 
   for (const ch of text) {
     if (ch === '{') {
-      stack.push({ selector: selector.trim(), decls: '', line });
+      stack.push({ selector: selector.trim(), decls: '', line: selectorLine });
       selector = '';
     } else if (ch === '}') {
       const block = stack.pop();
-      if (block && block.selector === `.${className}` && MARGIN_RE.test(block.decls)) hits.push(block.line);
+      if (block) {
+        const members = block.selector.split(',').map((s) => s.trim());
+        if (members.includes(`.${className}`) && MARGIN_RE.test(block.decls)) hits.push(block.line);
+      }
       selector = '';
     } else if (ch === ';') {
       if (stack.length) stack[stack.length - 1].decls += ch;
       selector = '';
     } else {
       if (stack.length) stack[stack.length - 1].decls += ch;
+      if (selector.trim() === '' && !/\s/.test(ch)) selectorLine = line;
       selector += ch;
     }
     if (ch === '\n') line += 1;
