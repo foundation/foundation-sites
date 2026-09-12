@@ -104,7 +104,9 @@ export function validateGuides(docsDir, merged) {
  * declarations (not nested blocks) set a margin. Handles native nesting and @layer wrappers.
  */
 export function findBareMargin(css, className) {
-  const text = stripComments(css);
+  // Blank string literals too, preserving length, so "margin" inside a
+  // content: or url() string never counts as a declaration.
+  const text = stripComments(css).replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, (m) => ' '.repeat(m.length));
   const hits = [];
   const stack = [];
   let selector = '';
@@ -155,7 +157,8 @@ export function validateLayers(srcDir) {
   if (!fs.existsSync(entryFile)) {
     errors.push({ file: entryFile, message: 'missing' });
   } else {
-    const text = stripComments(fs.readFileSync(entryFile, 'utf8')).trim();
+    // A leading @charset is legal before @import; imports.js skips it too.
+    const text = stripComments(fs.readFileSync(entryFile, 'utf8')).replace(/^\s*@charset\s+"[^"]*"\s*;/, '').trim();
     if (!/^@import\s+(?:url\(\s*)?["']layers\.css["']\s*\)?\s*;/.test(text)) {
       errors.push({ file: entryFile, line: 1, message: 'must begin with @import "layers.css";' });
     }

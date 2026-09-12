@@ -95,6 +95,16 @@ test('findBareMargin flags margin on the bare identity selector only', () => {
   assert.deepEqual(findBareMargin('.rail-item { margin: 0; }\n.rail { padding: 0; }', 'rail'), []);
 });
 
+test('findBareMargin ignores the word margin inside string values', () => {
+  assert.deepEqual(findBareMargin('.rail { content: "set margin: 1px here"; }', 'rail'), []);
+  assert.deepEqual(findBareMargin(".rail { content: 'margin: 0'; margin: 0; }", 'rail'), [1]);
+});
+
+test('validateLayers tolerates a leading @charset in yeti.css', () => {
+  const r = run(validTree({ 'src/yeti.css': '@charset "UTF-8";\n@import "layers.css";\n' }));
+  assert.deepEqual(r.lines, []);
+});
+
 test('a component setting its own margin fails the spacing rule', () => {
   const r = run(validTree({ 'src/layouts/rail/rail.css': '.rail {\n  margin-inline: auto;\n}\n' }));
   assert.deepEqual(r.lines, ['src/layouts/rail/rail.css:1: .rail sets its own margin; spacing belongs to the parent layout (architecture §6.6)']);
