@@ -49,4 +49,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Questions go to [Discussions](https://gi
 
 ## License
 
-FSL-1.1-MIT. See [LICENSE](LICENSE). Foundation for Sites 6 remains MIT on the `v6` branch.
+Yeti is released under the [Functional Source License 1.1, MIT future license](LICENSE) (FSL-1.1-MIT). You can use, copy, modify, and redistribute it for any purpose except offering it as a competing product; each release becomes plain MIT two years after it ships. Foundation for Sites 6 remains MIT.
