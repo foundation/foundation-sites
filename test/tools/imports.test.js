@@ -46,6 +46,13 @@ test('splitImports skips a leading @charset and drops it from the rest', () => {
   assert.equal(r.rest.trim(), '.x {}');
 });
 
+test('splitImports names an unsupported import form instead of calling it late', () => {
+  const unquoted = splitImports('@import url(a.css);\n.x {}\n', 'entry.css');
+  assert.deepEqual(unquoted.errors, [{ file: 'entry.css', line: 1, message: 'unsupported @import form; use @import "path"; or @import url("path");' }]);
+  const noSemicolon = splitImports('@import "a.css"\n.x {}\n', 'entry.css');
+  assert.equal(noSemicolon.errors[0].message, 'unsupported @import form; use @import "path"; or @import url("path");');
+});
+
 test('resolveImports returns files in cascade order, each once', () => {
   const dir = makeTree({
     'yeti.css': '@import "layers.css";\n@import "a/a.css";\n@import "b.css";\n.entry {}\n',

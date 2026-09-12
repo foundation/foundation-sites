@@ -49,8 +49,14 @@ export function splitImports(css, file) {
   let rest = css;
   for (const [start, end] of removed.reverse()) rest = rest.slice(0, start) + rest.slice(end);
 
-  const late = stripped.slice(pos).match(/@import\b/);
-  if (late) errors.push({ file, line: lineAt(stripped, pos + late.index), message: '@import must come before all rules' });
+  const remainder = stripped.slice(pos);
+  const lead = remainder.match(/^\s*/)[0].length;
+  if (remainder.slice(lead).startsWith('@import')) {
+    errors.push({ file, line: lineAt(stripped, pos + lead), message: 'unsupported @import form; use @import "path"; or @import url("path");' });
+  } else {
+    const late = remainder.match(/@import\b/);
+    if (late) errors.push({ file, line: lineAt(stripped, pos + late.index), message: '@import must come before all rules' });
+  }
 
   return { imports, rest, errors };
 }
