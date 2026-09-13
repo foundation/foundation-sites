@@ -13,7 +13,7 @@ import { stripComments, splitImports } from './lib/imports.js';
 import { walkFiles } from './lib/files.js';
 import { declaredTokens, loadCatalogue } from './lib/tokens.js';
 
-const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:/;
+const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:\s*([^;]*)/g;
 
 export function formatError(root, e) {
 	return `${path.relative(root, e.file)}${e.line ? `:${e.line}` : ''}: ${e.message}`;
@@ -79,10 +79,19 @@ export function extractHtmlBlocks(markdown) {
 	return blocks;
 }
 
-export function validateGuides(docsDir, merged) {
+export function validateGuides(docsDir, merged, entries = []) {
 	const errors = [];
-	if (!fs.existsSync(docsDir)) return errors;
-	for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
+	if (fs.existsSync(docsDir)) {
+		for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
+			const markdown = fs.readFileSync(file, 'utf8');
+			for (const block of extractHtmlBlocks(markdown)) {
+				errors.push(...validateElementTree(parseHtml(block.html), merged, file, block.line - 1));
+			}
+		}
+	}
+	for (const entry of entries) {
+		const file = path.join(entry.dir, 'docs.md');
+		if (!fs.existsSync(file)) continue;
 		const markdown = fs.readFileSync(file, 'utf8');
 		for (const block of extractHtmlBlocks(markdown)) {
 			errors.push(...validateElementTree(parseHtml(block.html), merged, file, block.line - 1));
@@ -113,7 +122,13 @@ export function findBareMargin(css, className) {
 			const block = stack.pop();
 			if (block) {
 				const members = block.selector.split(',').map((s) => s.trim());
-				if (members.includes(`.${className}`) && MARGIN_RE.test(block.decls)) hits.push(block.line);
+				if (block && members.includes(`.${className}`)) {
+					for (const m of block.decls.matchAll(MARGIN_RE)) {
+						if (m[1].trim().split(/\s+/).every((v) => v === 'auto')) continue;
+						hits.push(block.line);
+						break;
+					}
+				}
 			}
 			selector = '';
 		} else if (ch === ';') {
@@ -163,13 +178,14 @@ export function validateLayers(srcDir) {
 	return errors;
 }
 
-const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, then everything else';
+const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else';
 
-/** Enforces the phase 1 import order once src/tokens exists. */
+/** Enforces the import order and that every tokens/base/layouts file is imported. */
 export function validateImportOrder(srcDir) {
 	const tokensDir = path.join(srcDir, 'tokens');
 	const entryFile = path.join(srcDir, 'yeti.css');
-	if (!fs.existsSync(tokensDir) || !fs.existsSync(entryFile)) return [];
+	const attrFile = path.join(srcDir, 'layouts', 'attributes.css');
+	if (!fs.existsSync(entryFile) || (!fs.existsSync(tokensDir) && !fs.existsSync(attrFile))) return [];
 	const errors = [];
 	const raw = splitImports(fs.readFileSync(entryFile, 'utf8'), entryFile).imports;
 	// Normalise once so "./tokens/x.css" and "tokens/x.css" rank and match alike.
@@ -180,9 +196,11 @@ export function validateImportOrder(srcDir) {
 		if (href.startsWith('tokens/')) return 1;
 		if (href === 'base/reset.css') return 2;
 		if (href.startsWith('base/')) return 3;
-		return 4;
+		if (href === 'layouts/attributes.css') return 4;
+		if (href.startsWith('layouts/')) return 5;
+		return 6;
 	};
-	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'the rest'];
+	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'layouts/attributes.css', 'layouts/', 'the rest'];
 	// Report the first import that has something of a lower group after it.
 	for (let i = 0; i < imports.length; i++) {
 		const later = imports.slice(i + 1).find((imp) => rank(imp.href) < rank(imports[i].href));
@@ -191,9 +209,11 @@ export function validateImportOrder(srcDir) {
 			break;
 		}
 	}
-	const tokenFiles = fs.readdirSync(tokensDir).filter((f) => f.endsWith('.css')).map((f) => `tokens/${f}`);
-	for (const f of tokenFiles) {
-		if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+	if (fs.existsSync(tokensDir)) {
+		const tokenFiles = fs.readdirSync(tokensDir).filter((f) => f.endsWith('.css')).map((f) => `tokens/${f}`);
+		for (const f of tokenFiles) {
+			if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
 	}
 
 	const baseDir = path.join(srcDir, 'base');
@@ -201,6 +221,17 @@ export function validateImportOrder(srcDir) {
 		const baseFiles = fs.readdirSync(baseDir).filter((f) => f.endsWith('.css')).map((f) => `base/${f}`);
 		for (const f of baseFiles) {
 			if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
+	}
+
+	const layoutsDir = path.join(srcDir, 'layouts');
+	if (fs.existsSync(layoutsDir)) {
+		if (fs.existsSync(path.join(layoutsDir, 'attributes.css')) && !hrefs.includes('layouts/attributes.css')) {
+			errors.push({ file: entryFile, message: 'layouts/attributes.css is not imported' });
+		}
+		for (const name of fs.readdirSync(layoutsDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
+			const f = `layouts/${name}/${name}.css`;
+			if (fs.existsSync(path.join(srcDir, f)) && !hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
 		}
 	}
 	return errors;
@@ -266,6 +297,55 @@ export function validateTokens(root, manifestEntries = []) {
 	return errors;
 }
 
+const MAPPED = {
+	'data-gap': 'gap', 'data-align': 'align', 'data-justify': 'justify', 'data-threshold': 'width',
+	'data-width': 'width', 'data-min': 'width-or-none', 'data-max': 'width', 'data-ratio': 'ratio', 'data-columns': 'columns',
+};
+
+/** Every value of every mapped vocabulary must have a rule in layouts/attributes.css. */
+export function validateVocabulary(root) {
+	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
+	const attrFile = path.join(root, 'src', 'layouts', 'attributes.css');
+	if (!fs.existsSync(vocabFile) || !fs.existsSync(attrFile)) return [];
+	const vocabulary = loadVocabulary(vocabFile);
+	const css = stripComments(fs.readFileSync(attrFile, 'utf8'));
+	const present = new Set([...css.matchAll(/\[(data-[a-z-]+)="([^"]+)"\]/g)].map((m) => `${m[1]}=${m[2]}`));
+	const errors = [];
+	for (const [attr, vocab] of Object.entries(MAPPED)) {
+		for (const value of vocabulary[vocab] ?? []) {
+			if (!present.has(`${attr}=${value}`)) errors.push({ file: attrFile, message: `${attr}="${value}" (vocabulary ${vocab}) has no rule` });
+		}
+	}
+	return errors;
+}
+
+/** Layouts respond to their container, never the viewport. */
+export function validateNoMediaQueries(srcDir) {
+	const layoutsDir = path.join(srcDir, 'layouts');
+	if (!fs.existsSync(layoutsDir)) return [];
+	const errors = [];
+	for (const file of walkFiles(layoutsDir).filter((f) => f.endsWith('.css'))) {
+		const text = stripComments(fs.readFileSync(file, 'utf8'));
+		const m = text.match(/@media\b/);
+		if (m) errors.push({ file, line: text.slice(0, m.index).split('\n').length, message: 'layouts are intrinsic; use container-relative techniques, not media queries' });
+	}
+	return errors;
+}
+
+/** Every layout ships a docs.md that explains its name. */
+export function validateDocsFragments(entries) {
+	const errors = [];
+	for (const entry of entries.filter((e) => e.kind === 'layout')) {
+		const file = path.join(entry.dir, 'docs.md');
+		if (!fs.existsSync(file)) {
+			errors.push({ file: entry.dir, message: 'layouts must have a docs.md with a "## Why this name" heading' });
+		} else if (!/^## Why this name\s*$/m.test(fs.readFileSync(file, 'utf8'))) {
+			errors.push({ file, message: 'layouts must explain their name under a "## Why this name" heading' });
+		}
+	}
+	return errors;
+}
+
 export function validate({ root }) {
 	const srcDir = path.join(root, 'src');
 	const docsDir = path.join(root, 'docs', 'guides');
@@ -276,12 +356,15 @@ export function validate({ root }) {
 	const all = [
 		...errors,
 		...validateExamples(entries, merged),
-		...validateGuides(docsDir, merged),
+		...validateGuides(docsDir, merged, entries),
 		...validateSpacing(entries),
 		...validateLayers(srcDir),
 		...validateImportOrder(srcDir),
 		...validateImportant(srcDir),
 		...validateTokens(root, entries),
+		...validateVocabulary(root),
+		...validateNoMediaQueries(srcDir),
+		...validateDocsFragments(entries),
 	];
 	return { errors: all, count: Object.keys(merged).length };
 }

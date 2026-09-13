@@ -34,7 +34,7 @@ function range(child) {
 	return `${min} to ${max}`;
 }
 
-export function renderPage({ manifest: m, exampleHtml, navOrder }) {
+export function renderPage({ manifest: m, exampleHtml, navOrder, docsMd = '' }) {
 	const title = titleCase(m.name);
 	const dir = KIND_TO_DIR[m.kind];
 	const out = [];
@@ -44,6 +44,7 @@ export function renderPage({ manifest: m, exampleHtml, navOrder }) {
 	out.push(`${GENERATED_MARK} from src/${dir}/${m.name}/manifest.json. Do not edit. -->`, '', `# ${title}`, '', m.description, '');
 
 	out.push('## Example', '', '```html', exampleHtml.trim(), '```', '');
+	if (docsMd.trim()) out.push(docsMd.trim(), '');
 
 	out.push('## Attributes', '');
 	out.push(m.attributes.length
@@ -162,8 +163,10 @@ export function generateDocs({ root }) {
 		group.sort((a, b) => a.name.localeCompare(b.name));
 		group.forEach((entry, i) => {
 			const exampleHtml = fs.readFileSync(path.join(entry.dir, 'example.html'), 'utf8');
+			const docsMdFile = path.join(entry.dir, 'docs.md');
+			const docsMd = fs.existsSync(docsMdFile) ? fs.readFileSync(docsMdFile, 'utf8') : '';
 			const file = path.join(docsDir, `${entry.name}.md`);
-			fs.writeFileSync(file, renderPage({ manifest: entry.manifest, exampleHtml, navOrder: i + 1 }));
+			fs.writeFileSync(file, renderPage({ manifest: entry.manifest, exampleHtml, navOrder: i + 1, docsMd }));
 			written.push(file);
 		});
 	}

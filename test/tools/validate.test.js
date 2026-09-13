@@ -4,9 +4,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
 	validate, formatError, validateElementTree, extractHtmlBlocks, findBareMargin, validateLayers, validateImportOrder, validateImportant, validateTokens,
+	validateVocabulary, validateNoMediaQueries, validateDocsFragments,
 } from '../../bin/validate.js';
 import { parseHtml } from '../../bin/lib/html.js';
-import { makeTree, validManifest, validTree, REPO_ROOT, TOKENS_SCHEMA_PATH } from './helpers.js';
+import { makeTree, validManifest, validTree, REPO_ROOT, TOKENS_SCHEMA_PATH, VOCABULARY_PATH } from './helpers.js';
 
 const run = (files) => {
 	const root = makeTree(files);
@@ -110,7 +111,7 @@ test('validateLayers tolerates a leading @charset in yeti.css', () => {
 });
 
 test('a component setting its own margin fails the spacing rule', () => {
-	const r = run(validTree({ 'src/layouts/rail/rail.css': '.rail {\n  margin-inline: auto;\n}\n' }));
+	const r = run(validTree({ 'src/layouts/rail/rail.css': '.rail {\n  margin-block-end: 1rem;\n}\n' }));
 	assert.deepEqual(r.lines, ['src/layouts/rail/rail.css:1: .rail sets its own margin; spacing belongs to the parent layout (architecture §6.6)']);
 });
 
@@ -139,7 +140,7 @@ test('validateImportOrder requires layers, then tokens, then reset, then base', 
 	const ok = run(tokensTree('@import "layers.css";\n@import "tokens/color.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
 	assert.deepEqual(ok.lines, []);
 	const resetFirst = run(tokensTree('@import "layers.css";\n@import "base/reset.css";\n@import "tokens/scale.css";\n@import "tokens/color.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
-	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, then everything else (found "base/reset.css" before all of tokens/)']);
+	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else (found "base/reset.css" before all of tokens/)']);
 	const missingToken = run(tokensTree('@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
 	assert.deepEqual(missingToken.lines, ['src/yeti.css: tokens/color.css is not imported']);
 });
@@ -226,4 +227,57 @@ test('validateTokens flags a public token declared outside src/tokens/', () => {
 	assert.deepEqual(r.lines, [
 		'src/layouts/rail/rail.css: --yeti-rail-gap is a public token declared outside src/tokens/; public tokens live in src/tokens/ and the catalogue',
 	]);
+});
+
+const layoutTree = (extra = {}) => validTree({
+	'schema/vocabulary.json': fs.readFileSync(VOCABULARY_PATH, 'utf8'),
+	'src/layouts/attributes.css': '@layer yeti.layouts {\n' + ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'xs-sm', 'xs-md', 'xs-lg', 'xs-xl', 'xs-2xl', 'xs-3xl', 'sm-md', 'sm-lg', 'sm-xl', 'sm-2xl', 'sm-3xl', 'md-lg', 'md-xl', 'md-2xl', 'md-3xl', 'lg-xl', 'lg-2xl', 'lg-3xl', 'xl-2xl', 'xl-3xl', '2xl-3xl'].map((v) => `\t[data-gap="${v}"] { --_yeti-gap: 0; }\n`).join('')
+		+ ['start', 'center', 'end', 'stretch', 'baseline'].map((v) => `\t[data-align="${v}"] { --_yeti-align: ${v}; }\n`).join('')
+		+ ['start', 'center', 'end', 'between', 'around', 'evenly'].map((v) => `\t[data-justify="${v}"] { --_yeti-justify: ${v}; }\n`).join('')
+		+ ['xs', 'sm', 'md', 'lg', 'xl', '2xl'].flatMap((v) => [`\t[data-threshold="${v}"] { --_yeti-threshold: 0; }\n`, `\t[data-width="${v}"] { --_yeti-width: 0; }\n`, `\t[data-max="${v}"] { --_yeti-max: 0; }\n`]).join('')
+		+ ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'].map((v) => `\t[data-min="${v}"] { --_yeti-min: 0; }\n`).join('')
+		+ ['1/1', '4/3', '3/2', '16/9', '21/9'].map((v) => `\t[data-ratio="${v}"] { --_yeti-ratio: ${v}; }\n`).join('')
+		+ ['1', '2', '3', '4', '5', '6'].map((v) => `\t[data-columns="${v}"] { --_yeti-column-cap: 0; }\n`).join('')
+		+ '}\n',
+	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n',
+	...extra,
+});
+
+test('a complete layout tree validates', () => {
+	assert.deepEqual(run(layoutTree()).lines, []);
+});
+
+test('validateVocabulary reports a mapped value with no attributes.css rule', () => {
+	const tree = layoutTree();
+	tree['src/layouts/attributes.css'] = tree['src/layouts/attributes.css'].replace('\t[data-gap="lg"] { --_yeti-gap: 0; }\n', '');
+	assert.deepEqual(run(tree).lines, ['src/layouts/attributes.css: data-gap="lg" (vocabulary gap) has no rule']);
+});
+
+test('media queries are banned in layouts', () => {
+	const r = run(layoutTree({ 'src/layouts/rail/rail.css': '@layer yeti.layouts { .rail { display: flex; } @media (width > 40rem) { .rail { gap: 1rem; } } }\n' }));
+	assert.deepEqual(r.lines, ['src/layouts/rail/rail.css:1: layouts are intrinsic; use container-relative techniques, not media queries']);
+});
+
+test('every layout docs.md must carry the naming heading', () => {
+	const missing = run(layoutTree({ 'src/layouts/rail/docs.md': '# Rail\n\nProse.\n' }));
+	assert.deepEqual(missing.lines, ['src/layouts/rail/docs.md: layouts must explain their name under a "## Why this name" heading']);
+	const absent = run(layoutTree({ 'src/layouts/rail/docs.md': null }));
+	assert.deepEqual(absent.lines, ['src/layouts/rail: layouts must have a docs.md with a "## Why this name" heading']);
+});
+
+test('fenced html in docs.md is validated against the manifest', () => {
+	const r = run(layoutTree({ 'src/layouts/rail/docs.md': '## Why this name\n\nBecause.\n\n```html\n<div class="rail" data-gap="huge"><p>x</p></div>\n```\n' }));
+	assert.deepEqual(r.lines, ['src/layouts/rail/docs.md:6: .rail <div>: data-gap="huge" is not one of s, m, l']);
+});
+
+test('import order places layouts/attributes.css after base and before layout folders, and requires every layout file', () => {
+	const late = run(layoutTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/rail/rail.css";\n@import "layouts/attributes.css";\n' }));
+	assert.deepEqual(late.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else (found "layouts/rail/rail.css" before all of layouts/attributes.css)']);
+	const missing = run(layoutTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n' }));
+	assert.deepEqual(missing.lines, ['src/yeti.css: layouts/rail/rail.css is not imported']);
+});
+
+test('findBareMargin ignores auto-only margins', () => {
+	assert.deepEqual(findBareMargin('.center { margin-inline: auto; }', 'center'), []);
+	assert.deepEqual(findBareMargin('.center { margin: 0 auto; }', 'center'), [1]);
 });
