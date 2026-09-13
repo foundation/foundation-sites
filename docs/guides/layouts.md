@@ -108,42 +108,34 @@ A card: a bordered `box` holds a `stack`, which separates a cropped photo, a hea
 </div>
 ```
 
-A page shell: a `center` keeps the whole page within a readable maximum width. Inside it, a `cover` fills the viewport and centers its `h1`, then a `grid` of bordered `box`es follows below the fold.
+**The most common compositions ship as recipes, one class each, and every recipe page shows the same result built from primitives so nothing is hidden:** [shell](../shell.md) (page skeleton with a sticky footer), [media](../media.md) (a figure beside text), [hero](../hero.md) (a split opening band). `dist/yeti.css` includes the recipes; a project that composes its own can import the `dist/css/` files it wants and leave `dist/css/recipes/` out.
+
+A recipe still nests inside a primitive like anything else: a `grid` of three `media` items, each a figure and a caption.
 
 ```html
-<div class="center" data-max="xl">
-	<header class="cover" data-gap="lg">
-		<h1 data-center>Build interfaces that read their own container</h1>
-	</header>
-	<ul class="grid" data-min="sm" data-columns="3" role="list">
-		<li class="box" data-gap="md" data-border>
-			<h2>Fast</h2>
-			<p>No build step to wait on.</p>
-		</li>
-		<li class="box" data-gap="md" data-border>
-			<h2>Legible</h2>
-			<p>Plain HTML and a few attributes.</p>
-		</li>
-		<li class="box" data-gap="md" data-border>
-			<h2>Intrinsic</h2>
-			<p>Every layout reads its own width.</p>
-		</li>
-	</ul>
-</div>
-```
-
-A media object: a `sidebar` puts a square `frame` beside a `stack` of text, and the two swap to a single column once they no longer fit side by side.
-
-```html
-<div class="sidebar" data-side="start" data-width="sm">
-	<div class="frame" data-ratio="1/1">
+<ul class="grid" data-min="sm" data-columns="3" role="list">
+	<li class="media" data-width="sm">
+		<img src="trail.jpg" alt="A mountain trail at dawn">
+		<div>
+			<h3>Weekend in the hills</h3>
+			<p>Six miles, one summit, and a view worth the early start.</p>
+		</div>
+	</li>
+	<li class="media" data-width="sm">
 		<img src="ada.jpg" alt="Portrait of Ada Lovelace">
-	</div>
-	<div class="stack" data-gap="sm">
-		<h3>Ada Lovelace</h3>
-		<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
-	</div>
-</div>
+		<div>
+			<h3>Ada Lovelace</h3>
+			<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
+		</div>
+	</li>
+	<li class="media" data-width="sm">
+		<img src="peak.jpg" alt="A snow ridge at first light">
+		<div>
+			<h3>Get started</h3>
+			<p>Fifteen layouts, one attribute vocabulary, no breakpoints.</p>
+		</div>
+	</li>
+</ul>
 ```
 
 ## Coming from version 6
