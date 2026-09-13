@@ -144,6 +144,15 @@ test('validateImportOrder requires layers, then tokens, then reset, then base', 
 	assert.deepEqual(missingToken.lines, ['src/yeti.css: tokens/color.css is not imported']);
 });
 
+test('validateImportOrder treats a leading ./ as equivalent', () => {
+	const tree = validTree({
+		'src/tokens/scale.css': ':root { --yeti-base-min: 1rem; }\n',
+		'src/base/reset.css': '',
+		'src/yeti.css': '@import "layers.css";\n@import "./tokens/scale.css";\n@import "./base/reset.css";\n@import "layouts/rail/rail.css";\n',
+	});
+	assert.deepEqual(run(tree).lines, []);
+});
+
 test('validateImportOrder is silent when src/tokens does not exist', () => {
 	assert.deepEqual(run(validTree()).lines, []);
 });

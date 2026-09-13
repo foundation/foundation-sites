@@ -171,8 +171,10 @@ export function validateImportOrder(srcDir) {
 	const entryFile = path.join(srcDir, 'yeti.css');
 	if (!fs.existsSync(tokensDir) || !fs.existsSync(entryFile)) return [];
 	const errors = [];
-	const { imports } = splitImports(fs.readFileSync(entryFile, 'utf8'), entryFile);
-	const hrefs = imports.map((i) => i.href.replace(/^\.\//, ''));
+	const raw = splitImports(fs.readFileSync(entryFile, 'utf8'), entryFile).imports;
+	// Normalise once so "./tokens/x.css" and "tokens/x.css" rank and match alike.
+	const imports = raw.map((i) => ({ ...i, href: i.href.replace(/^\.\//, '') }));
+	const hrefs = imports.map((i) => i.href);
 	const rank = (href) => {
 		if (href === 'layers.css') return 0;
 		if (href.startsWith('tokens/')) return 1;
