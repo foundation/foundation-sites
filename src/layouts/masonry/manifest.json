@@ -5,7 +5,7 @@
   "description": "Packs items of uneven height into columns with no gaps under the short ones.",
   "class": "masonry",
   "attributes": [
-    { "name": "data-min", "type": "enum", "vocabulary": "width-or-none", "default": "xs", "description": "The narrowest a column may be. With none, only data-columns decides the count." },
+    { "name": "data-min", "type": "enum", "vocabulary": "width-or-none", "default": "xs", "description": "The narrowest a column may be. none is meant to be paired with data-columns, which then gives an exact count; alone it gives a single full-width column." },
     { "name": "data-columns", "type": "enum", "vocabulary": "columns", "description": "The most columns allowed. Fewer appear when the container cannot fit that many at data-min." },
     { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between columns and between items." }
   ],

@@ -4,7 +4,7 @@ Long-form pages: an article, a case study, documentation. The text sits in a col
 
 ## How it works
 
-The breakout is a grid of three columns: a gutter, the reading column, and a gutter. The reading column is `data-max` wide, or the container minus two gutters when that is less, and the gutters share whatever remains, so the column is centered. Every child lands in the middle track. A child carrying `data-bleed` spans all three. The rows are separated by the gap, and children's own margins are zeroed, as in every gap-based layout.
+The breakout is a grid of three columns: a gutter, the reading column, and a gutter. The reading column is `data-max` wide, or the container minus two gutters when that is less, and the gutters share whatever remains, so the column is centered. Every child lands in the middle track. A child carrying `data-bleed` spans all three. The rows are separated by the gap, and children's own margins are zeroed, as in every gap-based layout. Prose is also capped at `--yeti-measure`, so a column set wider than the measure is not filled by paragraphs.
 
 ```html
 <div class="breakout" data-max="md">

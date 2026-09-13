@@ -5,7 +5,7 @@ test.describe('breakout', () => {
 	test('plain children sit in a centered column at the maximum; bleeding children span the width', async ({ page }) => {
 		await open(page, 'breakout', 1000);
 		const [box, plain, bleed, after] = await Promise.all([rect(page, '#breakout'), rect(page, '#plain'), rect(page, '#bleed'), rect(page, '#after')]);
-		expect(plain.width).toBeCloseTo(await token(page, '--yeti-width-lg'), 0);
+		expect(plain.width).toBeCloseTo(await token(page, '--yeti-width-md'), 0);
 		expect(plain.left - box.left).toBeCloseTo(box.right - plain.right, 0);
 		expect(bleed.width).toBeCloseTo(box.width, 0);
 		expect(after.top - bleed.bottom).toBeCloseTo(await token(page, '--yeti-space-md'), 0);

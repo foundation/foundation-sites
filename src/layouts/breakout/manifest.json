@@ -5,7 +5,7 @@
   "description": "Keeps its children in a centered reading column with gutters, and lets any child carrying data-bleed span the full width.",
   "class": "breakout",
   "attributes": [
-    { "name": "data-max", "type": "enum", "vocabulary": "width", "default": "lg", "description": "The widest the reading column may be." },
+    { "name": "data-max", "type": "enum", "vocabulary": "width", "default": "md", "description": "The widest the reading column may be." },
     { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "The gutter on each side, and the space between children." }
   ],
   "classes": [],
@@ -14,7 +14,7 @@
     { "selector": "> [data-bleed]", "min": 0, "max": null, "description": "Children that break out of the column." }
   ],
   "tokens": [
-    { "name": "--yeti-width-lg", "public": true, "description": "The default column width." },
+    { "name": "--yeti-width-md", "public": true, "description": "The default column width, chosen under the base measure so paragraphs fill it." },
     { "name": "--yeti-space-md", "public": true, "description": "The default gutter and row gap." },
     { "name": "--_yeti-max", "public": false },
     { "name": "--_yeti-gap", "public": false }

@@ -1,17 +1,10 @@
 import { test, expect } from 'playwright/test';
-import { stage, rect, rects, token, expectNoChildMargins, axe } from '../lib/layout.js';
+import { stage, rect, token, expectNoChildMargins, same, axe } from '../lib/layout.js';
 
 const open = async (page, width = 1000) => {
 	const response = await page.goto('/test/browser/fixtures/recipes/shell.html');
 	expect(response.status()).toBe(200);
 	await stage(page, width);
-};
-/** Two boxes match in size and in position relative to their own container. */
-const same = (a, b, aBox, bBox) => {
-	expect(a.width).toBeCloseTo(b.width, 0);
-	expect(a.height).toBeCloseTo(b.height, 0);
-	expect(a.left - aBox.left).toBeCloseTo(b.left - bBox.left, 0);
-	expect(a.top - aBox.top).toBeCloseTo(b.top - bBox.top, 0);
 };
 
 test.describe('shell recipe', () => {
@@ -66,16 +59,28 @@ test.describe('shell recipe', () => {
 		expect(a2.top).toBeGreaterThanOrEqual(m2.bottom);
 	});
 
+	test('a body-row div only applies to a div holding nav, main, or aside', async ({ page }) => {
+		await open(page, 1000);
+		const [shell, pcA, pcB] = await Promise.all([rect(page, '#plain'), rect(page, '#pc-a'), rect(page, '#pc-b')]);
+		const height = await page.evaluate(() => window.innerHeight);
+		expect(pcB.top).toBeGreaterThanOrEqual(pcA.bottom);
+		expect(shell.height).toBeCloseTo(height, 0);
+	});
+
 	test('children have no margins', async ({ page }) => {
 		await open(page);
 		await expectNoChildMargins(page, '.shell');
-		await expectNoChildMargins(page, '.shell > div');
+		await expectNoChildMargins(page, '.shell > div:has(> :is(nav, main, aside))');
 	});
 
 	test('has no accessibility violations', async ({ page }) => {
 		await open(page);
-		// Two main landmarks on one page is itself a violation; the three-region case is measured above, not audited.
-		await page.evaluate(() => document.getElementById('three').remove());
+		// Stacking several full shells (each with its own header/footer/main) in one
+		// document to measure them side by side creates landmark duplicates and,
+		// for #plain's bare div.center, content outside any landmark; those are
+		// artifacts of the fixture, not the recipe, so both are removed here and
+		// measured on their own above instead.
+		await page.evaluate(() => { document.getElementById('three').remove(); document.getElementById('plain').remove(); });
 		expect(await axe(page)).toEqual([]);
 	});
 });

@@ -28,7 +28,7 @@ Long-form pages: an article, a case study, documentation. The text sits in a col
 
 ## How it works
 
-The breakout is a grid of three columns: a gutter, the reading column, and a gutter. The reading column is `data-max` wide, or the container minus two gutters when that is less, and the gutters share whatever remains, so the column is centered. Every child lands in the middle track. A child carrying `data-bleed` spans all three. The rows are separated by the gap, and children's own margins are zeroed, as in every gap-based layout.
+The breakout is a grid of three columns: a gutter, the reading column, and a gutter. The reading column is `data-max` wide, or the container minus two gutters when that is less, and the gutters share whatever remains, so the column is centered. Every child lands in the middle track. A child carrying `data-bleed` spans all three. The rows are separated by the gap, and children's own margins are zeroed, as in every gap-based layout. Prose is also capped at `--yeti-measure`, so a column set wider than the measure is not filled by paragraphs.
 
 ```html
 <div class="breakout" data-max="md">
@@ -46,7 +46,7 @@ The column is ordinary; what is special is that a child can break out of it. Fou
 
 | Attribute | Type | Values | Default | Description |
 | --- | --- | --- | --- | --- |
-| `data-max` | enum | `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `lg` | The widest the reading column may be. |
+| `data-max` | enum | `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `md` | The widest the reading column may be. |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | The gutter on each side, and the space between children. |
 
 ## Children
@@ -58,7 +58,7 @@ The column is ordinary; what is special is that a child can break out of it. Fou
 
 | Token | Description |
 | --- | --- |
-| `--yeti-width-lg` | The default column width. |
+| `--yeti-width-md` | The default column width, chosen under the base measure so paragraphs fill it. |
 | `--yeti-space-md` | The default gutter and row gap. |
 
 <details><summary>Internal tokens (may change between minor versions)</summary>

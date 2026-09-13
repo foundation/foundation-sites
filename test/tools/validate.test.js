@@ -353,3 +353,8 @@ test('a recipe docs.md must show the composed form without the recipe class', ()
 	const noName = run(recipeTree({ 'src/recipes/duo/docs.md': '## When to use it\n\nPairs.\n\n## Built from primitives\n\n```html\n<div class="rail" data-gap="m"><p>One</p><p>Two</p></div>\n```\n' }));
 	assert.deepEqual(noName.lines, ['src/recipes/duo/docs.md: layouts must explain their name under a "## Why this name" heading']);
 });
+
+test('a recipe with no docs.md at all is reported with the recipe kind, not the layout kind', () => {
+	const absent = run(recipeTree({ 'src/recipes/duo/docs.md': null }));
+	assert.deepEqual(absent.lines, ['src/recipes/duo: recipes must have a docs.md with a "## Why this name" heading']);
+});

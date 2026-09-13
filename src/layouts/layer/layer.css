@@ -7,6 +7,9 @@
 		align-items: var(--_yeti-align);
 	}
 	.layer:not([data-align]) { --_yeti-align: stretch; }
+	/* Grid has no baseline to share between items of different natural
+	   heights stacked in one area; treat data-align="baseline" as start. */
+	.layer[data-align="baseline"] { --_yeti-align: start; }
 	.layer > * {
 		margin: 0;
 		grid-area: layer;

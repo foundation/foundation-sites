@@ -1,17 +1,10 @@
 import { test, expect } from 'playwright/test';
-import { stage, rect, rects, token, expectNoChildMargins, axe } from '../lib/layout.js';
+import { stage, rect, token, expectNoChildMargins, same, axe } from '../lib/layout.js';
 
 const open = async (page, width = 1000) => {
 	const response = await page.goto('/test/browser/fixtures/recipes/hero.html');
 	expect(response.status()).toBe(200);
 	await stage(page, width);
-};
-/** Two boxes match in size and in position relative to their own container. */
-const same = (a, b, aBox, bBox) => {
-	expect(a.width).toBeCloseTo(b.width, 0);
-	expect(a.height).toBeCloseTo(b.height, 0);
-	expect(a.left - aBox.left).toBeCloseTo(b.left - bBox.left, 0);
-	expect(a.top - aBox.top).toBeCloseTo(b.top - bBox.top, 0);
 };
 
 // The figure selector, shared by media and hero:

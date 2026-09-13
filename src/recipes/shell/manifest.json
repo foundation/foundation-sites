@@ -6,7 +6,7 @@
   "class": "shell",
   "attributes": [
     { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between the rows, and between nav, main, and aside." },
-    { "name": "data-width", "type": "enum", "vocabulary": "width", "default": "sm", "description": "The preferred width of nav and aside." }
+    { "name": "data-width", "type": "enum", "vocabulary": "width", "default": "sm", "description": "The preferred width of nav and aside. Three regions share a row once the container is about four times this width plus the gaps; two regions need about half that." }
   ],
   "classes": [],
   "children": [

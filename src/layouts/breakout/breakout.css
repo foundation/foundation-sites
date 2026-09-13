@@ -12,7 +12,7 @@
 			[full-end];
 		row-gap: var(--_yeti-gap);
 	}
-	.breakout:not([data-max]) { --_yeti-max: var(--yeti-width-lg); }
+	.breakout:not([data-max]) { --_yeti-max: var(--yeti-width-md); }
 	.breakout:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
 	.breakout > * {
 		margin: 0;

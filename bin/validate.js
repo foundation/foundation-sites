@@ -387,7 +387,7 @@ export function validateDocsFragments(entries) {
 	for (const entry of entries.filter((e) => e.kind === 'layout' || e.kind === 'recipe')) {
 		const file = path.join(entry.dir, 'docs.md');
 		if (!fs.existsSync(file)) {
-			errors.push({ file: entry.dir, message: 'layouts must have a docs.md with a "## Why this name" heading' });
+			errors.push({ file: entry.dir, message: `${entry.kind}s must have a docs.md with a "## Why this name" heading` });
 			continue;
 		}
 		const markdown = fs.readFileSync(file, 'utf8');
@@ -401,7 +401,7 @@ export function validateDocsFragments(entries) {
 				for (const block of blocks) {
 					walkElements(parseHtml(block.html), (el) => {
 						if (classList(el).includes(entry.manifest.class)) {
-							errors.push({ file, line: block.line + lineOffset - 1 + (el.sourceCodeLocation ? el.sourceCodeLocation.startLine - 1 : 0) + 1, message: `the composed form must not use the recipe's own class .${entry.manifest.class}` });
+							errors.push({ file, line: block.line + lineOffset + (el.sourceCodeLocation ? el.sourceCodeLocation.startLine - 1 : 0), message: `the composed form must not use the recipe's own class .${entry.manifest.class}` });
 						}
 					});
 				}

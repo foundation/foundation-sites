@@ -13,6 +13,13 @@
 		--_yeti-column-count: auto;
 		--_yeti-column-cap: 0px;
 	}
+	/* data-min="none" describes an exact count and is meaningless without one:
+	   with no floor at all, both the column and the grid path repeat until the
+	   gaps overflow. Alone it gives a single full-width column. */
+	.masonry[data-min="none"]:not([data-columns]) {
+		--_yeti-column-count: 1;
+		--_yeti-column-cap: 100%;
+	}
 	/* The layout sets the space under each item; the item never does. */
 	.masonry > * {
 		margin: 0 0 var(--_yeti-gap);
@@ -28,6 +35,6 @@
 			column-width: auto;
 			column-count: auto;
 		}
-		.masonry > * { margin: 0; }
+		.masonry > * { margin: 0; break-inside: auto; }
 	}
 }

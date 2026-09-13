@@ -19,6 +19,18 @@ test.describe('masonry', () => {
 		expect(await columns(page, '#capped')).toBe(2);
 	});
 
+	test('data-min="none" alone gives a single full-width column', async ({ page }) => {
+		await open(page, 'masonry', 1000);
+		expect(await columns(page, '#none')).toBe(1);
+	});
+
+	test('data-min="none" with data-columns gives an exact count', async ({ page }) => {
+		await open(page, 'masonry', 1000);
+		expect(await columns(page, '#exact')).toBe(3);
+		await stage(page, 500);
+		expect(await columns(page, '#exact')).toBe(3);
+	});
+
 	test('packs items under each other with the gap between', async ({ page }) => {
 		await open(page, 'masonry', 1000);
 		const gap = await token(page, '--yeti-space-md');

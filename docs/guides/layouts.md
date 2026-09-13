@@ -114,25 +114,25 @@ A recipe still nests inside a primitive like anything else: a `grid` of three `m
 
 ```html
 <ul class="grid" data-min="sm" data-columns="3" role="list">
-	<li class="media" data-width="sm">
+	<li class="media" data-width="xs">
 		<img src="trail.jpg" alt="A mountain trail at dawn">
 		<div>
 			<h3>Weekend in the hills</h3>
 			<p>Six miles, one summit, and a view worth the early start.</p>
 		</div>
 	</li>
-	<li class="media" data-width="sm">
+	<li class="media" data-width="xs">
 		<img src="ada.jpg" alt="Portrait of Ada Lovelace">
 		<div>
 			<h3>Ada Lovelace</h3>
 			<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
 		</div>
 	</li>
-	<li class="media" data-width="sm">
+	<li class="media" data-width="xs">
 		<img src="peak.jpg" alt="A snow ridge at first light">
 		<div>
-			<h3>Get started</h3>
-			<p>Fifteen layouts, one attribute vocabulary, no breakpoints.</p>
+			<h3>First light on the ridge</h3>
+			<p>The cloud broke just after dawn, for about ten minutes.</p>
 		</div>
 	</li>
 </ul>

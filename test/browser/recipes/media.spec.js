@@ -1,17 +1,10 @@
 import { test, expect } from 'playwright/test';
-import { stage, rect, rects, token, expectNoChildMargins, axe } from '../lib/layout.js';
+import { stage, rect, token, expectNoChildMargins, same, axe } from '../lib/layout.js';
 
 const open = async (page, width = 1000) => {
 	const response = await page.goto('/test/browser/fixtures/recipes/media.html');
 	expect(response.status()).toBe(200);
 	await stage(page, width);
-};
-/** Two boxes match in size and in position relative to their own container. */
-const same = (a, b, aBox, bBox) => {
-	expect(a.width).toBeCloseTo(b.width, 0);
-	expect(a.height).toBeCloseTo(b.height, 0);
-	expect(a.left - aBox.left).toBeCloseTo(b.left - bBox.left, 0);
-	expect(a.top - aBox.top).toBeCloseTo(b.top - bBox.top, 0);
 };
 
 // The figure selector, shared by media and hero:
@@ -44,6 +37,13 @@ test.describe('media recipe', () => {
 		expect(lf.width / lf.height).toBeCloseTo(16 / 9, 1);
 		const [fb, ff] = await Promise.all([rect(page, '#f-body'), rect(page, '#f-figure')]);
 		expect(ff.left).toBeGreaterThan(fb.right);
+	});
+
+	test('the fill reaches an img inside a picture inside a wrapped figure', async ({ page }) => {
+		await open(page, 1000);
+		const [figure, img] = await Promise.all([rect(page, '#w-figure'), rect(page, '#w-figure img')]);
+		expect(img.width).toBeCloseTo(figure.width, 0);
+		expect(img.height).toBeCloseTo(figure.height, 0);
 	});
 
 	test('children have no margins', async ({ page }) => {

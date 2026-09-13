@@ -19,6 +19,13 @@ test.describe('layer', () => {
 		expect(short.bottom).toBeCloseTo(box.bottom, 1);
 	});
 
+	test('data-align="baseline" behaves as start', async ({ page }) => {
+		await open(page, 'layer');
+		const [box, short] = await Promise.all([rect(page, '#baseline'), rect(page, '#baseline-short')]);
+		expect(short.top).toBeCloseTo(box.top, 1);
+		expect(box.height).toBeCloseTo(200, 0);
+	});
+
 	test('children have no margins', async ({ page }) => {
 		await open(page, 'layer');
 		await expectNoChildMargins(page, '.layer');

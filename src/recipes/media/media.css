@@ -23,7 +23,11 @@
 		overflow: hidden;
 	}
 	.media > :is(img, video) { object-fit: cover; }
-	.media > :is(picture, :has(> :is(img, video, picture))) > :is(img, video) {
+	/* :is(..., picture) here too: the reset gives picture display: block, so a
+	   picture between the figure and its img (the wrapped-figure case) needs
+	   its own 100% size, or the img's percentage height has nothing to resolve
+	   against and falls back to the picture's own auto, content-based height. */
+	.media > :is(picture, :has(> :is(img, video, picture))) :is(img, video, picture) {
 		inline-size: 100%;
 		block-size: 100%;
 		object-fit: cover;

@@ -29,7 +29,7 @@ A wall of photos, cards of unpredictable length, quotes of different sizes: anyt
 
 ## How it works
 
-Everywhere, the masonry is a multi-column layout: `data-min` is the column width, `data-columns` caps the count, and each item is told not to break across columns. In that form items flow down the first column, then the next, so the reading order runs in columns. Where the browser supports native masonry, the same element becomes a grid with masonry rows, items read across as in a grid, and the gap is a real gap. Both forms use the same attributes and the same tokens, so nothing in your markup changes when a browser gains support.
+Everywhere, the masonry is a multi-column layout: `data-min` is the column width, `data-columns` caps the count, and each item is told not to break across columns. In that form items flow down the first column, then the next, so the reading order runs in columns. Where the browser supports native masonry, the same element becomes a grid with masonry rows, items read across as in a grid, and the gap is a real gap. Both forms use the same attributes and the same tokens, so nothing in your markup changes when a browser gains support. In the multi-column fallback the last item of each column keeps its bottom gap, so the fallback is one gap taller than the native form.
 
 ## Why this name
 
@@ -39,7 +39,7 @@ The word everyone already uses for the brick-wall arrangement. Foundation 6 had 
 
 | Attribute | Type | Values | Default | Description |
 | --- | --- | --- | --- | --- |
-| `data-min` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xs` | The narrowest a column may be. With none, only data-columns decides the count. |
+| `data-min` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xs` | The narrowest a column may be. none is meant to be paired with data-columns, which then gives an exact count; alone it gives a single full-width column. |
 | `data-columns` | enum | `1`, `2`, `3`, `4`, `5`, `6` |  | The most columns allowed. Fewer appear when the container cannot fit that many at data-min. |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | Space between columns and between items. |
 
