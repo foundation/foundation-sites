@@ -200,3 +200,12 @@ test('validateTokens reports drift in both directions and misdeclared override-o
 test('validateTokens is silent without a catalogue', () => {
 	assert.deepEqual(run(validTree()).lines, []);
 });
+
+test('validateTokens flags a public token declared outside src/tokens/', () => {
+	const r = run(catalogueTree({
+		'src/layouts/rail/rail.css': '@layer yeti.layouts { .rail { --yeti-rail-gap: 1rem; display: flex; } }\n',
+	}));
+	assert.deepEqual(r.lines, [
+		'src/layouts/rail/rail.css: --yeti-rail-gap is a public token declared outside src/tokens/; public tokens live in src/tokens/ and the catalogue',
+	]);
+});

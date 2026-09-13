@@ -233,6 +233,14 @@ export function validateTokens(root) {
 	for (const [name, file] of declaredIn) {
 		if (!listed.has(name)) errors.push({ file, message: `${name} is declared but not in tokens.json` });
 	}
+
+	const srcDir = path.join(root, 'src');
+	for (const file of walkFiles(srcDir).filter((f) => f.endsWith('.css') && !f.startsWith(tokensDir + path.sep))) {
+		for (const name of declaredTokens(fs.readFileSync(file, 'utf8'))) {
+			errors.push({ file, message: `${name} is a public token declared outside src/tokens/; public tokens live in src/tokens/ and the catalogue` });
+		}
+	}
+
 	for (const entry of entries) {
 		const declared = entry.declared !== false;
 		if (declared && !declaredIn.has(entry.name)) {
