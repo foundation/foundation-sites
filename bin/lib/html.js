@@ -32,10 +32,15 @@ export function attributes(el) {
 
 export function matchesSimple(el, simple) {
 	if (simple === '*') return true;
-	const [tag, ...classes] = simple.split('.');
+	// Split off [attr] parts, then tag and classes.
+	const attrs = [...simple.matchAll(/\[([^\]]+)\]/g)].map((m) => m[1]);
+	const rest = simple.replace(/\[[^\]]+\]/g, '');
+	const [tag, ...classes] = rest.split('.');
 	if (tag && el.tagName !== tag) return false;
 	const list = classList(el);
-	return classes.every((c) => list.includes(c));
+	if (!classes.every((c) => list.includes(c))) return false;
+	const have = attributes(el);
+	return attrs.every((a) => have.has(a));
 }
 
 export function countMatches(el, selector) {

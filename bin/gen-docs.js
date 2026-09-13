@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { frontMatter } from './lib/front-matter.js';
-import { loadSchema, loadAndMerge, KIND_TO_DIR } from './lib/manifest.js';
+import { loadSchema, loadAndMerge, loadVocabulary, KIND_TO_DIR } from './lib/manifest.js';
 import { formatError } from './validate.js';
 import { declaredTokens, loadCatalogue } from './lib/tokens.js';
 import { walkFiles } from './lib/files.js';
@@ -125,7 +125,9 @@ export function generateDocs({ root }) {
 	const srcDir = path.join(root, 'src');
 	const docsDir = path.join(root, 'docs');
 	const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
-	const { entries, merged, errors } = loadAndMerge(srcDir, schema);
+	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
+	const vocabulary = fs.existsSync(vocabFile) ? loadVocabulary(vocabFile) : {};
+	const { entries, merged, errors } = loadAndMerge(srcDir, schema, vocabulary);
 	if (errors.length) return { written: [], deleted: [], errors };
 
 	const catalogueFile = path.join(srcDir, 'tokens', 'tokens.json');

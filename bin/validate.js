@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LAYER_STATEMENT } from './lib/layers.js';
-import { loadSchema, loadAndMerge } from './lib/manifest.js';
+import { loadSchema, loadAndMerge, loadVocabulary } from './lib/manifest.js';
 import { parseHtml, walkElements, classList, attributes, countMatches } from './lib/html.js';
 import { stripComments, splitImports } from './lib/imports.js';
 import { walkFiles } from './lib/files.js';
@@ -270,7 +270,9 @@ export function validate({ root }) {
 	const srcDir = path.join(root, 'src');
 	const docsDir = path.join(root, 'docs', 'guides');
 	const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
-	const { entries, merged, errors } = loadAndMerge(srcDir, schema);
+	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
+	const vocabulary = fs.existsSync(vocabFile) ? loadVocabulary(vocabFile) : {};
+	const { entries, merged, errors } = loadAndMerge(srcDir, schema, vocabulary);
 	const all = [
 		...errors,
 		...validateExamples(entries, merged),

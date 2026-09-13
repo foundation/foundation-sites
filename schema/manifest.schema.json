@@ -65,6 +65,7 @@
         "name": { "type": "string", "pattern": "^data-[a-z][a-z0-9-]*$" },
         "type": { "enum": ["enum", "boolean", "number", "string"] },
         "values": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+        "vocabulary": { "type": "string", "description": "Name of a list in schema/vocabulary.json; resolved into values at load. Mutually exclusive with values." },
         "default": { "type": ["string", "number", "boolean"] },
         "description": { "type": "string" }
       }

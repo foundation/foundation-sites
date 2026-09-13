@@ -9,8 +9,14 @@ export function loadSchema(schemaPath) {
 	return JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
 }
 
+export function loadVocabulary(file) {
+	const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+	delete raw.$comment;
+	return raw;
+}
+
 /** Loads every manifest under srcDir/{layouts,components,utilities}/<name>/ and cross-checks it. */
-export function loadManifests(srcDir, schema) {
+export function loadManifests(srcDir, schema, vocabulary = {}) {
 	const entries = [];
 	const errors = [];
 
@@ -48,6 +54,17 @@ export function loadManifests(srcDir, schema) {
 			if (manifest.class !== manifest.name) errors.push({ file, message: `class "${manifest.class}" must equal name "${manifest.name}"` });
 
 			for (const attr of manifest.attributes) {
+				if (attr.vocabulary !== undefined) {
+					if (attr.values) {
+						errors.push({ file, message: `attribute ${attr.name}: vocabulary and values are mutually exclusive` });
+						continue;
+					}
+					if (!(attr.vocabulary in vocabulary)) {
+						errors.push({ file, message: `attribute ${attr.name}: unknown vocabulary "${attr.vocabulary}"` });
+						continue;
+					}
+					attr.values = [...vocabulary[attr.vocabulary]];
+				}
 				if (attr.type === 'enum' && !attr.values) {
 					errors.push({ file, message: `attribute ${attr.name}: enum type requires values` });
 				} else if (attr.type !== 'enum' && attr.values) {
@@ -91,8 +108,8 @@ export function mergeManifests(entries) {
 	return { merged, errors };
 }
 
-export function loadAndMerge(srcDir, schema) {
-	const loaded = loadManifests(srcDir, schema);
+export function loadAndMerge(srcDir, schema, vocabulary = {}) {
+	const loaded = loadManifests(srcDir, schema, vocabulary);
 	const { merged, errors } = mergeManifests(loaded.entries);
 	return { entries: loaded.entries, merged, errors: [...loaded.errors, ...errors] };
 }

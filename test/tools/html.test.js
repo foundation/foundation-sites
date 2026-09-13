@@ -47,3 +47,14 @@ test('countMatches without > counts all descendants', () => {
 	assert.equal(countMatches(div(), '.last'), 2);
 	assert.equal(countMatches(div(), 'p.deep'), 1);
 });
+
+test('matchesSimple handles attribute selectors', () => {
+	const frag = parseHtml('<div><p data-center>a</p><p class="x" data-split>b</p><span>c</span></div>');
+	const [p1, p2, span] = elementChildren(frag.childNodes[0]);
+	assert.equal(matchesSimple(p1, '[data-center]'), true);
+	assert.equal(matchesSimple(p2, '[data-center]'), false);
+	assert.equal(matchesSimple(p2, 'p[data-split]'), true);
+	assert.equal(matchesSimple(p2, '.x[data-split]'), true);
+	assert.equal(matchesSimple(span, 'span[data-split]'), false);
+	assert.equal(countMatches(frag.childNodes[0], '> [data-center]'), 1);
+});
