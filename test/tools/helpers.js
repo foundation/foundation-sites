@@ -7,6 +7,7 @@ import { LAYER_STATEMENT } from '../../bin/lib/layers.js';
 export const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 export const SCHEMA_PATH = path.join(REPO_ROOT, 'schema/manifest.schema.json');
 export const TOKENS_SCHEMA_PATH = path.join(REPO_ROOT, 'schema/tokens.schema.json');
+export const VOCABULARY_PATH = path.join(REPO_ROOT, 'schema/vocabulary.json');
 
 const created = [];
 process.on('exit', () => {
@@ -18,6 +19,7 @@ export function makeTree(files) {
 	const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'yeti-'));
 	created.push(dir);
 	for (const [rel, content] of Object.entries(files)) {
+		if (content === null) continue;
 		const file = path.join(dir, rel);
 		fs.mkdirSync(path.dirname(file), { recursive: true });
 		fs.writeFileSync(file, typeof content === 'string' ? content : JSON.stringify(content, null, 2) + '\n');
@@ -63,6 +65,7 @@ export function validTree(extra = {}) {
 		'src/layouts/rail/rail.css':
 			'@layer yeti.layouts {\n  .rail { display: flex; }\n  .rail > * + * { margin-inline-start: var(--rail-gap, 1rem); }\n}\n',
 		'src/layouts/rail/example.html': '<div class="rail" data-gap="l"><p>One</p><p>Two</p></div>\n',
+		'src/layouts/rail/docs.md': '## Why this name\n\nBecause.\n',
 		...extra,
 	};
 }

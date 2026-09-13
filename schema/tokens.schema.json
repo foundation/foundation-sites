@@ -10,7 +10,7 @@
     "required": ["name", "group", "public", "default", "description"],
     "properties": {
       "name": { "type": "string", "pattern": "^--yeti-[a-z0-9-]+$" },
-      "group": { "enum": ["scale", "space", "radius", "text", "font", "hue", "color", "motion"] },
+      "group": { "enum": ["scale", "space", "radius", "width", "text", "font", "hue", "color", "motion", "layout"] },
       "public": { "const": true },
       "declared": { "type": "boolean", "description": "false for override-only inputs Yeti never declares (--yeti-base, --yeti-ratio)." },
       "default": { "type": "string" },

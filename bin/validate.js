@@ -7,13 +7,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LAYER_STATEMENT } from './lib/layers.js';
-import { loadSchema, loadAndMerge } from './lib/manifest.js';
+import { loadSchema, loadAndMerge, loadVocabulary } from './lib/manifest.js';
 import { parseHtml, walkElements, classList, attributes, countMatches } from './lib/html.js';
 import { stripComments, splitImports } from './lib/imports.js';
 import { walkFiles } from './lib/files.js';
 import { declaredTokens, loadCatalogue } from './lib/tokens.js';
 
-const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:/;
+const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:\s*([^;]*)/g;
 
 export function formatError(root, e) {
 	return `${path.relative(root, e.file)}${e.line ? `:${e.line}` : ''}: ${e.message}`;
@@ -23,6 +23,16 @@ export function formatError(root, e) {
 export function validateElementTree(root, merged, file, lineOffset = 0) {
 	const errors = [];
 	const byClass = new Map(Object.values(merged).map((m) => [m.class, m]));
+
+	// A child marker such as data-split or data-center is declared by the PARENT
+	// layout's children contract, so it is legal on any element, including one
+	// that is itself a layout. The parent's min/max still counts them.
+	const childMarkers = new Set();
+	for (const m of Object.values(merged)) {
+		for (const child of m.children ?? []) {
+			for (const found of child.selector.matchAll(/\[(data-[a-z0-9-]+)\]/g)) childMarkers.add(found[1]);
+		}
+	}
 
 	walkElements(root, (el) => {
 		for (const cls of classList(el)) {
@@ -36,7 +46,10 @@ export function validateElementTree(root, merged, file, lineOffset = 0) {
 			for (const [name, value] of attrs) {
 				if (!name.startsWith('data-')) continue;
 				const decl = declared.get(name);
-				if (!decl) { push(`unknown attribute ${name}`); continue; }
+				if (!decl) {
+					if (!childMarkers.has(name)) push(`unknown attribute ${name}`);
+					continue;
+				}
 				if (decl.type === 'enum' && !decl.values.includes(value)) push(`${name}="${value}" is not one of ${decl.values.join(', ')}`);
 				if (decl.type === 'boolean' && value !== '') push(`${name} is a boolean attribute and takes no value`);
 				if (decl.type === 'number' && (value.trim() === '' || !Number.isFinite(Number(value)))) push(`${name}="${value}" is not a number`);
@@ -79,10 +92,19 @@ export function extractHtmlBlocks(markdown) {
 	return blocks;
 }
 
-export function validateGuides(docsDir, merged) {
+export function validateGuides(docsDir, merged, entries = []) {
 	const errors = [];
-	if (!fs.existsSync(docsDir)) return errors;
-	for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
+	if (fs.existsSync(docsDir)) {
+		for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
+			const markdown = fs.readFileSync(file, 'utf8');
+			for (const block of extractHtmlBlocks(markdown)) {
+				errors.push(...validateElementTree(parseHtml(block.html), merged, file, block.line - 1));
+			}
+		}
+	}
+	for (const entry of entries) {
+		const file = path.join(entry.dir, 'docs.md');
+		if (!fs.existsSync(file)) continue;
 		const markdown = fs.readFileSync(file, 'utf8');
 		for (const block of extractHtmlBlocks(markdown)) {
 			errors.push(...validateElementTree(parseHtml(block.html), merged, file, block.line - 1));
@@ -113,7 +135,13 @@ export function findBareMargin(css, className) {
 			const block = stack.pop();
 			if (block) {
 				const members = block.selector.split(',').map((s) => s.trim());
-				if (members.includes(`.${className}`) && MARGIN_RE.test(block.decls)) hits.push(block.line);
+				if (block && members.includes(`.${className}`)) {
+					for (const m of block.decls.matchAll(MARGIN_RE)) {
+						if (m[1].trim().split(/\s+/).every((v) => v === 'auto')) continue;
+						hits.push(block.line);
+						break;
+					}
+				}
 			}
 			selector = '';
 		} else if (ch === ';') {
@@ -163,13 +191,14 @@ export function validateLayers(srcDir) {
 	return errors;
 }
 
-const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, then everything else';
+const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else';
 
-/** Enforces the phase 1 import order once src/tokens exists. */
+/** Enforces the import order and that every tokens/base/layouts file is imported. */
 export function validateImportOrder(srcDir) {
 	const tokensDir = path.join(srcDir, 'tokens');
 	const entryFile = path.join(srcDir, 'yeti.css');
-	if (!fs.existsSync(tokensDir) || !fs.existsSync(entryFile)) return [];
+	const attrFile = path.join(srcDir, 'layouts', 'attributes.css');
+	if (!fs.existsSync(entryFile) || (!fs.existsSync(tokensDir) && !fs.existsSync(attrFile))) return [];
 	const errors = [];
 	const raw = splitImports(fs.readFileSync(entryFile, 'utf8'), entryFile).imports;
 	// Normalise once so "./tokens/x.css" and "tokens/x.css" rank and match alike.
@@ -180,9 +209,11 @@ export function validateImportOrder(srcDir) {
 		if (href.startsWith('tokens/')) return 1;
 		if (href === 'base/reset.css') return 2;
 		if (href.startsWith('base/')) return 3;
-		return 4;
+		if (href === 'layouts/attributes.css') return 4;
+		if (href.startsWith('layouts/')) return 5;
+		return 6;
 	};
-	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'the rest'];
+	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'layouts/attributes.css', 'layouts/', 'the rest'];
 	// Report the first import that has something of a lower group after it.
 	for (let i = 0; i < imports.length; i++) {
 		const later = imports.slice(i + 1).find((imp) => rank(imp.href) < rank(imports[i].href));
@@ -191,9 +222,11 @@ export function validateImportOrder(srcDir) {
 			break;
 		}
 	}
-	const tokenFiles = fs.readdirSync(tokensDir).filter((f) => f.endsWith('.css')).map((f) => `tokens/${f}`);
-	for (const f of tokenFiles) {
-		if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+	if (fs.existsSync(tokensDir)) {
+		const tokenFiles = fs.readdirSync(tokensDir).filter((f) => f.endsWith('.css')).map((f) => `tokens/${f}`);
+		for (const f of tokenFiles) {
+			if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
 	}
 
 	const baseDir = path.join(srcDir, 'base');
@@ -201,6 +234,17 @@ export function validateImportOrder(srcDir) {
 		const baseFiles = fs.readdirSync(baseDir).filter((f) => f.endsWith('.css')).map((f) => `base/${f}`);
 		for (const f of baseFiles) {
 			if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
+	}
+
+	const layoutsDir = path.join(srcDir, 'layouts');
+	if (fs.existsSync(layoutsDir)) {
+		if (fs.existsSync(path.join(layoutsDir, 'attributes.css')) && !hrefs.includes('layouts/attributes.css')) {
+			errors.push({ file: entryFile, message: 'layouts/attributes.css is not imported' });
+		}
+		for (const name of fs.readdirSync(layoutsDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
+			const f = `layouts/${name}/${name}.css`;
+			if (fs.existsSync(path.join(srcDir, f)) && !hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
 		}
 	}
 	return errors;
@@ -266,20 +310,90 @@ export function validateTokens(root, manifestEntries = []) {
 	return errors;
 }
 
+const MAPPED = {
+	'data-gap': 'gap', 'data-align': 'align', 'data-justify': 'justify', 'data-threshold': 'width',
+	'data-width': 'width', 'data-min': 'width-or-none', 'data-max': 'width', 'data-ratio': 'ratio', 'data-columns': 'columns',
+};
+
+// Read directly by their own layout's CSS, so they have no attributes.css rule.
+const READ_DIRECTLY = new Set(['data-side', 'data-limit']);
+
+/** Every value of every mapped vocabulary must have a rule in layouts/attributes.css,
+ *  and every manifest attribute that references a vocabulary must be checked against
+ *  the right one (or explicitly exempted as read directly by its own layout's CSS). */
+export function validateVocabulary(root, entries = []) {
+	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
+	const attrFile = path.join(root, 'src', 'layouts', 'attributes.css');
+	if (!fs.existsSync(vocabFile) || !fs.existsSync(attrFile)) return [];
+	const vocabulary = loadVocabulary(vocabFile);
+	const css = stripComments(fs.readFileSync(attrFile, 'utf8'));
+	const present = new Set([...css.matchAll(/\[(data-[a-z-]+)="([^"]+)"\]/g)].map((m) => `${m[1]}=${m[2]}`));
+	const errors = [];
+	for (const [attr, vocab] of Object.entries(MAPPED)) {
+		for (const value of vocabulary[vocab] ?? []) {
+			if (!present.has(`${attr}=${value}`)) errors.push({ file: attrFile, message: `${attr}="${value}" (vocabulary ${vocab}) has no rule` });
+		}
+	}
+
+	for (const entry of entries) {
+		for (const attr of entry.manifest.attributes) {
+			if (!attr.vocabulary || READ_DIRECTLY.has(attr.name)) continue;
+			if (!(attr.name in MAPPED)) {
+				errors.push({ file: entry.file, message: `attribute ${attr.name} references vocabulary "${attr.vocabulary}" but validate does not check it; add it to MAPPED or READ_DIRECTLY in bin/validate.js` });
+			} else if (MAPPED[attr.name] !== attr.vocabulary) {
+				errors.push({ file: entry.file, message: `attribute ${attr.name} uses vocabulary "${attr.vocabulary}" but validate checks it against "${MAPPED[attr.name]}"` });
+			}
+		}
+	}
+	return errors;
+}
+
+/** Layouts respond to their container, never the viewport. */
+export function validateNoMediaQueries(srcDir) {
+	const layoutsDir = path.join(srcDir, 'layouts');
+	if (!fs.existsSync(layoutsDir)) return [];
+	const errors = [];
+	for (const file of walkFiles(layoutsDir).filter((f) => f.endsWith('.css'))) {
+		const text = stripComments(fs.readFileSync(file, 'utf8'));
+		const m = text.match(/@media\b/);
+		if (m) errors.push({ file, line: text.slice(0, m.index).split('\n').length, message: 'layouts are intrinsic; use container-relative techniques, not media queries' });
+	}
+	return errors;
+}
+
+/** Every layout ships a docs.md that explains its name. */
+export function validateDocsFragments(entries) {
+	const errors = [];
+	for (const entry of entries.filter((e) => e.kind === 'layout')) {
+		const file = path.join(entry.dir, 'docs.md');
+		if (!fs.existsSync(file)) {
+			errors.push({ file: entry.dir, message: 'layouts must have a docs.md with a "## Why this name" heading' });
+		} else if (!/^## Why this name\s*$/m.test(fs.readFileSync(file, 'utf8'))) {
+			errors.push({ file, message: 'layouts must explain their name under a "## Why this name" heading' });
+		}
+	}
+	return errors;
+}
+
 export function validate({ root }) {
 	const srcDir = path.join(root, 'src');
 	const docsDir = path.join(root, 'docs', 'guides');
 	const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
-	const { entries, merged, errors } = loadAndMerge(srcDir, schema);
+	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
+	const vocabulary = fs.existsSync(vocabFile) ? loadVocabulary(vocabFile) : {};
+	const { entries, merged, errors } = loadAndMerge(srcDir, schema, vocabulary);
 	const all = [
 		...errors,
 		...validateExamples(entries, merged),
-		...validateGuides(docsDir, merged),
+		...validateGuides(docsDir, merged, entries),
 		...validateSpacing(entries),
 		...validateLayers(srcDir),
 		...validateImportOrder(srcDir),
 		...validateImportant(srcDir),
 		...validateTokens(root, entries),
+		...validateVocabulary(root, entries),
+		...validateNoMediaQueries(srcDir),
+		...validateDocsFragments(entries),
 	];
 	return { errors: all, count: Object.keys(merged).length };
 }

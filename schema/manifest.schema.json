@@ -65,6 +65,7 @@
         "name": { "type": "string", "pattern": "^data-[a-z][a-z0-9-]*$" },
         "type": { "enum": ["enum", "boolean", "number", "string"] },
         "values": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+        "vocabulary": { "type": "string", "description": "Name of a list in schema/vocabulary.json; resolved into values at load. Mutually exclusive with values." },
         "default": { "type": ["string", "number", "boolean"] },
         "description": { "type": "string" }
       }
@@ -84,7 +85,7 @@
       "additionalProperties": false,
       "required": ["selector"],
       "properties": {
-        "selector": { "type": "string", "description": "Relative to the root: '> *', '> tag', '> .class', '> tag.class', or the same without '>' for descendants." },
+        "selector": { "type": "string", "description": "Relative to the root: '> *', '> tag', '> .class', '> tag.class', '> [attr]', '> tag[attr]', '> .class[attr]' (optionally '[attr=\"value\"]', and '*' matches any tag), or the same without '>' for descendants." },
         "min": { "type": "integer", "minimum": 0 },
         "max": { "type": ["integer", "null"], "minimum": 0 },
         "description": { "type": "string" }
@@ -95,7 +96,7 @@
       "additionalProperties": false,
       "required": ["name", "public"],
       "properties": {
-        "name": { "type": "string", "pattern": "^--[a-z][a-z0-9-]*$" },
+        "name": { "type": "string", "pattern": "^--_?[a-z][a-z0-9-]*$" },
         "public": { "type": "boolean", "description": "Public tokens are the theming API and appear in docs. Internal ones may change between minors." },
         "description": { "type": "string" }
       }

@@ -1,7 +1,9 @@
-/* Space and radius read off the scale, so gaps are proportional to type. */
+/* Space and radius read off the scale, so gaps are proportional to type.
+   Widths are container measures in rem: they follow the visitor's root size,
+   not the scale, because a threshold is about content, not type. */
 @layer yeti.base {
 	:root {
-		--yeti-space-0: 0;
+		--yeti-space-none: 0;
 		--yeti-space-xs: var(--_yeti-step--2);
 		--yeti-space-sm: var(--_yeti-step--1);
 		--yeti-space-md: var(--_yeti-step-0);
@@ -18,9 +20,27 @@
 		--yeti-space-2xl-static: var(--_yeti-step-3-static);
 		--yeti-space-3xl-static: var(--_yeti-step-4-static);
 
+		/* Internal: the wide-viewport value of each stop, for fluid pairs. */
+		--_yeti-space-xs-max: var(--_yeti-step--2-max);
+		--_yeti-space-sm-max: var(--_yeti-step--1-max);
+		--_yeti-space-md-max: var(--_yeti-step-0-max);
+		--_yeti-space-lg-max: var(--_yeti-step-1-max);
+		--_yeti-space-xl-max: var(--_yeti-step-2-max);
+		--_yeti-space-2xl-max: var(--_yeti-step-3-max);
+		--_yeti-space-3xl-max: var(--_yeti-step-4-max);
+
 		--yeti-radius-sm: calc(0.25 * var(--_yeti-base));
 		--yeti-radius-md: calc(0.5 * var(--_yeti-base));
 		--yeti-radius-lg: var(--_yeti-base);
 		--yeti-radius-full: 9999px;
+
+		--yeti-width-xs: 16rem;
+		--yeti-width-sm: 24rem;
+		--yeti-width-md: 32rem;
+		--yeti-width-lg: 48rem;
+		--yeti-width-xl: 64rem;
+		--yeti-width-2xl: 80rem;
+
+		--yeti-cover-height: 100dvh;
 	}
 }

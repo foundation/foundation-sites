@@ -28,7 +28,7 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 
 | Token | Default | Description |
 | --- | --- | --- |
-| `--yeti-space-0` | `0` | No space; lets attributes offer a zero gap. |
+| `--yeti-space-none` | `0` | No space; the value behind data-gap="none". |
 | `--yeti-space-xs` | `step -2` | Hairline gap. |
 | `--yeti-space-sm` | `step -1` | Tight gap. |
 | `--yeti-space-md` | `step 0` | Default gap; equals the body text size. |
@@ -52,6 +52,17 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-radius-md` | `0.5 × base` | Medium corner radius; cards, dialogs. |
 | `--yeti-radius-lg` | `1 × base` | Large corner radius; hero panels. |
 | `--yeti-radius-full` | `9999px` | Pill or circle. |
+
+## Width
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-width-xs` | `16rem` | Smallest container measure; the grid's default minimum column width. |
+| `--yeti-width-sm` | `24rem` | The sidebar's default width. |
+| `--yeti-width-md` | `32rem` | The columns layout's default threshold. |
+| `--yeti-width-lg` | `48rem` | A narrow page column. |
+| `--yeti-width-xl` | `64rem` | The center layout's default maximum. |
+| `--yeti-width-2xl` | `80rem` | A wide page column. |
 
 ## Text
 
@@ -139,4 +150,10 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-duration-base` | `250ms` | Standard transitions; open and close. Collapses under prefers-reduced-motion. |
 | `--yeti-ease` | `cubic-bezier(0.2, 0, 0, 1)` | Default easing; fast out, gentle in. |
 
-Yeti also defines 34 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.
+## Layout
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-cover-height` | `100dvh` | Minimum block size of a cover layout. Set to auto for a cover that is only as tall as its content. |
+
+Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

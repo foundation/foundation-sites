@@ -1,0 +1,30 @@
+/* Sidebar: a fixed-width companion beside flexible content. The pair sits
+   side by side while the content can keep at least half the width, and
+   stacks the moment it cannot. */
+@layer yeti.layouts {
+	.sidebar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: var(--_yeti-align);
+		gap: var(--_yeti-gap);
+	}
+	.sidebar:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.sidebar:not([data-width]) { --_yeti-width: var(--yeti-width-sm); }
+	.sidebar:not([data-align]) { --_yeti-align: stretch; }
+	.sidebar > * { margin: 0; }
+
+	/* The sidebar child: first by default, last with data-side="end". */
+	.sidebar:not([data-side="end"]) > :first-child,
+	.sidebar[data-side="end"] > :last-child {
+		flex-basis: var(--_yeti-width);
+		flex-grow: 1;
+	}
+
+	/* The content child takes everything else and refuses to go below half. */
+	.sidebar:not([data-side="end"]) > :last-child,
+	.sidebar[data-side="end"] > :first-child {
+		flex-basis: 0;
+		flex-grow: 999;
+		min-inline-size: 50%;
+	}
+}

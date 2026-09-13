@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "box",
+  "kind": "layout",
+  "description": "Pads its content on all sides, with an optional border.",
+  "class": "box",
+  "attributes": [
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Padding on every side." },
+    { "name": "data-border", "type": "boolean", "description": "Draw a one-pixel border in the border color." }
+  ],
+  "classes": [],
+  "children": [],
+  "tokens": [
+    { "name": "--yeti-space-md", "public": true, "description": "The default padding." },
+    { "name": "--yeti-color-border", "public": true, "description": "The border color when data-border is set." },
+    { "name": "--_yeti-gap", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual. A box has no semantics; use a section or article element when the content is one." },
+  "js": null,
+  "support": { "unguarded": [], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

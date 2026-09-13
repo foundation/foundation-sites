@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "center",
+  "kind": "layout",
+  "description": "Centers a column of content horizontally, up to a maximum width, with gutters on narrow screens.",
+  "class": "center",
+  "attributes": [
+    { "name": "data-max", "type": "enum", "vocabulary": "width", "default": "xl", "description": "The widest the content column may be." },
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "The gutter on each side when the container is narrower than the maximum." },
+    { "name": "data-intrinsic", "type": "boolean", "description": "Also center each child on its own width instead of stretching it." }
+  ],
+  "classes": [],
+  "children": [],
+  "tokens": [
+    { "name": "--yeti-width-xl", "public": true, "description": "The default maximum." },
+    { "name": "--yeti-space-md", "public": true, "description": "The default gutter." },
+    { "name": "--_yeti-max", "public": false },
+    { "name": "--_yeti-gap", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual." },
+  "js": null,
+  "support": { "unguarded": ["logical properties"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

@@ -1,0 +1,17 @@
+/* Center: a horizontally centered column with gutters that never lets its
+   content touch the edges. content-box so the maximum is the content width. */
+@layer yeti.layouts {
+	.center {
+		box-sizing: content-box;
+		max-inline-size: var(--_yeti-max);
+		margin-inline: auto;
+		padding-inline: var(--_yeti-gap);
+	}
+	.center:not([data-max]) { --_yeti-max: var(--yeti-width-xl); }
+	.center:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.center[data-intrinsic] {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}

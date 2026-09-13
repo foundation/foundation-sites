@@ -1,13 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { loadSchema, loadAndMerge } from '../../bin/lib/manifest.js';
-import { makeTree, validManifest, validTree, SCHEMA_PATH } from './helpers.js';
+import { loadSchema, loadAndMerge, loadVocabulary } from '../../bin/lib/manifest.js';
+import { makeTree, validManifest, validTree, SCHEMA_PATH, VOCABULARY_PATH } from './helpers.js';
 
 const schema = () => loadSchema(SCHEMA_PATH);
-const load = (files) => {
+const load = (files, vocabulary) => {
 	const dir = makeTree(files);
-	return { dir, ...loadAndMerge(path.join(dir, 'src'), schema()) };
+	return { dir, ...loadAndMerge(path.join(dir, 'src'), schema(), vocabulary) };
 };
 const messages = (result) => result.errors.map((e) => e.message);
 
@@ -86,4 +86,23 @@ test('duplicate names across kinds are rejected', () => {
 	}));
 	assert.equal(messages(r).length, 1);
 	assert.match(messages(r)[0], /^duplicate name "rail"/);
+});
+
+test('an attribute may reference a vocabulary, which is resolved into values', () => {
+	const vocabulary = loadVocabulary(VOCABULARY_PATH);
+	const dir = makeTree(validTree({
+		'src/layouts/rail/manifest.json': validManifest({ attributes: [{ name: 'data-gap', type: 'enum', vocabulary: 'gap', description: 'Gap.' }] }),
+	}));
+	const r = loadAndMerge(path.join(dir, 'src'), schema(), vocabulary);
+	assert.deepEqual(r.errors, []);
+	assert.deepEqual(r.merged.rail.attributes[0].values.slice(0, 3), ['none', 'xs', 'sm']);
+	assert.equal(r.merged.rail.attributes[0].values.length, 29);
+});
+
+test('vocabulary and values together, or an unknown vocabulary, are errors', () => {
+	const vocabulary = loadVocabulary(VOCABULARY_PATH);
+	const both = load(validTree({ 'src/layouts/rail/manifest.json': validManifest({ attributes: [{ name: 'data-gap', type: 'enum', vocabulary: 'gap', values: ['x'], description: 'Gap.' }] }) }), vocabulary);
+	assert.deepEqual(messages(both), ['attribute data-gap: vocabulary and values are mutually exclusive']);
+	const unknown = load(validTree({ 'src/layouts/rail/manifest.json': validManifest({ attributes: [{ name: 'data-gap', type: 'enum', vocabulary: 'nope', description: 'Gap.' }] }) }), vocabulary);
+	assert.deepEqual(messages(unknown), ['attribute data-gap: unknown vocabulary "nope"']);
 });

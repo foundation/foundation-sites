@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resolveImports } from './lib/imports.js';
-import { loadSchema, loadAndMerge } from './lib/manifest.js';
+import { loadSchema, loadAndMerge, loadVocabulary } from './lib/manifest.js';
 import { validate, formatError } from './validate.js';
 import { walkFiles } from './lib/files.js';
 
@@ -55,7 +55,9 @@ export function build({ root, pkg = readPackage(root) }) {
 	}
 
 	const schema = loadSchema(path.join(root, 'schema', 'manifest.schema.json'));
-	const { merged } = loadAndMerge(srcDir, schema);
+	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
+	const vocabulary = fs.existsSync(vocabFile) ? loadVocabulary(vocabFile) : {};
+	const { merged } = loadAndMerge(srcDir, schema, vocabulary);
 	write('yeti.manifest.json', `${JSON.stringify({
 		framework: 'yeti',
 		version: pkg.version,

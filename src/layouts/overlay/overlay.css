@@ -1,0 +1,15 @@
+/* Overlay: centered over the nearest positioned ancestor, or over the
+   viewport with data-fixed. Never wider or taller than that box minus a gap. */
+@layer yeti.layouts {
+	.overlay {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		max-inline-size: calc(100% - 2 * var(--_yeti-gap));
+		max-block-size: calc(100% - 2 * var(--_yeti-gap));
+		overflow: auto;
+	}
+	.overlay:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.overlay[data-fixed] { position: fixed; }
+}

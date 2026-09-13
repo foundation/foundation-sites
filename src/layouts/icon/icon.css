@@ -1,0 +1,19 @@
+/* Icon: an SVG sized to the text beside it and aligned with it. */
+@layer yeti.layouts {
+	.icon {
+		display: inline-flex;
+		align-items: var(--_yeti-align);
+		gap: var(--_yeti-gap);
+	}
+	.icon:not([data-gap]) { --_yeti-gap: var(--yeti-space-xs); }
+	.icon:not([data-align]) { --_yeti-align: center; }
+	.icon > * { margin: 0; }
+	.icon > svg {
+		inline-size: 1em;
+		block-size: 1em;
+		flex: none;
+	}
+	/* On the baseline an icon's bottom edge sits where letters' do, which
+	   reads too high; a small nudge settles it. */
+	.icon[data-align="baseline"] > svg { translate: 0 0.125em; }
+}

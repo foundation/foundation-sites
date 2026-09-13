@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "cover",
+  "kind": "layout",
+  "description": "Fills at least the viewport's height and centers one child vertically, with optional content pinned above and below it.",
+  "class": "cover",
+  "attributes": [
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Minimum space between the centered child and whatever sits above or below it." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": null, "description": "A header, the centered child, a footer: any of them optional except the centered one." },
+    { "selector": "> [data-center]", "min": 1, "max": 1, "description": "Exactly one child carries data-center and is centered in the remaining space." }
+  ],
+  "tokens": [
+    { "name": "--yeti-cover-height", "public": true, "description": "The minimum block size. Set it to auto for a cover no taller than its content." },
+    { "name": "--yeti-space-md", "public": true, "description": "The default gap." },
+    { "name": "--_yeti-gap", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual. Keep the page's h1 inside the cover when the cover is the hero." },
+  "js": null,
+  "support": { "unguarded": ["flexbox gap", "dvh units"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

@@ -163,3 +163,24 @@ test('the internal token count ignores comments', () => {
 	generateDocs({ root });
 	assert.ok(fs.readFileSync(path.join(root, 'docs/tokens.md'), 'utf8').includes('1 internal `--_yeti-*` tokens'));
 });
+
+test('the tokens page renders the width and layout groups in order', () => {
+	const page = renderTokensPage([
+		{ name: '--yeti-width-xs', group: 'width', public: true, default: '16rem', description: 'x' },
+		{ name: '--yeti-cover-height', group: 'layout', public: true, default: '100dvh', description: 'x' },
+		{ name: '--yeti-radius-sm', group: 'radius', public: true, default: 'x', description: 'x' },
+	], 0);
+	assert.ok(page.indexOf('## Radius') < page.indexOf('## Width') && page.indexOf('## Width') < page.indexOf('## Layout'));
+});
+
+test('renderPage inserts a docs.md fragment after the example', () => {
+	const page = renderPage({ manifest: validManifest(), exampleHtml, navOrder: 1, docsMd: '## When to use it\n\nProse here.\n\n## Why this name\n\nBecause.\n' });
+	assert.ok(page.indexOf('## Example') < page.indexOf('## When to use it'));
+	assert.ok(page.indexOf('## Why this name') < page.indexOf('## Attributes'));
+});
+
+test('generateDocs reads docs.md from the component folder', () => {
+	const root = makeTree(validTree({ 'src/layouts/rail/docs.md': '## Why this name\n\nBecause.\n' }));
+	generateDocs({ root });
+	assert.ok(fs.readFileSync(path.join(root, 'docs/rail.md'), 'utf8').includes('## Why this name'));
+});
