@@ -20,6 +20,14 @@ test.describe('overlay', () => {
 		expect(c.y).toBeCloseTo(viewport.y, 0);
 	});
 
+	test('stays centered under direction: rtl', async ({ page }) => {
+		await open(page, 'overlay');
+		await page.evaluate(() => { document.documentElement.dir = 'rtl'; });
+		const [host, overlay] = await Promise.all([rect(page, '#host'), rect(page, '#overlay')]);
+		expect(center(overlay).x).toBeCloseTo(center(host).x, 0);
+		expect(center(overlay).y).toBeCloseTo(center(host).y, 0);
+	});
+
 	test('has no accessibility violations', async ({ page }) => {
 		await open(page, 'overlay');
 		expect(await axe(page)).toEqual([]);

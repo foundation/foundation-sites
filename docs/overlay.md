@@ -61,7 +61,7 @@ No structural requirements.
 
 ## Browser support
 
-- Used without guards: translate property, logical inset properties
+- Used without guards: translate property
 - Behind `@supports`: nothing
 
 ## JavaScript

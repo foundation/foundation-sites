@@ -16,7 +16,7 @@
   ],
   "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Positioning only. An overlay that interrupts the page needs focus management and a way to dismiss it, which the dialog and tooltip components provide; use those rather than this primitive alone for anything modal." },
   "js": null,
-  "support": { "unguarded": ["translate property", "logical inset properties"], "guarded": [] },
+  "support": { "unguarded": ["translate property"], "guarded": [] },
   "since": "7.0.0",
   "example": "example.html"
 }

@@ -3,8 +3,8 @@
 @layer yeti.layouts {
 	.overlay {
 		position: absolute;
-		inset-block-start: 50%;
-		inset-inline-start: 50%;
+		top: 50%;
+		left: 50%;
 		translate: -50% -50%;
 		max-inline-size: calc(100% - 2 * var(--_yeti-gap));
 		max-block-size: calc(100% - 2 * var(--_yeti-gap));
