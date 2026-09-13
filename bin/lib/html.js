@@ -1,12 +1,26 @@
-// Thin wrapper over parse5 for the validator. Examples are HTML fragments.
+// Thin wrapper over parse5 for the validator. Examples are HTML fragments,
+// except that some (the shell's) wrap their content in a real <body> to show
+// the recipe on the page's outermost element. parse5's fragment parser
+// special-cases a literal <body> tag and drops it (spec behavior for
+// innerHTML-style parsing): the wrapper's own class and attributes vanish and
+// only its children survive. So a leading <body> is parsed as a full
+// document instead, and the real body element (which carries the source
+// locations and attributes the fragment parser threw away) is unwrapped back
+// into the same one-element-array shape parseFragment would have returned.
 // The selector subset supported by countMatches is deliberately small:
 //   '> X'  direct children matching X
 //   'X'    all descendants matching X
 // where X is '*', 'tag', '.class', 'tag.class', or '.a.b'.
-import { parseFragment } from 'parse5';
+import { parseFragment, parse } from 'parse5';
 
 export function parseHtml(html) {
 	// Source locations let the validator report the line of the offending element.
+	if (/^\s*<body[\s>]/i.test(html)) {
+		const document = parse(html, { sourceCodeLocationInfo: true });
+		const body = document.childNodes.find((n) => n.tagName === 'html')
+			?.childNodes.find((n) => n.tagName === 'body');
+		return { childNodes: [body] };
+	}
 	return parseFragment(html, { sourceCodeLocationInfo: true });
 }
 

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "shell",
+  "kind": "recipe",
+  "description": "The page skeleton: header on top, footer at the bottom of the viewport when the page is short, and a body row where nav and aside sit beside main while there is room.",
+  "class": "shell",
+  "attributes": [
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between the rows, and between nav, main, and aside." },
+    { "name": "data-width", "type": "enum", "vocabulary": "width", "default": "sm", "description": "The preferred width of nav and aside." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": null, "description": "In order: an optional header, the body (a div holding nav, main, and aside, in that source order, or a bare main when there are no side regions), and an optional footer." },
+    { "selector": "> header", "min": 0, "max": 1 },
+    { "selector": "> footer", "min": 0, "max": 1 },
+    { "selector": "> main", "min": 0, "max": 1 },
+    { "selector": "> div", "min": 0, "max": 1, "description": "The body row. Its nav and aside take data-width; its main takes the rest and never drops below half." }
+  ],
+  "tokens": [
+    { "name": "--yeti-cover-height", "public": true, "description": "The shell's minimum block size; the viewport by default." },
+    { "name": "--yeti-space-md", "public": true, "description": "The default gap." },
+    { "name": "--yeti-width-sm", "public": true, "description": "The default nav and aside width." },
+    { "name": "--_yeti-gap", "public": false },
+    { "name": "--_yeti-width", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Meant for body or the page's outermost element. The landmarks do the work: one main; a label on nav when the page has more than one; aside for content that is complementary, not primary." },
+  "js": null,
+  "support": { "unguarded": ["flexbox gap", "dvh units"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

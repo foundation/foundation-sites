@@ -1,0 +1,34 @@
+/* Shell: the page skeleton. A filled column of header, body, and footer,
+   the body row growing so the footer sits at the bottom of a short page;
+   inside the body, nav and aside sit beside main while there is room. */
+@layer yeti.layouts {
+	.shell {
+		display: flex;
+		flex-direction: column;
+		min-block-size: var(--yeti-cover-height);
+		gap: var(--_yeti-gap);
+	}
+	.shell:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.shell:not([data-width]) { --_yeti-width: var(--yeti-width-sm); }
+	.shell > * { margin: 0; }
+	.shell > :is(main, div) { flex-grow: 1; }
+
+	/* The body row. align-content: start keeps its regions at their natural
+	   height, matching a sidebar, while the row itself takes the free space. */
+	.shell > div {
+		display: flex;
+		flex-wrap: wrap;
+		align-content: start;
+		gap: var(--_yeti-gap);
+	}
+	.shell > div > * { margin: 0; }
+	.shell > div > :is(nav, aside) {
+		flex-basis: var(--_yeti-width);
+		flex-grow: 1;
+	}
+	.shell > div > main {
+		flex-basis: 0;
+		flex-grow: 999;
+		min-inline-size: 50%;
+	}
+}
