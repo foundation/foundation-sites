@@ -236,7 +236,7 @@ const layoutTree = (extra = {}) => validTree({
 		+ ['start', 'center', 'end', 'between', 'around', 'evenly'].map((v) => `\t[data-justify="${v}"] { --_yeti-justify: ${v}; }\n`).join('')
 		+ ['xs', 'sm', 'md', 'lg', 'xl', '2xl'].flatMap((v) => [`\t[data-threshold="${v}"] { --_yeti-threshold: 0; }\n`, `\t[data-width="${v}"] { --_yeti-width: 0; }\n`, `\t[data-max="${v}"] { --_yeti-max: 0; }\n`]).join('')
 		+ ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'].map((v) => `\t[data-min="${v}"] { --_yeti-min: 0; }\n`).join('')
-		+ ['1/1', '4/3', '3/2', '16/9', '21/9'].map((v) => `\t[data-ratio="${v}"] { --_yeti-ratio: ${v}; }\n`).join('')
+		+ ['1/1', '4/3', '3/2', '16/9', '21/9'].map((v) => `\t[data-ratio="${v}"] { --_yeti-aspect: ${v}; }\n`).join('')
 		+ ['1', '2', '3', '4', '5', '6'].map((v) => `\t[data-columns="${v}"] { --_yeti-column-cap: 0; }\n`).join('')
 		+ '}\n',
 	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n',

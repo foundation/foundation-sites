@@ -82,11 +82,11 @@
 	[data-max="2xl"] { --_yeti-max: var(--yeti-width-2xl); }
 
 	/* data-ratio */
-	[data-ratio="1/1"] { --_yeti-ratio: 1 / 1; }
-	[data-ratio="4/3"] { --_yeti-ratio: 4 / 3; }
-	[data-ratio="3/2"] { --_yeti-ratio: 3 / 2; }
-	[data-ratio="16/9"] { --_yeti-ratio: 16 / 9; }
-	[data-ratio="21/9"] { --_yeti-ratio: 21 / 9; }
+	[data-ratio="1/1"] { --_yeti-aspect: 1 / 1; }
+	[data-ratio="4/3"] { --_yeti-aspect: 4 / 3; }
+	[data-ratio="3/2"] { --_yeti-aspect: 3 / 2; }
+	[data-ratio="16/9"] { --_yeti-aspect: 16 / 9; }
+	[data-ratio="21/9"] { --_yeti-aspect: 21 / 9; }
 
 	/* data-columns: the grid's maximum column count, as a minimum track width */
 	[data-columns="1"] { --_yeti-column-cap: 100%; }
