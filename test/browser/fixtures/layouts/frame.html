@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Frame fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Frame</h1>
+		<div id="stage">
+			<div class="frame" id="frame">
+				<img id="img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23cbd5e1'/%3E%3C/svg%3E" alt="">
+			</div>
+			<div class="frame item" id="square" data-ratio="1/1" style="inline-size: 200px">
+				<p id="placeholder">No image</p>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

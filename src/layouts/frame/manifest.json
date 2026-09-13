@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "frame",
+  "kind": "layout",
+  "description": "Holds one child in a fixed aspect ratio, cropping media to fill it and centering anything else.",
+  "class": "frame",
+  "attributes": [
+    { "name": "data-ratio", "type": "enum", "vocabulary": "ratio", "default": "16/9", "description": "Width to height." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": 1, "description": "One child: an image or video is cropped to fill; anything else is centered." }
+  ],
+  "tokens": [
+    { "name": "--_yeti-aspect", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Cropping hides parts of an image. Make sure the alt text describes what is visible, or use data-ratio to match the image so nothing is lost." },
+  "js": null,
+  "support": { "unguarded": ["aspect-ratio", "object-fit"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

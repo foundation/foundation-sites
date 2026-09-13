@@ -1,0 +1,17 @@
+/* Frame: a fixed aspect-ratio crop. Media fills and is cropped; anything
+   else is centered. */
+@layer yeti.layouts {
+	.frame {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: var(--_yeti-aspect);
+		overflow: hidden;
+	}
+	.frame:not([data-ratio]) { --_yeti-aspect: 16 / 9; }
+	.frame > :is(img, video) {
+		inline-size: 100%;
+		block-size: 100%;
+		object-fit: cover;
+	}
+}

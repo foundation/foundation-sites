@@ -1,0 +1,18 @@
+/* Scroller: a horizontal track. Children keep their width and the track
+   scrolls; snap and a fixed child width are opt-in. */
+@layer yeti.layouts {
+	.scroller {
+		display: flex;
+		gap: var(--_yeti-gap);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+	}
+	.scroller:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.scroller > * {
+		margin: 0;
+		flex: 0 0 auto;
+	}
+	.scroller[data-width] > * { inline-size: var(--_yeti-width); }
+	.scroller[data-snap] { scroll-snap-type: x mandatory; }
+	.scroller[data-snap] > * { scroll-snap-align: start; }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Scroller fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Scroller</h1>
+		<div id="stage">
+			<div class="scroller" id="scroller" role="region" aria-label="Plain track" tabindex="0">
+				<div class="item" id="s1" style="inline-size: 200px">s1</div>
+				<div class="item" id="s2" style="inline-size: 200px">s2</div>
+				<div class="item" id="s3" style="inline-size: 200px">s3</div>
+				<div class="item" id="s4" style="inline-size: 200px">s4</div>
+				<div class="item" id="s5" style="inline-size: 200px">s5</div>
+				<div class="item" id="s6" style="inline-size: 200px">s6</div>
+			</div>
+			<div class="scroller" id="snapped" data-snap data-width="xs" role="region" aria-label="Snapping track" tabindex="0">
+				<div class="item" id="n1">n1</div>
+				<div class="item" id="n2">n2</div>
+				<div class="item" id="n3">n3</div>
+				<div class="item" id="n4">n4</div>
+				<div class="item" id="n5">n5</div>
+				<div class="item" id="n6">n6</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

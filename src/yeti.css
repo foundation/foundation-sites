@@ -19,3 +19,5 @@
 @import "layouts/columns/columns.css";
 @import "layouts/cover/cover.css";
 @import "layouts/grid/grid.css";
+@import "layouts/frame/frame.css";
+@import "layouts/scroller/scroller.css";
