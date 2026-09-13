@@ -1,7 +1,7 @@
 ---
 raw: true
 title: "Layouts"
-description: "Twelve intrinsic layouts that respond to their container, one attribute vocabulary, and the responsive model behind them."
+description: "Fifteen intrinsic layouts that respond to their container, one attribute vocabulary, and the responsive model behind them."
 nav_group: "Guides"
 nav_order: 3
 ---
@@ -14,7 +14,7 @@ Layouts are Yeti's grammar. A layout is a class that arranges its own children a
 
 Yeti has three ways to make a page respond to its context, and they apply in a fixed order.
 
-Intrinsic layouts come first. The twelve on this page arrange their children by reading their own width, not the viewport's. A `sidebar` drops to a stack when it runs low on room, wherever on the page it sits and whatever else is happening at the edge of the browser window. Reach for one of these before reaching for anything else.
+Intrinsic layouts come first. The fifteen on this page arrange their children by reading their own width, not the viewport's. A `sidebar` drops to a stack when it runs low on room, wherever on the page it sits and whatever else is happening at the edge of the browser window. Reach for one of these before reaching for anything else.
 
 Container queries come second. They let a single component change shape based on the width of the box that holds it rather than the window: a card that goes from one column to two once its own container is wide enough, in a sidebar or in a full-width section alike. These arrive in phase 3.
 
@@ -68,7 +68,7 @@ For the sizing attributes the mapping rule is always the same: a value is a toke
 
 Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the two: it runs from the `sm` stop at the narrow end of the viewport to the `lg` stop at the wide end, the same way the type scale itself is fluid. `none` never anchors a pair, so any smaller of the remaining seven sized stops can pair with any larger one, which is what makes twenty-one pairs out of seven.
 
-## The twelve
+## The fifteen
 
 - [stack](../stack.md): stacks its children vertically with one consistent gap between them.
 - [cluster](../cluster.md): lays its children out in a row that wraps, keeping one gap between them on both axes.
@@ -83,6 +83,8 @@ Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the 
 - [center](../center.md): centers a column of content horizontally, up to a maximum width, with gutters on narrow screens.
 - [icon](../icon.md): sizes an inline SVG to the surrounding text and aligns it with the text beside it.
 - [masonry](../masonry.md): packs items of uneven height into columns with no gaps under the short ones.
+- [breakout](../breakout.md): keeps its children in a centered reading column with gutters, and lets any child carrying data-bleed span the full width.
+- [layer](../layer.md): stacks its children in one box, later ones on top, with the box as tall as the tallest of them.
 
 ## Composing
 

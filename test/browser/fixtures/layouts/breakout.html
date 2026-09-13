@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Breakout fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Breakout</h1>
+		<div id="stage">
+			<div class="breakout" id="breakout">
+				<div class="item" id="plain">A plain child in the column.</div>
+				<div class="item" id="bleed" data-bleed>A bleeding child.</div>
+				<p class="item" id="after">Another plain child.</p>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

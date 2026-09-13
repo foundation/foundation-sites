@@ -1,0 +1,22 @@
+/* Breakout: a reading column with gutters, in which a child carrying
+   data-bleed spans the full width. Three tracks: gutter, column, gutter;
+   the column is the maximum or the space minus two gutters, whichever
+   is less. */
+@layer yeti.layouts {
+	.breakout {
+		display: grid;
+		grid-template-columns:
+			[full-start] minmax(var(--_yeti-gap), 1fr)
+			[content-start] min(100% - 2 * var(--_yeti-gap), var(--_yeti-max))
+			[content-end] minmax(var(--_yeti-gap), 1fr)
+			[full-end];
+		row-gap: var(--_yeti-gap);
+	}
+	.breakout:not([data-max]) { --_yeti-max: var(--yeti-width-lg); }
+	.breakout:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.breakout > * {
+		margin: 0;
+		grid-column: content;
+	}
+	.breakout > [data-bleed] { grid-column: full; }
+}
