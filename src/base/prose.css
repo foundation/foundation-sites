@@ -1,0 +1,31 @@
+/* Flow rhythm for unclassed content. The one place base adds space, and
+   only between siblings in flow; no element sets its own outer margin.
+   Layouts in later layers replace this with their own gap. */
+@layer yeti.base {
+	:is(body, main, article, section, aside, header, footer, blockquote, figure, dd, li, details, fieldset) > * + * {
+		margin-block-start: var(--yeti-space-md);
+	}
+
+	/* A heading hugs what follows it. */
+	:is(h1, h2, h3, h4, h5, h6) + * {
+		margin-block-start: var(--yeti-space-sm);
+	}
+
+	/* Major headings open up from the content before them. */
+	:not(h1, h2, h3, h4, h5, h6) + :is(h2, h3) {
+		margin-block-start: var(--yeti-space-xl);
+	}
+
+	/* Measure: prose never runs wider than a comfortable line. */
+	p, li, dd, dt, blockquote, figcaption, h1, h2, h3, h4, h5, h6 {
+		max-inline-size: var(--yeti-measure);
+	}
+
+	ul, ol {
+		padding-inline-start: var(--yeti-space-lg);
+	}
+
+	li + li {
+		margin-block-start: var(--yeti-space-xs);
+	}
+}

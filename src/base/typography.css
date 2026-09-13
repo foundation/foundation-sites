@@ -1,0 +1,54 @@
+/* Typography defaults for bare HTML. Every value is a token. */
+@layer yeti.base {
+	html {
+		font-family: var(--yeti-font-sans);
+		font-size: var(--yeti-text-md);
+		line-height: var(--yeti-leading-md);
+		color: var(--yeti-color-text);
+		background-color: var(--yeti-color-surface);
+		-webkit-font-smoothing: auto;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
+		line-height: var(--yeti-leading-tight);
+		text-wrap: balance;
+	}
+	h1 { font-size: var(--yeti-text-3xl); }
+	h2 { font-size: var(--yeti-text-2xl); }
+	h3 { font-size: var(--yeti-text-xl); }
+	h4 { font-size: var(--yeti-text-lg); }
+	h5 { font-size: var(--yeti-text-md); }
+	h6 { font-size: var(--yeti-text-sm); }
+
+	p {
+		text-wrap: pretty;
+	}
+
+	small {
+		font-size: var(--yeti-text-sm);
+	}
+
+	strong, b {
+		font-weight: 700;
+	}
+
+	a {
+		color: var(--yeti-color-primary);
+		text-decoration: underline;
+		text-decoration-skip-ink: auto;
+		text-underline-offset: 0.15em;
+	}
+	a:hover {
+		color: var(--yeti-color-primary-strong);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--yeti-color-focus);
+		outline-offset: 2px;
+	}
+
+	::selection {
+		background-color: var(--yeti-color-primary-subtle);
+	}
+}

@@ -8,3 +8,5 @@
 @import "tokens/color.css";
 @import "tokens/motion.css";
 @import "base/reset.css";
+@import "base/typography.css";
+@import "base/prose.css";

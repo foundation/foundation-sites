@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Base fixture</title>
+	<link rel="stylesheet" href="../../../src/yeti.css">
+</head>
+<body>
+	<main>
+		<h1 id="h1">A page with no classes</h1>
+		<p id="lead">Yeti's base layer makes bare HTML coherent. This paragraph follows a heading, so it hugs it.</p>
+		<p id="second">This paragraph follows a paragraph, so it gets the default gap. It is long enough to wrap at the measure if the viewport is wide, which is the whole point of setting a maximum line length on prose by default rather than hoping every author remembers.</p>
+		<h2 id="h2">A second-level heading</h2>
+		<p id="after-h2">Text after the heading.</p>
+		<ul id="list"><li>One</li><li id="li2">Two</li></ul>
+		<p><a id="link" href="#h1">A link</a> in running text.</p>
+		<blockquote id="quote">A quotation set off from the text.</blockquote>
+		<figure><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='50'%3E%3C/svg%3E" alt=""><figcaption id="caption">A caption</figcaption></figure>
+		<p>Inline <code id="code">code</code> and a block:</p>
+		<pre id="pre"><code>pre block</code></pre>
+		<hr id="hr">
+		<form id="form">
+			<label for="name">Name</label>
+			<input id="name" type="text">
+			<label for="notes">Notes</label>
+			<textarea id="notes"></textarea>
+			<label for="pick">Pick</label>
+			<select id="pick"><option>One</option></select>
+			<button id="submit" type="submit">Submit</button>
+			<button id="disabled" type="button" disabled>Disabled</button>
+		</form>
+		<table id="table">
+			<caption>A table</caption>
+			<thead><tr><th id="th">Head</th><th>Head</th></tr></thead>
+			<tbody><tr><td id="td">Cell</td><td>Cell</td></tr><tr><td>Cell</td><td>Cell</td></tr></tbody>
+		</table>
+	</main>
+</body>
+</html>
