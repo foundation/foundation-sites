@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import {
-	validate, formatError, validateElementTree, extractHtmlBlocks, findBareMargin, validateLayers,
+	validate, formatError, validateElementTree, extractHtmlBlocks, findBareMargin, validateLayers, validateImportOrder, validateImportant,
 } from '../../bin/validate.js';
 import { parseHtml } from '../../bin/lib/html.js';
 import { makeTree, validManifest, validTree, REPO_ROOT } from './helpers.js';
@@ -125,4 +125,35 @@ test('the layer statement must match exactly and yeti.css must import it first',
 
 test('the real src/ passes the layer check', () => {
 	assert.deepEqual(validateLayers(path.join(REPO_ROOT, 'src')), []);
+});
+
+test('validateImportOrder requires layers, then tokens, then reset, then base', () => {
+	const tokensTree = (yetiCss) => validTree({
+		'src/tokens/scale.css': ':root { --yeti-base-min: 1rem; }\n',
+		'src/tokens/color.css': ':root { --yeti-hue-primary: 250; }\n',
+		'src/base/reset.css': '',
+		'src/base/typography.css': '',
+		'src/yeti.css': yetiCss,
+	});
+	const ok = run(tokensTree('@import "layers.css";\n@import "tokens/color.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
+	assert.deepEqual(ok.lines, []);
+	const resetFirst = run(tokensTree('@import "layers.css";\n@import "base/reset.css";\n@import "tokens/scale.css";\n@import "tokens/color.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
+	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, then everything else (found "base/reset.css" before all of tokens/)']);
+	const missingToken = run(tokensTree('@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
+	assert.deepEqual(missingToken.lines, ['src/yeti.css: tokens/color.css is not imported']);
+});
+
+test('validateImportOrder is silent when src/tokens does not exist', () => {
+	assert.deepEqual(run(validTree()).lines, []);
+});
+
+test('validateImportant allows only the [hidden] rule in the reset', () => {
+	const hidden = run(validTree({ 'src/base/reset.css': '@layer yeti.reset {\n\t[hidden] { display: none !important; }\n}\n' }));
+	assert.deepEqual(hidden.lines, []);
+	const elsewhere = run(validTree({ 'src/layouts/rail/rail.css': '.rail { display: flex !important; }\n' }));
+	assert.deepEqual(elsewhere.lines, ['src/layouts/rail/rail.css:1: !important is not allowed (only the [hidden] rule in base/reset.css may use it)']);
+	const wrongRule = run(validTree({ 'src/base/reset.css': 'img { display: block !important; }\n' }));
+	assert.deepEqual(wrongRule.lines, ['src/base/reset.css:1: !important is not allowed (only the [hidden] rule in base/reset.css may use it)']);
+	const inString = run(validTree({ 'src/layouts/rail/rail.css': '.rail::after { content: "!important"; }\n' }));
+	assert.deepEqual(inString.lines, []);
 });
