@@ -1,0 +1,48 @@
+/* Media: a figure beside text. The one-class form of a sidebar holding a
+   frame and a stack. The figure is whichever child is, or wraps, the
+   picture, so source order decides the side; data-side overrides it. */
+@layer yeti.layouts {
+	.media {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: var(--_yeti-align);
+		gap: var(--_yeti-gap);
+	}
+	.media:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.media:not([data-width]) { --_yeti-width: var(--yeti-width-xs); }
+	.media:not([data-align]) { --_yeti-align: stretch; }
+	.media:not([data-ratio]) { --_yeti-aspect: 1 / 1; }
+	.media > * { margin: 0; }
+
+	/* The figure */
+	.media > :is(img, video, picture),
+	.media > :has(> :is(img, video, picture)) {
+		flex-basis: var(--_yeti-width);
+		flex-grow: 1;
+		aspect-ratio: var(--_yeti-aspect);
+		overflow: hidden;
+	}
+	.media > :is(img, video) { object-fit: cover; }
+	.media > :is(picture, :has(> :is(img, video, picture))) > :is(img, video) {
+		inline-size: 100%;
+		block-size: 100%;
+		object-fit: cover;
+	}
+
+	/* The body: everything that is not the figure */
+	.media > :not(:is(img, video, picture), :has(> :is(img, video, picture))) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--yeti-space-sm);
+		flex-basis: 0;
+		flex-grow: 999;
+		min-inline-size: 50%;
+	}
+	.media > :not(:is(img, video, picture), :has(> :is(img, video, picture))) > * { margin: 0; }
+
+	/* data-side: move the figure without moving it in the source */
+	.media[data-side="start"] > :is(img, video, picture),
+	.media[data-side="start"] > :has(> :is(img, video, picture)) { order: -1; }
+	.media[data-side="end"] > :is(img, video, picture),
+	.media[data-side="end"] > :has(> :is(img, video, picture)) { order: 1; }
+}
