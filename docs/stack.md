@@ -28,7 +28,7 @@ Reach for a stack whenever things sit one above another and should be spaced eve
 
 ## How it works
 
-The stack is a flex column with a `gap`, so the space between children is the stack's decision and children's own margins are zeroed. `data-align` controls horizontal alignment. Give one child `data-split` and it, with everything after it, moves to the end whenever the stack is taller than its content, which is how a card keeps its actions at the bottom.
+The stack is a flex column with a `gap`, so the space between children is the stack's decision and children's own margins are zeroed. `data-align` controls horizontal alignment. Give one child `data-split` and it, with everything after it, moves to the end whenever the stack is taller than its content, which is how a card keeps its actions at the bottom. Add `data-fill` and the stack is at least as tall as the viewport, which with a `data-split` footer is the whole of a sticky footer.
 
 ```html
 <div class="stack" data-gap="sm" data-align="start">
@@ -48,6 +48,7 @@ Every Layout calls this the Stack too, and no other word says it as plainly. Fou
 | --- | --- | --- | --- | --- |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | Space between children. A pair such as sm-lg grows fluidly from the first stop to the second. |
 | `data-align` | enum | `start`, `center`, `end`, `stretch`, `baseline` | `stretch` | Horizontal alignment of the children. |
+| `data-fill` | boolean |  |  | Make the stack at least as tall as the viewport, so a child carrying data-split reaches the bottom. |
 
 ## Children
 
@@ -59,6 +60,7 @@ Every Layout calls this the Stack too, and no other word says it as plainly. Fou
 | Token | Description |
 | --- | --- |
 | `--yeti-space-md` | The default gap. |
+| `--yeti-cover-height` | The minimum block size when data-fill is set. |
 
 <details><summary>Internal tokens (may change between minor versions)</summary>
 

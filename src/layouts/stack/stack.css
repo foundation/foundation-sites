@@ -11,4 +11,5 @@
 	.stack:not([data-align]) { --_yeti-align: stretch; }
 	.stack > * { margin: 0; }
 	.stack > [data-split] { margin-block-start: auto; }
+	.stack[data-fill] { min-block-size: var(--yeti-cover-height); }
 }

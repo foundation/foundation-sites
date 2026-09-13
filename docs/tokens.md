@@ -154,6 +154,6 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 
 | Token | Default | Description |
 | --- | --- | --- |
-| `--yeti-cover-height` | `100dvh` | Minimum block size of a cover layout. Set to auto for a cover that is only as tall as its content. |
+| `--yeti-cover-height` | `100dvh` | Minimum block size of a cover layout or a filled stack. Set to auto for one that is only as tall as its content. |
 
 Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.
