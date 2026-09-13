@@ -19,6 +19,7 @@ export function parseHtml(html) {
 		const document = parse(html, { sourceCodeLocationInfo: true });
 		const body = document.childNodes.find((n) => n.tagName === 'html')
 			?.childNodes.find((n) => n.tagName === 'body');
+		if (!body) throw new Error('parseHtml: document parse produced no body element');
 		return { childNodes: [body] };
 	}
 	return parseFragment(html, { sourceCodeLocationInfo: true });

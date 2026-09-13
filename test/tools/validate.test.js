@@ -326,6 +326,11 @@ test('a recipe validates and counts as a component', () => {
 	assert.equal(r.count, 2);
 });
 
+test('a recipe example wrapped in a literal body still validates', () => {
+	const r = run(recipeTree({ 'src/recipes/duo/example.html': '<body class="duo"><p>One</p><p>Two</p></body>\n' }));
+	assert.deepEqual(r.lines, []);
+});
+
 test('recipes import after layouts and every recipe file must be imported', () => {
 	const early = run(recipeTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "recipes/duo/duo.css";\n@import "layouts/rail/rail.css";\n' }));
 	assert.deepEqual(early.lines, ['src/yeti.css:3: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "recipes/duo/duo.css" before all of layouts/)']);
