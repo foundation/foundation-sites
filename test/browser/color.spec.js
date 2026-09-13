@@ -51,6 +51,7 @@ for (const scheme of ['light', 'dark']) {
 			expect(await ratio(page, '#primary'), `on-primary at hue ${hue}`).toBeGreaterThanOrEqual(4.5);
 			expect(await ratio(page, '#primary-text'), `primary-text at hue ${hue}`).toBeGreaterThanOrEqual(4.5);
 			expect(await ratio(page, '#page'), `surface at hue ${hue}`).toBeGreaterThanOrEqual(7);
+			expect(await ratio(page, '#primary-on-surface'), `primary on surface at hue ${hue}`).toBeGreaterThanOrEqual(4.5);
 		}
 	});
 }
