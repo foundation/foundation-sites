@@ -28,6 +28,7 @@
     "test": "npm run validate && npm run test:tools && npm run test:browser",
     "test:tools": "node --test test/tools/*.test.js",
     "test:browser": "playwright test",
+    "fixtures": "node test/browser/serve.js",
     "release": "node bin/release.js"
   },
   "devDependencies": {

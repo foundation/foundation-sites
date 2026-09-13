@@ -47,7 +47,7 @@ cd yeti
 npm ci
 npx playwright install
 npm test
-npx playwright test --ui  # browse the fixtures under test/browser/fixtures/
+npm run fixtures          # then open http://localhost:4173/ to browse every fixture
 ```
 
 ## Contributing
