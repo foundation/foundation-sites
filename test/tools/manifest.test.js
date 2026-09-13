@@ -106,3 +106,8 @@ test('vocabulary and values together, or an unknown vocabulary, are errors', () 
 	const unknown = load(validTree({ 'src/layouts/rail/manifest.json': validManifest({ attributes: [{ name: 'data-gap', type: 'enum', vocabulary: 'nope', description: 'Gap.' }] }) }), vocabulary);
 	assert.deepEqual(messages(unknown), ['attribute data-gap: unknown vocabulary "nope"']);
 });
+
+test('a manifest under recipes/ must have kind recipe', () => {
+	const r = load(validTree({ 'src/recipes/duo/manifest.json': validManifest({ name: 'duo', class: 'duo', kind: 'layout' }), 'src/recipes/duo/duo.css': '', 'src/recipes/duo/example.html': '<div class="duo"></div>' }));
+	assert.deepEqual(messages(r), ['kind "layout" must be "recipe" inside recipes/']);
+});

@@ -191,7 +191,7 @@ export function validateLayers(srcDir) {
 	return errors;
 }
 
-const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else';
+const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else';
 
 /** Enforces the import order and that every tokens/base/layouts file is imported. */
 export function validateImportOrder(srcDir) {
@@ -211,9 +211,10 @@ export function validateImportOrder(srcDir) {
 		if (href.startsWith('base/')) return 3;
 		if (href === 'layouts/attributes.css') return 4;
 		if (href.startsWith('layouts/')) return 5;
-		return 6;
+		if (href.startsWith('recipes/')) return 6;
+		return 7;
 	};
-	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'layouts/attributes.css', 'layouts/', 'the rest'];
+	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'layouts/attributes.css', 'layouts/', 'recipes/', 'the rest'];
 	// Report the first import that has something of a lower group after it.
 	for (let i = 0; i < imports.length; i++) {
 		const later = imports.slice(i + 1).find((imp) => rank(imp.href) < rank(imports[i].href));
@@ -244,6 +245,14 @@ export function validateImportOrder(srcDir) {
 		}
 		for (const name of fs.readdirSync(layoutsDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
 			const f = `layouts/${name}/${name}.css`;
+			if (fs.existsSync(path.join(srcDir, f)) && !hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
+	}
+
+	const recipesDir = path.join(srcDir, 'recipes');
+	if (fs.existsSync(recipesDir)) {
+		for (const name of fs.readdirSync(recipesDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
+			const f = `recipes/${name}/${name}.css`;
 			if (fs.existsSync(path.join(srcDir, f)) && !hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
 		}
 	}
@@ -350,10 +359,9 @@ export function validateVocabulary(root, entries = []) {
 
 /** Layouts respond to their container, never the viewport. */
 export function validateNoMediaQueries(srcDir) {
-	const layoutsDir = path.join(srcDir, 'layouts');
-	if (!fs.existsSync(layoutsDir)) return [];
 	const errors = [];
-	for (const file of walkFiles(layoutsDir).filter((f) => f.endsWith('.css'))) {
+	const dirs = ['layouts', 'recipes'].map((d) => path.join(srcDir, d)).filter((d) => fs.existsSync(d));
+	for (const file of dirs.flatMap((d) => walkFiles(d)).filter((f) => f.endsWith('.css'))) {
 		const text = stripComments(fs.readFileSync(file, 'utf8'));
 		const m = text.match(/@media\b/);
 		if (m) errors.push({ file, line: text.slice(0, m.index).split('\n').length, message: 'layouts are intrinsic; use container-relative techniques, not media queries' });
@@ -361,14 +369,45 @@ export function validateNoMediaQueries(srcDir) {
 	return errors;
 }
 
-/** Every layout ships a docs.md that explains its name. */
+const BUILT_FROM_MESSAGE = 'recipes must show the same result built from primitives under a "## Built from primitives" heading with a fenced html block';
+
+/** The text of one `## Heading` section, up to the next `## `. Empty string when absent. */
+function markdownSection(markdown, heading) {
+	const re = new RegExp(`^## ${heading}\\s*$`, 'm');
+	const m = re.exec(markdown);
+	if (!m) return { text: '', offset: 0 };
+	const start = m.index + m[0].length;
+	const next = /^## /m.exec(markdown.slice(start));
+	return { text: markdown.slice(start, next ? start + next.index : undefined), offset: start };
+}
+
+/** Every layout and recipe ships a docs.md that explains its name; recipes also show the composed form. */
 export function validateDocsFragments(entries) {
 	const errors = [];
-	for (const entry of entries.filter((e) => e.kind === 'layout')) {
+	for (const entry of entries.filter((e) => e.kind === 'layout' || e.kind === 'recipe')) {
 		const file = path.join(entry.dir, 'docs.md');
 		if (!fs.existsSync(file)) {
 			errors.push({ file: entry.dir, message: 'layouts must have a docs.md with a "## Why this name" heading' });
-		} else if (!/^## Why this name\s*$/m.test(fs.readFileSync(file, 'utf8'))) {
+			continue;
+		}
+		const markdown = fs.readFileSync(file, 'utf8');
+		if (entry.kind === 'recipe') {
+			const section = markdownSection(markdown, 'Built from primitives');
+			const blocks = extractHtmlBlocks(section.text);
+			if (!blocks.length) {
+				errors.push({ file, message: BUILT_FROM_MESSAGE });
+			} else {
+				const lineOffset = markdown.slice(0, section.offset).split('\n').length - 1;
+				for (const block of blocks) {
+					walkElements(parseHtml(block.html), (el) => {
+						if (classList(el).includes(entry.manifest.class)) {
+							errors.push({ file, line: block.line + lineOffset - 1 + (el.sourceCodeLocation ? el.sourceCodeLocation.startLine - 1 : 0) + 1, message: `the composed form must not use the recipe's own class .${entry.manifest.class}` });
+						}
+					});
+				}
+			}
+		}
+		if (!/^## Why this name\s*$/m.test(markdown)) {
 			errors.push({ file, message: 'layouts must explain their name under a "## Why this name" heading' });
 		}
 	}

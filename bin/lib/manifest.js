@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { checkSchema } from './schema-check.js';
 
-export const KIND_DIRS = { layouts: 'layout', components: 'component', utilities: 'utility' };
-export const KIND_TO_DIR = { layout: 'layouts', component: 'components', utility: 'utilities' };
+export const KIND_DIRS = { layouts: 'layout', recipes: 'recipe', components: 'component', utilities: 'utility' };
+export const KIND_TO_DIR = { layout: 'layouts', recipe: 'recipes', component: 'components', utility: 'utilities' };
 
 export function loadSchema(schemaPath) {
 	return JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
