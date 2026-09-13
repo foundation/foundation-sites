@@ -163,3 +163,12 @@ test('the internal token count ignores comments', () => {
 	generateDocs({ root });
 	assert.ok(fs.readFileSync(path.join(root, 'docs/tokens.md'), 'utf8').includes('1 internal `--_yeti-*` tokens'));
 });
+
+test('the tokens page renders the width and layout groups in order', () => {
+	const page = renderTokensPage([
+		{ name: '--yeti-width-xs', group: 'width', public: true, default: '16rem', description: 'x' },
+		{ name: '--yeti-cover-height', group: 'layout', public: true, default: '100dvh', description: 'x' },
+		{ name: '--yeti-radius-sm', group: 'radius', public: true, default: 'x', description: 'x' },
+	], 0);
+	assert.ok(page.indexOf('## Radius') < page.indexOf('## Width') && page.indexOf('## Width') < page.indexOf('## Layout'));
+});

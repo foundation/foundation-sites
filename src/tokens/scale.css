@@ -37,5 +37,14 @@
 		--_yeti-step-2-static: calc(var(--yeti-base-min) * pow(var(--yeti-ratio-min), 2));
 		--_yeti-step-3-static: calc(var(--yeti-base-min) * pow(var(--yeti-ratio-min), 3));
 		--_yeti-step-4-static: calc(var(--yeti-base-min) * pow(var(--yeti-ratio-min), 4));
+
+		/* Wide-viewport steps: the far end for fluid space pairs. */
+		--_yeti-step--2-max: calc(var(--yeti-base-max) / pow(var(--yeti-ratio-max), 2));
+		--_yeti-step--1-max: calc(var(--yeti-base-max) / var(--yeti-ratio-max));
+		--_yeti-step-0-max: var(--yeti-base-max);
+		--_yeti-step-1-max: calc(var(--yeti-base-max) * var(--yeti-ratio-max));
+		--_yeti-step-2-max: calc(var(--yeti-base-max) * pow(var(--yeti-ratio-max), 2));
+		--_yeti-step-3-max: calc(var(--yeti-base-max) * pow(var(--yeti-ratio-max), 3));
+		--_yeti-step-4-max: calc(var(--yeti-base-max) * pow(var(--yeti-ratio-max), 4));
 	}
 }
