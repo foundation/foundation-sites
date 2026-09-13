@@ -128,6 +128,16 @@ test('generateDocs writes tokens.md when a catalogue exists and never sweeps it'
 	assert.ok(fs.readFileSync(path.join(root, 'docs/tokens.md'), 'utf8').includes('2 internal `--_yeti-*` tokens'));
 });
 
+test('generateDocs sweeps a stale generated docs/tokens.md when there is no catalogue', () => {
+	const root = makeTree(validTree({
+		'docs/tokens.md': `---\ntitle: "Tokens"\n---\n${GENERATED_MARK} from src/tokens/tokens.json. Do not edit. -->\n`,
+	}));
+	const r = generateDocs({ root });
+	assert.deepEqual(r.errors, []);
+	assert.deepEqual(r.deleted.map((f) => path.basename(f)), ['tokens.md']);
+	assert.ok(!fs.existsSync(path.join(root, 'docs/tokens.md')));
+});
+
 test('generateDocs refuses to run on an invalid catalogue', () => {
 	const root = makeTree(validTree({
 		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),

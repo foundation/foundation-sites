@@ -201,6 +201,19 @@ test('validateTokens is silent without a catalogue', () => {
 	assert.deepEqual(run(validTree()).lines, []);
 });
 
+test('validateTokens rejects a component named "tokens"', () => {
+	const r = run(catalogueTree({
+		'src/components/tokens/manifest.json': validManifest({
+			name: 'tokens', kind: 'component', class: 'tokens', children: [], tokens: [],
+		}),
+		'src/components/tokens/tokens.css': '@layer yeti.components {\n\t.tokens { display: block; }\n}\n',
+		'src/components/tokens/example.html': '<div class="tokens"></div>\n',
+	}));
+	assert.deepEqual(r.lines, [
+		'src/components/tokens/manifest.json: a component cannot be named "tokens"; docs/tokens.md is the generated token reference',
+	]);
+});
+
 test('validateTokens flags a public token declared outside src/tokens/', () => {
 	const r = run(catalogueTree({
 		'src/layouts/rail/rail.css': '@layer yeti.layouts { .rail { --yeti-rail-gap: 1rem; display: flex; } }\n',

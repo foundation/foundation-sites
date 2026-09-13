@@ -215,12 +215,17 @@ export function validateImportant(srcDir) {
 }
 
 /** The catalogue and src/tokens/*.css must agree exactly. */
-export function validateTokens(root) {
+export function validateTokens(root, manifestEntries = []) {
 	const catalogueFile = path.join(root, 'src', 'tokens', 'tokens.json');
 	if (!fs.existsSync(catalogueFile)) return [];
 	const schema = loadSchema(path.join(root, 'schema', 'tokens.schema.json'));
 	const { entries, errors } = loadCatalogue(catalogueFile, schema);
 	if (errors.length) return errors;
+
+	const tokensComponent = manifestEntries.find((e) => e.name === 'tokens');
+	if (tokensComponent) {
+		errors.push({ file: tokensComponent.file, message: 'a component cannot be named "tokens"; docs/tokens.md is the generated token reference' });
+	}
 
 	const declaredIn = new Map();
 	const tokensDir = path.join(root, 'src', 'tokens');
@@ -266,7 +271,7 @@ export function validate({ root }) {
 		...validateLayers(srcDir),
 		...validateImportOrder(srcDir),
 		...validateImportant(srcDir),
-		...validateTokens(root),
+		...validateTokens(root, entries),
 	];
 	return { errors: all, count: Object.keys(merged).length };
 }

@@ -147,7 +147,7 @@ export function generateDocs({ root }) {
 	if (tokenEntries !== null) {
 		const file = path.join(docsDir, 'tokens.md');
 		if (fs.existsSync(file) && !isGenerated(fs.readFileSync(file, 'utf8'))) {
-			clobberErrors.push({ file, message: 'refusing to overwrite a hand-written page; rename it or remove the component' });
+			clobberErrors.push({ file, message: 'refusing to overwrite a hand-written docs/tokens.md; rename it so the generated tokens page can be written' });
 		}
 	}
 	if (clobberErrors.length) return { written: [], deleted: [], errors: clobberErrors };
@@ -177,7 +177,9 @@ export function generateDocs({ root }) {
 		if (!name.endsWith('.md')) continue;
 		const file = path.join(docsDir, name);
 		if (!fs.statSync(file).isFile()) continue;
-		if (isGenerated(fs.readFileSync(file, 'utf8')) && !(name.slice(0, -3) in merged) && !RESERVED_PAGES.has(name.slice(0, -3))) {
+		const base = name.slice(0, -3);
+		const reserved = RESERVED_PAGES.has(base) && tokenEntries !== null;
+		if (isGenerated(fs.readFileSync(file, 'utf8')) && !(base in merged) && !reserved) {
 			fs.unlinkSync(file);
 			deleted.push(file);
 		}
