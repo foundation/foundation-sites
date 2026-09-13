@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "grid",
+  "kind": "layout",
+  "description": "Fits as many equal columns as the container allows at a minimum width, up to an optional maximum count.",
+  "class": "grid",
+  "attributes": [
+    { "name": "data-min", "type": "enum", "vocabulary": "width-or-none", "default": "xs", "description": "The narrowest a column may be. With none, only data-columns decides the count." },
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between columns and rows." },
+    { "name": "data-columns", "type": "enum", "vocabulary": "columns", "description": "The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min=\"none\" the count is exact." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": null, "description": "The cells. All are the same width." }
+  ],
+  "tokens": [
+    { "name": "--yeti-width-xs", "public": true, "description": "The default minimum column width." },
+    { "name": "--yeti-space-md", "public": true, "description": "The default gap." },
+    { "name": "--_yeti-gap", "public": false },
+    { "name": "--_yeti-min", "public": false },
+    { "name": "--_yeti-column-cap", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual. Use a list when the cells are a list of like things." },
+  "js": null,
+  "support": { "unguarded": ["grid auto-fit", "min() and max() inside minmax()"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

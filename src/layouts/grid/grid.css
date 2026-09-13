@@ -1,0 +1,15 @@
+/* Grid: as many equal columns as fit at a minimum width, with an optional
+   maximum count. The track minimum is the larger of the minimum width and
+   the container split N ways, so data-columns caps the count without a
+   breakpoint. */
+@layer yeti.layouts {
+	.grid {
+		display: grid;
+		gap: var(--_yeti-gap);
+		grid-template-columns: repeat(auto-fit, minmax(min(max(var(--_yeti-min), var(--_yeti-column-cap)), 100%), 1fr));
+	}
+	.grid:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.grid:not([data-min]) { --_yeti-min: var(--yeti-width-xs); }
+	.grid:not([data-columns]) { --_yeti-column-cap: 0px; }
+	.grid > * { margin: 0; }
+}

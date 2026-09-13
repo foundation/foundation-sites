@@ -17,3 +17,5 @@
 @import "layouts/cluster/cluster.css";
 @import "layouts/sidebar/sidebar.css";
 @import "layouts/columns/columns.css";
+@import "layouts/cover/cover.css";
+@import "layouts/grid/grid.css";

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Grid fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Grid</h1>
+		<div id="stage">
+			<div class="grid" id="grid">
+				<div class="item" id="g1">One</div>
+				<div class="item" id="g2">Two</div>
+				<div class="item" id="g3">Three</div>
+				<div class="item" id="g4">Four</div>
+				<div class="item" id="g5">Five</div>
+				<div class="item" id="g6">Six</div>
+			</div>
+			<div class="grid" id="capped" data-columns="3">
+				<div class="item" id="c1">One</div>
+				<div class="item" id="c2">Two</div>
+				<div class="item" id="c3">Three</div>
+				<div class="item" id="c4">Four</div>
+				<div class="item" id="c5">Five</div>
+				<div class="item" id="c6">Six</div>
+			</div>
+			<div class="grid" id="exact" data-columns="3" data-min="none">
+				<div class="item" id="e1">One</div>
+				<div class="item" id="e2">Two</div>
+				<div class="item" id="e3">Three</div>
+				<div class="item" id="e4">Four</div>
+				<div class="item" id="e5">Five</div>
+				<div class="item" id="e6">Six</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
