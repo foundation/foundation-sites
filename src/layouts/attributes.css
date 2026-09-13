@@ -1,0 +1,98 @@
+/* The shared attribute vocabulary. Each data-* value sets a private property
+   once; layouts read the property and supply their own default only when the
+   attribute is absent, so a nested layout never inherits a parent's value. */
+@layer yeti.layouts {
+	/* data-gap: one stop */
+	[data-gap="none"] { --_yeti-gap: var(--yeti-space-none); }
+	[data-gap="xs"] { --_yeti-gap: var(--yeti-space-xs); }
+	[data-gap="sm"] { --_yeti-gap: var(--yeti-space-sm); }
+	[data-gap="md"] { --_yeti-gap: var(--yeti-space-md); }
+	[data-gap="lg"] { --_yeti-gap: var(--yeti-space-lg); }
+	[data-gap="xl"] { --_yeti-gap: var(--yeti-space-xl); }
+	[data-gap="2xl"] { --_yeti-gap: var(--yeti-space-2xl); }
+	[data-gap="3xl"] { --_yeti-gap: var(--yeti-space-3xl); }
+
+	/* data-gap: fluid pairs. From the small stop's narrow value to the large
+	   stop's wide value, driven by the scale's interpolant. */
+	[data-gap="xs-sm"] { --_yeti-gap: calc(var(--yeti-space-xs-static) + (var(--_yeti-space-sm-max) - var(--yeti-space-xs-static)) * var(--_yeti-t)); }
+	[data-gap="xs-md"] { --_yeti-gap: calc(var(--yeti-space-xs-static) + (var(--_yeti-space-md-max) - var(--yeti-space-xs-static)) * var(--_yeti-t)); }
+	[data-gap="xs-lg"] { --_yeti-gap: calc(var(--yeti-space-xs-static) + (var(--_yeti-space-lg-max) - var(--yeti-space-xs-static)) * var(--_yeti-t)); }
+	[data-gap="xs-xl"] { --_yeti-gap: calc(var(--yeti-space-xs-static) + (var(--_yeti-space-xl-max) - var(--yeti-space-xs-static)) * var(--_yeti-t)); }
+	[data-gap="xs-2xl"] { --_yeti-gap: calc(var(--yeti-space-xs-static) + (var(--_yeti-space-2xl-max) - var(--yeti-space-xs-static)) * var(--_yeti-t)); }
+	[data-gap="xs-3xl"] { --_yeti-gap: calc(var(--yeti-space-xs-static) + (var(--_yeti-space-3xl-max) - var(--yeti-space-xs-static)) * var(--_yeti-t)); }
+	[data-gap="sm-md"] { --_yeti-gap: calc(var(--yeti-space-sm-static) + (var(--_yeti-space-md-max) - var(--yeti-space-sm-static)) * var(--_yeti-t)); }
+	[data-gap="sm-lg"] { --_yeti-gap: calc(var(--yeti-space-sm-static) + (var(--_yeti-space-lg-max) - var(--yeti-space-sm-static)) * var(--_yeti-t)); }
+	[data-gap="sm-xl"] { --_yeti-gap: calc(var(--yeti-space-sm-static) + (var(--_yeti-space-xl-max) - var(--yeti-space-sm-static)) * var(--_yeti-t)); }
+	[data-gap="sm-2xl"] { --_yeti-gap: calc(var(--yeti-space-sm-static) + (var(--_yeti-space-2xl-max) - var(--yeti-space-sm-static)) * var(--_yeti-t)); }
+	[data-gap="sm-3xl"] { --_yeti-gap: calc(var(--yeti-space-sm-static) + (var(--_yeti-space-3xl-max) - var(--yeti-space-sm-static)) * var(--_yeti-t)); }
+	[data-gap="md-lg"] { --_yeti-gap: calc(var(--yeti-space-md-static) + (var(--_yeti-space-lg-max) - var(--yeti-space-md-static)) * var(--_yeti-t)); }
+	[data-gap="md-xl"] { --_yeti-gap: calc(var(--yeti-space-md-static) + (var(--_yeti-space-xl-max) - var(--yeti-space-md-static)) * var(--_yeti-t)); }
+	[data-gap="md-2xl"] { --_yeti-gap: calc(var(--yeti-space-md-static) + (var(--_yeti-space-2xl-max) - var(--yeti-space-md-static)) * var(--_yeti-t)); }
+	[data-gap="md-3xl"] { --_yeti-gap: calc(var(--yeti-space-md-static) + (var(--_yeti-space-3xl-max) - var(--yeti-space-md-static)) * var(--_yeti-t)); }
+	[data-gap="lg-xl"] { --_yeti-gap: calc(var(--yeti-space-lg-static) + (var(--_yeti-space-xl-max) - var(--yeti-space-lg-static)) * var(--_yeti-t)); }
+	[data-gap="lg-2xl"] { --_yeti-gap: calc(var(--yeti-space-lg-static) + (var(--_yeti-space-2xl-max) - var(--yeti-space-lg-static)) * var(--_yeti-t)); }
+	[data-gap="lg-3xl"] { --_yeti-gap: calc(var(--yeti-space-lg-static) + (var(--_yeti-space-3xl-max) - var(--yeti-space-lg-static)) * var(--_yeti-t)); }
+	[data-gap="xl-2xl"] { --_yeti-gap: calc(var(--yeti-space-xl-static) + (var(--_yeti-space-2xl-max) - var(--yeti-space-xl-static)) * var(--_yeti-t)); }
+	[data-gap="xl-3xl"] { --_yeti-gap: calc(var(--yeti-space-xl-static) + (var(--_yeti-space-3xl-max) - var(--yeti-space-xl-static)) * var(--_yeti-t)); }
+	[data-gap="2xl-3xl"] { --_yeti-gap: calc(var(--yeti-space-2xl-static) + (var(--_yeti-space-3xl-max) - var(--yeti-space-2xl-static)) * var(--_yeti-t)); }
+
+	/* data-align: cross-axis alignment */
+	[data-align="start"] { --_yeti-align: flex-start; }
+	[data-align="center"] { --_yeti-align: center; }
+	[data-align="end"] { --_yeti-align: flex-end; }
+	[data-align="stretch"] { --_yeti-align: stretch; }
+	[data-align="baseline"] { --_yeti-align: baseline; }
+
+	/* data-justify: main-axis distribution */
+	[data-justify="start"] { --_yeti-justify: flex-start; }
+	[data-justify="center"] { --_yeti-justify: center; }
+	[data-justify="end"] { --_yeti-justify: flex-end; }
+	[data-justify="between"] { --_yeti-justify: space-between; }
+	[data-justify="around"] { --_yeti-justify: space-around; }
+	[data-justify="evenly"] { --_yeti-justify: space-evenly; }
+
+	/* Container widths */
+	[data-threshold="xs"] { --_yeti-threshold: var(--yeti-width-xs); }
+	[data-threshold="sm"] { --_yeti-threshold: var(--yeti-width-sm); }
+	[data-threshold="md"] { --_yeti-threshold: var(--yeti-width-md); }
+	[data-threshold="lg"] { --_yeti-threshold: var(--yeti-width-lg); }
+	[data-threshold="xl"] { --_yeti-threshold: var(--yeti-width-xl); }
+	[data-threshold="2xl"] { --_yeti-threshold: var(--yeti-width-2xl); }
+
+	[data-width="xs"] { --_yeti-width: var(--yeti-width-xs); }
+	[data-width="sm"] { --_yeti-width: var(--yeti-width-sm); }
+	[data-width="md"] { --_yeti-width: var(--yeti-width-md); }
+	[data-width="lg"] { --_yeti-width: var(--yeti-width-lg); }
+	[data-width="xl"] { --_yeti-width: var(--yeti-width-xl); }
+	[data-width="2xl"] { --_yeti-width: var(--yeti-width-2xl); }
+
+	[data-min="none"] { --_yeti-min: 0px; }
+	[data-min="xs"] { --_yeti-min: var(--yeti-width-xs); }
+	[data-min="sm"] { --_yeti-min: var(--yeti-width-sm); }
+	[data-min="md"] { --_yeti-min: var(--yeti-width-md); }
+	[data-min="lg"] { --_yeti-min: var(--yeti-width-lg); }
+	[data-min="xl"] { --_yeti-min: var(--yeti-width-xl); }
+	[data-min="2xl"] { --_yeti-min: var(--yeti-width-2xl); }
+
+	[data-max="xs"] { --_yeti-max: var(--yeti-width-xs); }
+	[data-max="sm"] { --_yeti-max: var(--yeti-width-sm); }
+	[data-max="md"] { --_yeti-max: var(--yeti-width-md); }
+	[data-max="lg"] { --_yeti-max: var(--yeti-width-lg); }
+	[data-max="xl"] { --_yeti-max: var(--yeti-width-xl); }
+	[data-max="2xl"] { --_yeti-max: var(--yeti-width-2xl); }
+
+	/* data-ratio */
+	[data-ratio="1/1"] { --_yeti-ratio: 1 / 1; }
+	[data-ratio="4/3"] { --_yeti-ratio: 4 / 3; }
+	[data-ratio="3/2"] { --_yeti-ratio: 3 / 2; }
+	[data-ratio="16/9"] { --_yeti-ratio: 16 / 9; }
+	[data-ratio="21/9"] { --_yeti-ratio: 21 / 9; }
+
+	/* data-columns: the grid's maximum column count, as a minimum track width */
+	[data-columns="1"] { --_yeti-column-cap: 100%; }
+	[data-columns="2"] { --_yeti-column-cap: calc((100% - 1 * var(--_yeti-gap)) / 2); }
+	[data-columns="3"] { --_yeti-column-cap: calc((100% - 2 * var(--_yeti-gap)) / 3); }
+	[data-columns="4"] { --_yeti-column-cap: calc((100% - 3 * var(--_yeti-gap)) / 4); }
+	[data-columns="5"] { --_yeti-column-cap: calc((100% - 4 * var(--_yeti-gap)) / 5); }
+	[data-columns="6"] { --_yeti-column-cap: calc((100% - 5 * var(--_yeti-gap)) / 6); }
+}

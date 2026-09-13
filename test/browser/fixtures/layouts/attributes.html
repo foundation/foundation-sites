@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Attributes fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .probe { inline-size: var(--_yeti-gap); block-size: 1rem; background: var(--yeti-color-primary-soft); }</style>
+</head>
+<body>
+	<main>
+		<h1>Attribute vocabulary</h1>
+		<p>Each probe is as wide as the private property its attribute sets.</p>
+		<div id="stage">
+			<div class="probe" id="gap-md" data-gap="md"></div>
+			<div class="probe" id="gap-none" data-gap="none"></div>
+			<div class="probe" id="gap-sm-lg" data-gap="sm-lg"></div>
+			<div class="probe" id="width-sm" data-width="sm" style="inline-size: var(--_yeti-width)"></div>
+			<div class="probe" id="min-none" data-min="none" style="inline-size: var(--_yeti-min)"></div>
+			<div class="probe" id="no-attr"></div>
+		</div>
+	</main>
+</body>
+</html>
