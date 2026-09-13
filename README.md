@@ -2,7 +2,7 @@
 
 **A CSS-first, native, zero-build layout and styling framework for web designers. By [Foundation](https://foundationcss.com).**
 
-> **Foundation for Sites 6 users:** this repository is now Yeti, the successor to Foundation for Sites. Version 6 continues on the [`v6` branch](https://github.com/foundation/yeti/tree/v6) with bug fixes, and `foundation-sites` on npm keeps publishing 6.x from it. Read the [announcement](https://github.com/foundation/yeti/issues) for the full story.
+> **Foundation for Sites 6 users:** this repository is now Yeti, the successor to Foundation for Sites. Version 6 continues on the [`v6` branch](https://github.com/foundation/yeti/tree/v6) with bug fixes, and `foundation-sites` on npm keeps publishing 6.x from it. Read the [announcement](https://github.com/foundation/yeti/issues/15554) for the full story.
 
 ## Status
 
@@ -33,7 +33,13 @@ Yeti targets **Baseline 2025**. Anything that reached Baseline by the end of 202
 
 ## Try it today
 
-There is no CSS to try yet beyond the cascade layer declaration. To run the tooling:
+The tokens, reset, and base layer are in. Link the unbuilt source and write plain HTML:
+
+```html
+<link rel="stylesheet" href="src/yeti.css">
+```
+
+Or run the fixtures locally:
 
 ```bash
 git clone https://github.com/foundation/yeti
@@ -41,6 +47,7 @@ cd yeti
 npm ci
 npx playwright install
 npm test
+npx playwright test --ui  # browse the fixtures under test/browser/fixtures/
 ```
 
 ## Contributing
