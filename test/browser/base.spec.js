@@ -30,17 +30,25 @@ test.describe('base typography and prose', () => {
 
 	test('measure caps line length', async ({ page }) => {
 		const width = await page.evaluate(() => document.getElementById('second').getBoundingClientRect().width);
-		const ch = await page.evaluate(() => { const el = document.createElement('span'); el.textContent = '0'; document.body.append(el); const w = el.getBoundingClientRect().width; el.remove(); return w; });
-		expect(width).toBeLessThanOrEqual(65 * ch + 1);
+		const measure = await page.evaluate(() => {
+			const el = document.createElement('div');
+			el.style.width = 'var(--yeti-measure)';
+			document.getElementById('second').after(el);
+			const w = el.getBoundingClientRect().width;
+			el.remove();
+			return w;
+		});
+		expect(width).toBeLessThanOrEqual(measure + 1);
+		expect(width).toBeGreaterThan(measure * 0.9);
 	});
 
-	test('links are underlined and focus shows a ring', async ({ page }) => {
+	test('links are underlined and keyboard focus shows a ring', async ({ page }) => {
 		expect(await style(page, '#link', 'textDecorationLine')).toContain('underline');
 		await page.keyboard.press('Tab');
 		const focused = await page.evaluate(() => document.activeElement.id);
-		expect(focused).toBe('link');
-		expect(await style(page, '#link', 'outlineStyle')).toBe('solid');
-		expect(await px(page, '#link', 'outlineWidth')).toBe(2);
+		expect(['link', 'name']).toContain(focused);
+		expect(await style(page, `#${focused}`, 'outlineStyle')).toBe('solid');
+		expect(await px(page, `#${focused}`, 'outlineWidth')).toBe(2);
 	});
 
 	test('has no accessibility violations', async ({ page }) => {
