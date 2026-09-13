@@ -1,0 +1,59 @@
+/* Neutral form controls and tables. Tidy, undesigned; the real look
+   arrives with the form and table components. */
+@layer yeti.base {
+	label, legend {
+		display: block;
+		font-weight: 600;
+	}
+
+	input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="submit"], [type="button"], [type="reset"], [type="file"]),
+	select,
+	textarea {
+		inline-size: 100%;
+		padding: var(--yeti-space-xs) var(--yeti-space-sm);
+		border: 1px solid var(--yeti-color-border);
+		border-radius: var(--yeti-radius-sm);
+		background-color: var(--yeti-color-surface);
+	}
+
+	textarea {
+		min-block-size: 4lh;
+		resize: vertical;
+	}
+
+	button,
+	input:is([type="submit"], [type="button"], [type="reset"]) {
+		padding: var(--yeti-space-xs) var(--yeti-space-sm);
+		border: 1px solid var(--yeti-color-border);
+		border-radius: var(--yeti-radius-sm);
+		background-color: var(--yeti-color-surface-raised);
+		cursor: default;
+	}
+
+	:is(input, select, textarea, button):disabled {
+		opacity: 0.6;
+	}
+
+	fieldset {
+		padding: var(--yeti-space-sm) var(--yeti-space-md);
+		border: 1px solid var(--yeti-color-border);
+		border-radius: var(--yeti-radius-sm);
+	}
+
+	table {
+		inline-size: 100%;
+	}
+	caption {
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text-muted);
+		text-align: start;
+	}
+	th {
+		font-weight: 700;
+		text-align: start;
+	}
+	th, td {
+		padding: var(--yeti-space-sm);
+		border-block-end: 1px solid var(--yeti-color-border);
+	}
+}
