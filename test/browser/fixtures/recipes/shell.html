@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shell fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>
+		#stage { inline-size: 100%; }
+		.item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }
+		.shell, .stack { margin-block-end: 2rem; }
+		header, footer, nav, main, aside { background: var(--yeti-color-primary-soft); padding: 0.5rem; }
+	</style>
+</head>
+<body>
+	<div id="stage">
+		<div class="shell" id="classed">
+			<header id="c-header">Header</header>
+			<div>
+				<nav id="c-nav" aria-label="Classed">Nav</nav>
+				<main id="c-main"><p>Main</p></main>
+			</div>
+			<footer id="c-footer">Footer</footer>
+		</div>
+		<!-- A section, not a bare div: the composed form's header and footer
+		     are real landmarks by default, which would duplicate the classed
+		     form's own banner and contentinfo; a section ancestor demotes
+		     them, and the section's label covers the page heading and the
+		     composed form's plain stand-in for main, both otherwise outside
+		     any landmark. The classed and three-region forms are left
+		     unwrapped, since each carries the page's one real main and a
+		     landmark cannot contain another. -->
+		<section aria-label="Shell recipe demo">
+			<h1>Shell recipe</h1>
+			<div class="stack" id="composed" data-fill>
+				<header id="p-header">Header</header>
+				<div class="sidebar" data-width="sm">
+					<nav id="p-nav" aria-label="Composed">Nav</nav>
+					<div class="item" id="p-main"><p>Main</p></div>
+				</div>
+				<footer id="p-footer" data-split>Footer</footer>
+			</div>
+		</section>
+		<div class="shell" id="three" data-width="xs">
+			<header>Header</header>
+			<div>
+				<nav id="t-nav" aria-label="Three">Nav</nav>
+				<main id="t-main"><p>Main</p></main>
+				<aside id="t-aside">Aside</aside>
+			</div>
+			<footer>Footer</footer>
+		</div>
+		<div class="shell" id="plain">
+			<header>Header</header>
+			<div class="center" id="plain-center">
+				<p id="pc-a">A</p>
+				<p id="pc-b">B</p>
+			</div>
+			<footer>Footer</footer>
+		</div>
+	</div>
+</body>
+</html>

@@ -184,3 +184,9 @@ test('generateDocs reads docs.md from the component folder', () => {
 	generateDocs({ root });
 	assert.ok(fs.readFileSync(path.join(root, 'docs/rail.md'), 'utf8').includes('## Why this name'));
 });
+
+test('a recipe renders into the Recipes group', () => {
+	const page = renderPage({ manifest: validManifest({ name: 'duo', kind: 'recipe', class: 'duo' }), exampleHtml: '<div class="duo"><p>a</p><p>b</p></div>\n', navOrder: 1 });
+	assert.ok(page.includes('nav_group: "Recipes"'));
+	assert.ok(page.includes('from src/recipes/duo/manifest.json'));
+});

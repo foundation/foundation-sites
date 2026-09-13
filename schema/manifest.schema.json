@@ -9,7 +9,7 @@
   "properties": {
     "$schema": { "type": "string" },
     "name": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "Must equal the folder name. Unique across the framework." },
-    "kind": { "enum": ["layout", "component", "utility"] },
+    "kind": { "enum": ["layout", "recipe", "component", "utility"] },
     "description": { "type": "string", "pattern": "\\S", "description": "One sentence, used verbatim in docs and the MCP server." },
     "class": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "The identity class. Must equal name." },
     "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },

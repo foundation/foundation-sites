@@ -140,7 +140,7 @@ test('validateImportOrder requires layers, then tokens, then reset, then base', 
 	const ok = run(tokensTree('@import "layers.css";\n@import "tokens/color.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
 	assert.deepEqual(ok.lines, []);
 	const resetFirst = run(tokensTree('@import "layers.css";\n@import "base/reset.css";\n@import "tokens/scale.css";\n@import "tokens/color.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
-	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else (found "base/reset.css" before all of tokens/)']);
+	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "base/reset.css" before all of tokens/)']);
 	const missingToken = run(tokensTree('@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
 	assert.deepEqual(missingToken.lines, ['src/yeti.css: tokens/color.css is not imported']);
 });
@@ -301,7 +301,7 @@ test('fenced html in docs.md is validated against the manifest', () => {
 
 test('import order places layouts/attributes.css after base and before layout folders, and requires every layout file', () => {
 	const late = run(layoutTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/rail/rail.css";\n@import "layouts/attributes.css";\n' }));
-	assert.deepEqual(late.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, then everything else (found "layouts/rail/rail.css" before all of layouts/attributes.css)']);
+	assert.deepEqual(late.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "layouts/rail/rail.css" before all of layouts/attributes.css)']);
 	const missing = run(layoutTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n' }));
 	assert.deepEqual(missing.lines, ['src/yeti.css: layouts/rail/rail.css is not imported']);
 });
@@ -309,4 +309,52 @@ test('import order places layouts/attributes.css after base and before layout fo
 test('findBareMargin ignores auto-only margins', () => {
 	assert.deepEqual(findBareMargin('.center { margin-inline: auto; }', 'center'), []);
 	assert.deepEqual(findBareMargin('.center { margin: 0 auto; }', 'center'), [1]);
+});
+
+const recipeTree = (extra = {}) => layoutTree({
+	'src/recipes/duo/manifest.json': validManifest({ name: 'duo', kind: 'recipe', class: 'duo', attributes: [{ name: 'data-gap', type: 'enum', vocabulary: 'gap', default: 'md', description: 'Gap.' }] }),
+	'src/recipes/duo/duo.css': '@layer yeti.layouts {\n\t.duo { display: flex; }\n\t.duo > * { margin: 0; }\n}\n',
+	'src/recipes/duo/example.html': '<div class="duo"><p>One</p><p>Two</p></div>\n',
+	'src/recipes/duo/docs.md': '## When to use it\n\nPairs.\n\n## Built from primitives\n\n```html\n<div class="rail" data-gap="m"><p>One</p><p>Two</p></div>\n```\n\n## Why this name\n\nTwo.\n',
+	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n@import "recipes/duo/duo.css";\n',
+	...extra,
+});
+
+test('a recipe validates and counts as a component', () => {
+	const r = run(recipeTree());
+	assert.deepEqual(r.lines, []);
+	assert.equal(r.count, 2);
+});
+
+test('a recipe example wrapped in a literal body still validates', () => {
+	const r = run(recipeTree({ 'src/recipes/duo/example.html': '<body class="duo"><p>One</p><p>Two</p></body>\n' }));
+	assert.deepEqual(r.lines, []);
+});
+
+test('recipes import after layouts and every recipe file must be imported', () => {
+	const early = run(recipeTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "recipes/duo/duo.css";\n@import "layouts/rail/rail.css";\n' }));
+	assert.deepEqual(early.lines, ['src/yeti.css:3: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "recipes/duo/duo.css" before all of layouts/)']);
+	const missing = run(recipeTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n' }));
+	assert.deepEqual(missing.lines, ['src/yeti.css: recipes/duo/duo.css is not imported']);
+});
+
+test('media queries are banned in recipes too', () => {
+	const r = run(recipeTree({ 'src/recipes/duo/duo.css': '@layer yeti.layouts {\n\t.duo { display: flex; }\n\t@media (width > 40rem) { .duo { gap: 1rem; } }\n}\n' }));
+	assert.deepEqual(r.lines, ['src/recipes/duo/duo.css:3: layouts are intrinsic; use container-relative techniques, not media queries']);
+});
+
+test('a recipe docs.md must show the composed form without the recipe class', () => {
+	const noSection = run(recipeTree({ 'src/recipes/duo/docs.md': '## When to use it\n\nPairs.\n\n## Why this name\n\nTwo.\n' }));
+	assert.deepEqual(noSection.lines, ['src/recipes/duo/docs.md: recipes must show the same result built from primitives under a "## Built from primitives" heading with a fenced html block']);
+	const noSnippet = run(recipeTree({ 'src/recipes/duo/docs.md': '## When to use it\n\nPairs.\n\n## Built from primitives\n\nJust prose.\n\n## Why this name\n\nTwo.\n' }));
+	assert.deepEqual(noSnippet.lines, ['src/recipes/duo/docs.md: recipes must show the same result built from primitives under a "## Built from primitives" heading with a fenced html block']);
+	const ownClass = run(recipeTree({ 'src/recipes/duo/docs.md': '## When to use it\n\nPairs.\n\n## Built from primitives\n\n```html\n<div class="duo"><p>One</p><p>Two</p></div>\n```\n\n## Why this name\n\nTwo.\n' }));
+	assert.deepEqual(ownClass.lines, ['src/recipes/duo/docs.md:8: the composed form must not use the recipe\'s own class .duo']);
+	const noName = run(recipeTree({ 'src/recipes/duo/docs.md': '## When to use it\n\nPairs.\n\n## Built from primitives\n\n```html\n<div class="rail" data-gap="m"><p>One</p><p>Two</p></div>\n```\n' }));
+	assert.deepEqual(noName.lines, ['src/recipes/duo/docs.md: layouts must explain their name under a "## Why this name" heading']);
+});
+
+test('a recipe with no docs.md at all is reported with the recipe kind, not the layout kind', () => {
+	const absent = run(recipeTree({ 'src/recipes/duo/docs.md': null }));
+	assert.deepEqual(absent.lines, ['src/recipes/duo: recipes must have a docs.md with a "## Why this name" heading']);
 });

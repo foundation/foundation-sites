@@ -24,6 +24,14 @@ test.describe('stack', () => {
 		expect((await rect(page, '#a')).width).toBeCloseTo((await rect(page, '#stack')).width, 1);
 	});
 
+	test('data-fill makes the stack viewport-tall so data-split reaches the bottom', async ({ page }) => {
+		await open(page, 'stack');
+		const height = await page.evaluate(() => window.innerHeight);
+		const [fill, bottom] = await Promise.all([rect(page, '#fill'), rect(page, '#f-bottom')]);
+		expect(fill.height).toBeCloseTo(height, 0);
+		expect(bottom.bottom).toBeCloseTo(fill.bottom, 1);
+	});
+
 	test('children have no margins', async ({ page }) => {
 		await open(page, 'stack');
 		await expectNoChildMargins(page, '.stack');

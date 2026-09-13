@@ -25,3 +25,9 @@
 @import "layouts/box/box.css";
 @import "layouts/center/center.css";
 @import "layouts/icon/icon.css";
+@import "layouts/masonry/masonry.css";
+@import "layouts/breakout/breakout.css";
+@import "layouts/layer/layer.css";
+@import "recipes/media/media.css";
+@import "recipes/hero/hero.css";
+@import "recipes/shell/shell.css";

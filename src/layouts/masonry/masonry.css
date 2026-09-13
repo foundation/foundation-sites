@@ -1,0 +1,40 @@
+/* Masonry: uneven items packed into columns. Multi-column layout is the
+   working fallback everywhere; native masonry takes over where it exists.
+   In the fallback items read down each column, then across. */
+@layer yeti.layouts {
+	.masonry {
+		column-width: var(--_yeti-min);
+		column-count: var(--_yeti-column-count);
+		column-gap: var(--_yeti-gap);
+	}
+	.masonry:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.masonry:not([data-min]) { --_yeti-min: var(--yeti-width-xs); }
+	.masonry:not([data-columns]) {
+		--_yeti-column-count: auto;
+		--_yeti-column-cap: 0px;
+	}
+	/* data-min="none" describes an exact count and is meaningless without one:
+	   with no floor at all, both the column and the grid path repeat until the
+	   gaps overflow. Alone it gives a single full-width column. */
+	.masonry[data-min="none"]:not([data-columns]) {
+		--_yeti-column-count: 1;
+		--_yeti-column-cap: 100%;
+	}
+	/* The layout sets the space under each item; the item never does. */
+	.masonry > * {
+		margin: 0 0 var(--_yeti-gap);
+		break-inside: avoid;
+	}
+
+	@supports (grid-template-rows: masonry) {
+		.masonry {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(min(max(var(--_yeti-min), var(--_yeti-column-cap)), 100%), 1fr));
+			grid-template-rows: masonry;
+			gap: var(--_yeti-gap);
+			column-width: auto;
+			column-count: auto;
+		}
+		.masonry > * { margin: 0; break-inside: auto; }
+	}
+}

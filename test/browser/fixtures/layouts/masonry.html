@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Masonry fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Masonry</h1>
+		<div id="stage">
+			<div class="masonry" id="masonry">
+				<div class="item" style="block-size: 120px">1</div>
+				<div class="item" style="block-size: 60px">2</div>
+				<div class="item" style="block-size: 180px">3</div>
+				<div class="item" style="block-size: 90px">4</div>
+				<div class="item" style="block-size: 150px">5</div>
+				<div class="item" style="block-size: 70px">6</div>
+				<div class="item" style="block-size: 110px">7</div>
+				<div class="item" style="block-size: 80px">8</div>
+			</div>
+			<div class="masonry" id="capped" data-columns="2">
+				<div class="item" id="c1" style="block-size: 120px">1</div>
+				<div class="item" id="c2" style="block-size: 60px">2</div>
+				<div class="item" id="c3" style="block-size: 180px">3</div>
+				<div class="item" id="c4" style="block-size: 90px">4</div>
+				<div class="item" id="c5" style="block-size: 150px">5</div>
+				<div class="item" id="c6" style="block-size: 70px">6</div>
+				<div class="item" id="c7" style="block-size: 110px">7</div>
+				<div class="item" id="c8" style="block-size: 80px">8</div>
+			</div>
+			<div class="masonry" id="none" data-min="none">
+				<div class="item" id="n1" style="block-size: 120px">1</div>
+				<div class="item" id="n2" style="block-size: 60px">2</div>
+				<div class="item" id="n3" style="block-size: 180px">3</div>
+				<div class="item" id="n4" style="block-size: 90px">4</div>
+				<div class="item" id="n5" style="block-size: 150px">5</div>
+				<div class="item" id="n6" style="block-size: 70px">6</div>
+				<div class="item" id="n7" style="block-size: 110px">7</div>
+				<div class="item" id="n8" style="block-size: 80px">8</div>
+			</div>
+			<div class="masonry" id="exact" data-min="none" data-columns="3">
+				<div class="item" id="e1" style="block-size: 120px">1</div>
+				<div class="item" id="e2" style="block-size: 60px">2</div>
+				<div class="item" id="e3" style="block-size: 180px">3</div>
+				<div class="item" id="e4" style="block-size: 90px">4</div>
+				<div class="item" id="e5" style="block-size: 150px">5</div>
+				<div class="item" id="e6" style="block-size: 70px">6</div>
+				<div class="item" id="e7" style="block-size: 110px">7</div>
+				<div class="item" id="e8" style="block-size: 80px">8</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

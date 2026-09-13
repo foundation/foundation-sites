@@ -66,3 +66,22 @@ test('matchesSimple handles valued and *-prefixed attribute selectors', () => {
 	assert.equal(matchesSimple(p2, '[data-split="x"]'), false);
 	assert.equal(matchesSimple(p2, '*[data-split]'), true);
 });
+
+test('parseHtml keeps a literal body wrapper as the top-level element', () => {
+	const frag = parseHtml('<body class="shell" data-width="sm">\n\t<header>H</header>\n</body>\n');
+	const els = elementChildren(frag);
+	assert.equal(els.length, 1);
+	const [body] = els;
+	assert.equal(body.tagName, 'body');
+	assert.deepEqual(classList(body), ['shell']);
+	assert.equal(attributes(body).get('data-width'), 'sm');
+	assert.equal(body.sourceCodeLocation.startLine, 1);
+});
+
+test('parseHtml still parses ordinary fragments as before', () => {
+	const frag = parseHtml('<div class="rail"><p>a</p></div>');
+	const els = elementChildren(frag);
+	assert.equal(els.length, 1);
+	assert.equal(els[0].tagName, 'div');
+	assert.deepEqual(classList(els[0]), ['rail']);
+});

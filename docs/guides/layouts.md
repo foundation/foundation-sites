@@ -1,7 +1,7 @@
 ---
 raw: true
 title: "Layouts"
-description: "Twelve intrinsic layouts that respond to their container, one attribute vocabulary, and the responsive model behind them."
+description: "Fifteen intrinsic layouts that respond to their container, one attribute vocabulary, and the responsive model behind them."
 nav_group: "Guides"
 nav_order: 3
 ---
@@ -14,7 +14,7 @@ Layouts are Yeti's grammar. A layout is a class that arranges its own children a
 
 Yeti has three ways to make a page respond to its context, and they apply in a fixed order.
 
-Intrinsic layouts come first. The twelve on this page arrange their children by reading their own width, not the viewport's. A `sidebar` drops to a stack when it runs low on room, wherever on the page it sits and whatever else is happening at the edge of the browser window. Reach for one of these before reaching for anything else.
+Intrinsic layouts come first. The fifteen on this page arrange their children by reading their own width, not the viewport's. A `sidebar` drops to a stack when it runs low on room, wherever on the page it sits and whatever else is happening at the edge of the browser window. Reach for one of these before reaching for anything else.
 
 Container queries come second. They let a single component change shape based on the width of the box that holds it rather than the window: a card that goes from one column to two once its own container is wide enough, in a sidebar or in a full-width section alike. These arrive in phase 3.
 
@@ -68,7 +68,7 @@ For the sizing attributes the mapping rule is always the same: a value is a toke
 
 Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the two: it runs from the `sm` stop at the narrow end of the viewport to the `lg` stop at the wide end, the same way the type scale itself is fluid. `none` never anchors a pair, so any smaller of the remaining seven sized stops can pair with any larger one, which is what makes twenty-one pairs out of seven.
 
-## The twelve
+## The fifteen
 
 - [stack](../stack.md): stacks its children vertically with one consistent gap between them.
 - [cluster](../cluster.md): lays its children out in a row that wraps, keeping one gap between them on both axes.
@@ -82,6 +82,9 @@ Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the 
 - [box](../box.md): pads its content on all sides, with an optional border.
 - [center](../center.md): centers a column of content horizontally, up to a maximum width, with gutters on narrow screens.
 - [icon](../icon.md): sizes an inline SVG to the surrounding text and aligns it with the text beside it.
+- [masonry](../masonry.md): packs items of uneven height into columns with no gaps under the short ones.
+- [breakout](../breakout.md): keeps its children in a centered reading column with gutters, and lets any child carrying data-bleed span the full width.
+- [layer](../layer.md): stacks its children in one box, later ones on top, with the box as tall as the tallest of them.
 
 ## Composing
 
@@ -105,42 +108,34 @@ A card: a bordered `box` holds a `stack`, which separates a cropped photo, a hea
 </div>
 ```
 
-A page shell: a `center` keeps the whole page within a readable maximum width. Inside it, a `cover` fills the viewport and centers its `h1`, then a `grid` of bordered `box`es follows below the fold.
+**The most common compositions ship as recipes, one class each, and every recipe page shows the same result built from primitives so nothing is hidden:** [shell](../shell.md) (page skeleton with a sticky footer), [media](../media.md) (a figure beside text), [hero](../hero.md) (a split opening band). `dist/yeti.css` includes the recipes; a project that composes its own can import the `dist/css/` files it wants and leave `dist/css/recipes/` out.
+
+A recipe still nests inside a primitive like anything else: a `grid` of three `media` items, each a figure and a caption.
 
 ```html
-<div class="center" data-max="xl">
-	<header class="cover" data-gap="lg">
-		<h1 data-center>Build interfaces that read their own container</h1>
-	</header>
-	<ul class="grid" data-min="sm" data-columns="3" role="list">
-		<li class="box" data-gap="md" data-border>
-			<h2>Fast</h2>
-			<p>No build step to wait on.</p>
-		</li>
-		<li class="box" data-gap="md" data-border>
-			<h2>Legible</h2>
-			<p>Plain HTML and a few attributes.</p>
-		</li>
-		<li class="box" data-gap="md" data-border>
-			<h2>Intrinsic</h2>
-			<p>Every layout reads its own width.</p>
-		</li>
-	</ul>
-</div>
-```
-
-A media object: a `sidebar` puts a square `frame` beside a `stack` of text, and the two swap to a single column once they no longer fit side by side.
-
-```html
-<div class="sidebar" data-side="start" data-width="sm">
-	<div class="frame" data-ratio="1/1">
+<ul class="grid" data-min="sm" data-columns="3" role="list">
+	<li class="media" data-width="xs">
+		<img src="trail.jpg" alt="A mountain trail at dawn">
+		<div>
+			<h3>Weekend in the hills</h3>
+			<p>Six miles, one summit, and a view worth the early start.</p>
+		</div>
+	</li>
+	<li class="media" data-width="xs">
 		<img src="ada.jpg" alt="Portrait of Ada Lovelace">
-	</div>
-	<div class="stack" data-gap="sm">
-		<h3>Ada Lovelace</h3>
-		<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
-	</div>
-</div>
+		<div>
+			<h3>Ada Lovelace</h3>
+			<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
+		</div>
+	</li>
+	<li class="media" data-width="xs">
+		<img src="peak.jpg" alt="A snow ridge at first light">
+		<div>
+			<h3>First light on the ridge</h3>
+			<p>The cloud broke just after dawn, for about ten minutes.</p>
+		</div>
+	</li>
+</ul>
 ```
 
 ## Coming from version 6

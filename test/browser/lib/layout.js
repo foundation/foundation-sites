@@ -62,6 +62,14 @@ export async function expectNoChildMargins(page, selector, except = '[data-split
 	for (const m of margins) expect(m).toBe('0px 0px 0px 0px');
 }
 
+/** Two boxes match in size and in position relative to their own container. */
+export function same(a, b, aBox, bBox) {
+	expect(a.width).toBeCloseTo(b.width, 0);
+	expect(a.height).toBeCloseTo(b.height, 0);
+	expect(a.left - aBox.left).toBeCloseTo(b.left - bBox.left, 0);
+	expect(a.top - aBox.top).toBeCloseTo(b.top - bBox.top, 0);
+}
+
 export async function axe(page) {
 	return (await new AxeBuilder({ page }).analyze()).violations;
 }

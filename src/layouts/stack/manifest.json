@@ -6,7 +6,8 @@
   "class": "stack",
   "attributes": [
     { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between children. A pair such as sm-lg grows fluidly from the first stop to the second." },
-    { "name": "data-align", "type": "enum", "vocabulary": "align", "default": "stretch", "description": "Horizontal alignment of the children." }
+    { "name": "data-align", "type": "enum", "vocabulary": "align", "default": "stretch", "description": "Horizontal alignment of the children." },
+    { "name": "data-fill", "type": "boolean", "description": "Make the stack at least as tall as the viewport, so a child carrying data-split reaches the bottom." }
   ],
   "classes": [],
   "children": [
@@ -16,7 +17,8 @@
   "tokens": [
     { "name": "--yeti-space-md", "public": true, "description": "The default gap." },
     { "name": "--_yeti-gap", "public": false },
-    { "name": "--_yeti-align", "public": false }
+    { "name": "--_yeti-align", "public": false },
+    { "name": "--yeti-cover-height", "public": true, "description": "The minimum block size when data-fill is set." }
   ],
   "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual. Reading order is source order." },
   "js": null,

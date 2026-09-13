@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Media fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>
+		#stage { inline-size: 100%; }
+		.item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }
+		.media, .sidebar { margin-block-end: 2rem; }
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Media recipe</h1>
+		<div id="stage">
+			<div class="media" id="classed">
+				<img id="c-figure" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+				<div class="item" id="c-body">
+					<h2>Ada Lovelace</h2>
+					<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
+				</div>
+			</div>
+			<div class="sidebar" id="composed" data-width="xs">
+				<div class="frame" data-ratio="1/1" id="p-figure">
+					<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+				</div>
+				<div class="stack item" data-gap="sm" id="p-body">
+					<h2>Ada Lovelace</h2>
+					<p>Wrote the first published algorithm, for Babbage's Analytical Engine.</p>
+				</div>
+			</div>
+			<div class="media" id="last" data-width="sm" data-ratio="16/9">
+				<div class="item" id="l-body"><h2>Figure last in the source</h2><p>With a wide ratio.</p></div>
+				<div id="l-figure"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt=""></div>
+			</div>
+			<div class="media" id="forced" data-side="end">
+				<img id="f-figure" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+				<div class="item" id="f-body"><h2>Figure first in the source</h2><p>Forced to the end.</p></div>
+			</div>
+			<div class="media" id="wrapped">
+				<div id="w-figure"><picture><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt=""></picture></div>
+				<div class="item" id="w-body"><h2>A picture wrapped in a div</h2><p>The fill rule must reach past the wrapper and the picture.</p></div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
