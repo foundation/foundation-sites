@@ -1,0 +1,41 @@
+/* The scale. Two inputs, base and ratio, each fluid between a narrow and a
+   wide viewport. Every size in Yeti is a step on this one progression.
+   See docs/guides/theming.md. */
+@layer yeti.base {
+	:root {
+		/* Public inputs. Setting --yeti-base or --yeti-ratio pins both ends
+		   of that pair; Yeti never declares those two itself. */
+		--yeti-base-min: var(--yeti-base, 1rem);
+		--yeti-base-max: var(--yeti-base, 1.125rem);
+		--yeti-ratio-min: var(--yeti-ratio, 1.2);
+		--yeti-ratio-max: var(--yeti-ratio, 1.333);
+		--yeti-viewport-min: 320px;
+		--yeti-viewport-max: 1280px;
+
+		/* Internal. --_yeti-t runs from 0 at viewport-min to 1 at viewport-max.
+		   tan(atan2(a, b)) equals a / b as a plain number, which is the only
+		   way to divide two lengths in calc() on the Baseline 2025 floor. */
+		--_yeti-t: clamp(0, tan(atan2(100vw - var(--yeti-viewport-min), var(--yeti-viewport-max) - var(--yeti-viewport-min))), 1);
+		--_yeti-base: calc(var(--yeti-base-min) + (var(--yeti-base-max) - var(--yeti-base-min)) * var(--_yeti-t));
+		--_yeti-ratio: calc(var(--yeti-ratio-min) + (var(--yeti-ratio-max) - var(--yeti-ratio-min)) * var(--_yeti-t));
+
+		/* Fluid steps. Step 0 is the base; each step multiplies by the ratio. */
+		--_yeti-step--2: calc(var(--_yeti-base) / pow(var(--_yeti-ratio), 2));
+		--_yeti-step--1: calc(var(--_yeti-base) / var(--_yeti-ratio));
+		--_yeti-step-0: var(--_yeti-base);
+		--_yeti-step-1: calc(var(--_yeti-base) * var(--_yeti-ratio));
+		--_yeti-step-2: calc(var(--_yeti-base) * pow(var(--_yeti-ratio), 2));
+		--_yeti-step-3: calc(var(--_yeti-base) * pow(var(--_yeti-ratio), 3));
+		--_yeti-step-4: calc(var(--_yeti-base) * pow(var(--_yeti-ratio), 4));
+		--_yeti-step-5: calc(var(--_yeti-base) * pow(var(--_yeti-ratio), 5));
+
+		/* Static steps: the narrow-viewport values, for the rare size that must not scale. */
+		--_yeti-step--2-static: calc(var(--yeti-base-min) / pow(var(--yeti-ratio-min), 2));
+		--_yeti-step--1-static: calc(var(--yeti-base-min) / var(--yeti-ratio-min));
+		--_yeti-step-0-static: var(--yeti-base-min);
+		--_yeti-step-1-static: calc(var(--yeti-base-min) * var(--yeti-ratio-min));
+		--_yeti-step-2-static: calc(var(--yeti-base-min) * pow(var(--yeti-ratio-min), 2));
+		--_yeti-step-3-static: calc(var(--yeti-base-min) * pow(var(--yeti-ratio-min), 3));
+		--_yeti-step-4-static: calc(var(--yeti-base-min) * pow(var(--yeti-ratio-min), 4));
+	}
+}

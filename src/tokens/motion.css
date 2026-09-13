@@ -1,0 +1,16 @@
+/* Motion. Components transition on these, so one media query here honours
+   the reduced-motion preference everywhere. */
+@layer yeti.base {
+	:root {
+		--yeti-duration-fast: 150ms;
+		--yeti-duration-base: 250ms;
+		--yeti-ease: cubic-bezier(0.2, 0, 0, 1);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:root {
+			--yeti-duration-fast: 0.01ms;
+			--yeti-duration-base: 0.01ms;
+		}
+	}
+}

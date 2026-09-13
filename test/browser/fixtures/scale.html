@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Scale fixture</title>
+	<link rel="stylesheet" href="../../../src/yeti.css">
+	<style>
+		/* Probes read a token as a width so the computed value is measurable. */
+		#space-md { width: var(--yeti-space-md); }
+		#space-md-static { width: var(--yeti-space-md-static); }
+		#radius-md { width: var(--yeti-radius-md); }
+		#step-4 { width: var(--_yeti-step-4); }
+		#leading { line-height: var(--yeti-leading-md); font-size: var(--yeti-text-md); }
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Scale fixture</h1>
+		<p>Probes below measure tokens.</p>
+		<div id="space-md"></div>
+		<div id="space-md-static"></div>
+		<div id="radius-md"></div>
+		<div id="step-4"></div>
+		<div id="leading">x</div>
+	</main>
+</body>
+</html>

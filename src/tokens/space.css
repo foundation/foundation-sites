@@ -1,0 +1,26 @@
+/* Space and radius read off the scale, so gaps are proportional to type. */
+@layer yeti.base {
+	:root {
+		--yeti-space-0: 0;
+		--yeti-space-xs: var(--_yeti-step--2);
+		--yeti-space-sm: var(--_yeti-step--1);
+		--yeti-space-md: var(--_yeti-step-0);
+		--yeti-space-lg: var(--_yeti-step-1);
+		--yeti-space-xl: var(--_yeti-step-2);
+		--yeti-space-2xl: var(--_yeti-step-3);
+		--yeti-space-3xl: var(--_yeti-step-4);
+
+		--yeti-space-xs-static: var(--_yeti-step--2-static);
+		--yeti-space-sm-static: var(--_yeti-step--1-static);
+		--yeti-space-md-static: var(--_yeti-step-0-static);
+		--yeti-space-lg-static: var(--_yeti-step-1-static);
+		--yeti-space-xl-static: var(--_yeti-step-2-static);
+		--yeti-space-2xl-static: var(--_yeti-step-3-static);
+		--yeti-space-3xl-static: var(--_yeti-step-4-static);
+
+		--yeti-radius-sm: calc(0.25 * var(--_yeti-base));
+		--yeti-radius-md: calc(0.5 * var(--_yeti-base));
+		--yeti-radius-lg: var(--_yeti-base);
+		--yeti-radius-full: 9999px;
+	}
+}
