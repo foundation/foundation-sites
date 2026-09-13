@@ -15,3 +15,5 @@
 @import "layouts/attributes.css";
 @import "layouts/stack/stack.css";
 @import "layouts/cluster/cluster.css";
+@import "layouts/sidebar/sidebar.css";
+@import "layouts/columns/columns.css";

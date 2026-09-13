@@ -1,0 +1,29 @@
+/* Columns: equal columns above a container width, rows below it. Each child's
+   basis flips between negative and positive across the threshold, so the
+   switch is decided by the container, not the viewport. */
+@layer yeti.layouts {
+	.columns {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: var(--_yeti-align);
+		justify-content: var(--_yeti-justify);
+		gap: var(--_yeti-gap);
+	}
+	.columns:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.columns:not([data-threshold]) { --_yeti-threshold: var(--yeti-width-md); }
+	.columns:not([data-align]) { --_yeti-align: stretch; }
+	.columns:not([data-justify]) { --_yeti-justify: flex-start; }
+	.columns > * {
+		margin: 0;
+		flex-grow: 1;
+		flex-basis: calc((var(--_yeti-threshold) - 100%) * 999);
+	}
+
+	/* data-limit: the first N share the row; every later child takes a full one. */
+	.columns[data-limit="2"] > :nth-child(n + 3),
+	.columns[data-limit="3"] > :nth-child(n + 4),
+	.columns[data-limit="4"] > :nth-child(n + 5),
+	.columns[data-limit="5"] > :nth-child(n + 6) {
+		flex-basis: 100%;
+	}
+}

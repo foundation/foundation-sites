@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Columns fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Columns</h1>
+		<div id="stage">
+			<div class="columns" id="columns">
+				<div class="item" id="c1">1</div>
+				<div class="item" id="c2">2</div>
+				<div class="item" id="c3">3</div>
+			</div>
+			<div class="columns" id="limited" data-limit="2">
+				<div class="item" id="l1">1</div>
+				<div class="item" id="l2">2</div>
+				<div class="item" id="l3">3</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

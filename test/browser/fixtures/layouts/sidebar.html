@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sidebar fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Sidebar</h1>
+		<div id="stage">
+			<div class="sidebar" id="sidebar">
+				<div class="item" id="side">Side</div>
+				<div class="item" id="content">Content</div>
+			</div>
+			<div class="sidebar" id="end" data-side="end" data-width="xs">
+				<div class="item" id="e-content">Content</div>
+				<div class="item" id="e-side">Side</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
