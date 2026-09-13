@@ -25,7 +25,7 @@
   ],
   "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Meant for body or the page's outermost element. The landmarks do the work: one main; a label on nav when the page has more than one; aside for content that is complementary, not primary." },
   "js": null,
-  "support": { "unguarded": ["flexbox gap", "dvh units"], "guarded": [] },
+  "support": { "unguarded": ["flexbox gap", "dvh units", ":has()"], "guarded": [] },
   "since": "7.0.0",
   "example": "example.html"
 }

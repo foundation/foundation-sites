@@ -92,7 +92,7 @@ A shell is the part of the page that is there before any content is, and stays w
 
 ## Browser support
 
-- Used without guards: flexbox gap, dvh units
+- Used without guards: flexbox gap, dvh units, :has()
 - Behind `@supports`: nothing
 
 ## JavaScript
