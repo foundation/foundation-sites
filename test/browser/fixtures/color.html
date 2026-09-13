@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../../../src/yeti.css">
 	<style>
 		body { background-color: var(--yeti-color-surface); color: var(--yeti-color-text); }
+		main > p[id] { padding: var(--yeti-space-xs) var(--yeti-space-sm); border-radius: var(--yeti-radius-sm); }
 		#page { background: var(--yeti-color-surface); color: var(--yeti-color-text); }
 		#muted { background: var(--yeti-color-surface); color: var(--yeti-color-text-muted); }
 		#primary { background: var(--yeti-color-primary); color: var(--yeti-on-primary); }
@@ -22,16 +23,25 @@
 <body>
 	<main>
 		<h1>Color fixture</h1>
-		<p id="page">page</p>
-		<p id="muted">muted</p>
-		<p id="primary">primary</p>
-		<p id="secondary">secondary</p>
-		<p id="success">success</p>
-		<p id="warning">warning</p>
-		<p id="alert">alert</p>
-		<p id="primary-text">primary text</p>
-		<p id="subtle">subtle</p>
-		<p id="forced">forced light</p>
+		<p>Every color derives from a hue. Toggle the system appearance to see both schemes; in devtools, set <code>--yeti-hue-primary: 160</code> on <code>html</code> to retheme.</p>
+
+		<h2>Page roles</h2>
+		<p id="page">page: text on surface</p>
+		<p id="muted">muted: text-muted on surface</p>
+
+		<h2>Accents with text placed on them</h2>
+		<p id="primary">primary with on-primary</p>
+		<p id="secondary">secondary with on-secondary</p>
+		<p id="success">success with on-success</p>
+		<p id="warning">warning with on-warning</p>
+		<p id="alert">alert with on-alert</p>
+
+		<h2>Hued text and tints</h2>
+		<p id="primary-text">primary-text on surface</p>
+		<p id="subtle">body text on primary-subtle</p>
+
+		<h2>Forced scheme</h2>
+		<p id="forced">this paragraph forces light whatever the system says</p>
 	</main>
 </body>
 </html>
