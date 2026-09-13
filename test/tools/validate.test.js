@@ -201,6 +201,11 @@ test('validateTokens is silent without a catalogue', () => {
 	assert.deepEqual(run(validTree()).lines, []);
 });
 
+test('validateImportOrder requires every src/base/*.css file to be imported', () => {
+	const r = run(catalogueTree({ 'src/base/extra.css': '' }));
+	assert.deepEqual(r.lines, ['src/yeti.css: base/extra.css is not imported']);
+});
+
 test('validateTokens rejects a component named "tokens"', () => {
 	const r = run(catalogueTree({
 		'src/components/tokens/manifest.json': validManifest({

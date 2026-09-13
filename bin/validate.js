@@ -195,6 +195,14 @@ export function validateImportOrder(srcDir) {
 	for (const f of tokenFiles) {
 		if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
 	}
+
+	const baseDir = path.join(srcDir, 'base');
+	if (fs.existsSync(baseDir)) {
+		const baseFiles = fs.readdirSync(baseDir).filter((f) => f.endsWith('.css')).map((f) => `base/${f}`);
+		for (const f of baseFiles) {
+			if (!hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
+	}
 	return errors;
 }
 
