@@ -127,3 +127,29 @@ test('generateDocs writes tokens.md when a catalogue exists and never sweeps it'
 	assert.deepEqual(again.deleted, []);
 	assert.ok(fs.readFileSync(path.join(root, 'docs/tokens.md'), 'utf8').includes('2 internal `--_yeti-*` tokens'));
 });
+
+test('generateDocs refuses to run on an invalid catalogue', () => {
+	const root = makeTree(validTree({
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/scale.css': '@layer yeti.base { :root { --yeti-base-min: 1rem; } }\n',
+		'src/tokens/tokens.json': [{ name: '--yeti-base-min', group: 'nope', public: true, default: '1rem', description: 'x' }],
+		'src/base/reset.css': '',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "layouts/rail/rail.css";\n',
+	}));
+	const r = generateDocs({ root });
+	assert.equal(r.errors.length, 1);
+	assert.deepEqual(r.written, []);
+	assert.ok(!fs.existsSync(path.join(root, 'docs/tokens.md')));
+});
+
+test('the internal token count ignores comments', () => {
+	const root = makeTree(validTree({
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/scale.css': '/* --_yeti-commented: 0; */\n@layer yeti.base { :root { --yeti-base-min: 1rem; --_yeti-real: 1; } }\n',
+		'src/tokens/tokens.json': [{ name: '--yeti-base-min', group: 'scale', public: true, default: '1rem', description: 'x' }],
+		'src/base/reset.css': '',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "layouts/rail/rail.css";\n',
+	}));
+	generateDocs({ root });
+	assert.ok(fs.readFileSync(path.join(root, 'docs/tokens.md'), 'utf8').includes('1 internal `--_yeti-*` tokens'));
+});
