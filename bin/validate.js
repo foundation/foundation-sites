@@ -11,6 +11,7 @@ import { loadSchema, loadAndMerge } from './lib/manifest.js';
 import { parseHtml, walkElements, classList, attributes, countMatches } from './lib/html.js';
 import { stripComments, splitImports } from './lib/imports.js';
 import { walkFiles } from './lib/files.js';
+import { declaredTokens, loadCatalogue } from './lib/tokens.js';
 
 const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:/;
 
@@ -211,6 +212,37 @@ export function validateImportant(srcDir) {
 	return errors;
 }
 
+/** The catalogue and src/tokens/*.css must agree exactly. */
+export function validateTokens(root) {
+	const catalogueFile = path.join(root, 'src', 'tokens', 'tokens.json');
+	if (!fs.existsSync(catalogueFile)) return [];
+	const schema = loadSchema(path.join(root, 'schema', 'tokens.schema.json'));
+	const { entries, errors } = loadCatalogue(catalogueFile, schema);
+	if (errors.length) return errors;
+
+	const declaredIn = new Map();
+	const tokensDir = path.join(root, 'src', 'tokens');
+	for (const file of walkFiles(tokensDir).filter((f) => f.endsWith('.css'))) {
+		for (const name of declaredTokens(fs.readFileSync(file, 'utf8'))) {
+			if (!declaredIn.has(name)) declaredIn.set(name, file);
+		}
+	}
+	const listed = new Map(entries.map((e) => [e.name, e]));
+	for (const [name, file] of declaredIn) {
+		if (!listed.has(name)) errors.push({ file, message: `${name} is declared but not in tokens.json` });
+	}
+	for (const entry of entries) {
+		const declared = entry.declared !== false;
+		if (declared && !declaredIn.has(entry.name)) {
+			errors.push({ file: catalogueFile, message: `${entry.name} is in the catalogue but not declared in src/tokens/*.css` });
+		}
+		if (!declared && declaredIn.has(entry.name)) {
+			errors.push({ file: catalogueFile, message: `${entry.name} is marked declared: false but src/tokens/*.css declares it` });
+		}
+	}
+	return errors;
+}
+
 export function validate({ root }) {
 	const srcDir = path.join(root, 'src');
 	const docsDir = path.join(root, 'docs', 'guides');
@@ -224,6 +256,7 @@ export function validate({ root }) {
 		...validateLayers(srcDir),
 		...validateImportOrder(srcDir),
 		...validateImportant(srcDir),
+		...validateTokens(root),
 	];
 	return { errors: all, count: Object.keys(merged).length };
 }

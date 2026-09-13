@@ -1,11 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import path from 'node:path';
 import {
-	validate, formatError, validateElementTree, extractHtmlBlocks, findBareMargin, validateLayers, validateImportOrder, validateImportant,
+	validate, formatError, validateElementTree, extractHtmlBlocks, findBareMargin, validateLayers, validateImportOrder, validateImportant, validateTokens,
 } from '../../bin/validate.js';
 import { parseHtml } from '../../bin/lib/html.js';
-import { makeTree, validManifest, validTree, REPO_ROOT } from './helpers.js';
+import { makeTree, validManifest, validTree, REPO_ROOT, TOKENS_SCHEMA_PATH } from './helpers.js';
 
 const run = (files) => {
 	const root = makeTree(files);
@@ -156,4 +157,37 @@ test('validateImportant allows only the [hidden] rule in the reset', () => {
 	assert.deepEqual(wrongRule.lines, ['src/base/reset.css:1: !important is not allowed (only the [hidden] rule in base/reset.css may use it)']);
 	const inString = run(validTree({ 'src/layouts/rail/rail.css': '.rail::after { content: "!important"; }\n' }));
 	assert.deepEqual(inString.lines, []);
+});
+
+const catalogueTree = (extra = {}) => validTree({
+	'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+	'src/tokens/scale.css': '@layer yeti.base {\n\t:root {\n\t\t--yeti-base-min: var(--yeti-base, 1rem);\n\t\t--_yeti-t: 0;\n\t}\n}\n',
+	'src/tokens/tokens.json': [
+		{ name: '--yeti-base-min', group: 'scale', public: true, default: '1rem', description: 'Body size at the narrow viewport.' },
+		{ name: '--yeti-base', group: 'scale', public: true, declared: false, default: 'unset', description: 'Set to pin both ends.' },
+	],
+	'src/base/reset.css': '',
+	'src/yeti.css': '@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "layouts/rail/rail.css";\n',
+	...extra,
+});
+
+test('validateTokens passes when the catalogue and the CSS agree', () => {
+	assert.deepEqual(run(catalogueTree()).lines, []);
+});
+
+test('validateTokens reports drift in both directions and misdeclared override-only inputs', () => {
+	const undocumented = run(catalogueTree({ 'src/tokens/scale.css': '@layer yeti.base { :root { --yeti-base-min: 1rem; --yeti-extra: 1; } }\n' }));
+	assert.deepEqual(undocumented.lines, ['src/tokens/scale.css: --yeti-extra is declared but not in tokens.json']);
+	const phantom = run(catalogueTree({ 'src/tokens/tokens.json': [
+		{ name: '--yeti-base-min', group: 'scale', public: true, default: '1rem', description: 'x' },
+		{ name: '--yeti-base', group: 'scale', public: true, declared: false, default: 'unset', description: 'x' },
+		{ name: '--yeti-ghost', group: 'scale', public: true, default: '0', description: 'x' },
+	] }));
+	assert.deepEqual(phantom.lines, ['src/tokens/tokens.json: --yeti-ghost is in the catalogue but not declared in src/tokens/*.css']);
+	const declaredAnyway = run(catalogueTree({ 'src/tokens/scale.css': '@layer yeti.base { :root { --yeti-base-min: 1rem; --yeti-base: 1rem; } }\n' }));
+	assert.deepEqual(declaredAnyway.lines, ['src/tokens/tokens.json: --yeti-base is marked declared: false but src/tokens/*.css declares it']);
+});
+
+test('validateTokens is silent without a catalogue', () => {
+	assert.deepEqual(run(validTree()).lines, []);
 });

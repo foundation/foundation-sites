@@ -2,8 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { renderPage, generateDocs, isGenerated, GENERATED_MARK } from '../../bin/gen-docs.js';
-import { makeTree, validManifest, validTree } from './helpers.js';
+import { renderPage, generateDocs, isGenerated, GENERATED_MARK, renderTokensPage } from '../../bin/gen-docs.js';
+import { makeTree, validManifest, validTree, TOKENS_SCHEMA_PATH } from './helpers.js';
 
 const exampleHtml = '<div class="rail" data-gap="l"><p>One</p><p>Two</p></div>\n';
 
@@ -93,4 +93,37 @@ test('generateDocs refuses to run on manifest errors', () => {
 	const r = generateDocs({ root });
 	assert.equal(r.errors.length, 1);
 	assert.deepEqual(r.written, []);
+});
+
+const entries = [
+	{ name: '--yeti-space-md', group: 'space', public: true, default: 'step 0', description: 'Default gap.' },
+	{ name: '--yeti-hue-primary', group: 'hue', public: true, default: '250', description: 'Brand hue.' },
+	{ name: '--yeti-base', group: 'scale', public: true, declared: false, default: 'unset', description: 'Pins both ends.' },
+];
+
+test('renderTokensPage groups by group with a table per group and notes internals', () => {
+	const page = renderTokensPage(entries, 12);
+	assert.ok(page.startsWith('---\nraw: true\ntitle: "Tokens"\n'));
+	assert.ok(page.includes(`${GENERATED_MARK} from src/tokens/tokens.json. Do not edit. -->`));
+	for (const h of ['## Scale', '## Space', '## Hue']) assert.ok(page.includes(`\n${h}\n`), h);
+	assert.ok(page.indexOf('## Scale') < page.indexOf('## Space') && page.indexOf('## Space') < page.indexOf('## Hue'));
+	assert.ok(page.includes('| `--yeti-space-md` | `step 0` | Default gap. |'));
+	assert.ok(page.includes('| `--yeti-base` | unset (override only) | Pins both ends. |'));
+	assert.ok(page.includes('12 internal `--_yeti-*` tokens'));
+});
+
+test('generateDocs writes tokens.md when a catalogue exists and never sweeps it', () => {
+	const root = makeTree(validTree({
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/scale.css': '@layer yeti.base { :root { --yeti-base-min: 1rem; --_yeti-t: 0; --_yeti-base: 1rem; } }\n',
+		'src/tokens/tokens.json': [{ name: '--yeti-base-min', group: 'scale', public: true, default: '1rem', description: 'x' }],
+		'src/base/reset.css': '',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "layouts/rail/rail.css";\n',
+	}));
+	const r = generateDocs({ root });
+	assert.deepEqual(r.errors, []);
+	assert.ok(r.written.map((f) => path.basename(f)).includes('tokens.md'));
+	const again = generateDocs({ root });
+	assert.deepEqual(again.deleted, []);
+	assert.ok(fs.readFileSync(path.join(root, 'docs/tokens.md'), 'utf8').includes('2 internal `--_yeti-*` tokens'));
 });

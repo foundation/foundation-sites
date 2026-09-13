@@ -6,6 +6,7 @@ import { LAYER_STATEMENT } from '../../bin/lib/layers.js';
 
 export const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 export const SCHEMA_PATH = path.join(REPO_ROOT, 'schema/manifest.schema.json');
+export const TOKENS_SCHEMA_PATH = path.join(REPO_ROOT, 'schema/tokens.schema.json');
 
 const created = [];
 process.on('exit', () => {
