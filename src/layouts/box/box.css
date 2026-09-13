@@ -1,0 +1,7 @@
+/* Box: padding and an optional border. The one layout that is only about
+   the space inside its own edges. */
+@layer yeti.layouts {
+	.box { padding: var(--_yeti-gap); }
+	.box:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.box[data-border] { border: 1px solid var(--yeti-color-border); }
+}
