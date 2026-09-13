@@ -23,7 +23,7 @@
 		max-inline-size: var(--yeti-measure);
 	}
 
-	ul, ol {
+	:is(ul, ol):not([role="list"]) {
 		padding-inline-start: var(--yeti-space-lg);
 	}
 

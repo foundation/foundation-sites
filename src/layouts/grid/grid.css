@@ -11,5 +11,9 @@
 	.grid:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
 	.grid:not([data-min]) { --_yeti-min: var(--yeti-width-xs); }
 	.grid:not([data-columns]) { --_yeti-column-cap: 0px; }
+	/* data-min="none" describes an exact count and is meaningless without one:
+	   with no floor at all, auto-fit repeats until the gaps overflow, which is
+	   dozens of tracks, or an engine-defined clamp when the gap is none too. */
+	.grid[data-min="none"]:not([data-columns]) { --_yeti-column-cap: 100%; }
 	.grid > * { margin: 0; }
 }

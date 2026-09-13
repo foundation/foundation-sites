@@ -1,5 +1,5 @@
 import { test, expect } from 'playwright/test';
-import { open, stage, style, token, expectNoChildMargins, axe } from '../lib/layout.js';
+import { open, stage, style, token, px, expectNoChildMargins, axe } from '../lib/layout.js';
 
 const columns = async (page, selector) => (await style(page, selector, 'grid-template-columns')).trim().split(/\s+/).length;
 const expected = (width, min, gap) => Math.floor((width + gap) / (min + gap));
@@ -25,6 +25,16 @@ test.describe('grid', () => {
 		expect(await columns(page, '#exact')).toBe(3);
 		await stage(page, 1000);
 		expect(await columns(page, '#exact')).toBe(3);
+	});
+
+	test('data-min="none" without data-columns gives a single column, not a runaway count', async ({ page }) => {
+		await open(page, 'grid', 1000);
+		expect(await columns(page, '#loose')).toBe(1);
+	});
+
+	test('role="list" keeps padding reset even inside a grid', async ({ page }) => {
+		await open(page, 'grid');
+		expect(await px(page, '#list-grid', 'padding-inline-start')).toBe(0);
 	});
 
 	test('children have no margins', async ({ page }) => {

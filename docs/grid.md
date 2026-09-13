@@ -29,7 +29,7 @@ Use a grid for a collection of like things that should line up in equal cells: c
 
 ## How it works
 
-The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the larger of `data-min` and the container divided by `data-columns`. Without `data-columns` that second value is zero, so the minimum width alone decides the count. With it, the container split N ways becomes the floor as soon as it is wider than the minimum, so there are never more than N columns, and still fewer when even N would squeeze a cell below the minimum. `data-min="none"` removes the width floor and gives exactly N.
+The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the larger of `data-min` and the container divided by `data-columns`. Without `data-columns` that second value is zero, so the minimum width alone decides the count. With it, the container split N ways becomes the floor as soon as it is wider than the minimum, so there are never more than N columns, and still fewer when even N would squeeze a cell below the minimum. `data-min="none"` removes the width floor and gives exactly N. `data-min="none"` is meant to be paired with `data-columns`; alone it gives a single full-width column instead of a runaway number of tracks.
 
 ```html
 <div class="grid" data-columns="4" data-min="none" data-gap="sm">
@@ -48,7 +48,7 @@ Every Layout's Grid, kept, because it is a grid and nothing else is. Foundation 
 
 | Attribute | Type | Values | Default | Description |
 | --- | --- | --- | --- | --- |
-| `data-min` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xs` | The narrowest a column may be. With none, only data-columns decides the count. |
+| `data-min` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xs` | The narrowest a column may be. With none, only data-columns decides the count; none is meant to be paired with data-columns, and alone gives a single full-width column. |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | Space between columns and rows. |
 | `data-columns` | enum | `1`, `2`, `3`, `4`, `5`, `6` |  | The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min="none" the count is exact. |
 

@@ -4,7 +4,7 @@ Use columns for a set of equals: pricing tiers, feature summaries, a row of stat
 
 ## How it works
 
-Every child has the same `flex-basis`: the threshold minus the container's width, multiplied by a large number. In a container wider than the threshold that number is hugely negative, so each child shrinks to its minimum and shares the row equally. In a narrower one it is hugely positive, so each child fills a row. `data-limit` caps how many share a row; any child past the cap takes a full row of its own.
+Every child has the same `flex-basis`: the threshold minus the container's width, multiplied by a large number. In a container wider than the threshold that number is hugely negative, which `flex-basis` clamps to zero, so `flex-grow: 1` shares the row equally between them. In a narrower one it is hugely positive, so each child fills a row. `data-limit` caps how many share a row; any child past the cap takes a full row of its own.
 
 ```html
 <div class="columns" data-threshold="sm" data-limit="2">

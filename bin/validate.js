@@ -24,6 +24,16 @@ export function validateElementTree(root, merged, file, lineOffset = 0) {
 	const errors = [];
 	const byClass = new Map(Object.values(merged).map((m) => [m.class, m]));
 
+	// A child marker such as data-split or data-center is declared by the PARENT
+	// layout's children contract, so it is legal on any element, including one
+	// that is itself a layout. The parent's min/max still counts them.
+	const childMarkers = new Set();
+	for (const m of Object.values(merged)) {
+		for (const child of m.children ?? []) {
+			for (const found of child.selector.matchAll(/\[(data-[a-z0-9-]+)\]/g)) childMarkers.add(found[1]);
+		}
+	}
+
 	walkElements(root, (el) => {
 		for (const cls of classList(el)) {
 			const m = byClass.get(cls);
@@ -36,7 +46,10 @@ export function validateElementTree(root, merged, file, lineOffset = 0) {
 			for (const [name, value] of attrs) {
 				if (!name.startsWith('data-')) continue;
 				const decl = declared.get(name);
-				if (!decl) { push(`unknown attribute ${name}`); continue; }
+				if (!decl) {
+					if (!childMarkers.has(name)) push(`unknown attribute ${name}`);
+					continue;
+				}
 				if (decl.type === 'enum' && !decl.values.includes(value)) push(`${name}="${value}" is not one of ${decl.values.join(', ')}`);
 				if (decl.type === 'boolean' && value !== '') push(`${name} is a boolean attribute and takes no value`);
 				if (decl.type === 'number' && (value.trim() === '' || !Number.isFinite(Number(value)))) push(`${name}="${value}" is not a number`);
@@ -302,8 +315,13 @@ const MAPPED = {
 	'data-width': 'width', 'data-min': 'width-or-none', 'data-max': 'width', 'data-ratio': 'ratio', 'data-columns': 'columns',
 };
 
-/** Every value of every mapped vocabulary must have a rule in layouts/attributes.css. */
-export function validateVocabulary(root) {
+// Read directly by their own layout's CSS, so they have no attributes.css rule.
+const READ_DIRECTLY = new Set(['data-side', 'data-limit']);
+
+/** Every value of every mapped vocabulary must have a rule in layouts/attributes.css,
+ *  and every manifest attribute that references a vocabulary must be checked against
+ *  the right one (or explicitly exempted as read directly by its own layout's CSS). */
+export function validateVocabulary(root, entries = []) {
 	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
 	const attrFile = path.join(root, 'src', 'layouts', 'attributes.css');
 	if (!fs.existsSync(vocabFile) || !fs.existsSync(attrFile)) return [];
@@ -314,6 +332,17 @@ export function validateVocabulary(root) {
 	for (const [attr, vocab] of Object.entries(MAPPED)) {
 		for (const value of vocabulary[vocab] ?? []) {
 			if (!present.has(`${attr}=${value}`)) errors.push({ file: attrFile, message: `${attr}="${value}" (vocabulary ${vocab}) has no rule` });
+		}
+	}
+
+	for (const entry of entries) {
+		for (const attr of entry.manifest.attributes) {
+			if (!attr.vocabulary || READ_DIRECTLY.has(attr.name)) continue;
+			if (!(attr.name in MAPPED)) {
+				errors.push({ file: entry.file, message: `attribute ${attr.name} references vocabulary "${attr.vocabulary}" but validate does not check it; add it to MAPPED or READ_DIRECTLY in bin/validate.js` });
+			} else if (MAPPED[attr.name] !== attr.vocabulary) {
+				errors.push({ file: entry.file, message: `attribute ${attr.name} uses vocabulary "${attr.vocabulary}" but validate checks it against "${MAPPED[attr.name]}"` });
+			}
 		}
 	}
 	return errors;
@@ -362,7 +391,7 @@ export function validate({ root }) {
 		...validateImportOrder(srcDir),
 		...validateImportant(srcDir),
 		...validateTokens(root, entries),
-		...validateVocabulary(root),
+		...validateVocabulary(root, entries),
 		...validateNoMediaQueries(srcDir),
 		...validateDocsFragments(entries),
 	];

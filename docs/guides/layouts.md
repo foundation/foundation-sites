@@ -62,9 +62,9 @@ Every layout is configured with a small set of `data-*` attributes, drawn from a
 | `data-ratio` | `1/1`, `4/3`, `3/2`, `16/9`, `21/9` | frame |
 | `data-columns` | `1`, `2`, `3`, `4`, `5`, `6` | grid |
 | `data-side` | `start`, `end` | sidebar |
-| `data-limit` | `2`, `3`, `4`, `5` | columns |
+| `data-limit` | `2`, `3`, `4`, `5` | columns — the first N share a row; every later child takes a full row |
 
-The mapping rule is the same for every attribute: a value is a token suffix. `data-gap="lg"` reads `--yeti-space-lg`; `data-width="sm"` reads `--yeti-width-sm`. The attribute names the property to set; the value names the step on Yeti's scale to set it to.
+For the sizing attributes the mapping rule is always the same: a value is a token suffix. `data-gap="lg"` reads `--yeti-space-lg`; `data-width="sm"` reads `--yeti-width-sm`. The attribute names the property to set; the value names the step on Yeti's scale to set it to. The rest — `data-align`, `data-justify`, `data-ratio`, `data-columns`, `data-side`, `data-limit` — name a behaviour rather than a token; `attributes.css` maps each value to the CSS keyword it means.
 
 Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the two: it runs from the `sm` stop at the narrow end of the viewport to the `lg` stop at the wide end, the same way the type scale itself is fluid. `none` never anchors a pair, so any smaller of the remaining seven sized stops can pair with any larger one, which is what makes twenty-one pairs out of seven.
 
@@ -87,7 +87,7 @@ Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the 
 
 None of these layouts do much alone. Nest a few and they add up to a page.
 
-A card: a bordered `box` holds a `stack`, which separates a cropped photo, a heading, and a paragraph at its own gap. The last child is a footer carrying `data-split`, which holds a `cluster` of links, so the footer settles at the bottom of the card once the stack has more height than its content needs.
+A card: a bordered `box` holds a `stack`, which separates a cropped photo, a heading, and a paragraph at its own gap. The last child is a `cluster` of links carrying `data-split`, so it settles at the bottom of the card once the stack has more height than its content needs.
 
 ```html
 <div class="box" data-border>
@@ -97,12 +97,10 @@ A card: a bordered `box` holds a `stack`, which separates a cropped photo, a hea
 		</div>
 		<h3>Weekend in the hills</h3>
 		<p>Six miles, one summit, and a view worth the early start.</p>
-		<footer data-split>
-			<nav class="cluster" data-gap="sm" aria-label="Card actions">
-				<a href="#">Read more</a>
-				<a href="#">Share</a>
-			</nav>
-		</footer>
+		<nav class="cluster" data-gap="sm" data-split aria-label="Card actions">
+			<a href="#">Read more</a>
+			<a href="#">Share</a>
+		</nav>
 	</div>
 </div>
 ```

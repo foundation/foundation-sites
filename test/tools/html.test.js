@@ -58,3 +58,11 @@ test('matchesSimple handles attribute selectors', () => {
 	assert.equal(matchesSimple(span, 'span[data-split]'), false);
 	assert.equal(countMatches(frag.childNodes[0], '> [data-center]'), 1);
 });
+
+test('matchesSimple handles valued and *-prefixed attribute selectors', () => {
+	const frag = parseHtml('<div><p data-center>a</p><p class="x" data-split>b</p><span>c</span></div>');
+	const [, p2] = elementChildren(frag.childNodes[0]);
+	assert.equal(matchesSimple(p2, '[data-split=""]'), true);
+	assert.equal(matchesSimple(p2, '[data-split="x"]'), false);
+	assert.equal(matchesSimple(p2, '*[data-split]'), true);
+});

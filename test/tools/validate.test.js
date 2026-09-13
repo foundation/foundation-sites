@@ -253,6 +253,35 @@ test('validateVocabulary reports a mapped value with no attributes.css rule', ()
 	assert.deepEqual(run(tree).lines, ['src/layouts/attributes.css: data-gap="lg" (vocabulary gap) has no rule']);
 });
 
+test('validateVocabulary cross-checks manifest attributes against MAPPED', () => {
+	const r = run(layoutTree({
+		'src/layouts/rail/manifest.json': validManifest({
+			attributes: [
+				{ name: 'data-gap', type: 'enum', values: ['s', 'm', 'l'], default: 'm', description: 'Gap between items.' },
+				{ name: 'data-tone', type: 'enum', vocabulary: 'align', description: 'x' },
+			],
+		}),
+	}));
+	assert.deepEqual(r.lines, [
+		'src/layouts/rail/manifest.json: attribute data-tone references vocabulary "align" but validate does not check it; add it to MAPPED or READ_DIRECTLY in bin/validate.js',
+	]);
+});
+
+test('a child marker such as data-split is legal on any element, including a nested layout', () => {
+	const tree = layoutTree({
+		'src/layouts/rail/manifest.json': validManifest({
+			children: [
+				{ selector: '> *', min: 1, max: null, description: 'The items.' },
+				{ selector: '> [data-split]', min: 0, max: 1, description: 'x' },
+			],
+		}),
+	});
+	const ok = run({ ...tree, 'src/layouts/rail/example.html': '<div class="rail"><div class="rail" data-split><p>x</p></div></div>\n' });
+	assert.deepEqual(ok.lines, []);
+	const bad = run({ ...tree, 'src/layouts/rail/example.html': '<div class="rail"><div class="rail" data-bogus><p>x</p></div></div>\n' });
+	assert.deepEqual(bad.errors.map((e) => e.message), ['.rail <div>: unknown attribute data-bogus']);
+});
+
 test('media queries are banned in layouts', () => {
 	const r = run(layoutTree({ 'src/layouts/rail/rail.css': '@layer yeti.layouts { .rail { display: flex; } @media (width > 40rem) { .rail { gap: 1rem; } } }\n' }));
 	assert.deepEqual(r.lines, ['src/layouts/rail/rail.css:1: layouts are intrinsic; use container-relative techniques, not media queries']);

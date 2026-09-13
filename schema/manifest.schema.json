@@ -85,7 +85,7 @@
       "additionalProperties": false,
       "required": ["selector"],
       "properties": {
-        "selector": { "type": "string", "description": "Relative to the root: '> *', '> tag', '> .class', '> tag.class', or the same without '>' for descendants." },
+        "selector": { "type": "string", "description": "Relative to the root: '> *', '> tag', '> .class', '> tag.class', '> [attr]', '> tag[attr]', '> .class[attr]' (optionally '[attr=\"value\"]', and '*' matches any tag), or the same without '>' for descendants." },
         "min": { "type": "integer", "minimum": 0 },
         "max": { "type": ["integer", "null"], "minimum": 0 },
         "description": { "type": "string" }
