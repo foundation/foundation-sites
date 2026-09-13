@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Reset fixture</title>
+	<link rel="stylesheet" href="../../../src/yeti.css">
+	<style>#box { width: 200px; } #hidden { display: block; }</style>
+</head>
+<body>
+	<main>
+		<h1>Reset fixture</h1>
+		<!-- A div is not a flow container the prose rhythm targets. -->
+		<div id="isolated">
+			<h2 id="h2">Heading</h2>
+			<p id="p">Paragraph</p>
+			<blockquote id="quote">Quote</blockquote>
+			<figure id="figure"><img id="img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='100' viewBox='0 0 2000 100'%3E%3Crect width='2000' height='100' fill='%23cbd5e1'/%3E%3Ctext x='1000' y='50' font-family='system-ui, sans-serif' font-size='40' fill='%23334155' text-anchor='middle' dominant-baseline='middle'%3E2000 %C3%97 100, wider than its container%3C/text%3E%3C/svg%3E" alt=""><figcaption>Caption</figcaption></figure>
+			<div id="box"></div>
+			<ul id="plain"><li>bullet</li></ul>
+			<ul id="decorative" role="list"><li>no bullet</li></ul>
+			<p><input id="input" type="text" aria-label="Text"> <button id="button">Button</button></p>
+			<p id="hidden" hidden>hidden</p>
+			<table id="table"><tr><td>cell</td></tr></table>
+			<p>x<sup id="sup">2</sup></p>
+			<dialog id="dialog">Dialog</dialog>
+		</div>
+	</main>
+</body>
+</html>

@@ -64,3 +64,19 @@ test('a rebuild replaces a stale dist', () => {
 	build({ root });
 	assert.ok(!fs.existsSync(path.join(root, 'dist', 'stale.txt')));
 });
+
+test('build ships the tokens catalogue when present', () => {
+	const root = makeTree(treeWithPkg({
+		'schema/tokens.schema.json': fs.readFileSync(path.join(process.cwd(), 'schema/tokens.schema.json'), 'utf8'),
+		'src/tokens/scale.css': '@layer yeti.base { :root { --yeti-base-min: 1rem; } }\n',
+		'src/tokens/tokens.json': [{ name: '--yeti-base-min', group: 'scale', public: true, default: '1rem', description: 'x' }],
+		'src/base/reset.css': '',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "layouts/rail/rail.css";\n',
+	}));
+	const r = build({ root });
+	assert.deepEqual(r.errors, []);
+	const shipped = JSON.parse(fs.readFileSync(path.join(root, 'dist/yeti.tokens.json'), 'utf8'));
+	assert.equal(shipped.framework, 'yeti');
+	assert.equal(shipped.tokens[0].name, '--yeti-base-min');
+	assert.ok(r.outputs.includes('yeti.tokens.json'));
+});

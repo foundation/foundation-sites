@@ -1,0 +1,39 @@
+/* Figures, code, rules, and quotes. */
+@layer yeti.base {
+	figcaption {
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text-muted);
+	}
+
+	code, kbd, samp {
+		font-family: var(--yeti-font-mono);
+		font-size: 0.9em;
+		padding: 0.1em 0.3em;
+		border-radius: var(--yeti-radius-sm);
+		background-color: var(--yeti-color-surface-raised);
+	}
+
+	pre {
+		font-family: var(--yeti-font-mono);
+		padding: var(--yeti-space-md);
+		border-radius: var(--yeti-radius-md);
+		background-color: var(--yeti-color-surface-raised);
+		overflow-x: auto;
+	}
+	pre code {
+		padding: 0;
+		border-radius: 0;
+		background-color: transparent;
+		font-size: inherit;
+	}
+
+	hr {
+		border: 0;
+		border-block-start: 1px solid var(--yeti-color-border);
+	}
+
+	blockquote {
+		padding-inline: var(--yeti-space-md);
+		border-inline-start: 4px solid var(--yeti-color-border-strong);
+	}
+}

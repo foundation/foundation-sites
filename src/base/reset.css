@@ -1,0 +1,108 @@
+/* Yeti reset. Protective, not opinionated: each rule undoes a surprising
+   or inconsistent user-agent default and says why. Design decisions live
+   in the base layer. This file reads no token and can be swapped out. */
+@layer yeti.reset {
+	/* Sizing that includes padding and border is what everyone expects. */
+	*, ::before, ::after {
+		box-sizing: border-box;
+	}
+
+	/* Spacing belongs to layouts (architecture §6.6). Every element starts
+	   with none. dialog is exempt so its native centring survives. */
+	*:not(dialog) {
+		margin: 0;
+	}
+
+	/* Stop mobile browsers inflating text on orientation change. */
+	html {
+		text-size-adjust: none;
+		-webkit-text-size-adjust: none;
+	}
+
+	/* Media are blocks that never overflow their container. */
+	img, picture, video, canvas, svg {
+		display: block;
+		max-inline-size: 100%;
+		block-size: auto;
+	}
+
+	/* Form controls inherit text styling instead of the UA's own. */
+	input, button, textarea, select {
+		font: inherit;
+		color: inherit;
+		letter-spacing: inherit;
+	}
+
+	/* WebKit renders these controls with non-inheriting chrome. */
+	input[type="search"] {
+		-webkit-appearance: textfield;
+		appearance: textfield;
+	}
+	::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+	::-webkit-file-upload-button {
+		-webkit-appearance: button;
+		font: inherit;
+	}
+	::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+		block-size: auto;
+	}
+
+	/* A textarea that grows with its content, where supported. */
+	@supports (field-sizing: content) {
+		textarea {
+			field-sizing: content;
+		}
+	}
+
+	/* Superscripts and subscripts must not disturb line height. */
+	sub, sup {
+		font-size: 75%;
+		line-height: 0;
+		position: relative;
+		vertical-align: baseline;
+	}
+	sub { inset-block-start: 0.25em; }
+	sup { inset-block-start: -0.5em; }
+
+	/* Tables collapse borders so a single border token draws a grid. */
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	/* The hidden attribute must win over everything. This is the one
+	   !important in Yeti (validate enforces that). */
+	[hidden] {
+		display: none !important;
+	}
+
+	/* Lists lose their markers only where the author says the list is
+	   decorative; a plain ul keeps its semantics and its bullets. */
+	:is(ul, ol)[role="list"] {
+		list-style: none;
+		padding-inline-start: 0;
+	}
+
+	/* Let height animate to and from auto where the engine supports it,
+	   and only for people who have not asked for reduced motion. */
+	@supports (interpolate-size: allow-keywords) {
+		@media (prefers-reduced-motion: no-preference) {
+			:root {
+				interpolate-size: allow-keywords;
+			}
+		}
+	}
+
+	/* Reduced motion: collapse durations rather than removing effects,
+	   so end states still apply. */
+	@media (prefers-reduced-motion: reduce) {
+		*, ::before, ::after {
+			animation-duration: 0.01ms;
+			animation-iteration-count: 1;
+			transition-duration: 0.01ms;
+			scroll-behavior: auto;
+		}
+	}
+}

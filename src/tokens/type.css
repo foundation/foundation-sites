@@ -1,0 +1,22 @@
+/* Type sizes are the same steps as space. Body is md. */
+@layer yeti.base {
+	:root {
+		--yeti-text-xs: var(--_yeti-step--2);
+		--yeti-text-sm: var(--_yeti-step--1);
+		--yeti-text-md: var(--_yeti-step-0);
+		--yeti-text-lg: var(--_yeti-step-1);
+		--yeti-text-xl: var(--_yeti-step-2);
+		--yeti-text-2xl: var(--_yeti-step-3);
+		--yeti-text-3xl: var(--_yeti-step-4);
+		--yeti-text-display: var(--_yeti-step-5);
+
+		/* Line height: one em plus half the base. Near 1.5 at body size,
+		   tighter as the size grows, because the added space stays constant. */
+		--yeti-leading-md: calc(1em + 0.5 * var(--_yeti-base));
+		--yeti-leading-tight: 1.15;
+		--yeti-measure: 65ch;
+
+		--yeti-font-sans: system-ui, sans-serif;
+		--yeti-font-mono: ui-monospace, monospace;
+	}
+}

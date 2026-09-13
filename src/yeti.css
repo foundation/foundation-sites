@@ -1,3 +1,14 @@
 /* Yeti entry point. layers.css must come first so the layer order is fixed
-   before any rule is parsed. Later phases append @import lines below it. */
+   before any rule is parsed. Tokens come before base, and the reset before
+   the rest of base, because base reads tokens and overrides the reset. */
 @import "layers.css";
+@import "tokens/scale.css";
+@import "tokens/space.css";
+@import "tokens/type.css";
+@import "tokens/color.css";
+@import "tokens/motion.css";
+@import "base/reset.css";
+@import "base/typography.css";
+@import "base/prose.css";
+@import "base/controls.css";
+@import "base/media.css";

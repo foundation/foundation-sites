@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Scale fixture</title>
+	<link rel="stylesheet" href="../../../src/yeti.css">
+	<style>
+		/* Probes read a token as a width so the computed value is measurable.
+		   The tests read width only; the height and fill exist so the page
+		   doubles as a live view of the scale. */
+		#space-md { width: var(--yeti-space-md); }
+		#space-md-static { width: var(--yeti-space-md-static); }
+		#radius-md { width: var(--yeti-radius-md); }
+		#step-4 { width: var(--_yeti-step-4); }
+		#leading { line-height: var(--yeti-leading-md); font-size: var(--yeti-text-md); }
+
+		.bar { block-size: 1lh; background: var(--yeti-color-primary); border-radius: var(--yeti-radius-sm); }
+		.row { display: grid; grid-template-columns: 14ch 1fr; align-items: center; gap: var(--yeti-space-sm); }
+		.row code { justify-self: start; }
+		#sheet .row + .row { margin-block-start: var(--yeti-space-xs); }
+		.xs { width: var(--yeti-space-xs); }
+		.sm { width: var(--yeti-space-sm); }
+		.md { width: var(--yeti-space-md); }
+		.lg { width: var(--yeti-space-lg); }
+		.xl { width: var(--yeti-space-xl); }
+		.x2 { width: var(--yeti-space-2xl); }
+		.x3 { width: var(--yeti-space-3xl); }
+		.t-xs { font-size: var(--yeti-text-xs); }
+		.t-sm { font-size: var(--yeti-text-sm); }
+		.t-md { font-size: var(--yeti-text-md); }
+		.t-lg { font-size: var(--yeti-text-lg); }
+		.t-xl { font-size: var(--yeti-text-xl); }
+		.t-2xl { font-size: var(--yeti-text-2xl); }
+		.t-3xl { font-size: var(--yeti-text-3xl); }
+		.t-display { font-size: var(--yeti-text-display); }
+		#sheet p { max-inline-size: none; line-height: var(--yeti-leading-tight); }
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Scale fixture</h1>
+		<p>Resize the window to watch the scale interpolate. In devtools, set <code>--yeti-ratio: 1.5</code> or <code>--yeti-base: 1.25rem</code> on <code>html</code> and everything recomputes.</p>
+
+		<h2>Probes the tests measure</h2>
+		<div class="row"><code>--yeti-space-md</code><div id="space-md" class="bar"></div></div>
+		<div class="row"><code>…-md-static</code><div id="space-md-static" class="bar"></div></div>
+		<div class="row"><code>--yeti-radius-md</code><div id="radius-md" class="bar"></div></div>
+		<div class="row"><code>--_yeti-step-4</code><div id="step-4" class="bar"></div></div>
+		<div class="row"><code>--yeti-leading-md</code><div id="leading">x</div></div>
+
+		<section id="sheet">
+			<h2>Space</h2>
+			<div class="row"><code>xs</code><div class="bar xs"></div></div>
+			<div class="row"><code>sm</code><div class="bar sm"></div></div>
+			<div class="row"><code>md</code><div class="bar md"></div></div>
+			<div class="row"><code>lg</code><div class="bar lg"></div></div>
+			<div class="row"><code>xl</code><div class="bar xl"></div></div>
+			<div class="row"><code>2xl</code><div class="bar x2"></div></div>
+			<div class="row"><code>3xl</code><div class="bar x3"></div></div>
+
+			<h2>Text</h2>
+			<p class="t-xs">xs: The quick brown fox jumps over the lazy dog</p>
+			<p class="t-sm">sm: The quick brown fox jumps over the lazy dog</p>
+			<p class="t-md">md: The quick brown fox jumps over the lazy dog</p>
+			<p class="t-lg">lg: The quick brown fox jumps over the lazy dog</p>
+			<p class="t-xl">xl: The quick brown fox</p>
+			<p class="t-2xl">2xl: The quick brown fox</p>
+			<p class="t-3xl">3xl: Quick brown fox</p>
+			<p class="t-display">display: Yeti</p>
+		</section>
+	</main>
+</body>
+</html>

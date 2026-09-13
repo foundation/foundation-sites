@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Color fixture</title>
+	<link rel="stylesheet" href="../../../src/yeti.css">
+	<style>
+		body { background-color: var(--yeti-color-surface); color: var(--yeti-color-text); }
+		main > p[id] { padding: var(--yeti-space-xs) var(--yeti-space-sm); border-radius: var(--yeti-radius-sm); }
+		#page { background: var(--yeti-color-surface); color: var(--yeti-color-text); }
+		#muted { background: var(--yeti-color-surface); color: var(--yeti-color-text-muted); }
+		#primary { background: var(--yeti-color-primary); color: var(--yeti-on-primary); }
+		#secondary { background: var(--yeti-color-secondary); color: var(--yeti-on-secondary); }
+		#success { background: var(--yeti-color-success); color: var(--yeti-on-success); }
+		#warning { background: var(--yeti-color-warning); color: var(--yeti-on-warning); }
+		#alert { background: var(--yeti-color-alert); color: var(--yeti-on-alert); }
+		#primary-text { background: var(--yeti-color-surface); color: var(--yeti-color-primary-text); }
+		#subtle { background: var(--yeti-color-primary-subtle); color: var(--yeti-color-text); }
+		#forced { color-scheme: light; background: var(--yeti-color-surface); color: var(--yeti-color-text); }
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Color fixture</h1>
+		<p>Every color derives from a hue. Toggle the system appearance to see both schemes; in devtools, set <code>--yeti-hue-primary: 160</code> on <code>html</code> to retheme.</p>
+
+		<h2>Page roles</h2>
+		<p id="page">page: text on surface</p>
+		<p id="muted">muted: text-muted on surface</p>
+
+		<h2>Accents with text placed on them</h2>
+		<p id="primary">primary with on-primary</p>
+		<p id="secondary">secondary with on-secondary</p>
+		<p id="success">success with on-success</p>
+		<p id="warning">warning with on-warning</p>
+		<p id="alert">alert with on-alert</p>
+
+		<h2>Hued text and tints</h2>
+		<p id="primary-text">primary-text on surface</p>
+		<p id="subtle">body text on primary-subtle</p>
+
+		<h2>Forced scheme</h2>
+		<p id="forced">this paragraph forces light whatever the system says</p>
+	</main>
+</body>
+</html>

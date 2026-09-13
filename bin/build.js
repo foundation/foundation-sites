@@ -63,6 +63,16 @@ export function build({ root, pkg = readPackage(root) }) {
 		components: merged,
 	}, null, 2)}\n`);
 
+	const catalogueFile = path.join(srcDir, 'tokens', 'tokens.json');
+	if (fs.existsSync(catalogueFile)) {
+		write('yeti.tokens.json', `${JSON.stringify({
+			framework: 'yeti',
+			version: pkg.version,
+			generated: new Date().toISOString().slice(0, 10),
+			tokens: JSON.parse(fs.readFileSync(catalogueFile, 'utf8')),
+		}, null, 2)}\n`);
+	}
+
 	return { errors: [], outputs };
 }
 
