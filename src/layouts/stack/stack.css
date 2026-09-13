@@ -1,0 +1,14 @@
+/* Stack: vertical rhythm. A flex column with a gap, so children's own
+   margins are irrelevant and a split point costs one attribute. */
+@layer yeti.layouts {
+	.stack {
+		display: flex;
+		flex-direction: column;
+		align-items: var(--_yeti-align);
+		gap: var(--_yeti-gap);
+	}
+	.stack:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.stack:not([data-align]) { --_yeti-align: stretch; }
+	.stack > * { margin: 0; }
+	.stack > [data-split] { margin-block-start: auto; }
+}

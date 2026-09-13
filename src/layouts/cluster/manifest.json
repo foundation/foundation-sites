@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "cluster",
+  "kind": "layout",
+  "description": "Lays its children out in a row that wraps, keeping one gap between them on both axes.",
+  "class": "cluster",
+  "attributes": [
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between items, horizontally and between wrapped rows." },
+    { "name": "data-align", "type": "enum", "vocabulary": "align", "default": "center", "description": "Vertical alignment of items within a row." },
+    { "name": "data-justify", "type": "enum", "vocabulary": "justify", "default": "start", "description": "How items are distributed along the row." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": null, "description": "Anything sized by its content: tags, buttons, links, a logo and a nav." }
+  ],
+  "tokens": [
+    { "name": "--yeti-space-md", "public": true, "description": "The default gap." },
+    { "name": "--_yeti-gap", "public": false },
+    { "name": "--_yeti-align", "public": false },
+    { "name": "--_yeti-justify", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual. Use a list element when the items are a list." },
+  "js": null,
+  "support": { "unguarded": ["flexbox gap"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

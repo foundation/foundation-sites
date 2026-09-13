@@ -96,7 +96,7 @@
       "additionalProperties": false,
       "required": ["name", "public"],
       "properties": {
-        "name": { "type": "string", "pattern": "^--[a-z][a-z0-9-]*$" },
+        "name": { "type": "string", "pattern": "^--_?[a-z][a-z0-9-]*$" },
         "public": { "type": "boolean", "description": "Public tokens are the theming API and appear in docs. Internal ones may change between minors." },
         "description": { "type": "string" }
       }

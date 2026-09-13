@@ -1,0 +1,15 @@
+/* Cluster: a wrapping row. Items keep their own width and the gap holds on
+   both axes when they wrap. */
+@layer yeti.layouts {
+	.cluster {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: var(--_yeti-align);
+		justify-content: var(--_yeti-justify);
+		gap: var(--_yeti-gap);
+	}
+	.cluster:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.cluster:not([data-align]) { --_yeti-align: center; }
+	.cluster:not([data-justify]) { --_yeti-justify: flex-start; }
+	.cluster > * { margin: 0; }
+}

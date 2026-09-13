@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Stack fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .item { background: var(--yeti-color-primary-soft); padding: 0.5rem; }</style>
+</head>
+<body>
+	<main>
+		<h1>Stack</h1>
+		<div id="stage">
+			<div class="stack" id="stack" style="block-size: 600px">
+				<div class="item" id="a">One</div>
+				<div class="item" id="b">Two</div>
+				<div class="item" id="c">Three</div>
+				<div class="item" id="d" data-split>Split</div>
+			</div>
+			<div class="stack" id="stack-sm" data-gap="sm" data-align="start">
+				<div class="item" id="sa">One</div>
+				<div class="item" id="sb">Two</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
