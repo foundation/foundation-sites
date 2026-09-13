@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "masonry",
+  "kind": "layout",
+  "description": "Packs items of uneven height into columns with no gaps under the short ones.",
+  "class": "masonry",
+  "attributes": [
+    { "name": "data-min", "type": "enum", "vocabulary": "width-or-none", "default": "xs", "description": "The narrowest a column may be. With none, only data-columns decides the count." },
+    { "name": "data-columns", "type": "enum", "vocabulary": "columns", "description": "The most columns allowed. Fewer appear when the container cannot fit that many at data-min." },
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between columns and between items." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 2, "max": null, "description": "The items. Each keeps its own height." }
+  ],
+  "tokens": [
+    { "name": "--yeti-width-xs", "public": true, "description": "The default minimum column width." },
+    { "name": "--yeti-space-md", "public": true, "description": "The default gap." },
+    { "name": "--_yeti-gap", "public": false },
+    { "name": "--_yeti-min", "public": false },
+    { "name": "--_yeti-column-count", "public": false },
+    { "name": "--_yeti-column-cap", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "In browsers without native masonry, items read down each column and then across. Keep the source order meaningful on its own." },
+  "js": null,
+  "support": { "unguarded": ["multi-column layout", "break-inside"], "guarded": ["grid-template-rows: masonry (add a display: grid-lanes guard when its companion properties settle)"] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

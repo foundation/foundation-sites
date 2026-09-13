@@ -82,6 +82,7 @@ Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the 
 - [box](../box.md): pads its content on all sides, with an optional border.
 - [center](../center.md): centers a column of content horizontally, up to a maximum width, with gutters on narrow screens.
 - [icon](../icon.md): sizes an inline SVG to the surrounding text and aligns it with the text beside it.
+- [masonry](../masonry.md): packs items of uneven height into columns with no gaps under the short ones.
 
 ## Composing
 

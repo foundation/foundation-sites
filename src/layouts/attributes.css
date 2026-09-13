@@ -88,11 +88,12 @@
 	[data-ratio="16/9"] { --_yeti-aspect: 16 / 9; }
 	[data-ratio="21/9"] { --_yeti-aspect: 21 / 9; }
 
-	/* data-columns: the grid's maximum column count, as a minimum track width */
-	[data-columns="1"] { --_yeti-column-cap: 100%; }
-	[data-columns="2"] { --_yeti-column-cap: calc((100% - 1 * var(--_yeti-gap)) / 2); }
-	[data-columns="3"] { --_yeti-column-cap: calc((100% - 2 * var(--_yeti-gap)) / 3); }
-	[data-columns="4"] { --_yeti-column-cap: calc((100% - 3 * var(--_yeti-gap)) / 4); }
-	[data-columns="5"] { --_yeti-column-cap: calc((100% - 4 * var(--_yeti-gap)) / 5); }
-	[data-columns="6"] { --_yeti-column-cap: calc((100% - 5 * var(--_yeti-gap)) / 6); }
+	/* data-columns: a maximum column count, as a minimum track width for grids
+	   and as a count for masonry's multi-column fallback */
+	[data-columns="1"] { --_yeti-column-cap: 100%; --_yeti-column-count: 1; }
+	[data-columns="2"] { --_yeti-column-cap: calc((100% - 1 * var(--_yeti-gap)) / 2); --_yeti-column-count: 2; }
+	[data-columns="3"] { --_yeti-column-cap: calc((100% - 2 * var(--_yeti-gap)) / 3); --_yeti-column-count: 3; }
+	[data-columns="4"] { --_yeti-column-cap: calc((100% - 3 * var(--_yeti-gap)) / 4); --_yeti-column-count: 4; }
+	[data-columns="5"] { --_yeti-column-cap: calc((100% - 4 * var(--_yeti-gap)) / 5); --_yeti-column-count: 5; }
+	[data-columns="6"] { --_yeti-column-cap: calc((100% - 5 * var(--_yeti-gap)) / 6); --_yeti-column-count: 6; }
 }
