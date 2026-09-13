@@ -40,6 +40,13 @@ for (const scheme of ['light', 'dark']) {
 		test('has no accessibility violations', async ({ page }) => {
 			expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 		});
+
+		test('an invalid hue override falls back instead of blanking the palette', async ({ page }) => {
+			await page.evaluate(() => document.documentElement.style.setProperty('--yeti-hue-primary', 'blue'));
+			const [bg] = await pair(page, '#primary');
+			expect(bg).not.toEqual([0, 0, 0]);
+			expect(await ratio(page, '#primary')).toBeGreaterThanOrEqual(4.5);
+		});
 	});
 
 	test(`hue sweep holds contrast in ${scheme}`, async ({ page }) => {

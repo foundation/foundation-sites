@@ -4,6 +4,17 @@
    (color-scheme: light) flips everything below it.
    Ladder (lightness light / dark): subtle 0.95/0.25, soft 0.85/0.35,
    base 0.52/0.70, strong 0.42/0.80, text 0.35/0.85. */
+
+/* Registered so a bad override (say, a color name where a hue angle belongs)
+   falls back to the initial value instead of invalidating every derived color.
+   @property rules are not layered; validate's layer checks do not cover them. */
+@property --yeti-hue-primary { syntax: "<number>"; inherits: true; initial-value: 250; }
+@property --yeti-hue-secondary { syntax: "<number>"; inherits: true; initial-value: 300; }
+@property --yeti-hue-success { syntax: "<number>"; inherits: true; initial-value: 145; }
+@property --yeti-hue-warning { syntax: "<number>"; inherits: true; initial-value: 80; }
+@property --yeti-hue-alert { syntax: "<number>"; inherits: true; initial-value: 25; }
+@property --yeti-chroma { syntax: "<number>"; inherits: true; initial-value: 0.15; }
+
 @layer yeti.base {
 	:root {
 		color-scheme: light dark;
