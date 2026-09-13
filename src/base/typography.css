@@ -4,7 +4,6 @@
 		font-family: var(--yeti-font-sans);
 		color: var(--yeti-color-text);
 		background-color: var(--yeti-color-surface);
-		-webkit-font-smoothing: auto;
 	}
 
 	/* Type size lives on body, not html, so rem keeps the visitor's root

@@ -6,7 +6,7 @@
 		font-weight: 600;
 	}
 
-	input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="submit"], [type="button"], [type="reset"], [type="file"]),
+	input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="submit"], [type="button"], [type="reset"], [type="file"], [type="image"]),
 	select,
 	textarea {
 		inline-size: 100%;
