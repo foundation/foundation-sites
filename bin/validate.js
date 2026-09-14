@@ -466,6 +466,15 @@ export function validateFields(entries, docsDir) {
 	return errors;
 }
 
+/** Blanks url(...) contents and quoted strings, preserving length, so a semicolon or colon
+ *  inside a token's value (a data: URL, say) is never mistaken for a declaration or
+ *  property-name boundary. Only property names are checked, so values may be replaced. */
+function sanitizeDeclarations(text) {
+	return text
+		.replace(/url\(([^)]*)\)/g, (m, inner) => `url(${' '.repeat(inner.length)})`)
+		.replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, (m) => ' '.repeat(m.length));
+}
+
 /** A theme is :root blocks of --yeti-* public tokens, nothing else. */
 export function validateThemes(root) {
 	const themesDir = path.join(root, 'src', 'themes');
@@ -485,7 +494,7 @@ export function validateThemes(root) {
 		for (const ch of text) {
 			if (ch === '{') {
 				const sel = selector.trim();
-				if (/^@media\s*\(\s*prefers-color-scheme:\s*(light|dark)\s*\)$/.test(sel)) {
+				if (/^@media\s*\(\s*prefers-color-scheme:\s*(light|dark)\s*\)$/.test(sel) && !(stack.length && stack.at(-1).kind === 'media')) {
 					stack.push({ kind: 'media' });
 				} else if (sel === ':root' && (stack.length === 0 || stack.at(-1).kind === 'media')) {
 					stack.push({ kind: 'root', line: selectorLine });
@@ -497,7 +506,7 @@ export function validateThemes(root) {
 			} else if (ch === '}') {
 				const block = stack.pop();
 				if (block?.kind === 'root') {
-					for (const d of decls.split(';')) {
+					for (const d of sanitizeDeclarations(decls).split(';')) {
 						const [prop] = d.split(':').map((s) => s.trim());
 						if (!prop) continue;
 						if (!prop.startsWith('--yeti-')) errors.push({ file, line: block.line, message: `themes may only set --yeti-* tokens (found "${prop}")` });

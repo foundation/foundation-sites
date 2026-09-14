@@ -435,3 +435,26 @@ test('validateThemes accepts token-only themes and rejects anything else', () =>
 		'src/themes/round.css:1: themes may only set --yeti-* tokens (found "color")',
 	]);
 });
+
+test('validateThemes ignores semicolons and colons inside url() and quoted values', () => {
+	const tree = (theme) => componentTree({
+		'src/tokens/tokens.json': [{ name: '--yeti-radius-md', group: 'radius', public: true, default: '0.5rem', description: 'x' }, { name: '--yeti-button-radius', group: 'button', public: true, default: 'x', description: 'x' }],
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/radius.css': '@layer yeti.base { :root { --yeti-radius-md: 0.5rem; --yeti-button-radius: var(--yeti-radius-md); } }\n',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/radius.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n@import "components/tag/tag.css";\n',
+		'src/themes/round.css': theme,
+	});
+	assert.deepEqual(run(tree(':root { --yeti-button-radius: url("data:image/svg+xml;charset=utf8,%3Csvg%3E"); }\n')).lines, []);
+	assert.deepEqual(run(tree(':root { --yeti-button-radius: 1px; color: red; }\n')).lines, ['src/themes/round.css:1: themes may only set --yeti-* tokens (found "color")']);
+});
+
+test('validateThemes rejects a media block nested inside another', () => {
+	const tree = (theme) => componentTree({
+		'src/tokens/tokens.json': [{ name: '--yeti-radius-md', group: 'radius', public: true, default: '0.5rem', description: 'x' }],
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/radius.css': '@layer yeti.base { :root { --yeti-radius-md: 0.5rem; } }\n',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/radius.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n@import "components/tag/tag.css";\n',
+		'src/themes/round.css': theme,
+	});
+	assert.deepEqual(run(tree('@media (prefers-color-scheme: dark) {\n\t@media (prefers-color-scheme: dark) {\n\t}\n}\n')).lines, ['src/themes/round.css:2: themes may only set --yeti-* tokens on :root (found "@media (prefers-color-scheme: dark)")']);
+});
