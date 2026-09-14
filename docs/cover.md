@@ -31,7 +31,7 @@ The cover is a flex column with a minimum block size of `--yeti-cover-height`, `
 
 ## Why this name
 
-Every Layout's Cover, kept: the block covers the viewport. Foundation 6 had no primitive for this; people combined a full-height utility with vertical alignment classes on the grid.
+The block covers the viewport. Foundation 6 had no primitive for this; people combined a full-height utility with vertical alignment classes on the grid.
 
 ## Attributes
 

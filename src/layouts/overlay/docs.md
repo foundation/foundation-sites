@@ -8,4 +8,4 @@ The overlay is absolutely positioned with its top-left corner at the center of t
 
 ## Why this name
 
-Every Layout calls this the Imposter, a joke that needs explaining. Overlay is what everyone already calls a thing that lies over other things. Foundation 6's Reveal was the modal; the plain positioning had no name.
+Overlay is what everyone already calls a thing that lies over other things. Foundation 6's Reveal was the modal; the plain positioning had no name.

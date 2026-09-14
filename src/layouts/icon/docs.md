@@ -15,4 +15,4 @@ The wrapper is an inline flex row with a small gap. The SVG is sized to one em, 
 
 ## Why this name
 
-Every Layout's Icon, kept: an icon is what it holds. Foundation 6 shipped an icon font instead, which set size and alignment by font rules; inline SVG needs this small layout to do the same.
+An icon is what it holds. Foundation 6 shipped an icon font instead, which set size and alignment by font rules; inline SVG needs this small layout to do the same.

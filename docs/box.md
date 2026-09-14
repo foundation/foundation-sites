@@ -39,7 +39,7 @@ A box is the thing to reach for when content needs breathing room from its edges
 
 ## Why this name
 
-Every Layout's Box, kept: there is no plainer word for a padded rectangle. Foundation 6's Callout was a styled box with a colour scheme; the plain one had no name.
+There is no plainer word for a padded rectangle. Foundation 6's Callout was a styled box with a colour scheme; the plain one had no name.
 
 ## Attributes
 

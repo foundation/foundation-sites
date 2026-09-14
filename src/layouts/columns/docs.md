@@ -16,4 +16,4 @@ Every child has the same `flex-basis`: the threshold minus the container's width
 
 ## Why this name
 
-Every Layout calls this the Switcher, after the mechanism. Yeti names layouts for what they do to their children, and what this one gives them is columns. Foundation 6 readers will recognise the job of `.grid-x` with `medium-4` cells; the difference is that the threshold is a container width, so the same markup works in a sidebar and a full-width band.
+Yeti names layouts for what they do to their children, and what this one gives them is columns; the switching is the mechanism, not the point. Foundation 6 readers will recognise the job of `.grid-x` with `medium-4` cells; the difference is that the threshold is a container width, so the same markup works in a sidebar and a full-width band.

@@ -30,7 +30,7 @@ A center is the page column: the wrapper that keeps a page or a section from spr
 
 ## Why this name
 
-Every Layout's Center, kept, because centering is the whole job. Foundation 6 readers: this is `.grid-container`, with the width and gutters as attributes instead of Sass variables.
+Centering is the whole job. Foundation 6 readers: this is `.grid-container`, with the width and gutters as attributes instead of Sass variables.
 
 ## Attributes
 

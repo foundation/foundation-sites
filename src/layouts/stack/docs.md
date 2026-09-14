@@ -16,4 +16,4 @@ The stack is a flex column with a `gap`, so the space between children is the st
 
 ## Why this name
 
-Every Layout calls this the Stack too, and no other word says it as plainly. Foundation 6 had no equivalent; the space between blocks came from each element's own margins.
+No other word says it as plainly: things stacked, one on another. Foundation 6 had no equivalent; the space between blocks came from each element's own margins.

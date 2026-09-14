@@ -17,4 +17,4 @@ The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the l
 
 ## Why this name
 
-Every Layout's Grid, kept, because it is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.
+It is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.

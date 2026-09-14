@@ -40,7 +40,7 @@ A cluster is a wrapping flex row with a `gap`. `data-justify` distributes the it
 
 ## Why this name
 
-Every Layout's Cluster is the same idea and the word is exact: items gather, they do not line up in columns. Foundation 6 reached for `.button-group` or a menu for the same job.
+The word is exact: items gather, they do not line up in columns. Foundation 6 reached for `.button-group` or a menu for the same job.
 
 ## Attributes
 
