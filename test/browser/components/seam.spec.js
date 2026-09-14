@@ -64,13 +64,32 @@ test.describe('seam', () => {
 		expect(await style(page, '#wave', 'mask-image')).not.toBe('none');
 	});
 
-	test('the cut edge gains the depth as padding', async ({ page }) => {
+	test('the cut edge gains the depth as an in-flow spacer, not padding', async ({ page }) => {
 		await open(page);
-		const depth = 2 * (await token(page, '--yeti-space-sm'));
-		const pad = await token(page, '--yeti-seam-padding');
-		expect(await px(page, '#slant', 'padding-bottom')).toBeCloseTo(pad + depth, 0);
-		expect(await px(page, '#slant', 'padding-top')).toBeCloseTo(await token(page, '--yeti-space-lg'), 0);
-		expect(await px(page, '#both', 'padding-top')).toBeCloseTo(pad + 2 * (await token(page, '--yeti-space-md')), 0);
+		const spaceLg = await token(page, '--yeti-space-lg');
+		const spaceSm = await token(page, '--yeti-space-sm');
+		const spaceMd = await token(page, '--yeti-space-md');
+
+		// The section's own padding (set by the fixture, not the component) is
+		// untouched on every side, including the cut edge.
+		expect(await px(page, '#slant', 'padding-bottom')).toBeCloseTo(spaceLg, 0);
+		expect(await px(page, '#slant', 'padding-top')).toBeCloseTo(spaceLg, 0);
+
+		// The depth itself comes from a generated ::after (bottom-edge seams)
+		// or ::before (top-edge seams) spacer, sized to the depth.
+		const afterHeight = await page.evaluate(() => parseFloat(getComputedStyle(document.getElementById('slant'), '::after').blockSize));
+		expect(afterHeight).toBeCloseTo(2 * spaceSm, 0);
+		const beforeHeight = await page.evaluate(() => parseFloat(getComputedStyle(document.getElementById('both'), '::before').blockSize));
+		expect(beforeHeight).toBeCloseTo(2 * spaceMd, 0);
+
+		// The spacer keeps the content clear of the cut: the last real child
+		// ends at least the depth above the section's own bottom edge.
+		const { childBottom, sectionBottom } = await page.evaluate(() => {
+			const section = document.getElementById('slant');
+			const last = section.children[section.children.length - 1];
+			return { childBottom: last.getBoundingClientRect().bottom, sectionBottom: section.getBoundingClientRect().bottom };
+		});
+		expect(sectionBottom - childBottom).toBeGreaterThanOrEqual(afterHeight - 1);
 	});
 
 	for (const scheme of ['light', 'dark']) {

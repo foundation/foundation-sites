@@ -13,9 +13,14 @@
 	}
 	.seam:not([data-size]) { --_yeti-size-space: var(--yeti-space-sm); }
 
-	/* Padding on a cut edge: the section's own padding plus the depth. */
-	.seam:not([data-edge="top"]) { padding-block-end: calc(var(--yeti-seam-padding) + var(--_yeti-seam)); }
-	.seam:is([data-edge="top"], [data-edge="both"]) { padding-block-start: calc(var(--yeti-seam-padding) + var(--_yeti-seam)); }
+	/* The depth is added in flow, after or before the content, so the
+	   section's own padding is untouched and text never sits in the cut. */
+	.seam:not([data-edge="top"])::after,
+	.seam:is([data-edge="top"], [data-edge="both"])::before {
+		content: "";
+		display: block;
+		block-size: var(--_yeti-seam);
+	}
 
 	/* Slant */
 	.seam:not([data-shape="curve"], [data-shape="wave"]):not([data-edge="top"], [data-edge="both"]) { clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--_yeti-seam)), 0 100%); }

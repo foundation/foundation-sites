@@ -235,6 +235,5 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | Token | Default | Description |
 | --- | --- | --- |
 | `--yeti-seam-size` | twice the size's space step (override only) | Depth of the cut; set it to fix the depth for every size. |
-| `--yeti-seam-padding` | `var(--yeti-space-lg)` | Padding a seamed section keeps on a cut edge, before the depth is added. |
 
 Yeti also defines 49 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

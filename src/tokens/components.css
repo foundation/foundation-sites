@@ -19,7 +19,5 @@
 
 		--yeti-table-stripe: var(--yeti-color-surface-sunken);
 		--yeti-table-border: var(--yeti-color-border);
-
-		--yeti-seam-padding: var(--yeti-space-lg);
 	}
 }

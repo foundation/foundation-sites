@@ -14,7 +14,6 @@
   "children": [],
   "tokens": [
     { "name": "--yeti-seam-size", "public": true, "description": "Fix the depth for every size." },
-    { "name": "--yeti-seam-padding", "public": true, "description": "The padding kept on a cut edge before the depth is added." },
     { "name": "--_yeti-seam", "public": false },
     { "name": "--_yeti-seam-curve-top", "public": false },
     { "name": "--_yeti-seam-curve-bottom", "public": false },
@@ -24,7 +23,7 @@
     { "name": "--_yeti-seam-wave-bottom-flip", "public": false },
     { "name": "--_yeti-size-space", "public": false }
   ],
-  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Decorative only; nothing changes for assistive tech. The seam adds its depth to the padding on a cut edge so text never sits in the cut." },
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Decorative only; nothing changes for assistive tech. The seam adds its depth as space on a cut edge so text never sits in the cut." },
   "js": null,
   "support": { "unguarded": ["clip-path: polygon()", "mask-image"], "guarded": [] },
   "since": "7.0.0",

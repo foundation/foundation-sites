@@ -7,15 +7,7 @@
 	<link rel="stylesheet" href="../../../../src/yeti.css">
 	<style>
 		#stage { inline-size: 100%; background: var(--yeti-color-secondary-subtle); padding-block: 1px; }
-		/* padding-inline only: a plain "padding" shorthand here would set every
-		   physical side including the one the component computes for the cut
-		   edge, and unlayered fixture CSS always wins over @layer yeti.components
-		   regardless of specificity, silently cancelling the seam's own depth
-		   calculation. Give the non-cut edge its baseline padding explicitly so
-		   it never competes with the side seam.css owns. */
-		.seam { background: var(--yeti-color-primary); color: var(--yeti-on-primary); padding-inline: var(--yeti-space-lg); block-size: 240px; box-sizing: border-box; margin-block-end: 1rem; }
-		.seam:not([data-edge="top"], [data-edge="both"]) { padding-block-start: var(--yeti-space-lg); }
-		.seam[data-edge="top"] { padding-block-end: var(--yeti-space-lg); }
+		.seam { background: var(--yeti-color-primary); color: var(--yeti-on-primary); padding: var(--yeti-space-lg); block-size: 240px; box-sizing: border-box; margin-block-end: 1rem; }
 	</style>
 </head>
 <body>
