@@ -27,7 +27,7 @@
     { "name": "--_yeti-size-text", "public": false },
     { "name": "--_yeti-size-space", "public": false }
   ],
-  "a11y": { "requiredAttributes": [], "keyboard": [ { "key": "Enter / Space", "action": "Activates a button element; Enter follows a link." } ], "notes": "Put the class on a button, an a, or a submit input, nothing else. Use button for actions and a for navigation. An icon-only button needs an aria-label. A toggle sets aria-pressed; a button that is waiting sets aria-busy=\"true\"." },
+  "a11y": { "requiredAttributes": [], "keyboard": [ { "key": "Enter / Space", "action": "Activates a button element; Enter follows a link." } ], "notes": "Put the class on a button, an a, or a submit input, nothing else. Use button for actions and a for navigation. An icon-only button needs an aria-label. A toggle sets aria-pressed; a button that is waiting sets aria-busy=\"true\" together with aria-disabled=\"true\", since it cannot be pressed while it waits." },
   "js": null,
   "support": { "unguarded": ["inline flexbox", "logical properties"], "guarded": [] },
   "since": "7.0.0",

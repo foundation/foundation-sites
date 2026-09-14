@@ -67,18 +67,18 @@ test.describe('button', () => {
 		expect((await rect(page, '#svg')).width).toBeCloseTo(em, 1);
 	});
 
-	test('focus ring shows on keyboard focus only', async ({ page }) => {
-		await open(page);
-		await page.click('#primary');
-		expect(await style(page, '#primary', 'outline-style')).toBe('none');
-		await page.keyboard.press('Tab');
-		const focused = await page.evaluate(() => document.activeElement.id);
+	test('focus ring shows on keyboard focus only', async ({ page, browserName }) => {
 		// A plain <button> without an explicit tabindex is not reachable by
 		// sequential Tab navigation in headless WebKit by default (it mirrors
 		// Safari's "Full Keyboard Access off" default, which limits Tab to text
 		// fields); verified for real in chromium and firefox, where the click
 		// leaves #primary unfocused and Tab lands on #secondary.
-		test.skip(focused === '', 'this engine does not include buttons in Tab order by default; verified in the other engines');
+		test.skip(browserName === 'webkit', 'headless WebKit does not Tab to buttons');
+		await open(page);
+		await page.click('#primary');
+		expect(await style(page, '#primary', 'outline-style')).toBe('none');
+		await page.keyboard.press('Tab');
+		const focused = await page.evaluate(() => document.activeElement.id);
 		expect(await style(page, `#${focused}`, 'outline-style')).toBe('solid');
 	});
 

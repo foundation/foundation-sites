@@ -25,18 +25,17 @@ test.describe('buttons', () => {
 		expect(await px(page, '#a1', 'border-top-left-radius')).toBeGreaterThan(0);
 	});
 
-	test('a focused member is lifted above its neighbours', async ({ page }) => {
-		await open(page);
-		await page.focus('#a2');
-		await page.keyboard.press('Shift+Tab');
-		await page.keyboard.press('Tab');
-		const focused = await page.evaluate(() => document.activeElement.id);
+	test('a focused member is lifted above its neighbours', async ({ page, browserName }) => {
 		// See the identical note in button.spec.js: headless WebKit does not
 		// include plain buttons in Tab order by default, so Shift+Tab/Tab away
 		// from a scripted .focus() cannot land back on a button either;
 		// verified for real in chromium and firefox.
-		test.skip(focused === '', 'this engine does not include buttons in Tab order by default; verified in the other engines');
-		expect(focused).toBe('a2');
+		test.skip(browserName === 'webkit', 'headless WebKit does not Tab to buttons');
+		await open(page);
+		await page.focus('#a2');
+		await page.keyboard.press('Shift+Tab');
+		await page.keyboard.press('Tab');
+		expect(await page.evaluate(() => document.activeElement.id)).toBe('a2');
 		expect(await style(page, '#a2', 'z-index')).toBe('1');
 	});
 
