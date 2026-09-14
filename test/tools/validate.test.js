@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
 	validate, formatError, validateElementTree, extractHtmlBlocks, findBareMargin, validateLayers, validateImportOrder, validateImportant, validateTokens,
-	validateVocabulary, validateNoMediaQueries, validateDocsFragments,
+	validateVocabulary, validateNoMediaQueries, validateDocsFragments, validateFields, validateThemes,
 } from '../../bin/validate.js';
 import { parseHtml } from '../../bin/lib/html.js';
 import { makeTree, validManifest, validTree, REPO_ROOT, TOKENS_SCHEMA_PATH, VOCABULARY_PATH } from './helpers.js';
@@ -140,7 +140,7 @@ test('validateImportOrder requires layers, then tokens, then reset, then base', 
 	const ok = run(tokensTree('@import "layers.css";\n@import "tokens/color.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
 	assert.deepEqual(ok.lines, []);
 	const resetFirst = run(tokensTree('@import "layers.css";\n@import "base/reset.css";\n@import "tokens/scale.css";\n@import "tokens/color.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
-	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "base/reset.css" before all of tokens/)']);
+	assert.deepEqual(resetFirst.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, components/*, then everything else (found "base/reset.css" before all of tokens/)']);
 	const missingToken = run(tokensTree('@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "base/typography.css";\n@import "layouts/rail/rail.css";\n'));
 	assert.deepEqual(missingToken.lines, ['src/yeti.css: tokens/color.css is not imported']);
 });
@@ -214,6 +214,8 @@ test('validateTokens rejects a component named "tokens"', () => {
 		}),
 		'src/components/tokens/tokens.css': '@layer yeti.components {\n\t.tokens { display: block; }\n}\n',
 		'src/components/tokens/example.html': '<div class="tokens"></div>\n',
+		'src/components/tokens/docs.md': '## When to use it\n\nx.\n\n## How it works\n\nx.\n\n## Accessibility\n\nx.\n',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/scale.css";\n@import "base/reset.css";\n@import "layouts/rail/rail.css";\n@import "components/tokens/tokens.css";\n',
 	}));
 	assert.deepEqual(r.lines, [
 		'src/components/tokens/manifest.json: a component cannot be named "tokens"; docs/tokens.md is the generated token reference',
@@ -240,6 +242,8 @@ const layoutTree = (extra = {}) => validTree({
 		+ ['1', '2', '3', '4', '5', '6'].map((v) => `\t[data-columns="${v}"] { --_yeti-column-cap: 0; }\n`).join('')
 		+ ['start', 'center', 'end', 'stretch', 'baseline'].map((v) => `\t[data-align-self="${v}"] { --_yeti-align-self: ${v}; }\n`).join('')
 		+ ['start', 'center', 'end', 'stretch'].map((v) => `\t[data-justify-self="${v}"] { --_yeti-justify-self: ${v}; }\n`).join('')
+		+ ['primary', 'secondary', 'success', 'warning', 'alert', 'neutral'].map((v) => `\t[data-variant="${v}"] { --_yeti-variant: 0; }\n`).join('')
+		+ ['sm', 'md', 'lg'].map((v) => `\t[data-size="${v}"] { --_yeti-size-text: 0; }\n`).join('')
 		+ '}\n',
 	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n',
 	...extra,
@@ -303,7 +307,7 @@ test('fenced html in docs.md is validated against the manifest', () => {
 
 test('import order places layouts/attributes.css after base and before layout folders, and requires every layout file', () => {
 	const late = run(layoutTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/rail/rail.css";\n@import "layouts/attributes.css";\n' }));
-	assert.deepEqual(late.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "layouts/rail/rail.css" before all of layouts/attributes.css)']);
+	assert.deepEqual(late.lines, ['src/yeti.css:2: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, components/*, then everything else (found "layouts/rail/rail.css" before all of layouts/attributes.css)']);
 	const missing = run(layoutTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n' }));
 	assert.deepEqual(missing.lines, ['src/yeti.css: layouts/rail/rail.css is not imported']);
 });
@@ -335,7 +339,7 @@ test('a recipe example wrapped in a literal body still validates', () => {
 
 test('recipes import after layouts and every recipe file must be imported', () => {
 	const early = run(recipeTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "recipes/duo/duo.css";\n@import "layouts/rail/rail.css";\n' }));
-	assert.deepEqual(early.lines, ['src/yeti.css:3: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else (found "recipes/duo/duo.css" before all of layouts/)']);
+	assert.deepEqual(early.lines, ['src/yeti.css:3: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, components/*, then everything else (found "recipes/duo/duo.css" before all of layouts/)']);
 	const missing = run(recipeTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n' }));
 	assert.deepEqual(missing.lines, ['src/yeti.css: recipes/duo/duo.css is not imported']);
 });
@@ -359,4 +363,75 @@ test('a recipe docs.md must show the composed form without the recipe class', ()
 test('a recipe with no docs.md at all is reported with the recipe kind, not the layout kind', () => {
 	const absent = run(recipeTree({ 'src/recipes/duo/docs.md': null }));
 	assert.deepEqual(absent.lines, ['src/recipes/duo: recipes must have a docs.md with a "## Why this name" heading']);
+});
+
+// The brief derives this tree's attributes.css by splicing variant/size rules into
+// layoutTree()'s via `.replace('}\n', ...)`, but that string occurs after every single
+// rule line above (each ends in "}\n"), not just the final one, so a plain (non-global)
+// replace lands on the first rule instead of the closing brace and corrupts the file.
+// layoutTree() itself now ends its attributes.css with the variant/size rules (needed by
+// every other test using it too, once MAPPED below covers data-variant/data-size), so no
+// splice is needed here at all.
+const componentTree = (extra = {}) => layoutTree({
+	'src/components/tag/manifest.json': validManifest({ name: 'tag', kind: 'component', class: 'tag', attributes: [{ name: 'data-variant', type: 'enum', vocabulary: 'variant', default: 'primary', description: 'Colour.' }], children: [] }),
+	'src/components/tag/tag.css': '@layer yeti.components {\n\t.tag { display: inline-flex; }\n}\n',
+	'src/components/tag/example.html': '<span class="tag" data-variant="success">New</span>\n',
+	'src/components/tag/docs.md': '## When to use it\n\nLabels.\n\n## How it works\n\nA box.\n\n## Accessibility\n\nText carries the meaning.\n',
+	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n@import "components/tag/tag.css";\n',
+	...extra,
+});
+
+test('a component validates and counts', () => {
+	const r = run(componentTree());
+	assert.deepEqual(r.lines, []);
+	assert.equal(r.count, 2);
+});
+
+test('components import after recipes and every component file must be imported', () => {
+	const early = run(componentTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "components/tag/tag.css";\n@import "layouts/rail/rail.css";\n' }));
+	assert.deepEqual(early.lines, ['src/yeti.css:3: imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, components/*, then everything else (found "components/tag/tag.css" before all of layouts/)']);
+	const missing = run(componentTree({ 'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n' }));
+	assert.deepEqual(missing.lines, ['src/yeti.css: components/tag/tag.css is not imported']);
+});
+
+test('media queries are banned in components', () => {
+	const r = run(componentTree({ 'src/components/tag/tag.css': '@layer yeti.components {\n\t.tag { display: inline-flex; }\n\t@media (width > 40rem) { .tag { gap: 1rem; } }\n}\n' }));
+	assert.deepEqual(r.lines, ['src/components/tag/tag.css:3: layouts are intrinsic; use container-relative techniques, not media queries']);
+});
+
+test('a component docs.md must carry the accessibility heading and needs no naming heading', () => {
+	const r = run(componentTree({ 'src/components/tag/docs.md': '## When to use it\n\nLabels.\n\n## How it works\n\nA box.\n' }));
+	assert.deepEqual(r.lines, ['src/components/tag/docs.md: components must document accessibility under a "## Accessibility" heading']);
+});
+
+test('validateFields requires a label for its control', () => {
+	// Adapted from the brief: the manifest's class must equal its name ("tag", matching the
+	// folder), so the fictional field markup also carries the .tag identity class the manifest
+	// declares (validateExamples' "example uses its class" check would otherwise fail); the
+	// class="tag" addition is inert for validateFields, which only looks for .field.
+	const field = (html) => componentTree({
+		'src/components/tag/manifest.json': validManifest({ name: 'tag', kind: 'component', class: 'tag', attributes: [], children: [] }),
+		'src/components/tag/example.html': html,
+	});
+	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><input id="a"></div>\n')).lines, []);
+	assert.deepEqual(run(field('<div class="field tag"><label>A</label><input id="a"></div>\n')).lines, ['src/components/tag/example.html:1: .field: the label must reference the control with for, and the control must carry that id']);
+	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><input id="b"></div>\n')).lines, ['src/components/tag/example.html:1: .field: the label must reference the control with for, and the control must carry that id']);
+	assert.deepEqual(run(field('<fieldset class="field tag"><legend>Pick</legend><input id="a" type="radio"></fieldset>\n')).lines, []);
+	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><div class="input-group"><span>$</span><input id="a"></div></div>\n')).lines, []);
+});
+
+test('validateThemes accepts token-only themes and rejects anything else', () => {
+	const tree = (theme) => componentTree({
+		'src/tokens/tokens.json': [{ name: '--yeti-radius-md', group: 'radius', public: true, default: '0.5rem', description: 'x' }, { name: '--yeti-button-radius', group: 'button', public: true, default: 'x', description: 'x' }],
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/radius.css': '@layer yeti.base { :root { --yeti-radius-md: 0.5rem; --yeti-button-radius: var(--yeti-radius-md); } }\n',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/radius.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n@import "components/tag/tag.css";\n',
+		'src/themes/round.css': theme,
+	});
+	assert.deepEqual(run(tree(':root {\n\t--yeti-button-radius: 999px;\n}\n@media (prefers-color-scheme: dark) {\n\t:root { --yeti-radius-md: 0; }\n}\n')).lines, []);
+	assert.deepEqual(run(tree(':root { --yeti-button-radius: 999px; }\n.button { color: red; }\n')).lines, ['src/themes/round.css:2: themes may only set --yeti-* tokens on :root (found ".button")']);
+	assert.deepEqual(run(tree(':root { --yeti-nope: 1; color: red; }\n')).lines, [
+		'src/themes/round.css:1: theme sets "--yeti-nope", which is not a public token',
+		'src/themes/round.css:1: themes may only set --yeti-* tokens (found "color")',
+	]);
 });

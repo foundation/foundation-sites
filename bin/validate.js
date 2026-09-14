@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LAYER_STATEMENT } from './lib/layers.js';
 import { loadSchema, loadAndMerge, loadVocabulary } from './lib/manifest.js';
-import { parseHtml, walkElements, classList, attributes, countMatches } from './lib/html.js';
+import { parseHtml, walkElements, classList, attributes, countMatches, elementChildren } from './lib/html.js';
 import { stripComments, splitImports } from './lib/imports.js';
 import { walkFiles } from './lib/files.js';
 import { declaredTokens, loadCatalogue } from './lib/tokens.js';
@@ -191,7 +191,7 @@ export function validateLayers(srcDir) {
 	return errors;
 }
 
-const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, then everything else';
+const IMPORT_ORDER_MESSAGE = 'imports must come in the order layers.css, tokens/*, base/reset.css, base/*, layouts/attributes.css, layouts/*, recipes/*, components/*, then everything else';
 
 /** Enforces the import order and that every tokens/base/layouts file is imported. */
 export function validateImportOrder(srcDir) {
@@ -212,9 +212,10 @@ export function validateImportOrder(srcDir) {
 		if (href === 'layouts/attributes.css') return 4;
 		if (href.startsWith('layouts/')) return 5;
 		if (href.startsWith('recipes/')) return 6;
-		return 7;
+		if (href.startsWith('components/')) return 7;
+		return 8;
 	};
-	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'layouts/attributes.css', 'layouts/', 'recipes/', 'the rest'];
+	const groupName = ['layers.css', 'tokens/', 'base/reset.css', 'base/', 'layouts/attributes.css', 'layouts/', 'recipes/', 'components/', 'the rest'];
 	// Report the first import that has something of a lower group after it.
 	for (let i = 0; i < imports.length; i++) {
 		const later = imports.slice(i + 1).find((imp) => rank(imp.href) < rank(imports[i].href));
@@ -253,6 +254,14 @@ export function validateImportOrder(srcDir) {
 	if (fs.existsSync(recipesDir)) {
 		for (const name of fs.readdirSync(recipesDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
 			const f = `recipes/${name}/${name}.css`;
+			if (fs.existsSync(path.join(srcDir, f)) && !hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
+		}
+	}
+
+	const componentsDir = path.join(srcDir, 'components');
+	if (fs.existsSync(componentsDir)) {
+		for (const name of fs.readdirSync(componentsDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
+			const f = `components/${name}/${name}.css`;
 			if (fs.existsSync(path.join(srcDir, f)) && !hrefs.includes(f)) errors.push({ file: entryFile, message: `${f} is not imported` });
 		}
 	}
@@ -301,7 +310,8 @@ export function validateTokens(root, manifestEntries = []) {
 	}
 
 	const srcDir = path.join(root, 'src');
-	for (const file of walkFiles(srcDir).filter((f) => f.endsWith('.css') && !f.startsWith(tokensDir + path.sep))) {
+	const themesDir = path.join(root, 'src', 'themes');
+	for (const file of walkFiles(srcDir).filter((f) => f.endsWith('.css') && !f.startsWith(tokensDir + path.sep) && !f.startsWith(themesDir + path.sep))) {
 		for (const name of declaredTokens(fs.readFileSync(file, 'utf8'))) {
 			errors.push({ file, message: `${name} is a public token declared outside src/tokens/; public tokens live in src/tokens/ and the catalogue` });
 		}
@@ -323,10 +333,11 @@ const MAPPED = {
 	'data-gap': 'gap', 'data-align': 'align', 'data-justify': 'justify', 'data-threshold': 'width',
 	'data-width': 'width', 'data-min': 'width-or-none', 'data-max': 'width', 'data-ratio': 'ratio', 'data-columns': 'columns',
 	'data-align-self': 'align', 'data-justify-self': 'self',
+	'data-variant': 'variant', 'data-size': 'size-control',
 };
 
 // Read directly by their own layout's CSS, so they have no attributes.css rule.
-const READ_DIRECTLY = new Set(['data-side', 'data-limit']);
+const READ_DIRECTLY = new Set(['data-side', 'data-limit', 'data-emphasis', 'data-shape', 'data-edge']);
 
 /** Every value of every mapped vocabulary must have a rule in layouts/attributes.css,
  *  and every manifest attribute that references a vocabulary must be checked against
@@ -361,7 +372,7 @@ export function validateVocabulary(root, entries = []) {
 /** Layouts respond to their container, never the viewport. */
 export function validateNoMediaQueries(srcDir) {
 	const errors = [];
-	const dirs = ['layouts', 'recipes'].map((d) => path.join(srcDir, d)).filter((d) => fs.existsSync(d));
+	const dirs = ['layouts', 'recipes', 'components'].map((d) => path.join(srcDir, d)).filter((d) => fs.existsSync(d));
 	for (const file of dirs.flatMap((d) => walkFiles(d)).filter((f) => f.endsWith('.css'))) {
 		const text = stripComments(fs.readFileSync(file, 'utf8'));
 		const m = text.match(/@media\b/);
@@ -382,13 +393,16 @@ function markdownSection(markdown, heading) {
 	return { text: markdown.slice(start, next ? start + next.index : undefined), offset: start };
 }
 
-/** Every layout and recipe ships a docs.md that explains its name; recipes also show the composed form. */
+const ACCESSIBILITY_MESSAGE = 'components must document accessibility under a "## Accessibility" heading';
+
+/** Every layout, recipe, and component ships a docs.md; layouts and recipes explain their
+ *  name, recipes also show the composed form, and components document accessibility. */
 export function validateDocsFragments(entries) {
 	const errors = [];
-	for (const entry of entries.filter((e) => e.kind === 'layout' || e.kind === 'recipe')) {
+	for (const entry of entries.filter((e) => e.kind !== 'utility')) {
 		const file = path.join(entry.dir, 'docs.md');
 		if (!fs.existsSync(file)) {
-			errors.push({ file: entry.dir, message: `${entry.kind}s must have a docs.md with a "## Why this name" heading` });
+			errors.push({ file: entry.dir, message: entry.kind === 'component' ? `${entry.kind}s must have a docs.md with a "## Accessibility" heading` : `${entry.kind}s must have a docs.md with a "## Why this name" heading` });
 			continue;
 		}
 		const markdown = fs.readFileSync(file, 'utf8');
@@ -408,8 +422,93 @@ export function validateDocsFragments(entries) {
 				}
 			}
 		}
-		if (!/^## Why this name\s*$/m.test(markdown)) {
+		if (entry.kind === 'component') {
+			if (!/^## Accessibility\s*$/m.test(markdown)) errors.push({ file, message: ACCESSIBILITY_MESSAGE });
+		} else if (!/^## Why this name\s*$/m.test(markdown)) {
 			errors.push({ file, message: 'layouts must explain their name under a "## Why this name" heading' });
+		}
+	}
+	return errors;
+}
+
+const FIELD_MESSAGE = '.field: the label must reference the control with for, and the control must carry that id';
+
+/** Every .field pairs its label with its control by for/id (or is a fieldset with a legend). */
+export function validateFields(entries, docsDir) {
+	const errors = [];
+	const sources = [];
+	for (const entry of entries) {
+		sources.push({ file: path.join(entry.dir, 'example.html'), html: fs.readFileSync(path.join(entry.dir, 'example.html'), 'utf8'), line: 0 });
+		const docsFile = path.join(entry.dir, 'docs.md');
+		if (fs.existsSync(docsFile)) for (const b of extractHtmlBlocks(fs.readFileSync(docsFile, 'utf8'))) sources.push({ file: docsFile, html: b.html, line: b.line - 1 });
+	}
+	if (fs.existsSync(docsDir)) {
+		for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
+			for (const b of extractHtmlBlocks(fs.readFileSync(file, 'utf8'))) sources.push({ file, html: b.html, line: b.line - 1 });
+		}
+	}
+	for (const { file, html, line } of sources) {
+		walkElements(parseHtml(html), (el) => {
+			if (!classList(el).includes('field')) return;
+			const kids = elementChildren(el);
+			if (el.tagName === 'fieldset') {
+				if (kids.filter((k) => k.tagName === 'legend').length !== 1) errors.push({ file, line: line + el.sourceCodeLocation.startLine, message: '.field on a fieldset needs exactly one legend' });
+				return;
+			}
+			const label = kids.find((k) => k.tagName === 'label');
+			const controls = kids.flatMap((k) => classList(k).includes('input-group') ? elementChildren(k).filter((g) => ['input', 'select'].includes(g.tagName)) : (['input', 'select', 'textarea'].includes(k.tagName) ? [k] : []));
+			const forId = label && attributes(label).get('for');
+			if (!label || !forId || controls.length !== 1 || attributes(controls[0]).get('id') !== forId) {
+				errors.push({ file, line: line + el.sourceCodeLocation.startLine, message: FIELD_MESSAGE });
+			}
+		});
+	}
+	return errors;
+}
+
+/** A theme is :root blocks of --yeti-* public tokens, nothing else. */
+export function validateThemes(root) {
+	const themesDir = path.join(root, 'src', 'themes');
+	const catalogueFile = path.join(root, 'src', 'tokens', 'tokens.json');
+	if (!fs.existsSync(themesDir) || !fs.existsSync(catalogueFile)) return [];
+	const schema = loadSchema(path.join(root, 'schema', 'tokens.schema.json'));
+	const { entries } = loadCatalogue(catalogueFile, schema);
+	const publicNames = new Set(entries.filter((e) => e.public).map((e) => e.name));
+	const errors = [];
+	for (const file of walkFiles(themesDir).filter((f) => f.endsWith('.css'))) {
+		const text = stripComments(fs.readFileSync(file, 'utf8'));
+		const stack = [];
+		let selector = '';
+		let line = 1;
+		let selectorLine = 1;
+		let decls = '';
+		for (const ch of text) {
+			if (ch === '{') {
+				const sel = selector.trim();
+				if (/^@media\s*\(\s*prefers-color-scheme:\s*(light|dark)\s*\)$/.test(sel)) {
+					stack.push({ kind: 'media' });
+				} else if (sel === ':root' && (stack.length === 0 || stack.at(-1).kind === 'media')) {
+					stack.push({ kind: 'root', line: selectorLine });
+				} else {
+					errors.push({ file, line: selectorLine, message: `themes may only set --yeti-* tokens on :root (found "${sel}")` });
+					stack.push({ kind: 'other' });
+				}
+				selector = ''; decls = '';
+			} else if (ch === '}') {
+				const block = stack.pop();
+				if (block?.kind === 'root') {
+					for (const d of decls.split(';')) {
+						const [prop] = d.split(':').map((s) => s.trim());
+						if (!prop) continue;
+						if (!prop.startsWith('--yeti-')) errors.push({ file, line: block.line, message: `themes may only set --yeti-* tokens (found "${prop}")` });
+						else if (!publicNames.has(prop)) errors.push({ file, line: block.line, message: `theme sets "${prop}", which is not a public token` });
+					}
+				}
+				selector = ''; decls = '';
+			} else {
+				if (stack.length && stack.at(-1).kind === 'root') decls += ch; else selector += ch;
+				if (ch === '\n') { line++; if (!selector.trim()) selectorLine = line; }
+			}
 		}
 	}
 	return errors;
@@ -434,6 +533,8 @@ export function validate({ root }) {
 		...validateVocabulary(root, entries),
 		...validateNoMediaQueries(srcDir),
 		...validateDocsFragments(entries),
+		...validateFields(entries, docsDir),
+		...validateThemes(root),
 	];
 	return { errors: all, count: Object.keys(merged).length };
 }

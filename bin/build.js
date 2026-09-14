@@ -44,9 +44,19 @@ export function build({ root, pkg = readPackage(root) }) {
 
 	fs.cpSync(srcDir, path.join(distDir, 'css'), {
 		recursive: true,
-		filter: (src) => !path.basename(src).startsWith('.'),
+		filter: (src) => !path.basename(src).startsWith('.') && path.relative(srcDir, src).split(path.sep)[0] !== 'themes',
 	});
 	outputs.push('css/');
+
+	const themesDir = path.join(srcDir, 'themes');
+	if (fs.existsSync(themesDir)) {
+		for (const file of walkFiles(themesDir).filter((f) => f.endsWith('.css'))) {
+			const rel = `themes/${path.basename(file)}`;
+			fs.mkdirSync(path.join(distDir, 'themes'), { recursive: true });
+			fs.copyFileSync(file, path.join(distDir, rel));
+			outputs.push(rel);
+		}
+	}
 
 	for (const file of walkFiles(srcDir).filter((f) => f.endsWith('.js'))) {
 		const rel = `js/${path.basename(file)}`;
