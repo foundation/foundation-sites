@@ -31,7 +31,7 @@
 	}
 
 	:is(input, select, textarea, button):disabled {
-		opacity: 0.6;
+		opacity: var(--yeti-opacity-muted);
 	}
 
 	fieldset {

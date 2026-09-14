@@ -14,5 +14,7 @@
   "emphasis": ["high", "medium", "low"],
   "size-control": ["sm", "md", "lg"],
   "shape": ["slant", "curve", "wave"],
-  "edge": ["top", "bottom", "both"]
+  "edge": ["top", "bottom", "both"],
+  "span": ["1", "2", "3", "4", "5", "6"],
+  "ranks": ["2", "3", "4", "5", "6"]
 }

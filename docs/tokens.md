@@ -192,6 +192,7 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-control-border` | `var(--yeti-color-border)` | Border of inputs at rest. |
 | `--yeti-control-surface` | `var(--yeti-color-surface)` | Background of inputs. |
 | `--yeti-control-chevron` | `a mid-grey chevron` | The select's chevron image; a theme may supply its own, for example a lighter one for a dark control surface. |
+| `--yeti-opacity-muted` | `0.6` | Opacity of a disabled or busy control. |
 
 ## Button
 

@@ -76,7 +76,7 @@
 		color: var(--_yeti-on-variant);
 	}
 	.button:is(:disabled, [aria-disabled="true"]) {
-		opacity: 0.6;
+		opacity: var(--yeti-opacity-muted);
 		cursor: not-allowed;
 	}
 	.button:is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
@@ -98,7 +98,7 @@
 	   aria-disabled, since it cannot be pressed again mid-request) keeps its
 	   progress cursor instead of the disabled rule's not-allowed. */
 	.button[aria-busy="true"] {
-		opacity: 0.6;
+		opacity: var(--yeti-opacity-muted);
 		cursor: progress;
 	}
 }

@@ -244,6 +244,8 @@ const layoutTree = (extra = {}) => validTree({
 		+ ['start', 'center', 'end', 'stretch'].map((v) => `\t[data-justify-self="${v}"] { --_yeti-justify-self: ${v}; }\n`).join('')
 		+ ['primary', 'secondary', 'success', 'warning', 'alert', 'neutral'].map((v) => `\t[data-variant="${v}"] { --_yeti-variant: 0; }\n`).join('')
 		+ ['sm', 'md', 'lg'].map((v) => `\t[data-size="${v}"] { --_yeti-size-text: 0; }\n`).join('')
+		+ ['1', '2', '3', '4', '5', '6'].map((v) => `\t[data-span="${v}"] { --_yeti-span: ${v}; }\n`).join('')
+		+ ['2', '3', '4', '5', '6'].map((v) => `\t[data-ranks="${v}"] { --_yeti-ranks: ${v}; }\n`).join('')
 		+ '}\n',
 	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n',
 	...extra,
@@ -271,6 +273,32 @@ test('validateVocabulary cross-checks manifest attributes against MAPPED', () =>
 	assert.deepEqual(r.lines, [
 		'src/layouts/rail/manifest.json: attribute data-tone references vocabulary "align" but validate does not check it; add it to MAPPED or READ_DIRECTLY in bin/validate.js',
 	]);
+});
+
+const gridTree = (example) => layoutTree({
+	'src/layouts/rail/manifest.json': null,
+	'src/layouts/rail/rail.css': null,
+	'src/layouts/rail/example.html': null,
+	'src/layouts/rail/docs.md': null,
+	'src/layouts/grid/manifest.json': validManifest({
+		name: 'grid',
+		class: 'grid',
+		attributes: [
+			{ name: 'data-fold', type: 'boolean', description: 'Fold into a single column below the threshold.' },
+			{ name: 'data-columns', type: 'enum', vocabulary: 'columns', description: 'Maximum column count.' },
+		],
+	}),
+	'src/layouts/grid/grid.css': '@layer yeti.layouts {\n\t.grid { display: grid; }\n}\n',
+	'src/layouts/grid/example.html': example,
+	'src/layouts/grid/docs.md': '## Why this name\n\nBecause.\n',
+	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/grid/grid.css";\n',
+});
+
+test('a .grid with data-fold requires data-columns to be 2, 4, or 6', () => {
+	const bad = run(gridTree('<div class="grid" data-fold data-columns="3"><p>a</p><p>b</p></div>\n'));
+	assert.deepEqual(bad.lines, ['src/layouts/grid/example.html:1: .grid <div>: data-fold needs data-columns 2, 4, or 6']);
+	const ok = run(gridTree('<div class="grid" data-fold data-columns="4"><p>a</p><p>b</p></div>\n'));
+	assert.deepEqual(ok.lines, []);
 });
 
 test('a child marker such as data-split is legal on any element, including a nested layout', () => {
