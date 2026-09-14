@@ -33,7 +33,7 @@ Yeti targets **Baseline 2025**. Anything that reached Baseline by the end of 202
 
 ## Try it today
 
-The tokens, reset, base layer, fifteen layout primitives, three recipes, and the first eight components are in, with two example themes; see the [Layouts guide](docs/guides/layouts.md). Link the unbuilt source and write plain HTML:
+The tokens, reset, base layer, seventeen layout primitives, three recipes, and the first eight components are in, with two example themes; see the [Layouts guide](docs/guides/layouts.md). Link the unbuilt source and write plain HTML:
 
 ```html
 <link rel="stylesheet" href="src/yeti.css">
