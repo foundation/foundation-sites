@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "badge",
+  "kind": "component",
+  "description": "A small inline label for a status or a count, tinted by a hue.",
+  "class": "badge",
+  "attributes": [
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "Which hue tints the badge." },
+    { "name": "data-emphasis", "type": "enum", "vocabulary": "emphasis", "default": "medium", "description": "medium is a subtle tint with dark text, high a solid fill, low text alone." },
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "The text size the badge sits beside; the badge renders one step smaller." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> svg", "min": 0, "max": 1, "description": "An optional icon, sized to the text." }
+  ],
+  "tokens": [
+    { "name": "--yeti-badge-radius", "public": true, "description": "Corner radius; full makes a pill." },
+    { "name": "--yeti-badge-weight", "public": true, "description": "Text weight." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-variant-text", "public": false },
+    { "name": "--_yeti-on-variant", "public": false },
+    { "name": "--_yeti-size-text", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "A badge is text. If the colour carries meaning, the text must carry it too. A count that belongs to a control goes into that control's accessible name, not beside it." },
+  "js": null,
+  "support": { "unguarded": ["inline flexbox"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

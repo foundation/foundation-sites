@@ -1,0 +1,102 @@
+/* Card: a bordered surface holding a figure, a body, and a footer. Below
+   about 24rem of the card's own outer width, a card with a figure becomes
+   a row with a thumbnail. Container conditions cannot read tokens, so the
+   threshold below is a literal; it is set a little under 24rem because a
+   size container query measures the container's content box, not its
+   border box, so the card's own padding and border (unreadable here, for
+   the same reason) have to be subtracted by hand to keep the effective,
+   outer-width breakpoint at 24rem. */
+@layer yeti.components {
+	.card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: var(--yeti-card-gap);
+		padding: var(--yeti-card-padding);
+		background-color: var(--yeti-card-surface);
+		color: var(--yeti-color-text);
+		border: var(--yeti-border-width) solid var(--yeti-card-border);
+		border-radius: var(--yeti-card-radius);
+		container-type: inline-size;
+		overflow: clip;
+	}
+	.card:not([data-ratio]) { --_yeti-aspect: 16 / 9; }
+
+	/* The figure: media, or a figure element, first in the card, bleeding to the edges.
+	   inline-size is given explicitly, rather than left to the flex item's
+	   default cross-axis stretch, because a stretch-computed width paired
+	   with aspect-ratio on a replaced element mis-sizes the height in WebKit. */
+	.card > :is(img, video, picture, figure):first-child {
+		inline-size: calc(100% + 2 * var(--yeti-card-padding));
+		margin: calc(-1 * var(--yeti-card-padding)) calc(-1 * var(--yeti-card-padding)) 0;
+		max-inline-size: none;
+		aspect-ratio: var(--_yeti-aspect);
+		object-fit: cover;
+	}
+	.card > figure:first-child {
+		display: flex;
+		flex-direction: column;
+		aspect-ratio: auto;
+	}
+	.card > figure:first-child > :is(img, video, picture) {
+		inline-size: 100%;
+		max-inline-size: none;
+		aspect-ratio: var(--_yeti-aspect);
+		object-fit: cover;
+	}
+	.card > figure:first-child > figcaption {
+		padding: var(--yeti-space-xs) var(--yeti-card-padding) 0;
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text-muted);
+	}
+
+	/* The footer sits at the bottom of a taller card. */
+	.card > footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--yeti-space-sm);
+		margin-block-start: auto;
+	}
+
+	/* One link may stretch over the whole card. */
+	.card [data-stretch]::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+	}
+
+	.card[data-raised] {
+		border-color: transparent;
+		box-shadow: var(--yeti-shadow-sm);
+	}
+	.card[data-variant] {
+		border-color: var(--_yeti-variant);
+		border-block-start-width: calc(var(--yeti-border-width) * 4);
+	}
+
+	/* Narrow: a thumbnail beside the text. Only cards with a figure change.
+	   A container query can only restyle descendants of its container, never
+	   the container itself, so the card's own display and flow stay flex
+	   column throughout; the figure is pulled out of flow with position and
+	   the text is indented to clear it. */
+	@container (inline-size < 21.625rem) {
+		.card > :is(img, video, picture, figure):first-child {
+			position: absolute;
+			inset-block-start: calc(-1 * var(--yeti-border-width));
+			inset-inline-start: calc(-1 * var(--yeti-border-width));
+			inline-size: 40%;
+			block-size: calc(100% + 2 * var(--yeti-border-width));
+			margin: 0;
+			aspect-ratio: auto;
+		}
+		.card > figure:first-child > :is(img, video, picture) {
+			flex: 1;
+			min-block-size: 0;
+			aspect-ratio: auto;
+		}
+		.card > :is(img, video, picture, figure):first-child ~ * {
+			margin-inline-start: calc(40% + var(--yeti-card-gap));
+		}
+	}
+}

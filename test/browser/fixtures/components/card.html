@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Card fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; }</style>
+</head>
+<body>
+	<main>
+		<h1>Card component</h1>
+		<div id="stage">
+			<div class="grid" data-min="sm" id="row" style="block-size: auto">
+				<article class="card" id="short">
+					<img id="img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+					<h2><a href="#hills" id="stretch" data-stretch data-contrast>Short</a></h2>
+					<p data-contrast>One line.</p>
+					<footer id="short-footer"><span class="badge" data-variant="success" data-contrast>Open</span></footer>
+				</article>
+				<article class="card" id="tall">
+					<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+					<h2>Tall</h2>
+					<p>One line.</p>
+					<p>Two lines.</p>
+					<p>Three lines.</p>
+					<footer id="tall-footer"><span class="badge">Later</span></footer>
+				</article>
+			</div>
+			<div id="narrow" style="inline-size: 300px">
+				<article class="card" id="thumb">
+					<img id="thumb-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+					<h2 id="thumb-title">Narrow</h2>
+					<p>Beside the picture.</p>
+				</article>
+			</div>
+			<article class="card" id="raised" data-raised style="inline-size: 320px"><p>Raised</p></article>
+			<article class="card" id="tinted" data-variant="warning" style="inline-size: 320px"><p data-contrast>Tinted</p></article>
+			<article class="card" id="captioned" style="inline-size: 400px">
+				<figure>
+					<img id="cap-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+					<figcaption id="caption" data-contrast>A caption</figcaption>
+				</figure>
+				<p>Body</p>
+			</article>
+		</div>
+	</main>
+</body>
+</html>

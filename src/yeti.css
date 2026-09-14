@@ -35,3 +35,5 @@
 @import "recipes/shell/shell.css";
 @import "components/button/button.css";
 @import "components/buttons/buttons.css";
+@import "components/badge/badge.css";
+@import "components/card/card.css";
