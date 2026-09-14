@@ -34,7 +34,7 @@
 	.field select {
 		appearance: none;
 		padding-inline-end: calc(var(--_yeti-size-space) * 2 + 1em);
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+		background-image: var(--yeti-control-chevron);
 		background-repeat: no-repeat;
 		background-position: right var(--_yeti-size-space) center;
 		background-size: 1em;

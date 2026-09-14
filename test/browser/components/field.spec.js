@@ -29,13 +29,12 @@ test.describe('field', () => {
 		expect(await style(page, '#colour', 'background-image')).not.toBe('none');
 	});
 
-	test('the error shows after the visitor leaves an invalid value, and at once with aria-invalid', async ({ page, browserName }) => {
+	test('the error shows after the visitor leaves an invalid value, and at once with aria-invalid', async ({ page }) => {
 		await open(page);
 		expect(await style(page, '#email-error', 'display')).toBe('none');
 		const rest = await style(page, '#email', 'border-top-color');
 		await page.fill('#email', 'nope');
 		await page.locator('#email').blur();
-		if (browserName === 'webkit') await page.evaluate(() => document.getElementById('email').dispatchEvent(new Event('change', { bubbles: true })));
 		expect(await style(page, '#email-error', 'display')).toBe('block');
 		expect(await style(page, '#email', 'border-top-color')).not.toBe(rest);
 		expect(await style(page, '#name-error', 'display')).toBe('block');

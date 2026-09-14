@@ -71,6 +71,7 @@ The label must point at the control with `for` and the control must carry that `
 | `--yeti-control-radius` | Corner of the control. |
 | `--yeti-control-border` | Border of the control at rest. |
 | `--yeti-control-surface` | Background of the control. |
+| `--yeti-control-chevron` | The select's chevron image. |
 | `--yeti-color-alert` | Border of an invalid control. |
 
 <details><summary>Internal tokens (may change between minor versions)</summary>
