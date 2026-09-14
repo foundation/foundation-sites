@@ -31,7 +31,7 @@
 		object-fit: cover;
 	}
 	/* A plain figure is a column: the picture, then the caption below. A
-	   figure that is a layer keeps its own stacking, caption over picture. */
+	   figure that is a layer keeps its own stacking (see the layer's page). */
 	.card > figure:first-child {
 		aspect-ratio: auto;
 	}
