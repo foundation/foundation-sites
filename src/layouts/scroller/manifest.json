@@ -11,7 +11,7 @@
   ],
   "classes": [],
   "children": [
-    { "selector": "> *", "min": 2, "max": null, "description": "The items. None shrinks; the track scrolls instead." }
+    { "selector": "> *", "min": 1, "max": null, "description": "The items. None shrinks; the track scrolls instead. A single wide item (a table, an image) is legal: the scroller then just gives that one item horizontal overflow." }
   ],
   "tokens": [
     { "name": "--yeti-space-md", "public": true, "description": "The default gap." },

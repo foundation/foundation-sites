@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "table",
+  "kind": "component",
+  "description": "A data table styled in place: header rule, row lines, optional stripes, hover, and cell borders, with numeric columns that line up.",
+  "class": "table",
+  "attributes": [
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "Cell padding and text size; sm is the compact table." },
+    { "name": "data-striped", "type": "boolean", "description": "Tint every other body row." },
+    { "name": "data-hover", "type": "boolean", "description": "Tint the row under the pointer." },
+    { "name": "data-grid", "type": "boolean", "description": "Borders around every cell instead of lines between rows." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> caption", "min": 0, "max": 1, "description": "The table's title." },
+    { "selector": "> thead", "min": 0, "max": 1, "description": "The header row." },
+    { "selector": "> tbody", "min": 1, "max": null, "description": "The rows." },
+    { "selector": "[data-numeric]", "min": 0, "max": null, "description": "A cell (or header cell) of numbers: end-aligned with tabular figures." }
+  ],
+  "tokens": [
+    { "name": "--yeti-table-stripe", "public": true, "description": "Fill of even rows with data-striped." },
+    { "name": "--yeti-table-border", "public": true, "description": "Row and cell borders." },
+    { "name": "--yeti-color-border-strong", "public": true, "description": "The rule under the header." },
+    { "name": "--_yeti-size-text", "public": false },
+    { "name": "--_yeti-size-space", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Give the table a caption, or aria-label / aria-labelledby. Header cells carry scope=\"col\" or scope=\"row\". A table wider than its container goes inside a scroller with tabindex=\"0\" and a label; the table itself never changes shape, so it stays a table for assistive tech." },
+  "js": null,
+  "support": { "unguarded": ["logical properties", "font-variant-numeric"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

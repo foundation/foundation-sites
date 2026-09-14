@@ -44,7 +44,7 @@ What the visitor does is scroll, so the layout is a scroller; a name for the mec
 
 ## Children
 
-- `> *`: at least 2. The items. None shrinks; the track scrolls instead.
+- `> *`: at least 1. The items. None shrinks; the track scrolls instead. A single wide item (a table, an image) is legal: the scroller then just gives that one item horizontal overflow.
 
 ## Tokens
 
