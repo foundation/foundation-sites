@@ -46,6 +46,13 @@ test.describe('media recipe', () => {
 		expect(img.height).toBeCloseTo(figure.height, 0);
 	});
 
+	test('a figure with a figcaption keeps its caption below the image, and the image keeps its ratio', async ({ page }) => {
+		await open(page, 1000);
+		const [image, caption] = await Promise.all([rect(page, '#cap-image'), rect(page, '#cap-caption')]);
+		expect(caption.top).toBeGreaterThanOrEqual(image.bottom);
+		expect(image.width / image.height).toBeCloseTo(1, 1);
+	});
+
 	test('children have no margins', async ({ page }) => {
 		await open(page);
 		await expectNoChildMargins(page, '.media');

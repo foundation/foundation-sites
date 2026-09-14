@@ -61,7 +61,7 @@ Nicole Sullivan named the media object in 2010 and the name stuck across a decad
 
 ## Children
 
-- `> *`: exactly 2. Exactly two: the figure (an img, video, or picture, or an element wrapping one) and the body; the body must not have an img, video, or picture as a direct child (it would be taken for a second figure).
+- `> *`: exactly 2. Exactly two: the figure (an img, video, or picture, or an element wrapping one) and the body; the body must not have an img, video, or picture as a direct child (it would be taken for a second figure). A figure with a figcaption keeps its caption below the picture.
 
 ## Tokens
 

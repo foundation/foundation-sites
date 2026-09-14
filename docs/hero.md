@@ -65,7 +65,7 @@ The one-class form does the same in one element: a wrapping row whose lines are 
 
 ## Children
 
-- `> *`: exactly 2. Exactly two: the copy and the figure (an img, video, or picture, or an element wrapping one); the copy (the body) must not have an img, video, or picture as a direct child (it would be taken for a second figure).
+- `> *`: exactly 2. Exactly two: the copy and the figure (an img, video, or picture, or an element wrapping one); the copy (the body) must not have an img, video, or picture as a direct child (it would be taken for a second figure). A figure with a figcaption keeps its caption below the picture.
 
 ## Tokens
 
