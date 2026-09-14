@@ -7,6 +7,8 @@
 @import "tokens/type.css";
 @import "tokens/color.css";
 @import "tokens/motion.css";
+@import "tokens/surface.css";
+@import "tokens/components.css";
 @import "base/reset.css";
 @import "base/typography.css";
 @import "base/prose.css";

@@ -133,6 +133,12 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-color-alert-strong` | `ladder strong` | Hover and active state of the alert color. |
 | `--yeti-color-alert-text` | `ladder text` | Alert-hued text on plain surfaces. |
 | `--yeti-on-alert` | `near-white in light, near-black in dark` | Text placed on --yeti-color-alert. |
+| `--yeti-color-neutral-subtle` | `ladder subtle` | Neutral tint for badges and quiet fills. |
+| `--yeti-color-neutral-soft` | `ladder soft` | Neutral fill for hover states. |
+| `--yeti-color-neutral` | `ladder base` | Neutral accent: buttons and badges with data-variant="neutral". |
+| `--yeti-color-neutral-strong` | `ladder strong` | Neutral accent, one step darker: hover and pressed. |
+| `--yeti-color-neutral-text` | `ladder text` | Neutral-hued text on plain surfaces. |
+| `--yeti-on-neutral` | `near-white in light, near-black in dark` | Text placed on --yeti-color-neutral. |
 | `--yeti-color-surface` | `L 0.99 light, 0.13 dark` | Page background. |
 | `--yeti-color-surface-raised` | `L 0.97 light, 0.17 dark` | Cards, code blocks, anything sitting on the page. |
 | `--yeti-color-surface-sunken` | `L 0.94 light, 0.10 dark` | Wells and inset areas. |
@@ -156,4 +162,78 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | --- | --- | --- |
 | `--yeti-cover-height` | `100dvh` | Minimum block size of a cover layout or a filled stack. Set to auto for one that is only as tall as its content. |
 
-Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.
+## Border
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-border-width` | `1px` | Width of every border a component draws. |
+
+## Weight
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-weight-normal` | `400` | Body weight. |
+| `--yeti-weight-strong` | `600` | Labels, headers, buttons. |
+
+## Shadow
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-shadow-sm` | `0 1px 2px (black at 14% light, 55% dark)` | Raised cards. |
+| `--yeti-shadow-md` | `0 4px 12px (the same colour)` | Floating surfaces; phase 4's menus and dialogs. |
+
+## Control
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-control-size` | `2.5rem` | Minimum block size of a button or input at data-size="md". |
+| `--yeti-control-radius` | `var(--yeti-radius-sm)` | Corner of inputs. |
+| `--yeti-control-border` | `var(--yeti-color-border)` | Border of inputs at rest. |
+| `--yeti-control-surface` | `var(--yeti-color-surface)` | Background of inputs. |
+
+## Button
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-button-radius` | `var(--yeti-radius-md)` | Corner of buttons. |
+| `--yeti-button-weight` | `var(--yeti-weight-strong)` | Weight of button text. |
+| `--yeti-button-padding` | `2` | Inline padding as a multiple of the size's space step. |
+
+## Badge
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-badge-radius` | `var(--yeti-radius-full)` | Corner of badges; full makes a pill. |
+| `--yeti-badge-weight` | `var(--yeti-weight-strong)` | Weight of badge text. |
+
+## Card
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-card-radius` | `var(--yeti-radius-md)` | Corner of cards. |
+| `--yeti-card-padding` | `var(--yeti-space-md)` | Padding inside a card. |
+| `--yeti-card-gap` | `var(--yeti-space-sm)` | Space between a card's parts. |
+| `--yeti-card-border` | `var(--yeti-color-border)` | Border of cards; transparent when raised. |
+| `--yeti-card-surface` | `var(--yeti-color-surface-raised)` | Background of cards. |
+
+## Field
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-field-gap` | `var(--yeti-space-xs)` | Space between a field's label, control, and hint. |
+
+## Table
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-table-stripe` | `var(--yeti-color-surface-sunken)` | Fill of even rows with data-striped. |
+| `--yeti-table-border` | `var(--yeti-color-border)` | Row and cell borders. |
+
+## Seam
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-seam-size` | twice the size's space step (override only) | Depth of the cut; set it to fix the depth for every size. |
+| `--yeti-seam-padding` | `var(--yeti-space-lg)` | Padding a seamed section keeps on a cut edge, before the depth is added. |
+
+Yeti also defines 49 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

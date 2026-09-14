@@ -1,0 +1,21 @@
+/* Surfaces and controls: the widths, weights, shadows, and control sizes
+   that components read. Every value here is a theme's to change. */
+@layer yeti.base {
+	:root {
+		--yeti-border-width: 1px;
+
+		--yeti-weight-normal: 400;
+		--yeti-weight-strong: 600;
+
+		/* Shadows are one colour and two offsets, so a theme can retune either. */
+		--_yeti-shadow-color: light-dark(oklch(0 0 0 / 0.14), oklch(0 0 0 / 0.55));
+		--yeti-shadow-sm: 0 1px 2px var(--_yeti-shadow-color);
+		--yeti-shadow-md: 0 4px 12px var(--_yeti-shadow-color);
+
+		/* Controls: the smallest a button or input gets, and its corner. */
+		--yeti-control-size: 2.5rem;
+		--yeti-control-radius: var(--yeti-radius-sm);
+		--yeti-control-border: var(--yeti-color-border);
+		--yeti-control-surface: var(--yeti-color-surface);
+	}
+}

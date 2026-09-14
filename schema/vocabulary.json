@@ -9,5 +9,10 @@
   "columns": ["1", "2", "3", "4", "5", "6"],
   "limit": ["2", "3", "4", "5"],
   "side": ["start", "end"],
-  "self": ["start", "center", "end", "stretch"]
+  "self": ["start", "center", "end", "stretch"],
+  "variant": ["primary", "secondary", "success", "warning", "alert", "neutral"],
+  "emphasis": ["high", "medium", "low"],
+  "size-control": ["sm", "md", "lg"],
+  "shape": ["slant", "curve", "wave"],
+  "edge": ["top", "bottom", "both"]
 }

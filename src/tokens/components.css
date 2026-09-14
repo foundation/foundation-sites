@@ -1,0 +1,25 @@
+/* Per-component overrides. Each defaults to a global token; a theme that
+   wants pill buttons or square cards sets one line here. */
+@layer yeti.base {
+	:root {
+		--yeti-button-radius: var(--yeti-radius-md);
+		--yeti-button-weight: var(--yeti-weight-strong);
+		--yeti-button-padding: 2;
+
+		--yeti-badge-radius: var(--yeti-radius-full);
+		--yeti-badge-weight: var(--yeti-weight-strong);
+
+		--yeti-card-radius: var(--yeti-radius-md);
+		--yeti-card-padding: var(--yeti-space-md);
+		--yeti-card-gap: var(--yeti-space-sm);
+		--yeti-card-border: var(--yeti-color-border);
+		--yeti-card-surface: var(--yeti-color-surface-raised);
+
+		--yeti-field-gap: var(--yeti-space-xs);
+
+		--yeti-table-stripe: var(--yeti-color-surface-sunken);
+		--yeti-table-border: var(--yeti-color-border);
+
+		--yeti-seam-padding: var(--yeti-space-lg);
+	}
+}
