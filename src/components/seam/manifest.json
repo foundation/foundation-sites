@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "seam",
+  "kind": "component",
+  "description": "Gives a section a shaped edge, a slant, a curve, or a wave, cut from its own background so whatever is behind shows through.",
+  "class": "seam",
+  "attributes": [
+    { "name": "data-shape", "type": "enum", "vocabulary": "shape", "default": "slant", "description": "The shape of the cut edge." },
+    { "name": "data-edge", "type": "enum", "vocabulary": "edge", "default": "bottom", "description": "Which edge is cut." },
+    { "name": "data-flip", "type": "boolean", "description": "Mirror the shape horizontally, for alternating sections. A curve is symmetric and does not change." },
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "The depth of the cut: twice the size's space step." }
+  ],
+  "classes": [],
+  "children": [],
+  "tokens": [
+    { "name": "--yeti-seam-size", "public": true, "description": "Fix the depth for every size." },
+    { "name": "--_yeti-seam", "public": false },
+    { "name": "--_yeti-seam-curve-top", "public": false },
+    { "name": "--_yeti-seam-curve-bottom", "public": false },
+    { "name": "--_yeti-seam-wave-top", "public": false },
+    { "name": "--_yeti-seam-wave-bottom", "public": false },
+    { "name": "--_yeti-seam-wave-top-flip", "public": false },
+    { "name": "--_yeti-seam-wave-bottom-flip", "public": false },
+    { "name": "--_yeti-size-space", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Decorative only; nothing changes for assistive tech. The seam adds its depth as space on a cut edge so text never sits in the cut." },
+  "js": null,
+  "support": { "unguarded": ["clip-path: polygon()", "mask-image"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

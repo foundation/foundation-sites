@@ -37,6 +37,22 @@
 		object-fit: cover;
 	}
 
+	/* A figure with a caption: only the media is cropped; the caption sits below. */
+	.hero > figure:has(> figcaption) {
+		display: flex;
+		flex-direction: column;
+		aspect-ratio: auto;
+		overflow: visible;
+	}
+	.hero > figure:has(> figcaption) > :is(img, video, picture) {
+		aspect-ratio: var(--_yeti-aspect);
+		block-size: auto;
+	}
+	.hero > figure:has(> figcaption) > figcaption {
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text-muted);
+	}
+
 	/* The copy */
 	.hero > :not(:is(img, video, picture), :has(> :is(img, video, picture))) {
 		display: flex;

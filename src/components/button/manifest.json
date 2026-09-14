@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "button",
+  "kind": "component",
+  "description": "An action with a face: a hue, an emphasis, and a size, with every state taken from the element itself.",
+  "class": "button",
+  "attributes": [
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "Which hue's ladder the button uses." },
+    { "name": "data-emphasis", "type": "enum", "vocabulary": "emphasis", "default": "high", "description": "How loud: high is a solid fill, medium an outline, low text alone." },
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "Scales the text and the padding together." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> svg", "min": 0, "max": 1, "description": "An optional icon, sized to the text." }
+  ],
+  "tokens": [
+    { "name": "--yeti-button-radius", "public": true, "description": "Corner radius." },
+    { "name": "--yeti-button-weight", "public": true, "description": "Text weight." },
+    { "name": "--yeti-button-padding", "public": true, "description": "Inline padding as a multiple of the size's space step." },
+    { "name": "--yeti-control-size", "public": true, "description": "Minimum height." },
+    { "name": "--yeti-border-width", "public": true, "description": "Border width." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-variant-strong", "public": false },
+    { "name": "--_yeti-variant-text", "public": false },
+    { "name": "--_yeti-on-variant", "public": false },
+    { "name": "--_yeti-size-text", "public": false },
+    { "name": "--_yeti-size-space", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [ { "key": "Enter / Space", "action": "Activates a button element; Enter follows a link." } ], "notes": "Put the class on a button, an a, or a submit input, nothing else. Use button for actions and a for navigation. An icon-only button needs an aria-label. A toggle sets aria-pressed; a button that is waiting sets aria-busy=\"true\" together with aria-disabled=\"true\", and your handler ignores presses while it waits." },
+  "js": null,
+  "support": { "unguarded": ["inline flexbox", "logical properties"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

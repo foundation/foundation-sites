@@ -19,6 +19,7 @@
     ".": "./dist/yeti.css",
     "./css/*": "./dist/css/*",
     "./js/*": "./dist/js/*",
+    "./themes/*": "./dist/themes/*",
     "./manifest": "./dist/yeti.manifest.json"
   },
   "scripts": {

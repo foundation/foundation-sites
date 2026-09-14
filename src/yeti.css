@@ -7,6 +7,8 @@
 @import "tokens/type.css";
 @import "tokens/color.css";
 @import "tokens/motion.css";
+@import "tokens/surface.css";
+@import "tokens/components.css";
 @import "base/reset.css";
 @import "base/typography.css";
 @import "base/prose.css";
@@ -31,3 +33,11 @@
 @import "recipes/media/media.css";
 @import "recipes/hero/hero.css";
 @import "recipes/shell/shell.css";
+@import "components/button/button.css";
+@import "components/buttons/buttons.css";
+@import "components/badge/badge.css";
+@import "components/card/card.css";
+@import "components/field/field.css";
+@import "components/affix/affix.css";
+@import "components/table/table.css";
+@import "components/seam/seam.css";

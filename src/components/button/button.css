@@ -1,0 +1,104 @@
+/* Button: an action with a face. data-variant picks the hue's ladder,
+   data-emphasis how loud, data-size scales padding and text together.
+   State is native: hover, active, focus-visible, disabled, aria-pressed. */
+@layer yeti.components {
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--yeti-space-xs);
+		min-block-size: var(--yeti-control-size);
+		padding: 0 calc(var(--_yeti-size-space) * var(--yeti-button-padding));
+		font: inherit;
+		font-size: var(--_yeti-size-text);
+		font-weight: var(--yeti-button-weight);
+		line-height: var(--yeti-leading-tight);
+		text-decoration: none;
+		border: var(--yeti-border-width) solid var(--_yeti-variant);
+		border-radius: var(--yeti-button-radius);
+		background-color: var(--_yeti-variant);
+		color: var(--_yeti-on-variant);
+		cursor: pointer;
+		user-select: none;
+		transition:
+			background-color var(--yeti-duration-fast) var(--yeti-ease),
+			border-color var(--yeti-duration-fast) var(--yeti-ease),
+			color var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.button:not([data-variant]) { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	.button:not([data-size]) { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	.button > svg {
+		inline-size: 1em;
+		block-size: 1em;
+		flex: none;
+	}
+
+	/* High emphasis (the default): a solid fill that steps up on hover. */
+	.button:is(:hover, :active) {
+		background-color: var(--_yeti-variant-strong);
+		border-color: var(--_yeti-variant-strong);
+		color: var(--_yeti-on-variant);
+	}
+
+	/* Medium: an outline. Low: text alone. Both tint on hover. */
+	.button[data-emphasis="medium"] {
+		background-color: transparent;
+		color: var(--_yeti-variant-text);
+	}
+	.button[data-emphasis="low"] {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--_yeti-variant-text);
+	}
+	.button[data-emphasis="medium"]:is(:hover, :active) {
+		background-color: var(--_yeti-variant-subtle);
+		border-color: var(--_yeti-variant);
+		color: var(--_yeti-variant-text);
+	}
+	.button[data-emphasis="low"]:is(:hover, :active) {
+		background-color: var(--_yeti-variant-subtle);
+		border-color: transparent;
+		color: var(--_yeti-variant-text);
+	}
+
+	/* A pressed medium or low toggle keeps its pressed fill on hover, instead
+	   of stepping down to the emphasis hover rules above. */
+	.button:is([data-emphasis="medium"], [data-emphasis="low"])[aria-pressed="true"]:is(:hover, :active) {
+		background-color: var(--_yeti-variant-strong);
+		border-color: var(--_yeti-variant-strong);
+		color: var(--_yeti-on-variant);
+	}
+
+	/* Pressed toggles, busy, and disabled, from the attributes that mean them. */
+	.button[aria-pressed="true"] {
+		background-color: var(--_yeti-variant-strong);
+		border-color: var(--_yeti-variant-strong);
+		color: var(--_yeti-on-variant);
+	}
+	.button:is(:disabled, [aria-disabled="true"]) {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+	.button:is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
+		background-color: var(--_yeti-variant);
+		border-color: var(--_yeti-variant);
+		color: var(--_yeti-on-variant);
+	}
+	.button[data-emphasis="medium"]:is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
+		background-color: transparent;
+		border-color: var(--_yeti-variant);
+		color: var(--_yeti-variant-text);
+	}
+	.button[data-emphasis="low"]:is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--_yeti-variant-text);
+	}
+	/* Busy is checked after disabled so a busy button (which also carries
+	   aria-disabled, since it cannot be pressed again mid-request) keeps its
+	   progress cursor instead of the disabled rule's not-allowed. */
+	.button[aria-busy="true"] {
+		opacity: 0.6;
+		cursor: progress;
+	}
+}

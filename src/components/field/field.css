@@ -1,0 +1,163 @@
+/* Field: a label, a control, a hint, and an error, as one thing. Controls
+   stay native; validation shows from the control's own state, so an empty
+   form is not red on load and no script is needed. */
+@layer yeti.components {
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: var(--yeti-field-gap);
+	}
+	.field:not([data-variant]) { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	.field:not([data-size]) { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	.field > * { margin: 0; }
+	.field > :is(label, legend) {
+		font-weight: var(--yeti-weight-strong);
+		font-size: var(--_yeti-size-text);
+	}
+
+	/* Text-like controls */
+	.field :is(input:not(:where([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"])), select, textarea) {
+		min-block-size: calc(var(--yeti-control-size) + max(0px, var(--_yeti-size-space) - var(--yeti-space-sm)));
+		padding: 0 var(--_yeti-size-space);
+		font: inherit;
+		font-size: var(--_yeti-size-text);
+		color: var(--yeti-color-text);
+		background-color: var(--yeti-control-surface);
+		border: var(--yeti-border-width) solid var(--yeti-control-border);
+		border-radius: var(--yeti-control-radius);
+		transition: border-color var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.field textarea {
+		padding-block: var(--_yeti-size-space);
+		min-block-size: 4lh;
+	}
+	.field select {
+		appearance: none;
+		padding-inline-end: calc(var(--_yeti-size-space) * 2 + 1em);
+		background-image: var(--yeti-control-chevron);
+		background-repeat: no-repeat;
+		background-position: right var(--_yeti-size-space) center;
+		background-size: 1em;
+	}
+	.field :is(input, select, textarea):focus-visible {
+		border-color: var(--yeti-color-border-strong);
+	}
+
+	/* Checkbox and radio, redrawn so the checked colour is the variant's. */
+	.field input:is([type="checkbox"], [type="radio"]) {
+		appearance: none;
+		inline-size: 1.25em;
+		block-size: 1.25em;
+		margin: 0;
+		font-size: var(--_yeti-size-text);
+		background-color: var(--yeti-control-surface);
+		border: var(--yeti-border-width) solid var(--yeti-control-border);
+		border-radius: var(--yeti-control-radius);
+		flex: none;
+		transition: background-color var(--yeti-duration-fast) var(--yeti-ease), box-shadow var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.field input[type="radio"] { border-radius: 50%; }
+	.field input:is([type="checkbox"], [type="radio"]):checked {
+		background-color: var(--_yeti-variant);
+		border-color: var(--_yeti-variant);
+		box-shadow: inset 0 0 0 0.2em var(--yeti-control-surface);
+	}
+
+	/* A switch: a checkbox with role="switch", drawn as a track with a thumb
+	   that slides to the end and a track that takes the variant colour. */
+	.field input[type="checkbox"][role="switch"] {
+		inline-size: 2.25em;
+		border-radius: var(--yeti-radius-full);
+		background-color: var(--yeti-control-border);
+		border-color: var(--yeti-control-border);
+		background-image: radial-gradient(circle, var(--yeti-control-surface) 0 0.4em, transparent 0.45em);
+		background-size: 1.25em 1.25em;
+		background-repeat: no-repeat;
+		background-position: 0% 50%;
+		transition: background-color var(--yeti-duration-fast) var(--yeti-ease), border-color var(--yeti-duration-fast) var(--yeti-ease), background-position var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.field input[type="checkbox"][role="switch"]:checked {
+		background-color: var(--_yeti-variant);
+		border-color: var(--_yeti-variant);
+		background-position: 100% 50%;
+		box-shadow: none;
+	}
+
+	/* A range: a thin track and a round thumb in the variant colour. The
+	   engine pseudo-elements take physical sizes; the input itself is a
+	   full control's height so the thumb is a comfortable target. */
+	.field input[type="range"] {
+		appearance: none;
+		inline-size: 100%;
+		block-size: var(--yeti-control-size);
+		margin: 0;
+		font-size: var(--_yeti-size-text);
+		background: transparent;
+		cursor: pointer;
+	}
+	.field input[type="range"]::-webkit-slider-runnable-track {
+		height: 0.25em;
+		border-radius: var(--yeti-radius-full);
+		background-color: var(--yeti-control-border);
+	}
+	.field input[type="range"]::-moz-range-track {
+		height: 0.25em;
+		border-radius: var(--yeti-radius-full);
+		background-color: var(--yeti-control-border);
+	}
+	.field input[type="range"]::-webkit-slider-thumb {
+		appearance: none;
+		width: 1.25em;
+		height: 1.25em;
+		margin-top: calc((0.25em - 1.25em) / 2);
+		border: var(--yeti-border-width) solid var(--_yeti-variant);
+		border-radius: 50%;
+		background-color: var(--_yeti-variant);
+	}
+	.field input[type="range"]::-moz-range-thumb {
+		width: 1.25em;
+		height: 1.25em;
+		border: var(--yeti-border-width) solid var(--_yeti-variant);
+		border-radius: 50%;
+		background-color: var(--_yeti-variant);
+	}
+
+	/* Inline: the label beside the control, for checkboxes, radios, and data-inline. */
+	.field:is([data-inline], :has(> input:is([type="checkbox"], [type="radio"]))) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--yeti-space-xs);
+	}
+	.field:is([data-inline], :has(> input:is([type="checkbox"], [type="radio"]))) > :is([data-hint], [data-error]) {
+		flex-basis: 100%;
+	}
+
+	/* Hint and error */
+	.field > [data-hint] {
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text-muted);
+	}
+	.field > [data-error] {
+		display: none;
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-alert-text);
+	}
+	.field:has(:user-invalid, [aria-invalid="true"]) > [data-error] { display: block; }
+	.field:has(> :user-invalid, > [aria-invalid="true"], > .affix :is(:user-invalid, [aria-invalid="true"])) > :is(input, select, textarea),
+	.field:has(> .affix :is(:user-invalid, [aria-invalid="true"])) > .affix > :is(input, select) { border-color: var(--yeti-color-alert); }
+
+	/* Required, marked after the label; the attribute carries the meaning. */
+	.field:has([required]) > :is(label, legend)::after {
+		content: " *";
+		color: var(--yeti-color-alert-text);
+	}
+
+	/* A fieldset as a field: the base layer's box, with the legend as the label. */
+	fieldset.field {
+		padding: var(--yeti-space-sm) var(--yeti-space-md);
+		border: var(--yeti-border-width) solid var(--yeti-control-border);
+		border-radius: var(--yeti-control-radius);
+	}
+	fieldset.field > legend { padding-inline: var(--yeti-space-xs); }
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Table fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } #wide { inline-size: 500px; }</style>
+</head>
+<body>
+	<main>
+		<h1>Table component</h1>
+		<div id="stage">
+			<table class="table" id="plain" data-striped data-hover>
+				<caption>Summits</caption>
+				<thead><tr><th scope="col" id="head" data-contrast>Peak</th><th scope="col" data-numeric>Height</th></tr></thead>
+				<tbody>
+					<tr id="r1"><td data-contrast>Ben Nevis</td><td id="n1" data-numeric>1,345</td></tr>
+					<tr id="r2"><td data-contrast>Snowdon</td><td data-numeric>1,085</td></tr>
+					<tr id="r3"><td>Scafell Pike</td><td data-numeric>978</td></tr>
+				</tbody>
+			</table>
+			<table class="table" id="gridded" data-grid data-size="sm">
+				<caption>Compact</caption>
+				<thead><tr><th scope="col" id="g-head">Head</th><th scope="col">Head</th></tr></thead>
+				<tbody><tr><td id="g1">A</td><td>B</td></tr></tbody>
+			</table>
+			<div class="scroller" id="wide" role="region" aria-label="Wide table" tabindex="0">
+				<table class="table" id="widetable" style="min-inline-size: 900px">
+					<caption>Wide</caption>
+					<tbody><tr><td>One</td><td>Two</td><td>Three</td></tr></tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/* Table: the element styled in place. It stays a table for assistive tech;
+   a wide one scrolls inside a scroller. */
+@layer yeti.components {
+	.table {
+		inline-size: 100%;
+		border-collapse: collapse;
+		font-size: var(--_yeti-size-text);
+	}
+	.table:not([data-size]) { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	.table > caption {
+		padding-block: var(--_yeti-size-space);
+		text-align: start;
+		font-weight: var(--yeti-weight-strong);
+	}
+	.table :is(th, td) {
+		padding: var(--_yeti-size-space) var(--yeti-space-sm);
+		text-align: start;
+		vertical-align: top;
+		border-block-end: var(--yeti-border-width) solid var(--yeti-table-border);
+	}
+	.table > thead th {
+		font-weight: var(--yeti-weight-strong);
+		border-block-end-color: var(--yeti-color-border-strong);
+	}
+	.table [data-numeric] {
+		text-align: end;
+		font-variant-numeric: tabular-nums;
+	}
+	.table[data-striped] > tbody > tr:nth-child(even) { background-color: var(--yeti-table-stripe); }
+	.table[data-hover] > tbody > tr:hover { background-color: var(--yeti-color-surface-sunken); }
+	.table[data-grid] :is(th, td) { border: var(--yeti-border-width) solid var(--yeti-table-border); }
+	.table[data-grid] > thead th { border-block-end-color: var(--yeti-color-border-strong); }
+}

@@ -108,4 +108,18 @@
 	[data-columns="4"] { --_yeti-column-cap: calc((100% - 3 * var(--_yeti-gap)) / 4); --_yeti-column-count: 4; }
 	[data-columns="5"] { --_yeti-column-cap: calc((100% - 4 * var(--_yeti-gap)) / 5); --_yeti-column-count: 5; }
 	[data-columns="6"] { --_yeti-column-cap: calc((100% - 5 * var(--_yeti-gap)) / 6); --_yeti-column-count: 6; }
+
+	/* data-variant: a hue's ladder, for components. A component sets its own
+	   default with .name:not([data-variant]), so nothing inherits a parent's. */
+	[data-variant="primary"] { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	[data-variant="secondary"] { --_yeti-variant: var(--yeti-color-secondary); --_yeti-variant-subtle: var(--yeti-color-secondary-subtle); --_yeti-variant-soft: var(--yeti-color-secondary-soft); --_yeti-variant-strong: var(--yeti-color-secondary-strong); --_yeti-variant-text: var(--yeti-color-secondary-text); --_yeti-on-variant: var(--yeti-on-secondary); }
+	[data-variant="success"] { --_yeti-variant: var(--yeti-color-success); --_yeti-variant-subtle: var(--yeti-color-success-subtle); --_yeti-variant-soft: var(--yeti-color-success-soft); --_yeti-variant-strong: var(--yeti-color-success-strong); --_yeti-variant-text: var(--yeti-color-success-text); --_yeti-on-variant: var(--yeti-on-success); }
+	[data-variant="warning"] { --_yeti-variant: var(--yeti-color-warning); --_yeti-variant-subtle: var(--yeti-color-warning-subtle); --_yeti-variant-soft: var(--yeti-color-warning-soft); --_yeti-variant-strong: var(--yeti-color-warning-strong); --_yeti-variant-text: var(--yeti-color-warning-text); --_yeti-on-variant: var(--yeti-on-warning); }
+	[data-variant="alert"] { --_yeti-variant: var(--yeti-color-alert); --_yeti-variant-subtle: var(--yeti-color-alert-subtle); --_yeti-variant-soft: var(--yeti-color-alert-soft); --_yeti-variant-strong: var(--yeti-color-alert-strong); --_yeti-variant-text: var(--yeti-color-alert-text); --_yeti-on-variant: var(--yeti-on-alert); }
+	[data-variant="neutral"] { --_yeti-variant: var(--yeti-color-neutral); --_yeti-variant-subtle: var(--yeti-color-neutral-subtle); --_yeti-variant-soft: var(--yeti-color-neutral-soft); --_yeti-variant-strong: var(--yeti-color-neutral-strong); --_yeti-variant-text: var(--yeti-color-neutral-text); --_yeti-on-variant: var(--yeti-on-neutral); }
+
+	/* data-size on components: a text step and the space step one below it */
+	[data-size="sm"] { --_yeti-size-text: var(--yeti-text-sm); --_yeti-size-space: var(--yeti-space-xs); }
+	[data-size="md"] { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	[data-size="lg"] { --_yeti-size-text: var(--yeti-text-lg); --_yeti-size-space: var(--yeti-space-md); }
 }

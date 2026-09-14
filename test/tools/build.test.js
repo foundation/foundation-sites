@@ -80,3 +80,11 @@ test('build ships the tokens catalogue when present', () => {
 	assert.equal(shipped.tokens[0].name, '--yeti-base-min');
 	assert.ok(r.outputs.includes('yeti.tokens.json'));
 });
+
+test('build copies themes to dist/themes', () => {
+	const root = makeTree(treeWithPkg({ 'src/themes/round.css': ':root { --yeti-radius-md: 0; }\n' }));
+	const r = build({ root });
+	assert.deepEqual(r.errors, []);
+	assert.equal(fs.readFileSync(path.join(root, 'dist/themes/round.css'), 'utf8'), ':root { --yeti-radius-md: 0; }\n');
+	assert.ok(!fs.existsSync(path.join(root, 'dist/css/themes')));
+});

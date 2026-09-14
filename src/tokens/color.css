@@ -81,6 +81,14 @@
 		--yeti-color-alert-text: light-dark(oklch(var(--_yeti-l-text-light) var(--_yeti-c-text) var(--yeti-hue-alert)), oklch(var(--_yeti-l-text-dark) var(--_yeti-c-text) var(--yeti-hue-alert))); /* #6c1517 */
 		--yeti-on-alert: light-dark(var(--_yeti-on-light), var(--_yeti-on-dark)); /* #fcfcfc */
 
+		/* Neutral: the same ladder at the neutral hue and chroma, for data-variant="neutral" */
+		--yeti-color-neutral-subtle: light-dark(oklch(var(--_yeti-l-subtle-light) var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(var(--_yeti-l-subtle-dark) var(--_yeti-c-neutral) var(--yeti-hue-neutral)));
+		--yeti-color-neutral-soft: light-dark(oklch(var(--_yeti-l-soft-light) var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(var(--_yeti-l-soft-dark) var(--_yeti-c-neutral) var(--yeti-hue-neutral)));
+		--yeti-color-neutral: light-dark(oklch(var(--_yeti-l-base-light) var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(var(--_yeti-l-base-dark) var(--_yeti-c-neutral) var(--yeti-hue-neutral)));
+		--yeti-color-neutral-strong: light-dark(oklch(var(--_yeti-l-strong-light) var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(var(--_yeti-l-strong-dark) var(--_yeti-c-neutral) var(--yeti-hue-neutral)));
+		--yeti-color-neutral-text: light-dark(oklch(var(--_yeti-l-text-light) var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(var(--_yeti-l-text-dark) var(--_yeti-c-neutral) var(--yeti-hue-neutral)));
+		--yeti-on-neutral: light-dark(var(--_yeti-on-light), var(--_yeti-on-dark));
+
 		/* Page roles from the neutral hue at low chroma */
 		--yeti-color-surface: light-dark(oklch(0.99 var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(0.13 var(--_yeti-c-neutral) var(--yeti-hue-neutral))); /* #f2fdff */
 		--yeti-color-surface-raised: light-dark(oklch(0.97 var(--_yeti-c-neutral) var(--yeti-hue-neutral)), oklch(0.17 var(--_yeti-c-neutral) var(--yeti-hue-neutral))); /* #ebf7ff */

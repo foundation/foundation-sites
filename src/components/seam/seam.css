@@ -1,0 +1,62 @@
+/* Seam: a shaped edge on a section, cut from the section's own box, so
+   whatever is behind it shows through. Slants are a clip-path polygon;
+   curves and waves are a mask made of a solid body and a shaped strip. */
+@layer yeti.components {
+	.seam {
+		--_yeti-seam: var(--yeti-seam-size, calc(var(--_yeti-size-space) * 2));
+		--_yeti-seam-curve-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100C75 13.3 25 13.3 0 0Z'/%3E%3C/svg%3E");
+		--_yeti-seam-curve-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 10C25 -3.3 75 -3.3 100 10Z'/%3E%3C/svg%3E");
+		--_yeti-seam-wave-bottom: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V5C87.5 10 62.5 0 50 5C37.5 10 12.5 0 0 5Z'/%3E%3C/svg%3E");
+		--_yeti-seam-wave-top: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 5C12.5 0 37.5 10 50 5C62.5 0 87.5 10 100 5V10H0Z'/%3E%3C/svg%3E");
+		--_yeti-seam-wave-bottom-flip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V5C87.5 0 62.5 10 50 5C37.5 0 12.5 10 0 5Z'/%3E%3C/svg%3E");
+		--_yeti-seam-wave-top-flip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 5C12.5 10 37.5 0 50 5C62.5 10 87.5 0 100 5V10H0Z'/%3E%3C/svg%3E");
+	}
+	.seam:not([data-size]) { --_yeti-size-space: var(--yeti-space-sm); }
+
+	/* The depth is added in flow, after or before the content, so the
+	   section's own padding is untouched and text never sits in the cut. */
+	.seam:not([data-edge="top"])::after,
+	.seam:is([data-edge="top"], [data-edge="both"])::before {
+		content: "";
+		display: block;
+		block-size: var(--_yeti-seam);
+	}
+
+	/* Slant */
+	.seam:not([data-shape="curve"], [data-shape="wave"]):not([data-edge="top"], [data-edge="both"]) { clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--_yeti-seam)), 0 100%); }
+	.seam:not([data-shape="curve"], [data-shape="wave"]):not([data-edge="top"], [data-edge="both"])[data-flip] { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--_yeti-seam))); }
+	.seam:not([data-shape="curve"], [data-shape="wave"])[data-edge="top"] { clip-path: polygon(0 var(--_yeti-seam), 100% 0, 100% 100%, 0 100%); }
+	.seam:not([data-shape="curve"], [data-shape="wave"])[data-edge="top"][data-flip] { clip-path: polygon(0 0, 100% var(--_yeti-seam), 100% 100%, 0 100%); }
+	.seam:not([data-shape="curve"], [data-shape="wave"])[data-edge="both"] { clip-path: polygon(0 var(--_yeti-seam), 100% 0, 100% calc(100% - var(--_yeti-seam)), 0 100%); }
+	.seam:not([data-shape="curve"], [data-shape="wave"])[data-edge="both"][data-flip] { clip-path: polygon(0 0, 100% var(--_yeti-seam), 100% 100%, 0 calc(100% - var(--_yeti-seam))); }
+
+	/* Curve and wave: a mask of a solid body and a shaped strip per cut edge. */
+	.seam:is([data-shape="curve"], [data-shape="wave"]) {
+		mask-repeat: no-repeat;
+		--_yeti-seam-top: var(--_yeti-seam-curve-top);
+		--_yeti-seam-bottom: var(--_yeti-seam-curve-bottom);
+	}
+	.seam[data-shape="wave"] {
+		--_yeti-seam-top: var(--_yeti-seam-wave-top);
+		--_yeti-seam-bottom: var(--_yeti-seam-wave-bottom);
+	}
+	.seam[data-shape="wave"][data-flip] {
+		--_yeti-seam-top: var(--_yeti-seam-wave-top-flip);
+		--_yeti-seam-bottom: var(--_yeti-seam-wave-bottom-flip);
+	}
+	.seam:is([data-shape="curve"], [data-shape="wave"]):not([data-edge="top"], [data-edge="both"]) {
+		mask-image: linear-gradient(black, black), var(--_yeti-seam-bottom);
+		mask-size: 100% calc(100% - var(--_yeti-seam)), 100% var(--_yeti-seam);
+		mask-position: top, bottom;
+	}
+	.seam:is([data-shape="curve"], [data-shape="wave"])[data-edge="top"] {
+		mask-image: var(--_yeti-seam-top), linear-gradient(black, black);
+		mask-size: 100% var(--_yeti-seam), 100% calc(100% - var(--_yeti-seam));
+		mask-position: top, bottom;
+	}
+	.seam:is([data-shape="curve"], [data-shape="wave"])[data-edge="both"] {
+		mask-image: var(--_yeti-seam-top), linear-gradient(black, black), var(--_yeti-seam-bottom);
+		mask-size: 100% var(--_yeti-seam), 100% calc(100% - 2 * var(--_yeti-seam)), 100% var(--_yeti-seam);
+		mask-position: top, center, bottom;
+	}
+}

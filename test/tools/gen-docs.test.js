@@ -190,3 +190,12 @@ test('a recipe renders into the Recipes group', () => {
 	assert.ok(page.includes('nav_group: "Recipes"'));
 	assert.ok(page.includes('from src/recipes/duo/manifest.json'));
 });
+
+test('the tokens page renders component groups after the framework groups', () => {
+	const page = renderTokensPage([
+		{ name: '--yeti-card-radius', group: 'card', public: true, default: 'x', description: 'x' },
+		{ name: '--yeti-border-width', group: 'border', public: true, default: '1px', description: 'x' },
+		{ name: '--yeti-color-text', group: 'color', public: true, default: 'x', description: 'x' },
+	], 0);
+	assert.ok(page.indexOf('## Color') < page.indexOf('## Border') && page.indexOf('## Border') < page.indexOf('## Card'));
+});
