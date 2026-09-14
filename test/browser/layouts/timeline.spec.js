@@ -1,12 +1,7 @@
 import { test, expect } from 'playwright/test';
 import { open, stage, rect, rects, token, expectNoChildMargins, axe } from '../lib/layout.js';
 
-const pseudo = (page, selector, which) => page.evaluate(([s, w]) => {
-	const el = document.querySelector(s);
-	const cs = getComputedStyle(el, w);
-	const r = el.getBoundingClientRect();
-	return { content: cs.content, width: parseFloat(cs.width), left: r.left + parseFloat(cs.left), right: r.right - parseFloat(cs.right) };
-}, [selector, which]);
+const pseudo = (page, selector, which) => page.evaluate(([s, w]) => ({ content: getComputedStyle(document.querySelector(s), w).content }), [selector, which]);
 
 test.describe('timeline', () => {
 	test('has a rail down the start edge with a marker per entry on it', async ({ page }) => {

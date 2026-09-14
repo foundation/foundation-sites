@@ -17,7 +17,7 @@
     { "name": "--yeti-color-border-strong", "public": true, "description": "The rail and the markers." },
     { "name": "--_yeti-gap", "public": false }
   ],
-  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Use an ordered list, so the sequence is announced, and a time element with datetime in each entry. The rail and markers are decorative." },
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Use an ordered list, so the sequence is announced, and a time element with datetime in each entry. The rail and markers are decorative. Give the ol role=\"list\": removing the list markers removes the list semantics in some engines." },
   "js": null,
   "support": { "unguarded": ["container size queries", "logical inset properties"], "guarded": [] },
   "since": "7.0.0",

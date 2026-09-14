@@ -14,7 +14,7 @@ The breakout is a grid of three columns: a gutter, the reading column, and a gut
 </div>
 ```
 
-A child carrying `data-note` is a margin note: it follows the paragraph it belongs to in the source, and when the content box is at least `xl` wide it moves into the end gutter beside that paragraph, in the small muted text of a hint; narrower, it stays in the column as an aside.
+A child carrying `data-note` is a margin note: it follows the paragraph it belongs to in the source, and when the content box is at least `xl` wide it moves into the end gutter beside that paragraph, in the small muted text of a hint; narrower, it stays in the column as an aside. One note per paragraph; a second note after the same paragraph stacks below the first and pushes the next paragraph down a row.
 
 ```html
 <div class="breakout" data-max="md">

@@ -40,7 +40,7 @@ The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the l
 </div>
 ```
 
-Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` and `data-columns="4"` the grid is four across while its content box is at least four `xs` widths, two by two while it is at least two, and a single column below that, never three. The thresholds are the width token's default multiplied by the count, so a theme that changes the token moves the token, not the fold. The same result with no container query is two `columns` nested in a third:
+Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` and `data-columns="4"` the grid is four across while its content box is at least four `xs` widths, two by two while it is at least two, and a single column below that, never three. The thresholds are the width token's default multiplied by the count, so a theme that changes the token moves the token, not the fold. The closest thing with no container query is two `columns` nested in a third, and it is not the same result: it steps at its own thresholds (inner `sm`, outer `md`) rather than the fold's.
 
 ```html
 <div class="columns" data-threshold="md">
@@ -51,7 +51,7 @@ Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` a
 
 The fold is one attribute on one element; the nest is two wrappers. Use whichever you would rather explain.
 
-`data-ranks` lines up neighbours' parts: with `data-ranks="3"` each child is a subgrid of three rows, so every first part sits in row one, every second in row two, and so on, across the row. Give the number of parts the fullest child has; a child with fewer leaves its last rows empty. A card in a ranked grid keeps its picture and footer aligned with its neighbours' and does not switch to its thumbnail row.
+`data-ranks` lines up neighbours' parts: with `data-ranks="3"` each child is a subgrid of three rows, so every first part sits in row one, every second in row two, and so on, across the row. Give the number of parts the fullest child has; a child with fewer leaves its last rows empty. A card in a ranked grid keeps its picture and footer aligned with its neighbours' and does not switch to its thumbnail row. A ranked child cannot also be a size container, because a size container cannot be a subgrid; the card turns its own container off inside a ranked grid for this reason.
 
 ## Why this name
 
@@ -64,7 +64,7 @@ It is a grid and nothing else is. Foundation 6 readers: this replaces the Block 
 | `data-min` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xs` | The narrowest a column may be. With none, only data-columns decides the count; none is meant to be paired with data-columns, and alone gives a single full-width column. |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | Space between columns and rows. |
 | `data-columns` | enum | `1`, `2`, `3`, `4`, `5`, `6` |  | The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min="none" the count is exact. With data-fold, the count only ever halves. |
-| `data-fold` | boolean |  |  | Halve the column count as the grid narrows instead of stepping down one at a time. Needs data-columns 2, 4, or 6 and uses data-min as the width per column. |
+| `data-fold` | boolean |  |  | Halve the column count as the grid narrows instead of stepping down one at a time. Needs data-columns 2, 4, or 6 and uses data-min as the width per column. data-min="none" has no meaning with a fold: the count needs a width per column. |
 | `data-ranks` | enum | `2`, `3`, `4`, `5`, `6` |  | Line up the parts of the children across each row: the value is how many parts a child has, and each part takes one row. |
 
 ## Children

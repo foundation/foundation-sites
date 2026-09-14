@@ -14,7 +14,7 @@ test.describe('breakout', () => {
 	test('data-note sits in the margin when wide and in the column when narrow', async ({ page }) => {
 		await open(page, 'breakout', 1200);
 		const [plain, note] = await Promise.all([rect(page, '#plain'), rect(page, '#note')]);
-		expect(note.left).toBeGreaterThanOrEqual(plain.right);
+		expect(note.left).toBeCloseTo(plain.right, 0);
 		expect(Math.abs(note.top - plain.top)).toBeLessThan(2);
 		await stage(page, 600);
 		const [p2, n2] = await Promise.all([rect(page, '#plain'), rect(page, '#note')]);

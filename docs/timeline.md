@@ -14,7 +14,7 @@ Lays its entries along a rail with a marker each, on one side, or on alternate s
 ## Example
 
 ```html
-<ol class="timeline" data-alternate>
+<ol class="timeline" data-alternate role="list">
 	<li><time datetime="2026-09-12">12 September</time><h3>The plan</h3><p>Twelve layouts on paper.</p></li>
 	<li><time datetime="2026-09-13">13 September</time><h3>The layouts</h3><p>Fifteen of them, in the browser.</p></li>
 	<li><time datetime="2026-09-14">14 September</time><h3>The components</h3><p>Eight, and two themes.</p></li>
@@ -30,7 +30,7 @@ A history, a changelog, the steps of a process, a schedule: entries in order alo
 The list is a column of entries at the gap, with a rail down its start edge and a marker on the rail beside each entry. Add `data-alternate` and, once the list's content box is at least `lg` wide, the rail moves to the centre and the entries take turns on either side of it, markers still on the rail; narrower, they fall back to one side. The switch is the list's own width, so a timeline in a sidebar stays single-sided while the same one across a page alternates.
 
 ```html
-<ol class="timeline" data-gap="md">
+<ol class="timeline" data-gap="md" role="list">
 	<li><time datetime="2026-01-01">January</time><p>Started.</p></li>
 	<li><time datetime="2026-06-01">June</time><p>Shipped.</p></li>
 </ol>
@@ -66,7 +66,7 @@ It is a line of time. Foundation 6 had nothing for it; people reached for a snip
 
 ## Accessibility
 
-- Use an ordered list, so the sequence is announced, and a time element with datetime in each entry. The rail and markers are decorative.
+- Use an ordered list, so the sequence is announced, and a time element with datetime in each entry. The rail and markers are decorative. Give the ol role="list": removing the list markers removes the list semantics in some engines.
 
 ## Browser support
 

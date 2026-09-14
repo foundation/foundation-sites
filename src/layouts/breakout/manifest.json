@@ -17,6 +17,8 @@
   "tokens": [
     { "name": "--yeti-width-md", "public": true, "description": "The default column width, chosen under the base measure so paragraphs fill it." },
     { "name": "--yeti-space-md", "public": true, "description": "The default gutter and row gap." },
+    { "name": "--yeti-text-sm", "public": true, "description": "The note's text size." },
+    { "name": "--yeti-color-text-muted", "public": true, "description": "The note's text colour." },
     { "name": "--_yeti-max", "public": false },
     { "name": "--_yeti-gap", "public": false }
   ],

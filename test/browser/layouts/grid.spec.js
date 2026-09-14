@@ -59,6 +59,15 @@ test.describe('grid', () => {
 		expect(perRow(await rects(page, '#fold > *'))).toBe(1);
 	});
 
+	test('data-fold with data-min="sm" and six columns steps 6, 3, 1', async ({ page }) => {
+		await open(page, 'grid', 2400);
+		expect(perRow(await rects(page, '#fold6 > *'))).toBe(6);
+		await stage(page, 1200);
+		expect(perRow(await rects(page, '#fold6 > *'))).toBe(3);
+		await stage(page, 1000);
+		expect(perRow(await rects(page, '#fold6 > *'))).toBe(1);
+	});
+
 	test('data-ranks lines up the parts of neighbours', async ({ page }) => {
 		await open(page, 'grid', 1000);
 		const heads = await rects(page, '#ranked h2');
@@ -67,7 +76,7 @@ test.describe('grid', () => {
 		expect(new Set(paras.map((r) => Math.round(r.top))).size).toBe(1);
 	});
 
-	test('the nested-columns twin gives the same counts', async ({ page }) => {
+	test('the nested-columns twin steps through the same counts', async ({ page }) => {
 		await open(page, 'grid', 1100);
 		expect(perRow(await rects(page, '#nest .columns .columns > *'))).toBe(4);
 		expect(new Set((await rects(page, '#nest .columns .columns > *')).map((r) => Math.round(r.top))).size).toBe(1);
