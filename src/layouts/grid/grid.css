@@ -113,5 +113,14 @@
 		.grid[data-fold][data-min="2xl"][data-columns="6"] > * { grid-column: span 2; }
 	}
 
+	/* data-ranks: every child is a subgrid of this grid's rows, one row per
+	   part, so the parts of neighbours line up across the row. */
+	.grid[data-ranks] > * {
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span var(--_yeti-ranks);
+		row-gap: var(--_yeti-gap);
+	}
+
 	.grid > * { margin: 0; }
 }

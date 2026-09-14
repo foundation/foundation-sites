@@ -26,6 +26,8 @@ Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` a
 
 The fold is one attribute on one element; the nest is two wrappers. Use whichever you would rather explain.
 
+`data-ranks` lines up neighbours' parts: with `data-ranks="3"` each child is a subgrid of three rows, so every first part sits in row one, every second in row two, and so on, across the row. Give the number of parts the fullest child has; a child with fewer leaves its last rows empty. A card in a ranked grid keeps its picture and footer aligned with its neighbours' and does not switch to its thumbnail row.
+
 ## Why this name
 
 It is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.

@@ -83,6 +83,23 @@
 		border-block-start-width: calc(var(--yeti-border-width) * 4);
 	}
 
+	/* In a ranked grid the card is a subgrid of the grid's rows, so its parts
+	   line up with its neighbours'; the footer sits in the last row instead of
+	   being pushed. The thumbnail row below is switched off there. The footer
+	   is placed in the last row explicitly so a card with fewer parts still
+	   aligns its footer. container-type is turned off here: a subgridded axis
+	   shares track sizing with its ancestor, which containment forbids, so a
+	   query container cannot also be a subgrid; the thumbnail query never
+	   matches a ranked card anyway. */
+	.grid[data-ranks] > .card {
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span var(--_yeti-ranks);
+		row-gap: var(--yeti-card-gap);
+		container-type: normal;
+	}
+	.grid[data-ranks] > .card > footer { margin-block-start: 0; grid-row: -2; }
+
 	/* Narrow: a thumbnail beside the text. Only cards with a figure change.
 	   A container query can only restyle descendants of its container, never
 	   the container itself, so the card's own display and flow stay flex
@@ -98,7 +115,7 @@
 	   thumbnail's right edge sits 40% - 0.2 × padding from the content
 	   box's own start) plus the card's gap. */
 	@container (inline-size < 22rem) {
-		.card > :is(img, video, picture, figure):first-child {
+		.card:not(.grid[data-ranks] > .card) > :is(img, video, picture, figure):first-child {
 			position: absolute;
 			inset-block-start: 0;
 			inset-inline-start: 0;
@@ -107,13 +124,13 @@
 			margin: 0;
 			aspect-ratio: auto;
 		}
-		.card > figure:first-child > :is(img, video, picture) {
+		.card:not(.grid[data-ranks] > .card) > figure:first-child > :is(img, video, picture) {
 			flex: 1;
 			min-block-size: 0;
 			block-size: 100%;
 			aspect-ratio: auto;
 		}
-		.card > :is(img, video, picture, figure):first-child ~ * {
+		.card:not(.grid[data-ranks] > .card) > :is(img, video, picture, figure):first-child ~ * {
 			margin-inline-start: calc(40% - 0.2 * var(--yeti-card-padding) + var(--yeti-card-gap));
 		}
 	}

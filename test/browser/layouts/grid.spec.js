@@ -59,6 +59,14 @@ test.describe('grid', () => {
 		expect(perRow(await rects(page, '#fold > *'))).toBe(1);
 	});
 
+	test('data-ranks lines up the parts of neighbours', async ({ page }) => {
+		await open(page, 'grid', 1000);
+		const heads = await rects(page, '#ranked h2');
+		const paras = await rects(page, '#ranked p');
+		expect(new Set(heads.map((r) => Math.round(r.top))).size).toBe(1);
+		expect(new Set(paras.map((r) => Math.round(r.top))).size).toBe(1);
+	});
+
 	test('the nested-columns twin gives the same counts', async ({ page }) => {
 		await open(page, 'grid', 1100);
 		expect(perRow(await rects(page, '#nest .columns .columns > *'))).toBe(4);

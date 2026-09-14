@@ -51,6 +51,8 @@ Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` a
 
 The fold is one attribute on one element; the nest is two wrappers. Use whichever you would rather explain.
 
+`data-ranks` lines up neighbours' parts: with `data-ranks="3"` each child is a subgrid of three rows, so every first part sits in row one, every second in row two, and so on, across the row. Give the number of parts the fullest child has; a child with fewer leaves its last rows empty. A card in a ranked grid keeps its picture and footer aligned with its neighbours' and does not switch to its thumbnail row.
+
 ## Why this name
 
 It is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.
@@ -63,6 +65,7 @@ It is a grid and nothing else is. Foundation 6 readers: this replaces the Block 
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | Space between columns and rows. |
 | `data-columns` | enum | `1`, `2`, `3`, `4`, `5`, `6` |  | The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min="none" the count is exact. With data-fold, the count only ever halves. |
 | `data-fold` | boolean |  |  | Halve the column count as the grid narrows instead of stepping down one at a time. Needs data-columns 2, 4, or 6 and uses data-min as the width per column. |
+| `data-ranks` | enum | `2`, `3`, `4`, `5`, `6` |  | Line up the parts of the children across each row: the value is how many parts a child has, and each part takes one row. |
 
 ## Children
 
@@ -80,6 +83,7 @@ It is a grid and nothing else is. Foundation 6 readers: this replaces the Block 
 - `--_yeti-gap`
 - `--_yeti-min`
 - `--_yeti-column-cap`
+- `--_yeti-ranks`
 
 </details>
 
