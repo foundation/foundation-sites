@@ -1,0 +1,18 @@
+/* Soft: round, warm, roomy. A theme is values only; load it after yeti.css. */
+:root {
+	--yeti-hue-primary: 30;
+	--yeti-hue-secondary: 340;
+	--yeti-chroma: 0.12;
+	--yeti-ratio-max: 1.4;
+	--yeti-radius-md: 1rem;
+	--yeti-radius-lg: 1.5rem;
+	--yeti-button-radius: var(--yeti-radius-full);
+	--yeti-button-weight: var(--yeti-weight-normal);
+	--yeti-badge-radius: var(--yeti-radius-full);
+	--yeti-card-radius: var(--yeti-radius-lg);
+	--yeti-card-padding: var(--yeti-space-lg);
+	--yeti-card-border: transparent;
+	--yeti-card-surface: var(--yeti-color-surface-raised);
+	--yeti-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.1);
+	--yeti-control-radius: var(--yeti-radius-md);
+}

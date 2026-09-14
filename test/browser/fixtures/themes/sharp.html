@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sharp theme fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<link rel="stylesheet" href="../../../../src/themes/sharp.css">
+</head>
+<body>
+	<main class="center">
+		<h1>Sharp theme fixture</h1>
+		<div id="stage" class="stack" data-gap="lg">
+			<div class="stack" data-gap="sm">
+				<div class="cluster" id="variants">
+					<button class="button" type="button" id="primary" data-contrast>Primary</button>
+					<button class="button" type="button" id="secondary" data-variant="secondary" data-contrast>Secondary</button>
+					<button class="button" type="button" data-variant="success" data-contrast>Success</button>
+					<button class="button" type="button" data-variant="warning" data-contrast>Warning</button>
+					<button class="button" type="button" data-variant="alert" data-contrast>Alert</button>
+					<button class="button" type="button" data-variant="neutral" data-contrast>Neutral</button>
+				</div>
+				<div class="cluster" id="emphasis">
+					<button class="button" type="button" id="medium" data-emphasis="medium" data-contrast>Medium</button>
+					<button class="button" type="button" id="low" data-emphasis="low" data-contrast>Low</button>
+					<button class="button" type="button" data-variant="alert" data-emphasis="medium" data-contrast>Alert medium</button>
+					<button class="button" type="button" data-variant="warning" data-emphasis="low" data-contrast>Warning low</button>
+				</div>
+				<div class="cluster" id="sizes">
+					<button class="button" type="button" id="sm" data-size="sm">Small</button>
+					<button class="button" type="button" id="md">Medium</button>
+					<button class="button" type="button" id="lg" data-size="lg">Large</button>
+				</div>
+				<div class="cluster" id="states">
+					<button class="button" type="button" id="pressed" aria-pressed="true" data-contrast>Pressed</button>
+					<button class="button" type="button" id="busy" aria-busy="true" aria-disabled="true">Busy</button>
+					<button class="button" type="button" id="disabled" disabled>Disabled</button>
+					<a class="button" href="#" id="link" data-contrast>Link</a>
+					<button class="button" type="button" id="icon"><svg id="svg" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>Icon</button>
+				</div>
+			</div>
+			<p>
+				<span class="badge" id="t-medium" data-contrast>Medium</span>
+				<span class="badge" id="high" data-emphasis="high" data-contrast>High</span>
+				<span class="badge" id="t-low" data-contrast>Low</span>
+				<span class="badge" data-variant="success" data-contrast>Success</span>
+				<span class="badge" data-variant="warning" data-contrast>Warning</span>
+				<span class="badge" data-variant="alert" data-emphasis="high" data-contrast>Alert</span>
+				<span class="badge" data-variant="neutral" data-contrast>Neutral</span>
+				<span class="badge" id="t-lg" data-size="lg">Large</span>
+			</p>
+			<article class="card" id="short">
+				<img id="img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%2394a3b8'/%3E%3C/svg%3E" alt="">
+				<h2><a href="#hills" id="stretch" data-stretch data-contrast>Short</a></h2>
+				<p data-contrast>One line.</p>
+				<footer id="short-footer"><span class="badge" data-variant="success" data-contrast>Open</span></footer>
+			</article>
+			<form class="stack" data-gap="md" id="form" novalidate>
+				<div class="field" id="text">
+					<label for="email" id="email-label" data-contrast>Email</label>
+					<input id="email" type="email" required aria-describedby="email-hint email-error">
+					<p id="email-hint" data-hint data-contrast>We only use it to sign you in.</p>
+					<p id="email-error" data-error>Enter an address with an @ in it.</p>
+				</div>
+				<div class="field" id="server">
+					<label for="name">Name</label>
+					<input id="name" type="text" aria-invalid="true" aria-describedby="name-error">
+					<p id="name-error" data-error data-contrast>Already taken.</p>
+				</div>
+				<div class="field" id="pick">
+					<label for="colour">Colour</label>
+					<select id="colour"><option>Blue</option><option>Green</option></select>
+				</div>
+				<div class="field" id="notes-field" data-size="lg">
+					<label for="notes">Notes</label>
+					<textarea id="notes"></textarea>
+				</div>
+				<div class="field" id="check">
+					<input id="agree" type="checkbox" checked>
+					<label for="agree" id="agree-label">I agree</label>
+				</div>
+				<div class="field" id="small" data-size="sm">
+					<label for="code">Code</label>
+					<input id="code" type="text">
+				</div>
+				<fieldset class="field" id="set">
+					<legend data-contrast>Plan</legend>
+					<div class="field"><input id="p-a" type="radio" name="plan" value="a"><label for="p-a">A</label></div>
+					<div class="field"><input id="p-b" type="radio" name="plan" value="b"><label for="p-b">B</label></div>
+					<p data-hint>One of them.</p>
+				</fieldset>
+				<button class="button" type="submit">Send</button>
+			</form>
+		</div>
+	</main>
+</body>
+</html>

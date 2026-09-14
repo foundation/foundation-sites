@@ -63,3 +63,27 @@ Sizes are named `xs sm md lg xl 2xl 3xl`, with `md` as the base step, and the sa
 ## Fonts
 
 Yeti ships no web fonts. `--yeti-font-sans` and `--yeti-font-mono` default to the system stacks; set them to yours and load the font files however you prefer.
+
+## Make a theme
+
+Everything above sets tokens inline, in your own `<style>` block. A theme is the same idea moved into its own file: a stylesheet of token values on `:root` and nothing else, loaded after `yeti.css` so its values win.
+
+```html
+<link rel="stylesheet" href="/css/yeti.css">
+<link rel="stylesheet" href="/css/themes/soft.css">
+```
+
+A theme file has no selectors but `:root` (optionally split by `@media (prefers-color-scheme: …)` for a value that should only change in one scheme), and no properties but `--yeti-*` public tokens — the validator refuses a theme that sets a class, an element, or a token it doesn't recognise. Beyond the hues, chroma, and scale already covered above, each component publishes a few tokens of its own as its skin surface: `--yeti-button-radius`, `--yeti-card-padding`, `--yeti-badge-radius`, and the rest are listed on the [Tokens](../tokens.md) page. Setting those, rather than editing a component's CSS, is what makes a theme portable: it is data, not code, so it survives an upgrade to a newer Yeti untouched.
+
+A small theme can change a lot. This one shifts the accent hue, opens up the corners, and turns buttons into pills:
+
+```css
+:root {
+	--yeti-hue-primary: 30;
+	--yeti-radius-md: 1rem;
+	--yeti-radius-lg: 1.5rem;
+	--yeti-button-radius: var(--yeti-radius-full);
+}
+```
+
+Yeti ships two such files in `dist/themes/` as worked examples: `soft`, round and warm with pill buttons and roomy cards, and `sharp`, square and mono with thick borders. Neither needs any markup beyond ordinary Yeti classes — a theme changes what a component looks like, never what element or attribute you reach for to use it.
