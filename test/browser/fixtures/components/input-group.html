@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Input group fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; }</style>
+</head>
+<body>
+	<main>
+		<h1>Input group component</h1>
+		<div id="stage">
+			<div class="field" id="price-field">
+				<label for="price">Price</label>
+				<div class="input-group" id="group">
+					<span id="unit" data-contrast>$</span>
+					<input id="price" type="number">
+					<button class="button" type="button" id="apply" data-emphasis="medium">Apply</button>
+				</div>
+			</div>
+			<div class="field" id="big" data-size="lg">
+				<label for="site">Site</label>
+				<div class="input-group" id="group-lg">
+					<input id="site" type="text">
+					<span id="domain">.example.com</span>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

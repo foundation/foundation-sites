@@ -1,0 +1,39 @@
+/* Input group: a control with something attached before or after it, a
+   unit, a symbol, or a button, sharing one border and one height. It reads
+   the size of the field around it, so it sets no defaults of its own. */
+@layer yeti.components {
+	.input-group {
+		display: flex;
+		align-items: stretch;
+	}
+	.input-group > * { margin: 0; }
+	.input-group > :is(input, select) {
+		flex: 1;
+		min-inline-size: 0;
+	}
+	.input-group > span {
+		display: flex;
+		align-items: center;
+		padding-inline: var(--_yeti-size-space, var(--yeti-space-sm));
+		font-size: var(--_yeti-size-text, var(--yeti-text-md));
+		color: var(--yeti-color-text-muted);
+		background-color: var(--yeti-color-surface-sunken);
+		border: var(--yeti-border-width) solid var(--yeti-control-border);
+		border-radius: var(--yeti-control-radius);
+		white-space: nowrap;
+	}
+	.input-group > .button { border-radius: var(--yeti-control-radius); }
+	.input-group > :not(:first-child) {
+		border-start-start-radius: 0;
+		border-end-start-radius: 0;
+		margin-inline-start: calc(-1 * var(--yeti-border-width));
+	}
+	.input-group > :not(:last-child) {
+		border-start-end-radius: 0;
+		border-end-end-radius: 0;
+	}
+	.input-group > :focus-visible {
+		position: relative;
+		z-index: 1;
+	}
+}

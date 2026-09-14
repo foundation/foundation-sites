@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "field",
+  "kind": "component",
+  "description": "One form control with its label, an optional hint, and an error that shows itself when the control is invalid.",
+  "class": "field",
+  "attributes": [
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "Scales the control's height and text." },
+    { "name": "data-inline", "type": "boolean", "description": "Put the label beside the control. Checkboxes and radios are inline without it." },
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "The colour of a checked checkbox or radio." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> label", "min": 0, "max": 1, "description": "The label, with for pointing at the control's id. Required unless the field is a fieldset with a legend." },
+    { "selector": "> legend", "min": 0, "max": 1, "description": "The legend, when the field is a fieldset grouping several controls." },
+    { "selector": "> input", "min": 0, "max": 1, "description": "The control." },
+    { "selector": "> select", "min": 0, "max": 1, "description": "The control." },
+    { "selector": "> textarea", "min": 0, "max": 1, "description": "The control." },
+    { "selector": "> .input-group", "min": 0, "max": 1, "description": "The control, with a prefix or suffix." },
+    { "selector": "> [data-hint]", "min": 0, "max": 1, "description": "Help text, referenced by the control's aria-describedby." },
+    { "selector": "> [data-error]", "min": 0, "max": 1, "description": "The error message, hidden until the control is invalid." }
+  ],
+  "tokens": [
+    { "name": "--yeti-field-gap", "public": true, "description": "Space between label, control, and hint." },
+    { "name": "--yeti-control-size", "public": true, "description": "Minimum height of the control." },
+    { "name": "--yeti-control-radius", "public": true, "description": "Corner of the control." },
+    { "name": "--yeti-control-border", "public": true, "description": "Border of the control at rest." },
+    { "name": "--yeti-control-surface", "public": true, "description": "Background of the control." },
+    { "name": "--yeti-color-alert", "public": true, "description": "Border of an invalid control." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-on-variant", "public": false },
+    { "name": "--_yeti-size-text", "public": false },
+    { "name": "--_yeti-size-space", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "The label's for must match the control's id; the validator checks it. Reference the hint and the error from the control with aria-describedby so both are announced. Use aria-invalid=\"true\" for errors found on the server. The required marker is decoration; the required attribute is what assistive tech reads." },
+  "js": null,
+  "support": { "unguarded": [":has()", ":user-invalid", "appearance: none", "lh unit"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

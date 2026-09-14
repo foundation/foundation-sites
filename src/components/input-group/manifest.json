@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "input-group",
+  "kind": "component",
+  "description": "A control with a prefix or suffix attached: a unit, a symbol, or a button sharing its border and height.",
+  "class": "input-group",
+  "attributes": [],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 2, "max": null, "description": "The control and its attachments, in visual order." },
+    { "selector": "> input", "min": 0, "max": 1, "description": "The control." },
+    { "selector": "> select", "min": 0, "max": 1, "description": "The control." },
+    { "selector": "> span", "min": 0, "max": 2, "description": "A text prefix or suffix." },
+    { "selector": "> .button", "min": 0, "max": 2, "description": "A button prefix or suffix." }
+  ],
+  "tokens": [
+    { "name": "--yeti-control-radius", "public": true, "description": "Outer corners." },
+    { "name": "--yeti-control-border", "public": true, "description": "Border of the attachments." },
+    { "name": "--yeti-border-width", "public": true, "description": "The width the members overlap by." }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "A prefix or suffix that carries meaning (a currency, a unit) must reach the control's accessible name or description: give the span an id and add it to the control's aria-describedby, or say it in the label. A button in the group is an ordinary button. Usually the group is the control slot of a field." },
+  "js": null,
+  "support": { "unguarded": ["flexbox", "logical border radii"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}
