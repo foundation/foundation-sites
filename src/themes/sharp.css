@@ -13,5 +13,6 @@
 	--yeti-color-border: var(--yeti-color-text);
 	--yeti-control-border: var(--yeti-color-text);
 	--yeti-card-surface: var(--yeti-color-surface);
+	--yeti-shadow-sm: 4px 4px 0 var(--yeti-color-text);
 	--yeti-table-border: var(--yeti-color-text);
 }

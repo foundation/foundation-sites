@@ -12,11 +12,13 @@ const open = async (page, width = 1000) => {
 // button.css transitions background-color/border-color/color (its :hover and
 // :is(:hover) rules). A CSS transition's "before" value is still current on
 // the very next read after the triggering event, however short its duration
-// (the interpolation is only sampled on a later frame), so reading a color
+// (the interpolation is only sampled on a later frame, and two animation
+// frames end before the transition itself does), so reading a color
 // immediately after page.hover() can catch mid-transition (or pre-transition)
-// values. Wait two animation frames so the transition has settled before
-// asserting on the hovered state.
-const settle = (page) => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+// values. Wait on the element's own running animations instead, as
+// field.spec.js does; Promise.all([]) resolves at once when there is nothing
+// to wait for.
+const settle = (page, selector) => page.evaluate((s) => Promise.all(document.querySelector(s).getAnimations().map((a) => a.finished)), selector);
 
 test.describe('button', () => {
 	test('every button meets the control height and scales with data-size', async ({ page }) => {
@@ -36,11 +38,11 @@ test.describe('button', () => {
 		expect(await style(page, '#low', 'border-top-color')).toBe('rgba(0, 0, 0, 0)');
 		const rest = await style(page, '#primary', 'background-color');
 		await page.hover('#primary');
-		await settle(page);
+		await settle(page, '#primary');
 		expect(await style(page, '#primary', 'background-color')).not.toBe(rest);
 		await expectAA(page, '#primary', { label: 'primary hovered' });
 		await page.hover('#medium');
-		await settle(page);
+		await settle(page, '#medium');
 		expect(await style(page, '#medium', 'background-color')).not.toBe('rgba(0, 0, 0, 0)');
 		await expectAA(page, '#medium', { label: 'medium hovered' });
 	});

@@ -1,5 +1,5 @@
 import { test, expect } from 'playwright/test';
-import { rect, px, axe } from './lib/layout.js';
+import { rect, px, style, axe } from './lib/layout.js';
 
 test.describe('themes', () => {
 	test('soft renders pill buttons and rounded cards', async ({ page }) => {
@@ -7,6 +7,8 @@ test.describe('themes', () => {
 		const r = await rect(page, '.button');
 		expect(await px(page, '.button', 'border-top-left-radius')).toBeGreaterThanOrEqual(r.height / 2);
 		expect(await px(page, '.card', 'border-top-left-radius')).toBeGreaterThanOrEqual(20);
+		expect(await style(page, '#t-raised-short', 'border-top-color')).toBe('rgba(0, 0, 0, 0)');
+		expect(await style(page, '#t-raised-short', 'box-shadow')).not.toBe('none');
 		expect(await axe(page)).toEqual([]);
 	});
 
@@ -14,6 +16,7 @@ test.describe('themes', () => {
 		expect((await page.goto('/test/browser/fixtures/themes/sharp.html')).status()).toBe(200);
 		expect(await px(page, '.button', 'border-top-left-radius')).toBe(0);
 		expect(await px(page, '.card', 'border-top-width')).toBe(2);
+		expect(await style(page, '#t-raised-short', 'box-shadow')).not.toBe('none');
 		expect(await axe(page)).toEqual([]);
 	});
 });
