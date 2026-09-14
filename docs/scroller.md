@@ -32,7 +32,7 @@ A flex row that does not wrap, with `overflow-x: auto`. Children are told not to
 
 ## Why this name
 
-What the visitor does is scroll, so the layout is a scroller; a name for the mechanism (a reel, a track) would say less. Foundation 6's Orbit was a JavaScript carousel; this is the CSS-only shape of the same idea, without the auto-advance.
+What the visitor does is scroll, so the layout is a scroller; a name for the mechanism (a reel, a track) would say less. Foundation 6 had no layout for a row that scrolls; people hid the overflow by hand.
 
 ## Attributes
 
