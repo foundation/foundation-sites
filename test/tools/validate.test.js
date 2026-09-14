@@ -417,7 +417,7 @@ test('validateFields requires a label for its control', () => {
 	assert.deepEqual(run(field('<div class="field tag"><label>A</label><input id="a"></div>\n')).lines, ['src/components/tag/example.html:1: .field: the label must reference the control with for, and the control must carry that id']);
 	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><input id="b"></div>\n')).lines, ['src/components/tag/example.html:1: .field: the label must reference the control with for, and the control must carry that id']);
 	assert.deepEqual(run(field('<fieldset class="field tag"><legend>Pick</legend><input id="a" type="radio"></fieldset>\n')).lines, []);
-	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><div class="input-group"><span>$</span><input id="a"></div></div>\n')).lines, []);
+	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><div class="affix"><span>$</span><input id="a"></div></div>\n')).lines, []);
 });
 
 test('validateFields also walks fixtures under test/browser/fixtures', () => {

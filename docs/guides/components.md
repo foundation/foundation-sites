@@ -40,7 +40,7 @@ Set the attribute the state actually means — `aria-pressed`, `required`, `disa
 
 ## Forms without JavaScript
 
-A `field` pairs a label with its control and adds a hint and an error the control can trigger on its own. The label's `for` must match the control's `id`; the validator refuses an example where it does not. The error stays hidden until the control is invalid *and* touched (`:user-invalid`), or until `aria-invalid="true"` marks a failure found on the server. A `required` control gets a marker after its label, decoration only — the `required` attribute is what a screen reader announces. An `input-group` attaches a prefix or a suffix to a control and takes its size from the field around it, not from an attribute of its own.
+A `field` pairs a label with its control and adds a hint and an error the control can trigger on its own. The label's `for` must match the control's `id`; the validator refuses an example where it does not. The error stays hidden until the control is invalid *and* touched (`:user-invalid`), or until `aria-invalid="true"` marks a failure found on the server. A `required` control gets a marker after its label, decoration only — the `required` attribute is what a screen reader announces. An `affix` attaches a prefix or a suffix to a control and takes its size from the field around it, not from an attribute of its own.
 
 ```html
 <form class="stack" data-gap="md">

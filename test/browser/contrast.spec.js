@@ -14,7 +14,7 @@ const PAGES = [
 	'/test/browser/fixtures/components/badge.html',
 	'/test/browser/fixtures/components/card.html',
 	'/test/browser/fixtures/components/field.html',
-	'/test/browser/fixtures/components/input-group.html',
+	'/test/browser/fixtures/components/affix.html',
 	'/test/browser/fixtures/components/table.html',
 	'/test/browser/fixtures/components/seam.html',
 	'/test/browser/fixtures/themes/soft.html',

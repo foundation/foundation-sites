@@ -85,8 +85,8 @@
 		color: var(--yeti-color-alert-text);
 	}
 	.field:has(:user-invalid, [aria-invalid="true"]) > [data-error] { display: block; }
-	.field:has(> :user-invalid, > [aria-invalid="true"], > .input-group :is(:user-invalid, [aria-invalid="true"])) > :is(input, select, textarea),
-	.field:has(> .input-group :is(:user-invalid, [aria-invalid="true"])) > .input-group > :is(input, select) { border-color: var(--yeti-color-alert); }
+	.field:has(> :user-invalid, > [aria-invalid="true"], > .affix :is(:user-invalid, [aria-invalid="true"])) > :is(input, select, textarea),
+	.field:has(> .affix :is(:user-invalid, [aria-invalid="true"])) > .affix > :is(input, select) { border-color: var(--yeti-color-alert); }
 
 	/* Required, marked after the label; the attribute carries the meaning. */
 	.field:has([required]) > :is(label, legend)::after {

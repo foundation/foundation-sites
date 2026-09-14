@@ -16,7 +16,7 @@
     { "selector": "> input", "min": 0, "max": 1, "description": "The control." },
     { "selector": "> select", "min": 0, "max": 1, "description": "The control." },
     { "selector": "> textarea", "min": 0, "max": 1, "description": "The control." },
-    { "selector": "> .input-group", "min": 0, "max": 1, "description": "The control, with a prefix or suffix." },
+    { "selector": "> .affix", "min": 0, "max": 1, "description": "The control slot as an affix: a control with attachments, or two controls joined." },
     { "selector": "> [data-hint]", "min": 0, "max": 1, "description": "Help text, referenced by the control's aria-describedby." },
     { "selector": "> [data-error]", "min": 0, "max": 1, "description": "The error message, hidden until the control is invalid." }
   ],

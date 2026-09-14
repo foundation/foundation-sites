@@ -4,12 +4,12 @@ import { PAGE_HELPERS, expectAA } from '../lib/contrast.js';
 
 const open = async (page, width = 1000) => {
 	await page.addInitScript(PAGE_HELPERS);
-	const response = await page.goto('/test/browser/fixtures/components/input-group.html');
+	const response = await page.goto('/test/browser/fixtures/components/affix.html');
 	expect(response.status()).toBe(200);
 	await stage(page, width);
 };
 
-test.describe('input-group', () => {
+test.describe('affix', () => {
 	test('members share one border and the control grows', async ({ page }) => {
 		await open(page);
 		const [group, unit, price, apply] = await Promise.all([rect(page, '#group'), rect(page, '#unit'), rect(page, '#price'), rect(page, '#apply')]);
@@ -40,6 +40,17 @@ test.describe('input-group', () => {
 			}
 		});
 	}
+
+	test('two controls join into one row and both grow', async ({ page }) => {
+		await open(page);
+		const [pair, code, phone] = await Promise.all([rect(page, '#pair'), rect(page, '#code'), rect(page, '#phone')]);
+		const border = await token(page, '--yeti-border-width');
+		expect(code.top).toBeCloseTo(phone.top, 1);
+		expect(phone.left - code.right).toBeCloseTo(-border, 1);
+		expect(code.width + phone.width).toBeGreaterThan(pair.width - 2);
+		expect(await px(page, '#code', 'border-top-right-radius')).toBe(0);
+		expect(await px(page, '#phone', 'border-top-left-radius')).toBe(0);
+	});
 
 	test('has no accessibility violations', async ({ page }) => {
 		await open(page);

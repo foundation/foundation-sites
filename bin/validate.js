@@ -461,9 +461,10 @@ export function validateFields(entries, docsDir, fixturesDir) {
 				return;
 			}
 			const label = kids.find((k) => k.tagName === 'label');
-			const controls = kids.flatMap((k) => classList(k).includes('input-group') ? elementChildren(k).filter((g) => ['input', 'select'].includes(g.tagName)) : (['input', 'select', 'textarea'].includes(k.tagName) ? [k] : []));
+			const controls = kids.flatMap((k) => classList(k).includes('affix') ? elementChildren(k).filter((g) => ['input', 'select'].includes(g.tagName)) : (['input', 'select', 'textarea'].includes(k.tagName) ? [k] : []));
 			const forId = label && attributes(label).get('for');
-			if (!label || !forId || controls.length !== 1 || attributes(controls[0]).get('id') !== forId) {
+			const named = controls.filter((c) => attributes(c).get('id') === forId);
+			if (!label || !forId || controls.length === 0 || named.length !== 1) {
 				errors.push({ file, line: line + el.sourceCodeLocation.startLine, message: FIELD_MESSAGE });
 			}
 		});
