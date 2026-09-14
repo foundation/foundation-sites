@@ -14,6 +14,15 @@ Every child has the same `flex-basis`: the threshold minus the container's width
 </div>
 ```
 
+A child with `data-span` takes that many shares of the row: `data-span="2"` beside a plain sibling is Foundation 6's eight-and-four, with no breakpoint, and it still stacks with the rest below the threshold.
+
+```html
+<div class="columns">
+	<article data-span="2">Two thirds.</article>
+	<aside>One third.</aside>
+</div>
+```
+
 ## Why this name
 
 Yeti names layouts for what they do to their children, and what this one gives them is columns; the switching is the mechanism, not the point. Foundation 6 readers will recognise the job of `.grid-x` with `medium-4` cells; the difference is that the threshold is a container width, so the same markup works in a sidebar and a full-width band.

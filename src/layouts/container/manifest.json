@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "container",
+  "kind": "layout",
+  "description": "Makes its box the thing a container query measures, so what is inside can respond to its width instead of the viewport's.",
+  "class": "container",
+  "attributes": [],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": null, "description": "Anything. The container itself arranges nothing." }
+  ],
+  "tokens": [],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely structural." },
+  "js": null,
+  "support": { "unguarded": ["container size queries"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}
