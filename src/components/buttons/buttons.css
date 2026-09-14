@@ -1,0 +1,28 @@
+/* Buttons: a group. A wrapping row at a small gap, or with data-attach one
+   fused control whose members share borders. */
+@layer yeti.components {
+	.buttons {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--_yeti-gap);
+	}
+	.buttons:not([data-gap]) { --_yeti-gap: var(--yeti-space-sm); }
+	.buttons > * { margin: 0; }
+
+	.buttons[data-attach] { gap: 0; }
+	.buttons[data-attach] > .button:not(:first-child) {
+		border-start-start-radius: 0;
+		border-end-start-radius: 0;
+		margin-inline-start: calc(-1 * var(--yeti-border-width));
+	}
+	.buttons[data-attach] > .button:not(:last-child) {
+		border-start-end-radius: 0;
+		border-end-end-radius: 0;
+	}
+	/* A focused member rises above its neighbours so its ring is whole. */
+	.buttons[data-attach] > .button:focus-visible {
+		position: relative;
+		z-index: 1;
+	}
+}

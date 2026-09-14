@@ -33,3 +33,5 @@
 @import "recipes/media/media.css";
 @import "recipes/hero/hero.css";
 @import "recipes/shell/shell.css";
+@import "components/button/button.css";
+@import "components/buttons/buttons.css";
