@@ -7,7 +7,8 @@
   "attributes": [
     { "name": "data-min", "type": "enum", "vocabulary": "width-or-none", "default": "xs", "description": "The narrowest a column may be. With none, only data-columns decides the count; none is meant to be paired with data-columns, and alone gives a single full-width column." },
     { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between columns and rows." },
-    { "name": "data-columns", "type": "enum", "vocabulary": "columns", "description": "The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min=\"none\" the count is exact." }
+    { "name": "data-columns", "type": "enum", "vocabulary": "columns", "description": "The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min=\"none\" the count is exact. With data-fold, the count only ever halves." },
+    { "name": "data-fold", "type": "boolean", "description": "Halve the column count as the grid narrows instead of stepping down one at a time. Needs data-columns 2, 4, or 6 and uses data-min as the width per column." }
   ],
   "classes": [],
   "children": [

@@ -15,6 +15,17 @@ The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the l
 </div>
 ```
 
+Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` and `data-columns="4"` the grid is four across while its content box is at least four `xs` widths, two by two while it is at least two, and a single column below that, never three. The thresholds are the width token's default multiplied by the count, so a theme that changes the token moves the token, not the fold. The same result with no container query is two `columns` nested in a third:
+
+```html
+<div class="columns" data-threshold="md">
+	<div class="columns" data-threshold="sm"><div>One</div><div>Two</div></div>
+	<div class="columns" data-threshold="sm"><div>Three</div><div>Four</div></div>
+</div>
+```
+
+The fold is one attribute on one element; the nest is two wrappers. Use whichever you would rather explain.
+
 ## Why this name
 
 It is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.

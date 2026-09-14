@@ -40,6 +40,17 @@ The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the l
 </div>
 ```
 
+Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` and `data-columns="4"` the grid is four across while its content box is at least four `xs` widths, two by two while it is at least two, and a single column below that, never three. The thresholds are the width token's default multiplied by the count, so a theme that changes the token moves the token, not the fold. The same result with no container query is two `columns` nested in a third:
+
+```html
+<div class="columns" data-threshold="md">
+	<div class="columns" data-threshold="sm"><div>One</div><div>Two</div></div>
+	<div class="columns" data-threshold="sm"><div>Three</div><div>Four</div></div>
+</div>
+```
+
+The fold is one attribute on one element; the nest is two wrappers. Use whichever you would rather explain.
+
 ## Why this name
 
 It is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.
@@ -50,7 +61,8 @@ It is a grid and nothing else is. Foundation 6 readers: this replaces the Block 
 | --- | --- | --- | --- | --- |
 | `data-min` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xs` | The narrowest a column may be. With none, only data-columns decides the count; none is meant to be paired with data-columns, and alone gives a single full-width column. |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | Space between columns and rows. |
-| `data-columns` | enum | `1`, `2`, `3`, `4`, `5`, `6` |  | The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min="none" the count is exact. |
+| `data-columns` | enum | `1`, `2`, `3`, `4`, `5`, `6` |  | The most columns allowed. Fewer appear when the container cannot fit that many at data-min; with data-min="none" the count is exact. With data-fold, the count only ever halves. |
+| `data-fold` | boolean |  |  | Halve the column count as the grid narrows instead of stepping down one at a time. Needs data-columns 2, 4, or 6 and uses data-min as the width per column. |
 
 ## Children
 
