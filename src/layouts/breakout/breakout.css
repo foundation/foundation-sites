@@ -5,6 +5,7 @@
 @layer yeti.layouts {
 	.breakout {
 		display: grid;
+		container-type: inline-size;
 		grid-template-columns:
 			[full-start] minmax(var(--_yeti-gap), 1fr)
 			[content-start] min(100% - 2 * var(--_yeti-gap), var(--_yeti-max))
@@ -19,4 +20,19 @@
 		grid-column: content;
 	}
 	.breakout > [data-bleed] { grid-column: full; }
+
+	/* data-note: an aside in the end gutter beside the child it follows,
+	   when the content box is wide enough for a margin (xl, 64rem, so the
+	   gutter beside an md column is at least 16rem); in the column otherwise. */
+	.breakout > [data-note] {
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text-muted);
+	}
+	@container (inline-size >= 64rem) {
+		.breakout > [data-note] {
+			grid-column: 3;
+			align-self: start;
+			padding-inline-start: var(--_yeti-gap);
+		}
+	}
 }

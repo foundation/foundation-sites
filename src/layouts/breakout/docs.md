@@ -14,6 +14,15 @@ The breakout is a grid of three columns: a gutter, the reading column, and a gut
 </div>
 ```
 
+A child carrying `data-note` is a margin note: it follows the paragraph it belongs to in the source, and when the content box is at least `xl` wide it moves into the end gutter beside that paragraph, in the small muted text of a hint; narrower, it stays in the column as an aside.
+
+```html
+<div class="breakout" data-max="md">
+	<p>The main text carries the argument.</p>
+	<aside data-note>A citation, or a caveat, that would interrupt the flow.</aside>
+</div>
+```
+
 ## Why this name
 
 The column is ordinary; what is special is that a child can break out of it. Foundation 6 had `.grid-container.fluid` for the whole page and nothing for one element; people reached for negative margins.
