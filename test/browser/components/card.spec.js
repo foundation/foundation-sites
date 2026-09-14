@@ -58,6 +58,17 @@ test.describe('card', () => {
 		expect(img.width).toBeCloseTo(card.width - 2 * border, 0);
 	});
 
+	test('a layer figure puts its caption over the picture', async ({ page }) => {
+		await open(page);
+		const [img, cap, card] = await Promise.all([rect(page, '#lay-img'), rect(page, '#lay-caption'), rect(page, '#layered')]);
+		const border = await token(page, '--yeti-border-width');
+		expect(img.width).toBeCloseTo(card.width - 2 * border, 0);
+		expect(img.width / img.height).toBeCloseTo(16 / 9, 1);
+		expect(cap.bottom).toBeCloseTo(img.bottom, 1);
+		expect(cap.top).toBeGreaterThan(img.top);
+		expect(await style(page, '#lay-caption', 'background-color')).not.toBe('rgba(0, 0, 0, 0)');
+	});
+
 	test('data-stretch makes the whole card the link', async ({ page }) => {
 		await open(page);
 		const card = await rect(page, '#short');

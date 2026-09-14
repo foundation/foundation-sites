@@ -30,10 +30,14 @@
 		aspect-ratio: var(--_yeti-aspect);
 		object-fit: cover;
 	}
+	/* A plain figure is a column: the picture, then the caption below. A
+	   figure that is a layer keeps its own stacking, caption over picture. */
 	.card > figure:first-child {
+		aspect-ratio: auto;
+	}
+	.card > figure:first-child:not(.layer) {
 		display: flex;
 		flex-direction: column;
-		aspect-ratio: auto;
 	}
 	.card > figure:first-child > :is(img, video, picture) {
 		inline-size: 100%;
@@ -41,10 +45,17 @@
 		aspect-ratio: var(--_yeti-aspect);
 		object-fit: cover;
 	}
-	.card > figure:first-child > figcaption {
+	.card > figure:first-child:not(.layer) > figcaption {
 		padding: var(--yeti-space-xs) var(--yeti-card-padding) 0;
 		font-size: var(--yeti-text-sm);
 		color: var(--yeti-color-text-muted);
+	}
+	/* Over the picture, the caption needs a scrim to stay readable. */
+	.card > figure.layer:first-child > figcaption {
+		padding: var(--yeti-space-xs) var(--yeti-card-padding);
+		font-size: var(--yeti-text-sm);
+		color: var(--yeti-color-text);
+		background-color: color-mix(in oklch, var(--yeti-color-surface) 85%, transparent);
 	}
 
 	/* The footer sits at the bottom of a taller card. */
@@ -99,6 +110,7 @@
 		.card > figure:first-child > :is(img, video, picture) {
 			flex: 1;
 			min-block-size: 0;
+			block-size: 100%;
 			aspect-ratio: auto;
 		}
 		.card > :is(img, video, picture, figure):first-child ~ * {
