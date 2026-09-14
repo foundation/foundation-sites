@@ -13,6 +13,6 @@
 	--yeti-card-padding: var(--yeti-space-lg);
 	--yeti-card-border: var(--yeti-color-primary-subtle);
 	--yeti-card-surface: var(--yeti-color-surface-raised);
-	--yeti-shadow-sm: 0 2px 8px oklch(0 0 0 / 0.1);
+	--yeti-shadow-sm: 0 2px 8px var(--yeti-shadow-color);
 	--yeti-control-radius: var(--yeti-radius-md);
 }

@@ -58,9 +58,9 @@
 	}
 	.field input[type="radio"] { border-radius: 50%; }
 	.field input:is([type="checkbox"], [type="radio"]):checked {
-		background-color: var(--_yeti-on-variant);
+		background-color: var(--_yeti-variant);
 		border-color: var(--_yeti-variant);
-		box-shadow: inset 0 0 0 0.35em var(--_yeti-variant);
+		box-shadow: inset 0 0 0 0.2em var(--yeti-control-surface);
 	}
 
 	/* Inline: the label beside the control, for checkboxes, radios, and data-inline. */
@@ -85,7 +85,8 @@
 		color: var(--yeti-color-alert-text);
 	}
 	.field:has(:user-invalid, [aria-invalid="true"]) > [data-error] { display: block; }
-	.field:has(:user-invalid, [aria-invalid="true"]) :is(input, select, textarea) { border-color: var(--yeti-color-alert); }
+	.field:has(> :user-invalid, > [aria-invalid="true"], > .input-group :is(:user-invalid, [aria-invalid="true"])) > :is(input, select, textarea),
+	.field:has(> .input-group :is(:user-invalid, [aria-invalid="true"])) > .input-group > :is(input, select) { border-color: var(--yeti-color-alert); }
 
 	/* Required, marked after the label; the attribute carries the meaning. */
 	.field:has([required]) > :is(label, legend)::after {

@@ -420,6 +420,17 @@ test('validateFields requires a label for its control', () => {
 	assert.deepEqual(run(field('<div class="field tag"><label for="a">A</label><div class="input-group"><span>$</span><input id="a"></div></div>\n')).lines, []);
 });
 
+test('validateFields also walks fixtures under test/browser/fixtures', () => {
+	const r = run(componentTree({
+		'test/browser/fixtures/components/x.html': '<!doctype html>\n<html>\n<body>\n<div class="field"><label for="a">A</label><input id="b"></div>\n</body>\n</html>\n',
+	}));
+	assert.deepEqual(r.lines, ['test/browser/fixtures/components/x.html:4: .field: the label must reference the control with for, and the control must carry that id']);
+});
+
+test('validateFields is silent when test/browser/fixtures does not exist', () => {
+	assert.deepEqual(run(componentTree()).lines, []);
+});
+
 test('validateThemes accepts token-only themes and rejects anything else', () => {
 	const tree = (theme) => componentTree({
 		'src/tokens/tokens.json': [{ name: '--yeti-radius-md', group: 'radius', public: true, default: '0.5rem', description: 'x' }, { name: '--yeti-button-radius', group: 'button', public: true, default: 'x', description: 'x' }],
@@ -446,6 +457,17 @@ test('validateThemes ignores semicolons and colons inside url() and quoted value
 	});
 	assert.deepEqual(run(tree(':root { --yeti-button-radius: url("data:image/svg+xml;charset=utf8,%3Csvg%3E"); }\n')).lines, []);
 	assert.deepEqual(run(tree(':root { --yeti-button-radius: 1px; color: red; }\n')).lines, ['src/themes/round.css:1: themes may only set --yeti-* tokens (found "color")']);
+});
+
+test('validateThemes rejects a bare at-rule statement with no block', () => {
+	const tree = (theme) => componentTree({
+		'src/tokens/tokens.json': [{ name: '--yeti-radius-md', group: 'radius', public: true, default: '0.5rem', description: 'x' }],
+		'schema/tokens.schema.json': fs.readFileSync(TOKENS_SCHEMA_PATH, 'utf8'),
+		'src/tokens/radius.css': '@layer yeti.base { :root { --yeti-radius-md: 0.5rem; } }\n',
+		'src/yeti.css': '@import "layers.css";\n@import "tokens/radius.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n@import "components/tag/tag.css";\n',
+		'src/themes/round.css': theme,
+	});
+	assert.deepEqual(run(tree('@layer theme;\n')).lines, ['src/themes/round.css:1: themes may only set --yeti-* tokens on :root (found "@layer theme;")']);
 });
 
 test('validateThemes rejects a media block nested inside another', () => {

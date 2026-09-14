@@ -47,6 +47,22 @@ test.describe('button', () => {
 		await expectAA(page, '#medium', { label: 'medium hovered' });
 	});
 
+	test('a pressed medium or low toggle keeps its pressed look on hover', async ({ page }) => {
+		await open(page);
+		const rest = await style(page, '#pressed-medium', 'background-color');
+		await page.hover('#pressed-medium');
+		await settle(page, '#pressed-medium');
+		expect(await style(page, '#pressed-medium', 'background-color')).toBe(rest);
+	});
+
+	test('a disabled low-emphasis button keeps its transparent border on hover', async ({ page }) => {
+		await open(page);
+		const rest = await style(page, '#disabled-low', 'border-top-color');
+		await page.hover('#disabled-low');
+		await settle(page, '#disabled-low');
+		expect(await style(page, '#disabled-low', 'border-top-color')).toBe(rest);
+	});
+
 	test('a link, a pressed toggle, and an icon behave like buttons', async ({ page }) => {
 		await open(page);
 		const [link, md] = await Promise.all([rect(page, '#link'), rect(page, '#md')]);

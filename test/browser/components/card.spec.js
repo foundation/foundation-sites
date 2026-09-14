@@ -20,6 +20,12 @@ test.describe('card', () => {
 		expect(img.width / img.height).toBeCloseTo(16 / 9, 1);
 	});
 
+	test('card children keep the card\'s rhythm instead of stacking their own prose margin', async ({ page }) => {
+		await open(page);
+		const [img, h2] = await Promise.all([rect(page, '#img'), rect(page, '#short h2')]);
+		expect(h2.top - img.bottom).toBeCloseTo(await token(page, '--yeti-card-gap'), 0);
+	});
+
 	test('the footer sits at the bottom of a card stretched in a row', async ({ page }) => {
 		await open(page);
 		const [short, tall, sf, tf] = await Promise.all([rect(page, '#short'), rect(page, '#tall'), rect(page, '#short-footer'), rect(page, '#tall-footer')]);

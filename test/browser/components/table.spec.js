@@ -28,6 +28,11 @@ test.describe('table', () => {
 		expect(await px(page, '#g1', 'padding-top')).toBeLessThan(await px(page, '#n1', 'padding-top'));
 	});
 
+	test('the header rule survives data-grid', async ({ page }) => {
+		await open(page);
+		expect(await style(page, '#g-head', 'border-bottom-color')).not.toBe(await style(page, '#g1', 'border-bottom-color'));
+	});
+
 	test('a wide table scrolls inside a scroller and stays a table', async ({ page }) => {
 		await open(page);
 		expect(await page.evaluate(() => { const el = document.getElementById('wide'); return el.scrollWidth > el.clientWidth; })).toBe(true);

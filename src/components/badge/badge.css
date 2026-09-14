@@ -8,7 +8,7 @@
 		padding: 0.15em 0.6em;
 		font-size: calc(var(--_yeti-size-text) * 0.8);
 		font-weight: var(--yeti-badge-weight);
-		line-height: 1.4;
+		line-height: var(--yeti-leading-tight);
 		white-space: nowrap;
 		border: var(--yeti-border-width) solid transparent;
 		border-radius: var(--yeti-badge-radius);

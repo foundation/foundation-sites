@@ -29,4 +29,5 @@
 	.table[data-striped] > tbody > tr:nth-child(even) { background-color: var(--yeti-table-stripe); }
 	.table[data-hover] > tbody > tr:hover { background-color: var(--yeti-color-surface-sunken); }
 	.table[data-grid] :is(th, td) { border: var(--yeti-border-width) solid var(--yeti-table-border); }
+	.table[data-grid] > thead th { border-block-end-color: var(--yeti-color-border-strong); }
 }

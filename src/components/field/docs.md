@@ -4,7 +4,7 @@ Every control in a form: text, email, number, select, textarea, checkbox, radio.
 
 ## How it works
 
-A tight column: label, control, hint, error. The control is a native element styled to the control tokens, so a theme that changes `--yeti-control-radius` changes every input. The error is hidden until the control is invalid *and* the visitor has touched it (`:user-invalid`), or until you set `aria-invalid="true"` after a server round trip; then it shows and the border turns to the alert colour. A `required` control gets a marker after its label. A checkbox or radio is laid out inline automatically, label after the control, and is redrawn so its checked colour is the field's variant.
+A tight column: label, control, hint, error. The control is a native element styled to the control tokens, so a theme that changes `--yeti-control-radius` changes every input. The error is hidden until the control is invalid *and* the visitor has touched it (`:user-invalid`), or until you set `aria-invalid="true"` after a server round trip; then it shows and the border turns to the alert colour. A `required` control gets a marker after its label. A checkbox or radio is laid out inline automatically, label after the control, and its checked mark is a variant-coloured centre inside a ring of the surface colour.
 
 ```html
 <fieldset class="field">

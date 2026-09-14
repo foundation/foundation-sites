@@ -38,7 +38,7 @@ Three attributes and no classes. `data-variant` picks a hue from the palette and
 
 ## Accessibility
 
-A `button` is a button and an `a` is a link; the class changes the look, not the role, so use the element that matches what happens. An icon-only button needs an `aria-label`. A toggle carries `aria-pressed`, and the pressed look follows it. A button that is waiting on a request carries `aria-busy="true"` and `aria-disabled="true"` together: it dims, shows a progress cursor, and cannot be pressed again until the request returns. The focus ring is the page's ring and is never removed. Text over every fill meets AA in both colour schemes; the test suite checks each variant.
+A `button` is a button and an `a` is a link; the class changes the look, not the role, so use the element that matches what happens. An icon-only button needs an `aria-label`. A toggle carries `aria-pressed`, and the pressed look follows it. A button that is waiting on a request carries `aria-busy="true"` and `aria-disabled="true"` together: it dims, shows a progress cursor, and your handler ignores presses until the request returns. The focus ring is the page's ring and is never removed. Text over every fill meets AA in both colour schemes; the test suite checks each variant.
 
 ## Attributes
 
@@ -76,7 +76,7 @@ A `button` is a button and an `a` is a link; the class changes the look, not the
 
 ## Accessibility
 
-- Put the class on a button, an a, or a submit input, nothing else. Use button for actions and a for navigation. An icon-only button needs an aria-label. A toggle sets aria-pressed; a button that is waiting sets aria-busy="true" together with aria-disabled="true", since it cannot be pressed while it waits.
+- Put the class on a button, an a, or a submit input, nothing else. Use button for actions and a for navigation. An icon-only button needs an aria-label. A toggle sets aria-pressed; a button that is waiting sets aria-busy="true" together with aria-disabled="true", and your handler ignores presses while it waits.
 
 | Key | Action |
 | --- | --- |

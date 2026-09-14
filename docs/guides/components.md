@@ -104,9 +104,9 @@ A `seam` cuts a shaped edge — a slant, a curve, or a wave — from a section's
 	<h2>A calmer opening</h2>
 	<p>The wave along the bottom carries into the section below.</p>
 </section>
-<section class="seam" data-shape="wave" data-edge="top" data-flip style="background: var(--yeti-color-surface-raised); padding: var(--yeti-space-xl)">
-	<h2>Mirrored to meet the section above</h2>
-	<p>Flipping the second seam keeps the curve from repeating itself down the page.</p>
+<section class="seam" data-shape="wave" data-edge="top" style="background: var(--yeti-color-surface-raised); padding: var(--yeti-space-xl)">
+	<h2>Nested to meet the section above</h2>
+	<p>The top seam repeats the same wave unflipped, so the two curves nest into one line instead of mirroring each other.</p>
 </section>
 ```
 

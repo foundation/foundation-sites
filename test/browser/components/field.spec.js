@@ -49,10 +49,41 @@ test.describe('field', () => {
 		expect(Math.abs((box.top + box.bottom) / 2 - (label.top + label.bottom) / 2)).toBeLessThan(2);
 		const checked = await style(page, '#agree', 'box-shadow');
 		expect(checked).not.toBe('none');
+		// getPropertyValue returns the token's raw text (a light-dark() call the
+		// canvas helper cannot parse), so resolve it the same way token() does:
+		// give a probe element that value and read its used color back.
+		const [bg, variant] = await page.evaluate(() => {
+			const el = document.getElementById('agree');
+			const probe = document.createElement('div');
+			probe.style.color = getComputedStyle(el).getPropertyValue('--_yeti-variant');
+			document.body.append(probe);
+			const variantColor = getComputedStyle(probe).color;
+			probe.remove();
+			return [window.__yeti.rgb(getComputedStyle(el).backgroundColor), window.__yeti.rgb(variantColor)];
+		});
+		expect(bg).toEqual(variant);
 		await page.uncheck('#agree');
 		await settle(page);
 		await settleTransitions(page, '#agree');
 		expect(await style(page, '#agree', 'box-shadow')).toBe('none');
+		const [uncheckedBg, surface] = await page.evaluate(() => {
+			const el = document.getElementById('agree');
+			const probe = document.createElement('div');
+			probe.style.color = getComputedStyle(el).getPropertyValue('--yeti-control-surface');
+			document.body.append(probe);
+			const surfaceColor = getComputedStyle(probe).color;
+			probe.remove();
+			return [window.__yeti.rgb(getComputedStyle(el).backgroundColor), window.__yeti.rgb(surfaceColor)];
+		});
+		expect(uncheckedBg).toEqual(surface);
+	});
+
+	test('an invalid control only reddens its own control', async ({ page }) => {
+		await open(page);
+		const rest = await style(page, '#p-b', 'border-top-color');
+		await page.evaluate(() => document.getElementById('p-a').setAttribute('aria-invalid', 'true'));
+		expect(await style(page, '#p-b', 'border-top-color')).toBe(rest);
+		expect(await style(page, '#p-a', 'border-top-color')).not.toBe(rest);
 	});
 
 	test('a fieldset field groups inline fields under a legend', async ({ page }) => {

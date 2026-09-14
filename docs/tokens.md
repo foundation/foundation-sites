@@ -179,6 +179,7 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 
 | Token | Default | Description |
 | --- | --- | --- |
+| `--yeti-shadow-color` | `black at 14% in light, 55% in dark` | The colour every shadow is drawn in; a theme changes offsets without losing the scheme flip. |
 | `--yeti-shadow-sm` | `0 1px 2px (black at 14% light, 55% dark)` | Raised cards. |
 | `--yeti-shadow-md` | `0 4px 12px (the same colour)` | Floating surfaces; phase 4's menus and dialogs. |
 
@@ -236,4 +237,4 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | --- | --- | --- |
 | `--yeti-seam-size` | twice the size's space step (override only) | Depth of the cut; set it to fix the depth for every size. |
 
-Yeti also defines 49 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.
+Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

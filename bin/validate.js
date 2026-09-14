@@ -434,7 +434,7 @@ export function validateDocsFragments(entries) {
 const FIELD_MESSAGE = '.field: the label must reference the control with for, and the control must carry that id';
 
 /** Every .field pairs its label with its control by for/id (or is a fieldset with a legend). */
-export function validateFields(entries, docsDir) {
+export function validateFields(entries, docsDir, fixturesDir) {
 	const errors = [];
 	const sources = [];
 	for (const entry of entries) {
@@ -445,6 +445,11 @@ export function validateFields(entries, docsDir) {
 	if (fs.existsSync(docsDir)) {
 		for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
 			for (const b of extractHtmlBlocks(fs.readFileSync(file, 'utf8'))) sources.push({ file, html: b.html, line: b.line - 1 });
+		}
+	}
+	if (fixturesDir && fs.existsSync(fixturesDir)) {
+		for (const file of walkFiles(fixturesDir).filter((f) => f.endsWith('.html'))) {
+			sources.push({ file, html: fs.readFileSync(file, 'utf8'), line: 0 });
 		}
 	}
 	for (const { file, html, line } of sources) {
@@ -519,6 +524,12 @@ export function validateThemes(root) {
 				if (ch === '\n') { line++; if (!selector.trim()) selectorLine = line; }
 			}
 		}
+		// A statement at-rule (@import …; or @layer x;) never opens a block, so the
+		// char loop above never sees it: it just keeps accumulating in `selector`
+		// until the file ends. Catch that leftover text here.
+		if (selector.trim()) {
+			errors.push({ file, line: selectorLine, message: `themes may only set --yeti-* tokens on :root (found "${selector.trim()}")` });
+		}
 	}
 	return errors;
 }
@@ -542,7 +553,7 @@ export function validate({ root }) {
 		...validateVocabulary(root, entries),
 		...validateNoMediaQueries(srcDir),
 		...validateDocsFragments(entries),
-		...validateFields(entries, docsDir),
+		...validateFields(entries, docsDir, path.join(root, 'test', 'browser', 'fixtures')),
 		...validateThemes(root),
 	];
 	return { errors: all, count: Object.keys(merged).length };

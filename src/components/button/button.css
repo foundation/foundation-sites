@@ -61,6 +61,14 @@
 		color: var(--_yeti-variant-text);
 	}
 
+	/* A pressed medium or low toggle keeps its pressed fill on hover, instead
+	   of stepping down to the emphasis hover rules above. */
+	.button:is([data-emphasis="medium"], [data-emphasis="low"])[aria-pressed="true"]:is(:hover, :active) {
+		background-color: var(--_yeti-variant-strong);
+		border-color: var(--_yeti-variant-strong);
+		color: var(--_yeti-on-variant);
+	}
+
 	/* Pressed toggles, busy, and disabled, from the attributes that mean them. */
 	.button[aria-pressed="true"] {
 		background-color: var(--_yeti-variant-strong);
@@ -76,8 +84,14 @@
 		border-color: var(--_yeti-variant);
 		color: var(--_yeti-on-variant);
 	}
-	.button:is([data-emphasis="medium"], [data-emphasis="low"]):is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
+	.button[data-emphasis="medium"]:is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
 		background-color: transparent;
+		border-color: var(--_yeti-variant);
+		color: var(--_yeti-variant-text);
+	}
+	.button[data-emphasis="low"]:is(:disabled, [aria-disabled="true"]):is(:hover, :active) {
+		background-color: transparent;
+		border-color: transparent;
 		color: var(--_yeti-variant-text);
 	}
 	/* Busy is checked after disabled so a busy button (which also carries

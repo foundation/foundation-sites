@@ -8,9 +8,9 @@
 		--yeti-weight-strong: 600;
 
 		/* Shadows are one colour and two offsets, so a theme can retune either. */
-		--_yeti-shadow-color: light-dark(oklch(0 0 0 / 0.14), oklch(0 0 0 / 0.55));
-		--yeti-shadow-sm: 0 1px 2px var(--_yeti-shadow-color);
-		--yeti-shadow-md: 0 4px 12px var(--_yeti-shadow-color);
+		--yeti-shadow-color: light-dark(oklch(0 0 0 / 0.14), oklch(0 0 0 / 0.55));
+		--yeti-shadow-sm: 0 1px 2px var(--yeti-shadow-color);
+		--yeti-shadow-md: 0 4px 12px var(--yeti-shadow-color);
 
 		/* Controls: the smallest a button or input gets, and its corner. */
 		--yeti-control-size: 2.5rem;

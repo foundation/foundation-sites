@@ -17,6 +17,7 @@
 		overflow: clip;
 	}
 	.card:not([data-ratio]) { --_yeti-aspect: 16 / 9; }
+	.card > * { margin-block: 0; }
 
 	/* The figure: media, or a figure element, first in the card, bleeding to the edges.
 	   inline-size is given explicitly, rather than left to the flex item's
