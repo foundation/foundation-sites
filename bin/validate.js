@@ -322,6 +322,7 @@ export function validateTokens(root, manifestEntries = []) {
 const MAPPED = {
 	'data-gap': 'gap', 'data-align': 'align', 'data-justify': 'justify', 'data-threshold': 'width',
 	'data-width': 'width', 'data-min': 'width-or-none', 'data-max': 'width', 'data-ratio': 'ratio', 'data-columns': 'columns',
+	'data-align-self': 'align', 'data-justify-self': 'self',
 };
 
 // Read directly by their own layout's CSS, so they have no attributes.css rule.

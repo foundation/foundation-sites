@@ -81,6 +81,18 @@
 	[data-max="xl"] { --_yeti-max: var(--yeti-width-xl); }
 	[data-max="2xl"] { --_yeti-max: var(--yeti-width-2xl); }
 
+	/* Child placement inside a layer: data-align-self and data-justify-self
+	   sit on the child and set the property on the child. */
+	[data-align-self="start"] { --_yeti-align-self: start; }
+	[data-align-self="center"] { --_yeti-align-self: center; }
+	[data-align-self="end"] { --_yeti-align-self: end; }
+	[data-align-self="stretch"] { --_yeti-align-self: stretch; }
+	[data-align-self="baseline"] { --_yeti-align-self: baseline; }
+	[data-justify-self="start"] { --_yeti-justify-self: start; }
+	[data-justify-self="center"] { --_yeti-justify-self: center; }
+	[data-justify-self="end"] { --_yeti-justify-self: end; }
+	[data-justify-self="stretch"] { --_yeti-justify-self: stretch; }
+
 	/* data-ratio */
 	[data-ratio="1/1"] { --_yeti-aspect: 1 / 1; }
 	[data-ratio="4/3"] { --_yeti-aspect: 4 / 3; }

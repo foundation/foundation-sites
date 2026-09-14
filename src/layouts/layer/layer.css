@@ -13,5 +13,11 @@
 	.layer > * {
 		margin: 0;
 		grid-area: layer;
+		align-self: var(--_yeti-align-self);
+		justify-self: var(--_yeti-justify-self);
 	}
+	/* A child places itself with data-align-self and data-justify-self;
+	   without them it follows the layer's data-align. */
+	.layer > :not([data-align-self]) { --_yeti-align-self: auto; }
+	.layer > :not([data-justify-self]) { --_yeti-justify-self: auto; }
 }

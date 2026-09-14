@@ -63,6 +63,8 @@ Every layout is configured with a small set of `data-*` attributes, drawn from a
 | `data-columns` | `1`, `2`, `3`, `4`, `5`, `6` | grid |
 | `data-side` | `start`, `end` | sidebar |
 | `data-limit` | `2`, `3`, `4`, `5` | columns — the first N share a row; every later child takes a full row |
+| `data-align-self` | `start`, `center`, `end`, `stretch`, `baseline` | a child of layer — places that child vertically |
+| `data-justify-self` | `start`, `center`, `end`, `stretch` | a child of layer — places that child horizontally |
 
 For the sizing attributes the mapping rule is always the same: a value is a token suffix. `data-gap="lg"` reads `--yeti-space-lg`; `data-width="sm"` reads `--yeti-width-sm`. The attribute names the property to set; the value names the step on Yeti's scale to set it to. The rest — `data-align`, `data-justify`, `data-ratio`, `data-columns`, `data-side`, `data-limit` — name a behaviour rather than a token; `attributes.css` maps each value to the CSS keyword it means.
 

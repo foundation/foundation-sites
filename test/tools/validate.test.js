@@ -238,6 +238,8 @@ const layoutTree = (extra = {}) => validTree({
 		+ ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'].map((v) => `\t[data-min="${v}"] { --_yeti-min: 0; }\n`).join('')
 		+ ['1/1', '4/3', '3/2', '16/9', '21/9'].map((v) => `\t[data-ratio="${v}"] { --_yeti-aspect: ${v}; }\n`).join('')
 		+ ['1', '2', '3', '4', '5', '6'].map((v) => `\t[data-columns="${v}"] { --_yeti-column-cap: 0; }\n`).join('')
+		+ ['start', 'center', 'end', 'stretch', 'baseline'].map((v) => `\t[data-align-self="${v}"] { --_yeti-align-self: ${v}; }\n`).join('')
+		+ ['start', 'center', 'end', 'stretch'].map((v) => `\t[data-justify-self="${v}"] { --_yeti-justify-self: ${v}; }\n`).join('')
 		+ '}\n',
 	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n',
 	...extra,
