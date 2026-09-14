@@ -1,7 +1,7 @@
 ---
 raw: true
 title: "Card"
-description: "A bordered surface for one thing: an optional figure that bleeds to the edges, a body, and a footer that sits at the bottom; a thumbnail row when the card is narrow."
+description: "A bordered surface for one thing: an optional figure that bleeds to the edges, a body, and a footer that sits at the bottom; a thumbnail row when the card's content is narrower than 22rem."
 nav_group: "Components"
 nav_order: 4
 ---
@@ -9,7 +9,7 @@ nav_order: 4
 
 # Card
 
-A bordered surface for one thing: an optional figure that bleeds to the edges, a body, and a footer that sits at the bottom; a thumbnail row when the card is narrow.
+A bordered surface for one thing: an optional figure that bleeds to the edges, a body, and a footer that sits at the bottom; a thumbnail row when the card's content is narrower than 22rem.
 
 ## Example
 
@@ -31,7 +31,7 @@ One thing in a box: an article in a listing, a product, a person, a plan. Put ca
 
 ## How it works
 
-A card is a flex column on the raised surface with a border and a radius. A picture, video, or `figure` placed first bleeds through the padding to the card's edges and is cropped to `data-ratio`. Everything after it is the body, spaced at the card's gap and keeping its prose rhythm. A `footer` is pushed to the bottom, so a row of cards of different lengths keeps its actions aligned. `data-raised` trades the border for a shadow; `data-variant` colours the border and draws a bar along the top without tinting the text. Below 24rem of its own width, a card with a picture becomes a two-column row: the picture is a thumbnail down the left, the body takes the rest.
+A card is a flex column on the raised surface with a border and a radius. A picture, video, or `figure` placed first bleeds through the padding to the card's edges and is cropped to `data-ratio`. Everything after it is the body, spaced at the card's gap and keeping its prose rhythm. A `footer` is pushed to the bottom, so a row of cards of different lengths keeps its actions aligned. `data-raised` trades the border for a shadow; `data-variant` colours the border and draws a bar along the top without tinting the text. Below 22rem of content width, a card with a picture becomes a two-column row: the picture is a thumbnail down the left, the body takes the rest.
 
 ```html
 <ul class="grid" data-min="sm" role="list">
@@ -94,7 +94,7 @@ Do not wrap a card in a link. Put the link on the heading and add `data-stretch`
 
 ## Browser support
 
-- Used without guards: container size queries, :has(), aspect-ratio, overflow: clip
+- Used without guards: container size queries, aspect-ratio, overflow: clip
 - Behind `@supports`: nothing
 
 ## JavaScript

@@ -27,12 +27,17 @@ test.describe('card', () => {
 		expect(sf.bottom).toBeCloseTo(tf.bottom, 0);
 	});
 
-	test('below 24rem of its own width a card with a picture becomes a thumbnail row', async ({ page }) => {
+	test('below 22rem of its own content width a card with a picture becomes a thumbnail row', async ({ page }) => {
 		await open(page);
 		const [card, img, title] = await Promise.all([rect(page, '#thumb'), rect(page, '#thumb-img'), rect(page, '#thumb-title')]);
+		const border = await token(page, '--yeti-border-width');
 		expect(title.left).toBeGreaterThan(img.right);
 		expect(img.width).toBeCloseTo(card.width * 0.4, -1);
-		expect(img.height).toBeCloseTo(card.height, 0);
+		expect(img.height).toBeCloseTo(card.height - 2 * border, 0);
+		expect(title.left - img.right).toBeCloseTo(await token(page, '--yeti-card-gap'), 0);
+
+		const [variantCard, variantImg] = await Promise.all([rect(page, '#thumb-variant'), rect(page, '#thumb-variant-img')]);
+		expect(variantImg.top).toBeCloseTo(variantCard.top + 4 * border, 0);
 	});
 
 	test('raised, tinted, and captioned variants', async ({ page }) => {

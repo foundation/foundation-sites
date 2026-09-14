@@ -1,11 +1,7 @@
 /* Card: a bordered surface holding a figure, a body, and a footer. Below
-   about 24rem of the card's own outer width, a card with a figure becomes
-   a row with a thumbnail. Container conditions cannot read tokens, so the
-   threshold below is a literal; it is set a little under 24rem because a
-   size container query measures the container's content box, not its
-   border box, so the card's own padding and border (unreadable here, for
-   the same reason) have to be subtracted by hand to keep the effective,
-   outer-width breakpoint at 24rem. */
+   22rem of content width, roughly the sm width once padding is added, a
+   card with a figure becomes a row with a thumbnail. Literal because
+   container conditions cannot read custom properties. */
 @layer yeti.components {
 	.card {
 		position: relative;
@@ -79,14 +75,23 @@
 	   A container query can only restyle descendants of its container, never
 	   the container itself, so the card's own display and flow stay flex
 	   column throughout; the figure is pulled out of flow with position and
-	   the text is indented to clear it. */
-	@container (inline-size < 21.625rem) {
+	   the text is indented to clear it. The thumbnail sits inside the
+	   border, like the wide figure: inset to the padding box, not the
+	   border box, so the border (and a data-variant bar) stays visible
+	   above and beside it. Its width is 40% of the padding box; the
+	   sibling's margin-inline-start percentage resolves against the
+	   narrower content box, so the indent is rewritten in content-box
+	   terms (40% of padding box = 40% of content box + 0.8 × padding; the
+	   content box starts one padding in from the padding box, so the
+	   thumbnail's right edge sits 40% - 0.2 × padding from the content
+	   box's own start) plus the card's gap. */
+	@container (inline-size < 22rem) {
 		.card > :is(img, video, picture, figure):first-child {
 			position: absolute;
-			inset-block-start: calc(-1 * var(--yeti-border-width));
-			inset-inline-start: calc(-1 * var(--yeti-border-width));
+			inset-block-start: 0;
+			inset-inline-start: 0;
 			inline-size: 40%;
-			block-size: calc(100% + 2 * var(--yeti-border-width));
+			block-size: 100%;
 			margin: 0;
 			aspect-ratio: auto;
 		}
@@ -96,7 +101,7 @@
 			aspect-ratio: auto;
 		}
 		.card > :is(img, video, picture, figure):first-child ~ * {
-			margin-inline-start: calc(40% + var(--yeti-card-gap));
+			margin-inline-start: calc(40% - 0.2 * var(--yeti-card-padding) + var(--yeti-card-gap));
 		}
 	}
 }

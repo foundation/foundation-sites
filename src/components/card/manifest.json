@@ -2,7 +2,7 @@
   "$schema": "../../../schema/manifest.schema.json",
   "name": "card",
   "kind": "component",
-  "description": "A bordered surface for one thing: an optional figure that bleeds to the edges, a body, and a footer that sits at the bottom; a thumbnail row when the card is narrow.",
+  "description": "A bordered surface for one thing: an optional figure that bleeds to the edges, a body, and a footer that sits at the bottom; a thumbnail row when the card's content is narrower than 22rem.",
   "class": "card",
   "attributes": [
     { "name": "data-ratio", "type": "enum", "vocabulary": "ratio", "default": "16/9", "description": "The figure's aspect ratio when the card is wide." },
@@ -28,7 +28,7 @@
   ],
   "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Never wrap a card in a link: the whole card's text would become the link's name. Put the link on the heading and give it data-stretch so the card is clickable and the link is named by the heading. Use article for cards that stand alone and li for cards in a list." },
   "js": null,
-  "support": { "unguarded": ["container size queries", ":has()", "aspect-ratio", "overflow: clip"], "guarded": [] },
+  "support": { "unguarded": ["container size queries", "aspect-ratio", "overflow: clip"], "guarded": [] },
   "since": "7.0.0",
   "example": "example.html"
 }
