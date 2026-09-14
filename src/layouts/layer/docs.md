@@ -4,7 +4,7 @@ A caption over a picture, a badge in the corner of a thumbnail, a heading over a
 
 ## How it works
 
-Every child is placed in the same grid cell, in source order, so later children paint over earlier ones. `data-align` on the layer sets where every child sits vertically when it is shorter than the box; by default they stretch to fill it. To place one child on its own, put `data-align-self` and `data-justify-self` on that child: a badge in the top-right corner is `data-align-self="start" data-justify-self="end"`. Compare `overlay`, which takes one child out of the flow and centers it over a positioned ancestor.
+Every child is placed in the same grid cell, in source order, so later children paint over earlier ones. `data-align` on the layer sets where every child sits vertically when it is shorter than the box; by default they stretch to fill it. To place one child on its own, put `data-align-self` and `data-justify-self` on that child: a badge in the top-right corner is `data-align-self="start" data-justify-self="end"`. Compare `overlay`, which takes one marked child out of the flow and centers it over the rest.
 
 ```html
 <div class="layer">

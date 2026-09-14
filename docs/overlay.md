@@ -1,7 +1,7 @@
 ---
 raw: true
 title: "Overlay"
-description: "Centers itself over the nearest positioned ancestor, or over the viewport, without pushing anything else around."
+description: "Holds one child over the rest, centered, without pushing anything around; the parent is the box it covers."
 nav_group: "Layouts"
 nav_order: 12
 ---
@@ -9,24 +9,32 @@ nav_order: 12
 
 # Overlay
 
-Centers itself over the nearest positioned ancestor, or over the viewport, without pushing anything else around.
+Holds one child over the rest, centered, without pushing anything around; the parent is the box it covers.
 
 ## Example
 
 ```html
-<div style="position: relative">
+<div class="overlay">
 	<img src="photo.jpg" alt="A lake at dawn">
-	<p class="overlay">Sold out</p>
+	<p data-over>Sold out</p>
 </div>
 ```
 
 ## When to use it
 
-An overlay sits on top of something without taking part in the layout underneath: a "sold out" stamp on a product image, a loading message over a form, a notice over the whole page with `data-fixed`. It is the positioning half of a dialog; the behaviour half is a component's job.
+An overlay holds one thing on top of another without taking part in the layout underneath: a "sold out" stamp on a product image, a loading message over a form, a notice over the whole page with `data-fixed`. It is the positioning half of a dialog; the behaviour half is a component's job. Compare `layer`, which stacks all its children in flow and grows to the tallest; an overlay's held child changes nothing about the box.
 
 ## How it works
 
-The overlay is absolutely positioned with its top-left corner at the center of the nearest positioned ancestor, then translated back by half its own size, which centers it whatever its dimensions. Its maximum width and height are the ancestor's minus a gap on each side, and it scrolls internally rather than growing beyond that. `data-fixed` swaps `absolute` for `fixed`, so the containing box is the viewport.
+The overlay is the box being covered, so it is positioned, and its plain children flow as usual. The one child carrying `data-over` is absolutely positioned with its top-left corner at the box's center, then translated back by half its own size, which centers it whatever its dimensions. Its maximum width and height are the box's minus a gap on each side, and it scrolls internally rather than growing beyond that. `data-fixed` on the overlay makes the held child `fixed`, so the box it centers on is the viewport.
+
+```html
+<form class="overlay">
+	<label for="email">Email</label>
+	<input id="email" type="email">
+	<p data-over>Saving…</p>
+</form>
+```
 
 ## Why this name
 
@@ -36,12 +44,13 @@ Overlay is what everyone already calls a thing that lies over other things. Foun
 
 | Attribute | Type | Values | Default | Description |
 | --- | --- | --- | --- | --- |
-| `data-fixed` | boolean |  |  | Center over the viewport instead of the nearest positioned ancestor, and stay put while the page scrolls. |
-| `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | The least space kept between the overlay and the edges of the box it covers. |
+| `data-fixed` | boolean |  |  | Center the held child over the viewport instead of this box, and keep it there while the page scrolls. |
+| `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | The least space kept between the held child and the edges of the box. |
 
 ## Children
 
-No structural requirements.
+- `> *`: at least 2. The content underneath, in normal flow, and one held child.
+- `> [data-over]`: exactly 1. Exactly one child carries data-over; it leaves the flow and is centered over the box.
 
 ## Tokens
 
@@ -57,7 +66,7 @@ No structural requirements.
 
 ## Accessibility
 
-- Positioning only. An overlay that interrupts the page needs focus management and a way to dismiss it, which the dialog and tooltip components provide; use those rather than this primitive alone for anything modal.
+- Positioning only. The held child stays in reading order where it is in the source. A held child that interrupts the page needs focus management and a way to dismiss it, which the dialog and tooltip components provide; use those rather than this primitive alone for anything modal.
 
 ## Browser support
 

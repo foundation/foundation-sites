@@ -80,7 +80,7 @@ Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the 
 - [grid](../grid.md): fits as many equal columns as the container allows at a minimum width, up to an optional maximum count.
 - [frame](../frame.md): holds one child in a fixed aspect ratio, cropping media to fill it and centering anything else.
 - [scroller](../scroller.md): lays its children out in a single row that scrolls horizontally.
-- [overlay](../overlay.md): centers itself over the nearest positioned ancestor, or over the viewport, without pushing anything else around.
+- [overlay](../overlay.md): holds one child over the rest, centered, without pushing anything around; the parent is the box it covers.
 - [box](../box.md): pads its content on all sides, with an optional border.
 - [center](../center.md): centers a column of content horizontally, up to a maximum width, with gutters on narrow screens.
 - [icon](../icon.md): sizes an inline SVG to the surrounding text and aligns it with the text beside it.

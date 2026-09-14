@@ -11,10 +11,14 @@
 	<main>
 		<h1>Overlay</h1>
 		<div id="stage">
-			<div id="host" style="position: relative; block-size: 300px; background: var(--yeti-color-surface-sunken)">
-				<p class="overlay item" id="overlay">Centered over the host</p>
+			<div class="overlay" id="host" style="block-size: 300px; background: var(--yeti-color-surface-sunken)">
+				<p id="under">The content underneath, in normal flow.</p>
+				<p class="item" id="overlay" data-over>Centered over the host</p>
 			</div>
-			<p class="overlay item" id="fixed" data-fixed hidden>Centered over the viewport</p>
+			<div class="overlay" id="fixed-host" data-fixed>
+				<p>The page underneath.</p>
+				<p class="item" id="fixed" data-over hidden>Centered over the viewport</p>
+			</div>
 		</div>
 	</main>
 </body>

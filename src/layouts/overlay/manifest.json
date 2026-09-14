@@ -2,21 +2,60 @@
   "$schema": "../../../schema/manifest.schema.json",
   "name": "overlay",
   "kind": "layout",
-  "description": "Centers itself over the nearest positioned ancestor, or over the viewport, without pushing anything else around.",
+  "description": "Holds one child over the rest, centered, without pushing anything around; the parent is the box it covers.",
   "class": "overlay",
   "attributes": [
-    { "name": "data-fixed", "type": "boolean", "description": "Center over the viewport instead of the nearest positioned ancestor, and stay put while the page scrolls." },
-    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "The least space kept between the overlay and the edges of the box it covers." }
+    {
+      "name": "data-fixed",
+      "type": "boolean",
+      "description": "Center the held child over the viewport instead of this box, and keep it there while the page scrolls."
+    },
+    {
+      "name": "data-gap",
+      "type": "enum",
+      "vocabulary": "gap",
+      "default": "md",
+      "description": "The least space kept between the held child and the edges of the box."
+    }
   ],
   "classes": [],
-  "children": [],
-  "tokens": [
-    { "name": "--yeti-space-md", "public": true, "description": "The default edge gap." },
-    { "name": "--_yeti-gap", "public": false }
+  "children": [
+    {
+      "selector": "> *",
+      "min": 2,
+      "max": null,
+      "description": "The content underneath, in normal flow, and one held child."
+    },
+    {
+      "selector": "> [data-over]",
+      "min": 1,
+      "max": 1,
+      "description": "Exactly one child carries data-over; it leaves the flow and is centered over the box."
+    }
   ],
-  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Positioning only. An overlay that interrupts the page needs focus management and a way to dismiss it, which the dialog and tooltip components provide; use those rather than this primitive alone for anything modal." },
+  "tokens": [
+    {
+      "name": "--yeti-space-md",
+      "public": true,
+      "description": "The default edge gap."
+    },
+    {
+      "name": "--_yeti-gap",
+      "public": false
+    }
+  ],
+  "a11y": {
+    "requiredAttributes": [],
+    "keyboard": [],
+    "notes": "Positioning only. The held child stays in reading order where it is in the source. A held child that interrupts the page needs focus management and a way to dismiss it, which the dialog and tooltip components provide; use those rather than this primitive alone for anything modal."
+  },
   "js": null,
-  "support": { "unguarded": ["translate property"], "guarded": [] },
+  "support": {
+    "unguarded": [
+      "translate property"
+    ],
+    "guarded": []
+  },
   "since": "7.0.0",
   "example": "example.html"
 }
