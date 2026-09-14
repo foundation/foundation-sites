@@ -15,4 +15,4 @@ Both children live in a wrapping flex row. The sidebar child gets `data-width` a
 
 ## Why this name
 
-Every Layout's Sidebar is the same composition and the word says exactly what the fixed child is. Foundation 6 built this with `.grid-x` columns and `medium-8`/`medium-4` classes, which fixed the switch to a viewport breakpoint rather than to the content.
+The word says exactly what the fixed child is. Foundation 6 built this with `.grid-x` columns and `medium-8`/`medium-4` classes, which fixed the switch to a viewport breakpoint rather than to the content.

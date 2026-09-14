@@ -26,11 +26,11 @@ A center is the page column: the wrapper that keeps a page or a section from spr
 
 ## How it works
 
-`max-inline-size` caps the content, automatic inline margins split the remaining space equally, and `padding-inline` supplies the gutters. The box is `content-box`, so `data-max` is the width of the content, not the content plus gutters. `data-intrinsic` turns it into a flex column that centers each child on its own width, for a heading and a button that should sit in the middle rather than stretch.
+`max-inline-size` caps the content, automatic inline margins split the remaining space equally, and `padding-inline` supplies the gutters. The box is `content-box`, so `data-max` is the width of the content, not the content plus gutters. `data-intrinsic` changes what is centered: the column shrinks to fit its content, still no wider than `data-max`, and that box is centered on the page, with each child centered on its own width inside it. Use it for a heading and a button that should sit in the middle rather than stretch.
 
 ## Why this name
 
-Every Layout's Center, kept, because centering is the whole job. Foundation 6 readers: this is `.grid-container`, with the width and gutters as attributes instead of Sass variables.
+Centering is the whole job. Foundation 6 readers: this is `.grid-container`, with the width and gutters as attributes instead of Sass variables.
 
 ## Attributes
 
@@ -38,7 +38,7 @@ Every Layout's Center, kept, because centering is the whole job. Foundation 6 re
 | --- | --- | --- | --- | --- |
 | `data-max` | enum | `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `xl` | The widest the content column may be. |
 | `data-gap` | enum | `none`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `xs-sm`, `xs-md`, `xs-lg`, `xs-xl`, `xs-2xl`, `xs-3xl`, `sm-md`, `sm-lg`, `sm-xl`, `sm-2xl`, `sm-3xl`, `md-lg`, `md-xl`, `md-2xl`, `md-3xl`, `lg-xl`, `lg-2xl`, `lg-3xl`, `xl-2xl`, `xl-3xl`, `2xl-3xl` | `md` | The gutter on each side when the container is narrower than the maximum. |
-| `data-intrinsic` | boolean |  |  | Also center each child on its own width instead of stretching it. |
+| `data-intrinsic` | boolean |  |  | Shrink the column to its content (still no wider than data-max) and center it, with each child centered on its own width inside it. |
 
 ## Children
 

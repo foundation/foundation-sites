@@ -7,7 +7,7 @@
   "attributes": [
     { "name": "data-max", "type": "enum", "vocabulary": "width", "default": "xl", "description": "The widest the content column may be." },
     { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "The gutter on each side when the container is narrower than the maximum." },
-    { "name": "data-intrinsic", "type": "boolean", "description": "Also center each child on its own width instead of stretching it." }
+    { "name": "data-intrinsic", "type": "boolean", "description": "Shrink the column to its content (still no wider than data-max) and center it, with each child centered on its own width inside it." }
   ],
   "classes": [],
   "children": [],

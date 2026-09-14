@@ -8,4 +8,4 @@ Use a frame wherever images of unpredictable shape must present as the same shap
 
 ## Why this name
 
-Every Layout's Frame, kept: it is what a picture frame does. Foundation 6 had `.responsive-embed` for video ratios only; a frame does the same for anything.
+It is what a picture frame does: fix the shape and crop what is inside it. Foundation 6 had `.responsive-embed` for video ratios only; a frame does the same for anything.

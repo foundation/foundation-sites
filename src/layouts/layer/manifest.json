@@ -5,18 +5,61 @@
   "description": "Stacks its children in one box, later ones on top, with the box as tall as the tallest of them.",
   "class": "layer",
   "attributes": [
-    { "name": "data-align", "type": "enum", "vocabulary": "align", "default": "stretch", "description": "Vertical alignment of every child in the box. baseline behaves as start here." }
+    {
+      "name": "data-align",
+      "type": "enum",
+      "vocabulary": "align",
+      "default": "stretch",
+      "description": "Vertical alignment of every child in the box. baseline behaves as start here."
+    }
   ],
   "classes": [],
   "children": [
-    { "selector": "> *", "min": 2, "max": null, "description": "The layers, bottom first. Place one child on its own with align-self and justify-self." }
+    {
+      "selector": "> *",
+      "min": 2,
+      "max": null,
+      "description": "The layers, bottom first."
+    },
+    {
+      "selector": "> [data-align-self]",
+      "min": 0,
+      "max": null,
+      "description": "A child that places itself vertically: start, center, end, stretch, or baseline."
+    },
+    {
+      "selector": "> [data-justify-self]",
+      "min": 0,
+      "max": null,
+      "description": "A child that places itself horizontally: start, center, end, or stretch."
+    }
   ],
   "tokens": [
-    { "name": "--_yeti-align", "public": false }
+    {
+      "name": "--_yeti-align",
+      "public": false
+    },
+    {
+      "name": "--_yeti-align-self",
+      "public": false
+    },
+    {
+      "name": "--_yeti-justify-self",
+      "public": false
+    }
   ],
-  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Everything stays in reading order. Text laid over a picture needs a contrast treatment (a scrim or a solid panel); the layer does not add one." },
+  "a11y": {
+    "requiredAttributes": [],
+    "keyboard": [],
+    "notes": "Everything stays in reading order. Text laid over a picture needs a contrast treatment (a scrim or a solid panel); the layer does not add one."
+  },
   "js": null,
-  "support": { "unguarded": ["grid-template-areas"], "guarded": [] },
+  "support": {
+    "unguarded": [
+      "grid-template-areas"
+    ],
+    "guarded": []
+  },
   "since": "7.0.0",
   "example": "example.html"
 }

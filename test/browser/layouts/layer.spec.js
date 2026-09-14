@@ -26,6 +26,17 @@ test.describe('layer', () => {
 		expect(box.height).toBeCloseTo(200, 0);
 	});
 
+	test('a child places itself with data-align-self and data-justify-self', async ({ page }) => {
+		await open(page, 'layer');
+		const [box, badge, caption] = await Promise.all([rect(page, '#placed'), rect(page, '#badge'), rect(page, '#caption')]);
+		expect(box.height).toBeCloseTo(200, 0);
+		expect(badge.top).toBeCloseTo(box.top, 1);
+		expect(badge.right).toBeCloseTo(box.right, 1);
+		expect(badge.width).toBeLessThan(box.width / 2);
+		expect(caption.bottom).toBeCloseTo(box.bottom, 1);
+		expect(caption.width).toBeCloseTo(box.width, 1);
+	});
+
 	test('children have no margins', async ({ page }) => {
 		await open(page, 'layer');
 		await expectNoChildMargins(page, '.layer');

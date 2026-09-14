@@ -4,11 +4,13 @@ import { open, rect, axe } from '../lib/layout.js';
 const center = (r) => ({ x: (r.left + r.right) / 2, y: (r.top + r.bottom) / 2 });
 
 test.describe('overlay', () => {
-	test('is centered over its positioned ancestor', async ({ page }) => {
+	test('the held child is centered over the overlay and the rest flows as usual', async ({ page }) => {
 		await open(page, 'overlay');
-		const [host, overlay] = await Promise.all([rect(page, '#host'), rect(page, '#overlay')]);
+		const [host, overlay, under] = await Promise.all([rect(page, '#host'), rect(page, '#overlay'), rect(page, '#under')]);
 		expect(center(overlay).x).toBeCloseTo(center(host).x, 0);
 		expect(center(overlay).y).toBeCloseTo(center(host).y, 0);
+		expect(under.top).toBeCloseTo(host.top, 1);
+		expect(host.height).toBeCloseTo(300, 0);
 	});
 
 	test('data-fixed centers it over the viewport', async ({ page }) => {

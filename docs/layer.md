@@ -14,9 +14,9 @@ Stacks its children in one box, later ones on top, with the box as tall as the t
 ## Example
 
 ```html
-<figure class="layer" data-align="end">
+<figure class="layer">
 	<img src="harbour.jpg" alt="Boats in a harbour at dawn">
-	<figcaption>Dawn at the harbour</figcaption>
+	<figcaption data-align-self="end">Dawn at the harbour</figcaption>
 </figure>
 ```
 
@@ -26,12 +26,12 @@ A caption over a picture, a badge in the corner of a thumbnail, a heading over a
 
 ## How it works
 
-Every child is placed in the same grid cell, in source order, so later children paint over earlier ones. `data-align` sets where they sit vertically when they are shorter than the box; by default they stretch to fill it. To place one child differently, give it `align-self` and `justify-self` in your own CSS. Compare `overlay`, which takes one child out of the flow and centers it over a positioned ancestor.
+Every child is placed in the same grid cell, in source order, so later children paint over earlier ones. `data-align` on the layer sets where every child sits vertically when it is shorter than the box; by default they stretch to fill it. To place one child on its own, put `data-align-self` and `data-justify-self` on that child: a badge in the top-right corner is `data-align-self="start" data-justify-self="end"`. Compare `overlay`, which takes one marked child out of the flow and centers it over the rest.
 
 ```html
 <div class="layer">
 	<img src="thumb.jpg" alt="">
-	<span style="justify-self: end; align-self: start">New</span>
+	<span data-align-self="start" data-justify-self="end">New</span>
 </div>
 ```
 
@@ -47,7 +47,9 @@ Layers is what every design tool calls things stacked in one frame. Foundation 6
 
 ## Children
 
-- `> *`: at least 2. The layers, bottom first. Place one child on its own with align-self and justify-self.
+- `> *`: at least 2. The layers, bottom first.
+- `> [data-align-self]`: any number. A child that places itself vertically: start, center, end, stretch, or baseline.
+- `> [data-justify-self]`: any number. A child that places itself horizontally: start, center, end, or stretch.
 
 ## Tokens
 
@@ -56,6 +58,8 @@ No public tokens.
 <details><summary>Internal tokens (may change between minor versions)</summary>
 
 - `--_yeti-align`
+- `--_yeti-align-self`
+- `--_yeti-justify-self`
 
 </details>
 
