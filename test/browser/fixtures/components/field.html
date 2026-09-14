@@ -39,7 +39,15 @@
 					<label for="code">Code</label>
 					<input id="code" type="text">
 				</div>
-				<fieldset class="field" id="set">
+				<div class="field" id="switch-field">
+				<input id="dark" type="checkbox" role="switch">
+				<label for="dark" id="dark-label">Dark mode</label>
+			</div>
+			<div class="field" id="range-field">
+				<label for="volume">Volume</label>
+				<input id="volume" type="range" min="0" max="100" value="40">
+			</div>
+			<fieldset class="field" id="set">
 					<legend data-contrast>Plan</legend>
 					<div class="field"><input id="p-a" type="radio" name="plan" value="a"><label for="p-a">A</label></div>
 					<div class="field"><input id="p-b" type="radio" name="plan" value="b"><label for="p-b">B</label></div>

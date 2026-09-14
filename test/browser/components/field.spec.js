@@ -86,6 +86,34 @@ test.describe('field', () => {
 		expect(await style(page, '#p-a', 'border-top-color')).not.toBe(rest);
 	});
 
+	test('a checkbox with role="switch" is a track whose thumb slides and takes the variant colour', async ({ page }) => {
+		await open(page);
+		const box = await rect(page, '#dark');
+		expect(box.width).toBeGreaterThan(box.height * 1.5);
+		expect(await style(page, '#dark', 'background-image')).not.toBe('none');
+		const off = await style(page, '#dark', 'background-color');
+		const offPos = await style(page, '#dark', 'background-position');
+		await page.check('#dark');
+		await settleTransitions(page, '#dark');
+		expect(await style(page, '#dark', 'background-color')).not.toBe(off);
+		expect(await style(page, '#dark', 'background-position')).not.toBe(offPos);
+		const label = await rect(page, '#dark-label');
+		expect(label.left).toBeGreaterThan(box.right);
+	});
+
+	test('a range is a control-height track with a round variant thumb', async ({ page, browserName }) => {
+		await open(page);
+		expect((await rect(page, '#volume')).height).toBeGreaterThanOrEqual((await token(page, '--yeti-control-size')) - 0.5);
+		expect(await style(page, '#volume', 'appearance')).toBe('none');
+		// Only Firefox exposes the thumb pseudo-element to getComputedStyle; Chromium and WebKit
+		// return the input's own styles (or nothing) for ::-webkit-slider-thumb.
+		test.skip(browserName !== 'firefox', 'thumb geometry is only readable through ::-moz-range-thumb');
+		const thumb = await page.evaluate(() => { const cs = getComputedStyle(document.getElementById('volume'), '::-moz-range-thumb'); return { w: parseFloat(cs.width), h: parseFloat(cs.height), r: cs.borderTopLeftRadius }; });
+		expect(thumb.w).toBeCloseTo(thumb.h, 0);
+		expect(thumb.w).toBeGreaterThan(15);
+		expect(thumb.r).not.toBe('0px');
+	});
+
 	test('a fieldset field groups inline fields under a legend', async ({ page }) => {
 		await open(page);
 		const [a, b] = await Promise.all([rect(page, '#p-a'), rect(page, '#p-b')]);
