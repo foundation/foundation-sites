@@ -1,7 +1,7 @@
 ---
 raw: true
 title: "Layouts"
-description: "Fifteen intrinsic layouts that respond to their container, one attribute vocabulary, and the responsive model behind them."
+description: "Seventeen intrinsic layouts that respond to their container, one attribute vocabulary, and the responsive model behind them."
 nav_group: "Guides"
 nav_order: 3
 ---
@@ -14,9 +14,9 @@ Layouts are Yeti's grammar. A layout is a class that arranges its own children a
 
 Yeti has three ways to make a page respond to its context, and they apply in a fixed order.
 
-Intrinsic layouts come first. The fifteen on this page arrange their children by reading their own width, not the viewport's. A `sidebar` drops to a stack when it runs low on room, wherever on the page it sits and whatever else is happening at the edge of the browser window. Reach for one of these before reaching for anything else.
+Intrinsic layouts come first. The seventeen on this page arrange their children by reading their own width, not the viewport's. A `sidebar` drops to a stack when it runs low on room, wherever on the page it sits and whatever else is happening at the edge of the browser window. Reach for one of these before reaching for anything else.
 
-Container queries come second. They let a single component change shape based on the width of the box that holds it rather than the window: a card that goes from one column to two once its own container is wide enough, in a sidebar or in a full-width section alike. These arrive in phase 3.
+Container queries come second. They let a single component change shape based on the width of the box that holds it rather than the window: a card that goes from one column to two once its own container is wide enough, in a sidebar or in a full-width section alike. These arrive in phase 3. A Yeti layout may query itself and change its children, never itself; the thresholds are the width tokens' defaults, written as numbers because a container condition cannot read a token. When something must change its own shape, put it in a `container` and query that.
 
 Media queries come last, if at all. They read the viewport itself, or a visitor's stated preferences: color scheme, reduced motion, print. Those are the right job for a media query. Layout is not, because a rule that switches at a viewport width breaks the moment its element moves into a narrower or wider container than the one it was tuned for.
 
@@ -46,6 +46,15 @@ Put a `columns` inside a `sidebar`'s content side, and it never sees the full vi
 </div>
 ```
 
+Four across, two by two, one is the same question with an extra step, and the answer is `grid` with `data-fold`, not a longer chain of thresholds: `data-min="xs" data-columns="4" data-fold` halves the column count as its own content box narrows — four, then two, then one — and never passes through three. The no-query alternative is two `columns` nested inside a third:
+
+```html
+<div class="columns" data-threshold="md">
+	<div class="columns" data-threshold="sm"><div>One</div><div>Two</div></div>
+	<div class="columns" data-threshold="sm"><div>Three</div><div>Four</div></div>
+</div>
+```
+
 ## The vocabulary
 
 Every layout is configured with a small set of `data-*` attributes, drawn from a shared list of values.
@@ -65,12 +74,17 @@ Every layout is configured with a small set of `data-*` attributes, drawn from a
 | `data-limit` | `2`, `3`, `4`, `5` | columns — the first N share a row; every later child takes a full row |
 | `data-align-self` | `start`, `center`, `end`, `stretch`, `baseline` | a child of layer — places that child vertically |
 | `data-justify-self` | `start`, `center`, `end`, `stretch` | a child of layer — places that child horizontally |
+| `data-span` | `1`, `2`, `3`, `4`, `5`, `6` | a child of columns — that child's share of the row |
+| `data-ranks` | `2`, `3`, `4`, `5`, `6` | grid — how many parts each child has; lines up neighbours' parts across the row |
+| `data-fold` | boolean | grid — the column count halves as the grid narrows, instead of stepping down one at a time |
+| `data-note` | boolean | a child of breakout — a margin note beside the paragraph it follows |
+| `data-alternate` | boolean | timeline — entries take alternate sides of a centred rail once it is wide enough |
 
 For the sizing attributes the mapping rule is always the same: a value is a token suffix. `data-gap="lg"` reads `--yeti-space-lg`; `data-width="sm"` reads `--yeti-width-sm`. The attribute names the property to set; the value names the step on Yeti's scale to set it to. The rest — `data-align`, `data-justify`, `data-ratio`, `data-columns`, `data-side`, `data-limit` — name a behaviour rather than a token; `attributes.css` maps each value to the CSS keyword it means.
 
 Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the two: it runs from the `sm` stop at the narrow end of the viewport to the `lg` stop at the wide end, the same way the type scale itself is fluid. `none` never anchors a pair, so any smaller of the remaining seven sized stops can pair with any larger one, which is what makes twenty-one pairs out of seven.
 
-## The fifteen
+## The seventeen
 
 - [stack](../stack.md): stacks its children vertically with one consistent gap between them.
 - [cluster](../cluster.md): lays its children out in a row that wraps, keeping one gap between them on both axes.
@@ -87,6 +101,8 @@ Gap alone also takes a fluid pair. `data-gap="sm-lg"` does not jump between the 
 - [masonry](../masonry.md): packs items of uneven height into columns with no gaps under the short ones.
 - [breakout](../breakout.md): keeps its children in a centered reading column with gutters, and lets any child carrying data-bleed span the full width.
 - [layer](../layer.md): stacks its children in one box, later ones on top, with the box as tall as the tallest of them.
+- [container](../container.md): makes its box the thing a container query measures, so what is inside can respond to its width instead of the viewport's.
+- [timeline](../timeline.md): lays its entries along a rail with a marker each, on one side, or on alternate sides of a centred rail when it is wide.
 
 ## Composing
 
@@ -148,7 +164,9 @@ The layouts change more than they look like they do, because the biggest habit t
 | --- | --- |
 | `.grid-container` | `center` |
 | `.grid-x` with `medium-N` cells | `columns` or `sidebar` |
+| `medium-8` / `medium-4` | `columns` with `data-span="2"` on the wider child |
 | Block Grid `small-up-N` / `large-up-N` | `grid` with `data-columns` |
+| `large-up-4 medium-up-2 small-up-1` | `grid` with `data-fold data-columns="4"` |
 | `.responsive-embed` | `frame` |
 | `.callout` | `box` with `data-border` |
 | `.button-group` | `cluster` |

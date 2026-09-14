@@ -38,6 +38,15 @@ The breakout is a grid of three columns: a gutter, the reading column, and a gut
 </div>
 ```
 
+A child carrying `data-note` is a margin note: it follows the paragraph it belongs to in the source, and when the content box is at least `xl` wide it moves into the end gutter beside that paragraph, in the small muted text of a hint; narrower, it stays in the column as an aside. One note per paragraph; a second note after the same paragraph stacks below the first and pushes the next paragraph down a row.
+
+```html
+<div class="breakout" data-max="md">
+	<p>The main text carries the argument.</p>
+	<aside data-note>A citation, or a caveat, that would interrupt the flow.</aside>
+</div>
+```
+
 ## Why this name
 
 The column is ordinary; what is special is that a child can break out of it. Foundation 6 had `.grid-container.fluid` for the whole page and nothing for one element; people reached for negative margins.
@@ -53,6 +62,7 @@ The column is ordinary; what is special is that a child can break out of it. Fou
 
 - `> *`: at least 1. The content, in the column. Any child may carry data-bleed to span the full width.
 - `> [data-bleed]`: any number. Children that break out of the column.
+- `> [data-note]`: any number. A margin note: in the end gutter beside the child it follows when the breakout is wide, in the column when it is not.
 
 ## Tokens
 
@@ -60,6 +70,8 @@ The column is ordinary; what is special is that a child can break out of it. Fou
 | --- | --- |
 | `--yeti-width-md` | The default column width, chosen under the base measure so paragraphs fill it. |
 | `--yeti-space-md` | The default gutter and row gap. |
+| `--yeti-text-sm` | The note's text size. |
+| `--yeti-color-text-muted` | The note's text colour. |
 
 <details><summary>Internal tokens (may change between minor versions)</summary>
 

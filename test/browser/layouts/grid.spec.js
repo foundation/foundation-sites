@@ -1,8 +1,9 @@
 import { test, expect } from 'playwright/test';
-import { open, stage, style, token, px, expectNoChildMargins, axe } from '../lib/layout.js';
+import { open, stage, style, token, px, rects, expectNoChildMargins, axe } from '../lib/layout.js';
 
 const columns = async (page, selector) => (await style(page, selector, 'grid-template-columns')).trim().split(/\s+/).length;
 const expected = (width, min, gap) => Math.floor((width + gap) / (min + gap));
+const perRow = (rs) => { const tops = [...new Set(rs.map((r) => Math.round(r.top)))].sort((a, b) => a - b); return rs.filter((r) => Math.round(r.top) === tops[0]).length; };
 
 test.describe('grid', () => {
 	test('fits as many columns as the minimum allows', async ({ page }) => {
@@ -45,5 +46,43 @@ test.describe('grid', () => {
 	test('has no accessibility violations', async ({ page }) => {
 		await open(page, 'grid');
 		expect(await axe(page)).toEqual([]);
+	});
+
+	test('data-fold halves the count and never shows three', async ({ page }) => {
+		await open(page, 'grid', 1100);
+		expect(perRow(await rects(page, '#fold > *'))).toBe(4);
+		await stage(page, 900);
+		expect(perRow(await rects(page, '#fold > *'))).toBe(2);
+		await stage(page, 700);
+		expect(perRow(await rects(page, '#fold > *'))).toBe(2);
+		await stage(page, 400);
+		expect(perRow(await rects(page, '#fold > *'))).toBe(1);
+	});
+
+	test('data-fold with data-min="sm" and six columns steps 6, 3, 1', async ({ page }) => {
+		await open(page, 'grid', 2400);
+		expect(perRow(await rects(page, '#fold6 > *'))).toBe(6);
+		await stage(page, 1200);
+		expect(perRow(await rects(page, '#fold6 > *'))).toBe(3);
+		await stage(page, 1000);
+		expect(perRow(await rects(page, '#fold6 > *'))).toBe(1);
+	});
+
+	test('data-ranks lines up the parts of neighbours', async ({ page }) => {
+		await open(page, 'grid', 1000);
+		const heads = await rects(page, '#ranked h2');
+		const paras = await rects(page, '#ranked p');
+		expect(new Set(heads.map((r) => Math.round(r.top))).size).toBe(1);
+		expect(new Set(paras.map((r) => Math.round(r.top))).size).toBe(1);
+	});
+
+	test('the nested-columns twin steps through the same counts', async ({ page }) => {
+		await open(page, 'grid', 1100);
+		expect(perRow(await rects(page, '#nest .columns .columns > *'))).toBe(4);
+		expect(new Set((await rects(page, '#nest .columns .columns > *')).map((r) => Math.round(r.top))).size).toBe(1);
+		await stage(page, 700);
+		expect(new Set((await rects(page, '#nest .columns .columns > *')).map((r) => Math.round(r.top))).size).toBe(2);
+		await stage(page, 300);
+		expect(new Set((await rects(page, '#nest .columns .columns > *')).map((r) => Math.round(r.top))).size).toBe(4);
 	});
 });

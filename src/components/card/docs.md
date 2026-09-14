@@ -4,7 +4,7 @@ One thing in a box: an article in a listing, a product, a person, a plan. Put ca
 
 ## How it works
 
-A card is a flex column on the raised surface with a border and a radius. A picture, video, or `figure` placed first bleeds through the padding to the card's edges and is cropped to `data-ratio`. Everything after it is the body, spaced at the card's gap. A `footer` is pushed to the bottom, so a row of cards of different lengths keeps its actions aligned. `data-raised` trades the border for a shadow; `data-variant` colours the border and draws a bar along the top without tinting the text. Below 22rem of content width, a card with a picture becomes a two-column row: the picture is a thumbnail down the left, the body takes the rest.
+A card is a flex column on the raised surface with a border and a radius. A picture, video, or `figure` placed first bleeds through the padding to the card's edges and is cropped to `data-ratio`. Everything after it is the body, spaced at the card's gap. A `footer` is pushed to the bottom, so a row of cards of different lengths keeps its actions aligned. `data-raised` trades the border for a shadow; `data-variant` colours the border and draws a bar along the top without tinting the text. Below 22rem of content width, a card with a picture becomes a two-column row: the picture is a thumbnail down the left, the body takes the rest. A card in a ranked grid keeps its picture and footer aligned with its neighbours' and does not switch to its thumbnail row.
 
 ```html
 <ul class="grid" data-min="sm" role="list">

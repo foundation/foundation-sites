@@ -15,5 +15,112 @@
 	   with no floor at all, auto-fit repeats until the gaps overflow, which is
 	   dozens of tracks, or an engine-defined clamp when the gap is none too. */
 	.grid[data-min="none"]:not([data-columns]) { --_yeti-column-cap: 100%; }
+
+	/* data-fold: the count halves as the grid narrows instead of stepping.
+	   The grid is its own container and a container query can only style its
+	   children, so a folded grid has twelve tracks and the queries set each
+	   child's span. Thresholds are count × the width token's default
+	   (xs 16rem, sm 24, md 32, lg 48, xl 64, 2xl 80), measured on the content
+	   box, and are literal because a container condition cannot read a token.
+	   data-columns 2 folds 2 → 1; 4 folds 4 → 2 → 1; 6 folds 6 → 3 → 1. */
+	.grid[data-fold] {
+		container-type: inline-size;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+	.grid[data-fold] > * { grid-column: span 12; }
+
+	/* xs (16rem per column) */
+	@container (inline-size >= 32rem) {
+		.grid[data-fold]:is(:not([data-min]), [data-min="xs"]):is([data-columns="2"], [data-columns="4"]) > * { grid-column: span 6; }
+	}
+	@container (inline-size >= 48rem) {
+		.grid[data-fold]:is(:not([data-min]), [data-min="xs"])[data-columns="6"] > * { grid-column: span 4; }
+	}
+	@container (inline-size >= 64rem) {
+		.grid[data-fold]:is(:not([data-min]), [data-min="xs"])[data-columns="4"] > * { grid-column: span 3; }
+	}
+	@container (inline-size >= 96rem) {
+		.grid[data-fold]:is(:not([data-min]), [data-min="xs"])[data-columns="6"] > * { grid-column: span 2; }
+	}
+
+	/* sm (24rem per column) */
+	@container (inline-size >= 48rem) {
+		.grid[data-fold][data-min="sm"]:is([data-columns="2"], [data-columns="4"]) > * { grid-column: span 6; }
+	}
+	@container (inline-size >= 72rem) {
+		.grid[data-fold][data-min="sm"][data-columns="6"] > * { grid-column: span 4; }
+	}
+	@container (inline-size >= 96rem) {
+		.grid[data-fold][data-min="sm"][data-columns="4"] > * { grid-column: span 3; }
+	}
+	@container (inline-size >= 144rem) {
+		.grid[data-fold][data-min="sm"][data-columns="6"] > * { grid-column: span 2; }
+	}
+
+	/* md (32rem per column) */
+	@container (inline-size >= 64rem) {
+		.grid[data-fold][data-min="md"]:is([data-columns="2"], [data-columns="4"]) > * { grid-column: span 6; }
+	}
+	@container (inline-size >= 96rem) {
+		.grid[data-fold][data-min="md"][data-columns="6"] > * { grid-column: span 4; }
+	}
+	@container (inline-size >= 128rem) {
+		.grid[data-fold][data-min="md"][data-columns="4"] > * { grid-column: span 3; }
+	}
+	@container (inline-size >= 192rem) {
+		.grid[data-fold][data-min="md"][data-columns="6"] > * { grid-column: span 2; }
+	}
+
+	/* lg (48rem per column) */
+	@container (inline-size >= 96rem) {
+		.grid[data-fold][data-min="lg"]:is([data-columns="2"], [data-columns="4"]) > * { grid-column: span 6; }
+	}
+	@container (inline-size >= 144rem) {
+		.grid[data-fold][data-min="lg"][data-columns="6"] > * { grid-column: span 4; }
+	}
+	@container (inline-size >= 192rem) {
+		.grid[data-fold][data-min="lg"][data-columns="4"] > * { grid-column: span 3; }
+	}
+	@container (inline-size >= 288rem) {
+		.grid[data-fold][data-min="lg"][data-columns="6"] > * { grid-column: span 2; }
+	}
+
+	/* xl (64rem per column) */
+	@container (inline-size >= 128rem) {
+		.grid[data-fold][data-min="xl"]:is([data-columns="2"], [data-columns="4"]) > * { grid-column: span 6; }
+	}
+	@container (inline-size >= 192rem) {
+		.grid[data-fold][data-min="xl"][data-columns="6"] > * { grid-column: span 4; }
+	}
+	@container (inline-size >= 256rem) {
+		.grid[data-fold][data-min="xl"][data-columns="4"] > * { grid-column: span 3; }
+	}
+	@container (inline-size >= 384rem) {
+		.grid[data-fold][data-min="xl"][data-columns="6"] > * { grid-column: span 2; }
+	}
+
+	/* 2xl (80rem per column) */
+	@container (inline-size >= 160rem) {
+		.grid[data-fold][data-min="2xl"]:is([data-columns="2"], [data-columns="4"]) > * { grid-column: span 6; }
+	}
+	@container (inline-size >= 240rem) {
+		.grid[data-fold][data-min="2xl"][data-columns="6"] > * { grid-column: span 4; }
+	}
+	@container (inline-size >= 320rem) {
+		.grid[data-fold][data-min="2xl"][data-columns="4"] > * { grid-column: span 3; }
+	}
+	@container (inline-size >= 480rem) {
+		.grid[data-fold][data-min="2xl"][data-columns="6"] > * { grid-column: span 2; }
+	}
+
+	/* data-ranks: every child is a subgrid of this grid's rows, one row per
+	   part, so the parts of neighbours line up across the row. */
+	.grid[data-ranks] > * {
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-row: span var(--_yeti-ranks);
+		row-gap: var(--_yeti-gap);
+	}
+
 	.grid > * { margin: 0; }
 }

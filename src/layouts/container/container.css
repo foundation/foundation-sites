@@ -1,0 +1,6 @@
+/* Container: the box a container query measures. It arranges nothing; it
+   exists so that whatever is inside can respond to its width rather than
+   the viewport's. Name it in your own CSS when a query must target it. */
+@layer yeti.layouts {
+	.container { container-type: inline-size; }
+}

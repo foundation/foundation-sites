@@ -11,11 +11,14 @@
   "classes": [],
   "children": [
     { "selector": "> *", "min": 1, "max": null, "description": "The content, in the column. Any child may carry data-bleed to span the full width." },
-    { "selector": "> [data-bleed]", "min": 0, "max": null, "description": "Children that break out of the column." }
+    { "selector": "> [data-bleed]", "min": 0, "max": null, "description": "Children that break out of the column." },
+    { "selector": "> [data-note]", "min": 0, "max": null, "description": "A margin note: in the end gutter beside the child it follows when the breakout is wide, in the column when it is not." }
   ],
   "tokens": [
     { "name": "--yeti-width-md", "public": true, "description": "The default column width, chosen under the base measure so paragraphs fill it." },
     { "name": "--yeti-space-md", "public": true, "description": "The default gutter and row gap." },
+    { "name": "--yeti-text-sm", "public": true, "description": "The note's text size." },
+    { "name": "--yeti-color-text-muted", "public": true, "description": "The note's text colour." },
     { "name": "--_yeti-max", "public": false },
     { "name": "--_yeti-gap", "public": false }
   ],

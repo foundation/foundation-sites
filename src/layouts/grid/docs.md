@@ -15,6 +15,19 @@ The track list is `repeat(auto-fit, minmax(<min>, 1fr))`, where `<min>` is the l
 </div>
 ```
 
+Add `data-fold` and the count halves instead of stepping: with `data-min="xs"` and `data-columns="4"` the grid is four across while its content box is at least four `xs` widths, two by two while it is at least two, and a single column below that, never three. The thresholds are the width token's default multiplied by the count, so a theme that changes the token moves the token, not the fold. The closest thing with no container query is two `columns` nested in a third, and it is not the same result: it steps at its own thresholds (inner `sm`, outer `md`) rather than the fold's.
+
+```html
+<div class="columns" data-threshold="md">
+	<div class="columns" data-threshold="sm"><div>One</div><div>Two</div></div>
+	<div class="columns" data-threshold="sm"><div>Three</div><div>Four</div></div>
+</div>
+```
+
+The fold is one attribute on one element; the nest is two wrappers. Use whichever you would rather explain.
+
+`data-ranks` lines up neighbours' parts: with `data-ranks="3"` each child is a subgrid of three rows, so every first part sits in row one, every second in row two, and so on, across the row. Give the number of parts the fullest child has; a child with fewer leaves its last rows empty. A card in a ranked grid keeps its picture and footer aligned with its neighbours' and does not switch to its thumbnail row. A ranked child cannot also be a size container, because a size container cannot be a subgrid; the card turns its own container off inside a ranked grid for this reason.
+
 ## Why this name
 
 It is a grid and nothing else is. Foundation 6 readers: this replaces the Block Grid, and `data-columns="4"` is the intrinsic form of `large-up-4`, with the shrinking at narrow widths handled by the minimum instead of by `small-up-1 medium-up-2`.

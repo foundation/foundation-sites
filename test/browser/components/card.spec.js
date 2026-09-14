@@ -76,6 +76,14 @@ test.describe('card', () => {
 		expect(await page.evaluate(() => location.hash)).toBe('#hills');
 	});
 
+	test('cards in a ranked grid align their footers and keep the wide figure', async ({ page }) => {
+		await open(page);
+		const footers = await rects(page, '#ranked-row footer');
+		expect(new Set(footers.map((r) => Math.round(r.bottom))).size).toBe(1);
+		const [card, img] = await Promise.all([rect(page, '#ranked-row .card'), rect(page, '#ranked-row .card img')]);
+		expect(img.width).toBeCloseTo(card.width - 2 * (await token(page, '--yeti-border-width')), 0);
+	});
+
 	for (const scheme of ['light', 'dark']) {
 		test(`text meets AA in ${scheme}`, async ({ page }) => {
 			await page.emulateMedia({ colorScheme: scheme });

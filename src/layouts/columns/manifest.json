@@ -13,7 +13,8 @@
   ],
   "classes": [],
   "children": [
-    { "selector": "> *", "min": 2, "max": null, "description": "The columns. Each gets an equal share of the row." }
+    { "selector": "> *", "min": 2, "max": null, "description": "The columns. Each gets an equal share of the row." },
+    { "selector": "> [data-span]", "min": 0, "max": null, "description": "A child that takes several shares of the row: data-span=\"2\" is twice a plain sibling. Below the threshold it stacks like the rest." }
   ],
   "tokens": [
     { "name": "--yeti-width-md", "public": true, "description": "The default threshold." },
@@ -21,7 +22,8 @@
     { "name": "--_yeti-gap", "public": false },
     { "name": "--_yeti-threshold", "public": false },
     { "name": "--_yeti-align", "public": false },
-    { "name": "--_yeti-justify", "public": false }
+    { "name": "--_yeti-justify", "public": false },
+    { "name": "--_yeti-span", "public": false }
   ],
   "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Purely visual. Reading order is source order in both arrangements." },
   "js": null,

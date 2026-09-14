@@ -122,4 +122,19 @@
 	[data-size="sm"] { --_yeti-size-text: var(--yeti-text-sm); --_yeti-size-space: var(--yeti-space-xs); }
 	[data-size="md"] { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
 	[data-size="lg"] { --_yeti-size-text: var(--yeti-text-lg); --_yeti-size-space: var(--yeti-space-md); }
+
+	/* data-span: a child's share of a columns row */
+	[data-span="1"] { --_yeti-span: 1; }
+	[data-span="2"] { --_yeti-span: 2; }
+	[data-span="3"] { --_yeti-span: 3; }
+	[data-span="4"] { --_yeti-span: 4; }
+	[data-span="5"] { --_yeti-span: 5; }
+	[data-span="6"] { --_yeti-span: 6; }
+
+	/* data-ranks: how many parts each child of a ranked grid has */
+	[data-ranks="2"] { --_yeti-ranks: 2; }
+	[data-ranks="3"] { --_yeti-ranks: 3; }
+	[data-ranks="4"] { --_yeti-ranks: 4; }
+	[data-ranks="5"] { --_yeti-ranks: 5; }
+	[data-ranks="6"] { --_yeti-ranks: 6; }
 }

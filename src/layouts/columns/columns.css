@@ -18,6 +18,8 @@
 		flex-grow: 1;
 		flex-basis: calc((var(--_yeti-threshold) - 100%) * 999);
 	}
+	/* data-span: a child's share of the row, as a multiple of its siblings'. */
+	.columns > [data-span] { flex-grow: var(--_yeti-span); }
 
 	/* data-limit: the first N share the row; every later child takes a full one. */
 	.columns[data-limit="2"] > :nth-child(n + 3),

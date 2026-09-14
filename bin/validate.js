@@ -8,10 +8,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LAYER_STATEMENT } from './lib/layers.js';
 import { loadSchema, loadAndMerge, loadVocabulary } from './lib/manifest.js';
-import { parseHtml, walkElements, classList, attributes, countMatches, elementChildren } from './lib/html.js';
+import { parseHtml, walkElements, classList, attributes, countMatches } from './lib/html.js';
 import { stripComments, splitImports } from './lib/imports.js';
 import { walkFiles } from './lib/files.js';
 import { declaredTokens, loadCatalogue } from './lib/tokens.js';
+import { extractHtmlBlocks } from './lib/markdown.js';
+import { validateFields } from './lib/validate-fields.js';
+import { validateThemes } from './lib/validate-themes.js';
+import { validateDocsFragments } from './lib/validate-docs.js';
+export { extractHtmlBlocks, validateFields, validateThemes, validateDocsFragments };
 
 const MARGIN_RE = /(?:^|[;\s{])margin(?:-block|-inline)?(?:-start|-end)?\s*:\s*([^;]*)/g;
 
@@ -54,6 +59,9 @@ export function validateElementTree(root, merged, file, lineOffset = 0) {
 				if (decl.type === 'boolean' && value !== '') push(`${name} is a boolean attribute and takes no value`);
 				if (decl.type === 'number' && (value.trim() === '' || !Number.isFinite(Number(value)))) push(`${name}="${value}" is not a number`);
 			}
+			if (m.name === 'grid' && attrs.has('data-fold') && !['2', '4', '6'].includes(attrs.get('data-columns'))) {
+				push('data-fold needs data-columns 2, 4, or 6');
+			}
 			for (const required of m.a11y.requiredAttributes) {
 				if (!attrs.has(required)) push(`missing required attribute ${required}`);
 			}
@@ -80,16 +88,6 @@ export function validateExamples(entries, merged) {
 		if (!used) errors.push({ file, message: `example does not use .${entry.manifest.class}` });
 	}
 	return errors;
-}
-
-export function extractHtmlBlocks(markdown) {
-	const blocks = [];
-	const re = /```html[^\n]*\n([\s\S]*?)\n```/g;
-	let m;
-	while ((m = re.exec(markdown)) !== null) {
-		blocks.push({ html: m[1], line: markdown.slice(0, m.index).split('\n').length + 1 });
-	}
-	return blocks;
 }
 
 export function validateGuides(docsDir, merged, entries = []) {
@@ -334,6 +332,7 @@ const MAPPED = {
 	'data-width': 'width', 'data-min': 'width-or-none', 'data-max': 'width', 'data-ratio': 'ratio', 'data-columns': 'columns',
 	'data-align-self': 'align', 'data-justify-self': 'self',
 	'data-variant': 'variant', 'data-size': 'size-control',
+	'data-span': 'span', 'data-ranks': 'ranks',
 };
 
 // Read directly by their own layout's CSS, so they have no attributes.css rule.
@@ -377,160 +376,6 @@ export function validateNoMediaQueries(srcDir) {
 		const text = stripComments(fs.readFileSync(file, 'utf8'));
 		const m = text.match(/@media\b/);
 		if (m) errors.push({ file, line: text.slice(0, m.index).split('\n').length, message: 'layouts are intrinsic; use container-relative techniques, not media queries' });
-	}
-	return errors;
-}
-
-const BUILT_FROM_MESSAGE = 'recipes must show the same result built from primitives under a "## Built from primitives" heading with a fenced html block';
-
-/** The text of one `## Heading` section, up to the next `## `. Empty string when absent. */
-function markdownSection(markdown, heading) {
-	const re = new RegExp(`^## ${heading}\\s*$`, 'm');
-	const m = re.exec(markdown);
-	if (!m) return { text: '', offset: 0 };
-	const start = m.index + m[0].length;
-	const next = /^## /m.exec(markdown.slice(start));
-	return { text: markdown.slice(start, next ? start + next.index : undefined), offset: start };
-}
-
-const ACCESSIBILITY_MESSAGE = 'components must document accessibility under a "## Accessibility" heading';
-
-/** Every layout, recipe, and component ships a docs.md; layouts and recipes explain their
- *  name, recipes also show the composed form, and components document accessibility. */
-export function validateDocsFragments(entries) {
-	const errors = [];
-	for (const entry of entries.filter((e) => e.kind !== 'utility')) {
-		const file = path.join(entry.dir, 'docs.md');
-		if (!fs.existsSync(file)) {
-			errors.push({ file: entry.dir, message: entry.kind === 'component' ? `${entry.kind}s must have a docs.md with a "## Accessibility" heading` : `${entry.kind}s must have a docs.md with a "## Why this name" heading` });
-			continue;
-		}
-		const markdown = fs.readFileSync(file, 'utf8');
-		if (entry.kind === 'recipe') {
-			const section = markdownSection(markdown, 'Built from primitives');
-			const blocks = extractHtmlBlocks(section.text);
-			if (!blocks.length) {
-				errors.push({ file, message: BUILT_FROM_MESSAGE });
-			} else {
-				const lineOffset = markdown.slice(0, section.offset).split('\n').length - 1;
-				for (const block of blocks) {
-					walkElements(parseHtml(block.html), (el) => {
-						if (classList(el).includes(entry.manifest.class)) {
-							errors.push({ file, line: block.line + lineOffset + (el.sourceCodeLocation ? el.sourceCodeLocation.startLine - 1 : 0), message: `the composed form must not use the recipe's own class .${entry.manifest.class}` });
-						}
-					});
-				}
-			}
-		}
-		if (entry.kind === 'component') {
-			if (!/^## Accessibility\s*$/m.test(markdown)) errors.push({ file, message: ACCESSIBILITY_MESSAGE });
-		} else if (!/^## Why this name\s*$/m.test(markdown)) {
-			errors.push({ file, message: 'layouts must explain their name under a "## Why this name" heading' });
-		}
-	}
-	return errors;
-}
-
-const FIELD_MESSAGE = '.field: the label must reference the control with for, and the control must carry that id';
-
-/** Every .field pairs its label with its control by for/id (or is a fieldset with a legend). */
-export function validateFields(entries, docsDir, fixturesDir) {
-	const errors = [];
-	const sources = [];
-	for (const entry of entries) {
-		sources.push({ file: path.join(entry.dir, 'example.html'), html: fs.readFileSync(path.join(entry.dir, 'example.html'), 'utf8'), line: 0 });
-		const docsFile = path.join(entry.dir, 'docs.md');
-		if (fs.existsSync(docsFile)) for (const b of extractHtmlBlocks(fs.readFileSync(docsFile, 'utf8'))) sources.push({ file: docsFile, html: b.html, line: b.line - 1 });
-	}
-	if (fs.existsSync(docsDir)) {
-		for (const file of walkFiles(docsDir).filter((f) => f.endsWith('.md'))) {
-			for (const b of extractHtmlBlocks(fs.readFileSync(file, 'utf8'))) sources.push({ file, html: b.html, line: b.line - 1 });
-		}
-	}
-	if (fixturesDir && fs.existsSync(fixturesDir)) {
-		for (const file of walkFiles(fixturesDir).filter((f) => f.endsWith('.html'))) {
-			sources.push({ file, html: fs.readFileSync(file, 'utf8'), line: 0 });
-		}
-	}
-	for (const { file, html, line } of sources) {
-		walkElements(parseHtml(html), (el) => {
-			if (!classList(el).includes('field')) return;
-			const kids = elementChildren(el);
-			if (el.tagName === 'fieldset') {
-				if (kids.filter((k) => k.tagName === 'legend').length !== 1) errors.push({ file, line: line + el.sourceCodeLocation.startLine, message: '.field on a fieldset needs exactly one legend' });
-				return;
-			}
-			const label = kids.find((k) => k.tagName === 'label');
-			const controls = kids.flatMap((k) => classList(k).includes('affix') ? elementChildren(k).filter((g) => ['input', 'select'].includes(g.tagName)) : (['input', 'select', 'textarea'].includes(k.tagName) ? [k] : []));
-			const forId = label && attributes(label).get('for');
-			const named = controls.filter((c) => attributes(c).get('id') === forId);
-			if (!label || !forId || controls.length === 0 || named.length !== 1) {
-				errors.push({ file, line: line + el.sourceCodeLocation.startLine, message: FIELD_MESSAGE });
-			}
-		});
-	}
-	return errors;
-}
-
-/** Blanks url(...) contents and quoted strings, preserving length, so a semicolon or colon
- *  inside a token's value (a data: URL, say) is never mistaken for a declaration or
- *  property-name boundary. Only property names are checked, so values may be replaced. */
-function sanitizeDeclarations(text) {
-	return text
-		.replace(/url\(([^)]*)\)/g, (m, inner) => `url(${' '.repeat(inner.length)})`)
-		.replace(/"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*'/g, (m) => ' '.repeat(m.length));
-}
-
-/** A theme is :root blocks of --yeti-* public tokens, nothing else. */
-export function validateThemes(root) {
-	const themesDir = path.join(root, 'src', 'themes');
-	const catalogueFile = path.join(root, 'src', 'tokens', 'tokens.json');
-	if (!fs.existsSync(themesDir) || !fs.existsSync(catalogueFile)) return [];
-	const schema = loadSchema(path.join(root, 'schema', 'tokens.schema.json'));
-	const { entries } = loadCatalogue(catalogueFile, schema);
-	const publicNames = new Set(entries.filter((e) => e.public).map((e) => e.name));
-	const errors = [];
-	for (const file of walkFiles(themesDir).filter((f) => f.endsWith('.css'))) {
-		const text = stripComments(fs.readFileSync(file, 'utf8'));
-		const stack = [];
-		let selector = '';
-		let line = 1;
-		let selectorLine = 1;
-		let decls = '';
-		for (const ch of text) {
-			if (ch === '{') {
-				const sel = selector.trim();
-				if (/^@media\s*\(\s*prefers-color-scheme:\s*(light|dark)\s*\)$/.test(sel) && !(stack.length && stack.at(-1).kind === 'media')) {
-					stack.push({ kind: 'media' });
-				} else if (sel === ':root' && (stack.length === 0 || stack.at(-1).kind === 'media')) {
-					stack.push({ kind: 'root', line: selectorLine });
-				} else {
-					errors.push({ file, line: selectorLine, message: `themes may only set --yeti-* tokens on :root (found "${sel}")` });
-					stack.push({ kind: 'other' });
-				}
-				selector = ''; decls = '';
-			} else if (ch === '}') {
-				const block = stack.pop();
-				if (block?.kind === 'root') {
-					for (const d of sanitizeDeclarations(decls).split(';')) {
-						const [prop] = d.split(':').map((s) => s.trim());
-						if (!prop) continue;
-						if (!prop.startsWith('--yeti-')) errors.push({ file, line: block.line, message: `themes may only set --yeti-* tokens (found "${prop}")` });
-						else if (!publicNames.has(prop)) errors.push({ file, line: block.line, message: `theme sets "${prop}", which is not a public token` });
-					}
-				}
-				selector = ''; decls = '';
-			} else {
-				if (stack.length && stack.at(-1).kind === 'root') decls += ch; else selector += ch;
-				if (ch === '\n') { line++; if (!selector.trim()) selectorLine = line; }
-			}
-		}
-		// A statement at-rule (@import …; or @layer x;) never opens a block, so the
-		// char loop above never sees it: it just keeps accumulating in `selector`
-		// until the file ends. Catch that leftover text here.
-		if (selector.trim()) {
-			errors.push({ file, line: selectorLine, message: `themes may only set --yeti-* tokens on :root (found "${selector.trim()}")` });
-		}
 	}
 	return errors;
 }

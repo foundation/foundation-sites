@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "timeline",
+  "kind": "layout",
+  "description": "Lays its entries along a rail with a marker each, on one side, or on alternate sides of a centred rail when it is wide.",
+  "class": "timeline",
+  "attributes": [
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "lg", "description": "Space between entries." },
+    { "name": "data-alternate", "type": "boolean", "description": "Put entries on alternate sides of a centred rail once the list is wide enough." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> li", "min": 2, "max": null, "description": "The entries, in order. Put a time, a heading, and text inside each." }
+  ],
+  "tokens": [
+    { "name": "--yeti-space-lg", "public": true, "description": "The default gap, and the room between the rail and the entries." },
+    { "name": "--yeti-color-border-strong", "public": true, "description": "The rail and the markers." },
+    { "name": "--_yeti-gap", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Use an ordered list, so the sequence is announced, and a time element with datetime in each entry. The rail and markers are decorative. Give the ol role=\"list\": removing the list markers removes the list semantics in some engines." },
+  "js": null,
+  "support": { "unguarded": ["container size queries", "logical inset properties"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

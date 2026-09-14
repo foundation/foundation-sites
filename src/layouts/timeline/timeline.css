@@ -1,0 +1,65 @@
+/* Timeline: entries along a rail, each with a marker. Single-sided by
+   default; data-alternate puts entries on alternate sides of a centred
+   rail once the list's content box is lg (48rem) wide. The list is its own
+   container, so the rail is a pseudo-element and the sides are the children. */
+@layer yeti.layouts {
+	.timeline {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: var(--_yeti-gap);
+		list-style: none;
+		padding-inline-start: 0;
+		container-type: inline-size;
+	}
+	.timeline:not([data-gap]) { --_yeti-gap: var(--yeti-space-lg); }
+	.timeline > * {
+		position: relative;
+		margin: 0;
+		padding-inline-start: var(--yeti-space-lg);
+	}
+
+	/* The rail, down the start edge, and a marker per entry sitting on it. */
+	.timeline::before {
+		content: "";
+		position: absolute;
+		inset-block: 0;
+		inset-inline-start: calc(0.5rem - 1px);
+		inline-size: 2px;
+		background-color: var(--yeti-color-border-strong);
+	}
+	.timeline > li::before {
+		content: "";
+		position: absolute;
+		inset-block-start: 0.35em;
+		inset-inline-start: 0;
+		inline-size: 1rem;
+		block-size: 1rem;
+		border-radius: 50%;
+		background-color: var(--yeti-color-border-strong);
+	}
+
+	/* Alternate: a centred rail, entries on either side of it. */
+	@container (inline-size >= 48rem) {
+		.timeline[data-alternate]::before { inset-inline-start: calc(50% - 1px); }
+		.timeline[data-alternate] > li {
+			inline-size: calc(50% - var(--yeti-space-lg));
+			padding-inline-start: 0;
+		}
+		.timeline[data-alternate] > li:nth-child(odd) {
+			align-self: flex-start;
+			padding-inline-end: var(--yeti-space-lg);
+		}
+		.timeline[data-alternate] > li:nth-child(even) {
+			align-self: flex-end;
+			padding-inline-start: var(--yeti-space-lg);
+		}
+		.timeline[data-alternate] > li:nth-child(odd)::before {
+			inset-inline-start: auto;
+			inset-inline-end: calc(-1 * var(--yeti-space-lg) - 0.5rem);
+		}
+		.timeline[data-alternate] > li:nth-child(even)::before {
+			inset-inline-start: calc(-1 * var(--yeti-space-lg) - 0.5rem);
+		}
+	}
+}

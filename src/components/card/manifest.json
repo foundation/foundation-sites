@@ -13,7 +13,7 @@
   "children": [
     { "selector": "> *", "min": 1, "max": null, "description": "A figure first if there is one, then the body, then an optional footer." },
     { "selector": "> figure", "min": 0, "max": 1, "description": "A figure element holding media and a caption; only the media is cropped." },
-    { "selector": "> footer", "min": 0, "max": 1, "description": "Actions, pushed to the bottom of the card." },
+    { "selector": "> footer", "min": 0, "max": 1, "description": "Actions, pushed to the bottom of the card; in a ranked grid it takes the last row." },
     { "selector": "[data-stretch]", "min": 0, "max": 1, "description": "One link that is stretched over the whole card, so the card is clickable while the link keeps its own name." }
   ],
   "tokens": [
