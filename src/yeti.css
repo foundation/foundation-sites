@@ -31,6 +31,7 @@
 @import "layouts/breakout/breakout.css";
 @import "layouts/layer/layer.css";
 @import "layouts/container/container.css";
+@import "layouts/timeline/timeline.css";
 @import "recipes/media/media.css";
 @import "recipes/hero/hero.css";
 @import "recipes/shell/shell.css";
