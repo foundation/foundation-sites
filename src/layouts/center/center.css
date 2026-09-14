@@ -9,9 +9,12 @@
 	}
 	.center:not([data-max]) { --_yeti-max: var(--yeti-width-xl); }
 	.center:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	/* data-intrinsic: the column shrinks to its content and is centered as a
+	   whole; each child is centered on its own width inside it. */
 	.center[data-intrinsic] {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		inline-size: fit-content;
 	}
 }

@@ -4,7 +4,7 @@ A center is the page column: the wrapper that keeps a page or a section from spr
 
 ## How it works
 
-`max-inline-size` caps the content, automatic inline margins split the remaining space equally, and `padding-inline` supplies the gutters. The box is `content-box`, so `data-max` is the width of the content, not the content plus gutters. `data-intrinsic` turns it into a flex column that centers each child on its own width, for a heading and a button that should sit in the middle rather than stretch.
+`max-inline-size` caps the content, automatic inline margins split the remaining space equally, and `padding-inline` supplies the gutters. The box is `content-box`, so `data-max` is the width of the content, not the content plus gutters. `data-intrinsic` changes what is centered: the column shrinks to fit its content, still no wider than `data-max`, and that box is centered on the page, with each child centered on its own width inside it. Use it for a heading and a button that should sit in the middle rather than stretch.
 
 ## Why this name
 

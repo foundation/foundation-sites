@@ -18,10 +18,12 @@ test.describe('center', () => {
 		expect((await rect(page, '#center > p')).width).toBeCloseTo(500 - 2 * gap, 1);
 	});
 
-	test('data-intrinsic centers each child on its own width', async ({ page }) => {
+	test('data-intrinsic shrinks the column to its content and centers it', async ({ page }) => {
 		await open(page, 'center');
-		const [box, button] = await Promise.all([rect(page, '#intrinsic'), rect(page, '#button')]);
-		expect(button.width).toBeLessThan(box.width / 2);
+		const [s, box, button] = await Promise.all([rect(page, '#stage'), rect(page, '#intrinsic'), rect(page, '#button')]);
+		const gap = await token(page, '--yeti-space-md');
+		expect(box.width).toBeCloseTo(button.width + 2 * gap, 0);
+		expect(box.left - s.left).toBeCloseTo(s.right - box.right, 1);
 		expect((button.left + button.right) / 2).toBeCloseTo((box.left + box.right) / 2, 0);
 	});
 
