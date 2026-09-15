@@ -48,6 +48,10 @@
 		--yeti-dropdown-radius: var(--yeti-radius-md);
 		--yeti-dropdown-padding: var(--yeti-space-xs);
 		--yeti-dropdown-min: 12rem;
+		/* Read by hover.js, not by CSS: the pause before a hover-triggered panel
+		   opens, and the grace after the pointer leaves. */
+		--yeti-dropdown-open-delay: 100ms;
+		--yeti-dropdown-close-delay: 200ms;
 
 		--yeti-dialog-surface: var(--yeti-color-surface-raised);
 		--yeti-dialog-radius: var(--yeti-radius-lg);

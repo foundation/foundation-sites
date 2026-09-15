@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dropdown fixture</title>
 	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<script type="module" src="../../../../src/components/dropdown/hover.js"></script>
 	<style>#stage { inline-size: 100%; }</style>
 </head>
 <body>
@@ -24,6 +25,13 @@
 				<div id="menu-two" popover>
 					<a href="#" id="item-two">Duplicate</a>
 					<button type="button">Archive</button>
+				</div>
+			</div>
+			<div class="dropdown" id="third" data-trigger="hover">
+				<button class="button" type="button" popovertarget="menu-three" id="trigger-three" data-emphasis="medium">Help</button>
+				<div id="menu-three" popover>
+					<a href="#" id="item-three">Docs</a>
+					<button type="button">Contact</button>
 				</div>
 			</div>
 		</div>

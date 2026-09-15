@@ -337,11 +337,11 @@ const MAPPED = {
 };
 
 // Read directly by their own layout's CSS, so they have no attributes.css rule.
-const READ_DIRECTLY = new Set(['data-side', 'data-limit', 'data-emphasis', 'data-shape', 'data-edge', 'data-panel', 'data-orientation', 'data-placement']);
+const READ_DIRECTLY = new Set(['data-side', 'data-limit', 'data-emphasis', 'data-shape', 'data-edge', 'data-panel', 'data-orientation', 'data-placement', 'data-trigger']);
 
 /** Every value of every mapped vocabulary must have a rule in layouts/attributes.css,
  *  and every manifest attribute that references a vocabulary must be checked against
- *  the right one (or explicitly exempted as read directly by its own layout's CSS). */
+ *  the right one (or explicitly exempted as read directly by its own layout's CSS, or by its module). */
 export function validateVocabulary(root, entries = []) {
 	const vocabFile = path.join(root, 'schema', 'vocabulary.json');
 	const attrFile = path.join(root, 'src', 'layouts', 'attributes.css');
