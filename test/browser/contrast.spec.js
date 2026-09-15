@@ -18,6 +18,8 @@ const PAGES = [
 	'/test/browser/fixtures/components/table.html',
 	'/test/browser/fixtures/components/seam.html',
 	'/test/browser/fixtures/components/nav.html',
+	'/test/browser/fixtures/components/breadcrumbs.html',
+	'/test/browser/fixtures/components/pagination.html',
 	'/test/browser/fixtures/themes/soft.html',
 	'/test/browser/fixtures/themes/sharp.html',
 ];

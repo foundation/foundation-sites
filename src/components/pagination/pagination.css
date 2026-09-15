@@ -1,0 +1,65 @@
+/* Pagination: page links as square targets, the current page filled.
+   Below its own threshold (default sm, 24rem) only Previous, the current
+   page, and Next remain. */
+@layer yeti.components {
+	.pagination { container-type: inline-size; }
+	.pagination:not([data-justify]) { --_yeti-justify: flex-start; }
+	.pagination:not([data-variant]) { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	.pagination:not([data-size]) { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	.pagination > ol {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: var(--_yeti-justify);
+		gap: var(--yeti-space-xs);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--_yeti-size-text);
+	}
+	.pagination > ol > li { margin: 0; }
+	.pagination > ol > li > :is(a, span) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-inline-size: var(--yeti-control-size);
+		min-block-size: var(--yeti-control-size);
+		padding-inline: var(--yeti-space-sm);
+		border-radius: var(--yeti-pagination-radius);
+		color: inherit;
+		text-decoration: none;
+	}
+	.pagination > ol > li > a:hover { background-color: var(--_yeti-variant-subtle); }
+	.pagination > ol > li > [aria-current] {
+		background-color: var(--_yeti-variant);
+		color: var(--_yeti-on-variant);
+	}
+	.pagination > ol > li > span { color: var(--yeti-color-text-muted); }
+
+	/* Compact, below the threshold. Thresholds are the width tokens'
+	   defaults, literal because a container condition cannot read a token;
+	   sm (24rem) is the default. */
+	@container (inline-size < 16rem) {
+		/* xs (16rem) */
+		.pagination[data-threshold="xs"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+	}
+	@container (inline-size < 24rem) {
+		/* sm (24rem), the default */
+		.pagination:is(:not([data-threshold]), [data-threshold="sm"]) > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+	}
+	@container (inline-size < 32rem) {
+		/* md (32rem) */
+		.pagination[data-threshold="md"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+	}
+	@container (inline-size < 48rem) {
+		/* lg (48rem) */
+		.pagination[data-threshold="lg"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+	}
+	@container (inline-size < 64rem) {
+		/* xl (64rem) */
+		.pagination[data-threshold="xl"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+	}
+	@container (inline-size < 80rem) {
+		/* 2xl (80rem) */
+		.pagination[data-threshold="2xl"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+	}
+}
