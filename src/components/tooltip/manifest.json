@@ -26,7 +26,7 @@
     "notes": "The trigger must reference the bubble with aria-describedby, so the hint is announced together with the control; the bubble carries role=\"tooltip\". A tooltip is for a short hint on a control whose purpose is not otherwise obvious, and it is never the only place something is said: touch has no hover, so anything essential belongs in the label, in a field's hint, or in the text. Do not put a link or a button inside the bubble, since there is no way to reach one. The bubble cannot be dismissed while the trigger stays hovered or focused, a known limit of a tooltip with no script, which WCAG 1.4.13 asks content shown on hover or focus to offer."
   },
   "js": null,
-  "support": { "unguarded": ["individual transform properties"], "guarded": ["anchor positioning (fallback: the bubble is placed above the trigger with absolute positioning)"] },
+  "support": { "unguarded": ["individual transform properties", "clip-path: polygon()"], "guarded": ["anchor positioning (fallback: the bubble and its caret are placed above the trigger with absolute positioning)"] },
   "since": "7.0.0",
   "example": "example.html"
 }

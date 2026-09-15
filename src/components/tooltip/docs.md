@@ -8,6 +8,8 @@ The component wraps a trigger and a bubble. The bubble is hidden until the trigg
 
 Where anchor positioning exists the bubble is fixed and anchored to the trigger, so a scrolling ancestor cannot clip it, and `data-placement` moves it to any of the four sides. Where it is missing the bubble falls back to absolute positioning above the trigger, which is fine until it sits inside something that scrolls.
 
+A caret bridges the gap between the bubble and the trigger, on whichever side the bubble sits. It is anchored to the trigger rather than to the bubble, because a bubble near the edge of the viewport slides sideways to stay on screen and a caret carried along with it would end up pointing at nothing. It takes the bubble's colour and needs no markup of its own.
+
 ```html
 <span class="tooltip" data-placement="end">
 	<button class="button" type="button" aria-label="Copy" aria-describedby="copy-tip" data-emphasis="low">⧉</button>

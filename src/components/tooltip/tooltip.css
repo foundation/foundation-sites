@@ -25,6 +25,30 @@
 		visibility: hidden;
 		transition: opacity var(--yeti-duration-fast) var(--yeti-ease), visibility var(--yeti-duration-fast);
 	}
+	/* The caret is as deep as the gap between bubble and trigger, so it bridges
+	   the two exactly and asks for no token of its own. Here the bubble is
+	   always centred on its trigger, so the caret can hang off the bubble.
+
+	   The extra pixel is the point of --_yeti-caret-overlap. Caret and bubble
+	   are separately positioned boxes that meet on a fractional edge, since the
+	   space token is fluid, and two such edges leave a hairline of background
+	   between them at most zoom levels. Overlapping by a pixel closes it; the
+	   caret is the same colour as the bubble, so the overlap cannot show. */
+	.tooltip > [role="tooltip"] {
+		--_yeti-caret: var(--yeti-space-xs);
+		--_yeti-caret-overlap: 1px;
+	}
+	.tooltip > [role="tooltip"]::after {
+		content: "";
+		position: absolute;
+		inset-block-start: calc(100% - var(--_yeti-caret-overlap));
+		inset-inline-start: 50%;
+		translate: -50% 0;
+		inline-size: calc(var(--_yeti-caret) * 2);
+		block-size: calc(var(--_yeti-caret) + var(--_yeti-caret-overlap));
+		background-color: var(--yeti-tooltip-surface);
+		clip-path: polygon(0 0, 100% 0, 50% 100%);
+	}
 	.tooltip:hover > [role="tooltip"],
 	.tooltip:focus-within > [role="tooltip"] {
 		opacity: 1;
@@ -44,9 +68,28 @@
 			translate: none;
 			margin-block-end: var(--yeti-space-xs);
 		}
+		/* The caret is anchored to the trigger rather than to the bubble,
+		   because a bubble near the edge of the viewport slides sideways to
+		   stay on screen and a caret carried along with it would point at
+		   nothing. */
+		.tooltip > [role="tooltip"]::after {
+			position: fixed;
+			position-anchor: --yeti-tooltip;
+			position-area: block-start;
+			justify-self: anchor-center;
+			inset: auto;
+			translate: none;
+			/* The region's own alignment pins the tip to the trigger, so the
+			   overlap grows out of the far edge, into the bubble. */
+			block-size: calc(var(--_yeti-caret) + var(--_yeti-caret-overlap));
+		}
 		.tooltip[data-placement="bottom"] > [role="tooltip"] {
 			position-area: block-end span-all;
 			margin-block: var(--yeti-space-xs) 0;
+		}
+		.tooltip[data-placement="bottom"] > [role="tooltip"]::after {
+			position-area: block-end;
+			clip-path: polygon(50% 0, 100% 100%, 0 100%);
 		}
 		.tooltip[data-placement="start"] > [role="tooltip"] {
 			position-area: inline-start span-all;
@@ -55,6 +98,21 @@
 		.tooltip[data-placement="end"] > [role="tooltip"] {
 			position-area: inline-end span-all;
 			margin-inline: var(--yeti-space-xs) 0;
+		}
+		.tooltip[data-placement="start"] > [role="tooltip"]::after,
+		.tooltip[data-placement="end"] > [role="tooltip"]::after {
+			align-self: anchor-center;
+			justify-self: auto;
+			inline-size: calc(var(--_yeti-caret) + var(--_yeti-caret-overlap));
+			block-size: calc(var(--_yeti-caret) * 2);
+		}
+		.tooltip[data-placement="start"] > [role="tooltip"]::after {
+			position-area: inline-start;
+			clip-path: polygon(0 0, 100% 50%, 0 100%);
+		}
+		.tooltip[data-placement="end"] > [role="tooltip"]::after {
+			position-area: inline-end;
+			clip-path: polygon(100% 0, 100% 100%, 0 50%);
 		}
 	}
 }
