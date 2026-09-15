@@ -40,6 +40,16 @@
 
 		--yeti-accordion-border: var(--yeti-color-border);
 		--yeti-accordion-padding: var(--yeti-space-md);
+		--yeti-accordion-surface: var(--yeti-color-surface);
+		/* Mixed toward the text colour rather than picked off the surface ramp,
+		   because the ramp's own steps are too small to read here: a summary and
+		   its answer came out three hundredths of a lightness apart in dark and
+		   the rows vanished into the panel. Mixing toward text also moves the
+		   right way in both schemes on its own, darkening the row in light and
+		   lifting it in dark, and a theme that restyles surface or text gets a
+		   header that still works without touching these. */
+		--yeti-accordion-summary: color-mix(in oklch, var(--yeti-accordion-surface) 88%, var(--yeti-color-text));
+		--yeti-accordion-summary-hover: color-mix(in oklch, var(--yeti-accordion-surface) 80%, var(--yeti-color-text));
 
 		--yeti-tabs-border: var(--yeti-color-border);
 		--yeti-tabs-padding: var(--yeti-space-sm) var(--yeti-space-md);

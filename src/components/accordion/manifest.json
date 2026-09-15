@@ -13,6 +13,9 @@
   "tokens": [
     { "name": "--yeti-accordion-border", "public": true, "description": "The line between panels and around the set." },
     { "name": "--yeti-accordion-padding", "public": true, "description": "Padding of a summary and its panel." },
+    { "name": "--yeti-accordion-surface", "public": true, "description": "Background of the set, and so of an open panel." },
+    { "name": "--yeti-accordion-summary", "public": true, "description": "Background of a summary row, set apart from the panel below it." },
+    { "name": "--yeti-accordion-summary-hover", "public": true, "description": "Background of a summary under the pointer." },
     { "name": "--yeti-border-width", "public": true, "description": "Width of those lines." },
     { "name": "--yeti-radius-md", "public": true, "description": "Corner of the set." }
   ],
@@ -25,7 +28,7 @@
     "notes": "This is native: details is a disclosure, summary is its button, and the open state is the open attribute, all announced without help. Put a heading inside the summary if the row is a section title, since summary is not a heading by itself. To open one at a time, give every details the same name attribute, which is the browser's own exclusive accordion; Yeti adds no attribute for it, because CSS cannot set one and script should not be needed."
   },
   "js": null,
-  "support": { "unguarded": ["details name attribute", "individual transform properties", "overflow: clip"], "guarded": [] },
+  "support": { "unguarded": ["details name attribute", "individual transform properties", "overflow: clip", "animating a grid row between 0fr and 1fr"], "guarded": ["discrete transition of content-visibility (fallback: the panel still grows open, and shuts at once rather than shrinking)"] },
   "since": "7.0.0",
   "example": "example.html"
 }

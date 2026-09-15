@@ -287,6 +287,9 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | --- | --- | --- |
 | `--yeti-accordion-border` | `var(--yeti-color-border)` | The line between one panel and the next, and around the set. |
 | `--yeti-accordion-padding` | `var(--yeti-space-md)` | Padding of a summary and of its panel. |
+| `--yeti-accordion-surface` | `var(--yeti-color-surface)` | Background of the set, and so of an open panel. |
+| `--yeti-accordion-summary` | `color-mix(in oklch, var(--yeti-accordion-surface) 88%, var(--yeti-color-text))` | Background of a summary row, set apart from the panel below it. Mixed toward the text colour, so it darkens the row in light and lifts it in dark. |
+| `--yeti-accordion-summary-hover` | `color-mix(in oklch, var(--yeti-accordion-surface) 80%, var(--yeti-color-text))` | Background of a summary under the pointer, one step further from the panel than at rest. |
 
 ## Tabs
 
@@ -303,6 +306,8 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-dropdown-radius` | `var(--yeti-radius-md)` | Corner of the panel. |
 | `--yeti-dropdown-padding` | `var(--yeti-space-xs)` | Padding around the items. |
 | `--yeti-dropdown-min` | `12rem` | Least width of the panel. |
+| `--yeti-dropdown-open-delay` | `100ms` | How long the pointer must rest on a data-trigger="hover" dropdown before its panel opens. Read by hover.js, so it has no effect without that module. |
+| `--yeti-dropdown-close-delay` | `200ms` | How long a hover-triggered panel waits after the pointer leaves before it closes, so the gap between trigger and panel is forgiving. Read by hover.js. |
 
 ## Dialog
 

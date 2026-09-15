@@ -7,6 +7,7 @@
 	.accordion {
 		border: var(--yeti-border-width) solid var(--yeti-accordion-border);
 		border-radius: var(--yeti-radius-md);
+		background-color: var(--yeti-accordion-surface);
 		overflow: clip;
 	}
 	.accordion > details + details { border-block-start: var(--yeti-border-width) solid var(--yeti-accordion-border); }
@@ -15,15 +16,23 @@
 		align-items: center;
 		gap: var(--yeti-space-sm);
 		padding: var(--yeti-accordion-padding);
+		background-color: var(--yeti-accordion-summary);
 		font-weight: var(--yeti-weight-strong);
 		cursor: pointer;
 		list-style: none;
 	}
 	.accordion > details > summary::-webkit-details-marker { display: none; }
-	.accordion > details > summary:hover { background-color: var(--yeti-color-surface-sunken); }
+	.accordion > details > summary:hover { background-color: var(--yeti-accordion-summary-hover); }
 	/* The set clips its corners, so the ring is drawn inside the summary
 	   rather than outside it, where the clip would crop it. */
 	.accordion > details > summary:focus-visible { outline-offset: -2px; }
+	/* An open row otherwise reads as one block with its panel, since the
+	   chevron is the only thing that changes. The line sits inside the details,
+	   below the summary, so it never lands on the line between one details and
+	   the next. */
+	.accordion > details[open] > summary {
+		border-block-end: var(--yeti-border-width) solid var(--yeti-accordion-border);
+	}
 
 	/* The chevron: a square with two borders, turned. It points down when
 	   the panel is shut and up when it is open. */
@@ -49,4 +58,35 @@
 		margin-inline: var(--yeti-accordion-padding);
 	}
 	.accordion > details > :not(summary):last-child { margin-block-end: var(--yeti-accordion-padding); }
+
+	/* The panel grows open rather than appearing. A details cannot animate its
+	   own height to auto in every engine, because the keywords that make auto
+	   interpolable are Chromium's alone, but a grid row measured in fr can, and
+	   that works everywhere. The summary takes the first row and the generated
+	   panel the second, so the transition runs on that row's size; the panel
+	   clips its overflow so the content is revealed rather than squashed.
+	   content-visibility has to come along discretely, or the panel would blink
+	   out at the start of a collapse instead of shrinking. The duration is a
+	   token because a rule in this layer outranks the reset's reduced-motion
+	   rule, but never the value it resolves.
+
+	   A fade alone was the first attempt and it read as a flash: the content
+	   arrived at full height instantly and only its opacity moved, so the row
+	   jumped and strobed at the same time. */
+	.accordion > details {
+		display: grid;
+		grid-template-rows: auto 0fr;
+		/* Without this the summary's row swells by a dozen pixels part way
+		   through and settles back, because an fr row is a share of the grid's
+		   leftover space and the auto row above it takes part in that sum while
+		   the share is being interpolated. Packing the rows to the start takes
+		   the summary out of the calculation, so only the panel moves. */
+		align-content: start;
+		transition: grid-template-rows var(--yeti-duration-base) var(--yeti-ease);
+	}
+	.accordion > details[open] { grid-template-rows: auto 1fr; }
+	.accordion > details::details-content {
+		overflow: hidden;
+		transition: content-visibility var(--yeti-duration-base) allow-discrete;
+	}
 }
