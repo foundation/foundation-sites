@@ -224,6 +224,7 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | Token | Default | Description |
 | --- | --- | --- |
 | `--yeti-field-gap` | `var(--yeti-space-xs)` | Space between a field's label, control, and hint. |
+| `--yeti-range-value` | `0%` | The filled share of a range's track. Set it on the input, inline or from your own script, since CSS cannot read the value. Not a theme value. |
 
 ## Table
 
@@ -237,5 +238,47 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | Token | Default | Description |
 | --- | --- | --- |
 | `--yeti-seam-size` | twice the size's space step (override only) | Depth of the cut; set it to fix the depth for every size. |
+
+## Nav
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-nav-padding` | `var(--yeti-space-sm) var(--yeti-space-md)` | Padding of the bar and of the open panel. |
+| `--yeti-nav-radius` | `var(--yeti-radius-sm)` | Corner of the links and the toggle. |
+| `--yeti-nav-border` | `var(--yeti-color-border)` | The bar's bottom edge, and the sheet's. |
+| `--yeti-nav-surface` | `var(--yeti-color-surface)` | Background of the bar. |
+| `--yeti-nav-panel` | `var(--yeti-color-surface-raised)` | Background of the open panel. |
+
+## Breadcrumbs
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-breadcrumbs-separator` | `"/"` | The string between crumbs; a theme may prefer "›". |
+
+## Pagination
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-pagination-radius` | `var(--yeti-radius-md)` | Corner of each page target. |
+
+## Alert
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-alert-radius` | `var(--yeti-radius-md)` | Corner of an alert. |
+| `--yeti-alert-padding` | `var(--yeti-space-md)` | Padding inside an alert. |
+
+## Progress
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-progress-radius` | `var(--yeti-radius-full)` | Corner of the bar and of its value. |
+
+## Spinner
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-spinner-duration` | `0.8s` | One turn of the ring; reduced motion stops it. |
+| `--yeti-spinner-width` | `0.15em` | Thickness of the ring. |
 
 Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.
