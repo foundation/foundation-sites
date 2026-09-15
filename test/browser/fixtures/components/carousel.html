@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Carousel fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } .slide { background: var(--yeti-color-primary-soft); padding: var(--yeti-space-md); }</style>
+</head>
+<body>
+	<main>
+		<h1>Carousel component</h1>
+		<div id="stage">
+			<section class="carousel" id="one" aria-roledescription="carousel" aria-label="Featured work">
+				<div data-track id="track" role="group" aria-label="Slides" tabindex="0">
+					<article id="s1" data-slide class="slide"><h2 data-contrast>First</h2><p data-contrast>First slide.</p></article>
+					<article id="s2" data-slide class="slide"><h2>Second</h2><p>Second slide.</p></article>
+					<article id="s3" data-slide class="slide"><h2>Third</h2><p>Third slide.</p></article>
+				</div>
+				<ol data-dots role="list" id="dots">
+					<li><a href="#s1" aria-label="Slide 1" id="dot1"></a></li>
+					<li><a href="#s2" aria-label="Slide 2" id="dot2"></a></li>
+					<li><a href="#s3" aria-label="Slide 3" id="dot3"></a></li>
+				</ol>
+			</section>
+			<section class="carousel" id="two" data-slides="2" aria-roledescription="carousel" aria-label="Quotes">
+				<div data-track id="track-two" role="group" aria-label="Quotes" tabindex="0">
+					<blockquote id="q1" data-slide class="slide"><p>One.</p></blockquote>
+					<blockquote id="q2" data-slide class="slide"><p>Two.</p></blockquote>
+					<blockquote id="q3" data-slide class="slide"><p>Three.</p></blockquote>
+				</div>
+			</section>
+		</div>
+	</main>
+</body>
+</html>
