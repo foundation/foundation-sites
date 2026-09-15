@@ -2,7 +2,7 @@
   "$schema": "../../../schema/manifest.schema.json",
   "name": "carousel",
   "kind": "component",
-  "description": "Slides on a scroll-snapping track with dots that link to each one, scrolled by the browser and needing no script.",
+  "description": "Slides on a scroll-snapping track with dots that link to each one, scrolled by the browser, with an optional module so following a dot costs no history entry.",
   "class": "carousel",
   "attributes": [
     { "name": "data-slides", "type": "enum", "vocabulary": "slides", "default": "1", "description": "How many slides are visible at once." },
@@ -12,7 +12,7 @@
   "children": [
     { "selector": "> [data-track]", "min": 1, "max": 1, "description": "The scrolling track holding the slides. A scrolling region is an interactive one, so give it role=\"group\", a name, and tabindex=\"0\"." },
     { "selector": "[data-slide]", "min": 2, "max": null, "description": "One slide each, with an id a dot can link to." },
-    { "selector": "> [data-dots]", "min": 0, "max": 1, "description": "A list of links, one per slide, each named with aria-label." }
+    { "selector": "> [data-dots]", "min": 0, "max": 1, "description": "A list of links, one per slide, each named with aria-label. With carousel.js loaded the module scrolls the track itself, so following one adds no history entry." }
   ],
   "tokens": [
     { "name": "--yeti-carousel-dot", "public": true, "description": "Colour of a dot." },
@@ -28,10 +28,10 @@
       { "key": "ArrowLeft / ArrowRight", "action": "Scroll the track." },
       { "key": "Enter", "action": "Scrolls to that dot's slide." }
     ],
-    "notes": "Label the region and give it aria-roledescription=\"carousel\" so it is announced as one. The dots are links to slide ids, so the browser does the scrolling and the keyboard works without help; each needs an aria-label, since a dot has no room for text and Yeti ships no visually-hidden utility. They jump to a slide but cannot report which slide is showing, because CSS cannot know that. Nothing essential should live behind a slide a reader has to find. The track scrolls, so it must be reachable from the keyboard: give it role=\"group\", an aria-label, and tabindex=\"0\". It is a group rather than a region because the carousel itself is already the landmark."
+    "notes": "Label the region and give it aria-roledescription=\"carousel\" so it is announced as one. The dots are links to slide ids, so the browser does the scrolling and the keyboard works without help; each needs an aria-label, since a dot has no room for text and Yeti ships no visually-hidden utility. They jump to a slide but cannot report which slide is showing, because CSS cannot know that. Loading carousel.js keeps the back button useful by scrolling the track instead of navigating; without it the dots still work, and each one followed is one press of back. Nothing essential should live behind a slide a reader has to find. The track scrolls, so it must be reachable from the keyboard: give it role=\"group\", an aria-label, and tabindex=\"0\". It is a group rather than a region because the carousel itself is already the landmark."
   },
-  "js": null,
-  "support": { "unguarded": ["scroll snap", "scroll-behavior"], "guarded": [] },
+  "js": { "module": "carousel.js", "optional": true },
+  "support": { "unguarded": ["scroll snap", "scroll-behavior", "scrollbar-width"], "guarded": [] },
   "since": "7.0.0",
   "example": "example.html"
 }

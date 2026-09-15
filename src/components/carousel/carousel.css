@@ -16,6 +16,9 @@
 		overscroll-behavior-x: contain;
 		scroll-snap-type: x mandatory;
 		scroll-behavior: var(--yeti-carousel-scroll);
+		/* The bar is noise under a snapping track: the dots say where you are
+		   and the track is focusable, so nothing is lost by hiding it. */
+		scrollbar-width: none;
 	}
 	.carousel > [data-track] > * {
 		flex: 0 0 auto;
