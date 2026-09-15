@@ -137,4 +137,10 @@
 	[data-ranks="4"] { --_yeti-ranks: 4; }
 	[data-ranks="5"] { --_yeti-ranks: 5; }
 	[data-ranks="6"] { --_yeti-ranks: 6; }
+
+	/* data-slides: how many slides of a carousel are visible at once */
+	[data-slides="1"] { --_yeti-slides: 1; }
+	[data-slides="2"] { --_yeti-slides: 2; }
+	[data-slides="3"] { --_yeti-slides: 3; }
+	[data-slides="4"] { --_yeti-slides: 4; }
 }

@@ -281,4 +281,51 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-spinner-duration` | `0.8s` | One turn of the ring; reduced motion stops it. |
 | `--yeti-spinner-width` | `0.15em` | Thickness of the ring. |
 
+## Accordion
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-accordion-border` | `var(--yeti-color-border)` | The line between one panel and the next, and around the set. |
+| `--yeti-accordion-padding` | `var(--yeti-space-md)` | Padding of a summary and of its panel. |
+
+## Tabs
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-tabs-border` | `var(--yeti-color-border)` | The line under the tab list. |
+| `--yeti-tabs-padding` | `var(--yeti-space-sm) var(--yeti-space-md)` | Padding of one tab. |
+
+## Dropdown
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-dropdown-surface` | `var(--yeti-color-surface-raised)` | Background of the open panel. |
+| `--yeti-dropdown-radius` | `var(--yeti-radius-md)` | Corner of the panel. |
+| `--yeti-dropdown-padding` | `var(--yeti-space-xs)` | Padding around the items. |
+| `--yeti-dropdown-min` | `12rem` | Least width of the panel. |
+
+## Dialog
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-dialog-surface` | `var(--yeti-color-surface-raised)` | Background of the dialog. |
+| `--yeti-dialog-radius` | `var(--yeti-radius-lg)` | Corner of the dialog. |
+| `--yeti-dialog-padding` | `var(--yeti-space-lg)` | Padding inside the dialog. |
+| `--yeti-dialog-backdrop` | `a translucent wash of the text colour` | The backdrop behind an open dialog. |
+
+## Tooltip
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-tooltip-surface` | `var(--yeti-color-text)` | Background of the bubble, inverted so it reads over anything. |
+| `--yeti-tooltip-text` | `var(--yeti-color-surface)` | Text of the bubble. |
+| `--yeti-tooltip-radius` | `var(--yeti-radius-sm)` | Corner of the bubble. |
+
+## Carousel
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-carousel-dot` | `var(--yeti-color-border-strong)` | Colour of a slide dot. |
+| `--yeti-carousel-dot-size` | `0.75rem` | Diameter of a slide dot. |
+
 Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

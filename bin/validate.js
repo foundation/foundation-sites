@@ -333,10 +333,11 @@ const MAPPED = {
 	'data-align-self': 'align', 'data-justify-self': 'self',
 	'data-variant': 'variant', 'data-size': 'size-control',
 	'data-span': 'span', 'data-ranks': 'ranks',
+	'data-slides': 'slides',
 };
 
 // Read directly by their own layout's CSS, so they have no attributes.css rule.
-const READ_DIRECTLY = new Set(['data-side', 'data-limit', 'data-emphasis', 'data-shape', 'data-edge', 'data-panel']);
+const READ_DIRECTLY = new Set(['data-side', 'data-limit', 'data-emphasis', 'data-shape', 'data-edge', 'data-panel', 'data-orientation', 'data-placement']);
 
 /** Every value of every mapped vocabulary must have a rule in layouts/attributes.css,
  *  and every manifest attribute that references a vocabulary must be checked against

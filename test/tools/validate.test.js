@@ -246,6 +246,7 @@ const layoutTree = (extra = {}) => validTree({
 		+ ['sm', 'md', 'lg'].map((v) => `\t[data-size="${v}"] { --_yeti-size-text: 0; }\n`).join('')
 		+ ['1', '2', '3', '4', '5', '6'].map((v) => `\t[data-span="${v}"] { --_yeti-span: ${v}; }\n`).join('')
 		+ ['2', '3', '4', '5', '6'].map((v) => `\t[data-ranks="${v}"] { --_yeti-ranks: ${v}; }\n`).join('')
+		+ ['1', '2', '3', '4'].map((v) => `\t[data-slides="${v}"] { --_yeti-slides: ${v}; }\n`).join('')
 		+ '}\n',
 	'src/yeti.css': '@import "layers.css";\n@import "layouts/attributes.css";\n@import "layouts/rail/rail.css";\n',
 	...extra,

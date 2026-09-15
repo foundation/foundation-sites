@@ -38,6 +38,29 @@
 		--yeti-spinner-duration: 0.8s;
 		--yeti-spinner-width: 0.15em;
 
+		--yeti-accordion-border: var(--yeti-color-border);
+		--yeti-accordion-padding: var(--yeti-space-md);
+
+		--yeti-tabs-border: var(--yeti-color-border);
+		--yeti-tabs-padding: var(--yeti-space-sm) var(--yeti-space-md);
+
+		--yeti-dropdown-surface: var(--yeti-color-surface-raised);
+		--yeti-dropdown-radius: var(--yeti-radius-md);
+		--yeti-dropdown-padding: var(--yeti-space-xs);
+		--yeti-dropdown-min: 12rem;
+
+		--yeti-dialog-surface: var(--yeti-color-surface-raised);
+		--yeti-dialog-radius: var(--yeti-radius-lg);
+		--yeti-dialog-padding: var(--yeti-space-lg);
+		--yeti-dialog-backdrop: color-mix(in oklch, var(--yeti-color-text) 45%, transparent);
+
+		--yeti-tooltip-surface: var(--yeti-color-text);
+		--yeti-tooltip-text: var(--yeti-color-surface);
+		--yeti-tooltip-radius: var(--yeti-radius-sm);
+
+		--yeti-carousel-dot: var(--yeti-color-border-strong);
+		--yeti-carousel-dot-size: 0.75rem;
+
 		/* Per element, not per theme: the filled share of a range's track. */
 		--yeti-range-value: 0%;
 	}
