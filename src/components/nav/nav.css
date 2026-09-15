@@ -126,7 +126,7 @@
 		border-block-end: var(--yeti-border-width) solid var(--yeti-nav-border);
 	}
 	@supports (anchor-name: --a) and (anchor-scope: --a) and (position-anchor: --a) and (position-area: block-end) {
-		.nav { anchor-name: --yeti-nav; anchor-scope: --yeti-nav; }
+		.nav { anchor-name: --yeti-nav; anchor-scope: --yeti-nav, --yeti-nav-panel; }
 		.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
 			position-anchor: --yeti-nav;
 			position-area: block-end span-all;
@@ -163,6 +163,52 @@
 	   Escape on a phone, so it keeps a margin that dismisses it. */
 	.nav[data-panel="screen"]:not(:has(> ul[popover] > [data-close])) > ul[popover]:popover-open {
 		inset: var(--yeti-space-xl);
+	}
+
+	/* A dropdown inside the open panel. In the bar its panel is a small card
+	   anchored under a small trigger; in a full-width list that shape reads as
+	   a detached tooltip and hangs past the panel's own edge, so here it
+	   becomes a full-width block docked under its trigger, sharing the panel's
+	   surface and padding so the two read as one list. The guard is the panel
+	   being open, which is exactly the condition the inline rules are gated
+	   against, so a dropdown in the bar keeps its card. The wrapper needs
+	   display: block, or it shrink-wraps and the trigger sits narrower than
+	   the links beside it. It is still a popover, so it stays in the top layer
+	   and covers the items below rather than pushing them down; Escape and a
+	   click outside unwind it before the panel. Without anchor positioning it
+	   docks to the foot of the viewport instead: still full width, still
+	   dismissible, still in reach of a thumb. */
+	.nav > ul[popover]:popover-open .dropdown { display: block; }
+	.nav:has(> ul[popover]:popover-open) .dropdown > [popover]:popover-open {
+		position: fixed;
+		inset-block: auto 0;
+		inset-inline: 0;
+		inline-size: auto;
+		min-inline-size: 0;
+		max-block-size: 60dvh;
+		margin: 0;
+		padding: var(--yeti-nav-padding);
+		border-radius: 0;
+		overflow: auto;
+	}
+	@supports (anchor-name: --a) and (anchor-scope: --a) and (position-anchor: --a) and (position-area: block-end) {
+		/* Two anchors. The trigger, which position-anchor already names, gives
+		   the region: it starts at the trigger's far edge and runs to the
+		   viewport's bottom, so align-self and a percentage cap hug the content
+		   and still stop the block short of the edge, exactly as the sheet does.
+		   The panel gives the inline edges. Spanning the viewport instead would
+		   push the block past a drawer's edge and past an inset screen's margin;
+		   reading the panel's own box keeps every shape right without restating
+		   a single one of their widths. */
+		.nav > ul[popover] { anchor-name: --yeti-nav-panel; }
+		.nav:has(> ul[popover]:popover-open) .dropdown > [popover]:popover-open {
+			position-area: block-end span-all;
+			align-self: start;
+			justify-self: stretch;
+			inset-inline-start: anchor(--yeti-nav-panel start);
+			inset-inline-end: anchor(--yeti-nav-panel end);
+			max-block-size: 100%;
+		}
 	}
 
 	/* Entering: the sheet and the screen fade in, the drawer slides in.

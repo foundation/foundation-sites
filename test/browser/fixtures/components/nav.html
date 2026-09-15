@@ -37,6 +37,15 @@
 					<li data-close id="drawer-close"><button type="button" popovertarget="drawer-menu" popovertargetaction="hide" aria-label="Close">×</button></li>
 					<li><a href="#" id="drawer-first">Docs</a></li>
 					<li><a href="#">Blog</a></li>
+					<li id="drawer-has-dropdown">
+						<div class="dropdown">
+							<button type="button" popovertarget="drawer-more" id="drawer-more-trigger">More</button>
+							<div id="drawer-more" popover>
+								<a href="#" id="drawer-more-first">Changelog</a>
+								<a href="#">Status</a>
+							</div>
+						</div>
+					</li>
 				</ul>
 			</nav>
 			<nav class="nav" id="screen-nav" aria-label="Screen" data-panel="screen">
