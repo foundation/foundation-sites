@@ -20,6 +20,7 @@ const PAGES = [
 	'/test/browser/fixtures/components/nav.html',
 	'/test/browser/fixtures/components/breadcrumbs.html',
 	'/test/browser/fixtures/components/pagination.html',
+	'/test/browser/fixtures/components/alert.html',
 	'/test/browser/fixtures/themes/soft.html',
 	'/test/browser/fixtures/themes/sharp.html',
 ];

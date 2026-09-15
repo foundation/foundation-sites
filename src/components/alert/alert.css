@@ -1,0 +1,57 @@
+/* Alert: a message with a hue, an emphasis, an optional icon, and an
+   optional close button. The colour is a border and a tint; the words are
+   the message. */
+@layer yeti.components {
+	.alert {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--yeti-space-sm);
+		padding: var(--yeti-alert-padding);
+		border: var(--yeti-border-width) solid var(--_yeti-variant);
+		border-inline-start-width: calc(var(--yeti-border-width) * 4);
+		border-radius: var(--yeti-alert-radius);
+		background-color: var(--_yeti-variant-subtle);
+		color: var(--yeti-color-text);
+	}
+	.alert:not([data-variant]) { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	.alert > * { margin: 0; }
+	.alert > :not(svg, [data-dismiss]) { flex: 1; }
+	.alert[data-emphasis="high"] {
+		background-color: var(--_yeti-variant);
+		border-color: var(--_yeti-variant-strong);
+		color: var(--_yeti-on-variant);
+	}
+	.alert[data-emphasis="low"] { background-color: transparent; }
+
+	/* The icon sits on the first line of text. */
+	.alert > svg {
+		inline-size: 1.25em;
+		block-size: 1.25em;
+		flex: none;
+		margin-block: calc((1lh - 1.25em) / 2);
+		color: var(--_yeti-variant-text);
+	}
+	.alert[data-emphasis="high"] > svg { color: inherit; }
+
+	/* The close button: a control-sized square at the end, pulled into the
+	   first line's height so the alert is no taller for it. */
+	.alert > [data-dismiss] {
+		appearance: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: none;
+		inline-size: var(--yeti-control-size);
+		block-size: var(--yeti-control-size);
+		margin-block: calc((1lh - var(--yeti-control-size)) / 2);
+		margin-inline-start: auto;
+		padding: 0;
+		border: 0;
+		border-radius: var(--yeti-alert-radius);
+		background-color: transparent;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+	}
+	.alert > [data-dismiss]:hover { background-color: color-mix(in oklch, currentColor 12%, transparent); }
+}
