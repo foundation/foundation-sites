@@ -43,14 +43,14 @@ A checkbox with `role="switch"` becomes a switch: a track with a thumb that slid
 
 ```html
 <div class="field"><input id="dark" type="checkbox" role="switch"><label for="dark">Dark mode</label></div>
-<div class="field"><label for="volume">Volume</label><input id="volume" type="range" min="0" max="100" value="40"></div>
-```
-
-```html
 <div class="field"><label for="quality">Quality</label><input id="quality" type="range" min="0" max="100" value="70" style="--yeti-range-value: 70%"></div>
 ```
 
-The script form: `input.addEventListener('input', () => input.style.setProperty('--yeti-range-value', ((input.value - input.min) / (input.max - input.min) * 100) + '%'))`.
+```html
+<div class="field"><label for="volume">Volume</label><input id="volume" type="range" min="0" max="100" value="40"></div>
+```
+
+The script form: `const set = () => input.style.setProperty('--yeti-range-value', ((input.value - input.min) / (input.max - input.min) * 100) + '%'); input.addEventListener('input', set); set();`.
 
 ## Accessibility
 

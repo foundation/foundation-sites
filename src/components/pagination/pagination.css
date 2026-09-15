@@ -40,26 +40,26 @@
 	   sm (24rem) is the default. */
 	@container (inline-size < 16rem) {
 		/* xs (16rem) */
-		.pagination[data-threshold="xs"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+		.pagination[data-threshold="xs"] > ol > li:not(:has(> [rel~="prev"], > [rel~="next"], > [aria-current])) { display: none; }
 	}
 	@container (inline-size < 24rem) {
 		/* sm (24rem), the default */
-		.pagination:is(:not([data-threshold]), [data-threshold="sm"]) > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+		.pagination:is(:not([data-threshold]), [data-threshold="sm"]) > ol > li:not(:has(> [rel~="prev"], > [rel~="next"], > [aria-current])) { display: none; }
 	}
 	@container (inline-size < 32rem) {
 		/* md (32rem) */
-		.pagination[data-threshold="md"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+		.pagination[data-threshold="md"] > ol > li:not(:has(> [rel~="prev"], > [rel~="next"], > [aria-current])) { display: none; }
 	}
 	@container (inline-size < 48rem) {
 		/* lg (48rem) */
-		.pagination[data-threshold="lg"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+		.pagination[data-threshold="lg"] > ol > li:not(:has(> [rel~="prev"], > [rel~="next"], > [aria-current])) { display: none; }
 	}
 	@container (inline-size < 64rem) {
 		/* xl (64rem) */
-		.pagination[data-threshold="xl"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+		.pagination[data-threshold="xl"] > ol > li:not(:has(> [rel~="prev"], > [rel~="next"], > [aria-current])) { display: none; }
 	}
 	@container (inline-size < 80rem) {
 		/* 2xl (80rem) */
-		.pagination[data-threshold="2xl"] > ol > li:not(:has(> [rel="prev"], > [rel="next"], > [aria-current])) { display: none; }
+		.pagination[data-threshold="2xl"] > ol > li:not(:has(> [rel~="prev"], > [rel~="next"], > [aria-current])) { display: none; }
 	}
 }

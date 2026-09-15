@@ -17,4 +17,4 @@ The close button is a `button` carrying `data-dismiss`. Yeti's `alert.js`, loade
 
 ## Accessibility
 
-`role="status"` for the usual notice, which is announced politely when it appears; `role="alert"` only for something urgent, which interrupts whatever the reader is doing. Neither role announces content that is already on the page at load; they matter for alerts inserted later. The colour is decoration: say "Saved" or "Failed" in the words. The close button needs a name, and after it removes the alert focus falls back to the document, so put an alert near the thing it describes rather than far above it.
+`role="status"` for the usual notice, which is announced politely when it appears; `role="alert"` only for something urgent, which interrupts whatever the reader is doing. Neither role announces content that is already on the page at load; they matter for alerts inserted later. The colour is decoration: say "Saved" or "Failed" in the words. The close button needs a name, and after it removes the alert focus moves to where the alert was, so the reader keeps their place; put an alert near the thing it describes rather than far above it.

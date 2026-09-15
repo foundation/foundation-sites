@@ -51,4 +51,12 @@ test.describe('alert', () => {
 		await open(page);
 		expect(await axe(page)).toEqual([]);
 	});
+
+	test('dismissing with the keyboard keeps focus where the alert was', async ({ page }) => {
+		await open(page);
+		await page.focus('#dismiss');
+		await page.keyboard.press('Enter');
+		await expect(page.locator('#closable')).toHaveCount(0);
+		expect(await page.evaluate(() => document.activeElement === document.body)).toBe(false);
+	});
 });

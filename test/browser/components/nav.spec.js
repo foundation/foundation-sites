@@ -8,7 +8,11 @@ const open = async (page, width = 1000) => {
 };
 const isOpen = (page, id) => page.evaluate((i) => document.getElementById(i).matches(':popover-open'), id);
 // The panel enters with a transition, so geometry is read once it has settled.
-const settle = (page, selector) => page.evaluate((s) => Promise.all(document.querySelector(s).getAnimations().map((a) => a.finished)), selector);
+// Two frames: input is processed, then rAF callbacks run, so after two the
+// style recalculation that creates the transition has certainly happened and
+// getAnimations() reports it. Waiting on an empty list resolves at once.
+const settle = (page, selector) => page.evaluate((s) => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+	.then(() => Promise.all(document.querySelector(s).getAnimations().map((a) => a.finished))), selector);
 const anchored = (page) => page.evaluate(() => CSS.supports('anchor-name: --a') && CSS.supports('anchor-scope: --a'));
 
 test.describe('nav', () => {
@@ -43,6 +47,27 @@ test.describe('nav', () => {
 		expect(await isOpen(page, 'menu')).toBe(false);
 	});
 
+	test('a sheet never runs past the bottom of the viewport', async ({ page }) => {
+		await page.setViewportSize({ width: 400, height: 220 });
+		await open(page, 400);
+		await page.click('#toggle');
+		await settle(page, '#menu');
+		const menu = await rect(page, '#menu');
+		expect(menu.bottom).toBeLessThanOrEqual(220 + 1);
+		const scrolls = await page.evaluate(() => { const el = document.getElementById('menu'); return el.scrollHeight > el.clientHeight; });
+		expect(scrolls || menu.bottom <= 220).toBe(true);
+	});
+
+	test('a short sheet hugs its content instead of filling the rest of a tall viewport', async ({ page }) => {
+		await open(page, 400);
+		await page.click('#toggle');
+		await settle(page, '#menu');
+		const menu = await rect(page, '#menu');
+		const viewport = page.viewportSize();
+		expect(menu.height).toBeLessThan(400);
+		expect(menu.bottom).toBeLessThan(viewport.height);
+	});
+
 	test('Tab from the toggle reaches the first link', async ({ page, browserName }) => {
 		await open(page, 400);
 		await page.focus('#toggle');
@@ -70,11 +95,27 @@ test.describe('nav', () => {
 		expect(await style(page, '#menu', 'display')).toBe('none');
 	});
 
+	test('a panel that is open stays a panel when the nav widens', async ({ page }) => {
+		await open(page, 400);
+		await page.click('#toggle');
+		await settle(page, '#menu');
+		await stage(page, 1000);
+		expect(await isOpen(page, 'menu')).toBe(true);
+		expect(await style(page, '#menu', 'position')).toBe('fixed');
+		expect(await style(page, '#menu', 'background-color')).not.toBe('rgba(0, 0, 0, 0)');
+		expect(await style(page, '#toggle', 'display')).not.toBe('none');
+		await page.keyboard.press('Escape');
+		expect(await style(page, '#menu', 'position')).toBe('static');
+		expect(await style(page, '#toggle', 'display')).toBe('none');
+	});
+
 	test('has no accessibility violations, closed and open', async ({ page }) => {
 		await open(page, 400);
 		expect(await axe(page)).toEqual([]);
 		await page.click('#toggle');
 		await settle(page, '#menu');
+		expect(await axe(page)).toEqual([]);
+		await stage(page, 1000);
 		expect(await axe(page)).toEqual([]);
 	});
 

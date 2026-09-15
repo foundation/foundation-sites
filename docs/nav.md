@@ -48,7 +48,7 @@ One list of links, two modes. The list carries `popover` and the button carries 
 </nav>
 ```
 
-If the window widens while the menu is open, the links return to the bar but the browser still counts the popover as open; Escape ends that. `data-threshold` is the attribute `columns` uses, so a nav and the columns under it can switch at the same width.
+A panel that is open stays a panel until it is dismissed, whatever the nav's width; widening past the threshold does not return the links to the bar on its own. Escape or a click outside closes the panel, and only then do the links return to the bar. `data-threshold` is the attribute `columns` uses, so a nav and the columns under it can switch at the same width.
 
 ## Accessibility
 

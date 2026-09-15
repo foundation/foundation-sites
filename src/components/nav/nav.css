@@ -107,7 +107,13 @@
 	   where anchor positioning exists; at the top of the viewport otherwise,
 	   which covers the bar, but Escape and a click outside still close it.
 	   The name is scoped to each nav's subtree, so a page with two navs
-	   anchors each sheet under its own bar. */
+	   anchors each sheet under its own bar. The cap comes from position-area:
+	   it gives the sheet a region running from the bar's far edge to the
+	   viewport's own bottom, and align-self plus a percentage cap size the
+	   sheet to its content within that region instead of always filling it.
+	   anchor-size() cannot do this: it only knows the bar's own height, not
+	   its distance from the top, so a page with content above the bar would
+	   still let a tall sheet run past the bottom. */
 	.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
 		inset-inline: 0;
 		inset-block-start: 0;
@@ -115,12 +121,14 @@
 		max-block-size: 100dvh;
 		border-block-end: var(--yeti-border-width) solid var(--yeti-nav-border);
 	}
-	@supports (anchor-name: --a) and (anchor-scope: --a) {
+	@supports (anchor-name: --a) and (anchor-scope: --a) and (position-anchor: --a) and (position-area: block-end) {
 		.nav { anchor-name: --yeti-nav; anchor-scope: --yeti-nav; }
 		.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
 			position-anchor: --yeti-nav;
-			inset-block-start: anchor(bottom, 0);
-			max-block-size: calc(100dvh - anchor(bottom, 0));
+			position-area: block-end span-all;
+			align-self: start;
+			justify-self: stretch;
+			max-block-size: 100%;
 		}
 	}
 
@@ -147,6 +155,12 @@
 	}
 	.nav[data-panel="screen"] > ul[popover]:popover-open a { inline-size: auto; }
 
+	/* A screen panel with no close item would have no outside to click and no
+	   Escape on a phone, so it keeps a margin that dismisses it. */
+	.nav[data-panel="screen"]:not(:has(> ul[popover] > [data-close])) > ul[popover]:popover-open {
+		inset: var(--yeti-space-xl);
+	}
+
 	/* Entering: the sheet and the screen fade in, the drawer slides in.
 	   Leaving is instant. The durations are tokens, so reduced motion
 	   makes entering instant too. */
@@ -160,47 +174,49 @@
 	   panel rules' specificity (0,4,1), and they come last in the file, so
 	   the bar wins even while the popover is open. Thresholds are the width
 	   tokens' defaults, literal because a container condition cannot read a
-	   token; md (32rem) is the default. */
+	   token; md (32rem) is the default. While a panel is open the nav stays
+	   in panel mode whatever its width, so a resize cannot strip an open
+	   panel of its box. */
 	@container (inline-size >= 16rem) {
 		/* xs (16rem) */
-		.nav[data-threshold="xs"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
-		.nav[data-threshold="xs"] > ul[popover][popover] a { inline-size: auto; }
-		.nav[data-threshold="xs"] > ul[popover][popover] > [data-close],
-		.nav[data-threshold="xs"] > button[popovertarget] { display: none; }
+		.nav[data-threshold="xs"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="xs"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="xs"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] > [data-close],
+		.nav[data-threshold="xs"]:not(:has(> ul[popover]:popover-open)) > button[popovertarget] { display: none; }
 	}
 	@container (inline-size >= 24rem) {
 		/* sm (24rem) */
-		.nav[data-threshold="sm"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
-		.nav[data-threshold="sm"] > ul[popover][popover] a { inline-size: auto; }
-		.nav[data-threshold="sm"] > ul[popover][popover] > [data-close],
-		.nav[data-threshold="sm"] > button[popovertarget] { display: none; }
+		.nav[data-threshold="sm"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="sm"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="sm"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] > [data-close],
+		.nav[data-threshold="sm"]:not(:has(> ul[popover]:popover-open)) > button[popovertarget] { display: none; }
 	}
 	@container (inline-size >= 32rem) {
 		/* md (32rem), the default */
-		.nav:is(:not([data-threshold]), [data-threshold="md"]) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
-		.nav:is(:not([data-threshold]), [data-threshold="md"]) > ul[popover][popover] a { inline-size: auto; }
-		.nav:is(:not([data-threshold]), [data-threshold="md"]) > ul[popover][popover] > [data-close],
-		.nav:is(:not([data-threshold]), [data-threshold="md"]) > button[popovertarget] { display: none; }
+		.nav:is(:not([data-threshold]), [data-threshold="md"]):not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav:is(:not([data-threshold]), [data-threshold="md"]):not(:has(> ul[popover]:popover-open)) > ul[popover][popover] a { inline-size: auto; }
+		.nav:is(:not([data-threshold]), [data-threshold="md"]):not(:has(> ul[popover]:popover-open)) > ul[popover][popover] > [data-close],
+		.nav:is(:not([data-threshold]), [data-threshold="md"]):not(:has(> ul[popover]:popover-open)) > button[popovertarget] { display: none; }
 	}
 	@container (inline-size >= 48rem) {
 		/* lg (48rem) */
-		.nav[data-threshold="lg"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
-		.nav[data-threshold="lg"] > ul[popover][popover] a { inline-size: auto; }
-		.nav[data-threshold="lg"] > ul[popover][popover] > [data-close],
-		.nav[data-threshold="lg"] > button[popovertarget] { display: none; }
+		.nav[data-threshold="lg"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="lg"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="lg"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] > [data-close],
+		.nav[data-threshold="lg"]:not(:has(> ul[popover]:popover-open)) > button[popovertarget] { display: none; }
 	}
 	@container (inline-size >= 64rem) {
 		/* xl (64rem) */
-		.nav[data-threshold="xl"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
-		.nav[data-threshold="xl"] > ul[popover][popover] a { inline-size: auto; }
-		.nav[data-threshold="xl"] > ul[popover][popover] > [data-close],
-		.nav[data-threshold="xl"] > button[popovertarget] { display: none; }
+		.nav[data-threshold="xl"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="xl"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="xl"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] > [data-close],
+		.nav[data-threshold="xl"]:not(:has(> ul[popover]:popover-open)) > button[popovertarget] { display: none; }
 	}
 	@container (inline-size >= 80rem) {
 		/* 2xl (80rem) */
-		.nav[data-threshold="2xl"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
-		.nav[data-threshold="2xl"] > ul[popover][popover] a { inline-size: auto; }
-		.nav[data-threshold="2xl"] > ul[popover][popover] > [data-close],
-		.nav[data-threshold="2xl"] > button[popovertarget] { display: none; }
+		.nav[data-threshold="2xl"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="2xl"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="2xl"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] > [data-close],
+		.nav[data-threshold="2xl"]:not(:has(> ul[popover]:popover-open)) > button[popovertarget] { display: none; }
 	}
 }
