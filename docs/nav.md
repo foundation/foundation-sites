@@ -108,7 +108,7 @@ Give the `nav` an `aria-label`, since a page often has more than one. The toggle
 ## Browser support
 
 - Used without guards: popover, container size queries, @starting-style
-- Behind `@supports`: anchor positioning (fallback: the sheet starts at the top of the viewport)
+- Behind `@supports`: anchor positioning with anchor-scope (fallback: the sheet starts at the top of the viewport)
 
 ## JavaScript
 

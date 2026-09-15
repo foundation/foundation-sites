@@ -94,6 +94,7 @@
 		color: var(--yeti-color-text);
 		box-shadow: var(--yeti-shadow-md);
 		overflow: auto;
+		transition: opacity var(--yeti-duration-fast) var(--yeti-ease), translate var(--yeti-duration-fast) var(--yeti-ease);
 	}
 	.nav > ul[popover]:popover-open a { inline-size: 100%; }
 	.nav > ul[popover] > [data-close] {
@@ -104,7 +105,9 @@
 
 	/* Sheet, the default: under the bar, the full width. Anchored to the bar
 	   where anchor positioning exists; at the top of the viewport otherwise,
-	   which covers the bar, but Escape and a click outside still close it. */
+	   which covers the bar, but Escape and a click outside still close it.
+	   The name is scoped to each nav's subtree, so a page with two navs
+	   anchors each sheet under its own bar. */
 	.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
 		inset-inline: 0;
 		inset-block-start: 0;
@@ -112,13 +115,44 @@
 		max-block-size: 100dvh;
 		border-block-end: var(--yeti-border-width) solid var(--yeti-nav-border);
 	}
-	@supports (anchor-name: --a) {
-		.nav { anchor-name: --yeti-nav; }
+	@supports (anchor-name: --a) and (anchor-scope: --a) {
+		.nav { anchor-name: --yeti-nav; anchor-scope: --yeti-nav; }
 		.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
 			position-anchor: --yeti-nav;
 			inset-block-start: anchor(bottom, 0);
 			max-block-size: calc(100dvh - anchor(bottom, 0));
 		}
+	}
+
+	/* Drawer: a column from the start edge, the page dimmed behind it. A
+	   click on the backdrop is a click outside, so it closes the drawer. */
+	.nav[data-panel="drawer"] > ul[popover]:popover-open {
+		inset-block: 0;
+		inset-inline-start: 0;
+		inline-size: min(20rem, 100%);
+		block-size: auto;
+		max-block-size: none;
+	}
+	.nav[data-panel="drawer"] > ul[popover]::backdrop { background-color: var(--yeti-shadow-color); }
+
+	/* Screen: the whole viewport, links large and centred. */
+	.nav[data-panel="screen"] > ul[popover]:popover-open {
+		inset: 0;
+		inline-size: auto;
+		block-size: auto;
+		max-block-size: none;
+		justify-content: center;
+		align-items: center;
+		font-size: var(--yeti-text-lg);
+	}
+	.nav[data-panel="screen"] > ul[popover]:popover-open a { inline-size: auto; }
+
+	/* Entering: the sheet and the screen fade in, the drawer slides in.
+	   Leaving is instant. The durations are tokens, so reduced motion
+	   makes entering instant too. */
+	@starting-style {
+		.nav > ul[popover]:popover-open { opacity: 0; }
+		.nav[data-panel="drawer"] > ul[popover]:popover-open { translate: -100% 0; }
 	}
 
 	/* Inline, at or above the threshold: the list joins the bar, the toggle
