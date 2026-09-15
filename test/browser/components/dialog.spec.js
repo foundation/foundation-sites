@@ -1,5 +1,5 @@
 import { test, expect } from 'playwright/test';
-import { stage, style, axe, withoutModule } from '../lib/layout.js';
+import { stage, rect, style, axe, withoutModule } from '../lib/layout.js';
 
 const open = async (page, width = 1000) => {
 	const response = await page.goto('/test/browser/fixtures/components/dialog.html');
@@ -49,6 +49,23 @@ test.describe('dialog', () => {
 		expect(backdrop).not.toBe('rgba(0, 0, 0, 0)');
 	});
 
+	test('the contents are spaced and the footer buttons share a line', async ({ page }) => {
+		await open(page);
+		await page.click('#opener');
+		await settle(page, '#confirm');
+		const [title, body, cancel, go] = await Promise.all([rect(page, '#confirm-title'), rect(page, '#confirm p'), rect(page, '#cancel'), rect(page, '#confirm-go')]);
+		expect(body.top).toBeGreaterThan(title.bottom);
+		expect(Math.abs(cancel.top - go.top)).toBeLessThan(2);
+	});
+
+	test('the page behind a modal is inert', async ({ page }) => {
+		await open(page);
+		await page.click('#opener');
+		await settle(page, '#confirm');
+		await page.evaluate(() => document.getElementById('after').focus());
+		expect(await page.evaluate(() => document.activeElement.id)).not.toBe('after');
+	});
+
 	test('without the module the opener does nothing', async ({ page }) => {
 		await withoutModule(page, 'dialog');
 		await open(page);
@@ -65,6 +82,8 @@ test.describe('dialog', () => {
 		expect(await axe(page)).toEqual([]);
 	});
 
+	// Only discriminates in WebKit: Chromium and Firefox restore dialog focus
+	// natively, which masks the bug this guards against.
 	test('a dialog opened from inside another returns focus to its own trigger', async ({ page }) => {
 		await open(page);
 		await page.click('#opener');

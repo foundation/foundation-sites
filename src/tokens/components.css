@@ -60,6 +60,7 @@
 
 		--yeti-carousel-dot: var(--yeti-color-border-strong);
 		--yeti-carousel-dot-size: 0.75rem;
+		--yeti-carousel-scroll: smooth;
 
 		/* Per element, not per theme: the filled share of a range's track. */
 		--yeti-range-value: 0%;
@@ -71,6 +72,7 @@
 	@media (prefers-reduced-motion: reduce) {
 		:root {
 			--yeti-spinner-duration: 0.01ms;
+			--yeti-carousel-scroll: auto;
 		}
 	}
 }

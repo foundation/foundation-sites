@@ -66,6 +66,8 @@
 		gap: var(--yeti-space-sm);
 		margin-block-start: auto;
 	}
+	/* footer IS a flow container, and a block-start margin on a centred flex item shifts it down half its own margin. */
+	.card > footer > * { margin-block: 0; }
 
 	/* One link may stretch over the whole card. */
 	.card [data-stretch]::after {

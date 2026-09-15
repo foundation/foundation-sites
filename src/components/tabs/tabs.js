@@ -11,6 +11,9 @@ function select(root, tab) {
 		other.tabIndex = on ? 0 : -1;
 		const panel = document.getElementById(other.getAttribute('aria-controls'));
 		if (panel) panel.hidden = !on;
+		// A panel with nothing focusable inside it must take focus itself, or
+		// Tab leaves the tab list and skips straight past the content.
+		if (panel) panel.tabIndex = panel.querySelector('a, button, input, select, textarea, [tabindex]') ? -1 : 0;
 	}
 }
 

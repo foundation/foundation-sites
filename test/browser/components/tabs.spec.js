@@ -15,6 +15,8 @@ test.describe('tabs', () => {
 		await open(page);
 		for (const id of ['p1', 'p2', 'p3']) expect(await hidden(page, id), id).toBe(false);
 		for (const id of ['p1', 'p2', 'p3']) expect((await rect(page, `#${id}`)).height, id).toBeGreaterThan(0);
+		for (const id of ['t1', 't2', 't3']) expect(await page.evaluate((i) => document.getElementById(i).tabIndex, id), id).toBe(0);
+		expect(await axe(page)).toEqual([]);
 	});
 
 	test('with the module one panel shows and the rest are hidden', async ({ page }) => {
@@ -53,6 +55,11 @@ test.describe('tabs', () => {
 		expect(await selected(page, 'v2')).toBe('true');
 		const [list, panel] = await Promise.all([rect(page, '#vertical [role="tablist"]'), rect(page, '#vp2')]);
 		expect(panel.left).toBeGreaterThanOrEqual(list.right - 2);
+	});
+
+	test('the selected panel can take focus when nothing inside it can', async ({ page }) => {
+		await open(page);
+		expect(await page.evaluate(() => document.getElementById('p1').tabIndex)).toBe(0);
 	});
 
 	test('the selected tab is marked with the hue', async ({ page }) => {

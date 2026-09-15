@@ -20,3 +20,5 @@ Where anchor positioning exists the bubble is fixed and anchored to the trigger,
 The trigger references the bubble with `aria-describedby`, so a screen reader announces the hint with the control rather than leaving it stranded in the page. The bubble appears on focus as well as hover, so a keyboard reader gets it too.
 
 Keep it to a few words, and put nothing interactive inside: there is no way to move focus into a bubble that disappears when focus leaves the trigger. If the hint is long, or if it matters, it is not a tooltip. A field's own hint sits under the control permanently and is almost always the better answer.
+
+The bubble also cannot be dismissed while the trigger stays hovered or focused: WCAG 1.4.13 asks for that, and a tooltip with no script has no way to offer it. This is a known limit of a pure-CSS tooltip, not an oversight, and it is another reason to keep the text short and never essential.

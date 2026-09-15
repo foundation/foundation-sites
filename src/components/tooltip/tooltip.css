@@ -50,11 +50,11 @@
 		}
 		.tooltip[data-placement="start"] > [role="tooltip"] {
 			position-area: inline-start span-all;
-			margin: 0 var(--yeti-space-xs) 0 0;
+			margin-inline: 0 var(--yeti-space-xs);
 		}
 		.tooltip[data-placement="end"] > [role="tooltip"] {
 			position-area: inline-end span-all;
-			margin: 0 0 0 var(--yeti-space-xs);
+			margin-inline: var(--yeti-space-xs) 0;
 		}
 	}
 }

@@ -1,8 +1,11 @@
 /* Carousel: slides on a scroll-snap track, and dots that are ordinary links
-   to each slide's id. The browser does the scrolling, so there is no script;
-   the reset already turns smooth scrolling off for anyone who asked for less
-   motion. The dots jump to a slide; they cannot report which one is showing,
-   because CSS has no way to know. */
+   to each slide's id. The browser does the scrolling, so there is no script.
+   Components come after base in the layer order, so a components-layer
+   scroll-behavior would outrank the reset's reduced-motion rule; smooth
+   scrolling instead reads a token, so the preference reaches the track
+   through the token's own value rather than through the reset. The dots
+   jump to a slide; they cannot report which one is showing, because CSS
+   has no way to know. */
 @layer yeti.components {
 	.carousel:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
 	.carousel:not([data-slides]) { --_yeti-slides: 1; }
@@ -12,7 +15,7 @@
 		overflow-x: auto;
 		overscroll-behavior-x: contain;
 		scroll-snap-type: x mandatory;
-		scroll-behavior: smooth;
+		scroll-behavior: var(--yeti-carousel-scroll);
 	}
 	.carousel > [data-track] > * {
 		flex: 0 0 auto;

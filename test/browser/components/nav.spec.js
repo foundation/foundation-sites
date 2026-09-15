@@ -155,6 +155,12 @@ test.describe('nav', () => {
 		expect(await style(page, '#screen-close', 'display')).toBe('none');
 	});
 
+	test('a dropdown trigger in the list is styled like a link', async ({ page }) => {
+		await open(page, 1000);
+		const [link, trigger] = await Promise.all([rect(page, '#current'), rect(page, '#nav-more-trigger')]);
+		expect(trigger.height).toBeCloseTo(link.height, 0);
+	});
+
 	test('a dropdown inside a nav item opens and is not clipped by the bar', async ({ page }) => {
 		await open(page, 1000);
 		await page.click('#nav-more-trigger');

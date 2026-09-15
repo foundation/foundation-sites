@@ -28,7 +28,13 @@ test.describe('carousel', () => {
 		await open(page);
 		expect(await scrollLeft(page, 'track')).toBe(0);
 		await page.click('#dot3');
-		await expect.poll(() => scrollLeft(page, 'track')).toBeGreaterThan(0);
+		await expect.poll(async () => Math.round((await rect(page, '#s3')).left - (await rect(page, '#track')).left)).toBe(0);
+	});
+
+	test('under reduced motion the track does not animate its scrolling', async ({ page }) => {
+		await page.emulateMedia({ reducedMotion: 'reduce' });
+		await open(page);
+		expect(await style(page, '#track', 'scroll-behavior')).toBe('auto');
 	});
 
 	test('each dot is a named, pressable link', async ({ page }) => {

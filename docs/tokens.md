@@ -327,5 +327,6 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | --- | --- | --- |
 | `--yeti-carousel-dot` | `var(--yeti-color-border-strong)` | Colour of a slide dot. |
 | `--yeti-carousel-dot-size` | `0.75rem` | Diameter of a slide dot. |
+| `--yeti-carousel-scroll` | `smooth, and auto under reduced motion` | How the track scrolls when a dot is followed. A components-layer declaration outranks the reset, so the preference reaches the track through this token. |
 
 Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

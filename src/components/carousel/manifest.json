@@ -24,9 +24,8 @@
   "a11y": {
     "requiredAttributes": ["aria-label"],
     "keyboard": [
-      { "key": "Tab", "action": "Focuses the track so the arrow keys can scroll it." },
+      { "key": "Tab", "action": "Focuses the track, then each dot in turn." },
       { "key": "ArrowLeft / ArrowRight", "action": "Scroll the track." },
-      { "key": "Tab", "action": "Reaches each dot, which is an ordinary link." },
       { "key": "Enter", "action": "Scrolls to that dot's slide." }
     ],
     "notes": "Label the region and give it aria-roledescription=\"carousel\" so it is announced as one. The dots are links to slide ids, so the browser does the scrolling and the keyboard works without help; each needs an aria-label, since a dot has no room for text and Yeti ships no visually-hidden utility. They jump to a slide but cannot report which slide is showing, because CSS cannot know that. Nothing essential should live behind a slide a reader has to find. The track scrolls, so it must be reachable from the keyboard: give it role=\"group\", an aria-label, and tabindex=\"0\". It is a group rather than a region because the carousel itself is already the landmark."

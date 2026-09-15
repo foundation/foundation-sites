@@ -21,6 +21,9 @@
 	}
 	.accordion > details > summary::-webkit-details-marker { display: none; }
 	.accordion > details > summary:hover { background-color: var(--yeti-color-surface-sunken); }
+	/* The set clips its corners, so the ring is drawn inside the summary
+	   rather than outside it, where the clip would crop it. */
+	.accordion > details > summary:focus-visible { outline-offset: -2px; }
 
 	/* The chevron: a square with two borders, turned. It points down when
 	   the panel is shut and up when it is open. */

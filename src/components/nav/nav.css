@@ -62,18 +62,22 @@
 		padding: 0;
 	}
 	/* The prose layer spaces list items with margin-block-start; the nav
-	   owns that space through its own gap instead. */
+	   owns that space through its own gap instead. A dropdown's trigger
+	   inside the list is a button, not a link, and is styled like one. */
 	.nav > ul[popover] > li { margin: 0; }
-	.nav > ul[popover] a {
+	.nav > ul[popover] :is(a, .dropdown > button) {
 		display: inline-flex;
 		align-items: center;
 		min-block-size: var(--yeti-control-size);
 		padding: var(--yeti-space-xs) var(--yeti-space-sm);
+		border: 0;
 		border-radius: var(--yeti-nav-radius);
+		background-color: transparent;
 		color: inherit;
 		text-decoration: none;
+		cursor: pointer;
 	}
-	.nav > ul[popover] a:hover { background-color: var(--_yeti-variant-subtle); }
+	.nav > ul[popover] :is(a, .dropdown > button):hover { background-color: var(--_yeti-variant-subtle); }
 	.nav > ul[popover] a[aria-current] {
 		color: var(--_yeti-variant-text);
 		font-weight: var(--yeti-weight-strong);
@@ -96,7 +100,7 @@
 		overflow: auto;
 		transition: opacity var(--yeti-duration-fast) var(--yeti-ease), translate var(--yeti-duration-fast) var(--yeti-ease);
 	}
-	.nav > ul[popover]:popover-open a { inline-size: 100%; }
+	.nav > ul[popover]:popover-open :is(a, .dropdown > button) { inline-size: 100%; }
 	.nav > ul[popover] > [data-close] {
 		position: absolute;
 		inset-block-start: var(--yeti-space-sm);

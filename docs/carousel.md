@@ -36,7 +36,7 @@ A set of things of equal weight that would take too much room laid out at once: 
 
 The track is a row that scrolls and snaps, so dragging, swiping, and a trackpad all work with nothing added. The dots underneath are ordinary links to each slide's id, which means the browser scrolls to a slide when one is followed, the keyboard reaches them by Tab, and there is no script anywhere in the component.
 
-`data-slides` sets how many slides are visible at once, and each slide takes an equal share of the track less the gaps. Smooth scrolling comes from the browser, and the reset already turns it off for a reader who asked for less motion. The track itself carries `tabindex="0"` and a name, because a region that scrolls has to be reachable from the keyboard; once it has focus, the arrow keys scroll it.
+`data-slides` sets how many slides are visible at once, and each slide takes an equal share of the track less the gaps. Smooth scrolling comes from a token, `--yeti-carousel-scroll`, rather than from the reset, because a components-layer declaration would otherwise outrank it; the token itself collapses to `auto` under `prefers-reduced-motion`, so the preference still reaches the track. The track itself carries `tabindex="0"` and a name, because a region that scrolls has to be reachable from the keyboard; once it has focus, the arrow keys scroll it.
 
 ```html
 <section class="carousel" data-slides="2" aria-roledescription="carousel" aria-label="Quotes">
@@ -94,9 +94,8 @@ The dots take you to a slide; they do not tell you which slide you are on. CSS c
 
 | Key | Action |
 | --- | --- |
-| `Tab` | Focuses the track so the arrow keys can scroll it. |
+| `Tab` | Focuses the track, then each dot in turn. |
 | `ArrowLeft / ArrowRight` | Scroll the track. |
-| `Tab` | Reaches each dot, which is an ordinary link. |
 | `Enter` | Scrolls to that dot's slide. |
 
 ## Browser support

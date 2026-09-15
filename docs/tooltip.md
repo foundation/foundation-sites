@@ -45,6 +45,8 @@ The trigger references the bubble with `aria-describedby`, so a screen reader an
 
 Keep it to a few words, and put nothing interactive inside: there is no way to move focus into a bubble that disappears when focus leaves the trigger. If the hint is long, or if it matters, it is not a tooltip. A field's own hint sits under the control permanently and is almost always the better answer.
 
+The bubble also cannot be dismissed while the trigger stays hovered or focused: WCAG 1.4.13 asks for that, and a tooltip with no script has no way to offer it. This is a known limit of a pure-CSS tooltip, not an oversight, and it is another reason to keep the text short and never essential.
+
 ## Attributes
 
 | Attribute | Type | Values | Default | Description |
@@ -67,7 +69,7 @@ Keep it to a few words, and put nothing interactive inside: there is no way to m
 
 ## Accessibility
 
-- The trigger must reference the bubble with aria-describedby, so the hint is announced together with the control; the bubble carries role="tooltip". A tooltip is for a short hint on a control whose purpose is not otherwise obvious, and it is never the only place something is said: touch has no hover, so anything essential belongs in the label, in a field's hint, or in the text. Do not put a link or a button inside the bubble, since there is no way to reach one.
+- The trigger must reference the bubble with aria-describedby, so the hint is announced together with the control; the bubble carries role="tooltip". A tooltip is for a short hint on a control whose purpose is not otherwise obvious, and it is never the only place something is said: touch has no hover, so anything essential belongs in the label, in a field's hint, or in the text. Do not put a link or a button inside the bubble, since there is no way to reach one. The bubble cannot be dismissed while the trigger stays hovered or focused, a known limit of a tooltip with no script, which WCAG 1.4.13 asks content shown on hover or focus to offer.
 
 | Key | Action |
 | --- | --- |

@@ -82,7 +82,7 @@ None. This is configured through its children and tokens only.
 
 ## Browser support
 
-- Used without guards: details name attribute, individual transform properties
+- Used without guards: details name attribute, individual transform properties, overflow: clip
 - Behind `@supports`: nothing
 
 ## JavaScript
