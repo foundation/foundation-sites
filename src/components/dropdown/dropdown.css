@@ -1,0 +1,60 @@
+/* Dropdown: a button and a panel of ordinary links and buttons. The panel
+   carries popover, so the top layer, light dismiss, Escape and the button's
+   expanded state are all the browser's. No menu roles: a disclosure panel of
+   links reads better than a half-built application menu. */
+@layer yeti.components {
+	.dropdown { display: inline-block; }
+	.dropdown > [popover] {
+		margin: 0;
+		padding: var(--yeti-dropdown-padding);
+		border: 0;
+		background-color: transparent;
+	}
+	.dropdown > [popover]:popover-open {
+		display: flex;
+		flex-direction: column;
+		min-inline-size: var(--yeti-dropdown-min);
+		border-radius: var(--yeti-dropdown-radius);
+		background-color: var(--yeti-dropdown-surface);
+		color: var(--yeti-color-text);
+		box-shadow: var(--yeti-shadow-md);
+		transition: opacity var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.dropdown > [popover] a,
+	.dropdown > [popover] button {
+		display: flex;
+		align-items: center;
+		gap: var(--yeti-space-xs);
+		min-block-size: var(--yeti-control-size);
+		padding-inline: var(--yeti-space-sm);
+		border: 0;
+		border-radius: calc(var(--yeti-dropdown-radius) - var(--yeti-dropdown-padding));
+		background-color: transparent;
+		color: inherit;
+		font: inherit;
+		text-align: start;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	.dropdown > [popover] a:hover,
+	.dropdown > [popover] button:hover { background-color: var(--yeti-color-surface-sunken); }
+
+	/* Anchored under its own trigger. The name is scoped to this dropdown, so
+	   a page of them does not hang every panel off the last one. Without
+	   anchor positioning the user agent centres the panel, which still opens,
+	   closes and reads correctly. */
+	@supports (anchor-name: --a) and (anchor-scope: --a) and (position-anchor: --a) and (position-area: block-end) {
+		.dropdown { anchor-scope: --yeti-dropdown; }
+		.dropdown > button[popovertarget] { anchor-name: --yeti-dropdown; }
+		.dropdown > [popover]:popover-open {
+			position: fixed;
+			position-anchor: --yeti-dropdown;
+			position-area: block-end span-inline-end;
+			margin-block-start: var(--yeti-space-xs);
+		}
+		.dropdown[data-side="end"] > [popover]:popover-open { position-area: block-end span-inline-start; }
+	}
+	@starting-style {
+		.dropdown > [popover]:popover-open { opacity: 0; }
+	}
+}

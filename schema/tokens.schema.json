@@ -10,7 +10,7 @@
     "required": ["name", "group", "public", "default", "description"],
     "properties": {
       "name": { "type": "string", "pattern": "^--yeti-[a-z0-9-]+$" },
-      "group": { "enum": ["scale", "space", "radius", "width", "text", "font", "hue", "color", "motion", "layout", "border", "weight", "shadow", "control", "button", "badge", "card", "field", "table", "seam", "nav", "breadcrumbs", "pagination", "alert", "progress", "spinner"] },
+      "group": { "enum": ["scale", "space", "radius", "width", "text", "font", "hue", "color", "motion", "layout", "border", "weight", "shadow", "control", "button", "badge", "card", "field", "table", "seam", "nav", "breadcrumbs", "pagination", "alert", "progress", "spinner", "accordion", "tabs", "dropdown", "dialog", "tooltip", "carousel"] },
       "public": { "const": true },
       "declared": { "type": "boolean", "description": "false for override-only inputs Yeti never declares (--yeti-base, --yeti-ratio)." },
       "default": { "type": "string" },

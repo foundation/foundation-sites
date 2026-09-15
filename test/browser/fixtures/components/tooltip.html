@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tooltip fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<style>#stage { inline-size: 100%; } #scroller { max-inline-size: 12rem; overflow: auto; } #edge-row { display: flex; justify-content: flex-end; }</style>
+</head>
+<body>
+	<main>
+		<h1>Tooltip component</h1>
+		<div id="stage">
+			<p>
+				<span class="tooltip" id="top">
+					<button class="button" type="button" id="top-trigger" aria-label="Save" aria-describedby="top-tip" data-emphasis="medium">S</button>
+					<span role="tooltip" id="top-tip" data-contrast>Saves without closing</span>
+				</span>
+				<span class="tooltip" id="ended" data-placement="end">
+					<button class="button" type="button" id="end-trigger" aria-label="Copy" aria-describedby="end-tip" data-emphasis="medium">C</button>
+					<span role="tooltip" id="end-tip">Copies the link</span>
+				</span>
+				<span class="tooltip" id="bottomed" data-placement="bottom">
+					<button class="button" type="button" id="bottom-trigger" aria-label="Print" aria-describedby="bottom-tip" data-emphasis="medium">P</button>
+					<span role="tooltip" id="bottom-tip">Prints the page</span>
+				</span>
+				<span class="tooltip" id="started" data-placement="start">
+					<button class="button" type="button" id="start-trigger" aria-label="Archive" aria-describedby="start-tip" data-emphasis="medium">A</button>
+					<span role="tooltip" id="start-tip">Archives it</span>
+				</span>
+			</p>
+			<p id="edge-row">
+				<span class="tooltip" id="edged">
+					<button class="button" type="button" id="edge-trigger" aria-label="Rename" aria-describedby="edge-tip" data-emphasis="medium">R</button>
+					<span role="tooltip" id="edge-tip">Renames this item without leaving the page</span>
+				</span>
+			</p>
+			<div id="scroller">
+				<span class="tooltip" id="clipped">
+					<button class="button" type="button" id="clipped-trigger" aria-label="Help" aria-describedby="clipped-tip" data-emphasis="medium">?</button>
+					<span role="tooltip" id="clipped-tip">A hint inside a scroller</span>
+				</span>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

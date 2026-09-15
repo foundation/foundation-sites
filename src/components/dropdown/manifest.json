@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "dropdown",
+  "kind": "component",
+  "description": "A button and a panel of links and buttons that opens under it, closing on Escape or a click outside, with no script unless it is asked to open on hover.",
+  "class": "dropdown",
+  "attributes": [
+    { "name": "data-side", "type": "enum", "vocabulary": "side", "default": "start", "description": "Which edge of the trigger the panel lines up with." },
+    { "name": "data-trigger", "type": "enum", "vocabulary": "trigger", "default": "click", "description": "What opens the panel. Click always works; hover adds opening under the pointer, and needs the optional module and a pointer that hovers." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> button[popovertarget]", "min": 1, "max": 1, "description": "The trigger; its popovertarget names the panel's id." },
+    { "selector": "> [popover]", "min": 1, "max": 1, "description": "The panel, holding ordinary links and buttons." }
+  ],
+  "tokens": [
+    { "name": "--yeti-dropdown-surface", "public": true, "description": "Background of the panel." },
+    { "name": "--yeti-dropdown-radius", "public": true, "description": "Corner of the panel." },
+    { "name": "--yeti-dropdown-padding", "public": true, "description": "Padding around the items." },
+    { "name": "--yeti-dropdown-min", "public": true, "description": "Least width of the panel." },
+    { "name": "--yeti-shadow-md", "public": true, "description": "The panel's shadow." },
+    { "name": "--yeti-control-size", "public": true, "description": "Least height of an item." },
+    { "name": "--yeti-dropdown-open-delay", "public": true, "description": "How long the pointer must rest before a hover-triggered panel opens." },
+    { "name": "--yeti-dropdown-close-delay", "public": true, "description": "How long a hover-triggered panel waits after the pointer leaves before closing." }
+  ],
+  "a11y": {
+    "requiredAttributes": [],
+    "keyboard": [
+      { "key": "Enter / Space", "action": "On the trigger, opens or closes the panel." },
+      { "key": "Tab", "action": "Walks the items, which are ordinary links and buttons." },
+      { "key": "Escape", "action": "Closes the panel and returns focus to the trigger." }
+    ],
+    "notes": "With data-trigger=\"hover\" the module adds opening under the pointer and changes nothing else: the click, the keyboard, focus and the expanded state are all still the browser's, and a pointer that cannot hover never gets it. The trigger needs a name, and the browser sets its expanded state from popovertarget. The items are deliberately ordinary links and buttons with no menu roles: role=\"menu\" promises arrow-key semantics that belong to application menus, and on a website a disclosure panel is both simpler and better announced. Inside a nav, put the dropdown in the li beside the link it belongs to."
+  },
+  "js": { "module": "hover.js", "optional": true },
+  "support": { "unguarded": ["popover", "@starting-style"], "guarded": ["anchor positioning (fallback: the panel is centred by the user agent)"] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

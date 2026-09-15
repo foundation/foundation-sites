@@ -7,7 +7,8 @@
   "attributes": [
     { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "Which hue's ladder the button uses." },
     { "name": "data-emphasis", "type": "enum", "vocabulary": "emphasis", "default": "high", "description": "How loud: high is a solid fill, medium an outline, low text alone." },
-    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "Scales the text and the padding together." }
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "Scales the text and the padding together." },
+    { "name": "data-open", "type": "string", "description": "The id of a dialog this button opens, when dialog.js is loaded." }
   ],
   "classes": [],
   "children": [

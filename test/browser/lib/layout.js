@@ -4,6 +4,22 @@
 import { expect } from 'playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+// The fixtures link the source stylesheet, whose nested @import sheets land
+// after the load event. An element therefore changes as they arrive, and where
+// the component transitions that property the change is animated, so anything
+// read during it is a value part way between unstyled and real. Waiting for the
+// page's own animations to finish is what makes a reading at rest mean
+// anything. Promise.all([]) resolves at once when nothing is running.
+export function painted(page) {
+	return page.evaluate(() => Promise.all(document.getAnimations()
+		// A spinner runs forever, and an endless animation's finished promise
+		// never settles, so waiting on one hangs instead of resolving. Only the
+		// animations that have an end are worth waiting for; the transitions
+		// this is here to catch are all of them.
+		.filter((animation) => Number.isFinite(animation.effect?.getComputedTiming?.().activeDuration ?? Infinity))
+		.map((animation) => animation.finished)));
+}
+
 export async function stage(page, width) {
 	await page.evaluate((w) => { document.getElementById('stage').style.inlineSize = `${w}px`; }, width);
 }

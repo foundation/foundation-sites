@@ -1,10 +1,11 @@
 import { test, expect } from 'playwright/test';
-import { stage, rect, style, axe } from '../lib/layout.js';
+import { stage, rect, style, axe, painted } from '../lib/layout.js';
 
 const open = async (page, width = 1000) => {
 	const response = await page.goto('/test/browser/fixtures/components/nav.html');
 	expect(response.status()).toBe(200);
 	await stage(page, width);
+	await painted(page);
 };
 const isOpen = (page, id) => page.evaluate((i) => document.getElementById(i).matches(':popover-open'), id);
 // The panel enters with a transition, so geometry is read once it has settled.
@@ -153,5 +154,108 @@ test.describe('nav', () => {
 		await open(page, 1000);
 		expect(await style(page, '#drawer-close', 'display')).toBe('none');
 		expect(await style(page, '#screen-close', 'display')).toBe('none');
+	});
+
+	test('a dropdown trigger in the list is styled like a link', async ({ page }) => {
+		await open(page, 1000);
+		const [link, trigger] = await Promise.all([rect(page, '#current'), rect(page, '#nav-more-trigger')]);
+		expect(trigger.height).toBeCloseTo(link.height, 0);
+	});
+
+	test('a dropdown in the open panel is a full-width block docked under its trigger', async ({ page }) => {
+		await open(page, 400);
+		await page.click('#toggle');
+		await settle(page, '#menu');
+		// The wrapper is inline-block in the bar, so without a reset the trigger
+		// shrink-wraps and sits narrower than the links it stands among.
+		const [link, trigger] = await Promise.all([rect(page, '#plain'), rect(page, '#nav-more-trigger')]);
+		expect(trigger.width).toBeCloseTo(link.width, 0);
+		await page.click('#nav-more-trigger');
+		await settle(page, '#nav-more');
+		expect(await isOpen(page, 'menu')).toBe(true);
+		const viewport = page.viewportSize();
+		const [panel, sub] = await Promise.all([rect(page, '#menu'), rect(page, '#nav-more')]);
+		if (await anchored(page)) {
+			expect(sub.top).toBeCloseTo(trigger.bottom, 0);
+			expect(sub.left).toBeCloseTo(panel.left, 0);
+			expect(sub.right).toBeCloseTo(panel.right, 0);
+		} else {
+			expect(sub.bottom).toBeCloseTo(viewport.height, 0);
+			expect(sub.width).toBeCloseTo(viewport.width, 0);
+		}
+		expect(sub.bottom).toBeLessThanOrEqual(viewport.height + 1);
+	});
+
+	test('a submenu taller than the room below its trigger scrolls instead of running off', async ({ page }) => {
+		await open(page, 400);
+		await page.evaluate(() => {
+			const panel = document.getElementById('nav-more');
+			for (let i = 0; i < 30; i += 1) {
+				const link = document.createElement('a');
+				link.href = '#';
+				link.textContent = `Item ${i}`;
+				panel.append(link);
+			}
+		});
+		await page.click('#toggle');
+		await page.click('#nav-more-trigger');
+		await settle(page, '#nav-more');
+		const sub = await rect(page, '#nav-more');
+		expect(sub.bottom).toBeLessThanOrEqual(page.viewportSize().height + 1);
+		expect(await page.evaluate(() => { const el = document.getElementById('nav-more'); return el.scrollHeight > el.clientHeight + 1; })).toBe(true);
+	});
+
+	test('a submenu inside a drawer stops at the drawer\u2019s edge', async ({ page }) => {
+		await open(page, 400);
+		await page.click('#drawer-toggle');
+		await settle(page, '#drawer-menu');
+		await page.click('#drawer-more-trigger');
+		await settle(page, '#drawer-more');
+		const [panel, sub] = await Promise.all([rect(page, '#drawer-menu'), rect(page, '#drawer-more')]);
+		expect(panel.right).toBeLessThan(page.viewportSize().width);
+		if (await anchored(page)) {
+			expect(sub.left).toBeCloseTo(panel.left, 0);
+			expect(sub.right).toBeCloseTo(panel.right, 0);
+		} else {
+			expect(sub.bottom).toBeCloseTo(page.viewportSize().height, 0);
+		}
+	});
+
+	test('Escape closes the submenu before the panel', async ({ page }) => {
+		await open(page, 400);
+		await page.click('#toggle');
+		await page.click('#nav-more-trigger');
+		await settle(page, '#nav-more');
+		expect(await isOpen(page, 'nav-more')).toBe(true);
+		await page.keyboard.press('Escape');
+		expect(await isOpen(page, 'nav-more')).toBe(false);
+		expect(await isOpen(page, 'menu')).toBe(true);
+		await page.keyboard.press('Escape');
+		expect(await isOpen(page, 'menu')).toBe(false);
+	});
+
+	test('a dropdown in the bar keeps its own card', async ({ page }) => {
+		await open(page, 1000);
+		await page.click('#nav-more-trigger');
+		await settle(page, '#nav-more');
+		const [bar, sub] = await Promise.all([rect(page, '#nav'), rect(page, '#nav-more')]);
+		expect(sub.width).toBeLessThan(bar.width / 2);
+		expect(sub.left).toBeGreaterThan(bar.left);
+	});
+
+	test('a dropdown inside a nav item opens and is not clipped by the bar', async ({ page }) => {
+		await open(page, 1000);
+		await page.click('#nav-more-trigger');
+		await settle(page, '#nav-more');
+		expect(await page.evaluate(() => document.getElementById('nav-more').matches(':popover-open'))).toBe(true);
+		const panel = await rect(page, '#nav-more');
+		expect(panel.height).toBeGreaterThan(0);
+		const painted = await page.evaluate(() => {
+			const panel = document.getElementById('nav-more');
+			const box = panel.getBoundingClientRect();
+			const hit = document.elementFromPoint(box.left + box.width / 2, box.top + Math.min(10, box.height / 2));
+			return panel === hit || panel.contains(hit);
+		});
+		expect(painted).toBe(true);
 	});
 });

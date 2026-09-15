@@ -38,6 +38,44 @@
 		--yeti-spinner-duration: 0.8s;
 		--yeti-spinner-width: 0.15em;
 
+		--yeti-accordion-border: var(--yeti-color-border);
+		--yeti-accordion-padding: var(--yeti-space-md);
+		--yeti-accordion-surface: var(--yeti-color-surface);
+		/* Mixed toward the text colour rather than picked off the surface ramp,
+		   because the ramp's own steps are too small to read here: a summary and
+		   its answer came out three hundredths of a lightness apart in dark and
+		   the rows vanished into the panel. Mixing toward text also moves the
+		   right way in both schemes on its own, darkening the row in light and
+		   lifting it in dark, and a theme that restyles surface or text gets a
+		   header that still works without touching these. */
+		--yeti-accordion-summary: color-mix(in oklch, var(--yeti-accordion-surface) 88%, var(--yeti-color-text));
+		--yeti-accordion-summary-hover: color-mix(in oklch, var(--yeti-accordion-surface) 80%, var(--yeti-color-text));
+
+		--yeti-tabs-border: var(--yeti-color-border);
+		--yeti-tabs-padding: var(--yeti-space-sm) var(--yeti-space-md);
+
+		--yeti-dropdown-surface: var(--yeti-color-surface-raised);
+		--yeti-dropdown-radius: var(--yeti-radius-md);
+		--yeti-dropdown-padding: var(--yeti-space-xs);
+		--yeti-dropdown-min: 12rem;
+		/* Read by hover.js, not by CSS: the pause before a hover-triggered panel
+		   opens, and the grace after the pointer leaves. */
+		--yeti-dropdown-open-delay: 100ms;
+		--yeti-dropdown-close-delay: 200ms;
+
+		--yeti-dialog-surface: var(--yeti-color-surface-raised);
+		--yeti-dialog-radius: var(--yeti-radius-lg);
+		--yeti-dialog-padding: var(--yeti-space-lg);
+		--yeti-dialog-backdrop: color-mix(in oklch, var(--yeti-color-text) 45%, transparent);
+
+		--yeti-tooltip-surface: var(--yeti-color-text);
+		--yeti-tooltip-text: var(--yeti-color-surface);
+		--yeti-tooltip-radius: var(--yeti-radius-sm);
+
+		--yeti-carousel-dot: var(--yeti-color-border-strong);
+		--yeti-carousel-dot-size: 0.75rem;
+		--yeti-carousel-scroll: smooth;
+
 		/* Per element, not per theme: the filled share of a range's track. */
 		--yeti-range-value: 0%;
 	}
@@ -48,6 +86,7 @@
 	@media (prefers-reduced-motion: reduce) {
 		:root {
 			--yeti-spinner-duration: 0.01ms;
+			--yeti-carousel-scroll: auto;
 		}
 	}
 }

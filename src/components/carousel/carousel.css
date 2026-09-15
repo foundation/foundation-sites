@@ -1,0 +1,57 @@
+/* Carousel: slides on a scroll-snap track, and dots that are ordinary links
+   to each slide's id. The browser does the scrolling, so there is no script.
+   Components come after base in the layer order, so a components-layer
+   scroll-behavior would outrank the reset's reduced-motion rule; smooth
+   scrolling instead reads a token, so the preference reaches the track
+   through the token's own value rather than through the reset. The dots
+   jump to a slide; they cannot report which one is showing, because CSS
+   has no way to know. */
+@layer yeti.components {
+	.carousel:not([data-gap]) { --_yeti-gap: var(--yeti-space-md); }
+	.carousel:not([data-slides]) { --_yeti-slides: 1; }
+	.carousel > [data-track] {
+		display: flex;
+		gap: var(--_yeti-gap);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: var(--yeti-carousel-scroll);
+		/* The bar is noise under a snapping track: the dots say where you are
+		   and the track is focusable, so nothing is lost by hiding it. */
+		scrollbar-width: none;
+	}
+	.carousel > [data-track] > * {
+		flex: 0 0 auto;
+		margin: 0;
+		scroll-snap-align: start;
+		inline-size: calc((100% - (var(--_yeti-slides) - 1) * var(--_yeti-gap)) / var(--_yeti-slides));
+	}
+	.carousel > [data-dots] {
+		display: flex;
+		justify-content: center;
+		gap: var(--yeti-space-xs);
+		margin-block-start: var(--_yeti-gap);
+		padding: 0;
+		list-style: none;
+	}
+	.carousel > [data-dots] > li { margin: 0; }
+
+	/* A dot is a circle inside a target big enough to press. */
+	.carousel > [data-dots] a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		inline-size: var(--yeti-control-size);
+		block-size: var(--yeti-control-size);
+		text-decoration: none;
+	}
+	.carousel > [data-dots] a::before {
+		content: "";
+		inline-size: var(--yeti-carousel-dot-size);
+		block-size: var(--yeti-carousel-dot-size);
+		border-radius: 50%;
+		background-color: var(--yeti-carousel-dot);
+		transition: scale var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.carousel > [data-dots] a:hover::before { scale: 1.25; }
+}

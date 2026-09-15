@@ -147,11 +147,36 @@ A `progress` bar fills to its value, and without one it goes indeterminate: the 
 </div>
 ```
 
+## Things that open
+
+Six components hold something shut until a person asks for it, and each hands that job to whatever the platform already does best. An accordion opens on `details` and `summary`. A dropdown opens on `popover`. A dialog opens on the `dialog` element. A tooltip opens on hover and focus. A carousel moves on scroll-snap. Tabs select a panel with `aria-controls` and `aria-labelledby`. Of the six, only two ever need a script: the dialog, because nothing else can call `showModal`, and tabs, because nothing else can hide the inactive panels and rove focus between the tabs. The other four are complete in CSS and HTML alone.
+
+The accordion's one-at-a-time mode is not a Yeti attribute. Give every `details` in a set the same `name` and the browser closes the others when one opens, the same way radio buttons share a name to close each other out. Yeti adds nothing for it, because CSS cannot set an attribute on an element — only the markup or a script can — and here the markup already can.
+
+The dropdown's panel holds ordinary links and a button, with no `role="menu"` anywhere in it. `role="menu"` promises the full keyboard contract of an application menu — arrow keys moving selection, typeahead, a required active descendant — and a page that does not deliver the rest of that contract leaves a screen reader announcing a menu that does not behave like one. A disclosure panel of ordinary links needs none of it: Tab walks the items in document order, Enter activates whichever one has focus, and a screen reader announces exactly what is there, links and a button, nothing promised and unmet.
+
+Tabs and the dialog fail differently without their module, and the difference matters. Without `tabs.js`, nothing is hidden — every panel stays in the page and every tab stays focusable, which is plainer to navigate but never traps content behind a script that failed to load. Without `dialog.js`, the dialog does not open at all; there is no fallback state, because nothing but `showModal` can put it up. Never put the only route to something behind a dialog on a page that might not load the module.
+
+A tooltip is never the only place something is said. It shows on hover and on focus, and touch has neither, so whatever the bubble says must also live somewhere a touch user can reach it: the trigger's own label, a field's hint, or the surrounding text. Treat the tooltip as a short-hand restatement of something already true elsewhere, not as the one place it is written down.
+
+```html
+<div class="dropdown">
+	<button class="button" type="button" popovertarget="account-menu" data-emphasis="medium">Account</button>
+	<div id="account-menu" popover>
+		<a href="#">Profile</a>
+		<a href="#">Settings</a>
+		<button type="button">Sign out</button>
+	</div>
+</div>
+```
+
 ## Loading a module
 
 Yeti's JavaScript lives in `dist/js/`, one module per component, dependency-free and optional: nothing in the CSS expects it, so a page that never loads a module still gets the component, minus whatever that module would have added. Link it with a single `<script type="module" src="…/js/alert.js"></script>` anywhere in the page — there is no init call to run and no order to get right — and it is safe to include on a page with none of that component at all; it simply finds nothing to listen on. Leave the module out and the alert's close button sits there inert, the rest of the component unaffected.
 
-Today that list is one module long: `alert.js`, for the close button's fade and removal.
+Today that list is five modules long: `alert.js`, for the close button's fade and removal; `tabs.js`, for hiding inactive panels and roving focus between tabs; `dialog.js`, for opening the dialog with `showModal`; `hover.js`, for opening a dropdown under the pointer when it is asked to with `data-trigger="hover"`; and `carousel.js`, so that following a dot scrolls the track rather than adding an entry to the browser's history. That is the budget the architecture set for 7.0, and no further component in this release will bring a script.
+
+`hover.js` is the one with an end already written down. The `interestfor` attribute is that same feature standardised, and it exists in one engine today; when it reaches Baseline the module goes and the attribute maps to it instead.
 
 ## Skinning
 

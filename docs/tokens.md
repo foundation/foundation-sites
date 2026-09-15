@@ -281,4 +281,57 @@ Public tokens are the theming API: set them in your own stylesheet and everythin
 | `--yeti-spinner-duration` | `0.8s` | One turn of the ring; reduced motion stops it. |
 | `--yeti-spinner-width` | `0.15em` | Thickness of the ring. |
 
+## Accordion
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-accordion-border` | `var(--yeti-color-border)` | The line between one panel and the next, and around the set. |
+| `--yeti-accordion-padding` | `var(--yeti-space-md)` | Padding of a summary and of its panel. |
+| `--yeti-accordion-surface` | `var(--yeti-color-surface)` | Background of the set, and so of an open panel. |
+| `--yeti-accordion-summary` | `color-mix(in oklch, var(--yeti-accordion-surface) 88%, var(--yeti-color-text))` | Background of a summary row, set apart from the panel below it. Mixed toward the text colour, so it darkens the row in light and lifts it in dark. |
+| `--yeti-accordion-summary-hover` | `color-mix(in oklch, var(--yeti-accordion-surface) 80%, var(--yeti-color-text))` | Background of a summary under the pointer, one step further from the panel than at rest. |
+
+## Tabs
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-tabs-border` | `var(--yeti-color-border)` | The line under the tab list. |
+| `--yeti-tabs-padding` | `var(--yeti-space-sm) var(--yeti-space-md)` | Padding of one tab. |
+
+## Dropdown
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-dropdown-surface` | `var(--yeti-color-surface-raised)` | Background of the open panel. |
+| `--yeti-dropdown-radius` | `var(--yeti-radius-md)` | Corner of the panel. |
+| `--yeti-dropdown-padding` | `var(--yeti-space-xs)` | Padding around the items. |
+| `--yeti-dropdown-min` | `12rem` | Least width of the panel. |
+| `--yeti-dropdown-open-delay` | `100ms` | How long the pointer must rest on a data-trigger="hover" dropdown before its panel opens. Read by hover.js, so it has no effect without that module. |
+| `--yeti-dropdown-close-delay` | `200ms` | How long a hover-triggered panel waits after the pointer leaves before it closes, so the gap between trigger and panel is forgiving. Read by hover.js. |
+
+## Dialog
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-dialog-surface` | `var(--yeti-color-surface-raised)` | Background of the dialog. |
+| `--yeti-dialog-radius` | `var(--yeti-radius-lg)` | Corner of the dialog. |
+| `--yeti-dialog-padding` | `var(--yeti-space-lg)` | Padding inside the dialog. |
+| `--yeti-dialog-backdrop` | `a translucent wash of the text colour` | The backdrop behind an open dialog. |
+
+## Tooltip
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-tooltip-surface` | `var(--yeti-color-text)` | Background of the bubble, inverted so it reads over anything. |
+| `--yeti-tooltip-text` | `var(--yeti-color-surface)` | Text of the bubble. |
+| `--yeti-tooltip-radius` | `var(--yeti-radius-sm)` | Corner of the bubble. |
+
+## Carousel
+
+| Token | Default | Description |
+| --- | --- | --- |
+| `--yeti-carousel-dot` | `var(--yeti-color-border-strong)` | Colour of a slide dot. |
+| `--yeti-carousel-dot-size` | `0.75rem` | Diameter of a slide dot. |
+| `--yeti-carousel-scroll` | `smooth, and auto under reduced motion` | How the track scrolls when a dot is followed. A components-layer declaration outranks the reset, so the preference reaches the track through this token. |
+
 Yeti also defines 48 internal `--_yeti-*` tokens. They derive from the public ones and may change between minor versions; override the public token instead.

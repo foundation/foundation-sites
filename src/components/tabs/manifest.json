@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "tabs",
+  "kind": "component",
+  "description": "A row of tabs over their panels, showing one at a time when its module is loaded and all of them when it is not.",
+  "class": "tabs",
+  "attributes": [
+    { "name": "data-orientation", "type": "enum", "values": ["horizontal", "vertical"], "default": "horizontal", "description": "Whether the tab list runs along the top or down the side." },
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "The hue of the selected tab and its edge." },
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "md", "description": "Space between the list and the panels." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> [role=\"tablist\"]", "min": 1, "max": 1, "description": "The tabs, in order, with a name of its own." },
+    { "selector": "[role=\"tab\"]", "min": 2, "max": null, "description": "A button whose aria-controls names its panel." },
+    { "selector": "> [role=\"tabpanel\"]", "min": 2, "max": null, "description": "A panel whose aria-labelledby names its tab." }
+  ],
+  "tokens": [
+    { "name": "--yeti-tabs-border", "public": true, "description": "The line under or beside the list." },
+    { "name": "--yeti-tabs-padding", "public": true, "description": "Padding of one tab." },
+    { "name": "--yeti-border-width", "public": true, "description": "Width of that line; the selected mark is twice it." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-variant-text", "public": false },
+    { "name": "--_yeti-gap", "public": false }
+  ],
+  "a11y": {
+    "requiredAttributes": [],
+    "keyboard": [
+      { "key": "Left / Right", "action": "Moves selection along a horizontal list." },
+      { "key": "Up / Down", "action": "Moves selection along a vertical list." },
+      { "key": "Home / End", "action": "Selects the first or the last tab." },
+      { "key": "Tab", "action": "Leaves the list for the selected panel." }
+    ],
+    "notes": "Give the tablist a name with aria-label or aria-labelledby. Every tab is a button whose aria-controls names its panel, and every panel names its tab back with aria-labelledby; that pairing is what the module reads. With tabs.js loaded one tab is selected, the rest take tabindex=\"-1\" for a roving focus, and the inactive panels are hidden. Without it nothing is hidden and every tab is focusable, which is plainer but never traps content."
+  },
+  "js": { "module": "tabs.js", "optional": true },
+  "support": { "unguarded": ["logical properties"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

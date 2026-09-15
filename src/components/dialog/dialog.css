@@ -1,0 +1,43 @@
+/* Dialog: the native dialog element, styled. Opened as a modal by dialog.js,
+   which is what makes the rest of the page inert and keeps focus inside. The
+   reset already exempts dialog from the universal margin rule, so the
+   browser's own centring survives. */
+@layer yeti.components {
+	.dialog {
+		max-inline-size: min(var(--_yeti-width), 100% - 2 * var(--yeti-space-md));
+		padding: var(--yeti-dialog-padding);
+		border: 0;
+		border-radius: var(--yeti-dialog-radius);
+		background-color: var(--yeti-dialog-surface);
+		color: var(--yeti-color-text);
+		box-shadow: var(--yeti-shadow-md);
+	}
+	.dialog:not([data-width]) { --_yeti-width: var(--yeti-width-md); }
+	.dialog::backdrop { background-color: var(--yeti-dialog-backdrop); }
+	.dialog > footer {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		align-items: center;
+		gap: var(--yeti-space-sm);
+	}
+	/* dialog is not one of the flow containers the base layer spaces, and the
+	   reset has zeroed every child's margin, so the dialog spaces its own. */
+	.dialog > * + * { margin-block-start: var(--yeti-space-md); }
+	/* footer IS one of those containers, and a block-start margin on a centred
+	   flex item shifts it down half its own margin. */
+	.dialog > footer > * { margin-block: 0; }
+
+	/* Arriving and leaving. display and overlay transition discretely so the
+	   fade is seen in both directions; the durations are tokens, so reduced
+	   motion makes both instant. */
+	.dialog, .dialog::backdrop {
+		transition: opacity var(--yeti-duration-fast) var(--yeti-ease), translate var(--yeti-duration-fast) var(--yeti-ease), display var(--yeti-duration-fast) allow-discrete, overlay var(--yeti-duration-fast) allow-discrete;
+	}
+	.dialog:not([open]), .dialog:not([open])::backdrop { opacity: 0; }
+	.dialog[open] { translate: 0 0; }
+	@starting-style {
+		.dialog[open] { opacity: 0; translate: 0 1rem; }
+		.dialog[open]::backdrop { opacity: 0; }
+	}
+}
