@@ -1,0 +1,172 @@
+/* Nav: a bar with a brand, a list of links, and actions. The list carries
+   popover. Below the threshold it is a closed popover that the toggle opens
+   as a panel; at or above it, the nav's own container query puts the list
+   in the bar and hides the toggle. One list, two modes, no script. */
+@layer yeti.components {
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: var(--_yeti-gap);
+		min-block-size: var(--yeti-control-size);
+		padding: var(--yeti-nav-padding);
+		background-color: var(--yeti-nav-surface);
+		color: var(--yeti-color-text);
+		border-block-end: var(--yeti-border-width) solid var(--yeti-nav-border);
+		container-type: inline-size;
+	}
+	.nav:not([data-gap]) { --_yeti-gap: var(--yeti-space-sm); }
+	.nav:not([data-variant]) { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	.nav > * { margin: 0; }
+	.nav > [data-brand] {
+		font-weight: var(--yeti-weight-strong);
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.nav > [data-actions] {
+		display: flex;
+		align-items: center;
+		gap: var(--_yeti-gap);
+		margin-inline-start: auto;
+	}
+
+	/* The toggle, and the close button inside the panel: bare squares the
+	   size of a control. */
+	.nav > button[popovertarget],
+	.nav > ul[popover] > [data-close] > button {
+		appearance: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-inline-size: var(--yeti-control-size);
+		min-block-size: var(--yeti-control-size);
+		padding: 0 var(--yeti-space-xs);
+		border: 0;
+		border-radius: var(--yeti-nav-radius);
+		background-color: transparent;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+	}
+	.nav > button[popovertarget]:hover,
+	.nav > ul[popover] > [data-close] > button:hover { background-color: var(--_yeti-variant-subtle); }
+	.nav > button[popovertarget] > svg {
+		inline-size: 1.25em;
+		block-size: 1.25em;
+	}
+
+	/* The links. */
+	.nav > ul[popover] {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	/* The prose layer spaces list items with margin-block-start; the nav
+	   owns that space through its own gap instead. */
+	.nav > ul[popover] > li { margin: 0; }
+	.nav > ul[popover] a {
+		display: inline-flex;
+		align-items: center;
+		min-block-size: var(--yeti-control-size);
+		padding: var(--yeti-space-xs) var(--yeti-space-sm);
+		border-radius: var(--yeti-nav-radius);
+		color: inherit;
+		text-decoration: none;
+	}
+	.nav > ul[popover] a:hover { background-color: var(--_yeti-variant-subtle); }
+	.nav > ul[popover] a[aria-current] {
+		color: var(--_yeti-variant-text);
+		font-weight: var(--yeti-weight-strong);
+	}
+
+	/* The panel: the open list below the threshold. The user agent gives a
+	   popover inset 0, margin auto, a border, and fit-content sizes; the
+	   shapes reset what they need. */
+	.nav > ul[popover]:popover-open {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		inset: auto;
+		margin: 0;
+		padding: var(--yeti-nav-padding);
+		border: 0;
+		background-color: var(--yeti-nav-panel);
+		color: var(--yeti-color-text);
+		box-shadow: var(--yeti-shadow-md);
+		overflow: auto;
+	}
+	.nav > ul[popover]:popover-open a { inline-size: 100%; }
+	.nav > ul[popover] > [data-close] {
+		position: absolute;
+		inset-block-start: var(--yeti-space-sm);
+		inset-inline-end: var(--yeti-space-sm);
+	}
+
+	/* Sheet, the default: under the bar, the full width. Anchored to the bar
+	   where anchor positioning exists; at the top of the viewport otherwise,
+	   which covers the bar, but Escape and a click outside still close it. */
+	.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
+		inset-inline: 0;
+		inset-block-start: 0;
+		inline-size: auto;
+		max-block-size: 100dvh;
+		border-block-end: var(--yeti-border-width) solid var(--yeti-nav-border);
+	}
+	@supports (anchor-name: --a) {
+		.nav { anchor-name: --yeti-nav; }
+		.nav:is(:not([data-panel]), [data-panel="sheet"]) > ul[popover]:popover-open {
+			position-anchor: --yeti-nav;
+			inset-block-start: anchor(bottom, 0);
+			max-block-size: calc(100dvh - anchor(bottom, 0));
+		}
+	}
+
+	/* Inline, at or above the threshold: the list joins the bar, the toggle
+	   and the close item go. The doubled [popover] lifts these rules to the
+	   panel rules' specificity (0,4,1), and they come last in the file, so
+	   the bar wins even while the popover is open. Thresholds are the width
+	   tokens' defaults, literal because a container condition cannot read a
+	   token; md (32rem) is the default. */
+	@container (inline-size >= 16rem) {
+		/* xs (16rem) */
+		.nav[data-threshold="xs"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="xs"] > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="xs"] > ul[popover][popover] > [data-close],
+		.nav[data-threshold="xs"] > button[popovertarget] { display: none; }
+	}
+	@container (inline-size >= 24rem) {
+		/* sm (24rem) */
+		.nav[data-threshold="sm"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="sm"] > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="sm"] > ul[popover][popover] > [data-close],
+		.nav[data-threshold="sm"] > button[popovertarget] { display: none; }
+	}
+	@container (inline-size >= 32rem) {
+		/* md (32rem), the default */
+		.nav:is(:not([data-threshold]), [data-threshold="md"]) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav:is(:not([data-threshold]), [data-threshold="md"]) > ul[popover][popover] a { inline-size: auto; }
+		.nav:is(:not([data-threshold]), [data-threshold="md"]) > ul[popover][popover] > [data-close],
+		.nav:is(:not([data-threshold]), [data-threshold="md"]) > button[popovertarget] { display: none; }
+	}
+	@container (inline-size >= 48rem) {
+		/* lg (48rem) */
+		.nav[data-threshold="lg"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="lg"] > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="lg"] > ul[popover][popover] > [data-close],
+		.nav[data-threshold="lg"] > button[popovertarget] { display: none; }
+	}
+	@container (inline-size >= 64rem) {
+		/* xl (64rem) */
+		.nav[data-threshold="xl"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="xl"] > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="xl"] > ul[popover][popover] > [data-close],
+		.nav[data-threshold="xl"] > button[popovertarget] { display: none; }
+	}
+	@container (inline-size >= 80rem) {
+		/* 2xl (80rem) */
+		.nav[data-threshold="2xl"] > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }
+		.nav[data-threshold="2xl"] > ul[popover][popover] a { inline-size: auto; }
+		.nav[data-threshold="2xl"] > ul[popover][popover] > [data-close],
+		.nav[data-threshold="2xl"] > button[popovertarget] { display: none; }
+	}
+}
