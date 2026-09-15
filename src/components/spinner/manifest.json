@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "spinner",
+  "kind": "component",
+  "description": "A turning ring in a hue, the size of the text, for waiting with no known end; a busy button shows the same ring after its label.",
+  "class": "spinner",
+  "attributes": [
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "The hue of the bright edge." },
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "The ring is one em of the size's text step." }
+  ],
+  "classes": [],
+  "children": [],
+  "tokens": [
+    { "name": "--yeti-spinner-duration", "public": true, "description": "One turn." },
+    { "name": "--yeti-spinner-width", "public": true, "description": "Thickness of the ring." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-size-text", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Standing alone, give it role=\"status\" and an aria-label such as \"Loading\", so the wait is announced once. Inside a button that carries aria-busy=\"true\" it needs nothing: the button already says it is busy, and the ring appears by itself. Under reduced motion the ring stands still." },
+  "js": null,
+  "support": { "unguarded": ["individual transform properties", "color-mix()"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}
