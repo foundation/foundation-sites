@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "tooltip",
+  "kind": "component",
+  "description": "A short hint that appears beside a control on hover and on focus, described to assistive tech and needing no script.",
+  "class": "tooltip",
+  "attributes": [
+    { "name": "data-placement", "type": "enum", "vocabulary": "placement", "default": "top", "description": "Which side of the trigger the bubble sits on." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 2, "max": 2, "description": "The trigger first, then the bubble." },
+    { "selector": "> [role=\"tooltip\"]", "min": 1, "max": 1, "description": "The bubble; the trigger names it with aria-describedby." }
+  ],
+  "tokens": [
+    { "name": "--yeti-tooltip-surface", "public": true, "description": "Background of the bubble." },
+    { "name": "--yeti-tooltip-text", "public": true, "description": "Text of the bubble." },
+    { "name": "--yeti-tooltip-radius", "public": true, "description": "Corner of the bubble." },
+    { "name": "--yeti-text-sm", "public": true, "description": "The bubble's text size." }
+  ],
+  "a11y": {
+    "requiredAttributes": [],
+    "keyboard": [
+      { "key": "Tab", "action": "Focusing the trigger shows the bubble, so it is reachable without a mouse." }
+    ],
+    "notes": "The trigger must reference the bubble with aria-describedby, so the hint is announced together with the control; the bubble carries role=\"tooltip\". A tooltip is for a short hint on a control whose purpose is not otherwise obvious, and it is never the only place something is said: touch has no hover, so anything essential belongs in the label, in a field's hint, or in the text. Do not put a link or a button inside the bubble, since there is no way to reach one."
+  },
+  "js": null,
+  "support": { "unguarded": ["individual transform properties"], "guarded": ["anchor positioning (fallback: the bubble is placed above the trigger with absolute positioning)"] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

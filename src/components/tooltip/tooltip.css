@@ -1,0 +1,60 @@
+/* Tooltip: a trigger and a bubble that appears on hover and on focus. It is
+   deliberately not a popover: nothing but script can open one, and the point
+   of this component is that it needs none. Anchor positioning, where it
+   exists, lets the bubble escape a scrolling ancestor the way absolute
+   positioning cannot. */
+@layer yeti.components {
+	.tooltip {
+		display: inline-block;
+		position: relative;
+	}
+	.tooltip > [role="tooltip"] {
+		position: absolute;
+		inset-block-end: calc(100% + var(--yeti-space-xs));
+		inset-inline-start: 50%;
+		translate: -50% 0;
+		z-index: 1;
+		inline-size: max-content;
+		max-inline-size: 16rem;
+		padding: var(--yeti-space-xs) var(--yeti-space-sm);
+		border-radius: var(--yeti-tooltip-radius);
+		background-color: var(--yeti-tooltip-surface);
+		color: var(--yeti-tooltip-text);
+		font-size: var(--yeti-text-sm);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity var(--yeti-duration-fast) var(--yeti-ease), visibility var(--yeti-duration-fast);
+	}
+	.tooltip:hover > [role="tooltip"],
+	.tooltip:focus-within > [role="tooltip"] {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Anchored, so a scroller cannot clip it. The name is scoped to this
+	   tooltip, so a page of them each hang off their own trigger. */
+	@supports (anchor-name: --a) and (anchor-scope: --a) and (position-anchor: --a) and (position-area: block-start) {
+		.tooltip { anchor-scope: --yeti-tooltip; }
+		.tooltip > :first-child { anchor-name: --yeti-tooltip; }
+		.tooltip > [role="tooltip"] {
+			position: fixed;
+			position-anchor: --yeti-tooltip;
+			position-area: block-start span-all;
+			inset: auto;
+			translate: none;
+			margin-block-end: var(--yeti-space-xs);
+		}
+		.tooltip[data-placement="bottom"] > [role="tooltip"] {
+			position-area: block-end span-all;
+			margin-block: var(--yeti-space-xs) 0;
+		}
+		.tooltip[data-placement="start"] > [role="tooltip"] {
+			position-area: inline-start span-all;
+			margin: 0 var(--yeti-space-xs) 0 0;
+		}
+		.tooltip[data-placement="end"] > [role="tooltip"] {
+			position-area: inline-end span-all;
+			margin: 0 0 0 var(--yeti-space-xs);
+		}
+	}
+}

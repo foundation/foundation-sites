@@ -29,6 +29,7 @@ const PAGES = [
 	'/test/browser/fixtures/components/tabs.html',
 	'/test/browser/fixtures/components/dropdown.html',
 	'/test/browser/fixtures/components/dialog.html',
+	'/test/browser/fixtures/components/tooltip.html',
 	'/test/browser/fixtures/themes/soft.html',
 	'/test/browser/fixtures/themes/sharp.html',
 ];
