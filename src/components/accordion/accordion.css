@@ -1,0 +1,49 @@
+/* Accordion: a column of disclosures. details and summary do the work, so
+   opening and closing, the keyboard, and the announced state are all the
+   browser's. Give every details the same name attribute and the browser
+   closes the others for you; CSS cannot set an attribute, so Yeti does not
+   pretend to offer that as an option of its own. */
+@layer yeti.components {
+	.accordion {
+		border: var(--yeti-border-width) solid var(--yeti-accordion-border);
+		border-radius: var(--yeti-radius-md);
+		overflow: clip;
+	}
+	.accordion > details + details { border-block-start: var(--yeti-border-width) solid var(--yeti-accordion-border); }
+	.accordion > details > summary {
+		display: flex;
+		align-items: center;
+		gap: var(--yeti-space-sm);
+		padding: var(--yeti-accordion-padding);
+		font-weight: var(--yeti-weight-strong);
+		cursor: pointer;
+		list-style: none;
+	}
+	.accordion > details > summary::-webkit-details-marker { display: none; }
+	.accordion > details > summary:hover { background-color: var(--yeti-color-surface-sunken); }
+
+	/* The chevron: a square with two borders, turned. It points down when
+	   the panel is shut and up when it is open. */
+	.accordion > details > summary::after {
+		content: "";
+		inline-size: 0.5em;
+		block-size: 0.5em;
+		margin-inline-start: auto;
+		border-block-end: 2px solid currentColor;
+		border-inline-end: 2px solid currentColor;
+		rotate: 45deg;
+		translate: 0 -0.15em;
+		transition: rotate var(--yeti-duration-fast) var(--yeti-ease);
+	}
+	.accordion > details[open] > summary::after {
+		rotate: -135deg;
+		translate: 0 0.1em;
+	}
+
+	/* The panel: everything after the summary, padded to match it. The base
+	   layer already spaces flow inside a details. */
+	.accordion > details > :not(summary) {
+		margin-inline: var(--yeti-accordion-padding);
+	}
+	.accordion > details > :not(summary):last-child { margin-block-end: var(--yeti-accordion-padding); }
+}
