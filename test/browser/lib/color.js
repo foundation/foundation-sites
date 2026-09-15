@@ -1,6 +1,8 @@
 // Node side: WCAG 2 contrast from sRGB triples. Page side: a helper that
 // paints any CSS color onto a canvas so the engine does the color-space
-// conversion and gamut mapping, and returns the sRGB triple.
+// conversion and gamut mapping, and returns the sRGB quadruple (alpha
+// included, since a transparent fill is itself a colour the engine can
+// resolve, in whatever syntax the author wrote it in).
 
 function channel(c) {
 	c /= 255;
@@ -23,10 +25,11 @@ window.__yeti = {
 		const canvas = document.createElement('canvas');
 		canvas.width = canvas.height = 1;
 		const ctx = canvas.getContext('2d');
+		ctx.clearRect(0, 0, 1, 1);
 		ctx.fillStyle = color;
 		ctx.fillRect(0, 0, 1, 1);
 		const d = ctx.getImageData(0, 0, 1, 1).data;
-		return [d[0], d[1], d[2]];
+		return [d[0], d[1], d[2], d[3]];
 	},
 	bg(selector) { return this.rgb(getComputedStyle(document.querySelector(selector)).backgroundColor); },
 	fg(selector) { return this.rgb(getComputedStyle(document.querySelector(selector)).color); },
