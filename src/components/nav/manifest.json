@@ -17,6 +17,7 @@
     { "selector": "> ul[popover]", "min": 1, "max": 1, "description": "The links, one per li, with role=\"list\" and the id the toggle names." },
     { "selector": "li", "min": 1, "max": null, "description": "An entry in the list; each holds one link." },
     { "selector": "[data-close]", "min": 0, "max": 1, "description": "An li holding a button with popovertargetaction=\"hide\", shown at the panel's top end corner and hidden in the bar. Required with data-panel=\"screen\"." },
+    { "selector": ".dropdown", "min": 0, "max": null, "description": "A nav item may hold a dropdown for its own children; the panel is in the top layer, so the bar never clips it." },
     { "selector": "> [data-actions]", "min": 0, "max": 1, "description": "Buttons at the end of the bar." }
   ],
   "tokens": [

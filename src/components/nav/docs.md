@@ -22,6 +22,8 @@ One list of links, two modes. The list carries `popover` and the button carries 
 
 A panel that is open stays a panel until it is dismissed, whatever the nav's width; widening past the threshold does not return the links to the bar on its own. Escape or a click outside closes the panel, and only then do the links return to the bar. `data-threshold` is the attribute `columns` uses, so a nav and the columns under it can switch at the same width.
 
+A nav item may hold a `dropdown` for a section with children of its own: the item becomes a button rather than a link, since the dropdown brings its own trigger. Its panel is in the top layer, so the bar's own containment cannot clip it, whether the links are sitting in the bar or open as a sheet, a drawer, or a screen.
+
 ## Accessibility
 
 Give the `nav` an `aria-label`, since a page often has more than one. The toggle needs a name, from `aria-label` or visible text; the browser sets its expanded state. Mark the current page's link with `aria-current="page"`. Put `role="list"` on the `ul`: Yeti's reset only removes list markers where that role says the list is decorative. The open panel follows the toggle in the tab order, so Tab from the toggle reaches the first link; Escape closes the panel and returns focus to the toggle.

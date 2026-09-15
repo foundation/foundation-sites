@@ -154,4 +154,20 @@ test.describe('nav', () => {
 		expect(await style(page, '#drawer-close', 'display')).toBe('none');
 		expect(await style(page, '#screen-close', 'display')).toBe('none');
 	});
+
+	test('a dropdown inside a nav item opens and is not clipped by the bar', async ({ page }) => {
+		await open(page, 1000);
+		await page.click('#nav-more-trigger');
+		await settle(page, '#nav-more');
+		expect(await page.evaluate(() => document.getElementById('nav-more').matches(':popover-open'))).toBe(true);
+		const panel = await rect(page, '#nav-more');
+		expect(panel.height).toBeGreaterThan(0);
+		const painted = await page.evaluate(() => {
+			const panel = document.getElementById('nav-more');
+			const box = panel.getBoundingClientRect();
+			const hit = document.elementFromPoint(box.left + box.width / 2, box.top + Math.min(10, box.height / 2));
+			return panel === hit || panel.contains(hit);
+		});
+		expect(painted).toBe(true);
+	});
 });
