@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tabs fixture</title>
+	<link rel="stylesheet" href="../../../../src/yeti.css">
+	<script type="module" src="../../../../src/components/tabs/tabs.js"></script>
+	<style>#stage { inline-size: 100%; }</style>
+</head>
+<body>
+	<main>
+		<h1>Tabs component</h1>
+		<div id="stage">
+			<div class="tabs" id="tabs">
+				<div role="tablist" aria-label="Account">
+					<button type="button" role="tab" id="t1" aria-controls="p1" data-contrast>Profile</button>
+					<button type="button" role="tab" id="t2" aria-controls="p2" data-contrast>Billing</button>
+					<button type="button" role="tab" id="t3" aria-controls="p3">Alerts</button>
+				</div>
+				<section role="tabpanel" id="p1" aria-labelledby="t1"><p>Profile panel.</p></section>
+				<section role="tabpanel" id="p2" aria-labelledby="t2"><p>Billing panel.</p></section>
+				<section role="tabpanel" id="p3" aria-labelledby="t3"><p>Alerts panel.</p></section>
+			</div>
+			<div class="tabs" id="vertical" data-orientation="vertical">
+				<div role="tablist" aria-label="Settings">
+					<button type="button" role="tab" id="v1" aria-controls="vp1">General</button>
+					<button type="button" role="tab" id="v2" aria-controls="vp2">Keys</button>
+				</div>
+				<section role="tabpanel" id="vp1" aria-labelledby="v1"><p>General.</p></section>
+				<section role="tabpanel" id="vp2" aria-labelledby="v2"><p>Keys.</p></section>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
