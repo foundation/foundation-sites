@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "dialog",
+  "kind": "component",
+  "description": "The native dialog element as a modal, opened by a button that names it, with the page behind it inert and focus held inside.",
+  "class": "dialog",
+  "attributes": [
+    { "name": "data-width", "type": "enum", "vocabulary": "width", "default": "md", "description": "How wide the dialog may grow." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> *", "min": 1, "max": null, "description": "The contents: a heading that names the dialog, then whatever it is for." },
+    { "selector": "> footer", "min": 0, "max": 1, "description": "The buttons, at the end edge. A button inside a form with method=\"dialog\" closes it with no script." }
+  ],
+  "tokens": [
+    { "name": "--yeti-dialog-surface", "public": true, "description": "Background of the dialog." },
+    { "name": "--yeti-dialog-radius", "public": true, "description": "Corner of the dialog." },
+    { "name": "--yeti-dialog-padding", "public": true, "description": "Padding inside." },
+    { "name": "--yeti-dialog-backdrop", "public": true, "description": "The wash over the page behind it." },
+    { "name": "--yeti-shadow-md", "public": true, "description": "The dialog's shadow." },
+    { "name": "--_yeti-width", "public": false }
+  ],
+  "a11y": {
+    "requiredAttributes": [],
+    "keyboard": [
+      { "key": "Escape", "action": "Closes the dialog." },
+      { "key": "Tab", "action": "Cycles inside the dialog, since the rest of the page is inert." }
+    ],
+    "notes": "Give the dialog a name with aria-labelledby pointing at its heading. Opened with showModal, which is what dialog.js does, the browser makes everything behind it inert, holds focus inside, and closes on Escape; none of that needs ARIA. A button inside a form with method=\"dialog\" closes it without any script. Without the module nothing opens the dialog, so never put the only route to something behind one on a page that does not load it."
+  },
+  "js": { "module": "dialog.js", "optional": true },
+  "support": { "unguarded": ["dialog", "::backdrop", "@starting-style", "transition-behavior: allow-discrete"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}
