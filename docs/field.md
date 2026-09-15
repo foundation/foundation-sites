@@ -39,12 +39,18 @@ A tight column: label, control, hint, error. The control is a native element sty
 </fieldset>
 ```
 
-A checkbox with `role="switch"` becomes a switch: a track with a thumb that slides to the end and takes the field's colour when on. A `range` input gets a thin track and a round thumb in the field's colour, the height of a control so it is easy to grab; the track is not filled up to the value, since CSS cannot read it.
+A checkbox with `role="switch"` becomes a switch: a track with a thumb that slides to the end and takes the field's colour when on. A `range` input gets a thin track and a round thumb in the field's colour, the height of a control so it is easy to grab; the track is filled to `--yeti-range-value`, which CSS cannot work out for itself: set it inline for a static value, or from one line of your own script when the value moves.
 
 ```html
 <div class="field"><input id="dark" type="checkbox" role="switch"><label for="dark">Dark mode</label></div>
 <div class="field"><label for="volume">Volume</label><input id="volume" type="range" min="0" max="100" value="40"></div>
 ```
+
+```html
+<div class="field"><label for="quality">Quality</label><input id="quality" type="range" min="0" max="100" value="70" style="--yeti-range-value: 70%"></div>
+```
+
+The script form: `input.addEventListener('input', () => input.style.setProperty('--yeti-range-value', ((input.value - input.min) / (input.max - input.min) * 100) + '%'))`.
 
 ## Accessibility
 
@@ -77,6 +83,7 @@ The label must point at the control with `for` and the control must carry that `
 | `--yeti-control-size` | Minimum height of the control. |
 | `--yeti-control-radius` | Corner of the control. |
 | `--yeti-control-border` | Border of the control at rest. |
+| `--yeti-range-value` | The filled share of a range's track; set it on the input. |
 | `--yeti-control-surface` | Background of the control. |
 | `--yeti-control-chevron` | The select's chevron image. |
 | `--yeti-color-alert` | Border of an invalid control. |
