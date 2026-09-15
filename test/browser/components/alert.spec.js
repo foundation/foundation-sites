@@ -59,4 +59,13 @@ test.describe('alert', () => {
 		await expect(page.locator('#closable')).toHaveCount(0);
 		expect(await page.evaluate(() => document.activeElement === document.body)).toBe(false);
 	});
+
+	test('a parent with its own tabindex keeps it after the focus return', async ({ page }) => {
+		await open(page);
+		await page.evaluate(() => document.querySelector('#stage').setAttribute('tabindex', '0'));
+		await page.focus('#dismiss');
+		await page.keyboard.press('Enter');
+		await expect(page.locator('#closable')).toHaveCount(0);
+		expect(await page.evaluate(() => document.querySelector('#stage').getAttribute('tabindex'))).toBe('0');
+	});
 });

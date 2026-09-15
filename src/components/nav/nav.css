@@ -170,13 +170,15 @@
 	}
 
 	/* Inline, at or above the threshold: the list joins the bar, the toggle
-	   and the close item go. The doubled [popover] lifts these rules to the
-	   panel rules' specificity (0,4,1), and they come last in the file, so
-	   the bar wins even while the popover is open. Thresholds are the width
-	   tokens' defaults, literal because a container condition cannot read a
-	   token; md (32rem) is the default. While a panel is open the nav stays
-	   in panel mode whatever its width, so a resize cannot strip an open
-	   panel of its box. */
+	   and the close item go. Each block is gated on the panel being closed
+	   (:not(:has(> ul[popover]:popover-open))), so these rules and the panel
+	   rules never apply at once. The doubled [popover] stays so the inline
+	   rules still outrank the user agent's own closed-popover styling.
+	   Thresholds are the width tokens' defaults, literal because a container
+	   condition cannot read a token; md (32rem) is the default. While a
+	   panel is open the guard turns these rules off, so the nav stays in
+	   panel mode whatever its width: a resize cannot strip an open panel
+	   of its box before it is dismissed. */
 	@container (inline-size >= 16rem) {
 		/* xs (16rem) */
 		.nav[data-threshold="xs"]:not(:has(> ul[popover]:popover-open)) > ul[popover][popover] { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--_yeti-gap); position: static; inset: auto; inline-size: auto; block-size: auto; max-block-size: none; margin: 0; padding: 0; border: 0; background-color: transparent; color: inherit; box-shadow: none; overflow: visible; font-size: inherit; opacity: 1; translate: none; }

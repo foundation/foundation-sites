@@ -12,10 +12,14 @@ document.addEventListener('click', (event) => {
 		alert.remove();
 		// The button that had focus has just gone, so put focus where the alert
 		// was rather than letting it fall to the top of the document.
+		// Only add tabindex if the parent isn't already focusable, and only
+		// remove it again if we added it, so an author's own tabindex (a focus
+		// trap, a scrollable region) survives untouched.
 		if (held && parent) {
-			parent.setAttribute('tabindex', '-1');
+			const had = parent.getAttribute('tabindex');
+			if (had === null) parent.setAttribute('tabindex', '-1');
 			parent.focus({ preventScroll: true });
-			parent.addEventListener('blur', () => parent.removeAttribute('tabindex'), { once: true });
+			if (had === null) parent.addEventListener('blur', () => parent.removeAttribute('tabindex'), { once: true });
 		}
 	});
 });
