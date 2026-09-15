@@ -43,3 +43,9 @@
 @import "components/affix/affix.css";
 @import "components/table/table.css";
 @import "components/seam/seam.css";
+@import "components/nav/nav.css";
+@import "components/breadcrumbs/breadcrumbs.css";
+@import "components/pagination/pagination.css";
+@import "components/alert/alert.css";
+@import "components/progress/progress.css";
+@import "components/spinner/spinner.css";

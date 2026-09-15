@@ -1,0 +1,39 @@
+/* Progress: the native element, styled. With a value it is a bar filled to
+   the value; without one it is indeterminate and the track's stripes move. */
+@layer yeti.components {
+	.progress {
+		appearance: none;
+		display: block;
+		inline-size: 100%;
+		block-size: calc(var(--_yeti-size-space) / 2);
+		border: 0;
+		border-radius: var(--yeti-progress-radius);
+		background-color: var(--yeti-color-surface-sunken);
+		overflow: clip;
+	}
+	.progress:not([data-variant]) { --_yeti-variant: var(--yeti-color-primary); --_yeti-variant-subtle: var(--yeti-color-primary-subtle); --_yeti-variant-soft: var(--yeti-color-primary-soft); --_yeti-variant-strong: var(--yeti-color-primary-strong); --_yeti-variant-text: var(--yeti-color-primary-text); --_yeti-on-variant: var(--yeti-on-primary); }
+	.progress:not([data-size]) { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	.progress::-webkit-progress-bar { background-color: transparent; }
+	.progress::-webkit-progress-value {
+		background-color: var(--_yeti-variant);
+		border-radius: inherit;
+		transition: inline-size var(--yeti-duration-base) var(--yeti-ease);
+	}
+	.progress::-moz-progress-bar {
+		background-color: var(--_yeti-variant);
+		border-radius: inherit;
+		transition: inline-size var(--yeti-duration-base) var(--yeti-ease);
+	}
+
+	/* Indeterminate: diagonal stripes sliding along the track. One period of
+	   a 45-degree stripe pair 1.5rem wide is 1.5rem × √2 along the track. */
+	.progress:indeterminate {
+		background-image: repeating-linear-gradient(-45deg, var(--_yeti-variant-subtle) 0 0.75rem, var(--yeti-color-surface-sunken) 0.75rem 1.5rem);
+		animation: yeti-progress calc(var(--yeti-duration-base) * 4) linear infinite;
+	}
+	.progress:indeterminate::-webkit-progress-bar { background-color: transparent; }
+	.progress:indeterminate::-moz-progress-bar { background-color: transparent; }
+	@keyframes yeti-progress {
+		to { background-position: 2.1213rem 0; }
+	}
+}

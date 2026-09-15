@@ -114,6 +114,13 @@ test.describe('field', () => {
 		expect(thumb.r).not.toBe('0px');
 	});
 
+	test('a range fills its track to --yeti-range-value', async ({ page, browserName }) => {
+		await open(page);
+		test.skip(browserName !== 'firefox', 'track geometry is only readable through ::-moz-range-track');
+		const size = await page.evaluate(() => getComputedStyle(document.getElementById('volume'), '::-moz-range-track').backgroundSize);
+		expect(size.startsWith('40%')).toBe(true);
+	});
+
 	test('a fieldset field groups inline fields under a legend', async ({ page }) => {
 		await open(page);
 		const [a, b] = await Promise.all([rect(page, '#p-a'), rect(page, '#p-b')]);

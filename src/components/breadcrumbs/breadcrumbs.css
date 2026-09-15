@@ -1,0 +1,37 @@
+/* Breadcrumbs: the trail to the current page. The separator is drawn by
+   CSS with empty alternative text, so it is seen and not read. */
+@layer yeti.components {
+	.breadcrumbs:not([data-size]) { --_yeti-size-text: var(--yeti-text-md); --_yeti-size-space: var(--yeti-space-sm); }
+	.breadcrumbs > ol {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--yeti-space-xs);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--_yeti-size-text);
+	}
+	.breadcrumbs > ol > li {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--yeti-space-xs);
+		margin: 0;
+	}
+	.breadcrumbs > ol > li + li::before {
+		content: var(--yeti-breadcrumbs-separator) / "";
+		color: var(--yeti-color-text-muted);
+	}
+	.breadcrumbs a {
+		color: var(--yeti-color-text-muted);
+		text-decoration: none;
+	}
+	.breadcrumbs a:hover {
+		color: var(--yeti-color-text);
+		text-decoration: underline;
+	}
+	.breadcrumbs [aria-current] {
+		color: var(--yeti-color-text);
+		font-weight: var(--yeti-weight-strong);
+	}
+}

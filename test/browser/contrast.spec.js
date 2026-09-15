@@ -7,7 +7,11 @@ import { PAGE_HELPERS, expectAA } from './lib/contrast.js';
 // frames end before a 150ms transition does). Wait on the element's own
 // running animations instead, as field.spec.js does; Promise.all([]) resolves
 // at once when there is nothing to wait for.
-const settle = (page, selector) => page.evaluate((s) => Promise.all(document.querySelector(s).getAnimations().map((a) => a.finished)), selector);
+// Two frames: input is processed, then rAF callbacks run, so after two the
+// style recalculation that creates the transition has certainly happened and
+// getAnimations() reports it. Waiting on an empty list resolves at once.
+const settle = (page, selector) => page.evaluate((s) => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+	.then(() => Promise.all(document.querySelector(s).getAnimations().map((a) => a.finished))), selector);
 
 const PAGES = [
 	'/test/browser/fixtures/components/button.html',
@@ -17,6 +21,10 @@ const PAGES = [
 	'/test/browser/fixtures/components/affix.html',
 	'/test/browser/fixtures/components/table.html',
 	'/test/browser/fixtures/components/seam.html',
+	'/test/browser/fixtures/components/nav.html',
+	'/test/browser/fixtures/components/breadcrumbs.html',
+	'/test/browser/fixtures/components/pagination.html',
+	'/test/browser/fixtures/components/alert.html',
 	'/test/browser/fixtures/themes/soft.html',
 	'/test/browser/fixtures/themes/sharp.html',
 ];

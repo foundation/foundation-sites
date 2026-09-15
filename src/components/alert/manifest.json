@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "alert",
+  "kind": "component",
+  "description": "A message in a hue: a tinted box with a coloured edge, an optional icon, and an optional close button that the module wires up.",
+  "class": "alert",
+  "attributes": [
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "Which hue: success for done, warning for careful, alert for wrong, primary for news." },
+    { "name": "data-emphasis", "type": "enum", "vocabulary": "emphasis", "default": "medium", "description": "How loud: medium is a tint, high a solid fill, low the border alone." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> svg", "min": 0, "max": 1, "description": "An icon, first, sized to the text." },
+    { "selector": "> [data-dismiss]", "min": 0, "max": 1, "description": "A button, last, that removes the alert when alert.js is loaded." },
+    { "selector": "> *", "min": 1, "max": null, "description": "The message, in any element." }
+  ],
+  "tokens": [
+    { "name": "--yeti-alert-radius", "public": true, "description": "Corner radius." },
+    { "name": "--yeti-alert-padding", "public": true, "description": "Padding inside." },
+    { "name": "--yeti-control-size", "public": true, "description": "Size of the close button." },
+    { "name": "--yeti-border-width", "public": true, "description": "The border; the start edge is four of them." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-variant-strong", "public": false },
+    { "name": "--_yeti-variant-text", "public": false },
+    { "name": "--_yeti-on-variant", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [ { "key": "Enter / Space", "action": "On the close button, removes the alert." } ], "notes": "Use role=\"status\" for the usual notice, which is announced politely, and role=\"alert\" only for something urgent, which interrupts. Content present at page load is not announced by either role; the roles matter for alerts inserted later. Meaning carried by the colour must also be in the words. The close button needs a name. Without the module the button does nothing, so leave it out on pages that do not load alert.js." },
+  "js": { "module": "alert.js", "optional": true },
+  "support": { "unguarded": ["lh unit", "color-mix()"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

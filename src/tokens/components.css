@@ -19,5 +19,35 @@
 
 		--yeti-table-stripe: var(--yeti-color-surface-sunken);
 		--yeti-table-border: var(--yeti-color-border);
+
+		--yeti-nav-padding: var(--yeti-space-sm) var(--yeti-space-md);
+		--yeti-nav-radius: var(--yeti-radius-sm);
+		--yeti-nav-border: var(--yeti-color-border);
+		--yeti-nav-surface: var(--yeti-color-surface);
+		--yeti-nav-panel: var(--yeti-color-surface-raised);
+
+		--yeti-breadcrumbs-separator: "/";
+
+		--yeti-pagination-radius: var(--yeti-radius-md);
+
+		--yeti-alert-radius: var(--yeti-radius-md);
+		--yeti-alert-padding: var(--yeti-space-md);
+
+		--yeti-progress-radius: var(--yeti-radius-full);
+
+		--yeti-spinner-duration: 0.8s;
+		--yeti-spinner-width: 0.15em;
+
+		/* Per element, not per theme: the filled share of a range's track. */
+		--yeti-range-value: 0%;
+	}
+
+	/* The ring reads a token so the preference reaches it: a components-layer
+	   animation beats the reset's reduced-motion rule, but not the value it
+	   resolves. The same idiom as motion.css. */
+	@media (prefers-reduced-motion: reduce) {
+		:root {
+			--yeti-spinner-duration: 0.01ms;
+		}
 	}
 }

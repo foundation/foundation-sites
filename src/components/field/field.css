@@ -85,7 +85,9 @@
 
 	/* A range: a thin track and a round thumb in the variant colour. The
 	   engine pseudo-elements take physical sizes; the input itself is a
-	   full control's height so the thumb is a comfortable target. */
+	   full control's height so the thumb is a comfortable target. The
+	   track is filled to --yeti-range-value, a share the author sets on
+	   the input, since CSS cannot read the value. */
 	.field input[type="range"] {
 		appearance: none;
 		inline-size: 100%;
@@ -98,12 +100,12 @@
 	.field input[type="range"]::-webkit-slider-runnable-track {
 		height: 0.25em;
 		border-radius: var(--yeti-radius-full);
-		background-color: var(--yeti-control-border);
+		background: linear-gradient(var(--_yeti-variant) 0 0) 0 0 / var(--yeti-range-value) 100% no-repeat var(--yeti-control-border);
 	}
 	.field input[type="range"]::-moz-range-track {
 		height: 0.25em;
 		border-radius: var(--yeti-radius-full);
-		background-color: var(--yeti-control-border);
+		background: linear-gradient(var(--_yeti-variant) 0 0) 0 0 / var(--yeti-range-value) 100% no-repeat var(--yeti-control-border);
 	}
 	.field input[type="range"]::-webkit-slider-thumb {
 		appearance: none;

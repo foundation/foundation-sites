@@ -98,6 +98,11 @@
       "description": "Border of the control at rest."
     },
     {
+      "name": "--yeti-range-value",
+      "public": true,
+      "description": "The filled share of a range's track; set it on the input."
+    },
+    {
       "name": "--yeti-control-surface",
       "public": true,
       "description": "Background of the control."

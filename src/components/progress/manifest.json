@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "progress",
+  "kind": "component",
+  "description": "The native progress element as a thin bar in a hue, filled to its value, or striped and moving when it has none.",
+  "class": "progress",
+  "attributes": [
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "The hue of the filled part." },
+    { "name": "data-size", "type": "enum", "vocabulary": "size-control", "default": "md", "description": "The bar's thickness: half the size's space step." }
+  ],
+  "classes": [],
+  "children": [],
+  "tokens": [
+    { "name": "--yeti-progress-radius", "public": true, "description": "Corner of the bar and of its value." },
+    { "name": "--yeti-color-surface-sunken", "public": true, "description": "The track." },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-size-space", "public": false }
+  ],
+  "a11y": { "requiredAttributes": [], "keyboard": [], "notes": "Put the class on a progress element and give it a name with aria-label or aria-labelledby. Keep its text content current (\"40%\"), since older assistive tech reads that. Leave out value for work whose length is unknown; the element is then indeterminate and says so." },
+  "js": null,
+  "support": { "unguarded": ["appearance: none on progress"], "guarded": [] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

@@ -9,13 +9,18 @@ export async function ratioOf(page, selector) {
 		const el = document.querySelector(s);
 		const fg = window.__yeti.rgb(getComputedStyle(el).color);
 		let node = el;
-		let background = 'white';
+		// A background is transparent when the canvas says its alpha is 0, not
+		// when its serialisation matches 'rgba(0, 0, 0, 0)' or 'transparent':
+		// a page authored in oklch has Chromium serialise a fully transparent
+		// background as e.g. 'oklab(0 0 0 / 0)', which matched neither literal
+		// and made the walk stop one element too early, on an unpainted node.
+		let background = [255, 255, 255, 255];
 		while (node) {
-			const c = getComputedStyle(node).backgroundColor;
-			if (c !== 'rgba(0, 0, 0, 0)' && c !== 'transparent') { background = c; break; }
+			const c = window.__yeti.rgb(getComputedStyle(node).backgroundColor);
+			if (c[3] !== 0) { background = c; break; }
 			node = node.parentElement;
 		}
-		return [fg, window.__yeti.rgb(background)];
+		return [fg, background];
 	}, selector);
 	return contrast(fg, bg);
 }

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schema/manifest.schema.json",
+  "name": "nav",
+  "kind": "component",
+  "description": "A bar with a brand, a list of links, and actions, that collapses the links behind a toggle at its own width and opens them as a sheet, a drawer, or a screen.",
+  "class": "nav",
+  "attributes": [
+    { "name": "data-threshold", "type": "enum", "vocabulary": "width", "default": "md", "description": "The nav's own width at or above which the links sit in the bar; below it they are behind the toggle." },
+    { "name": "data-panel", "type": "enum", "vocabulary": "panel", "default": "sheet", "description": "The shape of the open list below the threshold: a sheet under the bar, a drawer from the start edge, or the whole screen." },
+    { "name": "data-variant", "type": "enum", "vocabulary": "variant", "default": "primary", "description": "The hue of the current link and of the hover tint." },
+    { "name": "data-gap", "type": "enum", "vocabulary": "gap", "default": "sm", "description": "Space between the bar's parts and between the links." }
+  ],
+  "classes": [],
+  "children": [
+    { "selector": "> [data-brand]", "min": 0, "max": 1, "description": "The site's name or mark, usually a link home." },
+    { "selector": "> button[popovertarget]", "min": 1, "max": 1, "description": "The toggle; its popovertarget names the list's id. Hidden while the links are in the bar." },
+    { "selector": "> ul[popover]", "min": 1, "max": 1, "description": "The links, one per li, with role=\"list\" and the id the toggle names." },
+    { "selector": "li", "min": 1, "max": null, "description": "An entry in the list; each holds one link." },
+    { "selector": "[data-close]", "min": 0, "max": 1, "description": "An li holding a button with popovertargetaction=\"hide\", shown at the panel's top end corner and hidden in the bar. Required with data-panel=\"screen\"." },
+    { "selector": "> [data-actions]", "min": 0, "max": 1, "description": "Buttons at the end of the bar." }
+  ],
+  "tokens": [
+    { "name": "--yeti-nav-padding", "public": true, "description": "Padding of the bar and of the open panel." },
+    { "name": "--yeti-nav-radius", "public": true, "description": "Corner of the links and the toggle." },
+    { "name": "--yeti-nav-border", "public": true, "description": "The bar's bottom edge, and the sheet's." },
+    { "name": "--yeti-nav-surface", "public": true, "description": "Background of the bar." },
+    { "name": "--yeti-nav-panel", "public": true, "description": "Background of the open panel." },
+    { "name": "--yeti-control-size", "public": true, "description": "Minimum height of the bar, the toggle, and each link." },
+    { "name": "--yeti-shadow-md", "public": true, "description": "The open panel's shadow." },
+    { "name": "--yeti-shadow-color", "public": true, "description": "The drawer's backdrop." },
+    { "name": "--_yeti-gap", "public": false },
+    { "name": "--_yeti-variant", "public": false },
+    { "name": "--_yeti-variant-subtle", "public": false },
+    { "name": "--_yeti-variant-text", "public": false }
+  ],
+  "a11y": {
+    "requiredAttributes": ["aria-label"],
+    "keyboard": [
+      { "key": "Enter / Space", "action": "On the toggle, opens or closes the list." },
+      { "key": "Tab", "action": "From the toggle, into the open list's first link." },
+      { "key": "Escape", "action": "Closes the open list and returns focus to the toggle." }
+    ],
+    "notes": "Give the nav an aria-label, since a page often has more than one. The toggle needs a name (aria-label or visible text); the browser sets its expanded state. Mark the current page's link with aria-current=\"page\". Put role=\"list\" on the ul, because the reset only removes list markers where that role says the list is decorative. With data-panel=\"screen\" there is no outside to click, so include the close item."
+  },
+  "js": null,
+  "support": { "unguarded": ["popover", "container size queries", "@starting-style"], "guarded": ["anchor positioning with anchor-scope (fallback: the sheet starts at the top of the viewport)"] },
+  "since": "7.0.0",
+  "example": "example.html"
+}

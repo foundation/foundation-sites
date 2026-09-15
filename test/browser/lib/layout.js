@@ -73,3 +73,8 @@ export function same(a, b, aBox, bBox) {
 export async function axe(page) {
 	return (await new AxeBuilder({ page }).analyze()).violations;
 }
+
+/** Blocks a component's module before the page loads, for the "without the module" run. */
+export function withoutModule(page, name) {
+	return page.route(`**/${name}.js`, (route) => route.abort());
+}
